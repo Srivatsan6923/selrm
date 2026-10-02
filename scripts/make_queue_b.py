@@ -96,7 +96,7 @@ def extras(seeds, registry, version):
     runs = []
     for r in csv.DictReader(open(f"{ROOT}/docs/RUN_MATRIX_B.csv", encoding="utf-8")):
         rid, seed = r["run_id"], int(r["seed"]) if r["seed"].isdigit() else 0
-        if seed not in seeds or r["status"] in ("done", "dropped", "queued"):
+        if seed not in seeds or r["status"] in ("done", "dropped"):
             continue
         base = {"run_id": rid, "seed": seed, "priority": 10 * PRIO[r["priority"]] + 2 * (seed > 0), "eval": dict(EVAL)}
         m = re.fullmatch(r"B-AB-([\w-]+)-s\d", rid)
