@@ -127,7 +127,11 @@ class Scorer:
         """Greedy, fixed max length; returns generated ids without the end token, and
         whether generation stopped by itself."""
         out, done = [None] * len(seqs), [False] * len(seqs)
-        for b in self._batches(seqs, self.bs_gen):
+        batches, t0, g0 = self._batches(seqs, self.bs_gen), time.time(), self.gen_tokens
+        for k, b in enumerate(batches):
+            if k and k % 25 == 0:         # long generation phases (rationale on rule_v1) stay observable
+                self.log(f"generate: batch {k}/{len(batches)}, {self.gen_tokens - g0} tokens, "
+                         f"{(self.gen_tokens - g0) / max(1e-9, time.time() - t0):.0f} tok/s")
             ids, att = self._left_pad([seqs[i] for i in b])
             g = self.model.generate(input_ids=ids, attention_mask=att, do_sample=False,
                                     max_new_tokens=self.max_new, eos_token_id=self.eos,
