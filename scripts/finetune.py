@@ -60,7 +60,22 @@ def load_base(base_dir, max_len, hp=HP):
     model, tok = FastLanguageModel.from_pretrained(base_dir, max_seq_length=max_len, dtype=torch.bfloat16,
                                                    load_in_4bit=False, load_in_8bit=False,
                                                    full_finetuning=False, local_files_only=True)
+    preflight()
     return model, tok
+
+
+def preflight():
+    """Fail fast instead of silently training on the slow torch Gated DeltaNet path."""
+    import transformers.models.qwen3_5.modeling_qwen3_5 as mq
+    fast = {n: getattr(mq, n, None) is not None for n in
+            ("causal_conv1d_fn", "causal_conv1d_update", "chunk_gated_delta_rule", "fused_recurrent_gated_delta_rule")}
+    if not all(fast.values()):
+        raise RuntimeError(f"Qwen3.5 fast path incomplete: {fast}")
+    from causal_conv1d import causal_conv1d_fn
+    x = torch.randn(2, 64, 16, device="cuda", dtype=torch.bfloat16)
+    causal_conv1d_fn(x, torch.randn(64, 4, device="cuda", dtype=torch.bfloat16), None, activation="silu")
+    torch.cuda.synchronize()
+    return fast
 
 
 def add_lora(model, seed, hp=HP):

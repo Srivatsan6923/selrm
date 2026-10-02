@@ -208,6 +208,8 @@ def main():
     ap.add_argument("--bs_score", type=int, default=64)
     ap.add_argument("--bs_gen", type=int, default=64)
     a = ap.parse_args()
+    if os.environ.get("SELRM_BACKEND", "unsloth") == "unsloth":
+        import unsloth  # noqa: F401  (before transformers)
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import finetune
     model, tok = finetune.load_for_eval(a.base, a.adapter)

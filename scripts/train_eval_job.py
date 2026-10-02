@@ -144,6 +144,8 @@ def main():
     ap.add_argument("--queue", required=True, action="append")
     ap.add_argument("--max_runs", type=int, default=0, help="stop after this many runs (0 = no limit)")
     a = ap.parse_args()
+    if os.environ.get("SELRM_BACKEND", "unsloth") == "unsloth":
+        import unsloth  # noqa: F401  (must precede transformers so its patches and GDN kernels apply)
     owner = os.environ.get("POD_NAME", socket.gethostname())
     log = Log(f"{a.root}/logs/{owner}/runner.log")
     mon = runq.GpuMonitor(f"{a.root}/logs/{owner}/gpu_util.csv", log=log)

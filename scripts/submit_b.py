@@ -157,6 +157,29 @@ def push_code():
     return code
 
 
+def pull(run_ids):
+    """Copy finished runs (DONE) to results_git/<run_id>/: meta, summaries, scores
+    (gzip-compressed in transit), DONE, gpu_util.csv. Returns the run_ids copied."""
+    have = exec_sync("sh", "-c", "cd /pvc/selrm/results 2>/dev/null && ls -d */DONE 2>/dev/null | cut -d/ -f1").split()
+    want = [r for r in (run_ids or have) if r in have]
+    got = []
+    for rid in want:
+        if os.path.exists(f"{REPO}/results_git/{rid}/DONE"):
+            continue
+        data = subprocess.run(["kubectl", "-n", NS, "exec", "selrm-b-sync", "--", "sh", "-c",
+                               f"cd /pvc/selrm/results && tar -czf - {rid}/meta.json {rid}/DONE "
+                               f"$(ls {rid}/summary_*.json {rid}/scores_*.jsonl {rid}/gpu_util.csv 2>/dev/null)"],
+                              capture_output=True, check=True).stdout
+        with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
+            tar.extractall(f"{REPO}/results_git", filter="data")
+        got.append(rid)
+        print(f"pulled {rid} ({len(data)} bytes gz)")
+    missing = sorted(set(run_ids or []) - set(have))
+    if missing:
+        print("not DONE on the PVC yet:", " ".join(missing))
+    return got
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd")
@@ -197,6 +220,11 @@ def main():
         for i in range(a.n):
             apply(runner_job(f"selrm-b-run-{stem}-{a.gpu}-{int(time.time()) % 100000}-{i}", q, code, a.env,
                              a.gpu, a.max_runs, a.hours))
+    elif a.cmd == "pull":
+        pull(a.args)
+    elif a.cmd == "ls":       # claim/heartbeat/done state of every run on the PVC
+        print(exec_sync("sh", "-c", "cd /pvc/selrm/results 2>/dev/null && for d in */; do "
+                                    "echo \"$d $(ls $d | grep -E '^(CLAIMED_|DONE|FAILED_)' | tr '\\n' ' ')\"; done"))
     else:
         sys.exit(f"unknown command {a.cmd}")
 
