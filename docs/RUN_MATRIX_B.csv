@@ -96,7 +96,7 @@ B-F-ledger2-blocks-s1,B,yes,"Tab3,Tab4",train+eval,ledger2 x blocks,rule_v1/bloc
 B-F-ledger2-blocks-s2,B,yes,"Tab3,Tab4",train+eval,ledger2 x blocks,rule_v1/blocks,2,GPU,2.3,,P0,"A-D4,B-C0",queued,NRP queue b_f_key_s12.json (2 Oct)
 B-F-ledger2-blocks-s3,B,yes,"Tab3,Tab4",train+eval,ledger2 x blocks,rule_v1/blocks,3,GPU,2.3,,P2,"A-D4,B-C0",todo,
 B-F-ledger2-blocks-s4,B,yes,"Tab3,Tab4",train+eval,ledger2 x blocks,rule_v1/blocks,4,GPU,2.3,,P2,"A-D4,B-C0",todo,
-B-F-ledger2-triplets-s0,B,yes,"Tab3,Tab4",train+eval,ledger2 x triplets,rule_v1/triplets,0,GPU,2.3,,P0,"A-D4,B-C0",queued,NRP queue b_f_s0.json (2 Oct)
+B-F-ledger2-triplets-s0,B,yes,"Tab3,Tab4",train+eval,ledger2 x triplets,rule_v1/triplets,0,GPU,2.3,3.732,P0,"A-D4,B-C0",done,NRP queue b_f_s0.json (2 Oct)
 B-F-ledger2-triplets-s1,B,yes,"Tab3,Tab4",train+eval,ledger2 x triplets,rule_v1/triplets,1,GPU,2.3,,P0,"A-D4,B-C0",queued,NRP queue b_f_key_s12.json (2 Oct)
 B-F-ledger2-triplets-s2,B,yes,"Tab3,Tab4",train+eval,ledger2 x triplets,rule_v1/triplets,2,GPU,2.3,,P0,"A-D4,B-C0",queued,NRP queue b_f_key_s12.json (2 Oct)
 B-F-ledger2-triplets-s3,B,yes,"Tab3,Tab4",train+eval,ledger2 x triplets,rule_v1/triplets,3,GPU,2.3,,P2,"A-D4,B-C0",todo,
