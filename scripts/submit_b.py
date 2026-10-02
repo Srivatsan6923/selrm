@@ -241,7 +241,7 @@ def main():
             d = f"{REPO}/results_git/{r['run_id']}"
             if r["run_id"] in pooled and not os.path.exists(f"{d}/DONE") and not os.path.exists(f"{d}/CLAIMED_B"):
                 os.makedirs(d, exist_ok=True)
-                open(f"{d}/CLAIMED_B", "w").write(f"queued on NRP in {name} {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}\n")
+                open(f"{d}/CLAIMED_B", "w", newline="\n").write(f"queued on NRP in {name} {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}\n")
                 marked.append(r["run_id"])
         if marked:
             print(f"marked {len(marked)} runs CLAIMED_B in results_git (commit and push to publish the claims)")

@@ -142,7 +142,7 @@ def main():
     seeds = {int(s) for s in a.seeds.split(",")}
     runs = (smoke() if a.kind == "smoke" else factorial(seeds, a.registry, a.version, a.key_only) if a.kind == "factorial"
             else transfer(seeds, a.registry, a.version) if a.kind == "transfer" else extras(seeds, a.registry, a.version))
-    json.dump({"runs": runs}, open(a.out, "w"), indent=1)
+    json.dump({"runs": runs}, open(a.out, "w", newline="\n"), indent=1)
     print(f"{len(runs)} runs -> {a.out}")
 
 
