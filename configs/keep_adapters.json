@@ -1,0 +1,1 @@
+{"keep": ["B-F-ledger2-triplets-s0", "B-F-ledger2-blocks-s0", "B-F-verdict-triplets-s0", "B-F-verdict-blocks-s0", "B-PRM"], "note": "Owner B. C and D load these through configs/adapters.json."}

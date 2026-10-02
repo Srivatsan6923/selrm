@@ -1,0 +1,11 @@
+# Pin exact versions after the first working Colab session (record in meta.json).
+unsloth
+trl
+transformers
+datasets
+peft
+accelerate
+requests
+numpy
+pandas
+pytest
