@@ -1,0 +1,302 @@
+{
+ "cad": {
+  "generic": [
+   "No angina symptoms reported.",
+   "No exertional chest discomfort.",
+   "Resting ECG shows no ischemic changes.",
+   "Takes no medicines for angina.",
+   "Chest pain on exertion: none reported.",
+   "Cardiac stress test unremarkable last year."
+  ],
+  "present": [
+   "Coronary artery disease with stable angina.",
+   "Coronary artery disease on ongoing treatment.",
+   "Coronary artery disease, with angina when walking uphill.",
+   "Coronary artery disease, followed in cardiology clinic every six months.",
+   "Has coronary artery disease, managed medically.",
+   "Known coronary artery disease (two-vessel disease on angiography)."
+  ],
+  "past": [
+   "Coronary artery disease treated with a stent in {year}.",
+   "Previously treated for coronary artery disease (stent, {year}).",
+   "Angioplasty for coronary artery disease in {year}, after which all symptoms resolved.",
+   "Coronary artery disease was treated with a stent, and cardiology follow-up was completed in {year} with no remaining symptoms.",
+   "Coronary artery disease years ago, with angina that went away after bypass surgery.",
+   "Had coronary artery disease, treated with bypass surgery in {year}; recovered well."
+  ],
+  "absent": [
+   "No history of coronary artery disease.",
+   "Denies coronary artery disease, past or present.",
+   "No coronary artery disease at any time.",
+   "Medical records show no coronary artery disease, past or present.",
+   "Has never had coronary artery disease.",
+   "Never diagnosed with coronary artery disease."
+  ],
+  "rel": [
+   "{Poss} {rel} has coronary artery disease.",
+   "{Poss} {rel} is being treated for coronary artery disease.",
+   "{Poss} {rel} takes a daily statin for coronary artery disease.",
+   "{Poss} {rel} carries a nitroglycerin spray for coronary artery disease.",
+   "{Poss} {rel} has angina from coronary artery disease.",
+   "{Poss} {rel} has known coronary artery disease."
+  ],
+  "rel_past": [
+   "{Poss} {rel} had coronary artery disease treated with a stent in {year}.",
+   "{Poss} {rel} previously had coronary artery disease, treated with angioplasty.",
+   "{Poss} {rel} completed cardiac rehabilitation for coronary artery disease in {year}.",
+   "{Poss} {rel} had coronary artery disease found on a stress test in {year}.",
+   "{Poss} {rel} had bypass surgery for coronary artery disease years ago.",
+   "{Poss} {rel} was formerly under the care of a cardiologist for coronary artery disease."
+  ]
+ },
+ "vte": {
+  "generic": [
+   "Not on any blood thinners.",
+   "No known blood clotting disorder.",
+   "No inherited clotting condition such as factor V Leiden.",
+   "Takes no anticoagulant medicines.",
+   "Coagulation tests normal on recent bloodwork.",
+   "Varicose veins: none seen."
+  ],
+  "present": [
+   "On treatment for a deep vein thrombosis in the left leg.",
+   "Active DVT of the right calf on anticoagulation.",
+   "CT pulmonary angiogram today shows a pulmonary embolism.",
+   "Has a deep vein thrombosis and takes apixaban twice daily.",
+   "Has an acute pulmonary embolism, diagnosed this week.",
+   "Ongoing treatment for a deep vein thrombosis of the left arm."
+  ],
+  "past": [
+   "Deep vein thrombosis after a fracture in {year}.",
+   "Previously had a DVT, in {year}.",
+   "Anticoagulation for a pulmonary embolism was completed in {year}, and the clot resolved.",
+   "Deep vein thrombosis following knee surgery in {year}; resolved with treatment.",
+   "Pulmonary embolism years ago, treated for six months.",
+   "Recovered from a pulmonary embolism in {year}."
+  ],
+  "absent": [
+   "No personal or family history of venous thromboembolism.",
+   "Denies any DVT or pulmonary embolism, past or present, personally or in parents, siblings or children.",
+   "No venous thromboembolism at any time, personally or among first-degree relatives.",
+   "Medical records show no venous thromboembolism, and none is reported in first-degree relatives.",
+   "Has never had a DVT or pulmonary embolism, nor has any parent, sibling or child.",
+   "Venous thromboembolism has never occurred in the patient or in any parent, sibling or child."
+  ],
+  "rel": [
+   "{Poss} {rel} has a deep vein thrombosis.",
+   "{Poss} {rel} has a DVT in one leg.",
+   "{Poss} {rel} was admitted this morning with a pulmonary embolism.",
+   "{Poss} {rel} has a DVT confirmed on ultrasound today.",
+   "{Poss} {rel} is being treated for a pulmonary embolism.",
+   "{Poss} {rel} is on anticoagulation for venous thrombosis."
+  ],
+  "rel_past": [
+   "{Poss} {rel} had a pulmonary embolism in {year}.",
+   "{Poss} {rel} had a deep vein thrombosis in {year}.",
+   "{Poss} {rel} previously took blood thinners for a deep vein thrombosis.",
+   "{Poss} {rel} completed a course of anticoagulation in {year} after a pulmonary embolism.",
+   "{Poss} {rel} had a DVT years ago.",
+   "{Poss} {rel} recovered from a pulmonary embolism in {year}."
+  ]
+ },
+ "stroke": {
+  "generic": [
+   "Neurological examination unremarkable.",
+   "Cranial nerves intact.",
+   "Speech fluent and face symmetric.",
+   "Visual fields full to confrontation.",
+   "Gait normal; no focal weakness.",
+   "Power and sensation normal in all limbs."
+  ],
+  "present": [
+   "Acute ischemic stroke this week.",
+   "Ongoing symptoms from a stroke this week.",
+   "Recent stroke, with slurred speech that persists today.",
+   "Brain MRI today shows a new ischemic stroke.",
+   "Has weakness of the left arm from a stroke this month.",
+   "Transient ischemic attack this week; carotid imaging is pending."
+  ],
+  "past": [
+   "Ischemic stroke in {year}; mild residual weakness of the left hand.",
+   "Previously had a stroke, in {year}.",
+   "Previously had a transient ischemic attack; the arm numbness resolved within an hour.",
+   "Minor stroke in {year} that caused slurred speech, which resolved completely.",
+   "TIA years ago, with full recovery.",
+   "Recovered from a stroke in {year}."
+  ],
+  "absent": [
+   "No history of stroke or TIA.",
+   "Denies ever having had a stroke or transient ischemic attack.",
+   "No stroke or TIA at any time.",
+   "Medical records show no stroke or TIA at any point.",
+   "Has never had a stroke or TIA.",
+   "Never diagnosed with a stroke or TIA."
+  ],
+  "rel": [
+   "{Poss} {rel} is recovering from a stroke this month.",
+   "{Poss} {rel} has an acute stroke.",
+   "{Poss} {rel} has a new stroke that affects speech.",
+   "{Poss} {rel} had a TIA this morning.",
+   "{Poss} {rel} was admitted with a stroke this week.",
+   "{Poss} {rel} is in the hospital with a TIA."
+  ],
+  "rel_past": [
+   "{Poss} {rel} had a stroke in {year}.",
+   "{Poss} {rel} was previously treated for a TIA, and the symptoms resolved within a day.",
+   "{Poss} {rel} completed stroke rehabilitation in {year}.",
+   "{Poss} {rel} had a minor stroke in {year}, and the weakness resolved.",
+   "{Poss} {rel} had a TIA years ago.",
+   "{Poss} {rel} recovered fully from a stroke years ago."
+  ]
+ },
+ "chf": {
+  "generic": [
+   "Jugular venous pressure not raised.",
+   "Heart size normal on chest radiograph.",
+   "Recent echocardiogram normal.",
+   "Takes no diuretics.",
+   "Heart sounds without a gallop.",
+   "Sleeps flat on one pillow."
+  ],
+  "present": [
+   "Heart failure with reduced ejection fraction.",
+   "Chronic heart failure (NYHA class II).",
+   "Breathless on mild exertion because of heart failure.",
+   "Heart failure, under regular review in a cardiology clinic.",
+   "Has heart failure, treated with diuretics.",
+   "Current heart failure with ankle swelling."
+  ],
+  "past": [
+   "Heart failure in {year} after viral myocarditis, resolved.",
+   "Previously had heart failure from a thyroid problem in {year}, resolved with treatment.",
+   "Heart failure during sepsis in {year}, resolved as the infection cleared.",
+   "Previously treated for heart failure, which resolved; heart function is normal on follow-up.",
+   "Had heart failure years ago from severe anemia; it recovered fully once the anemia was corrected.",
+   "Formerly had heart failure from stress cardiomyopathy; recovered fully in {year} and off all heart medicines since."
+  ],
+  "absent": [
+   "No history of heart failure.",
+   "Denies heart failure at any time.",
+   "No heart failure, past or present.",
+   "Not affected by heart failure at any point in life.",
+   "Has never had heart failure.",
+   "Heart failure: never diagnosed."
+  ],
+  "rel": [
+   "{Poss} {rel} has heart failure.",
+   "{Poss} {rel} lives with chronic heart failure.",
+   "{Poss} {rel} attends a heart failure clinic.",
+   "{Poss} {rel} was admitted this morning with heart failure.",
+   "{Poss} {rel} is treated for heart failure.",
+   "{Poss} {rel} has advanced heart failure."
+  ],
+  "rel_past": [
+   "{Poss} {rel} had heart failure in {year}.",
+   "{Poss} {rel} previously took diuretics for heart failure.",
+   "{Poss} {rel} had heart failure from a viral infection in {year}; it resolved.",
+   "{Poss} {rel} stopped heart failure medicines in {year} once heart function returned to normal.",
+   "{Poss} {rel} recovered from heart failure in {year}.",
+   "{Poss} {rel} had heart failure long ago and made a full recovery."
+  ]
+ },
+ "diabetes": {
+  "generic": [
+   "Fasting glucose normal on today's blood tests.",
+   "No excessive thirst or urination.",
+   "Urine dipstick shows no sugar.",
+   "Takes no medicines to lower blood sugar.",
+   "HbA1c 5.3% at a routine check.",
+   "Random glucose 92 mg/dL."
+  ],
+  "present": [
+   "Type 2 diabetes, diet-controlled.",
+   "Diabetes mellitus type 1.",
+   "Type 2 diabetes, with an HbA1c of 7.9% today.",
+   "Diabetic; tests blood sugar at home twice a day.",
+   "Has type 2 diabetes on metformin.",
+   "Insulin-treated diabetes."
+  ],
+  "past": [
+   "Type 2 diabetes diagnosed in {year}, resolved after weight loss.",
+   "Previously had type 2 diabetes ({year}); resolved after bariatric surgery.",
+   "Steroid-induced diabetes in {year}, resolved once the steroids were stopped.",
+   "Previously took metformin for type 2 diabetes; it was stopped when the diabetes resolved.",
+   "Had diabetes years ago that went into remission on a low-calorie diet.",
+   "Formerly diabetic; in remission since {year}."
+  ],
+  "absent": [
+   "No history of diabetes.",
+   "Denies diabetes, past or present.",
+   "No diabetes at any time.",
+   "No diabetes; blood sugar has always been normal.",
+   "Has never had diabetes.",
+   "Never diagnosed with diabetes."
+  ],
+  "rel": [
+   "{Poss} {rel} has type 2 diabetes.",
+   "{Poss} {rel} has diabetes treated with insulin.",
+   "{Poss} {rel} takes metformin for diabetes.",
+   "{Poss} {rel} has diabetes and wears a glucose monitor.",
+   "{Poss} {rel} is diabetic.",
+   "{Poss} {rel} lives with type 1 diabetes."
+  ],
+  "rel_past": [
+   "{Poss} {rel} had diabetes in {year}, resolved with weight loss.",
+   "{Poss} {rel} previously took tablets for type 2 diabetes.",
+   "{Poss} {rel} had steroid-induced diabetes in {year} that resolved when the steroids were stopped.",
+   "{Poss} {rel} stopped diabetes treatment in {year} after the diabetes resolved.",
+   "{Poss} {rel} had diabetes years ago that went away after a change in diet.",
+   "{Poss} {rel} was diabetic until bariatric surgery several years ago."
+  ]
+ },
+ "vascular": {
+  "generic": [
+   "Peripheral pulses palpable.",
+   "Foot pulses easily felt.",
+   "Troponin within the normal range.",
+   "Toes warm, with brisk capillary refill.",
+   "Walks without calf pain.",
+   "Ankle-brachial index normal today."
+  ],
+  "present": [
+   "Peripheral artery disease with calf claudication.",
+   "Has peripheral artery disease.",
+   "Has had a myocardial infarction and remains on secondary prevention.",
+   "Peripheral artery disease, on cilostazol for pain on walking.",
+   "Lives with peripheral artery disease affecting the left leg.",
+   "Has symptomatic peripheral artery disease of both legs."
+  ],
+  "past": [
+   "Myocardial infarction in {year}, treated with a stent.",
+   "Previously had a myocardial infarction, in {year}.",
+   "Myocardial infarction in {year}; completed cardiac rehabilitation and has had no symptoms since.",
+   "Peripheral artery disease in {year}, with leg pain that resolved after an artery stent.",
+   "Heart attack years ago, with full recovery.",
+   "Recovered from a heart attack in {year}."
+  ],
+  "absent": [
+   "No history of myocardial infarction or peripheral artery disease.",
+   "Denies ever having had a myocardial infarction or peripheral artery disease.",
+   "No myocardial infarction or peripheral artery disease at any time.",
+   "Medical records show no myocardial infarction or peripheral artery disease, past or present.",
+   "Has never had a heart attack or peripheral artery disease.",
+   "Never diagnosed with a myocardial infarction or peripheral artery disease."
+  ],
+  "rel": [
+   "{Poss} {rel} has peripheral artery disease.",
+   "{Poss} {rel} is being treated for a myocardial infarction this month.",
+   "{Poss} {rel} had a myocardial infarction this morning.",
+   "{Poss} {rel} takes cilostazol for peripheral artery disease.",
+   "{Poss} {rel} is in the hospital with a heart attack.",
+   "{Poss} {rel} has peripheral artery disease with leg pain."
+  ],
+  "rel_past": [
+   "{Poss} {rel} had a myocardial infarction in {year}.",
+   "{Poss} {rel} previously underwent a stent procedure for a myocardial infarction.",
+   "{Poss} {rel} completed cardiac rehabilitation after a myocardial infarction in {year}.",
+   "{Poss} {rel} had peripheral artery disease in {year}, resolved after leg artery surgery.",
+   "{Poss} {rel} had a heart attack years ago.",
+   "{Poss} {rel} recovered from a heart attack earlier in life."
+  ]
+ }
+}
