@@ -166,7 +166,7 @@ class GpuMonitor(threading.Thread):
                 for path in [self.job_csv] + ([f"{rdir}/gpu_util.csv"] if rdir else []):
                     new = not os.path.exists(path)
                     with open(path, "a", newline="") as f:
-                        w = csv.writer(f)
+                        w = csv.writer(f, lineterminator="\n")
                         if new:
                             w.writerow(["time", "utilization.gpu", "memory.used.MiB"])
                         w.writerow([ts, u, smp[1]])

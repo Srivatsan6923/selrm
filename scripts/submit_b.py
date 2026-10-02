@@ -220,6 +220,15 @@ def main():
         exec_sync("sh", "-c", f"mkdir -p /pvc/selrm/queue && cat > /pvc/selrm/queue/{name}.tmp && "
                               f"mv /pvc/selrm/queue/{name}.tmp /pvc/selrm/queue/{name}", inp=open(src, "rb").read())
         print(f"queue {name} pushed")
+        marked = []                       # claim channel for the pooled rows (docs/CHANGE_REQUESTS.md, 2 Oct)
+        for r in json.load(open(src))["runs"]:
+            d = f"{REPO}/results_git/{r['run_id']}"
+            if r["run_id"].startswith("B-") and not os.path.exists(f"{d}/DONE") and not os.path.exists(f"{d}/CLAIMED_B"):
+                os.makedirs(d, exist_ok=True)
+                open(f"{d}/CLAIMED_B", "w").write(f"queued on NRP in {name} {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}\n")
+                marked.append(r["run_id"])
+        if marked:
+            print(f"marked {len(marked)} runs CLAIMED_B in results_git (commit and push to publish the claims)")
     elif a.cmd == "build-env":
         code = a.code or sha()
         apply(cpu_job(f"selrm-b-build-env-{a.args[0]}", ["bash", f"/pvc/selrm/code/{code}/k8s/build_env.sh", a.args[0]],
