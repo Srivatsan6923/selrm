@@ -89,6 +89,9 @@ class Rule:
     sex: str | None = None
     age_range: tuple = (30, 64)
     family: str = ""               # structural family, used for held-out splits
+    logic: str = "any"             # constraint: "any" | "all" | "atleast" (points of met >= cutoff)
+    cutoff: int | None = None      # points needed when logic == "atleast"
+    verb: str = "Prescribe"        # constraint claims: "<verb> <option>."
 
     def crit(self, cid: str) -> Criterion:
         return next(c for c in self.criteria if c.cid == cid)
@@ -105,7 +108,7 @@ class Rule:
     def claims(self, cid: str) -> tuple[str, str]:
         """(s, s'): s is correct on the default side, s' on the flipped side."""
         if self.kind == "constraint":
-            return (f"Prescribe {self.default}.", f"Prescribe {self.alternative}.")
+            return (f"{self.verb} {self.default}.", f"{self.verb} {self.alternative}.")
         c = self.crit(cid)
         unit = "point" if c.points == 1 else "points"
         return (f"The {c.label} criterion contributes 0 points.",
@@ -115,8 +118,12 @@ class Rule:
         """0 if s is correct, 1 if s' is correct (executed, not annotated)."""
         overrides = overrides or {}
         if self.kind == "constraint":
-            hit = any(c.evaluate(mentions, overrides.get(c.cid)) for c in self.criteria)
-            return int(hit)
+            if self.logic == "any":
+                return int(any(c.evaluate(mentions, overrides.get(c.cid)) for c in self.criteria))
+            met = [c for c in self.criteria if c.evaluate(mentions, overrides.get(c.cid))]
+            if self.logic == "all":
+                return int(len(met) == len(self.criteria))
+            return int(sum(c.points for c in met) >= self.cutoff)
         c = self.crit(cid)
         return int(c.evaluate(mentions, overrides.get(cid)))
 
@@ -132,6 +139,39 @@ def N(cid, concept, label, keywords, op, thr, default_range, flip_range, near_de
                      default_range=default_range, flip_range=flip_range,
                      near_delta=near_delta, **kw)
 
+
+# Rule text from a structural family and (criterion, condition phrase) pairs;
+# Rule.label with Rule.logic is the program for every family.
+FAMILIES = ("any_of", "all_of", "two_of_three", "score_cutoff")
+
+
+def G(rid, family, title, intro, default, alternative, conds, setting, cutoff=None, **kw):
+    crits = [c for c, _ in conds]
+    head, switch = f"{intro}, prescribe {default}.", f"prescribe {alternative} instead"
+    phrases = [p for _, p in conds]
+    if family == "any_of":
+        text, logic = f"{head} If {' or '.join(phrases)}, {switch}.", "any"
+    elif family == "all_of":
+        text, logic = f"{head} If {' and '.join(phrases)}, {switch}.", "all"
+    elif family == "two_of_three":
+        text, logic, cutoff = (f"{head} If at least two of the following apply, {switch}: "
+                               f"{'; '.join(phrases)}."), "atleast", 2
+    elif family == "score_cutoff":
+        items = "; ".join(f"{c.points} point{'s' if c.points > 1 else ''} "
+                          f"{'if' if p.startswith('the ') else 'for'} {p}" for c, p in conds)
+        text, logic = f"{head} Score {items}. If the score is {cutoff} or more, {switch}.", "atleast"
+    else:
+        raise ValueError(family)
+    return Rule(rid, "constraint", title, text, crits, setting, default=default,
+                alternative=alternative, family=family, logic=logic, cutoff=cutoff, **kw)
+
+
+# Keyword sets shared by the extended library (selrm/rules_*.py).
+SBP_KW = ["systolic", "blood pressure", "bp "]
+VTE_KW = ["thrombo", "dvt", "pulmonary embol"]
+CONF_KW = ["confus", "disorient"]
+CANCER_KW = ["cancer", "lymphoma", "leukemia", "myeloma", "carcinoma"]
+AGE = dict(nm=("numeric",))
 
 # --------------------------------------------------------------------------
 # Pilot library. Every rule is a stated test specification, not clinical

@@ -1,0 +1,5 @@
+__pycache__/
+.pytest_cache/
+# datasets are rebuilt deterministically (scripts/build_rule_v1.py); MANIFEST.json holds sha256
+data/**/records.jsonl
+data/smoke_v2/
