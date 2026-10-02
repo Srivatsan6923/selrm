@@ -9,9 +9,9 @@ A-D6,A,no,Tab2,data,"hard tiers in test: long, superseded, delabelled; boundary 
 A-D7,A,no,"Tab2,Tab4 (MR)",data,missing-evidence twins + supported claims for FR; dev threshold set,-,-,CPU,2,,P0,A-D4,done,"missing, dev_missing sets; missing twins in every corpus"
 A-D8,A,no,Tab8,data,reading and application pairs for composition gap,-,-,CPU,1.5,,P1,A-D4,done,readapply set; engine.readapply_records
 A-D9,A,no,Tab3,data,folds 2 and 3 (train blocks/triplets + L2 tests),-,-,CPU,1,,P1,A-D4,done,build_rule_v1.py --fold 2|3
-A-D10,A,no,Fig3 left,data,"diversity-curve corpora: more families / more rules per family / more patients, matched size",-,-,CPU,1.5,,P1,A-D4,todo,
+A-D10,A,no,Fig3 left,data,"diversity-curve corpora: more families / more rules per family / more patients, matched size",-,-,CPU,1.5,,P1,A-D4,done,"build_rule_v1.py diversity(): div_new/same/patients_{x}; same-structure curve limited to 64 rules (two largest classes), new-structure curve ends at all training rules"
 A-D11,A,no,AppC text tiers,data,"rewritten-note tier: LLM rewrite of test triplets, accept only if two extractors recover the state",-,-,CPU,4,,P1,A-D4,todo,needs an open LLM on GPU or API; report acceptance rate
-A-D12,A,no,Tab9,data,"ablation corpora: no-presentation, no-ledger-resampling, decision-field targets, bit-only targets, conclusion-only labels, probe-reweighting inputs",-,-,CPU,2,,P1,A-D4,todo,
+A-D12,A,no,Tab9,data,"ablation corpora: no-presentation, no-ledger-resampling, decision-field targets, bit-only targets, conclusion-only labels, probe-reweighting inputs",-,-,CPU,2,,P1,A-D4,done,"abl_nopres_triplets, abl_conclusion_triplets, abl_probe_blocks; decision bit in meta.criterion_holds"
 A-D13,A,no,"Tab4,AppG",code,render_check_code(rec) for GenPRM-style verifier; reference graph per instance for graph-coverage reward,-,-,CPU,2,,P1,A-D0,done,selrm/reference.py; tests/test_reference.py
-A-D14,A,no,Tab7,eval,"shortcut scorers table: always default, claim only, concept named, attribute-blind logistic, bag of words, trigger lexicon (+ with training cues)",-,-,CPU,2,,P1,A-D4,todo,
-A-D15,A,no,AppB,doc,"dataset statistics, overlap table, 100-sample read (docs/SAMPLE_TRIPLETS.md), reject rates",-,-,CPU,1.5,,P0,A-D4,todo,
+A-D14,A,no,Tab7,eval,"shortcut scorers table: always default, claim only, concept named, attribute-blind logistic, bag of words, trigger lexicon (+ with training cues)",-,-,CPU,2,,P1,A-D4,in progress,scripts/shortcut_scorers.py ready; run on frozen test_L2
+A-D15,A,no,AppB,doc,"dataset statistics, overlap table, 100-sample read (docs/SAMPLE_TRIPLETS.md), reject rates",-,-,CPU,1.5,,P0,A-D4,in progress,"scripts/dataset_stats.py, scripts/sample_triplets.py ready; run after freeze"

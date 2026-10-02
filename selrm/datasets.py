@@ -38,14 +38,19 @@ def _independent(n, counts):
     return n, lambda rng: [{k} for k in rng.sample([k for k, c in counts.items() for _ in range(c)], n)]
 
 
-def _paired(core):
+def _paired(core, n_pres=6, n_miss=6):
     """Core cases per group from core(rng); pres and missing each in 6 of 14 groups."""
     def pick(rng):
         cores = core(rng)
-        pres, miss = set(rng.sample(range(14), 6)), set(rng.sample(range(14), 6))
+        pres, miss = set(rng.sample(range(14), n_pres)), set(rng.sample(range(14), n_miss))
         return [cores[i] | ({"pres"} if i in pres else set()) | ({"missing"} if i in miss else set())
                 for i in range(14)]
     return 14, pick
+
+
+def _triplet_core(rng):
+    """Flip in every group; base in 7 of 14, near in the other 7."""
+    return [{"flip", k} for k in rng.sample(["base"] * 7 + ["near"] * 7, 14)]
 
 
 # corpus -> (block size in groups, block -> case kinds per group)
@@ -53,8 +58,10 @@ CORPORA = {
     "natural": _independent(200, {"pres": 30, "missing": 30, "flip": 21, "base": 119}),
     "balanced": _independent(20, {"pres": 3, "missing": 3, "flip": 7, "base": 7}),
     "blocks": _paired(lambda rng: [{"base", "flip"}] * 14),
-    "triplets": _paired(lambda rng: [{"flip", k} for k in rng.sample(["base"] * 7 + ["near"] * 7, 14)]),
+    "triplets": _paired(_triplet_core),
 }
+# A-D12 ablation: triplets without presentation edits (missing kept near 15%: 5 of 33 cases)
+ABLATIONS = {"triplets_nopres": _paired(_triplet_core, 0, 5)}
 
 
 def register(rules):
@@ -114,17 +121,24 @@ def groups(specs, split, set_name, level, stats=None, tpl_split=None, missing=Fa
                            tpl_split, missing)
 
 
-def corpus(kind, specs, n_records, set_name="rule_v1", stats=None):
+def corpus(kind, specs, n_records, set_name="rule_v1", stats=None, claim_types=None, probes=False):
     """Yields the records of one training corpus: walks the group pool block by
-    block, keeping the case kinds of its pattern, until n_records are out."""
-    size, pattern = CORPORA[kind]
+    block, keeping the case kinds of its pattern, until n_records are out.
+    claim_types: keep only these claim types (A-D12 conclusion-only labels);
+    probes: also yield the group's other near and pres cases with meta.probe =
+    True, outside the record count (A-D12 probe re-weighting inputs)."""
+    size, pattern = {**CORPORA, **ABLATIONS}[kind]
     n, gen = 0, groups(specs, "train", set_name, "L0", stats, missing=True)
     for b in range(len(specs) // size):
         for want in pattern(random.Random(f"{kind}.{b}")):
             for r in next(gen):
+                if claim_types and r["claim_type"] not in claim_types:
+                    continue
                 if r["case_kind"] in want:
                     yield r
                     n += 1
+                elif probes and r["case_kind"] in ("near", "pres"):
+                    yield dict(r, meta=dict(r["meta"], probe=True))
             if n >= n_records:
                 return
     raise ValueError(f"group pool too small for {kind}: {n} < {n_records} records")

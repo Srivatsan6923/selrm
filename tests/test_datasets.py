@@ -45,7 +45,7 @@ def test_rules_and_templates_by_split(built):
         assert rids <= set(f[key]), name
         level = {"l2_rules": "L2", "l1_rules": "L1"}.get(key, "L3-alt" if name == "test_L3alt" else "L0")
         assert {r["level"] for r in recs} == {level}, name
-        tpl = "train" if name.startswith("train_") else "test"
+        tpl = "train" if name.startswith(("train_", "div_", "abl_")) else "test"
         for r in recs:
             assert r["meta"]["tpl_split"] == tpl
             assert all(P.split_of(int(t.rsplit("/", 1)[1])) == tpl for t in r["meta"]["tpl"])
@@ -108,7 +108,7 @@ def test_manifests_and_shortcuts(built):
         m = json.loads((out / v["manifest"]).read_text())
         assert m["n_records"] == v["n_records"] and m["template_split_hash"] == D.template_split_hash()
         short = name.split("/")[1]
-        want = "n/a" if short.startswith("train_") or "missing" in short else "PASS"
+        want = "n/a" if short.startswith(("train_", "div_", "abl_")) or "missing" in short else "PASS"
         assert m["shortcut_validation"]["result"] == want, m["shortcut_validation"]
 
 
@@ -116,3 +116,13 @@ def test_build_is_deterministic(built, tmp_path):
     _, reg, _, _ = built
     again = _build(tmp_path, seed_env="12345")
     assert {k: v["sha256"] for k, v in again.items()} == {k: v["sha256"] for k, v in reg.items()}
+
+
+def test_ablation_corpora(built):
+    _, _, sets, _ = built
+    assert not [r for r in sets["abl_nopres_triplets"] if r["case_kind"] == "pres"]
+    assert {r["claim_type"] for r in sets["abl_conclusion_triplets"]} == {"conclusion"}
+    probe = [r for r in sets["abl_probe_blocks"] if r["meta"].get("probe")]
+    train = [r for r in sets["abl_probe_blocks"] if not r["meta"].get("probe")]
+    assert probe and {r["case_kind"] for r in probe} <= {"near", "pres"}
+    assert train == sets["train_blocks"]                    # the trained part is train_blocks itself

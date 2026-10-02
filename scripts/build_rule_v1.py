@@ -17,6 +17,7 @@ import argparse
 import datetime
 import json
 import os
+import random
 import sys
 from collections import Counter
 from pathlib import Path
@@ -57,6 +58,52 @@ def ladder_and_diagnostics(emit, rules, n, SET):
           "note": "triplets (tid) + reading and application pairs (tid.base, tid.flip; case kinds "
                   "read/apply, claim_type conclusion); rules whose one-line cases decide the conclusion"},
          validate=True)
+
+
+def diversity(emit, F, fold, scale, SET):
+    """A-D10 diversity curves (Fig. 3 left): triplets corpora over x training rules,
+    records proportional to x (60k at 256), grown three ways from the same 16 rules:
+    rules of new classes, rules of the two starting classes, or only more groups for
+    the 16 rules. Sizes a library cannot fill are skipped (logged in the manifest)."""
+    rng = random.Random(f"div.{F['seed']}")
+    train = set(fold["train_rules"])
+    cls = {c: sorted(r for r in rids if r in train) for c, rids in F["classes"].items()}
+    cls = {c: rng.sample(v, len(v)) for c, v in sorted(cls.items()) if v}
+    a, b = sorted(cls, key=lambda c: (-len(cls[c]), c))[:2]           # the two largest classes
+    start = cls[a][:8] + cls[b][:8]
+    same = start + [r for r in cls[a][8:] + cls[b][8:]]
+    others = [c for c in cls if c not in (a, b)]
+    rest = [r for i in range(max(len(v) for v in cls.values()))       # round robin over new classes
+            for c in others for r in cls[c][i:i + 1]]
+    new = start + rest + cls[a][8:] + cls[b][8:]
+    per_rule = 60000 / 256
+    sizes = [x for x in (16, 32, 64, 128, 256) if x <= len(new)] + ([len(new)] if len(new) < 256 else [])
+    for x in sizes:
+        n = max(14 * 4, int(per_rule * x * scale))
+        for name, rids in (("new", new[:x]), ("same", same[:x]), ("patients", start)):
+            if x == 16 and name != "new":
+                continue                                            # the three curves share x = 16
+            if len(rids) < (16 if name == "patients" else x):
+                continue
+            pool = D.sample_specs([LIBRARY_BY_ID[r] for r in rids], max(n, 14 * 20), f"div.{name}.{x}")
+            emit(f"div_{'base' if x == 16 else name}_{x}", D.corpus("triplets", pool, n, SET),
+                 {"split": "train", "level": "L0", "templates": "train", "corpus": "triplets",
+                  "diversity": {"curve": name, "x": x, "rules": rids, "start_classes": [a, b]}})
+
+
+def ablations(emit, pool, n, SET):
+    """A-D12 corpora that cannot be derived from the four main corpora: triplets
+    without presentation edits, triplets with conclusion claims only (same record
+    count), and the blocks corpus plus its groups' near-miss and presentation cases
+    as probes (meta.probe) for re-weighting. Decision-field, bit-only and
+    no-resampling variants use meta.criterion_holds and the ledgers of each case."""
+    for name, kind, kw in (("abl_nopres_triplets", "triplets_nopres", {}),
+                           ("abl_conclusion_triplets", "triplets", {"claim_types": ("conclusion",)}),
+                           ("abl_probe_blocks", "blocks", {"probes": True})):
+        st = Counter()
+        emit(name, D.corpus(kind, pool, n["train"], SET, st, **kw),
+             {"split": "train", "level": "L0", "templates": "train", "corpus": kind, "ablation": name,
+              "stats": st})
 
 
 def main():
@@ -127,6 +174,7 @@ def main():
              {"split": "dev", "level": "L0", "templates": "test",
               "note": "threshold set for MR at 5% false rejection; missing twins of the dev groups"})
         ladder_and_diagnostics(emit, rules, n, SET)
+        diversity(emit, F, fold, a.scale, SET)
 
     # training corpora: one group pool, training rules, train templates
     pool = D.sample_specs(rules("train_rules"), max(int(POOL * a.scale), 14 * 200), "train")
@@ -134,6 +182,8 @@ def main():
         st = Counter()
         emit(f"train_{kind}", D.corpus(kind, pool, n["train"], SET, st),
              {"split": "train", "level": "L0", "templates": "train", "corpus": kind, "stats": st})
+    if not core:
+        ablations(emit, pool, n, SET)
 
     for name, m in mans.items():
         registry[f"{SET}/{name}"] = {

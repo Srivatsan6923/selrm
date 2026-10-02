@@ -19,6 +19,8 @@
 | dev_missing | training rules | test | missing twins of the dev groups plus one ordinary case each: the threshold set for MR at 5% false rejection |
 | readapply | training rules whose one-line cases decide the conclusion | test | 1,000 triplets with reading and application pairs |
 | train_{natural, balanced, blocks, triplets} | training rules | train | 60,000 records each (plus at most 16), from one group pool |
+| div_{base,new,same,patients}_{x} | training rules | train | A-D10 diversity curves: triplets corpora over x training rules (records proportional to x, 60k at 256): rules of new classes, of the two starting classes, or more patients for the same 16 rules. Sizes the library cannot fill are not built (see each MANIFEST `diversity`) |
+| abl_nopres_triplets, abl_conclusion_triplets, abl_probe_blocks | training rules | train | A-D12 ablations: triplets without presentation edits (missing kept near 15%); triplets with conclusion claims only (60k records); train_blocks plus its groups' near and pres cases with `meta.probe = true` (never trained on; inputs for re-weighting). Decision-field / bit-only targets: `meta.criterion_holds`; ledger resampling: the ledgers of the other cases of a group |
 
 Corpora, by case share:
 - **natural.** One case per group, in blocks of 200 groups: 30 pres, 30 missing, 21 flip and 119 base.
