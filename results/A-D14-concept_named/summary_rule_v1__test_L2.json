@@ -1,0 +1,181 @@
+{
+ "all": {
+  "Rev": 46.6,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 46.6,
+  "Tie": 0.0,
+  "PresHold": 46.6,
+  "n": 2000
+ },
+ "nm_kind=time": {
+  "Rev": 33.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 33.0,
+  "Tie": 0.0,
+  "PresHold": 33.0,
+  "n": 400
+ },
+ "tier=delabelled": {
+  "Rev": 100.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 6
+ },
+ "level=L2": {
+  "Rev": 46.6,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 46.6,
+  "Tie": 0.0,
+  "PresHold": 46.6,
+  "n": 2000
+ },
+ "family=g_all_of": {
+  "Rev": 59.84848484848485,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 59.84848484848485,
+  "Tie": 0.0,
+  "PresHold": 59.84848484848485,
+  "n": 528
+ },
+ "tier=long": {
+  "Rev": 46.93200663349917,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 46.93200663349917,
+  "Tie": 0.0,
+  "PresHold": 46.93200663349917,
+  "n": 603
+ },
+ "family=g_score_cutoff": {
+  "Rev": 45.39170506912443,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 45.39170506912443,
+  "Tie": 0.0,
+  "PresHold": 45.39170506912443,
+  "n": 434
+ },
+ "nm_kind=subject": {
+  "Rev": 100.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 400
+ },
+ "family=g_two_of_three": {
+  "Rev": 45.21072796934866,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 45.21072796934866,
+  "Tie": 0.0,
+  "PresHold": 45.21072796934866,
+  "n": 522
+ },
+ "nm_kind=boundary": {
+  "Rev": 0.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 0.0,
+  "Tie": 0.0,
+  "PresHold": 0.0,
+  "n": 400
+ },
+ "tier=easy": {
+  "Rev": 48.56495468277946,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 48.56495468277946,
+  "Tie": 0.0,
+  "PresHold": 48.56495468277946,
+  "n": 1324
+ },
+ "nm_kind=numeric": {
+  "Rev": 0.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 0.0,
+  "Tie": 0.0,
+  "PresHold": 0.0,
+  "n": 400
+ },
+ "nm_kind=negation": {
+  "Rev": 100.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 400
+ },
+ "family=g_any_of": {
+  "Rev": 0.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 0.0,
+  "Tie": 0.0,
+  "PresHold": 0.0,
+  "n": 120
+ },
+ "family=additive_score": {
+  "Rev": 45.93023255813954,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 45.93023255813954,
+  "Tie": 0.0,
+  "PresHold": 45.93023255813954,
+  "n": 344
+ },
+ "family=score_cutoff": {
+  "Rev": 54.34782608695652,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 54.34782608695652,
+  "Tie": 0.0,
+  "PresHold": 54.34782608695652,
+  "n": 46
+ },
+ "tier=superseded": {
+  "Rev": 0.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 0.0,
+  "Tie": 0.0,
+  "PresHold": 0.0,
+  "n": 67
+ },
+ "family=any_of": {
+  "Rev": 0.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 0.0,
+  "Tie": 0.0,
+  "PresHold": 0.0,
+  "n": 6
+ },
+ "run_id": "A-D14-concept_named",
+ "set": "rule_v1/test_L2",
+ "claim_type": "conclusion",
+ "CI95": {
+  "TA": [
+   0.0,
+   0.0
+  ],
+  "Rev": [
+   42.41545893719807,
+   51.29943502824859
+  ],
+  "Hold": [
+   0.0,
+   0.0
+  ]
+ }
+}

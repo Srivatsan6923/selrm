@@ -1,0 +1,1394 @@
+{
+ "run_id": "A-D15",
+ "date": "2026-10-02",
+ "git_commit": "59034a3dc24319fe2f1c596f7ad89336617da76f",
+ "rules_by_source": {
+  "pilot": 11,
+  "constraint": 40,
+  "score": 41,
+  "grammar_curated": 11,
+  "grammar_sampled": 250
+ },
+ "rules_by_kind": {
+  "constraint": 310,
+  "score": 43
+ },
+ "rules_total": 353,
+ "invented_rules_L3inv": 60,
+ "classes": {
+  "all|finding|cur": 3,
+  "all|finding|ext": 16,
+  "all|mixed|cur": 20,
+  "all|mixed|ext": 16,
+  "all|numeric|-": 8,
+  "any|finding|cur": 2,
+  "any|finding|ext": 26,
+  "any|mixed|cur": 12,
+  "any|mixed|ext": 15,
+  "any|numeric|-": 10,
+  "kofn|finding|ext": 19,
+  "kofn|mixed|cur": 16,
+  "kofn|mixed|ext": 44,
+  "kofn|numeric|-": 6,
+  "score|finding|ext": 2,
+  "score|mixed|cur": 17,
+  "score|mixed|ext": 16,
+  "score|numeric|-": 8,
+  "single|finding|cur": 37,
+  "single|finding|ext": 27,
+  "single|numeric|-": 33
+ },
+ "classes_by_source": {
+  "pilot": 5,
+  "constraint": 6,
+  "score": 4,
+  "grammar_curated": 6,
+  "grammar_sampled": 17
+ },
+ "templates": {
+  "templates_train": 1032,
+  "templates_test": 516,
+  "templates_shared": 0,
+  "cue_words_train": 14,
+  "cue_words_test": 19,
+  "cue_words_shared": 0
+ },
+ "folds": {
+  "1": {
+   "l2_classes": [
+    "all|finding|ext",
+    "all|mixed|ext",
+    "any|numeric|-",
+    "kofn|mixed|ext",
+    "score|mixed|cur"
+   ],
+   "n_classes": 21,
+   "n_l2_rules": 103,
+   "n_l1_rules": 27,
+   "n_train_rules": 223,
+   "overlap_train_vs_L2": {
+    "programs": 0.0,
+    "criterion_subexpressions": 76.28865979381443,
+    "rule_texts": 0.0
+   }
+  },
+  "2": {
+   "l2_classes": [
+    "any|mixed|cur",
+    "any|mixed|ext",
+    "kofn|numeric|-",
+    "score|numeric|-",
+    "single|numeric|-"
+   ],
+   "n_classes": 21,
+   "n_l2_rules": 74,
+   "n_l1_rules": 30,
+   "n_train_rules": 249,
+   "overlap_train_vs_L2": {
+    "programs": 0.0,
+    "criterion_subexpressions": 72.05882352941177,
+    "rule_texts": 0.0
+   }
+  },
+  "3": {
+   "l2_classes": [
+    "all|mixed|cur",
+    "all|numeric|-",
+    "any|finding|ext",
+    "score|mixed|ext",
+    "single|finding|ext"
+   ],
+   "n_classes": 21,
+   "n_l2_rules": 97,
+   "n_l1_rules": 27,
+   "n_train_rules": 229,
+   "overlap_train_vs_L2": {
+    "programs": 0.0,
+    "criterion_subexpressions": 85.27918781725889,
+    "rule_texts": 0.0
+   }
+  }
+ },
+ "datasets": {
+  "rule_v1/abl_conclusion_triplets": {
+   "n_groups": 10500,
+   "n_cases": 30000,
+   "n_records": 60000,
+   "cases_by_kind": {
+    "base": 5250,
+    "flip": 10500,
+    "missing": 4500,
+    "near": 5250,
+    "pres": 4500
+   },
+   "record_share": {
+    "base": 0.175,
+    "flip": 0.35,
+    "missing": 0.15,
+    "near": 0.175,
+    "pres": 0.15
+   },
+   "nm_kind": {
+    "boundary": 2085,
+    "negation": 2112,
+    "numeric": 2125,
+    "subject": 2106,
+    "time": 2072
+   },
+   "tier": {
+    "delabelled": 34,
+    "easy": 6780,
+    "long": 3437,
+    "superseded": 249
+   },
+   "n_rules": 223,
+   "reject_rate": 1.1206328279499012,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/abl_nopres_triplets": {
+   "n_groups": 6824,
+   "n_cases": 16085,
+   "n_records": 60006,
+   "cases_by_kind": {
+    "base": 3411,
+    "flip": 6824,
+    "missing": 2437,
+    "near": 3413
+   },
+   "record_share": {
+    "base": 0.2119,
+    "flip": 0.4242,
+    "missing": 0.1516,
+    "near": 0.2123
+   },
+   "nm_kind": {
+    "boundary": 1351,
+    "negation": 1403,
+    "numeric": 1382,
+    "subject": 1351,
+    "time": 1337
+   },
+   "tier": {
+    "delabelled": 21,
+    "easy": 4386,
+    "long": 2262,
+    "superseded": 155
+   },
+   "n_rules": 223,
+   "reject_rate": 1.2159814707585408,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/abl_probe_blocks": {
+   "n_groups": 5617,
+   "n_cases": 24875,
+   "n_records": 92976,
+   "cases_by_kind": {
+    "base": 5617,
+    "flip": 5617,
+    "missing": 2407,
+    "near": 5617,
+    "pres": 5617
+   },
+   "record_share": {
+    "base": 0.2258,
+    "flip": 0.2258,
+    "missing": 0.0969,
+    "near": 0.2258,
+    "pres": 0.2258
+   },
+   "nm_kind": {
+    "boundary": 1099,
+    "negation": 1129,
+    "numeric": 1139,
+    "subject": 1132,
+    "time": 1118
+   },
+   "tier": {
+    "delabelled": 21,
+    "easy": 3639,
+    "long": 1825,
+    "superseded": 132
+   },
+   "n_rules": 223,
+   "reject_rate": 1.1265622249603944,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/dev": {
+   "n_groups": 300,
+   "n_cases": 1200,
+   "n_records": 4560,
+   "cases_by_kind": {
+    "base": 300,
+    "flip": 300,
+    "near": 300,
+    "pres": 300
+   },
+   "record_share": {
+    "base": 0.25,
+    "flip": 0.25,
+    "near": 0.25,
+    "pres": 0.25
+   },
+   "nm_kind": {
+    "boundary": 60,
+    "negation": 60,
+    "numeric": 60,
+    "subject": 60,
+    "time": 60
+   },
+   "tier": {
+    "delabelled": 1,
+    "easy": 177,
+    "long": 114,
+    "superseded": 8
+   },
+   "n_rules": 157,
+   "reject_rate": 1.9607843137254901,
+   "shortcut_validation": "PASS"
+  },
+  "rule_v1/dev_missing": {
+   "n_groups": 300,
+   "n_cases": 600,
+   "n_records": 2280,
+   "cases_by_kind": {
+    "base": 150,
+    "flip": 150,
+    "missing": 300
+   },
+   "record_share": {
+    "base": 0.25,
+    "flip": 0.25,
+    "missing": 0.5
+   },
+   "nm_kind": {
+    "boundary": 60,
+    "negation": 60,
+    "numeric": 60,
+    "subject": 60,
+    "time": 60
+   },
+   "tier": {
+    "delabelled": 1,
+    "easy": 177,
+    "long": 114,
+    "superseded": 8
+   },
+   "n_rules": 157,
+   "reject_rate": null,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/div_base_16": {
+   "n_groups": 329,
+   "n_cases": 939,
+   "n_records": 3756,
+   "cases_by_kind": {
+    "base": 165,
+    "flip": 329,
+    "missing": 141,
+    "near": 164,
+    "pres": 140
+   },
+   "record_share": {
+    "base": 0.1757,
+    "flip": 0.3504,
+    "missing": 0.1502,
+    "near": 0.1747,
+    "pres": 0.1491
+   },
+   "nm_kind": {
+    "boundary": 66,
+    "negation": 71,
+    "numeric": 61,
+    "subject": 60,
+    "time": 71
+   },
+   "tier": {
+    "delabelled": 5,
+    "easy": 205,
+    "long": 107,
+    "superseded": 12
+   },
+   "n_rules": 16,
+   "reject_rate": null,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/div_new_128": {
+   "n_groups": 2841,
+   "n_cases": 8118,
+   "n_records": 30002,
+   "cases_by_kind": {
+    "base": 1420,
+    "flip": 2841,
+    "missing": 1218,
+    "near": 1421,
+    "pres": 1218
+   },
+   "record_share": {
+    "base": 0.1741,
+    "flip": 0.35,
+    "missing": 0.1499,
+    "near": 0.1759,
+    "pres": 0.1502
+   },
+   "nm_kind": {
+    "boundary": 567,
+    "negation": 574,
+    "numeric": 548,
+    "subject": 564,
+    "time": 588
+   },
+   "tier": {
+    "delabelled": 17,
+    "easy": 1843,
+    "long": 894,
+    "superseded": 87
+   },
+   "n_rules": 128,
+   "reject_rate": null,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/div_new_223": {
+   "n_groups": 4920,
+   "n_cases": 14059,
+   "n_records": 52272,
+   "cases_by_kind": {
+    "base": 2461,
+    "flip": 4920,
+    "missing": 2110,
+    "near": 2459,
+    "pres": 2109
+   },
+   "record_share": {
+    "base": 0.1747,
+    "flip": 0.3501,
+    "missing": 0.1503,
+    "near": 0.1754,
+    "pres": 0.1495
+   },
+   "nm_kind": {
+    "boundary": 967,
+    "negation": 993,
+    "numeric": 988,
+    "subject": 1011,
+    "time": 961
+   },
+   "tier": {
+    "delabelled": 21,
+    "easy": 3218,
+    "long": 1578,
+    "superseded": 103
+   },
+   "n_rules": 223,
+   "reject_rate": null,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/div_new_32": {
+   "n_groups": 688,
+   "n_cases": 1965,
+   "n_records": 7510,
+   "cases_by_kind": {
+    "base": 344,
+    "flip": 688,
+    "missing": 294,
+    "near": 344,
+    "pres": 295
+   },
+   "record_share": {
+    "base": 0.175,
+    "flip": 0.3505,
+    "missing": 0.1473,
+    "near": 0.1755,
+    "pres": 0.1518
+   },
+   "nm_kind": {
+    "boundary": 126,
+    "negation": 134,
+    "numeric": 145,
+    "subject": 141,
+    "time": 142
+   },
+   "tier": {
+    "delabelled": 5,
+    "easy": 439,
+    "long": 229,
+    "superseded": 15
+   },
+   "n_rules": 32,
+   "reject_rate": null,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/div_new_63": {
+   "n_groups": 1391,
+   "n_cases": 3975,
+   "n_records": 14772,
+   "cases_by_kind": {
+    "base": 695,
+    "flip": 1391,
+    "missing": 598,
+    "near": 696,
+    "pres": 595
+   },
+   "record_share": {
+    "base": 0.1749,
+    "flip": 0.3501,
+    "missing": 0.15,
+    "near": 0.1752,
+    "pres": 0.1497
+   },
+   "nm_kind": {
+    "boundary": 275,
+    "negation": 316,
+    "numeric": 259,
+    "subject": 271,
+    "time": 270
+   },
+   "tier": {
+    "delabelled": 3,
+    "easy": 900,
+    "long": 464,
+    "superseded": 24
+   },
+   "n_rules": 63,
+   "reject_rate": null,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/div_new_64": {
+   "n_groups": 1409,
+   "n_cases": 4023,
+   "n_records": 15004,
+   "cases_by_kind": {
+    "base": 706,
+    "flip": 1409,
+    "missing": 601,
+    "near": 703,
+    "pres": 604
+   },
+   "record_share": {
+    "base": 0.1769,
+    "flip": 0.3511,
+    "missing": 0.1478,
+    "near": 0.1742,
+    "pres": 0.15
+   },
+   "nm_kind": {
+    "boundary": 258,
+    "negation": 274,
+    "numeric": 276,
+    "subject": 318,
+    "time": 283
+   },
+   "tier": {
+    "delabelled": 6,
+    "easy": 893,
+    "long": 468,
+    "superseded": 42
+   },
+   "n_rules": 64,
+   "reject_rate": null,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/div_patients_128": {
+   "n_groups": 2625,
+   "n_cases": 7500,
+   "n_records": 30000,
+   "cases_by_kind": {
+    "base": 1313,
+    "flip": 2625,
+    "missing": 1124,
+    "near": 1312,
+    "pres": 1126
+   },
+   "record_share": {
+    "base": 0.1751,
+    "flip": 0.35,
+    "missing": 0.1499,
+    "near": 0.1749,
+    "pres": 0.1501
+   },
+   "nm_kind": {
+    "boundary": 509,
+    "negation": 549,
+    "numeric": 561,
+    "subject": 509,
+    "time": 497
+   },
+   "tier": {
+    "delabelled": 36,
+    "easy": 1729,
+    "long": 812,
+    "superseded": 48
+   },
+   "n_rules": 16,
+   "reject_rate": null,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/div_patients_223": {
+   "n_groups": 4574,
+   "n_cases": 13067,
+   "n_records": 52268,
+   "cases_by_kind": {
+    "base": 2288,
+    "flip": 4574,
+    "missing": 1960,
+    "near": 2286,
+    "pres": 1959
+   },
+   "record_share": {
+    "base": 0.1751,
+    "flip": 0.35,
+    "missing": 0.15,
+    "near": 0.1749,
+    "pres": 0.1499
+   },
+   "nm_kind": {
+    "boundary": 921,
+    "negation": 925,
+    "numeric": 896,
+    "subject": 953,
+    "time": 879
+   },
+   "tier": {
+    "delabelled": 57,
+    "easy": 2873,
+    "long": 1545,
+    "superseded": 99
+   },
+   "n_rules": 16,
+   "reject_rate": null,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/div_patients_32": {
+   "n_groups": 656,
+   "n_cases": 1875,
+   "n_records": 7500,
+   "cases_by_kind": {
+    "base": 328,
+    "flip": 656,
+    "missing": 281,
+    "near": 328,
+    "pres": 282
+   },
+   "record_share": {
+    "base": 0.1749,
+    "flip": 0.3499,
+    "missing": 0.1499,
+    "near": 0.1749,
+    "pres": 0.1504
+   },
+   "nm_kind": {
+    "boundary": 123,
+    "negation": 138,
+    "numeric": 146,
+    "subject": 138,
+    "time": 111
+   },
+   "tier": {
+    "delabelled": 7,
+    "easy": 426,
+    "long": 210,
+    "superseded": 13
+   },
+   "n_rules": 16,
+   "reject_rate": null,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/div_patients_63": {
+   "n_groups": 1292,
+   "n_cases": 3692,
+   "n_records": 14768,
+   "cases_by_kind": {
+    "base": 645,
+    "flip": 1292,
+    "missing": 553,
+    "near": 647,
+    "pres": 555
+   },
+   "record_share": {
+    "base": 0.1747,
+    "flip": 0.3499,
+    "missing": 0.1498,
+    "near": 0.1752,
+    "pres": 0.1503
+   },
+   "nm_kind": {
+    "boundary": 249,
+    "negation": 274,
+    "numeric": 274,
+    "subject": 247,
+    "time": 248
+   },
+   "tier": {
+    "delabelled": 9,
+    "easy": 834,
+    "long": 413,
+    "superseded": 36
+   },
+   "n_rules": 16,
+   "reject_rate": null,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/div_patients_64": {
+   "n_groups": 1313,
+   "n_cases": 3751,
+   "n_records": 15004,
+   "cases_by_kind": {
+    "base": 657,
+    "flip": 1313,
+    "missing": 563,
+    "near": 656,
+    "pres": 562
+   },
+   "record_share": {
+    "base": 0.1752,
+    "flip": 0.35,
+    "missing": 0.1501,
+    "near": 0.1749,
+    "pres": 0.1498
+   },
+   "nm_kind": {
+    "boundary": 267,
+    "negation": 255,
+    "numeric": 266,
+    "subject": 280,
+    "time": 245
+   },
+   "tier": {
+    "delabelled": 22,
+    "easy": 853,
+    "long": 406,
+    "superseded": 32
+   },
+   "n_rules": 16,
+   "reject_rate": null,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/div_same_32": {
+   "n_groups": 656,
+   "n_cases": 1875,
+   "n_records": 7500,
+   "cases_by_kind": {
+    "base": 328,
+    "flip": 656,
+    "missing": 281,
+    "near": 328,
+    "pres": 282
+   },
+   "record_share": {
+    "base": 0.1749,
+    "flip": 0.3499,
+    "missing": 0.1499,
+    "near": 0.1749,
+    "pres": 0.1504
+   },
+   "nm_kind": {
+    "boundary": 135,
+    "negation": 107,
+    "numeric": 153,
+    "subject": 133,
+    "time": 128
+   },
+   "tier": {
+    "delabelled": 17,
+    "easy": 417,
+    "long": 215,
+    "superseded": 7
+   },
+   "n_rules": 32,
+   "reject_rate": null,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/div_same_63": {
+   "n_groups": 1292,
+   "n_cases": 3692,
+   "n_records": 14768,
+   "cases_by_kind": {
+    "base": 645,
+    "flip": 1292,
+    "missing": 553,
+    "near": 647,
+    "pres": 555
+   },
+   "record_share": {
+    "base": 0.1747,
+    "flip": 0.3499,
+    "missing": 0.1498,
+    "near": 0.1752,
+    "pres": 0.1503
+   },
+   "nm_kind": {
+    "boundary": 246,
+    "negation": 275,
+    "numeric": 262,
+    "subject": 262,
+    "time": 247
+   },
+   "tier": {
+    "delabelled": 5,
+    "easy": 848,
+    "long": 411,
+    "superseded": 28
+   },
+   "n_rules": 63,
+   "reject_rate": null,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/missing": {
+   "n_groups": 1000,
+   "n_cases": 2000,
+   "n_records": 7344,
+   "cases_by_kind": {
+    "base": 500,
+    "flip": 500,
+    "missing": 1000
+   },
+   "record_share": {
+    "base": 0.2475,
+    "flip": 0.2525,
+    "missing": 0.5
+   },
+   "nm_kind": {
+    "boundary": 210,
+    "negation": 195,
+    "numeric": 190,
+    "subject": 192,
+    "time": 213
+   },
+   "tier": {
+    "delabelled": 4,
+    "easy": 649,
+    "long": 308,
+    "superseded": 39
+   },
+   "n_rules": 103,
+   "reject_rate": null,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/readapply": {
+   "n_groups": 3000,
+   "n_cases": 7000,
+   "n_records": 18590,
+   "cases_by_kind": {
+    "apply": 2000,
+    "base": 1000,
+    "flip": 1000,
+    "near": 1000,
+    "read": 2000
+   },
+   "record_share": {
+    "apply": 0.2152,
+    "base": 0.1899,
+    "flip": 0.1899,
+    "near": 0.1899,
+    "read": 0.2152
+   },
+   "nm_kind": {
+    "boundary": 675,
+    "negation": 423,
+    "numeric": 753,
+    "subject": 450,
+    "time": 699
+   },
+   "tier": {
+    "delabelled": 3,
+    "easy": 1938,
+    "long": 957,
+    "superseded": 102
+   },
+   "n_rules": 155,
+   "reject_rate": null,
+   "shortcut_validation": "PASS"
+  },
+  "rule_v1/test_L0": {
+   "n_groups": 1000,
+   "n_cases": 4000,
+   "n_records": 14992,
+   "cases_by_kind": {
+    "base": 1000,
+    "flip": 1000,
+    "near": 1000,
+    "pres": 1000
+   },
+   "record_share": {
+    "base": 0.25,
+    "flip": 0.25,
+    "near": 0.25,
+    "pres": 0.25
+   },
+   "nm_kind": {
+    "boundary": 200,
+    "negation": 200,
+    "numeric": 200,
+    "subject": 200,
+    "time": 200
+   },
+   "tier": {
+    "delabelled": 6,
+    "easy": 622,
+    "long": 349,
+    "superseded": 23
+   },
+   "n_rules": 218,
+   "reject_rate": 1.0880316518298714,
+   "shortcut_validation": "PASS"
+  },
+  "rule_v1/test_L1": {
+   "n_groups": 1000,
+   "n_cases": 4000,
+   "n_records": 14968,
+   "cases_by_kind": {
+    "base": 1000,
+    "flip": 1000,
+    "near": 1000,
+    "pres": 1000
+   },
+   "record_share": {
+    "base": 0.25,
+    "flip": 0.25,
+    "near": 0.25,
+    "pres": 0.25
+   },
+   "nm_kind": {
+    "boundary": 200,
+    "negation": 200,
+    "numeric": 200,
+    "subject": 200,
+    "time": 200
+   },
+   "tier": {
+    "delabelled": 1,
+    "easy": 652,
+    "long": 312,
+    "superseded": 35
+   },
+   "n_rules": 27,
+   "reject_rate": 0.6951340615690169,
+   "shortcut_validation": "PASS"
+  },
+  "rule_v1/test_L2": {
+   "n_groups": 2000,
+   "n_cases": 8000,
+   "n_records": 29248,
+   "cases_by_kind": {
+    "base": 2000,
+    "flip": 2000,
+    "near": 2000,
+    "pres": 2000
+   },
+   "record_share": {
+    "base": 0.25,
+    "flip": 0.25,
+    "near": 0.25,
+    "pres": 0.25
+   },
+   "nm_kind": {
+    "boundary": 400,
+    "negation": 400,
+    "numeric": 400,
+    "subject": 400,
+    "time": 400
+   },
+   "tier": {
+    "delabelled": 6,
+    "easy": 1324,
+    "long": 603,
+    "superseded": 67
+   },
+   "n_rules": 103,
+   "reject_rate": 0.0,
+   "shortcut_validation": "PASS"
+  },
+  "rule_v1/test_L3alt": {
+   "n_groups": 1000,
+   "n_cases": 4000,
+   "n_records": 13048,
+   "cases_by_kind": {
+    "base": 1000,
+    "flip": 1000,
+    "near": 1000,
+    "pres": 1000
+   },
+   "record_share": {
+    "base": 0.25,
+    "flip": 0.25,
+    "near": 0.25,
+    "pres": 0.25
+   },
+   "nm_kind": {
+    "boundary": 333,
+    "numeric": 334,
+    "time": 333
+   },
+   "tier": {
+    "alt": 1000
+   },
+   "n_rules": 17,
+   "reject_rate": 0.0,
+   "shortcut_validation": "PASS"
+  },
+  "rule_v1/test_L3inv": {
+   "n_groups": 1000,
+   "n_cases": 4000,
+   "n_records": 16000,
+   "cases_by_kind": {
+    "base": 1000,
+    "flip": 1000,
+    "near": 1000,
+    "pres": 1000
+   },
+   "record_share": {
+    "base": 0.25,
+    "flip": 0.25,
+    "near": 0.25,
+    "pres": 0.25
+   },
+   "nm_kind": {
+    "boundary": 200,
+    "negation": 200,
+    "numeric": 200,
+    "subject": 200,
+    "time": 200
+   },
+   "tier": {
+    "delabelled": 5,
+    "easy": 629,
+    "long": 335,
+    "superseded": 31
+   },
+   "n_rules": 60,
+   "reject_rate": 0.5964214711729622,
+   "shortcut_validation": "PASS"
+  },
+  "rule_v1/test_hard": {
+   "n_groups": 1000,
+   "n_cases": 4000,
+   "n_records": 14520,
+   "cases_by_kind": {
+    "base": 1000,
+    "flip": 1000,
+    "near": 1000,
+    "pres": 1000
+   },
+   "record_share": {
+    "base": 0.25,
+    "flip": 0.25,
+    "near": 0.25,
+    "pres": 0.25
+   },
+   "nm_kind": {
+    "boundary": 200,
+    "negation": 200,
+    "numeric": 200,
+    "subject": 200,
+    "time": 200
+   },
+   "tier": {
+    "delabelled": 3,
+    "long": 917,
+    "superseded": 80
+   },
+   "n_rules": 103,
+   "reject_rate": 0.0,
+   "shortcut_validation": "PASS"
+  },
+  "rule_v1/train_balanced": {
+   "n_groups": 16073,
+   "n_cases": 16073,
+   "n_records": 60000,
+   "cases_by_kind": {
+    "base": 5627,
+    "flip": 5624,
+    "missing": 2410,
+    "pres": 2412
+   },
+   "record_share": {
+    "base": 0.349,
+    "flip": 0.35,
+    "missing": 0.1501,
+    "pres": 0.1509
+   },
+   "nm_kind": {
+    "boundary": 3153,
+    "negation": 3203,
+    "numeric": 3240,
+    "subject": 3240,
+    "time": 3237
+   },
+   "tier": {
+    "delabelled": 64,
+    "easy": 10411,
+    "long": 5200,
+    "superseded": 398
+   },
+   "n_rules": 223,
+   "reject_rate": 1.0405122521856913,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/train_blocks": {
+   "n_groups": 5617,
+   "n_cases": 16049,
+   "n_records": 60004,
+   "cases_by_kind": {
+    "base": 5617,
+    "flip": 5617,
+    "missing": 2407,
+    "pres": 2408
+   },
+   "record_share": {
+    "base": 0.3498,
+    "flip": 0.3498,
+    "missing": 0.1501,
+    "pres": 0.1502
+   },
+   "nm_kind": {
+    "boundary": 1099,
+    "negation": 1129,
+    "numeric": 1139,
+    "subject": 1132,
+    "time": 1118
+   },
+   "tier": {
+    "delabelled": 21,
+    "easy": 3639,
+    "long": 1825,
+    "superseded": 132
+   },
+   "n_rules": 223,
+   "reject_rate": 1.1265622249603944,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/train_natural": {
+   "n_groups": 16073,
+   "n_cases": 16073,
+   "n_records": 60000,
+   "cases_by_kind": {
+    "base": 9559,
+    "flip": 1692,
+    "missing": 2410,
+    "pres": 2412
+   },
+   "record_share": {
+    "base": 0.5951,
+    "flip": 0.106,
+    "missing": 0.1488,
+    "pres": 0.15
+   },
+   "nm_kind": {
+    "boundary": 3153,
+    "negation": 3203,
+    "numeric": 3240,
+    "subject": 3240,
+    "time": 3237
+   },
+   "tier": {
+    "delabelled": 64,
+    "easy": 10411,
+    "long": 5200,
+    "superseded": 398
+   },
+   "n_rules": 223,
+   "reject_rate": 1.0405122521856913,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1/train_triplets": {
+   "n_groups": 5623,
+   "n_cases": 16066,
+   "n_records": 60004,
+   "cases_by_kind": {
+    "base": 2811,
+    "flip": 5623,
+    "missing": 2410,
+    "near": 2812,
+    "pres": 2410
+   },
+   "record_share": {
+    "base": 0.1757,
+    "flip": 0.3502,
+    "missing": 0.1497,
+    "near": 0.1745,
+    "pres": 0.1498
+   },
+   "nm_kind": {
+    "boundary": 1099,
+    "negation": 1133,
+    "numeric": 1139,
+    "subject": 1134,
+    "time": 1118
+   },
+   "tier": {
+    "delabelled": 21,
+    "easy": 3642,
+    "long": 1828,
+    "superseded": 132
+   },
+   "n_rules": 223,
+   "reject_rate": 1.1427566807313643,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1_fold2/dev": {
+   "n_groups": 300,
+   "n_cases": 1200,
+   "n_records": 4456,
+   "cases_by_kind": {
+    "base": 300,
+    "flip": 300,
+    "near": 300,
+    "pres": 300
+   },
+   "record_share": {
+    "base": 0.25,
+    "flip": 0.25,
+    "near": 0.25,
+    "pres": 0.25
+   },
+   "nm_kind": {
+    "boundary": 60,
+    "negation": 60,
+    "numeric": 60,
+    "subject": 60,
+    "time": 60
+   },
+   "tier": {
+    "easy": 188,
+    "long": 105,
+    "superseded": 7
+   },
+   "n_rules": 164,
+   "reject_rate": 0.6622516556291391,
+   "shortcut_validation": "PASS"
+  },
+  "rule_v1_fold2/test_L2": {
+   "n_groups": 2000,
+   "n_cases": 8000,
+   "n_records": 30848,
+   "cases_by_kind": {
+    "base": 2000,
+    "flip": 2000,
+    "near": 2000,
+    "pres": 2000
+   },
+   "record_share": {
+    "base": 0.25,
+    "flip": 0.25,
+    "near": 0.25,
+    "pres": 0.25
+   },
+   "nm_kind": {
+    "boundary": 400,
+    "negation": 400,
+    "numeric": 400,
+    "subject": 400,
+    "time": 400
+   },
+   "tier": {
+    "delabelled": 2,
+    "easy": 1290,
+    "long": 621,
+    "superseded": 87
+   },
+   "n_rules": 74,
+   "reject_rate": 0.0,
+   "shortcut_validation": "PASS"
+  },
+  "rule_v1_fold2/train_blocks": {
+   "n_groups": 5746,
+   "n_cases": 16419,
+   "n_records": 60000,
+   "cases_by_kind": {
+    "base": 5746,
+    "flip": 5746,
+    "missing": 2464,
+    "pres": 2463
+   },
+   "record_share": {
+    "base": 0.3502,
+    "flip": 0.3502,
+    "missing": 0.1504,
+    "pres": 0.1493
+   },
+   "nm_kind": {
+    "boundary": 1120,
+    "negation": 1163,
+    "numeric": 1171,
+    "subject": 1157,
+    "time": 1135
+   },
+   "tier": {
+    "delabelled": 27,
+    "easy": 3705,
+    "long": 1909,
+    "superseded": 105
+   },
+   "n_rules": 249,
+   "reject_rate": 0.7599309153713298,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1_fold2/train_triplets": {
+   "n_groups": 5745,
+   "n_cases": 16414,
+   "n_records": 60004,
+   "cases_by_kind": {
+    "base": 2872,
+    "flip": 5745,
+    "missing": 2462,
+    "near": 2873,
+    "pres": 2462
+   },
+   "record_share": {
+    "base": 0.1747,
+    "flip": 0.3501,
+    "missing": 0.1503,
+    "near": 0.1754,
+    "pres": 0.1496
+   },
+   "nm_kind": {
+    "boundary": 1120,
+    "negation": 1163,
+    "numeric": 1170,
+    "subject": 1157,
+    "time": 1135
+   },
+   "tier": {
+    "delabelled": 27,
+    "easy": 3704,
+    "long": 1909,
+    "superseded": 105
+   },
+   "n_rules": 249,
+   "reject_rate": 0.7600621869062014,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1_fold3/dev": {
+   "n_groups": 300,
+   "n_cases": 1200,
+   "n_records": 4520,
+   "cases_by_kind": {
+    "base": 300,
+    "flip": 300,
+    "near": 300,
+    "pres": 300
+   },
+   "record_share": {
+    "base": 0.25,
+    "flip": 0.25,
+    "near": 0.25,
+    "pres": 0.25
+   },
+   "nm_kind": {
+    "boundary": 60,
+    "negation": 60,
+    "numeric": 60,
+    "subject": 60,
+    "time": 60
+   },
+   "tier": {
+    "easy": 184,
+    "long": 109,
+    "superseded": 7
+   },
+   "n_rules": 149,
+   "reject_rate": 0.0,
+   "shortcut_validation": "PASS"
+  },
+  "rule_v1_fold3/test_L2": {
+   "n_groups": 2000,
+   "n_cases": 8000,
+   "n_records": 27640,
+   "cases_by_kind": {
+    "base": 2000,
+    "flip": 2000,
+    "near": 2000,
+    "pres": 2000
+   },
+   "record_share": {
+    "base": 0.25,
+    "flip": 0.25,
+    "near": 0.25,
+    "pres": 0.25
+   },
+   "nm_kind": {
+    "boundary": 400,
+    "negation": 400,
+    "numeric": 400,
+    "subject": 400,
+    "time": 400
+   },
+   "tier": {
+    "delabelled": 5,
+    "easy": 1304,
+    "long": 641,
+    "superseded": 50
+   },
+   "n_rules": 97,
+   "reject_rate": 1.0390895596239484,
+   "shortcut_validation": "PASS"
+  },
+  "rule_v1_fold3/train_blocks": {
+   "n_groups": 5541,
+   "n_cases": 15833,
+   "n_records": 60008,
+   "cases_by_kind": {
+    "base": 5541,
+    "flip": 5541,
+    "missing": 2375,
+    "pres": 2376
+   },
+   "record_share": {
+    "base": 0.3497,
+    "flip": 0.3497,
+    "missing": 0.1505,
+    "pres": 0.15
+   },
+   "nm_kind": {
+    "boundary": 1088,
+    "negation": 1115,
+    "numeric": 1116,
+    "subject": 1117,
+    "time": 1105
+   },
+   "tier": {
+    "delabelled": 27,
+    "easy": 3557,
+    "long": 1802,
+    "superseded": 155
+   },
+   "n_rules": 229,
+   "reject_rate": 0.7700573065902578,
+   "shortcut_validation": "n/a"
+  },
+  "rule_v1_fold3/train_triplets": {
+   "n_groups": 5545,
+   "n_cases": 15844,
+   "n_records": 60002,
+   "cases_by_kind": {
+    "base": 2772,
+    "flip": 5545,
+    "missing": 2377,
+    "near": 2773,
+    "pres": 2377
+   },
+   "record_share": {
+    "base": 0.1754,
+    "flip": 0.35,
+    "missing": 0.15,
+    "near": 0.1747,
+    "pres": 0.1499
+   },
+   "nm_kind": {
+    "boundary": 1089,
+    "negation": 1116,
+    "numeric": 1117,
+    "subject": 1117,
+    "time": 1106
+   },
+   "tier": {
+    "delabelled": 27,
+    "easy": 3560,
+    "long": 1803,
+    "superseded": 155
+   },
+   "n_rules": 229,
+   "reject_rate": 0.7695060844667144,
+   "shortcut_validation": "n/a"
+  }
+ }
+}

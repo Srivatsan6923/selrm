@@ -1,0 +1,9 @@
+{
+ "run_id": "A-D14-always_default",
+ "model": "always_default",
+ "train": "rule_v1/train_triplets",
+ "test": "rule_v1/test_L2",
+ "date": "2026-10-02",
+ "git_commit": "59034a3dc24319fe2f1c596f7ad89336617da76f",
+ "sklearn": "1.9.0"
+}
