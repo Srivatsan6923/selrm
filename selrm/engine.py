@@ -469,7 +469,8 @@ def readapply_records(rule, g, tid, set_name, split, level, seed, tpl_split=None
                           prose=ledger_to_prose(case["ledger"]),
                           meta={"tpl": ["/".join(map(str, x)) for x in case["tpl"]], "hdr": case["hdr"],
                                 "tpl_split": tpl_split or split, "seed": seed, "overrides": ov,
-                                "keywords": list(crit.keywords), "source_tid": tid, "origin": origin})
+                                "keywords": list(crit.keywords), "source_tid": tid, "origin": origin,
+                                "criterion_holds": int(origin == "flip")})
             for role, text in zip(("s", "s_prime"), claims):
                 out.append(dict(common, iid=f"{t}/{kind}/conclusion/{role}", claim_type="conclusion",
                                 claim_role=role, claim_text=text,
@@ -489,7 +490,11 @@ def to_records(rule, g, tid, set_name, split, level, seed, tpl_split=None):
                       prose=ledger_to_prose(case["ledger"]),
                       meta={"tpl": ["/".join(map(str, t)) for t in case["tpl"]], "hdr": case["hdr"],
                             "tpl_split": tpl_split or split, "seed": seed, "overrides": g["ov"],
-                            "keywords": list(crit.keywords)})
+                            "keywords": list(crit.keywords),
+                            # decision bit for the ablations: the criterion under test holds
+                            # (None for a missing twin: undetermined)
+                            "criterion_holds": None if k == "missing" else
+                            int(crit.evaluate(case["state"], g["ov"].get(crit.cid)))})
         for ctype, (s, s2) in g["claims"].items():
             y = None if k == "missing" else case["labels"][ctype]   # missing: neither claim holds
             for role, text in (("s", s), ("s_prime", s2)):

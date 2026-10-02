@@ -62,6 +62,7 @@ def test_every_cell_generates_valid_records(generated):
             y = E.case_labels(rule, _crit(r), r["meta"]["overrides"], st)[r["claim_type"]]
             assert r["label"] == int((r["claim_role"] == "s_prime") == (y == 1))
             assert y == E.WANT[r["case_kind"]]
+            assert r["meta"]["criterion_holds"] == (r["case_kind"] == "flip")
     assert len(iids) == sum(len(g) for g in groups)
 
 

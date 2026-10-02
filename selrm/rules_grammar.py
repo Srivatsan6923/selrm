@@ -243,6 +243,7 @@ EXCLUDE = {
     "Recovering on the ward after a myocardial infarction treated with a stent.":
         {"cad", "vascular", "aspirin", "hit"},
     "Productive cough and fever; consolidation on chest radiograph.": {"temperature"},
+    "Admitted for community-acquired pneumonia; immobile.": {"clarithromycin"},
     "Spreading redness and warmth of the right shin for two days.": {"calf_swelling"},
 }
 

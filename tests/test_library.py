@@ -29,7 +29,7 @@ def test_every_criterion_can_decide_its_rule():
 def _stated_op(text, cid):
     i = text.index("{thr_%s}" % cid)
     before = text[:i].split()[-1]
-    after = re.split(r"[;,]|\.\s|\.$| and ", text[i:], maxsplit=1)[0]
+    after = re.split(r"[;,]|\.\s|\.$| and | or (?!more|less)", text[i:], maxsplit=1)[0]
     if before in ("below", "above"):
         return {"below": "<", "above": ">"}[before]
     return ">=" if "or more" in after else "<=" if "or less" in after else None

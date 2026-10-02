@@ -5,9 +5,7 @@
   - selrm/datasets.py and scripts/build_rule_v1.py: every rule_v1 set, plus folds 2-3.
   - selrm/reference.py: check code and reference graphs (A-D13).
   - Rule library: 41 hand-written rules, 250 grammar-sampled, 60 invented (L3-inv, test only).
-- **In progress:**
-  - Final phrase banks (6 templates per form). selrm/phrases.py is currently DEV-FILLED and must not be committed until it is regenerated from the final banks.
-  - 60 new rules (30 constraint, 30 scoring) being written and reviewed in batches C1-C3 and S1-S3. They will be merged into rules_constraint.py and rules_score.py; new concept banks go into the phrase banks.
+- **In progress:** scoring batch S3 (10 rules) in review. Phrase banks are final (phrase_kit2 banks G1-G6, F, N -> phrases.py).
 - **Next:**
   1. Merge the rules and banks; run the full tests.
   2. Run `python scripts/build_rule_v1.py --freeze`; commit REGISTRY, MANIFESTs and FOLDS; add a HANDOFFS line.
