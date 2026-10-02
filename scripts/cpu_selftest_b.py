@@ -49,6 +49,9 @@ for mode, fmt, ad in (("oracle_ledger", "ledger2", "SELFTEST-ledger2"), ("progra
     runs.append({"run_id": f"SELFTEST-{mode}", "format": fmt, "train": False, "seed": 0, "base_model": "tiny/qwen35",
                  "adapter": f"adapters/{ad}", "hp": hp, "priority": 9, "eval_sets": ["mini/test_heldout_rules"],
                  "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24, "mode": mode}})
+runs.append({"run_id": "SELFTEST-concept", "kind": "concept", "format": "ledger2", "corpus": "mini/train_triplets",
+             "seed": 0, "base_model": "tiny/qwen35", "hp": hp, "priority": 9, "eval_sets": ["mini/test_heldout_rules"],
+             "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24}})
 json.dump({"runs": runs}, open(f"{root}/queue.json", "w"), indent=1)
 
 py = sys.executable

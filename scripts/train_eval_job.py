@@ -28,8 +28,9 @@ def keep_adapter(spec):
 
 
 def trains(spec):
-    """False for eval-only runs (base model, or an existing adapter given as spec['adapter'])."""
-    return spec.get("train", True) is not False
+    """False for eval-only runs (base model, or an existing adapter given as spec['adapter'])
+    and for the concept scorer (frozen backbone, linear heads fitted inside the run)."""
+    return spec.get("train", True) is not False and spec.get("kind") != "concept"
 
 
 def paths(root, spec):
@@ -114,7 +115,11 @@ def run_one(root, spec, mon, log, owner):
     mon.start_run(P["results"])
     t0, model, sc = time.time(), None, None
     try:
-        if trains(spec):
+        if spec.get("kind") == "concept":         # frozen backbone + linear heads (scripts/concept_scorer.py)
+            hp = finetune.HP | spec.get("hp", {})
+            model, tok = finetune.load_for_eval(P["base"], None, hp.get("max_len", 2048), hp)
+            tinfo = {"hp": hp, "grad_accum": None, "eval_only": True, "concept_scorer": True}
+        elif trains(spec):
             model, tok, tinfo = finetune.train(spec, P, log)
         else:                             # eval only: base model or an existing adapter (path relative to root)
             hp = finetune.HP | spec.get("hp", {})
@@ -129,8 +134,12 @@ def run_one(root, spec, mon, log, owner):
         te = time.time()
         if torch.cuda.is_available():
             torch.cuda.reset_peak_memory_stats()
-        summ = {s: eval_local.evaluate(sc, root, rid, spec["format"], s, P["results"], log, tok_tag(spec),
-                                       ev.get("mode")) for s in spec["eval_sets"]}
+        if spec.get("kind") == "concept":
+            import concept_scorer
+            summ = concept_scorer.run(spec, root, model, tok, sc, P["results"], log, tok_tag(spec))
+        else:
+            summ = {s: eval_local.evaluate(sc, root, rid, spec["format"], s, P["results"], log, tok_tag(spec),
+                                           ev.get("mode")) for s in spec["eval_sets"]}
         vers, gpu = versions()
         meta = {"run_id": rid, "model": spec.get("base_model", BASE),
                 "model_revision": open(f"{P['base']}/REVISION").read().strip()
