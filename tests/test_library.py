@@ -88,3 +88,21 @@ def test_no_coupled_concepts_or_setting_conflicts():
         cs = {c.concept for c in r.criteria}
         assert not [p for p in COUPLED if p <= cs], r.rid
         assert not cs & EXCLUDE.get(r.setting, set()), r.rid
+
+
+def test_every_rule_turns_exactly_at_its_stated_thresholds():
+    """Boundary tests for every rule: with the other criteria held at a deciding
+    setting, the conclusion changes exactly where the stated operator puts each
+    threshold (one step below, at, one step above; altered thresholds too)."""
+    for r, c in _numeric():
+        held = pivots(r, c)[0]
+        rest = [Mention(o.concept, o.kind, (o.flip_range if o in held else o.default_range)[0])
+                if o.kind == "numeric" else Mention(o.concept, "finding")
+                for o in r.criteria if o is not c and (o.kind == "numeric" or o in held)]
+        step = 10 ** -c.decimals
+        for thr, ov in ((c.threshold, {}), (c.alt_threshold, {c.cid: c.alt_threshold})):
+            if thr is None:
+                continue
+            for v in (round(thr - step, c.decimals), thr, round(thr + step, c.decimals)):
+                got = r.label(rest + [Mention(c.concept, "numeric", v)], c.cid, ov)
+                assert got == int(OPS[c.op](v, thr)), (r.rid, c.cid, v)

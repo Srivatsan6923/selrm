@@ -394,3 +394,61 @@ _S2 = [
 ]
 
 RULES += _S1 + _S2
+
+
+# ---- batch S4 ----
+# Batch S4: four further published scores, as partial versions over existing concepts.
+#
+# IMPROVE VTE (Spyropoulos 2011): previous VTE 3, active cancer 2, age > 60 1 (other items omitted).
+# ABCD2 (Johnston 2007): age >= 60, BP >= 140/90 (systolic only here), diabetes, 1 point each.
+# APACHE II (Knaus 1985): top band of temperature (>= 41 C: 4), heart rate (>= 180: 4),
+# respiratory rate (>= 50: 4) and age (>= 75: 6); other bands and items omitted.
+# Glasgow-Imrie (Blamey 1984): age > 55, WBC > 15 x10^9/L, urea > 16 mmol/L (BUN 45 mg/dL).
+_S4 = [
+    Rule("s4_improve_vte", "score", "IMPROVE VTE (partial)",
+         "IMPROVE VTE risk score (as used here, partial): 3 points for a venous thromboembolism of "
+         "the patient at any time (current or previous); 2 points for active cancer; 1 point for "
+         "age above {thr_age} years. Other IMPROVE items are not part of this question.",
+         [F("vte", "vte", "venous thromboembolism", VTE_KW, counts_past=True, points=3),
+          F("cancer", "cancer", "active cancer", CANCER_KW, points=2),
+          N("age", "age", "age", ["age"], ">", 60, (35, 56), (62, 90), 4, **AGE)],
+         "Admitted to the medical ward with cellulitis of the left leg; mostly in bed.",
+         family="additive_score"),
+    Rule("s4_abcd2", "score", "ABCD2 (partial)",
+         "ABCD2 score (as used here, partial): 1 point each for age {thr_age} years or more; a "
+         "current systolic blood pressure of {thr_sbp} mmHg or more; diabetes at any time. Clinical "
+         "features and duration of symptoms are not part of this question.",
+         [N("age", "age", "age", ["age"], ">=", 60, (35, 56), (60, 89), 4, **AGE),
+          N("sbp", "sbp", "systolic blood pressure", SBP_KW, ">=", 140, (104, 132), (140, 186), 8),
+          F("dm", "diabetes", "diabetes", ["diabet"], counts_past=True)],
+         "Transient weakness of the left arm lasting 20 minutes; assessed in a rapid-access clinic.",
+         family="additive_score"),
+    Rule("s4_apache", "score", "APACHE II (partial)",
+         "APACHE II (as used here, partial: only the stated band of each item): 4 points for a "
+         "current temperature of {thr_temp} C or more; 4 points for a current heart rate of "
+         "{thr_hr}/min or more; 4 points for a current respiratory rate of {thr_rr}/min or more; "
+         "6 points for age {thr_age} years or more. Any other value of these items scores 0 here, "
+         "and the other APACHE II items are not part of this question.",
+         [N("temp", "temperature", "temperature", ["temperature"], ">=", 41.0, (36.2, 39.8),
+            (41.0, 41.8), 0.4, decimals=1, points=4),
+          N("hr", "heart_rate", "heart rate", ["heart rate"], ">=", 180, (64, 150), (180, 210), 8,
+            points=4),
+          N("rr", "rr", "respiratory rate", ["respiratory rate"], ">=", 50, (12, 36), (50, 58), 4,
+            points=4),
+          N("age", "age", "age", ["age"], ">=", 75, (40, 70), (75, 92), 4, points=6, **AGE)],
+         "Admitted to the intensive care unit for monitoring.",
+         family="additive_score"),
+    Rule("s4_glasgow_imrie", "score", "Glasgow-Imrie (partial)",
+         "Glasgow-Imrie score for acute pancreatitis (as used here, partial): 1 point each for age "
+         "above {thr_age} years; a current white cell count above {thr_wbc} x10^9/L; a current "
+         "blood urea nitrogen above {thr_bun} mg/dL. Other Glasgow-Imrie items are not part of this "
+         "question.",
+         [N("age", "age", "age", ["age"], ">", 55, (30, 51), (57, 88), 4, **AGE),
+          N("wbc", "wbc", "white cell count", ["white cell", "wbc"], ">", 15.0, (5.0, 13.4),
+            (15.4, 24.0), 1.2, decimals=1),
+          N("bun", "bun", "blood urea nitrogen", ["bun", "urea nitrogen"], ">", 45, (8, 36), (47, 80), 6)],
+         "Acute pancreatitis confirmed by lipase and imaging; admitted for supportive care.",
+         family="additive_score"),
+]
+
+RULES += _S4
