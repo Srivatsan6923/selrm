@@ -1,0 +1,9 @@
+wrote 2000 triplets to D:\NAACL27\data\test.jsonl; rejected 5 of 2005 proposals
+  held-out families 500, seen 1500; rules 41
+  tier: {'alt': 150, 'delabelled': 150, 'easy': 1200, 'long': 250, 'superseded': 250}
+  nm_kind: {'negation': 362, 'numeric': 438, 'subject': 363, 'time': 837}
+  split: {'test': 2000}
+
+real	0m0.988s
+user	0m0.015s
+sys	0m0.000s

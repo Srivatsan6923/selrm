@@ -1,0 +1,54 @@
+generated 8820 triplets (441 cells x 2 splits x 10); rejected 11 of 8831 proposals (0.1%): draw 11
+invariant violations: 0
+
+conclusion claim
+scorer               subset       n                  rev                 hold                   ta            pres_hold                 ties             base_acc
+always_default       all       8820    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]
+always_default       finding   4720    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]
+always_default       numeric   4100    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]
+always_default       seen      5900    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]
+always_default       heldout   2920    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]
+concept_named        all       8820   53.5 [ 43.1, 65.1]    0.0 [  0.0,  0.0]    0.0 [  0.0,  0.0]   53.5 [ 43.1, 65.1]    0.0 [  0.0,  0.0]   53.5 [ 43.1, 65.1]
+concept_named        finding   4720  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]
+concept_named        numeric   4100    0.0 [  0.0,  0.0]    0.0 [  0.0,  0.0]    0.0 [  0.0,  0.0]    0.0 [  0.0,  0.0]    0.0 [  0.0,  0.0]    0.0 [  0.0,  0.0]
+concept_named        seen      5900   57.6 [ 43.6, 73.6]    0.0 [  0.0,  0.0]    0.0 [  0.0,  0.0]   57.6 [ 43.6, 73.6]    0.0 [  0.0,  0.0]   57.6 [ 43.6, 73.6]
+concept_named        heldout   2920   45.2 [ 28.8, 61.7]    0.0 [  0.0,  0.0]    0.0 [  0.0,  0.0]   45.2 [ 28.8, 61.7]    0.0 [  0.0,  0.0]   45.2 [ 28.8, 61.7]
+oracle               all       8820  100.0 [100.0,100.0]  100.0 [100.0,100.0]  100.0 [100.0,100.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]
+oracle               finding   4720  100.0 [100.0,100.0]  100.0 [100.0,100.0]  100.0 [100.0,100.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]
+oracle               numeric   4100  100.0 [100.0,100.0]  100.0 [100.0,100.0]  100.0 [100.0,100.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]
+oracle               seen      5900  100.0 [100.0,100.0]  100.0 [100.0,100.0]  100.0 [100.0,100.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]
+oracle               heldout   2920  100.0 [100.0,100.0]  100.0 [100.0,100.0]  100.0 [100.0,100.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]
+naive_number_parser  all       8820   46.5 [ 35.1, 56.9]   74.6 [ 68.3, 81.6]   21.1 [ 16.0, 25.8]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]
+naive_number_parser  finding   4720    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]
+naive_number_parser  numeric   4100  100.0 [100.0,100.0]   45.4 [ 42.7, 48.9]   45.4 [ 42.7, 48.9]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]
+naive_number_parser  seen      5900   42.4 [ 26.6, 57.1]   76.3 [ 67.8, 85.6]   18.6 [ 12.0, 24.5]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]
+naive_number_parser  heldout   2920   54.8 [ 38.3, 71.2]   71.2 [ 61.4, 81.5]   26.0 [ 19.4, 34.5]  100.0 [100.0,100.0]    0.0 [  0.0,  0.0]  100.0 [100.0,100.0]
+
+Hold / TA by claim (all claim types)
+  always_default       applicability 100/0 | conclusion 100/0 | criterion 100/0
+  concept_named        applicability 0/0 | conclusion 0/0 | criterion 0/0
+  oracle               applicability 100/100 | conclusion 100/100 | criterion 100/100
+  naive_number_parser  applicability 75/21 | conclusion 75/21 | criterion 76/21
+
+Hold / TA by nm_kind
+  always_default       negation 100/0 | numeric 100/0 | subject 100/0 | time 100/0
+  concept_named        negation 0/0 | numeric 0/0 | subject 0/0 | time 0/0
+  oracle               negation 100/100 | numeric 100/100 | subject 100/100 | time 100/100
+  naive_number_parser  negation 100/0 | numeric 100/100 | subject 100/0 | time 33/0
+
+Hold / TA by tier
+  always_default       alt 100/0 | delabelled 100/0 | easy 100/0 | long 100/0 | superseded 100/0
+  concept_named        alt 0/0 | delabelled 0/0 | easy 0/0 | long 0/0 | superseded 0/0
+  oracle               alt 100/100 | delabelled 100/100 | easy 100/100 | long 100/100 | superseded 100/100
+  naive_number_parser  alt 50/50 | delabelled 100/0 | easy 82/22 | long 82/22 | superseded 0/0
+
+shortcut validation
+  [PASS] no invariant violations
+  [PASS] always-default TA = 0
+  [PASS] always-default Hold = 100
+  [PASS] concept-named TA = 0 on finding triplets
+  [PASS] concept-named Rev = 100 on finding triplets
+  [PASS] concept-named Hold = 0 on finding triplets
+  [PASS] oracle TA = 100 on every claim type
+  [PASS] naive-number-parser TA = 0 on the superseded tier
+CHECKPOINT PASSED

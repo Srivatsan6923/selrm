@@ -1,0 +1,9 @@
+wrote 300 triplets to D:\NAACL27\data\dev.jsonl; rejected 0 of 300 proposals
+  held-out families 0, seen 300; rules 29
+  tier: {'alt': 30, 'delabelled': 30, 'easy': 180, 'long': 30, 'superseded': 30}
+  nm_kind: {'negation': 52, 'numeric': 68, 'subject': 53, 'time': 127}
+  split: {'train': 300}
+
+real	0m0.231s
+user	0m0.000s
+sys	0m0.000s

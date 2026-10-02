@@ -1,0 +1,148 @@
+{
+ "proposals": 60000,
+ "rejected": 0,
+ "balanced": {
+  "n": 60000,
+  "pairs": 0,
+  "labels": {
+   "1": 30000,
+   "0": 30000
+  },
+  "cases": {
+   "flip": 30000,
+   "base": 25510,
+   "pres": 4490
+  },
+  "pres_share_of_label0": 0.1497,
+  "claims": {
+   "criterion": 10921,
+   "conclusion": 24508,
+   "applicability": 24571
+  },
+  "near_kinds": {},
+  "tiers": {
+   "long": 11962,
+   "easy": 48038
+  },
+  "rules": 29
+ },
+ "flips": {
+  "n": 60000,
+  "pairs": 30000,
+  "labels": {
+   "1": 30000,
+   "0": 30000
+  },
+  "cases": {
+   "flip": 30000,
+   "base": 25510,
+   "pres": 4490
+  },
+  "pres_share_of_label0": 0.1497,
+  "claims": {
+   "applicability": 24558,
+   "conclusion": 24388,
+   "criterion": 11054
+  },
+  "near_kinds": {},
+  "tiers": {
+   "easy": 48030,
+   "long": 11970
+  },
+  "rules": 29
+ },
+ "triplets": {
+  "n": 60000,
+  "pairs": 30000,
+  "labels": {
+   "1": 30000,
+   "0": 30000
+  },
+  "cases": {
+   "flip": 30000,
+   "near": 15000,
+   "pres": 4502,
+   "base": 10498
+  },
+  "pres_share_of_label0": 0.1501,
+  "claims": {
+   "applicability": 24558,
+   "conclusion": 24388,
+   "criterion": 11054
+  },
+  "near_kinds": {
+   "time": 3723,
+   "subject": 3731,
+   "numeric": 3802,
+   "negation": 3744
+  },
+  "tiers": {
+   "easy": 48030,
+   "long": 11970
+  },
+  "rules": 29
+ },
+ "no_pres": {
+  "n": 60000,
+  "pairs": 30000,
+  "labels": {
+   "1": 30000,
+   "0": 30000
+  },
+  "cases": {
+   "flip": 30000,
+   "near": 15000,
+   "base": 15000
+  },
+  "pres_share_of_label0": 0.0,
+  "claims": {
+   "applicability": 24558,
+   "conclusion": 24388,
+   "criterion": 11054
+  },
+  "near_kinds": {
+   "time": 3723,
+   "subject": 3731,
+   "numeric": 3802,
+   "negation": 3744
+  },
+  "tiers": {
+   "easy": 48030,
+   "long": 11970
+  },
+  "rules": 29
+ },
+ "conclusion_only": {
+  "n": 60000,
+  "pairs": 30000,
+  "labels": {
+   "1": 30000,
+   "0": 30000
+  },
+  "cases": {
+   "flip": 30000,
+   "near": 15000,
+   "pres": 4502,
+   "base": 10498
+  },
+  "pres_share_of_label0": 0.1501,
+  "claims": {
+   "conclusion": 60000
+  },
+  "near_kinds": {
+   "time": 3723,
+   "subject": 3731,
+   "numeric": 3802,
+   "negation": 3744
+  },
+  "tiers": {
+   "easy": 48030,
+   "long": 11970
+  },
+  "rules": 29
+ }
+}
+
+real	0m35.718s
+user	0m0.015s
+sys	0m0.000s

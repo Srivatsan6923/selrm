@@ -1,0 +1,11 @@
+
+shortcut validation
+  [PASS] no invariant violations
+  [PASS] always-default TA = 0
+  [PASS] always-default Hold = 100
+  [PASS] concept-named TA = 0 on finding triplets
+  [PASS] concept-named Rev = 100 on finding triplets
+  [PASS] concept-named Hold = 0 on finding triplets
+  [PASS] oracle TA = 100 on every claim type
+  [PASS] naive-number-parser TA = 0 on the superseded tier
+CHECKPOINT PASSED
