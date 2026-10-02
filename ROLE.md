@@ -1,75 +1,93 @@
-# ROLE D: downstream experiments, tables, paper, and team lead
+# ROLE A: rule library, engine and every rule-tier dataset
 
-## Lead duties (every day)
-- Merge `role-a|b|c|d` into `main`; resolve conflicts in favour of the owner
-  of the file (table in CLAUDE.md).
-- Answer `docs/CHANGE_REQUESTS.md` within the same working block.
-- Apply the schedule ladder on Mon 5 and Wed 7 Oct; record it in
-  `docs/DECISIONS_D.md` and tell the other roles through `docs/HANDOFFS.md`.
-- Keep `docs/STATUS_BOARD.md`: per paper item (docs/PAPER_CONTEXT.md
-  section 4) -> not started / running / done / dropped, with run counts.
-- Run freeze: Wed 7 Oct 23:59. After that only reruns of failed P0 items.
+You are on the critical path. B, C and D can only produce reportable numbers
+after you publish `rule_v1`. **Core freeze: Saturday 3 Oct, evening.**
 
-## Deliverables (docs/RUN_MATRIX_D.csv)
-1. **D-L0** repo, shared Drive tree, registry files.
-2. **D-POOL-*** candidate pools: frozen policy = Qwen3.5-9B, sampled chain of
-   thought with numbered steps and a final line "Final answer: <option>";
-   16 samples per question (MedQA test, CareQA, MedEinst questions), 64 for a
-   fixed 300-question MedQA subset. A trace is eligible if it has a final
-   answer; report the share that is not.
-3. **D-CAL, D-SEL-***, **D-SELN** (Table 5, Figure 3 right).
-4. **D-RL-*** policy training (appendix G).
-5. **D-TAB** `scripts/make_tables.py`, `scripts/update_paper.py`;
-   **D-SUM** `docs/RESULTS_SUMMARY.md`; **D-PAPER**; **D-AUDIT**.
+## Deliverables, in order (IDs in docs/RUN_MATRIX_A.csv)
+1. **A-D0 `selrm/engine.py`** replacing `mini_engine.py`, emitting canonical
+   records (same fields as `selrm/smoke.py`, which you may reuse).
+2. **A-D1..D3 rule library** in `selrm/rules.py` + `selrm/rules_*.py`.
+3. **A-D4 freeze `rule_v1` core**: `test_L2` (2,000 triplets, fold 1), `dev`
+   (300, train-level rules, test templates), `train_{natural, balanced,
+   blocks, triplets}` (60k records each). `data/REGISTRY.json`, MANIFESTs,
+   shortcut validation PASS, one line in `docs/HANDOFFS.md`.
+4. A-D5..D8: ladder sets, hard tiers, missing twins, reading/application pairs.
+5. A-D9..D13: folds 2-3, diversity corpora, rewritten-note tier, ablation
+   corpora, check-code renderer and reference graphs.
+6. A-D14..D15: shortcut-scorer table, statistics, overlap table,
+   `docs/SAMPLE_TRIPLETS.md` (100 random triplets), appendix B and C text.
 
-## Answer selection
-- Step scores: the step check scores each step with the vignette. The ledger
-  score: the reader receives the vignette and the step and writes a ledger;
-  the judge scores the step from the ledger alone. A trace's score is the
-  minimum over its steps. Combined = minimum of the two after temperature
-  scaling fitted on development data; also report the product and a logistic
-  combination fitted on development data.
-- Rows: single sample, self-consistency, step check, step check with the
-  vignette of another question (swapped), ledger score, combined, combined
-  swapped, combined with the ledger model trained on blocks (no near-misses),
-  closed judge as selector (C's client), oracle selection.
-- Columns: MedQA accuracy, CareQA accuracy, key-pair accuracy (both members
-  right), MedEinst pair / control / trap accuracy. Paired bootstrap over
-  questions; the 1-point non-inferiority margin is fixed in advance.
-- Selection pressure: N in {1, 2, 4, 8, 16, 32, 64} on the 300-question
-  subset.
-- Adapters come from `configs/adapters.json` (B). Until then use provisional
-  adapters trained on smoke data to build and test the pipeline.
+## Engine specification
+- **Templates.** Every mention form (present, named absence, other person,
+  past/resolved, family first-degree, numeric now, numeric past) has at least
+  6 templates per concept group; indices 0-3 train, 4-5 test. Headers, cue
+  words for negation and time, and relative names are split the same way.
+  A test asserts zero overlap of template ids, cue words and relatives.
+- **Cases per group.** base, flip, near, pres (same state, other templates
+  and order); optional missing, read, apply.
+- **Flip forms.** If the criterion counts past or family findings, flips use
+  those forms part of the time (a past stroke is a flip for CHA2DS2-VASc).
+- **Near-miss kinds.** numeric (strictly inside `near_delta`, default side);
+  `boundary` (value exactly at the threshold) is its own kind; subject
+  (a person the criterion does not count); negation (named absence); time
+  (past or resolved; numeric: an old value on the flip side with a year while
+  today's value stays on the default side). Only kinds valid for the
+  criterion (`Criterion.nm_kinds()`).
+- **Invariants** (reject, resample, log rates per rule and kind):
+  labels base = near = pres = 0, flip = 1 from `Rule.label`; exactly one
+  criterion changes between base and flip; for findings the concept keywords
+  are absent from the base text and present in flip and near; for numerics
+  present in all three; no filler line contains any keyword of any rule in
+  the case; `ledger` quotes are substrings of `case_text`.
+- **Tiers.** easy (at most 4 lines); long (15+ filler lines, including other
+  people's unrelated conditions and old values of unrelated labs);
+  superseded; delabelled (allergy label removed after testing); alt (rule
+  text uses `alt_threshold`; keep cases where the original threshold gives
+  the other answer); rewritten (A-D11).
+- **Step claims.** conclusion (always); criterion (constraint rules);
+  applicability (optional).
+- **Missing twins.** Remove the decisive input; for findings that are not
+  closed-world add an explicit "not recorded" line; both claims label 0.
+  Verify by enumeration that both outcomes are reachable. Add an equal number
+  of ordinary supported claims so C can measure false rejection.
+- **Reading / application pairs.** read: claims quote the decisive finding
+  correctly vs incorrectly; apply: a one-line case with only that finding.
 
-## Policy training (GRPO)
-Policy: Qwen3.5-4B with LoRA on rule-application prompts from train-level
-rules ("decide and justify in numbered steps"). Rewards: outcome (rule
-program), step check, ledger model trained on blocks, ledger model trained on
-triplets, reference-graph coverage (A's `reference_graph`). 2 seeds, about
-1-2k steps, group size 8 (verify the GRPO implementation you use). Before
-each run check that reward terms are not collinear within groups and that a
-64-prompt subset can be overfit. Evaluate the policy with the rule program on
-held-out signature classes: accuracy on base, flip and near cases; log reward
-against program accuracy over training (reward exploitation).
+## Rule library targets (report what is built; v10's counts were placeholders)
+| Source | Minimum | Stretch | Notes |
+|---|---|---|---|
+| Constraint rules | 60 | 120 | recommendation -> decision tree -> program; families: allergy switch, lab threshold (renal, hepatic, haematologic), state switch, drug interaction, history switch, family switch, age limit, any-of / all-of two conditions |
+| Scoring rules | 40 | 138 | additive and banded scores from published definitions and MedCalc-Bench scoring calculators (verify dataset ID and licence; use its worked examples as unit tests) |
+| Grammar-sampled rules | 200 | 300 | grammar over operators (threshold, any-of, all-of, k-of-n, banded, default-with-exception), input types and applicability predicates; neutral invented names for L3-inv |
 
-## Tables and paper
-- `make_tables.py` reads only `results/*/summary_*.json` and
-  `scores_*.jsonl`; writes `tables/*.tex`, `figures/*.pdf` and
-  `tables/numbers.tex` (one macro per number used in running text).
-  Missing input -> "not run". Seeds: mean and s.d.; CIs and paired tests from
-  `selrm.metrics`; Holm over the four primary comparisons.
-- `update_paper.py` replaces table bodies in `paper/latex/main.tex` and
-  checks that no `\ph{` remains before switching to `\placeholdersfalse`.
-- `docs/RESULTS_SUMMARY.md` (Thu 8 Oct): for each claim in the abstract and
-  contribution list: estimate, CI, test, supported / not supported / not run,
-  and the sentence the paper may state.
-- Paper rewrite: docs/PAPER_CONTEXT.md section 8. A, B and C deliver appendix
-  text for their parts on Thu 8 Oct.
-- Final audit on Sat 10 Oct (Prompt 4 in PROMPTS.md). Submission is done by
-  the human.
+Extend `Rule` with a `logic` field for multi-criterion rules. Each rule gets
+a structural **signature** (kind, operators, depth, input types,
+applicability types); signature classes define L1 vs L2. Three folds, each
+holding out at least 4 classes. Every rule needs boundary tests.
+
+## Corpora (all 60k records, 15% presentation and 15% missing-input cases)
+natural: states sampled with flip-side conditions at 15% prevalence, cases
+independent; balanced: outcomes 50/50, cases independent; blocks: base+flip
+pairs; triplets: blocks where near-misses replace half of the base cases
+(all kinds equally). Train-level rules and train templates only.
+
+## Other tasks
+- **A-D11 rewritten tier.** Rewrite test cases with an open LLM (verify ID)
+  into note-like text; accept a group only if two different extractor models
+  recover the full state (concept, value, subject, status, time) of all its
+  cases. Report the acceptance rate.
+- **A-D13.** `render_check_code(rec)` (Python that reads the stated values
+  and prints the verdict) for B's GenPRM-style verifier; `reference_graph(
+  rec)` (decisive findings and criteria as nodes) for D's graph reward.
+- **A-D14 shortcut scorers** on `test_L2`: always default, claim only,
+  concept named, attribute-blind logistic (concept-value features without
+  subject/status/time), bag of words, trigger lexicon + program (ConText
+  style, built from training cue phrases; also with test cues given).
 
 ## Decision rules
-- If B's step check is the released Med-PRM, say so in Table 5's caption.
-- If selection gains are within the non-inferiority margin, report that; do
-  not search aggregation rules on test data.
-- Policy training is dropped first if the ladder is applied.
+- Freeze late? At 18:00 on 3 Oct freeze what passes validation (constraint +
+  scoring rules) as `rule_v1`; grammar rules and folds go into `rule_v1_fold*`
+  and L3-inv later. Never delay the freeze for completeness.
+- NO-GO pilot (from C): raise hard-tier share to 60%, add combined tiers
+  (long + superseded, long + alt), publish `rule_v2` within 12 hours.
+- After the freeze your GPU serves the pooled queue (INTERFACES section 7).

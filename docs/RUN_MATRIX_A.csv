@@ -1,0 +1,17 @@
+run_id,owner,pool,paper_item,kind,what,data,seed,runtime,est_hours,measured_hours,priority,depends_on,status,notes
+A-D0,A,no,"Sec3,AppC",code,"engine.py from mini_engine: canonical schema, step claims, pres edits, invariants, reject log; tests",-,-,CPU,5,,P0,-,todo,
+A-D1,A,no,AppB,code,"constraint rules to >=60 (stretch 120) via recommendation->tree->program, boundary tests",-,-,CPU,6,,P0,-,todo,
+A-D2,A,no,AppB,code,"scoring rules: MedCalc-Bench scoring calculators that pass tests + published scores (>=40 total, stretch 138)",-,-,CPU,6,,P0,-,todo,
+A-D3,A,no,AppB,code,"grammar-sampled rules (>=200, stretch 300); signature classes; 3 folds with held-out classes",-,-,CPU,4,,P0,-,todo,
+A-D4,A,no,"Tab3,Tab4",data,"FREEZE rule_v1: test L2 fold1 (2000 triplets), dev (300), train corpora natural/balanced/blocks/triplets (60k each)",-,-,CPU,2,,P0,A-D0..D3,todo,deadline Sat 3 Oct evening; MANIFEST + REGISTRY; shortcut validation must pass
+A-D5,A,no,Tab10,data,"ladder test sets L0, L1, L3-inv, L3-alt (alt: keep cases where original threshold disagrees)",-,-,CPU,2,,P0,A-D4,todo,
+A-D6,A,no,Tab2,data,"hard tiers in test: long, superseded, delabelled; boundary kind separated",-,-,CPU,2,,P0,A-D4,todo,
+A-D7,A,no,"Tab2,Tab4 (MR)",data,missing-evidence twins + supported claims for FR; dev threshold set,-,-,CPU,2,,P0,A-D4,todo,
+A-D8,A,no,Tab8,data,reading and application pairs for composition gap,-,-,CPU,1.5,,P1,A-D4,todo,
+A-D9,A,no,Tab3,data,folds 2 and 3 (train blocks/triplets + L2 tests),-,-,CPU,1,,P1,A-D4,todo,
+A-D10,A,no,Fig3 left,data,"diversity-curve corpora: more families / more rules per family / more patients, matched size",-,-,CPU,1.5,,P1,A-D4,todo,
+A-D11,A,no,AppC text tiers,data,"rewritten-note tier: LLM rewrite of test triplets, accept only if two extractors recover the state",-,-,CPU,4,,P1,A-D4,todo,needs an open LLM on GPU or API; report acceptance rate
+A-D12,A,no,Tab9,data,"ablation corpora: no-presentation, no-ledger-resampling, decision-field targets, bit-only targets, conclusion-only labels, probe-reweighting inputs",-,-,CPU,2,,P1,A-D4,todo,
+A-D13,A,no,"Tab4,AppG",code,render_check_code(rec) for GenPRM-style verifier; reference graph per instance for graph-coverage reward,-,-,CPU,2,,P1,A-D0,todo,
+A-D14,A,no,Tab7,eval,"shortcut scorers table: always default, claim only, concept named, attribute-blind logistic, bag of words, trigger lexicon (+ with training cues)",-,-,CPU,2,,P1,A-D4,todo,
+A-D15,A,no,AppB,doc,"dataset statistics, overlap table, 100-sample read (docs/SAMPLE_TRIPLETS.md), reject rates",-,-,CPU,1.5,,P0,A-D4,todo,
