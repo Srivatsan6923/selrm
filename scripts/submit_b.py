@@ -74,7 +74,7 @@ def cpu_job(name, command, cpu=8, mem="32Gi", eph="60Gi", hours=2):
                                            "volumes": [VOL_PVC]}}}}
 
 
-def runner_job(name, queue, code, env_tag, gpu, max_runs, hours, models=("unsloth--Qwen3.5-9B",)):
+def runner_job(name, queue, code, env_tag, gpu, max_runs, hours, cpu=3, mem="24Gi", models=("unsloth--Qwen3.5-9B",)):
     resource, products, prio = GPU[gpu]
     terms = [DRIVER] + ([{"key": "nvidia.com/gpu.product", "operator": "In", "values": products}] if products else [])
     pod = {"restartPolicy": "Never", "affinity": affinity(terms),
@@ -95,7 +95,7 @@ def runner_job(name, queue, code, env_tag, gpu, max_runs, hours, models=("unslot
                                "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"}.items()]
                            + [{"name": "POD_NAME", "valueFrom": {"fieldRef": {"fieldPath": "metadata.name"}}},
                               {"name": "NODE_NAME", "valueFrom": {"fieldRef": {"fieldPath": "spec.nodeName"}}}],
-                           "resources": res(3, "32Gi", "64Gi", {resource: "1"}),
+                           "resources": res(cpu, mem, "64Gi", {resource: "1"}),   # RSS median must stay >= 20% of mem
                            "volumeMounts": [MNT_PVC, {"name": "work", "mountPath": "/work"},
                                             {"name": "env", "mountPath": "/opt/selrm-env"},
                                             {"name": "dshm", "mountPath": "/dev/shm"}]}],
@@ -189,6 +189,8 @@ def main():
     ap.add_argument("--max-runs", type=int, default=3)
     ap.add_argument("--hours", type=float, default=4)
     ap.add_argument("--env", default="v1")
+    ap.add_argument("--cpu", type=int, default=3)
+    ap.add_argument("--mem", default="24Gi")
     ap.add_argument("--code", default=None)
     a = ap.parse_args()
     if a.cmd == "sync-up":
@@ -219,7 +221,7 @@ def main():
         stem = q.replace("_", "-").replace(".json", "")
         for i in range(a.n):
             apply(runner_job(f"selrm-b-run-{stem}-{a.gpu}-{int(time.time()) % 100000}-{i}", q, code, a.env,
-                             a.gpu, a.max_runs, a.hours))
+                             a.gpu, a.max_runs, a.hours, a.cpu, a.mem))
     elif a.cmd == "pull":
         pull(a.args)
     elif a.cmd == "ls":       # claim/heartbeat/done state of every run on the PVC
