@@ -85,6 +85,8 @@ python scripts/submit_b.py build-env v1                    # once per env tag
 python scripts/submit_b.py prep b_smoke.json --code <sha>  # CPU; wait for "PREP OK"
 python scripts/submit_b.py runners b_smoke.json --n 3 --gpu a100 --max-runs 3 --hours 4
 python scripts/submit_b.py runners all --n 7 --gpu a100 --max-runs 6 --hours 30   # every queue file, by priority
+python scripts/submit_b.py runners all --n 2 --gpu a6000 --models unsloth--Qwen3.5-4B,unsloth--granite-4.1-8b \
+       --max-runs 6 --hours 30          # backbone rows: a run is claimable only where its base is staged
 python scripts/submit_b.py push-ref origin/role-a && python scripts/submit_b.py build-data <sha12> [-- --fold 2]
 python scripts/submit_b.py ls                              # run states on the PVC
 python scripts/submit_b.py pull                            # finished runs -> results_git/
