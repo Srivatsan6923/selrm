@@ -1,5 +1,14 @@
 # STATE role B (maintained by Claude Code)
-Updated: 2026-10-02 ~17:20 UTC (Fri). Working to the lead's revised plan (2 Oct evening). Run freeze: Wed 7 Oct 23:59.
+Updated: 2026-10-02 ~17:25 UTC (Fri). PAUSED by the user (no new runs); summary: docs/SUMMARY_B.md.
+Run freeze: Wed 7 Oct 23:59 (UTC assumed).
+
+## PAUSED (17:20 UTC, user's instruction)
+- No new runs start: every queue file on the PVC is empty ({"runs": []}); full copies in /pvc/selrm/queues_paused/
+  and configs/queues/ (git). Runner Jobs that had not started were deleted.
+- Still running, finish then exit: B-F-rationale-{natural,blocks,triplets,balanced}-s0, B-F-summary2-triplets-s0,
+  B-BB-qwen3.5-4b-verdict-blocks-s0, B-C0-val-gpu-ckpt (7 pods).
+- Resume: on the sync pod `cp -r /pvc/selrm/queues_paused/. /pvc/selrm/queues/`, then `submit_b.py runners all ...`
+  (docs/NRP_B.md). Nothing else is needed: specs, pre-tokenised data and claims are in place.
 
 ## Report for the lead (revised plan, "report first"; corrected 17:15 UTC after a verification pass)
 Full tables, generated from results, PVC run logs and queue files: docs/PROJECTION_B.md (report_b.py timesplit,
