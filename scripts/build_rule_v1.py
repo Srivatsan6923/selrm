@@ -77,7 +77,9 @@ def diversity(emit, F, fold, scale, SET):
             for c in others for r in cls[c][i:i + 1]]
     new = start + rest + cls[a][8:] + cls[b][8:]
     per_rule = 60000 / 256
-    sizes = [x for x in (16, 32, 64, 128, 256) if x <= len(new)] + ([len(new)] if len(new) < 256 else [])
+    # standard sizes, plus the largest size each grown curve reaches (all three curves are
+    # built there too, so every point compares matched data)
+    sizes = sorted({x for x in (16, 32, 64, 128, 256) if x <= len(new)} | {min(len(same), 256), min(len(new), 256)})
     for x in sizes:
         n = max(14 * 4, int(per_rule * x * scale))
         for name, rids in (("new", new[:x]), ("same", same[:x]), ("patients", start)):
