@@ -1,0 +1,15 @@
+{
+ "runs": [
+  {
+   "run_id": "B-C0-val-gpu-ckpt",
+   "format": "ledger2",
+   "corpus": "smoke_v2/train_triplets",
+   "seed": 0,
+   "priority": -1,
+   "provisional": true,
+   "max_steps": 40,
+   "eval": {"bs_score": 128, "bs_gen": 256, "max_new": 384},
+   "eval_sets": ["smoke_v2/test_heldout_rules"]
+  }
+ ]
+}
