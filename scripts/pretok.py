@@ -1,32 +1,53 @@
 """Pre-tokenise B's training corpora and evaluation prompts on CPU, so a GPU job
 never builds data. Usage:
-  python scripts/pretok.py --root ROOT --queue QUEUE.json --tokenizer TOKDIR
-For every run in the queue:
-  ROOT/tok/train/<train_key>/{train.npz, stats.json, READY}
-  ROOT/tok/eval/<set>/<kind>.npz     (prompt ids; kind = verdict | rationale |
-                                      reader_ledger | reader_prose)
+  python scripts/pretok.py --root ROOT --queue QUEUE.json [--models DIR]
+For every run in the queue, with <tag> = its base model ("unsloth--Qwen3.5-9B"),
+whose tokenizer is loaded from DIR/<tag> (default ROOT/models):
+  ROOT/tok/<tag>/train/<train_key>/{train.npz, stats.json, READY}
+  ROOT/tok/<tag>/eval/<set>/<kind>.npz   (kind = verdict | rationale | reader_ledger | reader_prose)
 Datasets are read from ROOT/data/<name>.jsonl (name as in data/REGISTRY.json).
 Prompts get the chat template with thinking disabled (INTERFACES 2); every
-completion ends with the end-of-turn token so generation formats learn to stop."""
+completion ends with the end-of-turn token so generation formats learn to stop.
+Gold ledgers must pass the eval-time malformed check (formats.well_formed), and all
+records of one (case, condition) must carry the same ledger and prose, else prep stops.
+Files are written under pid-unique temporary names and renamed; READY is written last."""
 import argparse, json, os, sys
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from selrm.formats import VERSION, build_examples, reader_units
+from selrm.formats import FIELDS, VERSION, build_examples, dataset_path, gold_record, reader_unit, reader_units, well_formed
 from selrm.prompts import rationale_prompt, reader_prompt, verdict_prompt
 
+BASE = "unsloth/Qwen3.5-9B"
+MAX_LEN = 1024
 EVAL_KIND = {"verdict": "verdict", "rationale": "rationale", "summary2": "reader_prose",
              "value2": "reader_ledger", "ledger2": "reader_ledger"}
 
 
-def load_jsonl(path):
-    with open(path, encoding="utf-8") as f:
-        return [json.loads(line) for line in f]
+def tok_tag(spec):
+    return spec.get("base_model", BASE).replace("/", "--")
+
+
+def max_len(spec):
+    return spec.get("hp", {}).get("max_len", MAX_LEN)
 
 
 def train_key(spec):
     p = spec.get("resample_p", 0.3) if spec["format"] in ("summary2", "value2", "ledger2") else 0
     return (f"{spec['format']}__{spec['corpus'].replace('/', '~')}__n{spec.get('n_examples') or 'all'}"
-            f"__p{p}__c{spec.get('construction_seed', 0)}__v{VERSION}")
+            f"__p{p}__c{spec.get('construction_seed', 0)}__L{max_len(spec)}__v{VERSION}")
+
+
+def train_dir(root, spec):
+    return f"{root}/tok/{tok_tag(spec)}/train/{train_key(spec)}"
+
+
+def eval_path(root, spec, set_name):
+    return f"{root}/tok/{tok_tag(spec)}/eval/{set_name}/{EVAL_KIND[spec['format']]}.npz"
+
+
+def load_jsonl(path):
+    with open(path, encoding="utf-8") as f:
+        return [json.loads(line) for line in f]
 
 
 def chat(tok, text):
@@ -55,56 +76,84 @@ def tok_ids(tok, texts, bs=2048):
     return out
 
 
-def build_train(root, spec, tok, end, max_len):
-    d = f"{root}/tok/train/{train_key(spec)}"
+def save_npz(path, **arrays):
+    tmp = f"{path}.{os.getpid()}.tmp.npz"
+    np.savez(tmp, **arrays)
+    os.replace(tmp, path)
+
+
+def check_gold(recs, fmts, where):
+    """Every (case, condition) unit: one ledger/prose for all its records, and the gold
+    ledger passes the eval-time malformed check. Raises with examples otherwise."""
+    groups, bad = {}, []
+    for r in recs:
+        groups.setdefault(reader_unit(r), []).append(r)
+    for unit, rs in groups.items():
+        if any(x["ledger"] != rs[0]["ledger"] or x["prose"] != rs[0]["prose"] for x in rs[1:]):
+            bad.append(f"{rs[0]['iid']}: records of one (case, condition) carry different ledgers/prose")
+        for f in fmts:
+            if f in FIELDS and not well_formed(gold_record(rs[0], f), rs[0]["case_text"], f):
+                bad.append(f"{rs[0]['iid']}: gold {f} ledger fails the malformed check: {gold_record(rs[0], f)!r}")
+    if bad:
+        raise SystemExit(f"{where}: {len(bad)} gold-ledger problems, e.g.\n" + "\n".join(bad[:10]))
+
+
+def build_train(root, spec, tok, end):
+    d = train_dir(root, spec)
     if os.path.exists(f"{d}/READY"):
         return d, "exists"
-    recs = load_jsonl(f"{root}/data/{spec['corpus']}.jsonl")
+    recs = load_jsonl(dataset_path(root, spec["corpus"]))
+    if spec["format"] != "verdict":
+        check_gold(recs, [spec["format"]], spec["corpus"])
     ex, stats = build_examples(recs, spec["format"], n=spec.get("n_examples"),
                                resample_p=spec.get("resample_p", 0.3),
                                seed=spec.get("construction_seed", 0))
     P = tok_ids(tok, [chat(tok, e["prompt"]) for e in ex])
     C = tok_ids(tok, [e["completion"] + end for e in ex])
-    seqs, npr, over = [], [], 0
+    seqs, npr, over, L = [], [], 0, max_len(spec)
     for p, c in zip(P, C):
-        if len(p) + len(c) > max_len:
+        if len(p) + len(c) > L:
             over += 1
             continue
         seqs.append(p + c)
         npr.append(len(p))
     if over > 0.005 * len(ex):
-        raise SystemExit(f"{over} of {len(ex)} examples exceed max_len {max_len} in {d}")
+        raise SystemExit(f"{over} of {len(ex)} examples exceed max_len {L} in {d}")
     ids, off = pack(seqs)
     os.makedirs(d, exist_ok=True)
-    np.savez(f"{d}/train.npz", ids=ids, off=off, npr=np.asarray(npr, dtype=np.int32))
-    L = np.diff(off)
-    stats |= {"key": train_key(spec), "spec": {k: spec.get(k) for k in ("format", "corpus", "n_examples",
-              "resample_p", "construction_seed")}, "dropped_over_max_len": over, "max_len": max_len,
-              "examples": len(seqs), "tokens": int(off[-1]), "len_mean": float(L.mean()),
-              "len_max": int(L.max()), "completion_tokens": int(off[-1] - np.sum(npr)),
-              "tokenizer": tok.name_or_path, "end_of_turn": end,
-              "parts": {k: sum(e["part"] == k for e in ex) for k in {e["part"] for e in ex}}}
-    json.dump(stats, open(f"{d}/stats.json", "w"), indent=1)
+    save_npz(f"{d}/train.npz", ids=ids, off=off, npr=np.asarray(npr, dtype=np.int32),
+             vocab=np.asarray(len(tok)))
+    lens = np.diff(off)
+    stats |= {"key": train_key(spec), "tokenizer": tok_tag(spec), "vocab": len(tok),
+              "spec": {k: spec.get(k) for k in ("format", "corpus", "n_examples", "resample_p", "construction_seed")},
+              "dropped_over_max_len": over, "max_len": L, "examples": len(seqs), "tokens": int(off[-1]),
+              "len_mean": float(lens.mean()), "len_max": int(lens.max()),
+              "completion_tokens": int(off[-1] - np.sum(npr)), "end_of_turn": end,
+              "parts": {k: sum(e["part"] == k for e in ex) for k in sorted({e["part"] for e in ex})}}
+    tmp = f"{d}/stats.json.{os.getpid()}"
+    json.dump(stats, open(tmp, "w"), indent=1)
+    os.replace(tmp, f"{d}/stats.json")
     open(f"{d}/READY", "w").write("ok\n")
     return d, f"built {len(seqs)} examples, {int(off[-1])} tokens"
 
 
-def build_eval(root, set_name, kind, tok):
-    d, path = f"{root}/tok/eval/{set_name}", f"{root}/tok/eval/{set_name}/{kind}.npz"
+def build_eval(root, spec, set_name, tok):
+    path = eval_path(root, spec, set_name)
     if os.path.exists(path):
         return path, "exists"
-    recs = load_jsonl(f"{root}/data/{set_name}.jsonl")
+    kind = EVAL_KIND[spec["format"]]
+    recs = load_jsonl(dataset_path(root, set_name))
     if kind in ("verdict", "rationale"):
         fn = verdict_prompt if kind == "verdict" else rationale_prompt
         keys, texts = [r["iid"] for r in recs], [fn(r) for r in recs]
     else:
+        check_gold(recs, ["ledger2", "value2"] if kind == "reader_ledger" else [], set_name)
         units = reader_units(recs)
         keys = ["/".join(r["iid"].split("/")[:2]) for r in units]
         texts = [reader_prompt(r, prose=kind == "reader_prose") for r in units]
     ids, off = pack(tok_ids(tok, [chat(tok, t) for t in texts]))
-    os.makedirs(d, exist_ok=True)
-    np.savez(path + ".tmp.npz", ids=ids, off=off, keys=np.asarray(keys))
-    os.replace(path + ".tmp.npz", path)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    save_npz(path, ids=ids, off=off, keys=np.asarray(keys), vocab=np.asarray(len(tok)))
     return path, f"built {len(keys)} prompts, max {int(np.diff(off).max())} tokens"
 
 
@@ -112,18 +161,20 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", required=True)
     ap.add_argument("--queue", required=True)
-    ap.add_argument("--tokenizer", required=True)
-    ap.add_argument("--max_len", type=int, default=1024)
+    ap.add_argument("--models", default=None, help="dir with <tag>/ tokenizer files (default ROOT/models)")
     a = ap.parse_args()
     from transformers import AutoTokenizer
-    tok = AutoTokenizer.from_pretrained(a.tokenizer)
-    end = end_of_turn(tok)
-    runs = json.load(open(a.queue))["runs"]
-    for spec in runs:
+    toks = {}
+    for spec in json.load(open(a.queue))["runs"]:
+        tag = tok_tag(spec)
+        if tag not in toks:
+            t = AutoTokenizer.from_pretrained(f"{a.models or a.root + '/models'}/{tag}")
+            toks[tag] = (t, end_of_turn(t))
+        tok, end = toks[tag]
         if spec.get("train", True):
-            print(spec["run_id"], *build_train(a.root, spec, tok, end, spec.get("max_len", a.max_len)), flush=True)
+            print(spec["run_id"], *build_train(a.root, spec, tok, end), flush=True)
         for s in spec["eval_sets"]:
-            print(spec["run_id"], s, *build_eval(a.root, s, EVAL_KIND[spec["format"]], tok), flush=True)
+            print(spec["run_id"], s, *build_eval(a.root, spec, s, tok), flush=True)
 
 
 if __name__ == "__main__":

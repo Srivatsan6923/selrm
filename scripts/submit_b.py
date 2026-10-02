@@ -74,7 +74,7 @@ def cpu_job(name, command, cpu=8, mem="32Gi", eph="60Gi", hours=2):
                                            "volumes": [VOL_PVC]}}}}
 
 
-def runner_job(name, queue, code, env_tag, gpu, max_runs, hours, cpu=3, mem="24Gi", models=("unsloth--Qwen3.5-9B",)):
+def runner_job(name, queue, code, env_tag, gpu, max_runs, hours, cpu=2, mem="12Gi", models=("unsloth--Qwen3.5-9B",)):
     resource, products, prio = GPU[gpu]
     terms = [DRIVER] + ([{"key": "nvidia.com/gpu.product", "operator": "In", "values": products}] if products else [])
     pod = {"restartPolicy": "Never", "affinity": affinity(terms),
@@ -164,8 +164,9 @@ def pull(run_ids):
     want = [r for r in (run_ids or have) if r in have]
     got = []
     for rid in want:
-        if os.path.exists(f"{REPO}/results_git/{rid}/DONE"):
-            continue
+        local = f"{REPO}/results_git/{rid}/DONE"
+        if os.path.exists(local) and open(local).read() == exec_sync("cat", f"/pvc/selrm/results/{rid}/DONE"):
+            continue                       # same DONE stamp: nothing new (a re-run writes a new stamp)
         data = subprocess.run(["kubectl", "-n", NS, "exec", "selrm-b-sync", "--", "sh", "-c",
                                f"cd /pvc/selrm/results && tar -czf - {rid}/meta.json {rid}/DONE "
                                f"$(ls {rid}/summary_*.json {rid}/scores_*.jsonl {rid}/gpu_util.csv 2>/dev/null)"],
@@ -189,8 +190,8 @@ def main():
     ap.add_argument("--max-runs", type=int, default=3)
     ap.add_argument("--hours", type=float, default=4)
     ap.add_argument("--env", default="v1")
-    ap.add_argument("--cpu", type=int, default=3)
-    ap.add_argument("--mem", default="24Gi")
+    ap.add_argument("--cpu", type=int, default=2)        # measured 1.0 core median on A100 training
+    ap.add_argument("--mem", default="12Gi")             # measured RSS 2.9 GiB; RSS median must be >= 20% of this
     ap.add_argument("--code", default=None)
     a = ap.parse_args()
     if a.cmd == "sync-up":
@@ -225,8 +226,9 @@ def main():
     elif a.cmd == "pull":
         pull(a.args)
     elif a.cmd == "ls":       # claim/heartbeat/done state of every run on the PVC
-        print(exec_sync("sh", "-c", "cd /pvc/selrm/results 2>/dev/null && for d in */; do "
-                                    "echo \"$d $(ls $d | grep -E '^(CLAIMED_|DONE|FAILED_)' | tr '\\n' ' ')\"; done"))
+        print(exec_sync("sh", "-c", "cd /pvc/selrm/results 2>/dev/null && now=$(date +%s) && for d in */; do "
+                                    "hb=$(stat -c %Y $d/HEARTBEAT 2>/dev/null || echo $now); "
+                                    "echo \"$d hb_age=$((now-hb))s $(ls $d | grep -E '^(CLAIMED_|DONE|FAILED_|KILLED_)' | tr '\\n' ' ')\"; done"))
     else:
         sys.exit(f"unknown command {a.cmd}")
 

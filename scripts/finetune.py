@@ -19,6 +19,7 @@ class TokDataset(torch.utils.data.Dataset):
     def __init__(self, path):
         z = np.load(path)
         self.ids, self.off, self.npr = z["ids"], z["off"], z["npr"]
+        self.vocab = int(z["vocab"]) if "vocab" in z else None
 
     def __len__(self):
         return len(self.npr)
@@ -52,9 +53,13 @@ def load_base(base_dir, max_len, hp=HP):
     """backend 'unsloth' (default) or 'hf' (plain transformers + PEFT: CPU self-test
     and fallback path; same LoRA and optimiser settings)."""
     if hp.get("backend", "unsloth") == "hf":
-        from transformers import AutoModelForCausalLM, AutoTokenizer
+        from transformers import AutoConfig, AutoModelForCausalLM, AutoModelForImageTextToText, AutoTokenizer
         dt = torch.bfloat16 if hp.get("bf16", True) else torch.float32
-        model = AutoModelForCausalLM.from_pretrained(base_dir, dtype=dt, local_files_only=True)
+        # the full qwen3_5 checkpoint must load as Qwen3_5ForConditionalGeneration (as Unsloth does), or
+        # LoRA module paths (model.language_model.layers.N vs model.layers.N) differ from Unsloth adapters
+        multimodal = getattr(AutoConfig.from_pretrained(base_dir), "vision_config", None) is not None
+        cls = AutoModelForImageTextToText if multimodal else AutoModelForCausalLM
+        model = cls.from_pretrained(base_dir, dtype=dt, local_files_only=True)
         return model.to("cuda" if torch.cuda.is_available() else "cpu"), AutoTokenizer.from_pretrained(base_dir)
     from unsloth import FastLanguageModel
     # Unsloth's Qwen3.5 guide flags for 16-bit LoRA; qwen3_5 is routed to FastModel (VLM path)
@@ -122,17 +127,40 @@ def train(spec, paths, log=print, hp=HP):
     torch.manual_seed(seed)
     model, tok = load_base(paths["base"], hp["max_len"], hp)
     done = f"{paths['adapter']}/TRAINED.json"
+    # what the adapter was trained on; the micro-batch split may change (e.g. after an OOM) and still resume
+    key = {"train_data": paths["data"], "base": os.path.basename(paths["base"]), "seed": seed,
+           "max_steps": spec.get("max_steps"),
+           "hp": {k: v for k, v in hp.items() if k not in ("save_every_s", "per_device", "workers")}}
     if os.path.exists(done):                       # a retry after training finished: evaluate only
-        from peft import PeftModel
-        log(f"adapter already trained ({done}); skipping training")
-        return PeftModel.from_pretrained(model, paths["adapter"]), tok, json.load(open(done))
+        info = json.load(open(done))
+        if info.get("key") == key:
+            from peft import PeftModel
+            log(f"adapter already trained for this spec ({done}); skipping training")
+            return PeftModel.from_pretrained(model, paths["adapter"]), tok, info
+        stale = f"{paths['adapter']}.stale-{int(time.time())}"
+        log(f"adapter at {paths['adapter']} was trained for another spec; moved to {stale}")
+        os.replace(paths["adapter"], stale)
+    os.makedirs(paths["ckpt"], exist_ok=True)
+    kfile = f"{paths['ckpt']}/KEY.json"
+    if os.path.exists(kfile) and json.load(open(kfile)) != key:   # checkpoints of another spec
+        import shutil
+        for d in os.listdir(paths["ckpt"]):
+            if d.startswith("checkpoint-"):
+                shutil.rmtree(f"{paths['ckpt']}/{d}", ignore_errors=True)
+    json.dump(key, open(kfile, "w"))
     model = add_lora(model, seed, hp)
     ds = TokDataset(paths["data"])
+    if ds.vocab is not None and ds.vocab != len(tok):
+        raise RuntimeError(f"{paths['data']} was tokenised with vocab {ds.vocab}, model tokenizer has {len(tok)}")
     acc = hp["batch"] // hp["per_device"]
     assert acc * hp["per_device"] == hp["batch"]
 
     class TimedSave(TrainerCallback):
         last = time.time()
+        step0 = 0
+
+        def on_train_begin(self, args, state, control, **kw):
+            self.step0 = state.global_step
 
         def on_step_end(self, args, state, control, **kw):
             if time.time() - self.last > hp["save_every_s"]:
@@ -150,23 +178,43 @@ def train(spec, paths, log=print, hp=HP):
         warmup_steps=round(hp["warmup_ratio"] * total), weight_decay=hp["weight_decay"], optim=hp["optim"],
         max_grad_norm=hp["max_grad_norm"], num_train_epochs=hp["epochs"],
         max_steps=spec.get("max_steps") or -1, bf16=hp.get("bf16", True), logging_steps=10, save_strategy="no",
+        # unsloth checkpoints activations itself; the plain fallback needs torch checkpointing on a GPU
+        gradient_checkpointing=hp.get("backend", "unsloth") == "hf" and torch.cuda.is_available(),
+        gradient_checkpointing_kwargs={"use_reentrant": False},
         save_total_limit=1, seed=seed, data_seed=seed, report_to=[], dataloader_num_workers=hp.get("workers", 2),
         dataloader_pin_memory=True, remove_unused_columns=False, disable_tqdm=True)
+    cb = TimedSave()
     trainer = Trainer(model=model, args=args, train_dataset=ds, data_collator=Collate(tok.pad_token_id),
-                      callbacks=[TimedSave()])
-    resume = any(d.startswith("checkpoint-") for d in os.listdir(paths["ckpt"])) if os.path.isdir(paths["ckpt"]) else False
+                      callbacks=[cb])
+    if hp.get("backend", "unsloth") == "hf":
+        # transformers 5.0-5.5 scales the loss by 1/accumulation twice through accelerate's
+        # GradientAccumulationPlugin; unsloth patches this, the plain path must clamp it
+        trainer.accelerator.gradient_accumulation_steps = 1
+    # resume from the newest COMPLETE checkpoint (trainer_state.json is written last); drop partial ones
+    import shutil
+    ck = sorted((d for d in os.listdir(paths["ckpt"]) if d.startswith("checkpoint-")),
+                key=lambda d: int(d.split("-")[1]))
+    good = [d for d in ck if os.path.exists(f"{paths['ckpt']}/{d}/trainer_state.json")]
+    for d in ck:
+        if d not in good[-1:]:
+            shutil.rmtree(f"{paths['ckpt']}/{d}", ignore_errors=True)
+    resume = f"{paths['ckpt']}/{good[-1]}" if good else None
     if torch.cuda.is_available():
         torch.cuda.reset_peak_memory_stats()
     t0 = time.time()
-    out = trainer.train(resume_from_checkpoint=True if resume else None)
+    out = trainer.train(resume_from_checkpoint=resume)
     secs = time.time() - t0
     steps = trainer.state.global_step
-    frac = steps / max(1, trainer.state.max_steps)
-    info = {"train_seconds": round(secs, 1), "steps": steps, "resumed": resume,
-            "train_loss": out.training_loss, "examples": len(ds), "tokens": ds.tokens(),
-            "tokens_per_s": round(ds.tokens() * frac / secs, 1) if secs else None,
-            "s_per_step": round(secs / max(1, steps), 3),
-            "peak_mem_gb": round(torch.cuda.max_memory_allocated() / 2**30, 2) if torch.cuda.is_available() else None,
+    n_now = steps - cb.step0                      # optimizer steps done in this attempt
+    tok_per_ex = ds.tokens() / max(1, len(ds))    # mean tokens per example (incl. prompt)
+    info = {"key": key, "train_seconds": round(secs, 1), "steps": steps, "steps_this_attempt": n_now,
+            "resumed_from": resume, "examples": len(ds),
+            # HF sums this attempt's losses but divides by all steps: rescale to this attempt
+            "train_loss": out.training_loss * steps / max(1, n_now),
+            "tokens": ds.tokens(), "tokens_per_s": round(tok_per_ex * hp["batch"] * n_now / secs, 1) if secs else None,
+            "s_per_step": round(secs / max(1, n_now), 3),
+            "peak_mem_gb": round(torch.cuda.max_memory_reserved() / 2**30, 2) if torch.cuda.is_available() else None,
+            "peak_mem_allocated_gb": round(torch.cuda.max_memory_allocated() / 2**30, 2) if torch.cuda.is_available() else None,
             "trainable_params": sum(p.numel() for p in model.parameters() if p.requires_grad),
             "lora_modules": sum(1 for n, _ in model.named_modules() if n.endswith("lora_A")),
             "dtype": str(model.get_input_embeddings().weight.dtype),

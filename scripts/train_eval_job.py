@@ -11,20 +11,29 @@ from importlib import metadata
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from selrm import runq
-from pretok import EVAL_KIND, train_key
+from pretok import eval_path, tok_tag, train_dir, train_key
 
 BASE = "unsloth/Qwen3.5-9B"
 PKGS = ("torch", "transformers", "unsloth", "unsloth_zoo", "trl", "peft", "accelerate",
         "flash-linear-attention", "fla-core", "causal-conv1d", "triton", "numpy")
 
 
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def keep_adapter(spec):
+    """Kept if the queue says so or configs/keep_adapters.json (snapshot shipped with the code) lists it."""
+    keep = json.load(open(f"{REPO}/configs/keep_adapters.json"))["keep"]
+    return bool(spec.get("keep_adapter")) or spec["run_id"] in keep
+
+
 def paths(root, spec):
     """Base weights come from SELRM_MODELS (local NVMe copy made by k8s/stage.sh) if set."""
     rid, base = spec["run_id"], spec.get("base_model", BASE)
-    keep = spec.get("keep_adapter", False)
+    keep = keep_adapter(spec)
     models = os.environ.get("SELRM_MODELS", f"{root}/models")
     return {"base": f"{models}/{base.replace('/', '--')}",
-            "data": f"{root}/tok/train/{train_key(spec)}/train.npz",
+            "data": f"{train_dir(root, spec)}/train.npz",
             "ckpt": f"{root}/ckpt/{rid}",
             "adapter": f"{root}/adapters/{rid}" if keep else f"{root}/ckpt/{rid}/adapter",
             "results": f"{root}/results/{rid}"}
@@ -33,8 +42,7 @@ def paths(root, spec):
 def ready(root, spec):
     P = paths(root, spec)
     return (os.path.exists(os.path.dirname(P["data"]) + "/READY") and os.path.isdir(P["base"])
-            and all(os.path.exists(f"{root}/tok/eval/{s}/{EVAL_KIND[spec['format']]}.npz")
-                    for s in spec["eval_sets"]))
+            and all(os.path.exists(eval_path(root, spec, s)) for s in spec["eval_sets"]))
 
 
 def load_runs(queues):
@@ -57,6 +65,14 @@ def versions():
     return out, smi
 
 
+def max_rss_gb():
+    try:
+        import resource                      # Linux pods; absent on the Windows laptop self-test
+        return round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 2**20, 2)
+    except ImportError:
+        return None
+
+
 def commit(code_dir):
     try:
         return subprocess.run(["git", "-C", code_dir, "rev-parse", "HEAD"], capture_output=True,
@@ -75,8 +91,11 @@ class Log:
         line = f"{time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())} {msg}"
         print(line, flush=True)
         for p in self.paths:
-            with open(p, "a") as f:
-                f.write(line + "\n")
+            try:
+                with open(p, "a") as f:
+                    f.write(line + "\n")
+            except OSError:          # a vanished results dir must not turn a log line into a crash
+                pass
 
 
 def run_one(root, spec, mon, log, owner):
@@ -86,7 +105,7 @@ def run_one(root, spec, mon, log, owner):
     os.makedirs(P["results"], exist_ok=True)
     log.paths.append(f"{P['results']}/run.log")
     mon.start_run(P["results"])
-    t0, model = time.time(), None
+    t0, model, sc = time.time(), None, None
     try:
         model, tok, tinfo = finetune.train(spec, P, log)
         finetune.for_inference(model, tinfo["hp"])
@@ -94,7 +113,7 @@ def run_one(root, spec, mon, log, owner):
         sc = eval_local.Scorer(model, tok, ev.get("bs_score", 64), ev.get("bs_gen", 64),
                                ev.get("max_new", 384), log)
         te = time.time()
-        summ = {s: eval_local.evaluate(sc, root, rid, spec["format"], s, P["results"], log)
+        summ = {s: eval_local.evaluate(sc, root, rid, spec["format"], s, P["results"], log, tok_tag(spec))
                 for s in spec["eval_sets"]}
         vers, gpu = versions()
         meta = {"run_id": rid, "model": spec.get("base_model", BASE),
@@ -111,8 +130,10 @@ def run_one(root, spec, mon, log, owner):
                 "per_device_batch": tinfo["hp"]["per_device"], "grad_accum": tinfo["grad_accum"],
                 "versions": vers, "gpu": gpu, "node": os.environ.get("NODE_NAME"),
                 "pod": owner, "git_commit": commit(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-                "wall_seconds": round(time.time() - t0, 1), "keep_adapter": spec.get("keep_adapter", False),
-                "adapter_path": P["adapter"] if spec.get("keep_adapter") else None,
+                "wall_seconds": round(time.time() - t0, 1), "keep_adapter": keep_adapter(spec),
+                "max_rss_gb": max_rss_gb(),
+                "eval_u_path": sc.u_path,
+                "adapter_path": P["adapter"] if keep_adapter(spec) else None,
                 "summaries": {s: v.get("all") for s, v in summ.items()}}
         meta |= mon.end_run()
         meta["gpu_hours"] = round(meta["wall_seconds"] / 3600, 3)
@@ -132,7 +153,7 @@ def run_one(root, spec, mon, log, owner):
         return False
     finally:
         log.paths = log.paths[:1]
-        del model
+        sc = model = None                 # the Scorer holds the model too; drop both before collecting
         gc.collect()
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
@@ -146,12 +167,27 @@ def main():
     a = ap.parse_args()
     if os.environ.get("SELRM_BACKEND", "unsloth") == "unsloth":
         import unsloth  # noqa: F401  (must precede transformers so its patches and GDN kernels apply)
+        import finetune
+        try:                              # a broken env/node must fail the pod, not be charged to runs
+            print("preflight:", finetune.preflight(), flush=True)
+        except Exception as e:
+            print(f"PREFLIGHT FAILED: {type(e).__name__}: {e}", flush=True)
+            sys.exit(4)
     owner = os.environ.get("POD_NAME", socket.gethostname())
     log = Log(f"{a.root}/logs/{owner}/runner.log")
     mon = runq.GpuMonitor(f"{a.root}/logs/{owner}/gpu_util.csv", log=log)
     mon.start()
     done = 0
     while not a.max_runs or done < a.max_runs:
+        if done:                          # the previous run's model must be gone before the next load
+            import torch
+            gc.collect()
+            torch.cuda.empty_cache()
+            held = torch.cuda.memory_allocated() / 2**30
+            log(f"GPU memory still allocated after run {done}: {held:.2f} GiB")
+            if held > 2:
+                log("previous model not freed; exiting so the Job starts a clean pod (no run claimed)")
+                sys.exit(5)
         pick = None
         for spec in load_runs(a.queue):
             rdir = f"{a.root}/results/{spec['run_id']}"

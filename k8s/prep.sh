@@ -36,11 +36,15 @@ for m in [m for m in json.load(open("configs/models_b.json"))["models"] if m.get
         print("present", m["id"], m["revision"]); continue
     snapshot_download(m["id"], revision=m["revision"], local_dir=d + ".tmp",
                       allow_patterns=m.get("allow_patterns"), max_workers=2)   # bounded memory (pod OOM at 8 Gi with defaults)
+    open(f"{d}.tmp/REVISION", "w").write(m["revision"] + "\n")     # written before the rename
+    if os.path.exists(d):
+        os.replace(d, d + ".old")
     os.replace(d + ".tmp", d)
-    open(f"{d}/REVISION", "w").write(m["revision"] + "\n")
+    if os.path.exists(d + ".old"):
+        import shutil
+        shutil.rmtree(d + ".old")
     print("downloaded", m["id"], m["revision"])
 EOF
 
-"$PY" scripts/pretok.py --root "$ROOT" --queue "$ROOT/queue/$QUEUE" \
-  --tokenizer "$ROOT/models/unsloth--Qwen3.5-9B"
+"$PY" scripts/pretok.py --root "$ROOT" --queue "$ROOT/queue/$QUEUE"
 echo "PREP OK $QUEUE"

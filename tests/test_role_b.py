@@ -44,6 +44,13 @@ def test_resampling_and_determinism():
     b, sb = build_examples(recs, "ledger2", resample_p=1.0)
     c, _ = build_examples(recs, "ledger2", resample_p=1.0)
     assert sa["pairs_swapped"] == 0 and sb["pairs_swapped"] > 0 and b == c
+    assert sa["unique_judge_pairs"] * 2 == sa["judge"]                   # p=0: each pair at most once per pass
+    # swaps stay inside (rule, condition, claim type): same anchors, so the (rule, claim) texts
+    # of the judge examples are identical at p=0 and p=1; only ledgers and labels move
+    rc = lambda ex: sorted((e["prompt"].split("Evidence record:")[0], e["prompt"].split("Claim:")[1])
+                           for e in ex if e["part"] == "judge")
+    assert rc(a) == rc(b)
+    assert sum(e["prompt"] != f["prompt"] for e, f in zip(a, b) if e["part"] == "judge") > 0
 
 
 def test_well_formed():
@@ -62,17 +69,21 @@ def test_well_formed():
 
 def test_claims_and_stats():
     d = tempfile.mkdtemp() + "/R1"
-    assert runq.claim(d, "pod-a") and not runq.claim(d, "pod-b")
+    assert runq.claim(d, "pod-a", settle_s=0) and not runq.claim(d, "pod-b", settle_s=0)
     old = time.time() - runq.STALE_OWN_S - 5
     os.utime(f"{d}/HEARTBEAT", (old, old))
-    assert runq.state(d) == "free" and runq.claim(d, "pod-b")            # stale own claim
+    assert runq.state(d) == "claimed"               # fresh claim file + old heartbeat: still live (race fix)
+    os.utime(f"{d}/CLAIMED_B", (old, old))
+    assert runq.state(d) == "free" and runq.claim(d, "pod-b", settle_s=0)   # dead pod: claim and heartbeat old
+    assert runq.count(d, "KILLED_") == 1           # the takeover is recorded against the run
     open(f"{d}/CLAIMED_C", "w").close()
     os.remove(f"{d}/CLAIMED_B")
-    os.utime(f"{d}/HEARTBEAT", (old, old))
+    for f in ("HEARTBEAT", "CLAIMED_C"):
+        os.utime(f"{d}/{f}", (old, old))
     assert runq.state(d) == "claimed"                                     # other role: 3 h rule
     os.remove(f"{d}/CLAIMED_C")
-    runq.claim(d, "pod-c"); runq.release(d, False, "x")
-    runq.claim(d, "pod-c"); runq.release(d, False, "y")
+    runq.claim(d, "pod-c", settle_s=0); runq.release(d, False, "x")
+    runq.claim(d, "pod-c", settle_s=0); runq.release(d, False, "y")
     assert runq.state(d) == "failed"
     st = runq.util_stats([90.0] * 10 + [10.0] * 10 + [50.0] * 3)
     assert st["gpu_windows_below40"] == 0.5 and st["gpu_util_p10"] == 10.0, st

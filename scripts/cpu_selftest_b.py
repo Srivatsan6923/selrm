@@ -45,8 +45,7 @@ json.dump({"runs": runs}, open(f"{root}/queue.json", "w"), indent=1)
 
 py = sys.executable
 os.environ["SELRM_BACKEND"] = "hf"          # no GPU: plain transformers + PEFT
-subprocess.run([py, f"{HERE}/pretok.py", "--root", root, "--queue", f"{root}/queue.json",
-                "--tokenizer", mdir], check=True)
+subprocess.run([py, f"{HERE}/pretok.py", "--root", root, "--queue", f"{root}/queue.json"], check=True)
 subprocess.run([py, f"{HERE}/train_eval_job.py", "--root", root, "--queue", f"{root}/queue.json"], check=True)
 
 for r in runs:

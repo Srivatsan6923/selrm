@@ -14,7 +14,7 @@ import argparse, json, os, sys, time
 import numpy as np
 import torch
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from selrm.formats import MALFORMED_U, TWO_STAGE, reader_units, well_formed
+from selrm.formats import MALFORMED_U, TWO_STAGE, dataset_path, reader_units, well_formed
 from selrm.metrics import bootstrap_ci, decisions, summarise
 from selrm.prompts import judge_prompt
 
@@ -27,8 +27,10 @@ def load_jsonl(path):
         return [json.loads(line) for line in f]
 
 
-def unpack(path):
+def unpack(path, vocab=None):
     z = np.load(path)
+    if vocab is not None and "vocab" in z and int(z["vocab"]) != vocab:
+        raise RuntimeError(f"{path} was tokenised with a vocabulary of {int(z['vocab'])}, model has {vocab}")
     ids, off = z["ids"], z["off"]
     return [ids[off[i]:off[i + 1]].tolist() for i in range(len(off) - 1)], list(z["keys"])
 
@@ -42,12 +44,20 @@ class Scorer:
         assert tok("-", add_special_tokens=False).input_ids == [self.minus]
         self.pad = tok.pad_token_id if tok.pad_token_id is not None else tok.eos_token_id
         # no generation_config.json in the repo: stop on <|im_end|> and <|endoftext|> explicitly
-        self.eos = sorted({tok.convert_tokens_to_ids(t) for t in ("<|im_end|>", "<|endoftext|>")}
-                          | {tok.eos_token_id} - {None, tok.unk_token_id})
+        self.eos = sorted(({tok.convert_tokens_to_ids(t) for t in ("<|im_end|>", "<|endoftext|>")}
+                           | {tok.eos_token_id}) - {None, tok.unk_token_id})
         self.nl = {i for t, i in tok.get_vocab().items() if tok.convert_tokens_to_string([t]).endswith("\n")}
         self.dev = next(model.parameters()).device
         self.pad_ok = None
         self.gen_tokens = 0
+        # u in fp32 from the hidden state that feeds lm_head (bf16 logits sit on a 0.125-0.25 grid,
+        # which creates exact ties d == 0 that the metrics count as failures)
+        head = model.get_output_embeddings()
+        self.w = (head.weight[self.plus].float() - head.weight[self.minus].float()).to(self.dev)
+        self.b = (head.bias[self.plus] - head.bias[self.minus]).float() if getattr(head, "bias", None) is not None else 0.0
+        self._h = None
+        head.register_forward_pre_hook(self._grab)
+        self.u_path = None
 
     def _batches(self, seqs, bs):
         """Indices sorted by length; exact-length buckets when padding is not trusted."""
@@ -70,22 +80,39 @@ class Scorer:
             att[j, L - len(s):] = 1
         return ids.to(self.dev), att.to(self.dev)
 
+    def _grab(self, module, args):
+        self._h = args[0]
+
     @torch.no_grad()
     def _last(self, seqs):
         ids, att = self._left_pad(seqs)
+        self._h = None
         out = self.model(input_ids=ids, attention_mask=att, logits_to_keep=1, use_cache=False)
         lg = out.logits[:, -1, :].float()
-        return (lg[:, self.plus] - lg[:, self.minus]).cpu().numpy()
+        u_bf16 = lg[:, self.plus] - lg[:, self.minus]
+        if self._h is not None and self._h.shape[0] == len(seqs):
+            u = self._h[:, -1, :].float() @ self.w + self.b
+            if self.u_path is None:       # once: the fp32 path must agree with the logits up to bf16 rounding
+                gap = float((u - u_bf16).abs().max())
+                self.u_path = "fp32-hidden" if gap <= 0.5 + 0.02 * float(u.abs().max()) else "logits"
+                self.log(f"u path: {self.u_path} (max |u_fp32 - u_bf16logits| = {gap:.4f})")
+            if self.u_path == "fp32-hidden":
+                return u.cpu().numpy()
+        elif self.u_path is None:
+            self.u_path = "logits"
+            self.log("u path: logits (lm_head pre-hook did not fire)")
+        return u_bf16.cpu().numpy()
 
-    def check_padding(self, seqs, n=8, tol=0.15):
+    def check_padding(self, seqs, n=8):
         """Batched (left-padded) vs one-at-a-time scores on prompts of mixed length."""
         pick = sorted(range(len(seqs)), key=lambda i: len(seqs[i]))
         pick = [pick[int(k * (len(pick) - 1) / (n - 1))] for k in range(n)]
         single = np.array([self._last([seqs[i]])[0] for i in pick])
         batched = self._last([seqs[i] for i in pick])
         diff = float(np.abs(single - batched).max())
+        tol = 0.1 + 0.01 * float(np.abs(single).max())
         self.pad_ok = diff <= tol
-        self.log(f"padding self-check: max |u_batch - u_single| = {diff:.4f} -> "
+        self.log(f"padding self-check: max |u_batch - u_single| = {diff:.4f} (tol {tol:.3f}) -> "
                  f"{'left padding' if self.pad_ok else 'exact-length buckets'}")
         return diff
 
@@ -130,11 +157,12 @@ def chat_ids(tok, texts):
     return tok(s, add_special_tokens=False).input_ids
 
 
-def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print):
-    """-> summary dict; writes scores_<set>.jsonl and summary_<set>.json."""
+def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="unsloth--Qwen3.5-9B"):
+    """-> summary dict; writes scores_<set>.jsonl and summary_<set>.json. Prompts come
+    pre-tokenised from ROOT/tok/<tag>/eval/<set>/<kind>.npz (scripts/pretok.py)."""
     t0 = time.time()
-    recs = load_jsonl(f"{root}/data/{set_name}.jsonl")
-    seqs, keys = unpack(f"{root}/tok/eval/{set_name}/{KIND[fmt]}.npz")
+    recs = load_jsonl(dataset_path(root, set_name))
+    seqs, keys = unpack(f"{root}/tok/{tag}/eval/{set_name}/{KIND[fmt]}.npz", len(sc.tok))
     if sc.pad_ok is None:
         sc.check_padding(seqs)
     extra, rows = {}, []
@@ -174,7 +202,7 @@ def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print):
         for row in rows:
             f.write(json.dumps(row) + "\n")
     summ = summarize(recs, [row["u"] for row in rows], run_id, set_name)
-    summ["eval"] = extra | {"seconds": round(time.time() - t0, 1), "pad_ok": sc.pad_ok}
+    summ["eval"] = extra | {"seconds": round(time.time() - t0, 1), "pad_ok": sc.pad_ok, "u_path": sc.u_path}
     json.dump(summ, open(f"{out_dir}/summary_{set_name.replace('/', '~')}.json", "w"), indent=1)
     a = summ.get("all", {})
     log(f"{run_id} {set_name}: TA {a.get('TA', float('nan')):.1f} Rev {a.get('Rev', float('nan')):.1f} "
@@ -187,7 +215,7 @@ def summarize(recs, scores, run_id, set_name):
     out = {"run_id": run_id, "set": set_name, "claim_type": "conclusion"}
     T = decisions(recs, scores, "conclusion")
     out |= summarise(T)
-    if T:
+    if out.get("all"):                 # sets without complete triplets (missing, read/apply) get no CI
         out["CI95"] = {m: list(bootstrap_ci(T, m)) for m in ("TA", "Rev", "Hold")}
     step = {}
     for ct in sorted({r["claim_type"] for r in recs} - {"conclusion"}):
@@ -214,8 +242,9 @@ def main():
     import finetune
     model, tok = finetune.load_for_eval(a.base, a.adapter)
     sc = Scorer(model, tok, a.bs_score, a.bs_gen)
+    tag = os.path.basename(os.path.normpath(a.base)) if a.base else "unsloth--Qwen3.5-9B"
     for s in a.set:
-        evaluate(sc, a.root, a.run_id, a.format, s, f"{a.root}/results/{a.run_id}")
+        evaluate(sc, a.root, a.run_id, a.format, s, f"{a.root}/results/{a.run_id}", tag=tag)
 
 
 if __name__ == "__main__":

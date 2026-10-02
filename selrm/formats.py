@@ -9,8 +9,11 @@ value2     reader -> ledger cut to need/found; judge(that text) -> answer
 ledger2    reader -> ledger_to_text(ledger); judge(that text) -> answer
 Two-stage budget: n//2 reader examples (one per case and condition, cycled when
 there are fewer units) and n//2 judge examples (both claims of a case and claim
-type; with probability resample_p the case is swapped for another case of the
-same group, so the judge sees one claim under different ledgers).
+type). Ledger resampling implements the draft's q(.|x): with probability
+resample_p a selected judge pair (x, claim type) is replaced by the pair of x'
+drawn uniformly from N(x), the other training cases of the same rule and condition
+(twins included); claim texts are identical within (rule, condition, claim type),
+so the judge sees the claim with x' 's ledger and the verdict that ledger implies.
 """
 from __future__ import annotations
 
@@ -20,7 +23,7 @@ from selrm.prompts import (answer, judge_prompt, ledger_to_text, rationale_promp
                            reader_prompt, verdict_prompt)
 
 FORMATS = ("verdict", "rationale", "summary2", "value2", "ledger2")
-VERSION = 1                  # bump when example construction changes (part of the pretok key)
+VERSION = 2                  # bump when example construction changes (part of the pretok key)
 TWO_STAGE = ("summary2", "value2", "ledger2")
 FIELDS = {"ledger2": ("need", "found", "subject", "status", "time"), "value2": ("need", "found")}
 NOT_MENTIONED = "not mentioned"
@@ -74,6 +77,8 @@ def well_formed(text: str, case_text: str, fmt: str) -> bool:
 
 def _take(items: list, k: int, rng: random.Random) -> list:
     """k items: every item once per pass (fresh shuffle each pass), last pass partial."""
+    if k and not items:
+        raise ValueError("nothing to sample from")
     out = []
     while len(out) < k:
         batch = list(items)
@@ -104,24 +109,43 @@ def build_examples(records, fmt: str, n: int | None = None, resample_p: float = 
     for r in records:
         pairs.setdefault((r["tid"], r["case_kind"], r["claim_type"]), {})[r["claim_role"]] = r
     pairs = {k: v for k, v in pairs.items() if len(v) == 2}
-    siblings = {}
-    for tid, ck, ct in pairs:
-        siblings.setdefault((tid, ct), []).append(ck)
+    groups = {}                                   # N(x): same rule, condition and claim type
+    for key, v in pairs.items():
+        groups.setdefault((v["s"]["rid"], v["s"]["condition"], key[2]), []).append(key)
     n_pairs = (n - n // 2) // 2
     n_reader = n - 2 * n_pairs
     ex = [{"prompt": reader_prompt(r, prose=fmt == "summary2"), "completion": gold_record(r, fmt),
            "part": "reader", "src": "/".join(r["iid"].split("/")[:2])}
           for r in _take(reader_units(records), n_reader, rng)]
-    swapped = 0
-    for tid, ck, ct in _take(sorted(pairs), n_pairs, rng):
+    sel, swapped = [], 0
+    for key in _take(sorted(pairs), n_pairs, rng):
         if rng.random() < resample_p:
-            others = [k for k in siblings[(tid, ct)] if k != ck]
-            if others:
-                ck, swapped = rng.choice(others), swapped + 1
+            v = pairs[key]["s"]
+            group = groups[(v["rid"], v["condition"], key[2])]
+            if len(group) > 1:
+                other = key
+                while other == key:
+                    other = rng.choice(group)
+                key, swapped = other, swapped + 1
+        sel.append(key)
         for role in ("s", "s_prime"):
-            r = pairs[(tid, ck, ct)][role]
+            r = pairs[key][role]
             ex.append({"prompt": judge_prompt(r, gold_record(r, fmt)), "completion": answer(r),
                        "part": "judge", "src": r["iid"]})
     stats = {"n": len(ex), "reader": n_reader, "judge": 2 * n_pairs, "pairs_swapped": swapped,
-             "reader_units": len(reader_units(records)), "judge_pairs_available": len(pairs)}
+             "unique_judge_pairs": len(set(sel)), "reader_units": len(reader_units(records)),
+             "judge_pairs_available": len(pairs), "resample_groups": len(groups),
+             "label1": sum(e["completion"] == "+" for e in ex if e["part"] == "judge")}
     return ex, stats
+
+
+def dataset_path(root: str, name: str) -> str:
+    """Records file of a dataset: the REGISTRY.json path (A's layout
+    data/<set>/<name>/records.jsonl) if registered, else data/<name>.jsonl (smoke)."""
+    import json, os
+    reg = f"{root}/data/REGISTRY.json"
+    if os.path.exists(reg):
+        entry = json.load(open(reg, encoding="utf-8")).get(name)
+        if entry:
+            return f"{root}/data/{entry['path']}"
+    return f"{root}/data/{name}.jsonl"

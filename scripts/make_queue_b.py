@@ -38,8 +38,8 @@ def factorial(seeds, registry, version):
         if corpus not in reg or not reg[corpus].get("frozen"):
             sys.exit(f"{corpus} not frozen in {registry}")
         runs.append({"run_id": r["run_id"], "format": m[1], "corpus": corpus, "seed": int(m[3]),
-                     "priority": PRIO[r["priority"]], "keep_adapter": r["run_id"] in keep,
-                     "eval_sets": evals})
+                     "n_examples": 60000, "priority": PRIO[r["priority"]],
+                     "keep_adapter": r["run_id"] in keep, "eval_sets": evals})
     return runs
 
 

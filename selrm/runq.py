@@ -1,6 +1,6 @@
 """Run claims, heartbeats and GPU-utilisation logging for B's queue runners
 (INTERFACES 7). Owner B. Everything lives under results/<run_id>/ on the shared
-PVC: CLAIMED_<role>, HEARTBEAT, DONE, FAILED_<n>, gpu_util.csv."""
+PVC: CLAIMED_<role>, HEARTBEAT, DONE, FAILED_<n>, KILLED_<n>, gpu_util.csv."""
 from __future__ import annotations
 
 import csv
@@ -13,6 +13,7 @@ ROLE = "B"
 STALE_OTHER_S = 3 * 3600      # INTERFACES: a claim with no heartbeat for 3 h may be re-claimed
 STALE_OWN_S = 15 * 60         # our runners heartbeat every 2 min; a silent own claim is a dead pod
 MAX_FAILS = 2                 # ROLE.md: a run that fails twice is marked failed
+MAX_KILLED = 3                # pods that died silently on this run (preemption, OOM kill, node loss)
 
 
 def _age(path):
@@ -26,20 +27,25 @@ def state(rdir: str) -> str:
     """done | failed | claimed | free (free includes stale claims)."""
     if os.path.exists(f"{rdir}/DONE"):
         return "done"
-    if fails(rdir) >= MAX_FAILS:
+    if fails(rdir) >= MAX_FAILS or count(rdir, "KILLED_") >= MAX_KILLED:
         return "failed"
     claims = [f for f in os.listdir(rdir) if f.startswith("CLAIMED_")] if os.path.isdir(rdir) else []
     if not claims:
         return "free"
-    hb = _age(f"{rdir}/HEARTBEAT")
-    if hb is None:
-        hb = min(_age(f"{rdir}/{c}") or 0 for c in claims)
+    # freshest of heartbeat and claim files: a claim made seconds ago is live even if an
+    # old HEARTBEAT from a previous attempt is still lying there
+    ages = [a for a in [_age(f"{rdir}/HEARTBEAT")] + [_age(f"{rdir}/{c}") for c in claims] if a is not None]
+    hb = min(ages) if ages else 0
     limit = STALE_OWN_S if claims == [f"CLAIMED_{ROLE}"] else STALE_OTHER_S
     return "claimed" if hb < limit else "free"
 
 
+def count(rdir: str, prefix: str) -> int:
+    return len([f for f in os.listdir(rdir) if f.startswith(prefix)]) if os.path.isdir(rdir) else 0
+
+
 def fails(rdir: str) -> int:
-    return len([f for f in os.listdir(rdir) if f.startswith("FAILED_")]) if os.path.isdir(rdir) else 0
+    return count(rdir, "FAILED_")
 
 
 def claim(rdir: str, owner: str, settle_s: float = 2.0) -> bool:
@@ -55,6 +61,8 @@ def claim(rdir: str, owner: str, settle_s: float = 2.0) -> bool:
                 os.replace(f"{rdir}/{f}", f"{rdir}/stale_{f}")
             except FileNotFoundError:
                 return False
+            if f == f"CLAIMED_{ROLE}":      # our own pod died on this run without a FAILED record
+                open(f"{rdir}/KILLED_{count(rdir, 'KILLED_') + 1}", "w").write(f"stale claim taken over by {owner}\n")
     me = f"{owner} {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())} {os.getpid()}\n"
     try:
         fd = os.open(f"{rdir}/CLAIMED_{ROLE}", os.O_CREAT | os.O_EXCL | os.O_WRONLY)
@@ -62,6 +70,7 @@ def claim(rdir: str, owner: str, settle_s: float = 2.0) -> bool:
         return False
     os.write(fd, me.encode())
     os.close(fd)
+    beat(rdir)
     time.sleep(settle_s)
     try:
         if open(f"{rdir}/CLAIMED_{ROLE}").read() != me:
@@ -138,37 +147,40 @@ class GpuMonitor(threading.Thread):
 
     def run(self):
         while True:
-            smp, now = gpu_sample(), time.time()
-            ts = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(now))
-            with self.lock:
-                rdir = self.rdir
-                if smp is not None:
-                    u, m = smp
-                    rows = [self.job_csv] + ([f"{rdir}/gpu_util.csv"] if rdir else [])
-                    for path in rows:
-                        new = not os.path.exists(path)
-                        with open(path, "a", newline="") as f:
-                            w = csv.writer(f)
-                            if new:
-                                w.writerow(["time", "utilization.gpu", "memory.used.MiB"])
-                            w.writerow([ts, u, m])
-                    if rdir:
-                        self.utils.append(u)
-                    self.low_since = (self.low_since or now) if u < self.floor else None
+            try:
+                self.tick()
+            except Exception as e:          # one bad write (CephFS hiccup) must not kill the monitor
+                self.log(f"monitor: {type(e).__name__}: {e}")
+            time.sleep(self.period)
+
+    def tick(self):
+        smp, now = gpu_sample(), time.time()
+        ts = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(now))
+        u = smp[0] if smp is not None else 0.0          # a failing nvidia-smi counts as idle
+        with self.lock:
+            rdir = self.rdir
+            self.low_since = (self.low_since or now) if u < self.floor else None
+            if smp is not None:
+                if rdir:
+                    self.utils.append(u)
+                for path in [self.job_csv] + ([f"{rdir}/gpu_util.csv"] if rdir else []):
+                    new = not os.path.exists(path)
+                    with open(path, "a", newline="") as f:
+                        w = csv.writer(f)
+                        if new:
+                            w.writerow(["time", "utilization.gpu", "memory.used.MiB"])
+                        w.writerow([ts, u, smp[1]])
+        if rdir:
+            try:
+                beat(rdir)
+            except OSError as e:
+                self.log(f"heartbeat failed: {e}")
+        if self.low_since is not None and now - self.low_since >= self.patience and now - self.t0 >= self.grace:
+            reason = f"WATCHDOG: GPU utilisation below {self.floor}% for {int(now - self.low_since)} s; aborting (exit 3)"
+            self.log(reason)
             if rdir:
                 try:
-                    beat(rdir)
-                except OSError as e:
-                    self.log(f"heartbeat failed: {e}")
-            if (self.low_since is not None and now - self.low_since >= self.patience
-                    and now - self.t0 >= self.grace):
-                reason = (f"WATCHDOG: GPU utilisation below {self.floor}% for "
-                          f"{int(now - self.low_since)} s; aborting (exit 3)")
-                self.log(reason)
-                if rdir:
-                    try:
-                        release(rdir, ok=False, reason=reason)
-                    except OSError:
-                        pass
-                os._exit(3)
-            time.sleep(self.period)
+                    release(rdir, ok=False, reason=reason)
+                except OSError:
+                    pass
+            os._exit(3)
