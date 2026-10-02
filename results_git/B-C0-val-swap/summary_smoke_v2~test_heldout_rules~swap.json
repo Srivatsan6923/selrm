@@ -1,0 +1,11 @@
+{
+ "run_id": "B-C0-val-swap",
+ "set": "smoke_v2/test_heldout_rules",
+ "mode": "ledger_swap",
+ "n": 9600,
+ "agreement": 100.0,
+ "eval": {
+  "seconds": 156.6,
+  "u_path": "fp32-hidden"
+ }
+}

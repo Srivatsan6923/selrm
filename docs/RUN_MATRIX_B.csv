@@ -1,7 +1,7 @@
 run_id,owner,pool,paper_item,kind,what,data,seed,runtime,est_hours,measured_hours,priority,depends_on,status,notes
 B-C0,B,no,Sec5,code,"finetune.py (verdict, rationale, summary2, value-ledger2, ledger2), eval_local.py, train-then-eval job, adapter retention policy",-,-,GPU,6,0.75,P0,-,done,"code + CPU self-test + NRP env; smoke comparison B-C0-smoke-verdict-{blocks,triplets}-s0 on A100 (GPU hours = the two smoke runs from meta.json; plus ~0.2 h of an aborted first attempt); provisional report docs/SMOKE_B_C0.md"
 B-T0,B,no,AppG,timing,200-step timing per format on rule_v1 or smoke; update est_hours,-,-,GPU,0.5,1.94,P0,-,done,B-T0-<format> x5 + B-T0b-rationale-bs256 on A100-80GB (16x4); docs/TIMING_B_T0.md; est_hours of B-F rows updated from it
-B-F-verdict-natural-s0,B,yes,"Tab3,Tab4",train+eval,verdict x natural,rule_v1/natural,0,GPU,2.3,,P0,"A-D4,B-C0",queued,NRP queue b_f_s0.json (2 Oct)
+B-F-verdict-natural-s0,B,yes,"Tab3,Tab4",train+eval,verdict x natural,rule_v1/natural,0,GPU,2.3,2.246,P0,"A-D4,B-C0",done,NRP queue b_f_s0.json (2 Oct)
 B-F-verdict-natural-s1,B,yes,"Tab3,Tab4",train+eval,verdict x natural,rule_v1/natural,1,GPU,1.9,,P1,"A-D4,B-C0",queued,"est with primary eval sets (dev, test_L2, test_L3alt, dev_missing, missing); NRP queue b_f_s12.json (2 Oct)"
 B-F-verdict-natural-s2,B,yes,"Tab3,Tab4",train+eval,verdict x natural,rule_v1/natural,2,GPU,1.9,,P1,"A-D4,B-C0",queued,"est with primary eval sets (dev, test_L2, test_L3alt, dev_missing, missing); NRP queue b_f_s12.json (2 Oct)"
 B-F-verdict-natural-s3,B,yes,"Tab3,Tab4",train+eval,verdict x natural,rule_v1/natural,3,GPU,1.9,,P2,"A-D4,B-C0",todo,"est with primary eval sets (dev, test_L2, test_L3alt, dev_missing, missing)"

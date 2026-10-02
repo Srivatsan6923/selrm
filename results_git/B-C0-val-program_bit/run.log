@@ -1,0 +1,5 @@
+2026-10-02T12:20:08Z eval only: base /work/models/unsloth--Qwen3.5-9B, adapter /pvc/selrm/adapters/B-C0-val-ledger2_dec
+2026-10-02T12:20:10Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0030)
+2026-10-02T12:20:11Z padding self-check: max |u_batch - u_single| = 0.1987 (tol 0.602) -> left padding
+2026-10-02T12:21:28Z B-C0-val-program_bit smoke_v2/test_heldout_rules: TA 100.0 Rev 100.0 Hold 100.0 n=600 (79.0 s)
+2026-10-02T12:21:28Z DONE B-C0-val-program_bit in 1.7 min, GPU util mean 66.3

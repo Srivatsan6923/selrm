@@ -1,0 +1,12 @@
+2026-10-02T12:05:51Z step 10/60 loss=0.03257 grad_norm=0.004361 learning_rate=9.645e-05 epoch=0.02833
+2026-10-02T12:06:23Z step 20/60 loss=0.05547 grad_norm=0.001882 learning_rate=8.026e-05 epoch=0.05666
+2026-10-02T12:06:56Z step 30/60 loss=0.001555 grad_norm=0.003185 learning_rate=5.541e-05 epoch=0.08499
+2026-10-02T12:07:28Z step 40/60 loss=0.01972 grad_norm=0.0943 learning_rate=2.901e-05 epoch=0.1133
+2026-10-02T12:08:01Z step 50/60 loss=0.001219 grad_norm=0.0004294 learning_rate=8.616e-06 epoch=0.1416
+2026-10-02T12:08:33Z step 60/60 loss=0.08483 grad_norm=1.545e-05 learning_rate=7.333e-08 epoch=0.17
+2026-10-02T12:08:33Z step 60/60 train_runtime=322.4 train_samples_per_second=5.955 train_steps_per_second=0.186 total_flos=3.196e+16 train_loss=0.03256 epoch=0.17
+2026-10-02T12:08:37Z trained 60 steps in 5.4 min, 1558.4 tok/s, peak 20.93 GB
+2026-10-02T12:08:47Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0529)
+2026-10-02T12:08:48Z padding self-check: max |u_batch - u_single| = 0.1862 (tol 0.836) -> left padding
+2026-10-02T12:10:38Z B-C0-val-verdict_bt smoke_v2/test_heldout_rules: TA 100.0 Rev 100.0 Hold 100.0 n=600 (120.6 s)
+2026-10-02T12:10:39Z DONE B-C0-val-verdict_bt in 7.8 min, GPU util mean 82.2
