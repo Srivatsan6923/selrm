@@ -180,6 +180,21 @@ def test_age_criterion_moves_age_out_of_the_header(groups):
         assert bool(re.search(r"\d", head)) != has_age, head
 
 
+def test_relatives_are_plausible_for_every_age_in_the_group(groups):
+    old = {"mother", "father", "aunt", "uncle"}
+    for recs in groups:
+        cs = _cases(recs)
+        c = _crit(recs[0])
+        if c.concept != "age":
+            continue
+        ages = [m["value"] for k in ("base", "flip") for m in cs[k]["state"] if m["concept"] == "age"]
+        words = {w for r in cs.values() for w in re.findall(r"[a-z-]+", r["case_text"].lower())}
+        if max(ages) >= 65:
+            assert not words & old, (recs[0]["tid"], words & old)
+        if max(ages) >= 40:
+            assert not words & {"grandmother", "grandfather"}, recs[0]["tid"]
+
+
 def test_missing_twins_drop_only_the_decisive_input():
     for cell in E.cells():
         plain = E.make_group(*cell, "test", 0, "t", "L0")

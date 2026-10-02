@@ -194,8 +194,16 @@ def _propose(rule, crit, nm_kind, tier, split, rng, rng_m=None):
     age = next((vals[c.cid] for c in rule.criteria if c.concept == "age"), None) \
         or rng.randint(*rule.age_range)
 
+    # The patient's ages across the group (an age criterion moves it between base
+    # and flip): people and years must be plausible for all of them.
+    ages = (age, flip_v) if crit.concept == "age" else (age,)
+
+    def people(concept):
+        pools = [P.persons(concept, split, a) for a in ages]
+        return [p for p in pools[0] if all(p in q for q in pools[1:])]
+
     def year():
-        return rng.randint(max(2005, min(NOW - 2, NOW - age + 18)), NOW - 2)
+        return rng.randint(max(2005, min(NOW - 2, NOW - min(ages) + 18)), NOW - 2)
 
     def pick(options, avoid=None, same_year=None):
         idx = [i for i in P.ids(options, split) if i != avoid
@@ -218,13 +226,13 @@ def _propose(rule, crit, nm_kind, tier, split, rng, rng_m=None):
         or a first-degree relative where the predicate counts those."""
         way = rng.choice(["patient"] + ["past"] * c.counts_past + ["family"] * c.counts_family)
         if way == "family":
-            kin = [p for p in P.persons(c.concept, split, age) if p in FIRST_DEGREE]
+            kin = [p for p in people(c.concept) if p in FIRST_DEGREE]
             return line(c, rel_form(c), subject=rng.choice(kin))
         return line(c, "present" if way == "patient" else "past")
 
     def filler(kind, i):
         return {"filler": kind, "tpl": ("filler", kind, i),
-                "who": rng.choice(P.persons(None, split, age)) if kind == "other" else None,
+                "who": rng.choice(people(None)) if kind == "other" else None,
                 "year": year() if kind == "lab" else None}
 
     # Concepts present in some case of the group; a generic absence line that could
@@ -276,7 +284,7 @@ def _propose(rule, crit, nm_kind, tier, split, rng, rng_m=None):
         if nm_kind == "negation":
             near = line(crit, "absent")
         elif nm_kind == "subject":
-            others = [p for p in P.persons(crit.concept, split, age)
+            others = [p for p in people(crit.concept)
                       if not (crit.counts_family and p in FIRST_DEGREE)]
             near = line(crit, rel_form(crit), subject=rng.choice(others))
         else:                          # time

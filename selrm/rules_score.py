@@ -452,3 +452,193 @@ _S4 = [
 ]
 
 RULES += _S4
+
+
+# ---- batch S3 ----
+# Batch S3: partial additive scores from comorbidity indices (Charlson, HCT-CI), upper
+# gastrointestinal bleeding (Glasgow-Blatchford, Rockall, AIMS65), liver disease (Child-Pugh),
+# appendicitis (Alvarado), pulmonary embolism checklists counted as scores (PERC, Hestia) and fall
+# risk (Johns Hopkins). New concepts: inr, ascites, rlq_tenderness, fall (banks in S3_banks.json).
+#
+# Banded items are stated as one threshold with the points of the first band beyond it; their
+# flip ranges stay inside that band, so every value a case shows scores the same under the stated
+# item and under the published score (Child-Pugh instead states 1 point per finding present,
+# whatever its grade). Findings counted at any time use only concepts whose banks
+# have a rel_past form (tests/test_phrases.py requires it; asthma has none, so it is current only).
+BUN_KW = ["bun", "urea nitrogen"]
+SPO2_KW = ["saturation", "spo2"]
+STROKE_KW = ["stroke", "transient ischemic", "tia"]
+VASC_KW = ["myocardial infarction", "peripheral artery", "heart attack"]
+WBC_KW = ["white cell", "wbc"]
+INR_KW = ["international normalized ratio"]
+RLQ_KW = ["right lower quadrant", "right iliac fossa"]
+
+_S3 = [
+    # Charlson 1987 (J Chronic Dis): CHF 1, MI 1, PVD 1, chronic pulmonary disease 1, moderate or
+    # severe renal disease (creatinine > 3 mg/dL) 2. MI and PVD share one criterion (a case names
+    # only one of them); current asthma stands for chronic pulmonary disease.
+    Rule("s3_charlson", "score", "Charlson Comorbidity Index (partial)",
+         "Charlson Comorbidity Index (as used here, partial): 1 point for heart failure at any time "
+         "(current or past); 1 point for a myocardial infarction or peripheral artery disease at any "
+         "time (current or past); 1 point for current asthma; 2 points for a current serum "
+         "creatinine above {thr_cr} mg/dL. Age and other Charlson items are not part of this "
+         "question.",
+         [F("hf", "chf", "heart failure", ["heart failure"], counts_past=True),
+          F("vasc", "vascular", "myocardial infarction or peripheral artery disease", VASC_KW,
+            counts_past=True),
+          F("asthma", "asthma", "asthma", ["asthma"]),
+          N("cr", "creatinine", "serum creatinine", ["creatinine"], ">", 3.0, (0.6, 2.4),
+            (3.2, 6.0), 0.3, decimals=1, alt_threshold=2.0, points=2)],
+         "Inpatient on the medical ward; comorbidity review.",
+         age_range=(50, 85), family="additive_score"),
+
+    # Sorror 2005 (Blood), coding per Sorror 2013 (Blood): cardiovascular (coronary artery disease
+    # at any time) 1, cerebrovascular disease at any time 1, peptic ulcer requiring treatment 2
+    # (a current ulcer only here), mild hepatic (ALT > ULN to 2.5 x ULN) 1. ALT flip values stay
+    # at or below 2.5 x 40 U/L, where the published item scores 1. Prior solid tumor (3) is not
+    # used: a finding counted at any time also renders as a current, untreated tumor, which rules
+    # out transplant.
+    Rule("s3_hctci", "score", "HCT-CI (partial)",
+         "Hematopoietic Cell Transplantation-specific Comorbidity Index (as used here, partial): "
+         "1 point for coronary artery disease at any time (current or past); 1 point for a stroke "
+         "or TIA at any time (current or past); 2 points for a current peptic ulcer; 1 point for a "
+         "current ALT above {thr_alt} U/L. Other items of the index are not part of this question.",
+         [F("cad", "cad", "coronary artery disease", ["coronary"], counts_past=True),
+          F("stroke", "stroke", "stroke/TIA", STROKE_KW, counts_past=True),
+          F("ulcer", "peptic_ulcer", "active peptic ulcer", ["ulcer"], points=2),
+          N("alt", "alt_enzyme", "ALT", ["alt "], ">", 40, (12, 34), (44, 98), 6,
+            alt_threshold=33)],
+         "Assessment before allogeneic stem cell transplantation for acute myeloid leukemia in "
+         "remission.",
+         age_range=(40, 70), family="additive_score"),
+
+    # Zondag 2011 (J Thromb Haemost), Hestia criteria counted as a score: active bleeding,
+    # documented history of heparin-induced thrombocytopenia, pulmonary embolism diagnosed during
+    # anticoagulant treatment (warfarin only here); 1 point each, other criteria omitted.
+    Rule("s3_hestia", "score", "Hestia counted as a score (partial)",
+         "Hestia criteria counted as a score (as used here, partial): 1 point each for an active "
+         "major bleed; heparin-induced thrombocytopenia at any time (current or past); current use "
+         "of warfarin (pulmonary embolism diagnosed during anticoagulant treatment). Other Hestia "
+         "criteria are not part of this question.",
+         [F("bleed", "bleeding", "active major bleeding", ["bleed"]),
+          F("hit", "hit", "heparin-induced thrombocytopenia", ["heparin-induced"], counts_past=True),
+          F("warfarin", "warfarin", "warfarin use", ["warfarin"])],
+         "Acute pulmonary embolism confirmed on CT pulmonary angiography within the past hour; "
+         "deciding whether to treat at home.",
+         age_range=(30, 80), family="additive_score"),
+
+    # Kline 2004 (J Thromb Haemost), counted as a score: age >= 50, heart rate >= 100,
+    # SaO2 < 95%, prior DVT or PE (1 each); hemoptysis, estrogen use, recent surgery or trauma
+    # and unilateral leg swelling omitted. Base ages 40-46 and flip ages 50-64: other people in
+    # long-tier lines are drawn for the base age (engine._propose), so no grandparent (drawn only
+    # for ages under 40) appears, and no parent appears beside a flip age of 65 or more.
+    Rule("s3_perc", "score", "PERC counted as a score (partial)",
+         "PERC rule counted as a score (as used here, partial): 1 point each for age {thr_age} "
+         "years or more; a current heart rate of {thr_hr}/min or more; a current oxygen saturation "
+         "below {thr_spo2}%; a venous thromboembolism (deep vein thrombosis or pulmonary "
+         "embolism) of the patient at any time (current or past). Other PERC items are not part "
+         "of this question.",
+         [N("age", "age", "age", ["age"], ">=", 50, (40, 46), (50, 64), 4, **AGE),
+          N("hr", "heart_rate", "heart rate", ["heart rate"], ">=", 100, (60, 92), (100, 130), 5),
+          N("spo2", "spo2", "oxygen saturation", SPO2_KW, "<", 95, (96, 100), (85, 94), 3),
+          F("vte", "vte", "venous thromboembolism", VTE_KW, counts_past=True)],
+         "Sharp chest pain on deep breathing for one day; assessed in hospital.",
+         family="additive_score"),
+
+    # Blatchford 2000 (Lancet): blood urea 6.5-8.0 mmol/L (BUN 18.2-22.3 mg/dL) 2, systolic BP
+    # 100-109 mmHg 1, pulse >= 100/min 1, cardiac failure 2. BUN flip 19-22 and systolic flip
+    # 100-109 stay inside those bands; melena, syncope, hepatic disease and hemoglobin omitted.
+    Rule("s3_blatchford", "score", "Glasgow-Blatchford (partial)",
+         "Glasgow-Blatchford score (as used here, partial): 2 points for a current blood urea "
+         "nitrogen above {thr_bun} mg/dL; 1 point for a current systolic blood pressure below "
+         "{thr_sbp} mmHg; 1 point for a current heart rate of {thr_hr}/min or more; 2 points for "
+         "current heart failure. Other Glasgow-Blatchford items are not part of this question.",
+         [N("bun", "bun", "blood urea nitrogen", BUN_KW, ">", 18, (8, 14), (19, 22), 4, points=2),
+          N("sbp", "sbp", "systolic blood pressure", SBP_KW, "<", 110, (120, 160), (100, 109), 8),
+          N("hr", "heart_rate", "heart rate", ["heart rate"], ">=", 100, (60, 92), (100, 130), 5),
+          F("hf", "chf", "heart failure", ["heart failure"], points=2)],
+         "Vomited fresh blood twice; admitted with upper gastrointestinal bleeding.",
+         age_range=(30, 80), family="additive_score"),
+
+    # Rockall 1996 (Gut), pre-endoscopy items: age 60-79 1, systolic BP < 100 mmHg 2, cardiac
+    # failure 2. Age flip 60-79 stays inside the 1-point band; base ages start at 40, so no
+    # grandparent drawn for the base age appears beside a flip age. (Ischaemic heart disease is
+    # not used: a cad template contains "managed", which names the age keyword.)
+    Rule("s3_rockall", "score", "Rockall (partial)",
+         "Rockall score (as used here, partial, pre-endoscopy items): 1 point for age {thr_age} "
+         "years or more; 2 points for a current systolic blood pressure below {thr_sbp} mmHg; "
+         "2 points for current heart failure. Other Rockall items are not part of this question.",
+         [N("age", "age", "age", ["age"], ">=", 60, (40, 55), (60, 79), 4, **AGE),
+          N("sbp", "sbp", "systolic blood pressure", SBP_KW, "<", 100, (110, 160), (72, 98), 8,
+            points=2),
+          F("hf", "chf", "heart failure", ["heart failure"], points=2)],
+         "Coffee-ground vomiting since the early hours; assessed in the emergency department.",
+         family="additive_score"),
+
+    # Saltzman 2011 (Gastrointest Endosc): INR > 1.5, altered mental status, systolic BP <= 90,
+    # age >= 65 (1 each); albumin < 3.0 g/dL omitted.
+    Rule("s3_aims65", "score", "AIMS65 (partial)",
+         "AIMS65 (as used here, partial): 1 point each for a current international normalized "
+         "ratio (INR) above {thr_inr}; current altered mental status (confusion or "
+         "disorientation); a current systolic blood pressure of {thr_sbp} mmHg or less; age "
+         "{thr_age} years or more. Other AIMS65 items are not part of this question.",
+         [N("inr", "inr", "international normalized ratio", INR_KW, ">", 1.5, (0.9, 1.3),
+            (1.6, 2.6), 0.3, decimals=1),
+          F("ams", "confusion", "altered mental status", CONF_KW),
+          N("sbp", "sbp", "systolic blood pressure", SBP_KW, "<=", 90, (104, 150), (70, 90), 6),
+          N("age", "age", "age", ["age"], ">=", 65, (40, 60), (65, 88), 4, **AGE)],
+         "Upper gastrointestinal bleeding with black stools; admitted for endoscopy.",
+         family="additive_score"),
+
+    # Pugh 1973 (Br J Surg), three items kept: INR (in place of prothrombin time; 1.7 is the lower
+    # edge of its 2-point band), ascites and encephalopathy; bilirubin and albumin omitted. The
+    # stated rule gives 1 point per finding present, whatever its grade, so no published band
+    # decides a label (the confusion templates include West Haven grade III, the alt tier shows
+    # INR 1.5-1.6, and ascites lines range from ultrasound-only to diuretic-treated).
+    Rule("s3_childpugh", "score", "Child-Pugh (partial)",
+         "Child-Pugh score (as used here, partial; each finding below adds 1 point, whatever its "
+         "grade): 1 point each for a current international normalized ratio (INR) of {thr_inr} or "
+         "more; current ascites; new confusion (encephalopathy). Bilirubin, albumin and other "
+         "items are not part of this question.",
+         [N("inr", "inr", "international normalized ratio", INR_KW, ">=", 1.7, (0.9, 1.4),
+            (1.7, 2.3), 0.3, decimals=1, alt_threshold=1.5),
+          F("ascites", "ascites", "ascites", ["ascites"]),
+          F("enceph", "confusion", "new confusion", CONF_KW)],
+         "Cirrhosis due to chronic hepatitis B; reviewed by the hepatology team.",
+         age_range=(35, 75), family="additive_score"),
+
+    # Alvarado 1986 (Ann Emerg Med): tenderness in the right lower quadrant 2, leukocytosis
+    # (> 10 x10^9/L) 2, elevated temperature (>= 37.3 C) 1; migration, anorexia, nausea, rebound
+    # and left shift omitted. White cell count: numeric and boundary near-misses only, because a
+    # past template of that bank describes appendicitis treated by surgery.
+    Rule("s3_alvarado", "score", "Alvarado (partial)",
+         "Alvarado score (as used here, partial): 2 points for current tenderness in the right "
+         "lower quadrant (right iliac fossa); 2 points for a current white cell count above "
+         "{thr_wbc} x10^9/L; 1 point for a current temperature of {thr_temp} C or more. Other "
+         "Alvarado items are not part of this question.",
+         [F("rlq", "rlq_tenderness", "right lower quadrant tenderness", RLQ_KW, points=2),
+          N("wbc", "wbc", "white cell count", WBC_KW, ">", 10.0, (4.5, 8.8), (10.6, 18.5), 0.8,
+            decimals=1, points=2, nm=("numeric",)),
+          N("temp", "temperature", "temperature", ["temperature"], ">=", 37.3, (36.1, 36.9),
+            (37.3, 39.4), 0.3, decimals=1)],
+         "Abdominal pain for one day; assessed in the emergency department.",
+         age_range=(18, 60), family="additive_score"),
+
+    # Johns Hopkins Fall Risk Assessment Tool (Poe 2005, 2007): age 60-69 1, one fall within
+    # 6 months before admission 5, altered awareness of the immediate physical environment 1.
+    # Age flip 60-69 stays inside the 1-point band and base ages start at 40 (no grandparent
+    # drawn for the base age appears beside a flip age); the fall templates describe a single fall
+    # at home (more than one fall, or a fall in hospital, takes the patient out of the score).
+    Rule("s3_jhfrat", "score", "Johns Hopkins Fall Risk (partial)",
+         "Johns Hopkins Fall Risk Assessment Tool (as used here, partial): 1 point for age "
+         "{thr_age} years or more; 5 points for one fall in the six months before this admission; "
+         "1 point for new confusion (altered awareness of the surroundings). Other items are not "
+         "part of this question.",
+         [N("age", "age", "age", ["age"], ">=", 60, (40, 54), (60, 69), 4, **AGE),
+          F("fall", "fall", "recent fall", ["fallen"], points=5),
+          F("conf", "confusion", "new confusion", CONF_KW)],
+         "Admitted to the medical ward with a urinary infection.",
+         family="additive_score"),
+]
+
+RULES += _S3
