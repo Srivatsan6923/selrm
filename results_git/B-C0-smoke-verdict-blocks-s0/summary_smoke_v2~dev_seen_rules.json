@@ -1,0 +1,143 @@
+{
+ "run_id": "B-C0-smoke-verdict-blocks-s0",
+ "set": "smoke_v2/dev_seen_rules",
+ "claim_type": "conclusion",
+ "all": {
+  "Rev": 100.0,
+  "Hold": 87.33333333333333,
+  "TA": 87.33333333333333,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 300
+ },
+ "nm_kind=subject": {
+  "Rev": 100.0,
+  "Hold": 84.84848484848484,
+  "TA": 84.84848484848484,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 66
+ },
+ "tier=easy": {
+  "Rev": 100.0,
+  "Hold": 87.33333333333333,
+  "TA": 87.33333333333333,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 300
+ },
+ "level=smoke": {
+  "Rev": 100.0,
+  "Hold": 87.33333333333333,
+  "TA": 87.33333333333333,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 300
+ },
+ "family=allergy_switch": {
+  "Rev": 100.0,
+  "Hold": 77.27272727272727,
+  "TA": 77.27272727272727,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 44
+ },
+ "nm_kind=numeric": {
+  "Rev": 100.0,
+  "Hold": 45.09803921568628,
+  "TA": 45.09803921568628,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 51
+ },
+ "family=lab_threshold": {
+  "Rev": 100.0,
+  "Hold": 74.71264367816092,
+  "TA": 74.71264367816092,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 87
+ },
+ "nm_kind=negation": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 72
+ },
+ "family=drug_interaction": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 37
+ },
+ "family=additive_score": {
+  "Rev": 100.0,
+  "Hold": 91.17647058823529,
+  "TA": 91.17647058823529,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 68
+ },
+ "nm_kind=time": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 111
+ },
+ "family=state_switch": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 64
+ },
+ "CI95": {
+  "TA": [
+   77.31958762886597,
+   96.15384615384616
+  ],
+  "Rev": [
+   100.0,
+   100.0
+  ],
+  "Hold": [
+   77.31958762886597,
+   96.15384615384616
+  ]
+ },
+ "step": {
+  "criterion": {
+   "Rev": 100.0,
+   "Hold": 93.96551724137932,
+   "TA": 93.96551724137932,
+   "BaseAcc": 100.0,
+   "Tie": 0.0,
+   "PresHold": 100.0,
+   "n": 232
+  }
+ },
+ "eval": {
+  "seconds": 56.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
