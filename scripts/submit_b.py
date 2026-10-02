@@ -219,6 +219,7 @@ def main():
     ap.add_argument("--cpu", type=int, default=2)        # measured 1.0 core median on A100 training
     ap.add_argument("--mem", default="12Gi")             # measured RSS 2.9 GiB; RSS median must be >= 20% of this
     ap.add_argument("--code", default=None)
+    ap.add_argument("--models", default="unsloth--Qwen3.5-9B", help="runners: base weights to stage (comma list)")
     ap.add_argument("--secret", default=None, help="NAME:KEY of the HF token secret (publish)")
     a = ap.parse_args()
     if a.cmd == "sync-up":
@@ -262,7 +263,7 @@ def main():
         stem = q.split(",")[0].replace("_", "-").replace("/", "-").replace(".json", "")   # q: a queue, a comma list, or all (every queue file)
         for i in range(a.n):
             apply(runner_job(f"selrm-b-run-{stem}-{a.gpu}-{int(time.time()) % 100000}-{i}", q, code, a.env,
-                             a.gpu, a.max_runs, a.hours, a.cpu, a.mem))
+                             a.gpu, a.max_runs, a.hours, a.cpu, a.mem, tuple(a.models.split(","))))
     elif a.cmd == "push-ref":        # e.g. push-ref origin/role-a  (A's code + data/REGISTRY.json)
         push_ref(a.args[0])
     elif a.cmd == "build-data":      # build-data <A code sha12> [builder args...]: rebuild + sha256 check + publish

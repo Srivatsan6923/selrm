@@ -82,6 +82,24 @@ def transfer(seeds, registry, version):
     return runs
 
 
+BACKBONES = {"qwen3.5-4b": "unsloth/Qwen3.5-4B", "non-qwen-4to9b": "unsloth/granite-4.1-8b"}   # configs/models_b.json
+
+
+def backbones(seeds, registry, version):
+    """B-BB rows: the key cells on other base models (claimable only by runners that staged them,
+    submit_b.py runners ... --models)."""
+    runs = []
+    for r in csv.DictReader(open(f"{ROOT}/docs/RUN_MATRIX_B.csv", encoding="utf-8")):
+        m = re.fullmatch(r"B-BB-(.+)-(verdict|ledger2)-(blocks|triplets)-s(\d)", r["run_id"])
+        if not m or int(m[4]) not in seeds or r["status"] in ("done", "dropped"):
+            continue
+        runs.append({"run_id": r["run_id"], "format": m[2], "corpus": f"{version}/train_{m[3]}", "seed": int(m[4]),
+                     "n_examples": 60000, "base_model": BACKBONES[m[1]],
+                     "priority": 10 * PRIO[r["priority"]] + 2 * (int(m[4]) > 0), "keep_adapter": False,
+                     "eval": dict(EVAL), "eval_sets": [f"{version}/{s}" for s in PRIMARY]})
+    return runs
+
+
 # Table 9 ablations: changes against ledger2 x triplets (corpus names inside <version>/)
 ABLATIONS = {"decfield": {"format": "ledger2_dec"}, "bitonly-judge": {"format": "dec_judge"},
              "bitonly-reader": {"format": "bit_reader"}, "verify": {"format": "ledger2_verify", "mode": "verify"},
@@ -143,7 +161,7 @@ def extras(seeds, registry, version):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("kind", choices=["smoke", "factorial", "transfer", "extras"])
+    ap.add_argument("kind", choices=["smoke", "factorial", "transfer", "extras", "backbones"])
     ap.add_argument("out")
     ap.add_argument("--seeds", default="0")
     ap.add_argument("--registry", default=f"{ROOT}/data/REGISTRY.json")
@@ -153,7 +171,8 @@ def main():
     a = ap.parse_args()
     seeds = {int(s) for s in a.seeds.split(",")}
     runs = (smoke() if a.kind == "smoke" else factorial(seeds, a.registry, a.version, a.key_only) if a.kind == "factorial"
-            else transfer(seeds, a.registry, a.version) if a.kind == "transfer" else extras(seeds, a.registry, a.version))
+            else transfer(seeds, a.registry, a.version) if a.kind == "transfer"
+            else backbones(seeds, a.registry, a.version) if a.kind == "backbones" else extras(seeds, a.registry, a.version))
     runs = [r for r in runs if re.search(a.runs, r["run_id"])]
     os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
     json.dump({"runs": runs}, open(a.out, "w", newline="\n"), indent=1)

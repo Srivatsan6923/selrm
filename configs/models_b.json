@@ -18,14 +18,30 @@
   {
    "id": "unsloth/Qwen3.5-4B",
    "revision": "3764fa359b9082ea5a1e4a5e3ac3aaf6e9671636",
-   "prefetch": false,
-   "note": "B-BB-qwen3.5-4b-*; weights identical to Qwen/Qwen3.5-4B@851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a; tied embeddings; 9.32 GB"
+   "prefetch": true,
+   "note": "B-BB-qwen3.5-4b-*; weights identical to Qwen/Qwen3.5-4B@851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a; tied embeddings; 9.32 GB",
+   "allow_patterns": [
+    "*.json",
+    "*.jinja",
+    "*.safetensors",
+    "merges.txt",
+    "vocab.json",
+    "LICENSE"
+   ]
   },
   {
    "id": "unsloth/granite-4.1-8b",
    "revision": "acb681dfd7b46ea403274f041c70d28da947b1ab",
-   "prefetch": false,
-   "note": "candidate for B-BB-non-qwen-4to9b (dense text-only, Apache-2.0, Unsloth documents fine-tuning); choose when B-BB starts"
+   "prefetch": true,
+   "note": "B-BB-non-qwen-4to9b (chosen 2 Oct): GraniteForCausalLM, dense, 40 layers, q/k/v/o/gate/up/down (same LoRA targets), tied embeddings, logits_scaling 16 (eval_local divides the fp32 u by it), Apache-2.0, not gated; chat end-of-turn = eos <|end_of_text|> 100257; '+'/'-' single tokens",
+   "allow_patterns": [
+    "*.json",
+    "*.jinja",
+    "*.safetensors",
+    "merges.txt",
+    "vocab.json",
+    "LICENSE"
+   ]
   },
   {
    "id": "unsloth/Llama-3.1-8B-Instruct",

@@ -116,6 +116,7 @@ class Scorer:
         head = model.get_output_embeddings()
         self.w = (head.weight[self.plus].float() - head.weight[self.minus].float()).to(self.dev)
         self.b = (head.bias[self.plus] - head.bias[self.minus]).float() if getattr(head, "bias", None) is not None else 0.0
+        self.scale = 1.0 / float(getattr(model.config, "logits_scaling", None) or 1.0)   # Granite divides logits by 16
         self._h = None
         head.register_forward_pre_hook(self._grab)
         self.u_path = None
@@ -152,7 +153,7 @@ class Scorer:
         lg = out.logits[:, -1, :].float()
         u_bf16 = lg[:, self.plus] - lg[:, self.minus]
         if self._h is not None and self._h.shape[0] == len(seqs):
-            u = self._h[:, -1, :].float() @ self.w + self.b
+            u = (self._h[:, -1, :].float() @ self.w + self.b) * self.scale
             if self.u_path is None:       # once: the fp32 path must agree with the logits up to bf16 rounding
                 gap = float((u - u_bf16).abs().max())
                 self.u_path = "fp32-hidden" if gap <= 0.5 + 0.02 * float(u.abs().max()) else "logits"
