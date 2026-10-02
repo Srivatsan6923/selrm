@@ -11,7 +11,7 @@ completion ends with the end-of-turn token so generation formats learn to stop."
 import argparse, json, os, sys
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from selrm.formats import build_examples, reader_units
+from selrm.formats import VERSION, build_examples, reader_units
 from selrm.prompts import rationale_prompt, reader_prompt, verdict_prompt
 
 EVAL_KIND = {"verdict": "verdict", "rationale": "rationale", "summary2": "reader_prose",
@@ -26,7 +26,7 @@ def load_jsonl(path):
 def train_key(spec):
     p = spec.get("resample_p", 0.3) if spec["format"] in ("summary2", "value2", "ledger2") else 0
     return (f"{spec['format']}__{spec['corpus'].replace('/', '~')}__n{spec.get('n_examples') or 'all'}"
-            f"__p{p}__c{spec.get('construction_seed', 0)}")
+            f"__p{p}__c{spec.get('construction_seed', 0)}__v{VERSION}")
 
 
 def chat(tok, text):

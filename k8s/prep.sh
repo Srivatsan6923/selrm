@@ -30,7 +30,7 @@ fi
 import json, os
 from huggingface_hub import snapshot_download
 root = "/pvc/selrm/models"
-for m in json.load(open("configs/models_b.json"))["models"]:
+for m in [m for m in json.load(open("configs/models_b.json"))["models"] if m.get("prefetch")]:
     d = f"{root}/{m['id'].replace('/', '--')}"
     if os.path.exists(f"{d}/REVISION") and open(f"{d}/REVISION").read().strip() == m["revision"]:
         print("present", m["id"], m["revision"]); continue

@@ -1,0 +1,32 @@
+{
+ "verified": "2026-10-02 via https://huggingface.co/api/datasets/<id>",
+ "datasets": [
+  {
+   "id": "ryokamoi/FoVer-FormalLogic-FormalProof-Qwen-2.5-7B-LastStepBalanced-40k",
+   "revision": "cdd294231e7dfe54b7b442c9e1b7dd8c36e3de9e",
+   "license": "cc-by-4.0",
+   "files": [
+    ".gitattributes",
+    "README.md",
+    "data/train-00000-of-00001.parquet",
+    "readme_figures/fover_overview.png",
+    "readme_figures/fover_stats.png"
+   ],
+   "use": "B-TR-fover (verdict-only training on formal-verification step labels); CC-BY-4.0; ~40k examples, cycled to the 60k budget"
+  },
+  {
+   "id": "ryokamoi/FoVer-FormalLogic-FormalProof-Llama-3.1-8B-LastStepBalanced-40k",
+   "revision": "f760b86dae3550c7119b5612bd4c1a4ecb7e79ce",
+   "license": "cc-by-4.0",
+   "files": [
+    ".gitattributes",
+    "README.md",
+    "data/train-00000-of-00001.parquet",
+    "readme_figures/fover_overview.png",
+    "readme_figures/fover_stats.png"
+   ],
+   "use": "B-TR-fover (verdict-only training on formal-verification step labels); CC-BY-4.0; ~40k examples, cycled to the 60k budget"
+  }
+ ],
+ "note": "Pick the Qwen-2.5-7B variant (policy family closest to the Qwen3.5 backbone) unless C's audit uses the Llama one; record the choice in DECISIONS_B.md when B-TR-fover is built."
+}

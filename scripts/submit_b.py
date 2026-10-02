@@ -206,13 +206,13 @@ def main():
     elif a.cmd == "build-env":
         code = a.code or sha()
         apply(cpu_job(f"selrm-b-build-env-{a.args[0]}", ["bash", f"/pvc/selrm/code/{code}/k8s/build_env.sh", a.args[0]],
-                      cpu=16, mem="32Gi", eph="80Gi", hours=2))
+                      cpu=6, mem="12Gi", eph="80Gi", hours=2))   # compile uses ~3-6 cores; usage must stay >=20% of request
     elif a.cmd == "prep":
         code = a.code or sha()
         q = a.args[0]
         apply(cpu_job(f"selrm-b-prep-{q.replace('_', '-').replace('.json', '')}-{int(time.time()) % 100000}",
-                      ["bash", f"/pvc/selrm/code/{code}/k8s/prep.sh", a.env, code, q], cpu=8, mem="24Gi",
-                      eph="40Gi", hours=2))
+                      ["bash", f"/pvc/selrm/code/{code}/k8s/prep.sh", a.env, code, q], cpu=2, mem="8Gi",
+                      eph="40Gi", hours=2))      # mostly single-threaded: keep median usage >= 20% of request
     elif a.cmd == "runners":
         code = a.code or sha()
         q = a.args[0]

@@ -20,6 +20,7 @@ from selrm.prompts import (answer, judge_prompt, ledger_to_text, rationale_promp
                            reader_prompt, verdict_prompt)
 
 FORMATS = ("verdict", "rationale", "summary2", "value2", "ledger2")
+VERSION = 1                  # bump when example construction changes (part of the pretok key)
 TWO_STAGE = ("summary2", "value2", "ledger2")
 FIELDS = {"ledger2": ("need", "found", "subject", "status", "time"), "value2": ("need", "found")}
 NOT_MENTIONED = "not mentioned"

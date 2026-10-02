@@ -31,7 +31,7 @@ uv pip install --python "$PY" --index-url https://pypi.org/simple \
   "datasets==4.3.0" "flash-linear-attention==0.5.2" "fla-core==0.5.2" \
   numpy ninja packaging setuptools wheel huggingface_hub
 
-export CUDA_HOME=/usr/local/cuda TORCH_CUDA_ARCH_LIST="8.0;8.6;8.9;9.0" MAX_JOBS=${MAX_JOBS:-14} \
+export CUDA_HOME=/usr/local/cuda TORCH_CUDA_ARCH_LIST="8.0;8.6;8.9;9.0" MAX_JOBS=${MAX_JOBS:-6} \
        CAUSAL_CONV1D_FORCE_BUILD=TRUE
 uv pip install --python "$PY" --no-build-isolation "causal-conv1d==1.7.0"
 
