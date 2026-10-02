@@ -109,6 +109,31 @@ def timing():
 
 CORPORA = ("natural", "balanced", "blocks", "triplets")
 LADDER = ("dev", "test_L0", "test_L1", "test_L2", "test_L3alt", "test_L3inv", "test_hard")
+DATA = os.environ.get("SELRM_DATA", f"{ROOT}/scratch/rv1_local")   # A's layout: REGISTRY.json + rule_v1/<set>/records.jsonl
+
+
+def records(name):
+    reg = json.load(open(f"{DATA}/REGISTRY.json"))
+    return [json.loads(l) for l in open(f"{DATA}/{reg[name]['path']}", encoding="utf-8")]
+
+
+def mr(rid, test="rule_v1/missing", dev="rule_v1/dev_missing", fr=0.05):
+    """Missing-input rejection (draft Sec. 4): share of missing cases whose two conclusion claims both
+    score below the threshold that rejects fr of the supported (label 1) base/flip conclusion claims
+    of the dev set. -> (MR %, n missing cases, threshold) or None."""
+    paths = [f"{RG}/{rid}/scores_{s.replace('/', '~')}.jsonl" for s in (dev, test)]
+    if not all(os.path.exists(p) for p in paths):
+        return None
+    ud, ut = ({r["iid"]: r["u"] for r in map(json.loads, open(p))} for p in paths)
+    sup = sorted(ud[r["iid"]] for r in records(dev)
+                 if r["claim_type"] == "conclusion" and r["case_kind"] != "missing" and r["label"] == 1)
+    tau = sup[int(fr * len(sup))]
+    both = {}
+    for r in records(test):
+        if r["claim_type"] == "conclusion" and r["case_kind"] == "missing":
+            both.setdefault(r["tid"], []).append(ut[r["iid"]] < tau)
+    vals = [all(v) for v in both.values() if len(v) == 2]
+    return round(100.0 * sum(vals) / max(1, len(vals)), 1), len(vals), round(tau, 3)
 
 
 def factorial(seed="0"):
@@ -131,14 +156,16 @@ def factorial(seed="0"):
             cells.append(f"{s['all']['TA']:.1f} [{lo:.1f}, {hi:.1f}]")
         print(f"| {f} | " + " | ".join(cells) + " |")
     kinds = sorted({k.split("=", 1)[1] for s in S.values() if s for k in s if k.startswith("nm_kind=")})
-    print(NL + "## rule_v1/test_L2 detail (TA by near-miss kind at the right)" + NL)
-    print("| run | n | Rev | Hold | TA | PresHold | BaseAcc | Tie | " + " | ".join(kinds) + " |")
-    print("|---|" + "---|" * (7 + len(kinds)))
+    print(NL + "## rule_v1/test_L2 detail (MR on rule_v1/missing at 5% false rejection on dev_missing; "
+          "TA by near-miss kind at the right)" + NL)
+    print("| run | n | Rev | Hold | TA | PresHold | BaseAcc | Tie | MR | " + " | ".join(kinds) + " |")
+    print("|---|" + "---|" * (8 + len(kinds)))
     for (f, c), s in S.items():
         if s and s.get("all"):
-            a = s["all"]
+            a, m = s["all"], mr(f"B-F-{f}-{c}-s{seed}")
             print(f"| {f} x {c} | {a['n']} | {a['Rev']:.1f} | {a['Hold']:.1f} | {a['TA']:.1f} | "
-                  f"{a.get('PresHold', float('nan')):.1f} | {a['BaseAcc']:.1f} | {a['Tie']:.1f} | " +
+                  f"{a.get('PresHold', float('nan')):.1f} | {a['BaseAcc']:.1f} | {a['Tie']:.1f} | "
+                  f"{m[0] if m else '-'} | " +
                   " | ".join(f"{s[f'nm_kind={k}']['TA']:.1f}" if f"nm_kind={k}" in s else "-" for k in kinds) + " |")
     print(NL + "## Triplet accuracy on every ladder set" + NL)
     print("| run | " + " | ".join(LADDER) + " |")
