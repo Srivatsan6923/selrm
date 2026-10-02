@@ -206,6 +206,7 @@ def main():
     ap.add_argument("--cpu", type=int, default=2)        # measured 1.0 core median on A100 training
     ap.add_argument("--mem", default="12Gi")             # measured RSS 2.9 GiB; RSS median must be >= 20% of this
     ap.add_argument("--code", default=None)
+    ap.add_argument("--secret", default=None, help="NAME:KEY of the HF token secret (publish)")
     a = ap.parse_args()
     if a.cmd == "sync-up":
         apply(sync_pod()); wait_running("selrm-b-sync"); print("selrm-b-sync running")
@@ -243,6 +244,15 @@ def main():
         apply(cpu_job(f"selrm-b-build-data-{code[:8]}-{int(time.time()) % 100000}",
                       ["bash", f"/pvc/selrm/code/{a.code or sha()}/k8s/build_data.sh", a.env, code, *a.args[1:]],
                       cpu=2, mem="12Gi", eph="60Gi", hours=3))
+    elif a.cmd == "publish":         # publish <hf repo> --secret NAME:KEY  (only once the user confirmed the secret)
+        name, key = a.secret.split(":")
+        job = cpu_job(f"selrm-b-publish-{int(time.time()) % 100000}",
+                      ["bash", "-c", f"tar -xf /pvc/selrm/env/selrm-env-{a.env}.tar -C /opt && "
+                                     f"/opt/selrm-env/venv/bin/python /pvc/selrm/code/{a.code or sha()}/scripts/publish_adapters_b.py "
+                                     f"--root /pvc/selrm --repo {a.args[0]}"], cpu=1, mem="2Gi", eph="20Gi", hours=1)
+        job["spec"]["template"]["spec"]["containers"][0]["env"].append(
+            {"name": "HF_TOKEN", "valueFrom": {"secretKeyRef": {"name": name, "key": key}}})
+        apply(job)
     elif a.cmd == "pull":
         pull(a.args)
     elif a.cmd == "ls":       # claim/heartbeat/done state of every run on the PVC
