@@ -2,7 +2,7 @@
 # Rebuild role A's frozen datasets inside the cluster (Drive is not reachable from NRP) and
 # publish them on the PVC only if every records.jsonl matches the sha256 in A's registry.
 # Usage (CPU Job): bash build_data.sh <env_tag> <code_sha_of_A> <build args...>
-#   e.g. bash build_data.sh v1 113f176c825c "--fold 1"
+#   e.g. bash build_data.sh v1 113f176c825c --fold 2   (one at a time: each updates the PVC registry)
 # Expects data/REGISTRY.json (A's frozen registry, committed by A) inside the code snapshot.
 set -euo pipefail
 ENVTAG=$1; CODE=$2; shift 2
@@ -12,6 +12,8 @@ PY=/opt/selrm-env/venv/bin/python
 cp -r "$ROOT/code/$CODE" /tmp/code
 cd /tmp/code
 test -f data/REGISTRY.json || { echo "no data/REGISTRY.json in code $CODE"; exit 2; }
+# folds 2-3 read the fold assignment frozen with rule_v1 from <out>/rule_v1/FOLDS.json (as in A's build)
+if [ -f data/rule_v1/FOLDS.json ]; then mkdir -p /tmp/data/rule_v1 && cp data/rule_v1/FOLDS.json /tmp/data/rule_v1/; fi
 "$PY" scripts/build_rule_v1.py --out /tmp/data "$@"
 "$PY" - <<'EOF'
 import hashlib, json, os, shutil, sys
