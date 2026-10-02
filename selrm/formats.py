@@ -20,6 +20,8 @@ meta.criterion_holds = 1|0|None, None for missing input):
 ledger2_dec  reader -> ledger + bit line; judge sees both           (+ decision field)
 dec_judge    reader -> ledger + bit line; judge sees the bit line only (decision field only)
 bit_reader   reader -> bit line only;     judge sees the bit line    (reader writes bit only)
+verdict_bt   verdict prompts of the two claims of a case; Bradley-Terry loss on u(correct) - u(wrong)
+             (B-AB-pairwise; n//2 pairs = n sequences; missing-input cases have no preferred claim)
 """
 from __future__ import annotations
 
@@ -28,7 +30,8 @@ import random
 from selrm.prompts import (answer, judge_prompt, ledger_to_text, rationale_prompt,
                            reader_prompt, verdict_prompt)
 
-FORMATS = ("verdict", "rationale", "summary2", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader")
+FORMATS = ("verdict", "rationale", "summary2", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader",
+           "verdict_bt")
 VERSION = 2                  # bump when example construction changes (part of the pretok key)
 TWO_STAGE = ("summary2", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader")
 FIELDS = {"ledger2": ("need", "found", "subject", "status", "time"), "value2": ("need", "found")}
@@ -142,6 +145,14 @@ def build_examples(records, fmt: str, n: int | None = None, resample_p: float = 
                 p, c = rationale_prompt(r), ledger_to_text(r["ledger"]) + "\n" + answer(r)
             ex.append({"prompt": p, "completion": c, "part": fmt, "src": r["iid"]})
         return ex, {"n": len(ex), "label1": sum(e["completion"].endswith("+") for e in ex)}
+    if fmt == "verdict_bt":
+        both = {}
+        for r in records:
+            both.setdefault((r["tid"], r["case_kind"], r["claim_type"]), {})[r["label"]] = r
+        prefs = sorted(k for k, v in both.items() if set(v) == {0, 1})
+        ex = [{"prompt": verdict_prompt(both[k][1]), "prompt_b": verdict_prompt(both[k][0]), "completion": "",
+               "part": "pair", "src": both[k][1]["iid"]} for k in _take(prefs, n // 2, rng)]
+        return ex, {"n": 2 * len(ex), "pairs": len(ex), "pairs_available": len(prefs)}
 
     pairs = {}
     for r in records:

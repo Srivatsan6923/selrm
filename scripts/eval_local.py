@@ -19,7 +19,7 @@ from selrm.formats import (MALFORMED_U, TWO_STAGE, dataset_path, gold_record, ju
 from selrm.metrics import bootstrap_ci, decisions, summarise
 from selrm.prompts import judge_prompt
 
-KIND = {"verdict": "verdict", "rationale": "rationale", "summary2": "reader_prose",
+KIND = {"verdict": "verdict", "verdict_bt": "verdict", "rationale": "rationale", "summary2": "reader_prose",
         "value2": "reader_ledger", "ledger2": "reader_ledger", "ledger2_dec": "reader_ledger",
         "dec_judge": "reader_ledger", "bit_reader": "reader_ledger"}
 PROGRAM_U = 10.0            # |u| when the rule program decides from the predicted bit
@@ -183,7 +183,7 @@ def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="u
     if sc.pad_ok is None:
         sc.check_padding(seqs)
     extra, rows = {}, []
-    if fmt == "verdict":
+    if fmt in ("verdict", "verdict_bt"):
         assert keys == [r["iid"] for r in recs], "eval prompts out of sync with records"
         u = sc.score(seqs)
         rows = [{"iid": r["iid"], "u": float(x)} for r, x in zip(recs, u)]

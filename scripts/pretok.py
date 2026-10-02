@@ -19,7 +19,7 @@ from selrm.prompts import rationale_prompt, reader_prompt, verdict_prompt
 
 BASE = "unsloth/Qwen3.5-9B"
 MAX_LEN = 1024
-EVAL_KIND = {"verdict": "verdict", "rationale": "rationale", "summary2": "reader_prose",
+EVAL_KIND = {"verdict": "verdict", "verdict_bt": "verdict", "rationale": "rationale", "summary2": "reader_prose",
              "value2": "reader_ledger", "ledger2": "reader_ledger", "ledger2_dec": "reader_ledger",
              "dec_judge": "reader_ledger", "bit_reader": "reader_ledger"}
 
@@ -104,13 +104,18 @@ def build_train(root, spec, tok, end):
     if os.path.exists(f"{d}/READY"):
         return d, "exists"
     recs = load_jsonl(dataset_path(root, spec["corpus"]))
-    if spec["format"] not in ("verdict", "summary2"):    # rationale targets carry the ledger2 text
+    if spec["format"] not in ("verdict", "verdict_bt", "summary2"):    # rationale targets carry the ledger2 text
         check_gold(recs, ["ledger2" if spec["format"] == "rationale" else spec["format"]], spec["corpus"])
     ex, stats = build_examples(recs, spec["format"], n=spec.get("n_examples"),
                                resample_p=spec.get("resample_p", 0.3),
                                seed=spec.get("construction_seed", 0))
-    P = tok_ids(tok, [chat(tok, e["prompt"]) for e in ex])
-    C = tok_ids(tok, [e["completion"] + end for e in ex])
+    if spec["format"] == "verdict_bt":            # prompt pairs (correct, wrong) stored as consecutive sequences
+        A = tok_ids(tok, [chat(tok, e["prompt"]) for e in ex])
+        B = tok_ids(tok, [chat(tok, e["prompt_b"]) for e in ex])
+        P, C = [s for ab in zip(A, B) for s in ab], [[] for _ in range(2 * len(ex))]
+    else:
+        P = tok_ids(tok, [chat(tok, e["prompt"]) for e in ex])
+        C = tok_ids(tok, [e["completion"] + end for e in ex])
     seqs, npr, over, L = [], [], 0, max_len(spec)
     for p, c in zip(P, C):
         if len(p) + len(c) > L:
@@ -118,12 +123,14 @@ def build_train(root, spec, tok, end):
             continue
         seqs.append(p + c)
         npr.append(len(p))
+    if spec["format"] == "verdict_bt" and over:
+        raise SystemExit(f"{over} pair sequences exceed max_len {L} in {d}")   # dropping one breaks the pairing
     if over > 0.005 * len(ex):
         raise SystemExit(f"{over} of {len(ex)} examples exceed max_len {L} in {d}")
     ids, off = pack(seqs)
     os.makedirs(d, exist_ok=True)
     save_npz(f"{d}/train.npz", ids=ids, off=off, npr=np.asarray(npr, dtype=np.int32),
-             vocab=np.asarray(len(tok)))
+             vocab=np.asarray(len(tok)), pairs=np.asarray(int(spec["format"] == "verdict_bt")))
     lens = np.diff(off)
     stats |= {"key": train_key(spec), "tokenizer": tok_tag(spec), "vocab": len(tok),
               "spec": {k: spec.get(k) for k in ("format", "corpus", "n_examples", "resample_p", "construction_seed")},

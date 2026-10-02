@@ -31,6 +31,59 @@ class TokDataset(torch.utils.data.Dataset):
         return int(self.off[-1])
 
 
+class PairDataset(TokDataset):
+    """verdict_bt: item i = (correct-claim prompt, wrong-claim prompt) = sequences 2i, 2i+1."""
+
+    def __len__(self):
+        return len(self.npr) // 2
+
+    def __getitem__(self, i):
+        a, b = super().__getitem__(2 * i), super().__getitem__(2 * i + 1)
+        return {"a": a["input_ids"], "b": b["input_ids"]}
+
+
+class PairCollate:
+    """Left padding so the last position is the answer position of every sequence;
+    rows alternate correct / wrong."""
+
+    def __init__(self, pad_id):
+        self.pad = pad_id
+
+    def __call__(self, batch):
+        seqs = [s for b in batch for s in (b["a"], b["b"])]
+        L = max(len(s) for s in seqs)
+        ids = torch.full((len(seqs), L), self.pad, dtype=torch.long)
+        att = torch.zeros((len(seqs), L), dtype=torch.long)
+        for j, s in enumerate(seqs):
+            ids[j, L - len(s):] = torch.from_numpy(s.astype(np.int64))
+            att[j, L - len(s):] = 1
+        return {"input_ids": ids, "attention_mask": att}
+
+
+def last_hidden(model, ids, att):
+    """Final (normed) hidden state at the last position, from the decoder without lm_head."""
+    base = model.get_base_model() if hasattr(model, "get_base_model") else model
+    out = base.model(input_ids=ids, attention_mask=att, use_cache=False)
+    return out.last_hidden_state[:, -1, :]
+
+
+def bt_trainer_cls():
+    from transformers import Trainer
+    import torch.nn.functional as F
+
+    class BTTrainer(Trainer):
+        """Bradley-Terry loss on the two claims: -log sigmoid(u(correct) - u(wrong)),
+        u = h_last . (W[+] - W[-]) in fp32 (the same u the scorer reads)."""
+        wdiff = None
+
+        def compute_loss(self, model, inputs, return_outputs=False, num_items_in_batch=None):
+            u = last_hidden(model, inputs["input_ids"], inputs["attention_mask"]).float() @ self.wdiff
+            loss = -F.logsigmoid(u[0::2] - u[1::2]).mean()
+            return (loss, None) if return_outputs else loss
+
+    return BTTrainer
+
+
 class Collate:
     """Right padding; labels = -100 on prompt and padding (loss on the response only)."""
 
@@ -149,11 +202,14 @@ def train(spec, paths, log=print, hp=HP):
                 shutil.rmtree(f"{paths['ckpt']}/{d}", ignore_errors=True)
     json.dump(key, open(kfile, "w"))
     model = add_lora(model, seed, hp)
-    ds = TokDataset(paths["data"])
+    pairwise = spec["format"] == "verdict_bt"
+    ds = PairDataset(paths["data"]) if pairwise else TokDataset(paths["data"])
     if ds.vocab is not None and ds.vocab != len(tok):
         raise RuntimeError(f"{paths['data']} was tokenised with vocab {ds.vocab}, model tokenizer has {len(tok)}")
-    acc = hp["batch"] // hp["per_device"]
-    assert acc * hp["per_device"] == hp["batch"]
+    # pairs count two sequences: 64 sequences per optimizer step = 32 pairs
+    per_device = hp["per_device"] // 2 if pairwise else hp["per_device"]
+    acc = (hp["batch"] // 2 if pairwise else hp["batch"]) // per_device
+    assert acc * per_device == (hp["batch"] // 2 if pairwise else hp["batch"])
 
     class TimedSave(TrainerCallback):
         last = time.time()
@@ -171,9 +227,9 @@ def train(spec, paths, log=print, hp=HP):
                 log(f"step {state.global_step}/{state.max_steps} " + " ".join(
                     f"{k}={v:.4g}" if isinstance(v, float) else f"{k}={v}" for k, v in logs.items()))
 
-    total = spec.get("max_steps") or -(-len(ds) // hp["batch"]) * hp["epochs"]
+    total = spec.get("max_steps") or -(-len(ds) // (hp["batch"] // 2 if pairwise else hp["batch"])) * hp["epochs"]
     args = TrainingArguments(
-        output_dir=paths["ckpt"], per_device_train_batch_size=hp["per_device"],
+        output_dir=paths["ckpt"], per_device_train_batch_size=per_device,
         gradient_accumulation_steps=acc, learning_rate=hp["lr"], lr_scheduler_type="cosine",
         warmup_steps=round(hp["warmup_ratio"] * total), weight_decay=hp["weight_decay"], optim=hp["optim"],
         max_grad_norm=hp["max_grad_norm"], num_train_epochs=hp["epochs"],
@@ -184,8 +240,14 @@ def train(spec, paths, log=print, hp=HP):
         save_total_limit=1, seed=seed, data_seed=seed, report_to=[], dataloader_num_workers=hp.get("workers", 2),
         dataloader_pin_memory=True, remove_unused_columns=False, disable_tqdm=True)
     cb = TimedSave()
-    trainer = Trainer(model=model, args=args, train_dataset=ds, data_collator=Collate(tok.pad_token_id),
-                      callbacks=[cb])
+    if pairwise:
+        cls = bt_trainer_cls()
+        head = model.get_output_embeddings()
+        cls.wdiff = (head.weight[tok.convert_tokens_to_ids("+")] - head.weight[tok.convert_tokens_to_ids("-")]).detach().float()
+        trainer = cls(model=model, args=args, train_dataset=ds, data_collator=PairCollate(tok.pad_token_id), callbacks=[cb])
+    else:
+        trainer = Trainer(model=model, args=args, train_dataset=ds, data_collator=Collate(tok.pad_token_id),
+                          callbacks=[cb])
     if hp.get("backend", "unsloth") == "hf":
         # transformers 5.0-5.5 scales the loss by 1/accumulation twice through accelerate's
         # GradientAccumulationPlugin; unsloth patches this, the plain path must clamp it
@@ -206,12 +268,11 @@ def train(spec, paths, log=print, hp=HP):
     secs = time.time() - t0
     steps = trainer.state.global_step
     n_now = steps - cb.step0                      # optimizer steps done in this attempt
-    tok_per_ex = ds.tokens() / max(1, len(ds))    # mean tokens per example (incl. prompt)
     info = {"key": key, "train_seconds": round(secs, 1), "steps": steps, "steps_this_attempt": n_now,
             "resumed_from": resume, "examples": len(ds),
             # HF sums this attempt's losses but divides by all steps: rescale to this attempt
             "train_loss": out.training_loss * steps / max(1, n_now),
-            "tokens": ds.tokens(), "tokens_per_s": round(tok_per_ex * hp["batch"] * n_now / secs, 1) if secs else None,
+            "tokens": ds.tokens(), "tokens_per_s": round(ds.tokens() / max(1, len(ds)) * (hp["batch"] // 2 if pairwise else hp["batch"]) * n_now / secs, 1) if secs else None,
             "s_per_step": round(secs / max(1, n_now), 3),
             "peak_mem_gb": round(torch.cuda.max_memory_reserved() / 2**30, 2) if torch.cuda.is_available() else None,
             "peak_mem_allocated_gb": round(torch.cuda.max_memory_allocated() / 2**30, 2) if torch.cuda.is_available() else None,
