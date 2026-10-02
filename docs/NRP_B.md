@@ -43,8 +43,9 @@ storage); the rules below follow them and the portal source (prp/k8s_portal).
 /pvc/selrm/tok/<base>/train/<key>/       pre-tokenised corpora (train.npz, stats.json, READY); key has format,
                                          corpus, n, p, construction seed, max_len, formats.VERSION
 /pvc/selrm/tok/<base>/eval/<set>/<kind>.npz   pre-tokenised eval prompts (kind verdict|rationale|reader_*)
-/pvc/selrm/queue/<name>.json    queue files (run specs); runners started with `runners all` read every file
-/pvc/selrm/queue/v2/<name>.json queues that need code from 2 Oct 13:00 UTC on (genprm, ledger_edit; specs carry
+/pvc/selrm/queues/<name>.json   queue files (run specs; root since 2 Oct 16:20, /pvc/selrm/queue holds empty stubs
+                                so runners with older code drain); runners started with `runners all` read every file
+/pvc/selrm/queues/v2/<name>.json queues that need code from 2 Oct 13:00 UTC on (genprm, ledger_edit; specs carry
                                 min_gen 2): runners staged before then read the top level only. Runners staged from
                                 then on read every subdirectory; from 7d0f3a6 on they also skip specs whose format,
                                 eval mode, kind or min_gen their code lacks. Specs needing GEN 3 go out only after the
