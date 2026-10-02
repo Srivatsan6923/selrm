@@ -8,6 +8,8 @@ import argparse, csv, json, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FMTS = ("verdict", "rationale", "summary2", "value2", "ledger2")
 PRIO = {"P0": 0, "P1": 1, "P2": 2, "P3": 3}
+KEY_CELLS = {("verdict", "blocks"), ("verdict", "triplets"), ("ledger2", "blocks"), ("ledger2", "triplets")}
+EVAL = {"bs_score": 64, "bs_gen": 64, "max_new": 384}      # updated from B-T0/B-T0b (docs/TIMING_B_T0.md)
 
 
 def keep_list():
@@ -37,9 +39,10 @@ def factorial(seeds, registry, version):
         corpus = f"{version}/train_{m[2]}"
         if corpus not in reg or not reg[corpus].get("frozen"):
             sys.exit(f"{corpus} not frozen in {registry}")
+        # key cells first inside a priority class: C and D need their adapters earliest
         runs.append({"run_id": r["run_id"], "format": m[1], "corpus": corpus, "seed": int(m[3]),
-                     "n_examples": 60000, "priority": PRIO[r["priority"]],
-                     "keep_adapter": r["run_id"] in keep, "eval_sets": evals})
+                     "n_examples": 60000, "priority": 10 * PRIO[r["priority"]] + ((m[1], m[2]) not in KEY_CELLS),
+                     "keep_adapter": r["run_id"] in keep, "eval_sets": evals, "eval": dict(EVAL)})
     return runs
 
 
