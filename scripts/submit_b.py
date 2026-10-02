@@ -7,6 +7,8 @@ Kubernetes objects as JSON and applies them with kubectl. Laptop side only.
   python scripts/submit_b.py prep QUEUE_NAME              # CPU Job: data, weights, pretok
   python scripts/submit_b.py runners QUEUE_NAME --n 3 --gpu a100 --max-runs 3 --hours 4
   python scripts/submit_b.py pull RUN_ID [RUN_ID ...]     # results -> results_git/<run_id>/
+  python scripts/submit_b.py push-ref origin/role-a       # A's code (+ data/REGISTRY.json) -> /pvc/selrm/code/<sha>
+  python scripts/submit_b.py build-data <A_sha12> [--fold N]   # CPU: rebuild A's sets, verify sha256, publish
 Policy built in (docs/NRP_B.md): one GPU per Job, requests == limits, no sleep in Jobs,
 CPU Jobs kept off GPU nodes, runner exits when its queue has no claimable run."""
 import argparse, io, json, os, subprocess, sys, tarfile, time
@@ -136,6 +138,17 @@ def exec_sync(*cmd, inp=None):
     return kubectl("exec", *(["-i"] if inp is not None else []), "selrm-b-sync", "--", *cmd, inp=inp)
 
 
+def push_ref(ref):
+    """Snapshot of any git ref (e.g. role A's frozen commit) -> /pvc/selrm/code/<sha12>, via git archive."""
+    full = subprocess.run(["git", "-C", REPO, "rev-parse", ref], capture_output=True, text=True, check=True).stdout.strip()
+    data = subprocess.run(["git", "-C", REPO, "archive", "--format=tar", full], capture_output=True, check=True).stdout
+    code, dest = full[:12], f"/pvc/selrm/code/{full[:12]}"
+    exec_sync("sh", "-c", f"mkdir -p {dest}.tmp && tar -xf - -C {dest}.tmp && echo {full} > {dest}.tmp/COMMIT && "
+                          f"rm -rf {dest} && mv {dest}.tmp {dest}", inp=data)
+    print(f"{ref} = {full} -> {dest} ({len(data)} bytes)")
+    return code
+
+
 def push_code():
     code = sha()
     dirty = subprocess.run(["git", "-C", REPO, "status", "--porcelain", "--", *CODE_DIRS],
@@ -223,6 +236,13 @@ def main():
         for i in range(a.n):
             apply(runner_job(f"selrm-b-run-{stem}-{a.gpu}-{int(time.time()) % 100000}-{i}", q, code, a.env,
                              a.gpu, a.max_runs, a.hours, a.cpu, a.mem))
+    elif a.cmd == "push-ref":        # e.g. push-ref origin/role-a  (A's code + data/REGISTRY.json)
+        push_ref(a.args[0])
+    elif a.cmd == "build-data":      # build-data <A code sha12> [builder args...]: rebuild + sha256 check + publish
+        code = a.args[0]
+        apply(cpu_job(f"selrm-b-build-data-{code[:8]}-{int(time.time()) % 100000}",
+                      ["bash", f"/pvc/selrm/code/{a.code or sha()}/k8s/build_data.sh", a.env, code, *a.args[1:]],
+                      cpu=2, mem="12Gi", eph="60Gi", hours=3))
     elif a.cmd == "pull":
         pull(a.args)
     elif a.cmd == "ls":       # claim/heartbeat/done state of every run on the PVC
