@@ -5,7 +5,8 @@
   python scripts/make_queue_b.py critic OUT.json          # C-TF-critic (owner C, run by B's runners)
 Revised plan (lead, 2 Oct evening): only the four key cells are evaluated on every frozen dev/test set
 (every seed); every other run on dev, test_L2, dev_missing and missing (B-TR rows add test_L3alt; the new
-experiments, folds and diversity curves use the sets the plan names). priority() encodes the run order."""
+experiments and folds use the sets the plan names; diversity curves the reduced sets). priority() encodes the
+run order."""
 import argparse, csv, json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -35,7 +36,9 @@ def priority(rid, seed, mprio="P1"):
         return 10
     if m and seed == 0:
         return 20
-    if m and seed <= 2 and (cell in KEY_CELLS or cell == ("summary2", "triplets")):
+    # seeds 1-2 of the key cells and summary2 x triplets (plan), and of verdict x natural: the lead's natural vs
+    # blocks claim is decided by their seeds 1-2 (verdict x blocks is a key cell)
+    if m and seed <= 2 and (cell in KEY_CELLS or cell in (("summary2", "triplets"), ("verdict", "natural"))):
         return 30
     if rid.startswith("B-LOKO-"):
         return 40 if rid.startswith("B-LOKO-subject-") else 41
@@ -189,7 +192,7 @@ def extras(seeds, registry, version):
         m = re.fullmatch(r"B-DIV-(\w+)-(\d+)-s\d", rid)
         if m and ok(f"{version}/div_{m[1]}_{m[2]}"):
             runs.append({**base, "format": "ledger2", "corpus": f"{version}/div_{m[1]}_{m[2]}", "n_examples": None,
-                         "keep_adapter": False, "eval_sets": [f"{version}/dev", f"{version}/test_L2"]})
+                         "keep_adapter": False, "eval_sets": [f"{version}/{s}" for s in REDUCED]})
     order = ("B-AB", "B-AE", "B-FOLD", "B-DIV")     # within a priority: Table 9 first, then folds, then curves
     return sorted(runs, key=lambda r: next(i for i, f in enumerate(order) if r["run_id"].startswith(f)))
 

@@ -6,7 +6,7 @@
    "corpus": "rule_v1/train_natural",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 30,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -26,7 +26,7 @@
    "corpus": "rule_v1/train_natural",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 30,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,

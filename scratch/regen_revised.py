@@ -1,0 +1,44 @@
+"""One-off (2 Oct evening): regenerate B's queue files under the revised plan. Runs already claimed, running,
+done or failed on the PVC keep the spec they were queued with (the plan: claimed runs keep their scope)."""
+import json, os, subprocess, sys
+os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, "scripts")
+import make_queue_b as Q
+
+REG, V = "scratch/registry_rule_v1.json", "rule_v1"
+out = subprocess.run(["kubectl", "-n", "ecepxie", "exec", "selrm-b-sync", "--", "sh", "-c",
+                      "cd /pvc/selrm/results && for d in */; do ls $d | grep -qE '^(CLAIMED_|DONE|FAILED_|KILLED_)' "
+                      "&& echo ${d%/}; done"], capture_output=True, text=True, check=True).stdout.split()
+busy = set(out)
+print(len(busy), "busy run dirs on the PVC")
+FILES = {  # queue file -> generator
+    "b_f_s0.json": lambda: Q.factorial({0}, REG, V),
+    "b_f_key_s12.json": lambda: Q.factorial({1, 2}, REG, V, key_only=True),
+    "b_f_s12.json": lambda: [r for r in Q.factorial({1, 2}, REG, V) if (r["format"], r["corpus"].split("_")[-1])
+                             not in Q.KEY_CELLS],
+    "b_tr_s0.json": lambda: [r for r in Q.transfer({0}, REG, V) if r["format"] != "genprm"],
+    "v2/b_genprm_s0.json": lambda: [r for r in Q.transfer({0}, REG, V) if r["format"] == "genprm"],
+    "b_x_s0.json": lambda: [r for r in Q.extras({0}, REG, V) if r["run_id"] != "B-AE-field-edit"],
+    "v2/b_x2_s0.json": lambda: [r for r in Q.extras({0}, REG, V) if r["run_id"] == "B-AE-field-edit"],
+    "b_x_s12.json": lambda: Q.extras({1, 2}, REG, V),
+    "b_f_s34.json": lambda: Q.factorial({3, 4}, REG, V, key_only=True),
+    "b_tr_s1p.json": lambda: [r for r in Q.transfer({1, 2, 3, 4}, REG, V) if r["format"] != "genprm"],
+    "v2/b_genprm_s12.json": lambda: [r for r in Q.transfer({1, 2, 3, 4}, REG, V) if r["format"] == "genprm"],
+    "v2/b_bb_s12.json": lambda: Q.backbones({1, 2}, REG, V),
+    "v2/b_bb_s0.json": lambda: Q.backbones({0}, REG, V),
+    "v2/b_probe_rw_s0.json": lambda: Q.probe_rw(V),
+    "b_critic.json": lambda: Q.critic(REG, V),
+    "b_new_s0.json": lambda: Q.newexp({0}, REG, V),
+}
+for name, gen in FILES.items():
+    path = f"configs/queues/{name}"
+    old = {r["run_id"]: r for r in json.load(open(path))["runs"]} if os.path.exists(path) else {}
+    runs, kept = [], []
+    for r in gen():
+        if r["run_id"] in busy and r["run_id"] in old:
+            runs.append(old[r["run_id"]]); kept.append(r["run_id"])
+        else:
+            runs.append(r)
+    gone = sorted(set(old) - {r["run_id"] for r in runs} - busy)
+    json.dump({"runs": runs}, open(path, "w", newline="\n"), indent=1)
+    print(f"{name}: {len(runs)} runs ({len(kept)} busy kept as queued){'; not regenerated: ' + str(gone) if gone else ''}")
