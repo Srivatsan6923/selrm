@@ -14,6 +14,12 @@ resample_p a selected judge pair (x, claim type) is replaced by the pair of x'
 drawn uniformly from N(x), the other training cases of the same rule and condition
 (twins included); claim texts are identical within (rule, condition, claim type),
 so the judge sees the claim with x' 's ledger and the verdict that ledger implies.
+
+Decision-bit ablations (Table 9; the bit is "applies: yes|no|unknown", A's
+meta.criterion_holds = 1|0|None, None for missing input):
+ledger2_dec  reader -> ledger + bit line; judge sees both           (+ decision field)
+dec_judge    reader -> ledger + bit line; judge sees the bit line only (decision field only)
+bit_reader   reader -> bit line only;     judge sees the bit line    (reader writes bit only)
 """
 from __future__ import annotations
 
@@ -22,21 +28,47 @@ import random
 from selrm.prompts import (answer, judge_prompt, ledger_to_text, rationale_prompt,
                            reader_prompt, verdict_prompt)
 
-FORMATS = ("verdict", "rationale", "summary2", "value2", "ledger2")
+FORMATS = ("verdict", "rationale", "summary2", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader")
 VERSION = 2                  # bump when example construction changes (part of the pretok key)
-TWO_STAGE = ("summary2", "value2", "ledger2")
+TWO_STAGE = ("summary2", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader")
 FIELDS = {"ledger2": ("need", "found", "subject", "status", "time"), "value2": ("need", "found")}
+BITS = {1: "applies: yes", 0: "applies: no", None: "applies: unknown"}
 NOT_MENTIONED = "not mentioned"
 MALFORMED_U = -20.0          # INTERFACES 3: malformed ledger -> u = -20 for both claims
 
 
+def holds(rec: dict):
+    """Decision bit of the case: A's meta.criterion_holds (1, 0, None for missing input);
+    smoke records lack it and get it from their own label (claim s is correct iff the
+    condition does not hold, claim s_prime iff it holds)."""
+    if "criterion_holds" in rec["meta"]:
+        return rec["meta"]["criterion_holds"]
+    if rec["case_kind"] == "missing":
+        return None
+    return 1 - rec["label"] if rec["claim_role"] == "s" else rec["label"]
+
+
 def gold_record(rec: dict, fmt: str) -> str:
-    """What the reader should write for this case: program ledger or prose."""
+    """What the reader should write for this case: program ledger, prose or decision bit."""
     if fmt == "summary2":
         return rec["prose"]
-    if fmt == "ledger2":
-        return ledger_to_text(rec["ledger"])
-    return "\n\n".join("\n".join(f"{k}: {e[k]}" for k in FIELDS[fmt]) for e in rec["ledger"])
+    if fmt == "bit_reader":
+        return BITS[holds(rec)]
+    if fmt == "value2":
+        return "\n\n".join("\n".join(f"{k}: {e[k]}" for k in FIELDS[fmt]) for e in rec["ledger"])
+    text = ledger_to_text(rec["ledger"])
+    return text + "\n\n" + BITS[holds(rec)] if fmt in ("ledger2_dec", "dec_judge") else text
+
+
+def judge_view(text: str, fmt: str) -> str:
+    """What the judge sees given the reader's text (gold in training, generated at eval)."""
+    return text.strip().split("\n")[-1] if fmt == "dec_judge" else text
+
+
+def read_bit(text: str):
+    """1 / 0 / None from a decision line at the end of a reader output; 'bad' otherwise."""
+    last = text.strip().split("\n")[-1] if text.strip() else ""
+    return next((h for h, line in BITS.items() if line == last), "bad")
 
 
 def reader_unit(rec: dict) -> tuple:
@@ -57,7 +89,13 @@ def well_formed(text: str, case_text: str, fmt: str) -> bool:
     Prose (summary2) has no structure to check."""
     if fmt == "summary2":
         return True
-    keys, text = FIELDS[fmt], text.strip()
+    text = text.strip()
+    if fmt == "bit_reader":
+        return text in BITS.values()
+    if fmt in ("ledger2_dec", "dec_judge"):
+        head, sep, last = text.rpartition("\n\n")
+        return bool(sep) and last in BITS.values() and well_formed(head, case_text, "ledger2")
+    keys = FIELDS[fmt]
     if not text:
         return False
     for entry in text.split("\n\n"):
@@ -130,7 +168,7 @@ def build_examples(records, fmt: str, n: int | None = None, resample_p: float = 
         sel.append(key)
         for role in ("s", "s_prime"):
             r = pairs[key][role]
-            ex.append({"prompt": judge_prompt(r, gold_record(r, fmt)), "completion": answer(r),
+            ex.append({"prompt": judge_prompt(r, judge_view(gold_record(r, fmt), fmt)), "completion": answer(r),
                        "part": "judge", "src": r["iid"]})
     stats = {"n": len(ex), "reader": n_reader, "judge": 2 * n_pairs, "pairs_swapped": swapped,
              "unique_judge_pairs": len(set(sel)), "reader_units": len(reader_units(records)),

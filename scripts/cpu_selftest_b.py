@@ -38,12 +38,17 @@ for name, n_groups in (("train_triplets", 60), ("test_heldout_rules", 12)):
 
 hp = {"backend": "hf", "bf16": False, "per_device": 4, "batch": 8, "save_every_s": 0, "workers": 0}
 runs = [{"run_id": f"SELFTEST-{f}", "format": f, "corpus": "mini/train_triplets", "seed": 0,
-         "max_steps": 2, "base_model": "tiny/qwen35", "hp": hp, "keep_adapter": f == "ledger2",
+         "max_steps": 2, "base_model": "tiny/qwen35", "hp": hp, "keep_adapter": f in ("ledger2", "ledger2_dec"),
          "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24},
          "eval_sets": ["mini/test_heldout_rules"]} for f in FORMATS]
 runs.append({"run_id": "SELFTEST-evalonly-ledger2", "format": "ledger2", "train": False, "seed": 0,
              "base_model": "tiny/qwen35", "adapter": "adapters/SELFTEST-ledger2", "hp": hp, "priority": 9,
              "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24}, "eval_sets": ["mini/test_heldout_rules"]})
+for mode, fmt, ad in (("oracle_ledger", "ledger2", "SELFTEST-ledger2"), ("program_bit", "ledger2_dec", "SELFTEST-ledger2_dec"),
+                      ("ledger_swap", "ledger2", "SELFTEST-ledger2")):
+    runs.append({"run_id": f"SELFTEST-{mode}", "format": fmt, "train": False, "seed": 0, "base_model": "tiny/qwen35",
+                 "adapter": f"adapters/{ad}", "hp": hp, "priority": 9, "eval_sets": ["mini/test_heldout_rules"],
+                 "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24, "mode": mode}})
 json.dump({"runs": runs}, open(f"{root}/queue.json", "w"), indent=1)
 
 py = sys.executable
@@ -55,9 +60,16 @@ for r in runs:
     d = f"{root}/results/{r['run_id']}"
     assert os.path.exists(f"{d}/DONE"), f"{r['run_id']} not done: {os.listdir(d)}"
     meta = json.load(open(f"{d}/meta.json"))
+    if r.get("eval", {}).get("mode") == "ledger_swap":
+        summ = json.load(open(f"{d}/summary_mini~test_heldout_rules~swap.json"))
+        assert summ["n"] > 0 and 0 <= summ["agreement"] <= 100
+        print("ok", r["run_id"], "agreement", summ["agreement"], "n", summ["n"])
+        continue
     summ = json.load(open(f"{d}/summary_mini~test_heldout_rules.json"))
     n = sum(1 for _ in open(f"{d}/scores_mini~test_heldout_rules.jsonl"))
     assert "all" in summ and n > 0 and (meta["train"].get("eval_only") or meta["train"]["steps"] == 2)
+    if r.get("eval", {}).get("mode") == "oracle_ledger":
+        assert summ["eval"]["malformed_units"] == 0                  # program ledgers are always well formed
     print("ok", r["run_id"], "TA", round(summ["all"]["TA"], 1), "eval", summ["eval"])
 assert os.path.isdir(f"{root}/adapters/SELFTEST-ledger2") and not os.path.exists(f"{root}/ckpt/SELFTEST-verdict")
 print("CPU SELFTEST PASS")

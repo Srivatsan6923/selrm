@@ -67,6 +67,19 @@ def test_well_formed():
     assert well_formed("need: x\nfound: not mentioned", "", "value2")
 
 
+def test_program_on_gold_bit():
+    """The program on the gold decision bit solves every triplet (bit semantics are right)."""
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts"))
+    from eval_local import program_u
+    from selrm.metrics import decisions, summarise
+    seen, held = S.split_rules()
+    for rules in (seen, held):
+        recs = [r for t in S.generate(60, 5, rules, "t", "test", S.TEST_TPL) for r in t]
+        u = [program_u(r, gold_record(r, "ledger2_dec"), True) for r in recs]
+        for ct in ("conclusion", "criterion"):
+            assert summarise(decisions(recs, u, ct))["all"]["TA"] == 100.0, ct
+
+
 def test_claims_and_stats():
     d = tempfile.mkdtemp() + "/R1"
     assert runq.claim(d, "pod-a", settle_s=0) and not runq.claim(d, "pod-b", settle_s=0)

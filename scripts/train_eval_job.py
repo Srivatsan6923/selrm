@@ -129,8 +129,8 @@ def run_one(root, spec, mon, log, owner):
         te = time.time()
         if torch.cuda.is_available():
             torch.cuda.reset_peak_memory_stats()
-        summ = {s: eval_local.evaluate(sc, root, rid, spec["format"], s, P["results"], log, tok_tag(spec))
-                for s in spec["eval_sets"]}
+        summ = {s: eval_local.evaluate(sc, root, rid, spec["format"], s, P["results"], log, tok_tag(spec),
+                                       ev.get("mode")) for s in spec["eval_sets"]}
         vers, gpu = versions()
         meta = {"run_id": rid, "model": spec.get("base_model", BASE),
                 "model_revision": open(f"{P['base']}/REVISION").read().strip()

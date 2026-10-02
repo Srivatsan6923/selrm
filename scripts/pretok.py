@@ -14,13 +14,14 @@ Files are written under pid-unique temporary names and renamed; READY is written
 import argparse, json, os, sys
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from selrm.formats import FIELDS, VERSION, build_examples, dataset_path, gold_record, reader_unit, reader_units, well_formed
+from selrm.formats import VERSION, build_examples, dataset_path, gold_record, reader_unit, reader_units, well_formed
 from selrm.prompts import rationale_prompt, reader_prompt, verdict_prompt
 
 BASE = "unsloth/Qwen3.5-9B"
 MAX_LEN = 1024
 EVAL_KIND = {"verdict": "verdict", "rationale": "rationale", "summary2": "reader_prose",
-             "value2": "reader_ledger", "ledger2": "reader_ledger"}
+             "value2": "reader_ledger", "ledger2": "reader_ledger", "ledger2_dec": "reader_ledger",
+             "dec_judge": "reader_ledger", "bit_reader": "reader_ledger"}
 
 
 def tok_tag(spec):
@@ -92,7 +93,7 @@ def check_gold(recs, fmts, where):
         if any(x["ledger"] != rs[0]["ledger"] or x["prose"] != rs[0]["prose"] for x in rs[1:]):
             bad.append(f"{rs[0]['iid']}: records of one (case, condition) carry different ledgers/prose")
         for f in fmts:
-            if f in FIELDS and not well_formed(gold_record(rs[0], f), rs[0]["case_text"], f):
+            if f != "summary2" and not well_formed(gold_record(rs[0], f), rs[0]["case_text"], f):
                 bad.append(f"{rs[0]['iid']}: gold {f} ledger fails the malformed check: {gold_record(rs[0], f)!r}")
     if bad:
         raise SystemExit(f"{where}: {len(bad)} gold-ledger problems, e.g.\n" + "\n".join(bad[:10]))
@@ -103,8 +104,8 @@ def build_train(root, spec, tok, end):
     if os.path.exists(f"{d}/READY"):
         return d, "exists"
     recs = load_jsonl(dataset_path(root, spec["corpus"]))
-    if spec["format"] != "verdict":
-        check_gold(recs, [spec["format"]], spec["corpus"])
+    if spec["format"] not in ("verdict", "summary2"):    # rationale targets carry the ledger2 text
+        check_gold(recs, ["ledger2" if spec["format"] == "rationale" else spec["format"]], spec["corpus"])
     ex, stats = build_examples(recs, spec["format"], n=spec.get("n_examples"),
                                resample_p=spec.get("resample_p", 0.3),
                                seed=spec.get("construction_seed", 0))

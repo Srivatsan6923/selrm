@@ -14,12 +14,16 @@ import argparse, json, os, sys, time
 import numpy as np
 import torch
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from selrm.formats import MALFORMED_U, TWO_STAGE, dataset_path, reader_units, well_formed
+from selrm.formats import (MALFORMED_U, TWO_STAGE, dataset_path, gold_record, judge_view, read_bit,
+                           reader_unit, reader_units, well_formed)
 from selrm.metrics import bootstrap_ci, decisions, summarise
 from selrm.prompts import judge_prompt
 
 KIND = {"verdict": "verdict", "rationale": "rationale", "summary2": "reader_prose",
-        "value2": "reader_ledger", "ledger2": "reader_ledger"}
+        "value2": "reader_ledger", "ledger2": "reader_ledger", "ledger2_dec": "reader_ledger",
+        "dec_judge": "reader_ledger", "bit_reader": "reader_ledger"}
+PROGRAM_U = 10.0            # |u| when the rule program decides from the predicted bit
+MODES = (None, "oracle_ledger", "program_bit", "ledger_swap")
 
 
 def load_jsonl(path):
@@ -163,9 +167,16 @@ def chat_ids(tok, texts):
     return tok(s, add_special_tokens=False).input_ids
 
 
-def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="unsloth--Qwen3.5-9B"):
+def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="unsloth--Qwen3.5-9B",
+             mode=None):
     """-> summary dict; writes scores_<set>.jsonl and summary_<set>.json. Prompts come
-    pre-tokenised from ROOT/tok/<tag>/eval/<set>/<kind>.npz (scripts/pretok.py)."""
+    pre-tokenised from ROOT/tok/<tag>/eval/<set>/<kind>.npz (scripts/pretok.py).
+    Two-stage modes (Table 9 / Sec. 7.4 analyses on a trained adapter):
+      oracle_ledger  the judge reads the program's target ledger instead of the reader's
+      program_bit    the rule program decides from the reader's predicted decision bit
+      ledger_swap    the judge reads another case's ledger (same rule, condition, claim);
+                     summary = agreement with the verdict that ledger implies"""
+    assert mode in MODES, mode
     t0 = time.time()
     recs = load_jsonl(dataset_path(root, set_name))
     seqs, keys = unpack(f"{root}/tok/{tag}/eval/{set_name}/{KIND[fmt]}.npz", len(sc.tok))
@@ -184,24 +195,31 @@ def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="u
         rows = [{"iid": r["iid"], "u": float(x), "reader_output": sc.tok.decode(g), "answered": a, "stopped": d}
                 for r, x, g, (_, a), d in zip(recs, u, gens, pref, done)]
         extra = {"rationale_no_answer": sum(not a for _, a in pref), "gen_not_stopped": sum(not d for d in done)}
+    elif mode == "ledger_swap":
+        return ledger_swap(sc, recs, fmt, run_id, set_name, out_dir, log, t0)
     else:
         units = reader_units(recs)
         assert keys == ["/".join(r["iid"].split("/")[:2]) for r in units], "eval prompts out of sync"
-        gens, done = sc.generate(seqs)
+        if mode == "oracle_ledger":
+            outs, done = [gold_record(r, fmt) for r in units], [True] * len(units)
+        else:
+            gens, done = sc.generate(seqs)
+            outs = [sc.tok.decode(g) for g in gens]
         text = {}
-        for r, g, d in zip(units, gens, done):
-            out = sc.tok.decode(g)
+        for r, out, d in zip(units, outs, done):
             ok = (d or fmt == "summary2") and well_formed(out, r["case_text"], fmt)   # a cut-off ledger is unparsable
-            text[(r["tid"], r["case_kind"], r["condition"])] = (out, ok)
-        idx = [i for i, r in enumerate(recs) if text[(r["tid"], r["case_kind"], r["condition"])][1]]
+            text[reader_unit(r)] = (out, ok)
         u = np.full(len(recs), MALFORMED_U)
-        if idx:
-            u[idx] = sc.score(chat_ids(sc.tok, [judge_prompt(recs[i], text[(recs[i]["tid"], recs[i]["case_kind"],
-                                                                          recs[i]["condition"])][0]) for i in idx]))
-        rows = [{"iid": r["iid"], "u": float(x), "reader_output": text[(r["tid"], r["case_kind"], r["condition"])][0]}
-                for r, x in zip(recs, u)]
+        if mode == "program_bit":
+            u = np.array([program_u(r, *text[reader_unit(r)]) for r in recs])
+        else:
+            idx = [i for i, r in enumerate(recs) if text[reader_unit(r)][1]]
+            if idx:
+                u[idx] = sc.score(chat_ids(sc.tok, [judge_prompt(recs[i], judge_view(text[reader_unit(recs[i])][0], fmt))
+                                                    for i in idx]))
+        rows = [{"iid": r["iid"], "u": float(x), "reader_output": text[reader_unit(r)][0]} for r, x in zip(recs, u)]
         bad = sum(not ok for _, ok in text.values())
-        extra = {"reader_units": len(units), "malformed_units": bad,
+        extra = {"reader_units": len(units), "malformed_units": bad, "mode": mode,
                  "malformed_rate": round(bad / max(1, len(units)), 4), "gen_not_stopped": sum(not d for d in done)}
     os.makedirs(out_dir, exist_ok=True)
     with open(f"{out_dir}/scores_{set_name.replace('/', '~')}.jsonl", "w", encoding="utf-8") as f:
@@ -213,6 +231,46 @@ def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="u
     a = summ.get("all", {})
     log(f"{run_id} {set_name}: TA {a.get('TA', float('nan')):.1f} Rev {a.get('Rev', float('nan')):.1f} "
         f"Hold {a.get('Hold', float('nan')):.1f} n={a.get('n')} ({summ['eval']['seconds']} s)")
+    return summ
+
+
+def program_u(rec, out, ok):
+    """Rule program on the predicted decision bit: claim s is correct iff the condition does
+    not hold, s_prime iff it holds; 'unknown' rejects both; malformed -> MALFORMED_U."""
+    bit = read_bit(out)
+    if not ok or bit == "bad":
+        return MALFORMED_U
+    if bit is None:
+        return -PROGRAM_U
+    return PROGRAM_U if (rec["claim_role"] == "s") == (bit == 0) else -PROGRAM_U
+
+
+def ledger_swap(sc, recs, fmt, run_id, set_name, out_dir, log, t0, seed=0):
+    """Judge given another case's target ledger (same rule, condition, claim type and claim,
+    other group): agreement of sign(u) with the verdict that ledger implies (Sec. 7.4)."""
+    import random
+    rng, by = random.Random(seed), {}
+    for r in recs:
+        by.setdefault((r["rid"], r["condition"], r["claim_type"], r["claim_role"]), []).append(r)
+    pairs = []
+    for r in recs:
+        others = [x for x in by[(r["rid"], r["condition"], r["claim_type"], r["claim_role"])] if x["tid"] != r["tid"]]
+        if others:
+            pairs.append((r, rng.choice(others)))
+    u = sc.score(chat_ids(sc.tok, [judge_prompt(r, judge_view(gold_record(x, fmt), fmt)) for r, x in pairs]))
+    rows = [{"iid": r["iid"], "ledger_of": x["iid"], "u": float(v), "expected": x["label"]}
+            for (r, x), v in zip(pairs, u)]
+    agree = [(row["u"] > 0) == (row["expected"] == 1) for row in rows]
+    summ = {"run_id": run_id, "set": set_name, "mode": "ledger_swap", "n": len(rows),
+            "agreement": round(100.0 * sum(agree) / max(1, len(agree)), 2),
+            "eval": {"seconds": round(time.time() - t0, 1), "u_path": sc.u_path}}
+    os.makedirs(out_dir, exist_ok=True)
+    name = set_name.replace("/", "~") + "~swap"
+    with open(f"{out_dir}/scores_{name}.jsonl", "w", encoding="utf-8") as f:
+        for row in rows:
+            f.write(json.dumps(row) + "\n")
+    json.dump(summ, open(f"{out_dir}/summary_{name}.json", "w"), indent=1)
+    log(f"{run_id} {set_name} ledger swap: agreement {summ['agreement']} n={len(rows)}")
     return summ
 
 
