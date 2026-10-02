@@ -49,15 +49,34 @@ def factorial(seeds, registry, version):
     return runs
 
 
+def transfer(seeds, registry, version):
+    """B-TR rows that need no other role's data: fover (verdict on FoVer formal steps)."""
+    reg = json.load(open(registry))
+    evals = sorted(n for n, v in reg.items() if n.startswith(version + "/") and v.get("frozen")
+                   and v.get("split") in ("dev", "test"))
+    keep, runs = keep_list(), []
+    for r in csv.DictReader(open(f"{ROOT}/docs/RUN_MATRIX_B.csv", encoding="utf-8")):
+        m = re.fullmatch(r"B-TR-fover-s(\d)", r["run_id"])
+        if not m or int(m[1]) not in seeds or r["status"] in ("done", "dropped"):
+            continue
+        runs.append({"run_id": r["run_id"], "format": "verdict", "corpus": "fover_v1/train", "seed": int(m[1]),
+                     "n_examples": 60000, "priority": 10 * PRIO[r["priority"]] + 5, "keep_adapter": r["run_id"] in keep,
+                     "eval": dict(EVAL), "eval_sets": evals if int(m[1]) == 0 else
+                     [e for e in evals if e.split("/", 1)[1] in PRIMARY]})
+    return runs
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("kind", choices=["smoke", "factorial"])
+    ap.add_argument("kind", choices=["smoke", "factorial", "transfer"])
     ap.add_argument("out")
     ap.add_argument("--seeds", default="0")
     ap.add_argument("--registry", default=f"{ROOT}/data/REGISTRY.json")
     ap.add_argument("--version", default="rule_v1")
     a = ap.parse_args()
-    runs = smoke() if a.kind == "smoke" else factorial({int(s) for s in a.seeds.split(",")}, a.registry, a.version)
+    seeds = {int(s) for s in a.seeds.split(",")}
+    runs = (smoke() if a.kind == "smoke" else factorial(seeds, a.registry, a.version) if a.kind == "factorial"
+            else transfer(seeds, a.registry, a.version))
     json.dump({"runs": runs}, open(a.out, "w"), indent=1)
     print(f"{len(runs)} runs -> {a.out}")
 
