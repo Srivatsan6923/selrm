@@ -14,7 +14,7 @@ Files are written under pid-unique temporary names and renamed; READY is written
 import argparse, json, os, sys
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from selrm.formats import VERSION, build_examples, dataset_path, gold_record, reader_unit, reader_units, well_formed
+from selrm.formats import TWO_STAGE, VERSION, build_examples, dataset_path, gold_record, reader_unit, reader_units, well_formed
 from selrm.prompts import rationale_prompt, reader_prompt, verdict_prompt
 
 BASE = "unsloth/Qwen3.5-9B"
@@ -33,7 +33,7 @@ def max_len(spec):
 
 
 def train_key(spec):
-    p = spec.get("resample_p", 0.3) if spec["format"] in ("summary2", "value2", "ledger2") else 0
+    p = spec.get("resample_p", 0.3) if spec["format"] in TWO_STAGE else 0
     return (f"{spec['format']}__{spec['corpus'].replace('/', '~')}__n{spec.get('n_examples') or 'all'}"
             f"__p{p}__c{spec.get('construction_seed', 0)}__L{max_len(spec)}__v{VERSION}")
 
