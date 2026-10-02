@@ -39,10 +39,12 @@ storage); the rules below follow them and the portal source (prp/k8s_portal).
 /pvc/selrm/env/                 selrm-env-<tag>.tar + .freeze.txt
 /pvc/selrm/models/<id-->/       pinned HF snapshots + REVISION (configs/models_b.json)
 /pvc/selrm/data/<set>/<name>.jsonl  datasets (smoke_v2 rebuilt in-cluster, hashes checked)
-/pvc/selrm/tok/train/<key>/     pre-tokenised corpora (train.npz, stats.json, READY)
-/pvc/selrm/tok/eval/<set>/<kind>.npz  pre-tokenised eval prompts
+/pvc/selrm/data/REGISTRY.json + data/<set>/<name>/records.jsonl   A's frozen sets (rebuilt in-cluster, sha256 checked)
+/pvc/selrm/tok/<base>/train/<key>/       pre-tokenised corpora (train.npz, stats.json, READY); key has format,
+                                         corpus, n, p, construction seed, max_len, formats.VERSION
+/pvc/selrm/tok/<base>/eval/<set>/<kind>.npz   pre-tokenised eval prompts (kind verdict|rationale|reader_*)
 /pvc/selrm/queue/<name>.json    queue files (run specs)
-/pvc/selrm/results/<run_id>/    CLAIMED_B, HEARTBEAT, DONE/FAILED_n, meta.json, summary_*, scores_*, gpu_util.csv, run.log
+/pvc/selrm/results/<run_id>/    CLAIMED_B, HEARTBEAT, DONE/FAILED_n/KILLED_n, meta.json, summary_*, scores_*, gpu_util.csv, run.log
 /pvc/selrm/ckpt/<run_id>/       trainer checkpoints (deleted after the run) + adapter of non-kept runs
 /pvc/selrm/adapters/<run_id>/   kept adapters (configs/keep_adapters.json)
 /pvc/selrm/logs/<pod>/          runner.log, gpu_util.csv per pod
@@ -58,9 +60,15 @@ Each file has one writer (per-run or per-pod paths); pods never write shared fil
 - GPU runner Jobs: one GPU each; init container `k8s/stage.sh` unpacks env + code + weights to
   local NVMe (emptyDirs); main container runs `scripts/train_eval_job.py --queue ... --max_runs K`
   (claim -> train -> eval -> results -> DONE -> next; exits when nothing is claimable).
-  cpu 3, memory 32 Gi, ephemeral 64 Gi, /dev/shm 4 Gi, backoffLimit 2, TTL 3 days,
-  activeDeadlineSeconds = `--hours`. GPU monitor thread: nvidia-smi every 30 s ->
-  results/<run>/gpu_util.csv, heartbeat, watchdog exit 3 after 10 min below 5% (15 min grace).
+  cpu 2, memory 12 Gi (measured: 1.0 core, RSS 2.9 GiB; the 19 GiB working set is page cache and is
+  not judged), ephemeral 64 Gi, /dev/shm 4 Gi, backoffLimit 2, TTL 3 days, activeDeadlineSeconds =
+  `--hours`. Exit codes: 3 watchdog (GPU < 5% for 10 min after 15 min grace; run gets FAILED_n),
+  4 env preflight failed (no run charged), 5 previous model still on the GPU after gc (no run
+  charged), 2 CUDA error inside a run. GPU monitor thread: nvidia-smi every 30 s ->
+  results/<run>/gpu_util.csv, heartbeat; claim stale after 15 min without heartbeat/claim update
+  (own) or 3 h (other roles); a taken-over own claim writes KILLED_n (run failed at 3).
+- Resetting a run = delete results/<rid>, ckpt/<rid> and adapters/<rid> (adapters of another spec
+  are moved aside as <dir>.stale-<ts>, never deleted automatically).
 
 ## Commands (laptop, repo root)
 ```

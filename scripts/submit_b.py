@@ -114,10 +114,10 @@ def sync_pod():
     exempt from CPU/RAM usage checks). Deleted after each copy session."""
     return {"apiVersion": "v1", "kind": "Pod",
             "metadata": {"name": "selrm-b-sync", "namespace": NS, "labels": {"app": "selrm-b", "role": "sync"}},
-            "spec": {"restartPolicy": "Never", "activeDeadlineSeconds": 3600,
+            "spec": {"restartPolicy": "Never", "activeDeadlineSeconds": 21600,     # NRP cap for bare pods
                      "affinity": affinity([CPU_ONLY, {"key": "topology.kubernetes.io/region", "operator": "In",
                                                       "values": ["us-west"]}]),
-                     "containers": [{"name": "sync", "image": SMALL_IMAGE, "command": ["sh", "-c", "sleep 3000"],
+                     "containers": [{"name": "sync", "image": SMALL_IMAGE, "command": ["sh", "-c", "sleep 21000"],
                                      "resources": res(1, "1Gi", "2Gi"), "volumeMounts": [MNT_PVC]}],
                      "volumes": [VOL_PVC]}}
 
