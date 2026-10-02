@@ -162,6 +162,7 @@ def run_one(root, spec, mon, log, owner):
                 "eval_sets": spec["eval_sets"], "train_key": train_key(spec) if trains(spec) else None,
                 "pretok_stats": json.load(open(os.path.dirname(P["data"]) + "/stats.json")) if trains(spec) else None,
                 "train": tinfo, "eval_seconds": round(time.time() - te, 1),
+                "eval_seconds_by_set": {s: (v or {}).get("eval", {}).get("seconds") for s, v in summ.items()},
                 "eval_batch": {"score": sc.bs_score, "generate": sc.bs_gen, "max_new": sc.max_new},
                 "eval_peak_mem_gb": round(torch.cuda.max_memory_reserved() / 2**30, 2) if torch.cuda.is_available() else None,
                 "eval_generated_tokens": sc.gen_tokens, "pad_check_ok": sc.pad_ok,

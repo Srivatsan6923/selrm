@@ -1,0 +1,226 @@
+{
+ "runs": [
+  {
+   "run_id": "B-LOKO-subject-verdict-s0",
+   "format": "verdict",
+   "corpus": "rule_v1/train_triplets_lo_subject",
+   "seed": 0,
+   "n_examples": 60000,
+   "priority": 40,
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/test_L0"
+   ]
+  },
+  {
+   "run_id": "B-LOKO-subject-ledger2-s0",
+   "format": "ledger2",
+   "corpus": "rule_v1/train_triplets_lo_subject",
+   "seed": 0,
+   "n_examples": 60000,
+   "priority": 40,
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/test_L0"
+   ]
+  },
+  {
+   "run_id": "B-LOKO-negation-verdict-s0",
+   "format": "verdict",
+   "corpus": "rule_v1/train_triplets_lo_negation",
+   "seed": 0,
+   "n_examples": 60000,
+   "priority": 41,
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/test_L0"
+   ]
+  },
+  {
+   "run_id": "B-LOKO-negation-ledger2-s0",
+   "format": "ledger2",
+   "corpus": "rule_v1/train_triplets_lo_negation",
+   "seed": 0,
+   "n_examples": 60000,
+   "priority": 41,
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/test_L0"
+   ]
+  },
+  {
+   "run_id": "B-LOKO-time-verdict-s0",
+   "format": "verdict",
+   "corpus": "rule_v1/train_triplets_lo_time",
+   "seed": 0,
+   "n_examples": 60000,
+   "priority": 41,
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/test_L0"
+   ]
+  },
+  {
+   "run_id": "B-LOKO-time-ledger2-s0",
+   "format": "ledger2",
+   "corpus": "rule_v1/train_triplets_lo_time",
+   "seed": 0,
+   "n_examples": 60000,
+   "priority": 41,
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/test_L0"
+   ]
+  },
+  {
+   "run_id": "B-DOSE-05-verdict-s0",
+   "format": "verdict",
+   "corpus": "rule_v1/train_dose_05",
+   "seed": 0,
+   "n_examples": 60000,
+   "priority": 42,
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DOSE-05-ledger2-s0",
+   "format": "ledger2",
+   "corpus": "rule_v1/train_dose_05",
+   "seed": 0,
+   "n_examples": 60000,
+   "priority": 42,
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DOSE-12-verdict-s0",
+   "format": "verdict",
+   "corpus": "rule_v1/train_dose_12",
+   "seed": 0,
+   "n_examples": 60000,
+   "priority": 42,
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DOSE-12-ledger2-s0",
+   "format": "ledger2",
+   "corpus": "rule_v1/train_dose_12",
+   "seed": 0,
+   "n_examples": 60000,
+   "priority": 42,
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DOSE-25-verdict-s0",
+   "format": "verdict",
+   "corpus": "rule_v1/train_dose_25",
+   "seed": 0,
+   "n_examples": 60000,
+   "priority": 42,
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DOSE-25-ledger2-s0",
+   "format": "ledger2",
+   "corpus": "rule_v1/train_dose_25",
+   "seed": 0,
+   "n_examples": 60000,
+   "priority": 42,
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  }
+ ]
+}

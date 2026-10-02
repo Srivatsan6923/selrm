@@ -4,27 +4,22 @@
    "run_id": "B-TR-fover-s0",
    "seed": 0,
    "n_examples": 60000,
-   "priority": 10,
+   "priority": 51,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
     "max_new": 384
    },
-   "format": "verdict",
-   "corpus": "fover_v1/train",
    "eval_sets": [
     "rule_v1/dev",
+    "rule_v1/test_L2",
     "rule_v1/dev_missing",
     "rule_v1/missing",
-    "rule_v1/readapply",
-    "rule_v1/test_L0",
-    "rule_v1/test_L1",
-    "rule_v1/test_L2",
-    "rule_v1/test_L3alt",
-    "rule_v1/test_L3inv",
-    "rule_v1/test_hard"
-   ]
+    "rule_v1/test_L3alt"
+   ],
+   "format": "verdict",
+   "corpus": "fover_v1/train"
   }
  ]
 }

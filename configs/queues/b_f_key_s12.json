@@ -6,7 +6,7 @@
    "corpus": "rule_v1/train_blocks",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 2,
+   "priority": 30,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -32,7 +32,7 @@
    "corpus": "rule_v1/train_blocks",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 2,
+   "priority": 30,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -58,7 +58,7 @@
    "corpus": "rule_v1/train_triplets",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 2,
+   "priority": 30,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -84,7 +84,7 @@
    "corpus": "rule_v1/train_triplets",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 2,
+   "priority": 30,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -110,7 +110,7 @@
    "corpus": "rule_v1/train_blocks",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 2,
+   "priority": 30,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -136,7 +136,7 @@
    "corpus": "rule_v1/train_blocks",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 2,
+   "priority": 30,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -162,7 +162,7 @@
    "corpus": "rule_v1/train_triplets",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 2,
+   "priority": 30,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -188,7 +188,7 @@
    "corpus": "rule_v1/train_triplets",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 2,
+   "priority": 30,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,

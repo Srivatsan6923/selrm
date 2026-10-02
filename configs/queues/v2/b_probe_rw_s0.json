@@ -3,7 +3,7 @@
   {
    "run_id": "B-AB-probe-rw-s0",
    "seed": 0,
-   "priority": 10,
+   "priority": 50,
    "format": "ledger2",
    "corpus": "rule_v1/abl_probe_blocks",
    "n_examples": 60000,
@@ -19,7 +19,6 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L3alt",
     "rule_v1/dev_missing",
     "rule_v1/missing"
    ]

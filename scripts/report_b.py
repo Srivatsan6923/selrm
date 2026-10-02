@@ -191,6 +191,191 @@ def factorial(seed="0"):
                       f"test_L2 malformed rate {ev.get('eval', {}).get('malformed_rate', '-')}")
 
 
+def finished_rule_runs():
+    """[(run_id, meta, {set: eval seconds})] for every finished rule_v1 training run in results_git."""
+    out = []
+    for d in sorted(os.listdir(RG)):
+        m = load(d, "meta.json")
+        if not (m and os.path.exists(f"{RG}/{d}/DONE") and str(m.get("corpus", "")).startswith("rule_v1")):
+            continue
+        per = {}
+        for s in m["eval_sets"]:
+            summ = load(d, f"summary_{s.replace('/', '~')}.json")
+            per[s.split("/", 1)[1]] = (summ or {}).get("eval", {}).get("seconds")
+        out.append((d, m, per))
+    return out
+
+
+def timesplit():
+    """GPU-hours on training and on evaluation per finished rule_v1 run (meta.json), and evaluation seconds per
+    set (summary_<set>.json eval.seconds)."""
+    runs = finished_rule_runs()
+    sets = sorted({s for _, _, per in runs for s in per})
+    print("| run | GPU | train GPU-h | eval GPU-h | other GPU-h | total GPU-h | " + " | ".join(f"eval s {s}" for s in sets) + " |")
+    print("|---|---|---|---|---|---|" + "---|" * len(sets))
+    for rid, m, per in runs:
+        tr, ev, wall = m["train"]["train_seconds"], m["eval_seconds"], m["wall_seconds"]
+        print(f"| {rid} | {m['gpu'].split(',')[0]} | {tr / 3600:.2f} | {ev / 3600:.2f} | {(wall - tr - ev) / 3600:.2f} | "
+              f"{wall / 3600:.2f} | " + " | ".join(f"{per[s]:.0f}" if per.get(s) is not None else "-" for s in sets) + " |")
+
+
+# Projection model (A100-80GB SXM rates measured on rule_v1; see projection()): eval kind of each format, and the
+# eval time of formats not yet finished on rule_v1 relative to ledger2, from B-T0 (smoke, same sets and batches).
+EVAL_KIND = {"verdict": "verdict", "verdict_bt": "verdict", "rationale": "rationale", "genprm": "genprm",
+             "summary2": "summary2", "value2": "value2", "ledger2": "ledger2", "ledger2_dec": "ledger2",
+             "dec_judge": "ledger2", "bit_reader": "ledger2", "ledger2_verify": "ledger2"}
+
+
+def train_tokens():
+    """{train key: tokens} from the pre-tokenised sets on the PVC (stats.json)."""
+    import subprocess
+    out = subprocess.run(["kubectl", "-n", "ecepxie", "exec", "selrm-b-sync", "--", "sh", "-c",
+                          "cd /pvc/selrm/tok && for f in */train/*/stats.json; do echo \"$f $(tr -d '\\n ' < $f | "
+                          "grep -o '\"tokens\":[0-9]*' | head -1)\"; done"], capture_output=True, text=True).stdout
+    tok = {}
+    for line in out.splitlines():
+        parts = line.split()
+        if len(parts) == 2 and parts[1].startswith('"tokens":'):
+            tok[parts[0].split("/")[2]] = int(parts[1].split(":")[1])
+    return tok
+
+
+def claim_ages():
+    """{run_id: (hours since claimed, heartbeat age hours, done)} on the PVC."""
+    import subprocess, time
+    out = subprocess.run(["kubectl", "-n", "ecepxie", "exec", "selrm-b-sync", "--", "sh", "-c",
+                          "cd /pvc/selrm/results && for d in */; do c=$(stat -c %Y $d/CLAIMED_B 2>/dev/null || echo 0); "
+                          "h=$(stat -c %Y $d/HEARTBEAT 2>/dev/null || echo 0); t=$(test -f $d/DONE && echo 1 || echo 0); "
+                          "echo ${d%/} $c $h $t; done; date +%s"], capture_output=True, text=True).stdout.split("\n")
+    now = int(out[-2]) if len(out) > 1 and out[-2].strip().isdigit() else int(time.time())
+    ages = {}
+    for line in out[:-2]:
+        p = line.split()
+        if len(p) == 4 and int(p[1]):
+            ages[p[0]] = ((now - int(p[1])) / 3600, (now - int(p[2])) / 3600 if int(p[2]) else 99, p[3] == "1")
+    return ages
+
+
+def gpus_held(hours=6):
+    """(mean GPUs held by B's runner pods over the last hours, now) from Thanos."""
+    import urllib.parse, urllib.request
+    q = lambda e: json.load(urllib.request.urlopen("https://thanos.nrp-nautilus.io/api/v1/query?" + urllib.parse.urlencode(
+        {"query": e}), timeout=60))["data"]["result"]
+    sel = 'DCGM_FI_DEV_GPU_UTIL{namespace="ecepxie",pod=~"selrm-b-run.*"}'
+    mean = q(f"avg_over_time(count({sel})[{hours}h:5m])")
+    cur = q(f"count({sel})")
+    return (float(mean[0]["value"][1]) if mean else 0.0), (float(cur[0]["value"][1]) if cur else 0.0)
+
+
+def projection(freeze="2026-10-07T23:59:00Z"):
+    """GPU-hours of the revised queue (queued + running + P2 rows not yet queued) against the GPU-hours B's
+    runners deliver until the run freeze at the mean number of GPUs held over the last 6 hours."""
+    import csv, datetime, glob, re
+    runs = finished_rule_runs()
+    tok_s, ev_set, other = {}, {}, []
+    for rid, m, per in runs:
+        k = EVAL_KIND[m["format"]]
+        tok_s.setdefault(m["format"], []).append(m["train"]["tokens_per_s"])
+        for s, sec in per.items():
+            if sec is not None:
+                ev_set.setdefault(k, {}).setdefault(s, []).append(sec)
+        other.append(m["wall_seconds"] - m["train"]["train_seconds"] - m["eval_seconds"])
+    mean = lambda v: sum(v) / len(v)
+    tps = {f: mean(v) for f, v in tok_s.items()}
+    tps_all = mean([x for v in tok_s.values() for x in v])
+    sec = {k: {s: mean(v) for s, v in d.items()} for k, d in ev_set.items()}
+    t0 = {f: load(f"B-T0-{f}", "meta.json")["eval_seconds"] for f in FMTS}
+    rel = {"rationale": t0["rationale"] / t0["ledger2"], "summary2": t0["summary2"] / t0["ledger2"],
+           "value2": t0["value2"] / t0["ledger2"]}
+    tok = train_tokens()
+    gen_ratio = None        # genprm vs rationale: completion tokens per example (pretok stats)
+
+    def eval_seconds(fmt, sets, kind=None):
+        k = kind or EVAL_KIND.get(fmt, "ledger2")
+        tot = 0.0
+        for s in sets:
+            name = s.split("/", 1)[1].replace("rule_v1_fold2/", "").replace("rule_v1_fold3/", "")
+            base = sec["ledger2" if k not in sec else k]
+            v = base.get(name, base.get("test_L2" if "L2" in name else "dev"))
+            if k in rel and k not in sec:
+                v = sec["ledger2"].get(name, sec["ledger2"]["dev"]) * rel[k]
+            tot += v * (3.39 if k == "genprm" and k not in sec else 1.0)
+        return tot
+
+    def train_seconds(r):
+        if r.get("train") is False or r.get("kind") == "concept":
+            return 0.0
+        key = f"{r['format']}__{r['corpus'].replace('/', '~')}__n{r.get('n_examples') or 'all'}"
+        hits = [v for k, v in tok.items() if k.startswith(key)]
+        if not hits:                    # not pre-tokenised yet (new corpora): the same format on train_triplets
+            hits = [v for k, v in tok.items() if k.startswith(f"{r['format']}__rule_v1~train_triplets__n60000")]
+        return (hits[0] if hits else 13.1e6) / tps.get(r["format"], tps_all)
+
+    ages = claim_ages()
+    queued = {}
+    for f in sorted(glob.glob(f"{ROOT}/configs/queues/**/*.json", recursive=True)):
+        if re.search(r"b_(smoke|t0b|val\d*)\.json$", f):
+            continue
+        for r in json.load(open(f))["runs"]:
+            queued.setdefault(r["run_id"], r)
+    rows = []
+    for rid, r in queued.items():
+        a = ages.get(rid)
+        if a and a[2]:
+            continue                                    # DONE
+        est = (train_seconds(r) + eval_seconds(r["format"], r["eval_sets"],
+                                                "verdict" if r["run_id"].startswith(("C-TF", "B-AE-oracle", "B-AE-field"))
+                                                else None) + mean(other)) / 3600
+        state = "queued"
+        if a and not a[2] and a[1] < 0.25:
+            state, est = "running", max(0.0, est - a[0])
+        rows.append((r["priority"], rid, state, est))
+    for r in csv.DictReader(open(f"{ROOT}/docs/RUN_MATRIX_B.csv", encoding="utf-8")):
+        if r["run_id"] in queued or r["status"] in ("done", "dropped") or r["runtime"] != "GPU":
+            continue
+        m = re.fullmatch(r"B-F-(\w+)-(\w+)-s(\d)", r["run_id"])
+        seed = int(r["seed"]) if r["seed"].isdigit() else 0
+        if m:
+            spec = {"format": m[1], "corpus": f"rule_v1/train_{m[2]}", "n_examples": 60000,
+                    "eval_sets": [f"rule_v1/{s}" for s in ("dev", "dev_missing", "missing", "readapply", "test_L0", "test_L1",
+                                                           "test_L2", "test_L3alt", "test_L3inv", "test_hard")]}
+        elif r["run_id"].startswith("B-DIV-"):
+            d = re.fullmatch(r"B-DIV-(\w+)-(\d+)-s\d", r["run_id"])
+            spec = {"format": "ledger2", "corpus": f"rule_v1/div_{d[1]}_{d[2]}", "n_examples": None,
+                    "eval_sets": ["rule_v1/dev", "rule_v1/test_L2"]}
+        else:                               # other P2 rows: a ledger2 x triplets run with the reduced sets
+            spec = {"format": "ledger2", "corpus": "rule_v1/train_triplets", "n_examples": 60000,
+                    "eval_sets": ["rule_v1/dev", "rule_v1/test_L2", "rule_v1/dev_missing", "rule_v1/missing"]}
+        import make_queue_b
+        est = (train_seconds(spec) + eval_seconds(spec["format"], spec["eval_sets"]) + mean(other)) / 3600
+        rows.append((make_queue_b.priority(r["run_id"], seed, r["priority"]), r["run_id"], "not queued (" + r["status"] + ")", est))
+    now = datetime.datetime.now(datetime.timezone.utc)
+    left = (datetime.datetime.fromisoformat(freeze.replace("Z", "+00:00")) - now).total_seconds() / 3600
+    held_mean, held_now = gpus_held()
+    cap = held_mean * left
+    print(f"Generated {now:%Y-%m-%d %H:%M} UTC by scripts/report_b.py projection. Rates measured on A100-SXM4-80GB "
+          f"({len(runs)} finished rule_v1 runs): train tokens/s " + ", ".join(f"{f} {v:.0f}" for f, v in sorted(tps.items())) +
+          f"; eval seconds per set from the same runs; formats without a rule_v1 run yet scaled by B-T0 eval ratios to "
+          "ledger2 (" + ", ".join(f"{k} {v:.2f}" for k, v in rel.items()) + "), genprm 3.39 x rationale (completion "
+          "tokens per example); training time = pre-tokenised tokens / tokens per second. Cards slower than the "
+          "A100-SXM4-80GB stretch these hours." + NL)
+    print(f"Capacity until {freeze}: {left:.1f} h x {held_mean:.2f} GPUs (mean held by B runners over the last 6 h; "
+          f"{held_now:.0f} now) = {cap:.0f} GPU-h." + NL)
+    print("| priority | group | runs | GPU-h | cumulative GPU-h | fits |")
+    print("|---|---|---|---|---|---|")
+    groups = {}
+    for p, rid, state, est in sorted(rows):
+        g = re.sub(r"-s\d+$", "", rid)
+        g = re.sub(r"^(B-F)-\w+-\w+$", r"\1", g) if rid.startswith("B-F-") else g.split("-")[0] + "-" + g.split("-")[1]
+        groups.setdefault((p, g, state.split(" ")[0]), []).append(est)
+    cum = 0.0
+    for (p, g, state), v in sorted(groups.items()):
+        cum += sum(v)
+        print(f"| {p} | {g} ({state}) | {len(v)} | {sum(v):.1f} | {cum:.1f} | {'yes' if cum <= cap else 'no'} |")
+    print(NL + f"Total {cum:.1f} GPU-h for {len(rows)} runs; capacity {cap:.0f} GPU-h.")
+
+
 if __name__ == "__main__":
     sys.stdout.reconfigure(newline="\n")          # reports are committed: LF on Windows too
-    {"smoke": smoke, "timing": timing, "factorial": factorial}[sys.argv[1]](*sys.argv[2:])
+    {"smoke": smoke, "timing": timing, "factorial": factorial, "timesplit": timesplit,
+     "projection": projection}[sys.argv[1]](*sys.argv[2:])

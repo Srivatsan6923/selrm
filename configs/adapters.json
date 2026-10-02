@@ -1,10 +1,50 @@
 {
- "note": "Owner B (INTERFACES 6). {system: {run_id, path, base_model, format}}. path = where C and D load the adapter or model. Systems whose adapter is not published yet have path null and status pending (kept on B's NRP volume /pvc/selrm/adapters/<run_id>).",
+ "note": "Owner B (INTERFACES 6). {system: {run_id, path, pvc, pvc_path, base_model, format}}. Kept adapters live on B's NRP volume: PVC selrm-b (namespace ecepxie), path selrm/adapters/<run_id> (B's pods mount it at /pvc; D's pods mount it read-only). path is set once the adapter is published (HF secret pending); a system is listed with its PVC path as soon as its run is DONE.",
  "systems": {
-  "ledger2_triplets": {"run_id": "B-F-ledger2-triplets-s0", "path": null, "status": "pending: training (rule_v1, seed 0)", "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a", "format": "ledger2"},
-  "ledger2_blocks": {"run_id": "B-F-ledger2-blocks-s0", "path": null, "status": "pending: training (rule_v1, seed 0)", "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a", "format": "ledger2"},
-  "verdict_triplets": {"run_id": "B-F-verdict-triplets-s0", "path": null, "status": "pending: training (rule_v1, seed 0)", "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a", "format": "verdict"},
-  "verdict_blocks": {"run_id": "B-F-verdict-blocks-s0", "path": null, "status": "pending: training (rule_v1, seed 0)", "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a", "format": "verdict"},
-  "stepcheck": {"run_id": "B-PRM", "path": "hf://dmis-lab/llama-3.1-medprm-reward-v1.0", "revision": "6948b9e942fa0275dff8ff902a1833f1298974d4", "status": "released model (substitution, see note)", "base_model": "meta-llama/Llama-3.1-8B-Instruct (per model card)", "format": "medprm: steps end with ' ки'; step reward = softmax over the ' +' / ' -' logits at each marker (model card usage code); scored through C's wrapper", "license": "MIT", "verified": "2026-10-02 via https://huggingface.co/api/models/dmis-lab/llama-3.1-medprm-reward-v1.0", "note": "ROLE.md B-PRM fallback: MedPRMBench (arXiv 2604.17282) has no public data release as of 2026-10-02 (no Hugging Face or GitHub data link found), so no injected-error PRM is trained; the released Med-PRM serves as the step check"}
+  "ledger2_triplets": {
+   "run_id": "B-F-ledger2-triplets-s0",
+   "path": null,
+   "status": "pending: training (rule_v1, seed 0)",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "ledger2"
+  },
+  "ledger2_blocks": {
+   "run_id": "B-F-ledger2-blocks-s0",
+   "path": null,
+   "status": "DONE (rule_v1, seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "ledger2",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-F-ledger2-blocks-s0"
+  },
+  "verdict_triplets": {
+   "run_id": "B-F-verdict-triplets-s0",
+   "path": null,
+   "status": "DONE (rule_v1, seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-F-verdict-triplets-s0"
+  },
+  "verdict_blocks": {
+   "run_id": "B-F-verdict-blocks-s0",
+   "path": null,
+   "status": "DONE (rule_v1, seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-F-verdict-blocks-s0"
+  },
+  "stepcheck": {
+   "run_id": "B-PRM",
+   "path": "hf://dmis-lab/llama-3.1-medprm-reward-v1.0",
+   "revision": "6948b9e942fa0275dff8ff902a1833f1298974d4",
+   "status": "released model (substitution, see note)",
+   "base_model": "meta-llama/Llama-3.1-8B-Instruct (per model card)",
+   "format": "medprm: steps end with ' ки'; step reward = softmax over the ' +' / ' -' logits at each marker (model card usage code); scored through C's wrapper",
+   "license": "MIT",
+   "verified": "2026-10-02 via https://huggingface.co/api/models/dmis-lab/llama-3.1-medprm-reward-v1.0",
+   "note": "ROLE.md B-PRM fallback: MedPRMBench (arXiv 2604.17282) has no public data release as of 2026-10-02 (no Hugging Face or GitHub data link found), so no injected-error PRM is trained; the released Med-PRM serves as the step check"
+  }
  }
 }
