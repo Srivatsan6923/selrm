@@ -175,7 +175,8 @@ def main():
     a = ap.parse_args()
     from transformers import AutoTokenizer
     toks = {}
-    for spec in json.load(open(a.queue))["runs"]:
+    # claim order (runners take the highest priority first), so the first runs are ready first
+    for spec in sorted(json.load(open(a.queue))["runs"], key=lambda r: r.get("priority", 9)):
         tag = tok_tag(spec)
         if tag not in toks:
             t = AutoTokenizer.from_pretrained(f"{a.models or a.root + '/models'}/{tag}")
