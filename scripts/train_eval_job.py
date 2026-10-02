@@ -27,13 +27,18 @@ def keep_adapter(spec):
     return bool(spec.get("keep_adapter")) or spec["run_id"] in keep
 
 
+def trains(spec):
+    """False for eval-only runs (base model, or an existing adapter given as spec['adapter'])."""
+    return spec.get("train", True) is not False
+
+
 def paths(root, spec):
     """Base weights come from SELRM_MODELS (local NVMe copy made by k8s/stage.sh) if set."""
     rid, base = spec["run_id"], spec.get("base_model", BASE)
     keep = keep_adapter(spec)
     models = os.environ.get("SELRM_MODELS", f"{root}/models")
     return {"base": f"{models}/{base.replace('/', '--')}",
-            "data": f"{train_dir(root, spec)}/train.npz",
+            "data": f"{train_dir(root, spec)}/train.npz" if trains(spec) else None,
             "ckpt": f"{root}/ckpt/{rid}",
             "adapter": f"{root}/adapters/{rid}" if keep else f"{root}/ckpt/{rid}/adapter",
             "results": f"{root}/results/{rid}"}
@@ -41,7 +46,9 @@ def paths(root, spec):
 
 def ready(root, spec):
     P = paths(root, spec)
-    return (os.path.exists(os.path.dirname(P["data"]) + "/READY") and os.path.isdir(P["base"])
+    return ((not trains(spec) or os.path.exists(os.path.dirname(P["data"]) + "/READY"))
+            and os.path.isdir(P["base"])
+            and (not spec.get("adapter") or os.path.exists(f"{root}/{spec['adapter']}/adapter_config.json"))
             and all(os.path.exists(eval_path(root, spec, s)) for s in spec["eval_sets"]))
 
 
@@ -107,7 +114,14 @@ def run_one(root, spec, mon, log, owner):
     mon.start_run(P["results"])
     t0, model, sc = time.time(), None, None
     try:
-        model, tok, tinfo = finetune.train(spec, P, log)
+        if trains(spec):
+            model, tok, tinfo = finetune.train(spec, P, log)
+        else:                             # eval only: base model or an existing adapter (path relative to root)
+            hp = finetune.HP | spec.get("hp", {})
+            adapter = f"{root}/{spec['adapter']}" if spec.get("adapter") else None
+            model, tok = finetune.load_for_eval(P["base"], adapter, hp.get("max_len", 2048), hp)
+            tinfo = {"hp": hp, "grad_accum": None, "eval_only": True, "adapter": spec.get("adapter")}
+            log(f"eval only: base {P['base']}, adapter {adapter}")
         finetune.for_inference(model, tinfo["hp"])
         ev = spec.get("eval", {})
         sc = eval_local.Scorer(model, tok, ev.get("bs_score", 64), ev.get("bs_gen", 64),
@@ -121,10 +135,10 @@ def run_one(root, spec, mon, log, owner):
                 if os.path.exists(f"{P['base']}/REVISION") else None,
                 "provider": "local (NRP Nautilus)", "access_date": time.strftime("%Y-%m-%d"),
                 "reasoning": "chat template with enable_thinking=False",
-                "format": spec["format"], "corpus": spec["corpus"], "seed": spec["seed"],
+                "format": spec["format"], "corpus": spec.get("corpus"), "seed": spec.get("seed"),
                 "provisional": spec.get("provisional", False), "timing_only": spec.get("timing", False),
-                "eval_sets": spec["eval_sets"], "train_key": train_key(spec),
-                "pretok_stats": json.load(open(os.path.dirname(P["data"]) + "/stats.json")),
+                "eval_sets": spec["eval_sets"], "train_key": train_key(spec) if trains(spec) else None,
+                "pretok_stats": json.load(open(os.path.dirname(P["data"]) + "/stats.json")) if trains(spec) else None,
                 "train": tinfo, "eval_seconds": round(time.time() - te, 1),
                 "eval_generated_tokens": sc.gen_tokens, "pad_check_ok": sc.pad_ok,
                 "per_device_batch": tinfo["hp"]["per_device"], "grad_accum": tinfo["grad_accum"],

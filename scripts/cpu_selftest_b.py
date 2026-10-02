@@ -41,6 +41,9 @@ runs = [{"run_id": f"SELFTEST-{f}", "format": f, "corpus": "mini/train_triplets"
          "max_steps": 2, "base_model": "tiny/qwen35", "hp": hp, "keep_adapter": f == "ledger2",
          "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24},
          "eval_sets": ["mini/test_heldout_rules"]} for f in FORMATS]
+runs.append({"run_id": "SELFTEST-evalonly-ledger2", "format": "ledger2", "train": False, "seed": 0,
+             "base_model": "tiny/qwen35", "adapter": "adapters/SELFTEST-ledger2", "hp": hp, "priority": 9,
+             "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24}, "eval_sets": ["mini/test_heldout_rules"]})
 json.dump({"runs": runs}, open(f"{root}/queue.json", "w"), indent=1)
 
 py = sys.executable
@@ -54,7 +57,7 @@ for r in runs:
     meta = json.load(open(f"{d}/meta.json"))
     summ = json.load(open(f"{d}/summary_mini~test_heldout_rules.json"))
     n = sum(1 for _ in open(f"{d}/scores_mini~test_heldout_rules.jsonl"))
-    assert "all" in summ and n > 0 and meta["train"]["steps"] == 2
+    assert "all" in summ and n > 0 and (meta["train"].get("eval_only") or meta["train"]["steps"] == 2)
     print("ok", r["run_id"], "TA", round(summ["all"]["TA"], 1), "eval", summ["eval"])
 assert os.path.isdir(f"{root}/adapters/SELFTEST-ledger2") and not os.path.exists(f"{root}/ckpt/SELFTEST-verdict")
 print("CPU SELFTEST PASS")
