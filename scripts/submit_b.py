@@ -182,7 +182,7 @@ def pull(run_ids):
             continue                       # same DONE stamp: nothing new (a re-run writes a new stamp)
         data = subprocess.run(["kubectl", "-n", NS, "exec", "selrm-b-sync", "--", "sh", "-c",
                                f"cd /pvc/selrm/results && tar -czf - {rid}/meta.json {rid}/DONE "
-                               f"$(ls {rid}/summary_*.json {rid}/scores_*.jsonl {rid}/gpu_util.csv 2>/dev/null)"],
+                               f"$(ls {rid}/summary_*.json {rid}/scores_*.jsonl {rid}/gpu_util.csv {rid}/run.log 2>/dev/null)"],
                               capture_output=True, check=True).stdout
         with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
             tar.extractall(f"{REPO}/results_git", filter="data")
