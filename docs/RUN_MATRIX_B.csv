@@ -125,9 +125,9 @@ B-FOLD3-ledger2-blocks-s2,B,yes,Tab3,train+eval,fold 3: ledger2 x blocks,rule_v1
 B-FOLD3-ledger2-triplets-s0,B,yes,Tab3,train+eval,fold 3: ledger2 x triplets,rule_v1_fold3,0,GPU,0.8,,P1,A-D9,todo,
 B-FOLD3-ledger2-triplets-s1,B,yes,Tab3,train+eval,fold 3: ledger2 x triplets,rule_v1_fold3,1,GPU,0.8,,P1,A-D9,todo,
 B-FOLD3-ledger2-triplets-s2,B,yes,Tab3,train+eval,fold 3: ledger2 x triplets,rule_v1_fold3,2,GPU,0.8,,P1,A-D9,todo,
-B-TR-fover-s0,B,yes,Tab4,train+eval,verdict only on FoVer formal data (verify dataset ID),-,0,GPU,1.0,,P1,B-C0,todo,
-B-TR-fover-s1,B,yes,Tab4,train+eval,verdict only on FoVer formal data (verify dataset ID),-,1,GPU,1.0,,P2,B-C0,todo,
-B-TR-fover-s2,B,yes,Tab4,train+eval,verdict only on FoVer formal data (verify dataset ID),-,2,GPU,1.0,,P2,B-C0,todo,
+B-TR-fover-s0,B,yes,Tab4,train+eval,verdict only on FoVer formal data (verify dataset ID),-,0,GPU,1.0,,P1,B-C0,todo,"code ready: scripts/fover_to_records.py (built in prep), make_queue_b transfer"
+B-TR-fover-s1,B,yes,Tab4,train+eval,verdict only on FoVer formal data (verify dataset ID),-,1,GPU,1.0,,P2,B-C0,todo,"code ready: scripts/fover_to_records.py (built in prep), make_queue_b transfer"
+B-TR-fover-s2,B,yes,Tab4,train+eval,verdict only on FoVer formal data (verify dataset ID),-,2,GPU,1.0,,P2,B-C0,todo,"code ready: scripts/fover_to_records.py (built in prep), make_queue_b transfer"
 B-TR-genprm-s0,B,yes,Tab4,train+eval,"GenPRM-style verifier: analysis + executed check, trained on rule triplets",-,0,GPU,1.8,,P1,A-D13,todo,
 B-TR-genprm-s1,B,yes,Tab4,train+eval,"GenPRM-style verifier: analysis + executed check, trained on rule triplets",-,1,GPU,1.8,,P2,A-D13,todo,
 B-TR-genprm-s2,B,yes,Tab4,train+eval,"GenPRM-style verifier: analysis + executed check, trained on rule triplets",-,2,GPU,1.8,,P2,A-D13,todo,
@@ -140,24 +140,24 @@ B-TR-clinonly-s2,B,yes,Tab4,train+eval,ledger2 on clinical pairs only (MedEinst 
 B-TR-tripclin-s0,B,yes,Tab4,train+eval,ledger2 on rule triplets + clinical pairs 1:1,-,0,GPU,1.0,,P1,C-CL-clinpairs,todo,
 B-TR-tripclin-s1,B,yes,Tab4,train+eval,ledger2 on rule triplets + clinical pairs 1:1,-,1,GPU,1.0,,P2,C-CL-clinpairs,todo,
 B-TR-tripclin-s2,B,yes,Tab4,train+eval,ledger2 on rule triplets + clinical pairs 1:1,-,2,GPU,1.0,,P2,C-CL-clinpairs,todo,
-B-AB-decfield-s0,B,yes,"Tab9,Sec7.4",train+eval,+ decision field (reader also writes applies yes/no),rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,
-B-AB-decfield-s1,B,yes,"Tab9,Sec7.4",train+eval,+ decision field (reader also writes applies yes/no),rule_v1/triplets (variant),1,GPU,0.9,,P2,"B-F-ledger2-triplets-s0,A-D12",todo,
-B-AB-decfield-s2,B,yes,"Tab9,Sec7.4",train+eval,+ decision field (reader also writes applies yes/no),rule_v1/triplets (variant),2,GPU,0.9,,P2,"B-F-ledger2-triplets-s0,A-D12",todo,
-B-AB-bitonly-judge-s0,B,yes,"Tab9,Sec7.4",train+eval,decision field only: judge sees bit + claim,rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,
-B-AB-bitonly-reader-s0,B,yes,"Tab9,Sec7.4",train+eval,reader writes bit only,rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,
-B-AB-bitonly-reader-s1,B,yes,"Tab9,Sec7.4",train+eval,reader writes bit only,rule_v1/triplets (variant),1,GPU,0.9,,P2,"B-F-ledger2-triplets-s0,A-D12",todo,
-B-AB-bitonly-reader-s2,B,yes,"Tab9,Sec7.4",train+eval,reader writes bit only,rule_v1/triplets (variant),2,GPU,0.9,,P2,"B-F-ledger2-triplets-s0,A-D12",todo,
-B-AB-verify-s0,B,yes,"Tab9,Sec7.4",train+eval,"+ verification pass (re-read each entry, regenerate once)",rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,
-B-AB-concept-s0,B,yes,"Tab9,Sec7.4",train+eval,concept scorer: linear heads for fields + linear verdict,rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,
-B-AB-probe-rw-s0,B,yes,"Tab9,Sec7.4",train+eval,- near-misses + probe re-weighting (DynaCF-style),rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,
-B-AB-nopres-s0,B,yes,"Tab9,Sec7.4",train+eval,- presentation edits,rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,
-B-AB-noresamp-s0,B,yes,"Tab9,Sec7.4",train+eval,- ledger resampling (p=0),rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,
-B-AB-pairwise-s0,B,yes,"Tab9,Sec7.4",train+eval,"verdict only, pairwise Bradley-Terry loss",rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,
-B-AB-change-s0,B,yes,"Tab9,Sec7.4",train+eval,ledger2 + change loss (lambda on dev),rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,
-B-AB-concl-only-s0,B,yes,"Tab9,Sec7.4",train+eval,"ledger2, labels on conclusion claim only",rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,
-B-AE-oracle-ledger,B,no,"Tab9,Sec7.4",eval,judge with program-supplied ledger (reader error share),rule_v1 test,-,GPU,0.5,,P1,B-F-ledger2-triplets-s0,todo,
-B-AE-pred-bit-program,B,no,"Tab9,Sec7.4",eval,program applied to predicted bit,rule_v1 test,-,GPU,0.5,,P1,B-F-ledger2-triplets-s0,todo,
-B-AE-field-interv,B,no,"Tab9,Sec7.4",eval,field interventions: change subject/status/time; swap in another case's ledger,rule_v1 test,-,GPU,0.5,,P1,B-F-ledger2-triplets-s0,todo,
+B-AB-decfield-s0,B,yes,"Tab9,Sec7.4",train+eval,+ decision field (reader also writes applies yes/no),rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,"code ready: format ledger2_dec (reader writes ledger + ""applies:"" bit)"
+B-AB-decfield-s1,B,yes,"Tab9,Sec7.4",train+eval,+ decision field (reader also writes applies yes/no),rule_v1/triplets (variant),1,GPU,0.9,,P2,"B-F-ledger2-triplets-s0,A-D12",todo,"code ready: format ledger2_dec (reader writes ledger + ""applies:"" bit)"
+B-AB-decfield-s2,B,yes,"Tab9,Sec7.4",train+eval,+ decision field (reader also writes applies yes/no),rule_v1/triplets (variant),2,GPU,0.9,,P2,"B-F-ledger2-triplets-s0,A-D12",todo,"code ready: format ledger2_dec (reader writes ledger + ""applies:"" bit)"
+B-AB-bitonly-judge-s0,B,yes,"Tab9,Sec7.4",train+eval,decision field only: judge sees bit + claim,rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,code ready: format dec_judge (judge sees only the bit line)
+B-AB-bitonly-reader-s0,B,yes,"Tab9,Sec7.4",train+eval,reader writes bit only,rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,code ready: format bit_reader
+B-AB-bitonly-reader-s1,B,yes,"Tab9,Sec7.4",train+eval,reader writes bit only,rule_v1/triplets (variant),1,GPU,0.9,,P2,"B-F-ledger2-triplets-s0,A-D12",todo,code ready: format bit_reader
+B-AB-bitonly-reader-s2,B,yes,"Tab9,Sec7.4",train+eval,reader writes bit only,rule_v1/triplets (variant),2,GPU,0.9,,P2,"B-F-ledger2-triplets-s0,A-D12",todo,code ready: format bit_reader
+B-AB-verify-s0,B,yes,"Tab9,Sec7.4",train+eval,"+ verification pass (re-read each entry, regenerate once)",rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,code ready: format ledger2_verify + eval mode verify (+n/6 verification examples)
+B-AB-concept-s0,B,yes,"Tab9,Sec7.4",train+eval,concept scorer: linear heads for fields + linear verdict,rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,code ready: kind concept (scripts/concept_scorer.py)
+B-AB-probe-rw-s0,B,yes,"Tab9,Sec7.4",train+eval,- near-misses + probe re-weighting (DynaCF-style),rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,"code ready: score rule_v1/abl_probe_blocks with B-F-ledger2-blocks-s0, scripts/probe_weights.py, spec pair_weights"
+B-AB-nopres-s0,B,yes,"Tab9,Sec7.4",train+eval,- presentation edits,rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,"corpus rule_v1/abl_nopres_triplets (A-D12), format ledger2"
+B-AB-noresamp-s0,B,yes,"Tab9,Sec7.4",train+eval,- ledger resampling (p=0),rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,ledger2 x triplets with resample_p 0
+B-AB-pairwise-s0,B,yes,"Tab9,Sec7.4",train+eval,"verdict only, pairwise Bradley-Terry loss",rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,code ready: format verdict_bt (Bradley-Terry on the two claims)
+B-AB-change-s0,B,yes,"Tab9,Sec7.4",train+eval,ledger2 + change loss (lambda on dev),rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,deferred (ROLE.md optional P2): needs paired-batch trainer
+B-AB-concl-only-s0,B,yes,"Tab9,Sec7.4",train+eval,"ledger2, labels on conclusion claim only",rule_v1/triplets (variant),0,GPU,0.9,,P1,"B-F-ledger2-triplets-s0,A-D12",todo,"corpus rule_v1/abl_conclusion_triplets (A-D12), format ledger2"
+B-AE-oracle-ledger,B,no,"Tab9,Sec7.4",eval,judge with program-supplied ledger (reader error share),rule_v1 test,-,GPU,0.5,,P1,B-F-ledger2-triplets-s0,todo,code ready: eval mode oracle_ledger on B-F-ledger2-triplets-s0
+B-AE-pred-bit-program,B,no,"Tab9,Sec7.4",eval,program applied to predicted bit,rule_v1 test,-,GPU,0.5,,P1,B-F-ledger2-triplets-s0,todo,code ready: eval mode program_bit on B-AB-decfield-s0
+B-AE-field-interv,B,no,"Tab9,Sec7.4",eval,field interventions: change subject/status/time; swap in another case's ledger,rule_v1 test,-,GPU,0.5,,P1,B-F-ledger2-triplets-s0,todo,ledger swap ready (eval mode ledger_swap); subject/status/time edits need A engine on main
 B-AE-premise-gate,B,no,"Tab9,Sec7.4",eval,"premise gate on step check (EVPV-style), needs step-check scores",rule_v1 test,-,GPU,0.5,,P1,B-F-ledger2-triplets-s0,todo,
 B-DIV-families-1of8-s0,B,yes,Fig3 left,train+eval,diversity curve: families at 1of8,A-D10,0,GPU,0.8,,P1,A-D10,todo,
 B-DIV-families-1of8-s1,B,yes,Fig3 left,train+eval,diversity curve: families at 1of8,A-D10,1,GPU,0.8,,P2,A-D10,todo,
