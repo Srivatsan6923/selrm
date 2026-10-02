@@ -20,6 +20,8 @@ meta.criterion_holds = 1|0|None, None for missing input):
 ledger2_dec  reader -> ledger + bit line; judge sees both           (+ decision field)
 dec_judge    reader -> ledger + bit line; judge sees the bit line only (decision field only)
 bit_reader   reader -> bit line only;     judge sees the bit line    (reader writes bit only)
+ledger2_verify  ledger2 examples + verification examples (one ledger entry and the case -> + if every
+             field is as the case records it, - for an entry with one corrupted field), B-AB-verify
 verdict_bt   verdict prompts of the two claims of a case; Bradley-Terry loss on u(correct) - u(wrong)
              (B-AB-pairwise; n//2 pairs = n sequences; missing-input cases have no preferred claim)
 """
@@ -31,9 +33,12 @@ from selrm.prompts import (answer, judge_prompt, ledger_to_text, rationale_promp
                            reader_prompt, verdict_prompt)
 
 FORMATS = ("verdict", "rationale", "summary2", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader",
-           "verdict_bt")
+           "verdict_bt", "ledger2_verify")
 VERSION = 2                  # bump when example construction changes (part of the pretok key)
-TWO_STAGE = ("summary2", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader")
+TWO_STAGE = ("summary2", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader", "ledger2_verify")
+# verification pass (Table 9 "+ verification pass"; B-defined prompt, the frozen prompts have none)
+VERIFY = ("Rule: {rule}\n\nCase:\n{case}\n\nCondition under test: {condition}\n\nLedger entry:\n{entry}\n\n"
+          "Is every field of this entry (found, subject, status, time) as the case records it? Answer + or -.")
 FIELDS = {"ledger2": ("need", "found", "subject", "status", "time"), "value2": ("need", "found")}
 BITS = {1: "applies: yes", 0: "applies: no", None: "applies: unknown"}
 NOT_MENTIONED = "not mentioned"
@@ -59,8 +64,38 @@ def gold_record(rec: dict, fmt: str) -> str:
         return BITS[holds(rec)]
     if fmt == "value2":
         return "\n\n".join("\n".join(f"{k}: {e[k]}" for k in FIELDS[fmt]) for e in rec["ledger"])
-    text = ledger_to_text(rec["ledger"])
+    text = ledger_to_text(rec["ledger"])            # ledger2, ledger2_verify, decision-bit formats
     return text + "\n\n" + BITS[holds(rec)] if fmt in ("ledger2_dec", "dec_judge") else text
+
+
+def entry_text(e: dict) -> str:
+    return "\n".join(f"{k}: {e[k]}" for k in ("need", "found", "subject", "status", "time"))
+
+
+def parse_entries(text: str) -> list:
+    """Entries of a well-formed ledger2 text as dicts."""
+    return [dict(line.split(": ", 1) for line in block.split("\n")) for block in text.strip().split("\n\n")]
+
+
+def verify_prompt(rec: dict, entry: dict) -> str:
+    return VERIFY.format(rule=rec["rule_text"], case=rec["case_text"], condition=rec["condition"],
+                         entry=entry_text(entry))
+
+
+def corrupt(e: dict, case_text: str, rng: random.Random) -> dict:
+    """The entry with one field made wrong: subject, status, time or found."""
+    e, k = dict(e), rng.choice(("subject", "status", "time", "found"))
+    if k == "subject":
+        e["subject"] = "other (mother)" if e["subject"] == "patient" else "patient"
+    elif k == "status":
+        e["status"] = "absent" if e["status"] == "present" else "present"
+    elif k == "time":
+        e["time"] = "past (2015)" if e["time"] == "current" else "current"
+    else:
+        lines = [l.strip() for l in case_text.split("\n")[1:] if l.strip() and l.strip() != e["found"]
+                 and e["found"] not in l]
+        e["found"] = rng.choice(lines) if lines else (NOT_MENTIONED if e["found"] != NOT_MENTIONED else "present")
+    return e
 
 
 def judge_view(text: str, fmt: str) -> str:
@@ -95,6 +130,8 @@ def well_formed(text: str, case_text: str, fmt: str) -> bool:
     text = text.strip()
     if fmt == "bit_reader":
         return text in BITS.values()
+    if fmt == "ledger2_verify":
+        fmt = "ledger2"
     if fmt in ("ledger2_dec", "dec_judge"):
         head, sep, last = text.rpartition("\n\n")
         return bool(sep) and last in BITS.values() and well_formed(head, case_text, "ledger2")
@@ -135,6 +172,16 @@ def build_examples(records, fmt: str, n: int | None = None, resample_p: float = 
     which is shared by all training seeds of a cell (seeds vary order and LoRA init)."""
     if fmt not in FORMATS:
         raise ValueError(f"unknown format {fmt}")
+    if fmt == "ledger2_verify":       # the ledger2 examples, plus verification examples on top (n // 6)
+        ex, st = build_examples(records, "ledger2", n, resample_p, seed, pair_weights)
+        rng = random.Random(f"verify.{seed}")
+        units = reader_units(records)
+        for r in _take(units, (n or len(records)) // 6, rng):
+            e = rng.choice(r["ledger"])
+            bad = rng.random() < 0.5
+            ex.append({"prompt": verify_prompt(r, corrupt(e, r["case_text"], rng) if bad else e),
+                       "completion": "-" if bad else "+", "part": "verify", "src": "/".join(r["iid"].split("/")[:2])})
+        return ex, st | {"n": len(ex), "verify": len(ex) - st["n"]}
     rng, n = random.Random(seed), n or len(records)
     if fmt in ("verdict", "rationale"):
         ex = []

@@ -20,13 +20,18 @@ def test_budget_and_balance():
             if fmt == "verdict_bt":            # items are claim pairs: n sequences = n // 2 pairs
                 assert st["n"] == 2 * len(ex) == 2 * (n // 2), (fmt, n, len(ex))
                 continue
+            if fmt == "ledger2_verify":        # the ledger2 budget plus n // 6 verification examples
+                assert len(ex) == st["n"] == n + n // 6 and st["verify"] == n // 6, (fmt, n, len(ex))
+                continue
             assert len(ex) == n == st["n"], (fmt, n, len(ex))
         ex, st = build_examples(recs, fmt)
         if fmt == "verdict_bt":
             continue
         ans = [e["completion"][-1] for e in ex if e["part"] in ("verdict", "rationale", "judge")]
+        if fmt == "ledger2_verify":
+            st = dict(st, reader=st["reader"], judge=st["judge"])
         assert ans.count("+") == ans.count("-"), fmt
-        if fmt in ("summary2", "value2", "ledger2"):
+        if fmt in ("summary2", "value2", "ledger2", "ledger2_verify"):
             assert st["reader"] + st["judge"] == len(recs) and abs(st["reader"] - st["judge"]) <= 1
 
 

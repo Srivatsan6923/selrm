@@ -21,9 +21,9 @@ from selrm.prompts import judge_prompt
 
 KIND = {"verdict": "verdict", "verdict_bt": "verdict", "rationale": "rationale", "summary2": "reader_prose",
         "value2": "reader_ledger", "ledger2": "reader_ledger", "ledger2_dec": "reader_ledger",
-        "dec_judge": "reader_ledger", "bit_reader": "reader_ledger"}
+        "dec_judge": "reader_ledger", "bit_reader": "reader_ledger", "ledger2_verify": "reader_ledger"}
 PROGRAM_U = 10.0            # |u| when the rule program decides from the predicted bit
-MODES = (None, "oracle_ledger", "program_bit", "ledger_swap")
+MODES = (None, "oracle_ledger", "program_bit", "ledger_swap", "verify")
 
 
 def load_jsonl(path):
@@ -129,9 +129,12 @@ class Scorer:
         return u
 
     @torch.no_grad()
-    def generate(self, seqs):
-        """Greedy, fixed max length; returns generated ids without the end token, and
-        whether generation stopped by itself."""
+    def generate(self, seqs, sample=False, seed=0):
+        """Greedy (or seeded sampling at T=0.7, top-p 0.95), fixed max length; returns generated
+        ids without the end token, and whether generation stopped by itself."""
+        if sample:
+            torch.manual_seed(seed)
+        extra = {"do_sample": True, "temperature": 0.7, "top_p": 0.95} if sample else {"do_sample": False}
         out, done = [None] * len(seqs), [False] * len(seqs)
         batches, t0, g0 = self._batches(seqs, self.bs_gen), time.time(), self.gen_tokens
         for k, b in enumerate(batches):
@@ -139,7 +142,7 @@ class Scorer:
                 self.log(f"generate: batch {k}/{len(batches)}, {self.gen_tokens - g0} tokens, "
                          f"{(self.gen_tokens - g0) / max(1e-9, time.time() - t0):.0f} tok/s")
             ids, att = self._left_pad([seqs[i] for i in b])
-            g = self.model.generate(input_ids=ids, attention_mask=att, do_sample=False,
+            g = self.model.generate(input_ids=ids, attention_mask=att, **extra,
                                     max_new_tokens=self.max_new, eos_token_id=self.eos,
                                     pad_token_id=self.pad, use_cache=True)
             g = g[:, ids.shape[1]:].tolist()
@@ -209,6 +212,8 @@ def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="u
         for r, out, d in zip(units, outs, done):
             ok = (d or fmt == "summary2") and well_formed(out, r["case_text"], fmt)   # a cut-off ledger is unparsable
             text[reader_unit(r)] = (out, ok)
+        if mode == "verify":
+            extra_v = verification_pass(sc, units, seqs, text, fmt)
         u = np.full(len(recs), MALFORMED_U)
         if mode == "program_bit":
             u = np.array([program_u(r, *text[reader_unit(r)]) for r in recs])
@@ -221,6 +226,8 @@ def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="u
         bad = sum(not ok for _, ok in text.values())
         extra = {"reader_units": len(units), "malformed_units": bad, "mode": mode,
                  "malformed_rate": round(bad / max(1, len(units)), 4), "gen_not_stopped": sum(not d for d in done)}
+        if mode == "verify":
+            extra |= extra_v
     os.makedirs(out_dir, exist_ok=True)
     with open(f"{out_dir}/scores_{set_name.replace('/', '~')}.jsonl", "w", encoding="utf-8") as f:
         for row in rows:
@@ -232,6 +239,39 @@ def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="u
     log(f"{run_id} {set_name}: TA {a.get('TA', float('nan')):.1f} Rev {a.get('Rev', float('nan')):.1f} "
         f"Hold {a.get('Hold', float('nan')):.1f} n={a.get('n')} ({summ['eval']['seconds']} s)")
     return summ
+
+
+def verification_pass(sc, units, seqs, text, fmt):
+    """Every entry of every well-formed ledger is re-read against the case (verify prompt,
+    rejected if u < 0); a ledger with a rejected entry (or a malformed one) is regenerated
+    once by seeded sampling and replaced if the new ledger is well formed with fewer rejected
+    entries. Updates text in place; returns counts."""
+    from selrm.formats import parse_entries, verify_prompt
+
+    def rejected(pairs):
+        idx = [(k, e) for k, (out, ok) in pairs.items() if ok for e in parse_entries(out)]
+        u = sc.score(chat_ids(sc.tok, [verify_prompt(by_unit[k], e) for k, e in idx])) if idx else []
+        n = {k: 0 for k in pairs}
+        for (k, _), x in zip(idx, u):
+            n[k] += int(x < 0)
+        return n, len(idx), int(sum(x < 0 for x in u))
+
+    by_unit = {reader_unit(r): r for r in units}
+    rej, n_entries, n_rej = rejected(text)
+    redo = [i for i, r in enumerate(units) if rej[reader_unit(r)] or not text[reader_unit(r)][1]]
+    replaced = 0
+    if redo:
+        gens, done = sc.generate([seqs[i] for i in redo], sample=True, seed=0)
+        new = {}
+        for i, g, d in zip(redo, gens, done):
+            out = sc.tok.decode(g)
+            new[reader_unit(units[i])] = (out, d and well_formed(out, units[i]["case_text"], fmt))
+        rej2, _, _ = rejected(new)
+        for k, (out, ok) in new.items():
+            if ok and (not text[k][1] or rej2[k] < rej[k]):
+                text[k], replaced = (out, ok), replaced + 1
+    return {"verify_entries": n_entries, "verify_rejected_entries": n_rej, "verify_regenerated": len(redo),
+            "verify_replaced": replaced}
 
 
 def program_u(rec, out, ok):

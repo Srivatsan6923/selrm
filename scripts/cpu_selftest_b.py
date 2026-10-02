@@ -38,14 +38,14 @@ for name, n_groups in (("train_triplets", 60), ("test_heldout_rules", 12)):
 
 hp = {"backend": "hf", "bf16": False, "per_device": 4, "batch": 8, "save_every_s": 0, "workers": 0}
 runs = [{"run_id": f"SELFTEST-{f}", "format": f, "corpus": "mini/train_triplets", "seed": 0,
-         "max_steps": 2, "base_model": "tiny/qwen35", "hp": hp, "keep_adapter": f in ("ledger2", "ledger2_dec"),
+         "max_steps": 2, "base_model": "tiny/qwen35", "hp": hp, "keep_adapter": f in ("ledger2", "ledger2_dec", "ledger2_verify"),
          "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24},
          "eval_sets": ["mini/test_heldout_rules"]} for f in FORMATS]
 runs.append({"run_id": "SELFTEST-evalonly-ledger2", "format": "ledger2", "train": False, "seed": 0,
              "base_model": "tiny/qwen35", "adapter": "adapters/SELFTEST-ledger2", "hp": hp, "priority": 9,
              "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24}, "eval_sets": ["mini/test_heldout_rules"]})
 for mode, fmt, ad in (("oracle_ledger", "ledger2", "SELFTEST-ledger2"), ("program_bit", "ledger2_dec", "SELFTEST-ledger2_dec"),
-                      ("ledger_swap", "ledger2", "SELFTEST-ledger2")):
+                      ("ledger_swap", "ledger2", "SELFTEST-ledger2"), ("verify", "ledger2_verify", "SELFTEST-ledger2_verify")):
     runs.append({"run_id": f"SELFTEST-{mode}", "format": fmt, "train": False, "seed": 0, "base_model": "tiny/qwen35",
                  "adapter": f"adapters/{ad}", "hp": hp, "priority": 9, "eval_sets": ["mini/test_heldout_rules"],
                  "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24, "mode": mode}})

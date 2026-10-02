@@ -21,7 +21,7 @@ BASE = "unsloth/Qwen3.5-9B"
 MAX_LEN = 1024
 EVAL_KIND = {"verdict": "verdict", "verdict_bt": "verdict", "rationale": "rationale", "summary2": "reader_prose",
              "value2": "reader_ledger", "ledger2": "reader_ledger", "ledger2_dec": "reader_ledger",
-             "dec_judge": "reader_ledger", "bit_reader": "reader_ledger"}
+             "dec_judge": "reader_ledger", "bit_reader": "reader_ledger", "ledger2_verify": "reader_ledger"}
 
 
 def tok_tag(spec):
