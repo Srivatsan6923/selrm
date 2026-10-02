@@ -166,8 +166,14 @@ def _propose(rule, crit, nm_kind, tier, split, rng, rng_m=None):
     for c in rule.criteria:
         if c.kind == "numeric" and c is not crit:
             op = OPS[c.op]
-            lo_hi, ok = ((c.flip_range, lambda v, c=c, op=op: op(v, c.threshold)) if c.cid in met else
-                         (c.default_range, lambda v, c=c, op=op: not op(v, c.threshold)))
+            if c.cid in met:           # context held met: a value just across the threshold
+                lo, hi = c.flip_range
+                near = (max(lo, c.threshold - 2 * c.near_delta), min(hi, c.threshold)) \
+                    if c.op in ("<", "<=") else (max(lo, c.threshold), min(hi, c.threshold + 2 * c.near_delta))
+                lo_hi = near if near[0] <= near[1] else c.flip_range
+                ok = lambda v, c=c, op=op: op(v, c.threshold)  # noqa: E731
+            else:
+                lo_hi, ok = c.default_range, lambda v, c=c, op=op: not op(v, c.threshold)
             vals[c.cid] = _draw(rng, c, *lo_hi, ok)
     if crit.kind == "numeric":
         op = OPS[crit.op]
@@ -181,9 +187,10 @@ def _propose(rule, crit, nm_kind, tier, split, rng, rng_m=None):
             base_v = _draw(rng, crit, *crit.default_range,
                            lambda v: not op(v, thr) and abs(v - thr) > abs(near_v - thr))
         else:                          # time: a flip-side value at a time the criterion ignores
-            base_v = _draw(rng, crit, *crit.default_range, lambda v: not op(v, thr))
+            clear = lambda v: not op(v, thr) and _steps(abs(v - thr), crit) >= _steps(crit.near_delta, crit)  # noqa: E731
+            base_v = _draw(rng, crit, *crit.default_range, clear)
             past_v = _draw(rng, crit, *crit.flip_range, lambda v: op(v, thr))
-            old_v = _draw(rng, crit, *crit.default_range, lambda v: not op(v, thr))
+            old_v = _draw(rng, crit, *crit.default_range, clear)
         if tier == "alt":              # flip where the original threshold gives the other answer
             orig = crit.threshold
             flip_v = _draw(rng, crit, min(thr, orig), max(thr, orig),
@@ -336,7 +343,7 @@ def _propose(rule, crit, nm_kind, tier, split, rng, rng_m=None):
             return P.MISSING[i].format(What=what[0].upper() + what[1:], what=what)
         kw = {"Poss": poss, "rel": m.subject, "year": m.year}
         if m.kind == "numeric":
-            kw.update(v=fmt(m.value, by_concept[concept]), dia=round(0.6 * m.value + 4))
+            kw.update(v=fmt(m.value, by_concept[concept]), dia=round(0.55 * m.value + 15))  # 90 -> 64
         return P.BANKS[concept][form][i].format(**kw)
 
     def case(frame, ls, labelled=True):

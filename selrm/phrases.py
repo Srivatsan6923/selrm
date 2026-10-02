@@ -766,9 +766,9 @@ BANKS = {
         "present": [
             "Peripheral artery disease with calf claudication.",
             "Has peripheral artery disease.",
-            "Myocardial infarction confirmed by troponin and ECG today.",
+            "Has had a myocardial infarction and remains on secondary prevention.",
             "Peripheral artery disease, on cilostazol for pain on walking.",
-            "Admitted with a myocardial infarction this week.",
+            "Lives with peripheral artery disease affecting the left leg.",
             "Has symptomatic peripheral artery disease of both legs.",
         ],
         "past": [
@@ -1190,12 +1190,12 @@ BANKS = {
     },
     "exudate": {
         "generic": [
-            "No pus or white patches on the tonsils.",
-            "Throat mildly red; tonsils not coated.",
-            "No membrane, film or spots seen over the tonsils.",
-            "Nothing coating either tonsil.",
+            "Tonsils normal in appearance.",
+            "Throat mildly red; tonsils otherwise unremarkable.",
+            "Tonsillar surfaces smooth and pink.",
+            "Both tonsils look healthy.",
             "Tonsils pink and clean on inspection.",
-            "Tonsils slightly red but clean, without pus.",
+            "Tonsils a little red, surfaces clear.",
         ],
         "present": [
             "White exudate on both tonsils.",
@@ -1233,9 +1233,9 @@ BANKS = {
     "neck_nodes": {
         "generic": [
             "Neck soft and nontender.",
-            "No tender swellings in the neck.",
+            "Neck supple, with nothing abnormal felt.",
             "No neck masses.",
-            "Neck glands cannot be felt.",
+            "Neck feels normal on examination.",
             "Neck palpation unremarkable.",
             "Front of the neck without tenderness or swelling.",
         ],

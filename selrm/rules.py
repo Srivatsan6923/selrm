@@ -250,7 +250,7 @@ RULES: list[Rule] = [
             alt_threshold=12),
           N("rr", "rr", "respiratory rate", ["respiratory rate"], ">=", 30, (14, 24),
             (30, 40), 4),
-          N("sbp", "sbp", "blood pressure", ["systolic", "blood pressure", "bp "], "<", 90,
+          N("sbp", "sbp", "systolic blood pressure", ["systolic", "blood pressure", "bp "], "<", 90,
             (104, 150), (70, 89), 8),
           N("age", "age", "age", ["age"], ">=", 65, (40, 60), (66, 88), 5,
             nm=("numeric",))],

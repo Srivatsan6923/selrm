@@ -31,6 +31,7 @@ Corpora, by case share:
 Near-miss kinds have equal shares in every set. Tiers are drawn with weights easy 2 : long 1 : superseded 1 : delabelled 1 among the tiers valid for the cell. The alt tier appears only in test_L3alt.
 
 ## Record conventions beyond docs/INTERFACES.md
+- **Presentation edit** (`case_kind = pres`): the same facts as base. The line order and header frame change, and numeric values (current, or past with the same year) are reworded with the same value. Finding lines, superseded values and fillers keep their exact lines, so nothing but presentation changes.
 - **Missing twin** (`case_kind = missing`). The base case with the decisive input unknown:
   - A measured value is omitted. A finding gets a "not recorded" line; there are 6 templates, 4 for train and 2 for test.
   - Both claims have label 0 (undetermined). The ledger status is `unknown`.

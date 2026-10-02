@@ -90,6 +90,9 @@ def test_no_coupled_concepts_or_setting_conflicts():
         app = {(c.concept, "family" if c.counts_family else "ever" if c.counts_past else "current")
                for c in r.criteria}
         assert not (cs | app) & EXCLUDE.get(r.setting, set()), r.rid
+    from selrm.rules_grammar import SAMPLED, _contra
+    for r in SAMPLED:      # sampled rules never switch to a drug their condition rules out
+        assert not [c.concept for c in r.criteria if _contra(c.concept, r.default, r.alternative)], r.rid
 
 
 def test_claims_use_the_verb_of_the_rule_text():

@@ -141,7 +141,7 @@ FINDING_CONDITIONS = {   # concept -> {applicability: (phrase in the rule, crite
                  "family": ("the patient or a first-degree relative (parent, sibling or child) has "
                             "had diabetes at any time", "diabetes in the patient or a first-degree relative")},
     "vascular": {"ever": ("the patient has ever had a myocardial infarction or peripheral artery "
-                          "disease (current or past)", "vascular disease")},
+                          "disease (current or past)", "myocardial infarction or peripheral artery disease")},
     "confusion": {"current": ("the patient has new confusion", "new confusion")},
     "angioedema": {"ever": ("the patient has ever had angioedema (current or past)", "angioedema")},
     "asthma": {"current": ("the patient currently has asthma", "asthma"),
@@ -271,6 +271,43 @@ for _s in OUTPATIENT:
 COUPLED = ({"cad", "vascular"}, {"vte", "warfarin"}, {"egfr", "creatinine"}, {"weight", "bmi"},
            {"sbp", "map"}, {"hit", "platelets"})
 
+# Drugs a condition rules out: a sampled rule never switches to an alternative that
+# adds one of them (a penicillin for a penicillin allergy, diltiazem for heart
+# failure). Numeric concepts in the direction the sampled thresholds use.
+CONTRA = {
+    "pen_allergy": ("amoxicillin", "co-amoxiclav", "penicillin", "piperacillin"),
+    "sulfa_allergy": ("sulfamethoxazole",), "chf": ("diltiazem", "naproxen", "ibuprofen"),
+    "peptic_ulcer": ("naproxen", "ibuprofen", "aspirin"),
+    "bleeding": ("warfarin", "apixaban", "enoxaparin", "fondaparinux", "naproxen", "ibuprofen", "aspirin"),
+    "pregnancy": ("lisinopril", "warfarin", "doxycycline", "atorvastatin", "ezetimibe", "fluconazole",
+                  "naproxen", "ibuprofen", "trimethoprim"),
+    "asthma": ("metoprolol", "naproxen", "ibuprofen"), "angioedema": ("lisinopril",), "hit": ("enoxaparin",),
+    "warfarin": ("fluconazole", "naproxen", "ibuprofen", "apixaban", "trimethoprim"),
+    "clarithromycin": ("colchicine", "atorvastatin"), "mech_valve": ("apixaban",),
+    "vte": ("combined oral contraceptive",), "cad": ("sumatriptan",), "vascular": ("sumatriptan",),
+    "stroke": ("combined oral contraceptive", "sumatriptan"), "aspirin": ("naproxen", "ibuprofen"),
+    "diabetes": ("prednisone",),
+    "egfr": ("metformin", "nitrofurantoin", "naproxen", "ibuprofen"),
+    "creatinine": ("metformin", "nitrofurantoin", "naproxen", "ibuprofen"),
+    "potassium": ("spironolactone", "lisinopril"),
+    "platelets": ("enoxaparin", "fondaparinux", "apixaban", "warfarin", "naproxen", "ibuprofen", "aspirin"),
+    "alt_enzyme": ("atorvastatin",),
+}
+LOWERS_BP = ("lisinopril", "amlodipine", "metoprolol", "diltiazem", "labetalol")
+
+
+def _contra(concept, default, alt):
+    return any(b in alt.lower() and b not in default.lower() for b in CONTRA.get(concept, ()))
+
+
+def _configs(concept, cfgs, setting, alt):
+    """Numeric configurations a scenario allows: no low blood pressure in an
+    outpatient visit or before a drug that lowers it."""
+    if concept == "sbp" and (setting in OUTPATIENT or any(d in alt.lower() for d in LOWERS_BP)):
+        return [x for x in cfgs if x[0] in (">", ">=")]
+    return cfgs
+
+
 OPERATORS = (("single", 0.2), ("any_of", 0.25), ("all_of", 0.2), ("two_of_three", 0.15),
              ("score_cutoff", 0.2))
 
@@ -359,6 +396,8 @@ def sample_rules(n=250, seed=2027, scenarios=None, prefix="gs", title="Sampled r
         pool = [(c, v) for c, v in variants
                 if not any(kw in setting.lower() for kw in keywords[c])
                 and c not in EXCLUDE.get(setting, ()) and (c, v) not in EXCLUDE.get(setting, ())
+                and not _contra(c, default, alt)
+                and (v != "value" or _configs(c, num_cfg[c], setting, alt))
                 and (c != "pregnancy" or (sex == "female" and ages[1] <= 45))]
         chosen = []
         for c, v in rng.sample(pool, len(pool)):
@@ -376,7 +415,8 @@ def sample_rules(n=250, seed=2027, scenarios=None, prefix="gs", title="Sampled r
             if len(set(points)) == 1 or lo > hi:
                 continue
             cutoff = rng.randint(lo, hi)
-        conds = [_condition(c, v, f"c{i + 1}", rng.choice(num_cfg[c]) if v == "value" else None,
+        conds = [_condition(c, v, f"c{i + 1}",
+                            rng.choice(_configs(c, num_cfg[c], setting, alt)) if v == "value" else None,
                             fkw, points[i]) for i, (c, v) in enumerate(chosen)]
         rid, name = f"{prefix}{len(out):03d}", f"{title} {len(out):03d}"
         if op == "single":
