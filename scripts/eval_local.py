@@ -110,7 +110,7 @@ class Scorer:
         single = np.array([self._last([seqs[i]])[0] for i in pick])
         batched = self._last([seqs[i] for i in pick])
         diff = float(np.abs(single - batched).max())
-        tol = 0.1 + 0.01 * float(np.abs(single).max())
+        tol = 0.5 + 0.02 * float(np.abs(single).max())   # bf16 noise between batch shapes is ~0.1-0.2; a padding bug moves u by units
         self.pad_ok = diff <= tol
         self.log(f"padding self-check: max |u_batch - u_single| = {diff:.4f} (tol {tol:.3f}) -> "
                  f"{'left padding' if self.pad_ok else 'exact-length buckets'}")
