@@ -44,8 +44,11 @@ storage); the rules below follow them and the portal source (prp/k8s_portal).
                                          corpus, n, p, construction seed, max_len, formats.VERSION
 /pvc/selrm/tok/<base>/eval/<set>/<kind>.npz   pre-tokenised eval prompts (kind verdict|rationale|reader_*)
 /pvc/selrm/queue/<name>.json    queue files (run specs); runners started with `runners all` read every file
-/pvc/selrm/queue/v2/<name>.json queues that need code from 2 Oct 13:00 UTC on (genprm, ...): read only by
-                                runners staged with that code (older runners read the top level only)
+/pvc/selrm/queue/v2/<name>.json queues that need code from 2 Oct 13:00 UTC on (genprm, ledger_edit; specs carry
+                                min_gen 2): runners staged before then read the top level only. Runners staged from
+                                then on read every subdirectory; from 7d0f3a6 on they also skip specs whose format,
+                                eval mode, kind or min_gen their code lacks. Specs needing GEN 3 go out only after the
+                                runners staged between f260922 and 7d0f3a6 have exited (they check the format only).
 /pvc/selrm/code/<sha12>/        code snapshots (B's commits; A's freeze e40789bd5d7a for data rebuilds and checks)
 /pvc/selrm/derived/<set>/check_code.jsonl   genprm check code per record (A's render_check_code, run by pretok)
 /pvc/selrm/results/<run_id>/    CLAIMED_B, HEARTBEAT, DONE/FAILED_n/KILLED_n, meta.json, summary_*, scores_*, gpu_util.csv, run.log
