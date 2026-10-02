@@ -253,13 +253,13 @@ def main():
     elif a.cmd == "prep":
         code = snapshot(a.code)
         q = a.args[0]
-        apply(cpu_job(f"selrm-b-prep-{q.replace('_', '-').replace('.json', '')}-{int(time.time()) % 100000}",
+        apply(cpu_job(f"selrm-b-prep-{q.replace('_', '-').replace('/', '-').replace('.json', '')}-{int(time.time()) % 100000}",
                       ["bash", f"/pvc/selrm/code/{code}/k8s/prep.sh", a.env, code, q], cpu=2, mem="16Gi",
                       eph="40Gi", hours=2))      # mostly single-threaded: keep median usage >= 20% of request
     elif a.cmd == "runners":
         code = snapshot(a.code)
         q = a.args[0]
-        stem = q.split(",")[0].replace("_", "-").replace(".json", "")   # q: a queue, a comma list, or all (every queue file)
+        stem = q.split(",")[0].replace("_", "-").replace("/", "-").replace(".json", "")   # q: a queue, a comma list, or all (every queue file)
         for i in range(a.n):
             apply(runner_job(f"selrm-b-run-{stem}-{a.gpu}-{int(time.time()) % 100000}-{i}", q, code, a.env,
                              a.gpu, a.max_runs, a.hours, a.cpu, a.mem))
