@@ -91,7 +91,7 @@ B-F-ledger2-balanced-s1,B,yes,"Tab3,Tab4",train+eval,ledger2 x balanced,rule_v1/
 B-F-ledger2-balanced-s2,B,yes,"Tab3,Tab4",train+eval,ledger2 x balanced,rule_v1/balanced,2,GPU,1.9,,P1,"A-D4,B-C0",queued,"est with primary eval sets (dev, test_L2, test_L3alt, dev_missing, missing); NRP queue b_f_s12.json (2 Oct)"
 B-F-ledger2-balanced-s3,B,yes,"Tab3,Tab4",train+eval,ledger2 x balanced,rule_v1/balanced,3,GPU,1.9,,P2,"A-D4,B-C0",todo,"est with primary eval sets (dev, test_L2, test_L3alt, dev_missing, missing)"
 B-F-ledger2-balanced-s4,B,yes,"Tab3,Tab4",train+eval,ledger2 x balanced,rule_v1/balanced,4,GPU,1.9,,P2,"A-D4,B-C0",todo,"est with primary eval sets (dev, test_L2, test_L3alt, dev_missing, missing)"
-B-F-ledger2-blocks-s0,B,yes,"Tab3,Tab4",train+eval,ledger2 x blocks,rule_v1/blocks,0,GPU,2.3,,P0,"A-D4,B-C0",queued,NRP queue b_f_s0.json (2 Oct)
+B-F-ledger2-blocks-s0,B,yes,"Tab3,Tab4",train+eval,ledger2 x blocks,rule_v1/blocks,0,GPU,2.3,2.799,P0,"A-D4,B-C0",done,NRP queue b_f_s0.json (2 Oct)
 B-F-ledger2-blocks-s1,B,yes,"Tab3,Tab4",train+eval,ledger2 x blocks,rule_v1/blocks,1,GPU,2.3,,P0,"A-D4,B-C0",queued,NRP queue b_f_key_s12.json (2 Oct)
 B-F-ledger2-blocks-s2,B,yes,"Tab3,Tab4",train+eval,ledger2 x blocks,rule_v1/blocks,2,GPU,2.3,,P0,"A-D4,B-C0",queued,NRP queue b_f_key_s12.json (2 Oct)
 B-F-ledger2-blocks-s3,B,yes,"Tab3,Tab4",train+eval,ledger2 x blocks,rule_v1/blocks,3,GPU,2.3,,P2,"A-D4,B-C0",todo,
