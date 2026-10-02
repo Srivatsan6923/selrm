@@ -134,6 +134,18 @@ def wait_running(pod, timeout=600):
     sys.exit(f"{pod} not running after {timeout} s")
 
 
+def snapshot(code=None):
+    """The code snapshot a Job runs: --code, else HEAD, pushed first when it is not on the PVC
+    (a Job started on a missing snapshot fails at once)."""
+    code = code or sha()
+    if subprocess.run(["kubectl", "-n", NS, "exec", "selrm-b-sync", "--", "test", "-d", f"/pvc/selrm/code/{code}"],
+                      capture_output=True).returncode:
+        if code != sha():
+            sys.exit(f"code snapshot {code} is not on the PVC")
+        push_code()
+    return code
+
+
 def exec_sync(*cmd, inp=None):
     return kubectl("exec", *(["-i"] if inp is not None else []), "selrm-b-sync", "--", *cmd, inp=inp)
 
@@ -233,17 +245,17 @@ def main():
         if marked:
             print(f"marked {len(marked)} runs CLAIMED_B in results_git (commit and push to publish the claims)")
     elif a.cmd == "build-env":
-        code = a.code or sha()
+        code = snapshot(a.code)
         apply(cpu_job(f"selrm-b-build-env-{a.args[0]}", ["bash", f"/pvc/selrm/code/{code}/k8s/build_env.sh", a.args[0]],
                       cpu=6, mem="12Gi", eph="80Gi", hours=2))   # compile uses ~3-6 cores; usage must stay >=20% of request
     elif a.cmd == "prep":
-        code = a.code or sha()
+        code = snapshot(a.code)
         q = a.args[0]
         apply(cpu_job(f"selrm-b-prep-{q.replace('_', '-').replace('.json', '')}-{int(time.time()) % 100000}",
                       ["bash", f"/pvc/selrm/code/{code}/k8s/prep.sh", a.env, code, q], cpu=2, mem="16Gi",
                       eph="40Gi", hours=2))      # mostly single-threaded: keep median usage >= 20% of request
     elif a.cmd == "runners":
-        code = a.code or sha()
+        code = snapshot(a.code)
         q = a.args[0]
         stem = q.replace("_", "-").replace(".json", "")
         for i in range(a.n):
@@ -254,13 +266,13 @@ def main():
     elif a.cmd == "build-data":      # build-data <A code sha12> [builder args...]: rebuild + sha256 check + publish
         code = a.args[0]
         apply(cpu_job(f"selrm-b-build-data-{code[:8]}-{int(time.time()) % 100000}",
-                      ["bash", f"/pvc/selrm/code/{a.code or sha()}/k8s/build_data.sh", a.env, code, *a.args[1:]],
+                      ["bash", f"/pvc/selrm/code/{snapshot(a.code)}/k8s/build_data.sh", a.env, code, *a.args[1:]],
                       cpu=2, mem="12Gi", eph="60Gi", hours=3))
     elif a.cmd == "publish":         # publish <hf repo> --secret NAME:KEY  (only once the user confirmed the secret)
         name, key = a.secret.split(":")
         job = cpu_job(f"selrm-b-publish-{int(time.time()) % 100000}",
                       ["bash", "-c", f"tar -xf /pvc/selrm/env/selrm-env-{a.env}.tar -C /opt && "
-                                     f"/opt/selrm-env/venv/bin/python /pvc/selrm/code/{a.code or sha()}/scripts/publish_adapters_b.py "
+                                     f"/opt/selrm-env/venv/bin/python /pvc/selrm/code/{snapshot(a.code)}/scripts/publish_adapters_b.py "
                                      f"--root /pvc/selrm --repo {a.args[0]}"], cpu=1, mem="2Gi", eph="20Gi", hours=1)
         job["spec"]["template"]["spec"]["containers"][0]["env"].append(
             {"name": "HF_TOKEN", "valueFrom": {"secretKeyRef": {"name": name, "key": key}}})
