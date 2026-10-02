@@ -1,5 +1,5 @@
 # STATE role B (maintained by Claude Code)
-Updated: 2026-10-02 ~13:05 UTC (Fri). Schedule: ahead (rule_v1 frozen by A on Fri, not Sat; factorial running).
+Updated: 2026-10-02 ~15:05 UTC (Fri). Schedule: ahead (rule_v1 frozen by A on Fri; factorial running since 12:46).
 
 ## Done
 - B-C0 (code + NRP pipeline): selrm/{formats,runq}.py; scripts/{pretok,finetune,eval_local,train_eval_job,make_queue_b,
@@ -13,25 +13,26 @@ Updated: 2026-10-02 ~13:05 UTC (Fri). Schedule: ahead (rule_v1 frozen by A on Fr
   to A's registry, published on the PVC; fold-1 also rebuilt on the laptop (30/30 match).
 
 ## In progress (NRP)
-- Factorial seed 0 (20 runs, queue b_f_s0) + key cells seeds 1-2 (8 runs, b_f_key_s12): running on A100s since
-  12:46 UTC (verdict x blocks, verdict x triplets, ledger2 x blocks first; ~1.2 h training per verdict run).
-- Seed-0 extras queued behind the factorial (b_x_s0: 9 ablations, probe-rw step 1, 3 eval-only, 8 fold runs,
-  13 diversity runs; b_tr_s0: FoVer transfer). Newer-code queues in queue/v2/: b_genprm_s0 (GenPRM-style verifier),
-  b_x2_s0 (field edits).
-- Runners: 8 A100 Jobs (4 running, 4 pending; the 4 pending are replaced with current code so v2 queues get a reader).
+- Factorial seed 0 (20 runs) + key cells seeds 1-2 (8): 2 DONE (verdict x blocks, verdict x triplets; provisional
+  report docs/FACTORIAL_B_S0.md: L2 TA 58.2 vs 91.3, MR 100 both, shortcut scorers <= 54); running: ledger2 x blocks,
+  ledger2 x triplets, verdict x natural, verdict x balanced, rationale x natural.
+- Queued behind it: seed-0 extras (b_x_s0, b_tr_s0, v2/: genprm, field edits, backbones, probe re-weighting), then
+  seeds 1-2 of the other 16 cells (b_f_s12) and of the fold runs (b_x_s12). Everything pre-tokenised.
+- Runners: 5 x A100 running; 3 A100, 2 A40, 3 A6000, 3 L40 Jobs pending (all GPU types full); 2 of the 48 GB Jobs stage
+  the backbone bases (Qwen3.5-4B, granite-4.1-8b) and take B-C0-val-{qwen4b,granite} first.
+- Code review (5 reviewers + 2 skeptics per finding): 2 confirmed defects fixed before any run used them (field edits
+  dropped verdict-changing numeric edits; runner capability check format-only), generator guard added.
 
 ## Next
-1. Commit + push the GenPRM / field-edit / queue-dir code; push v2 queues; prep; replace pending runners.
-2. If A100 runners stay pending > 1 h (since 12:35): add 48 GB runners (rtxa6000 / l40 / a40), `runners all`.
-3. First key-cell results (~14:30 UTC): pull, sanity-check dev/test_L2, then queue seeds 1-2 of the other cells.
-4. Probe re-weighting step 2 after B-AB-probe-rw-s0-scores is DONE: scripts/probe_weights.py on CPU ->
-   derived weights -> queue B-AB-probe-rw-s0 (pair_weights).
-5. Publish kept adapters (HF secret, COMPUTE REQUEST #1), configs/adapters.json, HANDOFFS.
-6. Clinical evaluation of PVC-kept adapters once C's eval_clinical.py and clin_v1 exist.
+1. ledger2 x blocks (~15:40) and ledger2 x triplets (~17:00): check malformed rate, L2, MR; regenerate the report.
+2. Probe re-weighting step 2: after B-AB-probe-rw-s0-scores is DONE, `submit_b.py prep v2/b_probe_rw_s0.json`.
+3. Publish kept adapters (HF secret, COMPUTE REQUEST #1), fill paths in configs/adapters.json, HANDOFFS.
+4. Seeds 3-4 (P2) once seeds 1-2 are claimed; clinical evaluation of PVC-kept adapters when C's eval_clinical exists.
+5. sync pod expires ~18:00 UTC: `submit_b.py sync-up` before pulls.
 
 ## GPUs held
-- 4 x A100 (Missouri x2, SDSC, Great Plains) running; 4 A100 Jobs pending. Utilisation per run in meta.json;
-  validation runs today 66-100%, no 5-min window < 40%.
+- 5 x A100 (Missouri x2, Great Plains, SDSC x2). Finished runs: 94-95% mean GPU util (meta.json); Thanos 1 h means
+  62-75% per pod incl. staging; the Great Plains pod idled ~25 min on a slow local disk before training (rising).
 
 ## Open compute requests
 - #1 (2 Oct): read-only GitHub token secret `selrm-github-ro`; confirm `hf-token-srivatsan` is the user's (needed to
