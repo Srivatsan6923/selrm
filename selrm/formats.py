@@ -24,6 +24,8 @@ ledger2_verify  ledger2 examples + verification examples (one ledger entry and t
              field is as the case records it, - for an entry with one corrupted field), B-AB-verify
 verdict_bt   verdict prompts of the two claims of a case; Bradley-Terry loss on u(correct) - u(wrong)
              (B-AB-pairwise; n//2 pairs = n sequences; missing-input cases have no preferred claim)
+genprm       GENPRM prompt -> ```python check``` + its output + answer (B-TR-genprm; the check is A's
+             render_check_code, A-D13, rendered by scripts/render_checks.py; one per record)
 """
 from __future__ import annotations
 
@@ -33,12 +35,18 @@ from selrm.prompts import (answer, judge_prompt, ledger_to_text, rationale_promp
                            reader_prompt, verdict_prompt)
 
 FORMATS = ("verdict", "rationale", "summary2", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader",
-           "verdict_bt", "ledger2_verify")
+           "verdict_bt", "ledger2_verify", "genprm")
 VERSION = 2                  # bump when example construction changes (part of the pretok key)
 TWO_STAGE = ("summary2", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader", "ledger2_verify")
 # verification pass (Table 9 "+ verification pass"; B-defined prompt, the frozen prompts have none)
 VERIFY = ("Rule: {rule}\n\nCase:\n{case}\n\nCondition under test: {condition}\n\nLedger entry:\n{entry}\n\n"
           "Is every field of this entry (found, subject, status, time) as the case records it? Answer + or -.")
+# GenPRM-style verifier (Table 4; B-defined prompt): the generated check is executed and its output
+# is shown before the answer is read
+GENPRM = ("Rule: {rule}\n\nCase:\n{case}\n\nClaim: {claim}\n\n"
+          "Write a short Python check that records the case's values for every criterion of the rule, "
+          "applies the stated rule and prints + if the claim is correct, else -. The check is run and its "
+          "output is shown after it; then answer + or - on a new line.")
 FIELDS = {"ledger2": ("need", "found", "subject", "status", "time"), "value2": ("need", "found")}
 BITS = {1: "applies: yes", 0: "applies: no", None: "applies: unknown"}
 NOT_MENTIONED = "not mentioned"
@@ -96,6 +104,15 @@ def corrupt(e: dict, case_text: str, rng: random.Random) -> dict:
                  and e["found"] not in l]
         e["found"] = rng.choice(lines) if lines else (NOT_MENTIONED if e["found"] != NOT_MENTIONED else "present")
     return e
+
+
+def genprm_prompt(rec: dict) -> str:
+    return GENPRM.format(rule=rec["rule_text"], case=rec["case_text"], claim=rec["claim_text"])
+
+
+def genprm_target(code: str, out: str) -> str:
+    """Check block + its output line; the answer follows on the next line (in training, the output)."""
+    return "```python\n" + code + "```\nOutput: " + out + "\n"
 
 
 def judge_view(text: str, fmt: str) -> str:
@@ -166,10 +183,11 @@ def _take(items: list, k: int, rng: random.Random) -> list:
 
 
 def build_examples(records, fmt: str, n: int | None = None, resample_p: float = 0.3,
-                   seed: int = 0, pair_weights: dict | None = None):
+                   seed: int = 0, pair_weights: dict | None = None, codes: dict | None = None):
     """-> (examples, stats). Each example: {prompt, completion, part, src}.
     n is the example budget (default len(records)); seed fixes the selection,
-    which is shared by all training seeds of a cell (seeds vary order and LoRA init)."""
+    which is shared by all training seeds of a cell (seeds vary order and LoRA init).
+    codes: {iid: check code} for genprm (scripts/render_checks.py)."""
     if fmt not in FORMATS:
         raise ValueError(f"unknown format {fmt}")
     if fmt == "ledger2_verify":       # the ledger2 examples, plus verification examples on top (n // 6)
@@ -183,11 +201,13 @@ def build_examples(records, fmt: str, n: int | None = None, resample_p: float = 
                        "completion": "-" if bad else "+", "part": "verify", "src": "/".join(r["iid"].split("/")[:2])})
         return ex, st | {"n": len(ex), "verify": len(ex) - st["n"]}
     rng, n = random.Random(seed), n or len(records)
-    if fmt in ("verdict", "rationale"):
+    if fmt in ("verdict", "rationale", "genprm"):
         ex = []
         for r in _take(records, n, rng):
             if fmt == "verdict":
                 p, c = verdict_prompt(r), answer(r)
+            elif fmt == "genprm":         # the check reproduces the label, so its output is the answer
+                p, c = genprm_prompt(r), genprm_target(codes[r["iid"]], answer(r)) + answer(r)
             else:
                 p, c = rationale_prompt(r), ledger_to_text(r["ledger"]) + "\n" + answer(r)
             ex.append({"prompt": p, "completion": c, "part": fmt, "src": r["iid"]})

@@ -12,6 +12,7 @@ PRIO = {"P0": 0, "P1": 1, "P2": 2, "P3": 3}
 KEY_CELLS = {("verdict", "blocks"), ("verdict", "triplets"), ("ledger2", "blocks"), ("ledger2", "triplets")}
 EVAL = {"bs_score": 128, "bs_gen": 256, "max_new": 384}    # B-T0b: 1.7x faster rationale eval than 64/64; capped at 128 below 60 GB
 PRIMARY = ("dev", "test_L2", "test_L3alt", "dev_missing", "missing")   # Tables 3-4; seeds >= 1 of non-key cells
+A_CODE = "e40789bd5d7a"     # role A's rule_v1 freeze: check-code renderer for genprm (snapshot under ROOT/code)
 # adapters kept on the PVC for the clinical columns (C's eval_clinical.py, not yet available): Table 4 rows and
 # the MedEinst column of Table 9; only configs/keep_adapters.json runs are published for C and D
 CLINICAL_CELLS = {("verdict", "triplets"), ("summary2", "triplets"), ("rationale", "triplets"), ("value2", "triplets"),
@@ -59,20 +60,25 @@ def factorial(seeds, registry, version, key_only=False):
 
 
 def transfer(seeds, registry, version):
-    """B-TR rows that need no other role's data: fover (verdict on FoVer formal steps)."""
+    """B-TR rows that need no other role's data: fover (verdict on FoVer formal steps) and genprm
+    (GenPRM-style verifier on rule triplets; generation per record, so primary sets only)."""
     reg = json.load(open(registry))
     evals = sorted(n for n, v in reg.items() if n.startswith(version + "/") and v.get("frozen")
                    and v.get("split") in ("dev", "test"))
+    primary = [e for e in evals if e.split("/", 1)[1] in PRIMARY]
     runs = []
     for r in csv.DictReader(open(f"{ROOT}/docs/RUN_MATRIX_B.csv", encoding="utf-8")):
-        m = re.fullmatch(r"B-TR-fover-s(\d)", r["run_id"])
-        if not m or int(m[1]) not in seeds or r["status"] in ("done", "dropped"):
+        m = re.fullmatch(r"B-TR-(fover|genprm)-s(\d)", r["run_id"])
+        if not m or int(m[2]) not in seeds or r["status"] in ("done", "dropped"):
             continue
-        runs.append({"run_id": r["run_id"], "format": "verdict", "corpus": "fover_v1/train", "seed": int(m[1]),
-                     "n_examples": 60000, "priority": 10 * PRIO[r["priority"]] + 2 * (int(m[1]) > 0),
-                     "keep_adapter": True,   # Table 4 row (clinical columns)
-                     "eval": dict(EVAL), "eval_sets": evals if int(m[1]) == 0 else
-                     [e for e in evals if e.split("/", 1)[1] in PRIMARY]})
+        seed = int(m[2])
+        spec = ({"format": "verdict", "corpus": "fover_v1/train", "eval_sets": evals if seed == 0 else primary}
+                if m[1] == "fover" else
+                {"format": "genprm", "corpus": f"{version}/train_triplets", "a_code": A_CODE, "eval_sets": primary})
+        runs.append({"run_id": r["run_id"], "seed": seed, "n_examples": 60000,
+                     "priority": 10 * PRIO[r["priority"]] + 2 * (seed > 0),
+                     "keep_adapter": True,   # Table 4 rows (clinical columns)
+                     "eval": dict(EVAL), **spec})
     return runs
 
 
@@ -85,7 +91,8 @@ ABLATIONS = {"decfield": {"format": "ledger2_dec"}, "bitonly-judge": {"format": 
 # Table 9 / Sec. 7.4 evaluation-only rows: adapter run, format, eval mode, sets
 EVAL_ONLY = {"oracle-ledger": ("B-F-ledger2-triplets-s0", "ledger2", "oracle_ledger", PRIMARY),
              "pred-bit-program": ("B-AB-decfield-s0", "ledger2_dec", "program_bit", PRIMARY),
-             "field-swap": ("B-F-ledger2-triplets-s0", "ledger2", "ledger_swap", ("dev", "test_L2"))}
+             "field-swap": ("B-F-ledger2-triplets-s0", "ledger2", "ledger_swap", ("dev", "test_L2")),
+             "field-edit": ("B-F-ledger2-triplets-s0", "ledger2", "ledger_edit", ("test_L2",))}   # newer runners (v2/)
 
 
 def extras(seeds, registry, version):
@@ -99,6 +106,10 @@ def extras(seeds, registry, version):
         if seed not in seeds or r["status"] in ("done", "dropped"):
             continue
         base = {"run_id": rid, "seed": seed, "priority": 10 * PRIO[r["priority"]] + 2 * (seed > 0), "eval": dict(EVAL)}
+        if rid == "B-AB-probe-rw-s0":    # step 1 of 3 (then scripts/probe_weights.py, then the weighted run)
+            runs.append({**base, "run_id": rid + "-scores", "format": "ledger2", "train": False,
+                         "adapter": "adapters/B-F-ledger2-blocks-s0", "eval_sets": [f"{version}/abl_probe_blocks"]})
+            continue
         m = re.fullmatch(r"B-AB-([\w-]+)-s\d", rid)
         if m and m[1] in ABLATIONS:
             ch = dict(ABLATIONS[m[1]])
@@ -113,7 +124,7 @@ def extras(seeds, registry, version):
         m = re.fullmatch(r"B-AE-([\w-]+)", rid)
         if m and m[1] in EVAL_ONLY:
             src, fmt, mode, sets = EVAL_ONLY[m[1]]
-            runs.append({**base, "format": fmt, "train": False, "adapter": f"adapters/{src}",
+            runs.append({**base, "format": fmt, "train": False, "adapter": f"adapters/{src}", "a_code": A_CODE,
                          "eval": {**EVAL, "mode": mode}, "eval_sets": [f"{version}/{s}" for s in sets]})
             continue
         m = re.fullmatch(r"B-FOLD(\d)-(\w+)-(\w+)-s\d", rid)
@@ -138,10 +149,13 @@ def main():
     ap.add_argument("--registry", default=f"{ROOT}/data/REGISTRY.json")
     ap.add_argument("--version", default="rule_v1")
     ap.add_argument("--key_only", action="store_true", help="factorial: the four key cells only")
+    ap.add_argument("--runs", default="", help="keep run_ids matching this regex")
     a = ap.parse_args()
     seeds = {int(s) for s in a.seeds.split(",")}
     runs = (smoke() if a.kind == "smoke" else factorial(seeds, a.registry, a.version, a.key_only) if a.kind == "factorial"
             else transfer(seeds, a.registry, a.version) if a.kind == "transfer" else extras(seeds, a.registry, a.version))
+    runs = [r for r in runs if re.search(a.runs, r["run_id"])]
+    os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
     json.dump({"runs": runs}, open(a.out, "w", newline="\n"), indent=1)
     print(f"{len(runs)} runs -> {a.out}")
 

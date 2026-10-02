@@ -11,17 +11,21 @@ completion ends with the end-of-turn token so generation formats learn to stop.
 Gold ledgers must pass the eval-time malformed check (formats.well_formed), and all
 records of one (case, condition) must carry the same ledger and prose, else prep stops.
 Files are written under pid-unique temporary names and renamed; READY is written last."""
-import argparse, json, os, sys
+import argparse, json, os, subprocess, sys
 import numpy as np
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from selrm.formats import TWO_STAGE, VERSION, build_examples, dataset_path, gold_record, reader_unit, reader_units, well_formed
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, REPO)
+from selrm.formats import (TWO_STAGE, VERSION, build_examples, dataset_path, genprm_prompt, gold_record, reader_unit,
+                           reader_units, well_formed)
 from selrm.prompts import rationale_prompt, reader_prompt, verdict_prompt
 
 BASE = "unsloth/Qwen3.5-9B"
 MAX_LEN = 1024
 EVAL_KIND = {"verdict": "verdict", "verdict_bt": "verdict", "rationale": "rationale", "summary2": "reader_prose",
              "value2": "reader_ledger", "ledger2": "reader_ledger", "ledger2_dec": "reader_ledger",
-             "dec_judge": "reader_ledger", "bit_reader": "reader_ledger", "ledger2_verify": "reader_ledger"}
+             "dec_judge": "reader_ledger", "bit_reader": "reader_ledger", "ledger2_verify": "reader_ledger",
+             "genprm": "genprm"}
+PROMPT = {"verdict": verdict_prompt, "rationale": rationale_prompt, "genprm": genprm_prompt}   # one prompt per record
 
 
 def tok_tag(spec):
@@ -100,17 +104,41 @@ def check_gold(recs, fmts, where):
         raise SystemExit(f"{where}: {len(bad)} gold-ledger problems, e.g.\n" + "\n".join(bad[:10]))
 
 
+def check_codes(root, spec):
+    """{iid: check code} for genprm targets, rendered once per corpus by role A's frozen code
+    (spec a_code = its snapshot under ROOT/code) into ROOT/derived/<corpus>/check_code.jsonl."""
+    side = f"{root}/derived/{spec['corpus']}/check_code.jsonl"
+    if not os.path.exists(side):
+        os.makedirs(os.path.dirname(side), exist_ok=True)
+        subprocess.run([sys.executable, f"{REPO}/scripts/render_checks.py", dataset_path(root, spec["corpus"]), side],
+                       env={**os.environ, "PYTHONPATH": f"{root}/code/{spec['a_code']}"}, check=True)
+    return {d["iid"]: d["code"] for d in load_jsonl(side)}
+
+
+def field_edit_file(root, spec, set_name):
+    """ROOT/derived/<set>/field_edits.jsonl for eval mode ledger_edit, written once by role A's
+    frozen code (scripts/field_edits.py)."""
+    side = f"{root}/derived/{set_name}/field_edits.jsonl"
+    if os.path.exists(side):
+        return side, "exists"
+    os.makedirs(os.path.dirname(side), exist_ok=True)
+    subprocess.run([sys.executable, f"{REPO}/scripts/field_edits.py", dataset_path(root, set_name), side],
+                   env={**os.environ, "PYTHONPATH": f"{root}/code/{spec['a_code']}"}, check=True)
+    return side, "built"
+
+
 def build_train(root, spec, tok, end):
     d = train_dir(root, spec)
     if os.path.exists(f"{d}/READY"):
         return d, "exists"
     recs = [r for r in load_jsonl(dataset_path(root, spec["corpus"])) if not r["meta"].get("probe")]   # probes: scoring only
-    if spec["format"] not in ("verdict", "verdict_bt", "summary2"):    # rationale targets carry the ledger2 text
+    if spec["format"] not in ("verdict", "verdict_bt", "summary2", "genprm"):   # rationale targets carry ledger2 text
         check_gold(recs, ["ledger2" if spec["format"] == "rationale" else spec["format"]], spec["corpus"])
     pw = json.load(open(f"{root}/{spec['pair_weights']}")) if spec.get("pair_weights") else None
     ex, stats = build_examples(recs, spec["format"], n=spec.get("n_examples"),
                                resample_p=spec.get("resample_p", 0.3),
-                               seed=spec.get("construction_seed", 0), pair_weights=pw)
+                               seed=spec.get("construction_seed", 0), pair_weights=pw,
+                               codes=check_codes(root, spec) if spec["format"] == "genprm" else None)
     if spec["format"] == "verdict_bt":            # prompt pairs (correct, wrong) stored as consecutive sequences
         A = tok_ids(tok, [chat(tok, e["prompt"]) for e in ex])
         B = tok_ids(tok, [chat(tok, e["prompt_b"]) for e in ex])
@@ -153,9 +181,8 @@ def build_eval(root, spec, set_name, tok):
         return path, "exists"
     kind = EVAL_KIND[spec["format"]]
     recs = load_jsonl(dataset_path(root, set_name))
-    if kind in ("verdict", "rationale"):
-        fn = verdict_prompt if kind == "verdict" else rationale_prompt
-        keys, texts = [r["iid"] for r in recs], [fn(r) for r in recs]
+    if kind in PROMPT:
+        keys, texts = [r["iid"] for r in recs], [PROMPT[kind](r) for r in recs]
     else:
         check_gold(recs, ["ledger2", "value2"] if kind == "reader_ledger" else [], set_name)
         units = reader_units(recs)
@@ -186,6 +213,8 @@ def main():
             print(spec["run_id"], *build_train(a.root, spec, tok, end), flush=True)
         for s in spec["eval_sets"]:
             print(spec["run_id"], s, *build_eval(a.root, spec, s, tok), flush=True)
+            if spec.get("eval", {}).get("mode") == "ledger_edit":
+                print(spec["run_id"], s, *field_edit_file(a.root, spec, s), flush=True)
 
 
 if __name__ == "__main__":

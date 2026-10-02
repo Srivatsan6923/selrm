@@ -228,9 +228,10 @@ def main():
     elif a.cmd == "push-code":
         push_code()
     elif a.cmd == "push-queue":
-        src = a.args[0]
-        name = os.path.basename(src)
-        exec_sync("sh", "-c", f"mkdir -p /pvc/selrm/queue && cat > /pvc/selrm/queue/{name}.tmp && "
+        src = a.args[0]                   # path under configs/queues/ is kept (v2/...: queues for newer runners)
+        name = os.path.relpath(os.path.abspath(src), f"{REPO}/configs/queues").replace(os.sep, "/")
+        name = os.path.basename(src) if name.startswith("..") else name
+        exec_sync("sh", "-c", f"mkdir -p $(dirname /pvc/selrm/queue/{name}) && cat > /pvc/selrm/queue/{name}.tmp && "
                               f"mv /pvc/selrm/queue/{name}.tmp /pvc/selrm/queue/{name}", inp=open(src, "rb").read())
         print(f"queue {name} pushed")
         marked = []                       # claim channel for the pooled rows (docs/CHANGE_REQUESTS.md, 2 Oct)

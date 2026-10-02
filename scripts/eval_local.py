@@ -6,6 +6,8 @@ Usage (normally called by train_eval_job.py with the trained model in memory):
 Scoring: u = logit("+") - logit("-") at the answer position.
 verdict    one forward pass per record (pre-tokenised prompts)
 rationale  greedy-generate ledger + answer per record, then u at the answer position
+genprm     greedy-generate a Python check per record, execute it (restricted, no imports, time
+           limit), write its real output after it, then u at the answer position
 two-stage  greedy-generate the reader output once per (case, condition); malformed
            ledger -> u = -20 for both claims; else judge forward pass per record.
 Batches are padded on the left; a self-check compares batched and single-prompt
@@ -17,13 +19,66 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from selrm.formats import (MALFORMED_U, TWO_STAGE, dataset_path, gold_record, judge_view, read_bit,
                            reader_unit, reader_units, well_formed)
 from selrm.metrics import bootstrap_ci, decisions, summarise
-from selrm.prompts import judge_prompt
+from selrm.prompts import judge_prompt, ledger_to_text
 
 KIND = {"verdict": "verdict", "verdict_bt": "verdict", "rationale": "rationale", "summary2": "reader_prose",
         "value2": "reader_ledger", "ledger2": "reader_ledger", "ledger2_dec": "reader_ledger",
-        "dec_judge": "reader_ledger", "bit_reader": "reader_ledger", "ledger2_verify": "reader_ledger"}
+        "dec_judge": "reader_ledger", "bit_reader": "reader_ledger", "ledger2_verify": "reader_ledger",
+        "genprm": "genprm"}
 PROGRAM_U = 10.0            # |u| when the rule program decides from the predicted bit
-MODES = (None, "oracle_ledger", "program_bit", "ledger_swap", "verify")
+MODES = (None, "oracle_ledger", "program_bit", "ledger_swap", "verify", "ledger_edit")
+# Executes generated checks one per stdin line (JSON string) in a separate interpreter: no imports
+# (restricted builtins, so no network or files), 2 s per check; prints the last printed line or "error".
+CHECK_HARNESS = r'''
+import builtins, json, signal, sys
+def _stop(*a): raise TimeoutError
+ALARM = hasattr(signal, "setitimer")          # POSIX (the GPU pods); no per-check limit on Windows
+if ALARM:
+    signal.signal(signal.SIGALRM, _stop)
+SAFE = {k: getattr(builtins, k) for k in ("abs", "all", "any", "bool", "dict", "enumerate", "float", "int", "len",
+        "list", "max", "min", "range", "round", "set", "sorted", "str", "sum", "tuple", "zip")}
+for line in sys.stdin:
+    out = []
+    g = {"__builtins__": dict(SAFE, print=lambda *a, **k: out.append(" ".join(map(str, a))))}
+    try:
+        if ALARM:
+            signal.setitimer(signal.ITIMER_REAL, 2.0)
+        exec(compile(json.loads(line), "<check>", "exec"), g)
+        res = (out[-1].strip()[:20] if out else "") or "none"
+    except BaseException:
+        res = "error"
+    finally:
+        if ALARM:
+            signal.setitimer(signal.ITIMER_REAL, 0)
+    print(json.dumps(res), flush=True)
+'''
+
+
+def check_block(text):
+    """(code, end) of the first ```python block of a genprm output, or (None, None)."""
+    a = text.find("```python\n")
+    b = text.find("```", a + 10) if a >= 0 else -1
+    return (text[a + 10:b], b + 3) if b >= 0 else (None, None)
+
+
+def run_checks(codes, batch=1024):
+    """Executed output of each check (None -> "error"); batches of 1024 per interpreter.
+    ponytail: a check stuck inside one C call outlives its alarm; the batch then times out
+    and its unfinished checks count as "error"."""
+    import subprocess
+    outs = ["error"] * len(codes)
+    idx = [i for i, c in enumerate(codes) if c is not None]
+    for k in range(0, len(idx), batch):
+        part = idx[k:k + batch]
+        try:
+            r = subprocess.run([sys.executable, "-I", "-c", CHECK_HARNESS], capture_output=True, text=True,
+                               input="".join(json.dumps(codes[i]) + "\n" for i in part), timeout=300)
+            got = r.stdout.splitlines()
+        except subprocess.TimeoutExpired as e:
+            got = (e.stdout.decode() if isinstance(e.stdout, bytes) else e.stdout or "").splitlines()
+        for i, line in zip(part, got):
+            outs[i] = json.loads(line)
+    return outs
 
 
 def load_jsonl(path):
@@ -178,7 +233,10 @@ def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="u
       oracle_ledger  the judge reads the program's target ledger instead of the reader's
       program_bit    the rule program decides from the reader's predicted decision bit
       ledger_swap    the judge reads another case's ledger (same rule, condition, claim);
-                     summary = agreement with the verdict that ledger implies"""
+                     summary = agreement with the verdict that ledger implies
+      ledger_edit    the judge reads the program's ledger with subject, status or time edited;
+                     summary = agreement with the program's verdict after the edit
+      verify         reader outputs re-read entry by entry, rejected ones regenerated once"""
     assert mode in MODES, mode
     t0 = time.time()
     recs = load_jsonl(dataset_path(root, set_name))
@@ -198,8 +256,23 @@ def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="u
         rows = [{"iid": r["iid"], "u": float(x), "reader_output": sc.tok.decode(g), "answered": a, "stopped": d}
                 for r, x, g, (_, a), d in zip(recs, u, gens, pref, done)]
         extra = {"rationale_no_answer": sum(not a for _, a in pref), "gen_not_stopped": sum(not d for d in done)}
+    elif fmt == "genprm":
+        assert keys == [r["iid"] for r in recs], "eval prompts out of sync with records"
+        gens, done = sc.generate(seqs)
+        texts = [sc.tok.decode(g) for g in gens]
+        blocks = [check_block(t) for t in texts]
+        outs = run_checks([c for c, _ in blocks])
+        # the generated text up to the end of its check, the real output, then the answer is read
+        tails = [(t[:end] if end else t.rstrip()) + "\nOutput: " + o + "\n" for t, (_, end), o in zip(texts, blocks, outs)]
+        u = sc.score([p + sc.tok(tl, add_special_tokens=False).input_ids for p, tl in zip(seqs, tails)])
+        rows = [{"iid": r["iid"], "u": float(x), "reader_output": t, "check_output": o, "stopped": d}
+                for r, x, t, o, d in zip(recs, u, texts, outs, done)]
+        extra = {"check_missing": sum(c is None for c, _ in blocks), "check_error": sum(o == "error" for o in outs),
+                 "gen_not_stopped": sum(not d for d in done), "gen_tokens": int(sum(len(g) for g in gens))}
     elif mode == "ledger_swap":
         return ledger_swap(sc, recs, fmt, run_id, set_name, out_dir, log, t0)
+    elif mode == "ledger_edit":
+        return ledger_edit(sc, recs, fmt, run_id, set_name, out_dir, log, t0, root)
     else:
         units = reader_units(recs)
         assert keys == ["/".join(r["iid"].split("/")[:2]) for r in units], "eval prompts out of sync"
@@ -311,6 +384,32 @@ def ledger_swap(sc, recs, fmt, run_id, set_name, out_dir, log, t0, seed=0):
             f.write(json.dumps(row) + "\n")
     json.dump(summ, open(f"{out_dir}/summary_{name}.json", "w"), indent=1)
     log(f"{run_id} {set_name} ledger swap: agreement {summ['agreement']} n={len(rows)}")
+    return summ
+
+
+def ledger_edit(sc, recs, fmt, run_id, set_name, out_dir, log, t0, root):
+    """Judge given the program's ledger with one field edited (ROOT/derived/<set>/field_edits.jsonl,
+    scripts/field_edits.py): agreement of sign(u) with the label the program gives after the edit,
+    overall, per field and for edits that do or do not change the label (Sec. 7.4)."""
+    by = {r["iid"]: r for r in recs}
+    E = load_jsonl(f"{root}/derived/{set_name}/field_edits.jsonl")
+    u = sc.score(chat_ids(sc.tok, [judge_prompt(by[e["iid"]], judge_view(ledger_to_text(e["ledger"]), fmt))
+                                   for e in E]))
+    rows = [{"iid": e["iid"], "field": e["field"], "changed": e["changed"], "u": float(v), "expected": e["label"]}
+            for e, v in zip(E, u)]
+    agree = lambda rs: round(100.0 * sum((r["u"] > 0) == (r["expected"] == 1) for r in rs) / max(1, len(rs)), 2)
+    groups = {"all": rows} | {f"field={f}": [r for r in rows if r["field"] == f] for f in ("subject", "status", "time")}
+    groups |= {f"changed={c}": [r for r in rows if r["changed"] == c] for c in (0, 1)}
+    summ = {"run_id": run_id, "set": set_name, "mode": "ledger_edit", "n": len(rows), "agreement": agree(rows),
+            "by": {k: {"agreement": agree(v), "n": len(v)} for k, v in groups.items()},
+            "eval": {"seconds": round(time.time() - t0, 1), "u_path": sc.u_path}}
+    os.makedirs(out_dir, exist_ok=True)
+    name = set_name.replace("/", "~") + "~edit"
+    with open(f"{out_dir}/scores_{name}.jsonl", "w", encoding="utf-8") as f:
+        for row in rows:
+            f.write(json.dumps(row) + "\n")
+    json.dump(summ, open(f"{out_dir}/summary_{name}.json", "w"), indent=1)
+    log(f"{run_id} {set_name} field edits: agreement {summ['agreement']} n={len(rows)}")
     return summ
 
 

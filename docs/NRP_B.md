@@ -43,7 +43,11 @@ storage); the rules below follow them and the portal source (prp/k8s_portal).
 /pvc/selrm/tok/<base>/train/<key>/       pre-tokenised corpora (train.npz, stats.json, READY); key has format,
                                          corpus, n, p, construction seed, max_len, formats.VERSION
 /pvc/selrm/tok/<base>/eval/<set>/<kind>.npz   pre-tokenised eval prompts (kind verdict|rationale|reader_*)
-/pvc/selrm/queue/<name>.json    queue files (run specs)
+/pvc/selrm/queue/<name>.json    queue files (run specs); runners started with `runners all` read every file
+/pvc/selrm/queue/v2/<name>.json queues that need code from 2 Oct 13:00 UTC on (genprm, ...): read only by
+                                runners staged with that code (older runners read the top level only)
+/pvc/selrm/code/<sha12>/        code snapshots (B's commits; A's freeze e40789bd5d7a for data rebuilds and checks)
+/pvc/selrm/derived/<set>/check_code.jsonl   genprm check code per record (A's render_check_code, run by pretok)
 /pvc/selrm/results/<run_id>/    CLAIMED_B, HEARTBEAT, DONE/FAILED_n/KILLED_n, meta.json, summary_*, scores_*, gpu_util.csv, run.log
 /pvc/selrm/ckpt/<run_id>/       trainer checkpoints (deleted after the run) + adapter of non-kept runs
 /pvc/selrm/adapters/<run_id>/   kept adapters (configs/keep_adapters.json)
@@ -52,8 +56,10 @@ storage); the rules below follow them and the portal source (prp/k8s_portal).
 Each file has one writer (per-run or per-pod paths); pods never write shared files.
 
 ## Pods and Jobs (all built by `scripts/submit_b.py`)
-- `selrm-b-sync`: bare CPU pod (1 CPU, 1 Gi, `sleep 3000`, deadline 1 h) for code/queue pushes
-  and result pulls; delete after use (`sync-down`).
+- `selrm-b-sync`: bare CPU pod (1 CPU, 1 Gi, `sleep 21000`, deadline 6 h = NRP cap for bare pods) for
+  code/queue pushes and result pulls; recreate with `sync-up` when it expires; delete after use (`sync-down`).
+- `build-data <A sha12> [-- --fold k]`: CPU Job, rebuilds A's frozen sets from A's code snapshot, checks every
+  sha256 against A's registry, publishes sets + merges the registry (one at a time).
 - CPU Jobs (`build-env`, `prep`): off GPU nodes (`pci-10de.present NotIn true`), us-west.
   `prep` = rebuild smoke_v2 + hash check (configs/smoke_v2_sha256.json), download pinned
   weights, pre-tokenise the queue (`scripts/pretok.py`).
@@ -78,6 +84,8 @@ python scripts/submit_b.py push-queue configs/queues/b_smoke.json
 python scripts/submit_b.py build-env v1                    # once per env tag
 python scripts/submit_b.py prep b_smoke.json --code <sha>  # CPU; wait for "PREP OK"
 python scripts/submit_b.py runners b_smoke.json --n 3 --gpu a100 --max-runs 3 --hours 4
+python scripts/submit_b.py runners all --n 7 --gpu a100 --max-runs 6 --hours 30   # every queue file, by priority
+python scripts/submit_b.py push-ref origin/role-a && python scripts/submit_b.py build-data <sha12> [-- --fold 2]
 python scripts/submit_b.py ls                              # run states on the PVC
 python scripts/submit_b.py pull                            # finished runs -> results_git/
 python scripts/nrp_status_b.py                             # Thanos: GPU 1h/3h/6h/1d, CPU, RSS vs requests

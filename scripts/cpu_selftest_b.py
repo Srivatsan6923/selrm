@@ -36,6 +36,24 @@ for name, n_groups in (("train_triplets", 60), ("test_heldout_rules", 12)):
         keep.add(r["tid"]); out.append(line)
     open(f"{root}/data/mini/{name}.jsonl", "w", encoding="utf-8").writelines(out)
 
+# genprm: stand-in check codes (A's renderer needs rule_v1 record metadata that smoke records lack)
+os.makedirs(f"{root}/derived/mini/train_triplets", exist_ok=True)
+with open(f"{root}/derived/mini/train_triplets/check_code.jsonl", "w", encoding="utf-8") as f:
+    for line in open(f"{root}/data/mini/train_triplets.jsonl", encoding="utf-8"):
+        r = json.loads(line)
+        f.write(json.dumps({"iid": r["iid"], "code": f"answer = {r['label']}\nprint('+' if answer else '-')\n"}) + "\n")
+
+# ledger_edit: stand-in field edits (status flipped in the first mentioned entry, label flipped)
+os.makedirs(f"{root}/derived/mini/test_heldout_rules", exist_ok=True)
+with open(f"{root}/derived/mini/test_heldout_rules/field_edits.jsonl", "w", encoding="utf-8") as f:
+    for line in open(f"{root}/data/mini/test_heldout_rules.jsonl", encoding="utf-8"):
+        r = json.loads(line)
+        if r["claim_type"] == "conclusion" and r["ledger"][0]["found"] != "not mentioned":
+            led = [dict(e) for e in r["ledger"]]
+            led[0]["status"] = "absent" if led[0]["status"] == "present" else "present"
+            f.write(json.dumps({"iid": r["iid"], "field": "status", "ledger": led, "label": 1 - r["label"],
+                                "changed": 1}) + "\n")
+
 hp = {"backend": "hf", "bf16": False, "per_device": 4, "batch": 8, "save_every_s": 0, "workers": 0}
 runs = [{"run_id": f"SELFTEST-{f}", "format": f, "corpus": "mini/train_triplets", "seed": 0,
          "max_steps": 2, "base_model": "tiny/qwen35", "hp": hp, "keep_adapter": f in ("ledger2", "ledger2_dec", "ledger2_verify"),
@@ -45,26 +63,34 @@ runs.append({"run_id": "SELFTEST-evalonly-ledger2", "format": "ledger2", "train"
              "base_model": "tiny/qwen35", "adapter": "adapters/SELFTEST-ledger2", "hp": hp, "priority": 9,
              "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24}, "eval_sets": ["mini/test_heldout_rules"]})
 for mode, fmt, ad in (("oracle_ledger", "ledger2", "SELFTEST-ledger2"), ("program_bit", "ledger2_dec", "SELFTEST-ledger2_dec"),
-                      ("ledger_swap", "ledger2", "SELFTEST-ledger2"), ("verify", "ledger2_verify", "SELFTEST-ledger2_verify")):
+                      ("ledger_swap", "ledger2", "SELFTEST-ledger2"), ("verify", "ledger2_verify", "SELFTEST-ledger2_verify"),
+                      ("ledger_edit", "ledger2", "SELFTEST-ledger2")):
     runs.append({"run_id": f"SELFTEST-{mode}", "format": fmt, "train": False, "seed": 0, "base_model": "tiny/qwen35",
                  "adapter": f"adapters/{ad}", "hp": hp, "priority": 9, "eval_sets": ["mini/test_heldout_rules"],
                  "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24, "mode": mode}})
 runs.append({"run_id": "SELFTEST-concept", "kind": "concept", "format": "ledger2", "corpus": "mini/train_triplets",
              "seed": 0, "base_model": "tiny/qwen35", "hp": hp, "priority": 9, "eval_sets": ["mini/test_heldout_rules"],
              "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24}})
-json.dump({"runs": runs}, open(f"{root}/queue.json", "w"), indent=1)
+os.makedirs(f"{root}/queue/v2", exist_ok=True)
+json.dump({"runs": runs}, open(f"{root}/queue/main.json", "w"), indent=1)
+# a spec in a subdirectory with a format this code does not know: read (recursive) and skipped, not fatal
+json.dump({"runs": [{"run_id": "SELFTEST-unknown-format", "format": "nonexistent", "train": False, "seed": 0,
+                     "base_model": "tiny/qwen35", "priority": 0, "eval_sets": ["mini/test_heldout_rules"]}]},
+          open(f"{root}/queue/v2/newer.json", "w"))
 
 py = sys.executable
 os.environ["SELRM_BACKEND"] = "hf"          # no GPU: plain transformers + PEFT
-subprocess.run([py, f"{HERE}/pretok.py", "--root", root, "--queue", f"{root}/queue.json"], check=True)
-subprocess.run([py, f"{HERE}/train_eval_job.py", "--root", root, "--queue", f"{root}/queue.json"], check=True)
+subprocess.run([py, f"{HERE}/pretok.py", "--root", root, "--queue", f"{root}/queue/main.json"], check=True)
+subprocess.run([py, f"{HERE}/train_eval_job.py", "--root", root, "--queue", f"{root}/queue"], check=True)
+assert not os.path.exists(f"{root}/results/SELFTEST-unknown-format/DONE")
 
 for r in runs:
     d = f"{root}/results/{r['run_id']}"
     assert os.path.exists(f"{d}/DONE"), f"{r['run_id']} not done: {os.listdir(d)}"
     meta = json.load(open(f"{d}/meta.json"))
-    if r.get("eval", {}).get("mode") == "ledger_swap":
-        summ = json.load(open(f"{d}/summary_mini~test_heldout_rules~swap.json"))
+    if r.get("eval", {}).get("mode") in ("ledger_swap", "ledger_edit"):
+        tag = {"ledger_swap": "swap", "ledger_edit": "edit"}[r["eval"]["mode"]]
+        summ = json.load(open(f"{d}/summary_mini~test_heldout_rules~{tag}.json"))
         assert summ["n"] > 0 and 0 <= summ["agreement"] <= 100
         print("ok", r["run_id"], "agreement", summ["agreement"], "n", summ["n"])
         continue

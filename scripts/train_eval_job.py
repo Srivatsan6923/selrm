@@ -50,15 +50,19 @@ def ready(root, spec):
     return ((not trains(spec) or os.path.exists(os.path.dirname(P["data"]) + "/READY"))
             and os.path.isdir(P["base"])
             and (not spec.get("adapter") or os.path.exists(f"{root}/{spec['adapter']}/adapter_config.json"))
-            and all(os.path.exists(eval_path(root, spec, s)) for s in spec["eval_sets"]))
+            and all(os.path.exists(eval_path(root, spec, s)) for s in spec["eval_sets"])
+            and (spec.get("eval", {}).get("mode") != "ledger_edit"
+                 or all(os.path.exists(f"{root}/derived/{s}/field_edits.jsonl") for s in spec["eval_sets"])))
 
 
 def load_runs(queues):
-    """Runs of every queue file, highest priority first; a directory stands for all its *.json
-    (re-read before every claim, so a queue pushed later reaches running runners)."""
+    """Runs of every queue file, highest priority first; a directory stands for all its *.json,
+    subdirectories included (re-read before every claim, so a queue pushed later reaches running
+    runners). Queues that need newer code go in a subdirectory (e.g. v2/): runners staged with
+    code before 2 Oct 13:00 read only the top level and would stop on a format they do not know."""
     runs = []
     for q in queues:
-        for f in sorted(glob.glob(f"{q}/*.json")) if os.path.isdir(q) else [q]:
+        for f in sorted(glob.glob(f"{q}/**/*.json", recursive=True)) if os.path.isdir(q) else [q]:
             for i, r in enumerate(json.load(open(f))["runs"]):
                 runs.append((r.get("priority", 9), f, i, r))
     return [r for *_, r in sorted(runs, key=lambda x: x[:3])]
@@ -203,6 +207,7 @@ def main():
         except Exception as e:
             print(f"PREFLIGHT FAILED: {type(e).__name__}: {e}", flush=True)
             sys.exit(4)
+    import eval_local                     # its KIND table says which formats this code can evaluate
     owner = os.environ.get("POD_NAME", socket.gethostname())
     log = Log(f"{a.root}/logs/{owner}/runner.log")
     mon = runq.GpuMonitor(f"{a.root}/logs/{owner}/gpu_util.csv", log=log)
@@ -221,7 +226,12 @@ def main():
         pick = None
         for spec in load_runs(a.queue):
             rdir = f"{a.root}/results/{spec['run_id']}"
-            if runq.state(rdir) == "free" and ready(a.root, spec) and runq.claim(rdir, owner):
+            try:                          # a spec this code cannot read (newer format) is skipped, not fatal
+                ok = runq.state(rdir) == "free" and ready(a.root, spec) and eval_local.KIND.get(spec["format"])
+            except Exception as e:
+                log(f"skipping {spec.get('run_id')}: {type(e).__name__}: {e}")
+                continue
+            if ok and runq.claim(rdir, owner):
                 pick = spec
                 break
         if pick is None:
