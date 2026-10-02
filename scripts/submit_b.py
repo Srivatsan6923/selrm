@@ -221,9 +221,12 @@ def main():
                               f"mv /pvc/selrm/queue/{name}.tmp /pvc/selrm/queue/{name}", inp=open(src, "rb").read())
         print(f"queue {name} pushed")
         marked = []                       # claim channel for the pooled rows (docs/CHANGE_REQUESTS.md, 2 Oct)
+        import csv
+        pooled = {r["run_id"] for r in csv.DictReader(open(f"{REPO}/docs/RUN_MATRIX_B.csv", encoding="utf-8"))
+                  if r["pool"] == "yes"}
         for r in json.load(open(src))["runs"]:
             d = f"{REPO}/results_git/{r['run_id']}"
-            if r["run_id"].startswith("B-") and not os.path.exists(f"{d}/DONE") and not os.path.exists(f"{d}/CLAIMED_B"):
+            if r["run_id"] in pooled and not os.path.exists(f"{d}/DONE") and not os.path.exists(f"{d}/CLAIMED_B"):
                 os.makedirs(d, exist_ok=True)
                 open(f"{d}/CLAIMED_B", "w").write(f"queued on NRP in {name} {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}\n")
                 marked.append(r["run_id"])
