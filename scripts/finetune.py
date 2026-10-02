@@ -57,9 +57,11 @@ def load_base(base_dir, max_len, hp=HP):
         model = AutoModelForCausalLM.from_pretrained(base_dir, dtype=dt, local_files_only=True)
         return model.to("cuda" if torch.cuda.is_available() else "cpu"), AutoTokenizer.from_pretrained(base_dir)
     from unsloth import FastLanguageModel
-    model, tok = FastLanguageModel.from_pretrained(base_dir, max_seq_length=max_len, dtype=torch.bfloat16,
-                                                   load_in_4bit=False, load_in_8bit=False,
+    # Unsloth's Qwen3.5 guide flags for 16-bit LoRA; qwen3_5 is routed to FastModel (VLM path)
+    model, tok = FastLanguageModel.from_pretrained(base_dir, max_seq_length=max_len, dtype=None,
+                                                   load_in_4bit=False, load_in_16bit=True,
                                                    full_finetuning=False, local_files_only=True)
+    tok = getattr(tok, "tokenizer", tok)     # FastModel returns a processor for VLM checkpoints
     preflight()
     return model, tok
 
@@ -86,10 +88,13 @@ def add_lora(model, seed, hp=HP):
                                                 lora_dropout=hp["lora_dropout"], bias="none",
                                                 target_modules=hp["target_modules"], task_type="CAUSAL_LM"))
     from unsloth import FastLanguageModel
-    return FastLanguageModel.get_peft_model(model, r=hp["lora_r"], lora_alpha=hp["lora_alpha"],
-                                            lora_dropout=hp["lora_dropout"], bias="none",
-                                            target_modules=hp["target_modules"],
-                                            use_gradient_checkpointing="unsloth", random_state=seed)
+    model = FastLanguageModel.get_peft_model(model, r=hp["lora_r"], lora_alpha=hp["lora_alpha"],
+                                             lora_dropout=hp["lora_dropout"], bias="none",
+                                             target_modules=hp["target_modules"],
+                                             use_gradient_checkpointing="unsloth", random_state=seed)
+    lora = [n for n, _ in model.named_modules() if n.endswith("lora_A")]
+    assert lora and not any(".visual." in n for n in lora), "LoRA must cover language-model modules only"
+    return model
 
 
 def for_inference(model, hp=HP):
@@ -163,6 +168,8 @@ def train(spec, paths, log=print, hp=HP):
             "s_per_step": round(secs / max(1, steps), 3),
             "peak_mem_gb": round(torch.cuda.max_memory_allocated() / 2**30, 2) if torch.cuda.is_available() else None,
             "trainable_params": sum(p.numel() for p in model.parameters() if p.requires_grad),
+            "lora_modules": sum(1 for n, _ in model.named_modules() if n.endswith("lora_A")),
+            "dtype": str(model.get_input_embeddings().weight.dtype),
             "hp": hp, "grad_accum": acc}
     model.save_pretrained(paths["adapter"])
     json.dump(info, open(done, "w"), indent=1)

@@ -26,7 +26,7 @@ EOF
   date -u +%FT%TZ > "$ROOT/data/smoke_v2/HASHES_OK"
 fi
 
-"$PY" - <<'EOF'
+HF_HUB_DISABLE_XET=1 "$PY" - <<'EOF'
 import json, os
 from huggingface_hub import snapshot_download
 root = "/pvc/selrm/models"
@@ -35,7 +35,7 @@ for m in [m for m in json.load(open("configs/models_b.json"))["models"] if m.get
     if os.path.exists(f"{d}/REVISION") and open(f"{d}/REVISION").read().strip() == m["revision"]:
         print("present", m["id"], m["revision"]); continue
     snapshot_download(m["id"], revision=m["revision"], local_dir=d + ".tmp",
-                      allow_patterns=m.get("allow_patterns"))
+                      allow_patterns=m.get("allow_patterns"), max_workers=2)   # bounded memory (pod OOM at 8 Gi with defaults)
     os.replace(d + ".tmp", d)
     open(f"{d}/REVISION", "w").write(m["revision"] + "\n")
     print("downloaded", m["id"], m["revision"])

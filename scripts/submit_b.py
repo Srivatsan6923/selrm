@@ -211,7 +211,7 @@ def main():
         code = a.code or sha()
         q = a.args[0]
         apply(cpu_job(f"selrm-b-prep-{q.replace('_', '-').replace('.json', '')}-{int(time.time()) % 100000}",
-                      ["bash", f"/pvc/selrm/code/{code}/k8s/prep.sh", a.env, code, q], cpu=2, mem="8Gi",
+                      ["bash", f"/pvc/selrm/code/{code}/k8s/prep.sh", a.env, code, q], cpu=2, mem="16Gi",
                       eph="40Gi", hours=2))      # mostly single-threaded: keep median usage >= 20% of request
     elif a.cmd == "runners":
         code = a.code or sha()
