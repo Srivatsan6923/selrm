@@ -5,8 +5,8 @@ kept -> next run. Exits when no claimable run is left. Never waits for an input:
 a run whose pre-tokenised data is missing is skipped. A monitor thread logs GPU
 utilisation every 30 s into results/<run_id>/gpu_util.csv, heartbeats the claim,
 and aborts the process if utilisation stays below 5% for 10 minutes.
-  python scripts/train_eval_job.py --root ROOT --queue QUEUE.json [--queue ...]"""
-import argparse, gc, json, os, shutil, socket, subprocess, sys, time, traceback
+  python scripts/train_eval_job.py --root ROOT --queue QUEUE.json|QUEUE_DIR [--queue ...]"""
+import argparse, gc, glob, json, os, shutil, socket, subprocess, sys, time, traceback
 from importlib import metadata
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -54,10 +54,13 @@ def ready(root, spec):
 
 
 def load_runs(queues):
+    """Runs of every queue file, highest priority first; a directory stands for all its *.json
+    (re-read before every claim, so a queue pushed later reaches running runners)."""
     runs = []
     for q in queues:
-        for i, r in enumerate(json.load(open(q))["runs"]):
-            runs.append((r.get("priority", 9), q, i, r))
+        for f in sorted(glob.glob(f"{q}/*.json")) if os.path.isdir(q) else [q]:
+            for i, r in enumerate(json.load(open(f))["runs"]):
+                runs.append((r.get("priority", 9), f, i, r))
     return [r for *_, r in sorted(runs, key=lambda x: x[:3])]
 
 
