@@ -192,4 +192,5 @@ def factorial(seed="0"):
 
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(newline="\n")          # reports are committed: LF on Windows too
     {"smoke": smoke, "timing": timing, "factorial": factorial}[sys.argv[1]](*sys.argv[2:])
