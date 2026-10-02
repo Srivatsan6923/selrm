@@ -47,7 +47,7 @@ Branch `role-a` is pushed; the lead has not merged it into main yet.
 
 - **Statistics** (`results/A-D15`): between training and L2 rules, 0% of programs, rule texts, templates and cue words are shared. Criterion subexpressions are 72–85% shared (L2 means new structure over familiar criteria).
 - **Quality:**
-  - 45 tests pass, and shortcut validation passes on every triplet set.
+  - 46 tests pass, and shortcut validation passes on every triplet set.
   - Two audit rounds (6 readers, 450 rendered groups) found no label errors. Every consistency finding was fixed before the freeze.
   - The reject rate is about 1%, all from presentation edits that needed re-rendering.
 
