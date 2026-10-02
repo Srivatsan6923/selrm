@@ -124,7 +124,7 @@ MISSING = [
     "{What}: could not be determined from the information available.",
     "{What}: not yet assessed.",
     "Information on {what} was not obtained.",
-    "{What}: not asked about.",
+    "{What}: still to be established.",
     "{What}: unknown.",
     "{What}: status unclear from the records at hand.",
 ]
@@ -467,7 +467,7 @@ BANKS = {
             "Not taking any anticoagulants.",
             "No blood thinners on the medication list.",
             "Takes no tablets to thin the blood.",
-            "No INR monitoring in place.",
+            "Not on any treatment to prevent clots.",
             "Current anticoagulants: none.",
             "Anticoagulant therapy: none at present.",
         ],
@@ -1286,8 +1286,8 @@ BANKS = {
             "Medication list: aspirin 81 mg, taken each morning.",
             "Takes one enteric-coated aspirin with breakfast every day.",
             "Active medications today include aspirin 81 mg once daily.",
-            "Currently on low-dose aspirin for heart protection.",
-            "Uses a daily aspirin on a cardiologist's recommendation.",
+            "Currently on low-dose aspirin each day.",
+            "Swallows one low-dose aspirin each night.",
         ],
         "past": [
             "Took low-dose aspirin until {year}, when it was stopped on medical advice.",
@@ -2198,11 +2198,11 @@ BANKS = {
     },
     "fall": {
         "generic": [
-            "Walks steadily and has had no tumbles this year.",
-            "Steady on feet, with no recent trips or tumbles.",
+            "Walks steadily with good balance.",
+            "Steady on feet; balance normal.",
             "Mobile without help; no recent mishaps at home.",
             "Gets about unaided and has stayed upright this year.",
-            "Gait steady; no tumbles in recent months.",
+            "Gait steady, needs no walking aid.",
             "Walks independently, with no recent trips or slips.",
         ],
         "present": [

@@ -235,7 +235,7 @@ RULES: list[Rule] = [
          "For contraception, offer a combined oral contraceptive. If the patient or a "
          "first-degree relative (parent, sibling or child) has had a venous "
          "thromboembolism at any time, offer a progestin-only pill instead.",
-         [F("vte", "vte", "venous thromboembolism", ["thrombo", "dvt", "pulmonary embol"],
+         [F("vte", "vte", "venous thromboembolism (patient or first-degree relative)", ["thrombo", "dvt", "pulmonary embol"],
             counts_past=True, counts_family=True)],
          "Requests contraception.",
          default="a combined oral contraceptive", alternative="a progestin-only pill",

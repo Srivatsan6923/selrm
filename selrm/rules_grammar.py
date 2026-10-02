@@ -126,20 +126,20 @@ FINDING_CONDITIONS = {   # concept -> {applicability: (phrase in the rule, crite
                      "coronary artery disease"),
             "family": ("the patient or a first-degree relative (parent, sibling or child) has had "
                        "coronary artery disease at any time",
-                       "coronary artery disease in the patient or a first-degree relative")},
+                       "coronary artery disease (patient or first-degree relative)")},
     "vte": {"current": ("the patient currently has a venous thromboembolism",
                         "current venous thromboembolism"),
             "ever": ("the patient has ever had a venous thromboembolism (current or past)",
                      "venous thromboembolism"),
             "family": ("the patient or a first-degree relative (parent, sibling or child) has had "
                        "a venous thromboembolism at any time",
-                       "venous thromboembolism in the patient or a first-degree relative")},
+                       "venous thromboembolism (patient or first-degree relative)")},
     "stroke": {"ever": ("the patient has ever had a stroke or TIA (current or past)", "stroke/TIA")},
     "chf": {"current": ("the patient currently has heart failure", "current heart failure"),
             "ever": ("the patient has ever had heart failure (current or past)", "heart failure")},
     "diabetes": {"ever": ("the patient has ever had diabetes (current or past)", "diabetes"),
                  "family": ("the patient or a first-degree relative (parent, sibling or child) has "
-                            "had diabetes at any time", "diabetes in the patient or a first-degree relative")},
+                            "had diabetes at any time", "diabetes (patient or first-degree relative)")},
     "vascular": {"ever": ("the patient has ever had a myocardial infarction or peripheral artery "
                           "disease (current or past)", "myocardial infarction or peripheral artery disease")},
     "confusion": {"current": ("the patient has new confusion", "new confusion")},
@@ -151,7 +151,7 @@ FINDING_CONDITIONS = {   # concept -> {applicability: (phrase in the rule, crite
     "hit": {"ever": ("the patient has ever had heparin-induced thrombocytopenia (current or past)",
                      "heparin-induced thrombocytopenia")},
     "crc": {"family": ("the patient or a first-degree relative (parent, sibling or child) has had "
-                       "colorectal cancer at any time", "colorectal cancer")},
+                       "colorectal cancer at any time", "colorectal cancer (patient or first-degree relative)")},
     "bleeding": {"current": ("the patient currently has a major bleed", "active major bleeding"),
                  "ever": ("the patient has had a major bleeding event at any time", "bleeding history")},
     "cancer": {"current": ("the patient has active cancer", "active cancer"),
@@ -239,6 +239,7 @@ EXCLUDE = {
         {"cad", "vascular", "aspirin", "hit"},
     "Productive cough and fever; consolidation on chest radiograph.": {"temperature"},
     "Admitted for community-acquired pneumonia; immobile.": {"clarithromycin"},
+    "First day after elective total hip replacement.": {"platelets"},
     "Spreading redness and warmth of the right shin for two days.": {"calf_swelling"},
 }
 # Outpatient visits for a minor or chronic problem: no acute inpatient states
@@ -261,6 +262,15 @@ OUTPATIENT = [
     "Productive cough and fever; consolidation on chest radiograph.",
     "Spreading redness and warmth of the right shin for two days.",
 ]
+for _s in ("Presents with acute streptococcal pharyngitis (rapid antigen test positive).",
+           "Sore throat for two days.", "Erythema migrans rash ten days after a tick bite.",
+           "Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.",
+           "Community-acquired pneumonia confirmed on chest radiograph.",
+           "Productive cough and fever; consolidation on chest radiograph.",
+           "Suspected chest infection; assessed on the medical ward.",
+           "Spreading redness and warmth of the right shin for two days."):
+    EXCLUDE[_s] = EXCLUDE.get(_s, set()) | {"clarithromycin"}     # already on another antibiotic
+EXCLUDE["Dysuria and urinary frequency for two days; urine dipstick positive for nitrites."] |= {"temperature"}
 for _s in OUTPATIENT:
     EXCLUDE[_s] = EXCLUDE.get(_s, set()) | {"confusion", "spo2", "rr", "hit", "bleeding", "stroke",
                                             ("vte", "current")}
@@ -397,6 +407,7 @@ def sample_rules(n=250, seed=2027, scenarios=None, prefix="gs", title="Sampled r
                 if not any(kw in setting.lower() for kw in keywords[c])
                 and c not in EXCLUDE.get(setting, ()) and (c, v) not in EXCLUDE.get(setting, ())
                 and not _contra(c, default, alt)
+                and (op in ("single", "any_of") or not _contra(c, alt, default))
                 and (v != "value" or _configs(c, num_cfg[c], setting, alt))
                 and (c != "pregnancy" or (sex == "female" and ages[1] <= 45))]
         chosen = []

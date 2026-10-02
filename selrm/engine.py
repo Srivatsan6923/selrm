@@ -177,6 +177,12 @@ def _propose(rule, crit, nm_kind, tier, split, rng, rng_m=None):
             vals[c.cid] = _draw(rng, c, *lo_hi, ok)
     if crit.kind == "numeric":
         op = OPS[crit.op]
+
+        def close(lo_hi, k=3):         # flip-side values within k near-miss windows of the threshold
+            lo, hi = lo_hi
+            w = (max(lo, thr - k * crit.near_delta), min(hi, thr)) if crit.op in ("<", "<=") \
+                else (max(lo, thr), min(hi, thr + k * crit.near_delta))
+            return w if w[0] <= w[1] else lo_hi
         if nm_kind == "numeric":       # strictly inside the window, default side, not at threshold
             near_v = _draw(rng, crit, thr - crit.near_delta, thr + crit.near_delta,
                            lambda v: not op(v, thr)
@@ -188,9 +194,16 @@ def _propose(rule, crit, nm_kind, tier, split, rng, rng_m=None):
                            lambda v: not op(v, thr) and abs(v - thr) > abs(near_v - thr))
         else:                          # time: a flip-side value at a time the criterion ignores
             clear = lambda v: not op(v, thr) and _steps(abs(v - thr), crit) >= _steps(crit.near_delta, crit)  # noqa: E731
-            base_v = _draw(rng, crit, *crit.default_range, clear)
-            past_v = _draw(rng, crit, *crit.flip_range, lambda v: op(v, thr))
-            old_v = _draw(rng, crit, *crit.default_range, clear)
+            # a superseded value is recent: today's value within 4 windows of the threshold
+            # where the default range reaches that close
+            lo, hi = crit.default_range
+            if tier == "superseded":
+                w = (max(lo, thr + crit.near_delta), min(hi, thr + 4 * crit.near_delta)) \
+                    if crit.op in ("<", "<=") else (max(lo, thr - 4 * crit.near_delta), min(hi, thr - crit.near_delta))
+                lo, hi = w if w[0] <= w[1] else (lo, hi)
+            base_v = _draw(rng, crit, lo, hi, clear)
+            past_v = _draw(rng, crit, *close(crit.flip_range), lambda v: op(v, thr))
+            old_v = _draw(rng, crit, lo, hi, clear)
         if tier == "alt":              # flip where the original threshold gives the other answer
             orig = crit.threshold
             flip_v = _draw(rng, crit, min(thr, orig), max(thr, orig),
@@ -198,7 +211,7 @@ def _propose(rule, crit, nm_kind, tier, split, rng, rng_m=None):
         elif crit.op in (">=", "<=") and rng.random() < 1 / 3:
             flip_v = thr               # an inclusive threshold is met exactly at the stated value
         else:
-            flip_v = _draw(rng, crit, *crit.flip_range, lambda v: op(v, thr))
+            flip_v = _draw(rng, crit, *close(crit.flip_range), lambda v: op(v, thr))
         vals[crit.cid] = base_v
     age = next((vals[c.cid] for c in rule.criteria if c.concept == "age"), None) \
         or rng.randint(*rule.age_range)
@@ -299,7 +312,8 @@ def _propose(rule, crit, nm_kind, tier, split, rng, rng_m=None):
         elif nm_kind == "subject":
             others = [p for p in people(crit.concept)
                       if not (crit.counts_family and p in FIRST_DEGREE)]
-            near = line(crit, rel_form(crit), subject=rng.choice(others))
+            form = "rel_past" if flip["m"].time == "past" and "rel_past" in P.BANKS[crit.concept] else "rel"
+            near = line(crit, form, subject=rng.choice(others))     # same time as the flip
         else:                          # time
             near = line(crit, "delabelled" if tier == "delabelled" else "past")
 
@@ -327,7 +341,12 @@ def _propose(rule, crit, nm_kind, tier, split, rng, rng_m=None):
             pres_ls.append(dict(x, tpl=(x["tpl"][0], x["tpl"][1], i)))
         else:
             pres_ls.append(x)
-    rng.shuffle(pres_ls)
+    order = list(range(len(pres_ls)))
+    for _ in range(20):                # a new order whenever there are two lines to swap
+        rng.shuffle(order)
+        if len(order) < 2 or order != sorted(order):
+            break
+    pres_ls = [pres_ls[i] for i in order]
 
     by_concept = {c.concept: c for c in rule.criteria}
     noun = "woman" if sex == "female" else "man"
@@ -424,6 +443,8 @@ def check(rule, g):
     for k, case in cases.items():   # every slot filled, nothing rendered from a missing value
         if "None" in case["text"] or "{" in case["text"] or "}" in case["text"]:
             errs.append(f"render: {k} has an unfilled slot")
+    if cases["pres"]["lines"] == cases["base"]["lines"]:
+        errs.append("pres: only the header changes")
     if cases["pres"]["text"] == cases["base"]["text"]:
         errs.append("pres: same text as base")
     if Counter(cases["pres"]["state"]) != Counter(cases["base"]["state"]):

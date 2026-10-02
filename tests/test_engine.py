@@ -117,8 +117,9 @@ def test_near_misses_differ_from_a_counted_mention_in_one_attribute(groups):
             continue
         (m,) = [x for x in near if x not in base]
         assert not c.applies(m)
-        if kind == "subject":
+        if kind == "subject":   # another person, at the flip's time: only the person differs
             assert m.subject != "patient" and not (c.counts_family and m.subject in FIRST_DEGREE)
+            assert m.time == f.time, recs[0]["tid"]
         else:
             assert m.subject == "patient" and m.time == "past" and not c.counts_past
 
