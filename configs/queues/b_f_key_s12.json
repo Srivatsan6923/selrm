@@ -59,7 +59,7 @@
    "seed": 1,
    "n_examples": 60000,
    "priority": 2,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -85,7 +85,7 @@
    "seed": 2,
    "n_examples": 60000,
    "priority": 2,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -111,7 +111,7 @@
    "seed": 1,
    "n_examples": 60000,
    "priority": 2,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -137,7 +137,7 @@
    "seed": 2,
    "n_examples": 60000,
    "priority": 2,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -163,7 +163,7 @@
    "seed": 1,
    "n_examples": 60000,
    "priority": 2,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -189,7 +189,7 @@
    "seed": 2,
    "n_examples": 60000,
    "priority": 2,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,

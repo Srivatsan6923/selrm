@@ -189,7 +189,7 @@
    "seed": 0,
    "n_examples": 60000,
    "priority": 1,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -293,7 +293,7 @@
    "seed": 0,
    "n_examples": 60000,
    "priority": 1,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -397,7 +397,7 @@
    "seed": 0,
    "n_examples": 60000,
    "priority": 1,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -449,7 +449,7 @@
    "seed": 0,
    "n_examples": 60000,
    "priority": 1,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,

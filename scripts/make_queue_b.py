@@ -11,6 +11,10 @@ PRIO = {"P0": 0, "P1": 1, "P2": 2, "P3": 3}
 KEY_CELLS = {("verdict", "blocks"), ("verdict", "triplets"), ("ledger2", "blocks"), ("ledger2", "triplets")}
 EVAL = {"bs_score": 128, "bs_gen": 256, "max_new": 384}    # B-T0b: 1.7x faster rationale eval than 64/64; capped at 128 below 60 GB
 PRIMARY = ("dev", "test_L2", "test_L3alt", "dev_missing", "missing")   # Tables 3-4; seeds >= 1 of non-key cells
+# adapters kept on the PVC for the clinical columns (C's eval_clinical.py, not yet available): Table 4 rows and
+# the MedEinst column of Table 9; only configs/keep_adapters.json runs are published for C and D
+CLINICAL_CELLS = {("verdict", "triplets"), ("summary2", "triplets"), ("rationale", "triplets"), ("value2", "triplets"),
+                  ("ledger2", "balanced"), ("ledger2", "blocks"), ("ledger2", "triplets")}
 
 
 def keep_list():
@@ -48,7 +52,7 @@ def factorial(seeds, registry, version, key_only=False):
         runs.append({"run_id": r["run_id"], "format": m[1], "corpus": corpus, "seed": int(m[3]),
                      "n_examples": 60000,
                      "priority": 10 * PRIO[r["priority"]] + 2 * (int(m[3]) > 0) + ((m[1], m[2]) not in KEY_CELLS),
-                     "keep_adapter": r["run_id"] in keep, "eval": dict(EVAL),
+                     "keep_adapter": r["run_id"] in keep or (m[1], m[2]) in CLINICAL_CELLS, "eval": dict(EVAL),
                      "eval_sets": evals if full else [e for e in evals if e.split("/", 1)[1] in PRIMARY]})
     return runs
 
@@ -64,7 +68,7 @@ def transfer(seeds, registry, version):
         if not m or int(m[1]) not in seeds or r["status"] in ("done", "dropped"):
             continue
         runs.append({"run_id": r["run_id"], "format": "verdict", "corpus": "fover_v1/train", "seed": int(m[1]),
-                     "n_examples": 60000, "priority": 10 * PRIO[r["priority"]] + 5, "keep_adapter": r["run_id"] in keep,
+                     "n_examples": 60000, "priority": 10 * PRIO[r["priority"]] + 5, "keep_adapter": True,   # Table 4 row (clinical columns)
                      "eval": dict(EVAL), "eval_sets": evals if int(m[1]) == 0 else
                      [e for e in evals if e.split("/", 1)[1] in PRIMARY]})
     return runs
