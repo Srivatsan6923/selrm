@@ -1,34 +1,39 @@
 # STATE role B (maintained by Claude Code)
-Updated: 2026-10-02 ~10:05 UTC (Fri). Schedule: on time (B-C0 due today).
+Updated: 2026-10-02 ~11:50 UTC (Fri). Schedule: on time (B-C0 and B-T0 done on day 1).
 
 ## Done
-- First commands pass; kubectl works (context nautilus, ns ecepxie). Clone: D:\NAACL27\selrm-role-b (role-b).
-- B-C0 code: selrm/formats.py, selrm/runq.py, scripts/{pretok,finetune,eval_local,train_eval_job,make_queue_b,
-  submit_b,nrp_status_b,report_b,cpu_selftest_b}.py, k8s/{build_env,stage,prep}.sh. CPU end-to-end self-test
-  passes for all five formats. 4-lens adversarial review (23 agents): all confirmed findings fixed
-  (DECISIONS_B 2 Oct entries); resampling now follows the draft's q(.|x).
-- NRP: PVC selrm-b (rook-cephfs, 200 Gi); env v1 tarball built (torch 2.11.0+cu130, unsloth 2026.9.14,
-  transformers 5.5.0, trl 0.24.0, peft 0.21.2, fla 0.5.2, causal-conv1d 1.7.0 compiled); smoke_v2 rebuilt in-cluster
-  with matching hashes; unsloth/Qwen3.5-9B@005429c on the PVC; b_smoke pre-tokenised (tok/unsloth--Qwen3.5-9B/...).
-- First A100 measurement (16x4, verdict, smoke): 3.0 s/step, GPU 100%, 22.6 GB, 1 CPU core, RSS 2.9 GiB.
+- B-C0 (code + NRP pipeline): selrm/{formats,runq}.py; scripts/{pretok,finetune,eval_local,train_eval_job,make_queue_b,
+  submit_b,nrp_status_b,report_b,publish_adapters_b,cpu_selftest_b}.py; k8s/{build_env,stage,prep,build_data}.sh.
+  CPU self-test passes (5 formats + eval-only). 4-lens adversarial review: all confirmed findings fixed (DECISIONS_B).
+- Smoke comparison (PROVISIONAL, never tabled) -> lead: docs/SMOKE_B_C0.md. Held-out rules at ceiling for both
+  corpora (TA 99.7 blocks vs 100 triplets); dev (seen rules, held-out template): triplets - blocks TA +10.0
+  [+1.9, +20.4], all of it Hold on numeric near-misses (45.1 vs 100).
+- B-T0 timing (A100-80GB, 16x4): docs/TIMING_B_T0.md. All formats 82-91% mean GPU util, no 5-min window < 40%.
+  Eval batches score 128 / generate 256 (rationale eval 431 s vs 717 s at 64/64). est_hours of all B-F rows in
+  RUN_MATRIX_B from measurements (seed 0 of 20 cells ~53 GPU-h with full-ladder eval).
+- Verified on role A's real rule_v1 format (1% build of role-a): registry paths, gold-ledger checks, all 20 cells
+  pre-tokenise; queue runner trains+evaluates all 10 eval sets (missing sets: no CI, scores kept for C's MR).
+- NRP: PVC selrm-b; env v1 tarball; weights unsloth/Qwen3.5-9B@005429c; runner = 2 CPU / 12 Gi / A100.
 
 ## In progress
-- 3 single-A100 runner Jobs on queue b_smoke (code d66bb6fa7d53): B-C0-smoke-verdict-{blocks,triplets}-s0 and
-  B-T0-{verdict,rationale,summary2,value2,ledger2}.
+- nothing on GPUs (all runner Jobs exited by themselves when their queues were empty).
 
 ## Next
-1. Pull results, docs/SMOKE_B_C0.md (provisional, by near-miss kind) + HANDOFFS line to the lead; docs/TIMING_B_T0.md
-   (s/step, tok/s, peak mem, GPU util mean/p10/windows<40 per format); update est_hours in RUN_MATRIX_B.
-2. rule_v1: role A's builder is on role-a (scripts/build_rule_v1.py; registry has per-file sha256). When A freezes
-   (Sat evening): rebuild in-cluster from A's commit, verify sha256, prep + factorial seed-0 queue (20 cells, n=60k).
-3. B-PRM plan once C reports MedPRMBench status; B-TR-fover converter (FoVer IDs verified in configs/datasets_b.json).
+1. When A freezes rule_v1 (target Sat 3 Oct 18:00, A's registry carries sha256): `submit_b.py push-ref <A commit>`,
+   `build-data <sha12>` (CPU rebuild + sha256 check + publish), `make_queue_b.py factorial b_f_s0.json --seeds 0`,
+   push-queue (marks CLAIMED_B in results_git; commit+push), prep, runners (n = min(20, free A100s, quota 9)).
+2. Then key cells seeds 1-2 (8 runs, full ladder), publish kept adapters (after the HF secret is confirmed), B-REG.
+3. P1 code while waiting: B-TR-fover converter (IDs in configs/datasets_b.json), GenPRM-style check code (A-D13
+   selrm/reference.py on role-a), ablation variants (decision field, bit-only, pairwise BT loss, change loss,
+   conclusion-only, concept scorer, probe re-weighting), eval-only analyses (oracle ledger, field interventions).
 
 ## GPUs held
-- up to 3 x A100 (Jobs selrm-b-run-b-smoke-a100-*), started ~10:00 UTC; utilisation per run in results/<run>/gpu_util.csv.
+- none (last runner exited 11:33 UTC). Peak today: 3 x A100 (Missouri, Great Plains, SDSC) 10:00-11:33 UTC,
+  GPU util 82-91% per run (meta.json), RSS 0.24 of request, CPU 0.5 of request.
 
 ## Open compute requests
-- #1 (2 Oct): read-only GitHub token secret `selrm-github-ro`; confirm `hf-token-srivatsan` is the user's.
-  Workaround in use: code via the selrm-b-sync pod (small streams only).
+- #1 (2 Oct): read-only GitHub token secret `selrm-github-ro`; confirm `hf-token-srivatsan` is the user's (needed to
+  publish kept adapters to a private HF repo). Workaround: code via the selrm-b-sync pod (small streams only).
 
 ## Blockers
-- none.
+- none (rule_v1 expected Sat 18:00; smoke fallback not needed yet).
