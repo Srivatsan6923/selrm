@@ -134,6 +134,11 @@ def build_train(root, spec, tok, end):
     recs = [r for r in load_jsonl(dataset_path(root, spec["corpus"])) if not r["meta"].get("probe")]   # probes: scoring only
     if spec["format"] not in ("verdict", "verdict_bt", "summary2", "genprm"):   # rationale targets carry ledger2 text
         check_gold(recs, ["ledger2" if spec["format"] == "rationale" else spec["format"]], spec["corpus"])
+    if spec.get("pair_weights") and not os.path.exists(f"{root}/{spec['pair_weights']}"):   # probe re-weighting step 2
+        os.makedirs(os.path.dirname(f"{root}/{spec['pair_weights']}"), exist_ok=True)
+        subprocess.run([sys.executable, f"{REPO}/scripts/probe_weights.py", "--root", root, "--scores_run",
+                        spec["probe_scores"], "--set", spec["probe_set"], "--out", f"{root}/{spec['pair_weights']}"],
+                       check=True)
     pw = json.load(open(f"{root}/{spec['pair_weights']}")) if spec.get("pair_weights") else None
     ex, stats = build_examples(recs, spec["format"], n=spec.get("n_examples"),
                                resample_p=spec.get("resample_p", 0.3),
