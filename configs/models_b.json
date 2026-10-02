@@ -1,0 +1,8 @@
+{
+ "verified": "2026-10-02 via https://huggingface.co/api/models/<id> (sha = head of main that day)",
+ "models": [
+  {"id": "unsloth/Qwen3.5-9B", "revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+   "note": "backbone; weights byte-identical to Qwen/Qwen3.5-9B@c202236235762e1c871ad0ccb60c8ee5ba337b9a; 19.31 GB; no generation_config.json (stop on <|im_end|> 248046 and <|endoftext|> 248044)",
+   "allow_patterns": ["*.json", "*.jinja", "*.safetensors", "merges.txt", "vocab.json", "LICENSE"]}
+ ]
+}
