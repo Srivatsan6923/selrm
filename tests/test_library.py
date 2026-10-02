@@ -87,7 +87,17 @@ def test_no_coupled_concepts_or_setting_conflicts():
     for r in LIBRARY:
         cs = {c.concept for c in r.criteria}
         assert not [p for p in COUPLED if p <= cs], r.rid
-        assert not cs & EXCLUDE.get(r.setting, set()), r.rid
+        app = {(c.concept, "family" if c.counts_family else "ever" if c.counts_past else "current")
+               for c in r.criteria}
+        assert not (cs | app) & EXCLUDE.get(r.setting, set()), r.rid
+
+
+def test_claims_use_the_verb_of_the_rule_text():
+    for r in LIBRARY:
+        if r.kind == "constraint":
+            text = r.rule_text().lower()
+            assert f"{r.verb.lower()} {r.default.lower()}." in text, r.rid
+            assert f"{r.verb.lower()} {r.alternative.lower()} instead" in text, r.rid
 
 
 def test_every_rule_turns_exactly_at_its_stated_thresholds():

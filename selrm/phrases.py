@@ -47,7 +47,7 @@ TIME_CUES = {"train": ("resolved", "healed", "previously", "completed", "stopped
                        "yesterday", "on admission", "removed"),
              "test": ("formerly", "outgrown", "ago", "recovered", "earlier", "last month",
                       "de-labeled", "delabeled")}
-CURRENT_CUES = {"train": ("today", "this morning", "at this assessment", "on arrival"),
+CURRENT_CUES = {"train": ("today", "this morning", "at this assessment"),
                 "test": ("current", "currently", "now", "latest", "at this visit")}
 
 
@@ -68,7 +68,7 @@ def by_split(items, split):
 
 # Header frames; HEADER_NO_AGE is used when the rule has an age criterion.
 HEADER = ["{age}-year-old {noun}.", "Patient: {sex}, {age} years.", "{Sex}, {age} years.",
-          "A {age}-year-old {noun}.",
+          "{age} years old, {sex}.",
           "{Noun} of {age} years.", "{Sex} patient of {age} years."]
 HEADER_NO_AGE = ["Patient: {sex}.", "Sex: {sex}.", "Adult {noun}.", "{Sex} patient.",
                  "An adult {noun}.", "{Noun}, adult."]
@@ -94,6 +94,8 @@ def persons(concept, split, age=None):
         ok -= {"mother", "father", "aunt", "uncle"}
     if age is not None and age < 18:
         ok -= {"husband", "wife"}
+    if age is not None and age >= 70:
+        ok -= {"coworker"}
     return [p for p in by_split(PERSONS, split) if p in ok]
 
 
@@ -119,8 +121,8 @@ OVERLAP = (
 # Missing-input lines for a finding whose status is unknown ({What}/{what}: the
 # criterion label). Measured inputs are unknown when omitted and need no line.
 MISSING = [
-    "{What}: not recorded.",
-    "{What}: not documented in the records available.",
+    "{What}: could not be determined from the information available.",
+    "{What}: not yet assessed.",
     "Information on {what} was not obtained.",
     "{What}: not asked about.",
     "{What}: unknown.",
@@ -176,7 +178,7 @@ FILLERS = [
     "Watches football on weekends.",
     "Writes with the right hand.",
     "Lives on a quiet street.",
-    "Uses reading glasses for small print.",
+    "Wears glasses when driving.",
     "Knits as a hobby.",
     "Prefers to be addressed by first name.",
 ]
@@ -229,7 +231,7 @@ BANKS = {
     "pen_allergy": {
         "generic": [
             "No known drug allergies.",
-            "No beta-lactam allergy.",
+            "Has taken several antibiotic courses with no reaction.",
             "Not allergic to any antibiotics.",
             "Denies any drug allergies.",
             "Drug allergies: none known.",
@@ -463,8 +465,8 @@ BANKS = {
     "warfarin": {
         "generic": [
             "Not taking any anticoagulants.",
-            "No vitamin K antagonist on the medication list.",
-            "Not taking a vitamin K antagonist.",
+            "No blood thinners on the medication list.",
+            "Takes no tablets to thin the blood.",
             "No INR monitoring in place.",
             "Current anticoagulants: none.",
             "Anticoagulant therapy: none at present.",
@@ -504,12 +506,12 @@ BANKS = {
     },
     "cad": {
         "generic": [
-            "Exercises regularly without chest pain.",
+            "No angina symptoms reported.",
             "No exertional chest discomfort.",
             "Resting ECG shows no ischemic changes.",
             "Takes no medicines for angina.",
             "Chest pain on exertion: none reported.",
-            "Climbs two flights of stairs without symptoms.",
+            "Cardiac stress test unremarkable last year.",
         ],
         "present": [
             "Coronary artery disease with stable angina.",
@@ -567,7 +569,7 @@ BANKS = {
             "CT pulmonary angiogram today shows a pulmonary embolism.",
             "Has a deep vein thrombosis and takes apixaban twice daily.",
             "Has an acute pulmonary embolism, diagnosed this week.",
-            "Ongoing treatment for venous thrombosis of the left arm.",
+            "Ongoing treatment for a deep vein thrombosis of the left arm.",
         ],
         "past": [
             "Deep vein thrombosis after a fracture in {year}.",
@@ -582,7 +584,7 @@ BANKS = {
             "Denies any DVT or pulmonary embolism, past or present, personally or in parents, siblings or children.",
             "No venous thromboembolism at any time, personally or among first-degree relatives.",
             "Medical records show no venous thromboembolism, and none is reported in first-degree relatives.",
-            "Has never had a DVT or pulmonary embolism, nor has any parent or sibling.",
+            "Has never had a DVT or pulmonary embolism, nor has any parent, sibling or child.",
             "Venous thromboembolism has never occurred in the patient or in any parent, sibling or child.",
         ],
         "rel": [
@@ -814,7 +816,7 @@ BANKS = {
         "present": [
             "New confusion since this morning.",
             "Acutely confused, per family.",
-            "Confused on arrival, a sudden change from baseline.",
+            "Confused this morning, a sudden change from baseline.",
             "Acute confusional state at this assessment.",
             "Disoriented to time and place, which is new for the patient.",
             "Newly disoriented and unable to give a clear history.",
@@ -830,7 +832,7 @@ BANKS = {
         "absent": [
             "No confusion.",
             "Not confused or disoriented.",
-            "No sign of confusion on arrival.",
+            "No sign of confusion at this assessment.",
             "No confusion, according to the nursing staff.",
             "Confusion absent; answers questions appropriately.",
             "Without any confusion on assessment.",
@@ -947,11 +949,11 @@ BANKS = {
     "mech_valve": {
         "generic": [
             "No valve clicks on auscultation.",
-            "Auscultation: irregular rhythm and no clicks.",
+            "Auscultation: no clicks or added sounds.",
             "Not on anticoagulation at present.",
             "No ticking sound audible from the chest.",
-            "Heart sounds irregular, without a metallic click.",
-            "Irregularly irregular pulse; heart sounds free of clicks.",
+            "Heart sounds without a metallic click.",
+            "Heart sounds free of clicks.",
         ],
         "present": [
             "Has a mechanical aortic valve.",
@@ -1138,11 +1140,11 @@ BANKS = {
     },
     "cancer": {
         "generic": [
-            "No active malignancy.",
+            "Recent screening tests all normal.",
             "No unexplained weight loss or new lumps.",
-            "No evidence of active neoplasia.",
+            "Has not been referred to an oncology clinic.",
             "Not undergoing chemotherapy or radiotherapy.",
-            "Malignant disease: none at present.",
+            "Oncology follow-up: none.",
             "Weight steady over the past year.",
         ],
         "present": [
@@ -1241,7 +1243,7 @@ BANKS = {
             "Tender anterior cervical lymph nodes on both sides.",
             "Tender anterior cervical lymphadenopathy.",
             "The anterior cervical lymph nodes are tender today, more so on the right.",
-            "A single tender anterior cervical lymph node on the left.",
+            "Tender anterior cervical lymph nodes on the left.",
             "Anterior cervical lymph nodes enlarged and tender to touch.",
             "Tender, swollen lymph nodes in the front of the neck.",
         ],
@@ -1323,17 +1325,17 @@ BANKS = {
         ],
         "past": [
             "In {year}, eGFR was {v} mL/min/1.73 m2.",
-            "EGFR of {v} mL/min/1.73 m2 recorded in {year}.",
-            "A routine check in {year} gave eGFR {v} mL/min/1.73 m2.",
-            "EGFR {v} mL/min/1.73 m2 at a clinic visit in {year}.",
+            "eGFR of {v} mL/min/1.73 m2 recorded in {year}.",
+            "eGFR was {v} mL/min/1.73 m2 when measured in {year}.",
+            "eGFR {v} mL/min/1.73 m2 at a hospital visit in {year}.",
             "Records from {year} list eGFR at {v} mL/min/1.73 m2.",
-            "Back in {year}, eGFR measured {v} mL/min/1.73 m2.",
+            "Back in {year}, eGFR stood at {v} mL/min/1.73 m2.",
         ],
         "superseded": [
             "Yesterday, eGFR was {v} mL/min/1.73 m2; today's value replaces it.",
-            "On admission, eGFR was {v} mL/min/1.73 m2; it has since been repeated.",
-            "EGFR was {v} mL/min/1.73 m2 yesterday, before today's repeat.",
-            "EGFR of {v} mL/min/1.73 m2 measured yesterday was replaced by a repeat measurement.",
+            "Previously, eGFR was {v} mL/min/1.73 m2; it has since been repeated.",
+            "eGFR was {v} mL/min/1.73 m2 yesterday, before today's repeat.",
+            "eGFR of {v} mL/min/1.73 m2 measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, eGFR was {v} mL/min/1.73 m2; a newer reading supersedes it.",
             "Last month, eGFR was {v} mL/min/1.73 m2; the newest measurement replaces it.",
         ],
@@ -1350,14 +1352,14 @@ BANKS = {
         "past": [
             "In {year}, platelet count was {v} x10^9/L.",
             "Platelet count of {v} x10^9/L recorded in {year}.",
-            "A routine check in {year} gave platelet count {v} x10^9/L.",
-            "Platelet count {v} x10^9/L at a clinic visit in {year}.",
+            "Platelet count was {v} x10^9/L when measured in {year}.",
+            "Platelet count {v} x10^9/L at a hospital visit in {year}.",
             "Records from {year} list platelet count at {v} x10^9/L.",
-            "Back in {year}, platelet count measured {v} x10^9/L.",
+            "Back in {year}, platelet count stood at {v} x10^9/L.",
         ],
         "superseded": [
             "Yesterday, platelet count was {v} x10^9/L; today's value replaces it.",
-            "On admission, platelet count was {v} x10^9/L; it has since been repeated.",
+            "Previously, platelet count was {v} x10^9/L; it has since been repeated.",
             "Platelet count was {v} x10^9/L yesterday, before today's repeat.",
             "Platelet count of {v} x10^9/L measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, platelet count was {v} x10^9/L; a newer reading supersedes it.",
@@ -1376,14 +1378,14 @@ BANKS = {
         "past": [
             "In {year}, ALT was {v} U/L.",
             "ALT of {v} U/L recorded in {year}.",
-            "A routine check in {year} gave ALT {v} U/L.",
-            "ALT {v} U/L at a clinic visit in {year}.",
+            "ALT was {v} U/L when measured in {year}.",
+            "ALT {v} U/L at a hospital visit in {year}.",
             "Records from {year} list ALT at {v} U/L.",
-            "Back in {year}, ALT measured {v} U/L.",
+            "Back in {year}, ALT stood at {v} U/L.",
         ],
         "superseded": [
             "Yesterday, ALT was {v} U/L; today's value replaces it.",
-            "On admission, ALT was {v} U/L; it has since been repeated.",
+            "Previously, ALT was {v} U/L; it has since been repeated.",
             "ALT was {v} U/L yesterday, before today's repeat.",
             "ALT of {v} U/L measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, ALT was {v} U/L; a newer reading supersedes it.",
@@ -1402,14 +1404,14 @@ BANKS = {
         "past": [
             "In {year}, blood urea nitrogen was {v} mg/dL.",
             "Blood urea nitrogen of {v} mg/dL recorded in {year}.",
-            "A routine check in {year} gave blood urea nitrogen {v} mg/dL.",
-            "Blood urea nitrogen {v} mg/dL at a clinic visit in {year}.",
+            "Blood urea nitrogen was {v} mg/dL when measured in {year}.",
+            "Blood urea nitrogen {v} mg/dL at a hospital visit in {year}.",
             "Records from {year} list blood urea nitrogen at {v} mg/dL.",
-            "Back in {year}, blood urea nitrogen measured {v} mg/dL.",
+            "Back in {year}, blood urea nitrogen stood at {v} mg/dL.",
         ],
         "superseded": [
             "Yesterday, blood urea nitrogen was {v} mg/dL; today's value replaces it.",
-            "On admission, blood urea nitrogen was {v} mg/dL; it has since been repeated.",
+            "Previously, blood urea nitrogen was {v} mg/dL; it has since been repeated.",
             "Blood urea nitrogen was {v} mg/dL yesterday, before today's repeat.",
             "Blood urea nitrogen of {v} mg/dL measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, blood urea nitrogen was {v} mg/dL; a newer reading supersedes it.",
@@ -1428,14 +1430,14 @@ BANKS = {
         "past": [
             "In {year}, respiratory rate was {v}/min.",
             "Respiratory rate of {v}/min recorded in {year}.",
-            "A routine check in {year} gave respiratory rate {v}/min.",
-            "Respiratory rate {v}/min at a clinic visit in {year}.",
+            "Respiratory rate was {v}/min when measured in {year}.",
+            "Respiratory rate {v}/min at a hospital visit in {year}.",
             "Records from {year} list respiratory rate at {v}/min.",
-            "Back in {year}, respiratory rate measured {v}/min.",
+            "Back in {year}, respiratory rate stood at {v}/min.",
         ],
         "superseded": [
             "Yesterday, respiratory rate was {v}/min; today's value replaces it.",
-            "On admission, respiratory rate was {v}/min; it has since been repeated.",
+            "Previously, respiratory rate was {v}/min; it has since been repeated.",
             "Respiratory rate was {v}/min yesterday, before today's repeat.",
             "Respiratory rate of {v}/min measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, respiratory rate was {v}/min; a newer reading supersedes it.",
@@ -1454,14 +1456,14 @@ BANKS = {
         "past": [
             "In {year}, systolic blood pressure was {v} mmHg.",
             "Systolic blood pressure of {v} mmHg recorded in {year}.",
-            "A routine check in {year} gave systolic blood pressure {v} mmHg.",
-            "Systolic blood pressure {v} mmHg at a clinic visit in {year}.",
+            "Systolic blood pressure was {v} mmHg when measured in {year}.",
+            "Systolic blood pressure {v} mmHg at a hospital visit in {year}.",
             "Records from {year} list systolic blood pressure at {v} mmHg.",
-            "Back in {year}, systolic blood pressure measured {v} mmHg.",
+            "Back in {year}, systolic blood pressure stood at {v} mmHg.",
         ],
         "superseded": [
             "Yesterday, systolic blood pressure was {v} mmHg; today's value replaces it.",
-            "On admission, systolic blood pressure was {v} mmHg; it has since been repeated.",
+            "Previously, systolic blood pressure was {v} mmHg; it has since been repeated.",
             "Systolic blood pressure was {v} mmHg yesterday, before today's repeat.",
             "Systolic blood pressure of {v} mmHg measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, systolic blood pressure was {v} mmHg; a newer reading supersedes it.",
@@ -1471,7 +1473,7 @@ BANKS = {
     "age": {
         "current": [
             "Age today: {v} years.",
-            "Age on arrival: {v} years.",
+            "Age as of today: {v} years.",
             "Age at this assessment: {v} years.",
             "Age {v} years, calculated today from the date of birth.",
             "Currently aged {v} years.",
@@ -1490,14 +1492,14 @@ BANKS = {
         "past": [
             "In {year}, serum potassium was {v} mmol/L.",
             "Serum potassium of {v} mmol/L recorded in {year}.",
-            "A routine check in {year} gave serum potassium {v} mmol/L.",
-            "Serum potassium {v} mmol/L at a clinic visit in {year}.",
+            "Serum potassium was {v} mmol/L when measured in {year}.",
+            "Serum potassium {v} mmol/L at a hospital visit in {year}.",
             "Records from {year} list serum potassium at {v} mmol/L.",
-            "Back in {year}, serum potassium measured {v} mmol/L.",
+            "Back in {year}, serum potassium stood at {v} mmol/L.",
         ],
         "superseded": [
             "Yesterday, serum potassium was {v} mmol/L; today's value replaces it.",
-            "On admission, serum potassium was {v} mmol/L; it has since been repeated.",
+            "Previously, serum potassium was {v} mmol/L; it has since been repeated.",
             "Serum potassium was {v} mmol/L yesterday, before today's repeat.",
             "Serum potassium of {v} mmol/L measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, serum potassium was {v} mmol/L; a newer reading supersedes it.",
@@ -1516,14 +1518,14 @@ BANKS = {
         "past": [
             "In {year}, serum creatinine was {v} mg/dL.",
             "Serum creatinine of {v} mg/dL recorded in {year}.",
-            "A routine check in {year} gave serum creatinine {v} mg/dL.",
-            "Serum creatinine {v} mg/dL at a clinic visit in {year}.",
+            "Serum creatinine was {v} mg/dL when measured in {year}.",
+            "Serum creatinine {v} mg/dL at a hospital visit in {year}.",
             "Records from {year} list serum creatinine at {v} mg/dL.",
-            "Back in {year}, serum creatinine measured {v} mg/dL.",
+            "Back in {year}, serum creatinine stood at {v} mg/dL.",
         ],
         "superseded": [
             "Yesterday, serum creatinine was {v} mg/dL; today's value replaces it.",
-            "On admission, serum creatinine was {v} mg/dL; it has since been repeated.",
+            "Previously, serum creatinine was {v} mg/dL; it has since been repeated.",
             "Serum creatinine was {v} mg/dL yesterday, before today's repeat.",
             "Serum creatinine of {v} mg/dL measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, serum creatinine was {v} mg/dL; a newer reading supersedes it.",
@@ -1542,14 +1544,14 @@ BANKS = {
         "past": [
             "In {year}, white cell count was {v} x10^9/L.",
             "White cell count of {v} x10^9/L recorded in {year}.",
-            "A routine check in {year} gave white cell count {v} x10^9/L.",
-            "White cell count {v} x10^9/L at a clinic visit in {year}.",
+            "White cell count was {v} x10^9/L when measured in {year}.",
+            "White cell count {v} x10^9/L at a hospital visit in {year}.",
             "Records from {year} list white cell count at {v} x10^9/L.",
-            "Back in {year}, white cell count measured {v} x10^9/L.",
+            "Back in {year}, white cell count stood at {v} x10^9/L.",
         ],
         "superseded": [
             "Yesterday, white cell count was {v} x10^9/L; today's value replaces it.",
-            "On admission, white cell count was {v} x10^9/L; it has since been repeated.",
+            "Previously, white cell count was {v} x10^9/L; it has since been repeated.",
             "White cell count was {v} x10^9/L yesterday, before today's repeat.",
             "White cell count of {v} x10^9/L measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, white cell count was {v} x10^9/L; a newer reading supersedes it.",
@@ -1568,14 +1570,14 @@ BANKS = {
         "past": [
             "In {year}, oxygen saturation was {v}%.",
             "Oxygen saturation of {v}% recorded in {year}.",
-            "A routine check in {year} gave oxygen saturation {v}%.",
-            "Oxygen saturation {v}% at a clinic visit in {year}.",
+            "Oxygen saturation was {v}% when measured in {year}.",
+            "Oxygen saturation {v}% at a hospital visit in {year}.",
             "Records from {year} list oxygen saturation at {v}%.",
-            "Back in {year}, oxygen saturation measured {v}%.",
+            "Back in {year}, oxygen saturation stood at {v}%.",
         ],
         "superseded": [
             "Yesterday, oxygen saturation was {v}%; today's value replaces it.",
-            "On admission, oxygen saturation was {v}%; it has since been repeated.",
+            "Previously, oxygen saturation was {v}%; it has since been repeated.",
             "Oxygen saturation was {v}% yesterday, before today's repeat.",
             "Oxygen saturation of {v}% measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, oxygen saturation was {v}%; a newer reading supersedes it.",
@@ -1594,14 +1596,14 @@ BANKS = {
         "past": [
             "In {year}, temperature was {v} C.",
             "Temperature of {v} C recorded in {year}.",
-            "A routine check in {year} gave temperature {v} C.",
-            "Temperature {v} C at a clinic visit in {year}.",
+            "Temperature was {v} C when measured in {year}.",
+            "Temperature {v} C at a hospital visit in {year}.",
             "Records from {year} list temperature at {v} C.",
-            "Back in {year}, temperature measured {v} C.",
+            "Back in {year}, temperature stood at {v} C.",
         ],
         "superseded": [
             "Yesterday, temperature was {v} C; today's value replaces it.",
-            "On admission, temperature was {v} C; it has since been repeated.",
+            "Previously, temperature was {v} C; it has since been repeated.",
             "Temperature was {v} C yesterday, before today's repeat.",
             "Temperature of {v} C measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, temperature was {v} C; a newer reading supersedes it.",
@@ -1615,19 +1617,19 @@ BANKS = {
             "Pulse taken this morning: heart rate {v}/min.",
             "Heart rate counted over a full minute at this assessment: {v}/min.",
             "Current heart rate {v}/min.",
-            "Heart rate now {v}/min on the monitor.",
+            "Heart rate now {v}/min on a pulse check.",
         ],
         "past": [
             "In {year}, heart rate was {v}/min.",
             "Heart rate of {v}/min recorded in {year}.",
-            "A routine check in {year} gave heart rate {v}/min.",
-            "Heart rate {v}/min at a clinic visit in {year}.",
+            "Heart rate was {v}/min when measured in {year}.",
+            "Heart rate {v}/min at a hospital visit in {year}.",
             "Records from {year} list heart rate at {v}/min.",
-            "Back in {year}, heart rate measured {v}/min.",
+            "Back in {year}, heart rate stood at {v}/min.",
         ],
         "superseded": [
             "Yesterday, heart rate was {v}/min; today's value replaces it.",
-            "On admission, heart rate was {v}/min; it has since been repeated.",
+            "Previously, heart rate was {v}/min; it has since been repeated.",
             "Heart rate was {v}/min yesterday, before today's repeat.",
             "Heart rate of {v}/min measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, heart rate was {v}/min; a newer reading supersedes it.",
@@ -1646,14 +1648,14 @@ BANKS = {
         "past": [
             "In {year}, weight was {v} kg.",
             "Weight of {v} kg recorded in {year}.",
-            "A routine check in {year} gave weight {v} kg.",
-            "Weight {v} kg at a clinic visit in {year}.",
+            "Weight was {v} kg when measured in {year}.",
+            "Weight {v} kg at a hospital visit in {year}.",
             "Records from {year} list weight at {v} kg.",
-            "Back in {year}, weight measured {v} kg.",
+            "Back in {year}, weight stood at {v} kg.",
         ],
         "superseded": [
             "Yesterday, weight was {v} kg; today's value replaces it.",
-            "On admission, weight was {v} kg; it has since been repeated.",
+            "Previously, weight was {v} kg; it has since been repeated.",
             "Weight was {v} kg yesterday, before today's repeat.",
             "Weight of {v} kg measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, weight was {v} kg; a newer reading supersedes it.",
@@ -1667,19 +1669,19 @@ BANKS = {
             "Calf swelling at this assessment: {v} cm more than the opposite calf.",
             "Tape measurement today shows a calf circumference gap of {v} cm.",
             "Current calf swelling {v} cm compared with the other leg.",
-            "Calf swelling now amounts to {v} cm of extra girth in the larger calf.",
+            "Difference in calf circumference now {v} cm.",
         ],
         "past": [
             "In {year}, calf swelling was {v} cm.",
             "Calf swelling of {v} cm recorded in {year}.",
-            "A routine check in {year} gave calf swelling {v} cm.",
-            "Calf swelling {v} cm at a clinic visit in {year}.",
+            "Calf swelling was {v} cm when measured in {year}.",
+            "Calf swelling {v} cm at a hospital visit in {year}.",
             "Records from {year} list calf swelling at {v} cm.",
-            "Back in {year}, calf swelling measured {v} cm.",
+            "Back in {year}, calf swelling stood at {v} cm.",
         ],
         "superseded": [
             "Yesterday, calf swelling was {v} cm; today's value replaces it.",
-            "On admission, calf swelling was {v} cm; it has since been repeated.",
+            "Previously, calf swelling was {v} cm; it has since been repeated.",
             "Calf swelling was {v} cm yesterday, before today's repeat.",
             "Calf swelling of {v} cm measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, calf swelling was {v} cm; a newer reading supersedes it.",
@@ -1698,14 +1700,14 @@ BANKS = {
         "past": [
             "In {year}, Hgb was {v} g/dL.",
             "Hgb of {v} g/dL recorded in {year}.",
-            "A routine check in {year} gave Hgb {v} g/dL.",
-            "Hgb {v} g/dL at a clinic visit in {year}.",
+            "Hgb was {v} g/dL when measured in {year}.",
+            "Hgb {v} g/dL at a hospital visit in {year}.",
             "Records from {year} list Hgb at {v} g/dL.",
-            "Back in {year}, Hgb measured {v} g/dL.",
+            "Back in {year}, Hgb stood at {v} g/dL.",
         ],
         "superseded": [
             "Yesterday, Hgb was {v} g/dL; today's value replaces it.",
-            "On admission, Hgb was {v} g/dL; it has since been repeated.",
+            "Previously, Hgb was {v} g/dL; it has since been repeated.",
             "Hgb was {v} g/dL yesterday, before today's repeat.",
             "Hgb of {v} g/dL measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, Hgb was {v} g/dL; a newer reading supersedes it.",
@@ -1724,14 +1726,14 @@ BANKS = {
         "past": [
             "In {year}, neutrophil count was {v} x10^9/L.",
             "Neutrophil count of {v} x10^9/L recorded in {year}.",
-            "A routine check in {year} gave neutrophil count {v} x10^9/L.",
-            "Neutrophil count {v} x10^9/L at a clinic visit in {year}.",
+            "Neutrophil count was {v} x10^9/L when measured in {year}.",
+            "Neutrophil count {v} x10^9/L at a hospital visit in {year}.",
             "Records from {year} list neutrophil count at {v} x10^9/L.",
-            "Back in {year}, neutrophil count measured {v} x10^9/L.",
+            "Back in {year}, neutrophil count stood at {v} x10^9/L.",
         ],
         "superseded": [
             "Yesterday, neutrophil count was {v} x10^9/L; today's value replaces it.",
-            "On admission, neutrophil count was {v} x10^9/L; it has since been repeated.",
+            "Previously, neutrophil count was {v} x10^9/L; it has since been repeated.",
             "Neutrophil count was {v} x10^9/L yesterday, before today's repeat.",
             "Neutrophil count of {v} x10^9/L measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, neutrophil count was {v} x10^9/L; a newer reading supersedes it.",
@@ -1884,14 +1886,14 @@ BANKS = {
         "past": [
             "In {year}, arterial pH was {v}.",
             "Arterial pH of {v} recorded in {year}.",
-            "A routine check in {year} gave arterial pH {v}.",
-            "Arterial pH {v} at a clinic visit in {year}.",
+            "Arterial pH was {v} when measured in {year}.",
+            "Arterial pH {v} at a hospital visit in {year}.",
             "Records from {year} list arterial pH at {v}.",
-            "Back in {year}, arterial pH measured {v}.",
+            "Back in {year}, arterial pH stood at {v}.",
         ],
         "superseded": [
             "Yesterday, arterial pH was {v}; today's value replaces it.",
-            "On admission, arterial pH was {v}; it has since been repeated.",
+            "Previously, arterial pH was {v}; it has since been repeated.",
             "Arterial pH was {v} yesterday, before today's repeat.",
             "Arterial pH of {v} measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, arterial pH was {v}; a newer reading supersedes it.",
@@ -1910,14 +1912,14 @@ BANKS = {
         "past": [
             "In {year}, mean arterial pressure was {v} mmHg.",
             "Mean arterial pressure of {v} mmHg recorded in {year}.",
-            "A routine check in {year} gave mean arterial pressure {v} mmHg.",
-            "Mean arterial pressure {v} mmHg at a clinic visit in {year}.",
+            "Mean arterial pressure was {v} mmHg when measured in {year}.",
+            "Mean arterial pressure {v} mmHg at a hospital visit in {year}.",
             "Records from {year} list mean arterial pressure at {v} mmHg.",
-            "Back in {year}, mean arterial pressure measured {v} mmHg.",
+            "Back in {year}, mean arterial pressure stood at {v} mmHg.",
         ],
         "superseded": [
             "Yesterday, mean arterial pressure was {v} mmHg; today's value replaces it.",
-            "On admission, mean arterial pressure was {v} mmHg; it has since been repeated.",
+            "Previously, mean arterial pressure was {v} mmHg; it has since been repeated.",
             "Mean arterial pressure was {v} mmHg yesterday, before today's repeat.",
             "Mean arterial pressure of {v} mmHg measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, mean arterial pressure was {v} mmHg; a newer reading supersedes it.",
@@ -2063,21 +2065,21 @@ BANKS = {
             "Body mass index today: {v} kg/m2.",
             "BMI {v} kg/m2 at this assessment.",
             "Body mass index measured this morning: {v} kg/m2.",
-            "BMI on arrival: {v} kg/m2.",
+            "BMI at this assessment: {v} kg/m2.",
             "Current body mass index {v} kg/m2.",
             "Latest BMI is {v} kg/m2.",
         ],
         "past": [
             "In {year}, body mass index was {v} kg/m2.",
             "Body mass index of {v} kg/m2 recorded in {year}.",
-            "A routine check in {year} gave body mass index {v} kg/m2.",
-            "Body mass index {v} kg/m2 at a clinic visit in {year}.",
+            "Body mass index was {v} kg/m2 when measured in {year}.",
+            "Body mass index {v} kg/m2 at a hospital visit in {year}.",
             "Records from {year} list body mass index at {v} kg/m2.",
-            "Back in {year}, body mass index measured {v} kg/m2.",
+            "Back in {year}, body mass index stood at {v} kg/m2.",
         ],
         "superseded": [
             "Yesterday, body mass index was {v} kg/m2; today's value replaces it.",
-            "On admission, body mass index was {v} kg/m2; it has since been repeated.",
+            "Previously, body mass index was {v} kg/m2; it has since been repeated.",
             "Body mass index was {v} kg/m2 yesterday, before today's repeat.",
             "Body mass index of {v} kg/m2 measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, body mass index was {v} kg/m2; a newer reading supersedes it.",
@@ -2096,14 +2098,14 @@ BANKS = {
         "past": [
             "In {year}, international normalized ratio was {v}.",
             "International normalized ratio of {v} recorded in {year}.",
-            "A routine check in {year} gave international normalized ratio {v}.",
-            "International normalized ratio {v} at a clinic visit in {year}.",
+            "International normalized ratio was {v} when measured in {year}.",
+            "International normalized ratio {v} at a hospital visit in {year}.",
             "Records from {year} list international normalized ratio at {v}.",
-            "Back in {year}, international normalized ratio measured {v}.",
+            "Back in {year}, international normalized ratio stood at {v}.",
         ],
         "superseded": [
             "Yesterday, international normalized ratio was {v}; today's value replaces it.",
-            "On admission, international normalized ratio was {v}; it has since been repeated.",
+            "Previously, international normalized ratio was {v}; it has since been repeated.",
             "International normalized ratio was {v} yesterday, before today's repeat.",
             "International normalized ratio of {v} measured yesterday was replaced by a repeat measurement.",
             "Earlier this week, international normalized ratio was {v}; a newer reading supersedes it.",

@@ -18,13 +18,6 @@ RULES = [
        (N("egfr", "egfr", "eGFR", ["egfr"], "<", 30, (45, 95), (12, 29), 6),
         "the current eGFR is below {thr_egfr} mL/min/1.73 m2")],
       "Acute gout flare of the left knee."),
-    G("any_ppx", "any_of", "Inpatient thromboprophylaxis",
-      "For thromboprophylaxis in a medical inpatient", "enoxaparin", "compression stockings",
-      [(N("plt", "platelets", "platelet count", ["platelet"], "<", 50, (150, 380), (12, 49), 8),
-        "the current platelet count is below {thr_plt} x10^9/L"),
-       (F("hit", "hit", "heparin-induced thrombocytopenia", ["heparin-induced"], counts_past=True),
-        "the patient has ever had heparin-induced thrombocytopenia (current or past)")],
-      "Admitted with a urinary tract infection; mobility reduced.", age_range=(50, 84)),
     G("all_metformin", "all_of", "Metformin dosing", "For type 2 diabetes",
       "metformin 1000 mg twice daily", "metformin 500 mg twice daily",
       [(N("egfr", "egfr", "eGFR", ["egfr"], "<", 45, (50, 95), (25, 44), 4),
@@ -132,19 +125,21 @@ FINDING_CONDITIONS = {   # concept -> {applicability: (phrase in the rule, crite
     "cad": {"ever": ("the patient has ever had coronary artery disease (current or past)",
                      "coronary artery disease"),
             "family": ("the patient or a first-degree relative (parent, sibling or child) has had "
-                       "coronary artery disease at any time", "coronary artery disease in the family")},
+                       "coronary artery disease at any time",
+                       "coronary artery disease in the patient or a first-degree relative")},
     "vte": {"current": ("the patient currently has a venous thromboembolism",
                         "current venous thromboembolism"),
             "ever": ("the patient has ever had a venous thromboembolism (current or past)",
                      "venous thromboembolism"),
             "family": ("the patient or a first-degree relative (parent, sibling or child) has had "
-                       "a venous thromboembolism at any time", "venous thromboembolism in the family")},
+                       "a venous thromboembolism at any time",
+                       "venous thromboembolism in the patient or a first-degree relative")},
     "stroke": {"ever": ("the patient has ever had a stroke or TIA (current or past)", "stroke/TIA")},
     "chf": {"current": ("the patient currently has heart failure", "current heart failure"),
             "ever": ("the patient has ever had heart failure (current or past)", "heart failure")},
     "diabetes": {"ever": ("the patient has ever had diabetes (current or past)", "diabetes"),
                  "family": ("the patient or a first-degree relative (parent, sibling or child) has "
-                            "had diabetes at any time", "diabetes in the family")},
+                            "had diabetes at any time", "diabetes in the patient or a first-degree relative")},
     "vascular": {"ever": ("the patient has ever had a myocardial infarction or peripheral artery "
                           "disease (current or past)", "vascular disease")},
     "confusion": {"current": ("the patient has new confusion", "new confusion")},
@@ -246,12 +241,35 @@ EXCLUDE = {
     "Admitted for community-acquired pneumonia; immobile.": {"clarithromycin"},
     "Spreading redness and warmth of the right shin for two days.": {"calf_swelling"},
 }
+# Outpatient visits for a minor or chronic problem: no acute inpatient states
+# (new confusion, hypoxia, tachypnea, active bleeding, stroke, heparin exposure,
+# a current clot). Entries are concepts or (concept, applicability) pairs.
+OUTPATIENT = [
+    "Presents with acute streptococcal pharyngitis (rapid antigen test positive).",
+    "Newly diagnosed type 2 diabetes (HbA1c 7.9%).",
+    "Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).",
+    "Acute low back pain after lifting.", "Primary prevention; LDL cholesterol 182 mg/dL.",
+    "Acute gout flare of the right first metatarsophalangeal joint.",
+    "Acute migraine without aura, typical of prior attacks.", "Requests contraception.",
+    "Knee osteoarthritis with pain on walking.",
+    "Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.",
+    "Atrial fibrillation; anticoagulation indicated.",
+    "Vaginal itching and discharge; candidiasis confirmed on microscopy.",
+    "Erythema migrans rash ten days after a tick bite.",
+    "Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.",
+    "Sore throat for two days.", "Hip osteoarthritis with pain on walking.",
+    "Productive cough and fever; consolidation on chest radiograph.",
+    "Spreading redness and warmth of the right shin for two days.",
+]
+for _s in OUTPATIENT:
+    EXCLUDE[_s] = EXCLUDE.get(_s, set()) | {"confusion", "spo2", "rr", "hit", "bleeding", "stroke",
+                                            ("vte", "current")}
 
 # Concept pairs never sampled into one rule: a line of one implies the other (a
 # myocardial infarction is coronary disease; warfarin "for blood clots" implies
 # VTE) or their values are coupled (eGFR and creatinine, weight and BMI).
 COUPLED = ({"cad", "vascular"}, {"vte", "warfarin"}, {"egfr", "creatinine"}, {"weight", "bmi"},
-           {"sbp", "map"})
+           {"sbp", "map"}, {"hit", "platelets"})
 
 OPERATORS = (("single", 0.2), ("any_of", 0.25), ("all_of", 0.2), ("two_of_three", 0.15),
              ("score_cutoff", 0.2))
@@ -259,7 +277,7 @@ OPERATORS = (("single", 0.2), ("any_of", 0.25), ("all_of", 0.2), ("two_of_three"
 
 def _hand_written():
     from selrm import rules as _R, rules_constraint as _C, rules_score as _S
-    return _R.RULES + _C.RULES + _S.RULES + RULES
+    return _R.RULES + _C.ORIGINAL + _S.ORIGINAL + RULES   # batch rules carry extreme score bands
 
 
 def _numeric_configs():
@@ -339,7 +357,8 @@ def sample_rules(n=250, seed=2027, scenarios=None, prefix="gs", title="Sampled r
         k = {"single": 1, "any_of": 2, "all_of": 2, "two_of_three": 3,
              "score_cutoff": rng.choice((3, 4))}[op]
         pool = [(c, v) for c, v in variants
-                if not any(kw in setting.lower() for kw in keywords[c]) and c not in EXCLUDE.get(setting, ())
+                if not any(kw in setting.lower() for kw in keywords[c])
+                and c not in EXCLUDE.get(setting, ()) and (c, v) not in EXCLUDE.get(setting, ())
                 and (c != "pregnancy" or (sex == "female" and ages[1] <= 45))]
         chosen = []
         for c, v in rng.sample(pool, len(pool)):

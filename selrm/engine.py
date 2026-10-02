@@ -188,6 +188,8 @@ def _propose(rule, crit, nm_kind, tier, split, rng, rng_m=None):
             orig = crit.threshold
             flip_v = _draw(rng, crit, min(thr, orig), max(thr, orig),
                            lambda v: op(v, thr) and not op(v, orig))
+        elif crit.op in (">=", "<=") and rng.random() < 1 / 3:
+            flip_v = thr               # an inclusive threshold is met exactly at the stated value
         else:
             flip_v = _draw(rng, crit, *crit.flip_range, lambda v: op(v, thr))
         vals[crit.cid] = base_v
@@ -198,9 +200,13 @@ def _propose(rule, crit, nm_kind, tier, split, rng, rng_m=None):
     # and flip): people and years must be plausible for all of them.
     ages = (age, flip_v) if crit.concept == "age" else (age,)
 
+    spouses = [p for p in ("husband", "wife", "partner") if p in P.by_split(P.PERSONS, split)]
+    spouse = rng.choice(spouses)       # one spouse word per group
+
     def people(concept):
         pools = [P.persons(concept, split, a) for a in ages]
-        return [p for p in pools[0] if all(p in q for q in pools[1:])]
+        return [p for p in pools[0] if all(p in q for q in pools[1:])
+                and (p == spouse or p not in spouses)]
 
     def year():
         return rng.randint(max(2005, min(NOW - 2, NOW - min(ages) + 18)), NOW - 2)
@@ -303,9 +309,12 @@ def _propose(rule, crit, nm_kind, tier, split, rng, rng_m=None):
     frames = P.HEADER_NO_AGE if any(c.concept == "age" for c in rule.criteria) else P.HEADER
     hdr = pick(frames)
     base_ls = lines_with(base)
+    # Meaning-preserving: findings, superseded values and fillers keep their lines
+    # (a template states a specific fact); numeric values and dated past values
+    # are reworded with the same value and year; header frame and order change.
     pres_ls = []
     for x in base_ls:
-        if "m" in x:
+        if "m" in x and x["m"].kind == "numeric" and x["m"].form in ("current", "past"):
             bank = P.BANKS[x["m"].concept][x["m"].form]
             i = pick(bank, avoid=x["tpl"][2], same_year="{year}" in bank[x["tpl"][2]])
             pres_ls.append(dict(x, tpl=(x["tpl"][0], x["tpl"][1], i)))
@@ -405,6 +414,9 @@ def check(rule, g):
         removed, added = _edit(cases["base"]["lines"], cases[k]["lines"])
         if added != 1 or removed > 1:
             errs.append(f"edit: {k} removes {removed} and adds {added} lines")
+    for k, case in cases.items():   # every slot filled, nothing rendered from a missing value
+        if "None" in case["text"] or "{" in case["text"] or "}" in case["text"]:
+            errs.append(f"render: {k} has an unfilled slot")
     if cases["pres"]["text"] == cases["base"]["text"]:
         errs.append("pres: same text as base")
     if Counter(cases["pres"]["state"]) != Counter(cases["base"]["state"]):

@@ -393,6 +393,7 @@ _S2 = [
          age_range=(40, 84), family="additive_score"),
 ]
 
+ORIGINAL = list(RULES)      # rules before the batches; the grammar sampler reuses their numeric configs
 RULES += _S1 + _S2
 
 

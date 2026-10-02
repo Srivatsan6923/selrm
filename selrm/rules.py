@@ -190,22 +190,22 @@ RULES: list[Rule] = [
          [N("egfr", "egfr", "eGFR", ["egfr"], "<", 30, (45, 95), (12, 29), 6,
             alt_threshold=45)],
          "Newly diagnosed type 2 diabetes (HbA1c 7.9%).",
-         default="metformin", alternative="sitagliptin", family="lab_threshold"),
+         default="metformin", alternative="sitagliptin", family="lab_threshold", verb="Start"),
     Rule("htn_pregnancy", "constraint", "Hypertension in women",
          "For newly diagnosed hypertension, start lisinopril. If the patient is "
          "currently pregnant, start labetalol instead.",
          [F("pregnancy", "pregnancy", "pregnancy", ["pregnan"])],
          "Newly diagnosed stage 2 hypertension (BP 152/96 mmHg on two visits).",
          default="lisinopril", alternative="labetalol", sex="female", age_range=(24, 42),
-         family="state_switch"),
+         family="state_switch", verb="Start"),
     Rule("vte_platelets", "constraint", "VTE prophylaxis",
-         "For inpatient VTE prophylaxis, give enoxaparin. If the current platelet count "
+         "For inpatient VTE prophylaxis, use enoxaparin. If the current platelet count "
          "is below {thr_plt} x10^9/L, use intermittent pneumatic compression instead.",
          [N("plt", "platelets", "platelet count", ["platelet"], "<", 50, (150, 380),
             (12, 49), 8, alt_threshold=100)],
          "Admitted for community-acquired pneumonia; immobile.",
          default="enoxaparin", alternative="intermittent pneumatic compression",
-         family="lab_threshold"),
+         family="lab_threshold", verb="Use"),
     Rule("pain_ulcer", "constraint", "Analgesia",
          "For musculoskeletal pain, prescribe ibuprofen. If the patient has an active "
          "peptic ulcer, prescribe acetaminophen instead.",
@@ -218,7 +218,7 @@ RULES: list[Rule] = [
          [N("alt", "alt_enzyme", "ALT", ["alt "], ">", 120, (12, 60), (125, 400), 12,
             alt_threshold=80)],
          "Primary prevention; LDL cholesterol 182 mg/dL.",
-         default="atorvastatin", alternative="ezetimibe", family="lab_threshold"),
+         default="atorvastatin", alternative="ezetimibe", family="lab_threshold", verb="Start"),
     Rule("gout_clarith", "constraint", "Gout flare",
          "For an acute gout flare, prescribe colchicine. If the patient is currently "
          "taking clarithromycin, prescribe prednisone instead.",
@@ -239,7 +239,7 @@ RULES: list[Rule] = [
             counts_past=True, counts_family=True)],
          "Requests contraception.",
          default="a combined oral contraceptive", alternative="a progestin-only pill",
-         sex="female", age_range=(19, 38), family="family_switch"),
+         sex="female", age_range=(19, 38), family="family_switch", verb="Offer"),
     Rule("curb65", "score", "CURB-65",
          "CURB-65 (as used here): 1 point each for new confusion; blood urea nitrogen "
          "above {thr_bun} mg/dL; respiratory rate of {thr_rr}/min or more; systolic "

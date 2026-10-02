@@ -18,26 +18,27 @@ RULES = [
             decimals=1, alt_threshold=4.5)],
          "Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.",
          default="spironolactone", alternative="dapagliflozin", age_range=(45, 79),
-         family="lab_threshold"),
+         family="lab_threshold", verb="Add"),
     Rule("htn_angioedema", "constraint", "Hypertension initiation",
          "For newly diagnosed hypertension, start lisinopril. If the patient has ever had "
          "angioedema (current or past), start amlodipine instead.",
          [F("angioedema", "angioedema", "angioedema", ["angioedema"], counts_past=True)],
          "Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).",
-         default="lisinopril", alternative="amlodipine", family="history_switch"),
+         default="lisinopril", alternative="amlodipine", family="history_switch", verb="Start"),
     Rule("af_asthma", "constraint", "Atrial fibrillation rate control",
          "For rate control in atrial fibrillation, start metoprolol. If the patient currently "
          "has asthma, start diltiazem instead.",
          [F("asthma", "asthma", "asthma", ["asthma"])],
          "Atrial fibrillation with a ventricular rate of 128/min.",
          default="metoprolol", alternative="diltiazem", age_range=(40, 79),
-         family="state_switch"),
+         family="state_switch", verb="Start"),
     Rule("af_valve", "constraint", "Atrial fibrillation anticoagulation",
          "For stroke prevention in atrial fibrillation, start apixaban. If the patient currently "
          "has a mechanical heart valve, start warfarin instead.",
          [F("valve", "mech_valve", "mechanical heart valve", ["mechanical"])],
          "Atrial fibrillation; anticoagulation indicated.",
-         default="apixaban", alternative="warfarin", age_range=(45, 79), family="state_switch"),
+         default="apixaban", alternative="warfarin", age_range=(45, 79), family="state_switch",
+         verb="Start"),
     Rule("yeast_warfarin", "constraint", "Vaginal candidiasis",
          "For vaginal candidiasis, prescribe oral fluconazole. If the patient is currently "
          "taking warfarin, prescribe clotrimazole pessaries instead.",
@@ -422,4 +423,5 @@ _C3 = [
       age_range=(25, 79)),
 ]
 
+ORIGINAL = list(RULES)      # rules before the batches; the grammar sampler reuses their numeric configs
 RULES += _C1 + _C2 + _C3

@@ -153,6 +153,18 @@ def test_no_generic_absence_denies_a_present_concept(groups):
             assert not [(a, b) for g in P.OVERLAP for a in gen & g for b in pres & g if a != b], r["iid"]
 
 
+def test_presentation_edits_preserve_every_fact(groups):
+    """Only numeric current and dated past values are reworded; findings,
+    superseded values and fillers keep their lines; the order changes."""
+    for recs in groups:
+        cs = _cases(recs)
+        keep = lambda r: sorted(t for t in r["meta"]["tpl"]                     # noqa: E731
+                                if not (t.split("/")[1] in ("current", "past") and
+                                        any(m["concept"] == t.split("/")[0] and m["kind"] == "numeric"
+                                            for m in r["state"])))
+        assert keep(cs["pres"]) == keep(cs["base"]), recs[0]["tid"]
+
+
 def test_tiers(groups):
     for recs in groups:
         r = _cases(recs)["base"]
