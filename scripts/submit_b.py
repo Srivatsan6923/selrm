@@ -87,7 +87,8 @@ def runner_job(name, queue, code, env_tag, gpu, max_runs, hours, cpu=2, mem="12G
                                                 {"name": "env", "mountPath": "/opt/selrm-env"}]}],
            "containers": [{"name": "runner", "image": IMAGE, "workingDir": "/work",
                            "command": ["/opt/selrm-env/venv/bin/python", "-u", "/work/code/scripts/train_eval_job.py",
-                                       "--root", "/pvc/selrm", "--queue", f"/pvc/selrm/queue/{queue}",
+                                       "--root", "/pvc/selrm",
+                                       *[x for q in queue.split(",") for x in ("--queue", f"/pvc/selrm/queue/{q}")],
                                        "--max_runs", str(max_runs)],
                            "env": [{"name": k, "value": v} for k, v in {
                                "SELRM_MODELS": "/work/models", "HF_HOME": "/work/hf", "HF_HUB_OFFLINE": "1",
@@ -257,7 +258,7 @@ def main():
     elif a.cmd == "runners":
         code = snapshot(a.code)
         q = a.args[0]
-        stem = q.replace("_", "-").replace(".json", "")
+        stem = q.split(",")[0].replace("_", "-").replace(".json", "")   # q: one queue or a comma list
         for i in range(a.n):
             apply(runner_job(f"selrm-b-run-{stem}-{a.gpu}-{int(time.time()) % 100000}-{i}", q, code, a.env,
                              a.gpu, a.max_runs, a.hours, a.cpu, a.mem))

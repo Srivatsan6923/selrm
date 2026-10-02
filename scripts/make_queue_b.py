@@ -1,6 +1,6 @@
 """Write a queue file for B's runners (train_eval_job.py) from docs/RUN_MATRIX_B.csv.
   python scripts/make_queue_b.py smoke   OUT.json        # B-C0 smoke comparison + B-T0 timing
-  python scripts/make_queue_b.py factorial OUT.json --seeds 0 [--registry data/REGISTRY.json]
+  python scripts/make_queue_b.py factorial OUT.json --seeds 0 [--registry data/REGISTRY.json] [--key_only]
 Factorial rows read their training set as <version>/train_<corpus> and are
 evaluated on every frozen dev/test set of that version in the registry."""
 import argparse, csv, json, os, re, sys
@@ -28,7 +28,7 @@ def smoke():
     return runs
 
 
-def factorial(seeds, registry, version):
+def factorial(seeds, registry, version, key_only=False):
     reg = json.load(open(registry))
     evals = sorted(n for n, v in reg.items() if n.startswith(version + "/") and v.get("frozen")
                    and v.get("split") in ("dev", "test"))
@@ -37,13 +37,17 @@ def factorial(seeds, registry, version):
         m = re.fullmatch(r"B-F-(\w+)-(\w+)-s(\d)", r["run_id"])
         if not m or int(m[3]) not in seeds or r["status"] in ("done", "dropped"):
             continue
+        if key_only and (m[1], m[2]) not in KEY_CELLS:
+            continue
         corpus = f"{version}/train_{m[2]}"
         if corpus not in reg or not reg[corpus].get("frozen"):
             sys.exit(f"{corpus} not frozen in {registry}")
-        # key cells first inside a priority class: C and D need their adapters earliest
+        # inside a priority class: seed 0 before other seeds (one seed of every cell first), key cells
+        # first within each (C and D need their adapters earliest)
         full = int(m[3]) == 0 or (m[1], m[2]) in KEY_CELLS      # full ladder: seed 0 and the key cells
         runs.append({"run_id": r["run_id"], "format": m[1], "corpus": corpus, "seed": int(m[3]),
-                     "n_examples": 60000, "priority": 10 * PRIO[r["priority"]] + ((m[1], m[2]) not in KEY_CELLS),
+                     "n_examples": 60000,
+                     "priority": 10 * PRIO[r["priority"]] + 2 * (int(m[3]) > 0) + ((m[1], m[2]) not in KEY_CELLS),
                      "keep_adapter": r["run_id"] in keep, "eval": dict(EVAL),
                      "eval_sets": evals if full else [e for e in evals if e.split("/", 1)[1] in PRIMARY]})
     return runs
@@ -73,9 +77,10 @@ def main():
     ap.add_argument("--seeds", default="0")
     ap.add_argument("--registry", default=f"{ROOT}/data/REGISTRY.json")
     ap.add_argument("--version", default="rule_v1")
+    ap.add_argument("--key_only", action="store_true", help="factorial: the four key cells only")
     a = ap.parse_args()
     seeds = {int(s) for s in a.seeds.split(",")}
-    runs = (smoke() if a.kind == "smoke" else factorial(seeds, a.registry, a.version) if a.kind == "factorial"
+    runs = (smoke() if a.kind == "smoke" else factorial(seeds, a.registry, a.version, a.key_only) if a.kind == "factorial"
             else transfer(seeds, a.registry, a.version))
     json.dump({"runs": runs}, open(a.out, "w"), indent=1)
     print(f"{len(runs)} runs -> {a.out}")
