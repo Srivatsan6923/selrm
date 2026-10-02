@@ -1,6 +1,6 @@
 run_id,owner,pool,paper_item,kind,what,data,seed,runtime,est_hours,measured_hours,priority,depends_on,status,notes
-B-C0,B,no,Sec5,code,"finetune.py (verdict, rationale, summary2, value-ledger2, ledger2), eval_local.py, train-then-eval job, adapter retention policy",-,-,GPU,6,,P0,-,running,"code done + CPU self-test (2 Oct); NRP env build + smoke runs B-C0-smoke-verdict-{blocks,triplets}-s0 in progress"
-B-T0,B,no,AppG,timing,200-step timing per format on rule_v1 or smoke; update est_hours,-,-,GPU,0.5,,P0,-,requested,"queued as B-T0-<format> x5 in queue b_smoke (NRP A100, per-device 16 x accum 4)"
+B-C0,B,no,Sec5,code,"finetune.py (verdict, rationale, summary2, value-ledger2, ledger2), eval_local.py, train-then-eval job, adapter retention policy",-,-,GPU,6,0.75,P0,-,done,"code + CPU self-test + NRP env; smoke comparison B-C0-smoke-verdict-{blocks,triplets}-s0 on A100 (GPU hours = the two smoke runs from meta.json; plus ~0.2 h of an aborted first attempt); provisional report docs/SMOKE_B_C0.md"
+B-T0,B,no,AppG,timing,200-step timing per format on rule_v1 or smoke; update est_hours,-,-,GPU,0.5,,P0,-,running,"queued as B-T0-<format> x5 in queue b_smoke (NRP A100, per-device 16 x accum 4)"
 B-F-verdict-natural-s0,B,yes,"Tab3,Tab4",train+eval,verdict x natural,rule_v1/natural,0,GPU,0.8,,P0,"A-D4,B-C0",todo,
 B-F-verdict-natural-s1,B,yes,"Tab3,Tab4",train+eval,verdict x natural,rule_v1/natural,1,GPU,0.8,,P1,"A-D4,B-C0",todo,
 B-F-verdict-natural-s2,B,yes,"Tab3,Tab4",train+eval,verdict x natural,rule_v1/natural,2,GPU,0.8,,P1,"A-D4,B-C0",todo,
