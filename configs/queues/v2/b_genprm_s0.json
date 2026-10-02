@@ -20,7 +20,8 @@
     "rule_v1/missing",
     "rule_v1/test_L2",
     "rule_v1/test_L3alt"
-   ]
+   ],
+   "min_gen": 2
   }
  ]
 }

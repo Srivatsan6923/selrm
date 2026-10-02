@@ -16,7 +16,8 @@
    "a_code": "e40789bd5d7a",
    "eval_sets": [
     "rule_v1/test_L2"
-   ]
+   ],
+   "min_gen": 2
   }
  ]
 }

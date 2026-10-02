@@ -74,7 +74,8 @@ def transfer(seeds, registry, version):
         seed = int(m[2])
         spec = ({"format": "verdict", "corpus": "fover_v1/train", "eval_sets": evals if seed == 0 else primary}
                 if m[1] == "fover" else
-                {"format": "genprm", "corpus": f"{version}/train_triplets", "a_code": A_CODE, "eval_sets": primary})
+                {"format": "genprm", "corpus": f"{version}/train_triplets", "a_code": A_CODE, "eval_sets": primary,
+                 "min_gen": 2})
         runs.append({"run_id": r["run_id"], "seed": seed, "n_examples": 60000,
                      "priority": 10 * PRIO[r["priority"]] + 2 * (seed > 0),
                      "keep_adapter": True,   # Table 4 rows (clinical columns)
@@ -143,7 +144,8 @@ def extras(seeds, registry, version):
         if m and m[1] in EVAL_ONLY:
             src, fmt, mode, sets = EVAL_ONLY[m[1]]
             runs.append({**base, "format": fmt, "train": False, "adapter": f"adapters/{src}", "a_code": A_CODE,
-                         "eval": {**EVAL, "mode": mode}, "eval_sets": [f"{version}/{s}" for s in sets]})
+                         "eval": {**EVAL, "mode": mode}, "eval_sets": [f"{version}/{s}" for s in sets]}
+                        | ({"min_gen": 2} if mode == "ledger_edit" else {}))
             continue
         m = re.fullmatch(r"B-FOLD(\d)-(\w+)-(\w+)-s\d", rid)
         if m and ok(f"{version}_fold{m[1]}/train_{m[3]}"):
@@ -174,6 +176,9 @@ def main():
             else transfer(seeds, a.registry, a.version) if a.kind == "transfer"
             else backbones(seeds, a.registry, a.version) if a.kind == "backbones" else extras(seeds, a.registry, a.version))
     runs = [r for r in runs if re.search(a.runs, r["run_id"])]
+    newer = [r["run_id"] for r in runs if r.get("min_gen", 0) >= 2]   # runners staged before 2 Oct 13:00 read the top level
+    if newer and "v2" not in os.path.normpath(os.path.abspath(a.out)).split(os.sep):
+        sys.exit(f"{newer} need runner code from 2 Oct 13:00 UTC on: write them under configs/queues/v2/ (docs/NRP_B.md)")
     os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
     json.dump({"runs": runs}, open(a.out, "w", newline="\n"), indent=1)
     print(f"{len(runs)} runs -> {a.out}")

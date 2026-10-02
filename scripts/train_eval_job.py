@@ -16,6 +16,9 @@ from pretok import eval_path, tok_tag, train_dir, train_key
 BASE = "unsloth/Qwen3.5-9B"
 PKGS = ("torch", "transformers", "unsloth", "unsloth_zoo", "trl", "peft", "accelerate",
         "flash-linear-attention", "fla-core", "causal-conv1d", "triton", "numpy")
+# Runner code generation. A spec that needs runner-side behaviour newer than some running pods carries
+# "min_gen"; bump GEN in every commit that adds such behaviour (2: genprm format, ledger_edit mode, this check).
+GEN = 2
 
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -58,8 +61,9 @@ def ready(root, spec):
 def load_runs(queues):
     """Runs of every queue file, highest priority first; a directory stands for all its *.json,
     subdirectories included (re-read before every claim, so a queue pushed later reaches running
-    runners). Queues that need newer code go in a subdirectory (e.g. v2/): runners staged with
-    code before 2 Oct 13:00 read only the top level and would stop on a format they do not know."""
+    runners). Specs needing code from 2 Oct 13:00 on live in queue/v2/ (runners staged before then
+    read only the top level). Runners from then on read every subdirectory, so later specs are kept
+    from them only by the claim checks: format, eval mode, kind and min_gen (from GEN = 2 on)."""
     runs = []
     for q in queues:
         for f in sorted(glob.glob(f"{q}/**/*.json", recursive=True)) if os.path.isdir(q) else [q]:
@@ -226,8 +230,10 @@ def main():
         pick = None
         for spec in load_runs(a.queue):
             rdir = f"{a.root}/results/{spec['run_id']}"
-            try:                          # a spec this code cannot read (newer format) is skipped, not fatal
-                ok = runq.state(rdir) == "free" and ready(a.root, spec) and eval_local.KIND.get(spec["format"])
+            try:                          # a spec this code cannot run (newer format, mode, kind, generation) is skipped
+                ok = (spec.get("min_gen", 0) <= GEN and eval_local.KIND.get(spec["format"])
+                      and spec.get("eval", {}).get("mode") in eval_local.MODES and spec.get("kind") in (None, "concept")
+                      and runq.state(rdir) == "free" and ready(a.root, spec))
             except Exception as e:
                 log(f"skipping {spec.get('run_id')}: {type(e).__name__}: {e}")
                 continue

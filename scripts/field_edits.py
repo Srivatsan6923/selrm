@@ -2,9 +2,11 @@
 condition under test has a mention in the case, the program's ledger with one field of the first
 such mention edited (subject, status or time), and the record label the rule program gives after
 the same edit to the case state. Edits: subject patient <-> mother; status present <-> absent;
-time current <-> past (2015). Edits after which the program has no answer (a measurement with no
-applicable value) are left out. Runs with role A's frozen code on PYTHONPATH and imports nothing
-from B (both packages are named selrm):
+time current <-> past (2015). A measurement left without an applicable value is missing input, so
+neither claim holds (A's missing-twin label: both claims 0); an edit that leaves two applicable
+values has no program answer and is left out. Each edit carries the condition kind (finding |
+numeric) so results are reported per kind. Runs with role A's frozen code on PYTHONPATH and imports
+nothing from B (both packages are named selrm):
   PYTHONPATH=<A code dir> python scripts/field_edits.py RECORDS.jsonl OUT.jsonl"""
 import json, os, sys
 from dataclasses import replace
@@ -31,11 +33,13 @@ def edits(rec):
         new_ms = [(fn(m) if i == target[0] else m, q) for i, (m, q) in enumerate(ms)]
         try:
             new = rule.label([m for m, _ in new_ms], c.cid, ov)
-        except ValueError:                # e.g. a measurement left without an applicable value
-            continue
+        except ValueError:                # a measurement with no applicable value, or with two
+            if any(c.applies(m) and m.status == "present" for m, _ in new_ms):
+                continue                  # two applicable values: the program has no answer
+            new = None                    # none: missing input, neither claim holds
         entries = ledger(c, thr, [(q, m) for m, q in new_ms])
-        correct = int(new == (1 if rec["claim_role"] == "s_prime" else 0))
-        out.append({"iid": rec["iid"], "field": field, "ledger": entries, "label": correct,
+        correct = int(new is not None and new == (1 if rec["claim_role"] == "s_prime" else 0))
+        out.append({"iid": rec["iid"], "field": field, "kind": c.kind, "ledger": entries, "label": correct,
                     "changed": int(new != old)})
     return out
 

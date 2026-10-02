@@ -396,11 +396,14 @@ def ledger_edit(sc, recs, fmt, run_id, set_name, out_dir, log, t0, root):
     E = load_jsonl(f"{root}/derived/{set_name}/field_edits.jsonl")
     u = sc.score(chat_ids(sc.tok, [judge_prompt(by[e["iid"]], judge_view(ledger_to_text(e["ledger"]), fmt))
                                    for e in E]))
-    rows = [{"iid": e["iid"], "field": e["field"], "changed": e["changed"], "u": float(v), "expected": e["label"]}
-            for e, v in zip(E, u)]
+    rows = [{"iid": e["iid"], "field": e["field"], "kind": e.get("kind"), "changed": e["changed"], "u": float(v),
+             "expected": e["label"]} for e, v in zip(E, u)]
     agree = lambda rs: round(100.0 * sum((r["u"] > 0) == (r["expected"] == 1) for r in rs) / max(1, len(rs)), 2)
     groups = {"all": rows} | {f"field={f}": [r for r in rows if r["field"] == f] for f in ("subject", "status", "time")}
     groups |= {f"changed={c}": [r for r in rows if r["changed"] == c] for c in (0, 1)}
+    groups |= {f"kind={k}": [r for r in rows if r["kind"] == k] for k in ("finding", "numeric")}
+    groups |= {f"kind={k},changed={c}": [r for r in rows if r["kind"] == k and r["changed"] == c]
+               for k in ("finding", "numeric") for c in (0, 1)}
     summ = {"run_id": run_id, "set": set_name, "mode": "ledger_edit", "n": len(rows), "agreement": agree(rows),
             "by": {k: {"agreement": agree(v), "n": len(v)} for k, v in groups.items()},
             "eval": {"seconds": round(time.time() - t0, 1), "u_path": sc.u_path}}
