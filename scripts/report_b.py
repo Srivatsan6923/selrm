@@ -91,14 +91,16 @@ def timing():
             "5-min windows <40%", "util train / eval", "eval s", "gen tokens", "est h (60k ex, 1 epoch, train only)"]
     print("| " + " | ".join(cols) + " |")
     print("|" + "---|" * len(cols))
-    for f in FMTS:
-        m = load(f"B-T0-{f}", "meta.json")
+    extra = sorted(d for d in os.listdir(RG) if d.startswith("B-T0b-")) if os.path.isdir(RG) else []
+    for rid in [f"B-T0-{f}" for f in FMTS] + extra:
+        f = rid[len("B-T0-"):] if rid.startswith("B-T0-") else rid
+        m = load(rid, "meta.json")
         if not m:
             print(f"| {f} | not run |" + " |" * (len(cols) - 2))
             continue
         t = m["train"]
         steps60k = math.ceil(60000 / t["hp"]["batch"])
-        tr, ev = phase_util(f"B-T0-{f}")
+        tr, ev = phase_util(rid)
         print(f"| {f} | {m['gpu'].split(',')[0]} | {m['per_device_batch']} x {m['grad_accum']} | {t['s_per_step']} | "
               f"{t['tokens_per_s']} | {t['peak_mem_gb']} | {m.get('gpu_util_mean')} | {m.get('gpu_util_p10')} | "
               f"{m.get('gpu_windows_below40')} | {tr} / {ev} | {m['eval_seconds']} | {m.get('eval_generated_tokens')} | "

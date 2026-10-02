@@ -39,6 +39,8 @@ class Scorer:
     def __init__(self, model, tok, bs_score=64, bs_gen=64, max_new=384, log=print):
         self.model, self.tok, self.log = model, tok, log
         self.bs_score, self.bs_gen, self.max_new = bs_score, bs_gen, max_new
+        if torch.cuda.is_available() and torch.cuda.get_device_properties(0).total_memory < 60 * 2**30:
+            self.bs_gen = min(bs_gen, 128)      # generation states for 256 sequences need an 80 GB card
         self.plus, self.minus = (tok.convert_tokens_to_ids(t) for t in ("+", "-"))
         assert tok("+", add_special_tokens=False).input_ids == [self.plus]
         assert tok("-", add_special_tokens=False).input_ids == [self.minus]

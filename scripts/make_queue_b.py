@@ -9,7 +9,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FMTS = ("verdict", "rationale", "summary2", "value2", "ledger2")
 PRIO = {"P0": 0, "P1": 1, "P2": 2, "P3": 3}
 KEY_CELLS = {("verdict", "blocks"), ("verdict", "triplets"), ("ledger2", "blocks"), ("ledger2", "triplets")}
-EVAL = {"bs_score": 64, "bs_gen": 64, "max_new": 384}      # updated from B-T0/B-T0b (docs/TIMING_B_T0.md)
+EVAL = {"bs_score": 128, "bs_gen": 256, "max_new": 384}    # B-T0b: 1.7x faster rationale eval than 64/64; capped at 128 below 60 GB
+PRIMARY = ("dev", "test_L2", "test_L3alt", "dev_missing", "missing")   # Tables 3-4; seeds >= 1 of non-key cells
 
 
 def keep_list():
@@ -40,9 +41,11 @@ def factorial(seeds, registry, version):
         if corpus not in reg or not reg[corpus].get("frozen"):
             sys.exit(f"{corpus} not frozen in {registry}")
         # key cells first inside a priority class: C and D need their adapters earliest
+        full = int(m[3]) == 0 or (m[1], m[2]) in KEY_CELLS      # full ladder: seed 0 and the key cells
         runs.append({"run_id": r["run_id"], "format": m[1], "corpus": corpus, "seed": int(m[3]),
                      "n_examples": 60000, "priority": 10 * PRIO[r["priority"]] + ((m[1], m[2]) not in KEY_CELLS),
-                     "keep_adapter": r["run_id"] in keep, "eval_sets": evals, "eval": dict(EVAL)})
+                     "keep_adapter": r["run_id"] in keep, "eval": dict(EVAL),
+                     "eval_sets": evals if full else [e for e in evals if e.split("/", 1)[1] in PRIMARY]})
     return runs
 
 
