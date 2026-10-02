@@ -149,7 +149,10 @@ def add_lora(model, seed, hp=HP):
     model = FastLanguageModel.get_peft_model(model, r=hp["lora_r"], lora_alpha=hp["lora_alpha"],
                                              lora_dropout=hp["lora_dropout"], bias="none",
                                              target_modules=hp["target_modules"],
-                                             use_gradient_checkpointing="unsloth", random_state=seed)
+                                             # on-GPU checkpointing: Unsloth's "unsloth" mode offloads activations to
+                                             # pinned host RAM (7-8.5 GB at rule_v1 lengths, kept across runs), which
+                                             # OOM-killed a 12 Gi runner on 2 Oct; same maths, +4-8 GB VRAM
+                                             use_gradient_checkpointing=True, random_state=seed)
     lora = [n for n, _ in model.named_modules() if n.endswith("lora_A")]
     assert lora and not any(".visual." in n for n in lora), "LoRA must cover language-model modules only"
     return model

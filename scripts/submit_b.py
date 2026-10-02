@@ -2,7 +2,7 @@
 Kubernetes objects as JSON and applies them with kubectl. Laptop side only.
   python scripts/submit_b.py sync-up | sync-down          # short interactive CPU pod for copies
   python scripts/submit_b.py push-code                    # code snapshot -> /pvc/selrm/code/<sha>
-  python scripts/submit_b.py push-queue QUEUE.json        # -> /pvc/selrm/queue/<name>
+  python scripts/submit_b.py push-queue QUEUE.json        # -> /pvc/selrm/queues/<name>
   python scripts/submit_b.py build-env TAG                # CPU Job: env tarball
   python scripts/submit_b.py prep QUEUE_NAME              # CPU Job: data, weights, pretok
   python scripts/submit_b.py runners QUEUE_NAME --n 3 --gpu a100 --max-runs 3 --hours 4
@@ -88,7 +88,7 @@ def runner_job(name, queue, code, env_tag, gpu, max_runs, hours, cpu=2, mem="12G
            "containers": [{"name": "runner", "image": IMAGE, "workingDir": "/work",
                            "command": ["/opt/selrm-env/venv/bin/python", "-u", "/work/code/scripts/train_eval_job.py",
                                        "--root", "/pvc/selrm",
-                                       *[x for q in queue.split(",") for x in ("--queue", "/pvc/selrm/queue" + ("" if q == "all" else f"/{q}"))],
+                                       *[x for q in queue.split(",") for x in ("--queue", "/pvc/selrm/queues" + ("" if q == "all" else f"/{q}"))],
                                        "--max_runs", str(max_runs)],
                            "env": [{"name": k, "value": v} for k, v in {
                                "SELRM_MODELS": "/work/models", "HF_HOME": "/work/hf", "HF_HUB_OFFLINE": "1",
@@ -232,8 +232,8 @@ def main():
         src = a.args[0]                   # path under configs/queues/ is kept (v2/...: queues for newer runners)
         name = os.path.relpath(os.path.abspath(src), f"{REPO}/configs/queues").replace(os.sep, "/")
         name = os.path.basename(src) if name.startswith("..") else name
-        exec_sync("sh", "-c", f"mkdir -p $(dirname /pvc/selrm/queue/{name}) && cat > /pvc/selrm/queue/{name}.tmp && "
-                              f"mv /pvc/selrm/queue/{name}.tmp /pvc/selrm/queue/{name}", inp=open(src, "rb").read())
+        exec_sync("sh", "-c", f"mkdir -p $(dirname /pvc/selrm/queues/{name}) && cat > /pvc/selrm/queues/{name}.tmp && "
+                              f"mv /pvc/selrm/queues/{name}.tmp /pvc/selrm/queues/{name}", inp=open(src, "rb").read())
         print(f"queue {name} pushed")
         marked = []                       # claim channel for the pooled rows (docs/CHANGE_REQUESTS.md, 2 Oct)
         import csv

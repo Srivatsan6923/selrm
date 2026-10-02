@@ -46,9 +46,9 @@ for m in [m for m in json.load(open("configs/models_b.json"))["models"] if m.get
     print("downloaded", m["id"], m["revision"])
 EOF
 
-if grep -q '"fover_v1/' "$ROOT/queue/$QUEUE" && [ ! -f "$ROOT/data/fover_v1/train.jsonl" ]; then
+if grep -q '"fover_v1/' "$ROOT/queues/$QUEUE" && [ ! -f "$ROOT/data/fover_v1/train.jsonl" ]; then
   "$PY" scripts/fover_to_records.py "$ROOT/data/fover_v1"        # B-TR-fover corpus, pinned HF dataset
 fi
 
-"$PY" scripts/pretok.py --root "$ROOT" --queue "$ROOT/queue/$QUEUE"
+"$PY" scripts/pretok.py --root "$ROOT" --queue "$ROOT/queues/$QUEUE"
 echo "PREP OK $QUEUE"
