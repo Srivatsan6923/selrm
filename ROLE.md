@@ -1,75 +1,71 @@
-# ROLE D: downstream experiments, tables, paper, and team lead
+# ROLE C: metrics, judges, audit, baselines, clinical tier, diagnostics
 
-## Lead duties (every day)
-- Merge `role-a|b|c|d` into `main`; resolve conflicts in favour of the owner
-  of the file (table in CLAUDE.md).
-- Answer `docs/CHANGE_REQUESTS.md` within the same working block.
-- Apply the schedule ladder on Mon 5 and Wed 7 Oct; record it in
-  `docs/DECISIONS_D.md` and tell the other roles through `docs/HANDOFFS.md`.
-- Keep `docs/STATUS_BOARD.md`: per paper item (docs/PAPER_CONTEXT.md
-  section 4) -> not started / running / done / dropped, with run counts.
-- Run freeze: Wed 7 Oct 23:59. After that only reruns of failed P0 items.
+## Deliverables, in order (docs/RUN_MATRIX_C.csv)
+1. **C-M0** extend `selrm/metrics.py` (you own it): MR/FR on missing twins,
+   step-level metrics (correct / unnecessary revision), level and tier
+   breakdowns, clinical metrics. `scripts/score.py`, `scripts/eval_rule.py`,
+   `scripts/eval_clinical.py` (B and D call these; publish early via
+   HANDOFFS).
+2. **C-J0** `selrm/judges.py`, `scripts/run_judge.py`, `configs/models.json`.
+3. **C-CL-*** clinical data in the canonical schema (`clin_v1/...`).
+4. **C-P0 pilot** on Sun 4 Oct; apply the GO rule yourself; log it.
+5. **C-AUD-*** audit (Table 2), **C-TF-*** training-free rows, **C-REF-***
+   references (Table 4).
+6. **C-DG-*** diagnostics (appendix F); appendix D and F text.
 
-## Deliverables (docs/RUN_MATRIX_D.csv)
-1. **D-L0** repo, shared Drive tree, registry files.
-2. **D-POOL-*** candidate pools: frozen policy = Qwen3.5-9B, sampled chain of
-   thought with numbered steps and a final line "Final answer: <option>";
-   16 samples per question (MedQA test, CareQA, MedEinst questions), 64 for a
-   fixed 300-question MedQA subset. A trace is eligible if it has a final
-   answer; report the share that is not.
-3. **D-CAL, D-SEL-***, **D-SELN** (Table 5, Figure 3 right).
-4. **D-RL-*** policy training (appendix G).
-5. **D-TAB** `scripts/make_tables.py`, `scripts/update_paper.py`;
-   **D-SUM** `docs/RESULTS_SUMMARY.md`; **D-PAPER**; **D-AUDIT**.
+## Judge harness
+- Local open judges: Unsloth or transformers, pointwise u (INTERFACES 3).
+- Released PRMs/RMs (Med-PRM, MedS3 PRM, FoVer PRM, ThinkPRM, GenPRM-7B):
+  use each as released (its own prompt format and scoring head); wrap as
+  `score(records) -> u` where the claim is the step to be scored after the
+  rule and case. 3-hour timebox each; record what "as released" meant.
+- API judges: one OpenAI-compatible client; log-probabilities if the provider
+  returns them, else the two-order choice prompt. Disk cache keyed by
+  hash(model, messages, params); retries; thread pool; cost estimate printed
+  and checked against `configs/budget.json` before each run. Fix reasoning
+  effort per model. Verify every model ID on the provider page and record ID,
+  provider, date in `configs/models.json`: current GPT, Gemini and Claude
+  flagships; Kimi K3; GLM-5.3; Nemotron 3 (Ultra or Super via API, Nano
+  locally); Qwen3.5-27B and Llama-3.3-70B locally (quantised if needed).
 
-## Answer selection
-- Step scores: the step check scores each step with the vignette. The ledger
-  score: the reader receives the vignette and the step and writes a ledger;
-  the judge scores the step from the ledger alone. A trace's score is the
-  minimum over its steps. Combined = minimum of the two after temperature
-  scaling fitted on development data; also report the product and a logistic
-  combination fitted on development data.
-- Rows: single sample, self-consistency, step check, step check with the
-  vignette of another question (swapped), ledger score, combined, combined
-  swapped, combined with the ledger model trained on blocks (no near-misses),
-  closed judge as selector (C's client), oracle selection.
-- Columns: MedQA accuracy, CareQA accuracy, key-pair accuracy (both members
-  right), MedEinst pair / control / trap accuracy. Paired bootstrap over
-  questions; the 1-point non-inferiority margin is fixed in advance.
-- Selection pressure: N in {1, 2, 4, 8, 16, 32, 64} on the 300-question
-  subset.
-- Adapters come from `configs/adapters.json` (B). Until then use provisional
-  adapters trained on smoke data to build and test the pipeline.
+## Audit columns (Table 2)
+Rule triplets: Rev, Hold, TA, MR (2,000 triplets; 1,000 for costly reasoning
+models). MedEinst: reversal over test pairs. Key pairs: reversal.
+Report the readout type per model (log-odds or choice).
 
-## Policy training (GRPO)
-Policy: Qwen3.5-4B with LoRA on rule-application prompts from train-level
-rules ("decide and justify in numbered steps"). Rewards: outcome (rule
-program), step check, ledger model trained on blocks, ledger model trained on
-triplets, reference-graph coverage (A's `reference_graph`). 2 seeds, about
-1-2k steps, group size 8 (verify the GRPO implementation you use). Before
-each run check that reward terms are not collinear within groups and that a
-64-prompt subset can be overfit. Evaluate the policy with the rule program on
-held-out signature classes: accuracy on base, flip and near cases; log reward
-against program accuracy over training (reward exploitation).
+## Training-free rows and references (Table 4)
+critic (backbone zero-shot); default correction u(s,x) + a[u(s,x) -
+u(s, no case)] with a from dev; prompted ledger (two prompts, judge sees no
+case); generated-program verifier (the model writes a program for the stated
+rule, executed in a sandbox). References: best closed judge zero-shot and
+with the prompted ledger; extraction by a strong model followed by our rule
+program (rule tier only).
 
-## Tables and paper
-- `make_tables.py` reads only `results/*/summary_*.json` and
-  `scores_*.jsonl`; writes `tables/*.tex`, `figures/*.pdf` and
-  `tables/numbers.tex` (one macro per number used in running text).
-  Missing input -> "not run". Seeds: mean and s.d.; CIs and paired tests from
-  `selrm.metrics`; Holm over the four primary comparisons.
-- `update_paper.py` replaces table bodies in `paper/latex/main.tex` and
-  checks that no `\ph{` remains before switching to `\placeholdersfalse`.
-- `docs/RESULTS_SUMMARY.md` (Thu 8 Oct): for each claim in the abstract and
-  contribution list: estimate, CI, test, supported / not supported / not run,
-  and the sentence the paper may state.
-- Paper rewrite: docs/PAPER_CONTEXT.md section 8. A, B and C deliver appendix
-  text for their parts on Thu 8 Oct.
-- Final audit on Sat 10 Oct (Prompt 4 in PROMPTS.md). Submission is done by
-  the human.
+## Clinical tier (appendix D of the draft gives the definitions)
+- **MedEinst**: verify the repository and licence; test pairs -> blocks (two
+  cases x two diagnoses); keep reference pairs separate for B; control and
+  trap accuracy; disease-held-out split for B-DIS.
+- **Key pairs** (MedQA, CareQA): two questions with the same option set and
+  different keys; one-to-one matching by closest stem; exclude negated stems,
+  "all of the above" options and one-token stems; report the yield.
+- **NLI4CT-P** (SemEval-2024 Task 2): statements as claims, trial section as
+  case; the task's scorer for macro-F1, faithfulness, consistency.
+- **clinpairs_train** for B: MedEinst reference pairs + MedQA-train key
+  pairs, with ledger targets from the released structured evidence or the
+  sentence-level difference of the two vignettes.
+- **MedPRMBench**: check today whether the data are released; tell B and D
+  (HANDOFFS) which step check to use.
+- **CondMedQA**: only if released with general answers. **EHRNote-ChatQA**:
+  blocked until credentialed access exists; never send to an API.
+
+## Diagnostics (appendix F)
+composition gap P/K/G on A's reading/application pairs; shift classes and
+kappa using missing twins; sampling-noise check (log-odds vs sampled
+readout on one open judge); MedPRMBench input ablation (conditional);
+linear probe with a control task (P3).
 
 ## Decision rules
-- If B's step check is the released Med-PRM, say so in Table 5's caption.
-- If selection gains are within the non-inferiority margin, report that; do
-  not search aggregation rules on test data.
-- Policy training is dropped first if the ladder is applied.
+- GO rule and budget ladder: CLAUDE.md. You apply both without asking.
+- A model that cannot be verified or run inside its timebox is dropped and
+  listed in the appendix as attempted.
+- Until `rule_v1` exists, build and test everything on `data/smoke_v2`.

@@ -1,0 +1,40 @@
+run_id,owner,pool,paper_item,kind,what,data,seed,runtime,est_hours,measured_hours,priority,depends_on,status,notes
+C-M0,C,no,Sec3,code,"metrics.py extensions (MR/FR, PresHold, ladder, clinical metrics), score.py, eval_rule.py + eval_clinical.py usable by B and D",-,-,CPU,5,,P0,-,todo,
+C-J0,C,no,Sec6,code,judges.py + run_judge.py: local pointwise log-odds; API logprob or two-order choice; cache; cost estimate; configs/models.json with verified IDs,-,-,CPU,5,,P0,-,todo,
+C-P0,C,no,pilot,eval,PILOT: 300 test triplets x 5 models; apply GO rule; log,rule_v1 test[:300],-,API+GPU,3,,P0,"A-D4,C-J0",todo,
+C-AUD-medprm,C,no,Tab2,eval,audit: Med-PRM (released); rule test (Rev/Hold/TA/MR) + MedEinst + key pairs,"rule_v1 test, clinical",-,GPU,2.5,,P0,C-P0,todo,3-hour timebox per released checkpoint
+C-AUD-meds3,C,no,Tab2,eval,audit: MedS3 PRM (released; verify); rule test (Rev/Hold/TA/MR) + MedEinst + key pairs,"rule_v1 test, clinical",-,GPU,2.5,,P1,C-P0,todo,3-hour timebox per released checkpoint
+C-AUD-fover,C,no,Tab2,eval,audit: FoVer PRM (released); rule test (Rev/Hold/TA/MR) + MedEinst + key pairs,"rule_v1 test, clinical",-,GPU,2.5,,P0,C-P0,todo,3-hour timebox per released checkpoint
+C-AUD-injerr,C,no,Tab2,eval,audit: injected-error PRM (from B-PRM); rule test (Rev/Hold/TA/MR) + MedEinst + key pairs,"rule_v1 test, clinical",-,GPU,2.5,,P1,C-P0,todo,3-hour timebox per released checkpoint
+C-AUD-thinkprm,C,no,Tab2,eval,audit: ThinkPRM (released); rule test (Rev/Hold/TA/MR) + MedEinst + key pairs,"rule_v1 test, clinical",-,GPU,2.5,,P1,C-P0,todo,3-hour timebox per released checkpoint
+C-AUD-genprm,C,no,Tab2,eval,audit: GenPRM-7B (released; code sandbox); rule test (Rev/Hold/TA/MR) + MedEinst + key pairs,"rule_v1 test, clinical",-,GPU,2.5,,P1,C-P0,todo,3-hour timebox per released checkpoint
+C-AUD-qwen35-9b,C,no,Tab2,eval,audit: Qwen3.5-9B zero-shot (critic); rule test (Rev/Hold/TA/MR) + MedEinst + key pairs,"rule_v1 test, clinical",-,GPU,2.5,,P0,C-P0,todo,3-hour timebox per released checkpoint
+C-AUD-qwen35-27b,C,no,Tab2,eval,audit: Qwen3.5-27B; rule test (Rev/Hold/TA/MR) + MedEinst + key pairs,"rule_v1 test, clinical",-,GPU,2.5,,P1,C-P0,todo,3-hour timebox per released checkpoint
+C-AUD-llama70b,C,no,Tab2,eval,audit: Llama-3.3-70B (quantised if needed; verify ID); rule test (Rev/Hold/TA/MR) + MedEinst + key pairs,"rule_v1 test, clinical",-,GPU,2.5,,P1,C-P0,todo,3-hour timebox per released checkpoint
+C-AUD-kimi-k3,C,no,Tab2,eval,audit: Kimi K3 (API; verify ID); rule test (Rev/Hold/TA/MR) + MedEinst + key pairs,"rule_v1 test, clinical",-,API,1.5,,P0,C-P0,todo,3-hour timebox per released checkpoint
+C-AUD-glm-5.3,C,no,Tab2,eval,audit: GLM-5.3 (API; verify ID); rule test (Rev/Hold/TA/MR) + MedEinst + key pairs,"rule_v1 test, clinical",-,API,1.5,,P0,C-P0,todo,3-hour timebox per released checkpoint
+C-AUD-nemotron3,C,no,Tab2,eval,audit: Nemotron 3 Ultra or Super (API; verify ID); rule test (Rev/Hold/TA/MR) + MedEinst + key pairs,"rule_v1 test, clinical",-,API,1.5,,P1,C-P0,todo,3-hour timebox per released checkpoint
+C-AUD-closed-1,C,no,Tab2,eval,audit: current GPT flagship; rule test (Rev/Hold/TA/MR) + MedEinst + key pairs,"rule_v1 test, clinical",-,API,1.5,,P0,C-P0,todo,3-hour timebox per released checkpoint
+C-AUD-closed-2,C,no,Tab2,eval,audit: current Gemini flagship; rule test (Rev/Hold/TA/MR) + MedEinst + key pairs,"rule_v1 test, clinical",-,API,1.5,,P1,C-P0,todo,3-hour timebox per released checkpoint
+C-AUD-closed-3,C,no,Tab2,eval,audit: current Claude flagship; rule test (Rev/Hold/TA/MR) + MedEinst + key pairs,"rule_v1 test, clinical",-,API,1.5,,P0,C-P0,todo,3-hour timebox per released checkpoint
+C-TF-critic,C,no,Tab4,eval,critic = backbone zero-shot on all Tab4 columns,rule_v1 + clinical,-,GPU,2,,P0,C-M0,todo,
+C-TF-defcorr,C,no,Tab4,eval,"+ default correction u(s,x)+a[u(s,x)-u(s,empty)], a on dev",rule_v1 + clinical,-,GPU,2,,P1,C-M0,todo,
+C-TF-promptledger,C,no,Tab4,eval,"+ prompted ledger (two-stage prompting, no training)",rule_v1 + clinical,-,GPU,2,,P0,C-M0,todo,
+C-TF-genprog,C,no,Tab4,eval,generated-program verifier: model writes and executes a program for the stated rule,rule_v1 + clinical,-,GPU,2,,P1,C-M0,todo,
+C-REF-closed-zero,C,no,Tab4,eval,"best closed judge, zero-shot, all Tab4 columns",rule_v1 + clinical,-,API,2,,P1,C-AUD-closed-3,todo,
+C-REF-closed-ledger,C,no,Tab4,eval,best closed judge with prompted ledger,rule_v1 + clinical,-,API,2,,P1,C-AUD-closed-3,todo,
+C-REF-extract-program,C,no,Tab4,eval,extraction by a strong model + hand-written rule program (rule tier only),rule_v1 + clinical,-,API,2,,P1,C-AUD-closed-3,todo,
+C-CL-medeinst,C,no,"Sec3.2,AppD",data,MedEinst test pairs -> blocks; reference pairs kept separate for B,-,-,CPU,2,,P0,-,todo,
+C-CL-keypairs,C,no,"Sec3.2,AppD",data,"key pairs: MedQA and CareQA (shared option set, different key; one-to-one matching; exclusions)",-,-,CPU,2,,P1,-,todo,
+C-CL-nli4ct,C,no,"Sec3.2,AppD",data,NLI4CT-P (SemEval-2024 Task 2): statements as claims; task scorer for faithfulness/consistency,-,-,CPU,2,,P1,-,todo,
+C-CL-clinpairs,C,no,"Sec3.2,AppD",data,clinical training pairs: MedEinst reference pairs + MedQA-train key pairs with ledger targets; disease-held-out split,-,-,CPU,2,,P1,-,todo,
+C-CL-medprmbench,C,no,"Sec3.2,AppD",data,MedPRMBench: check release; train split for step check; case-dependent vs step-internal error types,-,-,CPU,2,,P0,-,todo,
+C-CL-condmedqa,C,no,"Sec3.2,AppD",data,CondMedQA (100 items): check release incl. general answers,-,-,CPU,2,,P2,-,todo,
+C-CL-ehrnote,C,no,"Sec3.2,AppD",data,EHRNote-ChatQA: credentialed; BLOCKED until access is granted; never send to APIs,-,-,CPU,2,,P3,-,todo,
+C-CL-overlap,C,no,"Sec3.2,AppD",data,"overlap checks CareQA vs MedQA, ReMedQA note",-,-,CPU,2,,P2,-,todo,
+C-DG-pkg,C,no,AppF,eval,composition gap P/K/G for 4 signals,-,-,GPU,2,,P1,A-D8,todo,
+C-DG-shift,C,no,AppF,eval,"shift classes and kappa (needs missing twins, MedPRMBench pairs)",-,-,GPU,2,,P2,A-D7,todo,
+C-DG-noise,C,no,AppF,eval,sampling-noise check: logprob vs sampled readout on one open judge,-,-,GPU,2,,P2,C-J0,todo,
+C-DG-inputabl,C,no,AppF,eval,MedPRMBench input ablation (no case; masked numbers),-,-,GPU,2,,P2,C-CL-medprmbench,todo,
+C-DG-probe,C,no,AppF,eval,exploratory linear probe (control task),-,-,GPU,2,,P3,C-M0,todo,
+C-X-icl,C,no,extension,eval,"in-context data effect: balanced vs blocks vs triplets demonstrations, 6 models, 3 draws",rule_v1 test[:1000],-,API,4,,P2,C-AUD-*,todo,not in v10; only if budget and time allow

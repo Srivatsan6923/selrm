@@ -1,10 +1,10 @@
-# START HERE: ROLE D (downstream + lead)
+# START HERE: ROLE C (evaluation)
 
 You run one of four parallel Claude Code sessions that together execute the
 full v10 paper. This package is self-contained.
 
 ## Setup (15 minutes)
-1. Put this folder in the team repo on branch `role-d` (the lead
+1. Put this folder in the team repo on branch `role-c` (the lead
    creates the repo; if it does not exist yet, start locally and push later).
 2. Add a shortcut to the shared Drive folder `selrm/` in your My Drive.
 3. Open the folder in Claude Code and paste **Prompt 1** from `PROMPTS.md`.
@@ -16,7 +16,7 @@ full v10 paper. This package is self-contained.
 - Daily 15-minute sync: bring numbers from `summary_*.json` only.
 
 ## What you own
-Answer selection, policy training, tables, the paper, and the lead duties. 32 rows in `docs/RUN_MATRIX_D.csv` (16 are P0).
+Metrics, the judge harness, the audit, baselines, the clinical tier and diagnostics. 39 rows in `docs/RUN_MATRIX_C.csv` (14 are P0).
 Details: `ROLE.md`. Shared rules: `CLAUDE.md`. Contracts: `docs/INTERFACES.md`.
 Schedule: `docs/TEAM_PLAN.md`.
 
