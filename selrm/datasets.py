@@ -64,6 +64,21 @@ CORPORA = {
 ABLATIONS = {"triplets_nopres": _paired(_triplet_core, 0, 5)}
 
 
+def _dose(pct):
+    """Near-miss dose: blocks of 100 groups, a flip in each, a near-miss in place of
+    the base in pct of them; pres and missing each in 43 groups (15% of cases each).
+    pct 0 is the blocks corpus and pct 50 the triplets corpus."""
+    def pick(rng):
+        core = [{"flip", k} for k in rng.sample(["near"] * pct + ["base"] * (100 - pct), 100)]
+        pres, miss = set(rng.sample(range(100), 43)), set(rng.sample(range(100), 43))
+        return [core[i] | ({"pres"} if i in pres else set()) | ({"missing"} if i in miss else set())
+                for i in range(100)]
+    return 100, pick
+
+
+EXPERIMENTS = {f"dose_{p:02d}": _dose(p) for p in (5, 12, 25)}
+
+
 def register(rules):
     """Makes test-only rules (outside LIBRARY) available to the builders."""
     RULES_BY_ID.update({r.rid: r for r in rules})
@@ -83,10 +98,11 @@ def options(rules, tier_w=TIER_W):
     return out
 
 
-def sample_specs(rules, n, seed, tier_w=TIER_W):
-    """n group specs (rid, cid, nm_kind, tier) with near-miss kinds in equal shares."""
+def sample_specs(rules, n, seed, tier_w=TIER_W, kinds=KINDS):
+    """n group specs (rid, cid, nm_kind, tier) with near-miss kinds in equal shares
+    (kinds: the near-miss kinds allowed, e.g. all but one for leave-one-kind-out)."""
     rng, opts = random.Random(f"specs.{seed}"), options(rules, tier_w)
-    kinds = [k for k in KINDS if opts[k]]
+    kinds = [k for k in kinds if opts[k]]
     order = (kinds * (n // len(kinds) + 1))[:n]
     rng.shuffle(order)
     specs = []
@@ -127,7 +143,7 @@ def corpus(kind, specs, n_records, set_name="rule_v1", stats=None, claim_types=N
     claim_types: keep only these claim types (A-D12 conclusion-only labels);
     probes: also yield the group's other near and pres cases with meta.probe =
     True, outside the record count (A-D12 probe re-weighting inputs)."""
-    size, pattern = {**CORPORA, **ABLATIONS}[kind]
+    size, pattern = {**CORPORA, **ABLATIONS, **EXPERIMENTS}[kind]
     n, gen = 0, groups(specs, "train", set_name, "L0", stats, missing=True)
     for b in range(len(specs) // size):
         for want in pattern(random.Random(f"{kind}.{b}")):

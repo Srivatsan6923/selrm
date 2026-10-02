@@ -108,12 +108,33 @@ def ablations(emit, pool, n, SET):
               "stats": st})
 
 
+def experiments(emit, rules, pool, n, SET):
+    """Two later experiments. Leave one near-miss kind out: the triplets corpus over
+    groups of the other near-miss kinds only (subject, negation or time held out).
+    Near-miss dose: the blocks corpus with 5, 12 or 25% of base cases replaced by
+    near-misses of all kinds (0% = train_blocks, 50% = train_triplets, same pool)."""
+    for held in ("subject", "negation", "time"):
+        st = Counter()
+        lo_pool = D.sample_specs(rules("train_rules"), len(pool), f"train.lo_{held}",
+                                 kinds=[k for k in D.KINDS if k != held])
+        emit(f"train_triplets_lo_{held}", D.corpus("triplets", lo_pool, n["train"], SET, st),
+             {"split": "train", "level": "L0", "templates": "train", "corpus": "triplets",
+              "experiment": {"leave_out_near_miss_kind": held}, "stats": st})
+    for pct in (5, 12, 25):
+        st = Counter()
+        emit(f"train_dose_{pct:02d}", D.corpus(f"dose_{pct:02d}", pool, n["train"], SET, st),
+             {"split": "train", "level": "L0", "templates": "train", "corpus": f"dose_{pct:02d}",
+              "experiment": {"base_cases_replaced_by_near_misses": pct / 100}, "stats": st})
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="data")
     ap.add_argument("--fold", type=int, default=1)
     ap.add_argument("--scale", type=float, default=1.0)
     ap.add_argument("--freeze", action="store_true")
+    ap.add_argument("--only", default="", help="comma-separated set names: build only these (new sets "
+                    "of a frozen version; the frozen fold assignment is read, never rewritten)")
     a = ap.parse_args()
     n = {k: max(14, int(v * a.scale)) for k, v in SIZES.items()}
     root = Path(a.out)
@@ -121,17 +142,20 @@ def main():
     out = root / SET
     reg_path = root / "REGISTRY.json"
     registry = json.loads(reg_path.read_text()) if reg_path.exists() else {}
-    frozen = [k for k, v in registry.items() if k.startswith(SET + "/") and v.get("frozen")]
+    only = set(filter(None, a.only.split(",")))
+    frozen = [k for k, v in registry.items() if k.startswith(SET + "/") and v.get("frozen")
+              and (not only or k.split("/", 1)[1] in only)]
     if frozen:
         sys.exit(f"refusing to rebuild: frozen sets {frozen}")
 
     frozen_folds = root / "rule_v1" / "FOLDS.json"
-    if a.fold != 1 and frozen_folds.exists():      # folds 2-3 use the assignment frozen with rule_v1
+    if (a.fold != 1 or only) and frozen_folds.exists():   # folds 2-3 and added sets use the frozen folds
         F = json.loads(frozen_folds.read_text())
     else:
         F = json.loads(json.dumps(FD.make_folds(LIBRARY)))
     out.mkdir(parents=True, exist_ok=True)
-    (out / "FOLDS.json").write_text(json.dumps(F, indent=1), encoding="utf-8")
+    if not (only and (out / "FOLDS.json").exists()):
+        (out / "FOLDS.json").write_text(json.dumps(F, indent=1), encoding="utf-8")
     fold = F["folds"][str(a.fold)]
 
     def rules(key):
@@ -143,6 +167,8 @@ def main():
     mans = {}
 
     def emit(name, recs, info, validate=False):
+        if only and name not in only:          # records are generated lazily: skipped sets cost nothing
+            return
         stats = info.pop("stats", None)
         m = D.write(out, name, recs, dict(base, **info), validate)
         if stats is not None:
@@ -186,6 +212,10 @@ def main():
              {"split": "train", "level": "L0", "templates": "train", "corpus": kind, "stats": st})
     if not core:
         ablations(emit, pool, n, SET)
+        experiments(emit, rules, pool, n, SET)
+    missing_names = only - set(mans)
+    if missing_names:
+        sys.exit(f"unknown set names in --only: {sorted(missing_names)}")
 
     for name, m in mans.items():
         registry[f"{SET}/{name}"] = {
