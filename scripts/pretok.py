@@ -34,8 +34,9 @@ def max_len(spec):
 
 def train_key(spec):
     p = spec.get("resample_p", 0.3) if spec["format"] in TWO_STAGE else 0
+    w = f"__w{os.path.basename(spec['pair_weights']).rsplit('.', 1)[0]}" if spec.get("pair_weights") else ""
     return (f"{spec['format']}__{spec['corpus'].replace('/', '~')}__n{spec.get('n_examples') or 'all'}"
-            f"__p{p}__c{spec.get('construction_seed', 0)}__L{max_len(spec)}__v{VERSION}")
+            f"__p{p}__c{spec.get('construction_seed', 0)}__L{max_len(spec)}{w}__v{VERSION}")
 
 
 def train_dir(root, spec):
@@ -103,12 +104,13 @@ def build_train(root, spec, tok, end):
     d = train_dir(root, spec)
     if os.path.exists(f"{d}/READY"):
         return d, "exists"
-    recs = load_jsonl(dataset_path(root, spec["corpus"]))
+    recs = [r for r in load_jsonl(dataset_path(root, spec["corpus"])) if not r["meta"].get("probe")]   # probes: scoring only
     if spec["format"] not in ("verdict", "verdict_bt", "summary2"):    # rationale targets carry the ledger2 text
         check_gold(recs, ["ledger2" if spec["format"] == "rationale" else spec["format"]], spec["corpus"])
+    pw = json.load(open(f"{root}/{spec['pair_weights']}")) if spec.get("pair_weights") else None
     ex, stats = build_examples(recs, spec["format"], n=spec.get("n_examples"),
                                resample_p=spec.get("resample_p", 0.3),
-                               seed=spec.get("construction_seed", 0))
+                               seed=spec.get("construction_seed", 0), pair_weights=pw)
     if spec["format"] == "verdict_bt":            # prompt pairs (correct, wrong) stored as consecutive sequences
         A = tok_ids(tok, [chat(tok, e["prompt"]) for e in ex])
         B = tok_ids(tok, [chat(tok, e["prompt_b"]) for e in ex])

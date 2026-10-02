@@ -129,7 +129,7 @@ def _take(items: list, k: int, rng: random.Random) -> list:
 
 
 def build_examples(records, fmt: str, n: int | None = None, resample_p: float = 0.3,
-                   seed: int = 0):
+                   seed: int = 0, pair_weights: dict | None = None):
     """-> (examples, stats). Each example: {prompt, completion, part, src}.
     n is the example budget (default len(records)); seed fixes the selection,
     which is shared by all training seeds of a cell (seeds vary order and LoRA init)."""
@@ -167,7 +167,12 @@ def build_examples(records, fmt: str, n: int | None = None, resample_p: float = 
            "part": "reader", "src": "/".join(r["iid"].split("/")[:2])}
           for r in _take(reader_units(records), n_reader, rng)]
     sel, swapped = [], 0
-    for key in _take(sorted(pairs), n_pairs, rng):
+    keys = sorted(pairs)
+    if pair_weights is not None:        # probe re-weighting: judge pairs drawn in proportion to their group's weight
+        anchors = rng.choices(keys, weights=[pair_weights.get(k[0], 1.0) for k in keys], k=n_pairs)
+    else:
+        anchors = _take(keys, n_pairs, rng)
+    for key in anchors:
         if rng.random() < resample_p:
             v = pairs[key]["s"]
             group = groups[(v["rid"], v["condition"], key[2])]

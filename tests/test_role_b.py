@@ -17,8 +17,13 @@ def test_budget_and_balance():
     for fmt in FORMATS:
         for n in (len(recs), 1001):
             ex, st = build_examples(recs, fmt, n=n)
+            if fmt == "verdict_bt":            # items are claim pairs: n sequences = n // 2 pairs
+                assert st["n"] == 2 * len(ex) == 2 * (n // 2), (fmt, n, len(ex))
+                continue
             assert len(ex) == n == st["n"], (fmt, n, len(ex))
         ex, st = build_examples(recs, fmt)
+        if fmt == "verdict_bt":
+            continue
         ans = [e["completion"][-1] for e in ex if e["part"] in ("verdict", "rationale", "judge")]
         assert ans.count("+") == ans.count("-"), fmt
         if fmt in ("summary2", "value2", "ledger2"):
