@@ -126,3 +126,17 @@ def test_ablation_corpora(built):
     train = [r for r in sets["abl_probe_blocks"] if not r["meta"].get("probe")]
     assert probe and {r["case_kind"] for r in probe} <= {"near", "pres"}
     assert train == sets["train_blocks"]                    # the trained part is train_blocks itself
+
+
+def test_new_experiment_corpora(built):
+    _, _, sets, _ = built
+    for held in ("subject", "negation", "time"):        # leave one near-miss kind out
+        recs = sets[f"train_triplets_lo_{held}"]
+        assert recs and held not in {r["nm_kind"] for r in recs}
+    for pct in (5, 12, 25):                               # dose: near-misses in pct of 100 groups
+        by_group = defaultdict(set)
+        for r in sets[f"train_dose_{pct:02d}"]:
+            by_group[r["tid"]].add(r["case_kind"])
+        block = Counter(k for g in list(by_group.values())[:100] for k in g)
+        assert len(by_group) >= 100 and block["near"] == pct and block["base"] == 100 - pct
+        assert block["flip"] == 100 and block["pres"] == block["missing"] == 43

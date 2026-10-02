@@ -21,6 +21,8 @@
 | train_{natural, balanced, blocks, triplets} | training rules | train | 60,000 records each (plus at most 16), from one group pool |
 | div_{base,new,same,patients}_{x} | training rules | train | A-D10 diversity curves: triplets corpora over x training rules (records proportional to x, 60k at 256): rules of new classes, of the two starting classes, or more patients for the same 16 rules. Sizes the library cannot fill are not built (see each MANIFEST `diversity`) |
 | abl_nopres_triplets, abl_conclusion_triplets, abl_probe_blocks | training rules | train | A-D12 ablations: triplets without presentation edits (missing kept near 15%); triplets with conclusion claims only (60k records); train_blocks plus its groups' near and pres cases with `meta.probe = true` (never trained on; inputs for re-weighting). Decision-field / bit-only targets: `meta.criterion_holds`; ledger resampling: the ledgers of the other cases of a group |
+| train_triplets_lo_{subject,negation,time} | training rules | train | Leave one near-miss kind out: the triplets corpus over groups of the other four near-miss kinds only (60k records, 15% pres and missing). Test on the held-out kind in test_L2 / test_L0 |
+| train_dose_{05,12,25} | training rules | train | Near-miss dose: the blocks corpus with 5, 12 or 25% of base cases replaced by near-misses of all kinds (blocks of 100 groups; 43 pres and 43 missing per block). 0% = train_blocks, 50% = train_triplets (same group pool) |
 
 Corpora, by case share:
 - **natural.** One case per group, in blocks of 200 groups: 30 pres, 30 missing, 21 flip and 119 base.
