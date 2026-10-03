@@ -247,7 +247,8 @@ def main():
     reward.__name__ = a.reward.replace("-", "_")
     tok = AutoTokenizer.from_pretrained(a.policy)
     cfg = GRPOConfig(output_dir=os.path.join(a.out, "ckpt"), seed=a.seed, max_steps=a.steps, learning_rate=1e-5,
-                     per_device_train_batch_size=8, gradient_accumulation_steps=1, num_generations=8,
+                     # 16 x 4 = 64 completions per optimiser step = 8 prompts x group of 8
+                     per_device_train_batch_size=16, gradient_accumulation_steps=4, num_generations=8,
                      max_completion_length=512, temperature=1.0, beta=0.0, logging_steps=10, save_steps=a.steps,
                      bf16=True, report_to=[], chat_template_kwargs={"enable_thinking": False},
                      model_init_kwargs={"dtype": torch.bfloat16}, remove_unused_columns=False)
