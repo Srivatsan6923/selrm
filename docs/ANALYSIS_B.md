@@ -136,6 +136,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-LOKO-subject-summary2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 12062378 | 1097188 | 938 | 0.74 | 0.25 |
 | B-LOKO-subject-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13135729 | 120000 | 938 | 0.69 | 0.14 |
 | B-LOKO-time-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13201513 | 120000 | 938 | 0.70 | 0.14 |
+| B-SC-summary2-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 15443373 | 1095740 | 938 | 1.67 | 0.41 |
 
 ## 8. Was donor-ledger resampling active?
 
@@ -155,6 +156,7 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | B-F-summary2-triplets-s2 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-LOKO-subject-ledger2-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
 | B-LOKO-subject-summary2-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
+| B-SC-summary2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 
 ## 9. Field interventions on the ledger x triplets adapter (test_L2)
 
@@ -230,4 +232,14 @@ Swap in the ledger of another case (same rule, condition and claim): the judge r
 | boundary | verdict | not run | | |
 | boundary | summary2 | not run | | |
 | boundary | ledger2 | not run | | |
+
+## 11. Summary pipeline whose judge also sees the case (test_L2, triplets corpus, seed 0; FINAL_TASKS_B P0.4)
+
+| run | judge sees | TA | Rev | Hold |
+|---|---|---|---|---|
+| B-SC-summary2-triplets-s0 | rule, case, prose record, claim | 98.8 | 99.0 | 99.8 |
+| B-F-summary2-triplets-s0 | rule, prose record, claim | 98.0 | 98.5 | 99.3 |
+| B-F-ledger2-triplets-s0 | rule, ledger, claim | 99.2 | 99.2 | 100.0 |
+
+Case-visible minus blind summary judge, TA: +0.8 [+0.1, +1.5], p 0.024; ledger minus case-visible summary judge, TA: +0.4 [-0.3, +1.1], p 0.290.
 

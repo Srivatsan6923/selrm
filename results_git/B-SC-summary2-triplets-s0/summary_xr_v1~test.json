@@ -1,0 +1,18 @@
+{
+ "run_id": "B-SC-summary2-triplets-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 288.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
