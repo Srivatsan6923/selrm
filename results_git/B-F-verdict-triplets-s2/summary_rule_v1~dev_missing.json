@@ -1,0 +1,13 @@
+{
+ "run_id": "B-F-verdict-triplets-s2",
+ "set": "rule_v1/dev_missing",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "seconds": 92.9,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
