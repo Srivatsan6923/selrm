@@ -158,10 +158,11 @@ def manifest(sources):
                 if mod == "invented" else "hand-written in selrm/" + {"pilot": "rules.py", "constraint": "rules_constraint.py",
                                                                     "score": "rules_score.py",
                                                                     "grammar_curated": "rules_grammar.py"}[mod])
+        library_tests = mod != "invented"          # tests/test_library.py covers the library, not L3-inv
         tests = (["tests/test_library.py: every threshold executed one step below, at and above (and at the"
-                  " altered threshold)"] * any(c.kind == "numeric" for c in r.criteria)
-                 + ["tests/test_library.py: the stated operator wording matches the program",
-                    "engine.check on every generated group: executed labels, a flip that changes exactly the"
+                  " altered threshold)"] * (library_tests and any(c.kind == "numeric" for c in r.criteria))
+                 + ["tests/test_library.py: the stated operator wording matches the program"] * library_tests
+                 + ["engine.check on every generated group: executed labels, a flip that changes exactly the"
                     " target criterion, unchanged near-miss and presentation, keyword pattern, ledger quotes"])
         out.append({"rid": r.rid, "module": mod, "kind": r.kind, "family": r.family, "signature_class": FD.sig_class(r),
                     "fold1_role": role.get(r.rid, "L3-inv" if mod == "invented" else None),
@@ -194,12 +195,12 @@ def check_triplet(rule, crit, ov, cases):
             if {m.status for m in cnt} >= {"present", "absent"} and \
                     len({(m.subject, m.time) for m in cnt}) < len(cnt):
                 v.append((k, "inconsistent", c.concept))
-    if len(ev) == 4:
+    if "base" in ev and "flip" in ev:
         changed = [c.cid for c, a, b in zip(rule.criteria, ev["base"], ev["flip"]) if a != b]
         if changed != [crit.cid]:
             v.append(("flip", "flip", f"changes {changed}"))
         for k in ("near", "pres"):
-            if ev[k] != ev["base"]:
+            if k in ev and ev[k] != ev["base"]:
                 v.append((k, "unchanged", "a criterion changes"))
     for k, rec in cases.items():                  # Proposition 1 keyword pattern, ledger, prose
         named = any(kw in rec["case_text"].lower() for kw in crit.keywords)
@@ -213,14 +214,26 @@ def check_triplet(rule, crit, ov, cases):
     return v
 
 
-def check_records(recs, rule, crit, ov):
+def check_records(recs, rule, crit, ov, n=None):
+    """Every stored label equals the executed one; a reading claim is correct iff the line it
+    quotes is a line of the case."""
     v = []
-    for r in recs:                                 # every stored label equals the executed one
+    for r in recs:
+        if r["case_kind"] == "read":
+            m = re.match(r'The case states: "(.*)"$', r["claim_text"], re.S)
+            y = int(bool(m) and m.group(1) in r["case_text"].split("\n"))
+            if n is not None:
+                n["read_labels"] += 1
+            if r["label"] != y:
+                v.append(("read", "stored label", r["iid"]))
+            continue
         if r["case_kind"] not in CASES + ("apply",):
             continue
         st = state(r)
         y = rule.label(st, crit.cid, ov) if r["case_kind"] == "apply" else \
             E.case_labels(rule, crit, ov, st)[r["claim_type"]]
+        if n is not None:
+            n["stored_labels"] += 1
         if r["label"] != int((r["claim_role"] == "s_prime") == (y == 1)):
             v.append((r["case_kind"], "stored label", r["iid"]))
     return v
@@ -245,7 +258,10 @@ def check_missing(rule, crit, ov, recs):
 
 
 def target_claim_check():
-    issues, n_groups, n_records = [], Counter(), Counter()
+    """Re-executes the programs on every registered rule_v1 test and development set. Coverage is
+    counted per check: stored labels (base, flip, near, pres, apply records), reading labels,
+    triplet invariants (groups with base, flip and near; pres when present), missing twins."""
+    issues, n_groups, n_records, cov, tids = [], Counter(), Counter(), Counter(), set()
     for name in TEST_SETS:
         for tid, recs in grouped(name).items():
             r0 = recs[0]
@@ -253,13 +269,19 @@ def target_claim_check():
             crit = rule.crit(r0["cid"])
             n_groups[name] += 1
             n_records[name] += len(recs)
-            v = check_records(recs, rule, crit, ov)
-            if set(CASES) <= {r["case_kind"] for r in recs}:
-                v += check_triplet(rule, crit, ov, {k: case_of(recs, k) for k in CASES})
+            tids.add(tid)
+            v = check_records(recs, rule, crit, ov, cov)
+            kinds = {r["case_kind"] for r in recs}
+            if {"base", "flip", "near"} <= kinds:
+                cov["triplet_groups"] += 1
+                v += check_triplet(rule, crit, ov, {k: case_of(recs, k) for k in CASES if k in kinds})
+            if "missing" in kinds:
+                cov["missing_twins"] += 1
             v += check_missing(rule, crit, ov, recs)
             issues += [{"set": name, "tid": tid, "case": k, "check": c, "detail": d} for k, c, d in v]
         log(f"target-claim check: {name}")
-    return issues, dict(n_groups), dict(n_records)
+    cov["distinct_groups"] = len(tids)
+    return issues, dict(n_groups), dict(n_records), dict(cov)
 
 
 # ------------------------------------------------------------------ rejects
@@ -356,12 +378,16 @@ def source_tokens(src):
     return {re.sub(r"\s+", "", t).lower().rstrip(".") for t in ids}
 
 
+def patient_state(rec):
+    """The case's mentions without the rule: a patient state that could recur under another rule."""
+    return tuple(sorted((m["concept"], str(m["value"]), m["subject"], m["status"], m["time"]) for m in rec["state"]))
+
+
 def base_state_key(rec):
-    return (rec["rid"], tuple(sorted((m["concept"], str(m["value"]), m["subject"], m["status"], m["time"])
-                                     for m in rec["state"])))
+    return (rec["rid"], patient_state(rec))
 
 
-def overlap(train_rules, train_tpl, train_states, train_sources, sets, sources):
+def overlap(train_rules, train_tpl, train_states, train_sources, sets, sources, train_patients=frozenset()):
     tr_prog = {program_key(r) for r in train_rules}
     tr_struct = {structure_key(r) for r in train_rules}
     tr_crit = {crit_key(c) for r in train_rules for c in r.criteria}
@@ -374,6 +400,7 @@ def overlap(train_rules, train_tpl, train_states, train_sources, sets, sources):
         texts = [r["case_text"] for r in cases]
         tpl = {tuple(t) for r in cases for t in r["meta"]["tpl"]}
         bases = {base_state_key(r) for r in cases if r["case_kind"] == "base"}
+        patients = {patient_state(r) for r in cases if r["case_kind"] == "base"}
         cue_pct, cue_words = hits(CUE_RE["train"], texts)
         rel_pct, rel_words = hits(PERSON_RE["train"], texts)
         srcd = [r for r in rules if sources.get(r.rid, {}).get("source_identifier")]
@@ -396,6 +423,7 @@ def overlap(train_rules, train_tpl, train_states, train_sources, sets, sources):
             "near_line_train_cue_words": hits(CUE_RE["train"], edits["near"])[1],
             "near_lines_with_train_relative_pct": hits(PERSON_RE["train"], edits["near"])[0],
             "base_states_shared": len(bases & train_states), "base_states": len(bases),
+            "patient_states_shared_any_rule": len(patients & train_patients), "patient_states": len(patients),
             "rules_with_source": len(srcd),
             "source_shared_with_train_pct": pct(sum(bool(source_tokens(sources[r.rid]) & train_sources)
                                                     for r in srcd), len(srcd))}
@@ -445,8 +473,9 @@ def requirements(G):
             "composition": rule.kind == "constraint" and len(rule.criteria) >= 2,
             "composition_with_other_condition_met": rule.kind == "constraint" and any(
                 o.evaluate(sts["base"], r0["meta"]["overrides"].get(o.cid)) for o in rule.criteria if o is not c),
-            "numerical_semantics": kind == "boundary" or (c.kind == "numeric" and bool(fv) and fv[0] == c.threshold
-                                                          and c.op in (">=", "<=")),
+            "numerical_semantics": kind == "boundary" or (
+                c.kind == "numeric" and bool(fv) and c.op in (">=", "<=")
+                and fv[0] == r0["meta"]["overrides"].get(c.cid, c.threshold)),
             "long_note": r0["tier"] == "long",
             "superseded_value": r0["tier"] == "superseded",
             "delabelled": r0["tier"] == "delabelled",
@@ -462,15 +491,33 @@ YEAR = re.compile(r"\b(19[5-9]\d|20[0-4]\d)\b")
 WINDOW = re.compile(r"\b(within|in the (?:past|last)|months? before|weeks? before|days? before|since)\b", re.I)
 
 
+NEG_WORD = re.compile(r"(?i)\b(no|not|none|never|without|negative|free of|denies|denied|nil|ruled out|absent)\b")
+
+
+def mention_lines(rec):
+    """state index -> the case line that renders that mention (meta.tpl lists the body lines in order;
+    the case text is header, setting, body)."""
+    body = rec["case_text"].split("\n")[2:]
+    out, k = {}, 0
+    for j, t in enumerate(rec["meta"]["tpl"]):
+        if not t.startswith("filler/"):
+            out[k] = body[j] if j < len(body) else None
+            k += 1
+    return out
+
+
 def semantics(sets):
     s = Counter()
     years = Counter()
+    flips = {r["tid"]: r for recs in sets.values() for r in recs
+             if r["case_kind"] == "flip" and r["claim_type"] == "conclusion" and r["claim_role"] == "s"}
     for recs in sets.values():
         for rec in recs:
             if rec["claim_type"] != "conclusion" or rec["claim_role"] != "s":
                 continue
             st = state(rec)
             rule = RB[rec["rid"]]
+            target = rule.crit(rec["cid"])
             s["cases"] += 1
             for c in rule.criteria:
                 ms = [m for m in st if m.concept == c.concept]
@@ -482,6 +529,9 @@ def semantics(sets):
                     s["finding_inputs"] += 1
                     s["finding_inputs_unmentioned"] += not ms
                     s["finding_inputs_two_or_more_mentions"] += len(ms) >= 2
+                    if c is not target:
+                        s["context_finding_inputs"] += 1
+                        s["context_finding_inputs_unmentioned"] += not ms
             years.update(int(y) for y in YEAR.findall(rec["case_text"]))
             s["past_mentions"] += sum(m.time == "past" for m in st)
             s["past_mentions_with_year"] += sum(m.time == "past" and m.year is not None for m in st)
@@ -499,13 +549,30 @@ def semantics(sets):
                     s["finding_bases_generic_absence_line"] += any(m.form == "generic" for m in tg)
                     s["finding_bases_no_line"] += not tg
                     s["finding_bases_naming_concept"] += any(k in rec["case_text"].lower() for k in c.keywords)
+                    line = mention_lines(rec).get(next((i for i, m in enumerate(st) if m.form == "generic"
+                                                        and m.concept == c.concept), -1))
+                    s["finding_bases_generic_line_with_negation"] += bool(line and NEG_WORD.search(line))
             if rec["case_kind"] == "flip":
                 c = rule.crit(rec["cid"])
                 if c.kind == "numeric":
+                    thr = rec["meta"]["overrides"].get(c.cid, c.threshold)
                     fv = [m.value for m in st if m.concept == c.concept and m.time == "current"]
                     s["numeric_flips"] += 1
                     s[f"numeric_flips_{'inclusive' if c.op in ('>=', '<=') else 'strict'}"] += 1
-                    s["numeric_flips_at_threshold"] += bool(fv) and fv[0] == c.threshold
+                    at = bool(fv) and fv[0] == thr and c.op in (">=", "<=")
+                    s["numeric_flips_at_inclusive_threshold"] += at
+                    s["numeric_flips_at_inclusive_threshold_outside_alt"] += at and rec["tier"] != "alt"
+                    s["numeric_flips_inclusive_outside_alt"] += c.op in (">=", "<=") and rec["tier"] != "alt"
+            if rec["case_kind"] == "near" and rec["nm_kind"] == "negation":
+                c = rule.crit(rec["cid"])
+                flip = flips.get(rec["tid"])
+                if flip is not None:
+                    fm = [m for m in state(flip) if m.concept == c.concept]
+                    nm = [m for m in st if m.concept == c.concept]
+                    if fm and nm:
+                        diff = sum(getattr(fm[0], a) != getattr(nm[0], a) for a in ("subject", "status", "time"))
+                        s["negation_near_misses"] += 1
+                        s["negation_near_misses_differing_in_more_than_status"] += diff > 1
     out = dict(s)
     out["dated_years_min"], out["dated_years_max"] = (min(years), max(years)) if years else (None, None)
     out["generator_reference_year"] = E.NOW
@@ -541,8 +608,8 @@ def library_semantics():
     diffs = [abs(len(a.split()) - len(b.split())) for a, b in
              (r.claims(r.criteria[0].cid) for r in LIBRARY if r.kind == "constraint")]
     out["constraint_rules"] = len(diffs)
-    out["constraint_claim_token_diff_max"] = max(diffs)
-    out["constraint_claim_token_diff_le2_pct"] = pct(sum(d <= 2 for d in diffs), len(diffs))
+    out["constraint_claim_word_diff_max"] = max(diffs)
+    out["constraint_claim_word_diff_le2_pct"] = pct(sum(d <= 2 for d in diffs), len(diffs))
     return out
 
 
@@ -569,15 +636,68 @@ def reviewers():
 
 
 # ------------------------------------------------------------------ authors' sample sheets (H1)
-def words(m, rule):
-    c = next((x for x in rule.criteria if x.concept == m["concept"]), None)
-    what = c.label if c else m["concept"]
-    val = "" if m["kind"] == "finding" else f" = {m['value']}"
-    when = "current" if m["time"] == "current" else f"past ({m['year']})" if m.get("year") else "past"
-    return f"{m['subject']}: {what}{val}; {m['status']}; {when}"
+def facts(rec, rule):
+    """The case's facts about the rule's conditions, each with the line that states it. Generic absence
+    lines never name the concept by design; unmentioned conditions are listed with their convention."""
+    lines, out = mention_lines(rec), []
+    for i, m in enumerate(rec["state"]):
+        c = next((x for x in rule.criteria if x.concept == m["concept"]), None)
+        what = c.label if c else m["concept"]
+        q = f' [line: "{lines[i]}"]' if lines.get(i) else ""
+        who = "patient" if m["subject"] == "patient" else m["subject"]
+        when = "current" if m["time"] == "current" else f"past ({m['year']})" if m.get("year") else "past"
+        if m["status"] == "unknown":
+            out.append(f"{what}: stated as unknown{q}")
+        elif m["form"] == "generic":
+            out.append(f"{what}: not named; a general line implies absence (counts as absent){q}")
+        elif m["kind"] == "numeric":
+            out.append(f"{who}: {what} = {E.fmt(m['value'], c) if c else m['value']} ({when}){q}")
+        elif m["status"] == "absent":
+            out.append(f"{who}: {what} denied by name ({when}){q}")
+        else:
+            out.append(f"{who}: {what} present ({when}){q}")
+    named = {m["concept"] for m in rec["state"]}
+    out += [f"{c.label}: not mentioned ({'counts as absent' if c.kind == 'finding' else 'unknown'})"
+            for c in rule.criteria if c.concept not in named]
+    return out
+
+
+H1_README = """# H1: rendering fidelity (authors)
+
+Each of you reads 75 groups: `sheet_authorN.csv`, or the same rows in `sheets_authorN.md`. Save your
+answers as `audit/h1/answers_<your name>.csv`: a copy of your sheet with the answer columns filled in.
+No script ever writes that file. Do not open `key.csv` until you have finished; it holds the program's
+answers. Afterwards, `python scripts/h1_aggregate.py` compares your answers with the key.
+
+## Conventions the labels follow
+- A history item (a finding) that is not mentioned is absent. A measurement that is not mentioned is
+  unknown. A line saying a condition is unknown, not obtained or unclear makes it unknown.
+- Only the patient counts, unless the rule says that relatives (parent, sibling, child) count.
+- Only current findings and values count, unless the rule says that past ones count. A value given
+  with a year, or described as earlier, replaced or yesterday, is not current.
+- Numbers are compared with the stated operator: "above"/"below" are strict, "or more"/"or less"
+  are inclusive.
+- General lines such as "Steady on feet; balance normal." never name the condition. They are
+  listed as "not named; counts as absent". Do not report them as a missing fact.
+
+## Questions (one row per case; the cases of a group appear in random order)
+- **q1_facts_ok (y/n).** Do the quoted lines state exactly the listed facts about the rule's
+  conditions: value, unit, person, current or past, denial? And does no other line of the case bear
+  on a condition of the rule? The header, the setting and unrelated lines are out of scope unless
+  they bear on a condition. An empty facts list means that no condition of the rule is mentioned.
+- **q2_conclusion (s / s' / neither).** Under the rule as stated, which conclusion claim is
+  correct? Answer "neither" when the case does not decide it, for example when a needed value is
+  unknown.
+- **q3_criterion (s / s' / neither, or blank).** The same for the criterion claim. Constraint rules
+  only.
+- **problem_type** when q1 is n or an answer is unclear: dropped negation, wrong subject, ambiguous
+  time, conflicting measurement, omitted exception, wording, other. Add a note.
+"""
 
 
 def sample_sheets(out_dir, missing, seed=2026):
+    """The authors' H1 sample: 300 groups (the same selection as before), 75 per author, written to
+    out_dir/h1. Sheets carry no program answer; key.csv does. Answer files are never written here."""
     plan = [("rule_v1/test_L2", 150), ("rule_v1/test_hard", 50), ("rule_v1/test_L3alt", 30),
             ("rule_v1/test_L3inv", 30), ("rule_v1/test_L1", 20), ("rule_v1/test_L0", 20)]
     rng, picked = random.Random(seed), []
@@ -597,46 +717,61 @@ def sample_sheets(out_dir, missing, seed=2026):
                 got += 1
             i += 1
     rng.shuffle(picked)
-    out_dir.mkdir(parents=True, exist_ok=True)
-    md = ["# Rendering-fidelity sheets (H1): 300 groups, 75 per author\n",
-          "Read each case against the facts listed under it. (1) Does the text state exactly these facts, no "
-          "more and no fewer? (2) Is the correct claim unambiguous under the rule text? Record y/n in your CSV, "
-          "with a problem type (dropped negation, wrong subject, ambiguous time, conflicting measurement, "
-          "omitted exception, wording, other) and a note. Save it as `audit/fidelity_<name>.csv`.\n"]
-    cols = ["author", "group_no", "set", "tid", "near_miss_kind", "tier", "case", "rule_text", "claim_s",
-            "claim_s_prime", "program_answer", "facts_in_state", "case_text", "text_states_exactly_these_facts",
-            "correct_claim_unambiguous", "problem_type", "note"]
-    sheets = defaultdict(list)
+    h1 = out_dir / "h1"
+    h1.mkdir(parents=True, exist_ok=True)
+    (h1 / "README.md").write_text(H1_README, encoding="utf-8")
+    cols = ["author", "row", "group", "case", "set", "rule_text", "conclusion_s", "conclusion_s_prime",
+            "criterion_s", "criterion_s_prime", "facts", "context", "case_text", "q1_facts_ok", "q2_conclusion",
+            "q3_criterion", "problem_type", "note"]
+    sheets, keys, md = defaultdict(list), [], defaultdict(list)
+    order_rng = random.Random(seed + 1)
     for gno, (name, tid, G) in enumerate(picked):
         author = f"author{gno % 4 + 1}"
+        group = f"G{gno // 4 + 1:02d}"
         recs = G[tid] + missing.get(tid, [])
         rule = RB[recs[0]["rid"]]
-        md.append(f"\n## {author} / group {gno + 1}: `{tid}`\n\nRule: {recs[0]['rule_text']}\n")
-        for k in CASES + ("missing",) * (tid in missing):
-            c = next(r for r in recs if r["case_kind"] == k and r["claim_type"] == "conclusion"
-                     and r["claim_role"] == "s")
-            s2 = next(r for r in recs if r["case_kind"] == k and r["claim_type"] == "conclusion"
-                      and r["claim_role"] == "s_prime")
-            ans = "neither" if k == "missing" else "s'" if s2["label"] else "s"
-            facts = " | ".join(words(m, rule) for m in c["state"])
-            sheets[author].append({"author": author, "group_no": gno + 1, "set": name, "tid": tid,
-                                   "near_miss_kind": c["nm_kind"], "tier": c["tier"], "case": k,
-                                   "rule_text": c["rule_text"], "claim_s": c["claim_text"],
-                                   "claim_s_prime": s2["claim_text"], "program_answer": ans,
-                                   "facts_in_state": facts, "case_text": c["case_text"],
-                                   "text_states_exactly_these_facts": "", "correct_claim_unambiguous": "",
-                                   "problem_type": "", "note": ""})
-            md.append(f"**{k}** (program answer: {ans}; facts: {facts})\n```\n{c['case_text']}\n```\n")
+        kinds = list(CASES) + ["missing"] * (tid in missing)
+        order_rng.shuffle(kinds)
+        md[author].append(f"\n## {group}\n\nRule: {recs[0]['rule_text']}\n")
+        for j, k in enumerate(kinds):
+            claim = {(r["claim_type"], r["claim_role"]): r for r in recs if r["case_kind"] == k}
+            c = claim[("conclusion", "s")]
+            body = c["case_text"].split("\n")
+            fl = facts(c, rule)
+            ans = {t: ("neither" if k == "missing" else "s'" if claim[(t, "s_prime")]["label"] else "s")
+                   for t in ("conclusion", "criterion") if (t, "s") in claim}
+            case_id = f"{group}-C{j + 1}"
+            row = {"author": author, "row": len(sheets[author]) + 1, "group": group, "case": case_id, "set": name,
+                   "rule_text": c["rule_text"], "conclusion_s": c["claim_text"],
+                   "conclusion_s_prime": claim[("conclusion", "s_prime")]["claim_text"],
+                   "criterion_s": claim.get(("criterion", "s"), {}).get("claim_text", ""),
+                   "criterion_s_prime": claim.get(("criterion", "s_prime"), {}).get("claim_text", ""),
+                   "facts": " | ".join(fl), "context": f"header: {body[0]} / setting: {body[1]}",
+                   "case_text": c["case_text"], **{x: "" for x in cols[13:]}}
+            sheets[author].append(row)
+            keys.append({"author": author, "case": case_id, "tid": tid, "set": name, "case_kind": k,
+                         "near_miss_kind": c["nm_kind"], "tier": c["tier"], "level": c["level"],
+                         "conclusion_answer": ans["conclusion"], "criterion_answer": ans.get("criterion", "")})
+            md[author].append(f"**{case_id}**\n\nFacts: " + "; ".join(fl)
+                              + f"\n\nClaims: s = {row['conclusion_s']} | s' = {row['conclusion_s_prime']}"
+                              + (f"\n\nCriterion claims: s = {row['criterion_s']} | s' = {row['criterion_s_prime']}"
+                                 if row["criterion_s"] else "") + f"\n```\n{c['case_text']}\n```\n")
     for author, rows in sheets.items():
-        with open(out_dir / f"fidelity_{author}.csv", "w", encoding="utf-8", newline="") as f:
+        with open(h1 / f"sheet_{author}.csv", "w", encoding="utf-8", newline="") as f:
             w = csv.DictWriter(f, fieldnames=cols)
             w.writeheader()
             w.writerows(rows)
-    (out_dir / "fidelity_sheets.md").write_text("\n".join(md), encoding="utf-8")
+        (h1 / f"sheets_{author}.md").write_text(f"# H1 sheet {author} (75 groups)\n\nRead `README.md` first.\n"
+                                                 + "\n".join(md[author]), encoding="utf-8")
+    with open(h1 / "key.csv", "w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=list(keys[0]))
+        w.writeheader()
+        w.writerows(keys)
     return {"groups": len(picked), "per_set": dict(Counter(p[0] for p in picked)),
             "per_kind": dict(Counter(p[2][p[1]][0]["nm_kind"] for p in picked)),
             "with_missing_twin": sum(p[1] in missing for p in picked),
-            "rows_per_author": {a: len(r) for a, r in sorted(sheets.items())}}
+            "rows_per_author": {a: len(r) for a, r in sorted(sheets.items())},
+            "rows_with_criterion_claims": sum(bool(k["criterion_answer"]) for k in keys)}
 
 
 # ------------------------------------------------------------------ main
@@ -646,7 +781,12 @@ def main():
     man = manifest(sources)
     (DATA / "rule_v1" / "RULE_MANIFEST.json").write_text(json.dumps(man, indent=1), encoding="utf-8")
     hand = [m for m in man if m["module"] in ("pilot", "constraint", "score", "grammar_curated")]
-    stats = {"commit": git("rev-parse", "HEAD"),
+    dirty = git("status", "--porcelain", "--", "selrm", "scripts", "tests")
+    classes = {"score": {m["signature_class"] for m in man if m["kind"] == "score" and m["module"] != "invented"},
+               "constraint_hand_written": {m["signature_class"] for m in hand if m["kind"] == "constraint"},
+               "constraint_sampled": {m["signature_class"] for m in man if m["module"] == "grammar_sampled"},
+               "library": {m["signature_class"] for m in man if m["module"] != "invented"}}
+    stats = {"commit": git("rev-parse", "HEAD"), "code_modified_since_commit": bool(dirty),
              "rules": {"library": len(LIBRARY), "invented_test_only": len(INVENTED),
                        "by_module": dict(Counter(m["module"] for m in man)),
                        "hand_written": len(hand),
@@ -654,6 +794,10 @@ def main():
                        "sampled_by_kind": dict(Counter(m["kind"] for m in man if m["module"] == "grammar_sampled")),
                        "provenance": dict(Counter(m["provenance"] for m in man if m["module"] != "invented")),
                        "hand_written_provenance": dict(Counter(m["provenance"] for m in hand)),
+                       "hand_written_provenance_by_kind": {k: dict(Counter(m["provenance"] for m in hand
+                                                                           if m["kind"] == k))
+                                                           for k in ("constraint", "score")},
+                       "signature_classes_by_row": {k: len(v) for k, v in classes.items()},
                        "sources_checked": len(sources),
                        "sources_verified_online": sum(bool(s.get("source_verified")) for s in sources.values()),
                        "sources_with_contradictions": sum(bool(s.get("contradictions")) for s in sources.values()),
@@ -664,10 +808,11 @@ def main():
              "library_semantics": library_semantics()}
     log("manifest")
 
-    issues, n_groups, n_records = target_claim_check()
+    issues, n_groups, n_records, cov = target_claim_check()
     stats["target_claim_check"] = {"sets": TEST_SETS, "groups": n_groups, "groups_total": sum(n_groups.values()),
                                    "records": n_records, "records_total": sum(n_records.values()),
-                                   "violations": len(issues), "by_check": dict(Counter(i["check"] for i in issues))}
+                                   "coverage": cov, "violations": len(issues),
+                                   "by_check": dict(Counter(i["check"] for i in issues))}
     (DATA / "rule_v1" / "KNOWN_ISSUES.json").write_text(json.dumps(
         {"generated_by": "scripts/audit_rule_v1.py", "commit": stats["commit"], "checked_sets": TEST_SETS,
          "issues": issues}, indent=1), encoding="utf-8")
@@ -688,18 +833,20 @@ def main():
                                   ("2", "rule_v1_fold2/", ["rule_v1_fold2/train_blocks", "rule_v1_fold2/train_triplets"]),
                                   ("3", "rule_v1_fold3/", ["rule_v1_fold3/train_blocks", "rule_v1_fold3/train_triplets"])):
         train_rules = [RB[x] for x in FOLDS["folds"][fold]["train_rules"]]
-        train_tpl, train_states, texts = set(), set(), set()
+        train_tpl, train_states, train_patients, texts = set(), set(), set(), set()
         for n in corpora:
             for r in load(n):
                 train_tpl.update(tuple(t) for t in r["meta"]["tpl"])
                 if r["case_kind"] == "base":
                     train_states.add(base_state_key(r))
+                    train_patients.add(patient_state(r))
                 texts.add(r["case_text"])
         if fold == "1":
             train_texts = texts
         train_sources = {t for r in train_rules if r.rid in sources for t in source_tokens(sources[r.rid])}
         stats["overlap"].update(overlap(train_rules, train_tpl, train_states, train_sources,
-                                        {n: v for n, v in sets.items() if n.startswith(prefix)}, sources))
+                                        {n: v for n, v in sets.items() if n.startswith(prefix)}, sources,
+                                        train_patients))
         log(f"overlap fold {fold}")
     tc_pct, tc_words = hits(CUE_RE["test"], train_texts)
     tr_pct, tr_words = hits(PERSON_RE["test"], train_texts)
