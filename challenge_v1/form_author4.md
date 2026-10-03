@@ -1,7 +1,7 @@
 # challenge_v1 writing form: author4
 
-Read `challenge_v1/WRITING_GUIDE.md` first. Fill in every field after the colon. Save this file as `challenge_v1/notes_<your name>.md`.
-40 groups; your second author fills `check_ok` and `check_comment`.
+Read `challenge_v1/WRITING_GUIDE.md` first. Fill in every field after the colon. Save this file as `challenge_v1/notes_author4.md`.
+40 groups; your second author fills `check_ok` (yes and the fingerprint from `challenge_v1/ASSEMBLY_REPORT.md`, or no) and `check_comment`.
 
 ## c001   (writer: author4; checker: author1)
 
@@ -80,7 +80,7 @@ Rule, for context only (do not refer to it in the note): For acute sore throat, 
 Patient: 24-year-old female. Reason for the visit: Sore throat for two days.
 
 BASE note: one line for each fact below, in this order, in your own words.
-  fact 1: the patient had a myocardial infarction or peripheral artery disease in the past (years ago)
+  fact 1: the patient had a myocardial infarction (heart attack) in the past (years ago)
   fact 2: white cell count: 8.6 x10^9/L, the current value
   Do not mention tonsillar exudate in the base note at all, not even to deny it.
   FLIP (instruction): one line that is added to the base note, stating: the patient has tonsillar exudate now.
@@ -277,7 +277,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 5: weight: 71 kg, the current value
   FLIP (instruction): one line that replaces your line for fact 5, stating: weight: 60 kg, the current value.
   NEAR-MISS (instruction): one line that replaces your line for fact 4, stating: an earlier weight of 57 kg, measured in 2017.
-Every line that mentions weight must contain one of these words (a longer word that starts with one is fine): 'weight' | 'weighs'.
+Every line that mentions weight must contain one of these words (a longer word that starts with one is fine): 'weight' | 'weighs' | 'weighed'.
 
 header: 
 reason: 
@@ -444,8 +444,8 @@ Patient: adult female. Reason for the visit: Suspected chest infection; assessed
 BASE note: one line for each fact below, in this order, in your own words.
   fact 1: age: 72 years, the current value
   Do not mention a myocardial infarction or peripheral artery disease in the base note at all, not even to deny it.
-  FLIP (instruction): one line that is added to the base note, stating: the patient has a myocardial infarction or peripheral artery disease now.
-  NEAR-MISS (instruction): one line that is added to the base note, stating: the patient's wife has a myocardial infarction or peripheral artery disease now.
+  FLIP (instruction): one line that is added to the base note, stating: the patient has peripheral artery disease now.
+  NEAR-MISS (instruction): one line that is added to the base note, stating: the patient's wife has peripheral artery disease now.
 Every line that mentions a myocardial infarction or peripheral artery disease must contain one of these words (a longer word that starts with one is fine): 'myocardial infarction' | 'peripheral artery' | 'heart attack'.
 
 header: 
@@ -533,7 +533,7 @@ Patient: adult male. Reason for the visit: Suspected chest infection; assessed o
 
 BASE note: one line for each fact below, in this order, in your own words.
   fact 1: age: 47 years, the current value
-  fact 2: the patient has a myocardial infarction or peripheral artery disease now
+  fact 2: the patient has peripheral artery disease now
   FLIP (instruction): one line that replaces your line for fact 1, stating: age: 75 years, the current value.
   NEAR-MISS (instruction): one line that replaces your line for fact 1, stating: age: 63 years, the current value.
 Every line that mentions age must contain one of these words (a longer word that starts with one is fine): 'age'.
@@ -768,7 +768,7 @@ Patient: 29-year-old female. Reason for the visit: Vaginal itching and discharge
 BASE note: one line for each fact below, in this order, in your own words.
   fact 1: the patient has a peptic ulcer now
   Do not mention a myocardial infarction or peripheral artery disease in the base note at all, not even to deny it.
-  FLIP (instruction): one line that is added to the base note, stating: the patient has a myocardial infarction or peripheral artery disease now.
+  FLIP (instruction): one line that is added to the base note, stating: the patient has peripheral artery disease now.
   NEAR-MISS (instruction): one line that is added to the base note, stating: the patient explicitly does not have a myocardial infarction or peripheral artery disease (a clear denial).
 Every line that mentions a myocardial infarction or peripheral artery disease must contain one of these words (a longer word that starts with one is fine): 'myocardial infarction' | 'peripheral artery' | 'heart attack'.
 
@@ -790,7 +790,7 @@ Patient: 79-year-old female. Reason for the visit: First day after elective tota
 BASE note: one line for each fact below, in this order, in your own words.
   fact 1: systolic blood pressure: 149 mmHg, the current value
   fact 2: an earlier systolic blood pressure of 142 mmHg, measured in 2023
-  fact 3: the patient has a myocardial infarction or peripheral artery disease now
+  fact 3: the patient has peripheral artery disease now
   FLIP (instruction): one line that replaces your line for fact 1, stating: systolic blood pressure: 80 mmHg, the current value.
   NEAR-MISS (instruction): one line that replaces your line for fact 2, stating: an earlier systolic blood pressure of 85 mmHg, measured in 2023.
 Every line that mentions systolic blood pressure must contain one of these words (a longer word that starts with one is fine): 'systolic' | 'blood pressure' | 'bp'.

@@ -1,6 +1,13 @@
 {
  "code_modified_since_commit": false,
- "commit": "d212ab4b5616e7e3f97ea6ecef5fc0873ac9a7f0",
+ "commit": "64ae1a99a71c77cf3009b0e7bbc959ae323609bf",
+ "known_semantic_limits": {
+  "criterion_claim_without_scope": 120,
+  "general_line_contradicts_condition": {
+   "cases": 7,
+   "groups": 4
+  }
+ },
  "l3alt": {
   "concepts": {
    "alt_enzyme": 174,
@@ -1238,6 +1245,7 @@
    "author4": 311
   },
   "rows_with_criterion_claims": 1059,
+  "rows_with_known_contradiction": 2,
   "with_missing_twin": 76
  },
  "semantics": {

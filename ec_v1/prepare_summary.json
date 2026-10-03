@@ -27,10 +27,10 @@
   "k261",
   "k269"
  ],
- "kept": 99,
- "excluded": 195,
- "groups": 245,
- "records": 1960,
+ "kept": 96,
+ "excluded": 198,
+ "groups": 236,
+ "records": 1888,
  "by_concept": {
   "age": 3,
   "angioedema": 1,
@@ -63,12 +63,11 @@
   "vascular": 3,
   "vte": 4,
   "warfarin": 1,
-  "wbc": 1,
-  "weight": 4
+  "weight": 2
  },
  "by_type": {
-  "inclusion": 18,
-  "exclusion": 81
+  "inclusion": 17,
+  "exclusion": 79
  },
  "by_times": {
   "ever": 13,
@@ -76,13 +75,13 @@
   "window": 4
  },
  "by_kind": {
-  "numeric": 56,
+  "numeric": 53,
   "subject": 43,
   "negation": 43,
-  "boundary": 42,
-  "time": 61
+  "boundary": 39,
+  "time": 58
  },
- "trials": 89,
+ "trials": 86,
  "shortcut_validation": {
   "result": "PASS",
   "scorers": {
@@ -90,19 +89,19 @@
     "TA": 0.0,
     "Rev": 0.0,
     "Hold": 100.0,
-    "n": 245
+    "n": 236
    },
    "concept_named": {
     "TA": 0.0,
-    "Rev": 39.183673469387756,
+    "Rev": 40.67796610169491,
     "Hold": 0.0,
-    "n": 245
+    "n": 236
    },
    "program": {
     "TA": 100.0,
     "Rev": 100.0,
     "Hold": 100.0,
-    "n": 245
+    "n": 236
    }
   }
  }

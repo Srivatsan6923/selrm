@@ -1,7 +1,7 @@
 # challenge_v1 writing form: author1
 
-Read `challenge_v1/WRITING_GUIDE.md` first. Fill in every field after the colon. Save this file as `challenge_v1/notes_<your name>.md`.
-40 groups; your second author fills `check_ok` and `check_comment`.
+Read `challenge_v1/WRITING_GUIDE.md` first. Fill in every field after the colon. Save this file as `challenge_v1/notes_author1.md`.
+40 groups; your second author fills `check_ok` (yes and the fingerprint from `challenge_v1/ASSEMBLY_REPORT.md`, or no) and `check_comment`.
 
 ## c007   (writer: author1; checker: author2)
 
@@ -181,7 +181,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 3: weight: 67 kg, the current value
   FLIP (instruction): one line that replaces your line for fact 3, stating: weight: 50 kg, the current value.
   NEAR-MISS (instruction): one line that replaces your line for fact 2, stating: an earlier weight of 54 kg, measured in 2017.
-Every line that mentions weight must contain one of these words (a longer word that starts with one is fine): 'weight' | 'weighs'.
+Every line that mentions weight must contain one of these words (a longer word that starts with one is fine): 'weight' | 'weighs' | 'weighed'.
 
 header: 
 reason: 
@@ -332,7 +332,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 3: weight: 96 kg, the current value
   FLIP (instruction): one line that replaces your line for fact 3, stating: weight: 49 kg, the current value.
   NEAR-MISS (instruction): one line that replaces your line for fact 2, stating: an earlier weight of 50 kg, measured in 2007.
-Every line that mentions weight must contain one of these words (a longer word that starts with one is fine): 'weight' | 'weighs'.
+Every line that mentions weight must contain one of these words (a longer word that starts with one is fine): 'weight' | 'weighs' | 'weighed'.
 
 header: 
 reason: 
@@ -455,8 +455,8 @@ Patient: adult female. Reason for the visit: Suspected chest infection; assessed
 BASE note: one line for each fact below, in this order, in your own words.
   fact 1: age: 72 years, the current value
   Do not mention a myocardial infarction or peripheral artery disease in the base note at all, not even to deny it.
-  FLIP (instruction): one line that is added to the base note, stating: the patient had a myocardial infarction or peripheral artery disease in the past (years ago).
-  NEAR-MISS (instruction): one line that is added to the base note, stating: the patient's roommate had a myocardial infarction or peripheral artery disease in the past (years ago).
+  FLIP (instruction): one line that is added to the base note, stating: the patient had a myocardial infarction (heart attack) in the past (years ago).
+  NEAR-MISS (instruction): one line that is added to the base note, stating: the patient's roommate had a myocardial infarction (heart attack) in the past (years ago).
 Every line that mentions a myocardial infarction or peripheral artery disease must contain one of these words (a longer word that starts with one is fine): 'myocardial infarction' | 'peripheral artery' | 'heart attack'.
 
 header: 
@@ -546,7 +546,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 2: the patient's sister has coronary artery disease now
   FLIP (instruction): one line that replaces your line for fact 1, stating: weight: 55 kg, the current value.
   NEAR-MISS (instruction): one line that replaces your line for fact 1, stating: weight: 61 kg, the current value.
-Every line that mentions weight must contain one of these words (a longer word that starts with one is fine): 'weight' | 'weighs'.
+Every line that mentions weight must contain one of these words (a longer word that starts with one is fine): 'weight' | 'weighs' | 'weighed'.
 
 header: 
 reason: 
@@ -786,7 +786,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 4: the patient's father has coronary artery disease now
   FLIP (instruction): one line that replaces your line for fact 1, stating: weight: 52 kg, the current value.
   NEAR-MISS (instruction): one line that replaces your line for fact 1, stating: weight: 63 kg, the current value.
-Every line that mentions weight must contain one of these words (a longer word that starts with one is fine): 'weight' | 'weighs'.
+Every line that mentions weight must contain one of these words (a longer word that starts with one is fine): 'weight' | 'weighs' | 'weighed'.
 
 header: 
 reason: 

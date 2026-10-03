@@ -1,8 +1,8 @@
 # STATE role A
-Updated: Sat 3 Oct 2026, morning. Working on FINAL_TASKS_A (P0 in order, then P1), plus the lead's
+Updated: Sat 3 Oct 2026, afternoon. Working on FINAL_TASKS_A (P0 in order, then P1), plus the lead's
 addendum of 2 Oct: `docs/PAPER_VS_CODE.md`; the paper follows the code; windows only in the new sets.
-An adversarial review of every A deliverable ran on 3 Oct: 49 confirmed findings and 37 low ones,
-all fixed (`docs/DECISIONS_A.md`).
+Two adversarial reviews ran on 3 Oct: one of every A deliverable (49 confirmed findings, 37 low) and
+one of the three author kits (21 confirmed, 17 low). All are addressed (`docs/DECISIONS_A.md`).
 
 ## P0 status
 1. **Audit of rule_v1: done.**
@@ -22,16 +22,17 @@ all fixed (`docs/DECISIONS_A.md`).
    - `scripts/build_xr_v1.py --restore` writes the records.
 3. **challenge_v1 kit: done.**
    - Forms: `challenge_v1/form_author{1..4}.md`; guide: `WRITING_GUIDE.md`.
-   - The assembler checks each line.
+   - The assembler checks each line; the second author approves the exact text by fingerprint.
    - Freeze after H2.
 4. **Corpora for B: done.** `no_boundary` is new; the other five requested names are registry
    aliases.
-5. **ec_v1: sign-off sheet ready.**
-   - 99 criteria from 89 trials, one group per near-miss kind: 245 groups, all shown in
-     `ec_v1/SIGNOFF_CASES.md`.
-   - Sign-off sheet: `docs/EC_SIGNOFF.csv`, with `ec_v1/SIGNOFF_GUIDE.md`.
-   - `python scripts/build_ec_v1.py freeze` runs after two authors sign off. It requires complete
-     sign-offs and identical records.
+5. **ec_v1: sign-off kit ready.**
+   - 96 criteria from 86 trials, one group per near-miss kind: 236 groups, all shown in
+     `ec_v1/SIGNOFF_CASES.md` (`ec_v1/prepare_summary.json`).
+   - Sheet: `docs/EC_SIGNOFF.csv`. Each reviewer copies `docs/ec_signoff/TEMPLATE.csv` to
+     `docs/ec_signoff/<authorN>.csv`; guide: `ec_v1/SIGNOFF_GUIDE.md`.
+   - `python scripts/build_ec_v1.py freeze` needs exactly two reviews per criterion, each of the
+     current fingerprint.
 6. **rewrite_v1: ready, blocked** on `OPENROUTER_API_KEY`. Rejected groups go to
    `data/rewrite_v1/rejected.jsonl`.
 
@@ -45,12 +46,14 @@ all fixed (`docs/DECISIONS_A.md`).
 - #1 (2 Oct): `OPENROUTER_API_KEY` for rewrite_v1, about $2-3.
 
 ## Human tasks prepared by A (order: H2 before H1 and H3, so writers do not see generated cases)
-- **H2:** `challenge_v1/form_author{1..4}.md`. Save as `challenge_v1/notes_<name>.md`, then run
-  `python scripts/challenge_v1.py assemble`.
+- **H2:** `challenge_v1/form_author{1..4}.md`.
+  - Save as `challenge_v1/notes_<authorN>.md`, then run `python scripts/challenge_v1.py assemble`.
+  - The second author writes `check_ok: yes <fingerprint>` from `challenge_v1/ASSEMBLY_REPORT.md`.
 - **H1:** `audit/h1/sheet_author{1..4}.csv`, with the conventions in `audit/h1/README.md`.
-  - Save answers as `audit/h1/answers_<name>.csv`.
+  - Save answers as `audit/h1/answers_<authorN>.csv`.
   - `python scripts/h1_aggregate.py` writes `results/A-H1`.
-- **H3:** `docs/EC_SIGNOFF.csv`, with every case in `ec_v1/SIGNOFF_CASES.md`.
+- **H3:** `docs/EC_SIGNOFF.csv` and every case in `ec_v1/SIGNOFF_CASES.md`; one review file per
+  reviewer in `docs/ec_signoff/`.
 
 ## Notes for whoever resumes
 - Commit as Srivatsan Sarvesan <srivatsan6923@gmail.com>, with no assistant trailers.
@@ -58,3 +61,7 @@ all fixed (`docs/DECISIONS_A.md`).
 - Bash heredocs mangle backslashes. Edit Python files with the Edit tool, or build backslashes
   with `chr(92)`.
 - Run the audit only at a clean tree. It records the commit and a modified-code flag.
+- Do not re-run `build_ec_v1.py prepare` once review files exist in `docs/ec_signoff/`; it refuses
+  unless forced, and a forced run voids every review whose fingerprint changes.
+- Re-running `challenge_v1.py kit` keeps the group ids; any change to a group's written lines voids
+  its approval.

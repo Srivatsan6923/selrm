@@ -44,15 +44,14 @@
    "vascular": 3,
    "vte": 4,
    "warfarin": 1,
-   "wbc": 1,
-   "weight": 4
+   "weight": 2
   },
   "by_kind": {
-   "boundary": 42,
+   "boundary": 39,
    "negation": 43,
-   "numeric": 56,
+   "numeric": 53,
    "subject": 43,
-   "time": 61
+   "time": 58
   },
   "by_times": {
    "current": 26,
@@ -60,14 +59,14 @@
    "window": 4
   },
   "by_type": {
-   "exclusion": 81,
-   "inclusion": 18
+   "exclusion": 79,
+   "inclusion": 17
   },
   "candidates": 294,
   "confirmed_by_both_verifiers": 108,
-  "excluded": 195,
-  "groups": 245,
-  "kept": 99,
+  "excluded": 198,
+  "groups": 236,
+  "kept": 96,
   "kept_as_exclusion_subitems": [
    "k053",
    "k096",
@@ -85,7 +84,7 @@
    "k261",
    "k269"
   ],
-  "records": 1960,
+  "records": 1888,
   "rescued": [
    "k005",
    "k216",
@@ -101,23 +100,23 @@
      "Hold": 100.0,
      "Rev": 0.0,
      "TA": 0.0,
-     "n": 245
+     "n": 236
     },
     "concept_named": {
      "Hold": 0.0,
-     "Rev": 39.183673469387756,
+     "Rev": 40.67796610169491,
      "TA": 0.0,
-     "n": 245
+     "n": 236
     },
     "program": {
      "Hold": 100.0,
      "Rev": 100.0,
      "TA": 100.0,
-     "n": 245
+     "n": 236
     }
    }
   },
-  "trials": 89
+  "trials": 86
  },
  "run_id": "A-SETS",
  "xr_v1": {

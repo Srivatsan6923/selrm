@@ -124,9 +124,16 @@ def kw_pattern(kw):
     return re.compile(r"(?i)\b" + re.escape(kw.strip()) + (r"\b" if kw.endswith(" ") else ""))
 
 
-def names(text, keywords, concept=None):
+def named_word(text, keywords, concept=None):
+    """The whole word through which text names the condition ('Agent' for the stem 'age'), or None."""
     extra = EXTRA_WORDS.get(concept)
-    return bool(extra and re.search("(?i)" + extra, text)) or any(kw_pattern(k).search(text) for k in keywords)
+    m = (extra and re.search("(?i)" + extra, text)) or \
+        next((m for k in keywords for m in [kw_pattern(k).search(text)] if m), None)
+    return m.group(0) + re.match(r"[\w-]*", text[m.end():]).group(0) if m else None
+
+
+def names(text, keywords, concept=None):
+    return named_word(text, keywords, concept) is not None
 
 
 def denies(text, keywords, concept=None):
@@ -292,11 +299,13 @@ def check(s, n):
         errs.append(f"header: the sex ({sex}) is not given clearly")
     for x in n.get("extra", []):
         for c in rule.criteria:
-            if names(x, c.keywords, c.concept):
-                errs.append(f"extra: '{x[:40]}' mentions {c.label}; extra lines must be unrelated to the rule")
+            w = named_word(x, c.keywords, c.concept)
+            if w:
+                errs.append(f"extra: the word '{w}' names {c.label}; extra lines must be unrelated to the rule")
     for c in rule.criteria:
-        if names(n["reason"], c.keywords, c.concept) and not names(s["setting"], c.keywords, c.concept):
-            errs.append(f"reason: mentions {c.label}, which the reason for the visit does not")
+        w = named_word(n["reason"], c.keywords, c.concept)
+        if w and not names(s["setting"], c.keywords, c.concept):
+            errs.append(f"reason: the word '{w}' names {c.label}, which the reason for the visit does not")
     for k, t in assemble_texts(s, n).items():
         if crit.kind == "finding" and k == "base" and names(t, s["keywords"], crit.concept):
             errs.append(f"base: names {s['concept']}, which the base must not mention")

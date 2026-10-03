@@ -7729,7 +7729,7 @@ Paints watercolors as a hobby.
 
 Exclusion criterion: Pregnant or breastfeeding women
 
-Program: met iff the patient has pregnancy now (the criterion does not say whether a past occurrence counts; no case states one); also listed in the text but never mentioned in cases: breastfeeding
+Program: met iff the patient has pregnancy now (current); also listed in the text but never mentioned in cases: breastfeeding
 
 ### near-miss kind: negation
 
@@ -7814,7 +7814,7 @@ Owns a bicycle.
 
 Exclusion criterion: Pregnant or nursing women
 
-Program: met iff the patient has pregnancy now (the criterion does not say whether a past occurrence counts; no case states one); also listed in the text but never mentioned in cases: nursing
+Program: met iff the patient has pregnancy now (current); also listed in the text but never mentioned in cases: nursing
 
 ### near-miss kind: negation
 
@@ -7895,7 +7895,7 @@ Photographs local wildlife.
 
 Exclusion criterion: Currently pregnant or breastfeeding
 
-Program: met iff the patient has pregnancy now (the criterion does not say whether a past occurrence counts; no case states one); also listed in the text but never mentioned in cases: breastfeeding
+Program: met iff the patient has pregnancy now (current); also listed in the text but never mentioned in cases: breastfeeding
 
 ### near-miss kind: negation
 
@@ -7986,7 +7986,7 @@ Plays the piano.
 
 Exclusion criterion: Pregnant or nursing females
 
-Program: met iff the patient has pregnancy now (the criterion does not say whether a past occurrence counts; no case states one); also listed in the text but never mentioned in cases: nursing
+Program: met iff the patient has pregnancy now (current); also listed in the text but never mentioned in cases: nursing
 
 ### near-miss kind: negation
 
@@ -9095,7 +9095,7 @@ Medication allergies: none at present.
 
 Exclusion criterion: myocardial infarction within the previous 3 months (the day exactly 3 months before the visit counts)
 
-Program: met iff the patient has a myocardial infarction (or, outside windows, peripheral artery disease) within the 3 months before the visit date (boundary day counts)
+Program: met iff the patient has a myocardial infarction (heart attack) within the 3 months before the visit date (boundary day counts)
 
 ### near-miss kind: negation
 
@@ -9218,7 +9218,7 @@ Uses sunscreen in summer.
 
 Exclusion criterion: A heart attack (myocardial infarct) in the past twelve months (the day exactly twelve months before the visit counts)
 
-Program: met iff the patient has a myocardial infarction (or, outside windows, peripheral artery disease) within the 12 months before the visit date (boundary day counts)
+Program: met iff the patient has a myocardial infarction (heart attack) within the 12 months before the visit date (boundary day counts)
 
 ### near-miss kind: negation
 
@@ -9349,7 +9349,7 @@ Knits as a hobby.
 
 Exclusion criterion: Myocardial infarction within three months (the day exactly three months before the visit counts)
 
-Program: met iff the patient has a myocardial infarction (or, outside windows, peripheral artery disease) within the 3 months before the visit date (boundary day counts)
+Program: met iff the patient has a myocardial infarction (heart attack) within the 3 months before the visit date (boundary day counts)
 
 ### near-miss kind: negation
 
@@ -10008,139 +10008,6 @@ Current anticoagulants: none.
 Plays the piano.
 ```
 
-<a id="k285"></a>
-## k285 (NCT04226950)
-
-Exclusion criterion: WBC < 4 x10^9/L
-
-Program: met iff the patient's current white cell count < 4 x10^9/L
-
-### near-miss kind: boundary
-
-**base** (does not meet)
-```
-Woman of 18 years.
-Screening visit for a clinical trial.
-Lives in a second-floor apartment.
-Current white cell count 8.2 x10^9/L.
-Sees a dentist yearly.
-```
-
-**flip** (meets)
-```
-Woman of 18 years.
-Screening visit for a clinical trial.
-Lives in a second-floor apartment.
-Current white cell count 1.7 x10^9/L.
-Sees a dentist yearly.
-```
-
-**near** (does not meet)
-```
-Woman of 18 years.
-Screening visit for a clinical trial.
-Lives in a second-floor apartment.
-Current white cell count 4.0 x10^9/L.
-Sees a dentist yearly.
-```
-
-**pres** (does not meet)
-```
-Female patient of 18 years.
-Screening visit for a clinical trial.
-Sees a dentist yearly.
-Latest WBC is 8.2 x10^9/L.
-Lives in a second-floor apartment.
-```
-
-### near-miss kind: numeric
-
-**base** (does not meet)
-```
-Woman of 18 years.
-Screening visit for a clinical trial.
-Prefers morning appointments.
-Sees a dentist yearly.
-Latest WBC is 5.6 x10^9/L.
-Plays the piano.
-Sleeps seven hours a night.
-```
-
-**flip** (meets)
-```
-Woman of 18 years.
-Screening visit for a clinical trial.
-Prefers morning appointments.
-Sees a dentist yearly.
-Latest WBC is 2.2 x10^9/L.
-Plays the piano.
-Sleeps seven hours a night.
-```
-
-**near** (does not meet)
-```
-Woman of 18 years.
-Screening visit for a clinical trial.
-Prefers morning appointments.
-Sees a dentist yearly.
-Latest WBC is 4.7 x10^9/L.
-Plays the piano.
-Sleeps seven hours a night.
-```
-
-**pres** (does not meet)
-```
-Female patient of 18 years.
-Screening visit for a clinical trial.
-Current white cell count 5.6 x10^9/L.
-Sees a dentist yearly.
-Plays the piano.
-Sleeps seven hours a night.
-Prefers morning appointments.
-```
-
-### near-miss kind: time
-
-**base** (does not meet)
-```
-Man of 18 years.
-Screening visit for a clinical trial.
-Back in 2024, white cell count stood at 6.9 x10^9/L.
-Prefers morning appointments.
-Latest WBC is 7.6 x10^9/L.
-Prefers to be addressed by first name.
-```
-
-**flip** (meets)
-```
-Man of 18 years.
-Screening visit for a clinical trial.
-Back in 2024, white cell count stood at 6.9 x10^9/L.
-Prefers morning appointments.
-Latest WBC is 3.2 x10^9/L.
-Prefers to be addressed by first name.
-```
-
-**near** (does not meet)
-```
-Man of 18 years.
-Screening visit for a clinical trial.
-Back in 2024, white cell count stood at 2.8 x10^9/L.
-Prefers morning appointments.
-Latest WBC is 7.6 x10^9/L.
-Prefers to be addressed by first name.
-```
-
-**pres** (does not meet)
-```
-Male patient of 18 years.
-Screening visit for a clinical trial.
-Prefers morning appointments.
-Current white cell count 7.6 x10^9/L.
-Prefers to be addressed by first name.
-Records from 2024 list white cell count at 6.9 x10^9/L.
-```
-
 <a id="k287"></a>
 ## k287 (NCT02408185)
 
@@ -10272,244 +10139,6 @@ Records from 2015 list weight at 50 kg.
 Pupils equal and reactive to light.
 Prefers to be addressed by first name.
 Current weight 51 kg.
-```
-
-<a id="k288"></a>
-## k288 (NCT04327791)
-
-Inclusion criterion: Weight > 40 kg
-
-Program: met iff the patient's current weight > 40 kg
-
-### near-miss kind: boundary
-
-**base** (does not meet)
-```
-Female patient of 73 years.
-Screening visit for a clinical trial.
-Latest weight 38 kg.
-Has two cats.
-Prefers to be addressed by first name.
-```
-
-**flip** (meets)
-```
-Female patient of 73 years.
-Screening visit for a clinical trial.
-Latest weight 50 kg.
-Has two cats.
-Prefers to be addressed by first name.
-```
-
-**near** (does not meet)
-```
-Female patient of 73 years.
-Screening visit for a clinical trial.
-Latest weight 40 kg.
-Has two cats.
-Prefers to be addressed by first name.
-```
-
-**pres** (does not meet)
-```
-Woman of 73 years.
-Screening visit for a clinical trial.
-Current weight 38 kg.
-Prefers to be addressed by first name.
-Has two cats.
-```
-
-### near-miss kind: numeric
-
-**base** (does not meet)
-```
-Male patient of 65 years.
-Screening visit for a clinical trial.
-Prefers to be addressed by first name.
-Latest weight 33 kg.
-```
-
-**flip** (meets)
-```
-Male patient of 65 years.
-Screening visit for a clinical trial.
-Prefers to be addressed by first name.
-Latest weight 43 kg.
-```
-
-**near** (does not meet)
-```
-Male patient of 65 years.
-Screening visit for a clinical trial.
-Prefers to be addressed by first name.
-Latest weight 37 kg.
-```
-
-**pres** (does not meet)
-```
-Man of 65 years.
-Screening visit for a clinical trial.
-Current weight 33 kg.
-Prefers to be addressed by first name.
-```
-
-### near-miss kind: time
-
-**base** (does not meet)
-```
-Man of 77 years.
-Screening visit for a clinical trial.
-Records from 2015 list weight at 33 kg.
-Drives a car.
-Lives in a second-floor apartment.
-Current weight 34 kg.
-```
-
-**flip** (meets)
-```
-Man of 77 years.
-Screening visit for a clinical trial.
-Records from 2015 list weight at 33 kg.
-Drives a car.
-Lives in a second-floor apartment.
-Current weight 45 kg.
-```
-
-**near** (does not meet)
-```
-Man of 77 years.
-Screening visit for a clinical trial.
-Records from 2015 list weight at 42 kg.
-Drives a car.
-Lives in a second-floor apartment.
-Current weight 34 kg.
-```
-
-**pres** (does not meet)
-```
-Male patient of 77 years.
-Screening visit for a clinical trial.
-Latest weight 34 kg.
-Lives in a second-floor apartment.
-Back in 2015, weight stood at 33 kg.
-Drives a car.
-```
-
-<a id="k289"></a>
-## k289 (NCT00303459)
-
-Exclusion criterion: Body weight < 40 kg
-
-Program: met iff the patient's current weight < 40 kg
-
-### near-miss kind: boundary
-
-**base** (does not meet)
-```
-Woman of 53 years.
-Screening visit for a clinical trial.
-Current weight 72 kg.
-Sees a dentist yearly.
-```
-
-**flip** (meets)
-```
-Woman of 53 years.
-Screening visit for a clinical trial.
-Current weight 34 kg.
-Sees a dentist yearly.
-```
-
-**near** (does not meet)
-```
-Woman of 53 years.
-Screening visit for a clinical trial.
-Current weight 40 kg.
-Sees a dentist yearly.
-```
-
-**pres** (does not meet)
-```
-Female patient of 53 years.
-Screening visit for a clinical trial.
-Sees a dentist yearly.
-Latest weight 72 kg.
-```
-
-### near-miss kind: numeric
-
-**base** (does not meet)
-```
-Female patient of 56 years.
-Screening visit for a clinical trial.
-Current weight 54 kg.
-Owns a bicycle.
-Drives a car.
-```
-
-**flip** (meets)
-```
-Female patient of 56 years.
-Screening visit for a clinical trial.
-Current weight 34 kg.
-Owns a bicycle.
-Drives a car.
-```
-
-**near** (does not meet)
-```
-Female patient of 56 years.
-Screening visit for a clinical trial.
-Current weight 43 kg.
-Owns a bicycle.
-Drives a car.
-```
-
-**pres** (does not meet)
-```
-Woman of 56 years.
-Screening visit for a clinical trial.
-Owns a bicycle.
-Latest weight 54 kg.
-Drives a car.
-```
-
-### near-miss kind: time
-
-**base** (does not meet)
-```
-Male patient of 33 years.
-Screening visit for a clinical trial.
-Latest weight 55 kg.
-Back in 2019, weight stood at 68 kg.
-Plays the piano.
-```
-
-**flip** (meets)
-```
-Male patient of 33 years.
-Screening visit for a clinical trial.
-Latest weight 34 kg.
-Back in 2019, weight stood at 68 kg.
-Plays the piano.
-```
-
-**near** (does not meet)
-```
-Male patient of 33 years.
-Screening visit for a clinical trial.
-Latest weight 55 kg.
-Back in 2019, weight stood at 37 kg.
-Plays the piano.
-```
-
-**pres** (does not meet)
-```
-Man of 33 years.
-Screening visit for a clinical trial.
-Plays the piano.
-Current weight 55 kg.
-Records from 2019 list weight at 68 kg.
 ```
 
 <a id="k291"></a>
