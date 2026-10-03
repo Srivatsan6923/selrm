@@ -399,11 +399,15 @@ def medeinst(a):
     for x, y in ME_COMPARISONS:
         if x in items_by and y in items_by:
             bx, by = {i["tid"]: i for i in items_by[x]}, {i["tid"]: i for i in items_by[y]}
-            pairs = [{"tid": t, "a": bx[t], "b": by[t]} for t in sorted(bx.keys() & by.keys())]
-            r = M.paired_cluster_bootstrap(pairs, "tid", lambda ps: reversal([p["a"] for p in ps]),
-                                           lambda ps: reversal([p["b"] for p in ps]))
+            pairs = [{"tid": t, "labels": bx[t]["labels"], "a": bx[t], "b": by[t]} for t in sorted(bx.keys() & by.keys())]
+            stats = (lambda ps: reversal([p["a"] for p in ps]), lambda ps: reversal([p["b"] for p in ps]))
+            r = M.paired_cluster_bootstrap(pairs, "tid", *stats)
+            # pairs sharing (y_gt, y_bias) are correlated: the same comparison with label pairs as clusters
+            r["label_pairs"] = {k: v for k, v in M.paired_cluster_bootstrap(pairs, "labels", *stats).items()
+                                if k in ("lo", "hi", "p", "n_clusters", "B")}
             comps.append((x, y, r))
-            print(f"paired Reversal {x} - {y}: {r['diff']:.1f} [{r['lo']:.1f}, {r['hi']:.1f}] p={r['p']:.3f}")
+            print(f"paired Reversal {x} - {y}: {r['diff']:.1f} [{r['lo']:.1f}, {r['hi']:.1f}] p={r['p']:.3f}; label pairs "
+                  f"[{r['label_pairs']['lo']:.1f}, {r['label_pairs']['hi']:.1f}] p={r['label_pairs']['p']:.3f}")
     if comps:
         json.dump({f"{x} - {y}": r for x, y, r in comps},
                   open(f"{a.results}/C-ME-comparisons.json", "w", encoding="utf-8", newline="\n"), indent=1)
