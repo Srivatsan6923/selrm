@@ -1,0 +1,59 @@
+{
+ "set": "rule_v1/test_L2",
+ "n_triplets": 2000,
+ "logodds": {
+  "Rev": 37.0,
+  "Hold": 31.05,
+  "TA": 25.45,
+  "BaseAcc": 38.05,
+  "Tie": 6.3,
+  "PresHold": 39.65,
+  "n": 2000
+ },
+ "sampled": {
+  "TA": {
+   "mean": 24.045,
+   "sd": 0.6660205202043953
+  },
+  "Rev": {
+   "mean": 38.12,
+   "sd": 0.32249030993194205
+  },
+  "Hold": {
+   "mean": 33.339999999999996,
+   "sd": 0.6806043066438995
+  },
+  "Tie": {
+   "mean": 6.77,
+   "sd": 0.5588679032949856
+  },
+  "BaseAcc": {
+   "mean": 40.07,
+   "sd": 0.31287200080686167
+  }
+ },
+ "samples_per_record": 32,
+ "temperature": 1.0,
+ "top_p": 1.0,
+ "seeds": 10,
+ "plus_id": 10,
+ "minus_id": 12,
+ "topk_coverage": {
+  "median": 0.9995045881685126,
+  "min": 0.9981104168765242
+ },
+ "plus_minus_in_topk": 29248,
+ "note": "sampled readout = share of '+' among N draws from the model's next-token distribution (top-k, T, top-p)",
+ "logodds_run": {
+  "run": "C-TF-critic",
+  "summary": {
+   "Rev": 38.55,
+   "Hold": 32.2,
+   "TA": 27.15,
+   "BaseAcc": 39.55,
+   "Tie": 0.0,
+   "PresHold": 40.7,
+   "n": 2000
+  }
+ }
+}

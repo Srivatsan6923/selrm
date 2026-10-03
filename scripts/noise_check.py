@@ -53,6 +53,7 @@ def main():
     ap.add_argument("--T", type=float, default=0.7)
     ap.add_argument("--top_p", type=float, default=0.95)
     ap.add_argument("--seeds", type=int, default=10)
+    ap.add_argument("--out", default=None, help="default RUN_DIR/noise_check.json")
     a = ap.parse_args()
     name = a.set.replace("/", "~")
     top = {r["iid"]: r for r in load_jsonl(f"{a.run_dir}/topk_{name}.jsonl")}
@@ -87,7 +88,7 @@ def main():
         lo = {r["iid"]: r["u"] for r in load_jsonl(f"{a.logodds}/scores_{name}.jsonl")}
         out["logodds_run"] = {"run": os.path.basename(a.logodds.rstrip("/")),
                               "summary": M.summarise(M.decisions(recs, [lo[r["iid"]] for r in recs]))["all"]}
-    json.dump(out, open(f"{a.run_dir}/noise_check.json", "w", encoding="utf-8", newline="\n"), indent=1)
+    json.dump(out, open(a.out or f"{a.run_dir}/noise_check.json", "w", encoding="utf-8", newline="\n"), indent=1)
     print(json.dumps(out, indent=1))
 
 
