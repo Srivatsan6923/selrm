@@ -180,12 +180,16 @@ def summary(items, tau, run, split):
 def run_system(recs, dm, split, fmt, run_dir):
     """(items, summary) of one run, or (None, None) if it has no scores for the split yet."""
     sc = scores(f"{run_dir}/scores_clin_v1~trialgpt_{split}.jsonl")
-    sd = scores(f"{run_dir}/scores_rule_v1~dev_missing.jsonl")
+    src = f"{run_dir}/scores_rule_v1~dev_missing.jsonl"
+    if not os.path.exists(src):          # test run of a system with a dev run: same adapter, code and set
+        src = re.sub(r"(-s0)?$", "-dev", run_dir, count=1) + "/scores_rule_v1~dev_missing.jsonl"
+    sd = scores(src)
     if sc is None or sd is None:
         return None, None
     tau = M.mr_threshold(dm, [sd[r["iid"]]["u"] for r in dm])
     items = evaluate(recs, sc, tau, fmt)
-    return items, summary(items, tau, os.path.basename(run_dir), split)
+    return items, summary(items, tau, os.path.basename(run_dir), split) | {
+        "threshold_source": os.path.relpath(src, os.path.dirname(os.path.dirname(run_dir))).replace(os.sep, "/")}
 
 
 def fmt_num(x, nd=1):
