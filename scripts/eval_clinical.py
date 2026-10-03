@@ -15,7 +15,8 @@ from selrm import metrics as M
 CATS = ("met", "not_met", "nei")
 NAME5 = {("inclusion", "met"): "included", ("inclusion", "not_met"): "not included",
          ("exclusion", "met"): "excluded", ("exclusion", "not_met"): "not excluded"}
-SYSTEMS = [  # (name in run ids, row label, format)
+SYSTEMS = [  # (name in run ids, row label, format). Test runs: C-TG-<name> for the untrained backbone
+    # (mirrors C-TF-<name>), C-TG-<name>-s<k> for B's adapters (mirrors B-F-<name>-s<k>); dev: C-TG-<name>-dev
     ("critic", "Untrained backbone, verdict (critic)", "verdict"),
     ("promptsum", "Untrained backbone, prompted summary", "summary2"),
     ("promptledger", "Untrained backbone, prompted ledger", "ledger2"),
@@ -26,6 +27,15 @@ SYSTEMS = [  # (name in run ids, row label, format)
     ("ledger2-blocks", "Ledger x blocks", "ledger2"),
     ("ledger2-triplets", "Ledger x triplets", "ledger2"),
 ]
+UNTRAINED = ("critic", "promptsum", "promptledger")
+
+
+def run_ids(res, name, split):
+    if split == "dev":
+        return [f"C-TG-{name}-dev"]
+    if name in UNTRAINED:
+        return [f"C-TG-{name}"]
+    return [f"C-TG-{name}-s{k}" for k in range(5) if os.path.isdir(f"{res}/C-TG-{name}-s{k}")] or [f"C-TG-{name}-s0"]
 COMPARISONS = [("ledger2-triplets", "critic"), ("ledger2-triplets", "ledger2-blocks")]   # analysis plan (6)
 
 
@@ -166,8 +176,7 @@ def summary(items, tau, run, split):
             "bootstrap": {"unit": "patient", "B": 1000, "seed": 0}}
 
 
-def run_system(res, data, recs, dm, split, name, fmt, variant=""):
-    run = f"C-TG-{name}" + ("-dev" if split == "dev" else "")
+def run_system(res, data, recs, dm, split, name, fmt, variant="", run=None):
     sfx = "~lenient" if variant else ""
     sc = scores(f"{res}/{run}/scores_clin_v1~trialgpt_{split}{sfx}.jsonl")
     sd = scores(f"{res}/{run}/scores_rule_v1~dev_missing{sfx}.jsonl")
@@ -193,20 +202,24 @@ def main():
     recs = load_jsonl(f"{REPO}/data/clin_v1/trialgpt_{a.split}/records.jsonl")
     dm = dataset(a.data, "rule_v1/dev_missing")
     rows, items_by = [], {}
-    for name, label, fmt in SYSTEMS:
-        for variant in ([""] + (["lenient"] if fmt == "ledger2" else [])):
-            run, items, summ = run_system(a.results, a.data, recs, dm, a.split, name, fmt, variant)
-            key = name + ("~lenient" if variant else "")
-            rows.append((key, label + (" (lenient ledger parse)" if variant else ""), run, summ))
-            if summ is None:
-                continue
-            items_by[key] = items
-            out = f"{a.results}/{run}/summary_clin_v1~trialgpt_{a.split}{'~lenient' if variant else ''}.json"
-            old = json.load(open(out, encoding="utf-8")) if os.path.exists(out) else {}
-            summ["eval"] = old.get("eval")
-            json.dump(summ, open(out, "w", encoding="utf-8", newline="\n"), indent=1)
-            print(f"{key:24s} macroF1 {summ['macroF1']:.1f} [{summ['macroF1_CI95'][0]:.1f}, {summ['macroF1_CI95'][1]:.1f}]"
-                  f" acc {summ['acc']:.1f} tau {summ['threshold']:.3f} pred {summ['pred_distribution']}")
+    combos = [(name, label, fmt, variant, rid) for name, label, fmt in SYSTEMS
+              for variant in ([""] + (["lenient"] if fmt == "ledger2" else []))
+              for rid in run_ids(a.results, name, a.split)]
+    for name, label, fmt, variant, rid in combos:
+        run, items, summ = run_system(a.results, a.data, recs, dm, a.split, name, fmt, variant, rid)
+        seed = rid.rsplit("-s", 1)[1] if rid[-3:-1] == "-s" else None
+        key = name + ("~lenient" if variant else "") + (f"@s{seed}" if seed not in (None, "0") else "")
+        rows.append((key, label + (" (lenient ledger parse)" if variant else "") + (f", seed {seed}" if seed else ""),
+                     run, summ))
+        if summ is None:
+            continue
+        items_by[key] = items
+        out = f"{a.results}/{run}/summary_clin_v1~trialgpt_{a.split}{'~lenient' if variant else ''}.json"
+        old = json.load(open(out, encoding="utf-8")) if os.path.exists(out) else {}
+        summ["eval"] = old.get("eval")
+        json.dump(summ, open(out, "w", encoding="utf-8", newline="\n"), indent=1)
+        print(f"{key:24s} macroF1 {summ['macroF1']:.1f} [{summ['macroF1_CI95'][0]:.1f}, {summ['macroF1_CI95'][1]:.1f}]"
+              f" acc {summ['acc']:.1f} tau {summ['threshold']:.3f} pred {summ['pred_distribution']}")
     comps = []
     for x, y in COMPARISONS:
         if x in items_by and y in items_by:
