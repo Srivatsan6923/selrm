@@ -14,7 +14,7 @@ Updated 2026-10-03 ~08:35 UTC after merge 4 (main 1c11383: 85 tests pass; rule_v
 | Test suite on main | merge 4: 85 passed | pytest -q tests |
 | Interface mismatch | resolved: B's analysis_b.py unpacks C's paired_test tuple | scripts/analysis_b.py:48 |
 | Paper claim without a record | v13 App. H says the pilot model solved 59.7% on held-out rules where a past or family finding counts; no file records that test or value, and the pilot-generator data contain no case in which such a mention counts. The first dataset build (old repo c965184) already had such flips (135 of 2,000 test flips) and presentation edits, so App. H's "What changed" also needs the authors' records. The authors produce the record or remove the claims (H6) | docs/TIMELINE.md, 'Not in the records' 1-7 |
-| Tooling markers in committed files | open: a 'ponytail:' comment tag in selrm/rules_constraint.py:127 (A), scripts/eval_local.py:66 (B), scripts/eval_c.py:49 and scripts/prms/genprm.py:62,118,216 (C); a tooling note in the first line of docs/STATE_B.md and docs/STATE_C.md | CHANGE_REQUESTS 3 Oct |
+| Tooling markers in committed files | open: 'ponytail:' comment tags in selrm/rules_constraint.py:127 (A), scripts/eval_local.py:66 (B), scripts/eval_c.py:49 and scripts/prms/genprm.py:62,118,216 (C); a tooling note in the first line of docs/STATE_B.md and docs/STATE_C.md; commit c80a9a4 (status site, a teammate's) carries a co-author trailer: rewriting published history is the human lead's decision (H8) | CHANGE_REQUESTS 3 Oct; docs/FINAL_AUDIT.md check 9 |
 | Hand-typed number differing from its result | bag-of-words TA: v13 7.1, results/A-D14-bag_of_words 7.0 (now read from the result) | docs/PAPER_NUMBERS.md |
 
 ## Tasks
@@ -45,7 +45,7 @@ Updated 2026-10-03 ~08:35 UTC after merge 4 (main 1c11383: 85 tests pass; rule_v
 | D-P0.3 | update_paper.py, build that fails on placeholders, v13 sources | D | done: 185 numbers wired to keys; report docs/PAPER_NUMBERS.md | scripts/update_paper.py, scripts/build_paper.py |
 | D-P0.4 | Kits: error sheets, citation checklist, development timeline | D | done: timeline has 49 rows checked against git and file times, and the draft statements the records do not support | audit/, docs/CITATIONS_TODO.csv, docs/TIMELINE.md |
 | D-P0.5 | Length plan to 8 pages | D | done (proposal): 20 moves take the main text from 10.9 to 7.9 pages in a trial build, no experiment removed; the authors apply it (H6) | docs/LENGTH_PLAN.md, tools/length_plan/ |
-| D-P1 | Pools, Table 5, selection pressure, GRPO, resources, final audit | D | running: merged-adapter scoring validated (D-VAL: 99.96% sign agreement); MedQA dev pool done, scoring; MedQA test, key-pair (357 pairs), CareQA (1,000) and MedEinst (500 pairs) pools queued on two NRP sites (GPUs saturated); GRPO script ready; D-RES done | scripts/make_pool.py, score_pool.py, select_eval.py, results/D-* |
+| D-P1 | Pools, Table 5, selection pressure, GRPO, resources, final audit | D | running: MedQA dev pool scored and calibrated (D-CAL: Platt scaling; dev AUC Med-PRM 0.65, rule-trained ledger 0.51); MedQA test, key-pair (357 pairs), CareQA (1,000) and MedEinst (500 pairs) pools running on four H100s; Table 5 paired comparisons ready; GRPO plumbing passed a CPU smoke test; final audit script (docs/FINAL_AUDIT.md: 4 of 9 checks pass); D-RES done | scripts/make_pool.py, score_pool.py, select_eval.py, grpo_d.py, final_audit.py, results_git/D-* |
 | H1 | Read 75 rendered groups each (300) | authors | kit ready (A): audit/fidelity_author{1..4}.csv | audit/fidelity_<name>.csv |
 | H2 | Write 40 challenge cases each; second author checks | authors | kit ready (A): challenge_v1/form_author{1..4}.md | challenge_v1/notes_<name>.jsonl |
 | H3 | Sign off each registered criterion's program | two authors | waits for A-P0.5 | docs/EC_SIGNOFF.csv |
@@ -54,7 +54,7 @@ Updated 2026-10-03 ~08:35 UTC after merge 4 (main 1c11383: 85 tests pass; rule_v
 | H6 | Introduction, discussion, error analysis, development history | lead + one author | Fri 9 - Sat 10 | paper/latex_v13/main.tex |
 | H7 | Decide gates G1-G3 (definitions are the authors'; not in the repo) | lead (human) | open (Sun 4, Wed 7) | docs/DECISIONS_D.md |
 | H7a | Framing decision after C's TrialGPT report | lead (human) | ready: C's report is in (comparison (6) not supported on test; MedEinst comparison (4) running) | docs/TRIALGPT_RESULTS.md, docs/DECISIONS_D.md |
-| H8 | Venue policy on AI assistance; disclosure | lead (human) | by Sat 10 | checklist |
+| H8 | Venue policy on AI assistance; disclosure; whether to rewrite commit c80a9a4's co-author trailer | lead (human) | by Sat 10 | checklist, docs/FINAL_AUDIT.md |
 
 ## Runs by paper item (matrix rows; done = DONE file, claimed = CLAIMED_* without DONE)
 <!-- BEGIN GENERATED: scripts/status_board.py -->
