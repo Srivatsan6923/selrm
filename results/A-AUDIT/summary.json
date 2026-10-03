@@ -1,5 +1,6 @@
 {
- "commit": "11f77f7c869ada3738055ff46651c952794c42f5",
+ "code_modified_since_commit": false,
+ "commit": "d50bc5ba73806cc4b0ae52e9b5949f05a43761c9",
  "l3alt": {
   "concepts": {
    "alt_enzyme": 174,
@@ -29,8 +30,8 @@
   }
  },
  "library_semantics": {
-  "constraint_claim_token_diff_le2_pct": 100.0,
-  "constraint_claim_token_diff_max": 2,
+  "constraint_claim_word_diff_le2_pct": 100.0,
+  "constraint_claim_word_diff_max": 2,
   "constraint_rules": 310,
   "criteria": 791,
   "criteria_counting_family": 70,
@@ -378,6 +379,8 @@
    "near_line_train_cue_words": [],
    "near_lines_with_train_cue_pct": 0.0,
    "near_lines_with_train_relative_pct": 0.0,
+   "patient_states": 740,
+   "patient_states_shared_any_rule": 408,
    "program_pct": 100.0,
    "rule_text_pct": 100.0,
    "rules": 218,
@@ -403,6 +406,8 @@
    "near_line_train_cue_words": [],
    "near_lines_with_train_cue_pct": 0.0,
    "near_lines_with_train_relative_pct": 0.0,
+   "patient_states": 612,
+   "patient_states_shared_any_rule": 105,
    "program_pct": 37.0,
    "rule_text_pct": 0.0,
    "rules": 27,
@@ -427,6 +432,8 @@
    "near_line_train_cue_words": [],
    "near_lines_with_train_cue_pct": 0.0,
    "near_lines_with_train_relative_pct": 0.0,
+   "patient_states": 1745,
+   "patient_states_shared_any_rule": 51,
    "program_pct": 0.0,
    "rule_text_pct": 0.0,
    "rules": 103,
@@ -452,6 +459,8 @@
    "near_line_train_cue_words": [],
    "near_lines_with_train_cue_pct": 0.0,
    "near_lines_with_train_relative_pct": 0.0,
+   "patient_states": 723,
+   "patient_states_shared_any_rule": 197,
    "program_pct": 100.0,
    "rule_text_pct": 100.0,
    "rules": 17,
@@ -477,6 +486,8 @@
    "near_line_train_cue_words": [],
    "near_lines_with_train_cue_pct": 0.0,
    "near_lines_with_train_relative_pct": 0.0,
+   "patient_states": 727,
+   "patient_states_shared_any_rule": 123,
    "program_pct": 20.0,
    "rule_text_pct": 0.0,
    "rules": 60,
@@ -502,6 +513,8 @@
    "near_line_train_cue_words": [],
    "near_lines_with_train_cue_pct": 0.0,
    "near_lines_with_train_relative_pct": 0.0,
+   "patient_states": 245,
+   "patient_states_shared_any_rule": 135,
    "program_pct": 100.0,
    "rule_text_pct": 100.0,
    "rules": 157,
@@ -527,6 +540,8 @@
    "near_line_train_cue_words": [],
    "near_lines_with_train_cue_pct": 0.0,
    "near_lines_with_train_relative_pct": 0.0,
+   "patient_states": 1233,
+   "patient_states_shared_any_rule": 13,
    "program_pct": 0.0,
    "rule_text_pct": 0.0,
    "rules": 74,
@@ -551,6 +566,8 @@
    "near_line_train_cue_words": [],
    "near_lines_with_train_cue_pct": 0.0,
    "near_lines_with_train_relative_pct": 0.0,
+   "patient_states": 263,
+   "patient_states_shared_any_rule": 85,
    "program_pct": 100.0,
    "rule_text_pct": 100.0,
    "rules": 164,
@@ -576,6 +593,8 @@
    "near_line_train_cue_words": [],
    "near_lines_with_train_cue_pct": 0.0,
    "near_lines_with_train_relative_pct": 0.0,
+   "patient_states": 1276,
+   "patient_states_shared_any_rule": 52,
    "program_pct": 0.0,
    "rule_text_pct": 0.0,
    "rules": 97,
@@ -601,6 +620,8 @@
    "near_line_train_cue_words": [],
    "near_lines_with_train_cue_pct": 0.0,
    "near_lines_with_train_relative_pct": 0.0,
+   "patient_states": 278,
+   "patient_states_shared_any_rule": 95,
    "program_pct": 100.0,
    "rule_text_pct": 100.0,
    "rules": 149,
@@ -626,6 +647,8 @@
    "near_line_train_cue_words": [],
    "near_lines_with_train_cue_pct": 0.0,
    "near_lines_with_train_relative_pct": 0.0,
+   "patient_states": 934,
+   "patient_states_shared_any_rule": 35,
    "program_pct": 0.0,
    "rule_text_pct": 0.0,
    "rules": 103,
@@ -861,7 +884,7 @@
    "competing_mentions": 333,
    "groups": 1000,
    "none_of_these": 0,
-   "numerical_semantics": 333,
+   "numerical_semantics": 342,
    "temporal_selection": 333
   },
   "L3inv": {
@@ -1068,6 +1091,15 @@
    "simplified_source": 97,
    "synthetic": 6
   },
+  "hand_written_provenance_by_kind": {
+   "constraint": {
+    "simplified_source": 54,
+    "synthetic": 6
+   },
+   "score": {
+    "simplified_source": 43
+   }
+  },
   "invented_test_only": 60,
   "library": 353,
   "provenance": {
@@ -1078,6 +1110,12 @@
    "constraint": 250
   },
   "signature_classes": 21,
+  "signature_classes_by_row": {
+   "constraint_hand_written": 11,
+   "constraint_sampled": 17,
+   "library": 21,
+   "score": 4
+  },
   "sources_checked": 103,
   "sources_simplifications_listed": 494,
   "sources_verified_online": 91,
@@ -1107,6 +1145,7 @@
    "author3": 325,
    "author4": 311
   },
+  "rows_with_criterion_claims": 1059,
   "with_missing_twin": 76
  },
  "semantics": {
@@ -1114,10 +1153,13 @@
    "cases": 47600,
    "cases_naming_year_2025_or_2026": 0,
    "cases_stating_a_reference_date": 0,
+   "context_finding_inputs": 36116,
+   "context_finding_inputs_unmentioned": 7048,
    "dated_years_max": 2024,
    "dated_years_min": 2005,
    "finding_bases": 5156,
    "finding_bases_generic_absence_line": 3572,
+   "finding_bases_generic_line_with_negation": 1953,
    "finding_bases_naming_concept": 0,
    "finding_bases_no_line": 1584,
    "finding_inputs": 56740,
@@ -1126,9 +1168,13 @@
    "generator_reference_year": 2026,
    "groups_rule_text_names_a_window": 23,
    "groups_rule_text_names_a_window_time_near_miss": 3,
+   "negation_near_misses": 2180,
+   "negation_near_misses_differing_in_more_than_status": 670,
    "numeric_flips": 6744,
-   "numeric_flips_at_threshold": 457,
+   "numeric_flips_at_inclusive_threshold": 411,
+   "numeric_flips_at_inclusive_threshold_outside_alt": 402,
    "numeric_flips_inclusive": 1198,
+   "numeric_flips_inclusive_outside_alt": 1109,
    "numeric_flips_strict": 5546,
    "numeric_inputs": 56592,
    "numeric_inputs_one_counted_value": 56592,
@@ -1140,10 +1186,13 @@
    "cases": 8000,
    "cases_naming_year_2025_or_2026": 0,
    "cases_stating_a_reference_date": 0,
+   "context_finding_inputs": 8820,
+   "context_finding_inputs_unmentioned": 1168,
    "dated_years_max": 2024,
    "dated_years_min": 2005,
    "finding_bases": 932,
    "finding_bases_generic_absence_line": 646,
+   "finding_bases_generic_line_with_negation": 291,
    "finding_bases_naming_concept": 0,
    "finding_bases_no_line": 286,
    "finding_inputs": 12548,
@@ -1152,9 +1201,13 @@
    "generator_reference_year": 2026,
    "groups_rule_text_names_a_window": 12,
    "groups_rule_text_names_a_window_time_near_miss": 2,
+   "negation_near_misses": 400,
+   "negation_near_misses_differing_in_more_than_status": 136,
    "numeric_flips": 1068,
-   "numeric_flips_at_threshold": 98,
+   "numeric_flips_at_inclusive_threshold": 98,
+   "numeric_flips_at_inclusive_threshold_outside_alt": 98,
    "numeric_flips_inclusive": 254,
+   "numeric_flips_inclusive_outside_alt": 254,
    "numeric_flips_strict": 814,
    "numeric_inputs": 10952,
    "numeric_inputs_one_counted_value": 10952,
@@ -1564,6 +1617,13 @@
  },
  "target_claim_check": {
   "by_check": {},
+  "coverage": {
+   "distinct_groups": 14899,
+   "missing_twins": 1300,
+   "read_labels": 4000,
+   "stored_labels": 194202,
+   "triplet_groups": 12900
+  },
   "groups": {
    "L0": 1000,
    "L1": 1000,

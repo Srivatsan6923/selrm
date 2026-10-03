@@ -1,5 +1,6 @@
 {
- "commit": "11f77f7c869ada3738055ff46651c952794c42f5",
+ "commit": "d50bc5ba73806cc4b0ae52e9b5949f05a43761c9",
+ "code_modified_since_commit": false,
  "rules": {
   "library": 353,
   "invented_test_only": 60,
@@ -26,6 +27,21 @@
   "hand_written_provenance": {
    "simplified_source": 97,
    "synthetic": 6
+  },
+  "hand_written_provenance_by_kind": {
+   "constraint": {
+    "simplified_source": 54,
+    "synthetic": 6
+   },
+   "score": {
+    "simplified_source": 43
+   }
+  },
+  "signature_classes_by_row": {
+   "score": 4,
+   "constraint_hand_written": 11,
+   "constraint_sampled": 17,
+   "library": 21
   },
   "sources_checked": 103,
   "sources_verified_online": 91,
@@ -135,8 +151,8 @@
    "s3_jhfrat"
   ],
   "constraint_rules": 310,
-  "constraint_claim_token_diff_max": 2,
-  "constraint_claim_token_diff_le2_pct": 100.0
+  "constraint_claim_word_diff_max": 2,
+  "constraint_claim_word_diff_le2_pct": 100.0
  },
  "target_claim_check": {
   "sets": [
@@ -189,6 +205,13 @@
    "rule_v1_fold3/test_L2": 27640
   },
   "records_total": 203014,
+  "coverage": {
+   "stored_labels": 194202,
+   "triplet_groups": 12900,
+   "missing_twins": 1300,
+   "read_labels": 4000,
+   "distinct_groups": 14899
+  },
   "violations": 0,
   "by_check": {}
  },
@@ -774,6 +797,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 162,
    "base_states": 280,
+   "patient_states_shared_any_rule": 135,
+   "patient_states": 245,
    "rules_with_source": 45,
    "source_shared_with_train_pct": 95.6
   },
@@ -799,6 +824,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 480,
    "base_states": 862,
+   "patient_states_shared_any_rule": 408,
+   "patient_states": 740,
    "rules_with_source": 66,
    "source_shared_with_train_pct": 93.9
   },
@@ -823,6 +850,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 0,
    "base_states": 629,
+   "patient_states_shared_any_rule": 105,
+   "patient_states": 612,
    "rules_with_source": 8,
    "source_shared_with_train_pct": 0.0
   },
@@ -848,6 +877,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 0,
    "base_states": 1775,
+   "patient_states_shared_any_rule": 51,
+   "patient_states": 1745,
    "rules_with_source": 20,
    "source_shared_with_train_pct": 5.0
   },
@@ -873,6 +904,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 196,
    "base_states": 797,
+   "patient_states_shared_any_rule": 197,
+   "patient_states": 723,
    "rules_with_source": 17,
    "source_shared_with_train_pct": 94.1
   },
@@ -898,6 +931,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 0,
    "base_states": 752,
+   "patient_states_shared_any_rule": 123,
+   "patient_states": 727,
    "rules_with_source": 0,
    "source_shared_with_train_pct": null
   },
@@ -923,6 +958,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 0,
    "base_states": 944,
+   "patient_states_shared_any_rule": 35,
+   "patient_states": 934,
    "rules_with_source": 20,
    "source_shared_with_train_pct": 5.0
   },
@@ -948,6 +985,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 105,
    "base_states": 291,
+   "patient_states_shared_any_rule": 85,
+   "patient_states": 263,
    "rules_with_source": 39,
    "source_shared_with_train_pct": 94.9
   },
@@ -972,6 +1011,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 0,
    "base_states": 1517,
+   "patient_states_shared_any_rule": 13,
+   "patient_states": 1233,
    "rules_with_source": 27,
    "source_shared_with_train_pct": 7.4
   },
@@ -997,6 +1038,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 93,
    "base_states": 289,
+   "patient_states_shared_any_rule": 95,
+   "patient_states": 278,
    "rules_with_source": 38,
    "source_shared_with_train_pct": 97.4
   },
@@ -1022,6 +1065,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 0,
    "base_states": 1381,
+   "patient_states_shared_any_rule": 52,
+   "patient_states": 1276,
    "rules_with_source": 29,
    "source_shared_with_train_pct": 13.8
   }
@@ -1123,7 +1168,7 @@
   },
   "rule_v1/test_L3alt": {
    "groups": 1000,
-   "numerical_semantics": 333,
+   "numerical_semantics": 342,
    "altered_threshold": 1000,
    "none_of_these": 0,
    "competing_mentions": 333,
@@ -1465,6 +1510,8 @@
    "finding_inputs": 12548,
    "finding_inputs_unmentioned": 1740,
    "finding_inputs_two_or_more_mentions": 0,
+   "context_finding_inputs": 8820,
+   "context_finding_inputs_unmentioned": 1168,
    "past_mentions": 3602,
    "past_mentions_with_year": 1914,
    "cases_naming_year_2025_or_2026": 0,
@@ -1473,13 +1520,18 @@
    "finding_bases_generic_absence_line": 646,
    "finding_bases_no_line": 286,
    "finding_bases_naming_concept": 0,
+   "finding_bases_generic_line_with_negation": 291,
    "numeric_inputs": 10952,
    "numeric_inputs_one_counted_value": 10952,
    "numeric_inputs_with_older_value": 1072,
    "numeric_flips": 1068,
    "numeric_flips_strict": 814,
-   "numeric_flips_at_threshold": 98,
+   "numeric_flips_at_inclusive_threshold": 98,
+   "numeric_flips_at_inclusive_threshold_outside_alt": 98,
+   "numeric_flips_inclusive_outside_alt": 254,
    "numeric_flips_inclusive": 254,
+   "negation_near_misses": 400,
+   "negation_near_misses_differing_in_more_than_status": 136,
    "groups_rule_text_names_a_window": 12,
    "groups_rule_text_names_a_window_time_near_miss": 2,
    "dated_years_min": 2005,
@@ -1491,6 +1543,8 @@
    "finding_inputs": 56740,
    "finding_inputs_unmentioned": 10216,
    "finding_inputs_two_or_more_mentions": 0,
+   "context_finding_inputs": 36116,
+   "context_finding_inputs_unmentioned": 7048,
    "past_mentions": 13591,
    "past_mentions_with_year": 8117,
    "cases_naming_year_2025_or_2026": 0,
@@ -1499,12 +1553,17 @@
    "finding_bases_generic_absence_line": 3572,
    "finding_bases_no_line": 1584,
    "finding_bases_naming_concept": 0,
+   "finding_bases_generic_line_with_negation": 1953,
+   "negation_near_misses": 2180,
+   "negation_near_misses_differing_in_more_than_status": 670,
    "numeric_inputs": 56592,
    "numeric_inputs_one_counted_value": 56592,
    "numeric_inputs_with_older_value": 6868,
    "numeric_flips": 6744,
    "numeric_flips_strict": 5546,
-   "numeric_flips_at_threshold": 457,
+   "numeric_flips_at_inclusive_threshold": 411,
+   "numeric_flips_at_inclusive_threshold_outside_alt": 402,
+   "numeric_flips_inclusive_outside_alt": 1109,
    "numeric_flips_inclusive": 1198,
    "groups_rule_text_names_a_window": 23,
    "groups_rule_text_names_a_window_time_near_miss": 3,
@@ -1591,6 +1650,7 @@
    "author2": 320,
    "author3": 325,
    "author4": 311
-  }
+  },
+  "rows_with_criterion_claims": 1059
  }
 }
