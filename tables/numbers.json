@@ -616,8 +616,8 @@
   "value": "88.7"
  },
  "run/D-RL-refgraph/L2/top/acc_pair": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 98.0,
+  "value": "98.0"
  },
  "run/D-RL-stepcheck/L2/top/acc_pair": {
   "number": 38.666666666666664,

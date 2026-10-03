@@ -1,7 +1,7 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "86f6ebd774b90b8cd56aba479156726083ebc660",
- "uncommitted_changes": false,
+ "code_commit": "d8582941c037463a9cb256c33186cec7d586e632",
+ "uncommitted_changes": true,
  "records": {
   "rule_v1/dev_missing": {
    "file": "data/rule_v1/dev_missing/records.jsonl",
@@ -26776,12 +26776,23 @@
    ]
   },
   "run/D-RL-refgraph/L2/top/acc_pair": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "98.0",
+   "number": 98.0,
+   "runs": [
+    {
+     "run_id": "D-RL-refgraph-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-refgraph-s0/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    0
+   ]
   },
   "run/D-RL-stepcheck/L2/top/acc_pair": {
    "value": "38.7",

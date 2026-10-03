@@ -1,0 +1,40 @@
+{
+ "run_id": "D-RL-refgraph-s0",
+ "set": "rule_v1/test_L2",
+ "metric": "accuracy of the chosen claim by the rule program",
+ "n_triplets": 150,
+ "start": {
+  "base": 90.66666666666667,
+  "flip": 98.0,
+  "near": 92.0,
+  "all": 93.55555555555556,
+  "pair": 88.66666666666667,
+  "triplet": 86.0
+ },
+ "final": {
+  "base": 98.66666666666667,
+  "flip": 99.33333333333333,
+  "near": 97.33333333333333,
+  "all": 98.44444444444444,
+  "pair": 98.0,
+  "triplet": 96.66666666666667
+ },
+ "top": null,
+ "final_step": 1000,
+ "from_files": [
+  "eval_step0.jsonl",
+  "eval_step1000.jsonl"
+ ],
+ "acc_base": 98.66666666666667,
+ "acc_flip": 99.33333333333333,
+ "acc_near": 97.33333333333333,
+ "acc_all": 98.44444444444444,
+ "acc_pair": 98.0,
+ "acc_triplet": 96.66666666666667,
+ "start_base": 90.66666666666667,
+ "start_flip": 98.0,
+ "start_near": 92.0,
+ "start_all": 93.55555555555556,
+ "start_pair": 88.66666666666667,
+ "start_triplet": 86.0
+}
