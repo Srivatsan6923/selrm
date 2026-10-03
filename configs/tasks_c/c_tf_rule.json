@@ -165,6 +165,101 @@
    ],
    "note": "untrained backbone, frozen reader (prose) and judge prompts",
    "min_gb": 30
+  },
+  {
+   "run_id": "C-ME-critic",
+   "priority": 12,
+   "format": "verdict",
+   "adapter": null,
+   "adapter_run": null,
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ]
+  },
+  {
+   "run_id": "C-ME-verdict-blocks-s0",
+   "priority": 13,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s0",
+   "adapter_run": "B-F-verdict-blocks-s0",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ]
+  },
+  {
+   "run_id": "C-ME-verdict-triplets-s0",
+   "priority": 14,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s0",
+   "adapter_run": "B-F-verdict-triplets-s0",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ]
+  },
+  {
+   "run_id": "C-ME-ledger2-triplets-s0",
+   "priority": 15,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s0",
+   "adapter_run": "B-F-ledger2-triplets-s0",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "max_new": 384
+  },
+  {
+   "run_id": "C-ME-ledger2-blocks-s0",
+   "priority": 16,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-blocks-s0",
+   "adapter_run": "B-F-ledger2-blocks-s0",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "max_new": 384
+  },
+  {
+   "run_id": "C-ME-summary2-triplets-s0",
+   "priority": 17,
+   "format": "summary2",
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-triplets-s0",
+   "adapter_run": "B-F-summary2-triplets-s0",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "max_new": 384
+  },
+  {
+   "run_id": "C-ME-promptsum",
+   "priority": 18,
+   "format": "summary2",
+   "adapter": null,
+   "adapter_run": null,
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "max_new": 768,
+   "min_gb": 30
+  },
+  {
+   "run_id": "C-ME-promptledger",
+   "priority": 19,
+   "format": "ledger2",
+   "adapter": null,
+   "adapter_run": null,
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "max_new": 768,
+   "min_gb": 30
   }
  ],
  "note": "wave 1: TrialGPT development portion (priority 1-8) and the untrained-backbone rule-tier rows (10, 20); runners re-read this file before every claim"

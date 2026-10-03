@@ -1,5 +1,6 @@
 """Clinical-set evaluation from per-example scores (owner C). No GPU.
   python scripts/eval_clinical.py trialgpt --split dev|test [--results results_git] [--data scratch/rv1]
+  python scripts/eval_clinical.py medeinst [--results results_git]   (every run with MedEinst test scores)
 TrialGPT (docs/TRIALGPT_PROTOCOL.md): for every system run found, the acceptance threshold
 tau comes from the run's own rule_v1/dev_missing scores (selrm.metrics.mr_threshold, 5%
 false rejection); per item NEI if max(u_s, u_s') < tau or u_s = u_s', else met / not met
@@ -198,11 +199,14 @@ def fmt_num(x, nd=1):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("dataset", choices=["trialgpt"])
+    ap.add_argument("dataset", choices=["trialgpt", "medeinst"])
     ap.add_argument("--split", default="dev", choices=["dev", "test"])
     ap.add_argument("--results", default=f"{REPO}/results_git")
     ap.add_argument("--data", default=os.environ.get("SELRM_DATA", f"{REPO}/scratch/rv1"))
+    ap.add_argument("--data-c", default=f"{REPO}/data", help="C's sets (clin_v1/...)")
     a = ap.parse_args()
+    if a.dataset == "medeinst":
+        return medeinst(a)
     recs = load_jsonl(f"{REPO}/data/clin_v1/trialgpt_{a.split}/records.jsonl")
     dm = dataset(a.data, "rule_v1/dev_missing")
     rows, items_by = [], {}
@@ -235,6 +239,101 @@ def main():
                   open(f"{a.results}/C-TG-comparisons_{a.split}.json", "w", encoding="utf-8", newline="\n"), indent=1)
     if a.split == "test":
         write_report(rows, comps)
+
+
+# ---------------------------------------------------------------- MedEinst
+
+ME_SET = "clin_v1/medeinst_test"
+ME_COMPARISONS = [("ledger2-triplets-s0", "critic"), ("ledger2-triplets-s0", "summary2-triplets-s0")]   # plan (4), (5)
+
+
+def me_pairs(recs, sc):
+    """One item per pair: d on the control (base) and on the trap (flip); flags from the records."""
+    P = {}
+    for r in recs:
+        p = P.setdefault(r["tid"], {"tid": r["tid"], "labels": r["rid"], "u": {}, "flags": r["meta"]})
+        p["u"][(r["case_kind"], r["claim_role"])] = sc[r["iid"]]["u"]
+    out = []
+    for p in P.values():
+        u = p["u"]
+        dc, dt = u[("base", "s")] - u[("base", "s_prime")], u[("flip", "s")] - u[("flip", "s_prime")]
+        out.append({"tid": p["tid"], "labels": p["labels"], "control": dc > 0, "trap": dt < 0, "tie": dc == 0 or dt == 0,
+                    "trapped": dc > 0 and dt > 0, "no_diff": p["flags"].get("no_content_diff", False),
+                    "overlap": p["flags"].get("overlap_ref", False)})
+    return out
+
+
+def pct(xs, key):
+    return 100.0 * sum(x[key] for x in xs) / len(xs)
+
+
+def reversal(xs):
+    return 100.0 * sum(x["control"] and x["trap"] for x in xs) / len(xs)
+
+
+def me_summary(items, run):
+    ctrl = [x for x in items if x["control"]]
+    rv = M.cluster_bootstrap(items, "tid", reversal)
+    rv_lab = M.cluster_bootstrap(items, "labels", reversal)
+    sub = lambda f: [x for x in items if f(x)]
+    return {"run_id": run, "set": ME_SET, "Reversal": rv[0], "CI95": [rv[1], rv[2]], "CI95_label_pairs": [rv_lab[1], rv_lab[2]],
+            "n_pairs": len(items), "control_acc": pct(items, "control"), "trap_acc": pct(items, "trap"),
+            "bias_trap_rate": 100.0 * sum(x["trapped"] for x in ctrl) / len(ctrl) if ctrl else None,
+            "n_control_correct": len(ctrl), "tie_rate": pct(items, "tie"),
+            "Reversal_excl_no_content_diff": reversal(sub(lambda x: not x["no_diff"])),
+            "Reversal_excl_overlap_ref": reversal(sub(lambda x: not x["overlap"])),
+            "n_no_content_diff": sum(x["no_diff"] for x in items), "n_overlap_ref": sum(x["overlap"] for x in items),
+            "definitions": "control correct: d(control) > 0; trap correct: d(trap) < 0; Reversal = both (ties fail); "
+                           "bias_trap_rate = share of control-correct pairs with d(trap) > 0 (MedEinst's R_bias on two candidates)",
+            "bootstrap": {"unit": "pair (CI95) and (y_gt, y_bias) label pair (CI95_label_pairs)", "B": 1000, "seed": 0}}
+
+
+def medeinst(a):
+    recs = load_jsonl(f"{a.data_c}/clin_v1/medeinst_test/records.jsonl")
+    rows, items_by = [], {}
+    for d in sorted(os.listdir(a.results)):
+        f = f"{a.results}/{d}/scores_{ME_SET.replace('/', '~')}.jsonl"
+        if not os.path.exists(f) or not os.path.exists(f"{a.results}/{d}/DONE"):
+            continue
+        items = me_pairs(recs, scores(f))
+        s = me_summary(items, d)
+        out = f"{a.results}/{d}/summary_{ME_SET.replace('/', '~')}.json"
+        old = json.load(open(out, encoding="utf-8")) if os.path.exists(out) else {}
+        s["eval"] = old.get("eval")
+        json.dump(s, open(out, "w", encoding="utf-8", newline="\n"), indent=1)
+        items_by[d.replace("C-ME-", "")] = items
+        rows.append((d, s))
+        print(f"{d:28s} Reversal {s['Reversal']:.1f} [{s['CI95'][0]:.1f}, {s['CI95'][1]:.1f}] control {s['control_acc']:.1f} "
+              f"trap {s['trap_acc']:.1f} bias-trap {s['bias_trap_rate'] or float('nan'):.1f} ties {s['tie_rate']:.1f}")
+    comps = []
+    for x, y in ME_COMPARISONS:
+        if x in items_by and y in items_by:
+            bx, by = {i["tid"]: i for i in items_by[x]}, {i["tid"]: i for i in items_by[y]}
+            pairs = [{"tid": t, "a": bx[t], "b": by[t]} for t in sorted(bx.keys() & by.keys())]
+            r = M.paired_cluster_bootstrap(pairs, "tid", lambda ps: reversal([p["a"] for p in ps]),
+                                           lambda ps: reversal([p["b"] for p in ps]))
+            comps.append((x, y, r))
+            print(f"paired Reversal {x} - {y}: {r['diff']:.1f} [{r['lo']:.1f}, {r['hi']:.1f}] p={r['p']:.3f}")
+    if comps:
+        json.dump({f"{x} - {y}": r for x, y, r in comps},
+                  open(f"{a.results}/C-ME-comparisons.json", "w", encoding="utf-8", newline="\n"), indent=1)
+    L = ["# MedEinst test pairs: results (role C)", "",
+         "Generated by `scripts/eval_clinical.py medeinst` from `results_git/*/scores_clin_v1~medeinst_test.jsonl` "
+         "(no typed numbers). Two candidate diagnoses per pair (control y_gt, trap y_bias); see "
+         "`data/clin_v1/medeinst_test/MANIFEST.json` for the release, normalisation and flags.", "",
+         "| run | Reversal [95% CI pairs] | CI label pairs | control acc | trap acc | bias-trap rate | ties | excl. no-diff | excl. overlap |",
+         "|---|---|---|---|---|---|---|---|---|"]
+    for d, s in rows:
+        L.append(f"| {d} | {s['Reversal']:.1f} [{s['CI95'][0]:.1f}, {s['CI95'][1]:.1f}] | [{s['CI95_label_pairs'][0]:.1f}, "
+                 f"{s['CI95_label_pairs'][1]:.1f}] | {s['control_acc']:.1f} | {s['trap_acc']:.1f} | "
+                 f"{fmt_num(s['bias_trap_rate'])} | {s['tie_rate']:.1f} | {s['Reversal_excl_no_content_diff']:.1f} | "
+                 f"{s['Reversal_excl_overlap_ref']:.1f} |")
+    if comps:
+        L += ["", "Paired differences in Reversal (same pairs, bootstrap over pairs, 1,000 resamples):", ""]
+        L += [f"- {x} minus {y}: {r['diff']:.1f} [{r['lo']:.1f}, {r['hi']:.1f}], p = {r['p']:.3f} ({r['n_items']} pairs)"
+              for x, y, r in comps]
+    open(f"{REPO}/docs/MEDEINST_RESULTS.md", "w", encoding="utf-8", newline="\n").write("\n".join(L) + "\n")
+    print("wrote docs/MEDEINST_RESULTS.md")
 
 
 def write_report(rows, comps):
