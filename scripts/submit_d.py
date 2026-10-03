@@ -32,7 +32,9 @@ CODE_DIRS = ("selrm", "scripts", "k8s", "configs")
 LABELS = {"app": "selrm-d"}
 GPU = {"a40": ("nvidia.com/a40", None), "a6000": ("nvidia.com/rtxa6000", None),
        "l40": ("nvidia.com/gpu", ["NVIDIA-L40", "NVIDIA-L40S"]),
-       "a100": ("nvidia.com/a100", ["NVIDIA-A100-SXM4-80GB", "NVIDIA-A100-80GB-PCIe", "NVIDIA-A100-PCIE-40GB"])}
+       "a100": ("nvidia.com/a100", ["NVIDIA-A100-SXM4-80GB", "NVIDIA-A100-80GB-PCIe", "NVIDIA-A100-PCIE-40GB"]),
+       "24gb": ("nvidia.com/gpu", ["NVIDIA-GeForce-RTX-3090", "NVIDIA-A10", "NVIDIA-GeForce-RTX-4090", "NVIDIA-RTX-A5000"]),
+       "pro6000": ("nvidia.com/gpu", ["NVIDIA-RTX-PRO-6000-Blackwell-Max-Q-Workstation-Edition"])}
 CPU_ONLY = {"key": "feature.node.kubernetes.io/pci-10de.present", "operator": "NotIn", "values": ["true"]}
 DRIVER = {"key": "nvidia.com/cuda.driver.major", "operator": "Gt", "values": ["579"]}
 VOLS = [{"name": "pvc", "persistentVolumeClaim": {"claimName": PVC}},
@@ -80,7 +82,8 @@ def cpu_job(name, command, cpu=8, mem="32Gi", eph="80Gi", hours=2):
     return job(name, pod, hours, "cpu")
 
 
-def gpu_job(name, code, env_tag, gpu, hours, args, cpu=4, mem="40Gi", models=("/pvcb/selrm/models/unsloth--Qwen3.5-9B",)):
+def gpu_job(name, code, env_tag, gpu, hours, args, cpu=4, mem="40Gi", models=("/pvcb/selrm/models/unsloth--Qwen3.5-9B",),
+            n_gpu=1):
     resource, products = GPU[gpu]
     terms = [DRIVER] + ([{"key": "nvidia.com/gpu.product", "operator": "In", "values": products}] if products else [])
     stage = (f"set -e; tar -xf /pvc/env/selrm-d-env-{env_tag}.tar -C /opt; cp -r /pvc/code/{code} /work/code; "
@@ -96,7 +99,7 @@ def gpu_job(name, code, env_tag, gpu, hours, args, cpu=4, mem="40Gi", models=("/
                                "HF_HOME": "/work/hf", "TRITON_CACHE_DIR": "/work/triton", "VLLM_CACHE_ROOT": "/work/vllm",
                                "PYTHONPYCACHEPREFIX": "/work/pycache", "TOKENIZERS_PARALLELISM": "false",
                                "OMP_NUM_THREADS": "4", "SELRM_MODELS": "/work/models"}.items()],
-                           "resources": res(cpu, mem, "80Gi", {resource: "1"}),
+                           "resources": res(cpu * n_gpu, mem, "80Gi", {resource: str(n_gpu)}),
                            "volumeMounts": MNTS + work + [{"name": "dshm", "mountPath": "/dev/shm"}]}],
            "volumes": VOLS + [{"name": "work", "emptyDir": {}}, {"name": "env", "emptyDir": {}},
                               {"name": "dshm", "emptyDir": {"medium": "Memory", "sizeLimit": "8Gi"}}]}
@@ -126,6 +129,7 @@ def main():
     ap.add_argument("--code", default=None)
     ap.add_argument("--models", default=None, help="comma-separated dirs copied to /work/models (gpu)")
     ap.add_argument("--cpu", type=int, default=8)
+    ap.add_argument("--n-gpu", dest="n_gpu", type=int, default=1, help="GPUs per pod (e.g. 2 x 24gb with --tp 2)")
     ap.add_argument("--mem", default="32Gi")
     a, extra = ap.parse_known_args()
     if a.cmd == "pvc":
@@ -155,7 +159,7 @@ def main():
         name, args = a.rest[0], a.rest[1:] + extra
         models = a.models.split(",") if a.models is not None else ("/pvcb/selrm/models/unsloth--Qwen3.5-9B",)
         apply(gpu_job(f"selrm-d-{name}-{int(time.time()) % 100000}", a.code or sha(), a.env, a.gpu, a.hours, args,
-                      models=models))
+                      models=models, n_gpu=a.n_gpu))
     elif a.cmd == "cpu":        # a python script of the code snapshot, in the env, on a CPU node
         name, args, code = a.rest[0], a.rest[1:] + extra, a.code or sha()
         cmd = (f"set -e; tar -xf /pvc/env/selrm-d-env-{a.env}.tar -C /opt; cd /pvc/code/{code}; "
