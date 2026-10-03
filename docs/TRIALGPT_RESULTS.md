@@ -10,7 +10,7 @@ Protocol: `docs/TRIALGPT_PROTOCOL.md`. Test portion: 43 patients; N/A items repo
 | Untrained backbone, prompted ledger (frozen malformed check) | C-TG-promptledger | 15.8 [13.8, 17.7] | 30.7 [25.9, 35.7] | 0.0 | 0.5 | 46.9 | 758 of 759 | 0.2 | - / 0.0 | -20.00 |
 | Untrained backbone, prompted ledger (format-normalised readout) | C-TG-promptledger-lenient | 54.0 [51.3, 56.5] | 62.3 [58.0, 66.4] | 72.0 | 73.9 | 16.2 | 65 of 759 | 86.0 | 61.1 / 43.5 | -0.57 |
 | Verdict only x blocks, seed 0 | C-TG-verdict-blocks-s0 | 64.8 [60.3, 69.2] | 65.7 [60.7, 70.7] | 61.6 | 72.0 | 60.9 | 425 of 759 | 92.8 | - | 7.87 |
-| Verdict only x blocks, seed 2 | C-TG-verdict-blocks-s2 | not run | | | | | | | | |
+| Verdict only x blocks, seed 2 | C-TG-verdict-blocks-s2 | 68.6 [64.2, 72.9] | 69.2 [63.9, 74.0] | 68.6 | 76.0 | 61.3 | 352 of 759 | 92.0 | - | 6.56 |
 | Verdict only x triplets, seed 0 | C-TG-verdict-triplets-s0 | 70.8 [66.3, 75.3] | 71.1 [66.3, 75.8] | 72.3 | 77.7 | 62.6 | 340 of 759 | 92.8 | - | 6.89 |
 | Verdict only x triplets, seed 1 | C-TG-verdict-triplets-s1 | not run | | | | | | | | |
 | Prose summary x blocks, seed 0 | C-TG-summary2-blocks-s0 | not run | | | | | | | | |
@@ -23,6 +23,12 @@ Paired differences in macro-F1 (same items, patient bootstrap, 1,000 resamples; 
 - ledger2-triplets minus critic: 3.4 [-2.6, 9.2], p = 0.244 (759 items, 43 patients)
 - ledger2-triplets minus ledger2-blocks: -1.8 [-4.8, 1.1], p = 0.214 (759 items, 43 patients)
 
+Seeds (protocol section 8): macro-F1 per seed, mean and s.d. (n - 1):
+
+| System | macro-F1 by seed | mean | s.d. | accuracy mean | accuracy s.d. |
+|---|---|---|---|---|---|
+| verdict-blocks | s0 64.8, s2 68.6 | 66.7 | 2.7 | 67.5 | 2.4 |
+
 Threshold-source sensitivity: tau and macro-F1 with tau computed from the same model's rule_v1/dev_missing scores in an independent run (adapters: B's evaluation run of the adapter; untrained backbone: role C's rule-tier run), against the reported tau (from the system's TrialGPT development run; seeds 1+ from their own run). Evidence P / R with malformed ledgers carrying no quotes (frozen check; ledger rows):
 
 | System | run | tau reported | tau alternative | macro-F1 reported | macro-F1 at alternative tau | accuracy at alternative tau | alternative source | evidence P / R, malformed without quotes |
@@ -32,6 +38,7 @@ Threshold-source sensitivity: tau and macro-F1 with tau computed from the same m
 | Untrained backbone, prompted ledger (frozen malformed check) | C-TG-promptledger | -20.000 | - | 15.8 | - | - | not available | - / 0.0 |
 | Untrained backbone, prompted ledger (format-normalised readout) | C-TG-promptledger-lenient | -0.573 | - | 54.0 | - | - | not available | 61.1 / 43.5 |
 | Verdict only x blocks, seed 0 | C-TG-verdict-blocks-s0 | 7.872 | 7.878 | 64.8 | 64.8 | 65.7 | origin/role-b:results_git/B-F-verdict-blocks-s0 | - |
+| Verdict only x blocks, seed 2 | C-TG-verdict-blocks-s2 | 6.557 | 6.570 | 68.6 | 68.6 | 69.2 | origin/role-b:results_git/B-F-verdict-blocks-s2 | - |
 | Verdict only x triplets, seed 0 | C-TG-verdict-triplets-s0 | 6.889 | 6.744 | 70.8 | 70.9 | 71.1 | origin/role-b:results_git/B-F-verdict-triplets-s0 | - |
 | Prose summary x triplets, seed 0 | C-TG-summary2-triplets-s0 | 13.051 | 13.128 | 69.2 | 69.1 | 69.0 | origin/role-b:results_git/B-F-summary2-triplets-s0 | - |
 | Ledger x blocks, seed 0 | C-TG-ledger2-blocks-s0 | 11.071 | 11.109 | 70.9 | 70.9 | 71.8 | origin/role-b:results_git/B-F-ledger2-blocks-s0 | 60.2 / 58.2 |
@@ -46,6 +53,7 @@ By criterion type, the dataset's five category names, predictions on not-applica
 | Untrained backbone, prompted ledger (frozen malformed check) | 21.5 (280) | 11.6 (479) | 9.5 | nei 41, not_met 1 | 0.0 / 29.3 / 80.0 | 12.6 |
 | Untrained backbone, prompted ledger (format-normalised readout) | 37.9 (280) | 39.9 (479) | 43.9 | nei 4, not_met 38 | 20.0 / 66.7 / 100.0 | 12.6 |
 | Verdict only x blocks, seed 0 | 51.8 (280) | 47.1 (479) | 47.3 | nei 17, not_met 25 | 22.2 / 65.9 / 100.0 | - |
+| Verdict only x blocks, seed 2 | 56.2 (280) | 53.5 (479) | 53.9 | met 1, nei 13, not_met 28 | 30.0 / 69.2 / 100.0 | - |
 | Verdict only x triplets, seed 0 | 64.0 (280) | 62.1 (479) | 63.6 | nei 12, not_met 30 | 30.0 / 73.6 / 100.0 | - |
 | Prose summary x triplets, seed 0 | 53.4 (280) | 51.7 (479) | 52.5 | met 1, nei 13, not_met 28 | 20.0 / 70.0 / 100.0 | 1.5 |
 | Ledger x blocks, seed 0 | 61.1 (280) | 52.0 (479) | 55.8 | nei 15, not_met 27 | 33.3 / 71.4 / 100.0 | 0.0 |
