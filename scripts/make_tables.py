@@ -154,6 +154,18 @@ def run(rid):
             if os.path.exists(os.path.join(p, "DONE")):
                 RUNS[rid] = Run(rid, p)
                 break
+        r = RUNS[rid]
+        # B scores runs that finished before a set existed in eval-only runs B-NS-<set>-<run> (HANDOFFS 3 Oct):
+        # their summaries count as the run's own for the sets the run itself lacks
+        for top in (TOPS if r and not rid.startswith("B-NS-") else ()):
+            base = os.path.join(ROOT, top)
+            for d in sorted(os.listdir(base)) if os.path.isdir(base) else ():
+                if d.startswith("B-NS-") and d.endswith("-" + rid) and os.path.exists(os.path.join(base, d, "DONE")):
+                    extra = Run(d, os.path.join(base, d))
+                    for k, v in extra.summaries.items():
+                        r.summaries.setdefault(k, v)
+                    for k, v in extra.scores.items():
+                        r.scores.setdefault(k, v)
     return RUNS[rid]
 
 
@@ -296,6 +308,17 @@ def scores_of(r, set_):
     return (recs, [u[x["iid"]] for x in recs]) if recs and all(x["iid"] in u for x in recs) else (None, None)
 
 
+_XR_KNOWN = []
+
+
+def xr_known():
+    """Item ids of A's xr_v1 known issues (data/xr_v1/KNOWN_ISSUES.json; 38 items)."""
+    if not _XR_KNOWN:
+        k = load_json(os.path.join(ROOT, "data", "xr_v1", "KNOWN_ISSUES.json")) or {"issues": []}
+        _XR_KNOWN.append({i for x in k["issues"] for i in x["items"]})
+    return _XR_KNOWN[0]
+
+
 def derived(r, set_, sl, metric):
     """Statistics a summary file does not hold, computed by selrm.metrics from the run's scores:
     MR/FR at 5% false rejection (threshold from dev_missing), near-miss decisions (slice
@@ -307,6 +330,19 @@ def derived(r, set_, sl, metric):
             return None, None
         out = M.missing_rejection(mr, mu, M.mr_threshold(dr, du))
         return out[metric], [r.scores[SETS["dev_missing"]], r.scores[set_]]
+    if set_ == set_name(XR) and sl == "xa":
+        # crossed accuracy on xr_v1 (selrm.metrics.crossed_accuracy, conclusion claims): XA* on all 400 items,
+        # XA362* without A's known issues (NEXT_TASKS: both everywhere); from the run's scores, or for runs
+        # without per-claim scores (policies: saved answers, D-RL-*) from its summary in C's layout
+        ex, m = metric.startswith("XA362"), metric.replace("XA362", "XA")
+        recs, u = scores_of(r, set_)
+        if recs is not None:
+            return M.crossed_accuracy(recs, u, exclude=xr_known() if ex else ()).get(m), [r.scores[set_]]
+        fd = r.summaries.get(set_)
+        d = (fd[1].get("without_known_issues") if ex else fd[1]) if fd else None
+        if isinstance(d, dict) and isinstance(d.get(m), (int, float)):
+            return d[m], [fd[0]]
+        return None, None
     if sl.startswith("nmt:") or sl.startswith("macro:"):
         T = triplets(r, set_)
         if T is None:
@@ -680,6 +716,75 @@ def t_ladder():
 KINDS = [("thr.", "boundary"), ("neg.", "negation"), ("num.", "numeric"), ("subj.", "subject"), ("time", "time")]
 
 
+SECONDARY = r"\multicolumn{%d}{@{}l}{\emph{%s: secondary analysis, specified after the planned comparisons}}\\" + "\n"
+
+POLICY = [("Untrained policy", "D-RL-untrained"), ("Outcome (rule program)", "D-RL-outcome"),
+          ("Reference graph", "D-RL-refgraph"), ("Step check (released Med-PRM)", "D-RL-stepcheck"),
+          ("\\method{}, rule blocks", "D-RL-ledger2-blocks"), ("\\method{}, rule triplets", "D-RL-ledger2-triplets"),
+          ("Prose summary, rule triplets", "D-RL-summary2-triplets")]
+
+
+def t_policy():
+    """Policy training (GRPO; App. G and NEXT_TASKS_D item 3): held-out L2 accuracy of the final policy per case
+    kind, on base-flip pairs and on triplets (150 triplets, rule program), and crossed accuracy on xr_v1 (S4)."""
+    cols = ["Base", "Flip", "Near", "Pair", "Triplet", "XA", "XA362"]
+    rows = [(lab, {"Base": f"run/{p}/L2/top/acc_base", "Flip": f"run/{p}/L2/top/acc_flip",
+                   "Near": f"run/{p}/L2/top/acc_near", "Pair": f"run/{p}/L2/top/acc_pair",
+                   "Triplet": f"run/{p}/L2/top/acc_triplet", "XA": f"run/{p}/{XR}/xa/XA",
+                   "XA362": f"run/{p}/{XR}/xa/XA362"}) for lab, p in POLICY]
+    return rows_tex("policy", rows, cols) + SECONDARY % (len(cols) + 1, "XA columns (xr\\_v1)")
+
+
+XR_ROWS = [("Untrained critic (\\bb{})", "C-TF-critic"), ("Verdict only, blocks", "B-F-verdict-blocks"),
+           ("Verdict only, triplets", "B-F-verdict-triplets"), ("Rationale, triplets", "B-F-rationale-triplets"),
+           ("Evidence summary, blocks", "B-F-summary2-blocks"), ("Evidence summary, triplets", "B-F-summary2-triplets"),
+           ("\\ \\ judge also sees the case", "B-SC-summary2-triplets"),
+           ("\\method{}, blocks", "B-F-ledger2-blocks"), ("\\method{}, triplets", "B-F-ledger2-triplets")]
+XR_DIMS = ["window", "subject", "currency", "inclusivity"]
+
+
+def t_xr():
+    """Crossed accuracy on the rule-side items xr_v1 (A): all 400 items and without A's 38 known issues, and per
+    dimension on all items (selrm.metrics.crossed_accuracy from each run's scores; seeds pooled as means)."""
+    cols = ["XA", "XA362"] + XR_DIMS
+    rows = [(lab, {"XA": f"run/{p}/{XR}/xa/XA", "XA362": f"run/{p}/{XR}/xa/XA362"} |
+             {d: f"run/{p}/{XR}/xa/XA_{d}" for d in XR_DIMS}) for lab, p in XR_ROWS]
+    return rows_tex("xr", rows, cols)
+
+
+LOKO_KINDS = [("Other person", "subject"), ("Past", "time"), ("Threshold", "boundary"), ("Negated", "negation")]
+
+
+def t_loko():
+    """Leave one near-miss kind out (B-LOKO-<kind>-<format>): L2 triplet accuracy on the triplets of the left-out
+    kind, against the same format trained on all kinds (B-F-<format>-triplets)."""
+    cols = [c for c, _ in LOKO_KINDS]
+    rows = []
+    for lab, fmt_ in (("Verdict only", "verdict"), ("Evidence summary", "summary2"), ("\\method{}", "ledger2")):
+        rows.append(("group", lab))
+        rows.append(("\\ \\ all kinds in training", {c: runkey(f"B-F-{fmt_}-triplets", "L2", "TA", f"nm_kind={k}")
+                                                     for c, k in LOKO_KINDS}))
+        rows.append(("\\ \\ this kind left out", {c: runkey(f"B-LOKO-{k}-{fmt_}", "L2", "TA", f"nm_kind={k}")
+                                                  for c, k in LOKO_KINDS}))
+    return rows_tex("loko", rows, cols)
+
+
+CASEVIS = [("Evidence summary, blocks", "B-F-summary2-blocks", "B-SC-summary2-blocks"),
+           ("Evidence summary, triplets", "B-F-summary2-triplets", "B-SC-summary2-triplets"),
+           ("\\method{}, blocks", "B-F-ledger2-blocks", "B-SC-ledger2-blocks"),
+           ("\\method{}, triplets", "B-F-ledger2-triplets", "B-SC-ledger2-triplets")]
+
+
+def t_casevis():
+    """Two-stage systems whose judge sees the case and the record (S3; B's B-SC-* runs) next to the case-blind
+    judge: L2 triplet accuracy and crossed accuracy on xr_v1. External columns follow when C names its runs."""
+    cols = ["L2 blind", "L2 case", "XA blind", "XA case"]
+    rows = [(lab, {"L2 blind": runkey(blind, "L2", "TA"), "L2 case": runkey(case, "L2", "TA"),
+                   "XA blind": f"run/{blind}/{XR}/xa/XA", "XA case": f"run/{case}/{XR}/xa/XA"})
+            for lab, blind, case in CASEVIS]
+    return SECONDARY % (len(cols) + 1, "case-visible judge (S3)") + rows_tex("casevis", rows, cols)
+
+
 def t_kinds():
     systems = [("Verdict only, blocks", "B-F-verdict-blocks"), ("\\method{}, blocks", "B-F-ledger2-blocks"),
                ("Verdict only, triplets", "B-F-verdict-triplets"), ("\\method{}, triplets", "B-F-ledger2-triplets")]
@@ -851,7 +956,8 @@ def f_diag_kappa():
 TABLES = [("factorial", t_factorial), ("audit", t_audit), ("main", t_main), ("main-app", t_main_app),
           ("downstream", t_downstream), ("ablation", t_ablation), ("ladder", t_ladder), ("kinds", t_kinds),
           ("shortcuts", t_shortcuts), ("rules", t_rules), ("primary", t_primary), ("seeds", t_seeds),
-          ("fig-div", f_div), ("fig-seln", f_seln), ("fig-diag", f_diag_classes), ("fig-diag-kappa", f_diag_kappa)]
+          ("fig-div", f_div), ("fig-seln", f_seln), ("fig-diag", f_diag_classes), ("fig-diag-kappa", f_diag_kappa),
+          ("policy", t_policy), ("xr", t_xr), ("loko", t_loko), ("casevis", t_casevis)]
 
 
 # ---------------------------------------------------------------- main
