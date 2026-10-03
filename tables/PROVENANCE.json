@@ -1,6 +1,6 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "ea6bf16adbe225fe9ab872a61dfa9151a0327838",
+ "code_commit": "63da0ba8970a62b3f5877ece2eec06b6781496fd",
  "uncommitted_changes": true,
  "records": {
   "rule_v1/dev_missing": {
@@ -433,12 +433,12 @@
     "run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal"
    ]
   },
-  "d/run/B-F-ledger2-blocks/clin_v1:nli4ct/top/faithfulness|run/B-F-ledger2-triplets/clin_v1:nli4ct/top/faithfulness": {
+  "d/run/B-F-ledger2-blocks/clin_v1:nli4ct_test/top/faithfulness|run/B-F-ledger2-triplets/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "d": [
-    "run/B-F-ledger2-blocks/clin_v1:nli4ct/top/faithfulness",
-    "run/B-F-ledger2-triplets/clin_v1:nli4ct/top/faithfulness"
+    "run/B-F-ledger2-blocks/clin_v1:nli4ct_test/top/faithfulness",
+    "run/B-F-ledger2-triplets/clin_v1:nli4ct_test/top/faithfulness"
    ]
   },
   "d/run/B-F-ledger2-triplets/L2/all/TA/s0|run/B-F-summary2-triplets/L2/all/TA/s0": {
@@ -465,12 +465,12 @@
     "run/B-F-verdict-triplets/L2/all/TA"
    ]
   },
-  "d/run/B-F-ledger2-triplets/clin_v1:nli4ct/top/consistency|run/B-F-ledger2-blocks/clin_v1:nli4ct/top/consistency": {
+  "d/run/B-F-ledger2-triplets/clin_v1:nli4ct_test/top/consistency|run/B-F-ledger2-blocks/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "d": [
-    "run/B-F-ledger2-triplets/clin_v1:nli4ct/top/consistency",
-    "run/B-F-ledger2-blocks/clin_v1:nli4ct/top/consistency"
+    "run/B-F-ledger2-triplets/clin_v1:nli4ct_test/top/consistency",
+    "run/B-F-ledger2-blocks/clin_v1:nli4ct_test/top/consistency"
    ]
   },
   "d/run/B-F-rationale-triplets/clin_v1:medeinst_test/top/Reversal|run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal": {
@@ -2456,11 +2456,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-ledger2-balanced/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/B-F-ledger2-balanced/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -2472,19 +2472,19 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-ledger2-balanced/clin_v1:nli4ct/top/consistency": {
+  "run/B-F-ledger2-balanced/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-ledger2-balanced/clin_v1:nli4ct/top/faithfulness": {
+  "run/B-F-ledger2-balanced/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -3122,11 +3122,11 @@
     0
    ]
   },
-  "run/B-F-ledger2-blocks/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/B-F-ledger2-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -3138,19 +3138,19 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-ledger2-blocks/clin_v1:nli4ct/top/consistency": {
+  "run/B-F-ledger2-blocks/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-ledger2-blocks/clin_v1:nli4ct/top/faithfulness": {
+  "run/B-F-ledger2-blocks/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -4708,11 +4708,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-ledger2-triplets/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/B-F-ledger2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -4748,27 +4748,27 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-ledger2-triplets/clin_v1:nli4ct/top/consistency": {
+  "run/B-F-ledger2-triplets/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-ledger2-triplets/clin_v1:nli4ct/top/faithfulness": {
+  "run/B-F-ledger2-triplets/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-ledger2-triplets/clin_v1:nli4ct/top/macroF1": {
+  "run/B-F-ledger2-triplets/clin_v1:nli4ct_test/top/macroF1": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -5631,11 +5631,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-summary2-triplets/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/B-F-summary2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -5647,19 +5647,19 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-summary2-triplets/clin_v1:nli4ct/top/consistency": {
+  "run/B-F-summary2-triplets/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-summary2-triplets/clin_v1:nli4ct/top/faithfulness": {
+  "run/B-F-summary2-triplets/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -6393,11 +6393,11 @@
     0
    ]
   },
-  "run/B-F-verdict-blocks/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/B-F-verdict-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -6409,19 +6409,19 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-verdict-blocks/clin_v1:nli4ct/top/consistency": {
+  "run/B-F-verdict-blocks/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-verdict-blocks/clin_v1:nli4ct/top/faithfulness": {
+  "run/B-F-verdict-blocks/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -7194,11 +7194,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-verdict-triplets/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/B-F-verdict-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -7210,19 +7210,19 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-verdict-triplets/clin_v1:nli4ct/top/consistency": {
+  "run/B-F-verdict-triplets/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-verdict-triplets/clin_v1:nli4ct/top/faithfulness": {
+  "run/B-F-verdict-triplets/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -7583,11 +7583,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-TR-clinonly/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/B-TR-clinonly/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -7599,19 +7599,19 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-TR-clinonly/clin_v1:nli4ct/top/consistency": {
+  "run/B-TR-clinonly/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-TR-clinonly/clin_v1:nli4ct/top/faithfulness": {
+  "run/B-TR-clinonly/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -7671,11 +7671,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-TR-fover/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/B-TR-fover/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -7687,19 +7687,19 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-TR-fover/clin_v1:nli4ct/top/consistency": {
+  "run/B-TR-fover/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-TR-fover/clin_v1:nli4ct/top/faithfulness": {
+  "run/B-TR-fover/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -7759,11 +7759,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-TR-genprm/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/B-TR-genprm/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -7775,19 +7775,19 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-TR-genprm/clin_v1:nli4ct/top/consistency": {
+  "run/B-TR-genprm/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-TR-genprm/clin_v1:nli4ct/top/faithfulness": {
+  "run/B-TR-genprm/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -7847,11 +7847,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-TR-steperr/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/B-TR-steperr/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -7863,19 +7863,19 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-TR-steperr/clin_v1:nli4ct/top/consistency": {
+  "run/B-TR-steperr/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-TR-steperr/clin_v1:nli4ct/top/faithfulness": {
+  "run/B-TR-steperr/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -7935,11 +7935,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-TR-tripclin/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/B-TR-tripclin/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -7951,19 +7951,19 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-TR-tripclin/clin_v1:nli4ct/top/consistency": {
+  "run/B-TR-tripclin/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-TR-tripclin/clin_v1:nli4ct/top/faithfulness": {
+  "run/B-TR-tripclin/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8023,11 +8023,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-AUD-closed-1/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-AUD-closed-1/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8071,11 +8071,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-AUD-closed-2/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-AUD-closed-2/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8119,11 +8119,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-AUD-closed-3/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-AUD-closed-3/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8167,11 +8167,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-AUD-fover/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-AUD-fover/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8215,11 +8215,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-AUD-genprm/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-AUD-genprm/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8263,11 +8263,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-AUD-injerr/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-AUD-injerr/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8311,11 +8311,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-AUD-kimi-k3/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-AUD-kimi-k3/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8359,11 +8359,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-AUD-llama70b/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-AUD-llama70b/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8407,11 +8407,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-AUD-medprm/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-AUD-medprm/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8455,11 +8455,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-AUD-meds3/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-AUD-meds3/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8503,11 +8503,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-AUD-qwen35-27b/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-AUD-qwen35-27b/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8551,11 +8551,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-AUD-qwen35-9b/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-AUD-qwen35-9b/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8599,11 +8599,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-AUD-thinkprm/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-AUD-thinkprm/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8839,11 +8839,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-REF-closed-ledger/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-REF-closed-ledger/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8855,19 +8855,19 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-REF-closed-ledger/clin_v1:nli4ct/top/consistency": {
+  "run/C-REF-closed-ledger/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-REF-closed-ledger/clin_v1:nli4ct/top/faithfulness": {
+  "run/C-REF-closed-ledger/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8943,11 +8943,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-REF-closed-zero/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-REF-closed-zero/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8959,19 +8959,19 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-REF-closed-zero/clin_v1:nli4ct/top/consistency": {
+  "run/C-REF-closed-zero/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-REF-closed-zero/clin_v1:nli4ct/top/faithfulness": {
+  "run/C-REF-closed-zero/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -9209,11 +9209,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-TF-critic/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-TF-critic/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -9233,27 +9233,27 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-TF-critic/clin_v1:nli4ct/top/consistency": {
+  "run/C-TF-critic/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-TF-critic/clin_v1:nli4ct/top/faithfulness": {
+  "run/C-TF-critic/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-TF-critic/clin_v1:nli4ct/top/macroF1": {
+  "run/C-TF-critic/clin_v1:nli4ct_test/top/macroF1": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -9321,11 +9321,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-TF-defcorr/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-TF-defcorr/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -9337,19 +9337,19 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-TF-defcorr/clin_v1:nli4ct/top/consistency": {
+  "run/C-TF-defcorr/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-TF-defcorr/clin_v1:nli4ct/top/faithfulness": {
+  "run/C-TF-defcorr/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -9441,11 +9441,11 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-TF-promptledger/clin_v1:keypairs_medqa/top/Reversal": {
+  "run/C-TF-promptledger/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/keypairs_medqa",
+   "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
    "seeds_found": []
   },
@@ -9457,19 +9457,19 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-TF-promptledger/clin_v1:nli4ct/top/consistency": {
+  "run/C-TF-promptledger/clin_v1:nli4ct_test/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-TF-promptledger/clin_v1:nli4ct/top/faithfulness": {
+  "run/C-TF-promptledger/clin_v1:nli4ct_test/top/faithfulness": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
-   "set": "clin_v1/nli4ct",
+   "set": "clin_v1/nli4ct_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -10448,7 +10448,7 @@
    {
     "row": "\\ph{MedS$^3$ PRM}",
     "col": "Key",
-    "key": "run/C-AUD-meds3/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-AUD-meds3/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
@@ -10484,7 +10484,7 @@
    {
     "row": "\\ph{Med-PRM}",
     "col": "Key",
-    "key": "run/C-AUD-medprm/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-AUD-medprm/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
@@ -10520,7 +10520,7 @@
    {
     "row": "\\ph{FoVer PRM}",
     "col": "Key",
-    "key": "run/C-AUD-fover/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-AUD-fover/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
@@ -10556,7 +10556,7 @@
    {
     "row": "\\ph{Inj.-error PRM}",
     "col": "Key",
-    "key": "run/C-AUD-injerr/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-AUD-injerr/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
@@ -10592,7 +10592,7 @@
    {
     "row": "\\ph{ThinkPRM}",
     "col": "Key",
-    "key": "run/C-AUD-thinkprm/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-AUD-thinkprm/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
@@ -10628,7 +10628,7 @@
    {
     "row": "\\ph{GenPRM-7B}",
     "col": "Key",
-    "key": "run/C-AUD-genprm/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-AUD-genprm/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
@@ -10664,7 +10664,7 @@
    {
     "row": "\\bb{}",
     "col": "Key",
-    "key": "run/C-AUD-qwen35-9b/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-AUD-qwen35-9b/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
@@ -10700,7 +10700,7 @@
    {
     "row": "\\ph{Llama-3.3-70B}",
     "col": "Key",
-    "key": "run/C-AUD-llama70b/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-AUD-llama70b/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
@@ -10736,7 +10736,7 @@
    {
     "row": "\\ph{Qwen3.5-27B}",
     "col": "Key",
-    "key": "run/C-AUD-qwen35-27b/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-AUD-qwen35-27b/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
@@ -10772,7 +10772,7 @@
    {
     "row": "\\ph{Kimi K3}",
     "col": "Key",
-    "key": "run/C-AUD-kimi-k3/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-AUD-kimi-k3/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
@@ -10808,7 +10808,7 @@
    {
     "row": "\\ph{GPT-5.4}",
     "col": "Key",
-    "key": "run/C-AUD-closed-1/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-AUD-closed-1/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
@@ -10844,7 +10844,7 @@
    {
     "row": "\\ph{Gemini 3.1 Pro}",
     "col": "Key",
-    "key": "run/C-AUD-closed-2/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-AUD-closed-2/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
@@ -10880,7 +10880,7 @@
    {
     "row": "\\ph{Claude Opus 5.5}",
     "col": "Key",
-    "key": "run/C-AUD-closed-3/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-AUD-closed-3/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    }
   ],
@@ -11718,289 +11718,289 @@
    {
     "row": "Critic",
     "col": "Key",
-    "key": "run/C-TF-critic/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-TF-critic/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
     "row": "Critic",
     "col": "NLI-F",
-    "key": "run/C-TF-critic/clin_v1:nli4ct/top/faithfulness",
+    "key": "run/C-TF-critic/clin_v1:nli4ct_test/top/faithfulness",
     "value": "\\ph{tbd}"
    },
    {
     "row": "Critic",
     "col": "NLI-C",
-    "key": "run/C-TF-critic/clin_v1:nli4ct/top/consistency",
+    "key": "run/C-TF-critic/clin_v1:nli4ct_test/top/consistency",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ \\ + default correction",
     "col": "Key",
-    "key": "run/C-TF-defcorr/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-TF-defcorr/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ \\ + default correction",
     "col": "NLI-F",
-    "key": "run/C-TF-defcorr/clin_v1:nli4ct/top/faithfulness",
+    "key": "run/C-TF-defcorr/clin_v1:nli4ct_test/top/faithfulness",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ \\ + default correction",
     "col": "NLI-C",
-    "key": "run/C-TF-defcorr/clin_v1:nli4ct/top/consistency",
+    "key": "run/C-TF-defcorr/clin_v1:nli4ct_test/top/consistency",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ \\ + prompted ledger",
     "col": "Key",
-    "key": "run/C-TF-promptledger/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-TF-promptledger/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ \\ + prompted ledger",
     "col": "NLI-F",
-    "key": "run/C-TF-promptledger/clin_v1:nli4ct/top/faithfulness",
+    "key": "run/C-TF-promptledger/clin_v1:nli4ct_test/top/faithfulness",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ \\ + prompted ledger",
     "col": "NLI-C",
-    "key": "run/C-TF-promptledger/clin_v1:nli4ct/top/consistency",
+    "key": "run/C-TF-promptledger/clin_v1:nli4ct_test/top/consistency",
     "value": "\\ph{tbd}"
    },
    {
     "row": "Verdict only, rule blocks",
     "col": "Key",
-    "key": "run/B-F-verdict-blocks/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/B-F-verdict-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
     "row": "Verdict only, rule blocks",
     "col": "NLI-F",
-    "key": "run/B-F-verdict-blocks/clin_v1:nli4ct/top/faithfulness",
+    "key": "run/B-F-verdict-blocks/clin_v1:nli4ct_test/top/faithfulness",
     "value": "\\ph{tbd}"
    },
    {
     "row": "Verdict only, rule blocks",
     "col": "NLI-C",
-    "key": "run/B-F-verdict-blocks/clin_v1:nli4ct/top/consistency",
+    "key": "run/B-F-verdict-blocks/clin_v1:nli4ct_test/top/consistency",
     "value": "\\ph{tbd}"
    },
    {
     "row": "Verdict only, FoVer data",
     "col": "Key",
-    "key": "run/B-TR-fover/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/B-TR-fover/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
     "row": "Verdict only, FoVer data",
     "col": "NLI-F",
-    "key": "run/B-TR-fover/clin_v1:nli4ct/top/faithfulness",
+    "key": "run/B-TR-fover/clin_v1:nli4ct_test/top/faithfulness",
     "value": "\\ph{tbd}"
    },
    {
     "row": "Verdict only, FoVer data",
     "col": "NLI-C",
-    "key": "run/B-TR-fover/clin_v1:nli4ct/top/consistency",
+    "key": "run/B-TR-fover/clin_v1:nli4ct_test/top/consistency",
     "value": "\\ph{tbd}"
    },
    {
     "row": "Verdict only, rule triplets",
     "col": "Key",
-    "key": "run/B-F-verdict-triplets/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/B-F-verdict-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
     "row": "Verdict only, rule triplets",
     "col": "NLI-F",
-    "key": "run/B-F-verdict-triplets/clin_v1:nli4ct/top/faithfulness",
+    "key": "run/B-F-verdict-triplets/clin_v1:nli4ct_test/top/faithfulness",
     "value": "\\ph{tbd}"
    },
    {
     "row": "Verdict only, rule triplets",
     "col": "NLI-C",
-    "key": "run/B-F-verdict-triplets/clin_v1:nli4ct/top/consistency",
+    "key": "run/B-F-verdict-triplets/clin_v1:nli4ct_test/top/consistency",
     "value": "\\ph{tbd}"
    },
    {
     "row": "Evidence summary, rule triplets",
     "col": "Key",
-    "key": "run/B-F-summary2-triplets/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/B-F-summary2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
     "row": "Evidence summary, rule triplets",
     "col": "NLI-F",
-    "key": "run/B-F-summary2-triplets/clin_v1:nli4ct/top/faithfulness",
+    "key": "run/B-F-summary2-triplets/clin_v1:nli4ct_test/top/faithfulness",
     "value": "\\ph{tbd}"
    },
    {
     "row": "Evidence summary, rule triplets",
     "col": "NLI-C",
-    "key": "run/B-F-summary2-triplets/clin_v1:nli4ct/top/consistency",
+    "key": "run/B-F-summary2-triplets/clin_v1:nli4ct_test/top/consistency",
     "value": "\\ph{tbd}"
    },
    {
     "row": "GenPRM-style verifier, rule triplets",
     "col": "Key",
-    "key": "run/B-TR-genprm/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/B-TR-genprm/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
     "row": "GenPRM-style verifier, rule triplets",
     "col": "NLI-F",
-    "key": "run/B-TR-genprm/clin_v1:nli4ct/top/faithfulness",
+    "key": "run/B-TR-genprm/clin_v1:nli4ct_test/top/faithfulness",
     "value": "\\ph{tbd}"
    },
    {
     "row": "GenPRM-style verifier, rule triplets",
     "col": "NLI-C",
-    "key": "run/B-TR-genprm/clin_v1:nli4ct/top/consistency",
+    "key": "run/B-TR-genprm/clin_v1:nli4ct_test/top/consistency",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\method{}, rule balanced",
     "col": "Key",
-    "key": "run/B-F-ledger2-balanced/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/B-F-ledger2-balanced/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\method{}, rule balanced",
     "col": "NLI-F",
-    "key": "run/B-F-ledger2-balanced/clin_v1:nli4ct/top/faithfulness",
+    "key": "run/B-F-ledger2-balanced/clin_v1:nli4ct_test/top/faithfulness",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\method{}, rule balanced",
     "col": "NLI-C",
-    "key": "run/B-F-ledger2-balanced/clin_v1:nli4ct/top/consistency",
+    "key": "run/B-F-ledger2-balanced/clin_v1:nli4ct_test/top/consistency",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\method{}, rule blocks",
     "col": "Key",
-    "key": "run/B-F-ledger2-blocks/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/B-F-ledger2-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\method{}, rule blocks",
     "col": "NLI-F",
-    "key": "run/B-F-ledger2-blocks/clin_v1:nli4ct/top/faithfulness",
+    "key": "run/B-F-ledger2-blocks/clin_v1:nli4ct_test/top/faithfulness",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\method{}, rule blocks",
     "col": "NLI-C",
-    "key": "run/B-F-ledger2-blocks/clin_v1:nli4ct/top/consistency",
+    "key": "run/B-F-ledger2-blocks/clin_v1:nli4ct_test/top/consistency",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\textbf{\\method}, rule triplets",
     "col": "Key",
-    "key": "run/B-F-ledger2-triplets/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/B-F-ledger2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\textbf{\\method}, rule triplets",
     "col": "NLI-F",
-    "key": "run/B-F-ledger2-triplets/clin_v1:nli4ct/top/faithfulness",
+    "key": "run/B-F-ledger2-triplets/clin_v1:nli4ct_test/top/faithfulness",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\textbf{\\method}, rule triplets",
     "col": "NLI-C",
-    "key": "run/B-F-ledger2-triplets/clin_v1:nli4ct/top/consistency",
+    "key": "run/B-F-ledger2-triplets/clin_v1:nli4ct_test/top/consistency",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\method{}, rule triplets + step-error data",
     "col": "Key",
-    "key": "run/B-TR-steperr/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/B-TR-steperr/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\method{}, rule triplets + step-error data",
     "col": "NLI-F",
-    "key": "run/B-TR-steperr/clin_v1:nli4ct/top/faithfulness",
+    "key": "run/B-TR-steperr/clin_v1:nli4ct_test/top/faithfulness",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\method{}, rule triplets + step-error data",
     "col": "NLI-C",
-    "key": "run/B-TR-steperr/clin_v1:nli4ct/top/consistency",
+    "key": "run/B-TR-steperr/clin_v1:nli4ct_test/top/consistency",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\method{}, clinical pairs only",
     "col": "Key",
-    "key": "run/B-TR-clinonly/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/B-TR-clinonly/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\method{}, clinical pairs only",
     "col": "NLI-F",
-    "key": "run/B-TR-clinonly/clin_v1:nli4ct/top/faithfulness",
+    "key": "run/B-TR-clinonly/clin_v1:nli4ct_test/top/faithfulness",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\method{}, clinical pairs only",
     "col": "NLI-C",
-    "key": "run/B-TR-clinonly/clin_v1:nli4ct/top/consistency",
+    "key": "run/B-TR-clinonly/clin_v1:nli4ct_test/top/consistency",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\method{}, rule triplets + clinical pairs",
     "col": "Key",
-    "key": "run/B-TR-tripclin/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/B-TR-tripclin/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\method{}, rule triplets + clinical pairs",
     "col": "NLI-F",
-    "key": "run/B-TR-tripclin/clin_v1:nli4ct/top/faithfulness",
+    "key": "run/B-TR-tripclin/clin_v1:nli4ct_test/top/faithfulness",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\method{}, rule triplets + clinical pairs",
     "col": "NLI-C",
-    "key": "run/B-TR-tripclin/clin_v1:nli4ct/top/consistency",
+    "key": "run/B-TR-tripclin/clin_v1:nli4ct_test/top/consistency",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ph{Claude Opus 5.5}, zero-shot",
     "col": "Key",
-    "key": "run/C-REF-closed-zero/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-REF-closed-zero/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ph{Claude Opus 5.5}, zero-shot",
     "col": "NLI-F",
-    "key": "run/C-REF-closed-zero/clin_v1:nli4ct/top/faithfulness",
+    "key": "run/C-REF-closed-zero/clin_v1:nli4ct_test/top/faithfulness",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ph{Claude Opus 5.5}, zero-shot",
     "col": "NLI-C",
-    "key": "run/C-REF-closed-zero/clin_v1:nli4ct/top/consistency",
+    "key": "run/C-REF-closed-zero/clin_v1:nli4ct_test/top/consistency",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ph{Claude Opus 5.5}, prompted ledger",
     "col": "Key",
-    "key": "run/C-REF-closed-ledger/clin_v1:keypairs_medqa/top/Reversal",
+    "key": "run/C-REF-closed-ledger/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ph{Claude Opus 5.5}, prompted ledger",
     "col": "NLI-F",
-    "key": "run/C-REF-closed-ledger/clin_v1:nli4ct/top/faithfulness",
+    "key": "run/C-REF-closed-ledger/clin_v1:nli4ct_test/top/faithfulness",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ph{Claude Opus 5.5}, prompted ledger",
     "col": "NLI-C",
-    "key": "run/C-REF-closed-ledger/clin_v1:nli4ct/top/consistency",
+    "key": "run/C-REF-closed-ledger/clin_v1:nli4ct_test/top/consistency",
     "value": "\\ph{tbd}"
    }
   ],

@@ -947,7 +947,7 @@ with MedEinst pair labels rises from \res{run/C-TF-critic/clin_v1:medeinst_test/
 MedPRMBench step-error data to the adapter adds \res{d/run/B-TR-steperr/clin_v1:medeinst_test/top/Reversal|run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal} points, which is
 medical supervision and not transfer. Near-misses buy holding at a small price
 in reversal: against the blocks model, the triplets model loses \res{d/run/B-F-ledger2-blocks/clin_v1:medeinst_test/top/Reversal|run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal}
-points on MedEinst and \res{d/run/B-F-ledger2-blocks/clin_v1:nli4ct/top/faithfulness|run/B-F-ledger2-triplets/clin_v1:nli4ct/top/faithfulness} of NLI4CT-P faithfulness and gains \res{d/run/B-F-ledger2-triplets/clin_v1:nli4ct/top/consistency|run/B-F-ledger2-blocks/clin_v1:nli4ct/top/consistency} of
+points on MedEinst and \res{d/run/B-F-ledger2-blocks/clin_v1:nli4ct_test/top/faithfulness|run/B-F-ledger2-triplets/clin_v1:nli4ct_test/top/faithfulness} of NLI4CT-P faithfulness and gains \res{d/run/B-F-ledger2-triplets/clin_v1:nli4ct_test/top/consistency|run/B-F-ledger2-blocks/clin_v1:nli4ct_test/top/consistency} of
 consistency. Trained on clinical pairs, the model reaches \ph{66.8}\% on
 MedEinst; this is in-distribution, and with diseases held out it is
 \ph{58.9}\% (Appendix~\ref{app:qa}).
@@ -1616,7 +1616,7 @@ Extraction + hand-written program & -- & -- & --\\
 \end{table}
 
 \paragraph{NLI4CT-P.}
-Base macro-F1 is \res{run/C-TF-critic/clin_v1:nli4ct/top/macroF1} for the critic and \res{run/B-F-ledger2-triplets/clin_v1:nli4ct/top/macroF1} for rule-only
+Base macro-F1 is \res{run/C-TF-critic/clin_v1:nli4ct_test/top/macroF1} for the critic and \res{run/B-F-ledger2-triplets/clin_v1:nli4ct_test/top/macroF1} for rule-only
 \method{}; joint correctness over an original statement and all its
 interventions is \ph{38.5}\% and \ph{47.9}\%. Faithfulness and consistency follow the task definitions; pairs
 that share an original statement are resampled together.

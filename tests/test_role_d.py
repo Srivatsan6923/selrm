@@ -30,12 +30,11 @@ def test_selection(tmp_path):
     # sample 0 wrong everywhere, sample 1 right; sample 2 ineligible
     ss = [{"qid": f"q{i}", "sample": k, "final": "B" if k == 0 else "A", "eligible": k != 2, "steps": ["x"]}
           for i in range(4) for k in range(3)]
-    write_pool(tmp_path / "pools" / "medqa_test", qs, ss)
-    write_pool(tmp_path / "pools" / "medqa_dev", qs, ss)
-    for pool in ("medqa_test", "medqa_dev"):
+    for pool in ("medqa_test", "medqa_dev", "medqa_kp"):
+        write_pool(tmp_path / "pools" / pool, qs, ss)
         json.dump({"n_questions": 4, "n_samples": 12, "ineligible_share": 0.3333},
                   open(tmp_path / "pools" / pool / "MANIFEST.json", "w"))
-    for pool in ("medqa_test", "medqa_dev"):
+    for pool in ("medqa_test", "medqa_dev", "medqa_kp"):
         d = tmp_path / "scores" / pool
         os.makedirs(d, exist_ok=True)
         for n, good in (("medprm", 1), ("ledger2-triplets", 0), ("ledger2-blocks", 1)):
@@ -51,6 +50,14 @@ def test_selection(tmp_path):
     # the ledger scorer prefers the wrong sample; the minimum with a good step check still picks right
     assert acc == {"D-SEL-single": 0.0, "D-SEL-oracle": 100.0, "D-SEL-stepcheck": 100.0,
                    "D-SEL-ledger": 0.0, "D-SEL-combined": 100.0}, acc
+    se.PAIRS, se.KPQ = [("q0", "q1"), ("q2", "q3")], {"q0"}   # key-pair pool; q0 leaves the calibration set
+    sys.argv[-1] = "medqa_kp"
+    se.main()
+    kp = {r: json.load(open(tmp_path / "res" / r / "summary_sel~keypairs.json"))["pair_acc"]
+          for r in ("D-SEL-single", "D-SEL-combined")}
+    assert kp == {"D-SEL-single": 0.0, "D-SEL-combined": 100.0}, kp
+    cal = json.load(open(tmp_path / "res" / "D-CAL" / "summary.json"))
+    assert (cal["excluded_keypair_questions"], cal["n_traces"]) == (1, 6), cal
     se2 = load("select_eval")
     assert se2.keypair_acc([("a", "b"), ("c", "d"), ("e", "z")], {"a": 1, "b": 1, "c": 1, "d": 0, "e": 1}) == (50.0, 2)
     qs2 = {f"m-{c}-{t}": {"meta": {"case_id": c, "case_type": t}} for c in ("x", "y") for t in ("control", "trap")}

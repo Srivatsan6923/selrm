@@ -5,10 +5,10 @@ r"""Candidate pools for answer selection (D-POOL-*; Table 5, Fig. 3 right).
 A frozen policy (configs/datasets_d.json "policy") samples chains of thought with
 numbered steps and a final line "Final answer: <letter>" for every question of a pinned
 dataset. Pools are nested: every question gets N = 16 samples; for the selection-pressure
-curve, `--extend QIDS.json` later adds samples 16-63 for the questions of the MedQA key
-pairs (Fig. 3 right plots key-pair accuracy; the pairs come from C), with their own seeds,
-in samples_ext.jsonl; samples 0-15 stay the 16-sample pool, so every selector and every N
-sees identical candidates. A sample is eligible if it has a final answer among the options;
+curve, `--extend all` later adds samples 16-63 to the pool medqa_kp (the questions of C's
+MedQA key pairs, configs/keypairs_d.json; Fig. 3 right plots key-pair accuracy), with their
+own seeds, in samples_ext.jsonl; samples 0-15 stay the 16-sample pool, so every selector and
+every N sees identical candidates. A sample is eligible if it has a final answer among the options;
 the share that is not is reported.
 
 Output (one directory per pool): questions.jsonl {qid, question, options{letter: text},
@@ -41,8 +41,11 @@ PROMPT = ("Answer the following medical exam question. Reason step by step in nu
 SAMPLING = {"temperature": 0.7, "top_p": 0.95, "max_tokens": 1536, "stop_token_ids": [248046, 248044]}
 POOLS = {   # name: (dataset key in configs/datasets_d.json, first rows, N, subset size with 64 samples,
            #        random sample of questions)
-    "medqa_test": ("medqa_test", None, 16, 0, 0),     # + 48 samples for the key-pair questions (--extend)
+    "medqa_test": ("medqa_test", None, 16, 0, 0),
     "medqa_dev": ("medqa_dev", 500, 16, 0, 0),       # calibration pool (D-CAL); first 500 questions
+    # the 714 questions of C's MedQA key pairs (configs/keypairs_d.json; test and validation rows);
+    # + 48 samples each for the selection-pressure curve (--extend all)
+    "medqa_kp": (("medqa_test", "medqa_dev"), None, 16, 0, 0),
     "careqa_en": ("careqa_en", None, 16, 0, 1000),   # a fixed random 1,000 of 5,621 (scoring cost; DECISIONS_D)
     "medeinst_test": ("medeinst_test", None, 16, 0, 0),   # a fixed random 500 pairs, control + trap (questions())
 }
@@ -121,8 +124,8 @@ def main():
     ap.add_argument("--model", help="local snapshot of the policy (default: download the pinned revision)")
     ap.add_argument("--limit", type=int, default=0, help="first k questions only (smoke test)")
     ap.add_argument("--tp", type=int, default=1)
-    ap.add_argument("--extend", help="JSON list of qids: add samples 16-63 for them (selection pressure); "
-                                     "written to samples_ext.jsonl, the 16-sample pool is not touched")
+    ap.add_argument("--extend", help="'all' or a JSON list of qids: add samples 16-63 for them (selection "
+                                     "pressure); written to samples_ext.jsonl, the 16-sample pool is not touched")
     a = ap.parse_args()
     key, rows, n, _, n_sample = POOLS[a.pool]
     out = os.path.join(a.out, a.pool + (f"_limit{a.limit}" if a.limit else ""))
@@ -131,7 +134,12 @@ def main():
         print("exists:", out, done)
         return
     os.makedirs(out, exist_ok=True)
-    qs = questions(key, rows)
+    if isinstance(key, tuple):   # medqa_kp: the key-pair questions of both files
+        kp = {x for p in json.load(open(os.path.join(ROOT, "configs", "keypairs_d.json"), encoding="utf-8"))["pairs"]
+              for x in p}
+        qs = [q for k in key for q in questions(k, rows) if q["qid"] in kp]
+    else:
+        qs = questions(key, rows)
     if n_sample:
         keep = set(random.Random(f"pool-sample-v1.{a.pool}").sample([q["qid"] for q in qs], n_sample))
         qs = [q for q in qs if q["qid"] in keep]
@@ -140,8 +148,9 @@ def main():
     if a.extend:                 # the base pool must exist; extra samples get their own seeds
         if not os.path.exists(os.path.join(out, "DONE")):
             sys.exit("extend: the 16-sample pool is not finished")
-        want = set(json.load(open(a.extend, encoding="utf-8")))
-        qs = [q for q in qs if q["qid"] in want]
+        if a.extend != "all":
+            want = set(json.load(open(a.extend, encoding="utf-8")))
+            qs = [q for q in qs if q["qid"] in want]
         sub = {q["qid"] for q in qs}
 
     import torch
@@ -180,7 +189,7 @@ def main():
                                      "final": final, "eligible": ok, "n_tokens": len(o.token_ids),
                                      "finish": o.finish_reason}) + "\n")
                 n_s, n_el, n_tok = n_s + 1, n_el + ok, n_tok + len(o.token_ids)
-    man = {"pool": a.pool, "dataset": CFG[key], "policy": pol, "model_path": model, "prompt": PROMPT,
+    man = {"pool": a.pool, "dataset": [CFG[k] for k in key] if isinstance(key, tuple) else CFG[key], "policy": pol, "model_path": model, "prompt": PROMPT,
            "chat_template": "tokenizer.apply_chat_template(enable_thinking=False)", "sampling": SAMPLING,
            "n_per_question": 64 - n if a.extend else n, "extension_of": "samples 0-15" if a.extend else None,
            "seed_rule": "sha256(pool|qid" + ("|ext64" if a.extend else "") + ")[:8] per question",

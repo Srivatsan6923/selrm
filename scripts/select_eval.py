@@ -22,8 +22,10 @@ Ineligible samples (no final answer) are never selected; a question with none co
 Ties in a score -> the earliest sample. Every selection is deterministic.
 Outputs: results/D-SEL-<name>/scores_sel~<set>.jsonl {qid, sample, answer, correct} and
 summary_sel~<set>.json, set = sel/medqa, sel/careqa, sel/medeinst (+ control_acc, trap_acc, pair_acc)
-and sel/keypairs (pair_acc: both questions of a MedQA key pair right; pairs from C, --keypairs);
-results/D-CAL/summary.json (temperatures, combination weights, dev likelihoods);
+and sel/keypairs (pool medqa_kp; pair_acc: both questions of a MedQA key pair right; the pairs are
+C's clin_v1/keypairs_medqa_oneway, configs/keypairs_d.json);
+results/D-CAL/summary.json (temperatures, combination weights, dev likelihoods; key-pair questions
+are left out of the dev pool);
 results/D-SELN/summary_sel~keypairs.json (slices selector=<name> with N1..N64: key-pair accuracy
 among the first N samples of the key-pair questions extended to 64 samples).
 Intervals and paired tests come from selrm.metrics (C) once it has an item-level bootstrap.
@@ -41,7 +43,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEV = "medqa_dev"
 
 
-POOL_SET = {"medqa_test": "medqa", "careqa_en": "careqa", "medeinst_test": "medeinst"}   # set sel/<name>
+POOL_SET = {"medqa_test": "medqa", "careqa_en": "careqa", "medeinst_test": "medeinst",
+            "medqa_kp": "keypairs"}   # set sel/<name>
+PAIRS = [tuple(p) for p in json.load(open(os.path.join(ROOT, "configs", "keypairs_d.json"), encoding="utf-8"))["pairs"]]
+KPQ = {q for p in PAIRS for q in p}
 
 
 def load_pool(d):
@@ -126,7 +131,9 @@ def calibrate(pools, scores_dir):
     cal = {"pool": DEV, "temperatures": {}, "nll": {}}
     sc = {n: load_scores(os.path.join(scores_dir, DEV, f"{n}.jsonl")) for n in
           ("medprm", "ledger2-triplets", "ledger2-blocks")}
-    rows = [(qid, k, s["final"] == qs[qid]["answer"]) for qid, ss in by_q.items() for k, s in ss.items() if s["eligible"]]
+    # questions of a key pair are test items (validation rows of C's key pairs): never calibrated on
+    rows = [(qid, k, s["final"] == qs[qid]["answer"]) for qid, ss in by_q.items() if qid not in KPQ
+            for k, s in ss.items() if s["eligible"]]
     for n, s in sc.items():
         if s:
             pts = [(s[(q, k)], y) for q, k, y in rows if s.get((q, k)) is not None]
@@ -137,6 +144,7 @@ def calibrate(pools, scores_dir):
                    if sc[led].get((q, k)) is not None and sc["medprm"].get((q, k)) is not None]
             cal[f"logistic:{led}"], cal[f"nll:logistic:{led}"] = fit_logistic(*zip(*pts))
     cal["n_traces"] = len(rows)
+    cal["n_questions"], cal["excluded_keypair_questions"] = len(set(by_q) - KPQ), len(set(by_q) & KPQ)
     return cal
 
 
@@ -216,14 +224,12 @@ def main():
     ap.add_argument("--scores", required=True)
     ap.add_argument("--out", default=os.path.join(ROOT, "results"))
     ap.add_argument("--pool", action="append", default=None)
-    ap.add_argument("--keypairs", help="C's MedQA key pairs: JSON list of [row_a, row_b] (rows of the MedQA test file)")
     a = ap.parse_args()
     cal = calibrate(a.pools, a.scores)
     os.makedirs(os.path.join(a.out, "D-CAL"), exist_ok=True)
     json.dump(cal, open(os.path.join(a.out, "D-CAL", "summary.json"), "w", encoding="utf-8", newline="\n"), indent=1)
     open(os.path.join(a.out, "D-CAL", "DONE"), "w").close()
-    pairs = [(f"medqa_test-{x:05d}", f"medqa_test-{y:05d}") for x, y in json.load(open(a.keypairs))] if a.keypairs else []
-    for pool in a.pool or ("medqa_test", "careqa_en", "medeinst_test"):
+    for pool in a.pool or ("medqa_test", "careqa_en", "medeinst_test", "medqa_kp"):
         if not os.path.exists(os.path.join(a.pools, pool, "DONE")):
             continue
         qs, by_q = load_pool(os.path.join(a.pools, pool))
@@ -241,15 +247,13 @@ def main():
         for name, fn in sel.items():
             rows = select(name, fn, qs, by_q, 16)
             extra = {"N": 16} | (pair_metrics(qs, rows) if pool == "medeinst_test" else {})
+            if pool == "medqa_kp":
+                extra |= dict(zip(("pair_acc", "n_pairs"), keypair_acc(PAIRS, {r["qid"]: r["correct"] for r in rows})))
             s = write(a.out, f"D-SEL-{name}", POOL_SET[pool], rows, extra)
             print(pool, name, round(s["acc"], 1), {k: v for k, v in extra.items() if k.endswith("acc")})
-            if pool == "medqa_test" and pairs:
-                acc, n_pairs = keypair_acc(pairs, {r["qid"]: r["correct"] for r in rows})
-                write(a.out, f"D-SEL-{name}", "keypairs", [r for r in rows if any(r["qid"] in p for p in pairs)],
-                      {"N": 16, "pair_acc": acc, "n_pairs": n_pairs})
         ext = {q for q, ss in by_q.items() if len(ss) >= 64}
-        if pool == "medqa_test" and pairs and ext:   # selection pressure on the key-pair questions with 64 samples
-            kp = [(x, y) for x, y in pairs if x in ext and y in ext]
+        if pool == "medqa_kp" and ext:   # selection pressure on the key-pair questions with 64 samples
+            kp = [(x, y) for x, y in PAIRS if x in ext and y in ext]
             curve = {}
             for name in ("combined", "stepcheck", "oracle", "ledger", "selfcons"):
                 if name in sel:

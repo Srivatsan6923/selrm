@@ -55,8 +55,10 @@ SETS = {"L2": "rule_v1/test_L2", "dev": "rule_v1/dev", "L0": "rule_v1/test_L0", 
         "f2L2": "rule_v1_fold2/test_L2", "f3L2": "rule_v1_fold3/test_L2"}
 # Sets other roles have not published yet (names to be confirmed when they register them).
 XR, CHALLENGE, REWRITE, EC = "xr_v1:test", "challenge_v1:test", "rewrite_v1:test", "ec_v1:test"
-MEDEINST, KEY_MQA, KEY_CQA, NLI, TRIALGPT = ("clin_v1:medeinst_test", "clin_v1:keypairs_medqa",
-                                             "clin_v1:keypairs_careqa", "clin_v1:nli4ct", "clin_v1:trialgpt_test")
+# Key pairs: C's one-directional sets (DECISIONS_D 3 Oct; the v13 definition yields 13 and 3 pairs).
+MEDEINST, KEY_MQA, KEY_CQA, NLI, TRIALGPT = ("clin_v1:medeinst_test", "clin_v1:keypairs_medqa_oneway",
+                                             "clin_v1:keypairs_careqa_oneway", "clin_v1:nli4ct_test",
+                                             "clin_v1:trialgpt_test")
 
 
 def tg(prefix):
@@ -68,8 +70,10 @@ def tg(prefix):
 
 
 # C scores the clinical sets of every system under its own mirrored runs (HANDOFFS 3 Oct):
-# MedEinst C-ME-<x>[-s<k>], TrialGPT C-TG-<x>[-s<k>], for systems B-F-<x> and C-TF-<x>.
-CLINICAL_RUNS = {"clin_v1/medeinst_test": "C-ME-", "clin_v1/trialgpt_test": "C-TG-"}
+# MedEinst C-ME-<x>[-s<k>], TrialGPT C-TG-<x>[-s<k>], key pairs C-KP-<x>[-s<k>], NLI4CT-P C-NL-<x>[-s<k>],
+# for systems B-F-<x> and C-TF-<x>.
+CLINICAL_RUNS = {"clin_v1/medeinst_test": "C-ME-", "clin_v1/trialgpt_test": "C-TG-", "clin_v1/nli4ct_test": "C-NL-"} | {
+    f"clin_v1/keypairs_{k}": "C-KP-" for k in ("medqa", "careqa", "medqa_oneway", "careqa_oneway")}
 
 
 def clinical_alias(prefix, set_):

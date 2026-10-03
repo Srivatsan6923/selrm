@@ -32,7 +32,8 @@ Sets: `L2 dev L0 L1 L3alt L3inv hard missing dev_missing readapply f2L2 f3L2` = 
 | Crossed accuracy (xr_v1) | any | `summary_xr_v1~test.json` top-level `XA`, `n_items` |
 | Registered criteria | any | `summary_ec_v1~test.json` (rule-tier format) |
 | MedEinst | the system's own run id | `summary_clin_v1~medeinst_test.json` top-level `Reversal`, `control_acc`, `trap_acc`, `n_pairs`, `CI95` |
-| Key pairs | system run id | `summary_clin_v1~keypairs_medqa.json` (and `_careqa`) top-level `Reversal` |
+| Key pairs | C-KP-<x>[-s<k>] (B-F-<x> and C-TF-<x> map there; C-AUD-* hold their own) | `summary_clin_v1~keypairs_medqa_oneway.json` (and `_careqa_oneway`; the tables use these, DECISIONS_D 3 Oct) top-level `Reversal` |
+| NLI4CT-P | C-NL-<x>[-s<k>] (B-F-<x> and C-TF-<x> map there) | `summary_clin_v1~nli4ct_test.json` top-level `macroF1`, `faithfulness`, `consistency` |
 | NLI4CT-P | system run id | `summary_clin_v1~nli4ct.json` top-level `macroF1`, `faithfulness`, `consistency` |
 | TrialGPT | C-TG-<x> (C scores system B-F-<x> / C-TF-<x>) | `summary_clin_v1~trialgpt_test.json` top-level `macroF1`, `acc`, `macroF1_CI95`, `per_class`; nested `evidence` {`precision`, `recall`} (key slice `evidence`); a variant file `summary_clin_v1~trialgpt_test~lenient.json` is read as set `clin_v1/trialgpt_test/lenient` |
 | Selection (D) | D-SEL-* | `summary_sel~{medqa,careqa,keypairs,medeinst}.json` top-level `acc`, `pair_acc`, `control_acc`, `trap_acc`, `n` |
