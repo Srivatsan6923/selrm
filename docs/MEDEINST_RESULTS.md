@@ -15,7 +15,9 @@ Validation of the release as its authors report it (MedEinst paper, Sec. 3.4, ch
 | C-AUD-meds3--p3 | 25.1 [24.0, 26.2] | [18.1, 32.4] | 79.1 | 44.2 | 68.3 | 0.0 | 25.5 | 25.3 |
 | C-ME-critic | 24.2 [23.0, 25.4] | [14.4, 35.6] | 71.8 | 51.6 | 66.3 | 0.0 | 24.6 | 24.3 |
 | C-ME-defcorr | 24.7 [23.5, 25.8] | [15.3, 36.2] | 70.4 | 53.3 | 64.9 | 0.0 | 25.1 | 24.7 |
+| C-ME-ledger2-blocks-s0 | 21.8 [20.7, 22.9] | [12.8, 32.7] | 49.5 | 39.6 | 44.0 | 42.1 | 22.2 | 21.9 |
 | C-ME-ledger2-triplets-s0 | 15.7 [14.7, 16.7] | [8.7, 25.2] | 44.4 | 35.1 | 48.7 | 48.2 | 16.0 | 15.8 |
+| C-ME-ledger2-triplets-s0-lenient (POST HOC re-read with the format-normalised readout; not a primary row) | 20.9 [19.9, 22.0] | [13.1, 30.8] | 56.4 | 45.6 | 52.1 | 24.7 | 21.3 | 20.9 |
 | C-ME-summary2-blocks-s0 | 22.8 [21.5, 24.0] | [13.3, 34.6] | 61.6 | 56.1 | 63.0 | 0.0 | 23.1 | 22.8 |
 | C-ME-summary2-triplets-s0 | 25.1 [23.9, 26.2] | [15.1, 36.6] | 73.2 | 47.3 | 65.7 | 0.0 | 25.5 | 25.3 |
 | C-ME-verdict-blocks-s0 | 20.5 [19.3, 21.6] | [12.9, 30.9] | 68.3 | 51.8 | 70.0 | 0.0 | 20.8 | 20.5 |
@@ -23,7 +25,7 @@ Validation of the release as its authors report it (MedEinst paper, Sec. 3.4, ch
 | C-ME-verdict-triplets-s0 | 22.8 [21.7, 24.0] | [14.6, 33.3] | 69.5 | 52.9 | 67.2 | 0.0 | 23.2 | 22.8 |
 | C-ME-verdict-triplets-s1 | 18.7 [17.6, 19.8] | [11.5, 29.7] | 67.6 | 50.8 | 72.3 | 0.0 | 19.0 | 18.9 |
 
-Paired differences in Reversal (same pairs, bootstrap over pairs, 1,000 resamples):
+Planned comparisons (4), (5): paired differences in Reversal on the same pairs, 1,000 resamples; clusters = pairs, and = (y_gt, y_bias) label pairs (the interval for inference):
 
-- ledger2-triplets-s0 minus critic: -8.5 [-9.8, -7.0], p = 0.000 (5383 pairs)
-- ledger2-triplets-s0 minus summary2-triplets-s0: -9.4 [-10.7, -8.1], p = 0.000 (5383 pairs)
+- ledger2-triplets-s0 minus critic: -8.5; pairs [-9.8, -7.0], p = 0.000; label pairs [-20.1, 1.7], p = 0.104 (5383 pairs, 134 label pairs)
+- ledger2-triplets-s0 minus summary2-triplets-s0: -9.4; pairs [-10.7, -8.1], p = 0.000; label pairs [-19.5, -0.8], p = 0.026 (5383 pairs, 134 label pairs)

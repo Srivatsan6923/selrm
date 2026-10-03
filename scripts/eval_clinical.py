@@ -28,6 +28,7 @@ SYSTEMS = [  # (name in run ids, row label, format). Test runs: C-TG-<name> for 
     ("summary2-triplets", "Prose summary x triplets", "summary2"),
     ("ledger2-blocks", "Ledger x blocks", "ledger2"),
     ("ledger2-triplets", "Ledger x triplets", "ledger2"),
+    ("sc-summary2-triplets", "Summary x triplets, judge sees the case (secondary analysis S3)", "summary2"),
 ]
 UNTRAINED = ("critic", "promptsum", "promptledger", "promptledger-lenient")
 MALFORMED_U = -20.0     # INTERFACES 3: a malformed ledger scores -20 on both claims
@@ -289,6 +290,7 @@ def main():
 # ---------------------------------------------------------------- MedEinst
 
 ME_SET = "clin_v1/medeinst_test"
+ME_POST_HOC = {"C-ME-ledger2-triplets-s0-lenient"}   # decided after the primary result (DECISIONS_C 3 Oct)
 ME_COMPARISONS = [("ledger2-triplets-s0", "critic"), ("ledger2-triplets-s0", "summary2-triplets-s0")]   # plan (4), (5)
 
 
@@ -422,14 +424,18 @@ def medeinst(a):
          "| run | Reversal [95% CI pairs] | CI label pairs | control acc | trap acc | bias-trap rate | ties | excl. no-diff | excl. overlap |",
          "|---|---|---|---|---|---|---|---|---|"]
     for d, s in rows:
-        L.append(f"| {d} | {s['Reversal']:.1f} [{s['CI95'][0]:.1f}, {s['CI95'][1]:.1f}] | [{s['CI95_label_pairs'][0]:.1f}, "
+        tag = " (POST HOC re-read with the format-normalised readout; not a primary row)" if d in ME_POST_HOC else \
+              " (secondary analysis S3: judge sees the case)" if d.startswith("C-ME-sc-") else ""
+        L.append(f"| {d}{tag} | {s['Reversal']:.1f} [{s['CI95'][0]:.1f}, {s['CI95'][1]:.1f}] | [{s['CI95_label_pairs'][0]:.1f}, "
                  f"{s['CI95_label_pairs'][1]:.1f}] | {s['control_acc']:.1f} | {s['trap_acc']:.1f} | "
                  f"{fmt_num(s['bias_trap_rate'])} | {s['tie_rate']:.1f} | {s['Reversal_excl_no_content_diff']:.1f} | "
                  f"{s['Reversal_excl_overlap_ref']:.1f} |")
     if comps:
-        L += ["", "Paired differences in Reversal (same pairs, bootstrap over pairs, 1,000 resamples):", ""]
-        L += [f"- {x} minus {y}: {r['diff']:.1f} [{r['lo']:.1f}, {r['hi']:.1f}], p = {r['p']:.3f} ({r['n_items']} pairs)"
-              for x, y, r in comps]
+        L += ["", "Planned comparisons (4), (5): paired differences in Reversal on the same pairs, 1,000 resamples; "
+                  "clusters = pairs, and = (y_gt, y_bias) label pairs (the interval for inference):", ""]
+        L += [f"- {x} minus {y}: {r['diff']:.1f}; pairs [{r['lo']:.1f}, {r['hi']:.1f}], p = {r['p']:.3f}; label pairs "
+              f"[{r['label_pairs']['lo']:.1f}, {r['label_pairs']['hi']:.1f}], p = {r['label_pairs']['p']:.3f} "
+              f"({r['n_items']} pairs, {r['label_pairs']['n_clusters']} label pairs)" for x, y, r in comps]
     open(f"{REPO}/docs/MEDEINST_RESULTS.md", "w", encoding="utf-8", newline="\n").write("\n".join(L) + "\n")
     print("wrote docs/MEDEINST_RESULTS.md")
 

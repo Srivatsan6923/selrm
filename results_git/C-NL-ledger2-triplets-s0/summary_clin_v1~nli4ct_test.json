@@ -1,0 +1,33 @@
+{
+ "run_id": "C-NL-ledger2-triplets-s0",
+ "set": "clin_v1/nli4ct_test",
+ "prediction_rule": "Entailment iff u > 0",
+ "macroF1": 0.627391247379455,
+ "faithfulness": 0.8495370370370371,
+ "consistency": 0.7429883945841392,
+ "Control_F1": 0.5707547169811321,
+ "Control_macroF1": 0.627391247379455,
+ "Contrast_F1": 0.47481531229012763,
+ "Faithfulness": 0.8495370370370371,
+ "Consistency": 0.7429883945841392,
+ "Consistency_acc": 0.6532882011605415,
+ "n_control": 500,
+ "n_altering": 864,
+ "n_preserving": 4136,
+ "acc_Contradiction": 0.8246666666666667,
+ "acc_Numerical_contradiction": 0.9021739130434783,
+ "acc_Numerical_paraphrase": 0.625,
+ "acc_Paraphrase": 0.6273333333333333,
+ "acc_Text_appended": 0.5793333333333334,
+ "Average": 0.7210933828674362,
+ "eval": {
+  "reader_units": 5500,
+  "malformed_units": 1282,
+  "mode": null,
+  "malformed_rate": 0.2331,
+  "gen_not_stopped": 56,
+  "seconds": 9841.2,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

@@ -17,6 +17,7 @@ Protocol: `docs/TRIALGPT_PROTOCOL.md`. Test portion: 43 patients; N/A items repo
 | Prose summary x triplets, seed 0 | C-TG-summary2-triplets-s0 | 69.2 [65.1, 72.9] | 69.0 [64.2, 73.3] | 78.1 | 75.7 | 53.8 | 259 of 759 | 87.5 | 61.4 / 60.5 | 13.05 |
 | Ledger x blocks, seed 0 | C-TG-ledger2-blocks-s0 | 70.9 [66.7, 74.6] | 71.8 [67.3, 75.9] | 71.8 | 79.1 | 61.7 | 296 of 759 | 85.8 | 57.8 / 61.8 | 11.07 |
 | Ledger x triplets, seed 0 | C-TG-ledger2-triplets-s0 | 69.1 [64.3, 73.5] | 70.6 [65.5, 75.3] | 67.0 | 79.1 | 61.2 | 330 of 759 | 87.7 | 55.6 / 67.9 | 14.70 |
+| Summary x triplets, judge sees the case (secondary analysis S3), seed 0 | C-TG-sc-summary2-triplets-s0 | not run | | | | | | | | |
 
 Paired differences in macro-F1 (same items, patient bootstrap, 1,000 resamples; comparison (6) of the analysis plan; Holm across the primary comparisons is applied by the lead):
 
@@ -37,7 +38,7 @@ Threshold-source sensitivity: tau and macro-F1 with tau computed from the same m
 | Untrained backbone, verdict (critic) | C-TG-critic | -0.359 | -0.352 | 65.7 | 65.7 | 70.4 | results_git/C-TF-critic | - |
 | Untrained backbone, prompted summary | C-TG-promptsum | -0.195 | -0.147 | 68.0 | 68.6 | 71.5 | results_git/C-TF-promptsum--p1 | - |
 | Untrained backbone, prompted ledger (frozen malformed check) | C-TG-promptledger | -20.000 | -20.000 | 15.8 | 15.8 | 30.7 | results_git/C-TF-promptledger--p1 | - / 0.0 |
-| Untrained backbone, prompted ledger (format-normalised readout) | C-TG-promptledger-lenient | -0.573 | - | 54.0 | - | - | not available | 61.1 / 43.5 |
+| Untrained backbone, prompted ledger (format-normalised readout) | C-TG-promptledger-lenient | -0.573 | -0.614 | 54.0 | 53.9 | 62.5 | results_git/C-TF-promptledger-lenient--p1 | 61.1 / 43.5 |
 | Verdict only x blocks, seed 0 | C-TG-verdict-blocks-s0 | 7.872 | 7.878 | 64.8 | 64.8 | 65.7 | origin/role-b:results_git/B-F-verdict-blocks-s0 | - |
 | Verdict only x blocks, seed 2 | C-TG-verdict-blocks-s2 | 6.557 | 6.570 | 68.6 | 68.6 | 69.2 | origin/role-b:results_git/B-F-verdict-blocks-s2 | - |
 | Verdict only x triplets, seed 0 | C-TG-verdict-triplets-s0 | 6.889 | 6.744 | 70.8 | 70.9 | 71.1 | origin/role-b:results_git/B-F-verdict-triplets-s0 | - |

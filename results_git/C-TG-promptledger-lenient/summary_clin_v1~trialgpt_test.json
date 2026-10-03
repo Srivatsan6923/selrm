@@ -139,6 +139,12 @@
   "seed": 0
  },
  "threshold_source": "results_git/C-TG-promptledger-lenient-dev/scores_rule_v1~dev_missing.jsonl",
+ "threshold_alt": {
+  "source": "results_git/C-TF-promptledger-lenient--p1",
+  "tau": -0.6143123507499695,
+  "macroF1": 53.92452285500101,
+  "acc": 62.45059288537549
+ },
  "eval": {
   "reader_units": 801,
   "malformed_units": 53,

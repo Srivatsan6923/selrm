@@ -1,0 +1,189 @@
+2026-10-03T08:57:09Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-ledger2-blocks-s0
+2026-10-03T08:57:09Z token budget per batch: 8000
+2026-10-03T08:57:10Z C-ME-ledger2-blocks-s0 clin_v1/medeinst_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test/reader_ledger.npz', 'exists')
+2026-10-03T08:57:25Z FAILED C-ME-ledger2-blocks-s0
+Traceback (most recent call last):
+  File "/work/code/scripts/eval_c.py", line 377, in run_one
+    summ[s] = eval_local.evaluate(sc, root, rid, spec["format"], s, rdir, log, tag, spec.get("mode"))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/bcode/scripts/eval_local.py", line 246, in evaluate
+    sc.check_padding(seqs)
+  File "/work/code/scripts/eval_c.py", line 296, in check_padding
+    return super().check_padding(fit, n)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/bcode/scripts/eval_local.py", line 172, in check_padding
+    single = np.array([self._last([seqs[i]])[0] for i in pick])
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/bcode/scripts/eval_local.py", line 152, in _last
+    out = self.model(input_ids=ids, attention_mask=att, logits_to_keep=1, use_cache=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/peft/peft_model.py", line 2120, in forward
+    return self.base_model(
+           ^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/peft/tuners/tuners_utils.py", line 359, in forward
+    return self.model(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py", line 1385, in forward
+    return Qwen3_5ForConditionalGeneration_forward(self, input_ids=input_ids, attention_mask=attention_mask, position_ids=position_ids, past_key_values=past_key_values, inputs_embeds=inputs_embeds, labels=labels, pixel_values=pixel_values, pixel_values_videos=pixel_values_videos, image_grid_thw=image_grid_thw, video_grid_thw=video_grid_thw, mm_token_type_ids=mm_token_type_ids, logits_to_keep=logits_to_keep, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/unsloth_zoo/temporary_patches/utils.py", line 2187, in forward
+    return disabled(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/external_utils.py", line 227, in nonrecursive_disable_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 876, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py", line 1150, in Qwen3_5ForConditionalGeneration_forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 876, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py", line 1672, in forward
+    outputs = self.language_model(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 952, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/utils/output_capturing.py", line 248, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py", line 1275, in forward
+    hidden_states = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/unsloth_zoo/temporary_patches/misc.py", line 1987, in __call__
+    return original(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/modeling_layers.py", line 93, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py", line 759, in forward
+    hidden_states = self.linear_attn(
+                    ^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py", line 686, in forward
+    return Qwen3_5GatedDeltaNet_forward(self, hidden_states=hidden_states, cache_params=cache_params, attention_mask=attention_mask)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/unsloth_zoo/temporary_patches/utils.py", line 2187, in forward
+    return disabled(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/external_utils.py", line 227, in nonrecursive_disable_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/work/unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py", line 527, in Qwen3_5GatedDeltaNet_forward
+    b = self.in_proj_b(hidden_states)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/linear.py", line 134, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasGemmEx( handle, opa, opb, m, n, k, &falpha, a, CUDA_R_16BF, lda, b, CUDA_R_16BF, ldb, &fbeta, c, std::is_same_v<C_Dtype, float> ? CUDA_R_32F : CUDA_R_16BF, ldc, compute_type, CUBLAS_GEMM_DEFAULT_TENSOR_OP)`
+
+2026-10-03T09:05:05Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-ledger2-blocks-s0
+2026-10-03T09:05:06Z token budget per batch: 8000
+2026-10-03T09:05:06Z C-ME-ledger2-blocks-s0 clin_v1/medeinst_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test/reader_ledger.npz', 'exists')
+2026-10-03T09:05:17Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0029)
+2026-10-03T09:05:20Z padding self-check: max |u_batch - u_single| = 0.1084 (tol 0.643) -> left padding
+2026-10-03T09:11:22Z generate: batch 25/1079, 49336 tokens, 136 tok/s
+2026-10-03T09:17:36Z generate: batch 50/1079, 97391 tokens, 132 tok/s
+2026-10-03T09:44:49Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-ledger2-blocks-s0
+2026-10-03T09:44:49Z token budget per batch: 8000
+2026-10-03T09:44:49Z C-ME-ledger2-blocks-s0 clin_v1/medeinst_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test/reader_ledger.npz', 'exists')
+2026-10-03T09:44:51Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0218)
+2026-10-03T09:44:55Z padding self-check: max |u_batch - u_single| = 0.1100 (tol 0.642) -> left padding
+2026-10-03T09:55:17Z generate: batch 25/1079, 49543 tokens, 80 tok/s
+2026-10-03T10:06:00Z generate: batch 50/1079, 97814 tokens, 77 tok/s
+2026-10-03T10:16:52Z generate: batch 75/1079, 143471 tokens, 75 tok/s
+2026-10-03T10:28:34Z generate: batch 100/1079, 192604 tokens, 74 tok/s
+2026-10-03T10:41:15Z generate: batch 125/1079, 234238 tokens, 69 tok/s
+2026-10-03T10:53:34Z generate: batch 150/1079, 271558 tokens, 66 tok/s
+2026-10-03T11:06:45Z generate: batch 175/1079, 313937 tokens, 64 tok/s
+2026-10-03T11:19:32Z generate: batch 200/1079, 357594 tokens, 63 tok/s
+2026-10-03T11:31:55Z generate: batch 225/1079, 399778 tokens, 62 tok/s
+2026-10-03T11:44:23Z generate: batch 250/1079, 443913 tokens, 62 tok/s
+2026-10-03T11:57:35Z generate: batch 275/1079, 491512 tokens, 62 tok/s
+2026-10-03T12:11:03Z generate: batch 300/1079, 537731 tokens, 61 tok/s
+2026-10-03T12:24:15Z generate: batch 325/1079, 585125 tokens, 61 tok/s
+2026-10-03T12:37:39Z generate: batch 350/1079, 632865 tokens, 61 tok/s
+2026-10-03T12:50:28Z generate: batch 375/1079, 677584 tokens, 61 tok/s
+2026-10-03T13:03:56Z generate: batch 400/1079, 724191 tokens, 61 tok/s
+2026-10-03T13:16:51Z generate: batch 425/1079, 772138 tokens, 61 tok/s
+2026-10-03T13:30:44Z generate: batch 450/1079, 822035 tokens, 61 tok/s
+2026-10-03T13:44:28Z generate: batch 475/1079, 871221 tokens, 61 tok/s
+2026-10-03T13:58:07Z generate: batch 500/1079, 920202 tokens, 61 tok/s
+2026-10-03T14:11:59Z generate: batch 525/1079, 971940 tokens, 61 tok/s
+2026-10-03T14:25:56Z generate: batch 550/1079, 1022334 tokens, 61 tok/s
+2026-10-03T14:40:12Z generate: batch 575/1079, 1076444 tokens, 61 tok/s
+2026-10-03T14:54:46Z generate: batch 600/1079, 1130767 tokens, 61 tok/s
+2026-10-03T15:10:06Z generate: batch 625/1079, 1188528 tokens, 61 tok/s
+2026-10-03T15:24:43Z generate: batch 650/1079, 1243141 tokens, 61 tok/s
+2026-10-03T15:39:30Z generate: batch 675/1079, 1299911 tokens, 61 tok/s
+2026-10-03T15:54:57Z generate: batch 700/1079, 1356376 tokens, 61 tok/s
+2026-10-03T16:09:28Z generate: batch 725/1079, 1410647 tokens, 61 tok/s
+2026-10-03T16:24:07Z generate: batch 750/1079, 1464599 tokens, 61 tok/s
+2026-10-03T16:38:58Z generate: batch 775/1079, 1518261 tokens, 61 tok/s
+2026-10-03T16:53:38Z generate: batch 800/1079, 1571059 tokens, 61 tok/s
+2026-10-03T17:09:04Z generate: batch 825/1079, 1630577 tokens, 61 tok/s
+2026-10-03T17:25:01Z generate: batch 850/1079, 1690988 tokens, 61 tok/s
+2026-10-03T17:41:01Z generate: batch 875/1079, 1753032 tokens, 61 tok/s
+2026-10-03T17:57:19Z generate: batch 900/1079, 1817276 tokens, 62 tok/s
+2026-10-03T18:13:41Z generate: batch 925/1079, 1882219 tokens, 62 tok/s
+2026-10-03T18:29:55Z generate: batch 950/1079, 1945439 tokens, 62 tok/s
+2026-10-03T18:45:49Z generate: batch 975/1079, 1991337 tokens, 61 tok/s
+2026-10-03T18:58:57Z generate: batch 1000/1079, 2022430 tokens, 61 tok/s
+2026-10-03T19:14:41Z generate: batch 1025/1079, 2061534 tokens, 60 tok/s
+2026-10-03T19:30:43Z generate: batch 1050/1079, 2105231 tokens, 60 tok/s
+2026-10-03T19:46:24Z generate: batch 1075/1079, 2146391 tokens, 59 tok/s
+2026-10-03T20:17:31Z C-ME-ledger2-blocks-s0 clin_v1/medeinst_test: TA nan Rev nan Hold nan n=None (37962.1 s)
+2026-10-03T20:17:32Z DONE C-ME-ledger2-blocks-s0 in 633.1 min, GPU util mean 98.2

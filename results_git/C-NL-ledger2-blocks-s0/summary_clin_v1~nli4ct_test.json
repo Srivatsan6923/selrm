@@ -1,0 +1,33 @@
+{
+ "run_id": "C-NL-ledger2-blocks-s0",
+ "set": "clin_v1/nli4ct_test",
+ "prediction_rule": "Entailment iff u > 0",
+ "macroF1": 0.6043107341589635,
+ "faithfulness": 0.8668981481481481,
+ "consistency": 0.7603965183752418,
+ "Control_F1": 0.5307125307125307,
+ "Control_macroF1": 0.6043107341589635,
+ "Contrast_F1": 0.41356431994102466,
+ "Faithfulness": 0.8668981481481481,
+ "Consistency": 0.7603965183752418,
+ "Consistency_acc": 0.6431334622823984,
+ "n_control": 500,
+ "n_altering": 864,
+ "n_preserving": 4136,
+ "acc_Contradiction": 0.8473333333333334,
+ "acc_Numerical_contradiction": 0.9094202898550725,
+ "acc_Numerical_paraphrase": 0.6294642857142857,
+ "acc_Paraphrase": 0.6086666666666667,
+ "acc_Text_appended": 0.5553333333333333,
+ "Average": 0.7193357324119735,
+ "eval": {
+  "reader_units": 5500,
+  "malformed_units": 1529,
+  "mode": null,
+  "malformed_rate": 0.278,
+  "gen_not_stopped": 24,
+  "seconds": 11188.0,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
