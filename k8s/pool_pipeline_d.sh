@@ -5,8 +5,8 @@
 # so a re-run resumes. Usage (GPU Job, code dir as working dir):
 #   sh k8s/pool_pipeline_d.sh <pool> <tp> [--ext] [scorers...]
 # scorers: medprm medprm-swap ledger2-triplets ledger2-triplets-swap ledger2-blocks (default: all)
-# With --ext after <tp>: extend the pool by samples 16-63 for all its questions (used for medqa_kp, the
-# key-pair questions) and score only those (outputs <scorer>.ext.jsonl).
+# With --ext after <tp>: extend the pool by samples 16-63 for its subset (medqa_kp: 150 whole key pairs)
+# and score only those (outputs <scorer>.ext.jsonl).
 set -eu
 POOL=$1; TP=$2; shift 2
 EXT=0
@@ -19,7 +19,7 @@ mkdir -p "$OUT"
 MODEL=/pvcb/selrm/models/unsloth--Qwen3.5-9B
 [ -d "$MODEL" ] || MODEL=/pvc/selrm/models/unsloth--Qwen3.5-9B     # central site: B's files under /pvc/selrm
 if [ "$EXT" = 1 ]; then
-  $PY -u scripts/make_pool.py --pool "$POOL" --out $POOLS --model "$MODEL" --tp "$TP" --extend all
+  $PY -u scripts/make_pool.py --pool "$POOL" --out $POOLS --model "$MODEL" --tp "$TP" --extend subset
   X="--ext"; SUF=".ext"
 else
   $PY -u scripts/make_pool.py --pool "$POOL" --out $POOLS --model "$MODEL" --tp "$TP"

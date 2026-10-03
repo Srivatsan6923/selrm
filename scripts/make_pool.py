@@ -5,9 +5,9 @@ r"""Candidate pools for answer selection (D-POOL-*; Table 5, Fig. 3 right).
 A frozen policy (configs/datasets_d.json "policy") samples chains of thought with
 numbered steps and a final line "Final answer: <letter>" for every question of a pinned
 dataset. Pools are nested: every question gets N = 16 samples; for the selection-pressure
-curve, `--extend all` later adds samples 16-63 to the pool medqa_kp (the questions of C's
-MedQA key pairs, configs/keypairs_d.json; Fig. 3 right plots key-pair accuracy), with their
-own seeds, in samples_ext.jsonl; samples 0-15 stay the 16-sample pool, so every selector and
+curve, `--extend subset` later adds samples 16-63 for 300 questions of the pool medqa_kp
+(150 whole key pairs drawn once from C's MedQA key pairs, configs/keypairs_d.json; Fig. 3 right
+plots key-pair accuracy), with their own seeds, in samples_ext.jsonl; samples 0-15 stay the 16-sample pool, so every selector and
 every N sees identical candidates. A sample is eligible if it has a final answer among the options;
 the share that is not is reported.
 
@@ -44,8 +44,8 @@ POOLS = {   # name: (dataset key in configs/datasets_d.json, first rows, N, subs
     "medqa_test": ("medqa_test", None, 16, 0, 0),
     "medqa_dev": ("medqa_dev", 500, 16, 0, 0),       # calibration pool (D-CAL); first 500 questions
     # the 714 questions of C's MedQA key pairs (configs/keypairs_d.json; test and validation rows);
-    # + 48 samples each for the selection-pressure curve (--extend all)
-    "medqa_kp": (("medqa_test", "medqa_dev"), None, 16, 0, 0),
+    # + 48 samples for 150 whole pairs (300 questions) for the selection-pressure curve (--extend subset)
+    "medqa_kp": (("medqa_test", "medqa_dev"), None, 16, 300, 0),
     "careqa_en": ("careqa_en", None, 16, 0, 1000),   # a fixed random 1,000 of 5,621 (scoring cost; DECISIONS_D)
     "medeinst_test": ("medeinst_test", None, 16, 0, 0),   # a fixed random 500 pairs, control + trap (questions())
 }
@@ -124,19 +124,20 @@ def main():
     ap.add_argument("--model", help="local snapshot of the policy (default: download the pinned revision)")
     ap.add_argument("--limit", type=int, default=0, help="first k questions only (smoke test)")
     ap.add_argument("--tp", type=int, default=1)
-    ap.add_argument("--extend", help="'all' or a JSON list of qids: add samples 16-63 for them (selection "
-                                     "pressure); written to samples_ext.jsonl, the 16-sample pool is not touched")
+    ap.add_argument("--extend", help="'subset' (medqa_kp: 150 whole key pairs) or a JSON list of qids: add "
+                                     "samples 16-63 for them (selection pressure); written to samples_ext.jsonl, "
+                                     "the 16-sample pool is not touched")
     a = ap.parse_args()
-    key, rows, n, _, n_sample = POOLS[a.pool]
+    key, rows, n, n_ext, n_sample = POOLS[a.pool]
     out = os.path.join(a.out, a.pool + (f"_limit{a.limit}" if a.limit else ""))
     done = "EXTENDED" if a.extend else "DONE"
     if os.path.exists(os.path.join(out, done)):
         print("exists:", out, done)
         return
     os.makedirs(out, exist_ok=True)
+    pairs = json.load(open(os.path.join(ROOT, "configs", "keypairs_d.json"), encoding="utf-8"))["pairs"]
     if isinstance(key, tuple):   # medqa_kp: the key-pair questions of both files
-        kp = {x for p in json.load(open(os.path.join(ROOT, "configs", "keypairs_d.json"), encoding="utf-8"))["pairs"]
-              for x in p}
+        kp = {x for p in pairs for x in p}
         qs = [q for k in key for q in questions(k, rows) if q["qid"] in kp]
     else:
         qs = questions(key, rows)
@@ -148,9 +149,11 @@ def main():
     if a.extend:                 # the base pool must exist; extra samples get their own seeds
         if not os.path.exists(os.path.join(out, "DONE")):
             sys.exit("extend: the 16-sample pool is not finished")
-        if a.extend != "all":
+        if a.extend == "subset":     # whole key pairs, a fixed random draw of n_ext questions
+            want = {x for p in random.Random(f"pool-ext-v1.{a.pool}").sample(pairs, n_ext // 2) for x in p}
+        else:
             want = set(json.load(open(a.extend, encoding="utf-8")))
-            qs = [q for q in qs if q["qid"] in want]
+        qs = [q for q in qs if q["qid"] in want]
         sub = {q["qid"] for q in qs}
 
     import torch
