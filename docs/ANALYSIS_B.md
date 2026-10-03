@@ -132,6 +132,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-verdict-natural-s0 | NVIDIA A100-SXM4-80GB | 60000 | 60000 | - | - | 12916495 | 120000 | 938 | 1.56 | 0.68 |
 | B-F-verdict-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 1.51 | 0.65 |
 | B-F-verdict-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 0.64 | 0.31 |
+| B-LOKO-boundary-summary2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 11979662 | 1139596 | 938 | 0.71 | 0.26 |
 | B-LOKO-boundary-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 12970250 | 120000 | 938 | 0.69 | 0.14 |
 | B-LOKO-subject-ledger2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13213846 | 1073236 | 938 | 0.82 | 0.27 |
 | B-LOKO-subject-summary2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 12062378 | 1097188 | 938 | 0.74 | 0.25 |
@@ -157,6 +158,7 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | B-F-summary2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-summary2-triplets-s1 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-summary2-triplets-s2 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-LOKO-boundary-summary2-s0 | 0.3 | 30000 | 15000 | 4529 | 30.2% | 797 |
 | B-LOKO-subject-ledger2-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
 | B-LOKO-subject-summary2-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
 | B-LOKO-time-ledger2-s0 | 0.3 | 30000 | 15000 | 4526 | 30.2% | 797 |
@@ -235,7 +237,7 @@ Swap in the ledger of another case (same rule, condition and claim): the judge r
 | time | summary2 | 61.5 | 99.8 | -38.2 [-45.7, -31.3], p < 0.001 |
 | time | ledger2 | 86.2 | 100.0 | -13.8 [-18.9, -8.8], p < 0.001 |
 | boundary | verdict | 49.8 | 93.2 | -43.5 [-54.2, -32.3], p < 0.001 |
-| boundary | summary2 | not run | | |
+| boundary | summary2 | 99.0 | 100.0 | -1.0 [-3.2, +0.0], p 0.690 |
 | boundary | ledger2 | not run | | |
 
 ## 11. Summary pipeline whose judge also sees the case (test_L2, triplets corpus, seed 0; FINAL_TASKS_B P0.4)
@@ -260,6 +262,7 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-F-summary2-blocks-s2 | 62.5 | 93.8 | 92.0 | 12.0 | 95.0 | 51.0 |
 | B-F-summary2-triplets-s1 | 92.5 | 98.8 | 100.0 | 100.0 | 99.0 | 71.0 |
 | B-F-summary2-triplets-s2 | 90.2 | 98.4 | 100.0 | 100.0 | 100.0 | 61.0 |
+| B-LOKO-boundary-summary2-s0 | 92.5 | 98.8 | 99.0 | 100.0 | 98.0 | 73.0 |
 | B-LOKO-boundary-verdict-s0 | 83.0 | 96.0 | 100.0 | 97.0 | 100.0 | 35.0 |
 | B-LOKO-subject-ledger2-s0 | 90.8 | 98.5 | 98.0 | 100.0 | 91.0 | 74.0 |
 | B-LOKO-subject-summary2-s0 | 91.5 | 98.6 | 100.0 | 100.0 | 100.0 | 66.0 |
@@ -276,5 +279,6 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-NS-xr_v1-B-F-verdict-blocks-s1 | 47.2 | 90.0 | 95.0 | 64.0 | 0.0 | 30.0 |
 | B-NS-xr_v1-B-F-verdict-blocks-s2 | 66.2 | 94.2 | 96.0 | 65.0 | 52.0 | 52.0 |
 | B-NS-xr_v1-B-F-verdict-triplets-s0 | 90.2 | 97.7 | 100.0 | 100.0 | 95.0 | 66.0 |
+| B-NS-xr_v1-B-F-verdict-triplets-s1 | 91.2 | 98.4 | 100.0 | 100.0 | 94.0 | 71.0 |
 | B-SC-summary2-triplets-s0 | 91.5 | 98.6 | 96.0 | 100.0 | 98.0 | 72.0 |
 
