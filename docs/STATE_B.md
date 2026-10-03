@@ -11,7 +11,7 @@ Run freeze: Wed 7 Oct 23:59 (UTC assumed). Decisions: docs/DECISIONS_B.md. Analy
 3. Core seeds 1-2: DONE (12 runs; ANALYSIS_B section 13 mean +- s.d.; seed-pooled ledger-summary in section 1).
    Blocks cells vary a lot across seeds (handoff 3 Oct).
 4. B-SC-summary2-triplets-s0: DONE (L2 TA 98.8 vs 98.0 blind; ANALYSIS_B section 11).
-5. LOKO: 8 of 9 DONE (ANALYSIS_B section 10); B-LOKO-boundary-ledger2-s0 running (A100).
+5. LOKO: DONE (9 runs; ANALYSIS_B section 10; handoff 3 Oct).
 6. New sets: xr_v1/test registered by A (efe0128) and restored on the PVC (sha256 = A's). Every not-started training
    run (except folds and diversity curves) now evaluates on it and keeps its adapter; kept adapters of finished runs
    get eval-only runs B-NS-xr_v1-<run> (configs/queues/v2/b_ns.json, priority 45). Summaries carry crossed accuracy
