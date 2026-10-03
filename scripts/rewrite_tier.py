@@ -32,7 +32,7 @@ from pathlib import Path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from selrm import datasets as D  # noqa: E402
 from selrm.rules import FIRST_DEGREE  # noqa: E402
-from selrm.schema import validate  # noqa: E402
+from selrm.schema import LEDGER_KEYS, validate  # noqa: E402
 from selrm.smoke import ledger_to_prose  # noqa: E402
 
 API = "https://openrouter.ai/api/v1/chat/completions"
@@ -101,7 +101,8 @@ def _norm_subject(s):
 
 
 def _value(m, decimals):
-    if m.get("value") in (None, True, "", "null"):
+    v = m.get("value")
+    if v is None or v is True or v in ("", "null"):  # not `in (None, True, ...)`: 1.0 == True in Python
         return None
     try:
         return round(float(m["value"]), decimals)
@@ -147,7 +148,14 @@ def accepts(rec, mentions, decimals):
 
 def anchored_ledger(rec, note, mentions, crit, decimals):
     """The case's ledger with each finding quote re-anchored in the note (numbers stay
-    values); None if a quote is not a substring of the note or a value is not in it."""
+    values); None if a quote is not a substring of the note or a value is not in it.
+    Entries come back in the schema's key order (records read from disk have sorted keys,
+    which selrm.schema.validate rejects)."""
+    out = _anchored(rec, note, mentions, crit)
+    return None if out is None else [{k: e[k] for k in LEDGER_KEYS} for e in out]
+
+
+def _anchored(rec, note, mentions, crit):
     out = []
     for e in rec["ledger"]:
         if e["found"] == "not mentioned":
