@@ -314,15 +314,18 @@ def main():
         ext = {q for q, ss in by_q.items() if len(ss) >= 64}
         if pool == "medqa_kp" and ext:   # selection pressure on the key-pair questions with 64 samples
             kp = [(x, y) for x, y in PAIRS if x in ext and y in ext]
-            curve = {}
+            curve, per = {}, []
             for name in ("combined", "stepcheck", "oracle", "ledger", "selfcons"):
                 if name in sel:
                     curve[f"selector={name}"] = {}
                     for n in (1, 2, 4, 8, 16, 32, 64):
                         rows = select(name, sel[name], qs, {q: by_q[q] for q in ext}, n)
                         curve[f"selector={name}"][f"N{n}"] = keypair_acc(kp, {r["qid"]: r["correct"] for r in rows})[0]
+                        per += [{"selector": name, "N": n} | r for r in rows]
             d = os.path.join(a.out, "D-SELN")
             os.makedirs(d, exist_ok=True)
+            with open(os.path.join(d, "scores_sel~keypairs.jsonl"), "w", encoding="utf-8", newline="\n") as f:
+                f.writelines(json.dumps(r) + "\n" for r in per)
             json.dump({"run_id": "D-SELN", "set": "sel/keypairs", "n_pairs": len(kp)} | curve,
                       open(os.path.join(d, "summary_sel~keypairs.json"), "w", encoding="utf-8", newline="\n"), indent=1)
             open(os.path.join(d, "DONE"), "w").close()
