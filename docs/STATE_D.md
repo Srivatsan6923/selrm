@@ -1,5 +1,5 @@
 # STATE role D (lead; maintained by the D session)
-Updated: 2026-10-03 ~06:20 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
+Updated: 2026-10-03 ~06:45 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
 
 ## Where D works
 - Clone `D:/NAACL27/selrm-role-d` (github Srivatsan6923/selrm): D's work on `role-d`; publish with
@@ -25,9 +25,13 @@ Updated: 2026-10-03 ~06:20 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo roo
 - P1: D-RES (results/D-RES); pool/scoring/selection code; tests/test_role_d.py.
 
 ## In progress
-- Workflow wf_e31e6623-e81: timeline (docs/TIMELINE.md) build, length plan (docs/LENGTH_PLAN.md) verification.
-- NRP: pool smoke test (24 GB x2) running; validation of the merged ledger model against B's test_L2 scores
-  pending (24gb, l40, a6000, a40: keep the first that finishes, delete the rest).
+- Workflow wf_e31e6623-e81: timeline verification (docs/TIMELINE.md committed? no: waits for its verifier).
+- NRP: validation of the merged ledger model against B's test_L2 scores (job selrm-d-validate-l2t-24gb-9248,
+  24 GB x2, us-west required; acceptance criteria fixed in DECISIONS_D 3 Oct); pool smoke test
+  (selrm-d-pool-smoke-24gb-9251); gzip copies of the env tarballs (CPU job).
+- Lessons: GPU pods outside us-west read CephFS at ~5 MB/s (env 8.5 GB + weights 19 GB = about an hour), so 24 GB
+  jobs require us-west; vLLM needs VLLM_USE_FLASHINFER_SAMPLER=0; transformers 5 apply_chat_template(tokenize=True)
+  returns a dict (tokenise the rendered text instead); argparse keeps '--' (the launcher strips it).
 
 ## Next
 1. When validation passes (sign agreement with B's preferences, TA equal within noise): launch
