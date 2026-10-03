@@ -1,5 +1,23 @@
 # STATE role C (maintained by Claude Code)
-Updated: 2026-10-03 ~16:55 UTC (Sat). Task list: FINAL_TASKS_C.md. Branch role-c, clone D:\NAACL27\selrm-role-c.
+Updated: 2026-10-03 ~22:00 UTC (Sat). Task lists: NEXT_TASKS_C.md (3 Oct, current; copy in scratch/next_tasks/)
+over FINAL_TASKS_C.md. Branch role-c, clone D:\NAACL27\selrm-role-c. Run freeze: Wed 7 Oct 23:59 UTC.
+
+## NEXT_TASKS_C progress (3 Oct)
+1. docs/AUX_PROTOCOL.md completed and committed (51aa523) before any training under it.
+2. In-domain sets frozen: clin_v1/nli4ct_train (1,700), clin_v1/trialgpt_cv (801 items, 5 patient folds),
+   clin_v1/medeinst_train (alias of clinpairs_medeinst); dev splits nli4ct_dev, medeinst_ref_dev, trialgpt_dev.
+3. clin_v1/medeinst_neg (3,937) / medeinst_neg_train (7,523): scripts/medeinst_neg.py works with a provisional bank;
+   NOT frozen or registered until A's negation bank lands (interface request in HANDOFFS). Then:
+   python scripts/medeinst_neg.py --bank <A's bank> --freeze; push records + registry to the PVC; add the S2 sha256
+   to docs/AUX_PROTOCOL.md; queue medeinst_neg scoring for case-blind and case-visible rows.
+4. S3 (c_s3.json, B code 10e1882945ce): B-SC-summary2-triplets-s0 on TrialGPT dev, NLI4CT-P, key pairs, MedEinst.
+   After C-TG-sc-summary2-triplets-dev: dev check, then add C-TG-sc-summary2-triplets-s0 (test, cap 768).
+   More case-visible systems as B registers them.
+5. S1 evaluator scripts/eval_aux.py ready (B's runs B-AUX-<ds>-<recipe>-s<k>[-f<fold>]).
+6. API audit: blocked on OPENROUTER_API_KEY (COMPUTE REQUEST #1).
+7. Finish: ThinkPRM p2 (A6000) and p3; GenPRM p1 (RTX 3090); C-ME-promptsum / -promptledger (32 GB);
+   TrialGPT rows + seeds (c_tg_more.json, 25 runs); 27B judge (API or 80 GB card).
+8. TREC/SIGIR trial-level eligibility: only if time remains.
 
 ## Compute and how runs work
 - NRP namespace ecepxie: own PVC selrm-c (/pvc/selrmc); B's PVC selrm-b read-only at /pvcb. Objects selrm-c-*.
