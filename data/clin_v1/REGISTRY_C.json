@@ -179,6 +179,18 @@
   "split": "test",
   "tier": "external"
  },
+ "clin_v1/nli4ct_train": {
+  "created": "2026-10-03",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/nli4ct_train/MANIFEST.json",
+  "n_groups": 1700,
+  "n_records": 1700,
+  "path": "clin_v1/nli4ct_train/records.jsonl",
+  "sha256": "a6865c75ca0a9c27e570a5197421f684ea3ae28b9483cea29f6b8a441716cdb4",
+  "split": "train",
+  "tier": "external"
+ },
  "clin_v1/trialgpt_dev": {
   "created": "2026-10-02",
   "frozen": true,

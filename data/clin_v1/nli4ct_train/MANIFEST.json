@@ -1,0 +1,24 @@
+{
+ "name": "clin_v1/nli4ct_train",
+ "source": "github.com/ai-systems/Task-2-SemEval-2024",
+ "revision": "7f32fa6c",
+ "source_file": "training_data.zip:train.json",
+ "source_sha256": "ed3d9819cfebd2d1d5d70fd786323c904b341470f8dc173af39946f70a0e5b9f",
+ "ctr_files": 999,
+ "licence": "none stated by the organisers",
+ "n_records": 1700,
+ "split": "train",
+ "by_intervention": {
+  "Original": 1700
+ },
+ "entailment": 850,
+ "prediction_rule": "Entailment iff u > 0",
+ "shortcut_validation": {
+  "note": "a constant predictor: all-Entailment gives Control F1 0.667 (binary, official scorer); all-Contradiction gives Faithfulness 1.0 and F1 0.0"
+ },
+ "git_commit": "f44b05f012066f8a6ada5867159718415aebc7dd",
+ "python": "3.12.7",
+ "sha256": "a6865c75ca0a9c27e570a5197421f684ea3ae28b9483cea29f6b8a441716cdb4",
+ "created": "2026-10-03",
+ "frozen": true
+}
