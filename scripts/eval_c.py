@@ -130,7 +130,10 @@ def run_one(spec, a, mon, log, owner):
         base = f"{os.environ.get('SELRM_MODELS', a.broot + '/models')}/{spec.get('base_model', 'unsloth/Qwen3.5-9B').replace('/', '--')}"
         model, tok = finetune.load_for_eval(base, spec.get("adapter"), hp["max_len"], hp)
         log(f"loaded base {base}, adapter {spec.get('adapter')}")
-        sc = eval_local.Scorer(model, tok, spec.get("bs_score", 64), spec.get("bs_gen", 128), spec.get("max_new", 384), log)
+        bs_score, bs_gen = spec.get("bs_score", 64), spec.get("bs_gen", 128)
+        if torch.cuda.is_available() and torch.cuda.get_device_properties(0).total_memory < 30 * 2**30:
+            bs_score, bs_gen = min(bs_score, 16), min(bs_gen, 16)     # 24 GB cards: 18.8 GB of weights
+        sc = eval_local.Scorer(model, tok, bs_score, bs_gen, spec.get("max_new", 384), log)
         tag = spec.get("base_model", "unsloth/Qwen3.5-9B").replace("/", "--")
         summ, secs = {}, {}
         for s in spec["sets"]:
@@ -184,7 +187,9 @@ def main():
     ap.add_argument("--broot", required=True)
     ap.add_argument("--bcode", required=True)
     ap.add_argument("--tasks", required=True)
+    ap.add_argument("--formats", default="", help="comma list: claim only runs of these formats (default all)")
     a = ap.parse_args()
+    only = set(filter(None, a.formats.split(",")))
     sys.path[:0] = [a.bcode, f"{a.bcode}/scripts"]        # B's selrm package and scoring scripts
     import unsloth  # noqa: F401  (before transformers)
     import finetune, runq
@@ -201,7 +206,8 @@ def main():
     mon.start()
     while True:
         runs = sorted(json.load(open(a.tasks))["runs"], key=lambda r: r.get("priority", 9))
-        pick = next((r for r in runs if runq.state(f"{a.root}/results/{r['run_id']}") == "free"
+        pick = next((r for r in runs if (not only or r["format"] in only)
+                     and runq.state(f"{a.root}/results/{r['run_id']}") == "free"
                      and runq.claim(f"{a.root}/results/{r['run_id']}", owner)), None)
         if pick is None:
             log("nothing claimable; exiting")
