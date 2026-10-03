@@ -874,7 +874,7 @@ DIV = [("new", "blue!75!black", "mark=*", "new struct.", (16, 32, 63, 64, 128, 2
        ("patients", "black!60", "mark=square*", "more cases", (16, 32, 63, 64, 128, 223))]
 
 
-def plot(table, color, mark, name, pts, errors=False):
+def plot(table, color, mark, name, pts, errors=False, scale=1):
     """One \\addplot of (x, key) points; points without a result are left out."""
     coords, last = [], None
     for x, key in pts:
@@ -882,8 +882,8 @@ def plot(table, color, mark, name, pts, errors=False):
         if n is None:
             continue
         sd = resolve(key + "/sd")[0] if errors and key.startswith("run/") else None
-        coords.append(f"({x},{n:.1f})" + (f" +- (0,{sd:.1f})" if errors and sd is not None else ""))
-        last = (x, n)
+        coords.append(f"({x},{n * scale:.1f})" + (f" +- (0,{sd * scale:.1f})" if errors and sd is not None else ""))
+        last = (x, n * scale)     # scale: e.g. 100 for a 0-1 reward plotted in percent
     if not coords:                     # no result yet: no plot (an empty plot breaks some axes)
         return "", False
     opts = f"{color}, thick, {mark}, mark size=1pt" + (", error bars/.cd, y dir=both, y explicit" if errors else "")
@@ -918,6 +918,24 @@ def f_seln():
     for sel, color, mark, name in SELN:
         pts = [(n, f"run/D-SELN/{SEL['key']}/selector={sel}/N{n}") for n in (1, 2, 4, 8, 16, 32, 64)]
         b, d = plot("fig-seln", color, mark, name, pts)
+        body, anyd = body + b, anyd or d
+    return body + tbd_node(anyd)
+
+
+POLICY_PLOT = [("outcome", "black!70", "mark=*", "outcome"), ("refgraph", "teal", "mark=diamond*", "ref.\\ graph"),
+               ("stepcheck", "red!75!black", "mark=triangle*", "step check"),
+               ("ledger2-blocks", "orange!85!black", "mark=square*", "\\method{} blocks"),
+               ("ledger2-triplets", "blue!75!black", "mark=o", "\\method{} triplets"),
+               ("summary2-triplets", "violet", "mark=x", "summary triplets")]
+
+
+def f_policy(metric):
+    """Policy training: held-out L2 accuracy on base-flip pairs ('pair') or training reward ('reward') against
+    the step, one line per reward (D-RL-<reward>, mean over the seeds that exist; step 0 = untrained)."""
+    body, anyd = "", False
+    for r, color, mark, name in POLICY_PLOT:
+        pts = [(n, f"run/D-RL-{r}/L2/step={n}/{metric}") for n in range(0, 1001, 200)]
+        b, d = plot(f"fig-policy-{metric}", color, mark, name, pts, scale=100 if metric == "reward" else 1)
         body, anyd = body + b, anyd or d
     return body + tbd_node(anyd)
 
@@ -957,7 +975,8 @@ TABLES = [("factorial", t_factorial), ("audit", t_audit), ("main", t_main), ("ma
           ("downstream", t_downstream), ("ablation", t_ablation), ("ladder", t_ladder), ("kinds", t_kinds),
           ("shortcuts", t_shortcuts), ("rules", t_rules), ("primary", t_primary), ("seeds", t_seeds),
           ("fig-div", f_div), ("fig-seln", f_seln), ("fig-diag", f_diag_classes), ("fig-diag-kappa", f_diag_kappa),
-          ("policy", t_policy), ("xr", t_xr), ("loko", t_loko), ("casevis", t_casevis)]
+          ("policy", t_policy), ("xr", t_xr), ("loko", t_loko), ("casevis", t_casevis),
+          ("fig-policy-pair", lambda: f_policy("pair")), ("fig-policy-reward", lambda: f_policy("reward"))]
 
 
 # ---------------------------------------------------------------- main
