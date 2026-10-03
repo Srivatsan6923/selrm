@@ -1,5 +1,5 @@
 # STATE role D (lead; maintained by the D session)
-Updated: 2026-10-03 ~06:45 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
+Updated: 2026-10-03 ~07:15 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
 
 ## Where D works
 - Clone `D:/NAACL27/selrm-role-d` (github Srivatsan6923/selrm): D's work on `role-d`; publish with
@@ -25,23 +25,22 @@ Updated: 2026-10-03 ~06:45 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo roo
 - P1: D-RES (results/D-RES); pool/scoring/selection code; tests/test_role_d.py.
 
 ## In progress
-- Workflow wf_e31e6623-e81: timeline verification (docs/TIMELINE.md committed? no: waits for its verifier).
-- NRP: validation of the merged ledger model against B's test_L2 scores (job selrm-d-validate-l2t-24gb-9248,
-  24 GB x2, us-west required; acceptance criteria fixed in DECISIONS_D 3 Oct); pool smoke test
-  (selrm-d-pool-smoke-24gb-9251); gzip copies of the env tarballs (CPU job).
-- Lessons: GPU pods outside us-west read CephFS at ~5 MB/s (env 8.5 GB + weights 19 GB = about an hour), so 24 GB
-  jobs require us-west; vLLM needs VLLM_USE_FLASHINFER_SAMPLER=0; transformers 5 apply_chat_template(tokenize=True)
-  returns a dict (tokenise the rendered text instead); argparse keeps '--' (the launcher strips it).
+- Workflow wf_e31e6623-e81: verification of docs/TIMELINE.md (not yet committed; commit after the verdict).
+- NRP (all queued, us-west required; 48 GB and 24 GB pairs saturated on 3 Oct morning UTC): validation of the merged
+  ledger model against B's test_L2 scores (selrm-d-validate-l2t-24gb-9709 with tp 2, selrm-d-validate-l2t-l40-9962
+  with tp 1: keep the first that finishes, delete the other) and pool smoke tests (selrm-d-pool-smoke-24gb-9712,
+  -l40-9972). Acceptance criteria for the validation: DECISIONS_D 3 Oct.
+- Merge 3 done (main 201e360 + lead commits; 71 tests pass).
 
 ## Next
-1. When validation passes (sign agreement with B's preferences, TA equal within noise): launch
-   `k8s/pool_pipeline_d.sh` for medqa_dev, medqa_test, careqa_en (24 GB x2, tp 2); then select_eval.py; wire
-   Table 5 / Fig. 3 right / App. G selection numbers (D-SEL-combined-product, -logistic exist as runs).
-2. Daily merge 3; board; framing decision is the human lead's after C's TrialGPT report.
-3. GRPO (P1, decide Mon 5 with the ladder; dropped first): env v2 + trl 1.14.1 (supports vllm <= 0.30.0);
-   policy Qwen3.5-4B LoRA (ROLE.md; v13 text says 9B: change the text if run); prompts from train-rule triplets;
-   rewards outcome / step check / ledger2-blocks / ledger2-triplets / reference graph (selrm/reference.py);
-   evaluation by the rule program on test_L2 base/flip/near.
+1. Validation passes -> pipelines (k8s/pool_pipeline_d.sh <pool> <tp>): medqa_dev (calibration; scorers medprm
+   ledger2-triplets ledger2-blocks), medqa_test, careqa_en, medeinst_test (all five scorers); pull /pvc/pools and
+   /pvc/scores (submit_d.py pull), run select_eval.py (--keypairs once C publishes them), make_tables, update_paper.
+   Validation fails -> score with B's HF+PEFT code path (scripts/eval_local.Scorer) on smaller pools; log it.
+2. When C publishes the MedQA key pairs: write /pvc/pools/medqa_test.extend.json (their qids) and run the pipeline
+   with --ext (samples 16-63, scored as <scorer>.ext.jsonl) for Fig. 3 right.
+3. Daily merge (worktree D:/NAACL27/selrm-merge), board, results summary; Mon 5: schedule ladder incl. the GRPO
+   decision (scripts/grpo_d.py ready, env v2).
 
 ## Open compute requests
 - none. If NRP stays saturated for the pools, ask for the Colab 96 GB GPU session (COMPUTE REQUEST).
