@@ -1,7 +1,7 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "3202740b6d5f6d2490b1422bce96577790793d65",
- "uncommitted_changes": false,
+ "code_commit": "90dc8a56f300b4d4964d31bb842cdea014c6689c",
+ "uncommitted_changes": true,
  "records": {
   "rule_v1/dev_missing": {
    "file": "data/rule_v1/dev_missing/records.jsonl",
@@ -26811,6 +26811,54 @@
     null
    ]
   },
+  "run/D-SEL-combined-rule/sel:careqa/top/acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "sel/careqa",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/D-SEL-combined-rule/sel:keypairs/top/pair_acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "sel/keypairs",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/D-SEL-combined-rule/sel:medeinst/top/control_acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "sel/medeinst",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/D-SEL-combined-rule/sel:medeinst/top/pair_acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "sel/medeinst",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/D-SEL-combined-rule/sel:medeinst/top/trap_acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "sel/medeinst",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/D-SEL-combined-rule/sel:medqa/top/acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "sel/medqa",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/D-SEL-combined-swap/sel:careqa/top/acc": {
    "value": "88.1",
    "number": 88.1,
@@ -27266,6 +27314,54 @@
    "seeds_found": [
     null
    ]
+  },
+  "run/D-SEL-ledger-rule/sel:careqa/top/acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "sel/careqa",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/D-SEL-ledger-rule/sel:keypairs/top/pair_acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "sel/keypairs",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/D-SEL-ledger-rule/sel:medeinst/top/control_acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "sel/medeinst",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/D-SEL-ledger-rule/sel:medeinst/top/pair_acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "sel/medeinst",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/D-SEL-ledger-rule/sel:medeinst/top/trap_acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "sel/medeinst",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/D-SEL-ledger-rule/sel:medqa/top/acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "sel/medqa",
+   "stat": "mean",
+   "seeds_found": []
   },
   "run/D-SEL-ledger/sel:careqa/top/acc": {
    "value": "88.4",
@@ -31192,6 +31288,42 @@
     "value": "49.8"
    },
    {
+    "row": "\\ \\ \\ rule triplets only",
+    "col": "MQA",
+    "key": "run/D-SEL-ledger-rule/sel:medqa/top/acc",
+    "value": "\\ph{tbd}"
+   },
+   {
+    "row": "\\ \\ \\ rule triplets only",
+    "col": "CQA",
+    "key": "run/D-SEL-ledger-rule/sel:careqa/top/acc",
+    "value": "\\ph{tbd}"
+   },
+   {
+    "row": "\\ \\ \\ rule triplets only",
+    "col": "Key",
+    "key": "run/D-SEL-ledger-rule/sel:keypairs/top/pair_acc",
+    "value": "\\ph{tbd}"
+   },
+   {
+    "row": "\\ \\ \\ rule triplets only",
+    "col": "pair",
+    "key": "run/D-SEL-ledger-rule/sel:medeinst/top/pair_acc",
+    "value": "\\ph{tbd}"
+   },
+   {
+    "row": "\\ \\ \\ rule triplets only",
+    "col": "ctrl",
+    "key": "run/D-SEL-ledger-rule/sel:medeinst/top/control_acc",
+    "value": "\\ph{tbd}"
+   },
+   {
+    "row": "\\ \\ \\ rule triplets only",
+    "col": "trap",
+    "key": "run/D-SEL-ledger-rule/sel:medeinst/top/trap_acc",
+    "value": "\\ph{tbd}"
+   },
+   {
     "row": "Combined",
     "col": "MQA",
     "key": "run/D-SEL-combined/sel:medqa/top/acc",
@@ -31262,6 +31394,42 @@
     "col": "trap",
     "key": "run/D-SEL-combined-swap/sel:medeinst/top/trap_acc",
     "value": "49.0"
+   },
+   {
+    "row": "\\ \\ \\ rule triplets only",
+    "col": "MQA",
+    "key": "run/D-SEL-combined-rule/sel:medqa/top/acc",
+    "value": "\\ph{tbd}"
+   },
+   {
+    "row": "\\ \\ \\ rule triplets only",
+    "col": "CQA",
+    "key": "run/D-SEL-combined-rule/sel:careqa/top/acc",
+    "value": "\\ph{tbd}"
+   },
+   {
+    "row": "\\ \\ \\ rule triplets only",
+    "col": "Key",
+    "key": "run/D-SEL-combined-rule/sel:keypairs/top/pair_acc",
+    "value": "\\ph{tbd}"
+   },
+   {
+    "row": "\\ \\ \\ rule triplets only",
+    "col": "pair",
+    "key": "run/D-SEL-combined-rule/sel:medeinst/top/pair_acc",
+    "value": "\\ph{tbd}"
+   },
+   {
+    "row": "\\ \\ \\ rule triplets only",
+    "col": "ctrl",
+    "key": "run/D-SEL-combined-rule/sel:medeinst/top/control_acc",
+    "value": "\\ph{tbd}"
+   },
+   {
+    "row": "\\ \\ \\ rule triplets only",
+    "col": "trap",
+    "key": "run/D-SEL-combined-rule/sel:medeinst/top/trap_acc",
+    "value": "\\ph{tbd}"
    },
    {
     "row": "\\ \\ \\ no near-misses",

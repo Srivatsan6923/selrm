@@ -49,6 +49,8 @@ from selrm import metrics as M  # noqa: E402
 from selrm.formats import MALFORMED_U  # noqa: E402
 
 DEV = "medqa_dev"
+LEDGERS = ("ledger2-triplets", "ledger2-blocks", "ledger2-tripclin")
+MAIN = {"triplets": "ledger2-triplets", "tripclin": "ledger2-tripclin"}
 # Paired selector comparisons stated in the text of Table 5 (name, pool, a, b): a - b.
 SEL_CMP = [("sel-mqa-comb-step", "medqa_test", "combined", "stepcheck"),
            ("sel-cqa-comb-step", "careqa_en", "combined", "stepcheck"),
@@ -171,7 +173,7 @@ def calibrate(pools, scores_dir):
     qs, by_q = load_pool(os.path.join(pools, DEV))
     cal = {"pool": DEV, "platt": {}, "nll": {}, "auc": {}}
     sc = {n: load_scores(os.path.join(scores_dir, DEV, f"{n}.jsonl")) for n in
-          ("medprm", "ledger2-triplets", "ledger2-blocks")}
+          ("medprm",) + LEDGERS}
     # questions of a key pair are test items (validation rows of C's key pairs): never calibrated on
     rows = [(qid, k, s["final"] == qs[qid]["answer"]) for qid, ss in by_q.items() if qid not in KPQ
             for k, s in ss.items() if s["eligible"]]
@@ -180,7 +182,7 @@ def calibrate(pools, scores_dir):
             pts = [(s[(q, k)], y) for q, k, y in rows if s.get((q, k)) is not None]
             cal["platt"][n], cal["nll"][n] = fit_logistic([[p for p, _ in pts]], [y for _, y in pts])
             cal["auc"][n] = auc([p for p, _ in pts], [y for _, y in pts])
-    for led in ("ledger2-triplets", "ledger2-blocks"):
+    for led in LEDGERS:
         if sc["medprm"] and sc[led]:
             pts = [(sc[led][(q, k)], sc["medprm"][(q, k)], y) for q, k, y in rows
                    if sc[led].get((q, k)) is not None and sc["medprm"].get((q, k)) is not None]
@@ -190,7 +192,7 @@ def calibrate(pools, scores_dir):
     # dev AUC of the ledger scores under alternative aggregations, reported, never used for selection
     alt = {"mean": lambda u, w: float(np.mean(u)), "last": lambda u, w: u[-1],
            "min_well_formed": lambda u, w: min([x for x, ok in zip(u, w) if ok] or [MALFORMED_U])}
-    for led in ("ledger2-triplets", "ledger2-blocks"):
+    for led in LEDGERS:
         f = os.path.join(scores_dir, DEV, f"{led}.jsonl")
         if os.path.exists(f):
             J = {(j["qid"], j["sample"]): j for j in map(json.loads, open(f, encoding="utf-8"))}
@@ -206,7 +208,9 @@ def calibrate(pools, scores_dir):
     return cal
 
 
-def selectors(cal, sc):
+def selectors(cal, sc, main="ledger2-triplets"):
+    """main: the ledger model of the Ledger and Combined rows (--ledger); with the clinical-pairs model the
+    rule-only model stays as ledger-rule / combined-rule, the reference of no-nearmiss."""
     A = cal["platt"]
 
     def p(n, s, k):
@@ -230,13 +234,16 @@ def selectors(cal, sc):
         out["stepcheck"] = lambda k: sc["medprm"].get(k)
     if sc.get("medprm-swap"):
         out["stepcheck-swap"] = lambda k: sc["medprm-swap"].get(k)
-    if sc.get("ledger2-triplets"):
-        out["ledger"] = lambda k: sc["ledger2-triplets"].get(k)
-    if sc.get("ledger2-triplets") and sc.get("medprm"):
+    if sc.get(main):
+        out["ledger"] = lambda k: sc[main].get(k)
+    if sc.get(main) and sc.get("medprm"):
         for mode, name in (("min", "combined"), ("product", "combined-product"), ("logistic", "combined-logistic")):
-            out[name] = comb(("ledger2-triplets", sc["ledger2-triplets"]), sc["medprm"], mode)
-    if sc.get("ledger2-triplets-swap") and sc.get("medprm-swap"):
-        out["combined-swap"] = comb(("ledger2-triplets", sc["ledger2-triplets-swap"]), sc["medprm-swap"])
+            out[name] = comb((main, sc[main]), sc["medprm"], mode)
+    if sc.get(main + "-swap") and sc.get("medprm-swap"):
+        out["combined-swap"] = comb((main, sc[main + "-swap"]), sc["medprm-swap"])
+    if main != "ledger2-triplets" and sc.get("ledger2-triplets") and sc.get("medprm"):
+        out["ledger-rule"] = lambda k: sc["ledger2-triplets"].get(k)
+        out["combined-rule"] = comb(("ledger2-triplets", sc["ledger2-triplets"]), sc["medprm"])
     if sc.get("ledger2-blocks") and sc.get("medprm"):
         out["no-nearmiss"] = comb(("ledger2-blocks", sc["ledger2-blocks"]), sc["medprm"])
     return out
@@ -282,6 +289,9 @@ def main():
     ap.add_argument("--scores", required=True)
     ap.add_argument("--out", default=os.path.join(ROOT, "results"))
     ap.add_argument("--pool", action="append", default=None)
+    ap.add_argument("--ledger", choices=sorted(MAIN), default="triplets",
+                    help="ledger model of the Ledger and Combined rows: rule triplets, or rule triplets + clinical pairs "
+                         "(B-TR-tripclin-s0; only once every pool is scored with it, DECISIONS_D 3 Oct)")
     a = ap.parse_args()
     cal = calibrate(a.pools, a.scores)
     os.makedirs(os.path.join(a.out, "D-CAL"), exist_ok=True)
@@ -301,8 +311,9 @@ def main():
                                                                  encoding="utf-8", newline="\n"), indent=1)
         open(os.path.join(d, "DONE"), "w").close()
         sc = {n: load_scores(os.path.join(a.scores, pool, f"{n}.jsonl")) for n in
-              ("medprm", "medprm-swap", "ledger2-triplets", "ledger2-triplets-swap", "ledger2-blocks")}
-        sel = selectors(cal, sc)
+              ("medprm", "medprm-swap", "ledger2-triplets", "ledger2-triplets-swap", "ledger2-blocks",
+               "ledger2-tripclin", "ledger2-tripclin-swap")}
+        sel = selectors(cal, sc, MAIN[a.ledger])
         for name, fn in sel.items():
             rows = select(name, fn, qs, by_q, 16)
             extra = {"N": 16} | (pair_metrics(qs, rows) if pool == "medeinst_test" else {})
@@ -332,6 +343,8 @@ def main():
     cp = os.path.join(a.out, "D-SEL-comparisons.json")
     cmp = json.load(open(cp, encoding="utf-8")) if os.path.exists(cp) else {}
     for name, pool, x, y in SEL_CMP:
+        if x == "combined" and y == "no-nearmiss" and (pool, "combined-rule") in by_sel:
+            x = "combined-rule"      # only the near-misses differ (rule-only blocks vs rule-only triplets)
         if (pool, x) in by_sel and (pool, y) in by_sel:
             cmp[name] = {"pool": pool, "a": x, "b": y, "set": f"sel/{POOL_SET[pool]}",
                          "metric": "acc" if pool in ("medqa_test", "careqa_en") else "pair_acc"} | compare(

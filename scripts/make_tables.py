@@ -614,8 +614,10 @@ def t_main_app():
 
 SELECTION = [("Single sample", "D-SEL-single"), ("Self-consistency", "D-SEL-selfcons"),
              ("Step check", "D-SEL-stepcheck"), ("\\ \\ \\ vignette swapped", "D-SEL-stepcheck-swap"),
-             ("Ledger score", "D-SEL-ledger"), ("Combined", "D-SEL-combined"),
-             ("\\ \\ \\ vignette swapped", "D-SEL-combined-swap"), ("\\ \\ \\ no near-misses", "D-SEL-no-nearmiss"),
+             ("Ledger score", "D-SEL-ledger"), ("\\ \\ \\ rule triplets only", "D-SEL-ledger-rule"),
+             ("Combined", "D-SEL-combined"), ("\\ \\ \\ vignette swapped", "D-SEL-combined-swap"),
+             # rows -rule exist once Ledger/Combined use the clinical-pairs model (DECISIONS_D 3 Oct; drop them if not)
+             ("\\ \\ \\ rule triplets only", "D-SEL-combined-rule"), ("\\ \\ \\ no near-misses", "D-SEL-no-nearmiss"),
              ("CLOSED", "D-SEL-closed")]
 
 

@@ -34,6 +34,8 @@ for s in $SCORERS; do
     ledger2-triplets)      $PY -u scripts/score_pool.py ledger --pool $POOLS/$POOL --model /pvc/merged/B-F-ledger2-triplets-s0 --tp "$TP" --out "$f.tmp" $X ;;
     ledger2-triplets-swap) $PY -u scripts/score_pool.py ledger --pool $POOLS/$POOL --model /pvc/merged/B-F-ledger2-triplets-s0 --tp "$TP" --out "$f.tmp" --swap $X ;;
     ledger2-blocks)        $PY -u scripts/score_pool.py ledger --pool $POOLS/$POOL --model /pvc/merged/B-F-ledger2-blocks-s0 --tp "$TP" --out "$f.tmp" $X ;;
+    ledger2-tripclin)      $PY -u scripts/score_pool.py ledger --pool $POOLS/$POOL --model /pvc/merged/B-TR-tripclin-s0 --tp "$TP" --out "$f.tmp" $X ;;
+    ledger2-tripclin-swap) $PY -u scripts/score_pool.py ledger --pool $POOLS/$POOL --model /pvc/merged/B-TR-tripclin-s0 --tp "$TP" --out "$f.tmp" --swap $X ;;
     *) echo "unknown scorer $s"; exit 2 ;;
   esac
   mv "$f.tmp" "$f"; mv "$f.tmp.meta.json" "$f.meta.json"
