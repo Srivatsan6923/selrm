@@ -1,6 +1,6 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "f036367ed8b8c0fbd56c1d8bf1aa512c5b69b741",
+ "code_commit": "ea6bf16adbe225fe9ab872a61dfa9151a0327838",
  "uncommitted_changes": true,
  "records": {
   "rule_v1/dev_missing": {
@@ -9633,6 +9633,38 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/D-SEL-combined-logistic/sel:keypairs/top/pair_acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "sel/keypairs",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/D-SEL-combined-logistic/sel:medqa/top/acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "sel/medqa",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/D-SEL-combined-product/sel:keypairs/top/pair_acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "sel/keypairs",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/D-SEL-combined-product/sel:medqa/top/acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "sel/medqa",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/D-SEL-combined-swap/sel:careqa/top/acc": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -10232,6 +10264,25 @@
    "set": "sel/keypairs",
    "stat": "mean",
    "seeds_found": []
+  },
+  "sum/D-POOL-medqa_test/ineligible_share@pct1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": []
+  },
+  "sum/D-RES/systems.ledger2.generated_tokens_per_claim@0": {
+   "value": "10",
+   "number": 10.011088159350793,
+   "runs": [
+    {
+     "run_id": "D-RES",
+     "seed": null,
+     "file": "results/D-RES/summary.json",
+     "field": "systems.ledger2.generated_tokens_per_claim",
+     "file_commit": "8c49d34b1af8d38cc62ce9009eed945a6468a9bf",
+     "code_commit": null
+    }
+   ]
   }
  },
  "tables": {

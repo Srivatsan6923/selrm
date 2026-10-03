@@ -70,5 +70,6 @@
  "run/B-F-verdict-triplets/L2/all/TA/lo": "87.3",
  "run/B-F-verdict-triplets/L3inv/all/TA": "96.9",
  "run/B-F-verdict-triplets/dev/all/TA": "99.7",
- "run/B-F-verdict-triplets/readapply/all/TA": "99.4"
+ "run/B-F-verdict-triplets/readapply/all/TA": "99.4",
+ "sum/D-RES/systems.ledger2.generated_tokens_per_claim@0": "10"
 }

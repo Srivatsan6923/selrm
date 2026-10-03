@@ -583,6 +583,22 @@
   "number": null,
   "value": "\\ph{tbd}"
  },
+ "run/D-SEL-combined-logistic/sel:keypairs/top/pair_acc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/D-SEL-combined-logistic/sel:medqa/top/acc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/D-SEL-combined-product/sel:keypairs/top/pair_acc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/D-SEL-combined-product/sel:medqa/top/acc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
  "run/D-SEL-combined/sel:keypairs/top/pair_acc": {
   "number": null,
   "value": "\\ph{tbd}"
@@ -602,5 +618,13 @@
  "run/D-SEL-stepcheck/sel:medeinst/top/pair_acc": {
   "number": null,
   "value": "\\ph{tbd}"
+ },
+ "sum/D-POOL-medqa_test/ineligible_share@pct1": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "sum/D-RES/systems.ledger2.generated_tokens_per_claim@0": {
+  "number": 10.011088159350793,
+  "value": "10"
  }
 }

@@ -2006,7 +2006,7 @@ counts do not by themselves mean equal supervision.}
 
 \paragraph{Resources.}
 Per scored claim: verdict only, \ph{1} pass and \ph{1} generated token;
-\method{}, \ph{2} passes and \ph{45} tokens; generated-program verifier,
+\method{}, \ph{2} passes and \res{sum/D-RES/systems.ledger2.generated_tokens_per_claim@0} tokens; generated-program verifier,
 \ph{1} pass, \ph{540} tokens and one execution; GenPRM-style verifier,
 \ph{1} pass, \ph{500} tokens and one execution; closed judge with ledger
 prompt, \ph{1} API call and \ph{210} tokens, about \ph{60} times the list
@@ -2028,10 +2028,10 @@ findings and of the chain from finding to criterion to conclusion, gives
 outcome reward, uses the answer for each case.
 
 \paragraph{Selection protocol.}
-A trace is eligible if it contains a final answer (\ph{6.1}\% are not).
-Ranking by the product of the two calibrated scores gives \ph{78.0}\% on
-MedQA and \ph{66.1}\% on key pairs, a logistic combination fitted on
-development data \ph{78.5}\% and \ph{67.0}\%, and the minimum \res{run/D-SEL-combined/sel:medqa/top/acc}\% and
+A trace is eligible if it contains a final answer (\res{sum/D-POOL-medqa_test/ineligible_share@pct1}\% are not).
+Ranking by the product of the two calibrated scores gives \res{run/D-SEL-combined-product/sel:medqa/top/acc}\% on
+MedQA and \res{run/D-SEL-combined-product/sel:keypairs/top/pair_acc}\% on key pairs, a logistic combination fitted on
+development data \res{run/D-SEL-combined-logistic/sel:medqa/top/acc}\% and \res{run/D-SEL-combined-logistic/sel:keypairs/top/pair_acc}\%, and the minimum \res{run/D-SEL-combined/sel:medqa/top/acc}\% and
 \res{run/D-SEL-combined/sel:keypairs/top/pair_acc}\%. With
 a paraphrased vignette the combined reward gives \ph{78.0}\% on MedQA. For
 nested pools the selected reward cannot fall as $N$ grows, so we report
