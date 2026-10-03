@@ -1,5 +1,5 @@
 # STATE role D (lead; maintained by the D session)
-Updated: 2026-10-03 ~07:15 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
+Updated: 2026-10-03 ~07:35 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
 
 ## Where D works
 - Clone `D:/NAACL27/selrm-role-d` (github Srivatsan6923/selrm): D's work on `role-d`; publish with
@@ -25,12 +25,18 @@ Updated: 2026-10-03 ~07:15 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo roo
 - P1: D-RES (results/D-RES); pool/scoring/selection code; tests/test_role_d.py.
 
 ## In progress
-- Workflow wf_e31e6623-e81: verification of docs/TIMELINE.md (not yet committed; commit after the verdict).
-- NRP (all queued, us-west required; 48 GB and 24 GB pairs saturated on 3 Oct morning UTC): validation of the merged
-  ledger model against B's test_L2 scores (selrm-d-validate-l2t-24gb-9709 with tp 2, selrm-d-validate-l2t-l40-9962
-  with tp 1: keep the first that finishes, delete the other) and pool smoke tests (selrm-d-pool-smoke-24gb-9712,
-  -l40-9972). Acceptance criteria for the validation: DECISIONS_D 3 Oct.
-- Merge 3 done (main 201e360 + lead commits; 71 tests pass).
+- Workflow wf_e31e6623-e81: verification of docs/TIMELINE.md (untracked until its verdict).
+- NRP west: validation of the merged ledger model against B's test_L2 scores running on an opportunistic H100
+  (selrm-d-validate-l2t-h100-11263) and staging on 2 x 24 GB (selrm-d-validate-l2t-24gb-9709): keep the first that
+  finishes; acceptance criteria DECISIONS_D 3 Oct. Pool smoke tests pending (selrm-d-pool-smoke-24gb-9712, -l40-9972).
+- NRP central (second site, us-central): PVC selrm-d-central, sync pod selrm-d-sync-c, mirror job
+  selrm-d-mirror-central-12448 (env, code, adapters, validation records from the west; pinned base model and Med-PRM
+  from Hugging Face; merges the two adapters there). Jobs there: `--site central`, paths /pvc/selrm/... instead of
+  /pvcb/selrm/..., and the central merged copies are validated like the west ones before use.
+- Lessons: cross-region CephFS reads ~5 MB/s (jobs require their PVC's region); vLLM needs
+  VLLM_USE_FLASHINFER_SAMPLER=0; transformers 5 apply_chat_template(tokenize=True) returns a dict (tokenise the
+  rendered text); argparse keeps '--' (the launcher strips it); a pod mounting the same PVC twice (rw + ro) hung in
+  ContainerCreating (central mounts once); opportunistic H100s (priorityClassName opportunistic) are usable.
 
 ## Next
 1. Validation passes -> pipelines (k8s/pool_pipeline_d.sh <pool> <tp>): medqa_dev (calibration; scorers medprm
