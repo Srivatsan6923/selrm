@@ -43,8 +43,5 @@ Clinical evaluations of B's adapters: write them under the adapter's run id (e.g
 `results_git/B-F-ledger2-triplets-s0/summary_clin_v1~medeinst_test.json`) or under an
 eval-only run id `<adapter run id>-eval` that the lead maps; say which in HANDOFFS.
 
-## Run ids for rows the run matrices do not name yet
-`B-F-summary2case-triplets-s<k>` (summary pipeline, judge also sees the case),
-`B-LOKO-<subject|time|boundary>-<verdict|summary2|ledger2>-s0`, `B-AB-condition-s0` (condition
-derived by the reader), `B-AE-pred-ledger-program` (rule program on the predicted ledger),
-`C-DG-trigger` (general-purpose trigger tagger). Other ids: `docs/RUN_MATRIX_{A,B,C,D}.csv`.
+## Run ids for rows the run matrices do not name
+`B-SC-summary2-triplets-s<k>` (summary pipeline, judge also sees the case), `B-LOKO-<subject|time|boundary>-<verdict|summary2|ledger2>-s0`, `B-AB-conddrv-s0` (condition derived by the reader), `B-AE-program-ledger` (rule program on the predicted ledger), `C-SC-gptrigger` (general-purpose trigger tagger + program), `C-TG-<x>` (TrialGPT scores of system `B-F-<x>` or `C-TF-<x>`, set clin_v1/trialgpt_test). Other ids: `docs/RUN_MATRIX_{A,B,C,D}.csv`.

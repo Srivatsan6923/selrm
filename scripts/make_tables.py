@@ -487,7 +487,7 @@ def t_factorial():
             rows.append(("group", "Two-stage (case-blind judge)"))
         rows.append((lab, {c: runkey(f"B-F-{f}-{c}", "L2", "TA") for c in CORPORA}))
     rows += [("group", "Two-stage, judge also sees the case"),
-             ("Evidence summary", {"triplets": runkey("B-F-summary2case-triplets", "L2", "TA")})]
+             ("Evidence summary", {"triplets": runkey("B-SC-summary2-triplets", "L2", "TA")})]
     return rows_tex("factorial", rows, CORPORA, bold="table")
 
 
@@ -591,14 +591,14 @@ ABLATION = [("\\method{} (facts only)", "B-F-ledger2-triplets", "all"),
             ("\\ \\ decision field only", "B-AB-bitonly-judge", "all"),
             ("\\ \\ program on predicted bit", "B-AE-pred-bit-program", "all"),
             ("\\ \\ reader writes bit only", "B-AB-bitonly-reader", "all"),
-            ("\\ \\ condition derived by the reader", "B-AB-condition", "all"),
+            ("\\ \\ condition derived by the reader", "B-AB-conddrv", "all"),
             ("\\ \\ + verification pass", "B-AB-verify", "all"),
             ("\\ \\ program-supplied ledger", "B-AE-oracle-ledger", "all"),
-            ("\\ \\ program on predicted ledger", "B-AE-pred-ledger-program", "all"),
+            ("\\ \\ program on predicted ledger", "B-AE-program-ledger", "all"),
             ("One-stage ledger", "B-F-rationale-triplets", "all"),
             ("Value ledger", "B-F-value2-triplets", "all"),
             ("Evidence summary (matched prose)", "B-F-summary2-triplets", "all"),
-            ("\\ \\ judge also sees the case", "B-F-summary2case-triplets", "all"),
+            ("\\ \\ judge also sees the case", "B-SC-summary2-triplets", "all"),
             ("Concept scorer", "B-AB-concept", "all"),
             ("Premise gate", "B-AE-premise-gate", "all"),
             ("$-$ near-misses", "B-F-ledger2-blocks", "all"),
@@ -609,7 +609,7 @@ ABLATION = [("\\method{} (facts only)", "B-F-ledger2-triplets", "all"),
             ("$-$ presentation edits", "B-AB-nopres", "all"),
             ("$-$ ledger resampling", "B-AB-noresamp", "all"),
             ("Verdict only, pairwise loss", "B-AB-pairwise", "all")]
-NO_ME = {"B-AE-pred-bit-program", "B-AE-oracle-ledger", "B-AE-pred-ledger-program"}
+NO_ME = {"B-AE-pred-bit-program", "B-AE-oracle-ledger", "B-AE-program-ledger"}
 
 
 def t_ablation():
@@ -657,7 +657,7 @@ SHORTCUTS = [("Always default", "A-D14-always_default"), ("Claim only", "A-D14-c
              ("Attribute-blind, logistic", "A-D14-attribute_blind"),
              ("Trigger lexicon + program, training cue phrases", "A-D14-trigger_train"),
              ("\\ \\ given the test cue phrases", "A-D14-trigger_all"),
-             ("General-purpose trigger tagger + program", "C-DG-trigger")]
+             ("General-purpose trigger tagger + program", "C-SC-gptrigger")]
 
 
 def t_shortcuts():

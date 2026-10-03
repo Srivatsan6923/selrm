@@ -1,6 +1,6 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "d9806ba1eeef4f3fa0405f2ed233175fe4cbb5eb",
+ "code_commit": "b3986bc693017a151933a412e382908d33fea852",
  "uncommitted_changes": true,
  "records": {
   "rule_v1/dev_missing": {
@@ -1293,7 +1293,7 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-AB-condition/L2/all/Hold": {
+  "run/B-AB-conddrv/L2/all/Hold": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
@@ -1301,7 +1301,7 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-AB-condition/L2/all/Rev": {
+  "run/B-AB-conddrv/L2/all/Rev": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
@@ -1309,7 +1309,7 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-AB-condition/L2/all/TA": {
+  "run/B-AB-conddrv/L2/all/TA": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
@@ -1317,7 +1317,7 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-AB-condition/clin_v1:medeinst_test/top/Reversal": {
+  "run/B-AB-conddrv/clin_v1:medeinst_test/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
@@ -1325,7 +1325,7 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-AB-condition/missing/top/MR": {
+  "run/B-AB-conddrv/missing/top/MR": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
@@ -1637,38 +1637,6 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-AE-pred-ledger-program/L2/all/Hold": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "rule_v1/test_L2",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/B-AE-pred-ledger-program/L2/all/Rev": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "rule_v1/test_L2",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/B-AE-pred-ledger-program/L2/all/TA": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "rule_v1/test_L2",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/B-AE-pred-ledger-program/missing/top/MR": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "rule_v1/missing",
-   "stat": "mean",
-   "seeds_found": []
-  },
   "run/B-AE-premise-gate/L2/all/Hold": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -1708,6 +1676,158 @@
    "set": "rule_v1/missing",
    "stat": "mean",
    "seeds_found": []
+  },
+  "run/B-AE-program-ledger/L2/all/Hold": {
+   "value": "100.0",
+   "number": 100.0,
+   "runs": [
+    {
+     "run_id": "B-AE-program-ledger",
+     "seed": null,
+     "file": "results_git/B-AE-program-ledger/summary_rule_v1~test_L2.json",
+     "field": "all.Hold",
+     "file_commit": "d3c801aad22f7b689fa9e6c8f5b01a2d4a24956c",
+     "code_commit": "d3c801aad22f"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/B-AE-program-ledger/L2/all/Hold/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-AE-program-ledger",
+     "seed": null,
+     "file": "results_git/B-AE-program-ledger/summary_rule_v1~test_L2.json",
+     "field": "all.Hold",
+     "file_commit": "d3c801aad22f7b689fa9e6c8f5b01a2d4a24956c",
+     "code_commit": "d3c801aad22f"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/B-AE-program-ledger/L2/all/Rev": {
+   "value": "99.4",
+   "number": 99.4,
+   "runs": [
+    {
+     "run_id": "B-AE-program-ledger",
+     "seed": null,
+     "file": "results_git/B-AE-program-ledger/summary_rule_v1~test_L2.json",
+     "field": "all.Rev",
+     "file_commit": "d3c801aad22f7b689fa9e6c8f5b01a2d4a24956c",
+     "code_commit": "d3c801aad22f"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/B-AE-program-ledger/L2/all/Rev/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-AE-program-ledger",
+     "seed": null,
+     "file": "results_git/B-AE-program-ledger/summary_rule_v1~test_L2.json",
+     "field": "all.Rev",
+     "file_commit": "d3c801aad22f7b689fa9e6c8f5b01a2d4a24956c",
+     "code_commit": "d3c801aad22f"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/B-AE-program-ledger/L2/all/TA": {
+   "value": "99.4",
+   "number": 99.4,
+   "runs": [
+    {
+     "run_id": "B-AE-program-ledger",
+     "seed": null,
+     "file": "results_git/B-AE-program-ledger/summary_rule_v1~test_L2.json",
+     "field": "all.TA",
+     "file_commit": "d3c801aad22f7b689fa9e6c8f5b01a2d4a24956c",
+     "code_commit": "d3c801aad22f"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/B-AE-program-ledger/L2/all/TA/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-AE-program-ledger",
+     "seed": null,
+     "file": "results_git/B-AE-program-ledger/summary_rule_v1~test_L2.json",
+     "field": "all.TA",
+     "file_commit": "d3c801aad22f7b689fa9e6c8f5b01a2d4a24956c",
+     "code_commit": "d3c801aad22f"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/B-AE-program-ledger/missing/top/MR": {
+   "value": "54.9",
+   "number": 54.9,
+   "runs": [
+    {
+     "run_id": "B-AE-program-ledger",
+     "seed": null,
+     "file": "results_git/B-AE-program-ledger/scores_rule_v1~missing.jsonl",
+     "field": "top.MR",
+     "file_commit": "d3c801aad22f7b689fa9e6c8f5b01a2d4a24956c",
+     "code_commit": "d3c801aad22f"
+    }
+   ],
+   "set": "rule_v1/missing",
+   "stat": "mean",
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/B-AE-program-ledger/missing/top/MR/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-AE-program-ledger",
+     "seed": null,
+     "file": "results_git/B-AE-program-ledger/scores_rule_v1~missing.jsonl",
+     "field": "top.MR",
+     "file_commit": "d3c801aad22f7b689fa9e6c8f5b01a2d4a24956c",
+     "code_commit": "d3c801aad22f"
+    }
+   ],
+   "set": "rule_v1/missing",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/B-DIV-base-16/L2/all/TA": {
    "value": "\\ph{tbd}",
@@ -4632,46 +4752,6 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-summary2case-triplets/L2/all/Hold": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "rule_v1/test_L2",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/B-F-summary2case-triplets/L2/all/Rev": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "rule_v1/test_L2",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/B-F-summary2case-triplets/L2/all/TA": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "rule_v1/test_L2",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/B-F-summary2case-triplets/clin_v1:medeinst_test/top/Reversal": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "clin_v1/medeinst_test",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/B-F-summary2case-triplets/missing/top/MR": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "rule_v1/missing",
-   "stat": "mean",
-   "seeds_found": []
-  },
   "run/B-F-value2-balanced/L2/all/TA": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -6328,6 +6408,46 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/B-SC-summary2-triplets/L2/all/Hold": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/B-SC-summary2-triplets/L2/all/Rev": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/B-SC-summary2-triplets/L2/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/B-SC-summary2-triplets/clin_v1:medeinst_test/top/Reversal": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/medeinst_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/B-SC-summary2-triplets/missing/top/MR": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rule_v1/missing",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/B-TR-clinonly/L2/all/Hold": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -7552,30 +7672,6 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-DG-trigger/L2/all/Hold": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "rule_v1/test_L2",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/C-DG-trigger/L2/all/Rev": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "rule_v1/test_L2",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/C-DG-trigger/L2/all/TA": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "rule_v1/test_L2",
-   "stat": "mean",
-   "seeds_found": []
-  },
   "run/C-REF-closed-ledger/L0/all/TA": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -7831,6 +7927,120 @@
    "set": "xr_v1/test",
    "stat": "mean",
    "seeds_found": []
+  },
+  "run/C-SC-gptrigger/L2/all/Hold": {
+   "value": "81.0",
+   "number": 81.05,
+   "runs": [
+    {
+     "run_id": "C-SC-gptrigger",
+     "seed": null,
+     "file": "results_git/C-SC-gptrigger/summary_rule_v1~test_L2.json",
+     "field": "all.Hold",
+     "file_commit": "5d9020dfdedecb362aac0bce16bcb9c02ec247d7",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-SC-gptrigger/L2/all/Hold/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "C-SC-gptrigger",
+     "seed": null,
+     "file": "results_git/C-SC-gptrigger/summary_rule_v1~test_L2.json",
+     "field": "all.Hold",
+     "file_commit": "5d9020dfdedecb362aac0bce16bcb9c02ec247d7",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-SC-gptrigger/L2/all/Rev": {
+   "value": "96.7",
+   "number": 96.65,
+   "runs": [
+    {
+     "run_id": "C-SC-gptrigger",
+     "seed": null,
+     "file": "results_git/C-SC-gptrigger/summary_rule_v1~test_L2.json",
+     "field": "all.Rev",
+     "file_commit": "5d9020dfdedecb362aac0bce16bcb9c02ec247d7",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-SC-gptrigger/L2/all/Rev/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "C-SC-gptrigger",
+     "seed": null,
+     "file": "results_git/C-SC-gptrigger/summary_rule_v1~test_L2.json",
+     "field": "all.Rev",
+     "file_commit": "5d9020dfdedecb362aac0bce16bcb9c02ec247d7",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-SC-gptrigger/L2/all/TA": {
+   "value": "77.7",
+   "number": 77.7,
+   "runs": [
+    {
+     "run_id": "C-SC-gptrigger",
+     "seed": null,
+     "file": "results_git/C-SC-gptrigger/summary_rule_v1~test_L2.json",
+     "field": "all.TA",
+     "file_commit": "5d9020dfdedecb362aac0bce16bcb9c02ec247d7",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-SC-gptrigger/L2/all/TA/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "C-SC-gptrigger",
+     "seed": null,
+     "file": "results_git/C-SC-gptrigger/summary_rule_v1~test_L2.json",
+     "field": "all.TA",
+     "file_commit": "5d9020dfdedecb362aac0bce16bcb9c02ec247d7",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/C-TF-critic/L0/all/TA": {
    "value": "\\ph{tbd}",
@@ -8998,7 +9208,7 @@
    {
     "row": "Evidence summary",
     "col": "triplets",
-    "key": "run/B-F-summary2case-triplets/L2/all/TA",
+    "key": "run/B-SC-summary2-triplets/L2/all/TA",
     "value": "\\ph{tbd}"
    }
   ],
@@ -11102,31 +11312,31 @@
    {
     "row": "\\ \\ condition derived by the reader",
     "col": "Rev",
-    "key": "run/B-AB-condition/L2/all/Rev",
+    "key": "run/B-AB-conddrv/L2/all/Rev",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ \\ condition derived by the reader",
     "col": "Hold",
-    "key": "run/B-AB-condition/L2/all/Hold",
+    "key": "run/B-AB-conddrv/L2/all/Hold",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ \\ condition derived by the reader",
     "col": "TA",
-    "key": "run/B-AB-condition/L2/all/TA",
+    "key": "run/B-AB-conddrv/L2/all/TA",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ \\ condition derived by the reader",
     "col": "MR",
-    "key": "run/B-AB-condition/missing/top/MR",
+    "key": "run/B-AB-conddrv/missing/top/MR",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ \\ condition derived by the reader",
     "col": "ME",
-    "key": "run/B-AB-condition/clin_v1:medeinst_test/top/Reversal",
+    "key": "run/B-AB-conddrv/clin_v1:medeinst_test/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
@@ -11186,26 +11396,26 @@
    {
     "row": "\\ \\ program on predicted ledger",
     "col": "Rev",
-    "key": "run/B-AE-pred-ledger-program/L2/all/Rev",
-    "value": "\\ph{tbd}"
+    "key": "run/B-AE-program-ledger/L2/all/Rev",
+    "value": "99.4"
    },
    {
     "row": "\\ \\ program on predicted ledger",
     "col": "Hold",
-    "key": "run/B-AE-pred-ledger-program/L2/all/Hold",
-    "value": "\\ph{tbd}"
+    "key": "run/B-AE-program-ledger/L2/all/Hold",
+    "value": "100.0"
    },
    {
     "row": "\\ \\ program on predicted ledger",
     "col": "TA",
-    "key": "run/B-AE-pred-ledger-program/L2/all/TA",
-    "value": "\\ph{tbd}"
+    "key": "run/B-AE-program-ledger/L2/all/TA",
+    "value": "99.4"
    },
    {
     "row": "\\ \\ program on predicted ledger",
     "col": "MR",
-    "key": "run/B-AE-pred-ledger-program/missing/top/MR",
-    "value": "\\ph{tbd}"
+    "key": "run/B-AE-program-ledger/missing/top/MR",
+    "value": "54.9"
    },
    {
     "row": "One-stage ledger",
@@ -11300,31 +11510,31 @@
    {
     "row": "\\ \\ judge also sees the case",
     "col": "Rev",
-    "key": "run/B-F-summary2case-triplets/L2/all/Rev",
+    "key": "run/B-SC-summary2-triplets/L2/all/Rev",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ \\ judge also sees the case",
     "col": "Hold",
-    "key": "run/B-F-summary2case-triplets/L2/all/Hold",
+    "key": "run/B-SC-summary2-triplets/L2/all/Hold",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ \\ judge also sees the case",
     "col": "TA",
-    "key": "run/B-F-summary2case-triplets/L2/all/TA",
+    "key": "run/B-SC-summary2-triplets/L2/all/TA",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ \\ judge also sees the case",
     "col": "MR",
-    "key": "run/B-F-summary2case-triplets/missing/top/MR",
+    "key": "run/B-SC-summary2-triplets/missing/top/MR",
     "value": "\\ph{tbd}"
    },
    {
     "row": "\\ \\ judge also sees the case",
     "col": "ME",
-    "key": "run/B-F-summary2case-triplets/clin_v1:medeinst_test/top/Reversal",
+    "key": "run/B-SC-summary2-triplets/clin_v1:medeinst_test/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
@@ -12254,20 +12464,20 @@
    {
     "row": "General-purpose trigger tagger + program",
     "col": "Rev",
-    "key": "run/C-DG-trigger/L2/all/Rev",
-    "value": "\\ph{tbd}"
+    "key": "run/C-SC-gptrigger/L2/all/Rev",
+    "value": "96.7"
    },
    {
     "row": "General-purpose trigger tagger + program",
     "col": "Hold",
-    "key": "run/C-DG-trigger/L2/all/Hold",
-    "value": "\\ph{tbd}"
+    "key": "run/C-SC-gptrigger/L2/all/Hold",
+    "value": "81.0"
    },
    {
     "row": "General-purpose trigger tagger + program",
     "col": "TA",
-    "key": "run/C-DG-trigger/L2/all/TA",
-    "value": "\\ph{tbd}"
+    "key": "run/C-SC-gptrigger/L2/all/TA",
+    "value": "77.7"
    }
   ],
   "rules": [
