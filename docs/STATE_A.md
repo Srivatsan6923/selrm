@@ -1,4 +1,4 @@
-# STATE role A (maintained by Claude Code)
+# STATE role A
 Updated: Sat 3 Oct 2026, early morning. Working on FINAL_TASKS_A (P0 in order, then P1), plus the
 lead's addendum of 2 Oct: `docs/PAPER_VS_CODE.md`; the paper follows the code; windows only in
 the new sets.
