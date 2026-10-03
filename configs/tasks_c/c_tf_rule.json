@@ -446,6 +446,19 @@
     "clin_v1/nli4ct_test"
    ],
    "max_new": 768
+  },
+  {
+   "run_id": "C-CP-medqa-train-reader",
+   "priority": 11,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s0",
+   "adapter_run": "B-F-ledger2-triplets-s0",
+   "bs_score": 64,
+   "max_new": 768,
+   "sets": [
+    "clin_v1/keypairs_medqa_train"
+   ],
+   "note": "ledger targets for C's clinical training pairs (v13 App.: sampled once from the frozen rule-trained reader, kept if quotes occur in the case and the frozen judge returns the keyed verdict on all four cells); greedy decoding"
   }
  ],
  "note": "wave 1: TrialGPT development portion (priority 1-8) and the untrained-backbone rule-tier rows (10, 20); runners re-read this file before every claim"
