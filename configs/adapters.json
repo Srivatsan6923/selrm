@@ -645,6 +645,26 @@
    "corpus": "rule_v1/train_triplets",
    "pvc": "selrm-b",
    "pvc_path": "selrm/adapters/B-TR-genprm-s0"
+  },
+  "B-LOKO-subject-bit_reader-s0": {
+   "run_id": "B-LOKO-subject-bit_reader-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "bit_reader",
+   "corpus": "rule_v1/train_triplets_no_subject",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-LOKO-subject-bit_reader-s0"
+  },
+  "B-LOKO-time-bit_reader-s0": {
+   "run_id": "B-LOKO-time-bit_reader-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "bit_reader",
+   "corpus": "rule_v1/train_triplets_no_time",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-LOKO-time-bit_reader-s0"
   }
  }
 }
