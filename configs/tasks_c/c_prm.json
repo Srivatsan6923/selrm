@@ -161,7 +161,112 @@
     "clin_v1/keypairs_careqa"
    ],
    "merge_into": "C-AUD-fover"
+  },
+  {
+   "run_id": "C-AUD-thinkprm--p1",
+   "prm": "thinkprm",
+   "format": "prm",
+   "priority": 40,
+   "bs": 8,
+   "min_gen": 3,
+   "min_gb": 40,
+   "max_new": 2048,
+   "n_groups": 200,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "merge_into": "C-AUD-thinkprm"
+  },
+  {
+   "run_id": "C-AUD-thinkprm--p2",
+   "prm": "thinkprm",
+   "format": "prm",
+   "priority": 41,
+   "bs": 8,
+   "min_gen": 3,
+   "min_gb": 40,
+   "max_new": 2048,
+   "n_groups": 100,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "xr_v1/test"
+   ],
+   "merge_into": "C-AUD-thinkprm"
+  },
+  {
+   "run_id": "C-AUD-thinkprm--p3",
+   "prm": "thinkprm",
+   "format": "prm",
+   "priority": 42,
+   "bs": 8,
+   "min_gen": 3,
+   "min_gb": 40,
+   "max_new": 2048,
+   "n_groups": 200,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "merge_into": "C-AUD-thinkprm"
+  },
+  {
+   "run_id": "C-AUD-genprm--p1",
+   "prm": "genprm",
+   "format": "prm",
+   "priority": 43,
+   "bs": 16,
+   "min_gen": 3,
+   "max_new": 2048,
+   "n_groups": 200,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "merge_into": "C-AUD-genprm"
+  },
+  {
+   "run_id": "C-AUD-genprm--p2",
+   "prm": "genprm",
+   "format": "prm",
+   "priority": 44,
+   "bs": 16,
+   "min_gen": 3,
+   "max_new": 2048,
+   "n_groups": 100,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "xr_v1/test"
+   ],
+   "merge_into": "C-AUD-genprm"
+  },
+  {
+   "run_id": "C-AUD-genprm--p3",
+   "prm": "genprm",
+   "format": "prm",
+   "priority": 45,
+   "bs": 16,
+   "min_gen": 3,
+   "max_new": 2048,
+   "n_groups": 200,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "merge_into": "C-AUD-genprm"
   }
  ],
- "note": "released PRMs as released (scripts/prms); runners with --online and --models ''; generative PRMs (thinkprm, genprm) are added after their wrappers are reviewed"
+ "note": "released PRMs as released (scripts/prms); runners with --online --models ''. Generative PRMs on fixed subsets (200 L2 triplets, 100 xr_v1 items, 200 MedEinst pairs; n/kinds per near-miss kind, random.Random(0)); 3-hour timebox each"
 }
