@@ -147,7 +147,8 @@
     "rule_v1/test_L2",
     "rule_v1/test_L3alt"
    ],
-   "note": "untrained backbone, frozen reader (ledger) and judge prompts; strict malformed check primary, lenient normalisation secondary"
+   "note": "untrained backbone, frozen reader (ledger) and judge prompts; strict malformed check primary, lenient normalisation secondary",
+   "min_gb": 40
   },
   {
    "run_id": "C-TF-promptsum",
@@ -163,7 +164,8 @@
     "rule_v1/test_L2",
     "rule_v1/test_L3alt"
    ],
-   "note": "untrained backbone, frozen reader (prose) and judge prompts"
+   "note": "untrained backbone, frozen reader (prose) and judge prompts",
+   "min_gb": 40
   }
  ],
  "note": "wave 1: TrialGPT development portion (priority 1-8) and the untrained-backbone rule-tier rows (10, 20); runners re-read this file before every claim"

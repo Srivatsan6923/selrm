@@ -119,7 +119,8 @@ def build_eval_c(root, fmt, tag, set_name, tok):
 
 def run_one(spec, a, mon, log, owner):
     import torch
-    import eval_local, finetune, runq
+    import eval_local, finetune
+    from selrm import runq
     rid = spec["run_id"]
     rdir = f"{a.root}/results/{rid}"
     log.paths.append(f"{rdir}/run.log")
@@ -191,22 +192,28 @@ def main():
     a = ap.parse_args()
     only = set(filter(None, a.formats.split(",")))
     sys.path[:0] = [a.bcode, f"{a.bcode}/scripts"]        # B's selrm package and scoring scripts
-    import unsloth  # noqa: F401  (before transformers)
-    import finetune, runq
+    gpu = os.environ.get("SELRM_BACKEND", "unsloth") == "unsloth"
+    if gpu:
+        import unsloth  # noqa: F401  (before transformers)
+    import finetune
+    from selrm import runq
     from train_eval_job import Log
     runq.ROLE = "C"
-    try:
-        print("preflight:", finetune.preflight(), flush=True)
-    except Exception as e:
-        print(f"PREFLIGHT FAILED: {type(e).__name__}: {e}", flush=True)
-        sys.exit(4)
+    if gpu:
+        try:
+            print("preflight:", finetune.preflight(), flush=True)
+        except Exception as e:
+            print(f"PREFLIGHT FAILED: {type(e).__name__}: {e}", flush=True)
+            sys.exit(4)
     owner = os.environ.get("POD_NAME", socket.gethostname())
     log = Log(f"{a.root}/logs/{owner}/runner.log")
     mon = runq.GpuMonitor(f"{a.root}/logs/{owner}/gpu_util.csv", log=log)
     mon.start()
+    import torch
+    gb = torch.cuda.get_device_properties(0).total_memory / 2**30 if torch.cuda.is_available() else 0
     while True:
         runs = sorted(json.load(open(a.tasks))["runs"], key=lambda r: r.get("priority", 9))
-        pick = next((r for r in runs if (not only or r["format"] in only)
+        pick = next((r for r in runs if (not only or r["format"] in only) and (not gpu or gb >= r.get("min_gb", 0))
                      and runq.state(f"{a.root}/results/{r['run_id']}") == "free"
                      and runq.claim(f"{a.root}/results/{r['run_id']}", owner)), None)
         if pick is None:
