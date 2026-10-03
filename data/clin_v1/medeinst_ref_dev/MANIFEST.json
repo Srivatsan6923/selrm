@@ -1,0 +1,21 @@
+{
+ "source": "zhui711/MedEinst",
+ "revision": "354f4b527e764a8f2bebea8f71be55e0a6966402",
+ "licence": "CC BY 4.0 (MedEinst; DDXPlus CC BY 4.0)",
+ "git_commit": "af3b2fc42d4fdcf26b75ab2a1891d748199e5d4a",
+ "python": "3.12.7",
+ "claims": "s = 'The most likely diagnosis is <y_gt>.', s_prime = same with <y_bias>; base = control, flip = trap",
+ "normalisation": "trailing whitespace removed per line (Markdown double-space leak on trap narratives)",
+ "split": "dev",
+ "source_file": "train.jsonl",
+ "source_sha256": "f3e8a72d321d9dff7b9d0fda5bf28bb5ecdf5705bfa0ba088acabb9ea1712de8",
+ "ref_pairs_released": 10609,
+ "ref_pairs_dropped_overlap_test": 63,
+ "split_rule": "random.Random(20261003).sample(kept reference pairs, 500) -> ref_dev; rest -> ref_train",
+ "name": "clin_v1/medeinst_ref_dev",
+ "n_records": 2000,
+ "n_pairs": 500,
+ "sha256": "7ba6648aefdb16333a4bdf0f2f47a7a770a611fea4d721bf192ed8d2c66585a4",
+ "created": "2026-10-02",
+ "frozen": true
+}

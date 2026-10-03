@@ -1,4 +1,40 @@
 {
+ "clin_v1/medeinst_ref_dev": {
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/medeinst_ref_dev/MANIFEST.json",
+  "n_groups": 500,
+  "n_records": 2000,
+  "path": "clin_v1/medeinst_ref_dev/records.jsonl",
+  "sha256": "7ba6648aefdb16333a4bdf0f2f47a7a770a611fea4d721bf192ed8d2c66585a4",
+  "split": "dev",
+  "tier": "external"
+ },
+ "clin_v1/medeinst_ref_train": {
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/medeinst_ref_train/MANIFEST.json",
+  "n_groups": 10046,
+  "n_records": 40184,
+  "path": "clin_v1/medeinst_ref_train/records.jsonl",
+  "sha256": "e89c1911d4d0ffccf6c6799efe217fa368ef440f68ba7ab36c470b13769d211f",
+  "split": "train",
+  "tier": "external"
+ },
+ "clin_v1/medeinst_test": {
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/medeinst_test/MANIFEST.json",
+  "n_groups": 5383,
+  "n_records": 21532,
+  "path": "clin_v1/medeinst_test/records.jsonl",
+  "sha256": "e8f373d223583dc6c14dd8a4c70324bb2ea06659be9cb9f1cd28baa96893c284",
+  "split": "test",
+  "tier": "external"
+ },
  "clin_v1/trialgpt_dev": {
   "created": "2026-10-02",
   "frozen": true,
