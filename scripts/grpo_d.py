@@ -313,13 +313,19 @@ def main():
     keep = set(random.Random("grpo-eval-v1").sample(tids, min(a.eval_triplets, len(tids))))
     ev = tasks([r for r in test if r["tid"] in keep], tag="eval")
     if a.eval_from:
+        import transformers
         from peft import PeftModel
-        from transformers import AutoModelForCausalLM
+        from transformers import AutoConfig
         tok = AutoTokenizer.from_pretrained(a.policy)
-        base = AutoModelForCausalLM.from_pretrained(a.policy, dtype=torch.bfloat16).to("cuda")
+        # the class TRL trained (Qwen3.5: the image-text wrapper, adapter keys model.language_model.*); the text-only
+        # class matches none of the adapter's keys and PEFT then leaves the policy untrained without an error
+        arch = AutoConfig.from_pretrained(a.policy).architectures[0]
+        base = getattr(transformers, arch).from_pretrained(a.policy, dtype=torch.bfloat16).to("cuda")
         for src in a.eval_from:
             m = re.search(r"checkpoint-(\d+)", src)
             model = base if src == "base" else PeftModel.from_pretrained(base, src)
+            if src != "base" and not sum(float(p.abs().sum()) for n, p in model.named_parameters() if "lora_B" in n):
+                sys.exit(f"adapter of {src} not applied (every lora_B is zero)")
             acc = evaluate(model, tok, ev, out=os.path.join(a.out, f"eval_step{m.group(1) if m else 0}.jsonl"))
             print("eval-from", src, json.dumps(acc), flush=True)
             if src != "base":
