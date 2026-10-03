@@ -13,9 +13,9 @@ Kubernetes objects as JSON and applies them with kubectl. In Git Bash set MSYS_N
 
 Sites. Each job reads a PVC of its own region: reading 19 GB of weights across regions took
 about an hour (3 Oct). west: D's PVC selrm-d at /pvc and B's PVC selrm-b read-only at /pvcb
-(base weights, kept adapters, data). central: D's PVC selrm-d-central at /pvc and, read-only,
-at /pvcb; k8s/mirror_central_d.sh lays it out like the two west PVCs (same paths), so every
-job command is the same on both sites.
+(base weights, kept adapters, data). central: D's PVC selrm-d-central at /pvc only (one mount);
+k8s/mirror_central_d.sh puts B's files under /pvc/selrm/..., so a west path /pvcb/selrm/x is
+/pvc/selrm/x there (k8s/pool_pipeline_d.sh falls back to it).
 
 Rules (docs/NRP_B.md, binding for D too): objects are named selrm-d-* and labelled
 app=selrm-d; requests == limits; no sleep in Jobs; CPU Jobs off GPU nodes; B holds the
@@ -37,7 +37,7 @@ CODE_DIRS = ("selrm", "scripts", "k8s", "configs")
 LABELS = {"app": "selrm-d"}
 SITES = {"west": {"pvc": "selrm-d", "pvcb": "selrm-b", "region": "us-west", "storage": "rook-cephfs",
                   "sync": "selrm-d-sync"},
-         "central": {"pvc": "selrm-d-central", "pvcb": "selrm-d-central", "region": "us-central",
+         "central": {"pvc": "selrm-d-central", "pvcb": None, "region": "us-central",
                      "storage": "rook-cephfs-central", "sync": "selrm-d-sync-c"}}
 SITE = SITES["west"]
 GPU = {"a40": ("nvidia.com/a40", None), "a6000": ("nvidia.com/rtxa6000", None),
@@ -53,12 +53,14 @@ DRIVER = {"key": "nvidia.com/cuda.driver.major", "operator": "Gt", "values": ["5
 
 
 def vols():
-    return [{"name": "pvc", "persistentVolumeClaim": {"claimName": SITE["pvc"]}},
-            {"name": "pvcb", "persistentVolumeClaim": {"claimName": SITE["pvcb"], "readOnly": True}}]
+    v = [{"name": "pvc", "persistentVolumeClaim": {"claimName": SITE["pvc"]}}]
+    return v + ([{"name": "pvcb", "persistentVolumeClaim": {"claimName": SITE["pvcb"], "readOnly": True}}]
+                if SITE["pvcb"] else [])
 
 
 def mnts():
-    return [{"name": "pvc", "mountPath": "/pvc"}, {"name": "pvcb", "mountPath": "/pvcb", "readOnly": True}]
+    m = [{"name": "pvc", "mountPath": "/pvc"}]
+    return m + ([{"name": "pvcb", "mountPath": "/pvcb", "readOnly": True}] if SITE["pvcb"] else [])
 
 
 def region():

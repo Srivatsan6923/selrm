@@ -16,7 +16,8 @@ PY=/opt/selrm-env/venv/bin/python
 POOLS=/pvc/pools; OUT=/pvc/scores/$POOL
 MEDPRM=/pvc/models/dmis-lab--llama-3.1-medprm-reward-v1.0
 mkdir -p "$OUT"
-MODEL=${POLICY:-/pvcb/selrm/models/unsloth--Qwen3.5-9B}
+MODEL=/pvcb/selrm/models/unsloth--Qwen3.5-9B
+[ -d "$MODEL" ] || MODEL=/pvc/selrm/models/unsloth--Qwen3.5-9B     # central site: B's files under /pvc/selrm
 if [ "$EXT" = 1 ]; then
   $PY -u scripts/make_pool.py --pool "$POOL" --out $POOLS --model "$MODEL" --tp "$TP" --extend "$POOLS/$POOL.extend.json"
   X="--ext"; SUF=".ext"
