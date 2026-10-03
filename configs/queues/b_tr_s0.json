@@ -23,6 +23,56 @@
    "corpus": "fover_v1/train"
   },
   {
+   "run_id": "B-TR-clinonly-s0",
+   "seed": 0,
+   "format": "ledger2",
+   "n_examples": 60000,
+   "corpus": "clin_v1/clinpairs_train",
+   "priority": 74,
+   "max_drop": 0.01,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/test_L3alt",
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "xr_v1/test"
+   ]
+  },
+  {
+   "run_id": "B-TR-tripclin-s0",
+   "seed": 0,
+   "format": "ledger2",
+   "n_examples": 60000,
+   "corpus": "rule_v1/train_triplets",
+   "mix": {
+    "corpus": "clin_v1/clinpairs_train",
+    "share": 0.5
+   },
+   "priority": 74,
+   "max_drop": 0.01,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/test_L3alt",
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "xr_v1/test"
+   ]
+  },
+  {
    "run_id": "B-DIS-s0",
    "seed": 0,
    "format": "ledger2",

@@ -25,7 +25,7 @@ CLINICAL_CELLS = {("verdict", "triplets"), ("summary2", "triplets"), ("rationale
 
 CORE_CELLS = {(f, c) for f in ("verdict", "summary2", "ledger2") for c in ("blocks", "triplets")}
 NEW_FAMILIES = ("xr_v1", "challenge_v1", "rewrite_v1", "ec_v1")     # A's new sets (FINAL_TASKS_B P0.6)
-CLIN_TRAIN = None    # C's final clinical training pairs (MedEinst reference + MedQA-train key pairs), once frozen
+CLIN_TRAIN = "clin_v1/clinpairs_train"    # C's final clinical training pairs (MedEinst reference + MedQA-train key pairs), once frozen
 ABL_ORDER = ("decfield", "bitonly-judge", "bitonly-reader", "conddrv", "verify", "concept", "premise-gate", "probe-rw",
              "nopres", "noresamp", "pairwise")       # FINAL_TASKS_B P1 order
 

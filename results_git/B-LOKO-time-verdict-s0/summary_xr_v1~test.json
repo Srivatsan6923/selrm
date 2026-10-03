@@ -1,0 +1,13 @@
+{
+ "run_id": "B-LOKO-time-verdict-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "seconds": 62.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

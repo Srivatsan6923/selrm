@@ -195,6 +195,16 @@
    "corpus": "rule_v1/train_triplets_no_subject",
    "pvc": "selrm-b",
    "pvc_path": "selrm/adapters/B-LOKO-subject-summary2-s0"
+  },
+  "B-LOKO-time-verdict-s0": {
+   "run_id": "B-LOKO-time-verdict-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v1/train_triplets_no_time",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-LOKO-time-verdict-s0"
   }
  }
 }

@@ -135,6 +135,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-LOKO-subject-ledger2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13213846 | 1073236 | 938 | 0.82 | 0.27 |
 | B-LOKO-subject-summary2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 12062378 | 1097188 | 938 | 0.74 | 0.25 |
 | B-LOKO-subject-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13135729 | 120000 | 938 | 0.69 | 0.14 |
+| B-LOKO-time-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13201513 | 120000 | 938 | 0.70 | 0.14 |
 
 ## 8. Was donor-ledger resampling active?
 
@@ -223,7 +224,7 @@ Swap in the ledger of another case (same rule, condition and claim): the judge r
 | subject | verdict | 7.0 | 91.0 | -84.0 [-89.2, -78.2], p < 0.001 |
 | subject | summary2 | 89.2 | 93.2 | -4.0 [-8.3, -0.3], p 0.048 |
 | subject | ledger2 | 62.5 | 97.8 | -35.2 [-42.7, -27.9], p < 0.001 |
-| time | verdict | not run | | |
+| time | verdict | 60.2 | 88.2 | -28.0 [-36.0, -20.6], p < 0.001 |
 | time | summary2 | not run | | |
 | time | ledger2 | not run | | |
 | boundary | verdict | not run | | |
