@@ -396,6 +396,22 @@ def seeds_section():
     print()
 
 
+def fields_section():
+    print("## 14. What the ledger's subject/status/time fields add: ledger minus value ledger (test_L2, seed 0)" + NL)
+    print("| corpus | metric | ledger | value ledger | ledger - value ledger [95% CI], p |")
+    print("|---|---|---|---|---|")
+    for corpus in ("blocks", "triplets"):
+        a, b = f"B-F-ledger2-{corpus}-s0", f"B-F-value2-{corpus}-s0"
+        if not (done(a) and done(b)):
+            print(f"| {corpus} | | not run | | |")
+            continue
+        Ta, Tb = triplets(a), triplets(b)
+        sa, sb = summarise(Ta)["all"], summarise(Tb)["all"]
+        for m in ("TA", "Rev", "Hold"):
+            print(f"| {corpus} | {m} | {sa[m]:.1f} | {sb[m]:.1f} | {pdiff(Ta, Tb, m)} |")
+    print()
+
+
 def main():
     sys.stdout.reconfigure(newline="\n")
     print("# Role B analyses on existing predictions (FINAL_TASKS_B P0.1)" + NL)
@@ -403,7 +419,7 @@ def main():
           "\"not run\" = the input result does not exist yet." + NL)
     for f in (paired_section, leakage_section, transitions_section, program_ledger_section, macro_section,
               natural_balanced_section, budget_section, resampling_section, field_section, loko_section,
-              case_visible_section, xr_section, seeds_section):
+              case_visible_section, xr_section, seeds_section, fields_section):
         f()
 
 

@@ -385,3 +385,14 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | ledger2 x triplets | Rev | 99.2 | 99.2 | 99.3 | - | - | 99.2 | 0.1 | 3 |
 | ledger2 x triplets | Hold | 100.0 | 99.9 | 99.8 | - | - | 99.9 | 0.1 | 3 |
 
+## 14. What the ledger's subject/status/time fields add: ledger minus value ledger (test_L2, seed 0)
+
+| corpus | metric | ledger | value ledger | ledger - value ledger [95% CI], p |
+|---|---|---|---|---|
+| blocks | TA | 75.3 | 70.7 | +4.6 [+1.3, +7.6], p 0.006 |
+| blocks | Rev | 98.7 | 98.0 | +0.7 [-0.0, +1.4], p 0.084 |
+| blocks | Hold | 76.2 | 72.3 | +3.9 [+0.7, +6.7], p 0.016 |
+| triplets | TA | 99.2 | 85.7 | +13.5 [+11.3, +15.9], p < 0.001 |
+| triplets | Rev | 99.2 | 99.1 | +0.2 [-0.6, +0.8], p 0.748 |
+| triplets | Hold | 100.0 | 86.6 | +13.4 [+11.2, +15.6], p < 0.001 |
+
