@@ -146,6 +146,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 
 | run | GPU | corpus records | examples | reader targets | judge targets | tokens | completion tokens | steps | train h | eval h |
 |---|---|---|---|---|---|---|---|---|---|---|
+| B-AB-bitonly-judge-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 12447626 | 1223333 | 938 | 0.71 | 0.15 |
 | B-BB-qwen3.5-4b-verdict-blocks-s0 | NVIDIA L40 | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 1.90 | 0.40 |
 | B-F-ledger2-balanced-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 13046129 | 1048600 | 938 | 0.74 | 0.18 |
 | B-F-ledger2-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 13044356 | 1045348 | 938 | 1.76 | 1.03 |
@@ -203,6 +204,7 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 
 | run | resample_p | judge examples | judge pairs (both claims) | pairs drawn from a donor case | share | (rule, condition, claim type) groups |
 |---|---|---|---|---|---|---|
+| B-AB-bitonly-judge-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-ledger2-balanced-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-F-ledger2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-ledger2-blocks-s1 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
@@ -325,6 +327,7 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 
 | run | XA | cell accuracy | XA currency | XA inclusivity | XA subject | XA window |
 |---|---|---|---|---|---|---|
+| B-AB-bitonly-judge-s0 | 97.8 | 99.6 | 100.0 | 100.0 | 100.0 | 91.0 |
 | B-F-ledger2-balanced-s0 | 54.5 | 92.4 | 87.0 | 44.0 | 31.0 | 56.0 |
 | B-F-ledger2-blocks-s1 | 37.8 | 87.0 | 46.0 | 28.0 | 25.0 | 52.0 |
 | B-F-ledger2-blocks-s2 | 71.0 | 95.2 | 88.0 | 98.0 | 55.0 | 43.0 |
@@ -403,4 +406,11 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | triplets | TA | 99.2 | 85.7 | +13.5 [+11.3, +15.9], p < 0.001 |
 | triplets | Rev | 99.2 | 99.1 | +0.2 [-0.6, +0.8], p 0.748 |
 | triplets | Hold | 100.0 | 86.6 | +13.4 [+11.2, +15.6], p < 0.001 |
+
+## 15. Ablations (Table 9; test_L2, seed 0; reference B-F-ledger2-triplets-s0)
+
+| run | TA | Rev | Hold | TA minus reference [95% CI], p |
+|---|---|---|---|---|
+| B-F-ledger2-triplets-s0 | 99.2 | 99.2 | 100.0 | - |
+| B-AB-bitonly-judge-s0 | 99.3 | 99.5 | 99.9 | +0.1 [-0.2, +0.6], p 0.552 |
 

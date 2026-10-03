@@ -412,6 +412,25 @@ def fields_section():
     print()
 
 
+def ablation_section():
+    print("## 15. Ablations (Table 9; test_L2, seed 0; reference B-F-ledger2-triplets-s0)" + NL)
+    ref = "B-F-ledger2-triplets-s0"
+    runs = sorted(os.path.basename(d) for d in glob.glob(f"{RG}/B-AB-*-s0") if done(os.path.basename(d)))
+    if not runs or not done(ref):
+        print("not run" + NL)
+        return
+    Tr = triplets(ref)
+    print("| run | TA | Rev | Hold | TA minus reference [95% CI], p |")
+    print("|---|---|---|---|---|")
+    for r in [ref] + runs:
+        T = triplets(r)
+        if not T:
+            continue
+        s = summarise(T)["all"]
+        print(f"| {r} | {s['TA']:.1f} | {s['Rev']:.1f} | {s['Hold']:.1f} | {'-' if r == ref else pdiff(T, Tr, 'TA')} |")
+    print()
+
+
 def main():
     sys.stdout.reconfigure(newline="\n")
     print("# Role B analyses on existing predictions (FINAL_TASKS_B P0.1)" + NL)
@@ -419,7 +438,7 @@ def main():
           "\"not run\" = the input result does not exist yet." + NL)
     for f in (paired_section, leakage_section, transitions_section, program_ledger_section, macro_section,
               natural_balanced_section, budget_section, resampling_section, field_section, loko_section,
-              case_visible_section, xr_section, seeds_section, fields_section):
+              case_visible_section, xr_section, seeds_section, fields_section, ablation_section):
         f()
 
 
