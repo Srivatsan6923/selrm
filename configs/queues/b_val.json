@@ -1,0 +1,57 @@
+{
+ "runs": [
+  {
+   "seed": 0,
+   "priority": 0,
+   "provisional": true,
+   "max_steps": 60,
+   "eval_sets": [
+    "smoke_v2/test_heldout_rules"
+   ],
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "run_id": "B-C0-val-verdict_bt",
+   "format": "verdict_bt",
+   "corpus": "smoke_v2/train_triplets"
+  },
+  {
+   "seed": 0,
+   "priority": 0,
+   "provisional": true,
+   "max_steps": 60,
+   "eval_sets": [
+    "smoke_v2/test_heldout_rules"
+   ],
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "run_id": "B-C0-val-ledger2_dec",
+   "format": "ledger2_dec",
+   "corpus": "smoke_v2/train_triplets",
+   "keep_adapter": true
+  },
+  {
+   "seed": 0,
+   "priority": 1,
+   "provisional": true,
+   "eval_sets": [
+    "smoke_v2/test_heldout_rules"
+   ],
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "program_bit"
+   },
+   "run_id": "B-C0-val-program_bit",
+   "format": "ledger2_dec",
+   "train": false,
+   "adapter": "adapters/B-C0-val-ledger2_dec"
+  }
+ ]
+}

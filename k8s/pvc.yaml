@@ -1,0 +1,15 @@
+# Shared CephFS volume for all role-B pods (data, env tarball, weights, ckpt, adapters, results).
+# rook-cephfs = US West CephFS pool (RWX). Never pip-install into it (NRP policy): the
+# Python env lives here only as one tarball that pods unpack to local NVMe.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: selrm-b
+  namespace: ecepxie
+  labels: {app: selrm-b}
+spec:
+  storageClassName: rook-cephfs
+  accessModes: [ReadWriteMany]
+  resources:
+    requests:
+      storage: 200Gi

@@ -1,0 +1,27 @@
+{
+ "runs": [
+  {
+   "run_id": "B-AB-probe-rw-s0",
+   "seed": 0,
+   "priority": 50,
+   "format": "ledger2",
+   "corpus": "rule_v1/abl_probe_blocks",
+   "n_examples": 60000,
+   "pair_weights": "derived/probe_rw/B-F-ledger2-blocks-s0.json",
+   "probe_scores": "B-AB-probe-rw-s0-scores",
+   "probe_set": "rule_v1/abl_probe_blocks",
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  }
+ ]
+}

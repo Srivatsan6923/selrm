@@ -1,0 +1,131 @@
+{
+ "run_id": "B-C0-val-concept",
+ "set": "smoke_v2/test_heldout_rules",
+ "claim_type": "conclusion",
+ "all": {
+  "Rev": 0.16666666666666666,
+  "Hold": 100.0,
+  "TA": 0.16666666666666666,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 600
+ },
+ "nm_kind=time": {
+  "Rev": 0.0,
+  "Hold": 100.0,
+  "TA": 0.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 96
+ },
+ "tier=easy": {
+  "Rev": 0.16666666666666666,
+  "Hold": 100.0,
+  "TA": 0.16666666666666666,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 600
+ },
+ "level=smoke": {
+  "Rev": 0.16666666666666666,
+  "Hold": 100.0,
+  "TA": 0.16666666666666666,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 600
+ },
+ "family=lab_threshold": {
+  "Rev": 0.5102040816326531,
+  "Hold": 100.0,
+  "TA": 0.5102040816326531,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 196
+ },
+ "nm_kind=negation": {
+  "Rev": 0.0,
+  "Hold": 100.0,
+  "TA": 0.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 219
+ },
+ "family=family_switch": {
+  "Rev": 0.0,
+  "Hold": 100.0,
+  "TA": 0.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 215
+ },
+ "nm_kind=subject": {
+  "Rev": 0.0,
+  "Hold": 100.0,
+  "TA": 0.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 185
+ },
+ "family=history_switch": {
+  "Rev": 0.0,
+  "Hold": 100.0,
+  "TA": 0.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 189
+ },
+ "nm_kind=numeric": {
+  "Rev": 1.0,
+  "Hold": 100.0,
+  "TA": 1.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 100
+ },
+ "CI95": {
+  "TA": [
+   0.0,
+   0.5102040816326531
+  ],
+  "Rev": [
+   0.0,
+   0.5102040816326531
+  ],
+  "Hold": [
+   100.0,
+   100.0
+  ]
+ },
+ "step": {
+  "criterion": {
+   "Rev": 0.16666666666666666,
+   "Hold": 100.0,
+   "TA": 0.16666666666666666,
+   "BaseAcc": 100.0,
+   "Tie": 0.0,
+   "PresHold": 100.0,
+   "n": 600
+  }
+ },
+ "eval": {
+  "seconds": 32.0,
+  "concept_train_acc": {
+   "mentioned": 100.0,
+   "subject_patient": 100.0,
+   "status_present": 100.0,
+   "time_current": 100.0,
+   "patient_present_current": 100.0
+  },
+  "units": 2400
+ }
+}

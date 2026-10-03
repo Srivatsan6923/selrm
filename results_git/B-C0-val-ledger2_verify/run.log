@@ -1,0 +1,12 @@
+2026-10-02T12:29:30Z step 10/60 loss=0.2427 grad_norm=0.2262 learning_rate=9.645e-05 epoch=0.02429
+2026-10-02T12:30:11Z step 20/60 loss=0.006274 grad_norm=0.0078 learning_rate=8.026e-05 epoch=0.04857
+2026-10-02T12:30:51Z step 30/60 loss=0.003722 grad_norm=0.006509 learning_rate=5.541e-05 epoch=0.07286
+2026-10-02T12:31:32Z step 40/60 loss=0.001228 grad_norm=0.02174 learning_rate=2.901e-05 epoch=0.09715
+2026-10-02T12:32:12Z step 50/60 loss=0.0005411 grad_norm=0.006391 learning_rate=8.616e-06 epoch=0.1214
+2026-10-02T12:32:53Z step 60/60 loss=0.0004795 grad_norm=0.008163 learning_rate=7.333e-08 epoch=0.1457
+2026-10-02T12:32:53Z step 60/60 train_runtime=373.9 train_samples_per_second=10.27 train_steps_per_second=0.16 total_flos=4.793e+16 train_loss=0.04249 epoch=0.1457
+2026-10-02T12:32:58Z trained 60 steps in 6.3 min, 1697.9 tok/s, peak 21.05 GB
+2026-10-02T12:33:08Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0010)
+2026-10-02T12:33:09Z padding self-check: max |u_batch - u_single| = 0.1352 (tol 0.628) -> left padding
+2026-10-02T12:36:28Z B-C0-val-ledger2_verify smoke_v2/test_heldout_rules: TA 100.0 Rev 100.0 Hold 100.0 n=600 (209.8 s)
+2026-10-02T12:36:29Z DONE B-C0-val-ledger2_verify in 10.1 min, GPU util mean 79.8

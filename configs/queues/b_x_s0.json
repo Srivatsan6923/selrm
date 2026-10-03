@@ -1,0 +1,668 @@
+{
+ "runs": [
+  {
+   "run_id": "B-AB-decfield-s0",
+   "seed": 0,
+   "priority": 50,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2_dec",
+   "corpus": "rule_v1/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-AB-bitonly-judge-s0",
+   "seed": 0,
+   "priority": 50,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "dec_judge",
+   "corpus": "rule_v1/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-AB-bitonly-reader-s0",
+   "seed": 0,
+   "priority": 50,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "bit_reader",
+   "corpus": "rule_v1/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-AB-verify-s0",
+   "seed": 0,
+   "priority": 50,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "verify"
+   },
+   "format": "ledger2_verify",
+   "corpus": "rule_v1/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-AB-concept-s0",
+   "seed": 0,
+   "priority": 50,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ],
+   "kind": "concept"
+  },
+  {
+   "run_id": "B-AB-probe-rw-s0-scores",
+   "seed": 0,
+   "priority": 50,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "train": false,
+   "adapter": "adapters/B-F-ledger2-blocks-s0",
+   "eval_sets": [
+    "rule_v1/abl_probe_blocks"
+   ]
+  },
+  {
+   "run_id": "B-AB-nopres-s0",
+   "seed": 0,
+   "priority": 50,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/abl_nopres_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-AB-noresamp-s0",
+   "seed": 0,
+   "priority": 50,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ],
+   "resample_p": 0
+  },
+  {
+   "run_id": "B-AB-pairwise-s0",
+   "seed": 0,
+   "priority": 50,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "verdict_bt",
+   "corpus": "rule_v1/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-AB-concl-only-s0",
+   "seed": 0,
+   "priority": 50,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/abl_conclusion_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-AE-oracle-ledger",
+   "seed": 0,
+   "priority": 50,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "oracle_ledger"
+   },
+   "format": "ledger2",
+   "train": false,
+   "adapter": "adapters/B-F-ledger2-triplets-s0",
+   "a_code": "e40789bd5d7a",
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-AE-pred-bit-program",
+   "seed": 0,
+   "priority": 50,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "program_bit"
+   },
+   "format": "ledger2_dec",
+   "train": false,
+   "adapter": "adapters/B-AB-decfield-s0",
+   "a_code": "e40789bd5d7a",
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-AE-field-swap",
+   "seed": 0,
+   "priority": 50,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "ledger_swap"
+   },
+   "format": "ledger2",
+   "train": false,
+   "adapter": "adapters/B-F-ledger2-triplets-s0",
+   "a_code": "e40789bd5d7a",
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-FOLD2-verdict-blocks-s0",
+   "seed": 0,
+   "priority": 53,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "verdict",
+   "corpus": "rule_v1_fold2/train_blocks",
+   "n_examples": 60000,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1_fold2/dev",
+    "rule_v1_fold2/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-FOLD2-verdict-triplets-s0",
+   "seed": 0,
+   "priority": 53,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "verdict",
+   "corpus": "rule_v1_fold2/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1_fold2/dev",
+    "rule_v1_fold2/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-FOLD2-ledger2-blocks-s0",
+   "seed": 0,
+   "priority": 53,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1_fold2/train_blocks",
+   "n_examples": 60000,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1_fold2/dev",
+    "rule_v1_fold2/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-FOLD2-ledger2-triplets-s0",
+   "seed": 0,
+   "priority": 53,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1_fold2/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1_fold2/dev",
+    "rule_v1_fold2/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-FOLD3-verdict-blocks-s0",
+   "seed": 0,
+   "priority": 53,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "verdict",
+   "corpus": "rule_v1_fold3/train_blocks",
+   "n_examples": 60000,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1_fold3/dev",
+    "rule_v1_fold3/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-FOLD3-verdict-triplets-s0",
+   "seed": 0,
+   "priority": 53,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "verdict",
+   "corpus": "rule_v1_fold3/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1_fold3/dev",
+    "rule_v1_fold3/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-FOLD3-ledger2-blocks-s0",
+   "seed": 0,
+   "priority": 53,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1_fold3/train_blocks",
+   "n_examples": 60000,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1_fold3/dev",
+    "rule_v1_fold3/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-FOLD3-ledger2-triplets-s0",
+   "seed": 0,
+   "priority": 53,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1_fold3/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1_fold3/dev",
+    "rule_v1_fold3/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DIV-base-16-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_base_16",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-DIV-new-32-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_new_32",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-DIV-new-63-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_new_63",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-DIV-new-64-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_new_64",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-DIV-new-128-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_new_128",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-DIV-new-223-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_new_223",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-DIV-same-32-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_same_32",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-DIV-same-63-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_same_63",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-DIV-patients-32-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_patients_32",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-DIV-patients-63-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_patients_63",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-DIV-patients-64-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_patients_64",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-DIV-patients-128-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_patients_128",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  {
+   "run_id": "B-DIV-patients-223-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_patients_223",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  }
+ ]
+}

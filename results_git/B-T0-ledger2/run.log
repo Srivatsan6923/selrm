@@ -1,0 +1,26 @@
+2026-10-02T10:57:39Z step 10/200 loss=1.221 grad_norm=1.659 learning_rate=9.994e-05 epoch=0.02833
+2026-10-02T10:58:20Z step 20/200 loss=0.01123 grad_norm=0.003624 learning_rate=9.89e-05 epoch=0.05666
+2026-10-02T10:59:01Z step 30/200 loss=0.01975 grad_norm=0.003398 learning_rate=9.657e-05 epoch=0.08499
+2026-10-02T10:59:42Z step 40/200 loss=0.04149 grad_norm=0.00888 learning_rate=9.303e-05 epoch=0.1133
+2026-10-02T11:00:23Z step 50/200 loss=0.0009406 grad_norm=0.02236 learning_rate=8.836e-05 epoch=0.1416
+2026-10-02T11:01:04Z step 60/200 loss=0.000198 grad_norm=0.01006 learning_rate=8.269e-05 epoch=0.17
+2026-10-02T11:01:45Z step 70/200 loss=6.384e-05 grad_norm=0.001488 learning_rate=7.616e-05 epoch=0.1983
+2026-10-02T11:02:26Z step 80/200 loss=3.296e-05 grad_norm=0.001053 learning_rate=6.895e-05 epoch=0.2266
+2026-10-02T11:03:09Z step 90/200 loss=2.861e-05 grad_norm=0.0003761 learning_rate=6.124e-05 epoch=0.255
+2026-10-02T11:03:50Z step 100/200 loss=6.806e-05 grad_norm=0.0002396 learning_rate=5.324e-05 epoch=0.2833
+2026-10-02T11:04:31Z step 110/200 loss=1.819e-05 grad_norm=0.0005083 learning_rate=4.515e-05 epoch=0.3116
+2026-10-02T11:05:12Z step 120/200 loss=1.526e-05 grad_norm=0.0003254 learning_rate=3.719e-05 epoch=0.3399
+2026-10-02T11:05:53Z step 130/200 loss=1.487e-05 grad_norm=0.0002999 learning_rate=2.956e-05 epoch=0.3683
+2026-10-02T11:06:34Z step 140/200 loss=7.096e-05 grad_norm=0.1693 learning_rate=2.247e-05 epoch=0.3966
+2026-10-02T11:07:15Z step 150/200 loss=1.491e-05 grad_norm=0.0002369 learning_rate=1.61e-05 epoch=0.4249
+2026-10-02T11:07:57Z step 160/200 loss=1.452e-05 grad_norm=0.0001566 learning_rate=1.062e-05 epoch=0.4533
+2026-10-02T11:08:38Z step 170/200 loss=1.391e-05 grad_norm=0.0004469 learning_rate=6.169e-06 epoch=0.4816
+2026-10-02T11:09:19Z step 180/200 loss=1.355e-05 grad_norm=0.0003407 learning_rate=2.863e-06 epoch=0.5099
+2026-10-02T11:10:00Z step 190/200 loss=1.38e-05 grad_norm=0.0004948 learning_rate=7.912e-07 epoch=0.5382
+2026-10-02T11:10:41Z step 200/200 loss=1.252e-05 grad_norm=0.0001812 learning_rate=6.556e-09 epoch=0.5666
+2026-10-02T11:10:41Z step 200/200 train_runtime=824.6 train_samples_per_second=15.52 train_steps_per_second=0.243 total_flos=1.624e+17 train_loss=0.06473 epoch=0.5666
+2026-10-02T11:10:46Z trained 200 steps in 13.8 min, 2544.5 tok/s, peak 26.7 GB
+2026-10-02T11:10:47Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0234)
+2026-10-02T11:10:48Z padding self-check: max |u_batch - u_single| = 0.1662 (tol 0.187) -> left padding
+2026-10-02T11:14:53Z B-T0-ledger2 smoke_v2/test_heldout_rules: TA 100.0 Rev 100.0 Hold 100.0 n=600 (246.7 s)
+2026-10-02T11:14:54Z DONE B-T0-ledger2 in 18.3 min, GPU util mean 89.6

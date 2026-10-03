@@ -1,0 +1,27 @@
+{
+ "runs": [
+  {
+   "run_id": "B-TR-genprm-s0",
+   "seed": 0,
+   "n_examples": 60000,
+   "priority": 51,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "rule_v1/test_L3alt"
+   ],
+   "format": "genprm",
+   "corpus": "rule_v1/train_triplets",
+   "a_code": "e40789bd5d7a",
+   "min_gen": 2
+  }
+ ]
+}

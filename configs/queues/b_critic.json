@@ -1,0 +1,29 @@
+{
+ "runs": [
+  {
+   "run_id": "C-TF-critic",
+   "seed": 0,
+   "priority": 10,
+   "format": "verdict",
+   "train": false,
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "rule_v1/readapply",
+    "rule_v1/test_L0",
+    "rule_v1/test_L1",
+    "rule_v1/test_L2",
+    "rule_v1/test_L3alt",
+    "rule_v1/test_L3inv",
+    "rule_v1/test_hard"
+   ]
+  }
+ ]
+}

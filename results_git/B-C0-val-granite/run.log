@@ -1,0 +1,9 @@
+2026-10-02T15:37:52Z step 10/30 loss=0.8725 grad_norm=0.4591 learning_rate=8.237e-05 epoch=0.02833
+2026-10-02T15:39:39Z step 20/30 loss=0.0127 grad_norm=0.2951 learning_rate=3.149e-05 epoch=0.05666
+2026-10-02T15:41:28Z step 30/30 loss=0.002517 grad_norm=0.1772 learning_rate=2.931e-07 epoch=0.08499
+2026-10-02T15:41:28Z step 30/30 train_runtime=326 train_samples_per_second=5.89 train_steps_per_second=0.092 total_flos=2.28e+16 train_loss=0.2959 epoch=0.08499
+2026-10-02T15:41:42Z trained 30 steps in 5.5 min, 945.9 tok/s, peak 22.87 GB
+2026-10-02T15:41:43Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0201)
+2026-10-02T15:41:44Z padding self-check: max |u_batch - u_single| = 0.1124 (tol 0.582) -> left padding
+2026-10-02T15:50:28Z B-C0-val-granite smoke_v2/test_heldout_rules: TA 93.5 Rev 100.0 Hold 93.5 n=600 (525.9 s)
+2026-10-02T15:50:29Z DONE B-C0-val-granite in 14.8 min, GPU util mean 92.6

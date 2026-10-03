@@ -1,0 +1,15 @@
+{
+ "run_id": "B-F-rationale-blocks-s0",
+ "set": "rule_v1/missing",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "rationale_no_answer": 0,
+  "gen_not_stopped": 0,
+  "seconds": 508.2,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

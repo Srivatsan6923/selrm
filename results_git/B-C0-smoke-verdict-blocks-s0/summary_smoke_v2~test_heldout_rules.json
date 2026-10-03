@@ -1,0 +1,125 @@
+{
+ "run_id": "B-C0-smoke-verdict-blocks-s0",
+ "set": "smoke_v2/test_heldout_rules",
+ "claim_type": "conclusion",
+ "all": {
+  "Rev": 100.0,
+  "Hold": 99.66666666666667,
+  "TA": 99.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 600
+ },
+ "nm_kind=time": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 96
+ },
+ "tier=easy": {
+  "Rev": 100.0,
+  "Hold": 99.66666666666667,
+  "TA": 99.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 600
+ },
+ "level=smoke": {
+  "Rev": 100.0,
+  "Hold": 99.66666666666667,
+  "TA": 99.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 600
+ },
+ "family=lab_threshold": {
+  "Rev": 100.0,
+  "Hold": 98.9795918367347,
+  "TA": 98.9795918367347,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 196
+ },
+ "nm_kind=negation": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 219
+ },
+ "family=family_switch": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 215
+ },
+ "nm_kind=subject": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 185
+ },
+ "family=history_switch": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 189
+ },
+ "nm_kind=numeric": {
+  "Rev": 100.0,
+  "Hold": 98.0,
+  "TA": 98.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 100
+ },
+ "CI95": {
+  "TA": [
+   98.9795918367347,
+   100.0
+  ],
+  "Rev": [
+   100.0,
+   100.0
+  ],
+  "Hold": [
+   98.9795918367347,
+   100.0
+  ]
+ },
+ "step": {
+  "criterion": {
+   "Rev": 100.0,
+   "Hold": 100.0,
+   "TA": 100.0,
+   "BaseAcc": 100.0,
+   "Tie": 0.0,
+   "PresHold": 100.0,
+   "n": 600
+  }
+ },
+ "eval": {
+  "seconds": 98.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

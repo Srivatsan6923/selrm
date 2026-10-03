@@ -1,0 +1,11 @@
+{
+ "set": "smoke_v2",
+ "generator": "scripts/make_smoke.py data/smoke_v2 (default args)",
+ "sha256_lf": {
+  "MANIFEST.json": "80c4a97984e2485662d52402c53008363a5a26cba55cc532e8c89bf8c5d0c720",
+  "dev_seen_rules.jsonl": "b923f66675bf36e613009f8f7f2f7e8bb82d23915648c4fa31b45b0aa2bb33e9",
+  "test_heldout_rules.jsonl": "36028bd1e040dbabeecafa1db1c726116f1d950ab22e739c90f19f43bcd41376",
+  "train_blocks.jsonl": "87c28f6709077cd409e794915cffdc20d35fcf598a0ce03e59e52afbbe611db6",
+  "train_triplets.jsonl": "6e12a062c4fbdadc31a06ebb582545b66c4bcd1995e146f2e469e1b674324b0e"
+ }
+}

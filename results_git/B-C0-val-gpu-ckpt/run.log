@@ -1,0 +1,10 @@
+2026-10-02T17:12:00Z step 10/40 loss=0.2052 grad_norm=0.2472 learning_rate=8.997e-05 epoch=0.02833
+2026-10-02T17:12:41Z step 20/40 loss=0.003116 grad_norm=0.001829 learning_rate=5.603e-05 epoch=0.05666
+2026-10-02T17:13:23Z step 30/40 loss=0.004193 grad_norm=0.007743 learning_rate=1.838e-05 epoch=0.08499
+2026-10-02T17:14:03Z step 40/40 loss=0.001803 grad_norm=0.003996 learning_rate=1.621e-07 epoch=0.1133
+2026-10-02T17:14:03Z step 40/40 train_runtime=322.5 train_samples_per_second=7.937 train_steps_per_second=0.124 total_flos=3.237e+16 train_loss=0.05358 epoch=0.1133
+2026-10-02T17:14:09Z trained 40 steps in 5.4 min, 1295.1 tok/s, peak 21.87 GB
+2026-10-02T17:14:22Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0074)
+2026-10-02T17:14:23Z padding self-check: max |u_batch - u_single| = 0.1903 (tol 0.618) -> left padding
+2026-10-02T17:17:50Z B-C0-val-gpu-ckpt smoke_v2/test_heldout_rules: TA 100.0 Rev 100.0 Hold 100.0 n=600 (220.4 s)
+2026-10-02T17:17:52Z DONE B-C0-val-gpu-ckpt in 9.7 min, GPU util mean 68.4

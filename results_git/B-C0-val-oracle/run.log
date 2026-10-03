@@ -1,0 +1,5 @@
+2026-10-02T12:44:19Z eval only: base /work/models/unsloth--Qwen3.5-9B, adapter /pvc/selrm/adapters/B-C0-val-ledger2_dec
+2026-10-02T12:44:20Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0030)
+2026-10-02T12:44:21Z padding self-check: max |u_batch - u_single| = 0.1806 (tol 0.602) -> left padding
+2026-10-02T12:46:55Z B-C0-val-oracle smoke_v2/test_heldout_rules: TA 100.0 Rev 100.0 Hold 100.0 n=600 (155.3 s)
+2026-10-02T12:46:55Z DONE B-C0-val-oracle in 3.0 min, GPU util mean 99.4

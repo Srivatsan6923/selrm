@@ -1,0 +1,93 @@
+{
+ "runs": [
+  {
+   "run_id": "B-C0-smoke-verdict-blocks-s0",
+   "format": "verdict",
+   "corpus": "smoke_v2/train_blocks",
+   "seed": 0,
+   "priority": 0,
+   "provisional": true,
+   "eval_sets": [
+    "smoke_v2/dev_seen_rules",
+    "smoke_v2/test_heldout_rules"
+   ]
+  },
+  {
+   "run_id": "B-C0-smoke-verdict-triplets-s0",
+   "format": "verdict",
+   "corpus": "smoke_v2/train_triplets",
+   "seed": 0,
+   "priority": 0,
+   "provisional": true,
+   "eval_sets": [
+    "smoke_v2/dev_seen_rules",
+    "smoke_v2/test_heldout_rules"
+   ]
+  },
+  {
+   "run_id": "B-T0-verdict",
+   "format": "verdict",
+   "corpus": "smoke_v2/train_triplets",
+   "seed": 0,
+   "priority": 1,
+   "provisional": true,
+   "timing": true,
+   "max_steps": 200,
+   "eval_sets": [
+    "smoke_v2/test_heldout_rules"
+   ]
+  },
+  {
+   "run_id": "B-T0-rationale",
+   "format": "rationale",
+   "corpus": "smoke_v2/train_triplets",
+   "seed": 0,
+   "priority": 1,
+   "provisional": true,
+   "timing": true,
+   "max_steps": 200,
+   "eval_sets": [
+    "smoke_v2/test_heldout_rules"
+   ]
+  },
+  {
+   "run_id": "B-T0-summary2",
+   "format": "summary2",
+   "corpus": "smoke_v2/train_triplets",
+   "seed": 0,
+   "priority": 1,
+   "provisional": true,
+   "timing": true,
+   "max_steps": 200,
+   "eval_sets": [
+    "smoke_v2/test_heldout_rules"
+   ]
+  },
+  {
+   "run_id": "B-T0-value2",
+   "format": "value2",
+   "corpus": "smoke_v2/train_triplets",
+   "seed": 0,
+   "priority": 1,
+   "provisional": true,
+   "timing": true,
+   "max_steps": 200,
+   "eval_sets": [
+    "smoke_v2/test_heldout_rules"
+   ]
+  },
+  {
+   "run_id": "B-T0-ledger2",
+   "format": "ledger2",
+   "corpus": "smoke_v2/train_triplets",
+   "seed": 0,
+   "priority": 1,
+   "provisional": true,
+   "timing": true,
+   "max_steps": 200,
+   "eval_sets": [
+    "smoke_v2/test_heldout_rules"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+2026-10-02T15:29:09Z step 10/30 loss=0.1721 grad_norm=0.1501 learning_rate=8.237e-05 epoch=0.02833
+2026-10-02T15:29:58Z step 20/30 loss=0.001381 grad_norm=0.01036 learning_rate=3.149e-05 epoch=0.05666
+2026-10-02T15:30:48Z step 30/30 loss=0.0003301 grad_norm=0.3727 learning_rate=2.931e-07 epoch=0.08499
+2026-10-02T15:30:48Z step 30/30 train_runtime=246.6 train_samples_per_second=7.786 train_steps_per_second=0.122 total_flos=1.145e+16 train_loss=0.05795 epoch=0.08499
+2026-10-02T15:30:52Z trained 30 steps in 4.1 min, 1273.3 tok/s, peak 11.46 GB
+2026-10-02T15:31:01Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0059)
+2026-10-02T15:31:02Z padding self-check: max |u_batch - u_single| = 0.0660 (tol 0.584) -> left padding
+2026-10-02T15:35:33Z B-C0-val-qwen4b smoke_v2/test_heldout_rules: TA 100.0 Rev 100.0 Hold 100.0 n=600 (280.4 s)
+2026-10-02T15:35:34Z DONE B-C0-val-qwen4b in 9.1 min, GPU util mean 68.1

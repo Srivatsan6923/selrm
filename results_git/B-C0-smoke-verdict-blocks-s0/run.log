@@ -1,0 +1,42 @@
+2026-10-02T10:13:37Z step 10/353 loss=0.07665 grad_norm=0.002972 learning_rate=8.182e-05 epoch=0.02833
+2026-10-02T10:14:06Z step 20/353 loss=0.03175 grad_norm=0.02203 learning_rate=9.987e-05 epoch=0.05666
+2026-10-02T10:14:34Z step 30/353 loss=0.000144 grad_norm=0.003184 learning_rate=9.932e-05 epoch=0.08499
+2026-10-02T10:15:03Z step 40/353 loss=0.00204 grad_norm=0.00048 learning_rate=9.836e-05 epoch=0.1133
+2026-10-02T10:15:32Z step 50/353 loss=1.003e-05 grad_norm=0.0005301 learning_rate=9.698e-05 epoch=0.1416
+2026-10-02T10:16:00Z step 60/353 loss=1.032e-05 grad_norm=0.0004203 learning_rate=9.522e-05 epoch=0.17
+2026-10-02T10:16:28Z step 70/353 loss=5.51e-06 grad_norm=0.0002116 learning_rate=9.307e-05 epoch=0.1983
+2026-10-02T10:16:58Z step 80/353 loss=3.628e-06 grad_norm=0.000571 learning_rate=9.056e-05 epoch=0.2266
+2026-10-02T10:17:26Z step 90/353 loss=1.872e-06 grad_norm=7.527e-05 learning_rate=8.771e-05 epoch=0.255
+2026-10-02T10:17:54Z step 100/353 loss=1.392e-06 grad_norm=8.86e-05 learning_rate=8.453e-05 epoch=0.2833
+2026-10-02T10:18:23Z step 110/353 loss=1.163e-06 grad_norm=4.66e-05 learning_rate=8.107e-05 epoch=0.3116
+2026-10-02T10:18:52Z step 120/353 loss=9.656e-07 grad_norm=4.428e-05 learning_rate=7.735e-05 epoch=0.3399
+2026-10-02T10:19:20Z step 130/353 loss=9.459e-07 grad_norm=4.869e-05 learning_rate=7.339e-05 epoch=0.3683
+2026-10-02T10:19:49Z step 140/353 loss=8.097e-07 grad_norm=3.595e-05 learning_rate=6.924e-05 epoch=0.3966
+2026-10-02T10:20:17Z step 150/353 loss=7.359e-07 grad_norm=3.568e-05 learning_rate=6.493e-05 epoch=0.4249
+2026-10-02T10:20:46Z step 160/353 loss=7.864e-07 grad_norm=2.951e-05 learning_rate=6.049e-05 epoch=0.4533
+2026-10-02T10:21:15Z step 170/353 loss=5.878e-07 grad_norm=2.485e-05 learning_rate=5.596e-05 epoch=0.4816
+2026-10-02T10:21:43Z step 180/353 loss=5.811e-07 grad_norm=2.269e-05 learning_rate=5.138e-05 epoch=0.5099
+2026-10-02T10:22:12Z step 190/353 loss=5.771e-07 grad_norm=2.451e-05 learning_rate=4.679e-05 epoch=0.5382
+2026-10-02T10:22:40Z step 200/353 loss=5.528e-07 grad_norm=2.244e-05 learning_rate=4.222e-05 epoch=0.5666
+2026-10-02T10:23:09Z step 210/353 loss=5.458e-07 grad_norm=3.166e-05 learning_rate=3.773e-05 epoch=0.5949
+2026-10-02T10:23:38Z step 220/353 loss=4.831e-07 grad_norm=2.37e-05 learning_rate=3.333e-05 epoch=0.6232
+2026-10-02T10:24:07Z step 230/353 loss=5.017e-07 grad_norm=2.225e-05 learning_rate=2.908e-05 epoch=0.6516
+2026-10-02T10:24:36Z step 240/353 loss=4.997e-07 grad_norm=2.465e-05 learning_rate=2.5e-05 epoch=0.6799
+2026-10-02T10:25:04Z step 250/353 loss=3.995e-07 grad_norm=1.73e-05 learning_rate=2.113e-05 epoch=0.7082
+2026-10-02T10:25:33Z step 260/353 loss=4.593e-07 grad_norm=2.09e-05 learning_rate=1.751e-05 epoch=0.7365
+2026-10-02T10:26:02Z step 270/353 loss=4.414e-07 grad_norm=1.773e-05 learning_rate=1.416e-05 epoch=0.7649
+2026-10-02T10:26:30Z step 280/353 loss=4.463e-07 grad_norm=2.785e-05 learning_rate=1.111e-05 epoch=0.7932
+2026-10-02T10:26:59Z step 290/353 loss=0.0004504 grad_norm=1.761e-05 learning_rate=8.395e-06 epoch=0.8215
+2026-10-02T10:27:27Z step 300/353 loss=3.412e-07 grad_norm=1.834e-05 learning_rate=6.026e-06 epoch=0.8499
+2026-10-02T10:27:55Z step 310/353 loss=3.249e-07 grad_norm=1.86e-05 learning_rate=4.029e-06 epoch=0.8782
+2026-10-02T10:28:24Z step 320/353 loss=3.268e-07 grad_norm=1.825e-05 learning_rate=2.419e-06 epoch=0.9065
+2026-10-02T10:28:52Z step 330/353 loss=3.002e-07 grad_norm=1.488e-05 learning_rate=1.21e-06 epoch=0.9348
+2026-10-02T10:29:20Z step 340/353 loss=3.203e-07 grad_norm=1.498e-05 learning_rate=4.129e-07 epoch=0.9632
+2026-10-02T10:29:49Z step 350/353 loss=3.095e-07 grad_norm=1.97e-05 learning_rate=3.375e-08 epoch=0.9915
+2026-10-02T10:30:06Z step 353/353 train_runtime=1140 train_samples_per_second=19.81 train_steps_per_second=0.31 total_flos=1.984e+17 train_loss=0.003147 epoch=1
+2026-10-02T10:30:34Z trained 353 steps in 19.0 min, 2591.8 tok/s, peak 20.66 GB
+2026-10-02T10:30:45Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0445)
+2026-10-02T10:30:46Z padding self-check: max |u_batch - u_single| = 0.1218 (tol 0.404) -> left padding
+2026-10-02T10:31:31Z B-C0-smoke-verdict-blocks-s0 smoke_v2/dev_seen_rules: TA 87.3 Rev 100.0 Hold 87.3 n=300 (56.1 s)
+2026-10-02T10:33:09Z B-C0-smoke-verdict-blocks-s0 smoke_v2/test_heldout_rules: TA 99.7 Rev 100.0 Hold 99.7 n=600 (98.1 s)
+2026-10-02T10:33:11Z DONE B-C0-smoke-verdict-blocks-s0 in 22.4 min, GPU util mean 84.0

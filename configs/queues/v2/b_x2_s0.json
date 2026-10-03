@@ -1,0 +1,23 @@
+{
+ "runs": [
+  {
+   "run_id": "B-AE-field-edit",
+   "seed": 0,
+   "priority": 50,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "ledger_edit"
+   },
+   "format": "ledger2",
+   "train": false,
+   "adapter": "adapters/B-F-ledger2-triplets-s0",
+   "a_code": "e40789bd5d7a",
+   "eval_sets": [
+    "rule_v1/test_L2"
+   ],
+   "min_gen": 2
+  }
+ ]
+}

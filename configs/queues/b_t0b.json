@@ -1,0 +1,22 @@
+{
+ "runs": [
+  {
+   "run_id": "B-T0b-rationale-bs256",
+   "format": "rationale",
+   "corpus": "smoke_v2/train_triplets",
+   "seed": 0,
+   "priority": 0,
+   "provisional": true,
+   "timing": true,
+   "max_steps": 200,
+   "eval_sets": [
+    "smoke_v2/test_heldout_rules"
+   ],
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   }
+  }
+ ]
+}
