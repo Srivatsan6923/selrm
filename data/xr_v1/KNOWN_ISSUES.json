@@ -1,0 +1,69 @@
+{
+ "set": "xr_v1/test",
+ "frozen": true,
+ "found_by": "adversarial review (role-a-review workflow, 3 Oct 2026), each finding confirmed by a second agent",
+ "protocol": "the frozen set is not changed; report XA on all items and on all items except those listed here (selrm.xr.crossed_accuracy(..., exclude=...))",
+ "issues": [
+  {
+   "id": "age_completed_years",
+   "items": [
+    11,
+    43,
+    67,
+    99,
+    115,
+    119,
+    139,
+    151,
+    171,
+    191,
+    207,
+    223,
+    239,
+    255,
+    263,
+    271,
+    295,
+    303,
+    315,
+    347,
+    367,
+    395,
+    399
+   ],
+   "reason": "Inclusivity items on age: the contested case states the age exactly at the threshold ('aged 65 years'). Age in years is read as completed years, so a patient aged 65 is between 65.0 and 66; a literal reader can hold that 'more than 65 years' is true, which flips the exclusive rule's label."
+  },
+  {
+   "id": "diabetes_remission",
+   "items": [
+    9,
+    37,
+    57,
+    81,
+    89,
+    129,
+    205,
+    237,
+    297,
+    309,
+    333,
+    349,
+    357,
+    361,
+    365
+   ],
+   "reason": "Currency items on diabetes: the contested case is diabetes in remission, which the program treats as not current. Remission is not cure (ADA/EASD 2021 consensus; ICD-10-CM codes type 2 diabetes in remission as a diabetes diagnosis), so a careful reader can hold that the patient currently has diabetes, which flips the 'currently has' rule's label."
+  }
+ ],
+ "design_notes": [
+  {
+   "id": "window_phrasing_date_form",
+   "reason": "In the window dimension the date form is confounded with the clause phrasing: phrasing 1 items always use month-and-year dates, phrasings 0 and 2 always use 'N months ago'. Do not report window results by phrasing or by date form.",
+   "counts": {
+    "phrasing 0, relative": 34,
+    "phrasing 1, dated": 33,
+    "phrasing 2, relative": 33
+   }
+  }
+ ]
+}

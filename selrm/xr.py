@@ -428,22 +428,28 @@ def build(n=400, seed=2029):
 
 
 # ---------------------------------------------------------------- crossed accuracy
-def crossed_accuracy(recs, scores, claim_type="conclusion"):
+def crossed_accuracy(recs, scores, claim_type="conclusion", exclude=(), partial=False):
     """XA: share of items whose six judgments (two rules x three cases) are all right. scores[j]
     is u(claim of record j); a judgment is right when d = u(s) - u(s') has the sign of the label
-    (ties are wrong). Also per dimension."""
+    (ties are wrong; an unparsable answer must be passed as a tie, not dropped). Also per dimension.
+    exclude: item ids left out (e.g. data/xr_v1/KNOWN_ISSUES.json). An item with fewer than six
+    judgments raises, unless partial=True, which leaves it out and reports n_incomplete."""
     u = {}
     for r, sc in zip(recs, scores):
-        if r["claim_type"] == claim_type:
+        if r["claim_type"] == claim_type and r["meta"]["xr"]["item"] not in exclude:
             u[(r["tid"], r["case_kind"], r["claim_role"])] = (sc, r)
     right = defaultdict(list)
     for (tid, ck, role), (sc, r) in u.items():
-        if role == "s":
+        if role == "s" and (tid, ck, "s_prime") in u:
             d = sc - u[(tid, ck, "s_prime")][0]
             right[(r["meta"]["xr"]["item"], r["nm_kind"])].append(d > 0 if r["label"] == 1 else d < 0)
-    solved = {k: len(v) == 6 and all(v) for k, v in right.items()}
+    incomplete = [k for k, v in right.items() if len(v) != 6]
+    if incomplete and not partial:
+        raise ValueError(f"{len(incomplete)} items lack some of their six judgments, e.g. {incomplete[:3]}")
+    solved = {k: all(v) for k, v in right.items() if len(v) == 6}
     by = defaultdict(list)
     for (item, dim), ok in solved.items():
         by[dim].append(ok)
     pct = lambda xs: round(100.0 * sum(xs) / len(xs), 1) if xs else None  # noqa: E731
-    return {"XA": pct(list(solved.values())), "n_items": len(solved), **{f"XA_{d}": pct(v) for d, v in sorted(by.items())}}
+    return {"XA": pct(list(solved.values())), "n_items": len(solved), "n_incomplete": len(incomplete),
+            **{f"XA_{d}": pct(v) for d, v in sorted(by.items())}}
