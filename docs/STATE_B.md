@@ -46,7 +46,9 @@ ledger2 x {blocks, triplets}; B-BB-qwen3.5-4b verdict x blocks; all B-C0 validat
 - B-DIS-s0..s2 queued (74): ledger2 on C's clin_v1/clinpairs_medeinst_dis (copied from PVC selrm-c, sha256 = C's),
   eval clin_v1/medeinst_dis_test (pair reversal) + rule dev/L2 + xr_v1. B-TR-steperr dropped (MedPRMBench unreleased).
 - B-TR-clinonly, B-TR-tripclin: wait for C's final clinpairs_train (with MedQA-train key pairs) under a new frozen
-  name (asked 3 Oct). tripclin needs a 1:1 mixture of two corpora (not implemented yet).
+  name (asked 3 Oct). Ready: set CLIN_TRAIN in scripts/make_queue_b.py to that name, copy it with
+  `submit_b.py copy-c <C sha> <name>`, refresh scratch/registry_rule_v1.json from the PVC, regen, push, prep
+  (tripclin = spec mix, 1:1; CPU self-test covers it).
 - Premise gate: C publishes Med-PRM per-example scores (results_git/C-AUD-medprm on role-c, dev and test_L2).
 
 ## P1 work without GPUs
