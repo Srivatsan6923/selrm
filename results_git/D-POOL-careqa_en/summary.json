@@ -1,0 +1,29 @@
+{
+ "run_id": "D-POOL-careqa_en",
+ "n_questions": 1000,
+ "n_samples": 16000,
+ "eligible": 15723,
+ "ineligible_share": 0.0173,
+ "generated_tokens": 4715487,
+ "wall_seconds": 448.0,
+ "gpu": "NVIDIA H100 80GB HBM3",
+ "vllm": "0.30.0",
+ "sampling": {
+  "temperature": 0.7,
+  "top_p": 0.95,
+  "max_tokens": 1536,
+  "stop_token_ids": [
+   248046,
+   248044
+  ]
+ },
+ "policy": {
+  "model": "unsloth/Qwen3.5-9B",
+  "revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+  "note": "frozen policy for candidate pools = B's pinned backbone (configs/models_b.json)"
+ },
+ "question_sample": {
+  "n": 1000,
+  "seed": "pool-sample-v1.careqa_en"
+ }
+}

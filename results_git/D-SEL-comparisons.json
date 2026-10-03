@@ -1,0 +1,16 @@
+{
+ "sel-cqa-comb-step": {
+  "pool": "careqa_en",
+  "a": "combined",
+  "b": "stepcheck",
+  "set": "sel/careqa",
+  "metric": "acc",
+  "diff": -0.09999999999999432,
+  "lo": -1.5,
+  "hi": 1.3999999999999915,
+  "p": 0.94,
+  "B": 1000,
+  "n_items": 1000,
+  "n_clusters": 1000
+ }
+}

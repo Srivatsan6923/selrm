@@ -1,0 +1,7 @@
+{
+ "run_id": "D-SEL-combined-product",
+ "set": "sel/careqa",
+ "acc": 89.2,
+ "n": 1000,
+ "N": 16
+}

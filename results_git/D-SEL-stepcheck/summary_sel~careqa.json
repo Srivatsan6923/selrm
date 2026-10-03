@@ -1,0 +1,7 @@
+{
+ "run_id": "D-SEL-stepcheck",
+ "set": "sel/careqa",
+ "acc": 89.0,
+ "n": 1000,
+ "N": 16
+}
