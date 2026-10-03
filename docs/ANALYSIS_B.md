@@ -71,6 +71,7 @@ Every reader output of the two-stage runs (one per case and condition, on every 
 | B-F-summary2-triplets-s0 | 10500 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-triplets-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-triplets-s2 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-summary2-triplets-s3 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-value2-natural-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-value2-balanced-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-value2-blocks-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -162,6 +163,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-summary2-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 1.60 | 0.34 |
 | B-F-summary2-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 0.67 | 0.65 |
 | B-F-summary2-triplets-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 0.72 | 0.70 |
+| B-F-summary2-triplets-s3 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 0.64 | 0.54 |
 | B-F-value2-balanced-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 12238812 | 644511 | 938 | 0.72 | 0.15 |
 | B-F-value2-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 12239958 | 642454 | 938 | 1.78 | 0.30 |
 | B-F-value2-natural-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 12154474 | 617784 | 938 | 0.79 | 0.16 |
@@ -210,6 +212,7 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | B-F-summary2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-summary2-triplets-s1 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-summary2-triplets-s2 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-summary2-triplets-s3 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-value2-balanced-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-F-value2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-value2-natural-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
@@ -324,6 +327,7 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-F-summary2-natural-s0 | 25.8 | 87.6 | 16.0 | 54.0 | 3.0 | 30.0 |
 | B-F-summary2-triplets-s1 | 92.5 | 98.8 | 100.0 | 100.0 | 99.0 | 71.0 |
 | B-F-summary2-triplets-s2 | 90.2 | 98.4 | 100.0 | 100.0 | 100.0 | 61.0 |
+| B-F-summary2-triplets-s3 | 89.2 | 98.0 | 98.0 | 100.0 | 100.0 | 59.0 |
 | B-F-value2-balanced-s0 | 57.8 | 90.4 | 60.0 | 100.0 | 12.0 | 59.0 |
 | B-F-value2-blocks-s0 | 70.0 | 94.2 | 83.0 | 100.0 | 42.0 | 55.0 |
 | B-F-value2-natural-s0 | 29.2 | 82.6 | 70.0 | 0.0 | 0.0 | 47.0 |
@@ -366,9 +370,9 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | summary2 x blocks | TA | 67.3 | 57.9 | 72.2 | 62.2 | - | 64.9 | 6.2 | 4 |
 | summary2 x blocks | Rev | 96.8 | 98.6 | 97.4 | 99.2 | - | 98.0 | 1.1 | 4 |
 | summary2 x blocks | Hold | 70.1 | 59.0 | 74.6 | 62.8 | - | 66.6 | 7.1 | 4 |
-| summary2 x triplets | TA | 98.0 | 98.1 | 98.0 | - | - | 98.0 | 0.1 | 3 |
-| summary2 x triplets | Rev | 98.5 | 98.1 | 98.0 | - | - | 98.2 | 0.3 | 3 |
-| summary2 x triplets | Hold | 99.3 | 100.0 | 100.0 | - | - | 99.8 | 0.4 | 3 |
+| summary2 x triplets | TA | 98.0 | 98.1 | 98.0 | 98.9 | - | 98.2 | 0.4 | 4 |
+| summary2 x triplets | Rev | 98.5 | 98.1 | 98.0 | 98.9 | - | 98.4 | 0.4 | 4 |
+| summary2 x triplets | Hold | 99.3 | 100.0 | 100.0 | 100.0 | - | 99.8 | 0.3 | 4 |
 | ledger2 x blocks | TA | 75.3 | 59.5 | 74.9 | - | - | 69.9 | 9.0 | 3 |
 | ledger2 x blocks | Rev | 98.7 | 99.5 | 99.9 | - | - | 99.4 | 0.6 | 3 |
 | ledger2 x blocks | Hold | 76.2 | 59.7 | 74.9 | - | - | 70.2 | 9.2 | 3 |
