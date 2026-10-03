@@ -1,0 +1,138 @@
+{
+ "runs": [
+  {
+   "format": "verdict",
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "hp": {
+    "per_device": 8,
+    "epochs": 5
+   },
+   "run_id": "B-AUX-trialgpt-ep5-s0",
+   "seed": 0,
+   "priority": 30,
+   "corpus": "clin_v1/trialgpt_cv",
+   "passes": 1,
+   "save_epochs": true,
+   "eval_sets": [],
+   "train_meta_exclude": {
+    "fold": [
+     0
+    ],
+    "category": [
+     "na"
+    ]
+   }
+  },
+  {
+   "format": "verdict",
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "hp": {
+    "per_device": 8
+   },
+   "run_id": "B-AUX-trialgpt-ep5-s0-e1",
+   "seed": 0,
+   "priority": 30,
+   "train": false,
+   "adapter": "adapters/B-AUX-trialgpt-ep5-s0-e1",
+   "eval_sets": [
+    "clin_v1/trialgpt_dev"
+   ]
+  },
+  {
+   "format": "verdict",
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "hp": {
+    "per_device": 8
+   },
+   "run_id": "B-AUX-trialgpt-ep5-s0-e2",
+   "seed": 0,
+   "priority": 30,
+   "train": false,
+   "adapter": "adapters/B-AUX-trialgpt-ep5-s0-e2",
+   "eval_sets": [
+    "clin_v1/trialgpt_dev"
+   ]
+  },
+  {
+   "format": "verdict",
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "hp": {
+    "per_device": 8
+   },
+   "run_id": "B-AUX-trialgpt-ep5-s0-e3",
+   "seed": 0,
+   "priority": 30,
+   "train": false,
+   "adapter": "adapters/B-AUX-trialgpt-ep5-s0-e3",
+   "eval_sets": [
+    "clin_v1/trialgpt_dev"
+   ]
+  },
+  {
+   "format": "verdict",
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "hp": {
+    "per_device": 8
+   },
+   "run_id": "B-AUX-trialgpt-ep5-s0-e4",
+   "seed": 0,
+   "priority": 30,
+   "train": false,
+   "adapter": "adapters/B-AUX-trialgpt-ep5-s0-e4",
+   "eval_sets": [
+    "clin_v1/trialgpt_dev"
+   ]
+  },
+  {
+   "format": "verdict",
+   "keep_adapter": false,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "hp": {
+    "per_device": 8
+   },
+   "run_id": "B-AUX-trialgpt-ep5-s0-e5",
+   "seed": 0,
+   "priority": 30,
+   "train": false,
+   "adapter": "adapters/B-AUX-trialgpt-ep5-s0-e5",
+   "eval_sets": [
+    "clin_v1/trialgpt_dev"
+   ]
+  }
+ ]
+}
