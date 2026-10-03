@@ -5,6 +5,32 @@
  "step": {
   "criterion": {}
  },
+ "xr": {
+  "conclusion": {
+   "XA": 83.0,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 96.58333333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 92.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 95.0,
+   "XA_window": 45.0
+  },
+  "criterion": {
+   "XA": 85.0,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 97.08333333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 99.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 100.0,
+   "XA_window": 41.0
+  }
+ },
  "eval": {
   "check_missing": 0,
   "check_error": 149,
