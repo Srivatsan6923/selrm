@@ -329,6 +329,9 @@ def budget_scorer(eval_local, model, tok, bs_score, bs_gen, max_new, log, gb):
     from GPU memory: long prompts (MedEinst, NLI4CT-P) at a fixed batch size ran 24 GB cards out of memory.
     Batch composition changes speed only (B's left-padding self-check runs as before)."""
     budget = None if gb >= 60 else (8000 if gb < 30 else 40000)
+    # generation is bound by memory bandwidth and this model's cache is small (3 of 4 layers are linear attention), so
+    # its batches get 3x the scoring budget; a batch that still does not fit is split (SafeGenerate)
+    gen_budget = None if budget is None else 3 * budget
 
     class BudgetScorer(eval_local.Scorer):
         def check_padding(self, seqs, n=8):
@@ -339,22 +342,61 @@ def budget_scorer(eval_local, model, tok, bs_score, bs_gen, max_new, log, gb):
             fit = [s for s in seqs if len(s) * n <= budget] or sorted(seqs, key=len)[:n]
             return super().check_padding(fit, n)
 
+        def generate(self, *args, **kw):
+            self._gen = True
+            try:
+                return super().generate(*args, **kw)
+            finally:
+                self._gen = False
+
         def _batches(self, seqs, bs):
             if budget is None or self.pad_ok is False:
                 return super()._batches(seqs, bs)
-            extra = self.max_new if bs == self.bs_gen else 0
+            gen = getattr(self, "_gen", False)
+            extra, cap = (self.max_new, gen_budget) if gen else (0, budget)
             order = sorted(range(len(seqs)), key=lambda i: (len(seqs[i]), i))
             out, cur = [], []
             for i in order:                       # ascending length: the new item is the longest in the batch
-                if cur and (len(cur) == bs or (len(cur) + 1) * (len(seqs[i]) + extra) > budget):
+                if cur and (len(cur) == bs or (len(cur) + 1) * (len(seqs[i]) + extra) > cap):
                     out.append(cur)
                     cur = []
                 cur.append(i)
             return out + ([cur] if cur else [])
 
     sc = BudgetScorer(model, tok, bs_score, bs_gen, max_new, log)
-    log(f"token budget per batch: {budget}")
+    sc.model = SafeGenerate(sc.model, sc.pad, log)
+    log(f"token budget per batch: {budget} (generation {gen_budget})")
     return sc
+
+
+class SafeGenerate:
+    """The model with an out-of-memory fallback for generate(): a batch that does not fit is split in halves (each
+    keeps its left padding); the halves' generated tokens are re-joined, right-padded with the pad id after each row's
+    own end, so callers that slice off the prompt see the same layout. Every other use goes to the model itself."""
+    def __init__(self, model, pad, log=print):
+        self.m, self.pad, self.log = model, pad, log
+
+    def __getattr__(self, k):
+        return getattr(self.m, k)
+
+    def __call__(self, *args, **kw):
+        return self.m(*args, **kw)
+
+    def generate(self, input_ids, attention_mask, **kw):
+        import torch
+        try:
+            return self.m.generate(input_ids=input_ids, attention_mask=attention_mask, **kw)
+        except torch.OutOfMemoryError:
+            if len(input_ids) == 1:
+                raise
+            torch.cuda.empty_cache()
+            h = len(input_ids) // 2
+            self.log(f"generate: out of memory at batch {len(input_ids)}; splitting")
+            parts = [self.generate(input_ids[s], attention_mask[s], **kw)[:, input_ids.shape[1]:]
+                     for s in (slice(0, h), slice(h, None))]
+            n = max(p.shape[1] for p in parts)
+            parts = [torch.nn.functional.pad(p, (0, n - p.shape[1]), value=self.pad) for p in parts]
+            return torch.cat([input_ids, torch.cat(parts)], dim=1)
 
 
 def run_one(spec, a, mon, log, owner):
@@ -374,7 +416,7 @@ def run_one(spec, a, mon, log, owner):
         bs_score, bs_gen = spec.get("bs_score", 64), spec.get("bs_gen", 128)
         mem = torch.cuda.get_device_properties(0).total_memory / 2**30 if torch.cuda.is_available() else 99
         if mem < 30:                              # 24 GB cards: 18.8 GB of weights
-            bs_score, bs_gen = min(bs_score, 16), min(bs_gen, 16)
+            bs_score, bs_gen = min(bs_score, 16), min(bs_gen, 48)   # generation also capped by its token budget
         elif mem < 40:                            # 32 GB cards
             bs_score, bs_gen = min(bs_score, 64), min(bs_gen, 64)
         sc = budget_scorer(eval_local, model, tok, bs_score, bs_gen, spec.get("max_new", 384), log, mem)
