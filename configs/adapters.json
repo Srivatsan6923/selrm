@@ -495,6 +495,16 @@
    "corpus": "rule_v1/train_triplets",
    "pvc": "selrm-b",
    "pvc_path": "selrm/adapters/B-F-summary2-triplets-s4"
+  },
+  "B-AB-verify-s0": {
+   "run_id": "B-AB-verify-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "ledger2_verify",
+   "corpus": "rule_v1/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-AB-verify-s0"
   }
  }
 }
