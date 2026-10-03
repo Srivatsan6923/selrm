@@ -1,0 +1,229 @@
+{
+ "run_id": "B-F-summary2-triplets-s1",
+ "set": "rule_v1/test_L1",
+ "claim_type": "conclusion",
+ "all": {
+  "Rev": 97.4,
+  "Hold": 100.0,
+  "TA": 97.4,
+  "BaseAcc": 97.5,
+  "Tie": 0.0,
+  "PresHold": 97.3,
+  "n": 1000
+ },
+ "nm_kind=boundary": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 200
+ },
+ "tier=easy": {
+  "Rev": 96.77914110429448,
+  "Hold": 100.0,
+  "TA": 96.77914110429448,
+  "BaseAcc": 96.93251533742331,
+  "Tie": 0.0,
+  "PresHold": 96.77914110429448,
+  "n": 652
+ },
+ "level=L1": {
+  "Rev": 97.4,
+  "Hold": 100.0,
+  "TA": 97.4,
+  "BaseAcc": 97.5,
+  "Tie": 0.0,
+  "PresHold": 97.3,
+  "n": 1000
+ },
+ "family=two_of_three": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 121
+ },
+ "nm_kind=negation": {
+  "Rev": 93.0,
+  "Hold": 100.0,
+  "TA": 93.0,
+  "BaseAcc": 93.0,
+  "Tie": 0.0,
+  "PresHold": 93.0,
+  "n": 200
+ },
+ "family=g_single": {
+  "Rev": 93.24324324324324,
+  "Hold": 100.0,
+  "TA": 93.24324324324324,
+  "BaseAcc": 93.24324324324324,
+  "Tie": 0.0,
+  "PresHold": 92.56756756756756,
+  "n": 148
+ },
+ "tier=long": {
+  "Rev": 98.3974358974359,
+  "Hold": 100.0,
+  "TA": 98.3974358974359,
+  "BaseAcc": 98.3974358974359,
+  "Tie": 0.0,
+  "PresHold": 98.07692307692308,
+  "n": 312
+ },
+ "family=g_any_of": {
+  "Rev": 96.12068965517241,
+  "Hold": 100.0,
+  "TA": 96.12068965517241,
+  "BaseAcc": 96.12068965517241,
+  "Tie": 0.0,
+  "PresHold": 96.12068965517241,
+  "n": 232
+ },
+ "nm_kind=subject": {
+  "Rev": 94.0,
+  "Hold": 100.0,
+  "TA": 94.0,
+  "BaseAcc": 94.5,
+  "Tie": 0.0,
+  "PresHold": 93.5,
+  "n": 200
+ },
+ "family=drug_interaction": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 33
+ },
+ "nm_kind=numeric": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 200
+ },
+ "family=additive_score": {
+  "Rev": 98.44961240310077,
+  "Hold": 100.0,
+  "TA": 98.44961240310077,
+  "BaseAcc": 99.2248062015504,
+  "Tie": 0.0,
+  "PresHold": 99.2248062015504,
+  "n": 129
+ },
+ "nm_kind=time": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 200
+ },
+ "tier=superseded": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 35
+ },
+ "family=g_all_of": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 145
+ },
+ "family=g_score_cutoff": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 29
+ },
+ "family=lab_threshold": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 80
+ },
+ "family=g_two_of_three": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 62
+ },
+ "family=history_switch": {
+  "Rev": 76.19047619047619,
+  "Hold": 100.0,
+  "TA": 76.19047619047619,
+  "BaseAcc": 76.19047619047619,
+  "Tie": 0.0,
+  "PresHold": 71.42857142857143,
+  "n": 21
+ },
+ "tier=delabelled": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 1
+ },
+ "CI95": {
+  "TA": [
+   93.9936775553214,
+   99.80059820538385
+  ],
+  "Rev": [
+   93.9936775553214,
+   99.80059820538385
+  ],
+  "Hold": [
+   100.0,
+   100.0
+  ]
+ },
+ "step": {
+  "criterion": {
+   "Rev": 97.47416762342135,
+   "Hold": 100.0,
+   "TA": 97.47416762342135,
+   "BaseAcc": 97.47416762342135,
+   "Tie": 0.0,
+   "PresHold": 97.12973593570608,
+   "n": 871
+  }
+ },
+ "eval": {
+  "reader_units": 4000,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 215.9,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
