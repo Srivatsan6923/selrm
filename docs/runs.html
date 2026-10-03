@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SelRM Runs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero reveal">
+      <div class="eyebrow">Run ledger</div>
+      <h1>Every run</h1>
+      <p>The planned matrix plus every result directory. State comes from DONE / CLAIMED files.</p>
+    </header>
+
+    <section class="card reveal" id="summary"></section>
+
+    <section>
+      <div class="section-head reveal"><h2>By paper item</h2><span class="muted small">Tables, figures and sections</span></div>
+      <div class="card reveal item-bars" id="items"></div>
+    </section>
+
+    <section>
+      <div class="section-head reveal"><h2>Runs</h2></div>
+      <div class="toolbar reveal" id="toolbar"></div>
+      <p class="count-line" id="count"></p>
+      <div class="table-wrap reveal"><table id="runs-table"></table></div>
+    </section>
+  </main>
+
+  <div class="drawer-bg" id="drawer-bg"></div>
+  <aside class="drawer" id="drawer" aria-label="Run details"></aside>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/drawer.js"></script>
+  <script src="assets/js/runs.js"></script>
+</body>
+</html>

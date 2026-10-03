@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SelRM Results</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero reveal">
+      <div class="eyebrow">Live results</div>
+      <h1>What the runs say</h1>
+      <p>Read straight from <code>summary_*.json</code> of finished runs. Smoke and timing runs are left out.</p>
+    </header>
+
+    <div class="notice reveal">Provisional: mostly seed 0. Paper tables come only from <code>scripts/make_tables.py</code>.</div>
+
+    <section>
+      <div class="section-head reveal">
+        <h2>Held-out rules (test_L2)</h2>
+        <div class="seg" id="metric-seg"></div>
+      </div>
+      <div class="card chart reveal" id="l2-chart"></div>
+    </section>
+
+    <section>
+      <div class="section-head reveal"><h2>Factorial: representation × corpus</h2><span class="muted small">TA on test_L2, mean over finished seeds</span></div>
+      <div class="card reveal" id="factorial"></div>
+    </section>
+
+    <section>
+      <div class="section-head reveal"><h2>Generalisation ladder</h2><span class="muted small">TA from seen rules to invented ones</span></div>
+      <div class="card reveal" id="ladder"></div>
+    </section>
+
+    <section>
+      <div class="section-head reveal"><h2>Near-miss kinds</h2><span class="muted small">TA on test_L2 by kind of look-alike evidence</span></div>
+      <div class="card reveal" id="kinds"></div>
+    </section>
+  </main>
+
+  <div class="drawer-bg" id="drawer-bg"></div>
+  <aside class="drawer" id="drawer" aria-label="Run details"></aside>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/drawer.js"></script>
+  <script src="assets/js/results.js"></script>
+</body>
+</html>
