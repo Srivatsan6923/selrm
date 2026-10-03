@@ -1,5 +1,5 @@
 # STATE role A (maintained by Claude Code)
-Updated: Fri 2 Oct 2026, late evening. Working on FINAL_TASKS_A (P0 in order, then P1), plus the
+Updated: Sat 3 Oct 2026, early morning. Working on FINAL_TASKS_A (P0 in order, then P1), plus the
 lead's addendum of 2 Oct: `docs/PAPER_VS_CODE.md`; the paper follows the code; windows only in
 the new sets.
 
@@ -26,17 +26,12 @@ the new sets.
 4. **Corpora for B: done.**
    - `train_triplets_no_boundary` is new and frozen.
    - `no_subject`, `no_time` and `nm05/12/25` are registry aliases of `lo_*` and `dose_*`.
-5. **ec_v1: in progress.**
-   - Mined from ClinicalTrials.gov (`scripts/ec_mine.py`): 8,425 candidates, then 294 selected,
-     with TrialGPT trials and texts excluded (C's `configs/trialgpt_exclusions.json`).
-   - Formalisation workflow `ec-formalize` (run `wf_5de76e48-8f4`) is running: 12 batches, each
-     with a formalizer and two skeptics.
-   - Next:
-     - save its result to `ec_v1/formalized.json`;
-     - run `python scripts/build_ec_v1.py prepare`, which writes `docs/EC_SIGNOFF.csv` and
-       `ec_v1/EXCLUSIONS.csv`;
-     - hand the sheet to two authors (H3);
-     - run `freeze` once both have signed off.
+5. **ec_v1: sign-off sheet ready.**
+   - Pipeline: 294 selected candidates; 108 confirmed by both skeptics; 6 rescued with the kinds the
+     rejecting skeptic named; registry context checked (sub-items, sections) and duplicates removed.
+   - Result: 100 criteria from 90 trials, 498 groups, shortcut validation PASS.
+   - Outputs: `docs/EC_SIGNOFF.csv` for H3 (`ec_v1/SIGNOFF_GUIDE.md`), `ec_v1/EXCLUSIONS.csv`.
+   - Next: run `python scripts/build_ec_v1.py freeze` once two authors have signed off.
 6. **rewrite_v1: ready, blocked.**
    - `scripts/rewrite_tier.py` writes `rewrite_v1/test` plus the audit file
      `data/rewrite_v1/rejected.jsonl`.
@@ -53,7 +48,7 @@ the new sets.
 ## Human tasks prepared by A
 - H1: `audit/fidelity_author{1..4}.csv`.
 - H2: `challenge_v1/form_author{1..4}.md`.
-- H3: `docs/EC_SIGNOFF.csv`, written by `build_ec_v1.py prepare`.
+- H3: `docs/EC_SIGNOFF.csv` (100 rows) with `ec_v1/SIGNOFF_GUIDE.md`.
 
 ## Notes for whoever resumes
 - Commit as Srivatsan Sarvesan <srivatsan6923@gmail.com>, with no assistant trailers.
