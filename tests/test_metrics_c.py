@@ -123,6 +123,19 @@ def test_prf_and_cluster_bootstrap():
     assert st["mean"] == 92.0 and abs(st["sd"] - 2.0) < 1e-12
 
 
+def test_reproducible_across_hash_seeds():
+    """CIs must not depend on PYTHONHASHSEED (set iteration order of string keys)."""
+    import subprocess
+    code = ("import sys; sys.path[:0] = ['tests', '.']; import test_metrics_c as T; from selrm import metrics as M; "
+            "Ta = M.decisions(*T.build([(f't{i}', {'base': 1, 'flip': -1, 'near': 1 - 2 * (i % 3 == 0)}, f'r{i % 7}') "
+            "for i in range(60)])); Tb = M.decisions(*T.build([(f't{i}', {'base': 1, 'flip': -1, 'near': 1 - 2 * (i % 4 == 0)}, "
+            "f'r{i % 7}') for i in range(60)])); print(M.bootstrap_ci(Ta), M.paired_diff(Ta, Tb), M.paired_test(Ta, Tb))")
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    outs = {subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, cwd=root,
+                           env=os.environ | {"PYTHONHASHSEED": h}).stdout for h in ("1", "2", "3")}
+    assert len(outs) == 1 and outs.pop().strip(), outs
+
+
 if __name__ == "__main__":
     for name, fn in list(globals().items()):
         if name.startswith("test_"):

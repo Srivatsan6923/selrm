@@ -65,7 +65,7 @@ def bootstrap_ci(T, metric="TA", unit="rid", B=1000, seed=0, alpha=0.05):
         f = _flags(t)
         if f is not None and metric in f:
             groups[t[unit]].append(f[metric])
-    keys, rng, stats = list(groups), random.Random(seed), []
+    keys, rng, stats = sorted(groups, key=str), random.Random(seed), []   # sorted: reproducible across processes
     for _ in range(B):
         vals = [v for k in (rng.choice(keys) for _ in keys) for v in groups[k]]
         stats.append(100.0 * sum(vals) / len(vals))
@@ -76,11 +76,11 @@ def bootstrap_ci(T, metric="TA", unit="rid", B=1000, seed=0, alpha=0.05):
 def paired_diff(Ta, Tb, metric="TA", unit="rid", B=1000, seed=0, alpha=0.05):
     """Difference a - b on the same triplets, same resampled rules. -> (diff, lo, hi)"""
     groups = collections.defaultdict(list)
-    for tid in Ta.keys() & Tb.keys():
+    for tid in sorted(Ta.keys() & Tb.keys()):   # sorted: a set's order changes with PYTHONHASHSEED
         fa, fb = _flags(Ta[tid]), _flags(Tb[tid])
         if fa is not None and fb is not None:
             groups[Ta[tid][unit]].append((fa[metric], fb[metric]))
-    keys, rng, stats = list(groups), random.Random(seed), []
+    keys, rng, stats = sorted(groups, key=str), random.Random(seed), []
     point = [p for k in keys for p in groups[k]]
     diff = 100.0 * (sum(a for a, _ in point) - sum(b for _, b in point)) / len(point)
     for _ in range(B):
