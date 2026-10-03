@@ -68,10 +68,33 @@ CLAIMS = [
            "better on key pairs and MedEinst pairs; swapping the vignette removes the gain (Sec. 7.5).", None, None,
      ["run/D-SEL-combined/sel:medqa/top/acc", "run/D-SEL-stepcheck/sel:medqa/top/acc",
       "run/D-SEL-combined-swap/sel:medqa/top/acc", "run/D-SEL-combined/sel:keypairs/top/pair_acc",
-      "run/D-SEL-stepcheck/sel:keypairs/top/pair_acc"],
+      "run/D-SEL-stepcheck/sel:keypairs/top/pair_acc"] +
+     [f"cmp/{c}/{f}" for c in ("sel-mqa-comb-step", "sel-key-comb-step", "sel-me-comb-step", "sel-mqa-comb-swap")
+      for f in ("diff", "lo", "hi")],
      "If the gains are within the non-inferiority margin, say so; no aggregation rule is searched on test data "
-     "(ROLE.md)."),
+     "(ROLE.md).", lambda: t5_status()),
+    ("G1", "Policy training (GRPO, held-out L2 base-flip pairs judged by the rule program): Ledger-RM as reward gives "
+           "a higher accuracy than the outcome, injected-error/step-check and reference-graph rewards (App. G; "
+           "descriptive, one seed).", None, None,
+     [f"run/D-RL-{r}/L2/top/{f}" for r in ("outcome", "stepcheck", "refgraph", "ledger2-triplets", "ledger2-blocks")
+      for f in ("start_pair", "acc_pair")],
+     "Report each reward's start and final accuracy as found; the step check's rise in reward with falling accuracy "
+     "is reward exploitation (the only basis for such statements, App. G).", None),
 ]
+
+
+def t5_status():
+    """Non-inferiority on MedQA (lower bound above -1), gains on key pairs and MedEinst (lower bound above 0) and
+    the swapped vignette below the combined reward (lower bound of combined - swapped above 0)."""
+    c = MT.comparisons()
+    need = {"sel-mqa-comb-step": ("not non-inferior on MedQA", -1.0),
+            "sel-key-comb-step": ("not better on key pairs", 0.0),
+            "sel-me-comb-step": ("not better on MedEinst pairs", 0.0),
+            "sel-mqa-comb-swap": ("combined not above its swapped-vignette version on MedQA", 0.0)}
+    if any((c.get(k) or {}).get("lo") is None for k in need):
+        return "not run"
+    fails = [txt for k, (txt, bound) in need.items() if not c[k]["lo"] > bound]
+    return "supported" if not fails else "not supported: " + "; ".join(fails)
 
 
 def status(cmp_name, sign):
@@ -92,9 +115,11 @@ def main():
            "behind a value is shown where it applies. Status rules: docstring of the script (App. A of the paper).", "",
            "| id | claim | estimate | test | status |", "|---|---|---|---|---|"]
     detail = []
-    for cid, claim, cmp_name, sign, keys, rule in CLAIMS:
+    for cid, claim, cmp_name, sign, keys, rule, *judge in CLAIMS:
         vals = "; ".join(f"`{k if len(k) < 70 else k[:67] + '...'}` = {MT.resolve(k)[1]}" for k in keys)
-        if cmp_name:
+        if judge and judge[0]:
+            st, test = judge[0](), "-"
+        elif cmp_name:
             st, c = status(cmp_name, sign)
             test = (f"{c.get('diff', 0):+.1f} [{c.get('lo', 0):+.1f}, {c.get('hi', 0):+.1f}], p {MT.resolve(f'cmp/{cmp_name}/p')[1]}, "
                     f"Holm {MT.resolve(f'cmp/{cmp_name}/padj')[1]}, n {c.get('n')}, seeds {','.join(c.get('seeds', [])) or '-'}"

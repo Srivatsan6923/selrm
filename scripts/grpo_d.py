@@ -265,7 +265,8 @@ def summarize(out_dir):
     old = json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
     summ = {k: v for k, v in old.items() if not k.startswith("acc_")} | {
         "start": start, "final": final, "final_step": steps[-1], "n_triplets": len({r["tid"] for r in load_rows(0)}),
-        "from_files": [f"eval_step0.jsonl", f"eval_step{steps[-1]}.jsonl"]} | {f"acc_{k}": v for k, v in final.items()}
+        "from_files": ["eval_step0.jsonl", f"eval_step{steps[-1]}.jsonl"]} | {f"acc_{k}": v for k, v in final.items()} | {
+        f"start_{k}": v for k, v in start.items()}
     json.dump(summ, open(p, "w", encoding="utf-8", newline="\n"), indent=1)
     return summ
 
