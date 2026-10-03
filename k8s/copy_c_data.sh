@@ -13,9 +13,13 @@ import hashlib, json, os, shutil, sys
 code, names, root = sys.argv[1], sys.argv[2:], "/pvc/selrm/data"
 reg_c = json.load(open(f"{code}/data/clin_v1/REGISTRY_C.json"))
 reg = json.load(open(f"{root}/REGISTRY.json"))
+print("C's PVC clin_v1:", sorted(os.listdir("/c/selrmc/data/clin_v1")) if os.path.isdir("/c/selrmc/data/clin_v1") else "none")
 for name in names:
     e = reg_c[name]
-    src = f"/c/selrmc/data/{e['path']}"
+    src = next((p for p in (f"/c/selrmc/data/{e['path']}", f"{code}/data/{e['path']}") if os.path.exists(p)), None)
+    if src is None:                          # neither on C's PVC nor in C's git: reported, the others still copied
+        print("MISSING", name, e["path"])
+        continue
     h = hashlib.sha256(open(src, "rb").read()).hexdigest()
     if h != e["sha256"] or not e.get("frozen"):
         raise SystemExit(f"MISMATCH or not frozen {name}: {h[:12]} vs {e['sha256'][:12]}")
