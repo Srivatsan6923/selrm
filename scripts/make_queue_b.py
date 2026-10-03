@@ -25,6 +25,7 @@ CLINICAL_CELLS = {("verdict", "triplets"), ("summary2", "triplets"), ("rationale
 
 CORE_CELLS = {(f, c) for f in ("verdict", "summary2", "ledger2") for c in ("blocks", "triplets")}
 NEW_FAMILIES = ("xr_v1", "challenge_v1", "rewrite_v1", "ec_v1")     # A's new sets (FINAL_TASKS_B P0.6)
+CLIN_TRAIN = None    # C's final clinical training pairs (MedEinst reference + MedQA-train key pairs), once frozen
 ABL_ORDER = ("decfield", "bitonly-judge", "bitonly-reader", "conddrv", "verify", "concept", "premise-gate", "probe-rw",
              "nopres", "noresamp", "pairwise")       # FINAL_TASKS_B P1 order
 
@@ -63,8 +64,10 @@ def priority(rid, seed, mprio="P1"):
         return 72 + (seed > 0) * 20
     if rid.startswith("B-TR-genprm"):
         return 73 + (seed > 0) * 20
-    if rid.startswith(("B-TR-", "B-DIS-")):
+    if rid.startswith("B-DIS-"):
         return 74
+    if rid.startswith("B-TR-"):
+        return 74 + (seed > 0) * 20
     if rid.startswith("B-FOLD"):
         return 76 + (seed > 0)
     if rid.startswith("B-DIV-"):
@@ -134,9 +137,20 @@ def transfer(seeds, registry, version):
                      "priority": priority(r["run_id"], seed, r["priority"]),
                      "keep_adapter": True,   # Table 4 rows (clinical columns)
                      "eval": dict(EVAL), "eval_sets": [f"{version}/{s}" for s in TRANSFER], **spec})
+    # 'with medical data' rows: ledger2 on C's clinical pairs only, and on rule triplets + clinical pairs 1:1
+    reg = json.load(open(registry))
+    clin = CLIN_TRAIN if reg.get(CLIN_TRAIN, {}).get("frozen") else None
+    for r in matrix():
+        m = re.fullmatch(r"B-TR-(clinonly|tripclin)-s(\d)", r["run_id"])
+        if m and clin and int(m[2]) in seeds and r["status"] not in ("done", "dropped", "deferred"):
+            data = ({"corpus": clin} if m[1] == "clinonly" else
+                    {"corpus": f"{version}/train_triplets", "mix": {"corpus": clin, "share": 0.5}})
+            runs.append({"run_id": r["run_id"], "seed": int(m[2]), "format": "ledger2", "n_examples": 60000, **data,
+                         "priority": priority(r["run_id"], int(m[2]), r["priority"]), "max_drop": 0.01,
+                         "keep_adapter": True, "eval": dict(EVAL), "eval_sets": [f"{version}/{s}" for s in TRANSFER]})
     # MedEinst with diseases held out (FINAL_TASKS_B P1, 3 runs): ledger2 on C's training-disease pairs
     corpus = "clin_v1/clinpairs_medeinst_dis"
-    if json.load(open(registry)).get(corpus, {}).get("frozen"):
+    if reg.get(corpus, {}).get("frozen"):
         for r in matrix():
             m = re.fullmatch(r"B-DIS-s(\d)", r["run_id"])
             if m and int(m[1]) in seeds and r["status"] not in ("done", "dropped", "deferred"):

@@ -59,6 +59,10 @@ runs = [{"run_id": f"SELFTEST-{f}", "format": f, "corpus": "mini/train_triplets"
          "max_steps": 2, "base_model": "tiny/qwen35", "hp": hp, "keep_adapter": f in ("ledger2", "ledger2_dec", "ledger2_verify"),
          "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24},
          "eval_sets": ["mini/test_heldout_rules"]} for f in FORMATS]
+runs.append({"run_id": "SELFTEST-mix", "format": "ledger2", "corpus": "mini/train_triplets", "n_examples": 200,
+             "mix": {"corpus": "mini/test_heldout_rules", "share": 0.5}, "seed": 0, "max_steps": 2,   # corpus mixture
+             "base_model": "tiny/qwen35", "hp": hp, "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24},
+             "eval_sets": ["mini/test_heldout_rules"]})
 runs.append({"run_id": "SELFTEST-evalonly-ledger2", "format": "ledger2", "train": False, "seed": 0,
              "base_model": "tiny/qwen35", "adapter": "adapters/SELFTEST-ledger2", "hp": hp, "priority": 9,
              "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24}, "eval_sets": ["mini/test_heldout_rules"]})
