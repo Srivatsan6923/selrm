@@ -1,6 +1,6 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "3d376a70339a7d674f5f9ce9c55a20256fd20ea8",
+ "code_commit": "39003c4fe8b8e37286933ffb0c134a2abaf0a8fa",
  "uncommitted_changes": true,
  "records": {
   "rule_v1/dev_missing": {
@@ -34829,20 +34829,80 @@
    ]
   },
   "run/D-RL-outcome/xr_v1:test/xa/XA": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "96.0",
+   "number": 96.0,
+   "runs": [
+    {
+     "run_id": "D-RL-outcome-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-outcome-s0/summary_xr_v1~test.json",
+     "field": "xa.XA",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "xr_v1/test",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/D-RL-outcome/xr_v1:test/xa/XA/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-RL-outcome-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-outcome-s0/summary_xr_v1~test.json",
+     "field": "xa.XA",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "xr_v1/test",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
   },
   "run/D-RL-outcome/xr_v1:test/xa/XA362": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "95.6",
+   "number": 95.58011049723757,
+   "runs": [
+    {
+     "run_id": "D-RL-outcome-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-outcome-s0/summary_xr_v1~test.json",
+     "field": "xa.XA362",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "xr_v1/test",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/D-RL-outcome/xr_v1:test/xa/XA362/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-RL-outcome-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-outcome-s0/summary_xr_v1~test.json",
+     "field": "xa.XA362",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "xr_v1/test",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
   },
   "run/D-RL-refgraph/L2/step=0/pair": {
    "value": "88.7",
@@ -35675,20 +35735,80 @@
    ]
   },
   "run/D-RL-stepcheck/xr_v1:test/xa/XA": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "38.2",
+   "number": 38.25,
+   "runs": [
+    {
+     "run_id": "D-RL-stepcheck-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-stepcheck-s0/summary_xr_v1~test.json",
+     "field": "xa.XA",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "xr_v1/test",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/D-RL-stepcheck/xr_v1:test/xa/XA/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-RL-stepcheck-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-stepcheck-s0/summary_xr_v1~test.json",
+     "field": "xa.XA",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "xr_v1/test",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
   },
   "run/D-RL-stepcheck/xr_v1:test/xa/XA362": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "39.8",
+   "number": 39.77900552486188,
+   "runs": [
+    {
+     "run_id": "D-RL-stepcheck-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-stepcheck-s0/summary_xr_v1~test.json",
+     "field": "xa.XA362",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "xr_v1/test",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/D-RL-stepcheck/xr_v1:test/xa/XA362/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-RL-stepcheck-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-stepcheck-s0/summary_xr_v1~test.json",
+     "field": "xa.XA362",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "xr_v1/test",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
   },
   "run/D-RL-summary2-triplets/L2/step=0/pair": {
    "value": "\\ph{tbd}",
@@ -35843,60 +35963,270 @@
    "seeds_found": []
   },
   "run/D-RL-untrained/L2/top/acc_base": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "90.7",
+   "number": 90.66666666666667,
+   "runs": [
+    {
+     "run_id": "D-RL-untrained",
+     "seed": null,
+     "file": "results_git/D-RL-untrained/summary_rule_v1~test_L2.json",
+     "field": "top.acc_base",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-RL-untrained/L2/top/acc_base/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-RL-untrained",
+     "seed": null,
+     "file": "results_git/D-RL-untrained/summary_rule_v1~test_L2.json",
+     "field": "top.acc_base",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-RL-untrained/L2/top/acc_flip": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "98.0",
+   "number": 98.0,
+   "runs": [
+    {
+     "run_id": "D-RL-untrained",
+     "seed": null,
+     "file": "results_git/D-RL-untrained/summary_rule_v1~test_L2.json",
+     "field": "top.acc_flip",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-RL-untrained/L2/top/acc_flip/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-RL-untrained",
+     "seed": null,
+     "file": "results_git/D-RL-untrained/summary_rule_v1~test_L2.json",
+     "field": "top.acc_flip",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-RL-untrained/L2/top/acc_near": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "92.0",
+   "number": 92.0,
+   "runs": [
+    {
+     "run_id": "D-RL-untrained",
+     "seed": null,
+     "file": "results_git/D-RL-untrained/summary_rule_v1~test_L2.json",
+     "field": "top.acc_near",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-RL-untrained/L2/top/acc_near/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-RL-untrained",
+     "seed": null,
+     "file": "results_git/D-RL-untrained/summary_rule_v1~test_L2.json",
+     "field": "top.acc_near",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-RL-untrained/L2/top/acc_pair": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "88.7",
+   "number": 88.66666666666667,
+   "runs": [
+    {
+     "run_id": "D-RL-untrained",
+     "seed": null,
+     "file": "results_git/D-RL-untrained/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-RL-untrained/L2/top/acc_pair/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-RL-untrained",
+     "seed": null,
+     "file": "results_git/D-RL-untrained/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-RL-untrained/L2/top/acc_triplet": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "86.0",
+   "number": 86.0,
+   "runs": [
+    {
+     "run_id": "D-RL-untrained",
+     "seed": null,
+     "file": "results_git/D-RL-untrained/summary_rule_v1~test_L2.json",
+     "field": "top.acc_triplet",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-RL-untrained/L2/top/acc_triplet/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-RL-untrained",
+     "seed": null,
+     "file": "results_git/D-RL-untrained/summary_rule_v1~test_L2.json",
+     "field": "top.acc_triplet",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-RL-untrained/xr_v1:test/xa/XA": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "90.0",
+   "number": 90.0,
+   "runs": [
+    {
+     "run_id": "D-RL-untrained",
+     "seed": null,
+     "file": "results_git/D-RL-untrained/summary_xr_v1~test.json",
+     "field": "xa.XA",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "xr_v1/test",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-RL-untrained/xr_v1:test/xa/XA/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-RL-untrained",
+     "seed": null,
+     "file": "results_git/D-RL-untrained/summary_xr_v1~test.json",
+     "field": "xa.XA",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "xr_v1/test",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-RL-untrained/xr_v1:test/xa/XA362": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "89.2",
+   "number": 89.22651933701657,
+   "runs": [
+    {
+     "run_id": "D-RL-untrained",
+     "seed": null,
+     "file": "results_git/D-RL-untrained/summary_xr_v1~test.json",
+     "field": "xa.XA362",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "xr_v1/test",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-RL-untrained/xr_v1:test/xa/XA362/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-RL-untrained",
+     "seed": null,
+     "file": "results_git/D-RL-untrained/summary_xr_v1~test.json",
+     "field": "xa.XA362",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "xr_v1/test",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-closed/sel:careqa/top/acc": {
    "value": "\\ph{tbd}",
@@ -43388,43 +43718,43 @@
     "row": "Untrained policy",
     "col": "Base",
     "key": "run/D-RL-untrained/L2/top/acc_base",
-    "value": "\\ph{tbd}"
+    "value": "90.7"
    },
    {
     "row": "Untrained policy",
     "col": "Flip",
     "key": "run/D-RL-untrained/L2/top/acc_flip",
-    "value": "\\ph{tbd}"
+    "value": "98.0"
    },
    {
     "row": "Untrained policy",
     "col": "Near",
     "key": "run/D-RL-untrained/L2/top/acc_near",
-    "value": "\\ph{tbd}"
+    "value": "92.0"
    },
    {
     "row": "Untrained policy",
     "col": "Pair",
     "key": "run/D-RL-untrained/L2/top/acc_pair",
-    "value": "\\ph{tbd}"
+    "value": "88.7"
    },
    {
     "row": "Untrained policy",
     "col": "Triplet",
     "key": "run/D-RL-untrained/L2/top/acc_triplet",
-    "value": "\\ph{tbd}"
+    "value": "86.0"
    },
    {
     "row": "Untrained policy",
     "col": "XA",
     "key": "run/D-RL-untrained/xr_v1:test/xa/XA",
-    "value": "\\ph{tbd}"
+    "value": "90.0"
    },
    {
     "row": "Untrained policy",
     "col": "XA362",
     "key": "run/D-RL-untrained/xr_v1:test/xa/XA362",
-    "value": "\\ph{tbd}"
+    "value": "89.2"
    },
    {
     "row": "Outcome (rule program)",
@@ -43460,13 +43790,13 @@
     "row": "Outcome (rule program)",
     "col": "XA",
     "key": "run/D-RL-outcome/xr_v1:test/xa/XA",
-    "value": "\\ph{tbd}"
+    "value": "96.0"
    },
    {
     "row": "Outcome (rule program)",
     "col": "XA362",
     "key": "run/D-RL-outcome/xr_v1:test/xa/XA362",
-    "value": "\\ph{tbd}"
+    "value": "95.6"
    },
    {
     "row": "Reference graph",
@@ -43544,13 +43874,13 @@
     "row": "Step check (released Med-PRM)",
     "col": "XA",
     "key": "run/D-RL-stepcheck/xr_v1:test/xa/XA",
-    "value": "\\ph{tbd}"
+    "value": "38.2"
    },
    {
     "row": "Step check (released Med-PRM)",
     "col": "XA362",
     "key": "run/D-RL-stepcheck/xr_v1:test/xa/XA362",
-    "value": "\\ph{tbd}"
+    "value": "39.8"
    },
    {
     "row": "\\method{}, rule blocks",

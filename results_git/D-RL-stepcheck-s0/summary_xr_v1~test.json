@@ -1,0 +1,33 @@
+{
+ "run_id": "D-RL-stepcheck-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "XA": 38.25,
+ "n_items": 400,
+ "n_incomplete": 0,
+ "n_excluded": 0,
+ "CellAcc": 89.375,
+ "n_cells": 2400,
+ "cells_without_label": 0,
+ "XA_currency": 60.0,
+ "XA_inclusivity": 17.0,
+ "XA_subject": 49.0,
+ "XA_window": 27.0,
+ "without_known_issues": {
+  "XA": 39.77900552486188,
+  "n_items": 362,
+  "n_incomplete": 0,
+  "n_excluded": 38,
+  "CellAcc": 89.59484346224677,
+  "n_cells": 2172,
+  "cells_without_label": 0,
+  "XA_currency": 60.0,
+  "XA_inclusivity": 22.07792207792208,
+  "XA_subject": 49.0,
+  "XA_window": 27.0
+ },
+ "final_step": 1000,
+ "from_files": [
+  "eval_xr_step1000.jsonl"
+ ]
+}

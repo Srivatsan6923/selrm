@@ -1,0 +1,49 @@
+{
+ "run_id": "D-RL-stepcheck-s0",
+ "set": "clin_v1/trialgpt_test",
+ "macroF1": 50.55437603208304,
+ "acc": 65.08563899868248,
+ "per_class": {
+  "met": {
+   "P": 65.9090909090909,
+   "R": 84.05797101449275,
+   "F1": 73.88535031847134,
+   "n": 138
+  },
+  "not met": {
+   "P": 64.83704974271012,
+   "R": 97.17223650385604,
+   "F1": 77.77777777777779,
+   "n": 389
+  },
+  "NEI": {
+   "P": 0.0,
+   "R": 0.0,
+   "F1": 0.0,
+   "n": 232
+  }
+ },
+ "confusion": {
+  "met": {
+   "met": 116,
+   "not met": 22
+  },
+  "not met": {
+   "not met": 378,
+   "met": 11
+  },
+  "NEI": {
+   "not met": 183,
+   "met": 49
+  }
+ },
+ "n": 759,
+ "forced_choice_acc": 93.7381404174573,
+ "n_forced": 527,
+ "no_answer_share": 0.0,
+ "final_step": 1000,
+ "from_files": [
+  "eval_tg_step1000.jsonl"
+ ],
+ "scoring": "no final answer = NEI; N/A items left out (docs/TRIALGPT_PROTOCOL.md classes)"
+}
