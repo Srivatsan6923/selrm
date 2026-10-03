@@ -291,10 +291,11 @@ def ns_eval(registry, adapters):
         fams.setdefault(s.split("/")[0], []).append(s)
     runs = []
     for src in sorted(adapters):
-        spec = specs.get(src)
-        if spec is None:                  # done runs leave the queue files: their meta.json has what the spec had
-            m = json.load(open(f"{ROOT}/results_git/{src}/meta.json"))
-            spec = {k: m[k] for k in ("format", "seed", "eval_sets")} | {"base_model": m["model"]}
+        spec = specs.get(src, {})
+        meta = f"{ROOT}/results_git/{src}/meta.json"     # what the run did: done runs leave the queue files, and a
+        if os.path.exists(meta):                          # runner may have claimed a run before its spec changed
+            m = json.load(open(meta))
+            spec = spec | {k: m[k] for k in ("format", "seed", "eval_sets")} | {"base_model": m["model"]}
         for fam, sets in sorted(fams.items()):
             if set(sets) <= set(spec.get("eval_sets", [])):
                 continue
