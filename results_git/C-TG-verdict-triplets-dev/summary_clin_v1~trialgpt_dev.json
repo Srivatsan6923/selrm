@@ -121,6 +121,7 @@
   "B": 1000,
   "seed": 0
  },
+ "threshold_source": "results_git/C-TG-verdict-triplets-dev/scores_rule_v1~dev_missing.jsonl",
  "eval": {
   "seconds": 48.2,
   "pad_ok": true,

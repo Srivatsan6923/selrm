@@ -122,6 +122,7 @@
   "B": 1000,
   "seed": 0
  },
+ "threshold_source": "results_git/C-TG-critic-dev/scores_rule_v1~dev_missing.jsonl",
  "eval": {
   "seconds": 31.9,
   "pad_ok": true,

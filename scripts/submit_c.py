@@ -114,9 +114,12 @@ def runner_job(name, tasks, code, bcode, env_tag, gpu, hours, cpu=2, mem="12Gi",
     """GPU runner: init container stages env, B's and C's code and the base weights on local NVMe;
     main container runs scripts/eval_c.py over a task list (claim -> evaluate -> DONE -> next)."""
     resource, products = GPU[gpu]
-    terms = [DRIVER] + ([{"key": "nvidia.com/gpu.product", "operator": "In", "values": products}] if products else [])
+    # us-west / us-central only (staging 20+ GB from the us-west CephFS pool to a us-east node took > 40 min, and
+    # some remote nodes lack its CSI driver); us-west preferred
+    terms = [DRIVER, {"key": "topology.kubernetes.io/region", "operator": "In", "values": ["us-west", "us-central"]}] \
+        + ([{"key": "nvidia.com/gpu.product", "operator": "In", "values": products}] if products else [])
     mounts = MNTS + [{"name": "work", "mountPath": "/work"}, {"name": "env", "mountPath": "/opt/selrm-env"}]
-    aff = affinity(terms)      # prefer us-west (the CephFS pool; some remote nodes lack its CSI driver)
+    aff = affinity(terms)
     aff["nodeAffinity"]["preferredDuringSchedulingIgnoredDuringExecution"] = [{"weight": 100, "preference": {
         "matchExpressions": [{"key": "topology.kubernetes.io/region", "operator": "In", "values": ["us-west"]}]}}]
     pod = {"restartPolicy": "Never", "affinity": aff,
