@@ -226,11 +226,22 @@ def main():
     elif a.cmd == "pull":
         remote, local = a.rest
         os.makedirs(local, exist_ok=True)
-        data = subprocess.run(["kubectl", "-n", NS, "exec", SITE["sync"], "--", "tar", "-cf", "-", "-C",
-                               os.path.dirname(remote), os.path.basename(remote)], capture_output=True, check=True).stdout
-        with tarfile.open(fileobj=io.BytesIO(data)) as t:
+        # A raw tar stream of ~30 MB through kubectl exec was cut short on Windows (3 Oct): pack and checksum on
+        # the pod, stream the gzip, compare the checksum, retry.
+        tmp = f"/tmp/pull-{int(time.time())}.tgz"
+        want = exec_sync("sh", "-c", f"tar -czf {tmp} -C {os.path.dirname(remote)} {os.path.basename(remote)} && "
+                                     f"sha256sum {tmp} | cut -d' ' -f1").strip()
+        import hashlib
+        for _ in range(5):
+            data = subprocess.run(["kubectl", "-n", NS, "exec", SITE["sync"], "--", "cat", tmp], capture_output=True).stdout
+            if hashlib.sha256(data).hexdigest() == want:
+                break
+        else:
+            sys.exit(f"pull: checksum mismatch after 5 tries ({remote})")
+        exec_sync("rm", "-f", tmp)
+        with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as t:
             t.extractall(local)
-        print("pulled", remote, "->", local)
+        print("pulled", remote, "->", local, f"({len(data)} bytes gzip, sha256 ok)")
     elif a.cmd == "ls":
         print(exec_sync("sh", "-c", f"ls -la {a.rest[0] if a.rest else '/pvc'}"))
     else:

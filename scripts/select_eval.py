@@ -12,11 +12,11 @@ Selectors (one D-SEL-<name> run each; N = 16 samples, nested pools):
   selfcons     majority vote over eligible samples; ties -> the earliest sample among the tied answers
   stepcheck    highest step-check trace score;  stepcheck-swap: scores with another question's vignette
   ledger       highest Ledger-RM trace score
-  combined     highest min(sigmoid(s_ledger / T_l), sigmoid(s_step / T_s)); T fitted on the MedQA dev
-               pool (D-CAL) by the likelihood of trace correctness; also product and a logistic
-               combination fitted on the same dev pool (reported in D-CAL)
+  combined     highest min(sigmoid(a_l s_ledger + b_l), sigmoid(a_s s_step + b_s)); a, b per scorer by
+               Platt scaling on the MedQA dev pool (D-CAL), likelihood of trace correctness; also the
+               product and a logistic combination fitted on the same dev pool
   combined-swap  combined, both scores computed with another question's vignette
-  no-nearmiss  combined with the ledger model trained on blocks (its own T)
+  no-nearmiss  combined with the ledger model trained on blocks (its own a, b)
   oracle       correct if any eligible sample is correct
 Ineligible samples (no final answer) are never selected; a question with none counts as wrong.
 Ties in a score -> the earliest sample. Every selection is deterministic.
@@ -24,8 +24,8 @@ Outputs: results/D-SEL-<name>/scores_sel~<set>.jsonl {qid, sample, answer, corre
 summary_sel~<set>.json, set = sel/medqa, sel/careqa, sel/medeinst (+ control_acc, trap_acc, pair_acc)
 and sel/keypairs (pool medqa_kp; pair_acc: both questions of a MedQA key pair right; the pairs are
 C's clin_v1/keypairs_medqa_oneway, configs/keypairs_d.json);
-results/D-CAL/summary.json (temperatures, combination weights, dev likelihoods; key-pair questions
-are left out of the dev pool);
+results/D-CAL/summary.json (Platt parameters, combination weights, dev likelihoods and AUCs; key-pair
+questions are left out of the dev pool);
 results/D-SELN/summary_sel~keypairs.json (slices selector=<name> with N1..N64: key-pair accuracy
 among the first N samples of the key-pair questions extended to 64 samples).
 results_git/D-SEL-comparisons.json: paired differences a - b of two selectors on identical items
@@ -46,6 +46,7 @@ from scipy.optimize import minimize
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 from selrm import metrics as M  # noqa: E402
+from selrm.formats import MALFORMED_U  # noqa: E402
 
 DEV = "medqa_dev"
 # Paired selector comparisons stated in the text of Table 5 (name, pool, a, b): a - b.
@@ -130,25 +131,29 @@ def sig(x):
     return 1.0 / (1.0 + math.exp(-max(-60.0, min(60.0, x))))
 
 
-def fit_temperature(scores, labels):
-    """T > 0 maximising the likelihood of sigmoid(s / T) for the correctness labels."""
-    s, y = np.array(scores, float), np.array(labels, float)
-
-    def nll(logt):
-        p = 1 / (1 + np.exp(-np.clip(s / math.exp(logt[0]), -60, 60)))
-        return -np.mean(y * np.log(p + 1e-12) + (1 - y) * np.log(1 - p + 1e-12))
-    r = minimize(nll, [0.0], method="Nelder-Mead")
-    return float(math.exp(r.x[0])), float(r.fun)
-
-
-def fit_logistic(x1, x2, labels):
-    X, y = np.column_stack([x1, x2, np.ones(len(x1))]), np.array(labels, float)
+def fit_logistic(xs, labels):
+    """[w_1..w_m, b] maximising the likelihood of sigmoid(w . x + b) for the correctness labels: Platt
+    scaling for one score, the fitted combination for two. Fitted on standardised columns (conditioning),
+    returned on the original scale. A temperature alone, sigmoid(s / T), cannot fit these scores: they
+    are mostly negative while most traces are correct (D-CAL of 3 Oct: T -> infinity)."""
+    X, y = np.column_stack(xs).astype(float), np.array(labels, float)
+    mu, sd = X.mean(0), X.std(0) + 1e-12
+    Z = np.column_stack([(X - mu) / sd, np.ones(len(X))])
 
     def nll(w):
-        p = 1 / (1 + np.exp(-np.clip(X @ w, -60, 60)))
+        p = 1 / (1 + np.exp(-np.clip(Z @ w, -60, 60)))
         return -np.mean(y * np.log(p + 1e-12) + (1 - y) * np.log(1 - p + 1e-12))
-    r = minimize(nll, np.zeros(3), method="Nelder-Mead", options={"maxiter": 4000})
-    return [float(v) for v in r.x], float(r.fun)
+    r = minimize(nll, np.zeros(Z.shape[1]), method="Nelder-Mead", options={"maxiter": 4000})
+    w = r.x[:-1] / sd
+    return [float(v) for v in w] + [float(r.x[-1] - (r.x[:-1] * mu / sd).sum())], float(r.fun)
+
+
+def auc(scores, labels):
+    """Probability that a correct trace scores above an incorrect one (ties count one half)."""
+    from scipy.stats import rankdata
+    r, y = rankdata(scores), np.array(labels, bool)
+    n1, n0 = y.sum(), (~y).sum()
+    return float((r[y].sum() - n1 * (n1 + 1) / 2) / (n1 * n0)) if n1 and n0 else None
 
 
 def pick(cands, key):
@@ -162,9 +167,9 @@ def pick(cands, key):
 
 
 def calibrate(pools, scores_dir):
-    """D-CAL: temperatures for every scorer and the logistic combination, on the dev pool."""
+    """D-CAL: Platt scaling of every scorer and the logistic combination, on the dev pool."""
     qs, by_q = load_pool(os.path.join(pools, DEV))
-    cal = {"pool": DEV, "temperatures": {}, "nll": {}}
+    cal = {"pool": DEV, "platt": {}, "nll": {}, "auc": {}}
     sc = {n: load_scores(os.path.join(scores_dir, DEV, f"{n}.jsonl")) for n in
           ("medprm", "ledger2-triplets", "ledger2-blocks")}
     # questions of a key pair are test items (validation rows of C's key pairs): never calibrated on
@@ -173,23 +178,40 @@ def calibrate(pools, scores_dir):
     for n, s in sc.items():
         if s:
             pts = [(s[(q, k)], y) for q, k, y in rows if s.get((q, k)) is not None]
-            cal["temperatures"][n], cal["nll"][n] = fit_temperature([p for p, _ in pts], [y for _, y in pts])
+            cal["platt"][n], cal["nll"][n] = fit_logistic([[p for p, _ in pts]], [y for _, y in pts])
+            cal["auc"][n] = auc([p for p, _ in pts], [y for _, y in pts])
     for led in ("ledger2-triplets", "ledger2-blocks"):
         if sc["medprm"] and sc[led]:
             pts = [(sc[led][(q, k)], sc["medprm"][(q, k)], y) for q, k, y in rows
                    if sc[led].get((q, k)) is not None and sc["medprm"].get((q, k)) is not None]
-            cal[f"logistic:{led}"], cal[f"nll:logistic:{led}"] = fit_logistic(*zip(*pts))
-    cal["n_traces"] = len(rows)
+            x1, x2, y = zip(*pts)
+            cal[f"logistic:{led}"], cal[f"nll:logistic:{led}"] = fit_logistic([x1, x2], y)
+    # the pre-specified trace score is the minimum step score (malformed reader output: MALFORMED_U);
+    # dev AUC of the ledger scores under alternative aggregations, reported, never used for selection
+    alt = {"mean": lambda u, w: float(np.mean(u)), "last": lambda u, w: u[-1],
+           "min_well_formed": lambda u, w: min([x for x, ok in zip(u, w) if ok] or [MALFORMED_U])}
+    for led in ("ledger2-triplets", "ledger2-blocks"):
+        f = os.path.join(scores_dir, DEV, f"{led}.jsonl")
+        if os.path.exists(f):
+            J = {(j["qid"], j["sample"]): j for j in map(json.loads, open(f, encoding="utf-8"))}
+            got = [(J[(q, k)], y) for q, k, y in rows if "well_formed" in J.get((q, k), {})]
+            if not got:
+                continue
+            cal.setdefault("auc_alt", {})[led] = {a: auc([g(j["u"], j["well_formed"]) for j, _ in got],
+                                                         [y for _, y in got]) for a, g in alt.items()}
+            cal.setdefault("share_traces_with_malformed_step", {})[led] = float(
+                np.mean([not all(j["well_formed"]) for j, _ in got]))
+    cal["n_traces"], cal["correct_share"] = len(rows), float(np.mean([y for _, _, y in rows]))
     cal["n_questions"], cal["excluded_keypair_questions"] = len(set(by_q) - KPQ), len(set(by_q) & KPQ)
     return cal
 
 
 def selectors(cal, sc):
-    T = cal["temperatures"]
+    A = cal["platt"]
 
     def p(n, s, k):
         v = s.get(k)
-        return None if v is None or n not in T else sig(v / T[n])
+        return None if v is None or n not in A else sig(A[n][0] * v + A[n][1])
 
     def comb(led, step, mode="min"):
         def f(k):
