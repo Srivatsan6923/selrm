@@ -155,6 +155,19 @@
   "split": "test",
   "tier": "external"
  },
+ "clin_v1/medeinst_train": {
+  "alias_of": "clin_v1/clinpairs_medeinst",
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/clinpairs_medeinst/MANIFEST.json",
+  "n_groups": 7807,
+  "n_records": 31228,
+  "path": "clin_v1/clinpairs_medeinst/records.jsonl",
+  "sha256": "5b0e7e9a3fdd2c958d020a34eab2b8636c11a012e176125207c222fda28ee37a",
+  "split": "train",
+  "tier": "external"
+ },
  "clin_v1/nli4ct_dev": {
   "created": "2026-10-02",
   "frozen": true,
@@ -189,6 +202,18 @@
   "path": "clin_v1/nli4ct_train/records.jsonl",
   "sha256": "a6865c75ca0a9c27e570a5197421f684ea3ae28b9483cea29f6b8a441716cdb4",
   "split": "train",
+  "tier": "external"
+ },
+ "clin_v1/trialgpt_cv": {
+  "created": "2026-10-03",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/trialgpt_cv/MANIFEST.json",
+  "n_groups": 801,
+  "n_records": 1602,
+  "path": "clin_v1/trialgpt_cv/records.jsonl",
+  "sha256": "89f2229e731f5be56fe7e91554566f63f4777cb081dbc26ab4d6fb731b194c81",
+  "split": "cv",
   "tier": "external"
  },
  "clin_v1/trialgpt_dev": {
