@@ -327,6 +327,18 @@
     "clin_v1/medeinst_test"
    ],
    "min_gen": 3
+  },
+  {
+   "run_id": "C-ME-promptledger-lenient",
+   "priority": 19.5,
+   "format": "ledger2",
+   "adapter": null,
+   "bs_score": 64,
+   "rejudge_from": "C-ME-promptledger",
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "min_gen": 3
   }
  ],
  "note": "long prompts; runner code with the budgeted padding check (GEN >= 3 and the check_padding fix)"
