@@ -44,6 +44,15 @@ Provenance (library): {{rules.provenance}}.
   - *synthetic*: no source supports the rule as stated.
 - The source check was done by model agents, each finding re-checked by a second agent that tried
   to refute it. No author has checked a formalisation against its source yet.
+- What the check found, for the {{rules.sources_checked}} hand-written rules:
+  - the source document was found and opened online for {{rules.sources_verified_online}};
+  - {{rules.sources_simplifications_listed}} simplifications are listed in all;
+  - {{rules.sources_with_contradictions}} rules contradict their source in at least one respect,
+    for example a threshold or an alternative that the source does not support;
+  - no rule restates a source verbatim.
+- Each record gives the source, the supporting text, every simplification and every
+  contradiction. Rules are test specifications, so a contradiction does not invalidate a label; it
+  does forbid calling the rule a guideline rule.
 
 ## 2. Target-claim check
 

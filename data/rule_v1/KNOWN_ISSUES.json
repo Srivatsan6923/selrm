@@ -1,6 +1,6 @@
 {
  "generated_by": "scripts/audit_rule_v1.py",
- "commit": "813e921a358d470d790c6a5c1f0666ddd260b85f",
+ "commit": "11f77f7c869ada3738055ff46651c952794c42f5",
  "checked_sets": [
   "rule_v1/dev",
   "rule_v1/dev_missing",
