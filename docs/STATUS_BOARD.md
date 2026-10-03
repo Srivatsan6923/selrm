@@ -13,6 +13,8 @@ Updated 2026-10-03 ~06:30 UTC after daily merge 2 (role-a 11f77f7, role-b 072d46
 | Independent rebuild of rule_v1 matches the registry | pass (2 Oct): all 44 sets of that day byte-identical | DECISIONS_D 2 Oct |
 | Test suite on main | merge 2: 66 passed | pytest -q tests |
 | Interface mismatch | B's scripts/analysis_b.py reads paired_test as a dict; C's returns a tuple | CHANGE_REQUESTS 3 Oct (owner B) |
+| Paper claim without a record | v13 App. H says the pilot model solved 59.7% on held-out rules where a past or family finding counts; no file records that test or value, and the pilot data contain no case in which such a mention counts. The authors produce the record or remove the claim (H6) | docs/TIMELINE.md, 'Not in the records' 1-5 |
+| Hand-typed number differing from its result | bag-of-words TA: v13 7.1, results/A-D14-bag_of_words 7.0 (now read from the result) | docs/PAPER_NUMBERS.md |
 
 ## Tasks
 | ID | Task | Owner | Status | Output |
