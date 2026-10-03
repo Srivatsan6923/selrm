@@ -1,0 +1,25 @@
+{
+ "run_id": "B-DIS-s1",
+ "set": "clin_v1/medeinst_dis_test",
+ "claim_type": "conclusion",
+ "pairs": {
+  "Reversal": 43.47826086956522,
+  "CI95": [
+   34.78260869565217,
+   53.04347826086956
+  ],
+  "control_correct": 46.95652173913044,
+  "trap_correct": 95.65217391304348,
+  "n_pairs": 115
+ },
+ "eval": {
+  "reader_units": 230,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 46.4,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

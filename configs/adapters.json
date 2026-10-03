@@ -595,6 +595,26 @@
    "corpus": "clin_v1/clinpairs_train",
    "pvc": "selrm-b",
    "pvc_path": "selrm/adapters/B-TR-clinonly-s0"
+  },
+  "B-DIS-s0": {
+   "run_id": "B-DIS-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "ledger2",
+   "corpus": "clin_v1/clinpairs_medeinst_dis",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-DIS-s0"
+  },
+  "B-DIS-s1": {
+   "run_id": "B-DIS-s1",
+   "path": null,
+   "status": "DONE (seed 1); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "ledger2",
+   "corpus": "clin_v1/clinpairs_medeinst_dis",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-DIS-s1"
   }
  }
 }

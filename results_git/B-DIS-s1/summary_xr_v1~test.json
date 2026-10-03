@@ -1,0 +1,44 @@
+{
+ "run_id": "B-DIS-s1",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 16.5,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 78.08333333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 6.0,
+   "XA_inclusivity": 33.0,
+   "XA_subject": 10.0,
+   "XA_window": 17.0
+  },
+  "criterion": {
+   "XA": 58.75,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 89.5,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 57.0,
+   "XA_inclusivity": 93.0,
+   "XA_subject": 53.0,
+   "XA_window": 32.0
+  }
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 202,
+  "mode": null,
+  "malformed_rate": 0.0842,
+  "gen_not_stopped": 0,
+  "seconds": 109.5,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
