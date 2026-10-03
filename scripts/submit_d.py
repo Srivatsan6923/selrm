@@ -86,6 +86,8 @@ def gpu_job(name, code, env_tag, gpu, hours, args, cpu=4, mem="40Gi", models=("/
             n_gpu=1):
     resource, products = GPU[gpu]
     terms = [DRIVER] + ([{"key": "nvidia.com/gpu.product", "operator": "In", "values": products}] if products else [])
+    if gpu == "24gb":       # 36 of 48 RTX 3090 nodes are in us-west, next to the CephFS: reading 19 GB of weights
+        terms.append({"key": "topology.kubernetes.io/region", "operator": "In", "values": ["us-west"]})  # elsewhere takes ~1 h
     env = f"/pvc/env/selrm-d-env-{env_tag}.tar"     # the gzip copy halves the bytes read from CephFS
     stage = (f"set -e; if [ -f {env}.gz ]; then tar -xzf {env}.gz -C /opt; else tar -xf {env} -C /opt; fi; "
              f"cp -r /pvc/code/{code} /work/code; "
