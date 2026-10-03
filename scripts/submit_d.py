@@ -90,7 +90,10 @@ def gpu_job(name, code, env_tag, gpu, hours, args, cpu=4, mem="40Gi", models=("/
              "mkdir -p /work/models; " + " ".join(f"cp -r {m} /work/models/;" for m in models if m)
              + " echo staged")
     work = [{"name": "work", "mountPath": "/work"}, {"name": "env", "mountPath": "/opt/selrm-env"}]
-    pod = {"restartPolicy": "Never", "affinity": affinity(terms),
+    aff = affinity(terms)       # prefer us-west: the CephFS pools (PVCs) are there; reads elsewhere are slower
+    aff["nodeAffinity"]["preferredDuringSchedulingIgnoredDuringExecution"] = [{"weight": 100, "preference": {
+        "matchExpressions": [{"key": "topology.kubernetes.io/region", "operator": "In", "values": ["us-west"]}]}}]
+    pod = {"restartPolicy": "Never", "affinity": aff,
            "initContainers": [{"name": "stage", "image": IMAGE, "command": ["sh", "-c", stage],
                                "resources": res(3, "8Gi", "80Gi"), "volumeMounts": MNTS + work}],
            "containers": [{"name": "main", "image": IMAGE, "workingDir": "/work/code",
