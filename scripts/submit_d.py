@@ -98,7 +98,10 @@ def gpu_job(name, code, env_tag, gpu, hours, args, cpu=4, mem="40Gi", models=("/
                            "env": [{"name": k, "value": v} for k, v in {
                                "HF_HOME": "/work/hf", "TRITON_CACHE_DIR": "/work/triton", "VLLM_CACHE_ROOT": "/work/vllm",
                                "PYTHONPYCACHEPREFIX": "/work/pycache", "TOKENIZERS_PARALLELISM": "false",
-                               "OMP_NUM_THREADS": "4", "SELRM_MODELS": "/work/models"}.items()],
+                               "OMP_NUM_THREADS": "4", "SELRM_MODELS": "/work/models",
+                               # FlashInfer's sampler JIT-compiles at start-up (needs ninja); torch sampling instead
+                               "VLLM_USE_FLASHINFER_SAMPLER": "0",
+                               "PATH": "/opt/selrm-env/venv/bin:/usr/local/cuda/bin:/usr/local/bin:/usr/bin:/bin"}.items()],
                            "resources": res(cpu, mem, "80Gi", {resource: str(n_gpu)}),
                            "volumeMounts": MNTS + work + [{"name": "dshm", "mountPath": "/dev/shm"}]}],
            "volumes": VOLS + [{"name": "work", "emptyDir": {}}, {"name": "env", "emptyDir": {}},
