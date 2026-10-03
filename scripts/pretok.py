@@ -15,14 +15,14 @@ import argparse, json, os, subprocess, sys
 import numpy as np
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO)
-from selrm.formats import (TWO_STAGE, VERSION, build_examples, dataset_path, genprm_prompt, gold_record, reader_unit,
+from selrm.formats import (PROSE, TWO_STAGE, VERSION, build_examples, dataset_path, genprm_prompt, gold_record, reader_unit,
                            reader_units, well_formed)
 from selrm.prompts import rationale_prompt, reader_prompt, verdict_prompt
 
 BASE = "unsloth/Qwen3.5-9B"
 MAX_LEN = 1024
 EVAL_KIND = {"verdict": "verdict", "verdict_bt": "verdict", "rationale": "rationale", "summary2": "reader_prose",
-             "value2": "reader_ledger", "ledger2": "reader_ledger", "ledger2_dec": "reader_ledger",
+             "summary2_case": "reader_prose", "value2": "reader_ledger", "ledger2": "reader_ledger", "ledger2_dec": "reader_ledger",
              "dec_judge": "reader_ledger", "bit_reader": "reader_ledger", "ledger2_verify": "reader_ledger",
              "genprm": "genprm"}
 PROMPT = {"verdict": verdict_prompt, "rationale": rationale_prompt, "genprm": genprm_prompt}   # one prompt per record
@@ -98,7 +98,7 @@ def check_gold(recs, fmts, where):
         if any(x["ledger"] != rs[0]["ledger"] or x["prose"] != rs[0]["prose"] for x in rs[1:]):
             bad.append(f"{rs[0]['iid']}: records of one (case, condition) carry different ledgers/prose")
         for f in fmts:
-            if f != "summary2" and not well_formed(gold_record(rs[0], f), rs[0]["case_text"], f):
+            if f not in PROSE and not well_formed(gold_record(rs[0], f), rs[0]["case_text"], f):
                 bad.append(f"{rs[0]['iid']}: gold {f} ledger fails the malformed check: {gold_record(rs[0], f)!r}")
     if bad:
         raise SystemExit(f"{where}: {len(bad)} gold-ledger problems, e.g.\n" + "\n".join(bad[:10]))
@@ -132,7 +132,7 @@ def build_train(root, spec, tok, end):
     if os.path.exists(f"{d}/READY"):
         return d, "exists"
     recs = [r for r in load_jsonl(dataset_path(root, spec["corpus"])) if not r["meta"].get("probe")]   # probes: scoring only
-    if spec["format"] not in ("verdict", "verdict_bt", "summary2", "genprm"):   # rationale targets carry ledger2 text
+    if spec["format"] not in ("verdict", "verdict_bt", "genprm", *PROSE):   # rationale targets carry ledger2 text
         check_gold(recs, ["ledger2" if spec["format"] == "rationale" else spec["format"]], spec["corpus"])
     if spec.get("pair_weights") and not os.path.exists(f"{root}/{spec['pair_weights']}"):   # probe re-weighting step 2
         os.makedirs(os.path.dirname(f"{root}/{spec['pair_weights']}"), exist_ok=True)

@@ -34,10 +34,14 @@ import random
 from selrm.prompts import (answer, judge_prompt, ledger_to_text, rationale_prompt,
                            reader_prompt, verdict_prompt)
 
-FORMATS = ("verdict", "rationale", "summary2", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader",
+FORMATS = ("verdict", "rationale", "summary2", "summary2_case", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader",
            "verdict_bt", "ledger2_verify", "genprm")
 VERSION = 2                  # bump when example construction changes (part of the pretok key)
-TWO_STAGE = ("summary2", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader", "ledger2_verify")
+TWO_STAGE = ("summary2", "summary2_case", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader", "ledger2_verify")
+PROSE = ("summary2", "summary2_case")       # reader writes free prose (never malformed)
+# summary pipeline whose judge also sees the case (FINAL_TASKS_B P0.4; B-defined prompt: the frozen JUDGE has no case)
+JUDGE_CASE = ("Rule: {rule}\n\nCase:\n{case}\n\nEvidence record:\n{record}\n\nClaim: {claim}\n\n"
+              "Is the claim correct for this case under the stated rule? Answer + or -.")
 # verification pass (Table 9 "+ verification pass"; B-defined prompt, the frozen prompts have none)
 VERIFY = ("Rule: {rule}\n\nCase:\n{case}\n\nCondition under test: {condition}\n\nLedger entry:\n{entry}\n\n"
           "Is every field of this entry (found, subject, status, time) as the case records it? Answer + or -.")
@@ -66,7 +70,7 @@ def holds(rec: dict):
 
 def gold_record(rec: dict, fmt: str) -> str:
     """What the reader should write for this case: program ledger, prose or decision bit."""
-    if fmt == "summary2":
+    if fmt in PROSE:
         return rec["prose"]
     if fmt == "bit_reader":
         return BITS[holds(rec)]
@@ -115,6 +119,13 @@ def genprm_target(code: str, out: str) -> str:
     return "```python\n" + code + "```\nOutput: " + out + "\n"
 
 
+def judge_for(rec: dict, text: str, fmt: str) -> str:
+    """Judge prompt for a reader output: the frozen JUDGE (rule, record, claim), or JUDGE_CASE for summary2_case."""
+    if fmt == "summary2_case":
+        return JUDGE_CASE.format(rule=rec["rule_text"], case=rec["case_text"], record=text, claim=rec["claim_text"])
+    return judge_prompt(rec, judge_view(text, fmt))
+
+
 def judge_view(text: str, fmt: str) -> str:
     """What the judge sees given the reader's text (gold in training, generated at eval)."""
     return text.strip().split("\n")[-1] if fmt == "dec_judge" else text
@@ -142,7 +153,7 @@ def well_formed(text: str, case_text: str, fmt: str) -> bool:
     """Ledger check (INTERFACES 3): every entry has exactly the format's fields in
     order, and every found is 'not mentioned' or a verbatim substring of the case.
     Prose (summary2) has no structure to check."""
-    if fmt == "summary2":
+    if fmt in PROSE:
         return True
     text = text.strip()
     if fmt == "bit_reader":
@@ -230,7 +241,7 @@ def build_examples(records, fmt: str, n: int | None = None, resample_p: float = 
         groups.setdefault((v["s"]["rid"], v["s"]["condition"], key[2]), []).append(key)
     n_pairs = (n - n // 2) // 2
     n_reader = n - 2 * n_pairs
-    ex = [{"prompt": reader_prompt(r, prose=fmt == "summary2"), "completion": gold_record(r, fmt),
+    ex = [{"prompt": reader_prompt(r, prose=fmt in PROSE), "completion": gold_record(r, fmt),
            "part": "reader", "src": "/".join(r["iid"].split("/")[:2])}
           for r in _take(reader_units(records), n_reader, rng)]
     sel, swapped = [], 0
@@ -251,7 +262,7 @@ def build_examples(records, fmt: str, n: int | None = None, resample_p: float = 
         sel.append(key)
         for role in ("s", "s_prime"):
             r = pairs[key][role]
-            ex.append({"prompt": judge_prompt(r, judge_view(gold_record(r, fmt), fmt)), "completion": answer(r),
+            ex.append({"prompt": judge_for(r, gold_record(r, fmt), fmt), "completion": answer(r),
                        "part": "judge", "src": r["iid"]})
     stats = {"n": len(ex), "reader": n_reader, "judge": 2 * n_pairs, "pairs_swapped": swapped,
              "unique_judge_pairs": len(set(sel)), "reader_units": len(reader_units(records)),

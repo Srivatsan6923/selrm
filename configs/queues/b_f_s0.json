@@ -1,32 +1,6 @@
 {
  "runs": [
   {
-   "run_id": "B-F-rationale-natural-s0",
-   "format": "rationale",
-   "corpus": "rule_v1/train_natural",
-   "seed": 0,
-   "n_examples": 60000,
-   "priority": 1,
-   "keep_adapter": false,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/dev_missing",
-    "rule_v1/missing",
-    "rule_v1/readapply",
-    "rule_v1/test_L0",
-    "rule_v1/test_L1",
-    "rule_v1/test_L2",
-    "rule_v1/test_L3alt",
-    "rule_v1/test_L3inv",
-    "rule_v1/test_hard"
-   ]
-  },
-  {
    "run_id": "B-F-rationale-balanced-s0",
    "format": "rationale",
    "corpus": "rule_v1/train_balanced",
@@ -53,64 +27,12 @@
    ]
   },
   {
-   "run_id": "B-F-rationale-blocks-s0",
-   "format": "rationale",
-   "corpus": "rule_v1/train_blocks",
-   "seed": 0,
-   "n_examples": 60000,
-   "priority": 1,
-   "keep_adapter": false,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/dev_missing",
-    "rule_v1/missing",
-    "rule_v1/readapply",
-    "rule_v1/test_L0",
-    "rule_v1/test_L1",
-    "rule_v1/test_L2",
-    "rule_v1/test_L3alt",
-    "rule_v1/test_L3inv",
-    "rule_v1/test_hard"
-   ]
-  },
-  {
-   "run_id": "B-F-rationale-triplets-s0",
-   "format": "rationale",
-   "corpus": "rule_v1/train_triplets",
-   "seed": 0,
-   "n_examples": 60000,
-   "priority": 1,
-   "keep_adapter": true,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/dev_missing",
-    "rule_v1/missing",
-    "rule_v1/readapply",
-    "rule_v1/test_L0",
-    "rule_v1/test_L1",
-    "rule_v1/test_L2",
-    "rule_v1/test_L3alt",
-    "rule_v1/test_L3inv",
-    "rule_v1/test_hard"
-   ]
-  },
-  {
    "run_id": "B-F-summary2-natural-s0",
    "format": "summary2",
    "corpus": "rule_v1/train_natural",
    "seed": 0,
    "n_examples": 60000,
-   "priority": 20,
+   "priority": 50,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -119,9 +41,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -130,7 +50,7 @@
    "corpus": "rule_v1/train_balanced",
    "seed": 0,
    "n_examples": 60000,
-   "priority": 20,
+   "priority": 50,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -139,9 +59,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -150,27 +68,7 @@
    "corpus": "rule_v1/train_blocks",
    "seed": 0,
    "n_examples": 60000,
-   "priority": 20,
-   "keep_adapter": false,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
-   ]
-  },
-  {
-   "run_id": "B-F-summary2-triplets-s0",
-   "format": "summary2",
-   "corpus": "rule_v1/train_triplets",
-   "seed": 0,
-   "n_examples": 60000,
-   "priority": 0,
+   "priority": 10,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -179,9 +77,15 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
     "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/missing",
+    "rule_v1/readapply",
+    "rule_v1/test_L0",
+    "rule_v1/test_L1",
+    "rule_v1/test_L2",
+    "rule_v1/test_L3alt",
+    "rule_v1/test_L3inv",
+    "rule_v1/test_hard"
    ]
   },
   {
@@ -190,7 +94,7 @@
    "corpus": "rule_v1/train_natural",
    "seed": 0,
    "n_examples": 60000,
-   "priority": 20,
+   "priority": 50,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -199,9 +103,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -210,7 +112,7 @@
    "corpus": "rule_v1/train_balanced",
    "seed": 0,
    "n_examples": 60000,
-   "priority": 20,
+   "priority": 50,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -219,9 +121,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -230,7 +130,7 @@
    "corpus": "rule_v1/train_blocks",
    "seed": 0,
    "n_examples": 60000,
-   "priority": 20,
+   "priority": 50,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -239,9 +139,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -250,7 +148,7 @@
    "corpus": "rule_v1/train_triplets",
    "seed": 0,
    "n_examples": 60000,
-   "priority": 20,
+   "priority": 50,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -259,9 +157,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -270,7 +166,7 @@
    "corpus": "rule_v1/train_natural",
    "seed": 0,
    "n_examples": 60000,
-   "priority": 20,
+   "priority": 50,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -279,9 +175,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -290,7 +184,7 @@
    "corpus": "rule_v1/train_balanced",
    "seed": 0,
    "n_examples": 60000,
-   "priority": 20,
+   "priority": 50,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -299,9 +193,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   }
  ]

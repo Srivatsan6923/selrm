@@ -6,7 +6,7 @@
    "corpus": "rule_v1/train_natural",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 30,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -15,9 +15,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -26,7 +24,7 @@
    "corpus": "rule_v1/train_natural",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 30,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -35,9 +33,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -46,7 +42,7 @@
    "corpus": "rule_v1/train_balanced",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -55,9 +51,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -66,7 +60,7 @@
    "corpus": "rule_v1/train_balanced",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -75,9 +69,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -86,7 +78,7 @@
    "corpus": "rule_v1/train_natural",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -95,9 +87,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -106,7 +96,7 @@
    "corpus": "rule_v1/train_natural",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -115,9 +105,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -126,7 +114,7 @@
    "corpus": "rule_v1/train_balanced",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -135,9 +123,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -146,7 +132,7 @@
    "corpus": "rule_v1/train_balanced",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -155,9 +141,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -166,7 +150,7 @@
    "corpus": "rule_v1/train_blocks",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -175,9 +159,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -186,7 +168,7 @@
    "corpus": "rule_v1/train_blocks",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -195,9 +177,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -206,7 +186,7 @@
    "corpus": "rule_v1/train_triplets",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -215,9 +195,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -226,7 +204,7 @@
    "corpus": "rule_v1/train_triplets",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -235,9 +213,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -246,7 +222,7 @@
    "corpus": "rule_v1/train_natural",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -255,9 +231,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -266,7 +240,7 @@
    "corpus": "rule_v1/train_natural",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -275,9 +249,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -286,7 +258,7 @@
    "corpus": "rule_v1/train_balanced",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -295,9 +267,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -306,7 +276,7 @@
    "corpus": "rule_v1/train_balanced",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -315,89 +285,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
-   ]
-  },
-  {
-   "run_id": "B-F-summary2-blocks-s1",
-   "format": "summary2",
-   "corpus": "rule_v1/train_blocks",
-   "seed": 1,
-   "n_examples": 60000,
-   "priority": 70,
-   "keep_adapter": false,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
-   ]
-  },
-  {
-   "run_id": "B-F-summary2-blocks-s2",
-   "format": "summary2",
-   "corpus": "rule_v1/train_blocks",
-   "seed": 2,
-   "n_examples": 60000,
-   "priority": 70,
-   "keep_adapter": false,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
-   ]
-  },
-  {
-   "run_id": "B-F-summary2-triplets-s1",
-   "format": "summary2",
-   "corpus": "rule_v1/train_triplets",
-   "seed": 1,
-   "n_examples": 60000,
-   "priority": 30,
-   "keep_adapter": true,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
-   ]
-  },
-  {
-   "run_id": "B-F-summary2-triplets-s2",
-   "format": "summary2",
-   "corpus": "rule_v1/train_triplets",
-   "seed": 2,
-   "n_examples": 60000,
-   "priority": 30,
-   "keep_adapter": true,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -406,7 +294,7 @@
    "corpus": "rule_v1/train_natural",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -415,9 +303,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -426,7 +312,7 @@
    "corpus": "rule_v1/train_natural",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -435,9 +321,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -446,7 +330,7 @@
    "corpus": "rule_v1/train_balanced",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -455,9 +339,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -466,7 +348,7 @@
    "corpus": "rule_v1/train_balanced",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -475,9 +357,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -486,7 +366,7 @@
    "corpus": "rule_v1/train_blocks",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -495,9 +375,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -506,7 +384,7 @@
    "corpus": "rule_v1/train_blocks",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -515,9 +393,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -526,7 +402,7 @@
    "corpus": "rule_v1/train_triplets",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -535,9 +411,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -546,7 +420,7 @@
    "corpus": "rule_v1/train_triplets",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -555,9 +429,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -566,7 +438,7 @@
    "corpus": "rule_v1/train_natural",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -575,9 +447,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -586,7 +456,7 @@
    "corpus": "rule_v1/train_natural",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -595,9 +465,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -606,7 +474,7 @@
    "corpus": "rule_v1/train_balanced",
    "seed": 1,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -615,9 +483,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -626,7 +492,7 @@
    "corpus": "rule_v1/train_balanced",
    "seed": 2,
    "n_examples": 60000,
-   "priority": 70,
+   "priority": 99,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -635,9 +501,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   }
  ]
