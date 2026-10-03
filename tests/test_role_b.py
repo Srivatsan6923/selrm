@@ -14,9 +14,10 @@ def _recs():
 
 def test_budget_and_balance():
     recs = _recs()
+    codes = {r["iid"]: f"print('{'+' if r['label'] else '-'}')\n" for r in recs}   # genprm: stand-in check code
     for fmt in FORMATS:
         for n in (len(recs), 1001):
-            ex, st = build_examples(recs, fmt, n=n)
+            ex, st = build_examples(recs, fmt, n=n, codes=codes)
             if fmt == "verdict_bt":            # items are claim pairs: n sequences = n // 2 pairs
                 assert st["n"] == 2 * len(ex) == 2 * (n // 2), (fmt, n, len(ex))
                 continue
@@ -24,14 +25,14 @@ def test_budget_and_balance():
                 assert len(ex) == st["n"] == n + n // 6 and st["verify"] == n // 6, (fmt, n, len(ex))
                 continue
             assert len(ex) == n == st["n"], (fmt, n, len(ex))
-        ex, st = build_examples(recs, fmt)
+        ex, st = build_examples(recs, fmt, codes=codes)
         if fmt == "verdict_bt":
             continue
-        ans = [e["completion"][-1] for e in ex if e["part"] in ("verdict", "rationale", "judge")]
+        ans = [e["completion"][-1] for e in ex if e["part"] in ("verdict", "rationale", "judge", "genprm")]
         if fmt == "ledger2_verify":
             st = dict(st, reader=st["reader"], judge=st["judge"])
         assert ans.count("+") == ans.count("-"), fmt
-        if fmt in ("summary2", "value2", "ledger2", "ledger2_verify"):
+        if fmt in ("summary2", "summary2_case", "value2", "ledger2", "ledger2_verify"):
             assert st["reader"] + st["judge"] == len(recs) and abs(st["reader"] - st["judge"]) <= 1
 
 
@@ -46,6 +47,12 @@ def test_two_stage_isolation_and_targets():
                 assert e["completion"] in "+-"
         value = [e["completion"] for e in ex if e["part"] == "reader"] if fmt == "value2" else []
         assert all("subject:" not in v and "found:" in v for v in value)
+    # summary2_case (FINAL_TASKS_B P0.4): same reader targets as summary2, and the judge does see the case
+    ex, _ = build_examples(recs, "summary2_case")
+    ex2, _ = build_examples(recs, "summary2")
+    judge = [e for e in ex if e["part"] == "judge"]
+    assert judge and all(any(c in e["prompt"] for c in cases) for e in judge)
+    assert [e["completion"] for e in ex if e["part"] == "reader"] == [e["completion"] for e in ex2 if e["part"] == "reader"]
 
 
 def test_resampling_and_determinism():
