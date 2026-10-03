@@ -82,8 +82,8 @@ def cpu_job(name, command, cpu=8, mem="32Gi", eph="80Gi", hours=2):
     return job(name, pod, hours, "cpu")
 
 
-def gpu_job(name, code, env_tag, gpu, hours, args, cpu=4, mem="40Gi", models=("/pvcb/selrm/models/unsloth--Qwen3.5-9B",),
-            n_gpu=1):
+def gpu_job(name, code, env_tag, gpu, hours, args, cpu=3, mem="24Gi", models=("/pvcb/selrm/models/unsloth--Qwen3.5-9B",),
+            n_gpu=1, eph="40Gi"):
     resource, products = GPU[gpu]
     terms = [DRIVER] + ([{"key": "nvidia.com/gpu.product", "operator": "In", "values": products}] if products else [])
     if gpu == "24gb":       # 36 of 48 RTX 3090 nodes are in us-west, next to the CephFS: reading 19 GB of weights
@@ -99,7 +99,7 @@ def gpu_job(name, code, env_tag, gpu, hours, args, cpu=4, mem="40Gi", models=("/
         "matchExpressions": [{"key": "topology.kubernetes.io/region", "operator": "In", "values": ["us-west"]}]}}]
     pod = {"restartPolicy": "Never", "affinity": aff,
            "initContainers": [{"name": "stage", "image": IMAGE, "command": ["sh", "-c", stage],
-                               "resources": res(3, "8Gi", "80Gi"), "volumeMounts": MNTS + work}],
+                               "resources": res(2, "8Gi", eph), "volumeMounts": MNTS + work}],
            "containers": [{"name": "main", "image": IMAGE, "workingDir": "/work/code",
                            "command": ["sh", *args] if args[0].endswith(".sh") else
                                       ["/opt/selrm-env/venv/bin/python", "-u", *args],
@@ -110,7 +110,7 @@ def gpu_job(name, code, env_tag, gpu, hours, args, cpu=4, mem="40Gi", models=("/
                                # FlashInfer's sampler JIT-compiles at start-up (needs ninja); torch sampling instead
                                "VLLM_USE_FLASHINFER_SAMPLER": "0",
                                "PATH": "/opt/selrm-env/venv/bin:/usr/local/cuda/bin:/usr/local/bin:/usr/bin:/bin"}.items()],
-                           "resources": res(cpu, mem, "80Gi", {resource: str(n_gpu)}),
+                           "resources": res(cpu, mem, eph, {resource: str(n_gpu)}),
                            "volumeMounts": MNTS + work + [{"name": "dshm", "mountPath": "/dev/shm"}]}],
            "volumes": VOLS + [{"name": "work", "emptyDir": {}}, {"name": "env", "emptyDir": {}},
                               {"name": "dshm", "emptyDir": {"medium": "Memory", "sizeLimit": "8Gi"}}]}
@@ -141,6 +141,8 @@ def main():
     ap.add_argument("--models", default=None, help="comma-separated dirs copied to /work/models (gpu)")
     ap.add_argument("--cpu", type=int, default=8)
     ap.add_argument("--n-gpu", dest="n_gpu", type=int, default=1, help="GPUs per pod (e.g. 2 x 24gb with --tp 2)")
+    ap.add_argument("--gpu-cpu", dest="gpu_cpu", type=int, default=3)
+    ap.add_argument("--gpu-mem", dest="gpu_mem", default="24Gi")
     ap.add_argument("--mem", default="32Gi")
     a, extra = ap.parse_known_args()
     if "--" in a.rest:                     # "... NAME -- script args": argparse keeps the separator
@@ -174,7 +176,7 @@ def main():
         name, args = a.rest[0], a.rest[1:] + extra
         models = a.models.split(",") if a.models is not None else ("/pvcb/selrm/models/unsloth--Qwen3.5-9B",)
         apply(gpu_job(f"selrm-d-{name}-{int(time.time()) % 100000}", a.code or sha(), a.env, a.gpu, a.hours, args,
-                      models=models, n_gpu=a.n_gpu))
+                      models=models, n_gpu=a.n_gpu, cpu=a.gpu_cpu, mem=a.gpu_mem))
     elif a.cmd == "cpu":        # a python (or .sh) script of the code snapshot, on a CPU node
         name, args, code = a.rest[0], a.rest[1:] + extra, a.code or sha()
         cmd = (f"set -e; cd /pvc/code/{code}; sh " + " ".join(args) if args[0].endswith(".sh") else
