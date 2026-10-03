@@ -1,6 +1,8 @@
 # Claims audit of the v13 draft against the measured results
 
-Commit 2f8cbbbb9113 (3 Oct, after merge 5). Every empirical statement of paper/latex_v13/main.tex (abstract, sections 1-8,
+paper/latex_v13/main.tex as of commit c43e751 (3 Oct, after merge 5; line numbers refer to it). Since then (2f8cbbb) the
+policy-training sentences of App. G (lines 2049-2058) read the D-RL results, so their entries below describe the
+placeholders those lines had. Every empirical statement of paper/latex_v13/main.tex (abstract, sections 1-8,
 limitations, appendices A-G) was compared with the result files, the tables generated from them
 (tables/numbers.json) and the roles' analysis documents; every statement found contradicted was then checked a
 second time, independently, from the files. Related work, ethics, the development history (see docs/TIMELINE.md)
