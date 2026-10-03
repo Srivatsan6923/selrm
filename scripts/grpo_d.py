@@ -237,7 +237,7 @@ def evaluate(model, tok, items, max_new=512, bs=32, out=None):
             ans = answer(text)
             per.setdefault(x["tid"], {})[x["case_kind"]] = ans == x["gold"]
             rows.append({"tid": x["tid"], "case_kind": x["case_kind"], "gold": x["gold"], "answer": ans,
-                         "correct": ans == x["gold"], "text": text})
+                         "correct": ans == x["gold"], "iid_a": x["iid_a"], "iid_b": x["iid_b"], "text": text})
     if out:
         with open(out, "w", encoding="utf-8", newline="\n") as f:
             f.writelines(json.dumps(r) + "\n" for r in rows)
@@ -256,6 +256,39 @@ def accuracy(rows):
     acc["pair"] = pct([t["base"] and t["flip"] for t in per.values() if {"base", "flip"} <= set(t)])
     acc["triplet"] = pct([all(t.values()) for t in per.values() if len(t) == 3])
     return acc
+
+
+XR_KINDS = ("contested", "positive", "negative")     # xr_v1: two rules x these three cases per item
+
+
+def crossed(rows, records, exclude=()):
+    """XA of a policy on xr_v1 (selrm.metrics.crossed_accuracy, as C reports it): the chosen claim scores +1 and
+    the other -1; no answer scores 0 for both, a tie, which fails the cell."""
+    from selrm import metrics as M
+    u = {}
+    for r in rows:
+        if r["answer"] in ("A", "B"):
+            win, lose = (r["iid_a"], r["iid_b"]) if r["answer"] == "A" else (r["iid_b"], r["iid_a"])
+            u[win], u[lose] = 1.0, -1.0
+    return M.crossed_accuracy(records, [u.get(rec["iid"], 0.0) for rec in records], exclude=exclude)
+
+
+def summarize_xr(out_dir, records, run_id):
+    """summary_xr_v1~test.json from eval_xr_step<N>.jsonl: XA of the final policy on all 400 items (top level) and
+    without A's known issues; the untrained policy's values under start*."""
+    steps = sorted(int(m.group(1)) for m in (re.match(r"eval_xr_step(\d+)\.jsonl$", f) for f in os.listdir(out_dir)) if m)
+    load_rows = lambda n: [json.loads(x) for x in open(os.path.join(out_dir, f"eval_xr_step{n}.jsonl"), encoding="utf-8")]
+    known = {i for x in json.load(open(os.path.join(ROOT, "data", "xr_v1", "KNOWN_ISSUES.json"), encoding="utf-8"))["issues"]
+             for i in x["items"]}
+    final = load_rows(steps[-1])
+    summ = {"run_id": run_id, "set": "xr_v1/test", "claim_type": "conclusion"} | crossed(final, records) | {
+        "without_known_issues": crossed(final, records, exclude=known), "final_step": steps[-1],
+        "from_files": [f"eval_xr_step{steps[-1]}.jsonl"]}
+    if steps[0] == 0 and len(steps) > 1:     # the run also holds the untrained policy's answers
+        start = load_rows(0)
+        summ |= {"start": crossed(start, records), "start_without_known_issues": crossed(start, records, exclude=known)}
+    json.dump(summ, open(os.path.join(out_dir, "summary_xr_v1~test.json"), "w", encoding="utf-8", newline="\n"), indent=1)
+    return summ
 
 
 def summarize(out_dir):
@@ -296,6 +329,9 @@ def main():
     ap.add_argument("--eval-from", dest="eval_from", nargs="+", default=None,
                     help="no training: evaluate 'base' (the untrained policy) and/or LoRA checkpoint dirs of a run on "
                          "its evaluation triplets -> OUT/eval_step<N>.jsonl (N = 0 for base, else the checkpoint step)")
+    ap.add_argument("--eval-sets", dest="eval_sets", nargs="+", default=["l2"], choices=["l2", "xr"],
+                    help="with --eval-from: l2 = the run's held-out L2 triplets; xr = xr_v1 (all 400 items, "
+                         "OUT/eval_xr_step<N>.jsonl and summary_xr_v1~test.json)")
     a = ap.parse_args()
     import torch
     from datasets import Dataset
@@ -326,17 +362,29 @@ def main():
         # class matches none of the adapter's keys and PEFT then leaves the policy untrained without an error
         arch = AutoConfig.from_pretrained(a.policy).architectures[0]
         base = getattr(transformers, arch).from_pretrained(a.policy, dtype=torch.bfloat16).to("cuda")
+        xr = load(os.path.join(a.data, "xr_v1", "test", "records.jsonl")) if "xr" in a.eval_sets else []
+        sets = {"l2": (ev, "eval_step"), "xr": (tasks(xr, kinds=XR_KINDS, tag="xr"), "eval_xr_step")}
         for src in a.eval_from:
             m = re.search(r"checkpoint-(\d+)", src)
             model = base if src == "base" else PeftModel.from_pretrained(base, src)
             if src != "base" and not sum(float(p.abs().sum()) for n, p in model.named_parameters() if "lora_B" in n):
                 sys.exit(f"adapter of {src} not applied (every lora_B is zero)")
-            acc = evaluate(model, tok, ev, out=os.path.join(a.out, f"eval_step{m.group(1) if m else 0}.jsonl"))
-            print("eval-from", src, json.dumps(acc), flush=True)
+            for name in a.eval_sets:
+                items, stem = sets[name]
+                acc = evaluate(model, tok, items, out=os.path.join(a.out, f"{stem}{m.group(1) if m else 0}.jsonl"))
+                print("eval-from", src, name, json.dumps(acc), flush=True)
             if src != "base":
                 base = model.unload()
-        if os.path.exists(os.path.join(a.out, "DONE")):   # a finished run: its summary now rests on these files
+        if a.eval_from == ["base"] and not os.path.exists(os.path.join(a.out, "DONE")):
+            # the untrained policy as a run of its own (D-RL-untrained): the start of every reward, evaluated once
+            json.dump({"run_id": os.path.basename(a.out.rstrip("/")), "policy": a.policy, "steps": 0,
+                       "what": "untrained policy, greedy evaluation", "gpu": torch.cuda.get_device_name(0)},
+                      open(os.path.join(a.out, "meta.json"), "w", encoding="utf-8", newline="\n"), indent=1)
+            open(os.path.join(a.out, "DONE"), "w").close()
+        if "l2" in a.eval_sets and os.path.exists(os.path.join(a.out, "DONE")):   # summary rests on these files
             print("summary", json.dumps(summarize(a.out)), flush=True)
+        if xr:
+            print("xr", json.dumps(summarize_xr(a.out, xr, os.path.basename(a.out.rstrip("/")))), flush=True)
         return
     reward = {"outcome": lambda: outcome_reward, "refgraph": lambda: make_refgraph_reward(recs_by_iid),
               "ledger2-blocks": lambda: make_ledger_reward(a.ledger_url, a.ledger_model, recs_by_iid),

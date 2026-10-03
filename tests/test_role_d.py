@@ -81,6 +81,16 @@ def test_update_paper_keeps_prose():
     rows = [{"tid": "a", "case_kind": k, "correct": k != "near"} for k in ("base", "flip", "near")] + \
            [{"tid": "b", "case_kind": k, "correct": k == "flip"} for k in ("base", "flip", "near")]
     assert {k: g.accuracy(rows)[k] for k in ("pair", "triplet", "flip")} == {"pair": 50.0, "triplet": 0.0, "flip": 100.0}
+    # xr_v1: one item = two rules x three cases; solved only if all six conclusion choices are right
+    recs = [{"iid": f"{t}/{k}/conclusion/{role}", "tid": t, "case_kind": k, "claim_type": "conclusion",
+             "claim_role": role, "label": int((role == "s") == (k != "negative")), "nm_kind": "window", "rid": t,
+             "tier": "rule_side", "level": "xr", "family": "window", "meta": {"xr": {"item": 0}}}
+            for t in ("r1", "r2") for k in g.XR_KINDS for role in ("s", "s_prime")]
+    ans = [{"iid_a": f"{t}/{k}/conclusion/s", "iid_b": f"{t}/{k}/conclusion/s_prime",
+            "answer": "A" if k != "negative" else "B"} for t in ("r1", "r2") for k in g.XR_KINDS]
+    assert g.crossed(ans, recs)["XA"] == 100.0
+    ans[0]["answer"] = None          # one unanswered cell is a tie and fails the item
+    assert g.crossed(ans, recs)["XA"] == 0.0
     up = load("update_paper")
     t = "a\n% <tables:x>\nold\n% </tables:x>\nb\n\\placeholderstrue"
     t2 = "a\n% <tables:x>\nnew\nrows\n% </tables:x>\nb\n\\placeholdersfalse"
