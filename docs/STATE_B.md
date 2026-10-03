@@ -37,7 +37,7 @@ copy-c and restore-data hardening; adapter registration; ablation references; p 
 - Runner Jobs: H100 opportunistic (several generations; the newest at code 327fd81, GEN 4, max 6 runs each),
   A100 / A40 / L40 / A6000 runners at code 625e935 (GEN 2: they skip every gated spec). Top up H100 runners when
   they exit (`submit_b.py runners all --n 3 --gpu h100-opp --max-runs 6 --hours 16`).
-- Sync pod selrm-b-sync started 18:35 UTC (6 h deadline): recreate before ~00:30 UTC 4 Oct (`kubectl -n ecepxie
+- Sync pod selrm-b-sync started 23:36 UTC (6 h deadline): recreate before ~05:36 UTC 4 Oct (`kubectl -n ecepxie
   delete pod selrm-b-sync`, then `python scripts/submit_b.py sync-up`).
 - Never run two data jobs (build-data, restore-data, copy-c) at once.
 - Laptop memory is tight (other sessions, IDE, browser): run analysis and resummarize one at a time.
