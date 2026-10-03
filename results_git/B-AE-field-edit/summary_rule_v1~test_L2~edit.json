@@ -1,0 +1,61 @@
+{
+ "run_id": "B-AE-field-edit",
+ "set": "rule_v1/test_L2",
+ "mode": "ledger_edit",
+ "n": 43462,
+ "agreement": 62.74,
+ "by": {
+  "all": {
+   "agreement": 62.74,
+   "n": 43462
+  },
+  "field=subject": {
+   "agreement": 71.24,
+   "n": 14856
+  },
+  "field=status": {
+   "agreement": 45.31,
+   "n": 14856
+  },
+  "field=time": {
+   "agreement": 72.39,
+   "n": 13750
+  },
+  "changed=0": {
+   "agreement": 99.67,
+   "n": 12496
+  },
+  "changed=1": {
+   "agreement": 47.84,
+   "n": 30966
+  },
+  "kind=finding": {
+   "agreement": 71.04,
+   "n": 18936
+  },
+  "kind=numeric": {
+   "agreement": 56.33,
+   "n": 24526
+  },
+  "kind=finding,changed=0": {
+   "agreement": 99.7,
+   "n": 10284
+  },
+  "kind=finding,changed=1": {
+   "agreement": 36.97,
+   "n": 8652
+  },
+  "kind=numeric,changed=0": {
+   "agreement": 99.55,
+   "n": 2212
+  },
+  "kind=numeric,changed=1": {
+   "agreement": 52.05,
+   "n": 22314
+  }
+ },
+ "eval": {
+  "seconds": 391.4,
+  "u_path": "fp32-hidden"
+ }
+}

@@ -1,0 +1,5 @@
+2026-10-03T05:53:56Z eval only: base /work/models/unsloth--Qwen3.5-9B, adapter /pvc/selrm/adapters/B-F-ledger2-triplets-s0
+2026-10-03T05:54:01Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0392)
+2026-10-03T05:54:02Z padding self-check: max |u_batch - u_single| = 0.0761 (tol 0.628) -> left padding
+2026-10-03T06:00:28Z B-AE-field-edit rule_v1/test_L2 field edits: agreement 62.74 n=43462
+2026-10-03T06:00:28Z DONE B-AE-field-edit in 6.9 min, GPU util mean 85.3

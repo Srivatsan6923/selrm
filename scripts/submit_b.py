@@ -9,6 +9,7 @@ Kubernetes objects as JSON and applies them with kubectl. Laptop side only.
   python scripts/submit_b.py pull RUN_ID [RUN_ID ...]     # results -> results_git/<run_id>/
   python scripts/submit_b.py push-ref origin/role-a       # A's code (+ data/REGISTRY.json) -> /pvc/selrm/code/<sha>
   python scripts/submit_b.py build-data <A_sha12> [--fold N]   # CPU: rebuild A's sets, verify sha256, publish
+  python scripts/submit_b.py restore-data <A_sha12> xr_v1/test scripts/build_xr_v1.py   # CPU: sets with own builder
 Policy built in (docs/NRP_B.md): one GPU per Job, requests == limits, no sleep in Jobs,
 CPU Jobs kept off GPU nodes, runner exits when its queue has no claimable run."""
 import argparse, io, json, os, subprocess, sys, tarfile, time
@@ -271,6 +272,11 @@ def main():
         apply(cpu_job(f"selrm-b-build-data-{code[:8]}-{int(time.time()) % 100000}",
                       ["bash", f"/pvc/selrm/code/{snapshot(a.code)}/k8s/build_data.sh", a.env, code, *a.args[1:]],
                       cpu=2, mem="12Gi", eph="60Gi", hours=3))
+    elif a.cmd == "restore-data":    # restore-data <A code sha12> <set name> <builder script> [args...]
+        code = a.args[0]
+        apply(cpu_job(f"selrm-b-restore-data-{code[:8]}-{int(time.time()) % 100000}",
+                      ["bash", f"/pvc/selrm/code/{snapshot(a.code)}/k8s/restore_data.sh", a.env, code, *a.args[1:]],
+                      cpu=2, mem="12Gi", eph="20Gi", hours=2))
     elif a.cmd == "publish":         # publish <hf repo> --secret NAME:KEY  (only once the user confirmed the secret)
         name, key = a.secret.split(":")
         job = cpu_job(f"selrm-b-publish-{int(time.time()) % 100000}",

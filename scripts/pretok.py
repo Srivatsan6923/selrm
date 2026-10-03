@@ -15,8 +15,8 @@ import argparse, json, os, subprocess, sys
 import numpy as np
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO)
-from selrm.formats import (PROSE, TWO_STAGE, VERSION, add_answers, build_examples, dataset_path, genprm_prompt, gold_record,
-                           reader_for, reader_unit, reader_units, well_formed)
+from selrm.formats import (PROSE, TWO_STAGE, VERSION, build_examples, dataset_path, genprm_prompt, gold_record, reader_for,
+                           reader_unit, reader_units, unit_key, well_formed)
 from selrm.prompts import rationale_prompt, verdict_prompt
 
 BASE = "unsloth/Qwen3.5-9B"
@@ -190,10 +190,8 @@ def build_eval(root, spec, set_name, tok):
         keys, texts = [r["iid"] for r in recs], [PROMPT[kind](r) for r in recs]
     else:
         check_gold(recs, {"reader_ledger": ["ledger2", "value2"], "reader_derive": ["ledger2"]}.get(kind, []), set_name)
-        if kind == "reader_derive":
-            add_answers(recs)
-        units = reader_units(recs)
-        keys = ["/".join(r["iid"].split("/")[:2]) for r in units]
+        units = reader_units(recs, spec["format"])
+        keys = [unit_key(r, spec["format"]) for r in units]
         texts = [reader_for(r, spec["format"]) for r in units]
     ids, off = pack(tok_ids(tok, [chat(tok, t) for t in texts]))
     os.makedirs(os.path.dirname(path), exist_ok=True)

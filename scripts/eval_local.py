@@ -17,7 +17,7 @@ import numpy as np
 import torch
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from selrm.formats import (MALFORMED_U, PROSE, TWO_STAGE, judge_for, dataset_path, gold_record, judge_view, read_bit,
-                           reader_unit, reader_units, well_formed)
+                           reader_unit, reader_units, unit_key, well_formed)
 from selrm.metrics import bootstrap_ci, decisions, summarise
 from selrm.prompts import judge_prompt, ledger_to_text
 
@@ -275,8 +275,8 @@ def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="u
     elif mode == "ledger_edit":
         return ledger_edit(sc, recs, fmt, run_id, set_name, out_dir, log, t0, root)
     else:
-        units = reader_units(recs)
-        assert keys == ["/".join(r["iid"].split("/")[:2]) for r in units], "eval prompts out of sync"
+        units = reader_units(recs, fmt)
+        assert keys == [unit_key(r, fmt) for r in units], "eval prompts out of sync"
         if mode == "oracle_ledger":
             outs, done = [gold_record(r, fmt) for r in units], [True] * len(units)
         else:
@@ -285,18 +285,18 @@ def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="u
         text = {}
         for r, out, d in zip(units, outs, done):
             ok = (d or fmt in PROSE) and well_formed(out, r["case_text"], fmt)   # a cut-off ledger is unparsable
-            text[reader_unit(r)] = (out, ok)
+            text[reader_unit(r, fmt)] = (out, ok)
         if mode == "verify":
             extra_v = verification_pass(sc, units, seqs, text, fmt)
         u = np.full(len(recs), MALFORMED_U)
         if mode == "program_bit":
-            u = np.array([program_u(r, *text[reader_unit(r)]) for r in recs])
+            u = np.array([program_u(r, *text[reader_unit(r, fmt)]) for r in recs])
         else:
-            idx = [i for i, r in enumerate(recs) if text[reader_unit(r)][1]]
+            idx = [i for i, r in enumerate(recs) if text[reader_unit(r, fmt)][1]]
             if idx:
-                u[idx] = sc.score(chat_ids(sc.tok, [judge_for(recs[i], text[reader_unit(recs[i])][0], fmt)
+                u[idx] = sc.score(chat_ids(sc.tok, [judge_for(recs[i], text[reader_unit(recs[i], fmt)][0], fmt)
                                                     for i in idx]))
-        rows = [{"iid": r["iid"], "u": float(x), "reader_output": text[reader_unit(r)][0]} for r, x in zip(recs, u)]
+        rows = [{"iid": r["iid"], "u": float(x), "reader_output": text[reader_unit(r, fmt)][0]} for r, x in zip(recs, u)]
         bad = sum(not ok for _, ok in text.values())
         extra = {"reader_units": len(units), "malformed_units": bad, "mode": mode,
                  "malformed_rate": round(bad / max(1, len(units)), 4), "gen_not_stopped": sum(not d for d in done)}
