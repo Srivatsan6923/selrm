@@ -16,8 +16,10 @@ The released manifest gives, for each of the \res{sum/A-AUDIT/rules.library@int}
 The \res{sum/A-AUDIT/rules.sampled_by_kind.constraint@int} grammar-sampled rules are synthetic.
 For each of the \res{sum/A-AUDIT/rules.hand_written@int} hand-written rules, we looked for the source
 document and recorded the supporting text, every simplification and every contradiction with the source.
-The source record was verified online for \res{sum/A-AUDIT/rules.sources_verified_online@int} rules. By
-kind:
+The source record was verified online for \res{sum/A-AUDIT/rules.sources_verified_online@int} rules.
+\res{sum/A-AUDIT/rules.hand_written_provenance.simplified_source@int} of the
+\res{sum/A-AUDIT/rules.hand_written@int} hand-written rules are simplified from a source and
+\res{sum/A-AUDIT/rules.hand_written_provenance.synthetic@int} are synthetic. By kind:
 \begin{itemize}
 \item \res{sum/A-AUDIT/rules.hand_written_provenance_by_kind.score.simplified_source@int} scoring rules are
 simplified source rules;
@@ -31,7 +33,8 @@ are synthetic;
 respect, for example a threshold or an alternative the source does not support. Model agents did this
 search, and a second agent tried to refute each record. No author has yet checked the formalisations
 against their sources. Because every prompt states the rule, correctness is relative to the stated text
-for all rules, and no rule is presented as clinical guidance.
+for all rules. We therefore call them stated rules, never guideline rules, and no rule is presented as
+clinical guidance.
 
 \paragraph{Constraint rules and claims.}
 Each constraint rule states a default option, one or more conditions and an alternative. The hand-written
@@ -46,7 +49,8 @@ criteria that count past or family mentions, that label leaves out the scope, wh
 
 \paragraph{Rendering audit.}
 Before the freeze, \res{sum/A-AUDIT/reviewers.sessions@int} LLM agent sessions read
-\res{sum/A-AUDIT/reviewers.groups@int} rendered groups in two rounds, and no person took part. Each session
+\res{sum/A-AUDIT/reviewers.groups@int} rendered groups in two rounds; the readers included
+\res{sum/A-AUDIT/reviewers.people@int} people. Each session
 checked labels under a literal reading of the rule and the case, consistency and plausibility, rendering,
 and give-aways. No stored label disagreed with the program.
 \begin{itemize}
@@ -188,5 +192,9 @@ only if all six judgments are right. A scorer that ignores the rule text, one th
 contested form and one that always counts it all reach crossed accuracy
 \res{sum/A-SETS/xr_v1.validation.crossed_accuracy.ignores_rule_text_counting_rule.XA@int}; the program
 reaches \res{sum/A-SETS/xr_v1.validation.crossed_accuracy.program.XA@int}. All rules are synthetic
-interventions on grammar scenarios. Items whose contested reading is clinically arguable are listed and
-reported separately.
+interventions on grammar scenarios. The \res{sum/A-SETS/xr_v1.known_issue_items@int} items whose contested
+reading is clinically arguable (age in completed years, diabetes in remission) are listed, and every
+result is reported twice: on all \res{sum/A-SETS/xr_v1.n_items@int} items and on the
+\res{sum/A-SETS/xr_v1.n_items_without_known_issues@int} without them. On the smaller version the program
+reaches \res{sum/A-SETS/xr_v1.validation_without_known_issues.program.XA@int} and the scorer that ignores
+the rule text \res{sum/A-SETS/xr_v1.validation_without_known_issues.ignores_rule_text_counting_rule.XA@int}.
