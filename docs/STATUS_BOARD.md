@@ -52,8 +52,8 @@ Updated 2026-10-03 ~17:10 UTC after merge 5 (main 3202740: 123 tests pass; rule_
 | H4 | Code 50 failures each (200) | authors | kit ready (D): audit/error_sheet_part{1..4}.csv, audit/ERROR_CODING.md | audit/errors_<name>.csv |
 | H5 | Open every cited paper; confirm the attributed sentence | authors | kit ready (D): docs/CITATIONS_TODO.csv (63 keys, 13 flagged) | docs/CITATIONS_CHECKED.csv |
 | H6 | Introduction, discussion, error analysis, development history; statements the results contradict (docs/CLAIMS_AUDIT.md: 98 contradicted, 50 partly, 34 placeholders with no result planned) | lead + one author | Fri 9 - Sat 10 | paper/latex_v13/main.tex, docs/CLAIMS_AUDIT.md |
-| H7 | Decide gates G1-G3 (definitions are the authors'; not in the repo) | lead (human) | open (Sun 4, Wed 7) | docs/DECISIONS_D.md |
-| H7a | Framing decision after C's TrialGPT report | lead (human) | ready: C's report is in (comparison (6) not supported on test; MedEinst comparison (4) running) | docs/TRIALGPT_RESULTS.md, docs/DECISIONS_D.md |
+| H7 | Gates: decided by the human lead's NEXT_TASKS bundle (DECISIONS_D 3 Oct: transfer claim withdrawn; typed-ledger headline gate not met; near-miss generalisation reported as found); the lead confirms | lead (human) | confirm | docs/DECISIONS_D.md |
+| H7a | Framing decision | lead (human) | done: NEXT_TASKS_D contributions (test and audit; near-miss supervision; separate evidence reading with the judge seeing the case; behaviour as a training reward); transfer and selection reported as negative | NEXT_TASKS_D.md, docs/DECISIONS_D.md |
 | H8 | Venue policy on AI assistance; disclosure; whether to rewrite commit c80a9a4's co-author trailer | lead (human) | by Sat 10 | checklist, docs/FINAL_AUDIT.md |
 
 ## Runs by paper item (matrix rows; done = DONE file, claimed = CLAIMED_* without DONE)

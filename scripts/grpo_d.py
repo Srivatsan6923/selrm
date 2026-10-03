@@ -339,8 +339,14 @@ def summarize(out_dir):
     start, final = accuracy(load_rows(0)), accuracy(load_rows(steps[-1]))
     p = os.path.join(out_dir, "summary_rule_v1~test_L2.json")
     old = json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
+    # the training curve (curve.jsonl: in-training evaluation every --eval-every steps, training reward and the
+    # rule program's outcome on the rollouts) as slices step=<n>; step 0 = the untrained policy of eval_step0
+    cp = os.path.join(out_dir, "curve.jsonl")
+    curve = [json.loads(x) for x in open(cp, encoding="utf-8")] if os.path.exists(cp) else []
+    step = {"0": dict(start)} | {str(c["step"]): {k: v for k, v in c.items() if k != "step"} for c in curve}
     summ = {k: v for k, v in old.items() if not k.startswith("acc_")} | {
         "start": start, "final": final, "final_step": steps[-1], "n_triplets": len({r["tid"] for r in load_rows(0)}),
+        "step": step,
         "from_files": ["eval_step0.jsonl", f"eval_step{steps[-1]}.jsonl"]} | {f"acc_{k}": v for k, v in final.items()} | {
         f"start_{k}": v for k, v in start.items()}
     json.dump(summ, open(p, "w", encoding="utf-8", newline="\n"), indent=1)
