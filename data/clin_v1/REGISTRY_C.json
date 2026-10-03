@@ -1,4 +1,40 @@
 {
+ "clin_v1/clinpairs_medeinst": {
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/clinpairs_medeinst/MANIFEST.json",
+  "n_groups": 7807,
+  "n_records": 31228,
+  "path": "clin_v1/clinpairs_medeinst/records.jsonl",
+  "sha256": "5b0e7e9a3fdd2c958d020a34eab2b8636c11a012e176125207c222fda28ee37a",
+  "split": "train",
+  "tier": "external"
+ },
+ "clin_v1/clinpairs_medeinst_dis": {
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/clinpairs_medeinst_dis/MANIFEST.json",
+  "n_groups": 3145,
+  "n_records": 12580,
+  "path": "clin_v1/clinpairs_medeinst_dis/records.jsonl",
+  "sha256": "fc026429975083f0e0ddcf26331070391d4c3758a3fa2d8fa1aefa0d83dbcb84",
+  "split": "train",
+  "tier": "external"
+ },
+ "clin_v1/clinpairs_train": {
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/clinpairs_train/MANIFEST.json",
+  "n_groups": 7807,
+  "n_records": 31228,
+  "path": "clin_v1/clinpairs_train/records.jsonl",
+  "sha256": "5b0e7e9a3fdd2c958d020a34eab2b8636c11a012e176125207c222fda28ee37a",
+  "split": "train",
+  "tier": "external"
+ },
  "clin_v1/keypairs_careqa": {
   "created": "2026-10-02",
   "frozen": true,
@@ -57,6 +93,18 @@
   "path": "clin_v1/keypairs_medqa_train/records.jsonl",
   "sha256": "3d341914a1dd4d3dd16f089680053094d7584f4a5a86ce435c4431255dd18259",
   "split": "train",
+  "tier": "external"
+ },
+ "clin_v1/medeinst_dis_test": {
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/medeinst_dis_test/MANIFEST.json",
+  "n_groups": 115,
+  "n_records": 460,
+  "path": "clin_v1/medeinst_dis_test/records.jsonl",
+  "sha256": "52ad02970bc011b1f2c7ebfc711747950ada8f065b97914da7289a99af5c682a",
+  "split": "test",
   "tier": "external"
  },
  "clin_v1/medeinst_ref_dev": {

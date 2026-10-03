@@ -1,0 +1,27 @@
+{
+ "git_commit": "4c083922f2a20759d777b00030cdb15c57ec8b9e",
+ "python": "3.12.7",
+ "builder": "scripts/clinpairs_prep.py",
+ "split_rule": "held-out diseases = random.Random(20261003).sample(46 sorted diagnosis names, 12)",
+ "held_out_diseases": [
+  "Acute COPD exacerbation / infection",
+  "Acute dystonic reactions",
+  "Allergic sinusitis",
+  "Atrial fibrillation",
+  "Croup",
+  "Ebola",
+  "GERD",
+  "Influenza",
+  "Pericarditis",
+  "Possible NSTEMI / STEMI",
+  "Scombroid food poisoning",
+  "Spontaneous pneumothorax"
+ ],
+ "source": "clin_v1/medeinst_test",
+ "name": "clin_v1/medeinst_dis_test",
+ "n_records": 460,
+ "n_groups": 115,
+ "sha256": "52ad02970bc011b1f2c7ebfc711747950ada8f065b97914da7289a99af5c682a",
+ "created": "2026-10-02",
+ "frozen": true
+}
