@@ -159,8 +159,11 @@ def run_one(spec, a, mon, log, owner):
         model, tok = finetune.load_for_eval(base, spec.get("adapter"), hp["max_len"], hp)
         log(f"loaded base {base}, adapter {spec.get('adapter')}")
         bs_score, bs_gen = spec.get("bs_score", 64), spec.get("bs_gen", 128)
-        if torch.cuda.is_available() and torch.cuda.get_device_properties(0).total_memory < 30 * 2**30:
-            bs_score, bs_gen = min(bs_score, 16), min(bs_gen, 16)     # 24 GB cards: 18.8 GB of weights
+        mem = torch.cuda.get_device_properties(0).total_memory / 2**30 if torch.cuda.is_available() else 99
+        if mem < 30:                              # 24 GB cards: 18.8 GB of weights
+            bs_score, bs_gen = min(bs_score, 16), min(bs_gen, 16)
+        elif mem < 40:                            # 32 GB cards
+            bs_score, bs_gen = min(bs_score, 64), min(bs_gen, 64)
         sc = eval_local.Scorer(model, tok, bs_score, bs_gen, spec.get("max_new", 384), log)
         tag = spec.get("base_model", "unsloth/Qwen3.5-9B").replace("/", "--")
         summ, secs = {}, {}

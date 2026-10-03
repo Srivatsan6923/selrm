@@ -25,6 +25,7 @@ GPU = {   # kind -> (resource, gpu.product values or None)
     "l40": ("nvidia.com/gpu", ["NVIDIA-L40", "NVIDIA-L40S"]),
     "a6000": ("nvidia.com/rtxa6000", None),
     "a40": ("nvidia.com/a40", None),
+    "32gb": ("nvidia.com/gpu", ["NVIDIA-RTX-5000-Ada-Generation"]),
     "24gb": ("nvidia.com/gpu", ["NVIDIA-A10", "NVIDIA-GeForce-RTX-3090", "NVIDIA-L4", "NVIDIA-GeForce-RTX-4090",
                                 "NVIDIA-RTX-A5000", "NVIDIA-TITAN-RTX", "Quadro-RTX-6000"]),   # verdict runs only
 }
