@@ -98,6 +98,10 @@ def job(name, pod, hours, role):
     labels = LABELS | {"role": role}
     return {"apiVersion": "batch/v1", "kind": "Job", "metadata": {"name": name, "namespace": NS, "labels": labels},
             "spec": {"backoffLimit": 1, "ttlSecondsAfterFinished": 259200, "activeDeadlineSeconds": int(hours * 3600),
+                     # a preempted or evicted pod (opportunistic GPUs) is not a failure of the job: it is replaced
+                     # without using up the retry, and resumable jobs continue from their last checkpoint
+                     "podFailurePolicy": {"rules": [{"action": "Ignore",
+                                                     "onPodConditions": [{"type": "DisruptionTarget"}]}]},
                      "template": {"metadata": {"labels": labels}, "spec": pod}}}
 
 
