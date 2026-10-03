@@ -77,6 +77,7 @@ Every reader output of the two-stage runs (one per case and condition, on every 
 | B-F-value2-balanced-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-value2-blocks-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-value2-triplets-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-ledger2-natural-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-balanced-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-blocks-s0 | 37497 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-blocks-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -126,6 +127,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-value2-balanced-s0 | 71.9 | 70.9 | 103 | 67.7 | 7 |
 | B-F-value2-blocks-s0 | 70.7 | 69.8 | 103 | 65.0 | 7 |
 | B-F-value2-triplets-s0 | 85.7 | 85.4 | 103 | 78.4 | 7 |
+| B-F-ledger2-natural-s0 | 77.2 | 76.5 | 103 | 74.4 | 7 |
 | B-F-ledger2-balanced-s0 | 49.4 | 50.8 | 103 | 52.5 | 7 |
 | B-F-ledger2-blocks-s0 | 75.3 | 75.3 | 103 | 72.8 | 7 |
 | B-F-ledger2-triplets-s0 | 99.2 | 99.1 | 103 | 98.7 | 7 |
@@ -142,7 +144,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-summary2-balanced-s0 | 99.6 | 72.8 | 99.8 | 72.8 | 72.6 | 72.5 |
 | B-F-value2-natural-s0 | 98.3 | 43.9 | 98.3 | 43.7 | 43.0 | 43.0 |
 | B-F-value2-balanced-s0 | 99.2 | 72.6 | 99.2 | 72.5 | 71.9 | 71.9 |
-| B-F-ledger2-natural-s0 | not run | | | | | |
+| B-F-ledger2-natural-s0 | 99.4 | 77.8 | 99.5 | 77.7 | 77.3 | 77.2 |
 | B-F-ledger2-balanced-s0 | 96.7 | 51.6 | 96.7 | 51.0 | 49.4 | 49.4 |
 
 ## 7. Training budget per finished run
@@ -162,6 +164,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-ledger2-blocks-s2 | NVIDIA A100-PCIE-40GB | 60004 | 60000 | 30000 | 30000 | 13044356 | 1045348 | 938 | 2.25 | 1.52 |
 | B-F-ledger2-blocks-s3 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13044356 | 1045348 | 938 | 0.78 | 0.65 |
 | B-F-ledger2-blocks-s4 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13044356 | 1045348 | 938 | 0.69 | 0.53 |
+| B-F-ledger2-natural-s0 | NVIDIA L40 | 60000 | 60000 | 30000 | 30000 | 12955030 | 1018856 | 938 | 3.72 | 0.72 |
 | B-F-ledger2-triplets-s0 | NVIDIA A100-PCIE-40GB | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 2.29 | 1.41 |
 | B-F-ledger2-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 0.94 | 0.56 |
 | B-F-ledger2-triplets-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 0.78 | 0.67 |
@@ -227,6 +230,7 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | B-F-ledger2-blocks-s2 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-ledger2-blocks-s3 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-ledger2-blocks-s4 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
+| B-F-ledger2-natural-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-F-ledger2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-ledger2-triplets-s1 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-ledger2-triplets-s2 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
@@ -358,6 +362,7 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-F-ledger2-blocks-s2 | 71.0 | 95.2 | 88.0 | 98.0 | 55.0 | 43.0 |
 | B-F-ledger2-blocks-s3 | 44.5 | 90.8 | 67.0 | 66.0 | 3.0 | 42.0 |
 | B-F-ledger2-blocks-s4 | 82.2 | 97.0 | 100.0 | 84.0 | 87.0 | 58.0 |
+| B-F-ledger2-natural-s0 | 86.0 | 97.7 | 98.0 | 100.0 | 91.0 | 55.0 |
 | B-F-ledger2-triplets-s1 | 88.8 | 98.0 | 100.0 | 100.0 | 87.0 | 68.0 |
 | B-F-ledger2-triplets-s2 | 91.5 | 98.6 | 99.0 | 100.0 | 100.0 | 67.0 |
 | B-F-ledger2-triplets-s3 | 94.0 | 99.0 | 100.0 | 100.0 | 100.0 | 76.0 |
