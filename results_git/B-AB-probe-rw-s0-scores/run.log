@@ -1,0 +1,8 @@
+2026-10-03T14:38:20Z eval only: base /work/models/unsloth--Qwen3.5-9B, adapter /pvc/selrm/adapters/B-F-ledger2-blocks-s0
+2026-10-03T14:38:31Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0267)
+2026-10-03T14:38:32Z padding self-check: max |u_batch - u_single| = 0.1066 (tol 0.627) -> left padding
+2026-10-03T14:40:26Z generate: batch 25/98, 195008 tokens, 1719 tok/s
+2026-10-03T14:42:35Z generate: batch 50/98, 418933 tokens, 1726 tok/s
+2026-10-03T14:45:00Z generate: batch 75/98, 639735 tokens, 1652 tok/s
+2026-10-03T15:00:25Z B-AB-probe-rw-s0-scores rule_v1/abl_probe_blocks: TA 74.8 Rev 100.0 Hold 74.8 n=5617 (1324.5 s)
+2026-10-03T15:00:25Z DONE B-AB-probe-rw-s0-scores in 22.4 min, GPU util mean 92.3
