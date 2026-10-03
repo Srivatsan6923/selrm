@@ -86,7 +86,9 @@ def gpu_job(name, code, env_tag, gpu, hours, args, cpu=4, mem="40Gi", models=("/
             n_gpu=1):
     resource, products = GPU[gpu]
     terms = [DRIVER] + ([{"key": "nvidia.com/gpu.product", "operator": "In", "values": products}] if products else [])
-    stage = (f"set -e; tar -xf /pvc/env/selrm-d-env-{env_tag}.tar -C /opt; cp -r /pvc/code/{code} /work/code; "
+    env = f"/pvc/env/selrm-d-env-{env_tag}.tar"     # the gzip copy halves the bytes read from CephFS
+    stage = (f"set -e; if [ -f {env}.gz ]; then tar -xzf {env}.gz -C /opt; else tar -xf {env} -C /opt; fi; "
+             f"cp -r /pvc/code/{code} /work/code; "
              "mkdir -p /work/models; " + " ".join(f"cp -r {m} /work/models/;" for m in models if m)
              + " echo staged")
     work = [{"name": "work", "mountPath": "/work"}, {"name": "env", "mountPath": "/opt/selrm-env"}]
@@ -167,9 +169,10 @@ def main():
         models = a.models.split(",") if a.models is not None else ("/pvcb/selrm/models/unsloth--Qwen3.5-9B",)
         apply(gpu_job(f"selrm-d-{name}-{int(time.time()) % 100000}", a.code or sha(), a.env, a.gpu, a.hours, args,
                       models=models, n_gpu=a.n_gpu))
-    elif a.cmd == "cpu":        # a python script of the code snapshot, in the env, on a CPU node
+    elif a.cmd == "cpu":        # a python (or .sh) script of the code snapshot, on a CPU node
         name, args, code = a.rest[0], a.rest[1:] + extra, a.code or sha()
-        cmd = (f"set -e; tar -xf /pvc/env/selrm-d-env-{a.env}.tar -C /opt; cd /pvc/code/{code}; "
+        cmd = (f"set -e; cd /pvc/code/{code}; sh " + " ".join(args) if args[0].endswith(".sh") else
+               f"set -e; tar -xf /pvc/env/selrm-d-env-{a.env}.tar -C /opt; cd /pvc/code/{code}; "
                "/opt/selrm-env/venv/bin/python -u " + " ".join(args))
         apply(cpu_job(f"selrm-d-{name}-{int(time.time()) % 100000}", ["sh", "-c", cmd], cpu=a.cpu, mem=a.mem,
                       hours=a.hours))
