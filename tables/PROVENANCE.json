@@ -1,6 +1,6 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "1a670f01e56b20580bbe1261f2c45698d36a9546",
+ "code_commit": "7200219dfa0980512a7fe96994f66ad8c64e1b7b",
  "uncommitted_changes": true,
  "records": {
   "rule_v1/test_L2": {
@@ -15,8 +15,8 @@
    "set": "rule_v1/test_L2",
    "metric": "TA",
    "diff": -8.85,
-   "lo": -12.165335838421795,
-   "hi": -5.599162742019885,
+   "lo": -11.885656970912738,
+   "hi": -5.727554179566564,
    "n": 2000,
    "seeds": [
     "0"
@@ -28,8 +28,8 @@
    "set": "rule_v1/test_L2",
    "metric": "TA",
    "diff": 33.1,
-   "lo": 29.462474645030426,
-   "hi": 36.83431952662722,
+   "lo": 29.569093610698367,
+   "hi": 36.69064748201439,
    "n": 2000,
    "seeds": [
     "0"
@@ -41,8 +41,8 @@
    "set": "rule_v1/test_L2",
    "metric": "TA",
    "diff": 1.2,
-   "lo": 0.24061597690086622,
-   "hi": 2.3255813953488373,
+   "lo": 0.19704433497536947,
+   "hi": 2.2615535889872174,
    "n": 2000,
    "seeds": [
     "0"
@@ -186,13 +186,13 @@
    "comparison": "p1"
   },
   "cmp/p1/hi": {
-   "value": "-5.6",
-   "number": -5.599162742019885,
+   "value": "-5.7",
+   "number": -5.727554179566564,
    "comparison": "p1"
   },
   "cmp/p1/lo": {
-   "value": "-12.2",
-   "number": -12.165335838421795,
+   "value": "-11.9",
+   "number": -11.885656970912738,
    "comparison": "p1"
   },
   "cmp/p1/p": {
@@ -211,13 +211,13 @@
    "comparison": "p2"
   },
   "cmp/p2/hi": {
-   "value": "36.8",
-   "number": 36.83431952662722,
+   "value": "36.7",
+   "number": 36.69064748201439,
    "comparison": "p2"
   },
   "cmp/p2/lo": {
-   "value": "29.5",
-   "number": 29.462474645030426,
+   "value": "29.6",
+   "number": 29.569093610698367,
    "comparison": "p2"
   },
   "cmp/p2/p": {
@@ -237,12 +237,12 @@
   },
   "cmp/p3/hi": {
    "value": "2.3",
-   "number": 2.3255813953488373,
+   "number": 2.2615535889872174,
    "comparison": "p3"
   },
   "cmp/p3/lo": {
    "value": "0.2",
-   "number": 0.24061597690086622,
+   "number": 0.19704433497536947,
    "comparison": "p3"
   },
   "cmp/p3/p": {
@@ -11462,13 +11462,13 @@
     "row": "p1",
     "col": "lo",
     "key": "cmp/p1/lo",
-    "value": "-12.2"
+    "value": "-11.9"
    },
    {
     "row": "p1",
     "col": "hi",
     "key": "cmp/p1/hi",
-    "value": "-5.6"
+    "value": "-5.7"
    },
    {
     "row": "p1",
@@ -11492,13 +11492,13 @@
     "row": "p2",
     "col": "lo",
     "key": "cmp/p2/lo",
-    "value": "29.5"
+    "value": "29.6"
    },
    {
     "row": "p2",
     "col": "hi",
     "key": "cmp/p2/hi",
-    "value": "36.8"
+    "value": "36.7"
    },
    {
     "row": "p2",

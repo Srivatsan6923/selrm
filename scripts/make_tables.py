@@ -28,6 +28,7 @@ Keys, as used in \res{...} (fields are separated by '/'):
               (lo, hi: 95% interval, rules resampled with their triplets, seeds pooled)
   meta/<prefix>/<dotted.field>[/<stat>]   a meta.json field (mean over seeds by default)
   a15/<dotted.field>                      results/A-D15/summary.json
+  sum/<run_id>/<dotted.field>            results/<run_id>/summary.json (a run without per-set summaries)
   cmp/<name>/<field>                      primary comparison: diff lo hi p padj n
   d/<key>|<key>[|<key>...]                first key minus the others
   min/<key>|<key>...  max/<key>|<key>...  smallest / largest of several keys
@@ -239,15 +240,15 @@ def _resolve(key):
         return run_value(rest, spec)
     if head == "meta":
         return meta_value(rest, spec)
-    if head == "a15":
-        r = run("A-D15")
-        d = r.summaries.get("")[1] if r and "" in r.summaries else (load_json(os.path.join(r.path, "summary.json")) if r else None)
-        x = d
-        for part in rest.split("."):
+    if head in ("a15", "sum"):     # a field of a run's summary.json (a run without per-set summaries)
+        rid, path = ("A-D15", rest) if head == "a15" else rest.split("/", 1)
+        r = run(rid)
+        p = os.path.join(r.path, "summary.json") if r else None
+        x = load_json(p) if p else None
+        for part in path.split("."):
             x = x.get(part) if isinstance(x, dict) else None
         x = x if isinstance(x, (int, float)) and not isinstance(x, bool) else None
-        p = os.path.join(r.path, "summary.json") if r else None
-        return x, fmt(x, spec, isinstance(x, int)), {"runs": [prov_run(r, p, rest)] if r else []}
+        return x, fmt(x, spec, isinstance(x, int)), {"runs": [prov_run(r, p, path)] if r else []}
     if head == "cmp":
         name, fld = rest.split("/")
         c = comparisons().get(name)
@@ -820,12 +821,14 @@ def main():
         if n is not None:
             lines.append(r"\resdef{" + k + "}{" + text + "}")
     open(os.path.join(a.out, "numbers.tex"), "w", encoding="utf-8", newline="\n").write("\n".join(lines) + "\n")
-    json.dump(numbers, open(os.path.join(a.out, "numbers.json"), "w", encoding="utf-8"), indent=1, sort_keys=True)
+    json.dump(numbers, open(os.path.join(a.out, "numbers.json"), "w", encoding="utf-8", newline="\n"),
+              indent=1, sort_keys=True)
     prov = {"generated_by": "scripts/make_tables.py", "code_commit": head, "uncommitted_changes": dirty,
             "records": DATA_PROV, "comparisons": comparisons(),
             "keys": {k: {"value": v[1], "number": v[0], **v[2]} for k, v in sorted(CACHE.items())},
             "tables": CELLS, "warnings": sorted(set(WARN))}
-    json.dump(prov, open(os.path.join(a.out, "PROVENANCE.json"), "w", encoding="utf-8"), indent=1, default=str)
+    json.dump(prov, open(os.path.join(a.out, "PROVENANCE.json"), "w", encoding="utf-8", newline="\n"),
+              indent=1, default=str)
     n_cells = sum(len(v) for v in CELLS.values())
     n_tbd = sum(c["value"] == TBD for v in CELLS.values() for c in v)
     print(f"{len(TABLES)} tables, {n_cells} cells ({n_cells - n_tbd} measured, {n_tbd} tbd); "

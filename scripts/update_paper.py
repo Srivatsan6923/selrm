@@ -147,8 +147,8 @@ def main():
         open(tex_path, "w", encoding="utf-8", newline="\n").write(new_text)
         shutil.copyfile(os.path.join(TABLES, "numbers.tex"), os.path.join(PAPER, "numbers.tex"))
         json.dump({k: v["value"] for k, v in numbers.items() if v["number"] is not None},
-                  open(applied_p, "w", encoding="utf-8"), indent=1, sort_keys=True)
-        json.dump(new_cells, open(cells_p, "w", encoding="utf-8"), indent=1, sort_keys=True)
+                  open(applied_p, "w", encoding="utf-8", newline="\n"), indent=1, sort_keys=True)
+        json.dump(new_cells, open(cells_p, "w", encoding="utf-8", newline="\n"), indent=1, sort_keys=True)
         print(f"{len(bodies(lines))} bodies replaced; numbers.tex copied; {len(keys)} \\res keys in the text")
         print(f"sentences whose numbers moved by more than one point since the last update: {len(report)}")
         for r in report:
