@@ -31,7 +31,9 @@ FILES = {  # queue file -> generator (FINAL_TASKS_B, 3 Oct)
     "v2/b_bb_s12.json": lambda: Q.backbones({1, 2}, REG, V),
     "v2/b_probe_rw_s0.json": lambda: Q.probe_rw(V),
     "b_new_s0.json": lambda: Q.newexp({0}, REG, V),
-    "b_sc_s0.json": lambda: Q.summary_case(REG, V),
+    "b_cv.json": lambda: Q.case_visible(REG, V),           # NEXT_TASKS_B 2 (the B-SC s0 run of b_sc_s0.json is done)
+    "b_new_s12.json": lambda: Q.newexp({1, 2}, REG, V),    # NEXT_TASKS_B 4: LOKO seeds 1-2
+    "b_rw.json": lambda: Q.rewritten(REG, V),              # NEXT_TASKS_B 5, once A freezes train_triplets_rw
     "v2/b_ns.json": lambda: Q.ns_eval(REG, adapters),      # P0.6: kept adapters on A's new sets
 }
 for name, gen in FILES.items():

@@ -41,6 +41,21 @@ def priority(rid, seed, mprio="P1"):
     cell = (m[1], m[2]) if m else None
     if rid in ("B-AE-oracle-ledger", "B-AE-field-edit", "B-AE-field-swap"):
         return 0
+    # NEXT_TASKS_B (3 Oct evening) order: case-visible judges (seed 0, then the triplets seeds 1-2), leave-one-kind-out
+    # seeds 1-2 and the decision-bit reader, the auxiliary grid, rewritten notes, A's new sets, 4B cells, folds
+    cv = re.fullmatch(r"B-(SC|LC)-\w+-\w+-s(\d)", rid)
+    if cv:
+        return 10 if cv[2] == "0" else 15
+    if rid.startswith("B-LOKO-") and (seed > 0 or "-bit_reader-" in rid):
+        return 20
+    if rid.startswith("B-AUX-"):
+        return 30
+    if rid.startswith("B-RW-"):
+        return 35
+    if rid.startswith("B-BB-") and seed == 0:
+        return 50
+    if rid.startswith("B-FOLD"):
+        return 55
     if rid == "B-F-summary2-blocks-s0":
         return 10
     if m and cell in CORE_CELLS and seed in (1, 2):
@@ -271,7 +286,7 @@ def newexp(seeds, registry, version):
     runs = []
     for r in matrix():
         rid = r["run_id"]
-        m = re.fullmatch(r"B-(LOKO|DOSE)-(\w+)-(verdict|summary2|ledger2)-s(\d)", rid)
+        m = re.fullmatch(r"B-(LOKO|DOSE)-(\w+?)-(verdict|summary2|ledger2|bit_reader)-s(\d)", rid)
         if not m or int(m[4]) not in seeds or r["status"] in ("done", "dropped", "deferred"):
             continue
         if m[1] == "LOKO":
@@ -333,17 +348,44 @@ def ns_eval(registry, adapters):
     return runs
 
 
-def summary_case(registry, version):
-    """FINAL_TASKS_B P0.4: the summary pipeline whose judge also sees the case, on triplets (B-SC-summary2-triplets-s0)."""
-    return [{"run_id": "B-SC-summary2-triplets-s0", "seed": 0, "priority": priority("B-SC-summary2-triplets-s0", 0),
-             "format": "summary2_case", "corpus": f"{version}/train_triplets", "n_examples": 60000, "keep_adapter": True,
-             "eval": dict(EVAL), "eval_sets": [f"{version}/{s}" for s in REDUCED]}]
+def case_visible(registry, version):
+    """FINAL_TASKS_B P0.4 and NEXT_TASKS_B 2: pipelines whose judge also sees the case (rule, case, record, claim):
+    summary2_case (B-SC-summary2-<corpus>-s<seed>) and ledger2_case (B-LC-ledger2-<corpus>-s<seed>); rows and seeds
+    from docs/RUN_MATRIX_B.csv."""
+    fmts = {"SC": "summary2_case", "LC": "ledger2_case"}
+    runs = []
+    for r in matrix():
+        m = re.fullmatch(r"B-(SC|LC)-(summary2|ledger2)-(blocks|triplets)-s(\d)", r["run_id"])
+        if not m or r["status"] in ("done", "dropped", "deferred"):
+            continue
+        runs.append({"run_id": r["run_id"], "seed": int(m[4]), "priority": priority(r["run_id"], int(m[4])),
+                     "format": fmts[m[1]], "corpus": f"{version}/train_{m[3]}", "n_examples": 60000,
+                     "keep_adapter": True, "eval": dict(EVAL), "eval_sets": [f"{version}/{s}" for s in REDUCED]})
+    return runs
+
+
+RW_CORPUS = "rule_v1x/train_triplets_rw"     # A's training-side rewrites (NEXT_TASKS_A 4), queued once frozen
+
+
+def rewritten(registry, version):
+    """NEXT_TASKS_B 5: verdict and summary2 trained on A's rewritten-note triplets (B-RW-<format>-triplets-s<seed>);
+    scored on dev, L2 and every registered new set (with_new_sets)."""
+    if not json.load(open(registry)).get(RW_CORPUS, {}).get("frozen"):
+        return []
+    runs = []
+    for r in matrix():
+        m = re.fullmatch(r"B-RW-(verdict|summary2)-triplets-s(\d)", r["run_id"])
+        if m and r["status"] not in ("done", "dropped", "deferred"):
+            runs.append({"run_id": r["run_id"], "seed": int(m[2]), "priority": priority(r["run_id"], int(m[2])),
+                         "format": m[1], "corpus": RW_CORPUS, "n_examples": 60000, "keep_adapter": True,
+                         "eval": dict(EVAL), "eval_sets": [f"{version}/{s}" for s in REDUCED]})
+    return runs
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("kind", choices=["smoke", "factorial", "transfer", "extras", "backbones", "probe_rw", "critic", "ns",
-                                     "newexp", "summary_case"])
+                                     "newexp", "case_visible", "rewritten"])
     ap.add_argument("out")
     ap.add_argument("--seeds", default="0")
     ap.add_argument("--registry", default=f"{ROOT}/data/REGISTRY.json")
@@ -361,7 +403,8 @@ def main():
            "probe_rw": lambda: probe_rw(a.version),
            "critic": lambda: critic(a.registry, a.version),
            "newexp": lambda: newexp(seeds, a.registry, a.version),
-           "summary_case": lambda: summary_case(a.registry, a.version),
+           "case_visible": lambda: case_visible(a.registry, a.version),
+           "rewritten": lambda: rewritten(a.registry, a.version),
            "ns": lambda: ns_eval(a.registry, a.adapters.split(","))}
     runs = [r for r in with_new_sets(gen[a.kind](), a.registry) if re.search(a.runs, r["run_id"])]
     newer = [r["run_id"] for r in runs if r.get("min_gen", 0) >= 2]   # runners staged before 2 Oct 13:00 read the top level

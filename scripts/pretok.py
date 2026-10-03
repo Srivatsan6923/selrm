@@ -24,7 +24,7 @@ MAX_LEN = 1024
 EVAL_KIND = {"verdict": "verdict", "verdict_bt": "verdict", "rationale": "rationale", "summary2": "reader_prose",
              "summary2_case": "reader_prose", "value2": "reader_ledger", "ledger2": "reader_ledger", "ledger2_dec": "reader_ledger",
              "dec_judge": "reader_ledger", "bit_reader": "reader_ledger", "ledger2_verify": "reader_ledger",
-             "genprm": "genprm", "conddrv": "reader_derive"}
+             "genprm": "genprm", "conddrv": "reader_derive", "ledger2_case": "reader_ledger"}
 PROMPT = {"verdict": verdict_prompt, "rationale": rationale_prompt, "genprm": genprm_prompt}   # one prompt per record
 
 

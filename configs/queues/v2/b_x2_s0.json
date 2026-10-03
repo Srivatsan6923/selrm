@@ -1,24 +1,3 @@
 {
- "runs": [
-  {
-   "run_id": "B-AB-conddrv-s0",
-   "seed": 0,
-   "priority": 63,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "format": "conddrv",
-   "corpus": "rule_v1/train_triplets",
-   "n_examples": 60000,
-   "keep_adapter": true,
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "xr_v1/test"
-   ],
-   "min_gen": 3
-  }
- ]
+ "runs": []
 }

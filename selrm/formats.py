@@ -27,6 +27,7 @@ verdict_bt   verdict prompts of the two claims of a case; Bradley-Terry loss on 
 conddrv      ledger2 whose reader gets the claim instead of the condition under test and names the condition
              itself in need (B-AB-conddrv, v13 "condition derived": the reader is given the rule and the claim);
              one reader output per record, the judge as in ledger2
+ledger2_case ledger2 whose judge also sees the case (JUDGE_CASE: rule, case, ledger, claim; B-LC, NEXT_TASKS_B 2)
 genprm       GENPRM prompt -> ```python check``` + its output + answer (B-TR-genprm; the check is A's
              render_check_code, A-D13, rendered by scripts/render_checks.py; one per record)
 """
@@ -38,9 +39,9 @@ from selrm.prompts import (answer, judge_prompt, ledger_to_text, rationale_promp
                            reader_prompt, verdict_prompt)
 
 FORMATS = ("verdict", "rationale", "summary2", "summary2_case", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader",
-           "verdict_bt", "ledger2_verify", "genprm", "conddrv")
+           "verdict_bt", "ledger2_verify", "genprm", "conddrv", "ledger2_case")
 VERSION = 2                  # bump when example construction changes (part of the pretok key)
-TWO_STAGE = ("summary2", "summary2_case", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader", "ledger2_verify", "conddrv")
+TWO_STAGE = ("summary2", "summary2_case", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader", "ledger2_verify", "conddrv", "ledger2_case")
 PROSE = ("summary2", "summary2_case")       # reader writes free prose (never malformed)
 # summary pipeline whose judge also sees the case (FINAL_TASKS_B P0.4; B-defined prompt: the frozen JUDGE has no case)
 JUDGE_CASE = ("Rule: {rule}\n\nCase:\n{case}\n\nEvidence record:\n{record}\n\nClaim: {claim}\n\n"
@@ -136,8 +137,9 @@ def reader_for(rec: dict, fmt: str) -> str:
 
 
 def judge_for(rec: dict, text: str, fmt: str) -> str:
-    """Judge prompt for a reader output: the frozen JUDGE (rule, record, claim), or JUDGE_CASE for summary2_case."""
-    if fmt == "summary2_case":
+    """Judge prompt for a reader output: the frozen JUDGE (rule, record, claim), or JUDGE_CASE (the judge also sees
+    the case) for summary2_case and ledger2_case."""
+    if fmt in ("summary2_case", "ledger2_case"):
         return JUDGE_CASE.format(rule=rec["rule_text"], case=rec["case_text"], record=text, claim=rec["claim_text"])
     return judge_prompt(rec, judge_view(text, fmt))
 
@@ -180,7 +182,7 @@ def well_formed(text: str, case_text: str, fmt: str) -> bool:
     text = text.strip()
     if fmt == "bit_reader":
         return text in BITS.values()
-    if fmt in ("ledger2_verify", "conddrv"):
+    if fmt in ("ledger2_verify", "conddrv", "ledger2_case"):
         fmt = "ledger2"
     if fmt in ("ledger2_dec", "dec_judge"):
         head, sep, last = text.rpartition("\n\n")
