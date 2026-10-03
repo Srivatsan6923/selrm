@@ -5,11 +5,11 @@ r"""Put the generated tables and measured numbers into the paper (FINAL_TASKS_D 
 
 Run scripts/make_tables.py first. This script
 1. replaces the body between each "% <tables:name>" and "% </tables:name>" line of
-   paper/latex_v13/main.tex with tables/<name>.tex;
+   paper/latex_v14/main.tex (SELRM_PAPER=latex_v13 for the old draft) with tables/<name>.tex;
 2. copies tables/numbers.tex next to main.tex (\res{key} reads it);
 3. lists every sentence whose \res numbers changed by more than one point since the last
-   update (paper/latex_v13/numbers_applied.json), and every table cell that did
-   (paper/latex_v13/cells_applied.json);
+   update (paper/latex_v14/numbers_applied.json), and every table cell that did
+   (paper/latex_v14/cells_applied.json);
 4. counts the placeholders left (\ph{...} in the document body, \res keys without a value)
    and switches \placeholderstrue to \placeholdersfalse only when none is left.
 It edits nothing else: the text outside the marked bodies is compared before and after,
@@ -23,7 +23,7 @@ import shutil
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAPER = os.path.join(ROOT, "paper", "latex_v13")
+PAPER = os.path.join(ROOT, "paper", os.environ.get("SELRM_PAPER", "latex_v14"))
 TABLES = os.path.join(ROOT, "tables")
 MARK = re.compile(r"^% <tables:([\w-]+)>$")
 NUM = re.compile(r"-?\d+(?:\.\d+)?")

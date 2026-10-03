@@ -1,6 +1,6 @@
 r"""Every table and every number of the paper, from result files only (FINAL_TASKS_D P0.2).
 
-  python scripts/make_tables.py [--paper paper/latex_v13/main.tex]
+  python scripts/make_tables.py [--paper paper/latex_v14/main.tex]
 
 Reads results/<run_id>/ and results_git/<run_id>/ (a run counts only once it has a
 DONE file), the frozen records in data/ (sha256 checked against data/REGISTRY.json;
@@ -1010,7 +1010,7 @@ def main():
     if os.environ.get("PYTHONHASHSEED") != "0":      # (os.exec* loses the output on Windows)
         sys.exit(subprocess.run([sys.executable, *sys.argv], env=os.environ | {"PYTHONHASHSEED": "0"}).returncode)
     ap = argparse.ArgumentParser()
-    ap.add_argument("--paper", default=os.path.join(ROOT, "paper", "latex_v13", "main.tex"))
+    ap.add_argument("--paper", default=os.path.join(ROOT, "paper", os.environ.get("SELRM_PAPER", "latex_v14"), "main.tex"))
     ap.add_argument("--out", default=os.path.join(ROOT, "tables"))
     ap.add_argument("--key", action="append", help="print the value and provenance of a key, write nothing")
     ap.add_argument("--catalog", action="store_true", help="list finished runs, sets and fields, write nothing")

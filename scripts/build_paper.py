@@ -16,7 +16,7 @@ import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAPER = os.path.join(ROOT, "paper", "latex_v13")
+PAPER = os.path.join(ROOT, "paper", os.environ.get("SELRM_PAPER", "latex_v14"))
 BUILD = os.path.join(ROOT, "paper", "build")
 
 

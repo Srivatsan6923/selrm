@@ -15,7 +15,7 @@ behind it:
     tracked by git; runs of two-stage formats keep the reader output in each line.
  6. Key cells {verdict, ledger2} x {blocks, triplets}: at least 3 seeds DONE (never dropped, project spec).
  7. Primary comparisons: all p-values present, so the Holm correction is computed.
- 8. Paper: placeholders left in paper/latex_v13/main.tex (the build fails while any remain).
+ 8. Paper: placeholders left in the paper (paper/latex_v14/main.tex) (the build fails while any remain).
  9. Tooling markers in tracked files and co-author trailers in commit messages since the freeze.
 10. (--tests) the test suite.
 """

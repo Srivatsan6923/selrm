@@ -2,7 +2,7 @@
 
   python scripts/citation_checklist.py [paper_dir]
 
-Reads main.tex and custom.bib in paper_dir (default: paper/latex_v13; a main.bbl
+Reads main.tex and custom.bib in paper_dir (default: paper/latex_v14; a main.bbl
 there is cross-checked) and writes
 
   docs/CITATIONS_TODO.csv     one row per cited key (utf-8-sig): bib fields,
@@ -24,7 +24,7 @@ from collections import Counter
 from datetime import date
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAPER = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else os.path.join(ROOT, "paper", "latex_v13")
+PAPER = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else os.path.join(ROOT, "paper", os.environ.get("SELRM_PAPER", "latex_v14"))
 TEX, BIB, BBL = (os.path.join(PAPER, n) for n in ("main.tex", "custom.bib", "main.bbl"))
 OUT_CSV = os.path.join(ROOT, "docs", "CITATIONS_TODO.csv")
 OUT_MD = os.path.join(ROOT, "docs", "CITATION_CHECKLIST.md")
@@ -438,7 +438,7 @@ def main():
         bbl_line,
         "",
         "**Regenerate:** `python scripts/citation_checklist.py` (optional argument: another paper folder; "
-        "default `paper/latex_v13`).",
+        "default `paper/latex_v14`).",
         "",
         "## 2. Entries never cited, keys missing from the bib",
         "",
