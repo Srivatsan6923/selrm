@@ -427,4 +427,6 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-F-ledger2-triplets-s0 | 99.2 | 99.2 | 100.0 | - |
 | B-AB-bitonly-judge-s0 | 99.3 | 99.5 | 99.9 | +0.1 [-0.2, +0.6], p 0.552 |
 | B-AB-concept-s0 | 26.8 | 34.4 | 58.4 | -72.5 [-76.0, -68.4], p < 0.001 |
+| B-AE-pred-bit-program | 99.5 | 99.7 | 99.8 | +0.3 [-0.1, +0.8], p 0.206 |
+| B-AE-program-ledger | 99.4 | 99.4 | 100.0 | +0.2 [+0.0, +0.6], p 0.238 |
 

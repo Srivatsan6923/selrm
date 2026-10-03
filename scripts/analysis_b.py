@@ -416,6 +416,7 @@ def ablation_section():
     print("## 15. Ablations (Table 9; test_L2, seed 0; reference B-F-ledger2-triplets-s0)" + NL)
     ref = "B-F-ledger2-triplets-s0"
     runs = sorted(os.path.basename(d) for d in glob.glob(f"{RG}/B-AB-*-s0") if done(os.path.basename(d)))
+    runs += [r for r in ("B-AE-pred-bit-program", "B-AE-program-ledger") if done(r)]   # eval-only Table 9 rows
     if not runs or not done(ref):
         print("not run" + NL)
         return
