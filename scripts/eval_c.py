@@ -144,6 +144,97 @@ def build_eval_c(root, fmt, tag, set_name, tok):
     return path, f"built {len(keys)} prompts, max {int(np.diff(off).max())} tokens"
 
 
+def subset(recs, n=0, claim_types=("conclusion",)):
+    """Records of the given claim types; with n, the fixed group subset of scripts/run_judge.py (n / #kinds groups
+    per near-miss kind, random.Random(0) over sorted group ids), so audit rows share their items."""
+    import random
+    recs = [r for r in recs if r["claim_type"] in claim_types]
+    if not n:
+        return recs
+    by = {}
+    for r in recs:
+        by.setdefault(r["nm_kind"], set()).add(r["tid"])
+    keep = set()
+    for kind in sorted(by):
+        keep |= set(random.Random(0).sample(sorted(by[kind]), min(len(by[kind]), n // len(by))))
+    return [r for r in recs if r["tid"] in keep]
+
+
+def run_prm(spec, a, mon, log, owner):
+    """A released PRM as released (scripts/prms/<module>.py: load, score), weights downloaded at their pinned
+    revision to local disk (the Job runs with the Hub online). Scores the step = claim after rule and case."""
+    import importlib.util, torch
+    import eval_local
+    from selrm import runq
+    from selrm.formats import dataset_path
+    rid = spec["run_id"]
+    rdir = f"{a.root}/results/{rid}"
+    log.paths.append(f"{rdir}/run.log")
+    mon.start_run(rdir)
+    t0, model = time.time(), None
+    try:
+        from huggingface_hub import snapshot_download
+        here = os.path.dirname(os.path.abspath(__file__))
+        ms = importlib.util.spec_from_file_location(spec["prm"], f"{here}/prms/{spec['prm']}.py")
+        mod = importlib.util.module_from_spec(ms)
+        ms.loader.exec_module(mod)
+        hf_id, rev = spec.get("hf_id", mod.HF_ID), spec.get("revision", mod.REVISION)
+        mdir = snapshot_download(hf_id, revision=rev, local_dir=f"/work/prm/{hf_id.replace('/', '--')}", max_workers=4)
+        bdir = None
+        if getattr(mod, "BASE_ID", None):
+            bdir = snapshot_download(mod.BASE_ID, revision=mod.BASE_REVISION,
+                                     local_dir=f"/work/prm/{mod.BASE_ID.replace('/', '--')}", max_workers=4)
+        log(f"downloaded {hf_id}@{rev} (base {getattr(mod, 'BASE_ID', None)}) in {time.time() - t0:.0f} s")
+        model, tok = mod.load(mdir, bdir)
+        summ, secs = {}, {}
+        for s in spec["sets"]:
+            root = a.broot if s.startswith("rule_v1") else a.root
+            recs = subset(load_jsonl(dataset_path(root, s)), spec.get("n_groups", 0), tuple(spec.get("claim_types", ["conclusion"])))
+            ts = time.time()
+            u = mod.score(model, tok, recs, batch_size=spec.get("bs", 8), max_new_tokens=spec.get("max_new"), log=log)
+            outs = getattr(mod, "LAST_OUTPUTS", None)
+            name = s.replace("/", "~")
+            os.makedirs(rdir, exist_ok=True)
+            with open(f"{rdir}/scores_{name}.jsonl", "w", encoding="utf-8") as f:
+                for i, (r, x) in enumerate(zip(recs, u)):
+                    row = {"iid": r["iid"], "u": float(x)}
+                    if outs is not None and len(outs) == len(recs):
+                        row["reader_output"] = outs[i]
+                    f.write(json.dumps(row) + "\n")
+            summ[s] = eval_local.summarize(recs, list(u), rid, s)
+            secs[s] = round(time.time() - ts, 1)
+            summ[s]["eval"] = {"seconds": secs[s], "n_records": len(recs), "n_groups": spec.get("n_groups") or "all",
+                               "claim_types": spec.get("claim_types", ["conclusion"])}
+            json.dump(summ[s], open(f"{rdir}/summary_{name}.json", "w"), indent=1)
+            log(f"{rid} {s}: TA {summ[s].get('all', {}).get('TA', float('nan')):.1f} ({secs[s]} s, {len(recs)} records)")
+        vers, gpu = __import__("train_eval_job").versions()
+        meta = {"run_id": rid, "role": "C", "model": hf_id, "model_revision": rev, "base": getattr(mod, "BASE_ID", None),
+                "base_revision": getattr(mod, "BASE_REVISION", None), "prm_module": spec["prm"],
+                "prompt_note": getattr(mod, "PROMPT_NOTE", None), "provider": "local (NRP Nautilus), as released",
+                "access_date": time.strftime("%Y-%m-%d"), "sets": spec["sets"], "n_groups": spec.get("n_groups") or "all",
+                "max_new": spec.get("max_new"), "eval_seconds_by_set": secs, "versions": vers, "gpu": gpu,
+                "node": os.environ.get("NODE_NAME"), "pod": owner, "wall_seconds": round(time.time() - t0, 1),
+                "eval_peak_mem_gb": round(torch.cuda.max_memory_reserved() / 2**30, 2) if torch.cuda.is_available() else None,
+                "summaries": {s: (v or {}).get("all") for s, v in summ.items()}}
+        meta |= mon.end_run()
+        json.dump(meta, open(f"{rdir}/meta.json", "w"), indent=1)
+        runq.release(rdir, ok=True)
+        log(f"DONE {rid} in {meta['wall_seconds'] / 60:.1f} min")
+    except Exception:
+        tb = traceback.format_exc()
+        log(f"FAILED {rid}\n{tb}")
+        runq.release(rdir, ok=False, reason=json.dumps(mon.end_run()) + "\n" + tb)
+        if "CUDA" in tb or "out of memory" in tb:
+            os._exit(2)
+    finally:
+        log.paths = log.paths[:1]
+        model = None
+        gc.collect()
+        import torch
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+
+
 def run_one(spec, a, mon, log, owner):
     import torch
     import eval_local, finetune
@@ -264,7 +355,7 @@ def main():
             log("nothing claimable; exiting")
             break
         log(f"claimed {pick['run_id']}")
-        run_one(pick, a, mon, log, owner)
+        (run_prm if pick.get("prm") else run_one)(pick, a, mon, log, owner)
 
 
 if __name__ == "__main__":
