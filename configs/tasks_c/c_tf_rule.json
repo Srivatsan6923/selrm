@@ -1,6 +1,110 @@
 {
  "runs": [
   {
+   "run_id": "C-TG-critic-dev",
+   "priority": 1,
+   "format": "verdict",
+   "adapter": null,
+   "adapter_run": null,
+   "system": null,
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_dev"
+   ]
+  },
+  {
+   "run_id": "C-TG-promptsum-dev",
+   "priority": 2,
+   "format": "summary2",
+   "adapter": null,
+   "adapter_run": null,
+   "system": null,
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_dev"
+   ],
+   "max_new": 768
+  },
+  {
+   "run_id": "C-TG-promptledger-dev",
+   "priority": 3,
+   "format": "ledger2",
+   "adapter": null,
+   "adapter_run": null,
+   "system": null,
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_dev"
+   ],
+   "max_new": 768,
+   "lenient": true
+  },
+  {
+   "run_id": "C-TG-verdict-blocks-dev",
+   "priority": 4,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s0",
+   "adapter_run": "B-F-verdict-blocks-s0",
+   "system": "verdict_blocks",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_dev"
+   ]
+  },
+  {
+   "run_id": "C-TG-verdict-triplets-dev",
+   "priority": 5,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s0",
+   "adapter_run": "B-F-verdict-triplets-s0",
+   "system": "verdict_triplets",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_dev"
+   ]
+  },
+  {
+   "run_id": "C-TG-ledger2-blocks-dev",
+   "priority": 6,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-blocks-s0",
+   "adapter_run": "B-F-ledger2-blocks-s0",
+   "system": "ledger2_blocks",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_dev"
+   ],
+   "max_new": 384,
+   "lenient": true
+  },
+  {
+   "run_id": "C-TG-ledger2-triplets-dev",
+   "priority": 7,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s0",
+   "adapter_run": "B-F-ledger2-triplets-s0",
+   "system": "ledger2_triplets",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_dev"
+   ],
+   "max_new": 384,
+   "lenient": true
+  },
+  {
+   "run_id": "C-TG-summary2-triplets-dev",
+   "priority": 8,
+   "format": "summary2",
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-triplets-s0",
+   "adapter_run": "B-F-summary2-triplets-s0",
+   "system": null,
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_dev"
+   ],
+   "max_new": 384
+  },
+  {
    "run_id": "C-TF-critic",
    "priority": 10,
    "format": "verdict",
@@ -53,5 +157,6 @@
    ],
    "note": "untrained backbone, frozen reader (prose) and judge prompts"
   }
- ]
+ ],
+ "note": "wave 1: TrialGPT development portion (priority 1-8) and the untrained-backbone rule-tier rows (10, 20); runners re-read this file before every claim"
 }
