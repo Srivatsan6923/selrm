@@ -83,6 +83,27 @@
    "sets": [
     "clin_v1/medeinst_test"
    ]
+  },
+  {
+   "run_id": "C-TF-genprog",
+   "priority": 35,
+   "format": "genprm",
+   "adapter": null,
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gb": 30,
+   "n_groups": 1000,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "rule_v1/test_L2",
+    "rule_v1/test_L3alt",
+    "xr_v1/test"
+   ],
+   "note": "generated-program verifier (Table 4 training-free): untrained backbone with B's GENPRM prompt; the generated check is executed (restricted interpreter) and the answer read after its output; 1,000 groups per set (n/5 per kind), conclusion claims"
   }
  ],
  "note": "needs runner code >= b9b5c9b (nocase); never put such runs in a file older runners read"

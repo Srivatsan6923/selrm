@@ -60,6 +60,8 @@ runs = [{"run_id": "ST-verdict", "priority": 1, "format": "verdict", "adapter": 
          "hp": hp, "bs_score": 8, "bs_gen": 8, "max_new": 16, "sets": sets},
         {"run_id": "ST-nocase", "priority": 4, "format": "verdict", "adapter": None, "base_model": "tiny/qwen35",
          "hp": hp, "bs_score": 8, "nocase": True, "sets": sets},
+        {"run_id": "ST-sub", "priority": 6, "format": "verdict", "adapter": None, "base_model": "tiny/qwen35",
+         "hp": hp, "bs_score": 8, "n_groups": 10, "claim_types": ["conclusion"], "sets": ["rule_v1/dev_missing"]},
         {"run_id": "ST-skipped", "priority": 0, "format": "rationale", "adapter": None, "base_model": "tiny/qwen35",
          "hp": hp, "sets": sets}]
 os.makedirs(f"{croot}/tasks", exist_ok=True)
@@ -91,6 +93,12 @@ tab = ("| need | found | subject | status | time |\n| :--- | :--- | :--- | :--- 
 got = eval_c.lenient_ledger(tab, case)
 assert got and got.count("need:") == 2 and "found: 4.6 mmol/L" in got, got
 assert eval_c.lenient_ledger(tab.replace("4.6", "9.9"), case) is None
+sb = sorted(os.listdir(f"{croot}/results/ST-sub"))
+print("ST-sub", sb)
+assert "scores_rule_v1~dev_missing.jsonl" in sb
+sub_rows = [json.loads(l) for l in open(f"{croot}/results/ST-sub/scores_rule_v1~dev_missing.jsonl", encoding="utf-8")]
+assert sub_rows and all(r["iid"].split("/")[2] == "conclusion" for r in sub_rows)
+assert json.load(open(f"{croot}/results/ST-sub/summary_rule_v1~dev_missing.json"))["subset"]["n_groups"] == 10
 nc = sorted(os.listdir(f"{croot}/results/ST-nocase"))
 print("ST-nocase", nc)
 assert "scores_nocase~rule_v1~dev_missing.jsonl" in nc and "scores_nocase~clin_v1~trialgpt_dev.jsonl" in nc

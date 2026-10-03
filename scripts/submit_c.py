@@ -88,24 +88,14 @@ def wait_running(pod, timeout=600):
 
 
 def push_code():
+    """Snapshot of the committed tree (git archive HEAD of CODE_DIRS): uncommitted files are never pushed."""
     code = sha()
-    dirty = subprocess.run(["git", "-C", REPO, "status", "--porcelain", "--", *CODE_DIRS],
-                           capture_output=True, text=True).stdout.strip()
-    dirty = "\n".join(l for l in dirty.splitlines() if "__pycache__" not in l)
-    if dirty:
-        sys.exit(f"commit first; uncommitted changes:\n{dirty}")
-    buf = io.BytesIO()
-    with tarfile.open(fileobj=buf, mode="w") as tar:
-        for d in CODE_DIRS:
-            tar.add(os.path.join(REPO, d), arcname=d,
-                    filter=lambda ti: None if "__pycache__" in ti.name or ti.name.endswith(".pyc") else ti)
-        data = (code + "\n").encode()
-        ti = tarfile.TarInfo("COMMIT"); ti.size = len(data)
-        tar.addfile(ti, io.BytesIO(data))
+    data = subprocess.run(["git", "-C", REPO, "archive", "--format=tar", "HEAD", *CODE_DIRS],
+                          capture_output=True, check=True).stdout
     dest = f"{ROOT}/code/{code}"
-    exec_sync("sh", "-c", f"mkdir -p {dest}.tmp && tar -xf - -C {dest}.tmp && rm -rf {dest} && mv {dest}.tmp {dest}",
-              inp=buf.getvalue())
-    print(f"code {code} -> {dest} ({len(buf.getvalue())} bytes)")
+    exec_sync("sh", "-c", f"mkdir -p {dest}.tmp && tar -xf - -C {dest}.tmp && echo {code} > {dest}.tmp/COMMIT && "
+                          f"rm -rf {dest} && mv {dest}.tmp {dest}", inp=data)
+    print(f"code {code} -> {dest} ({len(data)} bytes)")
     return code
 
 

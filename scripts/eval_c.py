@@ -274,10 +274,33 @@ def run_one(spec, a, mon, log, owner):
                 summ[s] = rejudge(sc, root, rid, s, f"{a.root}/results/{spec['rejudge_from']}", rdir, log)
                 secs[s] = summ[s]["eval"]["seconds"]
                 continue
+            orig = s
+            if (spec.get("n_groups") or spec.get("claim_types")) and not spec.get("nocase"):
+                # fixed subset (same rule as run_judge.py and the PRM runs); outputs keep the original set name
+                cts = tuple(spec.get("claim_types", ["conclusion", "criterion", "applicability"]))
+                s = f"sub/{spec.get('n_groups', 0)}_{'-'.join(cts)}/{orig}"
+                path = f"{a.root}/data/{s}.jsonl"
+                if not os.path.exists(path):
+                    from selrm.formats import dataset_path
+                    part = subset(load_jsonl(dataset_path(root, orig)), spec.get("n_groups", 0), cts)
+                    os.makedirs(os.path.dirname(path), exist_ok=True)
+                    with open(f"{path}.{os.getpid()}.tmp", "w", encoding="utf-8") as f:
+                        for r in part:
+                            f.write(json.dumps(r) + "\n")
+                    os.replace(f"{path}.{os.getpid()}.tmp", path)
+                root = a.root
             if root == a.root:                    # C's sets: pre-tokenise once, same code and tokenizer as B
                 log(f"{rid} {s} prompts: {build_eval_c(a.root, spec['format'], tag, s, tok)}")
             summ[s] = eval_local.evaluate(sc, root, rid, spec["format"], s, rdir, log, tag, spec.get("mode"))
             secs[s] = summ[s].get("eval", {}).get("seconds")
+            if s != orig and s.startswith("sub/"):
+                for kind in ("scores", "summary"):
+                    ext = "jsonl" if kind == "scores" else "json"
+                    os.replace(f"{rdir}/{kind}_{s.replace('/', '~')}.{ext}", f"{rdir}/{kind}_{orig.replace('/', '~')}.{ext}")
+                summ[orig] = summ.pop(s) | {"set": orig, "subset": {"n_groups": spec.get("n_groups") or "all",
+                                                                    "claim_types": spec.get("claim_types")}}
+                json.dump(summ[orig], open(f"{rdir}/summary_{orig.replace('/', '~')}.json", "w"), indent=1)
+                secs[orig] = secs.pop(s)
         vers, gpu = __import__("train_eval_job").versions()
         meta = {"run_id": rid, "role": "C", "model": spec.get("base_model", "unsloth/Qwen3.5-9B"),
                 "model_revision": open(f"{base}/REVISION").read().strip() if os.path.exists(f"{base}/REVISION") else None,
