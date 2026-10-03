@@ -21,7 +21,7 @@ over FINAL_TASKS_C.md. Branch role-c, clone D:\NAACL27\selrm-role-c. Run freeze:
 
 ## Compute and how runs work
 - NRP namespace ecepxie: own PVC selrm-c (/pvc/selrmc); B's PVC selrm-b read-only at /pvcb. Objects selrm-c-*.
-- Sync pod selrm-c-sync recreated ~16:40 UTC; it expires after 6 h (~22:40 UTC): `python scripts/submit_c.py sync-down`,
+- Sync pod selrm-c-sync recreated 21:51 UTC (3 Oct); it expires after 6 h (~03:50 UTC): `python scripts/submit_c.py sync-down`,
   wait until it is gone, then `sync-up`.
 - Launcher scripts/submit_c.py: sync-up/down, push-code (git archive HEAD), push FILE DEST, sh CMD,
   runner TASKS --gpu {a100,l40,a40,a6000,32gb,24gb} --bcode ac524e8062ef [--code SHA] [--online for PRM runs]
