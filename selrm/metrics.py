@@ -292,29 +292,34 @@ def judgments(records, scores, claim_type="conclusion"):
 
 
 def crossed_accuracy(records, scores, item_of=lambda r: r["meta"]["xr"]["item"], claim_type="conclusion",
-                     cells=6, by="nm_kind"):
+                     cells=6, by="nm_kind", exclude=(), partial=False):
     """XA for rule-side items (xr_v1, A's records: meta.xr.item, nm_kind = dimension): an item
-    (two rules x three cases) is solved iff it has `cells` judgments and every one has d of the
-    sign of the program label (ties fail); also per dimension and per-judgment accuracy.
-    Agrees with A's selrm.xr.crossed_accuracy (its validation copy)."""
+    (two rules x three cases) is solved iff every one of its `cells` judgments has d of the sign
+    of the program label (ties fail; an unparsable answer must arrive as a tie, never dropped);
+    also per dimension and per-judgment accuracy. exclude: item ids left out (A's
+    data/xr_v1/KNOWN_ISSUES.json). An item with fewer judgments raises, unless partial=True,
+    which leaves it out and reports n_incomplete. Agrees with A's selrm.xr.crossed_accuracy."""
     items, oks, dims, skipped = collections.defaultdict(list), [], {}, 0
     for j in judgments(records, scores, claim_type).values():
+        k = item_of(j["rec"])
+        if k in exclude:
+            continue
         if j["y"] == 0:
             skipped += 1
             continue
-        ok = j["d"] * j["y"] > 0
-        k = item_of(j["rec"])
-        items[k].append(ok)
+        items[k].append(j["d"] * j["y"] > 0)
         dims[k] = j["rec"].get(by)
-        oks.append(ok)
-    solved = {k: len(v) == cells and all(v) for k, v in items.items()}
+    incomplete = [k for k, v in items.items() if len(v) != cells]
+    if incomplete and not partial:
+        raise ValueError(f"{len(incomplete)} items lack some of their {cells} judgments, e.g. {incomplete[:3]}")
+    solved = {k: all(v) for k, v in items.items() if len(v) == cells}
+    oks = [ok for k in solved for ok in items[k]]
     pct = lambda xs: 100.0 * sum(xs) / len(xs) if xs else None
     per = collections.defaultdict(list)
     for k, s in solved.items():
         per[dims[k]].append(s)
-    return {"XA": pct(list(solved.values())), "n_items": len(solved),
-            "items_incomplete": sum(len(v) != cells for v in items.values()),
-            "CellAcc": pct(oks), "n_cells": len(oks), "cells_without_label": skipped,
+    return {"XA": pct(list(solved.values())), "n_items": len(solved), "n_incomplete": len(incomplete),
+            "n_excluded": len(set(exclude)), "CellAcc": pct(oks), "n_cells": len(oks), "cells_without_label": skipped,
             **{f"XA_{d}": pct(v) for d, v in sorted(per.items(), key=lambda x: str(x[0]))}}
 
 

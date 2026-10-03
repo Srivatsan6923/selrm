@@ -16,7 +16,7 @@ Runs with these options go in task files that only runners with this code read."
 import argparse, gc, json, os, re, socket, sys, time, traceback
 
 KEYS = ("need", "found", "subject", "status", "time")
-GEN = 4     # runner capability generation: runs with min_gen > GEN are skipped (3: topk, n_groups subsets, budgets; 4: ThinkPRM wrapper)
+GEN = 5     # runner capability generation: runs with min_gen > GEN are skipped (3: topk, n_groups subsets, budgets; 4: ThinkPRM wrapper; 5: xr_v1 subsets keep whole items)
 LENIENT_VERSION = 2      # 2: markdown tables (decided on the development sets, 3 Oct, before any test scoring)
 
 
@@ -147,18 +147,20 @@ def build_eval_c(root, fmt, tag, set_name, tok):
 
 def subset(recs, n=0, claim_types=("conclusion",)):
     """Records of the given claim types; with n, the fixed group subset of scripts/run_judge.py (n / #kinds groups
-    per near-miss kind, random.Random(0) over sorted group ids), so audit rows share their items."""
+    per near-miss kind, random.Random(0) over sorted group ids; an xr_v1 group is an item), so audit rows share
+    their items."""
     import random
     recs = [r for r in recs if r["claim_type"] in claim_types]
     if not n:
         return recs
+    group = lambda r: r["meta"]["xr"]["item"] if "xr" in r.get("meta", {}) else r["tid"]   # xr_v1: an item spans 2 tids
     by = {}
     for r in recs:
-        by.setdefault(r["nm_kind"], set()).add(r["tid"])
+        by.setdefault(r["nm_kind"], set()).add(group(r))
     keep = set()
     for kind in sorted(by):
         keep |= set(random.Random(0).sample(sorted(by[kind]), min(len(by[kind]), n // len(by))))
-    return [r for r in recs if r["tid"] in keep]
+    return [r for r in recs if group(r) in keep]
 
 
 def run_prm(spec, a, mon, log, owner):
