@@ -1,7 +1,7 @@
 # challenge_v1 writing form: author4
 
-Read `challenge_v1/WRITING_GUIDE.md` first. Fill in every field after the colon. Save this file as `challenge_v1/notes_author4.md`.
-40 groups; your second author fills `check_ok` (yes and the fingerprint from `challenge_v1/ASSEMBLY_REPORT.md`, or no) and `check_comment`.
+Read `challenge_v1/WRITING_GUIDE.md` first. Fill in every field after the colon. Save this file as `challenge_v1/notes_author4.md` (UTF-8).
+40 groups. Your second author checks them in this same file: `check_ok` (yes or no, with the fingerprint from `challenge_v1/ASSEMBLY_REPORT.md`) and `check_comment`.
 
 ## c001   (writer: author4; checker: author1)
 

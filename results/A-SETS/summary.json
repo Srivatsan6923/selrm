@@ -24,7 +24,7 @@
    "contrast_allergy": 1,
    "creatinine": 4,
    "diabetes": 2,
-   "egfr": 3,
+   "egfr": 2,
    "heart_rate": 3,
    "hemoglobin": 5,
    "hit": 6,
@@ -49,7 +49,7 @@
   "by_kind": {
    "boundary": 39,
    "negation": 43,
-   "numeric": 53,
+   "numeric": 52,
    "subject": 43,
    "time": 58
   },
@@ -59,14 +59,14 @@
    "window": 4
   },
   "by_type": {
-   "exclusion": 79,
+   "exclusion": 78,
    "inclusion": 17
   },
   "candidates": 294,
   "confirmed_by_both_verifiers": 108,
-  "excluded": 198,
-  "groups": 236,
-  "kept": 96,
+  "excluded": 199,
+  "groups": 235,
+  "kept": 95,
   "kept_as_exclusion_subitems": [
    "k053",
    "k096",
@@ -84,7 +84,7 @@
    "k261",
    "k269"
   ],
-  "records": 1888,
+  "records": 1880,
   "rescued": [
    "k005",
    "k216",
@@ -100,23 +100,23 @@
      "Hold": 100.0,
      "Rev": 0.0,
      "TA": 0.0,
-     "n": 236
+     "n": 235
     },
     "concept_named": {
      "Hold": 0.0,
-     "Rev": 40.67796610169491,
+     "Rev": 40.851063829787236,
      "TA": 0.0,
-     "n": 236
+     "n": 235
     },
     "program": {
      "Hold": 100.0,
      "Rev": 100.0,
      "TA": 100.0,
-     "n": 236
+     "n": 235
     }
    }
   },
-  "trials": 86
+  "trials": 85
  },
  "run_id": "A-SETS",
  "xr_v1": {
