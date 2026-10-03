@@ -7,7 +7,7 @@ Revised plan (lead, 2 Oct evening): only the four key cells are evaluated on eve
 (every seed); every other run on dev, test_L2, dev_missing and missing (B-TR rows add test_L3alt; the new
 experiments and folds use the sets the plan names; diversity curves the reduced sets). priority() encodes the
 run order."""
-import argparse, csv, json, os, re, sys
+import argparse, csv, glob, json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FMTS = ("verdict", "rationale", "summary2", "value2", "ledger2")
@@ -24,6 +24,7 @@ CLINICAL_CELLS = {("verdict", "triplets"), ("summary2", "triplets"), ("rationale
 
 
 CORE_CELLS = {(f, c) for f in ("verdict", "summary2", "ledger2") for c in ("blocks", "triplets")}
+NEW_FAMILIES = ("xr_v1", "challenge_v1", "rewrite_v1", "ec_v1")     # A's new sets (FINAL_TASKS_B P0.6)
 ABL_ORDER = ("decfield", "bitonly-judge", "bitonly-reader", "conddrv", "verify", "concept", "premise-gate", "probe-rw",
              "nopres", "noresamp", "pairwise")       # FINAL_TASKS_B P1 order
 
@@ -261,6 +262,50 @@ def newexp(seeds, registry, version):
     return sorted(runs, key=lambda r: r["priority"])
 
 
+def new_sets(registry):
+    """A's frozen evaluation sets of the new families, as registered so far."""
+    reg = json.load(open(registry))
+    return sorted(n for n, v in reg.items()
+                  if n.split("/")[0] in NEW_FAMILIES and v.get("frozen") and v.get("split") != "train")
+
+
+def with_new_sets(runs, registry):
+    """Training runs (not folds or diversity curves) also evaluate on the registered new sets and keep their
+    adapter, so that sets A registers later are scored by B-NS eval-only runs (FINAL_TASKS_B P0.6)."""
+    ns = new_sets(registry)
+    for r in runs:
+        if r.get("train", True) and not r["run_id"].startswith(("B-FOLD", "B-DIV", "B-C0", "B-T0")):
+            r["eval_sets"] = r["eval_sets"] + [s for s in ns if s not in r["eval_sets"]]
+            r["keep_adapter"] = True
+    return runs
+
+
+def ns_eval(registry, adapters):
+    """B-NS-<family>-<run>: eval-only runs of kept adapters on each new-set family their run did not evaluate.
+    adapters: run_ids with an adapter on the PVC; their specs come from configs/queues."""
+    specs = {}
+    for p in sorted(glob.glob(f"{ROOT}/configs/queues/**/*.json", recursive=True)):
+        specs.update({r["run_id"]: r for r in json.load(open(p))["runs"]})
+    fams = {}
+    for s in new_sets(registry):
+        fams.setdefault(s.split("/")[0], []).append(s)
+    runs = []
+    for src in sorted(adapters):
+        spec = specs.get(src, {})
+        meta = f"{ROOT}/results_git/{src}/meta.json"     # what the run did: done runs leave the queue files, and a
+        if os.path.exists(meta):                          # runner may have claimed a run before its spec changed
+            m = json.load(open(meta))
+            spec = spec | {k: m[k] for k in ("format", "seed", "eval_sets")} | {"base_model": m["model"]}
+        for fam, sets in sorted(fams.items()):
+            if set(sets) <= set(spec.get("eval_sets", [])):
+                continue
+            rid = f"B-NS-{fam}-{src}"
+            runs.append({"run_id": rid, "seed": spec["seed"], "priority": priority(rid, 0), "format": spec["format"],
+                         "train": False, "adapter": f"adapters/{src}", "eval": dict(EVAL), "eval_sets": sets}
+                        | {k: spec[k] for k in ("base_model", "min_gen", "kind") if k in spec})
+    return runs
+
+
 def summary_case(registry, version):
     """FINAL_TASKS_B P0.4: the summary pipeline whose judge also sees the case, on triplets (B-SC-summary2-triplets-s0)."""
     return [{"run_id": "B-SC-summary2-triplets-s0", "seed": 0, "priority": priority("B-SC-summary2-triplets-s0", 0),
@@ -270,7 +315,7 @@ def summary_case(registry, version):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("kind", choices=["smoke", "factorial", "transfer", "extras", "backbones", "probe_rw", "critic",
+    ap.add_argument("kind", choices=["smoke", "factorial", "transfer", "extras", "backbones", "probe_rw", "critic", "ns",
                                      "newexp", "summary_case"])
     ap.add_argument("out")
     ap.add_argument("--seeds", default="0")
@@ -278,6 +323,7 @@ def main():
     ap.add_argument("--version", default="rule_v1")
     ap.add_argument("--key_only", action="store_true", help="factorial: the four key cells only")
     ap.add_argument("--runs", default="", help="keep run_ids matching this regex")
+    ap.add_argument("--adapters", default="", help="ns: comma list of run_ids with an adapter on the PVC")
     a = ap.parse_args()
     seeds = {int(s) for s in a.seeds.split(",")}
     gen = {"smoke": lambda: smoke(),
@@ -288,8 +334,9 @@ def main():
            "probe_rw": lambda: probe_rw(a.version),
            "critic": lambda: critic(a.registry, a.version),
            "newexp": lambda: newexp(seeds, a.registry, a.version),
-           "summary_case": lambda: summary_case(a.registry, a.version)}
-    runs = [r for r in gen[a.kind]() if re.search(a.runs, r["run_id"])]
+           "summary_case": lambda: summary_case(a.registry, a.version),
+           "ns": lambda: ns_eval(a.registry, a.adapters.split(","))}
+    runs = [r for r in with_new_sets(gen[a.kind](), a.registry) if re.search(a.runs, r["run_id"])]
     newer = [r["run_id"] for r in runs if r.get("min_gen", 0) >= 2]   # runners staged before 2 Oct 13:00 read the top level
     if newer and "v2" not in os.path.normpath(os.path.abspath(a.out)).split(os.sep):
         sys.exit(f"{newer} need runner code from 2 Oct 13:00 UTC on: write them under configs/queues/v2/ (docs/NRP_B.md)")

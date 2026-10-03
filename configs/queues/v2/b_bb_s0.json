@@ -8,7 +8,7 @@
    "n_examples": 60000,
    "base_model": "unsloth/Qwen3.5-4B",
    "priority": 85,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -16,7 +16,8 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2"
+    "rule_v1/test_L2",
+    "xr_v1/test"
    ]
   },
   {
@@ -27,7 +28,7 @@
    "n_examples": 60000,
    "base_model": "unsloth/Qwen3.5-4B",
    "priority": 85,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -35,7 +36,8 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2"
+    "rule_v1/test_L2",
+    "xr_v1/test"
    ]
   },
   {
@@ -46,7 +48,7 @@
    "n_examples": 60000,
    "base_model": "unsloth/Qwen3.5-4B",
    "priority": 85,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -54,7 +56,8 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2"
+    "rule_v1/test_L2",
+    "xr_v1/test"
    ]
   }
  ]

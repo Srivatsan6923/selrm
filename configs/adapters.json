@@ -65,6 +65,56 @@
    "license": "MIT",
    "verified": "2026-10-02 via https://huggingface.co/api/models/dmis-lab/llama-3.1-medprm-reward-v1.0",
    "note": "ROLE.md B-PRM fallback: MedPRMBench (arXiv 2604.17282) has no public data release as of 2026-10-02 (no Hugging Face or GitHub data link found), so no injected-error PRM is trained; the released Med-PRM serves as the step check"
+  },
+  "B-F-verdict-blocks-s2": {
+   "run_id": "B-F-verdict-blocks-s2",
+   "path": null,
+   "status": "DONE (seed 2); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v1/train_blocks",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-F-verdict-blocks-s2"
+  },
+  "B-F-summary2-blocks-s0": {
+   "run_id": "B-F-summary2-blocks-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "summary2",
+   "corpus": "rule_v1/train_blocks",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-F-summary2-blocks-s0"
+  },
+  "B-F-verdict-triplets-s1": {
+   "run_id": "B-F-verdict-triplets-s1",
+   "path": null,
+   "status": "DONE (seed 1); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v1/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-F-verdict-triplets-s1"
+  },
+  "B-F-summary2-blocks-s2": {
+   "run_id": "B-F-summary2-blocks-s2",
+   "path": null,
+   "status": "DONE (seed 2); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "summary2",
+   "corpus": "rule_v1/train_blocks",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-F-summary2-blocks-s2"
+  },
+  "B-F-verdict-blocks-s1": {
+   "run_id": "B-F-verdict-blocks-s1",
+   "path": null,
+   "status": "DONE (seed 1); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v1/train_blocks",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-F-verdict-blocks-s1"
   }
  }
 }

@@ -1,0 +1,31 @@
+"""Add every finished run whose adapter is kept on the PVC to configs/adapters.json (for C and D).
+A run counts when results_git/<run>/ has DONE and its meta.json says keep_adapter; existing systems keep their
+names, new ones are named by run_id. Idempotent.
+  python scripts/register_adapters.py"""
+import glob, json, os
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def main():
+    p = f"{ROOT}/configs/adapters.json"
+    reg = json.load(open(p, encoding="utf-8"))
+    known = {v.get("run_id") for v in reg["systems"].values()}
+    added = []
+    for meta in sorted(glob.glob(f"{ROOT}/results_git/B-*/meta.json")):
+        d = os.path.dirname(meta)
+        m = json.load(open(meta, encoding="utf-8"))
+        rid = m["run_id"]
+        if (rid in known or rid.startswith(("B-C0", "B-T0")) or not m.get("keep_adapter") or not m.get("adapter_path")
+                or not os.path.exists(f"{d}/DONE")):
+            continue
+        reg["systems"][rid] = {"run_id": rid, "path": None, "status": f"DONE (seed {m['seed']}); on the PVC",
+                               "base_model": f"{m['model']}@{m['model_revision']}", "format": m["format"],
+                               "corpus": m["corpus"], "pvc": "selrm-b", "pvc_path": f"selrm/adapters/{rid}"}
+        added.append(rid)
+    open(p, "w", encoding="utf-8", newline="\n").write(json.dumps(reg, indent=1, ensure_ascii=False) + "\n")
+    print(f"{len(added)} added: {', '.join(added)}")
+
+
+if __name__ == "__main__":
+    main()
