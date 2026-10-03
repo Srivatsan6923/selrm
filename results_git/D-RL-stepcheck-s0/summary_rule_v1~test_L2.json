@@ -1,0 +1,40 @@
+{
+ "run_id": "D-RL-stepcheck-s0",
+ "set": "rule_v1/test_L2",
+ "metric": "accuracy of the chosen claim by the rule program",
+ "n_triplets": 150,
+ "start": {
+  "base": 90.0,
+  "flip": 98.0,
+  "near": 92.0,
+  "all": 93.33333333333333,
+  "pair": 88.0,
+  "triplet": 85.33333333333333
+ },
+ "final": {
+  "base": 47.333333333333336,
+  "flip": 90.66666666666667,
+  "near": 41.333333333333336,
+  "all": 59.77777777777778,
+  "pair": 38.666666666666664,
+  "triplet": 24.0
+ },
+ "top": null,
+ "final_step": 1000,
+ "from_files": [
+  "eval_step0.jsonl",
+  "eval_step1000.jsonl"
+ ],
+ "acc_base": 47.333333333333336,
+ "acc_flip": 90.66666666666667,
+ "acc_near": 41.333333333333336,
+ "acc_all": 59.77777777777778,
+ "acc_pair": 38.666666666666664,
+ "acc_triplet": 24.0,
+ "start_base": 90.0,
+ "start_flip": 98.0,
+ "start_near": 92.0,
+ "start_all": 93.33333333333333,
+ "start_pair": 88.0,
+ "start_triplet": 85.33333333333333
+}
