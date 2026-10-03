@@ -5,7 +5,8 @@ Kubernetes objects as JSON and applies them with kubectl.
   python scripts/submit_d.py sync-up | sync-down       # small CPU pod for copies (<= 6 h)
   python scripts/submit_d.py push-code                 # code snapshot -> /pvc/code/<sha12>
   python scripts/submit_d.py build-env TAG             # CPU Job: env tarball (k8s/build_env_d.sh)
-  python scripts/submit_d.py gpu NAME --gpu a40 --hours 6 -- scripts/make_pool.py --pool medqa_test ...
+  python scripts/submit_d.py gpu NAME --gpu a40 --hours 6 [--models DIR,DIR] -- scripts/make_pool.py ...
+  python scripts/submit_d.py cpu NAME --mem 64Gi --hours 2 -- scripts/merge_adapter.py ...
   python scripts/submit_d.py pull REMOTE LOCAL         # copy a result directory from the PVC
   python scripts/submit_d.py ls [PATH]
 
@@ -79,11 +80,11 @@ def cpu_job(name, command, cpu=8, mem="32Gi", eph="80Gi", hours=2):
     return job(name, pod, hours, "cpu")
 
 
-def gpu_job(name, code, env_tag, gpu, hours, args, cpu=4, mem="40Gi", models=("unsloth--Qwen3.5-9B",)):
+def gpu_job(name, code, env_tag, gpu, hours, args, cpu=4, mem="40Gi", models=("/pvcb/selrm/models/unsloth--Qwen3.5-9B",)):
     resource, products = GPU[gpu]
     terms = [DRIVER] + ([{"key": "nvidia.com/gpu.product", "operator": "In", "values": products}] if products else [])
     stage = (f"set -e; tar -xf /pvc/env/selrm-d-env-{env_tag}.tar -C /opt; cp -r /pvc/code/{code} /work/code; "
-             "mkdir -p /work/models; " + " ".join(f"cp -r /pvcb/selrm/models/{m} /work/models/;" for m in models)
+             "mkdir -p /work/models; " + " ".join(f"cp -r {m} /work/models/;" for m in models if m)
              + " echo staged")
     work = [{"name": "work", "mountPath": "/work"}, {"name": "env", "mountPath": "/opt/selrm-env"}]
     pod = {"restartPolicy": "Never", "affinity": affinity(terms),
@@ -123,6 +124,9 @@ def main():
     ap.add_argument("--hours", type=float, default=6)
     ap.add_argument("--env", default="v1")
     ap.add_argument("--code", default=None)
+    ap.add_argument("--models", default=None, help="comma-separated dirs copied to /work/models (gpu)")
+    ap.add_argument("--cpu", type=int, default=8)
+    ap.add_argument("--mem", default="32Gi")
     a, extra = ap.parse_known_args()
     if a.cmd == "pvc":
         apply({"apiVersion": "v1", "kind": "PersistentVolumeClaim",
@@ -149,7 +153,15 @@ def main():
                       hours=2))
     elif a.cmd == "gpu":
         name, args = a.rest[0], a.rest[1:] + extra
-        apply(gpu_job(f"selrm-d-{name}-{int(time.time()) % 100000}", a.code or sha(), a.env, a.gpu, a.hours, args))
+        models = a.models.split(",") if a.models is not None else ("/pvcb/selrm/models/unsloth--Qwen3.5-9B",)
+        apply(gpu_job(f"selrm-d-{name}-{int(time.time()) % 100000}", a.code or sha(), a.env, a.gpu, a.hours, args,
+                      models=models))
+    elif a.cmd == "cpu":        # a python script of the code snapshot, in the env, on a CPU node
+        name, args, code = a.rest[0], a.rest[1:] + extra, a.code or sha()
+        cmd = (f"set -e; tar -xf /pvc/env/selrm-d-env-{a.env}.tar -C /opt; cd /pvc/code/{code}; "
+               "/opt/selrm-env/venv/bin/python -u " + " ".join(args))
+        apply(cpu_job(f"selrm-d-{name}-{int(time.time()) % 100000}", ["sh", "-c", cmd], cpu=a.cpu, mem=a.mem,
+                      hours=a.hours))
     elif a.cmd == "pull":
         remote, local = a.rest
         os.makedirs(local, exist_ok=True)
