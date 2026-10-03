@@ -185,10 +185,12 @@ def make_stepcheck_reward(medprm_dir, recs_by_iid, device="cuda:1"):
 
 # ------------------------------------------------------------------ evaluation by the rule program
 def evaluate(model, tok, items, max_new=512, bs=32):
+    """Greedy answers judged by the rule program's labels: accuracy per case kind, on base-flip pairs
+    (both right; v13's policy-training metric) and on whole triplets."""
     import torch
     model.eval()
     tok.padding_side = "left"
-    right = {"base": [], "flip": [], "near": []}
+    per = {}
     for i in range(0, len(items), bs):
         batch = items[i:i + bs]
         texts = [tok.apply_chat_template(x["prompt"], tokenize=False, add_generation_prompt=True,
@@ -197,10 +199,13 @@ def evaluate(model, tok, items, max_new=512, bs=32):
         with torch.no_grad():
             gen = model.generate(**enc, max_new_tokens=max_new, do_sample=False)
         for x, g in zip(batch, gen[:, enc["input_ids"].shape[1]:]):
-            right[x["case_kind"]].append(answer(tok.decode(g, skip_special_tokens=True)) == x["gold"])
+            per.setdefault(x["tid"], {})[x["case_kind"]] = answer(tok.decode(g, skip_special_tokens=True)) == x["gold"]
     model.train()
-    acc = {k: 100.0 * sum(v) / len(v) for k, v in right.items() if v}
-    acc["all"] = 100.0 * sum(sum(v) for v in right.values()) / sum(len(v) for v in right.values())
+    pct = lambda xs: 100.0 * sum(xs) / len(xs) if xs else None
+    acc = {k: pct([t[k] for t in per.values() if k in t]) for k in ("base", "flip", "near")}
+    acc["all"] = pct([v for t in per.values() for v in t.values()])
+    acc["pair"] = pct([t["base"] and t["flip"] for t in per.values() if {"base", "flip"} <= set(t)])
+    acc["triplet"] = pct([all(t.values()) for t in per.values() if len(t) == 3])
     return acc
 
 
@@ -219,6 +224,8 @@ def main():
     ap.add_argument("--ledger-model", dest="ledger_model", default=None)
     ap.add_argument("--medprm", default=None)
     ap.add_argument("--overfit", type=int, default=0, help="train on this many prompts only (64: setup check)")
+    ap.add_argument("--smoke", action="store_true", help="plumbing check on CPU with a small policy: groups of 4, "
+                                                          "32-token completions; never a result")
     a = ap.parse_args()
     import torch
     from datasets import Dataset
@@ -248,9 +255,10 @@ def main():
     tok = AutoTokenizer.from_pretrained(a.policy)
     cfg = GRPOConfig(output_dir=os.path.join(a.out, "ckpt"), seed=a.seed, max_steps=a.steps, learning_rate=1e-5,
                      # 16 x 4 = 64 completions per optimiser step = 8 prompts x group of 8
-                     per_device_train_batch_size=16, gradient_accumulation_steps=4, num_generations=8,
-                     max_completion_length=512, temperature=1.0, beta=0.0, logging_steps=10, save_steps=a.steps,
-                     bf16=True, report_to=[], chat_template_kwargs={"enable_thinking": False},
+                     per_device_train_batch_size=4 if a.smoke else 16, gradient_accumulation_steps=1 if a.smoke else 4,
+                     num_generations=4 if a.smoke else 8, max_completion_length=32 if a.smoke else 512,
+                     temperature=1.0, beta=0.0, logging_steps=1 if a.smoke else 10, save_steps=a.steps,
+                     bf16=not a.smoke, report_to=[], chat_template_kwargs={"enable_thinking": False},
                      model_init_kwargs={"dtype": torch.bfloat16}, remove_unused_columns=False)
     curve = []
 
@@ -258,7 +266,7 @@ def main():
         def on_step_end(self, args, state, control, model=None, **kw):
             if state.global_step % a.eval_every == 0 or state.global_step == a.steps:
                 rew = [h.get("reward") for h in state.log_history[-max(1, a.eval_every // 10):] if "reward" in h]
-                acc = evaluate(model, tok, ev)
+                acc = evaluate(model, tok, ev, *((32, 4) if a.smoke else ()))
                 row = {"step": state.global_step, "reward": sum(rew) / len(rew) if rew else None} | acc
                 curve.append(row)
                 with open(os.path.join(a.out, "curve.jsonl"), "a", encoding="utf-8") as f:
@@ -271,7 +279,7 @@ def main():
                           peft_config=LoraConfig(r=16, lora_alpha=32, lora_dropout=0.0, task_type="CAUSAL_LM",
                                                  target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj",
                                                                  "up_proj", "down_proj"]))
-    start = evaluate(trainer.model, tok, ev)
+    start = evaluate(trainer.model, tok, ev, *((32, 4) if a.smoke else ()))
     curve.insert(0, {"step": 0, "reward": None} | start)
     trainer.train()
     final = curve[-1]
@@ -282,7 +290,7 @@ def main():
               open(os.path.join(a.out, "summary_rule_v1~test_L2.json"), "w", encoding="utf-8"), indent=1)
     json.dump({"run_id": run_id, "reward": a.reward, "policy": a.policy, "seed": a.seed, "steps": a.steps,
                "train_tasks": len(tr), "eval_tasks": len(ev), "group_size": 8, "lora_r": 16, "lr": 1e-5,
-               "wall_seconds": round(time.time() - t0, 1), "gpu": torch.cuda.get_device_name(0)},
+               "wall_seconds": round(time.time() - t0, 1), "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu"},
               open(os.path.join(a.out, "meta.json"), "w", encoding="utf-8"), indent=1)
     open(os.path.join(a.out, "DONE"), "w").close()
 
