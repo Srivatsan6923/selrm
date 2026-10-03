@@ -1,5 +1,5 @@
 # STATE role D (lead; maintained by the D session)
-Updated: 2026-10-03 ~12:35 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
+Updated: 2026-10-03 ~19:10 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
 
 ## Where D works
 - Clone `D:/NAACL27/selrm-role-d` (github Srivatsan6923/selrm): D's work on `role-d`; publish with
@@ -28,19 +28,25 @@ Updated: 2026-10-03 ~12:35 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo roo
 - Pools: all five done and pulled (D:/NAACL27/d_pools, checksummed); selection committed: D-CAL, D-POOL-*,
   D-SEL-* (sel/medqa, careqa, medeinst, keypairs), D-SEL-comparisons.json, D-SELN (curve). Re-run (deterministic):
   python scripts/select_eval.py --pools D:/NAACL27/d_pools/pools --scores D:/NAACL27/d_pools/scores --out results_git
-  When B-TR-tripclin-s0 exists: merge + validate it, score every pool with it (pipeline scorer to add:
-  ledger2-tripclin and its swap), Table 5 rows switch to it (DECISIONS_D 3 Oct).
-- GRPO (ROLE.md: Qwen3.5-4B LoRA; rewards outcome, refgraph, stepcheck, ledger2-blocks, ledger2-triplets; group 8):
-  setup check passed (results_git/D-RL-setup-outcome: 64-prompt overfit, ~26 s/step on H100; untrained policy at
-  89.3% on held-out pairs). Queued on h100-opp, seed 0, 1,000 steps (k8s/grpo_d.sh; checkpoint + resume every 200):
-  selrm-d-grpo-{outcome,refgraph,stepcheck}-s0-*; ledger2-{blocks,triplets} (2 GPUs each) after the pools.
-  Outputs /pvc/grpo/D-RL-<reward>-s0 -> pull (without ckpt/) into results_git/.
-- Sync pod selrm-d-sync recreated 09:25 UTC (expires ~15:25 UTC; `submit_d.py sync-down` then `sync-up`);
-  the central sync pod is deleted (all pools run in the west).
+- Clinical-pairs ledger (Table 5 caption): when B-TR-tripclin-s0 is DONE with its adapter on B's PVC, run
+  `submit_d.py gpu tripclin --gpu h100-opp --models "" --gpu-mem 64Gi --hours 10 -- k8s/tripclin_d.sh 1`
+  (merge, validation with the fixed criteria, then every pool + swaps + key-pair extension), pull the scores, then
+  `select_eval.py ... --ledger tripclin` (rows -rule keep the rule-only model; DECISIONS_D 3 Oct).
+- GRPO (D-RL-*, seed 0, 1,000 steps, Qwen3.5-4B LoRA, group 8; k8s/grpo_d.sh): committed outcome (pairs 88.7 ->
+  96.7) and stepcheck (88.0 -> 38.7, exploited); refgraph running (step 800); ledger2-triplets and ledger2-blocks
+  running since ~18:40 UTC on one H100 each (ledger server on the same GPU: server 32%, rollouts 22%,
+  --max-num-seqs 256), about 20 s/step. Finished runs started before per-example outputs need
+  `k8s/grpo_d.sh <reward> <run> --eval-from base /pvc/grpo/<run>/ckpt/checkpoint-1000` (24 GB GPU), then pull with
+  `submit_d.py pull /pvc/grpo/<run> D:/NAACL27/d_pools/grpo --exclude ckpt` and copy summary, curve, groups, meta,
+  eval_step*.jsonl, DONE into results_git/<run>. Ledger runs write eval_step*.jsonl themselves.
+- Claims audit of v13: docs/CLAIMS_AUDIT.md (872 statements; 98 contradicted, 50 partly; read main.tex at c43e751).
+- Sync pod selrm-d-sync recreated 16:45 UTC (expires ~22:45 UTC; `submit_d.py sync-down` then `sync-up`).
 - Lessons: cross-region CephFS reads ~5 MB/s (jobs require their PVC's region); vLLM needs
   VLLM_USE_FLASHINFER_SAMPLER=0; transformers 5 apply_chat_template(tokenize=True) returns a dict (tokenise the
   rendered text); argparse keeps '--' (the launcher strips it); a pod mounting the same PVC twice (rw + ro) hung in
-  ContainerCreating (central mounts once); opportunistic H100s (priorityClassName opportunistic) are usable.
+  ContainerCreating; opportunistic H100s are usable; a ~30 MB raw tar through kubectl exec was cut short (pull now
+  packs, checksums and retries); Qwen3.5 LoRA checkpoints from TRL need the image-text class to load (the text-only
+  class silently ignores the adapter); in Git Bash export MSYS_NO_PATHCONV=1 before kubectl exec with /pvc paths.
 ## Next
 1. When a pool's scores exist: `submit_d.py pull /pvc/pools/<pool> <local>` and /pvc/scores/<pool> (central:
    --site central), run select_eval.py (D-CAL needs medqa_dev; medqa_kp gives sel/keypairs and D-SELN), then
