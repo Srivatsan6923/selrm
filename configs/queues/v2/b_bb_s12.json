@@ -1,12 +1,12 @@
 {
  "runs": [
   {
-   "run_id": "B-BB-non-qwen-4to9b-verdict-blocks-s1",
+   "run_id": "B-BB-qwen3.5-4b-verdict-blocks-s1",
    "format": "verdict",
    "corpus": "rule_v1/train_blocks",
    "seed": 1,
    "n_examples": 60000,
-   "base_model": "unsloth/granite-4.1-8b",
+   "base_model": "unsloth/Qwen3.5-4B",
    "priority": 95,
    "keep_adapter": false,
    "eval": {
@@ -20,12 +20,12 @@
    ]
   },
   {
-   "run_id": "B-BB-non-qwen-4to9b-verdict-blocks-s2",
+   "run_id": "B-BB-qwen3.5-4b-verdict-blocks-s2",
    "format": "verdict",
    "corpus": "rule_v1/train_blocks",
    "seed": 2,
    "n_examples": 60000,
-   "base_model": "unsloth/granite-4.1-8b",
+   "base_model": "unsloth/Qwen3.5-4B",
    "priority": 95,
    "keep_adapter": false,
    "eval": {
@@ -39,12 +39,12 @@
    ]
   },
   {
-   "run_id": "B-BB-non-qwen-4to9b-verdict-triplets-s1",
+   "run_id": "B-BB-qwen3.5-4b-verdict-triplets-s1",
    "format": "verdict",
    "corpus": "rule_v1/train_triplets",
    "seed": 1,
    "n_examples": 60000,
-   "base_model": "unsloth/granite-4.1-8b",
+   "base_model": "unsloth/Qwen3.5-4B",
    "priority": 95,
    "keep_adapter": false,
    "eval": {
@@ -58,12 +58,12 @@
    ]
   },
   {
-   "run_id": "B-BB-non-qwen-4to9b-verdict-triplets-s2",
+   "run_id": "B-BB-qwen3.5-4b-verdict-triplets-s2",
    "format": "verdict",
    "corpus": "rule_v1/train_triplets",
    "seed": 2,
    "n_examples": 60000,
-   "base_model": "unsloth/granite-4.1-8b",
+   "base_model": "unsloth/Qwen3.5-4B",
    "priority": 95,
    "keep_adapter": false,
    "eval": {
@@ -77,12 +77,12 @@
    ]
   },
   {
-   "run_id": "B-BB-non-qwen-4to9b-ledger2-blocks-s1",
+   "run_id": "B-BB-qwen3.5-4b-ledger2-blocks-s1",
    "format": "ledger2",
    "corpus": "rule_v1/train_blocks",
    "seed": 1,
    "n_examples": 60000,
-   "base_model": "unsloth/granite-4.1-8b",
+   "base_model": "unsloth/Qwen3.5-4B",
    "priority": 95,
    "keep_adapter": false,
    "eval": {
@@ -96,12 +96,12 @@
    ]
   },
   {
-   "run_id": "B-BB-non-qwen-4to9b-ledger2-blocks-s2",
+   "run_id": "B-BB-qwen3.5-4b-ledger2-blocks-s2",
    "format": "ledger2",
    "corpus": "rule_v1/train_blocks",
    "seed": 2,
    "n_examples": 60000,
-   "base_model": "unsloth/granite-4.1-8b",
+   "base_model": "unsloth/Qwen3.5-4B",
    "priority": 95,
    "keep_adapter": false,
    "eval": {
@@ -115,12 +115,12 @@
    ]
   },
   {
-   "run_id": "B-BB-non-qwen-4to9b-ledger2-triplets-s1",
+   "run_id": "B-BB-qwen3.5-4b-ledger2-triplets-s1",
    "format": "ledger2",
    "corpus": "rule_v1/train_triplets",
    "seed": 1,
    "n_examples": 60000,
-   "base_model": "unsloth/granite-4.1-8b",
+   "base_model": "unsloth/Qwen3.5-4B",
    "priority": 95,
    "keep_adapter": false,
    "eval": {
@@ -134,12 +134,12 @@
    ]
   },
   {
-   "run_id": "B-BB-non-qwen-4to9b-ledger2-triplets-s2",
+   "run_id": "B-BB-qwen3.5-4b-ledger2-triplets-s2",
    "format": "ledger2",
    "corpus": "rule_v1/train_triplets",
    "seed": 2,
    "n_examples": 60000,
-   "base_model": "unsloth/granite-4.1-8b",
+   "base_model": "unsloth/Qwen3.5-4B",
    "priority": 95,
    "keep_adapter": false,
    "eval": {

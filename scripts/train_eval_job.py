@@ -17,8 +17,9 @@ BASE = "unsloth/Qwen3.5-9B"
 PKGS = ("torch", "transformers", "unsloth", "unsloth_zoo", "trl", "peft", "accelerate",
         "flash-linear-attention", "fla-core", "causal-conv1d", "triton", "numpy")
 # Runner code generation. A spec that needs runner-side behaviour newer than some running pods carries
-# "min_gen"; bump GEN in every commit that adds such behaviour (2: genprm format, ledger_edit mode, this check).
-GEN = 2
+# "min_gen"; bump GEN in every commit that adds such behaviour (2: genprm format, ledger_edit mode, this check;
+# 3: conddrv, one reader output per claim).
+GEN = 3
 
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
