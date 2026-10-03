@@ -1,0 +1,5 @@
+2026-10-03T10:52:55Z eval only: base /work/models/unsloth--Qwen3.5-9B, adapter /pvc/selrm/adapters/B-F-verdict-blocks-s2
+2026-10-03T10:52:57Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0489)
+2026-10-03T10:52:58Z padding self-check: max |u_batch - u_single| = 0.3217 (tol 0.900) -> left padding
+2026-10-03T10:54:25Z B-NS-xr_v1-B-F-verdict-blocks-s2 xr_v1/test: TA nan Rev nan Hold nan n=None (89.4 s)
+2026-10-03T10:54:26Z DONE B-NS-xr_v1-B-F-verdict-blocks-s2 in 2.3 min, GPU util mean 75.2

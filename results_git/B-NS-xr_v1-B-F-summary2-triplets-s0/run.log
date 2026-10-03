@@ -1,0 +1,5 @@
+2026-10-03T10:49:04Z eval only: base /work/models/unsloth--Qwen3.5-9B, adapter /pvc/selrm/adapters/B-F-summary2-triplets-s0
+2026-10-03T10:49:05Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0278)
+2026-10-03T10:49:07Z padding self-check: max |u_batch - u_single| = 0.0699 (tol 0.615) -> left padding
+2026-10-03T10:52:18Z B-NS-xr_v1-B-F-summary2-triplets-s0 xr_v1/test: TA nan Rev nan Hold nan n=None (193.0 s)
+2026-10-03T10:52:18Z DONE B-NS-xr_v1-B-F-summary2-triplets-s0 in 3.7 min, GPU util mean 68.1

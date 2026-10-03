@@ -248,3 +248,33 @@ Swap in the ledger of another case (same rule, condition and claim): the judge r
 
 Case-visible minus blind summary judge, TA: +0.8 [+0.1, +1.5], p 0.024; ledger minus case-visible summary judge, TA: +0.4 [-0.3, +1.1], p 0.290.
 
+## 12. Rule-side items (xr_v1/test; A's set, 400 items = 2 rules x 3 cases; conclusion claims)
+
+An item is solved iff all its cells are right (crossed accuracy XA, selrm.metrics.crossed_accuracy; B-NS runs score a kept adapter, other runs evaluated the set themselves).
+
+| run | XA | cell accuracy | XA currency | XA inclusivity | XA subject | XA window |
+|---|---|---|---|---|---|---|
+| B-F-ledger2-blocks-s1 | 37.8 | 87.0 | 46.0 | 28.0 | 25.0 | 52.0 |
+| B-F-ledger2-triplets-s1 | 88.8 | 98.0 | 100.0 | 100.0 | 87.0 | 68.0 |
+| B-F-ledger2-triplets-s2 | 91.5 | 98.6 | 99.0 | 100.0 | 100.0 | 67.0 |
+| B-F-summary2-blocks-s2 | 62.5 | 93.8 | 92.0 | 12.0 | 95.0 | 51.0 |
+| B-F-summary2-triplets-s1 | 92.5 | 98.8 | 100.0 | 100.0 | 99.0 | 71.0 |
+| B-F-summary2-triplets-s2 | 90.2 | 98.4 | 100.0 | 100.0 | 100.0 | 61.0 |
+| B-LOKO-boundary-verdict-s0 | 83.0 | 96.0 | 100.0 | 97.0 | 100.0 | 35.0 |
+| B-LOKO-subject-ledger2-s0 | 90.8 | 98.5 | 98.0 | 100.0 | 91.0 | 74.0 |
+| B-LOKO-subject-summary2-s0 | 91.5 | 98.6 | 100.0 | 100.0 | 100.0 | 66.0 |
+| B-LOKO-subject-verdict-s0 | 69.8 | 94.5 | 100.0 | 99.0 | 33.0 | 47.0 |
+| B-LOKO-time-ledger2-s0 | 84.2 | 97.4 | 100.0 | 100.0 | 79.0 | 58.0 |
+| B-LOKO-time-summary2-s0 | 91.2 | 98.5 | 100.0 | 100.0 | 100.0 | 65.0 |
+| B-LOKO-time-verdict-s0 | 80.5 | 95.3 | 96.0 | 100.0 | 100.0 | 26.0 |
+| B-NS-xr_v1-B-F-ledger2-blocks-s0 | 76.0 | 96.0 | 100.0 | 74.0 | 68.0 | 62.0 |
+| B-NS-xr_v1-B-F-ledger2-triplets-s0 | 89.8 | 98.3 | 93.0 | 100.0 | 98.0 | 68.0 |
+| B-NS-xr_v1-B-F-rationale-triplets-s0 | 92.8 | 98.5 | 100.0 | 100.0 | 100.0 | 71.0 |
+| B-NS-xr_v1-B-F-summary2-blocks-s0 | 80.2 | 96.7 | 94.0 | 79.0 | 97.0 | 51.0 |
+| B-NS-xr_v1-B-F-summary2-triplets-s0 | 88.5 | 98.1 | 100.0 | 100.0 | 100.0 | 54.0 |
+| B-NS-xr_v1-B-F-verdict-blocks-s0 | 60.8 | 93.0 | 75.0 | 77.0 | 47.0 | 44.0 |
+| B-NS-xr_v1-B-F-verdict-blocks-s1 | 47.2 | 90.0 | 95.0 | 64.0 | 0.0 | 30.0 |
+| B-NS-xr_v1-B-F-verdict-blocks-s2 | 66.2 | 94.2 | 96.0 | 65.0 | 52.0 | 52.0 |
+| B-NS-xr_v1-B-F-verdict-triplets-s0 | 90.2 | 97.7 | 100.0 | 100.0 | 95.0 | 66.0 |
+| B-SC-summary2-triplets-s0 | 91.5 | 98.6 | 96.0 | 100.0 | 98.0 | 72.0 |
+

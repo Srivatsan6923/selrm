@@ -2,7 +2,7 @@
   python scripts/analysis_b.py > docs/ANALYSIS_B.md
 Reads results_git/<run>/ (summaries, scores with reader outputs, meta.json) and the rule_v1 records (rebuilt
 copy, SELRM_DATA, default scratch/rv1_local). A result that does not exist prints "not run"."""
-import collections, json, os, re, sys
+import collections, glob, json, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
@@ -346,6 +346,21 @@ def case_visible_section():
           f"judge, TA: {pdiff(T[c], T[a], 'TA')}." + NL)
 
 
+def xr_section():
+    print("## 12. Rule-side items (xr_v1/test; A's set, 400 items = 2 rules x 3 cases; conclusion claims)" + NL)
+    print("An item is solved iff all its cells are right (crossed accuracy XA, selrm.metrics.crossed_accuracy; "
+          "B-NS runs score a kept adapter, other runs evaluated the set themselves)." + NL)
+    print("| run | XA | cell accuracy | XA currency | XA inclusivity | XA subject | XA window |")
+    print("|---|---|---|---|---|---|---|")
+    for sp in sorted(glob.glob(f"{RG}/*/summary_xr_v1~test.json")):
+        x = json.load(open(sp)).get("xr", {}).get("conclusion")
+        if x:
+            g = lambda k: f"{x[k]:.1f}" if x.get(k) is not None else "-"
+            print(f"| {os.path.basename(os.path.dirname(sp))} | {g('XA')} | {g('CellAcc')} | {g('XA_currency')} | "
+                  f"{g('XA_inclusivity')} | {g('XA_subject')} | {g('XA_window')} |")
+    print()
+
+
 def main():
     sys.stdout.reconfigure(newline="\n")
     print("# Role B analyses on existing predictions (FINAL_TASKS_B P0.1)" + NL)
@@ -353,7 +368,7 @@ def main():
           "\"not run\" = the input result does not exist yet." + NL)
     for f in (paired_section, leakage_section, transitions_section, program_ledger_section, macro_section,
               natural_balanced_section, budget_section, resampling_section, field_section, loko_section,
-              case_visible_section):
+              case_visible_section, xr_section):
         f()
 
 
