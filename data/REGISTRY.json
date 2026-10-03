@@ -395,6 +395,18 @@
   "split": "train",
   "tier": "mixed"
  },
+ "rule_v1/train_triplets_lo_boundary": {
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "L0",
+  "manifest": "rule_v1/train_triplets_lo_boundary/MANIFEST.json",
+  "n_groups": 5560,
+  "n_records": 60002,
+  "path": "rule_v1/train_triplets_lo_boundary/records.jsonl",
+  "sha256": "ac87065078eb9c36996b9d0725cb83898c0f4e9108049918a1f1b1763c603eb3",
+  "split": "train",
+  "tier": "mixed"
+ },
  "rule_v1/train_triplets_lo_negation": {
   "created": "2026-10-02",
   "frozen": true,
@@ -420,6 +432,84 @@
   "tier": "mixed"
  },
  "rule_v1/train_triplets_lo_time": {
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "L0",
+  "manifest": "rule_v1/train_triplets_lo_time/MANIFEST.json",
+  "n_groups": 5627,
+  "n_records": 60004,
+  "path": "rule_v1/train_triplets_lo_time/records.jsonl",
+  "sha256": "9b4c5fd7d9a200aed4d9161e3879d1328043f38105853269464281877794a0f7",
+  "split": "train",
+  "tier": "mixed"
+ },
+ "rule_v1/train_triplets_nm05": {
+  "alias_of": "rule_v1/train_dose_05",
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "L0",
+  "manifest": "rule_v1/train_dose_05/MANIFEST.json",
+  "n_groups": 5608,
+  "n_records": 60002,
+  "path": "rule_v1/train_dose_05/records.jsonl",
+  "sha256": "9c2c5d49a444665aa912bb45ea1628b400b33c541573691399642954052f33f7",
+  "split": "train",
+  "tier": "mixed"
+ },
+ "rule_v1/train_triplets_nm12": {
+  "alias_of": "rule_v1/train_dose_12",
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "L0",
+  "manifest": "rule_v1/train_dose_12/MANIFEST.json",
+  "n_groups": 5611,
+  "n_records": 60000,
+  "path": "rule_v1/train_dose_12/records.jsonl",
+  "sha256": "ff58126bd13388f3e9fb9cf2ffd9a70328b320a07c8d8a6a37e0aed81900df6f",
+  "split": "train",
+  "tier": "mixed"
+ },
+ "rule_v1/train_triplets_nm25": {
+  "alias_of": "rule_v1/train_dose_25",
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "L0",
+  "manifest": "rule_v1/train_dose_25/MANIFEST.json",
+  "n_groups": 5613,
+  "n_records": 60012,
+  "path": "rule_v1/train_dose_25/records.jsonl",
+  "sha256": "620787d283741c126bc78ee14cc68d062437afbaa1d92fccb15053772fc031ae",
+  "split": "train",
+  "tier": "mixed"
+ },
+ "rule_v1/train_triplets_no_boundary": {
+  "alias_of": "rule_v1/train_triplets_lo_boundary",
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "L0",
+  "manifest": "rule_v1/train_triplets_lo_boundary/MANIFEST.json",
+  "n_groups": 5560,
+  "n_records": 60002,
+  "path": "rule_v1/train_triplets_lo_boundary/records.jsonl",
+  "sha256": "ac87065078eb9c36996b9d0725cb83898c0f4e9108049918a1f1b1763c603eb3",
+  "split": "train",
+  "tier": "mixed"
+ },
+ "rule_v1/train_triplets_no_subject": {
+  "alias_of": "rule_v1/train_triplets_lo_subject",
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "L0",
+  "manifest": "rule_v1/train_triplets_lo_subject/MANIFEST.json",
+  "n_groups": 5648,
+  "n_records": 60002,
+  "path": "rule_v1/train_triplets_lo_subject/records.jsonl",
+  "sha256": "4cfd84c1a10416ee31752543094e060800fd92c95382e1997dca44710354200f",
+  "split": "train",
+  "tier": "mixed"
+ },
+ "rule_v1/train_triplets_no_time": {
+  "alias_of": "rule_v1/train_triplets_lo_time",
   "created": "2026-10-02",
   "frozen": true,
   "level": "L0",
