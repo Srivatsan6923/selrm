@@ -1,0 +1,18 @@
+{
+ "run_id": "B-NS-xr_v1-B-F-ledger2-triplets-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 2,
+  "mode": null,
+  "malformed_rate": 0.0008,
+  "gen_not_stopped": 0,
+  "seconds": 206.2,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
