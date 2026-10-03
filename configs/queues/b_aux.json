@@ -15,7 +15,7 @@
    },
    "run_id": "B-AUX-trialgpt-ep5-s0",
    "seed": 0,
-   "priority": 30,
+   "priority": 17,
    "corpus": "clin_v1/trialgpt_cv",
    "passes": 1,
    "save_epochs": true,
@@ -27,7 +27,8 @@
     "category": [
      "na"
     ]
-   }
+   },
+   "min_gen": 4
   },
   {
    "format": "verdict",
@@ -43,7 +44,7 @@
    },
    "run_id": "B-AUX-trialgpt-ep5-s0-e1",
    "seed": 0,
-   "priority": 30,
+   "priority": 17,
    "train": false,
    "adapter": "adapters/B-AUX-trialgpt-ep5-s0-e1",
    "eval_sets": [
@@ -64,7 +65,7 @@
    },
    "run_id": "B-AUX-trialgpt-ep5-s0-e2",
    "seed": 0,
-   "priority": 30,
+   "priority": 17,
    "train": false,
    "adapter": "adapters/B-AUX-trialgpt-ep5-s0-e2",
    "eval_sets": [
@@ -85,7 +86,7 @@
    },
    "run_id": "B-AUX-trialgpt-ep5-s0-e3",
    "seed": 0,
-   "priority": 30,
+   "priority": 17,
    "train": false,
    "adapter": "adapters/B-AUX-trialgpt-ep5-s0-e3",
    "eval_sets": [
@@ -106,7 +107,7 @@
    },
    "run_id": "B-AUX-trialgpt-ep5-s0-e4",
    "seed": 0,
-   "priority": 30,
+   "priority": 17,
    "train": false,
    "adapter": "adapters/B-AUX-trialgpt-ep5-s0-e4",
    "eval_sets": [
@@ -127,7 +128,7 @@
    },
    "run_id": "B-AUX-trialgpt-ep5-s0-e5",
    "seed": 0,
-   "priority": 30,
+   "priority": 17,
    "train": false,
    "adapter": "adapters/B-AUX-trialgpt-ep5-s0-e5",
    "eval_sets": [

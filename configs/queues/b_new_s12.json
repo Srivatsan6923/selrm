@@ -16,7 +16,6 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0",
     "xr_v1/test"
    ]
   },
@@ -36,7 +35,6 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0",
     "xr_v1/test"
    ]
   },
@@ -56,7 +54,6 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0",
     "xr_v1/test"
    ]
   },
@@ -76,7 +73,6 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0",
     "xr_v1/test"
    ]
   },
@@ -96,7 +92,6 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0",
     "xr_v1/test"
    ]
   },
@@ -116,7 +111,6 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0",
     "xr_v1/test"
    ]
   },
@@ -136,7 +130,6 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0",
     "xr_v1/test"
    ]
   },
@@ -156,7 +149,6 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0",
     "xr_v1/test"
    ]
   },
@@ -176,7 +168,6 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0",
     "xr_v1/test"
    ]
   },
@@ -196,7 +187,6 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0",
     "xr_v1/test"
    ]
   },
@@ -216,7 +206,6 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0",
     "xr_v1/test"
    ]
   },
@@ -236,7 +225,6 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0",
     "xr_v1/test"
    ]
   }
