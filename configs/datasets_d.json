@@ -36,5 +36,17 @@
   "licence": "as medqa_test",
   "use": "calibration pool for the combined reward (D-CAL); never a test set",
   "verified": "2026-10-02"
+ },
+ "medeinst_test": {
+  "hf_dataset": "zhui711/MedEinst",
+  "revision": "354f4b527e764a8f2bebea8f71be55e0a6966402",
+  "file": "test.jsonl",
+  "sha256": "b6b688fa41f788c17cdbf5076b5215782c9eb00efec1a3d3384c002836550a57",
+  "n_pairs": 5383,
+  "n_cases": 10766,
+  "licence": "cc-by-4.0 (dataset card; derived from DDXPlus, CC BY 4.0)",
+  "use": "D-POOL-medeinst: a fixed random 500 pairs; questions = control and trap narrative (whitespace-normalised as C's clin_v1/medeinst_test), options = the pair's two diagnoses",
+  "same_release_as": "C's clin_v1/medeinst_test (scripts/medeinst_prep.py)",
+  "verified": "2026-10-03"
  }
 }

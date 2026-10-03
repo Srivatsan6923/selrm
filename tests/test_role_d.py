@@ -43,11 +43,17 @@ def test_selection(tmp_path):
     sys.argv = ["x", "--pools", str(tmp_path / "pools"), "--scores", str(tmp_path / "scores"),
                 "--out", str(tmp_path / "res"), "--pool", "medqa_test"]
     se.main()
-    acc = {r: json.load(open(tmp_path / "res" / r / "summary_sel~medqa_test.json"))["acc"]
+    acc = {r: json.load(open(tmp_path / "res" / r / "summary_sel~medqa.json"))["acc"]
            for r in ("D-SEL-single", "D-SEL-oracle", "D-SEL-stepcheck", "D-SEL-ledger", "D-SEL-combined")}
     # the ledger scorer prefers the wrong sample; the minimum with a good step check still picks right
     assert acc == {"D-SEL-single": 0.0, "D-SEL-oracle": 100.0, "D-SEL-stepcheck": 100.0,
                    "D-SEL-ledger": 0.0, "D-SEL-combined": 100.0}, acc
+    se2 = load("select_eval")
+    assert se2.keypair_acc([("a", "b"), ("c", "d"), ("e", "z")], {"a": 1, "b": 1, "c": 1, "d": 0, "e": 1}) == (50.0, 2)
+    qs2 = {f"m-{c}-{t}": {"meta": {"case_id": c, "case_type": t}} for c in ("x", "y") for t in ("control", "trap")}
+    rows = [{"qid": "m-x-control", "correct": True}, {"qid": "m-x-trap", "correct": True},
+            {"qid": "m-y-control", "correct": True}, {"qid": "m-y-trap", "correct": False}]
+    assert se2.pair_metrics(qs2, rows) == {"control_acc": 100.0, "trap_acc": 50.0, "pair_acc": 50.0, "n_pairs": 2}
 
 
 def test_keys():

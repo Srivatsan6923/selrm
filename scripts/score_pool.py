@@ -46,9 +46,11 @@ MEDPRM_SYSTEM = ("You are an evaluator assessing the logicality and validity of 
                  "step. If the reasoning in a step is logical and valid, output + after that step. ")
 
 
-def load_pool(d):
+def load_pool(d, ext=False):
+    """Questions and the samples to score: the 16-sample pool, or with ext its extension (samples 16-63)."""
     qs = {q["qid"]: q for q in map(json.loads, open(os.path.join(d, "questions.jsonl"), encoding="utf-8"))}
-    ss = [s for s in map(json.loads, open(os.path.join(d, "samples.jsonl"), encoding="utf-8"))]
+    f = "samples_ext.jsonl" if ext else "samples.jsonl"
+    ss = [s for s in map(json.loads, open(os.path.join(d, f), encoding="utf-8"))]
     return qs, ss
 
 
@@ -120,7 +122,7 @@ class Ledger:
 
 
 def run_ledger(a):
-    qs, ss = load_pool(a.pool)
+    qs, ss = load_pool(a.pool, a.ext)
     vig = vignettes(qs, a.swap)
     lm = Ledger(a.model, a.fmt, a.tp)
     recs, where = [], []
@@ -147,7 +149,7 @@ def run_ledger(a):
 def run_medprm(a):
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
-    qs, ss = load_pool(a.pool)
+    qs, ss = load_pool(a.pool, a.ext)
     vig = vignettes(qs, a.swap)
     tok = AutoTokenizer.from_pretrained(a.model)
     if tok.pad_token is None:          # Llama 3.1 has none; padded positions are masked and never read
@@ -238,6 +240,7 @@ def main():
     ap.add_argument("--fmt", default="ledger2")
     ap.add_argument("--out", required=True)
     ap.add_argument("--swap", action="store_true")
+    ap.add_argument("--ext", action="store_true", help="score the pool's extension (samples_ext.jsonl)")
     ap.add_argument("--batch", type=int, default=8)
     ap.add_argument("--tp", type=int, default=1, help="tensor parallel GPUs (2 on 24 GB cards)")
     ap.add_argument("--records")

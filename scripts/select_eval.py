@@ -20,10 +20,12 @@ Selectors (one D-SEL-<name> run each; N = 16 samples, nested pools):
   oracle       correct if any eligible sample is correct
 Ineligible samples (no final answer) are never selected; a question with none counts as wrong.
 Ties in a score -> the earliest sample. Every selection is deterministic.
-Outputs: results/D-SEL-<name>/scores_sel~<pool>.jsonl {qid, sample, answer, correct} and
-summary_sel~<pool>.json {"set", "acc", "n", "N"} (+ pair_acc etc. once C's key pairs and
-MedEinst pairs exist); results/D-CAL/summary.json (temperatures, combination weights, dev
-likelihoods); results/D-SELN/summary_sel~<pool>.json (selector=<name> slices with N1..N64).
+Outputs: results/D-SEL-<name>/scores_sel~<set>.jsonl {qid, sample, answer, correct} and
+summary_sel~<set>.json, set = sel/medqa, sel/careqa, sel/medeinst (+ control_acc, trap_acc, pair_acc)
+and sel/keypairs (pair_acc: both questions of a MedQA key pair right; pairs from C, --keypairs);
+results/D-CAL/summary.json (temperatures, combination weights, dev likelihoods);
+results/D-SELN/summary_sel~keypairs.json (slices selector=<name> with N1..N64: key-pair accuracy
+among the first N samples of the key-pair questions extended to 64 samples).
 Intervals and paired tests come from selrm.metrics (C) once it has an item-level bootstrap.
 """
 import argparse
@@ -39,21 +41,48 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEV = "medqa_dev"
 
 
+POOL_SET = {"medqa_test": "medqa", "careqa_en": "careqa", "medeinst_test": "medeinst"}   # set sel/<name>
+
+
 def load_pool(d):
+    """Questions and samples; the extension (samples 16-63 of the key-pair questions) is merged in."""
     qs = {q["qid"]: q for q in map(json.loads, open(os.path.join(d, "questions.jsonl"), encoding="utf-8"))}
     by_q = {}
-    for s in map(json.loads, open(os.path.join(d, "samples.jsonl"), encoding="utf-8")):
-        by_q.setdefault(s["qid"], {})[s["sample"]] = s
+    for f in ("samples.jsonl", "samples_ext.jsonl"):
+        if os.path.exists(os.path.join(d, f)):
+            for s in map(json.loads, open(os.path.join(d, f), encoding="utf-8")):
+                by_q.setdefault(s["qid"], {})[s["sample"]] = s
     return qs, by_q
 
 
 def load_scores(path):
+    """Trace scores of a scorer, with those of the pool extension (<scorer>.ext.jsonl) merged in."""
     if not os.path.exists(path):
         return None
     out = {}
-    for j in map(json.loads, open(path, encoding="utf-8")):
-        out[(j["qid"], j["sample"])] = j["score"]
+    for p in (path, path[:-len(".jsonl")] + ".ext.jsonl"):
+        if os.path.exists(p):
+            for j in map(json.loads, open(p, encoding="utf-8")):
+                out[(j["qid"], j["sample"])] = j["score"]
     return out
+
+
+def pair_metrics(qs, rows):
+    """MedEinst: control, trap and pair accuracy (both cases of a pair right), over the pool's pairs."""
+    by = {}
+    for r in rows:
+        m = qs[r["qid"]]["meta"]
+        by.setdefault(m["case_id"], {})[m["case_type"]] = r["correct"]
+    pct = lambda xs: 100.0 * sum(xs) / len(xs) if xs else None
+    full = [v for v in by.values() if set(v) == {"control", "trap"}]
+    return {"control_acc": pct([v["control"] for v in full]), "trap_acc": pct([v["trap"] for v in full]),
+            "pair_acc": pct([v["control"] and v["trap"] for v in full]), "n_pairs": len(full)}
+
+
+def keypair_acc(pairs, correct):
+    """Share of key pairs whose two questions are both answered correctly by the selected traces."""
+    full = [(a, b) for a, b in pairs if a in correct and b in correct]
+    return (100.0 * sum(correct[a] and correct[b] for a, b in full) / len(full) if full else None), len(full)
 
 
 def sig(x):
@@ -167,15 +196,17 @@ def select(name, fn, qs, by_q, n):
     return rows
 
 
-def write(out_root, run, pool, rows, extra=None):
+def write(out_root, run, name, rows, extra=None):
+    """results/<run>/scores_sel~<name>.jsonl (per question) and summary_sel~<name>.json (set sel/<name>)."""
     d = os.path.join(out_root, run)
     os.makedirs(d, exist_ok=True)
-    with open(os.path.join(d, f"scores_sel~{pool}.jsonl"), "w", encoding="utf-8", newline="\n") as f:
+    with open(os.path.join(d, f"scores_sel~{name}.jsonl"), "w", encoding="utf-8", newline="\n") as f:
         for r in rows:
             f.write(json.dumps(r) + "\n")
-    summ = {"run_id": run, "set": f"sel/{pool}", "acc": 100.0 * sum(r["correct"] for r in rows) / len(rows),
+    summ = {"run_id": run, "set": f"sel/{name}",
+            "acc": 100.0 * sum(r["correct"] for r in rows) / len(rows) if rows else None,
             "n": len(rows)} | (extra or {})
-    json.dump(summ, open(os.path.join(d, f"summary_sel~{pool}.json"), "w", encoding="utf-8", newline="\n"), indent=1)
+    json.dump(summ, open(os.path.join(d, f"summary_sel~{name}.json"), "w", encoding="utf-8", newline="\n"), indent=1)
     return summ
 
 
@@ -185,12 +216,14 @@ def main():
     ap.add_argument("--scores", required=True)
     ap.add_argument("--out", default=os.path.join(ROOT, "results"))
     ap.add_argument("--pool", action="append", default=None)
+    ap.add_argument("--keypairs", help="C's MedQA key pairs: JSON list of [row_a, row_b] (rows of the MedQA test file)")
     a = ap.parse_args()
     cal = calibrate(a.pools, a.scores)
     os.makedirs(os.path.join(a.out, "D-CAL"), exist_ok=True)
     json.dump(cal, open(os.path.join(a.out, "D-CAL", "summary.json"), "w", encoding="utf-8", newline="\n"), indent=1)
     open(os.path.join(a.out, "D-CAL", "DONE"), "w").close()
-    for pool in a.pool or ("medqa_test", "careqa_en"):
+    pairs = [(f"medqa_test-{x:05d}", f"medqa_test-{y:05d}") for x, y in json.load(open(a.keypairs))] if a.keypairs else []
+    for pool in a.pool or ("medqa_test", "careqa_en", "medeinst_test"):
         if not os.path.exists(os.path.join(a.pools, pool, "DONE")):
             continue
         qs, by_q = load_pool(os.path.join(a.pools, pool))
@@ -198,20 +231,29 @@ def main():
               ("medprm", "medprm-swap", "ledger2-triplets", "ledger2-triplets-swap", "ledger2-blocks")}
         sel = selectors(cal, sc)
         for name, fn in sel.items():
-            s = write(a.out, f"D-SEL-{name}", pool, select(name, fn, qs, by_q, 16), {"N": 16})
-            print(pool, name, round(s["acc"], 1))
-        sub = {q for q, x in qs.items() if x.get("subset64")}
-        if sub:                     # selection pressure on the 64-sample subset
+            rows = select(name, fn, qs, by_q, 16)
+            extra = {"N": 16} | (pair_metrics(qs, rows) if pool == "medeinst_test" else {})
+            s = write(a.out, f"D-SEL-{name}", POOL_SET[pool], rows, extra)
+            print(pool, name, round(s["acc"], 1), {k: v for k, v in extra.items() if k.endswith("acc")})
+            if pool == "medqa_test" and pairs:
+                acc, n_pairs = keypair_acc(pairs, {r["qid"]: r["correct"] for r in rows})
+                write(a.out, f"D-SEL-{name}", "keypairs", [r for r in rows if any(r["qid"] in p for p in pairs)],
+                      {"N": 16, "pair_acc": acc, "n_pairs": n_pairs})
+        ext = {q for q, ss in by_q.items() if len(ss) >= 64}
+        if pool == "medqa_test" and pairs and ext:   # selection pressure on the key-pair questions with 64 samples
+            kp = [(x, y) for x, y in pairs if x in ext and y in ext]
             curve = {}
             for name in ("combined", "stepcheck", "oracle", "ledger", "selfcons"):
                 if name in sel:
-                    curve[f"selector={name}"] = {
-                        f"N{n}": 100.0 * sum(r["correct"] for r in select(name, sel[name], qs, {q: by_q[q] for q in sub}, n))
-                        / len(sub) for n in (1, 2, 4, 8, 16, 32, 64)}
+                    curve[f"selector={name}"] = {}
+                    for n in (1, 2, 4, 8, 16, 32, 64):
+                        rows = select(name, sel[name], qs, {q: by_q[q] for q in ext}, n)
+                        curve[f"selector={name}"][f"N{n}"] = keypair_acc(kp, {r["qid"]: r["correct"] for r in rows})[0]
             d = os.path.join(a.out, "D-SELN")
             os.makedirs(d, exist_ok=True)
-            json.dump({"run_id": "D-SELN", "set": f"sel/{pool}", "n_questions": len(sub)} | curve,
-                      open(os.path.join(d, f"summary_sel~{pool}.json"), "w", encoding="utf-8", newline="\n"), indent=1)
+            json.dump({"run_id": "D-SELN", "set": "sel/keypairs", "n_pairs": len(kp)} | curve,
+                      open(os.path.join(d, "summary_sel~keypairs.json"), "w", encoding="utf-8", newline="\n"), indent=1)
+            open(os.path.join(d, "DONE"), "w").close()
     for run in os.listdir(a.out):
         if run.startswith("D-SEL"):
             open(os.path.join(a.out, run, "DONE"), "w").close()

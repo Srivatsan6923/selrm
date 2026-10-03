@@ -4,15 +4,19 @@ r"""Candidate pools for answer selection (D-POOL-*; Table 5, Fig. 3 right).
 
 A frozen policy (configs/datasets_d.json "policy") samples chains of thought with
 numbered steps and a final line "Final answer: <letter>" for every question of a pinned
-dataset. Pools are nested: every question gets N samples (16), and a fixed subset of
-questions (300 of MedQA test) gets 64, of which samples 0-15 are the 16-sample pool, so
-every selector and every N sees identical candidates. A sample is eligible if it has a
-final answer among the options; the share that is not is reported.
+dataset. Pools are nested: every question gets N = 16 samples; for the selection-pressure
+curve, `--extend QIDS.json` later adds samples 16-63 for the questions of the MedQA key
+pairs (Fig. 3 right plots key-pair accuracy; the pairs come from C), with their own seeds,
+in samples_ext.jsonl; samples 0-15 stay the 16-sample pool, so every selector and every N
+sees identical candidates. A sample is eligible if it has a final answer among the options;
+the share that is not is reported.
 
 Output (one directory per pool): questions.jsonl {qid, question, options{letter: text},
 answer, meta}, samples.jsonl {qid, sample, text, steps[], final, eligible, n_tokens},
 MANIFEST.json (source, revision, sha256, prompt, sampling parameters, seeds, counts,
-vLLM version, model revision, GPU, wall time) and DONE. Re-running skips a finished pool.
+vLLM version, model revision, GPU, wall time) and DONE; an extension writes
+questions_ext.jsonl, samples_ext.jsonl, MANIFEST_ext.json and EXTENDED. Re-running skips
+finished work.
 """
 import argparse
 import hashlib
@@ -37,9 +41,10 @@ PROMPT = ("Answer the following medical exam question. Reason step by step in nu
 SAMPLING = {"temperature": 0.7, "top_p": 0.95, "max_tokens": 1536, "stop_token_ids": [248046, 248044]}
 POOLS = {   # name: (dataset key in configs/datasets_d.json, first rows, N, subset size with 64 samples,
            #        random sample of questions)
-    "medqa_test": ("medqa_test", None, 16, 300, 0),
+    "medqa_test": ("medqa_test", None, 16, 0, 0),     # + 48 samples for the key-pair questions (--extend)
     "medqa_dev": ("medqa_dev", 500, 16, 0, 0),       # calibration pool (D-CAL); first 500 questions
     "careqa_en": ("careqa_en", None, 16, 0, 1000),   # a fixed random 1,000 of 5,621 (scoring cost; DECISIONS_D)
+    "medeinst_test": ("medeinst_test", None, 16, 0, 0),   # a fixed random 500 pairs, control + trap (questions())
 }
 STEP = re.compile(r"^\s*(?:Step\s*)?(\d{1,2})[.):]\s+(.*\S)")
 FINAL = re.compile(r"Final answer:\s*\**\s*\(?([A-Ea-e])\)?(?![A-Za-z])")
@@ -54,10 +59,38 @@ def fetch(spec):
     return data
 
 
+def medeinst_questions(data, n_pairs):
+    """A fixed random sample of MedEinst pairs; each pair gives its control and its trap case as two
+    questions with the pair's two diagnoses as options (one option order per pair, so the letters
+    carry no information). Narratives are whitespace-normalised as in C's clin_v1/medeinst_test."""
+    pairs = {}
+    for line in data.decode("utf-8").splitlines():
+        r = json.loads(line)
+        pairs.setdefault(r["case_id"], {})[r["case_type"]] = r
+    ids = sorted(k for k, v in pairs.items() if set(v) == {"control", "trap"})
+    keep = sorted(random.Random("pool-sample-v1.medeinst_test").sample(ids, n_pairs))
+    out = []
+    for cid in keep:
+        c, t = pairs[cid]["control"], pairs[cid]["trap"]
+        ygt, ybias = c["ground_truth"], t["ground_truth"]
+        flip = int(hashlib.sha256(f"medeinst|{cid}".encode()).hexdigest(), 16) % 2
+        opts = {"A": ybias, "B": ygt} if flip else {"A": ygt, "B": ybias}
+        for row in (c, t):
+            narrative = "\n".join(ln.rstrip() for ln in row["narrative"].replace("\r", "").split("\n")).strip()
+            out.append({"qid": f"medeinst_test-{cid}-{row['case_type']}",
+                        "question": narrative + "\n\nWhat is the most likely diagnosis?", "options": opts,
+                        "answer": next(k for k, v in opts.items() if v == row["ground_truth"]),
+                        "meta": {"case_id": cid, "case_type": row["case_type"], "tid": f"medeinst_test_{cid}",
+                                 "y_gt": ygt, "y_bias": ybias}})
+    return out
+
+
 def questions(key, rows):
     spec = CFG[key]
     data = fetch(spec)
     out = []
+    if key == "medeinst_test":
+        return medeinst_questions(data, 500)
     if spec["file"].endswith(".parquet"):
         import pandas as pd
         df = pd.read_parquet(io.BytesIO(data))
@@ -88,11 +121,14 @@ def main():
     ap.add_argument("--model", help="local snapshot of the policy (default: download the pinned revision)")
     ap.add_argument("--limit", type=int, default=0, help="first k questions only (smoke test)")
     ap.add_argument("--tp", type=int, default=1)
+    ap.add_argument("--extend", help="JSON list of qids: add samples 16-63 for them (selection pressure); "
+                                     "written to samples_ext.jsonl, the 16-sample pool is not touched")
     a = ap.parse_args()
-    key, rows, n, n_sub, n_sample = POOLS[a.pool]
+    key, rows, n, _, n_sample = POOLS[a.pool]
     out = os.path.join(a.out, a.pool + (f"_limit{a.limit}" if a.limit else ""))
-    if os.path.exists(os.path.join(out, "DONE")):
-        print("exists:", out)
+    done = "EXTENDED" if a.extend else "DONE"
+    if os.path.exists(os.path.join(out, done)):
+        print("exists:", out, done)
         return
     os.makedirs(out, exist_ok=True)
     qs = questions(key, rows)
@@ -100,8 +136,13 @@ def main():
         keep = set(random.Random(f"pool-sample-v1.{a.pool}").sample([q["qid"] for q in qs], n_sample))
         qs = [q for q in qs if q["qid"] in keep]
     qs = qs[: a.limit or None]
-    rng = random.Random(f"pool-subset-v1.{a.pool}")
-    sub = set(rng.sample([q["qid"] for q in qs], min(n_sub, len(qs)))) if n_sub else set()
+    sub = set()
+    if a.extend:                 # the base pool must exist; extra samples get their own seeds
+        if not os.path.exists(os.path.join(out, "DONE")):
+            sys.exit("extend: the 16-sample pool is not finished")
+        want = set(json.load(open(a.extend, encoding="utf-8")))
+        qs = [q for q in qs if q["qid"] in want]
+        sub = {q["qid"] for q in qs}
 
     import torch
     import vllm
@@ -119,18 +160,21 @@ def main():
         text = tok.apply_chat_template([{"role": "user", "content": user}], add_generation_prompt=True,
                                        enable_thinking=False, tokenize=False)
         ids = tok(text, add_special_tokens=False).input_ids     # as B's evaluation (eval_local.chat_ids)
-        seed = int(hashlib.sha256(f"{a.pool}|{q['qid']}".encode()).hexdigest()[:8], 16)
+        seed = int(hashlib.sha256(f"{a.pool}|{q['qid']}{'|ext64' if a.extend else ''}".encode()).hexdigest()[:8], 16)
         prompts.append({"prompt_token_ids": ids})
-        params.append(vllm.SamplingParams(n=64 if q["qid"] in sub else n, seed=seed, **SAMPLING))
+        params.append(vllm.SamplingParams(n=64 - n if a.extend else n, seed=seed, **SAMPLING))
     t0 = time.time()
     res = llm.generate(prompts, params)
     wall = time.time() - t0
     n_s = n_el = n_tok = 0
-    with open(os.path.join(out, "questions.jsonl"), "w", encoding="utf-8", newline="\n") as fq, \
-            open(os.path.join(out, "samples.jsonl"), "w", encoding="utf-8", newline="\n") as fs:
+    first = n if a.extend else 0
+    with open(os.path.join(out, "questions_ext.jsonl" if a.extend else "questions.jsonl"), "w", encoding="utf-8",
+              newline="\n") as fq, \
+            open(os.path.join(out, "samples_ext.jsonl" if a.extend else "samples.jsonl"), "w", encoding="utf-8",
+                 newline="\n") as fs:
         for q, r in zip(qs, res):
-            fq.write(json.dumps(q | {"subset64": q["qid"] in sub}) + "\n")
-            for k, o in enumerate(r.outputs):
+            fq.write(json.dumps(q) + "\n")
+            for k, o in enumerate(r.outputs, first):
                 steps, final, ok = parse(o.text, q["options"])
                 fs.write(json.dumps({"qid": q["qid"], "sample": k, "text": o.text, "steps": steps,
                                      "final": final, "eligible": ok, "n_tokens": len(o.token_ids),
@@ -138,15 +182,17 @@ def main():
                 n_s, n_el, n_tok = n_s + 1, n_el + ok, n_tok + len(o.token_ids)
     man = {"pool": a.pool, "dataset": CFG[key], "policy": pol, "model_path": model, "prompt": PROMPT,
            "chat_template": "tokenizer.apply_chat_template(enable_thinking=False)", "sampling": SAMPLING,
-           "n_per_question": n, "subset64": sorted(sub), "seed_rule": "sha256(pool|qid)[:8] per question",
+           "n_per_question": 64 - n if a.extend else n, "extension_of": "samples 0-15" if a.extend else None,
+           "seed_rule": "sha256(pool|qid" + ("|ext64" if a.extend else "") + ")[:8] per question",
            "question_sample": {"n": n_sample, "seed": f"pool-sample-v1.{a.pool}"} if n_sample else None,
            "n_questions": len(qs), "n_samples": n_s, "eligible": n_el,
            "ineligible_share": round(1 - n_el / max(1, n_s), 4), "generated_tokens": n_tok,
            "wall_seconds": round(wall, 1), "vllm": vllm.__version__, "torch": torch.__version__,
            "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else None,
            "step_regex": STEP.pattern, "final_regex": FINAL.pattern}
-    json.dump(man, open(os.path.join(out, "MANIFEST.json"), "w", encoding="utf-8", newline="\n"), indent=1)
-    open(os.path.join(out, "DONE"), "w").close()
+    json.dump(man, open(os.path.join(out, "MANIFEST_ext.json" if a.extend else "MANIFEST.json"), "w",
+                        encoding="utf-8", newline="\n"), indent=1)
+    open(os.path.join(out, done), "w").close()
     print(json.dumps({k: man[k] for k in ("pool", "n_questions", "n_samples", "eligible", "ineligible_share",
                                           "generated_tokens", "wall_seconds")}))
 
