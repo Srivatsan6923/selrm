@@ -351,19 +351,26 @@ def field_section():
 
 def loko_section():
     print("## 10. Leave one near-miss kind out (test_L2, triplets of the held-out kind; FINAL_TASKS_B P0.5)" + NL)
-    print("| held-out kind | format | trained without the kind | trained on all kinds (B-F-<format>-triplets-s0) | "
-          "without - all [95% CI], p |")
-    print("|---|---|---|---|---|")
+    print("Seed 0 against the same format trained on all kinds (B-F-<format>-triplets-s0; for the decision-bit reader "
+          "the bit-only-reader ablation B-AB-bitonly-reader-s0); seeds 1-2 (NEXT_TASKS_B 4) listed with the mean." + NL)
+    print("| held-out kind | format | trained without the kind (s0) | trained on all kinds | without - all [95% CI], p "
+          "| s0 / s1 / s2 | mean |")
+    print("|---|---|---|---|---|---|---|")
+    ref = {"verdict": "B-F-verdict-triplets-s0", "summary2": "B-F-summary2-triplets-s0",
+           "ledger2": "B-F-ledger2-triplets-s0", "bit_reader": "B-AB-bitonly-reader-s0"}
     for kind in ("subject", "time", "boundary"):
-        for fmt in ("verdict", "summary2", "ledger2"):
-            a, b = f"B-LOKO-{kind}-{fmt}-s0", f"B-F-{fmt}-triplets-s0"
+        for fmt, b in ref.items():
+            a = f"B-LOKO-{kind}-{fmt}-s0"
             if not (done(a) and done(b)):
-                print(f"| {kind} | {fmt} | not run | | |")
+                print(f"| {kind} | {fmt} | not run | | | | |")
                 continue
+            kind_ta = lambda r: summarise({t: v for t, v in triplets(r).items() if v["nm_kind"] == kind})["all"]["TA"]
             Ta = {t: v for t, v in triplets(a).items() if v["nm_kind"] == kind}
             Tb = {t: v for t, v in triplets(b).items() if v["nm_kind"] == kind}
+            seeds = {sd: kind_ta(f"B-LOKO-{kind}-{fmt}-s{sd}") for sd in range(3) if done(f"B-LOKO-{kind}-{fmt}-s{sd}")}
             print(f"| {kind} | {fmt} | {summarise(Ta)['all']['TA']:.1f} | {summarise(Tb)['all']['TA']:.1f} | "
-                  f"{pdiff(Ta, Tb, 'TA')} |")
+                  f"{pdiff(Ta, Tb, 'TA')} | " + " / ".join(f"{seeds[sd]:.1f}" if sd in seeds else "-" for sd in range(3))
+                  + f" | {sum(seeds.values()) / len(seeds):.1f} |")
     print()
 
 
