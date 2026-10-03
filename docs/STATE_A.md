@@ -11,7 +11,7 @@ addressed (`docs/DECISIONS_A.md`).
      - `docs/DATA_AUDIT_rule_v1.md`;
      - `docs/PAPER_VS_CODE.md`, checked against the lead's updated v13 (red items resolved; two
        non-red sentences corrected);
-     - `tables/data_stats.json`, run at a clean commit;
+     - `tables/data_stats.json`, run at a clean commit (412a4d2);
      - `results/A-AUDIT`;
      - `data/rule_v1/{RULE_MANIFEST,RULE_SOURCES,KNOWN_ISSUES}.json`.
    - Re-executed check: 0 violations, coverage stated per check.
@@ -42,12 +42,6 @@ addressed (`docs/DECISIONS_A.md`).
   resolve; includes the two new known issues).
 - MedCalc-Bench: deferred. IDs are in `configs/medcalc_bench.json`; the code has no licence.
 - Folds 2-3, diversity corpora, check code and reference graphs: done earlier.
-
-## Pending
-- Re-run `python scripts/audit_rule_v1.py`, then `export_set_summaries.py` and `render_docs.py`, at a
-  clean tree. The run of 3 Oct evening was stopped by the host for low memory before it wrote
-  `tables/data_stats.json` and the H1 sheets; the committed audit outputs are those of 64ae1a9. The H1
-  sheets and README get the third-round layout (case, q2, q3, facts, q1) only after this run.
 
 ## Open compute requests
 - #1 (2 Oct): `OPENROUTER_API_KEY` for rewrite_v1, about $2-3.

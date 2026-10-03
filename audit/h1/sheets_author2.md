@@ -5443,7 +5443,7 @@ Formerly recorded as penicillin-allergic; de-labeled in 2007 by an allergy clini
 ```
 
 Facts (for q1, after q2 and q3):
-- patient: penicillin allergy label removed after testing (not allergic now) [line: "Formerly recorded as penicillin-allergic; de-labeled in 2007 by an allergy clinic."]
+- patient: penicillin allergy label removed (de-labelled; not allergic now) [line: "Formerly recorded as penicillin-allergic; de-labeled in 2007 by an allergy clinic."]
 - peptic ulcer: not mentioned (counts as absent)
 
 

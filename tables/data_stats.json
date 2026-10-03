@@ -1,5 +1,5 @@
 {
- "commit": "64ae1a99a71c77cf3009b0e7bbc959ae323609bf",
+ "commit": "412a4d296539290f848ce7a37632f2fd9d496947",
  "code_modified_since_commit": false,
  "rules": {
   "library": 353,
@@ -248,7 +248,8 @@
    "groups": 4,
    "cases": 7
   },
-  "criterion_claim_without_scope": 120
+  "criterion_claim_without_scope": 146,
+  "criterion_claim_without_scope_invented": 26
  },
  "rejects": {
   "logged": {
