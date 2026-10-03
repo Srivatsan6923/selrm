@@ -6,7 +6,7 @@ import collections, json, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
-from selrm.metrics import _flags, bootstrap_ci, decisions, paired_diff, summarise
+from selrm.metrics import _flags, bootstrap_ci, decisions, paired_test, summarise
 from report_b import RG, records
 
 NL = "\n"
@@ -43,6 +43,13 @@ def done(rid):
     return os.path.exists(f"{RG}/{rid}/DONE")
 
 
+def pdiff(Ta, Tb, m):
+    """a - b [95% CI], two-sided bootstrap p (C's paired_test: rules as clusters, reproducible order)."""
+    r = paired_test(Ta, Tb, m)
+    p = f"p {r['p']:.3f}" if r["p"] > 0 else f"p < {1 / r['B']:.3f}"     # no resample on the other side
+    return f"{r['diff']:+.1f} [{r['lo']:+.1f}, {r['hi']:+.1f}], {p}"
+
+
 def paired_section():
     print("## 1. Paired ledger minus summary (test_L2; triplets kept together, rules as clusters, 1,000 resamples)" + NL)
     for corpus in ("triplets", "blocks"):
@@ -52,12 +59,11 @@ def paired_section():
             continue
         Ta, Tb = triplets(a), triplets(b)
         print(f"**{corpus}** ({a} vs {b}, seed 0):" + NL)
-        print("| metric | ledger | summary | ledger - summary [95% CI] |")
+        print("| metric | ledger | summary | ledger - summary [95% CI], p |")
         print("|---|---|---|---|")
         sa, sb = summarise(Ta)["all"], summarise(Tb)["all"]
         for m in ("TA", "Rev", "Hold"):
-            d, lo, hi = paired_diff(Ta, Tb, m)
-            print(f"| {m} | {sa[m]:.1f} | {sb[m]:.1f} | {d:+.1f} [{lo:+.1f}, {hi:+.1f}] |")
+            print(f"| {m} | {sa[m]:.1f} | {sb[m]:.1f} | {pdiff(Ta, Tb, m)} |")
         print(NL + "Disagreement by near-miss kind (triplet solved = TA):" + NL)
         print("| near-miss kind | n | both | ledger only | summary only | neither |")
         print("|---|---|---|---|---|---|")
@@ -157,9 +163,8 @@ def transitions_section():
         print(f"| {k} | {sum(c.values())} | {c['unchanged, solved']} | {c['rescued']} | {c['broken']} | "
               f"{c['unchanged, unsolved']} |")
     so, sr = summarise(To)["all"], summarise(Tr)["all"]
-    d, lo, hi = paired_diff(To, Tr, "TA")
     print(NL + f"TA with the program-supplied ledger {so['TA']:.1f} vs the reader's ledger {sr['TA']:.1f}; paired "
-          f"difference {d:+.1f} [{lo:+.1f}, {hi:+.1f}]." + NL)
+          f"difference {pdiff(To, Tr, 'TA')}." + NL)
 
 
 def program_ledger_section():
@@ -170,10 +175,9 @@ def program_ledger_section():
         return
     T, Tj = triplets(rid), triplets("B-F-ledger2-triplets-s0")
     s, sj = summarise(T)["all"], summarise(Tj)["all"]
-    d, lo, hi = paired_diff(T, Tj, "TA")
     meta = json.load(open(f"{RG}/{rid}/summary_rule_v1~test_L2.json"))["eval"]      # test_L2 counts
     print(f"Program on the predicted ledger: TA {s['TA']:.1f} (Rev {s['Rev']:.1f}, Hold {s['Hold']:.1f}); the trained "
-          f"judge on the same ledgers: TA {sj['TA']:.1f}; paired difference {d:+.1f} [{lo:+.1f}, {hi:+.1f}]. "
+          f"judge on the same ledgers: TA {sj['TA']:.1f}; paired difference {pdiff(T, Tj, 'TA')}. "
           f"On test_L2, ledger entries matched to case mentions: {meta.get('matched')}; unmatched: {meta.get('unmatched')}; "
           f"malformed ledgers: {meta.get('malformed')}; records without a program answer: {meta.get('no_answer')}." + NL)
 
