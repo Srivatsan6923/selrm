@@ -32,6 +32,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FREEZE = "e40789b"
 KEY_CELLS = [f"B-F-{f}-{d}" for f in ("verdict", "ledger2") for d in ("blocks", "triplets")]
 TWO_STAGE = ("ledger2", "summary2", "value2", "conddrv", "promptledger", "promptsum")
+# analyses computed from the per-example scores of their source runs (named in the summary), not scoring runs
+DERIVED = ("C-DG-",)
 
 
 def git(*args):
@@ -96,7 +98,7 @@ def checks(run_tests):
     missing, n = [], 0
     for f in sorted(files):
         s = summary_set(f)
-        if not s:
+        if not s or f.split("/")[1].startswith(DERIVED):
             continue
         n += 1
         sc = f.replace("/summary_", "/scores_")[:-len(".json")] + ".jsonl"

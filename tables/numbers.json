@@ -32,16 +32,16 @@
   "value": "7"
  },
  "cmp/p3/diff": {
-  "number": 1.2,
-  "value": "1.2"
+  "number": 0.77,
+  "value": "0.8"
  },
  "cmp/p3/hi": {
-  "number": 2.247191011235955,
-  "value": "2.2"
+  "number": 1.325115562403698,
+  "value": "1.3"
  },
  "cmp/p3/lo": {
-  "number": 0.20376974019358127,
-  "value": "0.2"
+  "number": 0.2679031427099433,
+  "value": "0.3"
  },
  "cmp/sel-mqa-comb-step/hi": {
   "number": 0.15710919088766673,
@@ -56,8 +56,8 @@
   "value": "60"
  },
  "d/run/B-F-ledger2-blocks/L2/all/TA|run/B-F-verdict-blocks/L2/all/TA": {
-  "number": 18.08333333333333,
-  "value": "18.1"
+  "number": 17.29,
+  "value": "17.3"
  },
  "d/run/B-F-ledger2-blocks/clin_v1:medeinst_test/top/Reversal|run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal": {
   "number": null,
@@ -72,12 +72,12 @@
   "value": "1.2"
  },
  "d/run/B-F-ledger2-triplets/L2/all/TA|run/B-F-summary2-triplets/L2/all/TA": {
-  "number": 1.2000000000000028,
-  "value": "1.2"
+  "number": 0.7700000000000102,
+  "value": "0.8"
  },
  "d/run/B-F-ledger2-triplets/L2/all/TA|run/B-F-verdict-triplets/L2/all/TA": {
-  "number": 7.674999999999997,
-  "value": "7.7"
+  "number": 7.409999999999997,
+  "value": "7.4"
  },
  "d/run/B-F-ledger2-triplets/clin_v1:nli4ct_test/top/consistency|run/B-F-ledger2-blocks/clin_v1:nli4ct_test/top/consistency": {
   "number": null,
@@ -88,8 +88,8 @@
   "value": "\\ph{tbd}"
  },
  "d/run/B-F-verdict-triplets/dev/all/TA|run/B-F-verdict-triplets/L2/all/TA@0": {
-  "number": 7.974999999999994,
-  "value": "8"
+  "number": 7.493333333333339,
+  "value": "7"
  },
  "d/run/B-TR-steperr/clin_v1:medeinst_test/top/Reversal|run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal": {
   "number": null,
@@ -112,16 +112,16 @@
   "value": "18.7"
  },
  "max/run/B-F-ledger2-blocks/dev/eval/malformed_rate/max|run/B-F-ledger2-blocks/dev_missing/eval/malformed_rate/max|run/B-F-ledger2-blocks/missing/eval/malformed_rate/max|run/B-F-ledger2-blocks/readapply/eval/malformed_rate/max|run/B-F-ledger2-blocks/L0/eval/malformed_rate/max|run/B-F-ledger2-blocks/L1/eval/malformed_rate/max|run/B-F-ledger2-blocks/L2/eval/malformed_rate/max|run/B-F-ledger2-blocks/L3alt/eval/malformed_rate/max|run/B-F-ledger2-blocks/L3inv/eval/malformed_rate/max|run/B-F-ledger2-blocks/hard/eval/malformed_rate/max|run/B-F-ledger2-triplets/dev/eval/malformed_rate/max|run/B-F-ledger2-triplets/dev_missing/eval/malformed_rate/max|run/B-F-ledger2-triplets/missing/eval/malformed_rate/max|run/B-F-ledger2-triplets/readapply/eval/malformed_rate/max|run/B-F-ledger2-triplets/L0/eval/malformed_rate/max|run/B-F-ledger2-triplets/L1/eval/malformed_rate/max|run/B-F-ledger2-triplets/L2/eval/malformed_rate/max|run/B-F-ledger2-triplets/L3alt/eval/malformed_rate/max|run/B-F-ledger2-triplets/L3inv/eval/malformed_rate/max|run/B-F-ledger2-triplets/hard/eval/malformed_rate/max@pct2": {
-  "number": 0.0017,
-  "value": "0.17"
+  "number": 0.003,
+  "value": "0.30"
  },
  "max/run/B-F-ledger2-triplets/dev/eval/malformed_rate/max|run/B-F-ledger2-triplets/dev_missing/eval/malformed_rate/max|run/B-F-ledger2-triplets/missing/eval/malformed_rate/max|run/B-F-ledger2-triplets/readapply/eval/malformed_rate/max|run/B-F-ledger2-triplets/L0/eval/malformed_rate/max|run/B-F-ledger2-triplets/L1/eval/malformed_rate/max|run/B-F-ledger2-triplets/L2/eval/malformed_rate/max|run/B-F-ledger2-triplets/L3alt/eval/malformed_rate/max|run/B-F-ledger2-triplets/L3inv/eval/malformed_rate/max|run/B-F-ledger2-triplets/hard/eval/malformed_rate/max@pct2": {
   "number": 0.0017,
   "value": "0.17"
  },
  "max/run/B-F-verdict-blocks/L2/nm_kind=negation/TA|run/B-F-verdict-blocks/L2/nm_kind=numeric/TA@0": {
-  "number": 91.5,
-  "value": "92"
+  "number": 91.45,
+  "value": "91"
  },
  "max/run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA": {
   "number": null,
@@ -148,7 +148,7 @@
   "value": "\\ph{tbd}"
  },
  "min/run/B-F-verdict-blocks/L2/nm_kind=negation/TA|run/B-F-verdict-blocks/L2/nm_kind=numeric/TA@0": {
-  "number": 90.25,
+  "number": 89.6,
   "value": "90"
  },
  "min/run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA": {
@@ -192,20 +192,20 @@
   "value": "54.0"
  },
  "run/B-AB-bitonly-judge/L2/all/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 99.35,
+  "value": "99.3"
  },
  "run/B-AB-bitonly-judge/clin_v1:medeinst_test/top/Reversal": {
   "number": null,
   "value": "\\ph{tbd}"
  },
  "run/B-AB-conddrv/L2/all/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 86.55,
+  "value": "86.5"
  },
  "run/B-AB-verify/L2/all/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 99.8,
+  "value": "99.8"
  },
  "run/B-AE-field-edit/L2/top/agreement": {
   "number": null,
@@ -244,52 +244,52 @@
   "value": "\\ph{tbd}"
  },
  "run/B-F-ledger2-blocks/L2/all/TA": {
-  "number": 75.3,
-  "value": "75.3"
+  "number": 70.95,
+  "value": "71.0"
  },
  "run/B-F-ledger2-blocks/L2/all/TA/hi": {
-  "number": 78.51329354313619,
-  "value": "78.5"
+  "number": 73.03359173126616,
+  "value": "73.0"
  },
  "run/B-F-ledger2-blocks/L2/all/TA/lo": {
-  "number": 71.95979899497488,
-  "value": "72.0"
+  "number": 68.78889420775491,
+  "value": "68.8"
  },
  "run/B-F-ledger2-blocks/L2/nm_kind=boundary/TA": {
-  "number": 72.0,
-  "value": "72.0"
- },
- "run/B-F-ledger2-blocks/L2/nm_kind=subject/TA": {
-  "number": 48.5,
-  "value": "48.5"
- },
- "run/B-F-ledger2-blocks/readapply/all/TA": {
   "number": 76.0,
   "value": "76.0"
  },
+ "run/B-F-ledger2-blocks/L2/nm_kind=subject/TA": {
+  "number": 37.55,
+  "value": "37.5"
+ },
+ "run/B-F-ledger2-blocks/readapply/all/TA": {
+  "number": 73.47999999999999,
+  "value": "73.5"
+ },
  "run/B-F-ledger2-triplets/L2/all/TA": {
-  "number": 99.2,
+  "number": 99.25,
   "value": "99.2"
  },
  "run/B-F-ledger2-triplets/L2/all/TA/hi": {
-  "number": 99.69604863221885,
-  "value": "99.7"
+  "number": 99.55955955955956,
+  "value": "99.6"
  },
  "run/B-F-ledger2-triplets/L2/all/TA/lo": {
-  "number": 98.6336032388664,
-  "value": "98.6"
+  "number": 98.87744593202883,
+  "value": "98.9"
  },
  "run/B-F-ledger2-triplets/L2/all/TA/s0": {
   "number": 99.2,
   "value": "99.2"
  },
  "run/B-F-ledger2-triplets/L2/all/TA@0": {
-  "number": 99.2,
+  "number": 99.25,
   "value": "99"
  },
  "run/B-F-ledger2-triplets/L3inv/all/TA": {
-  "number": 97.9,
-  "value": "97.9"
+  "number": 98.64,
+  "value": "98.6"
  },
  "run/B-F-ledger2-triplets/challenge_v1:test/all/TA": {
   "number": null,
@@ -344,20 +344,20 @@
   "value": "91.0"
  },
  "run/B-F-summary2-blocks/L2/all/TA": {
-  "number": 69.75,
-  "value": "69.8"
+  "number": 64.9125,
+  "value": "64.9"
  },
  "run/B-F-summary2-triplets/L2/all/TA": {
-  "number": 98.0,
-  "value": "98.0"
+  "number": 98.47999999999999,
+  "value": "98.5"
  },
  "run/B-F-summary2-triplets/L2/all/TA/hi": {
-  "number": 98.85057471264368,
-  "value": "98.9"
+  "number": 99.03517587939699,
+  "value": "99.0"
  },
  "run/B-F-summary2-triplets/L2/all/TA/lo": {
-  "number": 97.04533876719307,
-  "value": "97.0"
+  "number": 97.85381026438569,
+  "value": "97.9"
  },
  "run/B-F-summary2-triplets/clin_v1:medeinst_test/top/Reversal": {
   "number": null,
@@ -380,40 +380,40 @@
   "value": "45.6"
  },
  "run/B-F-verdict-blocks/L2/all/Hold": {
-  "number": 61.833333333333336,
-  "value": "61.8"
+  "number": 57.92999999999999,
+  "value": "57.9"
  },
  "run/B-F-verdict-blocks/L2/all/Rev": {
-  "number": 92.33333333333333,
-  "value": "92.3"
+  "number": 92.55999999999999,
+  "value": "92.6"
  },
  "run/B-F-verdict-blocks/L2/all/TA": {
-  "number": 57.21666666666667,
-  "value": "57.2"
+  "number": 53.660000000000004,
+  "value": "53.7"
  },
  "run/B-F-verdict-blocks/L2/all/TA/hi": {
-  "number": 60.96807415036045,
-  "value": "61.0"
+  "number": 57.33527131782946,
+  "value": "57.3"
  },
  "run/B-F-verdict-blocks/L2/all/TA/lo": {
-  "number": 53.33661255943597,
-  "value": "53.3"
+  "number": 49.74525243168134,
+  "value": "49.7"
  },
  "run/B-F-verdict-blocks/L2/nm_kind=boundary/TA": {
-  "number": 28.666666666666668,
-  "value": "28.7"
+  "number": 21.6,
+  "value": "21.6"
  },
  "run/B-F-verdict-blocks/L2/nm_kind=subject/TA": {
-  "number": 12.583333333333334,
-  "value": "12.6"
+  "number": 9.8,
+  "value": "9.8"
  },
  "run/B-F-verdict-blocks/L3alt/all/TA": {
-  "number": 92.23333333333333,
-  "value": "92.2"
+  "number": 89.84,
+  "value": "89.8"
  },
  "run/B-F-verdict-blocks/readapply/all/TA": {
-  "number": 75.06666666666666,
-  "value": "75.1"
+  "number": 71.88,
+  "value": "71.9"
  },
  "run/B-F-verdict-natural/L2/all/Rev": {
   "number": 92.05,
@@ -432,76 +432,76 @@
   "value": "54.1"
  },
  "run/B-F-verdict-triplets/L2/all/Hold": {
-  "number": 97.125,
-  "value": "97.1"
+  "number": 97.57000000000001,
+  "value": "97.6"
  },
  "run/B-F-verdict-triplets/L2/all/Rev": {
-  "number": 92.525,
-  "value": "92.5"
+  "number": 92.61,
+  "value": "92.6"
  },
  "run/B-F-verdict-triplets/L2/all/TA": {
-  "number": 91.525,
-  "value": "91.5"
+  "number": 91.84,
+  "value": "91.8"
  },
  "run/B-F-verdict-triplets/L2/all/TA/hi": {
-  "number": 95.12743628185908,
-  "value": "95.1"
+  "number": 95.3627760252366,
+  "value": "95.4"
  },
  "run/B-F-verdict-triplets/L2/all/TA/lo": {
-  "number": 87.06726013847675,
-  "value": "87.1"
+  "number": 87.3689465801298,
+  "value": "87.4"
  },
  "run/B-F-verdict-triplets/L3inv/all/TA": {
-  "number": 95.95,
-  "value": "96.0"
+  "number": 96.4,
+  "value": "96.4"
  },
  "run/B-F-verdict-triplets/challenge_v1:test/all/TA": {
   "number": null,
   "value": "\\ph{tbd}"
  },
  "run/B-F-verdict-triplets/dev/all/TA": {
-  "number": 99.5,
-  "value": "99.5"
+  "number": 99.33333333333334,
+  "value": "99.3"
  },
  "run/B-F-verdict-triplets/ec_v1:test/all/TA": {
   "number": null,
   "value": "\\ph{tbd}"
  },
  "run/B-F-verdict-triplets/readapply/all/TA": {
-  "number": 99.5,
-  "value": "99.5"
+  "number": 99.64,
+  "value": "99.6"
  },
  "run/B-F-verdict-triplets/xr_v1:test/top/XA": {
   "number": null,
   "value": "\\ph{tbd}"
  },
  "run/B-LOKO-boundary-ledger2/L2/nm_kind=boundary/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 87.0,
+  "value": "87.0"
  },
  "run/B-LOKO-boundary-verdict/L2/nm_kind=boundary/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 49.75,
+  "value": "49.8"
  },
  "run/B-LOKO-subject-ledger2/L2/nm_kind=subject/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 62.5,
+  "value": "62.5"
  },
  "run/B-LOKO-subject-verdict/L2/nm_kind=subject/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 7.0,
+  "value": "7.0"
  },
  "run/B-LOKO-time-ledger2/L2/nm_kind=time/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 86.25,
+  "value": "86.2"
  },
  "run/B-LOKO-time-verdict/L2/nm_kind=time/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 60.25,
+  "value": "60.2"
  },
  "run/B-SC-summary2-triplets/L2/all/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 98.8,
+  "value": "98.8"
  },
  "run/B-TR-fover/L2/all/TA": {
   "number": null,
@@ -544,20 +544,20 @@
   "value": "\\ph{tbd}"
  },
  "run/C-TF-critic/clin_v1:medeinst_test/top/Reversal": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 24.187256176853055,
+  "value": "24.2"
  },
  "run/C-TF-critic/clin_v1:medeinst_test/top/Reversal@0": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 24.187256176853055,
+  "value": "24"
  },
  "run/C-TF-critic/clin_v1:nli4ct_test/top/macroF1": {
   "number": null,
   "value": "\\ph{tbd}"
  },
  "run/C-TF-defcorr/L2/all/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 26.35,
+  "value": "26.4"
  },
  "run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1": {
   "number": 65.70071104760866,
@@ -584,12 +584,12 @@
   "value": "69.2"
  },
  "run/C-TG-verdict-blocks/clin_v1:trialgpt_test/top/macroF1": {
-  "number": 64.83139167213699,
-  "value": "64.8"
+  "number": 66.73100246048868,
+  "value": "66.7"
  },
  "run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/macroF1": {
-  "number": 70.84664532321561,
-  "value": "70.8"
+  "number": 70.47438292613096,
+  "value": "70.5"
  },
  "run/D-SEL-combined-logistic/sel:keypairs/top/pair_acc": {
   "number": 77.87114845938375,
