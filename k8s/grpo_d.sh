@@ -20,7 +20,7 @@ case " $* " in
 esac
 [ -f "$OUT/DONE" ] && { echo "exists: $OUT"; exit 0; }
 case $R in
-  ledger2-blocks|ledger2-triplets)
+  ledger2-blocks|ledger2-triplets|summary2-triplets)
     M=/pvc/merged/B-F-$R-s0
     # two GPUs: the server owns the second; one GPU (80-96 GB): the server takes 32% of it first and the
     # rollout engine 22% instead of 35% (memory only: same model, prompts and sampling); a 22% server share

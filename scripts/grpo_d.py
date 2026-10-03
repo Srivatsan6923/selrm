@@ -16,6 +16,8 @@ Rewards (one per run):
   ledger2-*     Ledger-RM as a process reward: every step is read and judged as in selection
                 (scripts/score_pool.py: reader on case + rule + step, judge on rule + ledger + step),
                 trace score = minimum u over steps, reward = sigmoid(score); served by vLLM (--ledger-url)
+  summary2-triplets  the same with the two-stage prose-summary model trained on triplets (reader writes a
+                prose summary of the evidence; no structure check), served the same way
   stepcheck     the step check (released Med-PRM, model-card readout): minimum plus-probability over steps
 Evaluation, every --eval-every steps and at the end: greedy answers on a fixed sample of
 rule_v1/test_L2 triplets (held-out signature classes), accuracy of the chosen claim by the rule
@@ -105,8 +107,9 @@ def make_refgraph_reward(recs_by_iid):
     return reward
 
 
-def make_ledger_reward(url, model_name, recs_by_iid):
-    """Ledger-RM process reward through a vLLM OpenAI-compatible server (raw-logit logprobs)."""
+def make_ledger_reward(url, model_name, recs_by_iid, fmt="ledger2"):
+    """Two-stage process reward (Ledger-RM, fmt ledger2; prose summary, fmt summary2) through a vLLM
+    OpenAI-compatible server (raw-logit logprobs), with the reader and judge prompts of scripts/score_pool.py."""
     import urllib.request
     from transformers import AutoTokenizer
     from selrm import formats as F
@@ -131,10 +134,10 @@ def make_ledger_reward(url, model_name, recs_by_iid):
                                  "claim_text": st}))
         u = [[] for _ in completions]
         if jobs:
-            reads = post({"model": model_name, "prompt": [chat(P.reader_prompt(x)) for _, x in jobs],
+            reads = post({"model": model_name, "prompt": [chat(P.reader_prompt(x, prose=fmt == "summary2")) for _, x in jobs],
                           "max_tokens": 384, "temperature": 0, "stop_token_ids": [248046, 248044]})
             texts = [ch["text"] for ch in sorted(reads, key=lambda ch: ch["index"])]
-            ok = [F.well_formed(t, x["case_text"], "ledger2") for t, (_, x) in zip(texts, jobs)]
+            ok = [F.well_formed(t, x["case_text"], fmt) for t, (_, x) in zip(texts, jobs)]
             idx = [i for i, k in enumerate(ok) if k]
             if idx:
                 judged = post({"model": model_name, "prompt": [chat(P.judge_prompt(jobs[i][1], texts[i])) for i in idx],
@@ -274,7 +277,7 @@ def summarize(out_dir):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--reward", required=True, choices=["outcome", "refgraph", "ledger2-blocks", "ledger2-triplets",
-                                                        "stepcheck"])
+                                                        "summary2-triplets", "stepcheck"])
     ap.add_argument("--policy", required=True)
     ap.add_argument("--data", required=True, help="dir with rule_v1/<set>/records.jsonl")
     ap.add_argument("--out", required=True)
@@ -338,6 +341,7 @@ def main():
     reward = {"outcome": lambda: outcome_reward, "refgraph": lambda: make_refgraph_reward(recs_by_iid),
               "ledger2-blocks": lambda: make_ledger_reward(a.ledger_url, a.ledger_model, recs_by_iid),
               "ledger2-triplets": lambda: make_ledger_reward(a.ledger_url, a.ledger_model, recs_by_iid),
+              "summary2-triplets": lambda: make_ledger_reward(a.ledger_url, a.ledger_model, recs_by_iid, "summary2"),
               "stepcheck": lambda: make_stepcheck_reward(a.medprm, recs_by_iid)}[a.reward]()
     reward.__name__ = a.reward.replace("-", "_")
     group = 4 if a.smoke else 8
