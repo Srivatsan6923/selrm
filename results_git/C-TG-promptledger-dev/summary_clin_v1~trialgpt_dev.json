@@ -5,6 +5,7 @@
  "threshold": -20.0,
  "n_items": 213,
  "n_scored": 200,
+ "n_patients": 10,
  "macroF1": 15.581098339719029,
  "macroF1_CI95": [
   12.440191387559807,
@@ -103,7 +104,14 @@
  "forced_choice_acc": 0.0,
  "n_forced": 139,
  "evidence": {
-  "precision": 0.0,
+  "precision": null,
+  "n_items_pred": 0,
+  "recall": 0.0,
+  "n_items_gold": 73,
+  "items_without_quote": 213
+ },
+ "evidence_malformed_without_quotes": {
+  "precision": null,
   "n_items_pred": 0,
   "recall": 0.0,
   "n_items_gold": 73,
@@ -111,6 +119,7 @@
  },
  "per_trial_acc": {
   "n_trials": 16,
+  "min_items": 5,
   "min": 10.0,
   "median": 26.19047619047619,
   "max": 54.54545454545455

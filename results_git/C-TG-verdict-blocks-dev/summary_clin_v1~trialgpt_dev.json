@@ -5,6 +5,7 @@
  "threshold": 7.872409820556641,
  "n_items": 213,
  "n_scored": 200,
+ "n_patients": 10,
  "macroF1": 62.02001666897303,
  "macroF1_CI95": [
   49.629390912020625,
@@ -109,8 +110,10 @@
  "forced_choice_acc": 93.5251798561151,
  "n_forced": 139,
  "evidence": null,
+ "evidence_malformed_without_quotes": null,
  "per_trial_acc": {
   "n_trials": 16,
+  "min_items": 5,
   "min": 12.5,
   "median": 65.15151515151516,
   "max": 85.71428571428571
