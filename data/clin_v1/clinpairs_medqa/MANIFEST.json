@@ -1,0 +1,22 @@
+{
+ "git_commit": "fc67926ee0c7dfbce2bdee63d54987b18d86368d",
+ "python": "3.12.7",
+ "builder": "scripts/clinpairs_prep.py",
+ "source": "clin_v1/keypairs_medqa_train",
+ "reader_run": "results_git/C-CP-medqa-train-reader",
+ "pairs_total": 360,
+ "pairs_kept": 122,
+ "kept_share": 0.3389,
+ "name": "clin_v1/clinpairs_medqa",
+ "n_records": 488,
+ "n_groups": 122,
+ "sha256": "606c7f54841df1f5b14a2c39c01ce11142d71bd5c0390d400c3d013c12c96eb3",
+ "created": "2026-10-03",
+ "frozen": true,
+ "shortcut_validation": {
+  "claims_swapping_label_within_pair": 244,
+  "claims": 244,
+  "claim_only_solvable_pairs": 0,
+  "label1_share": 50.0
+ }
+}

@@ -31,6 +31,10 @@ GPU = {   # kind -> (resource, gpu.product values or None)
 }
 CPU_ONLY = {"key": "feature.node.kubernetes.io/pci-10de.present", "operator": "NotIn", "values": ["true"]}
 DRIVER = {"key": "nvidia.com/cuda.driver.major", "operator": "Gt", "values": ["579"]}   # cu130 needs >= 580
+# nodes where our pods keep dying: GPU faults (cuBLAS execution failure, misaligned address) on c6017; c4705's kubelet
+# went unreachable and c4715 left pods in ContainerStatusUnknown (3 Oct)
+BAD_NODES = {"key": "kubernetes.io/hostname", "operator": "NotIn",
+             "values": ["hcc-nrp-shor-c6017.unl.edu", "hcc-chase-shor-c4705.unl.edu", "hcc-chase-shor-c4715.unl.edu"]}
 VOLS = [{"name": "pvc", "persistentVolumeClaim": {"claimName": PVC}},
         {"name": "pvcb", "persistentVolumeClaim": {"claimName": PVCB, "readOnly": True}}]
 MNTS = [{"name": "pvc", "mountPath": "/pvc"}, {"name": "pvcb", "mountPath": "/pvcb", "readOnly": True}]
@@ -106,7 +110,7 @@ def runner_job(name, tasks, code, bcode, env_tag, gpu, hours, cpu=2, mem="12Gi",
     resource, products = GPU[gpu]
     # us-west / us-central only (staging 20+ GB from the us-west CephFS pool to a us-east node took > 40 min, and
     # some remote nodes lack its CSI driver); us-west preferred
-    terms = [DRIVER, {"key": "topology.kubernetes.io/region", "operator": "In", "values": ["us-west", "us-central"]}] \
+    terms = [DRIVER, BAD_NODES, {"key": "topology.kubernetes.io/region", "operator": "In", "values": ["us-west", "us-central"]}] \
         + ([{"key": "nvidia.com/gpu.product", "operator": "In", "values": products}] if products else [])
     mounts = MNTS + [{"name": "work", "mountPath": "/work"}, {"name": "env", "mountPath": "/opt/selrm-env"}]
     aff = affinity(terms)

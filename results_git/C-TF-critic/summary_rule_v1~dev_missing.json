@@ -1,0 +1,13 @@
+{
+ "run_id": "C-TF-critic",
+ "set": "rule_v1/dev_missing",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "seconds": 153.3,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

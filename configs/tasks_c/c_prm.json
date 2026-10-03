@@ -23,7 +23,7 @@
    "prm": "medprm",
    "format": "prm",
    "priority": 20,
-   "bs": 8,
+   "bs": 32,
    "min_gen": 3,
    "claim_types": [
     "conclusion"
@@ -40,7 +40,7 @@
    "prm": "medprm",
    "format": "prm",
    "priority": 30,
-   "bs": 8,
+   "bs": 32,
    "min_gen": 3,
    "claim_types": [
     "conclusion"
@@ -59,8 +59,8 @@
    "prm": "meds3prm",
    "format": "prm",
    "priority": 11,
-   "bs": 8,
-   "min_gen": 3,
+   "bs": 32,
+   "min_gen": 6,
    "claim_types": [
     "conclusion",
     "criterion",
@@ -77,8 +77,8 @@
    "prm": "meds3prm",
    "format": "prm",
    "priority": 21,
-   "bs": 8,
-   "min_gen": 3,
+   "bs": 32,
+   "min_gen": 6,
    "claim_types": [
     "conclusion"
    ],
@@ -94,8 +94,8 @@
    "prm": "meds3prm",
    "format": "prm",
    "priority": 31,
-   "bs": 8,
-   "min_gen": 3,
+   "bs": 32,
+   "min_gen": 6,
    "claim_types": [
     "conclusion"
    ],
@@ -131,7 +131,7 @@
    "prm": "foverprm",
    "format": "prm",
    "priority": 22,
-   "bs": 8,
+   "bs": 32,
    "min_gen": 3,
    "claim_types": [
     "conclusion"
@@ -148,7 +148,7 @@
    "prm": "foverprm",
    "format": "prm",
    "priority": 32,
-   "bs": 8,
+   "bs": 32,
    "min_gen": 3,
    "claim_types": [
     "conclusion"
@@ -186,7 +186,7 @@
    "format": "prm",
    "priority": 41,
    "bs": 8,
-   "min_gen": 4,
+   "min_gen": 5,
    "min_gb": 40,
    "max_new": 2048,
    "n_groups": 100,
@@ -239,7 +239,7 @@
    "format": "prm",
    "priority": 44,
    "bs": 16,
-   "min_gen": 3,
+   "min_gen": 5,
    "max_new": 2048,
    "n_groups": 100,
    "claim_types": [

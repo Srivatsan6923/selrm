@@ -128,6 +128,12 @@
   "seed": 0
  },
  "threshold_source": "results_git/C-TG-critic-dev/scores_rule_v1~dev_missing.jsonl",
+ "threshold_alt": {
+  "source": "results_git/C-TF-critic",
+  "tau": -0.35245028138160706,
+  "macroF1": 65.70071104760866,
+  "acc": 70.35573122529644
+ },
  "eval": {
   "seconds": 150.3,
   "pad_ok": true,

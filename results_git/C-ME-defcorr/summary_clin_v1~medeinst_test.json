@@ -1,0 +1,30 @@
+{
+ "run_id": "C-ME-defcorr",
+ "set": "clin_v1/medeinst_test",
+ "Reversal": 24.67025822032324,
+ "CI95": [
+  23.49990711499164,
+  25.803455322310977
+ ],
+ "CI95_label_pairs": [
+  15.304921120791146,
+  36.21413575927222
+ ],
+ "n_pairs": 5383,
+ "control_acc": 70.35110533159948,
+ "trap_acc": 53.33457180011146,
+ "bias_trap_rate": 64.93266437813573,
+ "n_control_correct": 3787,
+ "tie_rate": 0.0,
+ "Reversal_excl_no_content_diff": 25.051877004338802,
+ "Reversal_excl_overlap_ref": 24.69924812030075,
+ "n_no_content_diff": 82,
+ "n_overlap_ref": 63,
+ "definitions": "control correct: d(control) > 0; trap correct: d(trap) < 0; Reversal = both (ties fail); bias_trap_rate = share of control-correct pairs with d(trap) > 0 (MedEinst's R_bias on two candidates)",
+ "bootstrap": {
+  "unit": "pair (CI95) and (y_gt, y_bias) label pair (CI95_label_pairs)",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": null
+}

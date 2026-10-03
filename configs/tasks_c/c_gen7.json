@@ -1,0 +1,27 @@
+{
+ "note": "runs that need runner generation 7 (hidden states); read only by runners started on code >= c1d62851844b, because older runners ignore min_gen",
+ "runs": [
+  {
+   "run_id": "C-DG-probe",
+   "priority": 40,
+   "format": "verdict",
+   "adapter": null,
+   "bs_score": 64,
+   "min_gen": 7,
+   "hidden": {
+    "case_kinds": [
+     "base",
+     "flip",
+     "near"
+    ],
+    "claim_type": "conclusion",
+    "claim_role": "s"
+   },
+   "sets": [
+    "rule_v1/test_L0",
+    "rule_v1/test_L2"
+   ],
+   "note": "exploratory probe (App.): residual stream of the critic at the answer position; scripts/probe.py"
+  }
+ ]
+}

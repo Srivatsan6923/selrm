@@ -255,6 +255,64 @@
     "clin_v1/trialgpt_test"
    ],
    "note": "TrialGPT seed 1: tau from its own dev_missing scores; dev portion scored first"
+  },
+  {
+   "run_id": "C-TG-summary2-blocks-s0",
+   "priority": 0.5,
+   "format": "summary2",
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-blocks-s0",
+   "adapter_run": "B-F-summary2-blocks-s0",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_test"
+   ],
+   "max_new": 768,
+   "note": "TrialGPT test portion, scored once after the dev check (C-TG-summary2-blocks-dev: 0 malformed, 1 of 213 at the 384 cap); tau from the dev run"
+  },
+  {
+   "run_id": "C-TF-promptledger-lenient--p1",
+   "priority": 0.8,
+   "format": "ledger2",
+   "adapter": null,
+   "bs_score": 128,
+   "rejudge_from": "C-TF-promptledger--p1",
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/dev",
+    "rule_v1/missing"
+   ],
+   "note": "format-normalised readout (lenient_ledger v2) of C-TF-promptledger's reader outputs",
+   "merge_into": "C-TF-promptledger-lenient",
+   "min_gen": 3
+  },
+  {
+   "run_id": "C-TF-promptledger-lenient--p2",
+   "priority": 0.8,
+   "format": "ledger2",
+   "adapter": null,
+   "bs_score": 128,
+   "rejudge_from": "C-TF-promptledger--p2",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "note": "format-normalised readout (lenient_ledger v2) of C-TF-promptledger's reader outputs",
+   "merge_into": "C-TF-promptledger-lenient",
+   "min_gen": 3
+  },
+  {
+   "run_id": "C-TF-promptledger-lenient--p3",
+   "priority": 0.8,
+   "format": "ledger2",
+   "adapter": null,
+   "bs_score": 128,
+   "rejudge_from": "C-TF-promptledger--p3",
+   "sets": [
+    "rule_v1/test_L3alt",
+    "xr_v1/test"
+   ],
+   "note": "format-normalised readout (lenient_ledger v2) of C-TF-promptledger's reader outputs",
+   "merge_into": "C-TF-promptledger-lenient",
+   "min_gen": 3
   }
  ],
  "note": "wave 1: TrialGPT development portion (priority 1-8) and the untrained-backbone rule-tier rows (10, 20); runners re-read this file before every claim"

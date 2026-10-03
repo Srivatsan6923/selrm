@@ -23,15 +23,27 @@
   "split": "train",
   "tier": "external"
  },
+ "clin_v1/clinpairs_medqa": {
+  "created": "2026-10-03",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/clinpairs_medqa/MANIFEST.json",
+  "n_groups": 122,
+  "n_records": 488,
+  "path": "clin_v1/clinpairs_medqa/records.jsonl",
+  "sha256": "606c7f54841df1f5b14a2c39c01ce11142d71bd5c0390d400c3d013c12c96eb3",
+  "split": "train",
+  "tier": "external"
+ },
  "clin_v1/clinpairs_train": {
-  "created": "2026-10-02",
+  "created": "2026-10-03",
   "frozen": true,
   "level": "external",
   "manifest": "clin_v1/clinpairs_train/MANIFEST.json",
-  "n_groups": 7807,
-  "n_records": 31228,
+  "n_groups": 7929,
+  "n_records": 31716,
   "path": "clin_v1/clinpairs_train/records.jsonl",
-  "sha256": "5b0e7e9a3fdd2c958d020a34eab2b8636c11a012e176125207c222fda28ee37a",
+  "sha256": "548d26d0b6e4c191b7bd083f6ce1ad7a5def54a2de46d25934e12051b009d362",
   "split": "train",
   "tier": "external"
  },

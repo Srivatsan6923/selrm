@@ -33,13 +33,14 @@ def records(data, name):
 def subset(recs, n):
     if not n:
         return recs
+    group = lambda r: r["meta"]["xr"]["item"] if "xr" in r.get("meta", {}) else r["tid"]   # xr_v1: an item spans 2 tids
     by = collections.defaultdict(set)
     for r in recs:
-        by[r["nm_kind"]].add(r["tid"])
+        by[r["nm_kind"]].add(group(r))
     keep = set()
     for kind in sorted(by):
         keep |= set(random.Random(0).sample(sorted(by[kind]), min(len(by[kind]), n // len(by))))
-    return [r for r in recs if r["tid"] in keep]
+    return [r for r in recs if group(r) in keep]
 
 
 def spent():

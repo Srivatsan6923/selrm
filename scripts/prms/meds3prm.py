@@ -102,9 +102,16 @@ def load(model_dir, base_dir=None, device="cuda", dtype="bfloat16"):
         base_dir = snapshot_download(BASE_ID, revision=BASE_REVISION,
                                      allow_patterns=["config.json", "model*.safetensors*"])
     tok = AutoTokenizer.from_pretrained(model_dir)
-    model = AutoModelForTokenClassification.from_pretrained(
-        base_dir, num_labels=2, pad_token_id=tok.pad_token_id,  # 128004 <|finetune_right_pad_id|>, as ValueModel sets
-        dtype=getattr(torch, dtype) if isinstance(dtype, str) else dtype, device_map=device)
+    # transformers pre-allocates the model's full size on the GPU (a speed-only warm-up) again when it attaches the
+    # policy repo's LoRA: 14 GB on top of the loaded 14 GB base ran 24 GB cards out of memory. Off while loading.
+    import transformers.modeling_utils as mu
+    warm, mu.caching_allocator_warmup = mu.caching_allocator_warmup, lambda *a, **k: None
+    try:
+        model = AutoModelForTokenClassification.from_pretrained(
+            base_dir, num_labels=2, pad_token_id=tok.pad_token_id,  # 128004 <|finetune_right_pad_id|>, as ValueModel sets
+            dtype=getattr(torch, dtype) if isinstance(dtype, str) else dtype, device_map=device)
+    finally:
+        mu.caching_allocator_warmup = warm
     model = PeftModel.from_pretrained(model, model_dir).merge_and_unload()
     return model.eval(), tok
 

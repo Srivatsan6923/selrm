@@ -16,7 +16,7 @@ Runs with these options go in task files that only runners with this code read."
 import argparse, gc, json, os, re, socket, sys, time, traceback
 
 KEYS = ("need", "found", "subject", "status", "time")
-GEN = 4     # runner capability generation: runs with min_gen > GEN are skipped (3: topk, n_groups subsets, budgets; 4: ThinkPRM wrapper)
+GEN = 7     # runner capability generation: runs with min_gen > GEN are skipped (3: topk, n_groups subsets, budgets; 4: ThinkPRM wrapper; 5: xr_v1 subsets keep whole items; 6: MedS3 loader fix; 7: hidden states)
 LENIENT_VERSION = 2      # 2: markdown tables (decided on the development sets, 3 Oct, before any test scoring)
 
 
@@ -147,18 +147,20 @@ def build_eval_c(root, fmt, tag, set_name, tok):
 
 def subset(recs, n=0, claim_types=("conclusion",)):
     """Records of the given claim types; with n, the fixed group subset of scripts/run_judge.py (n / #kinds groups
-    per near-miss kind, random.Random(0) over sorted group ids), so audit rows share their items."""
+    per near-miss kind, random.Random(0) over sorted group ids; an xr_v1 group is an item), so audit rows share
+    their items."""
     import random
     recs = [r for r in recs if r["claim_type"] in claim_types]
     if not n:
         return recs
+    group = lambda r: r["meta"]["xr"]["item"] if "xr" in r.get("meta", {}) else r["tid"]   # xr_v1: an item spans 2 tids
     by = {}
     for r in recs:
-        by.setdefault(r["nm_kind"], set()).add(r["tid"])
+        by.setdefault(r["nm_kind"], set()).add(group(r))
     keep = set()
     for kind in sorted(by):
         keep |= set(random.Random(0).sample(sorted(by[kind]), min(len(by[kind]), n // len(by))))
-    return [r for r in recs if r["tid"] in keep]
+    return [r for r in recs if group(r) in keep]
 
 
 def run_prm(spec, a, mon, log, owner):
@@ -280,11 +282,56 @@ def topk_pass(sc, root, rid, set_name, out_dir, log, tag, k=50):
     return {"set": set_name, "n": len(rows), "k": k, "eval": {"seconds": round(time.time() - t0, 1), "mode": "topk"}}
 
 
+def hidden_pass(sc, root, rid, set_name, out_dir, log, tag, spec):
+    """Verdict prompts of a set: the residual stream (decoder-layer outputs, float16) at the answer position for the
+    exploratory probe (scripts/probe.py); records of one claim type and role and the given case kinds. Same
+    pre-tokenised prompts and left padding as the log-odds readout, so the last position is the answer position."""
+    import numpy as np
+    import torch
+    import eval_local
+    from selrm.formats import dataset_path
+    t0 = time.time()
+    recs = load_jsonl(dataset_path(root, set_name))
+    seqs, keys = eval_local.unpack(f"{root}/tok/{tag}/eval/{set_name}/verdict.npz", len(sc.tok))
+    assert keys == [r["iid"] for r in recs], "eval prompts out of sync with records"
+    keep = [i for i, r in enumerate(recs) if r["claim_type"] == spec.get("claim_type", "conclusion")
+            and r["claim_role"] == spec.get("claim_role", "s") and r["case_kind"] in spec.get("case_kinds", ["base", "flip", "near"])]
+    blocks = max((m for n, m in sc.model.named_modules() if n.endswith("layers") and isinstance(m, torch.nn.ModuleList)), key=len)
+    layers = spec.get("layers") or sorted({len(blocks) // 4, len(blocks) // 2, 3 * len(blocks) // 4, len(blocks) - 1})
+    grab = {}
+
+    def hook(l):
+        return lambda m, i, o: grab.__setitem__(l, (o[0] if isinstance(o, tuple) else o)[:, -1, :].float().cpu())
+    hooks = [blocks[l].register_forward_hook(hook(l)) for l in layers]
+    sub, out = [seqs[i] for i in keep], None
+    try:
+        with torch.no_grad():
+            for b in sc._batches(sub, sc.bs_score):
+                ids, att = sc._left_pad([sub[i] for i in b])
+                grab.clear()
+                sc.model(input_ids=ids, attention_mask=att, logits_to_keep=1, use_cache=False)
+                h = torch.stack([grab[l] for l in layers], dim=1).numpy().astype(np.float16)   # (batch, layers, d)
+                out = np.zeros((len(sub),) + h.shape[1:], dtype=np.float16) if out is None else out
+                out[b] = h
+    finally:
+        for x in hooks:
+            x.remove()
+    name = set_name.replace("/", "~")
+    np.savez_compressed(f"{out_dir}/hidden_{name}.npz", h=out, iid=np.array([recs[i]["iid"] for i in keep]),
+                        layers=np.array(layers), n_layers=len(blocks))
+    log(f"{rid} {set_name} residual stream at layers {layers} of {len(blocks)} for {len(keep)} records "
+        f"({time.time() - t0:.0f} s)")
+    return {"set": set_name, "n": len(keep), "layers": layers, "eval": {"seconds": round(time.time() - t0, 1), "mode": "hidden"}}
+
+
 def budget_scorer(eval_local, model, tok, bs_score, bs_gen, max_new, log, gb):
     """B's Scorer whose batches also respect a token budget (prompt tokens, plus max_new when generating), set
     from GPU memory: long prompts (MedEinst, NLI4CT-P) at a fixed batch size ran 24 GB cards out of memory.
     Batch composition changes speed only (B's left-padding self-check runs as before)."""
     budget = None if gb >= 60 else (8000 if gb < 30 else 40000)
+    # generation is bound by memory bandwidth and this model's cache is small (3 of 4 layers are linear attention), so
+    # its batches get 3x the scoring budget; a batch that still does not fit is split (SafeGenerate)
+    gen_budget = None if budget is None else 3 * budget
 
     class BudgetScorer(eval_local.Scorer):
         def check_padding(self, seqs, n=8):
@@ -295,22 +342,61 @@ def budget_scorer(eval_local, model, tok, bs_score, bs_gen, max_new, log, gb):
             fit = [s for s in seqs if len(s) * n <= budget] or sorted(seqs, key=len)[:n]
             return super().check_padding(fit, n)
 
+        def generate(self, *args, **kw):
+            self._gen = True
+            try:
+                return super().generate(*args, **kw)
+            finally:
+                self._gen = False
+
         def _batches(self, seqs, bs):
             if budget is None or self.pad_ok is False:
                 return super()._batches(seqs, bs)
-            extra = self.max_new if bs == self.bs_gen else 0
+            gen = getattr(self, "_gen", False)
+            extra, cap = (self.max_new, gen_budget) if gen else (0, budget)
             order = sorted(range(len(seqs)), key=lambda i: (len(seqs[i]), i))
             out, cur = [], []
             for i in order:                       # ascending length: the new item is the longest in the batch
-                if cur and (len(cur) == bs or (len(cur) + 1) * (len(seqs[i]) + extra) > budget):
+                if cur and (len(cur) == bs or (len(cur) + 1) * (len(seqs[i]) + extra) > cap):
                     out.append(cur)
                     cur = []
                 cur.append(i)
             return out + ([cur] if cur else [])
 
     sc = BudgetScorer(model, tok, bs_score, bs_gen, max_new, log)
-    log(f"token budget per batch: {budget}")
+    sc.model = SafeGenerate(sc.model, sc.pad, log)
+    log(f"token budget per batch: {budget} (generation {gen_budget})")
     return sc
+
+
+class SafeGenerate:
+    """The model with an out-of-memory fallback for generate(): a batch that does not fit is split in halves (each
+    keeps its left padding); the halves' generated tokens are re-joined, right-padded with the pad id after each row's
+    own end, so callers that slice off the prompt see the same layout. Every other use goes to the model itself."""
+    def __init__(self, model, pad, log=print):
+        self.m, self.pad, self.log = model, pad, log
+
+    def __getattr__(self, k):
+        return getattr(self.m, k)
+
+    def __call__(self, *args, **kw):
+        return self.m(*args, **kw)
+
+    def generate(self, input_ids, attention_mask, **kw):
+        import torch
+        try:
+            return self.m.generate(input_ids=input_ids, attention_mask=attention_mask, **kw)
+        except torch.OutOfMemoryError:
+            if len(input_ids) == 1:
+                raise
+            torch.cuda.empty_cache()
+            h = len(input_ids) // 2
+            self.log(f"generate: out of memory at batch {len(input_ids)}; splitting")
+            parts = [self.generate(input_ids[s], attention_mask[s], **kw)[:, input_ids.shape[1]:]
+                     for s in (slice(0, h), slice(h, None))]
+            n = max(p.shape[1] for p in parts)
+            parts = [torch.nn.functional.pad(p, (0, n - p.shape[1]), value=self.pad) for p in parts]
+            return torch.cat([input_ids, torch.cat(parts)], dim=1)
 
 
 def run_one(spec, a, mon, log, owner):
@@ -330,7 +416,7 @@ def run_one(spec, a, mon, log, owner):
         bs_score, bs_gen = spec.get("bs_score", 64), spec.get("bs_gen", 128)
         mem = torch.cuda.get_device_properties(0).total_memory / 2**30 if torch.cuda.is_available() else 99
         if mem < 30:                              # 24 GB cards: 18.8 GB of weights
-            bs_score, bs_gen = min(bs_score, 16), min(bs_gen, 16)
+            bs_score, bs_gen = min(bs_score, 16), min(bs_gen, 48)   # generation also capped by its token budget
         elif mem < 40:                            # 32 GB cards
             bs_score, bs_gen = min(bs_score, 64), min(bs_gen, 64)
         sc = budget_scorer(eval_local, model, tok, bs_score, bs_gen, spec.get("max_new", 384), log, mem)
@@ -355,6 +441,11 @@ def run_one(spec, a, mon, log, owner):
             if spec.get("topk"):                  # sampling-noise check: next-token distribution, verdict format
                 os.makedirs(rdir, exist_ok=True)
                 summ[s] = topk_pass(sc, root, rid, s, rdir, log, tag, spec["topk"])
+                secs[s] = summ[s]["eval"]["seconds"]
+                continue
+            if spec.get("hidden"):                # exploratory probe: residual stream at the answer position
+                os.makedirs(rdir, exist_ok=True)
+                summ[s] = hidden_pass(sc, root, rid, s, rdir, log, tag, spec["hidden"])
                 secs[s] = summ[s]["eval"]["seconds"]
                 continue
             orig = s

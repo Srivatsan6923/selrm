@@ -1,0 +1,8 @@
+2026-10-03T08:42:15Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-summary2-blocks-s0
+2026-10-03T08:42:17Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0006)
+2026-10-03T08:42:19Z padding self-check: max |u_batch - u_single| = 0.0866 (tol 0.639) -> left padding
+2026-10-03T08:44:09Z generate: batch 25/38, 12498 tokens, 114 tok/s
+2026-10-03T08:47:18Z C-TG-summary2-blocks-dev rule_v1/dev_missing: TA nan Rev nan Hold nan n=None (302.1 s)
+2026-10-03T08:47:18Z C-TG-summary2-blocks-dev clin_v1/trialgpt_dev prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_dev/reader_prose.npz', 'exists')
+2026-10-03T08:50:03Z C-TG-summary2-blocks-dev clin_v1/trialgpt_dev: TA nan Rev nan Hold nan n=None (165.1 s)
+2026-10-03T08:50:04Z DONE C-TG-summary2-blocks-dev in 8.4 min, GPU util mean 85.6

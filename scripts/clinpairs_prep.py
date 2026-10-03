@@ -76,6 +76,28 @@ def medqa_pairs(recs, run_dir):
     return out, kept, total
 
 
+def validation(recs):
+    """Shortcut validation of a pair set: every claim is correct on one case of its pair and wrong on the other, so a
+    claim-only scorer u(s, x) = g(s) solves no pair (Proposition 1 (i)); label balance; for MedEinst-derived cases the
+    checks of clin_v1/medeinst_test (no trailing double-space marker after normalisation; length cue)."""
+    lab, text = {}, {}
+    for r in recs:
+        lab.setdefault((r["tid"], r["claim_text"]), set()).add((r["case_kind"], r["label"]))
+        if r["meta"].get("y_gt") is not None:     # MedEinst-derived cases only
+            text[(r["tid"], r["case_kind"])] = r["case_text"]
+    swap = sum(len({l for _, l in v}) == 2 and len(v) == 2 for v in lab.values())
+    tids = sorted({t for t, _ in text})
+    out = {"claims_swapping_label_within_pair": swap, "claims": len(lab),
+           "claim_only_solvable_pairs": len({t for (t, _), v in lab.items() if len({l for _, l in v}) < 2}),
+           "label1_share": round(100.0 * sum(r["label"] for r in recs) / len(recs), 2) if recs else None}
+    if tids:
+        out["trailing_double_space_after_normalisation"] = {k: sum(any(l.endswith("  ") for l in text[(t, k)].split("\n"))
+                                                                   for t in tids if (t, k) in text) for k in ("base", "flip")}
+        out["share_trap_longer_than_control"] = round(100.0 * sum(len(text[(t, "flip")]) > len(text[(t, "base")])
+                                                                  for t in tids) / len(tids), 2)
+    return out
+
+
 def write(out, name, recs, man, reg):
     d = f"{out}/clin_v1/{name}"
     os.makedirs(d, exist_ok=True)
@@ -84,8 +106,10 @@ def write(out, name, recs, man, reg):
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
     sha = hashlib.sha256(open(f"{d}/records.jsonl", "rb").read()).hexdigest()
     split = recs[0]["split"] if recs else "train"
+    old = json.load(open(f"{d}/MANIFEST.json", encoding="utf-8")) if os.path.exists(f"{d}/MANIFEST.json") else {}
     man |= {"name": f"clin_v1/{name}", "n_records": len(recs), "n_groups": len({r['tid'] for r in recs}),
-            "sha256": sha, "created": time.strftime("%Y-%m-%d"), "frozen": True}
+            "sha256": sha, "created": old["created"] if old.get("sha256") == sha else time.strftime("%Y-%m-%d"),
+            "frozen": True, "shortcut_validation": validation(recs)}
     json.dump(man, open(f"{d}/MANIFEST.json", "w", encoding="utf-8", newline="\n"), indent=1)
     reg[f"clin_v1/{name}"] = {"path": f"clin_v1/{name}/records.jsonl", "split": split, "level": "external",
                               "tier": "external", "n_groups": man["n_groups"], "n_records": len(recs),

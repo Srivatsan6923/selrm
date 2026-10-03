@@ -1,0 +1,13 @@
+{
+ "run_id": "C-TG-verdict-blocks-s2",
+ "set": "rule_v1/dev_missing",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "seconds": 194.3,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

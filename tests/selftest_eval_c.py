@@ -62,6 +62,8 @@ runs = [{"run_id": "ST-verdict", "priority": 1, "format": "verdict", "adapter": 
          "hp": hp, "bs_score": 8, "nocase": True, "sets": sets},
         {"run_id": "ST-sub", "priority": 6, "format": "verdict", "adapter": None, "base_model": "tiny/qwen35",
          "hp": hp, "bs_score": 8, "n_groups": 10, "claim_types": ["conclusion"], "sets": ["rule_v1/dev_missing"]},
+        {"run_id": "ST-hidden", "priority": 7, "format": "verdict", "adapter": None, "base_model": "tiny/qwen35",
+         "hp": hp, "bs_score": 8, "hidden": {"case_kinds": ["base", "flip"]}, "sets": ["rule_v1/dev_missing"]},
         {"run_id": "ST-skipped", "priority": 0, "format": "rationale", "adapter": None, "base_model": "tiny/qwen35",
          "hp": hp, "sets": sets}]
 os.makedirs(f"{croot}/tasks", exist_ok=True)
@@ -104,4 +106,10 @@ print("ST-nocase", nc)
 assert "scores_nocase~rule_v1~dev_missing.jsonl" in nc and "scores_nocase~clin_v1~trialgpt_dev.jsonl" in nc
 assert all(json.loads(l)["case_text"] == "" for l in open(f"{croot}/data/nocase/rule_v1/dev_missing.jsonl", encoding="utf-8"))
 assert os.path.exists(f"{croot}/tok/tiny--qwen35/eval/clin_v1/trialgpt_dev/reader_ledger.npz")
+import numpy as np
+hz = np.load(f"{croot}/results/ST-hidden/hidden_rule_v1~dev_missing.npz")
+dm = [json.loads(l) for l in open(f"{broot}/data/rule_v1/dev_missing/records.jsonl", encoding="utf-8")]
+want = [r["iid"] for r in dm if r["claim_type"] == "conclusion" and r["claim_role"] == "s" and r["case_kind"] in ("base", "flip")]
+print("ST-hidden", hz["h"].shape, list(hz["layers"]))
+assert list(hz["iid"]) == want and hz["h"].shape == (len(want), len(hz["layers"]), 64) and np.isfinite(hz["h"]).all()
 print("selftest_eval_c OK")
