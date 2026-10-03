@@ -6,10 +6,9 @@ over FINAL_TASKS_C.md. Branch role-c, clone D:\NAACL27\selrm-role-c. Run freeze:
 1. docs/AUX_PROTOCOL.md completed and committed (51aa523) before any training under it.
 2. In-domain sets frozen: clin_v1/nli4ct_train (1,700), clin_v1/trialgpt_cv (801 items, 5 patient folds),
    clin_v1/medeinst_train (alias of clinpairs_medeinst); dev splits nli4ct_dev, medeinst_ref_dev, trialgpt_dev.
-3. clin_v1/medeinst_neg (3,937) / medeinst_neg_train (7,523): scripts/medeinst_neg.py works with a provisional bank;
-   NOT frozen or registered until A's negation bank lands (interface request in HANDOFFS). Then:
-   python scripts/medeinst_neg.py --bank <A's bank> --freeze; push records + registry to the PVC; add the S2 sha256
-   to docs/AUX_PROTOCOL.md; queue medeinst_neg scoring for case-blind and case-visible rows.
+3. clin_v1/medeinst_neg (3,699) / medeinst_neg_train (7,072) FROZEN with A's bank (e794752; copy in
+   scratch/anegbank), on the PVC, sha256 in docs/AUX_PROTOCOL.md S2. Zero-shot hold runs: c_mn.json (critic + six core
+   s0 cells, C-MN-<x>), C-MN-sc-summary2-triplets-s0 on c_s3; evaluate with eval_clinical.py medeinst_neg.
 4. S3 (c_s3.json, B code 10e1882945ce): B-SC-summary2-triplets-s0 on TrialGPT dev, NLI4CT-P, key pairs, MedEinst.
    After C-TG-sc-summary2-triplets-dev: dev check, then add C-TG-sc-summary2-triplets-s0 (test, cap 768).
    More case-visible systems as B registers them.
