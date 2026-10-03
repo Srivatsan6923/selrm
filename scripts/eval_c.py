@@ -16,6 +16,7 @@ Runs with these options go in task files that only runners with this code read."
 import argparse, gc, json, os, re, socket, sys, time, traceback
 
 KEYS = ("need", "found", "subject", "status", "time")
+GEN = 3     # runner capability generation: runs with min_gen > GEN are skipped (3: topk, n_groups subsets, budgets)
 LENIENT_VERSION = 2      # 2: markdown tables (decided on the development sets, 3 Oct, before any test scoring)
 
 
@@ -248,6 +249,37 @@ def run_prm(spec, a, mon, log, owner):
             torch.cuda.empty_cache()
 
 
+def topk_pass(sc, root, rid, set_name, out_dir, log, tag, k=50):
+    """Verdict prompts of a set: the top-k next-token logits (fp32) at the answer position, per record, for an
+    exact offline simulation of a sampled readout (scripts/noise_check.py). Same pre-tokenised prompts as the
+    log-odds readout; one forward pass per record."""
+    import torch
+    import eval_local
+    from selrm.formats import dataset_path
+    t0 = time.time()
+    recs = load_jsonl(dataset_path(root, set_name))
+    seqs, keys = eval_local.unpack(f"{root}/tok/{tag}/eval/{set_name}/verdict.npz", len(sc.tok))
+    assert keys == [r["iid"] for r in recs], "eval prompts out of sync with records"
+    rows = [None] * len(seqs)
+    with torch.no_grad():
+        for b in sc._batches(seqs, sc.bs_score):
+            ids, att = sc._left_pad([seqs[i] for i in b])
+            lg = sc.model(input_ids=ids, attention_mask=att, logits_to_keep=1, use_cache=False).logits[:, -1, :].float()
+            if sc.scale != 1.0:
+                lg = lg * sc.scale
+            v, ix = lg.topk(k, dim=-1)
+            lse = torch.logsumexp(lg, dim=-1)
+            for j, i in enumerate(b):
+                rows[i] = {"iid": recs[i]["iid"], "top_ids": ix[j].tolist(), "top_logits": [round(x, 4) for x in v[j].tolist()],
+                           "logsumexp": float(lse[j]), "plus": float(lg[j, sc.plus]), "minus": float(lg[j, sc.minus])}
+    name = set_name.replace("/", "~")
+    with open(f"{out_dir}/topk_{name}.jsonl", "w", encoding="utf-8") as f:
+        for r in rows:
+            f.write(json.dumps(r) + "\n")
+    log(f"{rid} {set_name} top-{k} logits for {len(rows)} records ({time.time() - t0:.0f} s)")
+    return {"set": set_name, "n": len(rows), "k": k, "eval": {"seconds": round(time.time() - t0, 1), "mode": "topk"}}
+
+
 def budget_scorer(eval_local, model, tok, bs_score, bs_gen, max_new, log, gb):
     """B's Scorer whose batches also respect a token budget (prompt tokens, plus max_new when generating), set
     from GPU memory: long prompts (MedEinst, NLI4CT-P) at a fixed batch size ran 24 GB cards out of memory.
@@ -310,6 +342,11 @@ def run_one(spec, a, mon, log, owner):
                     os.replace(f"{path}.{os.getpid()}.tmp", path)
             if spec.get("rejudge_from"):          # format-normalised readout of another run's reader outputs
                 summ[s] = rejudge(sc, root, rid, s, f"{a.root}/results/{spec['rejudge_from']}", rdir, log)
+                secs[s] = summ[s]["eval"]["seconds"]
+                continue
+            if spec.get("topk"):                  # sampling-noise check: next-token distribution, verdict format
+                os.makedirs(rdir, exist_ok=True)
+                summ[s] = topk_pass(sc, root, rid, s, rdir, log, tag, spec["topk"])
                 secs[s] = summ[s]["eval"]["seconds"]
                 continue
             orig = s
@@ -409,6 +446,7 @@ def main():
     while True:
         runs = sorted(json.load(open(a.tasks))["runs"], key=lambda r: r.get("priority", 9))
         pick = next((r for r in runs if (not only or r["format"] in only) and (not gpu or gb >= r.get("min_gb", 0))
+                     and r.get("min_gen", 0) <= GEN
                      and (not r.get("rejudge_from") or os.path.exists(f"{a.root}/results/{r['rejudge_from']}/DONE"))
                      and runq.state(f"{a.root}/results/{r['run_id']}") == "free"
                      and runq.claim(f"{a.root}/results/{r['run_id']}", owner)), None)
