@@ -1,0 +1,18 @@
+{
+ "run_id": "C-AUD-medprm--p2",
+ "set": "rule_v1/missing",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 321.8,
+  "n_records": 4000,
+  "n_groups": "all",
+  "claim_types": [
+   "conclusion"
+  ]
+ },
+ "MR": 0.0,
+ "FR": 6.5,
+ "threshold": -0.8788928985595703,
+ "n_missing": 1000,
+ "n_supported": 1000
+}

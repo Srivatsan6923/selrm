@@ -1,0 +1,14 @@
+2026-10-03T13:55:10Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-03T13:55:11Z token budget per batch: 8000 (generation 24000)
+2026-10-03T13:55:11Z C-KP-promptsum clin_v1/keypairs_medqa prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa/reader_prose.npz', 'exists')
+2026-10-03T13:55:12Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0456)
+2026-10-03T13:55:13Z padding self-check: max |u_batch - u_single| = 0.0387 (tol 0.717) -> left padding
+2026-10-03T13:55:51Z C-KP-promptsum clin_v1/keypairs_medqa: TA nan Rev nan Hold nan n=None (39.6 s)
+2026-10-03T13:55:51Z C-KP-promptsum clin_v1/keypairs_careqa prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa/reader_prose.npz', 'exists')
+2026-10-03T13:55:59Z C-KP-promptsum clin_v1/keypairs_careqa: TA nan Rev nan Hold nan n=None (7.9 s)
+2026-10-03T13:55:59Z C-KP-promptsum clin_v1/keypairs_medqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa_oneway/reader_prose.npz', 'exists')
+2026-10-03T14:03:50Z generate: batch 25/32, 81114 tokens, 173 tok/s
+2026-10-03T14:08:19Z C-KP-promptsum clin_v1/keypairs_medqa_oneway: TA nan Rev nan Hold nan n=None (739.6 s)
+2026-10-03T14:08:19Z C-KP-promptsum clin_v1/keypairs_careqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa_oneway/reader_prose.npz', 'exists')
+2026-10-03T14:11:16Z C-KP-promptsum clin_v1/keypairs_careqa_oneway: TA nan Rev nan Hold nan n=None (177.0 s)
+2026-10-03T14:11:17Z DONE C-KP-promptsum in 16.5 min, GPU util mean 89.9

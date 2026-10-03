@@ -1,0 +1,13 @@
+2026-10-03T13:15:24Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-verdict-blocks-s0
+2026-10-03T13:15:25Z token budget per batch: 8000 (generation 24000)
+2026-10-03T13:15:25Z C-KP-verdict-blocks-s0 clin_v1/keypairs_medqa prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa/verdict.npz', 'exists')
+2026-10-03T13:15:26Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0364)
+2026-10-03T13:15:28Z padding self-check: max |u_batch - u_single| = 0.0776 (tol 0.753) -> left padding
+2026-10-03T13:15:33Z C-KP-verdict-blocks-s0 clin_v1/keypairs_medqa: TA nan Rev nan Hold nan n=None (8.4 s)
+2026-10-03T13:15:33Z C-KP-verdict-blocks-s0 clin_v1/keypairs_careqa prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa/verdict.npz', 'exists')
+2026-10-03T13:15:35Z C-KP-verdict-blocks-s0 clin_v1/keypairs_careqa: TA nan Rev nan Hold nan n=None (1.5 s)
+2026-10-03T13:15:35Z C-KP-verdict-blocks-s0 clin_v1/keypairs_medqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa_oneway/verdict.npz', 'exists')
+2026-10-03T13:17:39Z C-KP-verdict-blocks-s0 clin_v1/keypairs_medqa_oneway: TA nan Rev nan Hold nan n=None (124.4 s)
+2026-10-03T13:17:40Z C-KP-verdict-blocks-s0 clin_v1/keypairs_careqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa_oneway/verdict.npz', 'exists')
+2026-10-03T13:18:15Z C-KP-verdict-blocks-s0 clin_v1/keypairs_careqa_oneway: TA nan Rev nan Hold nan n=None (35.0 s)
+2026-10-03T13:18:15Z DONE C-KP-verdict-blocks-s0 in 3.6 min, GPU util mean 85.7

@@ -1,0 +1,41 @@
+{
+ "run_id": "C-KP-ledger2-triplets-s0",
+ "set": "clin_v1/keypairs_medqa_oneway",
+ "Reversal": 30.532212885154063,
+ "CI95": [
+  26.050420168067227,
+  35.294117647058826
+ ],
+ "n_pairs": 357,
+ "q1_acc": 54.90196078431372,
+ "q2_acc": 58.26330532212885,
+ "tie_rate": 25.7703081232493,
+ "Reversal_by_tercile": {
+  "1": 29.41176470588235,
+  "2": 28.571428571428573,
+  "3": 33.61344537815126
+ },
+ "Reversal_by_category": {
+  "step1": 31.70731707317073,
+  "step2&3": 29.533678756476682
+ },
+ "n_by_category": {
+  "step1": 164,
+  "step2&3": 193
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "reader_units": 714,
+  "malformed_units": 106,
+  "mode": null,
+  "malformed_rate": 0.1485,
+  "gen_not_stopped": 0,
+  "seconds": 611.7,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

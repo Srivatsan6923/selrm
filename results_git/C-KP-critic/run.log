@@ -1,0 +1,13 @@
+2026-10-03T13:12:18Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-03T13:12:19Z token budget per batch: 8000 (generation 24000)
+2026-10-03T13:12:20Z C-KP-critic clin_v1/keypairs_medqa prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa/verdict.npz', 'built 52 prompts, max 434 tokens')
+2026-10-03T13:12:20Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0135)
+2026-10-03T13:12:22Z padding self-check: max |u_batch - u_single| = 0.1074 (tol 0.534) -> left padding
+2026-10-03T13:12:26Z C-KP-critic clin_v1/keypairs_medqa: TA nan Rev nan Hold nan n=None (6.0 s)
+2026-10-03T13:12:26Z C-KP-critic clin_v1/keypairs_careqa prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa/verdict.npz', 'built 12 prompts, max 148 tokens')
+2026-10-03T13:12:27Z C-KP-critic clin_v1/keypairs_careqa: TA nan Rev nan Hold nan n=None (0.8 s)
+2026-10-03T13:12:29Z C-KP-critic clin_v1/keypairs_medqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa_oneway/verdict.npz', 'built 1428 prompts, max 559 tokens')
+2026-10-03T13:14:06Z C-KP-critic clin_v1/keypairs_medqa_oneway: TA nan Rev nan Hold nan n=None (96.2 s)
+2026-10-03T13:14:07Z C-KP-critic clin_v1/keypairs_careqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa_oneway/verdict.npz', 'built 900 prompts, max 314 tokens')
+2026-10-03T13:14:35Z C-KP-critic clin_v1/keypairs_careqa_oneway: TA nan Rev nan Hold nan n=None (27.2 s)
+2026-10-03T13:14:35Z DONE C-KP-critic in 2.6 min, GPU util mean 60.8

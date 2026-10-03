@@ -1,0 +1,89 @@
+{
+ "run_id": "C-TF-genprog",
+ "role": "C",
+ "model": "unsloth/Qwen3.5-9B",
+ "model_revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+ "adapter": null,
+ "adapter_run": null,
+ "provider": "local (NRP Nautilus)",
+ "access_date": "2026-10-03",
+ "reasoning": "chat template with enable_thinking=False",
+ "format": "genprm",
+ "mode": null,
+ "rejudge_from": null,
+ "lenient_version": null,
+ "sets": [
+  "rule_v1/dev_missing",
+  "rule_v1/missing",
+  "rule_v1/test_L2",
+  "rule_v1/test_L3alt",
+  "xr_v1/test"
+ ],
+ "max_new": 768,
+ "eval_batch": {
+  "score": 64,
+  "generate": 64
+ },
+ "hp": {
+  "max_len": 4096
+ },
+ "eval_seconds_by_set": {
+  "rule_v1/dev_missing": 1495.2,
+  "rule_v1/missing": 4852.7,
+  "rule_v1/test_L2": 8476.7,
+  "rule_v1/test_L3alt": 6756.5,
+  "xr_v1/test": 4015.6
+ },
+ "eval_generated_tokens": 7453309,
+ "pad_check_ok": true,
+ "eval_u_path": "fp32-hidden",
+ "eval_peak_mem_gb": 19.78,
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA RTX 5000 Ada Generation, 595.91.07, 32760 MiB",
+ "node": "k8s-gpu-6.ucsc.edu",
+ "pod": "selrm-c-run-c-wave2-32gb-10408-0-6klgs",
+ "scoring_code": "role-b ac524e8062ef",
+ "git_commit": "e445da33532b",
+ "wall_seconds": 25640.8,
+ "summaries": {
+  "rule_v1/dev_missing": null,
+  "rule_v1/missing": null,
+  "rule_v1/test_L2": {
+   "Rev": 93.3,
+   "Hold": 94.7,
+   "TA": 89.8,
+   "BaseAcc": 95.0,
+   "Tie": 0.0,
+   "PresHold": 95.2,
+   "n": 1000
+  },
+  "rule_v1/test_L3alt": {
+   "Rev": 98.5985985985986,
+   "Hold": 97.5975975975976,
+   "TA": 96.29629629629629,
+   "BaseAcc": 98.89889889889889,
+   "Tie": 0.0,
+   "PresHold": 99.1991991991992,
+   "n": 999
+  },
+  "xr_v1/test": null
+ },
+ "gpu_util_mean": 96.0,
+ "gpu_util_p10": 95.0,
+ "gpu_windows_below40": 0.0,
+ "gpu_samples": 829,
+ "gpu_hours": 7.122
+}

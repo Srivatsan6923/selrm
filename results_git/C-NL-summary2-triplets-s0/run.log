@@ -1,0 +1,19 @@
+2026-10-03T14:43:46Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-summary2-triplets-s0
+2026-10-03T14:43:47Z token budget per batch: 8000 (generation 24000)
+2026-10-03T14:43:56Z C-NL-summary2-triplets-s0 clin_v1/nli4ct_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/nli4ct_test/reader_prose.npz', 'built 5500 prompts, max 2927 tokens')
+2026-10-03T14:43:57Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0140)
+2026-10-03T14:44:00Z padding self-check: max |u_batch - u_single| = 0.0887 (tol 0.637) -> left padding
+2026-10-03T14:48:54Z generate: batch 25/317, 37158 tokens, 127 tok/s
+2026-10-03T14:55:53Z generate: batch 50/317, 80191 tokens, 113 tok/s
+2026-10-03T15:04:36Z generate: batch 75/317, 119343 tokens, 97 tok/s
+2026-10-03T15:14:55Z generate: batch 100/317, 164792 tokens, 89 tok/s
+2026-10-03T15:24:31Z generate: batch 125/317, 203663 tokens, 84 tok/s
+2026-10-03T15:35:28Z generate: batch 150/317, 244100 tokens, 79 tok/s
+2026-10-03T15:47:39Z generate: batch 175/317, 284609 tokens, 75 tok/s
+2026-10-03T15:57:41Z generate: batch 200/317, 321448 tokens, 73 tok/s
+2026-10-03T16:04:48Z generate: batch 225/317, 346672 tokens, 72 tok/s
+2026-10-03T16:13:43Z generate: batch 250/317, 379167 tokens, 70 tok/s
+2026-10-03T16:21:10Z generate: batch 275/317, 402753 tokens, 69 tok/s
+2026-10-03T16:26:57Z generate: batch 300/317, 419379 tokens, 68 tok/s
+2026-10-03T16:36:59Z C-NL-summary2-triplets-s0 clin_v1/nli4ct_test: TA nan Rev nan Hold nan n=None (6783.4 s)
+2026-10-03T16:37:00Z DONE C-NL-summary2-triplets-s0 in 113.9 min, GPU util mean 94.3

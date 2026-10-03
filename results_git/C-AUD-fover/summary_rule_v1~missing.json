@@ -1,0 +1,18 @@
+{
+ "run_id": "C-AUD-fover--p2",
+ "set": "rule_v1/missing",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 301.3,
+  "n_records": 4000,
+  "n_groups": "all",
+  "claim_types": [
+   "conclusion"
+  ]
+ },
+ "MR": 14.8,
+ "FR": 10.4,
+ "threshold": -2.200397491455078,
+ "n_missing": 1000,
+ "n_supported": 1000
+}

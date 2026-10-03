@@ -1,0 +1,28 @@
+{
+ "run_id": "C-NL-verdict-blocks-s0",
+ "set": "clin_v1/nli4ct_test",
+ "prediction_rule": "Entailment iff u > 0",
+ "macroF1": 0.8051512387961961,
+ "faithfulness": 0.9375,
+ "consistency": 0.8387330754352031,
+ "Control_F1": 0.7922912205567451,
+ "Control_macroF1": 0.8051512387961961,
+ "Contrast_F1": 0.6796377054679639,
+ "Faithfulness": 0.9375,
+ "Consistency": 0.8387330754352031,
+ "Consistency_acc": 0.78215667311412,
+ "n_control": 500,
+ "n_altering": 864,
+ "n_preserving": 4136,
+ "acc_Contradiction": 0.8993333333333333,
+ "acc_Numerical_contradiction": 0.9565217391304348,
+ "acc_Numerical_paraphrase": 0.6875,
+ "acc_Paraphrase": 0.7793333333333333,
+ "acc_Text_appended": 0.7393333333333333,
+ "Average": 0.8561747653306494,
+ "eval": {
+  "seconds": 1084.2,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

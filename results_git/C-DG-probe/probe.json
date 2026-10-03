@@ -1,0 +1,60 @@
+{
+ "run": "probe",
+ "train": "rule_v1/test_L0",
+ "test": "rule_v1/test_L2",
+ "records": "conclusion claim s of flip and near-miss cases",
+ "target": "meta.criterion_holds",
+ "layers": [
+  8,
+  16,
+  24,
+  31
+ ],
+ "probe": {
+  "acc": 86.875,
+  "CI95": [
+   84.56209797130134,
+   88.99388549193996
+  ],
+  "layer_index": 2,
+  "C": 0.01,
+  "cv_acc_train": 93.95,
+  "unseen_conditions": {
+   "acc": 94.47368421052632,
+   "CI95": [
+    90.27027027027027,
+    97.94871794871794
+   ],
+   "n": 380
+  },
+  "layer": 24
+ },
+ "control": {
+  "acc": 69.85,
+  "CI95": [
+   65.44930321960595,
+   74.62900909526088
+  ],
+  "layer_index": 3,
+  "C": 0.01,
+  "cv_acc_train": 73.8,
+  "unseen_conditions": {
+   "acc": 41.31578947368421,
+   "CI95": [
+    28.535353535353536,
+    58.888888888888886
+   ],
+   "n": 380
+  },
+  "layer": 31,
+  "labels": "sha256(condition) first bit"
+ },
+ "selectivity": 17.025000000000006,
+ "n_train": 2000,
+ "n_test": 4000,
+ "test_majority": 50.0,
+ "test_rules": 103,
+ "train_rules": 218,
+ "shared_rules": 0,
+ "shared_conditions": 56
+}

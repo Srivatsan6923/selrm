@@ -1,0 +1,33 @@
+{
+ "run_id": "C-NL-summary2-triplets-s0",
+ "set": "clin_v1/nli4ct_test",
+ "prediction_rule": "Entailment iff u > 0",
+ "macroF1": 0.6872364210160983,
+ "faithfulness": 0.8599537037037037,
+ "consistency": 0.679642166344294,
+ "Control_F1": 0.6578366445916115,
+ "Control_macroF1": 0.6872364210160983,
+ "Contrast_F1": 0.4986244841815681,
+ "Faithfulness": 0.8599537037037037,
+ "Consistency": 0.679642166344294,
+ "Consistency_acc": 0.6767408123791102,
+ "n_control": 500,
+ "n_altering": 864,
+ "n_preserving": 4136,
+ "acc_Contradiction": 0.8406666666666667,
+ "acc_Numerical_contradiction": 0.8768115942028986,
+ "acc_Numerical_paraphrase": 0.6205357142857143,
+ "acc_Paraphrase": 0.694,
+ "acc_Text_appended": 0.5726666666666667,
+ "Average": 0.7324775048798697,
+ "eval": {
+  "reader_units": 5500,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 27,
+  "seconds": 6783.4,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

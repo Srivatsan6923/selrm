@@ -58,11 +58,12 @@ def main():
         u = run_scores(a.run_dir, s)
         if u is None or s in ("rule_v1/missing", "rule_v1/dev_missing"):
             continue
-        recs = records(a.data, s)
+        recs = [r for r in records(a.data, s) if r["iid"] in u]      # subset runs score a fixed part of a set
         res[s] = set_metrics(recs, [u[r["iid"]] for r in recs])
     ud, ut = run_scores(a.run_dir, "rule_v1/dev_missing"), run_scores(a.run_dir, "rule_v1/missing")
     if ud and ut:
-        dm, mi = records(a.data, "rule_v1/dev_missing"), records(a.data, "rule_v1/missing")
+        dm = [r for r in records(a.data, "rule_v1/dev_missing") if r["iid"] in ud]
+        mi = [r for r in records(a.data, "rule_v1/missing") if r["iid"] in ut]
         tau = M.mr_threshold(dm, [ud[r["iid"]] for r in dm])
         res["missing"] = M.missing_rejection(mi, [ut[r["iid"]] for r in mi], tau)
     ux = run_scores(a.run_dir, "xr_v1/test")

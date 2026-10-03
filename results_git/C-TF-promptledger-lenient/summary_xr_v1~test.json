@@ -1,0 +1,41 @@
+{
+ "run_id": "C-TF-promptledger-lenient--p3",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 110,
+  "malformed_rate": 0.0458,
+  "seconds": 436.6,
+  "mode": "rejudge",
+  "lenient_version": 2,
+  "source_run": "C-TF-promptledger--p3"
+ },
+ "XA": 52.5,
+ "n_items": 400,
+ "n_incomplete": 0,
+ "n_excluded": 0,
+ "CellAcc": 90.375,
+ "n_cells": 2400,
+ "cells_without_label": 0,
+ "XA_currency": 65.0,
+ "XA_inclusivity": 43.0,
+ "XA_subject": 73.0,
+ "XA_window": 29.0,
+ "without_known_issues": {
+  "XA": 54.14364640883978,
+  "n_items": 362,
+  "n_incomplete": 0,
+  "n_excluded": 38,
+  "CellAcc": 90.56169429097606,
+  "n_cells": 2172,
+  "cells_without_label": 0,
+  "XA_currency": 70.58823529411765,
+  "XA_inclusivity": 44.15584415584416,
+  "XA_subject": 73.0,
+  "XA_window": 29.0
+ }
+}

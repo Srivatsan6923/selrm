@@ -74,6 +74,8 @@ def shift(run, data):
     l2, u2 = records(data, "rule_v1/test_L2"), scores(run, "rule_v1/test_L2")
     if u is None or u2 is None:
         return None
+    recs = [r for r in recs if r["iid"] in u]        # runs may score the conclusion claims only
+    l2 = [r for r in l2 if r["iid"] in u2]
     J = M.judgments(recs, [u[r["iid"]] for r in recs])
     d2 = dmap(l2, u2)
     tau = statistics.median(abs(d2[(t, "pres")] - d2[(t, "base")]) for (t, k) in d2 if k == "pres" and (t, "base") in d2)

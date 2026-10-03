@@ -1,0 +1,28 @@
+{
+ "run_id": "C-NL-verdict-triplets-s0",
+ "set": "clin_v1/nli4ct_test",
+ "prediction_rule": "Entailment iff u > 0",
+ "macroF1": 0.80999923999696,
+ "faithfulness": 0.90625,
+ "consistency": 0.8445357833655706,
+ "Control_F1": 0.810379241516966,
+ "Control_macroF1": 0.80999923999696,
+ "Contrast_F1": 0.7153546842262795,
+ "Faithfulness": 0.90625,
+ "Consistency": 0.8445357833655706,
+ "Consistency_acc": 0.789651837524178,
+ "n_control": 500,
+ "n_altering": 864,
+ "n_preserving": 4136,
+ "acc_Contradiction": 0.868,
+ "acc_Numerical_contradiction": 0.9130434782608695,
+ "acc_Numerical_paraphrase": 0.6696428571428571,
+ "acc_Paraphrase": 0.7766666666666666,
+ "acc_Text_appended": 0.7866666666666666,
+ "Average": 0.8537216749608456,
+ "eval": {
+  "seconds": 1081.2,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

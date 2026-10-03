@@ -1,0 +1,47 @@
+{
+ "run_id": "C-AUD-fover",
+ "set": "clin_v1/keypairs_careqa_oneway",
+ "Reversal": 69.33333333333333,
+ "CI95": [
+  63.111111111111114,
+  75.11111111111111
+ ],
+ "n_pairs": 225,
+ "q1_acc": 80.88888888888889,
+ "q2_acc": 86.22222222222223,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 73.33333333333333,
+  "2": 74.66666666666667,
+  "3": 60.0
+ },
+ "Reversal_by_category": {
+  "Biology": 82.92682926829268,
+  "Chemistry": 58.333333333333336,
+  "Medicine": 65.11627906976744,
+  "Nursing": 60.60606060606061,
+  "Pharmacology": 75.0,
+  "Psychology": 64.28571428571429
+ },
+ "n_by_category": {
+  "Biology": 41,
+  "Chemistry": 24,
+  "Medicine": 43,
+  "Nursing": 33,
+  "Pharmacology": 56,
+  "Psychology": 28
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "seconds": 37.1,
+  "n_records": 900,
+  "n_groups": "all",
+  "claim_types": [
+   "conclusion"
+  ]
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "run_id": "C-NL-critic",
+ "set": "clin_v1/nli4ct_test",
+ "prediction_rule": "Entailment iff u > 0",
+ "macroF1": 0.781992151717462,
+ "faithfulness": 0.8483796296296297,
+ "consistency": 0.7947292069632496,
+ "Control_F1": 0.7833001988071571,
+ "Control_macroF1": 0.781992151717462,
+ "Contrast_F1": 0.648714069591528,
+ "Faithfulness": 0.8483796296296297,
+ "Consistency": 0.7947292069632496,
+ "Consistency_acc": 0.7509671179883946,
+ "n_control": 500,
+ "n_altering": 864,
+ "n_preserving": 4136,
+ "acc_Contradiction": 0.822,
+ "acc_Numerical_contradiction": 0.8731884057971014,
+ "acc_Numerical_paraphrase": 0.6875,
+ "acc_Paraphrase": 0.7626666666666667,
+ "acc_Text_appended": 0.7113333333333334,
+ "Average": 0.8088030118000121,
+ "eval": {
+  "seconds": 828.3,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "patterns": {
+  "verdict": [
+   "\\bthe claim (?:is|was) (?:not )?(?:correct|incorrect|true|false|right|wrong)\\b",
+   "\\banswer\\s*:",
+   "(?:^|\\n)\\s*[+\\-]\\s*$"
+  ],
+  "criterion": [
+   "\\b(?:criterion|condition|requirement)s? (?:is|are|was|were) (?:not )?(?:met|satisfied|fulfilled)\\b",
+   "\\b(?:meets|does not meet|do not meet|fails to meet)\\b",
+   "\\b(?:not )?eligible\\b",
+   "\\bdoes not apply\\b",
+   "\\bapplies\\b",
+   "\\bsatisf(?:ies|y|ied)\\b",
+   "\\bcontradict",
+   "\\bfalls? (?:within|outside)\\b",
+   "\\bwithin the (?:specified |required )?range\\b",
+   "\\bfulfil"
+  ],
+  "action": [
+   "\\btherefore\\b",
+   "\\bthus\\b",
+   "\\bhence\\b",
+   "\\bshould(?: not)?\\b",
+   "\\brecommend",
+   "\\bis indicated\\b",
+   "\\bcontraindicat"
+  ],
+  "compare": [
+   "\\b(?:above|below|greater than|less than|exceeds?|higher than|lower than|at or above|at or below)\\s+\\d"
+  ]
+ },
+ "sets": {
+  "rule_v1/dev": {
+   "units": 1200,
+   "condition_removed": true,
+   "decision_language_any": 19.33,
+   "decision_language_verdict": 0.0,
+   "decision_language_criterion": 5.83,
+   "decision_language_action": 2.0,
+   "decision_language_compare": 17.0,
+   "malformed_rate_strict": 0.0,
+   "mean_chars": 167.0
+  },
+  "rule_v1/dev_missing": {
+   "units": 600,
+   "condition_removed": true,
+   "decision_language_any": 17.33,
+   "decision_language_verdict": 0.0,
+   "decision_language_criterion": 2.33,
+   "decision_language_action": 5.67,
+   "decision_language_compare": 14.67,
+   "malformed_rate_strict": 0.0,
+   "mean_chars": 193.8
+  },
+  "rule_v1/missing": {
+   "units": 2000,
+   "condition_removed": true,
+   "decision_language_any": 13.2,
+   "decision_language_verdict": 0.0,
+   "decision_language_criterion": 2.25,
+   "decision_language_action": 3.6,
+   "decision_language_compare": 10.95,
+   "malformed_rate_strict": 0.0,
+   "mean_chars": 183.5
+  },
+  "rule_v1/test_L2": {
+   "units": 8000,
+   "condition_removed": true,
+   "decision_language_any": 16.31,
+   "decision_language_verdict": 0.0,
+   "decision_language_criterion": 4.8,
+   "decision_language_action": 1.69,
+   "decision_language_compare": 14.29,
+   "malformed_rate_strict": 0.0,
+   "mean_chars": 173.6
+  },
+  "rule_v1/test_L3alt": {
+   "units": 4000,
+   "condition_removed": true,
+   "decision_language_any": 45.27,
+   "decision_language_verdict": 0.0,
+   "decision_language_criterion": 8.82,
+   "decision_language_action": 1.23,
+   "decision_language_compare": 44.17,
+   "malformed_rate_strict": 0.0,
+   "mean_chars": 180.9
+  },
+  "xr_v1/test": {
+   "units": 2400,
+   "condition_removed": false,
+   "decision_language_any": 7.67,
+   "decision_language_verdict": 0.0,
+   "decision_language_criterion": 2.25,
+   "decision_language_action": 1.0,
+   "decision_language_compare": 4.75,
+   "malformed_rate_strict": 0.0,
+   "mean_chars": 122.6
+  }
+ }
+}

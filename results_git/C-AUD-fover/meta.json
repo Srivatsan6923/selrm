@@ -1,0 +1,129 @@
+{
+ "run_id": "C-AUD-fover",
+ "role": "C",
+ "model": "ryokamoi/Llama-3.1-8B-FoVer-PRM-2026",
+ "model_revision": "964c5c779d8e6ee4907e2b38c914cb3972e06c36",
+ "base": null,
+ "base_revision": null,
+ "prm_module": "foverprm",
+ "prompt_note": "Input is FoVer's own step format, taken from the usage example on the model card (huggingface.co/ryokamoi/Llama-3.1-8B-FoVer-PRM-2026 @ 964c5c7) and the helper it imports, get_fover_input_format (github.com/psunlpgroup/FoVer @ 6fc639c, src/prm/preprocessing.py, copied verbatim below): conversation = get_fover_input_format(problem=P, solution_steps=[claim_text]) with P = 'Rule: {rule_text}\\n\\nCase:\\n{case_text}' ('{case_text}' when rule_text is empty), i.e. one user turn '** Problem **\\n{P}\\n\\n** Task **\\nYour task is to evaluate the accuracy of each step in the provided solution to the above question. For each step, respond with \"correct\" if [...] Respond with \"incorrect\" if the step includes any errors or flawed logic.\\n\\n** Sotluion **\\n{claim_text}' (sic) followed by the dummy assistant turn 'correct' that FoVer uses at inference, rendered by the released tokenizer's Llama-3.1 chat template with its defaults (no system message, so the template's own 'Cutting Knowledge Date: December 2023 / Today Date: 26 Jul 2024' header; no generation prompt) and tokenized without added special tokens (the same ids as tokenizer.apply_chat_template(conversation)). Readout: FoVer's get_step_token_position (src/prm/postprocessing.py, verbatim) gives the '\\n\\n' token after 'assistant<|end_header_id|>', the position whose next-token logits extract_fover_scores reads; there u = logit('correct') - logit('incorrect') (ids 20523 and 63054: the first token of each word, as in extract_fover_scores), which equals log p - log(1-p) for FoVer's score p = softmax(incorrect, correct)[correct]; computed in float32 from the final hidden state and those two lm_head rows (weights in bf16 as stored, as in the authors' own vLLM evaluation; the card's snippet would load float32 under its pinned transformers 4.50.3) and clipped to +-30. One forward pass per record; batches are right-padded (the position is found on the unpadded ids and every pad comes after it); no generation, so max_new_tokens is unused.",
+ "provider": "local (NRP Nautilus), as released",
+ "access_date": "2026-10-03",
+ "sets": [
+  "rule_v1/dev",
+  "rule_v1/test_L2",
+  "rule_v1/dev_missing",
+  "rule_v1/missing",
+  "xr_v1/test",
+  "clin_v1/medeinst_test",
+  "clin_v1/keypairs_medqa_oneway",
+  "clin_v1/keypairs_careqa_oneway",
+  "clin_v1/keypairs_medqa",
+  "clin_v1/keypairs_careqa"
+ ],
+ "n_groups": "all",
+ "max_new": null,
+ "eval_seconds_by_set": {
+  "rule_v1/dev": 355.2,
+  "rule_v1/test_L2": 2409.3,
+  "rule_v1/dev_missing": 87.1,
+  "rule_v1/missing": 301.3,
+  "xr_v1/test": 266.1,
+  "clin_v1/medeinst_test": 2119.5,
+  "clin_v1/keypairs_medqa_oneway": 109.1,
+  "clin_v1/keypairs_careqa_oneway": 37.1,
+  "clin_v1/keypairs_medqa": 5.1,
+  "clin_v1/keypairs_careqa": 0.8
+ },
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA A10, 595.91.07, 23028 MiB",
+ "node": "hcc-nrp-shor-c5805.unl.edu",
+ "pod": "selrm-c-run-c-prm-24gb-15843-0-bv9j4",
+ "wall_seconds": 5926.299999999999,
+ "eval_peak_mem_gb": 15.51,
+ "summaries": {
+  "rule_v1/dev": {
+   "Rev": 73.0,
+   "Hold": 69.33333333333333,
+   "TA": 50.666666666666664,
+   "BaseAcc": 91.66666666666667,
+   "Tie": 0.0,
+   "PresHold": 92.66666666666667,
+   "n": 300
+  },
+  "rule_v1/test_L2": {
+   "Rev": 49.9,
+   "Hold": 61.9,
+   "TA": 31.8,
+   "BaseAcc": 76.55,
+   "Tie": 0.0,
+   "PresHold": 76.05,
+   "n": 2000
+  },
+  "rule_v1/dev_missing": null,
+  "rule_v1/missing": null,
+  "xr_v1/test": null,
+  "clin_v1/medeinst_test": null,
+  "clin_v1/keypairs_medqa_oneway": null,
+  "clin_v1/keypairs_careqa_oneway": null,
+  "clin_v1/keypairs_medqa": null,
+  "clin_v1/keypairs_careqa": null
+ },
+ "gpu_util_mean": 92.9,
+ "gpu_util_p10": 96.0,
+ "gpu_windows_below40": 0.0,
+ "gpu_samples": 94,
+ "parts": [
+  {
+   "run_id": "C-AUD-fover--p1",
+   "sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ],
+   "wall_seconds": 2879.1,
+   "gpu": "NVIDIA A10, 595.91.07, 23028 MiB",
+   "node": "hcc-nrp-shor-c5805.unl.edu",
+   "git_commit": null
+  },
+  {
+   "run_id": "C-AUD-fover--p2",
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "xr_v1/test"
+   ],
+   "wall_seconds": 759.0,
+   "gpu": "NVIDIA A10, 595.91.07, 23028 MiB",
+   "node": "hcc-nrp-shor-c6009.unl.edu",
+   "git_commit": null
+  },
+  {
+   "run_id": "C-AUD-fover--p3",
+   "sets": [
+    "clin_v1/medeinst_test",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway",
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa"
+   ],
+   "wall_seconds": 2288.2,
+   "gpu": "NVIDIA A10, 595.91.07, 23028 MiB",
+   "node": "hcc-nrp-shor-c6009.unl.edu",
+   "git_commit": null
+  }
+ ],
+ "merged": "2026-10-03T16:43:56Z"
+}

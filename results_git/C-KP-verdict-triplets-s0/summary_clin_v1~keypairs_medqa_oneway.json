@@ -1,0 +1,36 @@
+{
+ "run_id": "C-KP-verdict-triplets-s0",
+ "set": "clin_v1/keypairs_medqa_oneway",
+ "Reversal": 78.15126050420169,
+ "CI95": [
+  73.66946778711484,
+  82.3529411764706
+ ],
+ "n_pairs": 357,
+ "q1_acc": 88.51540616246498,
+ "q2_acc": 88.51540616246498,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 82.3529411764706,
+  "2": 81.5126050420168,
+  "3": 70.58823529411765
+ },
+ "Reversal_by_category": {
+  "step1": 81.70731707317073,
+  "step2&3": 75.12953367875647
+ },
+ "n_by_category": {
+  "step1": 164,
+  "step2&3": 193
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "seconds": 124.4,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

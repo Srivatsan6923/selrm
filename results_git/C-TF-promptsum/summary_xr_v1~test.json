@@ -1,0 +1,42 @@
+{
+ "run_id": "C-TF-promptsum--p3",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 1037.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ },
+ "XA": 80.5,
+ "n_items": 400,
+ "n_incomplete": 0,
+ "n_excluded": 0,
+ "CellAcc": 96.54166666666667,
+ "n_cells": 2400,
+ "cells_without_label": 0,
+ "XA_currency": 88.0,
+ "XA_inclusivity": 71.0,
+ "XA_subject": 98.0,
+ "XA_window": 65.0,
+ "without_known_issues": {
+  "XA": 83.14917127071823,
+  "n_items": 362,
+  "n_incomplete": 0,
+  "n_excluded": 38,
+  "CellAcc": 96.96132596685082,
+  "n_cells": 2172,
+  "cells_without_label": 0,
+  "XA_currency": 88.23529411764706,
+  "XA_inclusivity": 81.81818181818181,
+  "XA_subject": 98.0,
+  "XA_window": 65.0
+ }
+}

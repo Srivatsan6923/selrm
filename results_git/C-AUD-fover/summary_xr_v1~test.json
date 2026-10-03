@@ -1,0 +1,37 @@
+{
+ "run_id": "C-AUD-fover--p2",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 266.1,
+  "n_records": 4800,
+  "n_groups": "all",
+  "claim_types": [
+   "conclusion"
+  ]
+ },
+ "XA": 44.5,
+ "n_items": 400,
+ "n_incomplete": 0,
+ "n_excluded": 0,
+ "CellAcc": 90.54166666666667,
+ "n_cells": 2400,
+ "cells_without_label": 0,
+ "XA_currency": 66.0,
+ "XA_inclusivity": 19.0,
+ "XA_subject": 51.0,
+ "XA_window": 42.0,
+ "without_known_issues": {
+  "XA": 46.68508287292818,
+  "n_items": 362,
+  "n_incomplete": 0,
+  "n_excluded": 38,
+  "CellAcc": 90.93001841620627,
+  "n_cells": 2172,
+  "cells_without_label": 0,
+  "XA_currency": 67.05882352941177,
+  "XA_inclusivity": 24.675324675324674,
+  "XA_subject": 51.0,
+  "XA_window": 42.0
+ }
+}

@@ -1,0 +1,129 @@
+{
+ "run_id": "C-AUD-meds3",
+ "role": "C",
+ "model": "pixas/MedSSS_PRM",
+ "model_revision": "c9e78716a50f54295977ec3155d45304cad6bc02",
+ "base": "pixas/MedSSS_Policy",
+ "base_revision": "5025016086dd2d3e018bc84dd25de344952fec27",
+ "prm_module": "meds3prm",
+ "prompt_note": "Input is the official MedS3 PRM format, taken from obtain_prm_value_for_single_pair in the usage example of the model card (huggingface.co/pixas/MedSSS_PRM @ c9e7871; the same code is in github.com/pixas/MedSSS @ 8238225, Evol_Instruct/solver/sc_vm_solver.py, copied verbatim below) and from the PRM training code (Evol_Instruct/training/prm_train.py, format_one_item and tokenize_fn): messages [user: P, assistant: R] with P = 'Rule: {rule_text}\\n\\nCase:\\n{case_text}' ('{case_text}' when rule_text is empty) and R = 'Step 0: Let's break down this problem step by step.\\n\\nStep 1: {claim_text}', the shape of the card's step_wise_generation. The prompt is the user turn alone rendered by the release's own Llama-3.1 chat template (tokenize=False, add_generation_prompt=True, no system message, so the template trims P and inserts its 'Cutting Knowledge Date: December 2023 / Today Date: 26 Jul 2024' header): '<|begin_of_text|><|start_header_id|>system<|end_header_id|>\\n\\nCutting Knowledge Date: December 2023\\nToday Date: 26 Jul 2024\\n\\n<|eot_id|><|start_header_id|>user<|end_header_id|>\\n\\n{P}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\\n\\n'; R is split on '\\n\\nStep' and each step + '\\n\\n' is tokenized separately (add_special_tokens=False) and appended to the separately tokenized prompt, so the text is the prompt followed by 'Step 0: ...step by step.\\n\\nStep 1: {claim_text}\\n\\n'. Step 0 is the fixed MCTS root step that opens every MedS3 policy output and every PRM training trajectory (labels are put on steps >= 1 only, and the official selection rules drop the step-0 value), so the claim is the one scored step, Step 1. Readout: the official completion_index of Step 1, i.e. its last token ('\\n\\n'-terminated, the last token of the input), where the official step value is p = softmax(logits)[..., 1] of the 2-class head (card; ValueModel.forward_token in Evol_Instruct/models/modeling_value_llama.py); u = logit_1 - logit_0 = log p - log(1-p), with the released head (score weight and bias) applied in float32 to the final hidden state, clipped to +-30. Batches are left-padded with position ids restarted at each sequence's first real token, so every row matches the official unpadded call. Not generative: max_new_tokens is unused. Weights: the PRM adapter merged into the full weights of pixas/MedSSS_Policy @ 5025016 without that repo's own SFT LoRA, which the official loader attaches and then overwrites with the PRM adapter (see load()); bfloat16 by default, where the official rescoring merges in bfloat16 and then casts the model to float16 (dtype='float16' approximates that; it merges in float16).",
+ "provider": "local (NRP Nautilus), as released",
+ "access_date": "2026-10-03",
+ "sets": [
+  "rule_v1/dev",
+  "rule_v1/test_L2",
+  "rule_v1/dev_missing",
+  "rule_v1/missing",
+  "xr_v1/test",
+  "clin_v1/medeinst_test",
+  "clin_v1/keypairs_medqa_oneway",
+  "clin_v1/keypairs_careqa_oneway",
+  "clin_v1/keypairs_medqa",
+  "clin_v1/keypairs_careqa"
+ ],
+ "n_groups": "all",
+ "max_new": null,
+ "eval_seconds_by_set": {
+  "rule_v1/dev": 290.9,
+  "rule_v1/test_L2": 2057.8,
+  "rule_v1/dev_missing": 84.6,
+  "rule_v1/missing": 298.6,
+  "xr_v1/test": 239.2,
+  "clin_v1/medeinst_test": 1888.3,
+  "clin_v1/keypairs_medqa_oneway": 92.1,
+  "clin_v1/keypairs_careqa_oneway": 24.1,
+  "clin_v1/keypairs_medqa": 4.4,
+  "clin_v1/keypairs_careqa": 0.6
+ },
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA GeForce RTX 3090, 595.71.05, 24576 MiB",
+ "node": "suncave-4",
+ "pod": "selrm-c-run-c-prm-24gb-16826-0-vjqgk",
+ "wall_seconds": 5200.1,
+ "eval_peak_mem_gb": 16.01,
+ "summaries": {
+  "rule_v1/dev": {
+   "Rev": 44.333333333333336,
+   "Hold": 36.0,
+   "TA": 26.0,
+   "BaseAcc": 51.0,
+   "Tie": 0.0,
+   "PresHold": 52.0,
+   "n": 300
+  },
+  "rule_v1/test_L2": {
+   "Rev": 22.6,
+   "Hold": 16.35,
+   "TA": 10.0,
+   "BaseAcc": 25.4,
+   "Tie": 0.0,
+   "PresHold": 25.55,
+   "n": 2000
+  },
+  "rule_v1/dev_missing": null,
+  "rule_v1/missing": null,
+  "xr_v1/test": null,
+  "clin_v1/medeinst_test": null,
+  "clin_v1/keypairs_medqa_oneway": null,
+  "clin_v1/keypairs_careqa_oneway": null,
+  "clin_v1/keypairs_medqa": null,
+  "clin_v1/keypairs_careqa": null
+ },
+ "gpu_util_mean": 93.3,
+ "gpu_util_p10": 97.0,
+ "gpu_windows_below40": 0.0,
+ "gpu_samples": 78,
+ "parts": [
+  {
+   "run_id": "C-AUD-meds3--p1",
+   "sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ],
+   "wall_seconds": 2451.9,
+   "gpu": "NVIDIA GeForce RTX 3090, 595.71.05, 24576 MiB",
+   "node": "suncave-4",
+   "git_commit": null
+  },
+  {
+   "run_id": "C-AUD-meds3--p2",
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "xr_v1/test"
+   ],
+   "wall_seconds": 715.4,
+   "gpu": "NVIDIA L4, 595.71.05, 23034 MiB",
+   "node": "nautilus-it-gpu05.fullerton.edu",
+   "git_commit": null
+  },
+  {
+   "run_id": "C-AUD-meds3--p3",
+   "sets": [
+    "clin_v1/medeinst_test",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway",
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa"
+   ],
+   "wall_seconds": 2032.8,
+   "gpu": "NVIDIA GeForce RTX 3090, 595.71.05, 24576 MiB",
+   "node": "suncave-4",
+   "git_commit": null
+  }
+ ],
+ "merged": "2026-10-03T16:43:55Z"
+}

@@ -35,5 +35,22 @@
   },
   "n_opposed": 499,
   "source_run": "B-F-verdict-blocks-s0"
+ },
+ "signal=C-AUD-medprm": {
+  "crossed": 21.832358674463936,
+  "short": 40.93567251461988,
+  "unmoved": 31.189083820662766,
+  "wrong": 6.042884990253412,
+  "kappa": 0.7130398873529128,
+  "tau": 0.43522151559591293,
+  "counts": {
+   "baseline_agrees": 487,
+   "short": 210,
+   "unmoved": 160,
+   "wrong_direction": 31,
+   "crossed": 112
+  },
+  "n_opposed": 513,
+  "source_run": "C-AUD-medprm"
  }
 }

@@ -1,0 +1,49 @@
+{
+ "run_id": "C-KP-promptsum",
+ "set": "clin_v1/keypairs_careqa_oneway",
+ "Reversal": 80.88888888888889,
+ "CI95": [
+  75.55555555555556,
+  86.22222222222223
+ ],
+ "n_pairs": 225,
+ "q1_acc": 90.66666666666667,
+ "q2_acc": 88.0,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 81.33333333333333,
+  "2": 80.0,
+  "3": 81.33333333333333
+ },
+ "Reversal_by_category": {
+  "Biology": 87.8048780487805,
+  "Chemistry": 83.33333333333333,
+  "Medicine": 69.76744186046511,
+  "Nursing": 75.75757575757575,
+  "Pharmacology": 83.92857142857143,
+  "Psychology": 85.71428571428571
+ },
+ "n_by_category": {
+  "Biology": 41,
+  "Chemistry": 24,
+  "Medicine": 43,
+  "Nursing": 33,
+  "Pharmacology": 56,
+  "Psychology": 28
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "reader_units": 450,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 177.0,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
