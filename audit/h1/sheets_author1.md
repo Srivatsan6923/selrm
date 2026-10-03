@@ -1,0 +1,7812 @@
+# H1 sheet author1 (75 groups)
+
+Read `README.md` first.
+
+## G01
+
+Rule: For Quorin syndrome, prescribe ostravin. If the patient has active cancer or the patient has ever had heart failure (current or past), prescribe dalmerol instead.
+
+**G01-C1**
+
+Facts: heart failure: not named; a general line implies absence (counts as absent) [line: "Sleeps flat on one pillow."]; patient: cancer present (past (2017)) [line: "Formerly had kidney cancer, cured by surgery in 2017."]
+
+Claims: s = Prescribe ostravin. | s' = Prescribe dalmerol.
+
+Criterion claims: s = Under the rule, the condition "active cancer" does not hold for this patient. | s' = Under the rule, the condition "active cancer" holds for this patient.
+```
+Male patient of 29 years.
+Referred with Quorin syndrome.
+Sleeps flat on one pillow.
+Teeth in good repair.
+Formerly had kidney cancer, cured by surgery in 2017.
+```
+
+**G01-C2**
+
+Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Sleeps flat on one pillow."]
+
+Claims: s = Prescribe ostravin. | s' = Prescribe dalmerol.
+
+Criterion claims: s = Under the rule, the condition "active cancer" does not hold for this patient. | s' = Under the rule, the condition "active cancer" holds for this patient.
+```
+Man of 29 years.
+Referred with Quorin syndrome.
+Weight steady over the past year.
+Teeth in good repair.
+Sleeps flat on one pillow.
+```
+
+**G01-C3**
+
+Facts: heart failure: not named; a general line implies absence (counts as absent) [line: "Sleeps flat on one pillow."]; patient: cancer present (current) [line: "Has melanoma skin cancer and is receiving treatment for it."]
+
+Claims: s = Prescribe ostravin. | s' = Prescribe dalmerol.
+
+Criterion claims: s = Under the rule, the condition "active cancer" does not hold for this patient. | s' = Under the rule, the condition "active cancer" holds for this patient.
+```
+Male patient of 29 years.
+Referred with Quorin syndrome.
+Sleeps flat on one pillow.
+Teeth in good repair.
+Has melanoma skin cancer and is receiving treatment for it.
+```
+
+**G01-C4**
+
+Facts: heart failure: not named; a general line implies absence (counts as absent) [line: "Sleeps flat on one pillow."]; cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]
+
+Claims: s = Prescribe ostravin. | s' = Prescribe dalmerol.
+
+Criterion claims: s = Under the rule, the condition "active cancer" does not hold for this patient. | s' = Under the rule, the condition "active cancer" holds for this patient.
+```
+Male patient of 29 years.
+Referred with Quorin syndrome.
+Sleeps flat on one pillow.
+Teeth in good repair.
+Weight steady over the past year.
+```
+
+
+## G02
+
+Rule: For Hestin disease, prescribe melcadine. If the current white cell count is above 12.0 x10^9/L, prescribe orvitrex instead.
+
+**G02-C1**
+
+Facts: patient: white cell count = 7.8 (current) [line: "Current white cell count 7.8 x10^9/L."]
+
+Claims: s = Prescribe melcadine. | s' = Prescribe orvitrex.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Male patient of 43 years.
+Referred with Hestin disease.
+Owns a bicycle.
+Uses sunscreen in summer.
+Current white cell count 7.8 x10^9/L.
+Drives a car.
+```
+
+**G02-C2**
+
+Facts: patient: white cell count = 7.8 (current) [line: "Latest WBC is 7.8 x10^9/L."]
+
+Claims: s = Prescribe melcadine. | s' = Prescribe orvitrex.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Man of 43 years.
+Referred with Hestin disease.
+Owns a bicycle.
+Latest WBC is 7.8 x10^9/L.
+Drives a car.
+Uses sunscreen in summer.
+```
+
+**G02-C3**
+
+Facts: patient: white cell count = 13.4 (current) [line: "Latest WBC is 13.4 x10^9/L."]
+
+Claims: s = Prescribe melcadine. | s' = Prescribe orvitrex.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Man of 43 years.
+Referred with Hestin disease.
+Owns a bicycle.
+Latest WBC is 13.4 x10^9/L.
+Drives a car.
+Uses sunscreen in summer.
+```
+
+**G02-C4**
+
+Facts: patient: white cell count = 12.0 (current) [line: "Latest WBC is 12.0 x10^9/L."]
+
+Claims: s = Prescribe melcadine. | s' = Prescribe orvitrex.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Man of 43 years.
+Referred with Hestin disease.
+Owns a bicycle.
+Latest WBC is 12.0 x10^9/L.
+Drives a car.
+Uses sunscreen in summer.
+```
+
+
+## G03
+
+Rule: For Varnell syndrome, prescribe lorvatide. If the current temperature is above 38.0 C and the patient or a first-degree relative (parent, sibling or child) has had a venous thromboembolism at any time, prescribe pemraxin instead.
+
+**G03-C1**
+
+Facts: patient: venous thromboembolism present (past (2014)) [line: "Recovered from a pulmonary embolism in 2014."]; patient: temperature = 37.4 (current) [line: "Temperature now 37.4 C (tympanic)."]
+
+Claims: s = Prescribe lorvatide. | s' = Prescribe pemraxin.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Female patient of 71 years.
+Referred with Varnell syndrome.
+Recovered from a pulmonary embolism in 2014.
+Temperature now 37.4 C (tympanic).
+Teeth in good repair.
+```
+
+**G03-C2**
+
+Facts: patient: temperature = 37.4 (current) [line: "Current temperature 37.4 C."]; patient: venous thromboembolism present (past (2014)) [line: "Recovered from a pulmonary embolism in 2014."]
+
+Claims: s = Prescribe lorvatide. | s' = Prescribe pemraxin.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Woman of 71 years.
+Referred with Varnell syndrome.
+Current temperature 37.4 C.
+Recovered from a pulmonary embolism in 2014.
+Teeth in good repair.
+```
+
+**G03-C3**
+
+Facts: patient: venous thromboembolism present (past (2014)) [line: "Recovered from a pulmonary embolism in 2014."]; patient: temperature = 38.0 (current) [line: "Temperature now 38.0 C (tympanic)."]
+
+Claims: s = Prescribe lorvatide. | s' = Prescribe pemraxin.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Female patient of 71 years.
+Referred with Varnell syndrome.
+Recovered from a pulmonary embolism in 2014.
+Temperature now 38.0 C (tympanic).
+Teeth in good repair.
+```
+
+**G03-C4**
+
+Facts: patient: venous thromboembolism present (past (2014)) [line: "Recovered from a pulmonary embolism in 2014."]; patient: temperature = 38.8 (current) [line: "Temperature now 38.8 C (tympanic)."]
+
+Claims: s = Prescribe lorvatide. | s' = Prescribe pemraxin.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Female patient of 71 years.
+Referred with Varnell syndrome.
+Recovered from a pulmonary embolism in 2014.
+Temperature now 38.8 C (tympanic).
+Teeth in good repair.
+```
+
+
+## G04
+
+Rule: For heart failure with reduced ejection fraction, prescribe spironolactone. If the current blood urea nitrogen is above 19 mg/dL or the patient has active cancer, prescribe dapagliflozin instead.
+
+**G04-C1**
+
+Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: blood urea nitrogen = 29 (current) [line: "Blood urea nitrogen 29 mg/dL on the current labs."]
+
+Claims: s = Prescribe spironolactone. | s' = Prescribe dapagliflozin.
+
+Criterion claims: s = Under the rule, the condition "blood urea nitrogen above 19" does not hold for this patient. | s' = Under the rule, the condition "blood urea nitrogen above 19" holds for this patient.
+```
+Woman of 79 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Paints watercolors as a hobby.
+Knits as a hobby.
+Free T4 of 1.2 ng/dL in 2013.
+Pupils equal and reactive to light.
+Sleeps seven hours a night.
+Prefers morning appointments.
+Owns a bicycle.
+Oncology follow-up: none.
+Photographs local wildlife.
+Plays the piano.
+Drives a car.
+Lives in a second-floor apartment.
+Teeth in good repair.
+Her sister has a lazy eye.
+Her sister wears contact lenses.
+Zinc of 85 mcg/dL in 2017.
+Blood urea nitrogen 29 mg/dL on the current labs.
+Has two cats.
+```
+
+**G04-C2**
+
+Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: blood urea nitrogen = 19 (current) [line: "Blood urea nitrogen 19 mg/dL on the current labs."]
+
+Claims: s = Prescribe spironolactone. | s' = Prescribe dapagliflozin.
+
+Criterion claims: s = Under the rule, the condition "blood urea nitrogen above 19" does not hold for this patient. | s' = Under the rule, the condition "blood urea nitrogen above 19" holds for this patient.
+```
+Woman of 79 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Paints watercolors as a hobby.
+Knits as a hobby.
+Free T4 of 1.2 ng/dL in 2013.
+Pupils equal and reactive to light.
+Sleeps seven hours a night.
+Prefers morning appointments.
+Owns a bicycle.
+Oncology follow-up: none.
+Photographs local wildlife.
+Plays the piano.
+Drives a car.
+Lives in a second-floor apartment.
+Teeth in good repair.
+Her sister has a lazy eye.
+Her sister wears contact lenses.
+Zinc of 85 mcg/dL in 2017.
+Blood urea nitrogen 19 mg/dL on the current labs.
+Has two cats.
+```
+
+**G04-C3**
+
+Facts: patient: blood urea nitrogen = 10 (current) [line: "Blood urea nitrogen now: 10 mg/dL."]; cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]
+
+Claims: s = Prescribe spironolactone. | s' = Prescribe dapagliflozin.
+
+Criterion claims: s = Under the rule, the condition "blood urea nitrogen above 19" does not hold for this patient. | s' = Under the rule, the condition "blood urea nitrogen above 19" holds for this patient.
+```
+Female patient of 79 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Knits as a hobby.
+Blood urea nitrogen now: 10 mg/dL.
+Owns a bicycle.
+Teeth in good repair.
+Zinc of 85 mcg/dL in 2017.
+Photographs local wildlife.
+Oncology follow-up: none.
+Her sister has a lazy eye.
+Lives in a second-floor apartment.
+Her sister wears contact lenses.
+Sleeps seven hours a night.
+Free T4 of 1.2 ng/dL in 2013.
+Prefers morning appointments.
+Pupils equal and reactive to light.
+Paints watercolors as a hobby.
+Drives a car.
+Plays the piano.
+Has two cats.
+```
+
+**G04-C4**
+
+Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: blood urea nitrogen = 10 (current) [line: "Blood urea nitrogen 10 mg/dL on the current labs."]
+
+Claims: s = Prescribe spironolactone. | s' = Prescribe dapagliflozin.
+
+Criterion claims: s = Under the rule, the condition "blood urea nitrogen above 19" does not hold for this patient. | s' = Under the rule, the condition "blood urea nitrogen above 19" holds for this patient.
+```
+Woman of 79 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Paints watercolors as a hobby.
+Knits as a hobby.
+Free T4 of 1.2 ng/dL in 2013.
+Pupils equal and reactive to light.
+Sleeps seven hours a night.
+Prefers morning appointments.
+Owns a bicycle.
+Oncology follow-up: none.
+Photographs local wildlife.
+Plays the piano.
+Drives a car.
+Lives in a second-floor apartment.
+Teeth in good repair.
+Her sister has a lazy eye.
+Her sister wears contact lenses.
+Zinc of 85 mcg/dL in 2017.
+Blood urea nitrogen 10 mg/dL on the current labs.
+Has two cats.
+```
+
+
+## G05
+
+Rule: For cellulitis of the lower leg, prescribe cephalexin. If at least two of the following apply, prescribe clindamycin instead: the patient has ever had a peptic ulcer (current or past); the current ALT is above 120 U/L; the patient has ever had a venous thromboembolism (current or past).
+
+**G05-C1**
+
+Facts: patient: ALT = 136 (current) [line: "ALT now 136 U/L."]; sister: peptic ulcer present (current) [line: "Her sister has peptic ulcer disease."]; venous thromboembolism: not named; a general line implies absence (counts as absent) [line: "Coagulation tests normal on recent bloodwork."]
+
+Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
+
+Criterion claims: s = Under the rule, the condition "peptic ulcer at any time" does not hold for this patient. | s' = Under the rule, the condition "peptic ulcer at any time" holds for this patient.
+```
+Female patient of 18 years.
+Spreading redness and warmth of the right shin for two days.
+Her sister has recovered from a dislocated finger.
+ALT now 136 U/L.
+Enjoys board games.
+Prefers to be addressed by first name.
+Drives a car.
+Paints watercolors as a hobby.
+Plays the piano.
+Owns a bicycle.
+Her sister has peptic ulcer disease.
+Knits as a hobby.
+Pupils equal and reactive to light.
+During a checkup in 2024, total protein was 7.0 g/dL.
+Her father lives with psoriasis.
+In 2024, folate was 12 ng/mL.
+Prefers morning appointments.
+In 2024, lipase was 30 U/L.
+Lives in a second-floor apartment.
+Photographs local wildlife.
+Coagulation tests normal on recent bloodwork.
+Zinc of 85 mcg/dL in 2024.
+Sleeps seven hours a night.
+Has two cats.
+```
+
+**G05-C2**
+
+Facts: patient: ALT = 136 (current) [line: "ALT now 136 U/L."]; peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; venous thromboembolism: not named; a general line implies absence (counts as absent) [line: "Coagulation tests normal on recent bloodwork."]
+
+Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
+
+Criterion claims: s = Under the rule, the condition "peptic ulcer at any time" does not hold for this patient. | s' = Under the rule, the condition "peptic ulcer at any time" holds for this patient.
+```
+Female patient of 18 years.
+Spreading redness and warmth of the right shin for two days.
+Her sister has recovered from a dislocated finger.
+ALT now 136 U/L.
+Enjoys board games.
+Prefers to be addressed by first name.
+Drives a car.
+Paints watercolors as a hobby.
+Plays the piano.
+Owns a bicycle.
+Appetite good; no indigestion.
+Knits as a hobby.
+Pupils equal and reactive to light.
+During a checkup in 2024, total protein was 7.0 g/dL.
+Her father lives with psoriasis.
+In 2024, folate was 12 ng/mL.
+Prefers morning appointments.
+In 2024, lipase was 30 U/L.
+Lives in a second-floor apartment.
+Photographs local wildlife.
+Coagulation tests normal on recent bloodwork.
+Zinc of 85 mcg/dL in 2024.
+Sleeps seven hours a night.
+Has two cats.
+```
+
+**G05-C3**
+
+Facts: venous thromboembolism: not named; a general line implies absence (counts as absent) [line: "Coagulation tests normal on recent bloodwork."]; peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: ALT = 136 (current) [line: "Current ALT 136 U/L."]
+
+Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
+
+Criterion claims: s = Under the rule, the condition "peptic ulcer at any time" does not hold for this patient. | s' = Under the rule, the condition "peptic ulcer at any time" holds for this patient.
+```
+Woman of 18 years.
+Spreading redness and warmth of the right shin for two days.
+Has two cats.
+In 2024, lipase was 30 U/L.
+Zinc of 85 mcg/dL in 2024.
+Owns a bicycle.
+In 2024, folate was 12 ng/mL.
+Coagulation tests normal on recent bloodwork.
+Enjoys board games.
+Appetite good; no indigestion.
+Photographs local wildlife.
+Plays the piano.
+Her father lives with psoriasis.
+Lives in a second-floor apartment.
+Drives a car.
+During a checkup in 2024, total protein was 7.0 g/dL.
+Prefers to be addressed by first name.
+Her sister has recovered from a dislocated finger.
+Current ALT 136 U/L.
+Pupils equal and reactive to light.
+Paints watercolors as a hobby.
+Prefers morning appointments.
+Knits as a hobby.
+Sleeps seven hours a night.
+```
+
+**G05-C4**
+
+Facts: patient: ALT = 136 (current) [line: "ALT now 136 U/L."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]; venous thromboembolism: not named; a general line implies absence (counts as absent) [line: "Coagulation tests normal on recent bloodwork."]
+
+Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
+
+Criterion claims: s = Under the rule, the condition "peptic ulcer at any time" does not hold for this patient. | s' = Under the rule, the condition "peptic ulcer at any time" holds for this patient.
+```
+Female patient of 18 years.
+Spreading redness and warmth of the right shin for two days.
+Her sister has recovered from a dislocated finger.
+ALT now 136 U/L.
+Enjoys board games.
+Prefers to be addressed by first name.
+Drives a car.
+Paints watercolors as a hobby.
+Plays the piano.
+Owns a bicycle.
+Active peptic ulcer disease.
+Knits as a hobby.
+Pupils equal and reactive to light.
+During a checkup in 2024, total protein was 7.0 g/dL.
+Her father lives with psoriasis.
+In 2024, folate was 12 ng/mL.
+Prefers morning appointments.
+In 2024, lipase was 30 U/L.
+Lives in a second-floor apartment.
+Photographs local wildlife.
+Coagulation tests normal on recent bloodwork.
+Zinc of 85 mcg/dL in 2024.
+Sleeps seven hours a night.
+Has two cats.
+```
+
+
+## G06
+
+Rule: For hip osteoarthritis pain, prescribe naproxen alone. If the patient is aged 65 years or more and the patient is currently taking aspirin, prescribe naproxen with omeprazole instead.
+
+**G06-C1**
+
+Facts: patient: aspirin use present (current) [line: "Currently on low-dose aspirin each day."]; patient: age = 65 (current) [line: "Current age 65 years."]
+
+Claims: s = Prescribe naproxen alone. | s' = Prescribe naproxen with omeprazole.
+
+Criterion claims: s = Under the rule, the condition "age at least 65" does not hold for this patient. | s' = Under the rule, the condition "age at least 65" holds for this patient.
+```
+Woman, adult.
+Hip osteoarthritis with pain on walking.
+Plays the piano.
+Currently on low-dose aspirin each day.
+Current age 65 years.
+```
+
+**G06-C2**
+
+Facts: patient: aspirin use present (current) [line: "Currently on low-dose aspirin each day."]; patient: age = 45 (current) [line: "Currently aged 45 years."]
+
+Claims: s = Prescribe naproxen alone. | s' = Prescribe naproxen with omeprazole.
+
+Criterion claims: s = Under the rule, the condition "age at least 65" does not hold for this patient. | s' = Under the rule, the condition "age at least 65" holds for this patient.
+```
+An adult woman.
+Hip osteoarthritis with pain on walking.
+Currently on low-dose aspirin each day.
+Plays the piano.
+Currently aged 45 years.
+```
+
+**G06-C3**
+
+Facts: patient: aspirin use present (current) [line: "Currently on low-dose aspirin each day."]; patient: age = 62 (current) [line: "Current age 62 years."]
+
+Claims: s = Prescribe naproxen alone. | s' = Prescribe naproxen with omeprazole.
+
+Criterion claims: s = Under the rule, the condition "age at least 65" does not hold for this patient. | s' = Under the rule, the condition "age at least 65" holds for this patient.
+```
+Woman, adult.
+Hip osteoarthritis with pain on walking.
+Plays the piano.
+Currently on low-dose aspirin each day.
+Current age 62 years.
+```
+
+**G06-C4**
+
+Facts: patient: aspirin use present (current) [line: "Currently on low-dose aspirin each day."]; patient: age = 45 (current) [line: "Current age 45 years."]
+
+Claims: s = Prescribe naproxen alone. | s' = Prescribe naproxen with omeprazole.
+
+Criterion claims: s = Under the rule, the condition "age at least 65" does not hold for this patient. | s' = Under the rule, the condition "age at least 65" holds for this patient.
+```
+Woman, adult.
+Hip osteoarthritis with pain on walking.
+Plays the piano.
+Currently on low-dose aspirin each day.
+Current age 45 years.
+```
+
+
+## G07
+
+Rule: For urate-lowering therapy in gout, prescribe allopurinol 100 mg daily. If the current eGFR is below 60 mL/min/1.73 m2, prescribe allopurinol 50 mg daily instead.
+
+**G07-C1**
+
+Facts: patient: eGFR = 68 (current) [line: "eGFR now 68 mL/min/1.73 m2."]
+
+Claims: s = Prescribe allopurinol 100 mg daily. | s' = Prescribe allopurinol 50 mg daily.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 60" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 60" holds for this patient.
+```
+Male patient of 77 years.
+Three gout flares in the past year; serum urate 9.2 mg/dL.
+Plays the piano.
+eGFR now 68 mL/min/1.73 m2.
+```
+
+**G07-C2**
+
+Facts: patient: eGFR = 36 (current) [line: "eGFR now 36 mL/min/1.73 m2."]
+
+Claims: s = Prescribe allopurinol 100 mg daily. | s' = Prescribe allopurinol 50 mg daily.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 60" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 60" holds for this patient.
+```
+Male patient of 77 years.
+Three gout flares in the past year; serum urate 9.2 mg/dL.
+Plays the piano.
+eGFR now 36 mL/min/1.73 m2.
+```
+
+**G07-C3**
+
+Facts: patient: eGFR = 68 (current) [line: "Current eGFR 68 mL/min/1.73 m2."]
+
+Claims: s = Prescribe allopurinol 100 mg daily. | s' = Prescribe allopurinol 50 mg daily.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 60" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 60" holds for this patient.
+```
+Man of 77 years.
+Three gout flares in the past year; serum urate 9.2 mg/dL.
+Current eGFR 68 mL/min/1.73 m2.
+Plays the piano.
+```
+
+**G07-C4**
+
+Facts: patient: eGFR = 62 (current) [line: "eGFR now 62 mL/min/1.73 m2."]
+
+Claims: s = Prescribe allopurinol 100 mg daily. | s' = Prescribe allopurinol 50 mg daily.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 60" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 60" holds for this patient.
+```
+Male patient of 77 years.
+Three gout flares in the past year; serum urate 9.2 mg/dL.
+Plays the piano.
+eGFR now 62 mL/min/1.73 m2.
+```
+
+
+## G08
+
+Rule: For thromboprophylaxis after hip replacement, prescribe enoxaparin. If at least two of the following apply, prescribe fondaparinux instead: the patient or a first-degree relative (parent, sibling or child) has had a venous thromboembolism at any time; the patient has ever had a peptic ulcer (current or past); the current weight is 60 kg or less.
+
+**G08-C1**
+
+Facts: patient: weight = 86 (current) [line: "Latest weight 86 kg."]; patient: weight = 69 (past (2008)) [line: "Records from 2008 list weight at 69 kg."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]; venous thromboembolism: not mentioned (counts as absent)
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
+
+Criterion claims: s = Under the rule, the condition "weight at or below 60" does not hold for this patient. | s' = Under the rule, the condition "weight at or below 60" holds for this patient.
+```
+Male patient of 65 years.
+First day after elective total hip replacement.
+His wife wears contact lenses.
+During a checkup in 2010, total protein was 7.0 g/dL.
+In 2010, folate was 12 ng/mL.
+Photographs local wildlife.
+Lives in a second-floor apartment.
+Knits as a hobby.
+Latest weight 86 kg.
+Enjoys board games.
+Records from 2008 list weight at 69 kg.
+His friend has a lazy eye.
+Teeth in good repair.
+Sleeps seven hours a night.
+Pupils equal and reactive to light.
+His wife burned a hand on a stove years ago.
+His wife sprained a thumb last month.
+Prefers morning appointments.
+Drives a car.
+Active peptic ulcer disease.
+Prefers to be addressed by first name.
+Uses sunscreen in summer.
+Owns a bicycle.
+```
+
+**G08-C2**
+
+Facts: patient: weight = 58 (past (2008)) [line: "Back in 2008, weight stood at 58 kg."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]; patient: weight = 86 (current) [line: "Current weight 86 kg."]; venous thromboembolism: not mentioned (counts as absent)
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
+
+Criterion claims: s = Under the rule, the condition "weight at or below 60" does not hold for this patient. | s' = Under the rule, the condition "weight at or below 60" holds for this patient.
+```
+Man of 65 years.
+First day after elective total hip replacement.
+His wife burned a hand on a stove years ago.
+Back in 2008, weight stood at 58 kg.
+Drives a car.
+In 2010, folate was 12 ng/mL.
+Prefers to be addressed by first name.
+Photographs local wildlife.
+His wife wears contact lenses.
+Sleeps seven hours a night.
+Teeth in good repair.
+Active peptic ulcer disease.
+Prefers morning appointments.
+His wife sprained a thumb last month.
+Knits as a hobby.
+Current weight 86 kg.
+Uses sunscreen in summer.
+His friend has a lazy eye.
+During a checkup in 2010, total protein was 7.0 g/dL.
+Pupils equal and reactive to light.
+Enjoys board games.
+Lives in a second-floor apartment.
+Owns a bicycle.
+```
+
+**G08-C3**
+
+Facts: patient: weight = 69 (past (2008)) [line: "Back in 2008, weight stood at 69 kg."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]; patient: weight = 60 (current) [line: "Current weight 60 kg."]; venous thromboembolism: not mentioned (counts as absent)
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
+
+Criterion claims: s = Under the rule, the condition "weight at or below 60" does not hold for this patient. | s' = Under the rule, the condition "weight at or below 60" holds for this patient.
+```
+Man of 65 years.
+First day after elective total hip replacement.
+His wife burned a hand on a stove years ago.
+Back in 2008, weight stood at 69 kg.
+Drives a car.
+In 2010, folate was 12 ng/mL.
+Prefers to be addressed by first name.
+Photographs local wildlife.
+His wife wears contact lenses.
+Sleeps seven hours a night.
+Teeth in good repair.
+Active peptic ulcer disease.
+Prefers morning appointments.
+His wife sprained a thumb last month.
+Knits as a hobby.
+Current weight 60 kg.
+Uses sunscreen in summer.
+His friend has a lazy eye.
+During a checkup in 2010, total protein was 7.0 g/dL.
+Pupils equal and reactive to light.
+Enjoys board games.
+Lives in a second-floor apartment.
+Owns a bicycle.
+```
+
+**G08-C4**
+
+Facts: patient: weight = 69 (past (2008)) [line: "Back in 2008, weight stood at 69 kg."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]; patient: weight = 86 (current) [line: "Current weight 86 kg."]; venous thromboembolism: not mentioned (counts as absent)
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
+
+Criterion claims: s = Under the rule, the condition "weight at or below 60" does not hold for this patient. | s' = Under the rule, the condition "weight at or below 60" holds for this patient.
+```
+Man of 65 years.
+First day after elective total hip replacement.
+His wife burned a hand on a stove years ago.
+Back in 2008, weight stood at 69 kg.
+Drives a car.
+In 2010, folate was 12 ng/mL.
+Prefers to be addressed by first name.
+Photographs local wildlife.
+His wife wears contact lenses.
+Sleeps seven hours a night.
+Teeth in good repair.
+Active peptic ulcer disease.
+Prefers morning appointments.
+His wife sprained a thumb last month.
+Knits as a hobby.
+Current weight 86 kg.
+Uses sunscreen in summer.
+His friend has a lazy eye.
+During a checkup in 2010, total protein was 7.0 g/dL.
+Pupils equal and reactive to light.
+Enjoys board games.
+Lives in a second-floor apartment.
+Owns a bicycle.
+```
+
+**G08-C5**
+
+Facts: patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]; venous thromboembolism: not mentioned (counts as absent); weight: not mentioned (unknown)
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
+
+Criterion claims: s = Under the rule, the condition "weight at or below 60" does not hold for this patient. | s' = Under the rule, the condition "weight at or below 60" holds for this patient.
+```
+Man of 65 years.
+First day after elective total hip replacement.
+His wife burned a hand on a stove years ago.
+Drives a car.
+In 2010, folate was 12 ng/mL.
+Prefers to be addressed by first name.
+Photographs local wildlife.
+His wife wears contact lenses.
+Sleeps seven hours a night.
+Teeth in good repair.
+Active peptic ulcer disease.
+Prefers morning appointments.
+His wife sprained a thumb last month.
+Knits as a hobby.
+Uses sunscreen in summer.
+His friend has a lazy eye.
+During a checkup in 2010, total protein was 7.0 g/dL.
+Pupils equal and reactive to light.
+Enjoys board games.
+Lives in a second-floor apartment.
+Owns a bicycle.
+```
+
+
+## G09
+
+Rule: Glasgow-Blatchford score (as used here, partial): 2 points for a current blood urea nitrogen above 18 mg/dL; 1 point for a current systolic blood pressure below 110 mmHg; 1 point for a current heart rate of 100/min or more; 2 points for current heart failure. Other Glasgow-Blatchford items are not part of this question.
+
+**G09-C1**
+
+Facts: patient: heart rate = 79 (current) [line: "Current heart rate 79/min."]; patient: blood urea nitrogen = 19 (current) [line: "Blood urea nitrogen 19 mg/dL on the current labs."]; patient: systolic blood pressure = 136 (current) [line: "Current systolic blood pressure 136 mmHg."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]
+
+Claims: s = The blood urea nitrogen criterion contributes 0 points. | s' = The blood urea nitrogen criterion contributes 2 points.
+```
+Male patient of 30 years.
+Vomited fresh blood twice; admitted with upper gastrointestinal bleeding.
+Lives in a second-floor apartment.
+Enjoys board games.
+In 2018, folate was 12 ng/mL.
+In 2020, lipase was 30 U/L.
+Current heart rate 79/min.
+Knits as a hobby.
+During a checkup in 2021, free T3 was 3.2 pg/mL.
+His uncle burned a hand on a stove years ago.
+Drives a car.
+Sees a dentist yearly.
+Blood urea nitrogen 19 mg/dL on the current labs.
+His roommate sprained a thumb last month.
+Sleeps seven hours a night.
+Current systolic blood pressure 136 mmHg.
+Prefers morning appointments.
+Heart sounds without a gallop.
+Has two cats.
+Paints watercolors as a hobby.
+His sister has recovered from a dislocated finger.
+```
+
+**G09-C2**
+
+Facts: patient: heart rate = 79 (current) [line: "Current heart rate 79/min."]; patient: blood urea nitrogen = 12 (current) [line: "Blood urea nitrogen 12 mg/dL on the current labs."]; patient: systolic blood pressure = 136 (current) [line: "Current systolic blood pressure 136 mmHg."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]
+
+Claims: s = The blood urea nitrogen criterion contributes 0 points. | s' = The blood urea nitrogen criterion contributes 2 points.
+```
+Male patient of 30 years.
+Vomited fresh blood twice; admitted with upper gastrointestinal bleeding.
+Lives in a second-floor apartment.
+Enjoys board games.
+In 2018, folate was 12 ng/mL.
+In 2020, lipase was 30 U/L.
+Current heart rate 79/min.
+Knits as a hobby.
+During a checkup in 2021, free T3 was 3.2 pg/mL.
+His uncle burned a hand on a stove years ago.
+Drives a car.
+Sees a dentist yearly.
+Blood urea nitrogen 12 mg/dL on the current labs.
+His roommate sprained a thumb last month.
+Sleeps seven hours a night.
+Current systolic blood pressure 136 mmHg.
+Prefers morning appointments.
+Heart sounds without a gallop.
+Has two cats.
+Paints watercolors as a hobby.
+His sister has recovered from a dislocated finger.
+```
+
+**G09-C3**
+
+Facts: patient: heart rate = 79 (current) [line: "Current heart rate 79/min."]; patient: systolic blood pressure = 136 (current) [line: "Current systolic blood pressure 136 mmHg."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]; blood urea nitrogen: not mentioned (unknown)
+
+Claims: s = The blood urea nitrogen criterion contributes 0 points. | s' = The blood urea nitrogen criterion contributes 2 points.
+```
+Male patient of 30 years.
+Vomited fresh blood twice; admitted with upper gastrointestinal bleeding.
+Lives in a second-floor apartment.
+Enjoys board games.
+In 2018, folate was 12 ng/mL.
+In 2020, lipase was 30 U/L.
+Current heart rate 79/min.
+Knits as a hobby.
+During a checkup in 2021, free T3 was 3.2 pg/mL.
+His uncle burned a hand on a stove years ago.
+Drives a car.
+Sees a dentist yearly.
+His roommate sprained a thumb last month.
+Sleeps seven hours a night.
+Current systolic blood pressure 136 mmHg.
+Prefers morning appointments.
+Heart sounds without a gallop.
+Has two cats.
+Paints watercolors as a hobby.
+His sister has recovered from a dislocated finger.
+```
+
+**G09-C4**
+
+Facts: patient: blood urea nitrogen = 12 (current) [line: "Blood urea nitrogen now: 12 mg/dL."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]; patient: heart rate = 79 (current) [line: "Heart rate now 79/min on a pulse check."]; patient: systolic blood pressure = 136 (current) [line: "Observations now: blood pressure 136/90 mmHg."]
+
+Claims: s = The blood urea nitrogen criterion contributes 0 points. | s' = The blood urea nitrogen criterion contributes 2 points.
+```
+Man of 30 years.
+Vomited fresh blood twice; admitted with upper gastrointestinal bleeding.
+His uncle burned a hand on a stove years ago.
+His sister has recovered from a dislocated finger.
+In 2020, lipase was 30 U/L.
+Has two cats.
+Prefers morning appointments.
+Blood urea nitrogen now: 12 mg/dL.
+Sleeps seven hours a night.
+During a checkup in 2021, free T3 was 3.2 pg/mL.
+Sees a dentist yearly.
+Heart sounds without a gallop.
+His roommate sprained a thumb last month.
+Paints watercolors as a hobby.
+Drives a car.
+Knits as a hobby.
+Heart rate now 79/min on a pulse check.
+Observations now: blood pressure 136/90 mmHg.
+Enjoys board games.
+In 2018, folate was 12 ng/mL.
+Lives in a second-floor apartment.
+```
+
+**G09-C5**
+
+Facts: patient: heart rate = 79 (current) [line: "Current heart rate 79/min."]; patient: blood urea nitrogen = 18 (current) [line: "Blood urea nitrogen 18 mg/dL on the current labs."]; patient: systolic blood pressure = 136 (current) [line: "Current systolic blood pressure 136 mmHg."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]
+
+Claims: s = The blood urea nitrogen criterion contributes 0 points. | s' = The blood urea nitrogen criterion contributes 2 points.
+```
+Male patient of 30 years.
+Vomited fresh blood twice; admitted with upper gastrointestinal bleeding.
+Lives in a second-floor apartment.
+Enjoys board games.
+In 2018, folate was 12 ng/mL.
+In 2020, lipase was 30 U/L.
+Current heart rate 79/min.
+Knits as a hobby.
+During a checkup in 2021, free T3 was 3.2 pg/mL.
+His uncle burned a hand on a stove years ago.
+Drives a car.
+Sees a dentist yearly.
+Blood urea nitrogen 18 mg/dL on the current labs.
+His roommate sprained a thumb last month.
+Sleeps seven hours a night.
+Current systolic blood pressure 136 mmHg.
+Prefers morning appointments.
+Heart sounds without a gallop.
+Has two cats.
+Paints watercolors as a hobby.
+His sister has recovered from a dislocated finger.
+```
+
+
+## G10
+
+Rule: Caprini score (as used here, partial): 3 points for a venous thromboembolism of the patient or a first-degree relative (parent, sibling or child) at any time; 2 points for cancer at any time (active or previous); 1 point for a current body mass index above 25.0 kg/m2. Other Caprini items, including age, are not part of this question.
+
+**G10-C1**
+
+Facts: wife: venous thromboembolism present (current) [line: "Her wife is on anticoagulation for venous thrombosis."]; cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: body mass index = 20.4 (current) [line: "Current body mass index 20.4 kg/m2."]
+
+Claims: s = The venous thromboembolism criterion contributes 0 points. | s' = The venous thromboembolism criterion contributes 3 points.
+```
+Woman of 79 years.
+Admitted for an emergency bowel resection.
+Zinc of 85 mcg/dL in 2017.
+Her wife is on anticoagulation for venous thrombosis.
+Has two cats.
+Oncology follow-up: none.
+Her sister has a lazy eye.
+Lives in a second-floor apartment.
+Her sister wears contact lenses.
+Pupils equal and reactive to light.
+Prefers morning appointments.
+Paints watercolors as a hobby.
+Her roommate has recovered from a dislocated finger.
+Drives a car.
+Prefers to be addressed by first name.
+Knits as a hobby.
+During a checkup in 2017, free T3 was 3.2 pg/mL.
+In 2016, folate was 12 ng/mL.
+Teeth in good repair.
+Current body mass index 20.4 kg/m2.
+```
+
+**G10-C2**
+
+Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: body mass index = 20.4 (current) [line: "Current body mass index 20.4 kg/m2."]; venous thromboembolism: not mentioned (counts as absent)
+
+Claims: s = The venous thromboembolism criterion contributes 0 points. | s' = The venous thromboembolism criterion contributes 3 points.
+```
+Woman of 79 years.
+Admitted for an emergency bowel resection.
+Zinc of 85 mcg/dL in 2017.
+Has two cats.
+Oncology follow-up: none.
+Her sister has a lazy eye.
+Lives in a second-floor apartment.
+Her sister wears contact lenses.
+Pupils equal and reactive to light.
+Prefers morning appointments.
+Paints watercolors as a hobby.
+Her roommate has recovered from a dislocated finger.
+Drives a car.
+Prefers to be addressed by first name.
+Knits as a hobby.
+During a checkup in 2017, free T3 was 3.2 pg/mL.
+In 2016, folate was 12 ng/mL.
+Teeth in good repair.
+Current body mass index 20.4 kg/m2.
+```
+
+**G10-C3**
+
+Facts: patient: body mass index = 20.4 (current) [line: "Latest BMI is 20.4 kg/m2."]; cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; venous thromboembolism: not mentioned (counts as absent)
+
+Claims: s = The venous thromboembolism criterion contributes 0 points. | s' = The venous thromboembolism criterion contributes 3 points.
+```
+Female patient of 79 years.
+Admitted for an emergency bowel resection.
+Has two cats.
+Prefers to be addressed by first name.
+Prefers morning appointments.
+During a checkup in 2017, free T3 was 3.2 pg/mL.
+Teeth in good repair.
+Lives in a second-floor apartment.
+Her sister wears contact lenses.
+In 2016, folate was 12 ng/mL.
+Zinc of 85 mcg/dL in 2017.
+Latest BMI is 20.4 kg/m2.
+Oncology follow-up: none.
+Pupils equal and reactive to light.
+Paints watercolors as a hobby.
+Knits as a hobby.
+Her sister has a lazy eye.
+Drives a car.
+Her roommate has recovered from a dislocated finger.
+```
+
+**G10-C4**
+
+Facts: patient: venous thromboembolism present (current) [line: "Ongoing treatment for a deep vein thrombosis of the left arm."]; cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: body mass index = 20.4 (current) [line: "Current body mass index 20.4 kg/m2."]
+
+Claims: s = The venous thromboembolism criterion contributes 0 points. | s' = The venous thromboembolism criterion contributes 3 points.
+```
+Woman of 79 years.
+Admitted for an emergency bowel resection.
+Zinc of 85 mcg/dL in 2017.
+Ongoing treatment for a deep vein thrombosis of the left arm.
+Has two cats.
+Oncology follow-up: none.
+Her sister has a lazy eye.
+Lives in a second-floor apartment.
+Her sister wears contact lenses.
+Pupils equal and reactive to light.
+Prefers morning appointments.
+Paints watercolors as a hobby.
+Her roommate has recovered from a dislocated finger.
+Drives a car.
+Prefers to be addressed by first name.
+Knits as a hobby.
+During a checkup in 2017, free T3 was 3.2 pg/mL.
+In 2016, folate was 12 ng/mL.
+Teeth in good repair.
+Current body mass index 20.4 kg/m2.
+```
+
+
+## G11
+
+Rule: For suspected infection on the medical ward, prescribe oral amoxicillin. Score 3 points if the age of the patient is 65 years or more; 2 points if the current systolic blood pressure is below 90 mmHg; 1 point if the current blood urea nitrogen is above 19 mg/dL; 3 points if the patient has ever had diabetes (current or past). If the score is 6 or more, prescribe intravenous piperacillin-tazobactam instead.
+
+**G11-C1**
+
+Facts: patient: systolic blood pressure = 75 (current) [line: "Observations now: blood pressure 75/56 mmHg."]; patient: age = 75 (current) [line: "Current age 75 years."]; diabetes: not named; a general line implies absence (counts as absent) [line: "HbA1c 5.3% at a routine check."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen now: 13 mg/dL."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "blood urea nitrogen above 19" does not hold for this patient. | s' = Under the rule, the condition "blood urea nitrogen above 19" holds for this patient.
+```
+An adult man.
+Suspected chest infection; assessed on the medical ward.
+His friend lives with psoriasis.
+His roommate has recovered from a dislocated finger.
+Owns a bicycle.
+Sleeps seven hours a night.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+His sister has a lazy eye.
+In 2020, lipase was 30 U/L.
+Observations now: blood pressure 75/56 mmHg.
+Prefers morning appointments.
+Teeth in good repair.
+Current age 75 years.
+During a checkup in 2005, free T3 was 3.2 pg/mL.
+During a checkup in 2017, total protein was 7.0 g/dL.
+His friend wears contact lenses.
+Photographs local wildlife.
+Zinc of 85 mcg/dL in 2007.
+HbA1c 5.3% at a routine check.
+Enjoys board games.
+Blood urea nitrogen now: 13 mg/dL.
+```
+
+**G11-C2**
+
+Facts: patient: systolic blood pressure = 75 (current) [line: "Observations now: blood pressure 75/56 mmHg."]; patient: age = 75 (current) [line: "Current age 75 years."]; diabetes: not named; a general line implies absence (counts as absent) [line: "HbA1c 5.3% at a routine check."]; patient: blood urea nitrogen = 21 (current) [line: "Blood urea nitrogen now: 21 mg/dL."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "blood urea nitrogen above 19" does not hold for this patient. | s' = Under the rule, the condition "blood urea nitrogen above 19" holds for this patient.
+```
+An adult man.
+Suspected chest infection; assessed on the medical ward.
+His friend lives with psoriasis.
+His roommate has recovered from a dislocated finger.
+Owns a bicycle.
+Sleeps seven hours a night.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+His sister has a lazy eye.
+In 2020, lipase was 30 U/L.
+Observations now: blood pressure 75/56 mmHg.
+Prefers morning appointments.
+Teeth in good repair.
+Current age 75 years.
+During a checkup in 2005, free T3 was 3.2 pg/mL.
+During a checkup in 2017, total protein was 7.0 g/dL.
+His friend wears contact lenses.
+Photographs local wildlife.
+Zinc of 85 mcg/dL in 2007.
+HbA1c 5.3% at a routine check.
+Enjoys board games.
+Blood urea nitrogen now: 21 mg/dL.
+```
+
+**G11-C3**
+
+Facts: patient: systolic blood pressure = 75 (current) [line: "Current systolic blood pressure 75 mmHg."]; diabetes: not named; a general line implies absence (counts as absent) [line: "HbA1c 5.3% at a routine check."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen 13 mg/dL on the current labs."]; patient: age = 75 (current) [line: "Currently aged 75 years."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "blood urea nitrogen above 19" does not hold for this patient. | s' = Under the rule, the condition "blood urea nitrogen above 19" holds for this patient.
+```
+Man, adult.
+Suspected chest infection; assessed on the medical ward.
+His sister has a lazy eye.
+His roommate has recovered from a dislocated finger.
+Photographs local wildlife.
+Current systolic blood pressure 75 mmHg.
+In 2020, lipase was 30 U/L.
+HbA1c 5.3% at a routine check.
+During a checkup in 2005, free T3 was 3.2 pg/mL.
+Owns a bicycle.
+Zinc of 85 mcg/dL in 2007.
+Blood urea nitrogen 13 mg/dL on the current labs.
+Pupils equal and reactive to light.
+Enjoys board games.
+Sees a dentist yearly.
+Currently aged 75 years.
+His friend lives with psoriasis.
+Teeth in good repair.
+Sleeps seven hours a night.
+During a checkup in 2017, total protein was 7.0 g/dL.
+Prefers morning appointments.
+His friend wears contact lenses.
+```
+
+**G11-C4**
+
+Facts: patient: systolic blood pressure = 75 (current) [line: "Observations now: blood pressure 75/56 mmHg."]; patient: age = 75 (current) [line: "Current age 75 years."]; diabetes: not named; a general line implies absence (counts as absent) [line: "HbA1c 5.3% at a routine check."]; patient: blood urea nitrogen = 19 (current) [line: "Blood urea nitrogen now: 19 mg/dL."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "blood urea nitrogen above 19" does not hold for this patient. | s' = Under the rule, the condition "blood urea nitrogen above 19" holds for this patient.
+```
+An adult man.
+Suspected chest infection; assessed on the medical ward.
+His friend lives with psoriasis.
+His roommate has recovered from a dislocated finger.
+Owns a bicycle.
+Sleeps seven hours a night.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+His sister has a lazy eye.
+In 2020, lipase was 30 U/L.
+Observations now: blood pressure 75/56 mmHg.
+Prefers morning appointments.
+Teeth in good repair.
+Current age 75 years.
+During a checkup in 2005, free T3 was 3.2 pg/mL.
+During a checkup in 2017, total protein was 7.0 g/dL.
+His friend wears contact lenses.
+Photographs local wildlife.
+Zinc of 85 mcg/dL in 2007.
+HbA1c 5.3% at a routine check.
+Enjoys board games.
+Blood urea nitrogen now: 19 mg/dL.
+```
+
+
+## G12
+
+Rule: For contraception, prescribe a combined oral contraceptive. Score 2 points if the patient or a first-degree relative (parent, sibling or child) has had coronary artery disease at any time; 2 points if the current weight is 60 kg or less; 2 points if the current platelet count is below 50 x10^9/L; 1 point if the patient currently has tender anterior cervical lymph nodes. If the score is 7 or more, prescribe a progestin-only pill instead.
+
+**G12-C1**
+
+Facts: sister: coronary artery disease present (past) [line: "Her sister had bypass surgery for coronary artery disease years ago."]; patient: tender cervical lymph nodes present (current) [line: "Tender, swollen lymph nodes in the front of the neck."]; patient: platelet count = 48 (current) [line: "Current platelet count 48 x10^9/L."]; patient: weight = 55 (current) [line: "Latest weight 55 kg."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "tender cervical lymph nodes" does not hold for this patient. | s' = Under the rule, the condition "tender cervical lymph nodes" holds for this patient.
+```
+Female patient of 20 years.
+Requests contraception.
+Her sister had bypass surgery for coronary artery disease years ago.
+Drives a car.
+Enjoys board games.
+Owns a bicycle.
+Tender, swollen lymph nodes in the front of the neck.
+Prefers morning appointments.
+Current platelet count 48 x10^9/L.
+Latest weight 55 kg.
+```
+
+**G12-C2**
+
+Facts: tender cervical lymph nodes: not named; a general line implies absence (counts as absent) [line: "Front of the neck without tenderness or swelling."]; patient: platelet count = 48 (current) [line: "Platelet count now 48 x10^9/L."]; sister: coronary artery disease present (past) [line: "Her sister had bypass surgery for coronary artery disease years ago."]; patient: weight = 55 (current) [line: "Current weight 55 kg."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "tender cervical lymph nodes" does not hold for this patient. | s' = Under the rule, the condition "tender cervical lymph nodes" holds for this patient.
+```
+Woman of 20 years.
+Requests contraception.
+Owns a bicycle.
+Front of the neck without tenderness or swelling.
+Platelet count now 48 x10^9/L.
+Enjoys board games.
+Her sister had bypass surgery for coronary artery disease years ago.
+Current weight 55 kg.
+Prefers morning appointments.
+Drives a car.
+```
+
+**G12-C3**
+
+Facts: sister: coronary artery disease present (past) [line: "Her sister had bypass surgery for coronary artery disease years ago."]; patient: tender cervical lymph nodes denied by name (current) [line: "Neck supple, without tender lymph nodes."]; patient: platelet count = 48 (current) [line: "Current platelet count 48 x10^9/L."]; patient: weight = 55 (current) [line: "Latest weight 55 kg."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "tender cervical lymph nodes" does not hold for this patient. | s' = Under the rule, the condition "tender cervical lymph nodes" holds for this patient.
+```
+Female patient of 20 years.
+Requests contraception.
+Her sister had bypass surgery for coronary artery disease years ago.
+Drives a car.
+Enjoys board games.
+Owns a bicycle.
+Neck supple, without tender lymph nodes.
+Prefers morning appointments.
+Current platelet count 48 x10^9/L.
+Latest weight 55 kg.
+```
+
+**G12-C4**
+
+Facts: sister: coronary artery disease present (past) [line: "Her sister had bypass surgery for coronary artery disease years ago."]; tender cervical lymph nodes: not named; a general line implies absence (counts as absent) [line: "Front of the neck without tenderness or swelling."]; patient: platelet count = 48 (current) [line: "Current platelet count 48 x10^9/L."]; patient: weight = 55 (current) [line: "Latest weight 55 kg."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "tender cervical lymph nodes" does not hold for this patient. | s' = Under the rule, the condition "tender cervical lymph nodes" holds for this patient.
+```
+Female patient of 20 years.
+Requests contraception.
+Her sister had bypass surgery for coronary artery disease years ago.
+Drives a car.
+Enjoys board games.
+Owns a bicycle.
+Front of the neck without tenderness or swelling.
+Prefers morning appointments.
+Current platelet count 48 x10^9/L.
+Latest weight 55 kg.
+```
+
+
+## G13
+
+Rule: For inpatient VTE prophylaxis, prescribe enoxaparin. If the patient currently has a major bleed, prescribe intermittent pneumatic compression instead.
+
+**G13-C1**
+
+Facts: patient: major bleeding present (current) [line: "Currently has a major bleed from a duodenal ulcer, with transfusion under way."]
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe intermittent pneumatic compression.
+
+Criterion claims: s = Under the rule, the condition "active major bleeding" does not hold for this patient. | s' = Under the rule, the condition "active major bleeding" holds for this patient.
+```
+Woman of 67 years.
+Admitted for community-acquired pneumonia; immobile.
+Zinc of 85 mcg/dL in 2010.
+Her roommate burned a hand on a stove years ago.
+During a checkup in 2016, free T3 was 3.2 pg/mL.
+Knits as a hobby.
+Lives in a second-floor apartment.
+Pupils equal and reactive to light.
+Teeth in good repair.
+Uses sunscreen in summer.
+Plays the piano.
+Photographs local wildlife.
+Currently has a major bleed from a duodenal ulcer, with transfusion under way.
+Has two cats.
+Drives a car.
+Her wife has recovered from a dislocated finger.
+Paints watercolors as a hobby.
+Her sister sprained a thumb last month.
+Prefers morning appointments.
+```
+
+**G13-C2**
+
+Facts: major bleeding: not named; a general line implies absence (counts as absent) [line: "Bowel habit normal, without any blood in the stool."]
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe intermittent pneumatic compression.
+
+Criterion claims: s = Under the rule, the condition "active major bleeding" does not hold for this patient. | s' = Under the rule, the condition "active major bleeding" holds for this patient.
+```
+Female patient of 67 years.
+Admitted for community-acquired pneumonia; immobile.
+Has two cats.
+Drives a car.
+Photographs local wildlife.
+During a checkup in 2016, free T3 was 3.2 pg/mL.
+Her sister sprained a thumb last month.
+Knits as a hobby.
+Her wife has recovered from a dislocated finger.
+Bowel habit normal, without any blood in the stool.
+Zinc of 85 mcg/dL in 2010.
+Plays the piano.
+Pupils equal and reactive to light.
+Uses sunscreen in summer.
+Her roommate burned a hand on a stove years ago.
+Prefers morning appointments.
+Teeth in good repair.
+Paints watercolors as a hobby.
+Lives in a second-floor apartment.
+```
+
+**G13-C3**
+
+Facts: major bleeding: not named; a general line implies absence (counts as absent) [line: "Bowel habit normal, without any blood in the stool."]
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe intermittent pneumatic compression.
+
+Criterion claims: s = Under the rule, the condition "active major bleeding" does not hold for this patient. | s' = Under the rule, the condition "active major bleeding" holds for this patient.
+```
+Woman of 67 years.
+Admitted for community-acquired pneumonia; immobile.
+Zinc of 85 mcg/dL in 2010.
+Her roommate burned a hand on a stove years ago.
+During a checkup in 2016, free T3 was 3.2 pg/mL.
+Knits as a hobby.
+Lives in a second-floor apartment.
+Pupils equal and reactive to light.
+Teeth in good repair.
+Uses sunscreen in summer.
+Plays the piano.
+Photographs local wildlife.
+Bowel habit normal, without any blood in the stool.
+Has two cats.
+Drives a car.
+Her wife has recovered from a dislocated finger.
+Paints watercolors as a hobby.
+Her sister sprained a thumb last month.
+Prefers morning appointments.
+```
+
+**G13-C4**
+
+Facts: wife: major bleeding present (current) [line: "Her wife is currently being transfused for a major bleed."]
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe intermittent pneumatic compression.
+
+Criterion claims: s = Under the rule, the condition "active major bleeding" does not hold for this patient. | s' = Under the rule, the condition "active major bleeding" holds for this patient.
+```
+Woman of 67 years.
+Admitted for community-acquired pneumonia; immobile.
+Zinc of 85 mcg/dL in 2010.
+Her roommate burned a hand on a stove years ago.
+During a checkup in 2016, free T3 was 3.2 pg/mL.
+Knits as a hobby.
+Lives in a second-floor apartment.
+Pupils equal and reactive to light.
+Teeth in good repair.
+Uses sunscreen in summer.
+Plays the piano.
+Photographs local wildlife.
+Her wife is currently being transfused for a major bleed.
+Has two cats.
+Drives a car.
+Her wife has recovered from a dislocated finger.
+Paints watercolors as a hobby.
+Her sister sprained a thumb last month.
+Prefers morning appointments.
+```
+
+
+## G14
+
+Rule: For cellulitis of the lower leg, prescribe cephalexin. If at least two of the following apply, prescribe clindamycin instead: the patient has ever had a peptic ulcer (current or past); the current ALT is above 120 U/L; the patient has ever had a venous thromboembolism (current or past).
+
+**G14-C1**
+
+Facts: patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; ALT: not mentioned (unknown)
+
+Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
+
+Criterion claims: s = Under the rule, the condition "ALT above 120" does not hold for this patient. | s' = Under the rule, the condition "ALT above 120" holds for this patient.
+```
+Female patient of 81 years.
+Spreading redness and warmth of the right shin for two days.
+Sees a dentist yearly.
+Has an acute pulmonary embolism, diagnosed this week.
+Owns a bicycle.
+Appetite good; no indigestion.
+Drives a car.
+```
+
+**G14-C2**
+
+Facts: patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: ALT = 38 (current) [line: "Current ALT 38 U/L."]; patient: ALT = 126 (past (2022)) [line: "Records from 2022 list ALT at 126 U/L."]
+
+Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
+
+Criterion claims: s = Under the rule, the condition "ALT above 120" does not hold for this patient. | s' = Under the rule, the condition "ALT above 120" holds for this patient.
+```
+Female patient of 81 years.
+Spreading redness and warmth of the right shin for two days.
+Sees a dentist yearly.
+Has an acute pulmonary embolism, diagnosed this week.
+Owns a bicycle.
+Appetite good; no indigestion.
+Current ALT 38 U/L.
+Drives a car.
+Records from 2022 list ALT at 126 U/L.
+```
+
+**G14-C3**
+
+Facts: peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: ALT = 33 (past (2022)) [line: "Back in 2022, ALT stood at 33 U/L."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; patient: ALT = 38 (current) [line: "ALT now 38 U/L."]
+
+Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
+
+Criterion claims: s = Under the rule, the condition "ALT above 120" does not hold for this patient. | s' = Under the rule, the condition "ALT above 120" holds for this patient.
+```
+Woman of 81 years.
+Spreading redness and warmth of the right shin for two days.
+Appetite good; no indigestion.
+Drives a car.
+Back in 2022, ALT stood at 33 U/L.
+Sees a dentist yearly.
+Has an acute pulmonary embolism, diagnosed this week.
+Owns a bicycle.
+ALT now 38 U/L.
+```
+
+**G14-C4**
+
+Facts: patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: ALT = 38 (current) [line: "Current ALT 38 U/L."]; patient: ALT = 33 (past (2022)) [line: "Records from 2022 list ALT at 33 U/L."]
+
+Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
+
+Criterion claims: s = Under the rule, the condition "ALT above 120" does not hold for this patient. | s' = Under the rule, the condition "ALT above 120" holds for this patient.
+```
+Female patient of 81 years.
+Spreading redness and warmth of the right shin for two days.
+Sees a dentist yearly.
+Has an acute pulmonary embolism, diagnosed this week.
+Owns a bicycle.
+Appetite good; no indigestion.
+Current ALT 38 U/L.
+Drives a car.
+Records from 2022 list ALT at 33 U/L.
+```
+
+**G14-C5**
+
+Facts: patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: ALT = 143 (current) [line: "Current ALT 143 U/L."]; patient: ALT = 33 (past (2022)) [line: "Records from 2022 list ALT at 33 U/L."]
+
+Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
+
+Criterion claims: s = Under the rule, the condition "ALT above 120" does not hold for this patient. | s' = Under the rule, the condition "ALT above 120" holds for this patient.
+```
+Female patient of 81 years.
+Spreading redness and warmth of the right shin for two days.
+Sees a dentist yearly.
+Has an acute pulmonary embolism, diagnosed this week.
+Owns a bicycle.
+Appetite good; no indigestion.
+Current ALT 143 U/L.
+Drives a car.
+Records from 2022 list ALT at 33 U/L.
+```
+
+
+## G15
+
+Rule: For dual antiplatelet therapy after a myocardial infarction, prescribe aspirin plus ticagrelor. If the current serum potassium is above 5.0 mmol/L and the patient or a first-degree relative (parent, sibling or child) has had a venous thromboembolism at any time, prescribe aspirin plus clopidogrel instead.
+
+**G15-C1**
+
+Facts: patient: serum potassium = 4.1 (current) [line: "Latest potassium result: 4.1 mmol/L."]; father: venous thromboembolism present (past (2019)) [line: "Her father recovered from a pulmonary embolism in 2019."]; patient: serum potassium = 5.8 (past (2014)) [line: "Back in 2014, serum potassium stood at 5.8 mmol/L."]
+
+Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Woman of 41 years.
+Recovering on the ward after a myocardial infarction treated with a stent.
+Latest potassium result: 4.1 mmol/L.
+Her father recovered from a pulmonary embolism in 2019.
+Knits as a hobby.
+Back in 2014, serum potassium stood at 5.8 mmol/L.
+```
+
+**G15-C2**
+
+Facts: patient: serum potassium = 3.9 (past (2014)) [line: "Records from 2014 list serum potassium at 3.9 mmol/L."]; father: venous thromboembolism present (past (2019)) [line: "Her father recovered from a pulmonary embolism in 2019."]; patient: serum potassium = 4.1 (current) [line: "Current serum potassium 4.1 mmol/L."]
+
+Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Female patient of 41 years.
+Recovering on the ward after a myocardial infarction treated with a stent.
+Records from 2014 list serum potassium at 3.9 mmol/L.
+Her father recovered from a pulmonary embolism in 2019.
+Knits as a hobby.
+Current serum potassium 4.1 mmol/L.
+```
+
+**G15-C3**
+
+Facts: patient: serum potassium = 4.1 (current) [line: "Latest potassium result: 4.1 mmol/L."]; father: venous thromboembolism present (past (2019)) [line: "Her father recovered from a pulmonary embolism in 2019."]; patient: serum potassium = 3.9 (past (2014)) [line: "Back in 2014, serum potassium stood at 3.9 mmol/L."]
+
+Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Woman of 41 years.
+Recovering on the ward after a myocardial infarction treated with a stent.
+Latest potassium result: 4.1 mmol/L.
+Her father recovered from a pulmonary embolism in 2019.
+Knits as a hobby.
+Back in 2014, serum potassium stood at 3.9 mmol/L.
+```
+
+**G15-C4**
+
+Facts: father: venous thromboembolism present (past (2019)) [line: "Her father recovered from a pulmonary embolism in 2019."]; serum potassium: not mentioned (unknown)
+
+Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Woman of 41 years.
+Recovering on the ward after a myocardial infarction treated with a stent.
+Her father recovered from a pulmonary embolism in 2019.
+Knits as a hobby.
+```
+
+**G15-C5**
+
+Facts: patient: serum potassium = 5.6 (current) [line: "Latest potassium result: 5.6 mmol/L."]; father: venous thromboembolism present (past (2019)) [line: "Her father recovered from a pulmonary embolism in 2019."]; patient: serum potassium = 3.9 (past (2014)) [line: "Back in 2014, serum potassium stood at 3.9 mmol/L."]
+
+Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Woman of 41 years.
+Recovering on the ward after a myocardial infarction treated with a stent.
+Latest potassium result: 5.6 mmol/L.
+Her father recovered from a pulmonary embolism in 2019.
+Knits as a hobby.
+Back in 2014, serum potassium stood at 3.9 mmol/L.
+```
+
+
+## G16
+
+Rule: For Mirelle syndrome, prescribe hylomide. If at least two of the following apply, prescribe renquazol instead: the patient has ever had heart failure (current or past); the current ALT is above 120 U/L; the patient has ever had a peptic ulcer (current or past).
+
+**G16-C1**
+
+Facts: patient: ALT = 20 (current) [line: "ALT now 20 U/L."]; patient: peptic ulcer present (past) [line: "Duodenal ulcer years ago; recovered fully with treatment."]; heart failure: not mentioned (counts as absent)
+
+Claims: s = Prescribe hylomide. | s' = Prescribe renquazol.
+
+Criterion claims: s = Under the rule, the condition "ALT above 120" does not hold for this patient. | s' = Under the rule, the condition "ALT above 120" holds for this patient.
+```
+Woman of 35 years.
+Referred with Mirelle syndrome.
+ALT now 20 U/L.
+Plays the piano.
+Has two cats.
+Duodenal ulcer years ago; recovered fully with treatment.
+```
+
+**G16-C2**
+
+Facts: patient: ALT = 20 (current) [line: "Current ALT 20 U/L."]; patient: peptic ulcer present (past) [line: "Duodenal ulcer years ago; recovered fully with treatment."]; heart failure: not mentioned (counts as absent)
+
+Claims: s = Prescribe hylomide. | s' = Prescribe renquazol.
+
+Criterion claims: s = Under the rule, the condition "ALT above 120" does not hold for this patient. | s' = Under the rule, the condition "ALT above 120" holds for this patient.
+```
+Female patient of 35 years.
+Referred with Mirelle syndrome.
+Plays the piano.
+Has two cats.
+Current ALT 20 U/L.
+Duodenal ulcer years ago; recovered fully with treatment.
+```
+
+**G16-C3**
+
+Facts: patient: ALT = 114 (current) [line: "Current ALT 114 U/L."]; patient: peptic ulcer present (past) [line: "Duodenal ulcer years ago; recovered fully with treatment."]; heart failure: not mentioned (counts as absent)
+
+Claims: s = Prescribe hylomide. | s' = Prescribe renquazol.
+
+Criterion claims: s = Under the rule, the condition "ALT above 120" does not hold for this patient. | s' = Under the rule, the condition "ALT above 120" holds for this patient.
+```
+Female patient of 35 years.
+Referred with Mirelle syndrome.
+Plays the piano.
+Has two cats.
+Current ALT 114 U/L.
+Duodenal ulcer years ago; recovered fully with treatment.
+```
+
+**G16-C4**
+
+Facts: patient: ALT = 137 (current) [line: "Current ALT 137 U/L."]; patient: peptic ulcer present (past) [line: "Duodenal ulcer years ago; recovered fully with treatment."]; heart failure: not mentioned (counts as absent)
+
+Claims: s = Prescribe hylomide. | s' = Prescribe renquazol.
+
+Criterion claims: s = Under the rule, the condition "ALT above 120" does not hold for this patient. | s' = Under the rule, the condition "ALT above 120" holds for this patient.
+```
+Female patient of 35 years.
+Referred with Mirelle syndrome.
+Plays the piano.
+Has two cats.
+Current ALT 137 U/L.
+Duodenal ulcer years ago; recovered fully with treatment.
+```
+
+
+## G17
+
+Rule: For Hestin disease, prescribe melcadine. If the current systolic blood pressure is 100 mmHg or less or the current temperature is above 38.0 C, prescribe orvitrex instead.
+
+**G17-C1**
+
+Facts: patient: systolic blood pressure = 133 (current) [line: "Observations now: blood pressure 133/88 mmHg."]; patient: temperature = 38.6 (current) [line: "Current temperature 38.6 C."]
+
+Claims: s = Prescribe melcadine. | s' = Prescribe orvitrex.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Man of 25 years.
+Referred with Hestin disease.
+Observations now: blood pressure 133/88 mmHg.
+Current temperature 38.6 C.
+Sleeps seven hours a night.
+Knits as a hobby.
+```
+
+**G17-C2**
+
+Facts: patient: systolic blood pressure = 133 (current) [line: "Observations now: blood pressure 133/88 mmHg."]; patient: temperature = 38.0 (current) [line: "Current temperature 38.0 C."]
+
+Claims: s = Prescribe melcadine. | s' = Prescribe orvitrex.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Man of 25 years.
+Referred with Hestin disease.
+Observations now: blood pressure 133/88 mmHg.
+Current temperature 38.0 C.
+Sleeps seven hours a night.
+Knits as a hobby.
+```
+
+**G17-C3**
+
+Facts: patient: systolic blood pressure = 133 (current) [line: "Current systolic blood pressure 133 mmHg."]; patient: temperature = 37.2 (current) [line: "Temperature now 37.2 C (tympanic)."]
+
+Claims: s = Prescribe melcadine. | s' = Prescribe orvitrex.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Male patient of 25 years.
+Referred with Hestin disease.
+Current systolic blood pressure 133 mmHg.
+Knits as a hobby.
+Sleeps seven hours a night.
+Temperature now 37.2 C (tympanic).
+```
+
+**G17-C4**
+
+Facts: patient: systolic blood pressure = 133 (current) [line: "Observations now: blood pressure 133/88 mmHg."]; patient: temperature = 37.2 (current) [line: "Current temperature 37.2 C."]
+
+Claims: s = Prescribe melcadine. | s' = Prescribe orvitrex.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Man of 25 years.
+Referred with Hestin disease.
+Observations now: blood pressure 133/88 mmHg.
+Current temperature 37.2 C.
+Sleeps seven hours a night.
+Knits as a hobby.
+```
+
+
+## G18
+
+Rule: For stroke prevention in atrial fibrillation, prescribe apixaban. If the current temperature is above 38.0 C and the patient has ever had a peptic ulcer (current or past), prescribe warfarin instead.
+
+**G18-C1**
+
+Facts: patient: temperature = 38.4 (past) [line: "Earlier this week, temperature was 38.4 C; a newer reading supersedes it."]; patient: temperature = 37.3 (current) [line: "Temperature now 37.3 C (tympanic)."]; patient: peptic ulcer present (current) [line: "Has an active duodenal ulcer."]
+
+Claims: s = Prescribe apixaban. | s' = Prescribe warfarin.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Woman of 59 years.
+Atrial fibrillation; anticoagulation indicated.
+Sees a dentist yearly.
+Earlier this week, temperature was 38.4 C; a newer reading supersedes it.
+Temperature now 37.3 C (tympanic).
+Pupils equal and reactive to light.
+Has an active duodenal ulcer.
+Knits as a hobby.
+```
+
+**G18-C2**
+
+Facts: patient: temperature = 36.9 (past) [line: "Earlier this week, temperature was 36.9 C; a newer reading supersedes it."]; patient: temperature = 37.3 (current) [line: "Temperature now 37.3 C (tympanic)."]; patient: peptic ulcer present (current) [line: "Has an active duodenal ulcer."]
+
+Claims: s = Prescribe apixaban. | s' = Prescribe warfarin.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Woman of 59 years.
+Atrial fibrillation; anticoagulation indicated.
+Sees a dentist yearly.
+Earlier this week, temperature was 36.9 C; a newer reading supersedes it.
+Temperature now 37.3 C (tympanic).
+Pupils equal and reactive to light.
+Has an active duodenal ulcer.
+Knits as a hobby.
+```
+
+**G18-C3**
+
+Facts: patient: temperature = 37.3 (current) [line: "Current temperature 37.3 C."]; patient: peptic ulcer present (current) [line: "Has an active duodenal ulcer."]; patient: temperature = 36.9 (past) [line: "Earlier this week, temperature was 36.9 C; a newer reading supersedes it."]
+
+Claims: s = Prescribe apixaban. | s' = Prescribe warfarin.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Female patient of 59 years.
+Atrial fibrillation; anticoagulation indicated.
+Knits as a hobby.
+Pupils equal and reactive to light.
+Current temperature 37.3 C.
+Has an active duodenal ulcer.
+Sees a dentist yearly.
+Earlier this week, temperature was 36.9 C; a newer reading supersedes it.
+```
+
+**G18-C4**
+
+Facts: patient: temperature = 36.9 (past) [line: "Earlier this week, temperature was 36.9 C; a newer reading supersedes it."]; patient: temperature = 38.7 (current) [line: "Temperature now 38.7 C (tympanic)."]; patient: peptic ulcer present (current) [line: "Has an active duodenal ulcer."]
+
+Claims: s = Prescribe apixaban. | s' = Prescribe warfarin.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Woman of 59 years.
+Atrial fibrillation; anticoagulation indicated.
+Sees a dentist yearly.
+Earlier this week, temperature was 36.9 C; a newer reading supersedes it.
+Temperature now 38.7 C (tympanic).
+Pupils equal and reactive to light.
+Has an active duodenal ulcer.
+Knits as a hobby.
+```
+
+**G18-C5**
+
+Facts: patient: peptic ulcer present (current) [line: "Has an active duodenal ulcer."]; temperature: not mentioned (unknown)
+
+Claims: s = Prescribe apixaban. | s' = Prescribe warfarin.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Woman of 59 years.
+Atrial fibrillation; anticoagulation indicated.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+Has an active duodenal ulcer.
+Knits as a hobby.
+```
+
+
+## G19
+
+Rule: For cellulitis of the lower leg, prescribe cephalexin. If at least two of the following apply, prescribe clindamycin instead: the current weight is 60 kg or less; the patient is allergic to penicillin; the patient or a first-degree relative (parent, sibling or child) has had coronary artery disease at any time.
+
+**G19-C1**
+
+Facts: patient: weight = 53 (current) [line: "Latest weight 53 kg."]; penicillin allergy: not named; a general line implies absence (counts as absent) [line: "Reports no allergies to medicines."]; patient: weight = 67 (past (2014)) [line: "Records from 2014 list weight at 67 kg."]; sister: coronary artery disease present (past) [line: "His sister had bypass surgery for coronary artery disease years ago."]
+
+Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
+
+Criterion claims: s = Under the rule, the condition "weight at or below 60" does not hold for this patient. | s' = Under the rule, the condition "weight at or below 60" holds for this patient.
+```
+Man of 80 years.
+Spreading redness and warmth of the right shin for two days.
+Prefers to be addressed by first name.
+Owns a bicycle.
+Latest weight 53 kg.
+Reports no allergies to medicines.
+Photographs local wildlife.
+Records from 2014 list weight at 67 kg.
+His sister had bypass surgery for coronary artery disease years ago.
+Knits as a hobby.
+```
+
+**G19-C2**
+
+Facts: sister: coronary artery disease present (past) [line: "His sister had bypass surgery for coronary artery disease years ago."]; penicillin allergy: not named; a general line implies absence (counts as absent) [line: "Reports no allergies to medicines."]; patient: weight = 67 (past (2014)) [line: "Back in 2014, weight stood at 67 kg."]; patient: weight = 80 (current) [line: "Current weight 80 kg."]
+
+Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
+
+Criterion claims: s = Under the rule, the condition "weight at or below 60" does not hold for this patient. | s' = Under the rule, the condition "weight at or below 60" holds for this patient.
+```
+Male patient of 80 years.
+Spreading redness and warmth of the right shin for two days.
+His sister had bypass surgery for coronary artery disease years ago.
+Photographs local wildlife.
+Knits as a hobby.
+Reports no allergies to medicines.
+Back in 2014, weight stood at 67 kg.
+Current weight 80 kg.
+Owns a bicycle.
+Prefers to be addressed by first name.
+```
+
+**G19-C3**
+
+Facts: patient: weight = 80 (current) [line: "Latest weight 80 kg."]; penicillin allergy: not named; a general line implies absence (counts as absent) [line: "Reports no allergies to medicines."]; patient: weight = 67 (past (2014)) [line: "Records from 2014 list weight at 67 kg."]; sister: coronary artery disease present (past) [line: "His sister had bypass surgery for coronary artery disease years ago."]
+
+Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
+
+Criterion claims: s = Under the rule, the condition "weight at or below 60" does not hold for this patient. | s' = Under the rule, the condition "weight at or below 60" holds for this patient.
+```
+Man of 80 years.
+Spreading redness and warmth of the right shin for two days.
+Prefers to be addressed by first name.
+Owns a bicycle.
+Latest weight 80 kg.
+Reports no allergies to medicines.
+Photographs local wildlife.
+Records from 2014 list weight at 67 kg.
+His sister had bypass surgery for coronary artery disease years ago.
+Knits as a hobby.
+```
+
+**G19-C4**
+
+Facts: patient: weight = 80 (current) [line: "Latest weight 80 kg."]; penicillin allergy: not named; a general line implies absence (counts as absent) [line: "Reports no allergies to medicines."]; patient: weight = 52 (past (2014)) [line: "Records from 2014 list weight at 52 kg."]; sister: coronary artery disease present (past) [line: "His sister had bypass surgery for coronary artery disease years ago."]
+
+Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
+
+Criterion claims: s = Under the rule, the condition "weight at or below 60" does not hold for this patient. | s' = Under the rule, the condition "weight at or below 60" holds for this patient.
+```
+Man of 80 years.
+Spreading redness and warmth of the right shin for two days.
+Prefers to be addressed by first name.
+Owns a bicycle.
+Latest weight 80 kg.
+Reports no allergies to medicines.
+Photographs local wildlife.
+Records from 2014 list weight at 52 kg.
+His sister had bypass surgery for coronary artery disease years ago.
+Knits as a hobby.
+```
+
+
+## G20
+
+Rule: For contraception, prescribe a combined oral contraceptive. Score 1 point if the current platelet count is below 50 x10^9/L; 1 point if the patient is currently taking warfarin; 1 point if the patient has ever had diabetes (current or past); 3 points if the patient currently has a mechanical heart valve. If the score is 5 or more, prescribe a progestin-only pill instead.
+
+**G20-C1**
+
+Facts: patient: warfarin present (current) [line: "Anticoagulated with warfarin; INR checked monthly at the clinic."]; patient: platelet count = 35 (current) [line: "Current platelet count 35 x10^9/L."]; diabetes: not named; a general line implies absence (counts as absent) [line: "HbA1c 5.3% at a routine check."]; mechanical heart valve: not mentioned (counts as absent)
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "mechanical heart valve" does not hold for this patient. | s' = Under the rule, the condition "mechanical heart valve" holds for this patient.
+```
+Female patient of 39 years.
+Requests contraception.
+Anticoagulated with warfarin; INR checked monthly at the clinic.
+Pupils equal and reactive to light.
+Knits as a hobby.
+Current platelet count 35 x10^9/L.
+HbA1c 5.3% at a routine check.
+```
+
+**G20-C2**
+
+Facts: patient: platelet count = 35 (current) [line: "Platelet count now 35 x10^9/L."]; patient: warfarin present (current) [line: "Anticoagulated with warfarin; INR checked monthly at the clinic."]; diabetes: not named; a general line implies absence (counts as absent) [line: "HbA1c 5.3% at a routine check."]; mechanical heart valve: not mentioned (counts as absent)
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "mechanical heart valve" does not hold for this patient. | s' = Under the rule, the condition "mechanical heart valve" holds for this patient.
+```
+Woman of 39 years.
+Requests contraception.
+Platelet count now 35 x10^9/L.
+Anticoagulated with warfarin; INR checked monthly at the clinic.
+Knits as a hobby.
+Pupils equal and reactive to light.
+HbA1c 5.3% at a routine check.
+```
+
+**G20-C3**
+
+Facts: patient: warfarin present (current) [line: "Anticoagulated with warfarin; INR checked monthly at the clinic."]; patient: platelet count = 35 (current) [line: "Current platelet count 35 x10^9/L."]; patient: mechanical heart valve present (past) [line: "Mechanical aortic valve explanted years ago for valve thrombosis; a bioprosthesis now sits in its place."]; diabetes: not named; a general line implies absence (counts as absent) [line: "HbA1c 5.3% at a routine check."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "mechanical heart valve" does not hold for this patient. | s' = Under the rule, the condition "mechanical heart valve" holds for this patient.
+```
+Female patient of 39 years.
+Requests contraception.
+Anticoagulated with warfarin; INR checked monthly at the clinic.
+Pupils equal and reactive to light.
+Knits as a hobby.
+Current platelet count 35 x10^9/L.
+Mechanical aortic valve explanted years ago for valve thrombosis; a bioprosthesis now sits in its place.
+HbA1c 5.3% at a routine check.
+```
+
+**G20-C4**
+
+Facts: patient: warfarin present (current) [line: "Anticoagulated with warfarin; INR checked monthly at the clinic."]; patient: platelet count = 35 (current) [line: "Current platelet count 35 x10^9/L."]; patient: mechanical heart valve present (current) [line: "Mechanical mitral valve in place; metallic closing clicks audible."]; diabetes: not named; a general line implies absence (counts as absent) [line: "HbA1c 5.3% at a routine check."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "mechanical heart valve" does not hold for this patient. | s' = Under the rule, the condition "mechanical heart valve" holds for this patient.
+```
+Female patient of 39 years.
+Requests contraception.
+Anticoagulated with warfarin; INR checked monthly at the clinic.
+Pupils equal and reactive to light.
+Knits as a hobby.
+Current platelet count 35 x10^9/L.
+Mechanical mitral valve in place; metallic closing clicks audible.
+HbA1c 5.3% at a routine check.
+```
+
+
+## G21
+
+Rule: For Pallis disease, prescribe brexadol. Score 1 point if the patient or a first-degree relative (parent, sibling or child) has had a venous thromboembolism at any time; 2 points if the current ALT is above 120 U/L; 3 points if the current eGFR is below 30 mL/min/1.73 m2. If the score is 4 or more, prescribe corlitane instead.
+
+**G21-C1**
+
+Facts: patient: eGFR = 15 (current) [line: "eGFR now 15 mL/min/1.73 m2."]; patient: ALT = 15 (current) [line: "ALT now 15 U/L."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]
+
+Claims: s = Prescribe brexadol. | s' = Prescribe corlitane.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 30" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 30" holds for this patient.
+```
+Woman of 26 years.
+Referred with Pallis disease.
+Owns a bicycle.
+Teeth in good repair.
+eGFR now 15 mL/min/1.73 m2.
+ALT now 15 U/L.
+Prefers to be addressed by first name.
+Has an acute pulmonary embolism, diagnosed this week.
+```
+
+**G21-C2**
+
+Facts: patient: ALT = 15 (current) [line: "Current ALT 15 U/L."]; patient: eGFR = 81 (current) [line: "Current eGFR 81 mL/min/1.73 m2."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]
+
+Claims: s = Prescribe brexadol. | s' = Prescribe corlitane.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 30" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 30" holds for this patient.
+```
+Female patient of 26 years.
+Referred with Pallis disease.
+Current ALT 15 U/L.
+Prefers to be addressed by first name.
+Current eGFR 81 mL/min/1.73 m2.
+Teeth in good repair.
+Has an acute pulmonary embolism, diagnosed this week.
+Owns a bicycle.
+```
+
+**G21-C3**
+
+Facts: patient: eGFR = 81 (current) [line: "eGFR now 81 mL/min/1.73 m2."]; patient: ALT = 15 (current) [line: "ALT now 15 U/L."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]
+
+Claims: s = Prescribe brexadol. | s' = Prescribe corlitane.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 30" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 30" holds for this patient.
+```
+Woman of 26 years.
+Referred with Pallis disease.
+Owns a bicycle.
+Teeth in good repair.
+eGFR now 81 mL/min/1.73 m2.
+ALT now 15 U/L.
+Prefers to be addressed by first name.
+Has an acute pulmonary embolism, diagnosed this week.
+```
+
+**G21-C4**
+
+Facts: patient: eGFR = 33 (current) [line: "eGFR now 33 mL/min/1.73 m2."]; patient: ALT = 15 (current) [line: "ALT now 15 U/L."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]
+
+Claims: s = Prescribe brexadol. | s' = Prescribe corlitane.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 30" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 30" holds for this patient.
+```
+Woman of 26 years.
+Referred with Pallis disease.
+Owns a bicycle.
+Teeth in good repair.
+eGFR now 33 mL/min/1.73 m2.
+ALT now 15 U/L.
+Prefers to be addressed by first name.
+Has an acute pulmonary embolism, diagnosed this week.
+```
+
+
+## G22
+
+Rule: For acute sore throat, prescribe ibuprofen. If the patient has ever had a myocardial infarction or peripheral artery disease (current or past) and the current temperature is above 38.0 C, prescribe penicillin V instead.
+
+**G22-C1**
+
+Facts: patient: myocardial infarction or peripheral artery disease present (current) [line: "Lives with peripheral artery disease affecting the left leg."]; patient: temperature = 38.5 (current) [line: "Temperature now 38.5 C (tympanic)."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe penicillin V.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Female patient of 56 years.
+Sore throat for two days.
+Prefers morning appointments.
+Her friend lives with psoriasis.
+During a checkup in 2010, total protein was 7.0 g/dL.
+Sleeps seven hours a night.
+Paints watercolors as a hobby.
+Zinc of 85 mcg/dL in 2008.
+Lives with peripheral artery disease affecting the left leg.
+Her roommate has recovered from a dislocated finger.
+Teeth in good repair.
+Her roommate has a lazy eye.
+During a checkup in 2015, free T3 was 3.2 pg/mL.
+Pupils equal and reactive to light.
+Photographs local wildlife.
+Sees a dentist yearly.
+Temperature now 38.5 C (tympanic).
+Free T4 of 1.2 ng/dL in 2008.
+Uses sunscreen in summer.
+```
+
+**G22-C2**
+
+Facts: patient: myocardial infarction or peripheral artery disease present (current) [line: "Lives with peripheral artery disease affecting the left leg."]; patient: temperature = 36.8 (current) [line: "Temperature now 36.8 C (tympanic)."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe penicillin V.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Female patient of 56 years.
+Sore throat for two days.
+Prefers morning appointments.
+Her friend lives with psoriasis.
+During a checkup in 2010, total protein was 7.0 g/dL.
+Sleeps seven hours a night.
+Paints watercolors as a hobby.
+Zinc of 85 mcg/dL in 2008.
+Lives with peripheral artery disease affecting the left leg.
+Her roommate has recovered from a dislocated finger.
+Teeth in good repair.
+Her roommate has a lazy eye.
+During a checkup in 2015, free T3 was 3.2 pg/mL.
+Pupils equal and reactive to light.
+Photographs local wildlife.
+Sees a dentist yearly.
+Temperature now 36.8 C (tympanic).
+Free T4 of 1.2 ng/dL in 2008.
+Uses sunscreen in summer.
+```
+
+**G22-C3**
+
+Facts: patient: myocardial infarction or peripheral artery disease present (current) [line: "Lives with peripheral artery disease affecting the left leg."]; patient: temperature = 37.8 (current) [line: "Temperature now 37.8 C (tympanic)."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe penicillin V.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Female patient of 56 years.
+Sore throat for two days.
+Prefers morning appointments.
+Her friend lives with psoriasis.
+During a checkup in 2010, total protein was 7.0 g/dL.
+Sleeps seven hours a night.
+Paints watercolors as a hobby.
+Zinc of 85 mcg/dL in 2008.
+Lives with peripheral artery disease affecting the left leg.
+Her roommate has recovered from a dislocated finger.
+Teeth in good repair.
+Her roommate has a lazy eye.
+During a checkup in 2015, free T3 was 3.2 pg/mL.
+Pupils equal and reactive to light.
+Photographs local wildlife.
+Sees a dentist yearly.
+Temperature now 37.8 C (tympanic).
+Free T4 of 1.2 ng/dL in 2008.
+Uses sunscreen in summer.
+```
+
+**G22-C4**
+
+Facts: patient: myocardial infarction or peripheral artery disease present (current) [line: "Lives with peripheral artery disease affecting the left leg."]; patient: temperature = 36.8 (current) [line: "Current temperature 36.8 C."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe penicillin V.
+
+Criterion claims: s = Under the rule, the condition "temperature above 38.0" does not hold for this patient. | s' = Under the rule, the condition "temperature above 38.0" holds for this patient.
+```
+Woman of 56 years.
+Sore throat for two days.
+Photographs local wildlife.
+Lives with peripheral artery disease affecting the left leg.
+Free T4 of 1.2 ng/dL in 2008.
+Her roommate has recovered from a dislocated finger.
+Zinc of 85 mcg/dL in 2008.
+Sees a dentist yearly.
+Her friend lives with psoriasis.
+During a checkup in 2010, total protein was 7.0 g/dL.
+Uses sunscreen in summer.
+Prefers morning appointments.
+Her roommate has a lazy eye.
+Paints watercolors as a hobby.
+Teeth in good repair.
+During a checkup in 2015, free T3 was 3.2 pg/mL.
+Sleeps seven hours a night.
+Pupils equal and reactive to light.
+Current temperature 36.8 C.
+```
+
+
+## G23
+
+Rule: For thromboprophylaxis after hip replacement, prescribe enoxaparin. If the patient has ever had a myocardial infarction or peripheral artery disease (current or past) and the patient has had cancer at any time (active or in remission), prescribe fondaparinux instead.
+
+**G23-C1**
+
+Facts: patient: myocardial infarction or peripheral artery disease present (current) [line: "Has symptomatic peripheral artery disease of both legs."]; patient: cancer present (past (2010)) [line: "Formerly had kidney cancer, cured by surgery in 2010."]
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
+
+Criterion claims: s = Under the rule, the condition "myocardial infarction or peripheral artery disease" does not hold for this patient. | s' = Under the rule, the condition "myocardial infarction or peripheral artery disease" holds for this patient.
+```
+Man of 72 years.
+First day after elective total hip replacement.
+Knits as a hobby.
+In 2005, lipase was 30 U/L.
+Paints watercolors as a hobby.
+Sees a dentist yearly.
+Lives in a second-floor apartment.
+Has two cats.
+During a checkup in 2024, free T3 was 3.2 pg/mL.
+Prefers morning appointments.
+Uses sunscreen in summer.
+Plays the piano.
+Enjoys board games.
+Owns a bicycle.
+Has symptomatic peripheral artery disease of both legs.
+During a checkup in 2014, total protein was 7.0 g/dL.
+Formerly had kidney cancer, cured by surgery in 2010.
+Photographs local wildlife.
+His sister has a lazy eye.
+His friend sprained a thumb last month.
+In 2024, folate was 12 ng/mL.
+Teeth in good repair.
+Sleeps seven hours a night.
+```
+
+**G23-C2**
+
+Facts: patient: myocardial infarction or peripheral artery disease denied by name (current) [line: "Has never had a heart attack or peripheral artery disease."]; patient: cancer present (past (2010)) [line: "Formerly had kidney cancer, cured by surgery in 2010."]
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
+
+Criterion claims: s = Under the rule, the condition "myocardial infarction or peripheral artery disease" does not hold for this patient. | s' = Under the rule, the condition "myocardial infarction or peripheral artery disease" holds for this patient.
+```
+Man of 72 years.
+First day after elective total hip replacement.
+Knits as a hobby.
+In 2005, lipase was 30 U/L.
+Paints watercolors as a hobby.
+Sees a dentist yearly.
+Lives in a second-floor apartment.
+Has two cats.
+During a checkup in 2024, free T3 was 3.2 pg/mL.
+Prefers morning appointments.
+Uses sunscreen in summer.
+Plays the piano.
+Enjoys board games.
+Owns a bicycle.
+Has never had a heart attack or peripheral artery disease.
+During a checkup in 2014, total protein was 7.0 g/dL.
+Formerly had kidney cancer, cured by surgery in 2010.
+Photographs local wildlife.
+His sister has a lazy eye.
+His friend sprained a thumb last month.
+In 2024, folate was 12 ng/mL.
+Teeth in good repair.
+Sleeps seven hours a night.
+```
+
+**G23-C3**
+
+Facts: patient: cancer present (past (2010)) [line: "Formerly had kidney cancer, cured by surgery in 2010."]; myocardial infarction or peripheral artery disease: not named; a general line implies absence (counts as absent) [line: "Walks without calf pain."]
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
+
+Criterion claims: s = Under the rule, the condition "myocardial infarction or peripheral artery disease" does not hold for this patient. | s' = Under the rule, the condition "myocardial infarction or peripheral artery disease" holds for this patient.
+```
+Male patient of 72 years.
+First day after elective total hip replacement.
+Formerly had kidney cancer, cured by surgery in 2010.
+In 2024, folate was 12 ng/mL.
+Paints watercolors as a hobby.
+Walks without calf pain.
+Sees a dentist yearly.
+Enjoys board games.
+Photographs local wildlife.
+His sister has a lazy eye.
+Has two cats.
+His friend sprained a thumb last month.
+Uses sunscreen in summer.
+In 2005, lipase was 30 U/L.
+Owns a bicycle.
+During a checkup in 2024, free T3 was 3.2 pg/mL.
+During a checkup in 2014, total protein was 7.0 g/dL.
+Plays the piano.
+Prefers morning appointments.
+Lives in a second-floor apartment.
+Teeth in good repair.
+Knits as a hobby.
+Sleeps seven hours a night.
+```
+
+**G23-C4**
+
+Facts: myocardial infarction or peripheral artery disease: stated as unknown [line: "Myocardial infarction or peripheral artery disease: unknown."]; patient: cancer present (past (2010)) [line: "Formerly had kidney cancer, cured by surgery in 2010."]
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
+
+Criterion claims: s = Under the rule, the condition "myocardial infarction or peripheral artery disease" does not hold for this patient. | s' = Under the rule, the condition "myocardial infarction or peripheral artery disease" holds for this patient.
+```
+Man of 72 years.
+First day after elective total hip replacement.
+Knits as a hobby.
+In 2005, lipase was 30 U/L.
+Paints watercolors as a hobby.
+Sees a dentist yearly.
+Lives in a second-floor apartment.
+Has two cats.
+During a checkup in 2024, free T3 was 3.2 pg/mL.
+Prefers morning appointments.
+Uses sunscreen in summer.
+Plays the piano.
+Enjoys board games.
+Owns a bicycle.
+Myocardial infarction or peripheral artery disease: unknown.
+During a checkup in 2014, total protein was 7.0 g/dL.
+Formerly had kidney cancer, cured by surgery in 2010.
+Photographs local wildlife.
+His sister has a lazy eye.
+His friend sprained a thumb last month.
+In 2024, folate was 12 ng/mL.
+Teeth in good repair.
+Sleeps seven hours a night.
+```
+
+**G23-C5**
+
+Facts: myocardial infarction or peripheral artery disease: not named; a general line implies absence (counts as absent) [line: "Walks without calf pain."]; patient: cancer present (past (2010)) [line: "Formerly had kidney cancer, cured by surgery in 2010."]
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
+
+Criterion claims: s = Under the rule, the condition "myocardial infarction or peripheral artery disease" does not hold for this patient. | s' = Under the rule, the condition "myocardial infarction or peripheral artery disease" holds for this patient.
+```
+Man of 72 years.
+First day after elective total hip replacement.
+Knits as a hobby.
+In 2005, lipase was 30 U/L.
+Paints watercolors as a hobby.
+Sees a dentist yearly.
+Lives in a second-floor apartment.
+Has two cats.
+During a checkup in 2024, free T3 was 3.2 pg/mL.
+Prefers morning appointments.
+Uses sunscreen in summer.
+Plays the piano.
+Enjoys board games.
+Owns a bicycle.
+Walks without calf pain.
+During a checkup in 2014, total protein was 7.0 g/dL.
+Formerly had kidney cancer, cured by surgery in 2010.
+Photographs local wildlife.
+His sister has a lazy eye.
+His friend sprained a thumb last month.
+In 2024, folate was 12 ng/mL.
+Teeth in good repair.
+Sleeps seven hours a night.
+```
+
+
+## G24
+
+Rule: For community-acquired pneumonia, prescribe oral amoxicillin. If at least two of the following apply, prescribe intravenous co-amoxiclav instead: the patient has ever had heart failure (current or past); the current platelet count is below 50 x10^9/L; the current temperature is above 38.0 C.
+
+**G24-C1**
+
+Facts: patient: temperature = 38.6 (current) [line: "Current temperature 38.6 C."]; patient: platelet count = 356 (current) [line: "Platelet count now 356 x10^9/L."]; heart failure: not mentioned (counts as absent)
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
+
+Criterion claims: s = Under the rule, the condition "heart failure" does not hold for this patient. | s' = Under the rule, the condition "heart failure" holds for this patient.
+```
+Female patient of 43 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Current temperature 38.6 C.
+Paints watercolors as a hobby.
+Photographs local wildlife.
+Platelet count now 356 x10^9/L.
+```
+
+**G24-C2**
+
+Facts: patient: heart failure present (current) [line: "Current heart failure with ankle swelling."]; patient: temperature = 38.6 (current) [line: "Current temperature 38.6 C."]; patient: platelet count = 356 (current) [line: "Platelet count now 356 x10^9/L."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
+
+Criterion claims: s = Under the rule, the condition "heart failure" does not hold for this patient. | s' = Under the rule, the condition "heart failure" holds for this patient.
+```
+Female patient of 43 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Current heart failure with ankle swelling.
+Current temperature 38.6 C.
+Paints watercolors as a hobby.
+Photographs local wildlife.
+Platelet count now 356 x10^9/L.
+```
+
+**G24-C3**
+
+Facts: patient: platelet count = 356 (current) [line: "Current platelet count 356 x10^9/L."]; patient: temperature = 38.6 (current) [line: "Temperature now 38.6 C (tympanic)."]; heart failure: not mentioned (counts as absent)
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
+
+Criterion claims: s = Under the rule, the condition "heart failure" does not hold for this patient. | s' = Under the rule, the condition "heart failure" holds for this patient.
+```
+Woman of 43 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Photographs local wildlife.
+Current platelet count 356 x10^9/L.
+Temperature now 38.6 C (tympanic).
+Paints watercolors as a hobby.
+```
+
+**G24-C4**
+
+Facts: sister: heart failure present (current) [line: "Her sister has advanced heart failure."]; patient: temperature = 38.6 (current) [line: "Current temperature 38.6 C."]; patient: platelet count = 356 (current) [line: "Platelet count now 356 x10^9/L."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
+
+Criterion claims: s = Under the rule, the condition "heart failure" does not hold for this patient. | s' = Under the rule, the condition "heart failure" holds for this patient.
+```
+Female patient of 43 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Her sister has advanced heart failure.
+Current temperature 38.6 C.
+Paints watercolors as a hobby.
+Photographs local wildlife.
+Platelet count now 356 x10^9/L.
+```
+
+
+## G25
+
+Rule: For vaginal candidiasis, prescribe oral fluconazole. If the current heart rate is above 90/min or the current weight is 60 kg or less, prescribe clotrimazole pessaries instead.
+
+**G25-C1**
+
+Facts: patient: weight = 84 (current) [line: "Current weight 84 kg."]; patient: heart rate = 89 (current) [line: "Heart rate now 89/min on a pulse check."]
+
+Claims: s = Prescribe oral fluconazole. | s' = Prescribe clotrimazole pessaries.
+
+Criterion claims: s = Under the rule, the condition "heart rate above 90" does not hold for this patient. | s' = Under the rule, the condition "heart rate above 90" holds for this patient.
+```
+Female patient of 36 years.
+Vaginal itching and discharge; candidiasis confirmed on microscopy.
+Prefers to be addressed by first name.
+Current weight 84 kg.
+Heart rate now 89/min on a pulse check.
+Has two cats.
+```
+
+**G25-C2**
+
+Facts: patient: weight = 84 (current) [line: "Current weight 84 kg."]; patient: heart rate = 98 (current) [line: "Heart rate now 98/min on a pulse check."]
+
+Claims: s = Prescribe oral fluconazole. | s' = Prescribe clotrimazole pessaries.
+
+Criterion claims: s = Under the rule, the condition "heart rate above 90" does not hold for this patient. | s' = Under the rule, the condition "heart rate above 90" holds for this patient.
+```
+Female patient of 36 years.
+Vaginal itching and discharge; candidiasis confirmed on microscopy.
+Prefers to be addressed by first name.
+Current weight 84 kg.
+Heart rate now 98/min on a pulse check.
+Has two cats.
+```
+
+**G25-C3**
+
+Facts: patient: heart rate = 62 (current) [line: "Current heart rate 62/min."]; patient: weight = 84 (current) [line: "Latest weight 84 kg."]
+
+Claims: s = Prescribe oral fluconazole. | s' = Prescribe clotrimazole pessaries.
+
+Criterion claims: s = Under the rule, the condition "heart rate above 90" does not hold for this patient. | s' = Under the rule, the condition "heart rate above 90" holds for this patient.
+```
+Woman of 36 years.
+Vaginal itching and discharge; candidiasis confirmed on microscopy.
+Prefers to be addressed by first name.
+Has two cats.
+Current heart rate 62/min.
+Latest weight 84 kg.
+```
+
+**G25-C4**
+
+Facts: patient: weight = 84 (current) [line: "Current weight 84 kg."]; patient: heart rate = 62 (current) [line: "Heart rate now 62/min on a pulse check."]
+
+Claims: s = Prescribe oral fluconazole. | s' = Prescribe clotrimazole pessaries.
+
+Criterion claims: s = Under the rule, the condition "heart rate above 90" does not hold for this patient. | s' = Under the rule, the condition "heart rate above 90" holds for this patient.
+```
+Female patient of 36 years.
+Vaginal itching and discharge; candidiasis confirmed on microscopy.
+Prefers to be addressed by first name.
+Current weight 84 kg.
+Heart rate now 62/min on a pulse check.
+Has two cats.
+```
+
+
+## G26
+
+Rule: For contraception, prescribe a combined oral contraceptive. Score 2 points if the patient or a first-degree relative (parent, sibling or child) has had coronary artery disease at any time; 2 points if the current weight is 60 kg or less; 2 points if the current platelet count is below 50 x10^9/L; 1 point if the patient currently has tender anterior cervical lymph nodes. If the score is 7 or more, prescribe a progestin-only pill instead.
+
+**G26-C1**
+
+Facts: patient: platelet count = 37 (current) [line: "Platelet count now 37 x10^9/L."]; patient: weight = 55 (current) [line: "Latest weight 55 kg."]; patient: tender cervical lymph nodes present (current) [line: "Tender, swollen lymph nodes in the front of the neck."]; coronary artery disease: not named; a general line implies absence (counts as absent) [line: "Chest pain on exertion: none reported."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" holds for this patient.
+```
+Female patient of 29 years.
+Requests contraception.
+Platelet count now 37 x10^9/L.
+Latest weight 55 kg.
+Tender, swollen lymph nodes in the front of the neck.
+Chest pain on exertion: none reported.
+Prefers morning appointments.
+Teeth in good repair.
+Lives in a second-floor apartment.
+```
+
+**G26-C2**
+
+Facts: patient: platelet count = 37 (current) [line: "Current platelet count 37 x10^9/L."]; patient: weight = 55 (current) [line: "Current weight 55 kg."]; patient: tender cervical lymph nodes present (current) [line: "Tender, swollen lymph nodes in the front of the neck."]; wife: coronary artery disease present (current) [line: "Her wife has angina from coronary artery disease."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" holds for this patient.
+```
+Woman of 29 years.
+Requests contraception.
+Current platelet count 37 x10^9/L.
+Prefers morning appointments.
+Teeth in good repair.
+Current weight 55 kg.
+Lives in a second-floor apartment.
+Tender, swollen lymph nodes in the front of the neck.
+Her wife has angina from coronary artery disease.
+```
+
+**G26-C3**
+
+Facts: patient: platelet count = 37 (current) [line: "Current platelet count 37 x10^9/L."]; patient: weight = 55 (current) [line: "Current weight 55 kg."]; patient: tender cervical lymph nodes present (current) [line: "Tender, swollen lymph nodes in the front of the neck."]; coronary artery disease: not named; a general line implies absence (counts as absent) [line: "Chest pain on exertion: none reported."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" holds for this patient.
+```
+Woman of 29 years.
+Requests contraception.
+Current platelet count 37 x10^9/L.
+Prefers morning appointments.
+Teeth in good repair.
+Current weight 55 kg.
+Lives in a second-floor apartment.
+Tender, swollen lymph nodes in the front of the neck.
+Chest pain on exertion: none reported.
+```
+
+**G26-C4**
+
+Facts: patient: platelet count = 37 (current) [line: "Current platelet count 37 x10^9/L."]; patient: weight = 55 (current) [line: "Current weight 55 kg."]; patient: tender cervical lymph nodes present (current) [line: "Tender, swollen lymph nodes in the front of the neck."]; father: coronary artery disease present (current) [line: "Her father has known coronary artery disease."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" holds for this patient.
+```
+Woman of 29 years.
+Requests contraception.
+Current platelet count 37 x10^9/L.
+Prefers morning appointments.
+Teeth in good repair.
+Current weight 55 kg.
+Lives in a second-floor apartment.
+Tender, swollen lymph nodes in the front of the neck.
+Her father has known coronary artery disease.
+```
+
+**G26-C5**
+
+Facts: patient: platelet count = 37 (current) [line: "Current platelet count 37 x10^9/L."]; patient: weight = 55 (current) [line: "Current weight 55 kg."]; patient: tender cervical lymph nodes present (current) [line: "Tender, swollen lymph nodes in the front of the neck."]; coronary artery disease: stated as unknown [line: "Coronary artery disease (patient or first-degree relative): unknown."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" holds for this patient.
+```
+Woman of 29 years.
+Requests contraception.
+Current platelet count 37 x10^9/L.
+Prefers morning appointments.
+Teeth in good repair.
+Current weight 55 kg.
+Lives in a second-floor apartment.
+Tender, swollen lymph nodes in the front of the neck.
+Coronary artery disease (patient or first-degree relative): unknown.
+```
+
+
+## G27
+
+Rule: AIMS65 (as used here, partial): 1 point each for a current international normalized ratio (INR) above 1.5; current altered mental status (confusion or disorientation); a current systolic blood pressure of 90 mmHg or less; age 65 years or more. Other AIMS65 items are not part of this question.
+
+**G27-C1**
+
+Facts: altered mental status: not named; a general line implies absence (counts as absent) [line: "Speech clear; follows commands."]; patient: age = 44 (current) [line: "Current age 44 years."]; patient: international normalized ratio = 1.0 (current) [line: "Latest international normalized ratio (INR): 1.0."]; systolic blood pressure: not mentioned (unknown)
+
+Claims: s = The systolic blood pressure criterion contributes 0 points. | s' = The systolic blood pressure criterion contributes 1 point.
+```
+Woman, adult.
+Upper gastrointestinal bleeding with black stools; admitted for endoscopy.
+Speech clear; follows commands.
+Current age 44 years.
+Latest international normalized ratio (INR): 1.0.
+Teeth in good repair.
+```
+
+**G27-C2**
+
+Facts: altered mental status: not named; a general line implies absence (counts as absent) [line: "Speech clear; follows commands."]; patient: age = 44 (current) [line: "Current age 44 years."]; patient: international normalized ratio = 1.0 (current) [line: "Latest international normalized ratio (INR): 1.0."]; patient: systolic blood pressure = 90 (current) [line: "Observations now: blood pressure 90/64 mmHg."]
+
+Claims: s = The systolic blood pressure criterion contributes 0 points. | s' = The systolic blood pressure criterion contributes 1 point.
+```
+Woman, adult.
+Upper gastrointestinal bleeding with black stools; admitted for endoscopy.
+Speech clear; follows commands.
+Current age 44 years.
+Latest international normalized ratio (INR): 1.0.
+Teeth in good repair.
+Observations now: blood pressure 90/64 mmHg.
+```
+
+**G27-C3**
+
+Facts: altered mental status: not named; a general line implies absence (counts as absent) [line: "Speech clear; follows commands."]; patient: age = 44 (current) [line: "Current age 44 years."]; patient: international normalized ratio = 1.0 (current) [line: "Latest international normalized ratio (INR): 1.0."]; patient: systolic blood pressure = 95 (current) [line: "Observations now: blood pressure 95/67 mmHg."]
+
+Claims: s = The systolic blood pressure criterion contributes 0 points. | s' = The systolic blood pressure criterion contributes 1 point.
+```
+Woman, adult.
+Upper gastrointestinal bleeding with black stools; admitted for endoscopy.
+Speech clear; follows commands.
+Current age 44 years.
+Latest international normalized ratio (INR): 1.0.
+Teeth in good repair.
+Observations now: blood pressure 95/67 mmHg.
+```
+
+**G27-C4**
+
+Facts: altered mental status: not named; a general line implies absence (counts as absent) [line: "Speech clear; follows commands."]; patient: age = 44 (current) [line: "Current age 44 years."]; patient: international normalized ratio = 1.0 (current) [line: "Latest international normalized ratio (INR): 1.0."]; patient: systolic blood pressure = 135 (current) [line: "Observations now: blood pressure 135/89 mmHg."]
+
+Claims: s = The systolic blood pressure criterion contributes 0 points. | s' = The systolic blood pressure criterion contributes 1 point.
+```
+Woman, adult.
+Upper gastrointestinal bleeding with black stools; admitted for endoscopy.
+Speech clear; follows commands.
+Current age 44 years.
+Latest international normalized ratio (INR): 1.0.
+Teeth in good repair.
+Observations now: blood pressure 135/89 mmHg.
+```
+
+**G27-C5**
+
+Facts: patient: international normalized ratio = 1.0 (current) [line: "Current international normalized ratio 1.0."]; altered mental status: not named; a general line implies absence (counts as absent) [line: "Speech clear; follows commands."]; patient: systolic blood pressure = 135 (current) [line: "Current systolic blood pressure 135 mmHg."]; patient: age = 44 (current) [line: "Currently aged 44 years."]
+
+Claims: s = The systolic blood pressure criterion contributes 0 points. | s' = The systolic blood pressure criterion contributes 1 point.
+```
+An adult woman.
+Upper gastrointestinal bleeding with black stools; admitted for endoscopy.
+Teeth in good repair.
+Current international normalized ratio 1.0.
+Speech clear; follows commands.
+Current systolic blood pressure 135 mmHg.
+Currently aged 44 years.
+```
+
+
+## G28
+
+Rule: Mortality in Emergency Department Sepsis score (as used here, partial): 3 points for a current platelet count below 150 x10^9/L; 3 points for an age above 65 years; 2 points for current altered mental status (confusion or disorientation). Other items of the score are not part of this question.
+
+**G28-C1**
+
+Facts: patient: altered mental status present (current) [line: "Disoriented to time and place, which is new for the patient."]; patient: platelet count = 160 (current) [line: "Platelet count now 160 x10^9/L."]; patient: age = 55 (current) [line: "Current age 55 years."]
+
+Claims: s = The altered mental status criterion contributes 0 points. | s' = The altered mental status criterion contributes 2 points.
+```
+An adult man.
+Suspected sepsis; admitted from the emergency department.
+Has two cats.
+Uses sunscreen in summer.
+Disoriented to time and place, which is new for the patient.
+Platelet count now 160 x10^9/L.
+Prefers to be addressed by first name.
+Current age 55 years.
+Photographs local wildlife.
+Sleeps seven hours a night.
+Lives in a second-floor apartment.
+Knits as a hobby.
+Paints watercolors as a hobby.
+His father sprained a thumb last month.
+Plays the piano.
+Enjoys board games.
+His friend burned a hand on a stove years ago.
+Prefers morning appointments.
+Free T4 of 1.2 ng/dL in 2020.
+Sees a dentist yearly.
+Drives a car.
+Pupils equal and reactive to light.
+In 2009, lipase was 30 U/L.
+```
+
+**G28-C2**
+
+Facts: altered mental status: not named; a general line implies absence (counts as absent) [line: "Gives a clear account of the illness."]; patient: platelet count = 160 (current) [line: "Platelet count now 160 x10^9/L."]; patient: age = 55 (current) [line: "Current age 55 years."]
+
+Claims: s = The altered mental status criterion contributes 0 points. | s' = The altered mental status criterion contributes 2 points.
+```
+An adult man.
+Suspected sepsis; admitted from the emergency department.
+Has two cats.
+Uses sunscreen in summer.
+Gives a clear account of the illness.
+Platelet count now 160 x10^9/L.
+Prefers to be addressed by first name.
+Current age 55 years.
+Photographs local wildlife.
+Sleeps seven hours a night.
+Lives in a second-floor apartment.
+Knits as a hobby.
+Paints watercolors as a hobby.
+His father sprained a thumb last month.
+Plays the piano.
+Enjoys board games.
+His friend burned a hand on a stove years ago.
+Prefers morning appointments.
+Free T4 of 1.2 ng/dL in 2020.
+Sees a dentist yearly.
+Drives a car.
+Pupils equal and reactive to light.
+In 2009, lipase was 30 U/L.
+```
+
+**G28-C3**
+
+Facts: father: altered mental status present (current) [line: "His father is newly disoriented."]; patient: platelet count = 160 (current) [line: "Platelet count now 160 x10^9/L."]; patient: age = 55 (current) [line: "Current age 55 years."]
+
+Claims: s = The altered mental status criterion contributes 0 points. | s' = The altered mental status criterion contributes 2 points.
+```
+An adult man.
+Suspected sepsis; admitted from the emergency department.
+Has two cats.
+Uses sunscreen in summer.
+His father is newly disoriented.
+Platelet count now 160 x10^9/L.
+Prefers to be addressed by first name.
+Current age 55 years.
+Photographs local wildlife.
+Sleeps seven hours a night.
+Lives in a second-floor apartment.
+Knits as a hobby.
+Paints watercolors as a hobby.
+His father sprained a thumb last month.
+Plays the piano.
+Enjoys board games.
+His friend burned a hand on a stove years ago.
+Prefers morning appointments.
+Free T4 of 1.2 ng/dL in 2020.
+Sees a dentist yearly.
+Drives a car.
+Pupils equal and reactive to light.
+In 2009, lipase was 30 U/L.
+```
+
+**G28-C4**
+
+Facts: patient: platelet count = 160 (current) [line: "Current platelet count 160 x10^9/L."]; altered mental status: not named; a general line implies absence (counts as absent) [line: "Gives a clear account of the illness."]; patient: age = 55 (current) [line: "Currently aged 55 years."]
+
+Claims: s = The altered mental status criterion contributes 0 points. | s' = The altered mental status criterion contributes 2 points.
+```
+Man, adult.
+Suspected sepsis; admitted from the emergency department.
+Sees a dentist yearly.
+Sleeps seven hours a night.
+Enjoys board games.
+Free T4 of 1.2 ng/dL in 2020.
+Drives a car.
+Paints watercolors as a hobby.
+Current platelet count 160 x10^9/L.
+Gives a clear account of the illness.
+His father sprained a thumb last month.
+Photographs local wildlife.
+Currently aged 55 years.
+Plays the piano.
+Has two cats.
+Pupils equal and reactive to light.
+Lives in a second-floor apartment.
+Prefers morning appointments.
+Prefers to be addressed by first name.
+In 2009, lipase was 30 U/L.
+Uses sunscreen in summer.
+His friend burned a hand on a stove years ago.
+Knits as a hobby.
+```
+
+
+## G29
+
+Rule: For suspected infection on the medical ward, prescribe oral amoxicillin. If at least two of the following apply, prescribe intravenous piperacillin-tazobactam instead: the current blood urea nitrogen is above 19 mg/dL; the patient has had a major bleeding event at any time; the patient currently has heart failure.
+
+**G29-C1**
+
+Facts: patient: blood urea nitrogen = 10 (current) [line: "Blood urea nitrogen now: 10 mg/dL."]; patient: bleeding history present (current) [line: "Major bleed from the stomach at present, with hemoglobin falling."]; heart failure: not mentioned (counts as absent)
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "current heart failure" does not hold for this patient. | s' = Under the rule, the condition "current heart failure" holds for this patient.
+```
+Female patient of 65 years.
+Suspected chest infection; assessed on the medical ward.
+Blood urea nitrogen now: 10 mg/dL.
+Major bleed from the stomach at present, with hemoglobin falling.
+Teeth in good repair.
+Drives a car.
+Knits as a hobby.
+Prefers to be addressed by first name.
+```
+
+**G29-C2**
+
+Facts: patient: heart failure denied by name (current) [line: "Heart failure: never diagnosed."]; patient: blood urea nitrogen = 10 (current) [line: "Blood urea nitrogen now: 10 mg/dL."]; patient: bleeding history present (current) [line: "Major bleed from the stomach at present, with hemoglobin falling."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "current heart failure" does not hold for this patient. | s' = Under the rule, the condition "current heart failure" holds for this patient.
+```
+Female patient of 65 years.
+Suspected chest infection; assessed on the medical ward.
+Heart failure: never diagnosed.
+Blood urea nitrogen now: 10 mg/dL.
+Major bleed from the stomach at present, with hemoglobin falling.
+Teeth in good repair.
+Drives a car.
+Knits as a hobby.
+Prefers to be addressed by first name.
+```
+
+**G29-C3**
+
+Facts: patient: heart failure present (current) [line: "Current heart failure with ankle swelling."]; patient: blood urea nitrogen = 10 (current) [line: "Blood urea nitrogen now: 10 mg/dL."]; patient: bleeding history present (current) [line: "Major bleed from the stomach at present, with hemoglobin falling."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "current heart failure" does not hold for this patient. | s' = Under the rule, the condition "current heart failure" holds for this patient.
+```
+Female patient of 65 years.
+Suspected chest infection; assessed on the medical ward.
+Current heart failure with ankle swelling.
+Blood urea nitrogen now: 10 mg/dL.
+Major bleed from the stomach at present, with hemoglobin falling.
+Teeth in good repair.
+Drives a car.
+Knits as a hobby.
+Prefers to be addressed by first name.
+```
+
+**G29-C4**
+
+Facts: patient: bleeding history present (current) [line: "Major bleed from the stomach at present, with hemoglobin falling."]; patient: blood urea nitrogen = 10 (current) [line: "Blood urea nitrogen 10 mg/dL on the current labs."]; heart failure: not mentioned (counts as absent)
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "current heart failure" does not hold for this patient. | s' = Under the rule, the condition "current heart failure" holds for this patient.
+```
+Woman of 65 years.
+Suspected chest infection; assessed on the medical ward.
+Prefers to be addressed by first name.
+Teeth in good repair.
+Major bleed from the stomach at present, with hemoglobin falling.
+Blood urea nitrogen 10 mg/dL on the current labs.
+Drives a car.
+Knits as a hobby.
+```
+
+
+## G30
+
+Rule: For community-acquired pneumonia, prescribe oral amoxicillin. If the current serum creatinine is 1.5 mg/dL or more and the patient has ever had heart failure (current or past), prescribe intravenous co-amoxiclav instead.
+
+**G30-C1**
+
+Facts: patient: heart failure present (past (2009)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2009 and off all heart medicines since."]; patient: serum creatinine = 0.6 (current) [line: "Latest creatinine result: 0.6 mg/dL."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
+
+Criterion claims: s = Under the rule, the condition "serum creatinine at least 1.5" does not hold for this patient. | s' = Under the rule, the condition "serum creatinine at least 1.5" holds for this patient.
+```
+Female patient of 45 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Photographs local wildlife.
+Formerly had heart failure from stress cardiomyopathy; recovered fully in 2009 and off all heart medicines since.
+Latest creatinine result: 0.6 mg/dL.
+Plays the piano.
+```
+
+**G30-C2**
+
+Facts: patient: heart failure present (past (2009)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2009 and off all heart medicines since."]; patient: serum creatinine = 2.0 (current) [line: "Latest creatinine result: 2.0 mg/dL."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
+
+Criterion claims: s = Under the rule, the condition "serum creatinine at least 1.5" does not hold for this patient. | s' = Under the rule, the condition "serum creatinine at least 1.5" holds for this patient.
+```
+Female patient of 45 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Photographs local wildlife.
+Formerly had heart failure from stress cardiomyopathy; recovered fully in 2009 and off all heart medicines since.
+Latest creatinine result: 2.0 mg/dL.
+Plays the piano.
+```
+
+**G30-C3**
+
+Facts: patient: heart failure present (past (2009)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2009 and off all heart medicines since."]; patient: serum creatinine = 1.4 (current) [line: "Latest creatinine result: 1.4 mg/dL."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
+
+Criterion claims: s = Under the rule, the condition "serum creatinine at least 1.5" does not hold for this patient. | s' = Under the rule, the condition "serum creatinine at least 1.5" holds for this patient.
+```
+Female patient of 45 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Photographs local wildlife.
+Formerly had heart failure from stress cardiomyopathy; recovered fully in 2009 and off all heart medicines since.
+Latest creatinine result: 1.4 mg/dL.
+Plays the piano.
+```
+
+**G30-C4**
+
+Facts: patient: heart failure present (past (2009)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2009 and off all heart medicines since."]; patient: serum creatinine = 0.6 (current) [line: "Current serum creatinine 0.6 mg/dL."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
+
+Criterion claims: s = Under the rule, the condition "serum creatinine at least 1.5" does not hold for this patient. | s' = Under the rule, the condition "serum creatinine at least 1.5" holds for this patient.
+```
+Woman of 45 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Plays the piano.
+Formerly had heart failure from stress cardiomyopathy; recovered fully in 2009 and off all heart medicines since.
+Photographs local wildlife.
+Current serum creatinine 0.6 mg/dL.
+```
+
+
+## G31
+
+Rule: For contraception, prescribe a combined oral contraceptive. If the current eGFR is below 30 mL/min/1.73 m2 and the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time, prescribe a progestin-only pill instead.
+
+**G31-C1**
+
+Facts: patient: eGFR = 24 (current) [line: "eGFR now 24 mL/min/1.73 m2."]; sister: diabetes present (past) [line: "Her sister had diabetes years ago that went away after a change in diet."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "diabetes (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "diabetes (patient or first-degree relative)" holds for this patient.
+```
+Female patient of 19 years.
+Requests contraception.
+During a checkup in 2024, total protein was 7.0 g/dL.
+Has two cats.
+Lives in a second-floor apartment.
+Sees a dentist yearly.
+Her roommate sprained a thumb last month.
+Plays the piano.
+Zinc of 85 mcg/dL in 2024.
+Teeth in good repair.
+In 2024, folate was 12 ng/mL.
+Pupils equal and reactive to light.
+Her sister burned a hand on a stove years ago.
+Knits as a hobby.
+Paints watercolors as a hobby.
+Enjoys board games.
+eGFR now 24 mL/min/1.73 m2.
+Prefers to be addressed by first name.
+Owns a bicycle.
+Her sister had diabetes years ago that went away after a change in diet.
+Photographs local wildlife.
+```
+
+**G31-C2**
+
+Facts: patient: eGFR = 24 (current) [line: "Current eGFR 24 mL/min/1.73 m2."]; diabetes: not named; a general line implies absence (counts as absent) [line: "HbA1c 5.3% at a routine check."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "diabetes (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "diabetes (patient or first-degree relative)" holds for this patient.
+```
+Woman of 19 years.
+Requests contraception.
+Her roommate sprained a thumb last month.
+Current eGFR 24 mL/min/1.73 m2.
+HbA1c 5.3% at a routine check.
+Prefers to be addressed by first name.
+Owns a bicycle.
+Sees a dentist yearly.
+During a checkup in 2024, total protein was 7.0 g/dL.
+Paints watercolors as a hobby.
+Has two cats.
+Knits as a hobby.
+Lives in a second-floor apartment.
+Enjoys board games.
+Her sister burned a hand on a stove years ago.
+Zinc of 85 mcg/dL in 2024.
+In 2024, folate was 12 ng/mL.
+Plays the piano.
+Photographs local wildlife.
+Pupils equal and reactive to light.
+Teeth in good repair.
+```
+
+**G31-C3**
+
+Facts: patient: eGFR = 24 (current) [line: "eGFR now 24 mL/min/1.73 m2."]; patient: diabetes denied by name (current) [line: "Has never had diabetes."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "diabetes (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "diabetes (patient or first-degree relative)" holds for this patient.
+```
+Female patient of 19 years.
+Requests contraception.
+During a checkup in 2024, total protein was 7.0 g/dL.
+Has two cats.
+Lives in a second-floor apartment.
+Sees a dentist yearly.
+Her roommate sprained a thumb last month.
+Plays the piano.
+Zinc of 85 mcg/dL in 2024.
+Teeth in good repair.
+In 2024, folate was 12 ng/mL.
+Pupils equal and reactive to light.
+Her sister burned a hand on a stove years ago.
+Knits as a hobby.
+Paints watercolors as a hobby.
+Enjoys board games.
+eGFR now 24 mL/min/1.73 m2.
+Prefers to be addressed by first name.
+Owns a bicycle.
+Has never had diabetes.
+Photographs local wildlife.
+```
+
+**G31-C4**
+
+Facts: patient: eGFR = 24 (current) [line: "eGFR now 24 mL/min/1.73 m2."]; diabetes: not named; a general line implies absence (counts as absent) [line: "HbA1c 5.3% at a routine check."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "diabetes (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "diabetes (patient or first-degree relative)" holds for this patient.
+```
+Female patient of 19 years.
+Requests contraception.
+During a checkup in 2024, total protein was 7.0 g/dL.
+Has two cats.
+Lives in a second-floor apartment.
+Sees a dentist yearly.
+Her roommate sprained a thumb last month.
+Plays the piano.
+Zinc of 85 mcg/dL in 2024.
+Teeth in good repair.
+In 2024, folate was 12 ng/mL.
+Pupils equal and reactive to light.
+Her sister burned a hand on a stove years ago.
+Knits as a hobby.
+Paints watercolors as a hobby.
+Enjoys board games.
+eGFR now 24 mL/min/1.73 m2.
+Prefers to be addressed by first name.
+Owns a bicycle.
+HbA1c 5.3% at a routine check.
+Photographs local wildlife.
+```
+
+**G31-C5**
+
+Facts: patient: eGFR = 24 (current) [line: "eGFR now 24 mL/min/1.73 m2."]; diabetes: stated as unknown [line: "Diabetes (patient or first-degree relative): status unclear from the records at hand."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "diabetes (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "diabetes (patient or first-degree relative)" holds for this patient.
+```
+Female patient of 19 years.
+Requests contraception.
+During a checkup in 2024, total protein was 7.0 g/dL.
+Has two cats.
+Lives in a second-floor apartment.
+Sees a dentist yearly.
+Her roommate sprained a thumb last month.
+Plays the piano.
+Zinc of 85 mcg/dL in 2024.
+Teeth in good repair.
+In 2024, folate was 12 ng/mL.
+Pupils equal and reactive to light.
+Her sister burned a hand on a stove years ago.
+Knits as a hobby.
+Paints watercolors as a hobby.
+Enjoys board games.
+eGFR now 24 mL/min/1.73 m2.
+Prefers to be addressed by first name.
+Owns a bicycle.
+Diabetes (patient or first-degree relative): status unclear from the records at hand.
+Photographs local wildlife.
+```
+
+
+## G32
+
+Rule: For rate control in atrial fibrillation, prescribe metoprolol. If the patient or a first-degree relative (parent, sibling or child) has had colorectal cancer at any time and the patient currently has tonsillar exudate, prescribe diltiazem instead.
+
+**G32-C1**
+
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]; sister: colorectal cancer present (past (2013)) [line: "His sister recovered from colon cancer after an operation in 2013."]
+
+Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
+
+Criterion claims: s = Under the rule, the condition "tonsillar exudate" does not hold for this patient. | s' = Under the rule, the condition "tonsillar exudate" holds for this patient.
+```
+Man of 82 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Prefers morning appointments.
+Paints watercolors as a hobby.
+Has two cats.
+His roommate sprained a thumb last month.
+Enjoys board games.
+Uses sunscreen in summer.
+His friend wears contact lenses.
+In 2014, lipase was 30 U/L.
+In 2007, folate was 12 ng/mL.
+Photographs local wildlife.
+Owns a bicycle.
+Free T4 of 1.2 ng/dL in 2024.
+Sleeps seven hours a night.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+Teeth in good repair.
+Tonsils pink and clean on inspection.
+His sister recovered from colon cancer after an operation in 2013.
+Knits as a hobby.
+His friend lives with psoriasis.
+Drives a car.
+Lives in a second-floor apartment.
+```
+
+**G32-C2**
+
+Facts: sister: tonsillar exudate present (current) [line: "His sister has a sore throat with tonsillar exudate."]; sister: colorectal cancer present (past (2013)) [line: "His sister recovered from colon cancer after an operation in 2013."]
+
+Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
+
+Criterion claims: s = Under the rule, the condition "tonsillar exudate" does not hold for this patient. | s' = Under the rule, the condition "tonsillar exudate" holds for this patient.
+```
+Man of 82 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Prefers morning appointments.
+Paints watercolors as a hobby.
+Has two cats.
+His roommate sprained a thumb last month.
+Enjoys board games.
+Uses sunscreen in summer.
+His friend wears contact lenses.
+In 2014, lipase was 30 U/L.
+In 2007, folate was 12 ng/mL.
+Photographs local wildlife.
+Owns a bicycle.
+Free T4 of 1.2 ng/dL in 2024.
+Sleeps seven hours a night.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+Teeth in good repair.
+His sister has a sore throat with tonsillar exudate.
+His sister recovered from colon cancer after an operation in 2013.
+Knits as a hobby.
+His friend lives with psoriasis.
+Drives a car.
+Lives in a second-floor apartment.
+```
+
+**G32-C3**
+
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]; sister: colorectal cancer present (past (2013)) [line: "His sister recovered from colon cancer after an operation in 2013."]
+
+Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
+
+Criterion claims: s = Under the rule, the condition "tonsillar exudate" does not hold for this patient. | s' = Under the rule, the condition "tonsillar exudate" holds for this patient.
+```
+Male patient of 82 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Lives in a second-floor apartment.
+His friend wears contact lenses.
+Sees a dentist yearly.
+Teeth in good repair.
+Enjoys board games.
+Has two cats.
+His roommate sprained a thumb last month.
+Drives a car.
+Free T4 of 1.2 ng/dL in 2024.
+Sleeps seven hours a night.
+Owns a bicycle.
+Pupils equal and reactive to light.
+Tonsils pink and clean on inspection.
+His sister recovered from colon cancer after an operation in 2013.
+His friend lives with psoriasis.
+Photographs local wildlife.
+Paints watercolors as a hobby.
+Prefers morning appointments.
+Uses sunscreen in summer.
+In 2014, lipase was 30 U/L.
+In 2007, folate was 12 ng/mL.
+Knits as a hobby.
+```
+
+**G32-C4**
+
+Facts: tonsillar exudate: stated as unknown [line: "Tonsillar exudate: unknown."]; sister: colorectal cancer present (past (2013)) [line: "His sister recovered from colon cancer after an operation in 2013."]
+
+Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
+
+Criterion claims: s = Under the rule, the condition "tonsillar exudate" does not hold for this patient. | s' = Under the rule, the condition "tonsillar exudate" holds for this patient.
+```
+Man of 82 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Prefers morning appointments.
+Paints watercolors as a hobby.
+Has two cats.
+His roommate sprained a thumb last month.
+Enjoys board games.
+Uses sunscreen in summer.
+His friend wears contact lenses.
+In 2014, lipase was 30 U/L.
+In 2007, folate was 12 ng/mL.
+Photographs local wildlife.
+Owns a bicycle.
+Free T4 of 1.2 ng/dL in 2024.
+Sleeps seven hours a night.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+Teeth in good repair.
+Tonsillar exudate: unknown.
+His sister recovered from colon cancer after an operation in 2013.
+Knits as a hobby.
+His friend lives with psoriasis.
+Drives a car.
+Lives in a second-floor apartment.
+```
+
+**G32-C5**
+
+Facts: patient: tonsillar exudate present (current) [line: "Tonsils swollen and coated with yellow exudate."]; sister: colorectal cancer present (past (2013)) [line: "His sister recovered from colon cancer after an operation in 2013."]
+
+Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
+
+Criterion claims: s = Under the rule, the condition "tonsillar exudate" does not hold for this patient. | s' = Under the rule, the condition "tonsillar exudate" holds for this patient.
+```
+Man of 82 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Prefers morning appointments.
+Paints watercolors as a hobby.
+Has two cats.
+His roommate sprained a thumb last month.
+Enjoys board games.
+Uses sunscreen in summer.
+His friend wears contact lenses.
+In 2014, lipase was 30 U/L.
+In 2007, folate was 12 ng/mL.
+Photographs local wildlife.
+Owns a bicycle.
+Free T4 of 1.2 ng/dL in 2024.
+Sleeps seven hours a night.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+Teeth in good repair.
+Tonsils swollen and coated with yellow exudate.
+His sister recovered from colon cancer after an operation in 2013.
+Knits as a hobby.
+His friend lives with psoriasis.
+Drives a car.
+Lives in a second-floor apartment.
+```
+
+
+## G33
+
+Rule: For Okata fever, prescribe solvadine. If the patient currently has a venous thromboembolism and the current eGFR is below 50 mL/min/1.73 m2, prescribe tarnicept instead.
+
+**G33-C1**
+
+Facts: patient: eGFR = 44 (current) [line: "eGFR now 44 mL/min/1.73 m2."]; venous thromboembolism: not mentioned (counts as absent)
+
+Claims: s = Prescribe solvadine. | s' = Prescribe tarnicept.
+
+Criterion claims: s = Under the rule, the condition "current venous thromboembolism" does not hold for this patient. | s' = Under the rule, the condition "current venous thromboembolism" holds for this patient.
+```
+Man of 60 years.
+Referred with Okata fever.
+Drives a car.
+In 2024, lipase was 30 U/L.
+Paints watercolors as a hobby.
+eGFR now 44 mL/min/1.73 m2.
+His wife has a lazy eye.
+During a checkup in 2024, total protein was 7.0 g/dL.
+Free T4 of 1.2 ng/dL in 2005.
+His friend burned a hand on a stove years ago.
+Sleeps seven hours a night.
+Photographs local wildlife.
+Prefers morning appointments.
+During a checkup in 2019, free T3 was 3.2 pg/mL.
+Lives in a second-floor apartment.
+Uses sunscreen in summer.
+Teeth in good repair.
+His friend has recovered from a dislocated finger.
+His roommate wears contact lenses.
+```
+
+**G33-C2**
+
+Facts: patient: eGFR = 44 (current) [line: "eGFR now 44 mL/min/1.73 m2."]; patient: venous thromboembolism denied by name (current) [line: "Has never had a DVT or pulmonary embolism, nor has any parent, sibling or child."]
+
+Claims: s = Prescribe solvadine. | s' = Prescribe tarnicept.
+
+Criterion claims: s = Under the rule, the condition "current venous thromboembolism" does not hold for this patient. | s' = Under the rule, the condition "current venous thromboembolism" holds for this patient.
+```
+Man of 60 years.
+Referred with Okata fever.
+Drives a car.
+In 2024, lipase was 30 U/L.
+Paints watercolors as a hobby.
+eGFR now 44 mL/min/1.73 m2.
+His wife has a lazy eye.
+Has never had a DVT or pulmonary embolism, nor has any parent, sibling or child.
+During a checkup in 2024, total protein was 7.0 g/dL.
+Free T4 of 1.2 ng/dL in 2005.
+His friend burned a hand on a stove years ago.
+Sleeps seven hours a night.
+Photographs local wildlife.
+Prefers morning appointments.
+During a checkup in 2019, free T3 was 3.2 pg/mL.
+Lives in a second-floor apartment.
+Uses sunscreen in summer.
+Teeth in good repair.
+His friend has recovered from a dislocated finger.
+His roommate wears contact lenses.
+```
+
+**G33-C3**
+
+Facts: patient: eGFR = 44 (current) [line: "eGFR now 44 mL/min/1.73 m2."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]
+
+Claims: s = Prescribe solvadine. | s' = Prescribe tarnicept.
+
+Criterion claims: s = Under the rule, the condition "current venous thromboembolism" does not hold for this patient. | s' = Under the rule, the condition "current venous thromboembolism" holds for this patient.
+```
+Man of 60 years.
+Referred with Okata fever.
+Drives a car.
+In 2024, lipase was 30 U/L.
+Paints watercolors as a hobby.
+eGFR now 44 mL/min/1.73 m2.
+His wife has a lazy eye.
+Has an acute pulmonary embolism, diagnosed this week.
+During a checkup in 2024, total protein was 7.0 g/dL.
+Free T4 of 1.2 ng/dL in 2005.
+His friend burned a hand on a stove years ago.
+Sleeps seven hours a night.
+Photographs local wildlife.
+Prefers morning appointments.
+During a checkup in 2019, free T3 was 3.2 pg/mL.
+Lives in a second-floor apartment.
+Uses sunscreen in summer.
+Teeth in good repair.
+His friend has recovered from a dislocated finger.
+His roommate wears contact lenses.
+```
+
+**G33-C4**
+
+Facts: patient: eGFR = 44 (current) [line: "Current eGFR 44 mL/min/1.73 m2."]; venous thromboembolism: not mentioned (counts as absent)
+
+Claims: s = Prescribe solvadine. | s' = Prescribe tarnicept.
+
+Criterion claims: s = Under the rule, the condition "current venous thromboembolism" does not hold for this patient. | s' = Under the rule, the condition "current venous thromboembolism" holds for this patient.
+```
+Male patient of 60 years.
+Referred with Okata fever.
+Photographs local wildlife.
+His roommate wears contact lenses.
+Uses sunscreen in summer.
+During a checkup in 2024, total protein was 7.0 g/dL.
+In 2024, lipase was 30 U/L.
+His friend has recovered from a dislocated finger.
+Free T4 of 1.2 ng/dL in 2005.
+Teeth in good repair.
+Current eGFR 44 mL/min/1.73 m2.
+His friend burned a hand on a stove years ago.
+Drives a car.
+Lives in a second-floor apartment.
+Prefers morning appointments.
+During a checkup in 2019, free T3 was 3.2 pg/mL.
+Paints watercolors as a hobby.
+His wife has a lazy eye.
+Sleeps seven hours a night.
+```
+
+
+## G34
+
+Rule: Pneumonia Severity Index (as used here, partial): 30 points for active cancer; 10 points for current heart failure; 10 points for a stroke or TIA at any time; 30 points for a current arterial pH below 7.35; 20 points for a current blood urea nitrogen of 20 mg/dL or more. Age, sex and other items of the index are not part of this question.
+
+**G34-C1**
+
+Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: arterial pH = 7.42 (current) [line: "Latest arterial blood gas shows a pH of 7.42."]; patient: blood urea nitrogen = 13 (past (2012)) [line: "Back in 2012, blood urea nitrogen stood at 13 mg/dL."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen 13 mg/dL on the current labs."]; heart failure: not mentioned (counts as absent); stroke/TIA: not mentioned (counts as absent)
+
+Claims: s = The blood urea nitrogen criterion contributes 0 points. | s' = The blood urea nitrogen criterion contributes 20 points.
+```
+Woman of 45 years.
+Community-acquired pneumonia confirmed on chest radiograph; admitted to the medical ward.
+Oncology follow-up: none.
+Latest arterial blood gas shows a pH of 7.42.
+Back in 2012, blood urea nitrogen stood at 13 mg/dL.
+Blood urea nitrogen 13 mg/dL on the current labs.
+Prefers morning appointments.
+```
+
+**G34-C2**
+
+Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: arterial pH = 7.42 (current) [line: "Latest arterial blood gas shows a pH of 7.42."]; patient: blood urea nitrogen = 13 (past (2012)) [line: "Back in 2012, blood urea nitrogen stood at 13 mg/dL."]; patient: blood urea nitrogen = 24 (current) [line: "Blood urea nitrogen 24 mg/dL on the current labs."]; heart failure: not mentioned (counts as absent); stroke/TIA: not mentioned (counts as absent)
+
+Claims: s = The blood urea nitrogen criterion contributes 0 points. | s' = The blood urea nitrogen criterion contributes 20 points.
+```
+Woman of 45 years.
+Community-acquired pneumonia confirmed on chest radiograph; admitted to the medical ward.
+Oncology follow-up: none.
+Latest arterial blood gas shows a pH of 7.42.
+Back in 2012, blood urea nitrogen stood at 13 mg/dL.
+Blood urea nitrogen 24 mg/dL on the current labs.
+Prefers morning appointments.
+```
+
+**G34-C3**
+
+Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: arterial pH = 7.42 (current) [line: "Current arterial pH 7.42."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen now: 13 mg/dL."]; patient: blood urea nitrogen = 13 (past (2012)) [line: "Records from 2012 list blood urea nitrogen at 13 mg/dL."]; heart failure: not mentioned (counts as absent); stroke/TIA: not mentioned (counts as absent)
+
+Claims: s = The blood urea nitrogen criterion contributes 0 points. | s' = The blood urea nitrogen criterion contributes 20 points.
+```
+Female patient of 45 years.
+Community-acquired pneumonia confirmed on chest radiograph; admitted to the medical ward.
+Oncology follow-up: none.
+Prefers morning appointments.
+Current arterial pH 7.42.
+Blood urea nitrogen now: 13 mg/dL.
+Records from 2012 list blood urea nitrogen at 13 mg/dL.
+```
+
+**G34-C4**
+
+Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: arterial pH = 7.42 (current) [line: "Latest arterial blood gas shows a pH of 7.42."]; patient: blood urea nitrogen = 31 (past (2012)) [line: "Back in 2012, blood urea nitrogen stood at 31 mg/dL."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen 13 mg/dL on the current labs."]; heart failure: not mentioned (counts as absent); stroke/TIA: not mentioned (counts as absent)
+
+Claims: s = The blood urea nitrogen criterion contributes 0 points. | s' = The blood urea nitrogen criterion contributes 20 points.
+```
+Woman of 45 years.
+Community-acquired pneumonia confirmed on chest radiograph; admitted to the medical ward.
+Oncology follow-up: none.
+Latest arterial blood gas shows a pH of 7.42.
+Back in 2012, blood urea nitrogen stood at 31 mg/dL.
+Blood urea nitrogen 13 mg/dL on the current labs.
+Prefers morning appointments.
+```
+
+
+## G35
+
+Rule: For musculoskeletal pain, prescribe ibuprofen. If at least two of the following apply, prescribe acetaminophen instead: the patient currently has tonsillar exudate; the current serum potassium is above 5.0 mmol/L; the patient has ever had coronary artery disease (current or past).
+
+**G35-C1**
+
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]; patient: serum potassium = 4.4 (current) [line: "Current serum potassium 4.4 mmol/L."]; patient: coronary artery disease present (current) [line: "Has coronary artery disease, managed medically."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Woman of 55 years.
+Acute low back pain after lifting.
+Free T4 of 1.2 ng/dL in 2014.
+Owns a bicycle.
+Teeth in good repair.
+Lives in a second-floor apartment.
+In 2023, lipase was 30 U/L.
+Knits as a hobby.
+Her friend burned a hand on a stove years ago.
+Tonsils pink and clean on inspection.
+Photographs local wildlife.
+Drives a car.
+Current serum potassium 4.4 mmol/L.
+Her wife lives with psoriasis.
+Enjoys board games.
+Pupils equal and reactive to light.
+Sleeps seven hours a night.
+Her sister wears contact lenses.
+Has two cats.
+Uses sunscreen in summer.
+Prefers to be addressed by first name.
+During a checkup in 2010, total protein was 7.0 g/dL.
+Sees a dentist yearly.
+Paints watercolors as a hobby.
+Has coronary artery disease, managed medically.
+```
+
+**G35-C2**
+
+Facts: patient: coronary artery disease present (current) [line: "Has coronary artery disease, managed medically."]; tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]; patient: serum potassium = 4.4 (current) [line: "Latest potassium result: 4.4 mmol/L."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Female patient of 55 years.
+Acute low back pain after lifting.
+Sleeps seven hours a night.
+Paints watercolors as a hobby.
+Owns a bicycle.
+Pupils equal and reactive to light.
+In 2023, lipase was 30 U/L.
+Lives in a second-floor apartment.
+During a checkup in 2010, total protein was 7.0 g/dL.
+Has coronary artery disease, managed medically.
+Enjoys board games.
+Prefers to be addressed by first name.
+Tonsils pink and clean on inspection.
+Drives a car.
+Latest potassium result: 4.4 mmol/L.
+Her sister wears contact lenses.
+Knits as a hobby.
+Photographs local wildlife.
+Uses sunscreen in summer.
+Her friend burned a hand on a stove years ago.
+Her wife lives with psoriasis.
+Sees a dentist yearly.
+Teeth in good repair.
+Has two cats.
+Free T4 of 1.2 ng/dL in 2014.
+```
+
+**G35-C3**
+
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]; patient: serum potassium = 5.0 (current) [line: "Current serum potassium 5.0 mmol/L."]; patient: coronary artery disease present (current) [line: "Has coronary artery disease, managed medically."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Woman of 55 years.
+Acute low back pain after lifting.
+Free T4 of 1.2 ng/dL in 2014.
+Owns a bicycle.
+Teeth in good repair.
+Lives in a second-floor apartment.
+In 2023, lipase was 30 U/L.
+Knits as a hobby.
+Her friend burned a hand on a stove years ago.
+Tonsils pink and clean on inspection.
+Photographs local wildlife.
+Drives a car.
+Current serum potassium 5.0 mmol/L.
+Her wife lives with psoriasis.
+Enjoys board games.
+Pupils equal and reactive to light.
+Sleeps seven hours a night.
+Her sister wears contact lenses.
+Has two cats.
+Uses sunscreen in summer.
+Prefers to be addressed by first name.
+During a checkup in 2010, total protein was 7.0 g/dL.
+Sees a dentist yearly.
+Paints watercolors as a hobby.
+Has coronary artery disease, managed medically.
+```
+
+**G35-C4**
+
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]; patient: coronary artery disease present (current) [line: "Has coronary artery disease, managed medically."]; serum potassium: not mentioned (unknown)
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Woman of 55 years.
+Acute low back pain after lifting.
+Free T4 of 1.2 ng/dL in 2014.
+Owns a bicycle.
+Teeth in good repair.
+Lives in a second-floor apartment.
+In 2023, lipase was 30 U/L.
+Knits as a hobby.
+Her friend burned a hand on a stove years ago.
+Tonsils pink and clean on inspection.
+Photographs local wildlife.
+Drives a car.
+Her wife lives with psoriasis.
+Enjoys board games.
+Pupils equal and reactive to light.
+Sleeps seven hours a night.
+Her sister wears contact lenses.
+Has two cats.
+Uses sunscreen in summer.
+Prefers to be addressed by first name.
+During a checkup in 2010, total protein was 7.0 g/dL.
+Sees a dentist yearly.
+Paints watercolors as a hobby.
+Has coronary artery disease, managed medically.
+```
+
+**G35-C5**
+
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]; patient: serum potassium = 5.7 (current) [line: "Current serum potassium 5.7 mmol/L."]; patient: coronary artery disease present (current) [line: "Has coronary artery disease, managed medically."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Woman of 55 years.
+Acute low back pain after lifting.
+Free T4 of 1.2 ng/dL in 2014.
+Owns a bicycle.
+Teeth in good repair.
+Lives in a second-floor apartment.
+In 2023, lipase was 30 U/L.
+Knits as a hobby.
+Her friend burned a hand on a stove years ago.
+Tonsils pink and clean on inspection.
+Photographs local wildlife.
+Drives a car.
+Current serum potassium 5.7 mmol/L.
+Her wife lives with psoriasis.
+Enjoys board games.
+Pupils equal and reactive to light.
+Sleeps seven hours a night.
+Her sister wears contact lenses.
+Has two cats.
+Uses sunscreen in summer.
+Prefers to be addressed by first name.
+During a checkup in 2010, total protein was 7.0 g/dL.
+Sees a dentist yearly.
+Paints watercolors as a hobby.
+Has coronary artery disease, managed medically.
+```
+
+
+## G36
+
+Rule: For knee osteoarthritis pain, prescribe naproxen. Score 2 points if the patient is allergic to penicillin; 1 point if the patient or a first-degree relative (parent, sibling or child) has had a venous thromboembolism at any time; 3 points if the current heart rate is above 90/min. If the score is 6 or more, prescribe acetaminophen instead.
+
+**G36-C1**
+
+Facts: patient: penicillin allergy present (current) [line: "Penicillin allergy: anaphylaxis."]; patient: heart rate = 96 (current) [line: "Heart rate now 96/min on a pulse check."]; patient: venous thromboembolism present (past (2018)) [line: "Recovered from a pulmonary embolism in 2018."]
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "heart rate above 90" does not hold for this patient. | s' = Under the rule, the condition "heart rate above 90" holds for this patient.
+```
+Man of 81 years.
+Knee osteoarthritis with pain on walking.
+Penicillin allergy: anaphylaxis.
+Pupils equal and reactive to light.
+Owns a bicycle.
+Heart rate now 96/min on a pulse check.
+Recovered from a pulmonary embolism in 2018.
+```
+
+**G36-C2**
+
+Facts: patient: penicillin allergy present (current) [line: "Penicillin allergy: anaphylaxis."]; patient: heart rate = 90 (current) [line: "Heart rate now 90/min on a pulse check."]; patient: venous thromboembolism present (past (2018)) [line: "Recovered from a pulmonary embolism in 2018."]
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "heart rate above 90" does not hold for this patient. | s' = Under the rule, the condition "heart rate above 90" holds for this patient.
+```
+Man of 81 years.
+Knee osteoarthritis with pain on walking.
+Penicillin allergy: anaphylaxis.
+Pupils equal and reactive to light.
+Owns a bicycle.
+Heart rate now 90/min on a pulse check.
+Recovered from a pulmonary embolism in 2018.
+```
+
+**G36-C3**
+
+Facts: patient: penicillin allergy present (current) [line: "Penicillin allergy: anaphylaxis."]; patient: venous thromboembolism present (past (2018)) [line: "Recovered from a pulmonary embolism in 2018."]; heart rate: not mentioned (unknown)
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "heart rate above 90" does not hold for this patient. | s' = Under the rule, the condition "heart rate above 90" holds for this patient.
+```
+Man of 81 years.
+Knee osteoarthritis with pain on walking.
+Penicillin allergy: anaphylaxis.
+Pupils equal and reactive to light.
+Owns a bicycle.
+Recovered from a pulmonary embolism in 2018.
+```
+
+**G36-C4**
+
+Facts: patient: heart rate = 63 (current) [line: "Current heart rate 63/min."]; patient: venous thromboembolism present (past (2018)) [line: "Recovered from a pulmonary embolism in 2018."]; patient: penicillin allergy present (current) [line: "Penicillin allergy: anaphylaxis."]
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "heart rate above 90" does not hold for this patient. | s' = Under the rule, the condition "heart rate above 90" holds for this patient.
+```
+Male patient of 81 years.
+Knee osteoarthritis with pain on walking.
+Current heart rate 63/min.
+Pupils equal and reactive to light.
+Recovered from a pulmonary embolism in 2018.
+Owns a bicycle.
+Penicillin allergy: anaphylaxis.
+```
+
+**G36-C5**
+
+Facts: patient: penicillin allergy present (current) [line: "Penicillin allergy: anaphylaxis."]; patient: heart rate = 63 (current) [line: "Heart rate now 63/min on a pulse check."]; patient: venous thromboembolism present (past (2018)) [line: "Recovered from a pulmonary embolism in 2018."]
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "heart rate above 90" does not hold for this patient. | s' = Under the rule, the condition "heart rate above 90" holds for this patient.
+```
+Man of 81 years.
+Knee osteoarthritis with pain on walking.
+Penicillin allergy: anaphylaxis.
+Pupils equal and reactive to light.
+Owns a bicycle.
+Heart rate now 63/min on a pulse check.
+Recovered from a pulmonary embolism in 2018.
+```
+
+
+## G37
+
+Rule: For suspected infection on the medical ward, prescribe oral amoxicillin. If at least two of the following apply, prescribe intravenous piperacillin-tazobactam instead: the current blood urea nitrogen is above 19 mg/dL; the patient has had a major bleeding event at any time; the patient currently has heart failure.
+
+**G37-C1**
+
+Facts: bleeding history: not named; a general line implies absence (counts as absent) [line: "Examination shows no signs of blood loss."]; patient: heart failure present (current) [line: "Current heart failure with ankle swelling."]; patient: blood urea nitrogen = 14 (current) [line: "Blood urea nitrogen now: 14 mg/dL."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "bleeding history" does not hold for this patient. | s' = Under the rule, the condition "bleeding history" holds for this patient.
+```
+Male patient of 61 years.
+Suspected chest infection; assessed on the medical ward.
+During a checkup in 2008, free T3 was 3.2 pg/mL.
+Pupils equal and reactive to light.
+Paints watercolors as a hobby.
+Has two cats.
+Free T4 of 1.2 ng/dL in 2018.
+Prefers to be addressed by first name.
+Examination shows no signs of blood loss.
+Sees a dentist yearly.
+Photographs local wildlife.
+Lives in a second-floor apartment.
+Plays the piano.
+Prefers morning appointments.
+Knits as a hobby.
+His uncle has a lazy eye.
+Enjoys board games.
+Current heart failure with ankle swelling.
+Owns a bicycle.
+His uncle lives with psoriasis.
+Teeth in good repair.
+Uses sunscreen in summer.
+In 2020, folate was 12 ng/mL.
+During a checkup in 2011, total protein was 7.0 g/dL.
+Blood urea nitrogen now: 14 mg/dL.
+```
+
+**G37-C2**
+
+Facts: patient: heart failure present (current) [line: "Current heart failure with ankle swelling."]; patient: blood urea nitrogen = 14 (current) [line: "Blood urea nitrogen 14 mg/dL on the current labs."]; patient: bleeding history present (past) [line: "Major intracranial bleed after a fall years ago, with full recovery."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "bleeding history" does not hold for this patient. | s' = Under the rule, the condition "bleeding history" holds for this patient.
+```
+Man of 61 years.
+Suspected chest infection; assessed on the medical ward.
+Paints watercolors as a hobby.
+His uncle has a lazy eye.
+During a checkup in 2011, total protein was 7.0 g/dL.
+During a checkup in 2008, free T3 was 3.2 pg/mL.
+Sees a dentist yearly.
+Current heart failure with ankle swelling.
+Knits as a hobby.
+Blood urea nitrogen 14 mg/dL on the current labs.
+Photographs local wildlife.
+Plays the piano.
+Prefers morning appointments.
+Owns a bicycle.
+Has two cats.
+Prefers to be addressed by first name.
+Major intracranial bleed after a fall years ago, with full recovery.
+In 2020, folate was 12 ng/mL.
+Uses sunscreen in summer.
+Teeth in good repair.
+Enjoys board games.
+Lives in a second-floor apartment.
+Pupils equal and reactive to light.
+Free T4 of 1.2 ng/dL in 2018.
+His uncle lives with psoriasis.
+```
+
+**G37-C3**
+
+Facts: patient: heart failure present (current) [line: "Current heart failure with ankle swelling."]; patient: blood urea nitrogen = 14 (current) [line: "Blood urea nitrogen 14 mg/dL on the current labs."]; bleeding history: not named; a general line implies absence (counts as absent) [line: "Examination shows no signs of blood loss."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "bleeding history" does not hold for this patient. | s' = Under the rule, the condition "bleeding history" holds for this patient.
+```
+Man of 61 years.
+Suspected chest infection; assessed on the medical ward.
+Paints watercolors as a hobby.
+His uncle has a lazy eye.
+During a checkup in 2011, total protein was 7.0 g/dL.
+During a checkup in 2008, free T3 was 3.2 pg/mL.
+Sees a dentist yearly.
+Current heart failure with ankle swelling.
+Knits as a hobby.
+Blood urea nitrogen 14 mg/dL on the current labs.
+Photographs local wildlife.
+Plays the piano.
+Prefers morning appointments.
+Owns a bicycle.
+Has two cats.
+Prefers to be addressed by first name.
+Examination shows no signs of blood loss.
+In 2020, folate was 12 ng/mL.
+Uses sunscreen in summer.
+Teeth in good repair.
+Enjoys board games.
+Lives in a second-floor apartment.
+Pupils equal and reactive to light.
+Free T4 of 1.2 ng/dL in 2018.
+His uncle lives with psoriasis.
+```
+
+**G37-C4**
+
+Facts: patient: heart failure present (current) [line: "Current heart failure with ankle swelling."]; patient: blood urea nitrogen = 14 (current) [line: "Blood urea nitrogen 14 mg/dL on the current labs."]; sister: bleeding history present (past) [line: "His sister needed a blood transfusion for a major bleed years ago."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "bleeding history" does not hold for this patient. | s' = Under the rule, the condition "bleeding history" holds for this patient.
+```
+Man of 61 years.
+Suspected chest infection; assessed on the medical ward.
+Paints watercolors as a hobby.
+His uncle has a lazy eye.
+During a checkup in 2011, total protein was 7.0 g/dL.
+During a checkup in 2008, free T3 was 3.2 pg/mL.
+Sees a dentist yearly.
+Current heart failure with ankle swelling.
+Knits as a hobby.
+Blood urea nitrogen 14 mg/dL on the current labs.
+Photographs local wildlife.
+Plays the piano.
+Prefers morning appointments.
+Owns a bicycle.
+Has two cats.
+Prefers to be addressed by first name.
+His sister needed a blood transfusion for a major bleed years ago.
+In 2020, folate was 12 ng/mL.
+Uses sunscreen in summer.
+Teeth in good repair.
+Enjoys board games.
+Lives in a second-floor apartment.
+Pupils equal and reactive to light.
+Free T4 of 1.2 ng/dL in 2018.
+His uncle lives with psoriasis.
+```
+
+
+## G38
+
+Rule: For knee osteoarthritis pain, prescribe naproxen. If the patient is allergic to penicillin and the patient or a first-degree relative (parent, sibling or child) has had coronary artery disease at any time, prescribe acetaminophen instead.
+
+**G38-C1**
+
+Facts: patient: coronary artery disease denied by name (current) [line: "Has never had coronary artery disease."]; patient: penicillin allergy present (current) [line: "Known penicillin allergy with angioedema."]
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" holds for this patient.
+```
+Female patient of 75 years.
+Knee osteoarthritis with pain on walking.
+Owns a bicycle.
+Has never had coronary artery disease.
+Known penicillin allergy with angioedema.
+```
+
+**G38-C2**
+
+Facts: patient: penicillin allergy present (current) [line: "Known penicillin allergy with angioedema."]; coronary artery disease: not named; a general line implies absence (counts as absent) [line: "Chest pain on exertion: none reported."]
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" holds for this patient.
+```
+Woman of 75 years.
+Knee osteoarthritis with pain on walking.
+Known penicillin allergy with angioedema.
+Chest pain on exertion: none reported.
+Owns a bicycle.
+```
+
+**G38-C3**
+
+Facts: coronary artery disease: not named; a general line implies absence (counts as absent) [line: "Chest pain on exertion: none reported."]; patient: penicillin allergy present (current) [line: "Known penicillin allergy with angioedema."]
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" holds for this patient.
+```
+Female patient of 75 years.
+Knee osteoarthritis with pain on walking.
+Owns a bicycle.
+Chest pain on exertion: none reported.
+Known penicillin allergy with angioedema.
+```
+
+**G38-C4**
+
+Facts: patient: coronary artery disease present (past) [line: "Coronary artery disease years ago, with angina that went away after bypass surgery."]; patient: penicillin allergy present (current) [line: "Known penicillin allergy with angioedema."]
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" holds for this patient.
+```
+Female patient of 75 years.
+Knee osteoarthritis with pain on walking.
+Owns a bicycle.
+Coronary artery disease years ago, with angina that went away after bypass surgery.
+Known penicillin allergy with angioedema.
+```
+
+**G38-C5**
+
+Facts: coronary artery disease: stated as unknown [line: "Coronary artery disease (patient or first-degree relative): unknown."]; patient: penicillin allergy present (current) [line: "Known penicillin allergy with angioedema."]
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "coronary artery disease (patient or first-degree relative)" holds for this patient.
+```
+Female patient of 75 years.
+Knee osteoarthritis with pain on walking.
+Owns a bicycle.
+Coronary artery disease (patient or first-degree relative): unknown.
+Known penicillin allergy with angioedema.
+```
+
+
+## G39
+
+Rule: Mortality in Emergency Department Sepsis score (as used here, partial): 3 points for a current platelet count below 150 x10^9/L; 3 points for an age above 65 years; 2 points for current altered mental status (confusion or disorientation). Other items of the score are not part of this question.
+
+**G39-C1**
+
+Facts: patient: platelet count = 150 (current) [line: "Platelet count now 150 x10^9/L."]; altered mental status: not named; a general line implies absence (counts as absent) [line: "Speech clear; follows commands."]; patient: age = 47 (current) [line: "Currently aged 47 years."]
+
+Claims: s = The platelet count criterion contributes 0 points. | s' = The platelet count criterion contributes 3 points.
+```
+Woman, adult.
+Suspected sepsis; admitted from the emergency department.
+Enjoys board games.
+Platelet count now 150 x10^9/L.
+Speech clear; follows commands.
+Photographs local wildlife.
+Sleeps seven hours a night.
+Currently aged 47 years.
+```
+
+**G39-C2**
+
+Facts: altered mental status: not named; a general line implies absence (counts as absent) [line: "Speech clear; follows commands."]; patient: age = 47 (current) [line: "Current age 47 years."]; patient: platelet count = 332 (current) [line: "Current platelet count 332 x10^9/L."]
+
+Claims: s = The platelet count criterion contributes 0 points. | s' = The platelet count criterion contributes 3 points.
+```
+An adult woman.
+Suspected sepsis; admitted from the emergency department.
+Sleeps seven hours a night.
+Speech clear; follows commands.
+Current age 47 years.
+Enjoys board games.
+Current platelet count 332 x10^9/L.
+Photographs local wildlife.
+```
+
+**G39-C3**
+
+Facts: patient: platelet count = 130 (current) [line: "Platelet count now 130 x10^9/L."]; altered mental status: not named; a general line implies absence (counts as absent) [line: "Speech clear; follows commands."]; patient: age = 47 (current) [line: "Currently aged 47 years."]
+
+Claims: s = The platelet count criterion contributes 0 points. | s' = The platelet count criterion contributes 3 points.
+```
+Woman, adult.
+Suspected sepsis; admitted from the emergency department.
+Enjoys board games.
+Platelet count now 130 x10^9/L.
+Speech clear; follows commands.
+Photographs local wildlife.
+Sleeps seven hours a night.
+Currently aged 47 years.
+```
+
+**G39-C4**
+
+Facts: patient: platelet count = 332 (current) [line: "Platelet count now 332 x10^9/L."]; altered mental status: not named; a general line implies absence (counts as absent) [line: "Speech clear; follows commands."]; patient: age = 47 (current) [line: "Currently aged 47 years."]
+
+Claims: s = The platelet count criterion contributes 0 points. | s' = The platelet count criterion contributes 3 points.
+```
+Woman, adult.
+Suspected sepsis; admitted from the emergency department.
+Enjoys board games.
+Platelet count now 332 x10^9/L.
+Speech clear; follows commands.
+Photographs local wildlife.
+Sleeps seven hours a night.
+Currently aged 47 years.
+```
+
+
+## G40
+
+Rule: For Pallis disease, prescribe brexadol. If the current white cell count is above 12.0 x10^9/L, prescribe corlitane instead.
+
+**G40-C1**
+
+Facts: patient: white cell count = 8.6 (current) [line: "Current white cell count 8.6 x10^9/L."]
+
+Claims: s = Prescribe brexadol. | s' = Prescribe corlitane.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Male patient of 38 years.
+Referred with Pallis disease.
+Owns a bicycle.
+Lives in a second-floor apartment.
+Current white cell count 8.6 x10^9/L.
+Teeth in good repair.
+Sees a dentist yearly.
+```
+
+**G40-C2**
+
+Facts: patient: white cell count = 12.0 (current) [line: "Latest WBC is 12.0 x10^9/L."]
+
+Claims: s = Prescribe brexadol. | s' = Prescribe corlitane.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Man of 38 years.
+Referred with Pallis disease.
+Owns a bicycle.
+Sees a dentist yearly.
+Lives in a second-floor apartment.
+Latest WBC is 12.0 x10^9/L.
+Teeth in good repair.
+```
+
+**G40-C3**
+
+Facts: patient: white cell count = 14.3 (current) [line: "Latest WBC is 14.3 x10^9/L."]
+
+Claims: s = Prescribe brexadol. | s' = Prescribe corlitane.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Man of 38 years.
+Referred with Pallis disease.
+Owns a bicycle.
+Sees a dentist yearly.
+Lives in a second-floor apartment.
+Latest WBC is 14.3 x10^9/L.
+Teeth in good repair.
+```
+
+**G40-C4**
+
+Facts: patient: white cell count = 8.6 (current) [line: "Latest WBC is 8.6 x10^9/L."]
+
+Claims: s = Prescribe brexadol. | s' = Prescribe corlitane.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Man of 38 years.
+Referred with Pallis disease.
+Owns a bicycle.
+Sees a dentist yearly.
+Lives in a second-floor apartment.
+Latest WBC is 8.6 x10^9/L.
+Teeth in good repair.
+```
+
+
+## G41
+
+Rule: For suspected infection on the medical ward, prescribe oral amoxicillin. If at least two of the following apply, prescribe intravenous piperacillin-tazobactam instead: the current blood urea nitrogen is above 19 mg/dL; the patient has had a major bleeding event at any time; the patient currently has heart failure.
+
+**G41-C1**
+
+Facts: patient: blood urea nitrogen = 27 (current) [line: "Blood urea nitrogen 27 mg/dL on the current labs."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]; bleeding history: not mentioned (counts as absent)
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "bleeding history" does not hold for this patient. | s' = Under the rule, the condition "bleeding history" holds for this patient.
+```
+Male patient of 57 years.
+Suspected chest infection; assessed on the medical ward.
+In 2015, lipase was 30 U/L.
+Enjoys board games.
+Pupils equal and reactive to light.
+Sees a dentist yearly.
+Prefers morning appointments.
+Blood urea nitrogen 27 mg/dL on the current labs.
+Uses sunscreen in summer.
+Sleeps seven hours a night.
+Teeth in good repair.
+Drives a car.
+Heart sounds without a gallop.
+His father lives with psoriasis.
+His father wears contact lenses.
+Owns a bicycle.
+Photographs local wildlife.
+During a checkup in 2005, free T3 was 3.2 pg/mL.
+Prefers to be addressed by first name.
+Zinc of 85 mcg/dL in 2015.
+During a checkup in 2006, total protein was 7.0 g/dL.
+His roommate burned a hand on a stove years ago.
+Paints watercolors as a hobby.
+```
+
+**G41-C2**
+
+Facts: patient: blood urea nitrogen = 27 (current) [line: "Blood urea nitrogen 27 mg/dL on the current labs."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]; patient: bleeding history present (past (2022)) [line: "Recovered from a major lower gastrointestinal bleed in 2022 that required transfusion."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "bleeding history" does not hold for this patient. | s' = Under the rule, the condition "bleeding history" holds for this patient.
+```
+Male patient of 57 years.
+Suspected chest infection; assessed on the medical ward.
+In 2015, lipase was 30 U/L.
+Enjoys board games.
+Pupils equal and reactive to light.
+Sees a dentist yearly.
+Prefers morning appointments.
+Blood urea nitrogen 27 mg/dL on the current labs.
+Uses sunscreen in summer.
+Sleeps seven hours a night.
+Teeth in good repair.
+Drives a car.
+Heart sounds without a gallop.
+His father lives with psoriasis.
+His father wears contact lenses.
+Owns a bicycle.
+Photographs local wildlife.
+During a checkup in 2005, free T3 was 3.2 pg/mL.
+Recovered from a major lower gastrointestinal bleed in 2022 that required transfusion.
+Prefers to be addressed by first name.
+Zinc of 85 mcg/dL in 2015.
+During a checkup in 2006, total protein was 7.0 g/dL.
+His roommate burned a hand on a stove years ago.
+Paints watercolors as a hobby.
+```
+
+**G41-C3**
+
+Facts: heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]; patient: blood urea nitrogen = 27 (current) [line: "Blood urea nitrogen now: 27 mg/dL."]; bleeding history: not mentioned (counts as absent)
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "bleeding history" does not hold for this patient. | s' = Under the rule, the condition "bleeding history" holds for this patient.
+```
+Man of 57 years.
+Suspected chest infection; assessed on the medical ward.
+During a checkup in 2005, free T3 was 3.2 pg/mL.
+His father wears contact lenses.
+Drives a car.
+In 2015, lipase was 30 U/L.
+Zinc of 85 mcg/dL in 2015.
+Prefers morning appointments.
+Pupils equal and reactive to light.
+Heart sounds without a gallop.
+Teeth in good repair.
+Paints watercolors as a hobby.
+Blood urea nitrogen now: 27 mg/dL.
+Owns a bicycle.
+His roommate burned a hand on a stove years ago.
+Sees a dentist yearly.
+Uses sunscreen in summer.
+Photographs local wildlife.
+His father lives with psoriasis.
+During a checkup in 2006, total protein was 7.0 g/dL.
+Enjoys board games.
+Sleeps seven hours a night.
+Prefers to be addressed by first name.
+```
+
+**G41-C4**
+
+Facts: patient: blood urea nitrogen = 27 (current) [line: "Blood urea nitrogen 27 mg/dL on the current labs."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]; patient: bleeding history denied by name (current) [line: "Medical records negative for major bleeding at any time."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "bleeding history" does not hold for this patient. | s' = Under the rule, the condition "bleeding history" holds for this patient.
+```
+Male patient of 57 years.
+Suspected chest infection; assessed on the medical ward.
+In 2015, lipase was 30 U/L.
+Enjoys board games.
+Pupils equal and reactive to light.
+Sees a dentist yearly.
+Prefers morning appointments.
+Blood urea nitrogen 27 mg/dL on the current labs.
+Uses sunscreen in summer.
+Sleeps seven hours a night.
+Teeth in good repair.
+Drives a car.
+Heart sounds without a gallop.
+His father lives with psoriasis.
+His father wears contact lenses.
+Owns a bicycle.
+Photographs local wildlife.
+During a checkup in 2005, free T3 was 3.2 pg/mL.
+Medical records negative for major bleeding at any time.
+Prefers to be addressed by first name.
+Zinc of 85 mcg/dL in 2015.
+During a checkup in 2006, total protein was 7.0 g/dL.
+His roommate burned a hand on a stove years ago.
+Paints watercolors as a hobby.
+```
+
+
+## G42
+
+Rule: Revised Geneva score (as used here, partial): 2 points each for active cancer and current hemoptysis (coughing up blood); 1 point for a current age above 65 years. Other Geneva items are not part of this question.
+
+**G42-C1**
+
+Facts: hemoptysis: not named; a general line implies absence (counts as absent) [line: "Dry cough, with nothing brought up."]; cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]; patient: age = 46 (current) [line: "Currently aged 46 years."]
+
+Claims: s = The active cancer criterion contributes 0 points. | s' = The active cancer criterion contributes 2 points.
+```
+An adult woman.
+Pleuritic chest pain and breathlessness for two days; seen in the emergency department.
+Her uncle lives with psoriasis.
+In 2023, lipase was 30 U/L.
+Pupils equal and reactive to light.
+Her uncle burned a hand on a stove years ago.
+Dry cough, with nothing brought up.
+Her wife has a lazy eye.
+Sees a dentist yearly.
+Photographs local wildlife.
+Drives a car.
+Teeth in good repair.
+Prefers morning appointments.
+Free T4 of 1.2 ng/dL in 2017.
+Prefers to be addressed by first name.
+Weight steady over the past year.
+Owns a bicycle.
+Has two cats.
+Lives in a second-floor apartment.
+Her sister wears contact lenses.
+In 2013, folate was 12 ng/mL.
+Plays the piano.
+Currently aged 46 years.
+Sleeps seven hours a night.
+```
+
+**G42-C2**
+
+Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]; patient: age = 46 (current) [line: "Current age 46 years."]; hemoptysis: not named; a general line implies absence (counts as absent) [line: "Dry cough, with nothing brought up."]
+
+Claims: s = The active cancer criterion contributes 0 points. | s' = The active cancer criterion contributes 2 points.
+```
+Woman, adult.
+Pleuritic chest pain and breathlessness for two days; seen in the emergency department.
+Lives in a second-floor apartment.
+Prefers to be addressed by first name.
+Pupils equal and reactive to light.
+Free T4 of 1.2 ng/dL in 2017.
+Owns a bicycle.
+Her wife has a lazy eye.
+Prefers morning appointments.
+Teeth in good repair.
+Her sister wears contact lenses.
+In 2013, folate was 12 ng/mL.
+Weight steady over the past year.
+Current age 46 years.
+Photographs local wildlife.
+Sleeps seven hours a night.
+Her uncle burned a hand on a stove years ago.
+In 2023, lipase was 30 U/L.
+Plays the piano.
+Her uncle lives with psoriasis.
+Drives a car.
+Sees a dentist yearly.
+Dry cough, with nothing brought up.
+Has two cats.
+```
+
+**G42-C3**
+
+Facts: sister: cancer present (current) [line: "Her sister is being treated for leukemia."]; patient: age = 46 (current) [line: "Current age 46 years."]; hemoptysis: not named; a general line implies absence (counts as absent) [line: "Dry cough, with nothing brought up."]
+
+Claims: s = The active cancer criterion contributes 0 points. | s' = The active cancer criterion contributes 2 points.
+```
+Woman, adult.
+Pleuritic chest pain and breathlessness for two days; seen in the emergency department.
+Lives in a second-floor apartment.
+Prefers to be addressed by first name.
+Pupils equal and reactive to light.
+Free T4 of 1.2 ng/dL in 2017.
+Owns a bicycle.
+Her wife has a lazy eye.
+Prefers morning appointments.
+Teeth in good repair.
+Her sister wears contact lenses.
+In 2013, folate was 12 ng/mL.
+Her sister is being treated for leukemia.
+Current age 46 years.
+Photographs local wildlife.
+Sleeps seven hours a night.
+Her uncle burned a hand on a stove years ago.
+In 2023, lipase was 30 U/L.
+Plays the piano.
+Her uncle lives with psoriasis.
+Drives a car.
+Sees a dentist yearly.
+Dry cough, with nothing brought up.
+Has two cats.
+```
+
+**G42-C4**
+
+Facts: patient: cancer present (current) [line: "Has melanoma skin cancer and is receiving treatment for it."]; patient: age = 46 (current) [line: "Current age 46 years."]; hemoptysis: not named; a general line implies absence (counts as absent) [line: "Dry cough, with nothing brought up."]
+
+Claims: s = The active cancer criterion contributes 0 points. | s' = The active cancer criterion contributes 2 points.
+```
+Woman, adult.
+Pleuritic chest pain and breathlessness for two days; seen in the emergency department.
+Lives in a second-floor apartment.
+Prefers to be addressed by first name.
+Pupils equal and reactive to light.
+Free T4 of 1.2 ng/dL in 2017.
+Owns a bicycle.
+Her wife has a lazy eye.
+Prefers morning appointments.
+Teeth in good repair.
+Her sister wears contact lenses.
+In 2013, folate was 12 ng/mL.
+Has melanoma skin cancer and is receiving treatment for it.
+Current age 46 years.
+Photographs local wildlife.
+Sleeps seven hours a night.
+Her uncle burned a hand on a stove years ago.
+In 2023, lipase was 30 U/L.
+Plays the piano.
+Her uncle lives with psoriasis.
+Drives a car.
+Sees a dentist yearly.
+Dry cough, with nothing brought up.
+Has two cats.
+```
+
+
+## G43
+
+Rule: ATRIA bleeding score for men (as used here, partial): 3 points each for a current hemoglobin below 13.0 g/dL and a current eGFR below 45 mL/min/1.73 m2; 2 points for a current age of 75 years or more; 1 point for hypertension at any time. Other ATRIA items are not part of this question.
+
+**G43-C1**
+
+Facts: patient: eGFR = 66 (past (2024)) [line: "Records from 2024 list eGFR at 66 mL/min/1.73 m2."]; patient: age = 68 (current) [line: "Current age 68 years."]; hypertension: not named; a general line implies absence (counts as absent) [line: "Echocardiogram shows normal left ventricular wall thickness."]; patient: eGFR = 34 (current) [line: "eGFR now 34 mL/min/1.73 m2."]; patient: hemoglobin = 14.2 (current) [line: "Latest Hgb result: 14.2 g/dL."]
+
+Claims: s = The eGFR criterion contributes 0 points. | s' = The eGFR criterion contributes 3 points.
+```
+Man, adult.
+Atrial fibrillation; a decision on warfarin is pending.
+Teeth in good repair.
+Drives a car.
+Photographs local wildlife.
+Records from 2024 list eGFR at 66 mL/min/1.73 m2.
+Current age 68 years.
+Echocardiogram shows normal left ventricular wall thickness.
+eGFR now 34 mL/min/1.73 m2.
+Latest Hgb result: 14.2 g/dL.
+```
+
+**G43-C2**
+
+Facts: patient: eGFR = 27 (past (2024)) [line: "Records from 2024 list eGFR at 27 mL/min/1.73 m2."]; patient: age = 68 (current) [line: "Current age 68 years."]; hypertension: not named; a general line implies absence (counts as absent) [line: "Echocardiogram shows normal left ventricular wall thickness."]; patient: eGFR = 74 (current) [line: "eGFR now 74 mL/min/1.73 m2."]; patient: hemoglobin = 14.2 (current) [line: "Latest Hgb result: 14.2 g/dL."]
+
+Claims: s = The eGFR criterion contributes 0 points. | s' = The eGFR criterion contributes 3 points.
+```
+Man, adult.
+Atrial fibrillation; a decision on warfarin is pending.
+Teeth in good repair.
+Drives a car.
+Photographs local wildlife.
+Records from 2024 list eGFR at 27 mL/min/1.73 m2.
+Current age 68 years.
+Echocardiogram shows normal left ventricular wall thickness.
+eGFR now 74 mL/min/1.73 m2.
+Latest Hgb result: 14.2 g/dL.
+```
+
+**G43-C3**
+
+Facts: patient: eGFR = 66 (past (2024)) [line: "Records from 2024 list eGFR at 66 mL/min/1.73 m2."]; patient: age = 68 (current) [line: "Current age 68 years."]; hypertension: not named; a general line implies absence (counts as absent) [line: "Echocardiogram shows normal left ventricular wall thickness."]; patient: eGFR = 74 (current) [line: "eGFR now 74 mL/min/1.73 m2."]; patient: hemoglobin = 14.2 (current) [line: "Latest Hgb result: 14.2 g/dL."]
+
+Claims: s = The eGFR criterion contributes 0 points. | s' = The eGFR criterion contributes 3 points.
+```
+Man, adult.
+Atrial fibrillation; a decision on warfarin is pending.
+Teeth in good repair.
+Drives a car.
+Photographs local wildlife.
+Records from 2024 list eGFR at 66 mL/min/1.73 m2.
+Current age 68 years.
+Echocardiogram shows normal left ventricular wall thickness.
+eGFR now 74 mL/min/1.73 m2.
+Latest Hgb result: 14.2 g/dL.
+```
+
+**G43-C4**
+
+Facts: hypertension: not named; a general line implies absence (counts as absent) [line: "Echocardiogram shows normal left ventricular wall thickness."]; patient: eGFR = 74 (current) [line: "Current eGFR 74 mL/min/1.73 m2."]; patient: age = 68 (current) [line: "Currently aged 68 years."]; patient: eGFR = 66 (past (2024)) [line: "Back in 2024, eGFR stood at 66 mL/min/1.73 m2."]; patient: hemoglobin = 14.2 (current) [line: "Current Hgb 14.2 g/dL."]
+
+Claims: s = The eGFR criterion contributes 0 points. | s' = The eGFR criterion contributes 3 points.
+```
+An adult man.
+Atrial fibrillation; a decision on warfarin is pending.
+Teeth in good repair.
+Echocardiogram shows normal left ventricular wall thickness.
+Current eGFR 74 mL/min/1.73 m2.
+Currently aged 68 years.
+Back in 2024, eGFR stood at 66 mL/min/1.73 m2.
+Drives a car.
+Current Hgb 14.2 g/dL.
+Photographs local wildlife.
+```
+
+
+## G44
+
+Rule: For hip osteoarthritis pain, prescribe naproxen alone. If the patient has an active peptic ulcer and the current white cell count is above 12.0 x10^9/L, prescribe naproxen with omeprazole instead.
+
+**G44-C1**
+
+Facts: patient: white cell count = 8.0 (current) [line: "Latest WBC is 8.0 x10^9/L."]; patient: peptic ulcer present (current) [line: "Has an active duodenal ulcer."]
+
+Claims: s = Prescribe naproxen alone. | s' = Prescribe naproxen with omeprazole.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Man of 49 years.
+Hip osteoarthritis with pain on walking.
+Latest WBC is 8.0 x10^9/L.
+His sister lives with psoriasis.
+Owns a bicycle.
+Drives a car.
+His friend sprained a thumb last month.
+Paints watercolors as a hobby.
+Lives in a second-floor apartment.
+Teeth in good repair.
+Has an active duodenal ulcer.
+Knits as a hobby.
+Enjoys board games.
+Prefers to be addressed by first name.
+In 2017, lipase was 30 U/L.
+Sees a dentist yearly.
+Prefers morning appointments.
+Uses sunscreen in summer.
+His roommate has recovered from a dislocated finger.
+Pupils equal and reactive to light.
+Photographs local wildlife.
+Free T4 of 1.2 ng/dL in 2009.
+```
+
+**G44-C2**
+
+Facts: patient: white cell count = 12.7 (current) [line: "Latest WBC is 12.7 x10^9/L."]; patient: peptic ulcer present (current) [line: "Has an active duodenal ulcer."]
+
+Claims: s = Prescribe naproxen alone. | s' = Prescribe naproxen with omeprazole.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Man of 49 years.
+Hip osteoarthritis with pain on walking.
+Latest WBC is 12.7 x10^9/L.
+His sister lives with psoriasis.
+Owns a bicycle.
+Drives a car.
+His friend sprained a thumb last month.
+Paints watercolors as a hobby.
+Lives in a second-floor apartment.
+Teeth in good repair.
+Has an active duodenal ulcer.
+Knits as a hobby.
+Enjoys board games.
+Prefers to be addressed by first name.
+In 2017, lipase was 30 U/L.
+Sees a dentist yearly.
+Prefers morning appointments.
+Uses sunscreen in summer.
+His roommate has recovered from a dislocated finger.
+Pupils equal and reactive to light.
+Photographs local wildlife.
+Free T4 of 1.2 ng/dL in 2009.
+```
+
+**G44-C3**
+
+Facts: patient: white cell count = 12.0 (current) [line: "Latest WBC is 12.0 x10^9/L."]; patient: peptic ulcer present (current) [line: "Has an active duodenal ulcer."]
+
+Claims: s = Prescribe naproxen alone. | s' = Prescribe naproxen with omeprazole.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Man of 49 years.
+Hip osteoarthritis with pain on walking.
+Latest WBC is 12.0 x10^9/L.
+His sister lives with psoriasis.
+Owns a bicycle.
+Drives a car.
+His friend sprained a thumb last month.
+Paints watercolors as a hobby.
+Lives in a second-floor apartment.
+Teeth in good repair.
+Has an active duodenal ulcer.
+Knits as a hobby.
+Enjoys board games.
+Prefers to be addressed by first name.
+In 2017, lipase was 30 U/L.
+Sees a dentist yearly.
+Prefers morning appointments.
+Uses sunscreen in summer.
+His roommate has recovered from a dislocated finger.
+Pupils equal and reactive to light.
+Photographs local wildlife.
+Free T4 of 1.2 ng/dL in 2009.
+```
+
+**G44-C4**
+
+Facts: patient: white cell count = 8.0 (current) [line: "Current white cell count 8.0 x10^9/L."]; patient: peptic ulcer present (current) [line: "Has an active duodenal ulcer."]
+
+Claims: s = Prescribe naproxen alone. | s' = Prescribe naproxen with omeprazole.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Male patient of 49 years.
+Hip osteoarthritis with pain on walking.
+Current white cell count 8.0 x10^9/L.
+Uses sunscreen in summer.
+Paints watercolors as a hobby.
+Lives in a second-floor apartment.
+Knits as a hobby.
+Sees a dentist yearly.
+In 2017, lipase was 30 U/L.
+Free T4 of 1.2 ng/dL in 2009.
+Enjoys board games.
+Owns a bicycle.
+His friend sprained a thumb last month.
+His sister lives with psoriasis.
+Photographs local wildlife.
+Pupils equal and reactive to light.
+Teeth in good repair.
+His roommate has recovered from a dislocated finger.
+Has an active duodenal ulcer.
+Drives a car.
+Prefers to be addressed by first name.
+Prefers morning appointments.
+```
+
+
+## G45
+
+Rule: For newly diagnosed type 2 diabetes, prescribe metformin. If at least two of the following apply, prescribe sitagliptin instead: the patient has ever had a peptic ulcer (current or past); the current serum potassium is above 5.0 mmol/L; the patient or a first-degree relative (parent, sibling or child) has had a venous thromboembolism at any time.
+
+**G45-C1**
+
+Facts: patient: venous thromboembolism present (past (2010)) [line: "Recovered from a pulmonary embolism in 2010."]; patient: serum potassium = 5.6 (past) [line: "Last month, serum potassium was 5.6 mmol/L; the newest measurement replaces it."]; patient: serum potassium = 4.3 (current) [line: "Latest potassium result: 4.3 mmol/L."]; peptic ulcer: not mentioned (counts as absent)
+
+Claims: s = Prescribe metformin. | s' = Prescribe sitagliptin.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Woman of 75 years.
+Newly diagnosed type 2 diabetes (HbA1c 7.9%).
+Drives a car.
+Recovered from a pulmonary embolism in 2010.
+Last month, serum potassium was 5.6 mmol/L; the newest measurement replaces it.
+Latest potassium result: 4.3 mmol/L.
+```
+
+**G45-C2**
+
+Facts: patient: venous thromboembolism present (past (2010)) [line: "Recovered from a pulmonary embolism in 2010."]; patient: serum potassium = 4.4 (past) [line: "Last month, serum potassium was 4.4 mmol/L; the newest measurement replaces it."]; patient: serum potassium = 4.3 (current) [line: "Latest potassium result: 4.3 mmol/L."]; peptic ulcer: not mentioned (counts as absent)
+
+Claims: s = Prescribe metformin. | s' = Prescribe sitagliptin.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Woman of 75 years.
+Newly diagnosed type 2 diabetes (HbA1c 7.9%).
+Drives a car.
+Recovered from a pulmonary embolism in 2010.
+Last month, serum potassium was 4.4 mmol/L; the newest measurement replaces it.
+Latest potassium result: 4.3 mmol/L.
+```
+
+**G45-C3**
+
+Facts: patient: serum potassium = 4.3 (current) [line: "Current serum potassium 4.3 mmol/L."]; patient: venous thromboembolism present (past (2010)) [line: "Recovered from a pulmonary embolism in 2010."]; patient: serum potassium = 4.4 (past) [line: "Last month, serum potassium was 4.4 mmol/L; the newest measurement replaces it."]; peptic ulcer: not mentioned (counts as absent)
+
+Claims: s = Prescribe metformin. | s' = Prescribe sitagliptin.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Female patient of 75 years.
+Newly diagnosed type 2 diabetes (HbA1c 7.9%).
+Current serum potassium 4.3 mmol/L.
+Recovered from a pulmonary embolism in 2010.
+Last month, serum potassium was 4.4 mmol/L; the newest measurement replaces it.
+Drives a car.
+```
+
+**G45-C4**
+
+Facts: patient: venous thromboembolism present (past (2010)) [line: "Recovered from a pulmonary embolism in 2010."]; patient: serum potassium = 4.4 (past) [line: "Last month, serum potassium was 4.4 mmol/L; the newest measurement replaces it."]; patient: serum potassium = 5.8 (current) [line: "Latest potassium result: 5.8 mmol/L."]; peptic ulcer: not mentioned (counts as absent)
+
+Claims: s = Prescribe metformin. | s' = Prescribe sitagliptin.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Woman of 75 years.
+Newly diagnosed type 2 diabetes (HbA1c 7.9%).
+Drives a car.
+Recovered from a pulmonary embolism in 2010.
+Last month, serum potassium was 4.4 mmol/L; the newest measurement replaces it.
+Latest potassium result: 5.8 mmol/L.
+```
+
+
+## G46
+
+Rule: For acute sore throat, prescribe ibuprofen. If at least two of the following apply, prescribe penicillin V instead: the patient currently has tonsillar exudate; the patient has ever had a myocardial infarction or peripheral artery disease (current or past); the current white cell count is above 12.0 x10^9/L.
+
+**G46-C1**
+
+Facts: patient: tonsillar exudate present (current) [line: "Tonsils swollen and coated with yellow exudate."]; patient: white cell count = 4.9 (current) [line: "Latest WBC is 4.9 x10^9/L."]; patient: myocardial infarction or peripheral artery disease present (current) [line: "Lives with peripheral artery disease affecting the left leg."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe penicillin V.
+
+Criterion claims: s = Under the rule, the condition "tonsillar exudate" does not hold for this patient. | s' = Under the rule, the condition "tonsillar exudate" holds for this patient.
+```
+Male patient of 23 years.
+Sore throat for two days.
+Prefers to be addressed by first name.
+Enjoys board games.
+Tonsils swollen and coated with yellow exudate.
+Lives in a second-floor apartment.
+Paints watercolors as a hobby.
+Has two cats.
+Teeth in good repair.
+Knits as a hobby.
+Free T4 of 1.2 ng/dL in 2023.
+Latest WBC is 4.9 x10^9/L.
+Plays the piano.
+His wife has a lazy eye.
+Prefers morning appointments.
+Lives with peripheral artery disease affecting the left leg.
+In 2024, folate was 12 ng/mL.
+Drives a car.
+Owns a bicycle.
+Sleeps seven hours a night.
+His wife has recovered from a dislocated finger.
+Photographs local wildlife.
+```
+
+**G46-C2**
+
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]; patient: white cell count = 4.9 (current) [line: "Latest WBC is 4.9 x10^9/L."]; patient: myocardial infarction or peripheral artery disease present (current) [line: "Lives with peripheral artery disease affecting the left leg."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe penicillin V.
+
+Criterion claims: s = Under the rule, the condition "tonsillar exudate" does not hold for this patient. | s' = Under the rule, the condition "tonsillar exudate" holds for this patient.
+```
+Male patient of 23 years.
+Sore throat for two days.
+Prefers to be addressed by first name.
+Enjoys board games.
+Tonsils pink and clean on inspection.
+Lives in a second-floor apartment.
+Paints watercolors as a hobby.
+Has two cats.
+Teeth in good repair.
+Knits as a hobby.
+Free T4 of 1.2 ng/dL in 2023.
+Latest WBC is 4.9 x10^9/L.
+Plays the piano.
+His wife has a lazy eye.
+Prefers morning appointments.
+Lives with peripheral artery disease affecting the left leg.
+In 2024, folate was 12 ng/mL.
+Drives a car.
+Owns a bicycle.
+Sleeps seven hours a night.
+His wife has recovered from a dislocated finger.
+Photographs local wildlife.
+```
+
+**G46-C3**
+
+Facts: wife: tonsillar exudate present (current) [line: "His wife currently has a throat infection with tonsillar exudate."]; patient: white cell count = 4.9 (current) [line: "Latest WBC is 4.9 x10^9/L."]; patient: myocardial infarction or peripheral artery disease present (current) [line: "Lives with peripheral artery disease affecting the left leg."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe penicillin V.
+
+Criterion claims: s = Under the rule, the condition "tonsillar exudate" does not hold for this patient. | s' = Under the rule, the condition "tonsillar exudate" holds for this patient.
+```
+Male patient of 23 years.
+Sore throat for two days.
+Prefers to be addressed by first name.
+Enjoys board games.
+His wife currently has a throat infection with tonsillar exudate.
+Lives in a second-floor apartment.
+Paints watercolors as a hobby.
+Has two cats.
+Teeth in good repair.
+Knits as a hobby.
+Free T4 of 1.2 ng/dL in 2023.
+Latest WBC is 4.9 x10^9/L.
+Plays the piano.
+His wife has a lazy eye.
+Prefers morning appointments.
+Lives with peripheral artery disease affecting the left leg.
+In 2024, folate was 12 ng/mL.
+Drives a car.
+Owns a bicycle.
+Sleeps seven hours a night.
+His wife has recovered from a dislocated finger.
+Photographs local wildlife.
+```
+
+**G46-C4**
+
+Facts: patient: white cell count = 4.9 (current) [line: "Current white cell count 4.9 x10^9/L."]; patient: myocardial infarction or peripheral artery disease present (current) [line: "Lives with peripheral artery disease affecting the left leg."]; tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe penicillin V.
+
+Criterion claims: s = Under the rule, the condition "tonsillar exudate" does not hold for this patient. | s' = Under the rule, the condition "tonsillar exudate" holds for this patient.
+```
+Man of 23 years.
+Sore throat for two days.
+Current white cell count 4.9 x10^9/L.
+Enjoys board games.
+His wife has a lazy eye.
+Knits as a hobby.
+Paints watercolors as a hobby.
+In 2024, folate was 12 ng/mL.
+Prefers to be addressed by first name.
+Has two cats.
+Prefers morning appointments.
+Owns a bicycle.
+Drives a car.
+Lives in a second-floor apartment.
+Free T4 of 1.2 ng/dL in 2023.
+Teeth in good repair.
+Lives with peripheral artery disease affecting the left leg.
+His wife has recovered from a dislocated finger.
+Plays the piano.
+Tonsils pink and clean on inspection.
+Photographs local wildlife.
+Sleeps seven hours a night.
+```
+
+**G46-C5**
+
+Facts: tonsillar exudate: stated as unknown [line: "Tonsillar exudate: unknown."]; patient: white cell count = 4.9 (current) [line: "Latest WBC is 4.9 x10^9/L."]; patient: myocardial infarction or peripheral artery disease present (current) [line: "Lives with peripheral artery disease affecting the left leg."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe penicillin V.
+
+Criterion claims: s = Under the rule, the condition "tonsillar exudate" does not hold for this patient. | s' = Under the rule, the condition "tonsillar exudate" holds for this patient.
+```
+Male patient of 23 years.
+Sore throat for two days.
+Prefers to be addressed by first name.
+Enjoys board games.
+Tonsillar exudate: unknown.
+Lives in a second-floor apartment.
+Paints watercolors as a hobby.
+Has two cats.
+Teeth in good repair.
+Knits as a hobby.
+Free T4 of 1.2 ng/dL in 2023.
+Latest WBC is 4.9 x10^9/L.
+Plays the piano.
+His wife has a lazy eye.
+Prefers morning appointments.
+Lives with peripheral artery disease affecting the left leg.
+In 2024, folate was 12 ng/mL.
+Drives a car.
+Owns a bicycle.
+Sleeps seven hours a night.
+His wife has recovered from a dislocated finger.
+Photographs local wildlife.
+```
+
+
+## G47
+
+Rule: For uncomplicated cystitis, prescribe trimethoprim-sulfamethoxazole. Score 1 point if the current systolic blood pressure is above 160 mmHg; 2 points if the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time; 1 point if the patient has had cancer at any time (active or in remission); 2 points if the patient has ever had heart failure (current or past). If the score is 3 or more, prescribe nitrofurantoin instead.
+
+**G47-C1**
+
+Facts: patient: diabetes present (current) [line: "Insulin-treated diabetes."]; cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]; patient: systolic blood pressure = 118 (current) [line: "Observations now: blood pressure 118/80 mmHg."]; heart failure: stated as unknown [line: "Heart failure: unknown."]
+
+Claims: s = Prescribe trimethoprim-sulfamethoxazole. | s' = Prescribe nitrofurantoin.
+
+Criterion claims: s = Under the rule, the condition "heart failure" does not hold for this patient. | s' = Under the rule, the condition "heart failure" holds for this patient.
+```
+Woman of 50 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Insulin-treated diabetes.
+Weight steady over the past year.
+Plays the piano.
+Observations now: blood pressure 118/80 mmHg.
+Heart failure: unknown.
+Enjoys board games.
+```
+
+**G47-C2**
+
+Facts: patient: diabetes present (current) [line: "Insulin-treated diabetes."]; cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]; patient: systolic blood pressure = 118 (current) [line: "Observations now: blood pressure 118/80 mmHg."]; patient: heart failure present (past (2007)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2007 and off all heart medicines since."]
+
+Claims: s = Prescribe trimethoprim-sulfamethoxazole. | s' = Prescribe nitrofurantoin.
+
+Criterion claims: s = Under the rule, the condition "heart failure" does not hold for this patient. | s' = Under the rule, the condition "heart failure" holds for this patient.
+```
+Woman of 50 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Insulin-treated diabetes.
+Weight steady over the past year.
+Plays the piano.
+Observations now: blood pressure 118/80 mmHg.
+Formerly had heart failure from stress cardiomyopathy; recovered fully in 2007 and off all heart medicines since.
+Enjoys board games.
+```
+
+**G47-C3**
+
+Facts: patient: diabetes present (current) [line: "Insulin-treated diabetes."]; cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]; patient: systolic blood pressure = 118 (current) [line: "Observations now: blood pressure 118/80 mmHg."]; patient: heart failure denied by name (current) [line: "Heart failure: never diagnosed."]
+
+Claims: s = Prescribe trimethoprim-sulfamethoxazole. | s' = Prescribe nitrofurantoin.
+
+Criterion claims: s = Under the rule, the condition "heart failure" does not hold for this patient. | s' = Under the rule, the condition "heart failure" holds for this patient.
+```
+Woman of 50 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Insulin-treated diabetes.
+Weight steady over the past year.
+Plays the piano.
+Observations now: blood pressure 118/80 mmHg.
+Heart failure: never diagnosed.
+Enjoys board games.
+```
+
+**G47-C4**
+
+Facts: patient: systolic blood pressure = 118 (current) [line: "Current systolic blood pressure 118 mmHg."]; patient: diabetes present (current) [line: "Insulin-treated diabetes."]; cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Sleeps flat on one pillow."]
+
+Claims: s = Prescribe trimethoprim-sulfamethoxazole. | s' = Prescribe nitrofurantoin.
+
+Criterion claims: s = Under the rule, the condition "heart failure" does not hold for this patient. | s' = Under the rule, the condition "heart failure" holds for this patient.
+```
+Female patient of 50 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Plays the piano.
+Current systolic blood pressure 118 mmHg.
+Insulin-treated diabetes.
+Weight steady over the past year.
+Sleeps flat on one pillow.
+Enjoys board games.
+```
+
+**G47-C5**
+
+Facts: patient: diabetes present (current) [line: "Insulin-treated diabetes."]; cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]; patient: systolic blood pressure = 118 (current) [line: "Observations now: blood pressure 118/80 mmHg."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Sleeps flat on one pillow."]
+
+Claims: s = Prescribe trimethoprim-sulfamethoxazole. | s' = Prescribe nitrofurantoin.
+
+Criterion claims: s = Under the rule, the condition "heart failure" does not hold for this patient. | s' = Under the rule, the condition "heart failure" holds for this patient.
+```
+Woman of 50 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Insulin-treated diabetes.
+Weight steady over the past year.
+Plays the piano.
+Observations now: blood pressure 118/80 mmHg.
+Sleeps flat on one pillow.
+Enjoys board games.
+```
+
+
+## G48
+
+Rule: For knee osteoarthritis pain, prescribe naproxen. If the patient's current eGFR is below 75 mL/min/1.73 m2, prescribe acetaminophen instead.
+
+**G48-C1**
+
+Facts: patient: eGFR = 83 (current) [line: "Current eGFR 83 mL/min/1.73 m2."]
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 75" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 75" holds for this patient.
+```
+Male patient of 54 years.
+Knee osteoarthritis with pain on walking.
+Current eGFR 83 mL/min/1.73 m2.
+Uses sunscreen in summer.
+Paints watercolors as a hobby.
+Enjoys board games.
+Pupils equal and reactive to light.
+```
+
+**G48-C2**
+
+Facts: patient: eGFR = 83 (current) [line: "eGFR now 83 mL/min/1.73 m2."]
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 75" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 75" holds for this patient.
+```
+Man of 54 years.
+Knee osteoarthritis with pain on walking.
+Paints watercolors as a hobby.
+Uses sunscreen in summer.
+Pupils equal and reactive to light.
+Enjoys board games.
+eGFR now 83 mL/min/1.73 m2.
+```
+
+**G48-C3**
+
+Facts: patient: eGFR = 72 (current) [line: "eGFR now 72 mL/min/1.73 m2."]
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 75" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 75" holds for this patient.
+```
+Man of 54 years.
+Knee osteoarthritis with pain on walking.
+Paints watercolors as a hobby.
+Uses sunscreen in summer.
+Pupils equal and reactive to light.
+Enjoys board games.
+eGFR now 72 mL/min/1.73 m2.
+```
+
+**G48-C4**
+
+Facts: patient: eGFR = 75 (current) [line: "eGFR now 75 mL/min/1.73 m2."]
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 75" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 75" holds for this patient.
+```
+Man of 54 years.
+Knee osteoarthritis with pain on walking.
+Paints watercolors as a hobby.
+Uses sunscreen in summer.
+Pupils equal and reactive to light.
+Enjoys board games.
+eGFR now 75 mL/min/1.73 m2.
+```
+
+
+## G49
+
+Rule: Wells score for pulmonary embolism (as used here, partial): 1.5 points for a current heart rate above 100/min; 1 point each for current hemoptysis (coughing up blood) and active cancer. Other Wells items are not part of this question.
+
+**G49-C1**
+
+Facts: hemoptysis: not named; a general line implies absence (counts as absent) [line: "Sputum colorless on inspection."]; cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: heart rate = 83 (current) [line: "Current heart rate 83/min."]
+
+Claims: s = The heart rate criterion contributes 0 points. | s' = The heart rate criterion contributes 1.5 points.
+```
+Man of 74 years.
+Sudden breathlessness and pleuritic chest pain; assessed in the emergency department.
+During a checkup in 2016, free T3 was 3.2 pg/mL.
+Drives a car.
+Lives in a second-floor apartment.
+Owns a bicycle.
+His wife has recovered from a dislocated finger.
+In 2006, folate was 12 ng/mL.
+Zinc of 85 mcg/dL in 2008.
+Teeth in good repair.
+Sputum colorless on inspection.
+His sister has a lazy eye.
+Sleeps seven hours a night.
+Sees a dentist yearly.
+Plays the piano.
+Oncology follow-up: none.
+Current heart rate 83/min.
+Prefers morning appointments.
+Uses sunscreen in summer.
+In 2018, lipase was 30 U/L.
+Enjoys board games.
+Photographs local wildlife.
+```
+
+**G49-C2**
+
+Facts: hemoptysis: not named; a general line implies absence (counts as absent) [line: "Sputum colorless on inspection."]; cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: heart rate = 97 (current) [line: "Current heart rate 97/min."]
+
+Claims: s = The heart rate criterion contributes 0 points. | s' = The heart rate criterion contributes 1.5 points.
+```
+Man of 74 years.
+Sudden breathlessness and pleuritic chest pain; assessed in the emergency department.
+During a checkup in 2016, free T3 was 3.2 pg/mL.
+Drives a car.
+Lives in a second-floor apartment.
+Owns a bicycle.
+His wife has recovered from a dislocated finger.
+In 2006, folate was 12 ng/mL.
+Zinc of 85 mcg/dL in 2008.
+Teeth in good repair.
+Sputum colorless on inspection.
+His sister has a lazy eye.
+Sleeps seven hours a night.
+Sees a dentist yearly.
+Plays the piano.
+Oncology follow-up: none.
+Current heart rate 97/min.
+Prefers morning appointments.
+Uses sunscreen in summer.
+In 2018, lipase was 30 U/L.
+Enjoys board games.
+Photographs local wildlife.
+```
+
+**G49-C3**
+
+Facts: patient: heart rate = 83 (current) [line: "Heart rate now 83/min on a pulse check."]; hemoptysis: not named; a general line implies absence (counts as absent) [line: "Sputum colorless on inspection."]; cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]
+
+Claims: s = The heart rate criterion contributes 0 points. | s' = The heart rate criterion contributes 1.5 points.
+```
+Male patient of 74 years.
+Sudden breathlessness and pleuritic chest pain; assessed in the emergency department.
+His sister has a lazy eye.
+Photographs local wildlife.
+Teeth in good repair.
+Heart rate now 83/min on a pulse check.
+Sputum colorless on inspection.
+Drives a car.
+Prefers morning appointments.
+In 2018, lipase was 30 U/L.
+His wife has recovered from a dislocated finger.
+Zinc of 85 mcg/dL in 2008.
+Owns a bicycle.
+During a checkup in 2016, free T3 was 3.2 pg/mL.
+Enjoys board games.
+Plays the piano.
+In 2006, folate was 12 ng/mL.
+Lives in a second-floor apartment.
+Sleeps seven hours a night.
+Sees a dentist yearly.
+Oncology follow-up: none.
+Uses sunscreen in summer.
+```
+
+**G49-C4**
+
+Facts: hemoptysis: not named; a general line implies absence (counts as absent) [line: "Sputum colorless on inspection."]; cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: heart rate = 108 (current) [line: "Current heart rate 108/min."]
+
+Claims: s = The heart rate criterion contributes 0 points. | s' = The heart rate criterion contributes 1.5 points.
+```
+Man of 74 years.
+Sudden breathlessness and pleuritic chest pain; assessed in the emergency department.
+During a checkup in 2016, free T3 was 3.2 pg/mL.
+Drives a car.
+Lives in a second-floor apartment.
+Owns a bicycle.
+His wife has recovered from a dislocated finger.
+In 2006, folate was 12 ng/mL.
+Zinc of 85 mcg/dL in 2008.
+Teeth in good repair.
+Sputum colorless on inspection.
+His sister has a lazy eye.
+Sleeps seven hours a night.
+Sees a dentist yearly.
+Plays the piano.
+Oncology follow-up: none.
+Current heart rate 108/min.
+Prefers morning appointments.
+Uses sunscreen in summer.
+In 2018, lipase was 30 U/L.
+Enjoys board games.
+Photographs local wildlife.
+```
+
+
+## G50
+
+Rule: For Zentha disease, prescribe valtimide. If the patient currently has asthma or the patient has had cancer at any time (active or in remission), prescribe isomarin instead.
+
+**G50-C1**
+
+Facts: asthma: not named; a general line implies absence (counts as absent) [line: "Inhaler use: none."]; cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]
+
+Claims: s = Prescribe valtimide. | s' = Prescribe isomarin.
+
+Criterion claims: s = Under the rule, the condition "asthma" does not hold for this patient. | s' = Under the rule, the condition "asthma" holds for this patient.
+```
+Woman of 63 years.
+Referred with Zentha disease.
+Sleeps seven hours a night.
+Inhaler use: none.
+Weight steady over the past year.
+Prefers morning appointments.
+```
+
+**G50-C2**
+
+Facts: asthma: not named; a general line implies absence (counts as absent) [line: "Inhaler use: none."]; cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]
+
+Claims: s = Prescribe valtimide. | s' = Prescribe isomarin.
+
+Criterion claims: s = Under the rule, the condition "asthma" does not hold for this patient. | s' = Under the rule, the condition "asthma" holds for this patient.
+```
+Female patient of 63 years.
+Referred with Zentha disease.
+Prefers morning appointments.
+Sleeps seven hours a night.
+Inhaler use: none.
+Weight steady over the past year.
+```
+
+**G50-C3**
+
+Facts: father: asthma present (current) [line: "Her father uses an inhaler for asthma."]; cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]
+
+Claims: s = Prescribe valtimide. | s' = Prescribe isomarin.
+
+Criterion claims: s = Under the rule, the condition "asthma" does not hold for this patient. | s' = Under the rule, the condition "asthma" holds for this patient.
+```
+Woman of 63 years.
+Referred with Zentha disease.
+Sleeps seven hours a night.
+Her father uses an inhaler for asthma.
+Weight steady over the past year.
+Prefers morning appointments.
+```
+
+**G50-C4**
+
+Facts: patient: asthma present (current) [line: "Persistent asthma, using a rescue inhaler most weeks."]; cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]
+
+Claims: s = Prescribe valtimide. | s' = Prescribe isomarin.
+
+Criterion claims: s = Under the rule, the condition "asthma" does not hold for this patient. | s' = Under the rule, the condition "asthma" holds for this patient.
+```
+Woman of 63 years.
+Referred with Zentha disease.
+Sleeps seven hours a night.
+Persistent asthma, using a rescue inhaler most weeks.
+Weight steady over the past year.
+Prefers morning appointments.
+```
+
+
+## G51
+
+Rule: For newly diagnosed hypertension, prescribe lisinopril. If the patient has ever had a peptic ulcer (current or past) and the current blood urea nitrogen is above 19 mg/dL, prescribe amlodipine instead.
+
+**G51-C1**
+
+Facts: patient: blood urea nitrogen = 15 (current) [line: "Blood urea nitrogen now: 15 mg/dL."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "blood urea nitrogen above 19" does not hold for this patient. | s' = Under the rule, the condition "blood urea nitrogen above 19" holds for this patient.
+```
+Woman of 75 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+Sleeps seven hours a night.
+Owns a bicycle.
+During a checkup in 2017, free T3 was 3.2 pg/mL.
+Enjoys board games.
+Pupils equal and reactive to light.
+Her wife burned a hand on a stove years ago.
+Free T4 of 1.2 ng/dL in 2007.
+Plays the piano.
+Uses sunscreen in summer.
+Her sister wears contact lenses.
+Her sister has recovered from a dislocated finger.
+In 2016, lipase was 30 U/L.
+Teeth in good repair.
+Prefers to be addressed by first name.
+Has two cats.
+Zinc of 85 mcg/dL in 2022.
+Blood urea nitrogen now: 15 mg/dL.
+Her wife sprained a thumb last month.
+Prefers morning appointments.
+Knits as a hobby.
+Active peptic ulcer disease.
+```
+
+**G51-C2**
+
+Facts: patient: blood urea nitrogen = 28 (current) [line: "Blood urea nitrogen now: 28 mg/dL."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "blood urea nitrogen above 19" does not hold for this patient. | s' = Under the rule, the condition "blood urea nitrogen above 19" holds for this patient.
+```
+Woman of 75 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+Sleeps seven hours a night.
+Owns a bicycle.
+During a checkup in 2017, free T3 was 3.2 pg/mL.
+Enjoys board games.
+Pupils equal and reactive to light.
+Her wife burned a hand on a stove years ago.
+Free T4 of 1.2 ng/dL in 2007.
+Plays the piano.
+Uses sunscreen in summer.
+Her sister wears contact lenses.
+Her sister has recovered from a dislocated finger.
+In 2016, lipase was 30 U/L.
+Teeth in good repair.
+Prefers to be addressed by first name.
+Has two cats.
+Zinc of 85 mcg/dL in 2022.
+Blood urea nitrogen now: 28 mg/dL.
+Her wife sprained a thumb last month.
+Prefers morning appointments.
+Knits as a hobby.
+Active peptic ulcer disease.
+```
+
+**G51-C3**
+
+Facts: patient: blood urea nitrogen = 15 (current) [line: "Blood urea nitrogen 15 mg/dL on the current labs."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "blood urea nitrogen above 19" does not hold for this patient. | s' = Under the rule, the condition "blood urea nitrogen above 19" holds for this patient.
+```
+Female patient of 75 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+Enjoys board games.
+Owns a bicycle.
+Blood urea nitrogen 15 mg/dL on the current labs.
+Her wife sprained a thumb last month.
+In 2016, lipase was 30 U/L.
+Prefers to be addressed by first name.
+Uses sunscreen in summer.
+Free T4 of 1.2 ng/dL in 2007.
+Knits as a hobby.
+Her sister wears contact lenses.
+Pupils equal and reactive to light.
+Plays the piano.
+Teeth in good repair.
+During a checkup in 2017, free T3 was 3.2 pg/mL.
+Sleeps seven hours a night.
+Has two cats.
+Active peptic ulcer disease.
+Her wife burned a hand on a stove years ago.
+Zinc of 85 mcg/dL in 2022.
+Her sister has recovered from a dislocated finger.
+Prefers morning appointments.
+```
+
+**G51-C4**
+
+Facts: patient: blood urea nitrogen = 16 (current) [line: "Blood urea nitrogen now: 16 mg/dL."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "blood urea nitrogen above 19" does not hold for this patient. | s' = Under the rule, the condition "blood urea nitrogen above 19" holds for this patient.
+```
+Woman of 75 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+Sleeps seven hours a night.
+Owns a bicycle.
+During a checkup in 2017, free T3 was 3.2 pg/mL.
+Enjoys board games.
+Pupils equal and reactive to light.
+Her wife burned a hand on a stove years ago.
+Free T4 of 1.2 ng/dL in 2007.
+Plays the piano.
+Uses sunscreen in summer.
+Her sister wears contact lenses.
+Her sister has recovered from a dislocated finger.
+In 2016, lipase was 30 U/L.
+Teeth in good repair.
+Prefers to be addressed by first name.
+Has two cats.
+Zinc of 85 mcg/dL in 2022.
+Blood urea nitrogen now: 16 mg/dL.
+Her wife sprained a thumb last month.
+Prefers morning appointments.
+Knits as a hobby.
+Active peptic ulcer disease.
+```
+
+
+## G52
+
+Rule: For Brask fever, prescribe gendrotil. If the patient has ever had diabetes (current or past) or the patient is currently taking warfarin, prescribe lumacept instead.
+
+**G52-C1**
+
+Facts: diabetes: not mentioned (counts as absent); warfarin: not mentioned (counts as absent)
+
+Claims: s = Prescribe gendrotil. | s' = Prescribe lumacept.
+
+Criterion claims: s = Under the rule, the condition "warfarin" does not hold for this patient. | s' = Under the rule, the condition "warfarin" holds for this patient.
+```
+Male patient of 68 years.
+Referred with Brask fever.
+Teeth in good repair.
+Pupils equal and reactive to light.
+In 2015, lipase was 30 U/L.
+His wife has a lazy eye.
+Has two cats.
+Prefers to be addressed by first name.
+His wife sprained a thumb last month.
+Uses sunscreen in summer.
+Free T4 of 1.2 ng/dL in 2016.
+His roommate wears contact lenses.
+Sleeps seven hours a night.
+Owns a bicycle.
+Sees a dentist yearly.
+Photographs local wildlife.
+Knits as a hobby.
+His sister burned a hand on a stove years ago.
+Enjoys board games.
+```
+
+**G52-C2**
+
+Facts: friend: warfarin present (current) [line: "His friend is on warfarin with monthly INR checks."]; diabetes: not mentioned (counts as absent)
+
+Claims: s = Prescribe gendrotil. | s' = Prescribe lumacept.
+
+Criterion claims: s = Under the rule, the condition "warfarin" does not hold for this patient. | s' = Under the rule, the condition "warfarin" holds for this patient.
+```
+Male patient of 68 years.
+Referred with Brask fever.
+Teeth in good repair.
+Pupils equal and reactive to light.
+In 2015, lipase was 30 U/L.
+His wife has a lazy eye.
+Has two cats.
+Prefers to be addressed by first name.
+His wife sprained a thumb last month.
+Uses sunscreen in summer.
+Free T4 of 1.2 ng/dL in 2016.
+His roommate wears contact lenses.
+Sleeps seven hours a night.
+Owns a bicycle.
+Sees a dentist yearly.
+His friend is on warfarin with monthly INR checks.
+Photographs local wildlife.
+Knits as a hobby.
+His sister burned a hand on a stove years ago.
+Enjoys board games.
+```
+
+**G52-C3**
+
+Facts: diabetes: not mentioned (counts as absent); warfarin: not mentioned (counts as absent)
+
+Claims: s = Prescribe gendrotil. | s' = Prescribe lumacept.
+
+Criterion claims: s = Under the rule, the condition "warfarin" does not hold for this patient. | s' = Under the rule, the condition "warfarin" holds for this patient.
+```
+Man of 68 years.
+Referred with Brask fever.
+His wife sprained a thumb last month.
+Teeth in good repair.
+Knits as a hobby.
+Photographs local wildlife.
+Sleeps seven hours a night.
+His roommate wears contact lenses.
+Uses sunscreen in summer.
+Free T4 of 1.2 ng/dL in 2016.
+In 2015, lipase was 30 U/L.
+Pupils equal and reactive to light.
+Has two cats.
+His wife has a lazy eye.
+His sister burned a hand on a stove years ago.
+Sees a dentist yearly.
+Prefers to be addressed by first name.
+Owns a bicycle.
+Enjoys board games.
+```
+
+**G52-C4**
+
+Facts: patient: warfarin present (current) [line: "Currently on warfarin, prescribed by the cardiology clinic."]; diabetes: not mentioned (counts as absent)
+
+Claims: s = Prescribe gendrotil. | s' = Prescribe lumacept.
+
+Criterion claims: s = Under the rule, the condition "warfarin" does not hold for this patient. | s' = Under the rule, the condition "warfarin" holds for this patient.
+```
+Male patient of 68 years.
+Referred with Brask fever.
+Teeth in good repair.
+Pupils equal and reactive to light.
+In 2015, lipase was 30 U/L.
+His wife has a lazy eye.
+Has two cats.
+Prefers to be addressed by first name.
+His wife sprained a thumb last month.
+Uses sunscreen in summer.
+Free T4 of 1.2 ng/dL in 2016.
+His roommate wears contact lenses.
+Sleeps seven hours a night.
+Owns a bicycle.
+Sees a dentist yearly.
+Currently on warfarin, prescribed by the cardiology clinic.
+Photographs local wildlife.
+Knits as a hobby.
+His sister burned a hand on a stove years ago.
+Enjoys board games.
+```
+
+
+## G53
+
+Rule: For community-acquired pneumonia, prescribe oral amoxicillin. If at least two of the following apply, prescribe intravenous co-amoxiclav instead: the patient or a first-degree relative (parent, sibling or child) has had colorectal cancer at any time; the current calf swelling compared with the other leg is 3.0 cm or more; the age of the patient is above 65 years.
+
+**G53-C1**
+
+Facts: patient: calf swelling = 3.8 (current) [line: "Current calf swelling 3.8 cm compared with the other leg."]; patient: age = 48 (current) [line: "Current age 48 years."]; colorectal cancer: not named; a general line implies absence (counts as absent) [line: "Hemoglobin within the normal range on recent blood tests."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
+
+Criterion claims: s = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" holds for this patient.
+```
+An adult man.
+Community-acquired pneumonia confirmed on chest radiograph.
+Owns a bicycle.
+Photographs local wildlife.
+Current calf swelling 3.8 cm compared with the other leg.
+Current age 48 years.
+Hemoglobin within the normal range on recent blood tests.
+Enjoys board games.
+```
+
+**G53-C2**
+
+Facts: patient: colorectal cancer present (current) [line: "Colorectal cancer under active treatment."]; patient: age = 48 (current) [line: "Currently aged 48 years."]; patient: calf swelling = 3.8 (current) [line: "Difference in calf circumference now 3.8 cm."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
+
+Criterion claims: s = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" holds for this patient.
+```
+Man, adult.
+Community-acquired pneumonia confirmed on chest radiograph.
+Owns a bicycle.
+Colorectal cancer under active treatment.
+Currently aged 48 years.
+Photographs local wildlife.
+Enjoys board games.
+Difference in calf circumference now 3.8 cm.
+```
+
+**G53-C3**
+
+Facts: patient: colorectal cancer denied by name (current) [line: "Never diagnosed with colorectal cancer."]; patient: age = 48 (current) [line: "Currently aged 48 years."]; patient: calf swelling = 3.8 (current) [line: "Difference in calf circumference now 3.8 cm."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
+
+Criterion claims: s = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" holds for this patient.
+```
+Man, adult.
+Community-acquired pneumonia confirmed on chest radiograph.
+Owns a bicycle.
+Never diagnosed with colorectal cancer.
+Currently aged 48 years.
+Photographs local wildlife.
+Enjoys board games.
+Difference in calf circumference now 3.8 cm.
+```
+
+**G53-C4**
+
+Facts: colorectal cancer: not named; a general line implies absence (counts as absent) [line: "Hemoglobin within the normal range on recent blood tests."]; patient: age = 48 (current) [line: "Currently aged 48 years."]; patient: calf swelling = 3.8 (current) [line: "Difference in calf circumference now 3.8 cm."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
+
+Criterion claims: s = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" holds for this patient.
+```
+Man, adult.
+Community-acquired pneumonia confirmed on chest radiograph.
+Owns a bicycle.
+Hemoglobin within the normal range on recent blood tests.
+Currently aged 48 years.
+Photographs local wildlife.
+Enjoys board games.
+Difference in calf circumference now 3.8 cm.
+```
+
+
+## G54
+
+Rule: For contraception, prescribe a combined oral contraceptive. If at least two of the following apply, prescribe a progestin-only pill instead: the patient currently has heart failure; the age of the patient is 75 years or more; the patient has had cancer at any time (active or in remission).
+
+**G54-C1**
+
+Facts: patient: heart failure present (current) [line: "Current heart failure with ankle swelling."]; patient: cancer present (current) [line: "Has melanoma skin cancer and is receiving treatment for it."]; patient: age = 61 (current) [line: "Currently aged 61 years."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "current heart failure" does not hold for this patient. | s' = Under the rule, the condition "current heart failure" holds for this patient.
+```
+An adult woman.
+Requests contraception.
+Drives a car.
+Current heart failure with ankle swelling.
+Has melanoma skin cancer and is receiving treatment for it.
+Currently aged 61 years.
+```
+
+**G54-C2**
+
+Facts: heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]; patient: age = 61 (current) [line: "Current age 61 years."]; patient: cancer present (current) [line: "Has melanoma skin cancer and is receiving treatment for it."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "current heart failure" does not hold for this patient. | s' = Under the rule, the condition "current heart failure" holds for this patient.
+```
+Woman, adult.
+Requests contraception.
+Heart sounds without a gallop.
+Current age 61 years.
+Has melanoma skin cancer and is receiving treatment for it.
+Drives a car.
+```
+
+**G54-C3**
+
+Facts: patient: heart failure present (past (2023)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2023 and off all heart medicines since."]; patient: cancer present (current) [line: "Has melanoma skin cancer and is receiving treatment for it."]; patient: age = 61 (current) [line: "Currently aged 61 years."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "current heart failure" does not hold for this patient. | s' = Under the rule, the condition "current heart failure" holds for this patient.
+```
+An adult woman.
+Requests contraception.
+Drives a car.
+Formerly had heart failure from stress cardiomyopathy; recovered fully in 2023 and off all heart medicines since.
+Has melanoma skin cancer and is receiving treatment for it.
+Currently aged 61 years.
+```
+
+**G54-C4**
+
+Facts: heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]; patient: cancer present (current) [line: "Has melanoma skin cancer and is receiving treatment for it."]; patient: age = 61 (current) [line: "Currently aged 61 years."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "current heart failure" does not hold for this patient. | s' = Under the rule, the condition "current heart failure" holds for this patient.
+```
+An adult woman.
+Requests contraception.
+Drives a car.
+Heart sounds without a gallop.
+Has melanoma skin cancer and is receiving treatment for it.
+Currently aged 61 years.
+```
+
+
+## G55
+
+Rule: For hip osteoarthritis pain, prescribe naproxen alone. If the current systolic blood pressure is above 160 mmHg or the current serum creatinine is above 2.0 mg/dL, prescribe naproxen with omeprazole instead.
+
+**G55-C1**
+
+Facts: patient: serum creatinine = 0.7 (current) [line: "Current serum creatinine 0.7 mg/dL."]; patient: systolic blood pressure = 160 (current) [line: "Observations now: blood pressure 160/103 mmHg."]
+
+Claims: s = Prescribe naproxen alone. | s' = Prescribe naproxen with omeprazole.
+
+Criterion claims: s = Under the rule, the condition "systolic blood pressure above 160" does not hold for this patient. | s' = Under the rule, the condition "systolic blood pressure above 160" holds for this patient.
+```
+Male patient of 51 years.
+Hip osteoarthritis with pain on walking.
+Paints watercolors as a hobby.
+Current serum creatinine 0.7 mg/dL.
+Owns a bicycle.
+Observations now: blood pressure 160/103 mmHg.
+Pupils equal and reactive to light.
+```
+
+**G55-C2**
+
+Facts: patient: systolic blood pressure = 135 (current) [line: "Current systolic blood pressure 135 mmHg."]; patient: serum creatinine = 0.7 (current) [line: "Latest creatinine result: 0.7 mg/dL."]
+
+Claims: s = Prescribe naproxen alone. | s' = Prescribe naproxen with omeprazole.
+
+Criterion claims: s = Under the rule, the condition "systolic blood pressure above 160" does not hold for this patient. | s' = Under the rule, the condition "systolic blood pressure above 160" holds for this patient.
+```
+Man of 51 years.
+Hip osteoarthritis with pain on walking.
+Paints watercolors as a hobby.
+Current systolic blood pressure 135 mmHg.
+Owns a bicycle.
+Pupils equal and reactive to light.
+Latest creatinine result: 0.7 mg/dL.
+```
+
+**G55-C3**
+
+Facts: patient: serum creatinine = 0.7 (current) [line: "Current serum creatinine 0.7 mg/dL."]; patient: systolic blood pressure = 172 (current) [line: "Observations now: blood pressure 172/110 mmHg."]
+
+Claims: s = Prescribe naproxen alone. | s' = Prescribe naproxen with omeprazole.
+
+Criterion claims: s = Under the rule, the condition "systolic blood pressure above 160" does not hold for this patient. | s' = Under the rule, the condition "systolic blood pressure above 160" holds for this patient.
+```
+Male patient of 51 years.
+Hip osteoarthritis with pain on walking.
+Paints watercolors as a hobby.
+Current serum creatinine 0.7 mg/dL.
+Owns a bicycle.
+Observations now: blood pressure 172/110 mmHg.
+Pupils equal and reactive to light.
+```
+
+**G55-C4**
+
+Facts: patient: serum creatinine = 0.7 (current) [line: "Current serum creatinine 0.7 mg/dL."]; patient: systolic blood pressure = 135 (current) [line: "Observations now: blood pressure 135/89 mmHg."]
+
+Claims: s = Prescribe naproxen alone. | s' = Prescribe naproxen with omeprazole.
+
+Criterion claims: s = Under the rule, the condition "systolic blood pressure above 160" does not hold for this patient. | s' = Under the rule, the condition "systolic blood pressure above 160" holds for this patient.
+```
+Male patient of 51 years.
+Hip osteoarthritis with pain on walking.
+Paints watercolors as a hobby.
+Current serum creatinine 0.7 mg/dL.
+Owns a bicycle.
+Observations now: blood pressure 135/89 mmHg.
+Pupils equal and reactive to light.
+```
+
+
+## G56
+
+Rule: For rate control in atrial fibrillation, prescribe metoprolol. If the patient or a first-degree relative (parent, sibling or child) has had colorectal cancer at any time and the patient currently has tonsillar exudate, prescribe diltiazem instead.
+
+**G56-C1**
+
+Facts: friend: colorectal cancer present (past) [line: "His friend was treated for bowel cancer years ago."]; patient: tonsillar exudate present (current) [line: "Tonsillar exudate visible on both sides."]
+
+Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
+
+Criterion claims: s = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" holds for this patient.
+```
+Man of 42 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+His friend was treated for bowel cancer years ago.
+Drives a car.
+Tonsillar exudate visible on both sides.
+Pupils equal and reactive to light.
+```
+
+**G56-C2**
+
+Facts: colorectal cancer: not named; a general line implies absence (counts as absent) [line: "Rectal exam unremarkable."]; patient: tonsillar exudate present (current) [line: "Tonsillar exudate visible on both sides."]
+
+Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
+
+Criterion claims: s = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" holds for this patient.
+```
+Man of 42 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Rectal exam unremarkable.
+Drives a car.
+Tonsillar exudate visible on both sides.
+Pupils equal and reactive to light.
+```
+
+**G56-C3**
+
+Facts: colorectal cancer: not named; a general line implies absence (counts as absent) [line: "Rectal exam unremarkable."]; patient: tonsillar exudate present (current) [line: "Tonsillar exudate visible on both sides."]
+
+Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
+
+Criterion claims: s = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" holds for this patient.
+```
+Male patient of 42 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Pupils equal and reactive to light.
+Rectal exam unremarkable.
+Drives a car.
+Tonsillar exudate visible on both sides.
+```
+
+**G56-C4**
+
+Facts: sister: colorectal cancer present (past (2017)) [line: "His sister recovered from colon cancer after an operation in 2017."]; patient: tonsillar exudate present (current) [line: "Tonsillar exudate visible on both sides."]
+
+Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
+
+Criterion claims: s = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" holds for this patient.
+```
+Man of 42 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+His sister recovered from colon cancer after an operation in 2017.
+Drives a car.
+Tonsillar exudate visible on both sides.
+Pupils equal and reactive to light.
+```
+
+
+## G57
+
+Rule: For Varnell syndrome, prescribe lorvatide. If the patient has ever had angioedema (current or past), prescribe pemraxin instead.
+
+**G57-C1**
+
+Facts: patient: angioedema denied by name (current) [line: "Never diagnosed with angioedema."]
+
+Claims: s = Prescribe lorvatide. | s' = Prescribe pemraxin.
+
+Criterion claims: s = Under the rule, the condition "angioedema" does not hold for this patient. | s' = Under the rule, the condition "angioedema" holds for this patient.
+```
+Woman of 43 years.
+Referred with Varnell syndrome.
+Has two cats.
+Photographs local wildlife.
+Owns a bicycle.
+Never diagnosed with angioedema.
+```
+
+**G57-C2**
+
+Facts: angioedema: not mentioned (counts as absent)
+
+Claims: s = Prescribe lorvatide. | s' = Prescribe pemraxin.
+
+Criterion claims: s = Under the rule, the condition "angioedema" does not hold for this patient. | s' = Under the rule, the condition "angioedema" holds for this patient.
+```
+Woman of 43 years.
+Referred with Varnell syndrome.
+Has two cats.
+Photographs local wildlife.
+Owns a bicycle.
+```
+
+**G57-C3**
+
+Facts: patient: angioedema present (current) [line: "Recurrent angioedema, under allergy follow-up."]
+
+Claims: s = Prescribe lorvatide. | s' = Prescribe pemraxin.
+
+Criterion claims: s = Under the rule, the condition "angioedema" does not hold for this patient. | s' = Under the rule, the condition "angioedema" holds for this patient.
+```
+Woman of 43 years.
+Referred with Varnell syndrome.
+Has two cats.
+Photographs local wildlife.
+Owns a bicycle.
+Recurrent angioedema, under allergy follow-up.
+```
+
+**G57-C4**
+
+Facts: angioedema: not mentioned (counts as absent)
+
+Claims: s = Prescribe lorvatide. | s' = Prescribe pemraxin.
+
+Criterion claims: s = Under the rule, the condition "angioedema" does not hold for this patient. | s' = Under the rule, the condition "angioedema" holds for this patient.
+```
+Female patient of 43 years.
+Referred with Varnell syndrome.
+Owns a bicycle.
+Photographs local wildlife.
+Has two cats.
+```
+
+
+## G58
+
+Rule: For community-acquired pneumonia, prescribe oral amoxicillin. Score 3 points if the patient currently has a venous thromboembolism; 2 points if the patient or a first-degree relative (parent, sibling or child) has had colorectal cancer at any time; 2 points if the current respiratory rate is 22/min or more; 1 point if the current oxygen saturation is 91% or less. If the score is 6 or more, prescribe intravenous co-amoxiclav instead.
+
+**G58-C1**
+
+Facts: patient: oxygen saturation = 85 (current) [line: "Current oxygen saturation 85%."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; patient: respiratory rate = 14 (current) [line: "Current respiratory rate 14/min."]; colorectal cancer: not mentioned (counts as absent)
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
+
+Criterion claims: s = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" holds for this patient.
+```
+Woman of 56 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Drives a car.
+Prefers to be addressed by first name.
+Teeth in good repair.
+Current oxygen saturation 85%.
+Has an acute pulmonary embolism, diagnosed this week.
+Current respiratory rate 14/min.
+Sees a dentist yearly.
+```
+
+**G58-C2**
+
+Facts: patient: respiratory rate = 14 (current) [line: "Observations now: respiratory rate 14/min."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; patient: oxygen saturation = 85 (current) [line: "Latest oxygen saturation reading: 85%."]; colorectal cancer: not mentioned (counts as absent)
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
+
+Criterion claims: s = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" holds for this patient.
+```
+Female patient of 56 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Observations now: respiratory rate 14/min.
+Drives a car.
+Has an acute pulmonary embolism, diagnosed this week.
+Sees a dentist yearly.
+Latest oxygen saturation reading: 85%.
+Prefers to be addressed by first name.
+Teeth in good repair.
+```
+
+**G58-C3**
+
+Facts: patient: oxygen saturation = 85 (current) [line: "Current oxygen saturation 85%."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; patient: respiratory rate = 14 (current) [line: "Current respiratory rate 14/min."]; uncle: colorectal cancer present (current) [line: "Her uncle is undergoing surgery for bowel cancer."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
+
+Criterion claims: s = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" holds for this patient.
+```
+Woman of 56 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Drives a car.
+Prefers to be addressed by first name.
+Teeth in good repair.
+Current oxygen saturation 85%.
+Has an acute pulmonary embolism, diagnosed this week.
+Current respiratory rate 14/min.
+Sees a dentist yearly.
+Her uncle is undergoing surgery for bowel cancer.
+```
+
+**G58-C4**
+
+Facts: patient: oxygen saturation = 85 (current) [line: "Current oxygen saturation 85%."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; patient: respiratory rate = 14 (current) [line: "Current respiratory rate 14/min."]; sister: colorectal cancer present (current) [line: "Her sister is undergoing surgery for bowel cancer."]
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
+
+Criterion claims: s = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "colorectal cancer (patient or first-degree relative)" holds for this patient.
+```
+Woman of 56 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Drives a car.
+Prefers to be addressed by first name.
+Teeth in good repair.
+Current oxygen saturation 85%.
+Has an acute pulmonary embolism, diagnosed this week.
+Current respiratory rate 14/min.
+Sees a dentist yearly.
+Her sister is undergoing surgery for bowel cancer.
+```
+
+
+## G59
+
+Rule: For musculoskeletal pain, prescribe ibuprofen. If at least two of the following apply, prescribe acetaminophen instead: the current white cell count is above 12.0 x10^9/L; the patient has ever had angioedema (current or past); the patient has active cancer.
+
+**G59-C1**
+
+Facts: angioedema: not named; a general line implies absence (counts as absent) [line: "Face and neck without swelling on examination."]; patient: white cell count = 12.0 (current) [line: "Current white cell count 12.0 x10^9/L."]; patient: cancer present (current) [line: "Has melanoma skin cancer and is receiving treatment for it."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Male patient of 47 years.
+Acute low back pain after lifting.
+Enjoys board games.
+Drives a car.
+His uncle wears contact lenses.
+Sleeps seven hours a night.
+His roommate sprained a thumb last month.
+During a checkup in 2013, free T3 was 3.2 pg/mL.
+Prefers to be addressed by first name.
+Plays the piano.
+Lives in a second-floor apartment.
+Knits as a hobby.
+Face and neck without swelling on examination.
+Pupils equal and reactive to light.
+Uses sunscreen in summer.
+Teeth in good repair.
+Prefers morning appointments.
+Current white cell count 12.0 x10^9/L.
+Has two cats.
+In 2012, folate was 12 ng/mL.
+Paints watercolors as a hobby.
+Has melanoma skin cancer and is receiving treatment for it.
+```
+
+**G59-C2**
+
+Facts: angioedema: not named; a general line implies absence (counts as absent) [line: "Face and neck without swelling on examination."]; patient: white cell count = 13.4 (current) [line: "Current white cell count 13.4 x10^9/L."]; patient: cancer present (current) [line: "Has melanoma skin cancer and is receiving treatment for it."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Male patient of 47 years.
+Acute low back pain after lifting.
+Enjoys board games.
+Drives a car.
+His uncle wears contact lenses.
+Sleeps seven hours a night.
+His roommate sprained a thumb last month.
+During a checkup in 2013, free T3 was 3.2 pg/mL.
+Prefers to be addressed by first name.
+Plays the piano.
+Lives in a second-floor apartment.
+Knits as a hobby.
+Face and neck without swelling on examination.
+Pupils equal and reactive to light.
+Uses sunscreen in summer.
+Teeth in good repair.
+Prefers morning appointments.
+Current white cell count 13.4 x10^9/L.
+Has two cats.
+In 2012, folate was 12 ng/mL.
+Paints watercolors as a hobby.
+Has melanoma skin cancer and is receiving treatment for it.
+```
+
+**G59-C3**
+
+Facts: patient: cancer present (current) [line: "Has melanoma skin cancer and is receiving treatment for it."]; patient: white cell count = 9.5 (current) [line: "Latest WBC is 9.5 x10^9/L."]; angioedema: not named; a general line implies absence (counts as absent) [line: "Face and neck without swelling on examination."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Man of 47 years.
+Acute low back pain after lifting.
+Has two cats.
+His roommate sprained a thumb last month.
+Teeth in good repair.
+Pupils equal and reactive to light.
+Has melanoma skin cancer and is receiving treatment for it.
+Lives in a second-floor apartment.
+During a checkup in 2013, free T3 was 3.2 pg/mL.
+In 2012, folate was 12 ng/mL.
+Knits as a hobby.
+Prefers to be addressed by first name.
+Drives a car.
+Uses sunscreen in summer.
+His uncle wears contact lenses.
+Latest WBC is 9.5 x10^9/L.
+Sleeps seven hours a night.
+Plays the piano.
+Face and neck without swelling on examination.
+Paints watercolors as a hobby.
+Prefers morning appointments.
+Enjoys board games.
+```
+
+**G59-C4**
+
+Facts: angioedema: not named; a general line implies absence (counts as absent) [line: "Face and neck without swelling on examination."]; patient: white cell count = 9.5 (current) [line: "Current white cell count 9.5 x10^9/L."]; patient: cancer present (current) [line: "Has melanoma skin cancer and is receiving treatment for it."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Male patient of 47 years.
+Acute low back pain after lifting.
+Enjoys board games.
+Drives a car.
+His uncle wears contact lenses.
+Sleeps seven hours a night.
+His roommate sprained a thumb last month.
+During a checkup in 2013, free T3 was 3.2 pg/mL.
+Prefers to be addressed by first name.
+Plays the piano.
+Lives in a second-floor apartment.
+Knits as a hobby.
+Face and neck without swelling on examination.
+Pupils equal and reactive to light.
+Uses sunscreen in summer.
+Teeth in good repair.
+Prefers morning appointments.
+Current white cell count 9.5 x10^9/L.
+Has two cats.
+In 2012, folate was 12 ng/mL.
+Paints watercolors as a hobby.
+Has melanoma skin cancer and is receiving treatment for it.
+```
+
+
+## G60
+
+Rule: For newly diagnosed hypertension, prescribe lisinopril. If at least two of the following apply, prescribe amlodipine instead: the patient or a first-degree relative (parent, sibling or child) has had colorectal cancer at any time; the patient is currently taking warfarin; the current calf swelling compared with the other leg is 3.0 cm or more.
+
+**G60-C1**
+
+Facts: father: colorectal cancer present (current) [line: "Her father is undergoing surgery for bowel cancer."]; patient: warfarin present (current) [line: "Anticoagulated with warfarin; INR checked monthly at the clinic."]; patient: calf swelling = 0.3 (current) [line: "Current calf swelling 0.3 cm compared with the other leg."]
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "warfarin" does not hold for this patient. | s' = Under the rule, the condition "warfarin" holds for this patient.
+```
+Female patient of 46 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+Her father is undergoing surgery for bowel cancer.
+Teeth in good repair.
+Sleeps seven hours a night.
+Her father sprained a thumb last month.
+Paints watercolors as a hobby.
+Sees a dentist yearly.
+Anticoagulated with warfarin; INR checked monthly at the clinic.
+Her wife has recovered from a dislocated finger.
+Enjoys board games.
+Uses sunscreen in summer.
+Prefers to be addressed by first name.
+Has two cats.
+Pupils equal and reactive to light.
+Plays the piano.
+Drives a car.
+During a checkup in 2016, free T3 was 3.2 pg/mL.
+Lives in a second-floor apartment.
+Prefers morning appointments.
+During a checkup in 2007, total protein was 7.0 g/dL.
+Current calf swelling 0.3 cm compared with the other leg.
+In 2009, folate was 12 ng/mL.
+Knits as a hobby.
+Owns a bicycle.
+```
+
+**G60-C2**
+
+Facts: father: colorectal cancer present (current) [line: "Her father is undergoing surgery for bowel cancer."]; wife: warfarin present (current) [line: "Her wife is on warfarin with monthly INR checks."]; patient: calf swelling = 0.3 (current) [line: "Current calf swelling 0.3 cm compared with the other leg."]
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "warfarin" does not hold for this patient. | s' = Under the rule, the condition "warfarin" holds for this patient.
+```
+Female patient of 46 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+Her father is undergoing surgery for bowel cancer.
+Teeth in good repair.
+Sleeps seven hours a night.
+Her father sprained a thumb last month.
+Paints watercolors as a hobby.
+Sees a dentist yearly.
+Her wife is on warfarin with monthly INR checks.
+Her wife has recovered from a dislocated finger.
+Enjoys board games.
+Uses sunscreen in summer.
+Prefers to be addressed by first name.
+Has two cats.
+Pupils equal and reactive to light.
+Plays the piano.
+Drives a car.
+During a checkup in 2016, free T3 was 3.2 pg/mL.
+Lives in a second-floor apartment.
+Prefers morning appointments.
+During a checkup in 2007, total protein was 7.0 g/dL.
+Current calf swelling 0.3 cm compared with the other leg.
+In 2009, folate was 12 ng/mL.
+Knits as a hobby.
+Owns a bicycle.
+```
+
+**G60-C3**
+
+Facts: patient: calf swelling = 0.3 (current) [line: "Difference in calf circumference now 0.3 cm."]; father: colorectal cancer present (current) [line: "Her father is undergoing surgery for bowel cancer."]; warfarin: not mentioned (counts as absent)
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "warfarin" does not hold for this patient. | s' = Under the rule, the condition "warfarin" holds for this patient.
+```
+Woman of 46 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+In 2009, folate was 12 ng/mL.
+Has two cats.
+Difference in calf circumference now 0.3 cm.
+Sleeps seven hours a night.
+Pupils equal and reactive to light.
+Lives in a second-floor apartment.
+Drives a car.
+Her father is undergoing surgery for bowel cancer.
+Enjoys board games.
+Owns a bicycle.
+Knits as a hobby.
+Her wife has recovered from a dislocated finger.
+Teeth in good repair.
+Plays the piano.
+During a checkup in 2016, free T3 was 3.2 pg/mL.
+Uses sunscreen in summer.
+Her father sprained a thumb last month.
+Sees a dentist yearly.
+Prefers to be addressed by first name.
+During a checkup in 2007, total protein was 7.0 g/dL.
+Paints watercolors as a hobby.
+Prefers morning appointments.
+```
+
+**G60-C4**
+
+Facts: father: colorectal cancer present (current) [line: "Her father is undergoing surgery for bowel cancer."]; patient: calf swelling = 0.3 (current) [line: "Current calf swelling 0.3 cm compared with the other leg."]; warfarin: not mentioned (counts as absent)
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "warfarin" does not hold for this patient. | s' = Under the rule, the condition "warfarin" holds for this patient.
+```
+Female patient of 46 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+Her father is undergoing surgery for bowel cancer.
+Teeth in good repair.
+Sleeps seven hours a night.
+Her father sprained a thumb last month.
+Paints watercolors as a hobby.
+Sees a dentist yearly.
+Her wife has recovered from a dislocated finger.
+Enjoys board games.
+Uses sunscreen in summer.
+Prefers to be addressed by first name.
+Has two cats.
+Pupils equal and reactive to light.
+Plays the piano.
+Drives a car.
+During a checkup in 2016, free T3 was 3.2 pg/mL.
+Lives in a second-floor apartment.
+Prefers morning appointments.
+During a checkup in 2007, total protein was 7.0 g/dL.
+Current calf swelling 0.3 cm compared with the other leg.
+In 2009, folate was 12 ng/mL.
+Knits as a hobby.
+Owns a bicycle.
+```
+
+**G60-C5**
+
+Facts: father: colorectal cancer present (current) [line: "Her father is undergoing surgery for bowel cancer."]; warfarin: stated as unknown [line: "Warfarin: status unclear from the records at hand."]; patient: calf swelling = 0.3 (current) [line: "Current calf swelling 0.3 cm compared with the other leg."]
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "warfarin" does not hold for this patient. | s' = Under the rule, the condition "warfarin" holds for this patient.
+```
+Female patient of 46 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+Her father is undergoing surgery for bowel cancer.
+Teeth in good repair.
+Sleeps seven hours a night.
+Her father sprained a thumb last month.
+Paints watercolors as a hobby.
+Sees a dentist yearly.
+Warfarin: status unclear from the records at hand.
+Her wife has recovered from a dislocated finger.
+Enjoys board games.
+Uses sunscreen in summer.
+Prefers to be addressed by first name.
+Has two cats.
+Pupils equal and reactive to light.
+Plays the piano.
+Drives a car.
+During a checkup in 2016, free T3 was 3.2 pg/mL.
+Lives in a second-floor apartment.
+Prefers morning appointments.
+During a checkup in 2007, total protein was 7.0 g/dL.
+Current calf swelling 0.3 cm compared with the other leg.
+In 2009, folate was 12 ng/mL.
+Knits as a hobby.
+Owns a bicycle.
+```
+
+
+## G61
+
+Rule: For rate control in atrial fibrillation, prescribe metoprolol. If the patient has ever had diabetes (current or past) and the current white cell count is above 12.0 x10^9/L, prescribe diltiazem instead.
+
+**G61-C1**
+
+Facts: patient: diabetes present (current) [line: "Has type 2 diabetes on metformin."]; white cell count: not mentioned (unknown)
+
+Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Woman of 83 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Drives a car.
+Paints watercolors as a hobby.
+Has type 2 diabetes on metformin.
+Owns a bicycle.
+Prefers morning appointments.
+```
+
+**G61-C2**
+
+Facts: patient: white cell count = 13.4 (current) [line: "Latest WBC is 13.4 x10^9/L."]; patient: white cell count = 10.3 (past (2006)) [line: "Back in 2006, white cell count stood at 10.3 x10^9/L."]; patient: diabetes present (current) [line: "Has type 2 diabetes on metformin."]
+
+Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Woman of 83 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Latest WBC is 13.4 x10^9/L.
+Drives a car.
+Paints watercolors as a hobby.
+Back in 2006, white cell count stood at 10.3 x10^9/L.
+Has type 2 diabetes on metformin.
+Owns a bicycle.
+Prefers morning appointments.
+```
+
+**G61-C3**
+
+Facts: patient: diabetes present (current) [line: "Has type 2 diabetes on metformin."]; patient: white cell count = 7.8 (current) [line: "Current white cell count 7.8 x10^9/L."]; patient: white cell count = 10.3 (past (2006)) [line: "Records from 2006 list white cell count at 10.3 x10^9/L."]
+
+Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Female patient of 83 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Owns a bicycle.
+Prefers morning appointments.
+Has type 2 diabetes on metformin.
+Drives a car.
+Current white cell count 7.8 x10^9/L.
+Records from 2006 list white cell count at 10.3 x10^9/L.
+Paints watercolors as a hobby.
+```
+
+**G61-C4**
+
+Facts: patient: white cell count = 7.8 (current) [line: "Latest WBC is 7.8 x10^9/L."]; patient: white cell count = 12.8 (past (2006)) [line: "Back in 2006, white cell count stood at 12.8 x10^9/L."]; patient: diabetes present (current) [line: "Has type 2 diabetes on metformin."]
+
+Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Woman of 83 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Latest WBC is 7.8 x10^9/L.
+Drives a car.
+Paints watercolors as a hobby.
+Back in 2006, white cell count stood at 12.8 x10^9/L.
+Has type 2 diabetes on metformin.
+Owns a bicycle.
+Prefers morning appointments.
+```
+
+**G61-C5**
+
+Facts: patient: white cell count = 7.8 (current) [line: "Latest WBC is 7.8 x10^9/L."]; patient: white cell count = 10.3 (past (2006)) [line: "Back in 2006, white cell count stood at 10.3 x10^9/L."]; patient: diabetes present (current) [line: "Has type 2 diabetes on metformin."]
+
+Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
+
+Criterion claims: s = Under the rule, the condition "white cell count above 12.0" does not hold for this patient. | s' = Under the rule, the condition "white cell count above 12.0" holds for this patient.
+```
+Woman of 83 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Latest WBC is 7.8 x10^9/L.
+Drives a car.
+Paints watercolors as a hobby.
+Back in 2006, white cell count stood at 10.3 x10^9/L.
+Has type 2 diabetes on metformin.
+Owns a bicycle.
+Prefers morning appointments.
+```
+
+
+## G62
+
+Rule: For contraception, prescribe a combined oral contraceptive. If the current eGFR is below 50 mL/min/1.73 m2 or the patient currently has tonsillar exudate, prescribe a progestin-only pill instead.
+
+**G62-C1**
+
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]; patient: eGFR = 74 (current) [line: "eGFR now 74 mL/min/1.73 m2."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 50" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 50" holds for this patient.
+```
+Female patient of 25 years.
+Requests contraception.
+Owns a bicycle.
+Lives in a second-floor apartment.
+Tonsils pink and clean on inspection.
+eGFR now 74 mL/min/1.73 m2.
+```
+
+**G62-C2**
+
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]; patient: eGFR = 39 (current) [line: "Current eGFR 39 mL/min/1.73 m2."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 50" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 50" holds for this patient.
+```
+Woman of 25 years.
+Requests contraception.
+Lives in a second-floor apartment.
+Tonsils pink and clean on inspection.
+Owns a bicycle.
+Current eGFR 39 mL/min/1.73 m2.
+```
+
+**G62-C3**
+
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]; patient: eGFR = 74 (current) [line: "Current eGFR 74 mL/min/1.73 m2."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 50" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 50" holds for this patient.
+```
+Woman of 25 years.
+Requests contraception.
+Lives in a second-floor apartment.
+Tonsils pink and clean on inspection.
+Owns a bicycle.
+Current eGFR 74 mL/min/1.73 m2.
+```
+
+**G62-C4**
+
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]; patient: eGFR = 50 (current) [line: "Current eGFR 50 mL/min/1.73 m2."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 50" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 50" holds for this patient.
+```
+Woman of 25 years.
+Requests contraception.
+Lives in a second-floor apartment.
+Tonsils pink and clean on inspection.
+Owns a bicycle.
+Current eGFR 50 mL/min/1.73 m2.
+```
+
+
+## G63
+
+Rule: For suspected infection on the medical ward, prescribe oral amoxicillin. If at least two of the following apply, prescribe intravenous piperacillin-tazobactam instead: the age of the patient is 65 years or more; the patient has ever had a peptic ulcer (current or past); the patient has ever had a myocardial infarction or peripheral artery disease (current or past).
+
+**G63-C1**
+
+Facts: patient: peptic ulcer denied by name (current) [line: "Has never had a peptic ulcer."]; patient: age = 67 (current) [line: "Current age 67 years."]; myocardial infarction or peripheral artery disease: not mentioned (counts as absent)
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "peptic ulcer at any time" does not hold for this patient. | s' = Under the rule, the condition "peptic ulcer at any time" holds for this patient.
+```
+An adult woman.
+Suspected chest infection; assessed on the medical ward.
+Has never had a peptic ulcer.
+Prefers morning appointments.
+Current age 67 years.
+Paints watercolors as a hobby.
+Has two cats.
+```
+
+**G63-C2**
+
+Facts: patient: peptic ulcer present (past) [line: "Duodenal ulcer years ago; recovered fully with treatment."]; patient: age = 67 (current) [line: "Current age 67 years."]; myocardial infarction or peripheral artery disease: not mentioned (counts as absent)
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "peptic ulcer at any time" does not hold for this patient. | s' = Under the rule, the condition "peptic ulcer at any time" holds for this patient.
+```
+An adult woman.
+Suspected chest infection; assessed on the medical ward.
+Duodenal ulcer years ago; recovered fully with treatment.
+Prefers morning appointments.
+Current age 67 years.
+Paints watercolors as a hobby.
+Has two cats.
+```
+
+**G63-C3**
+
+Facts: peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Abdomen soft and non-tender."]; patient: age = 67 (current) [line: "Current age 67 years."]; myocardial infarction or peripheral artery disease: not mentioned (counts as absent)
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "peptic ulcer at any time" does not hold for this patient. | s' = Under the rule, the condition "peptic ulcer at any time" holds for this patient.
+```
+An adult woman.
+Suspected chest infection; assessed on the medical ward.
+Abdomen soft and non-tender.
+Prefers morning appointments.
+Current age 67 years.
+Paints watercolors as a hobby.
+Has two cats.
+```
+
+**G63-C4**
+
+Facts: peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Abdomen soft and non-tender."]; patient: age = 67 (current) [line: "Currently aged 67 years."]; myocardial infarction or peripheral artery disease: not mentioned (counts as absent)
+
+Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
+
+Criterion claims: s = Under the rule, the condition "peptic ulcer at any time" does not hold for this patient. | s' = Under the rule, the condition "peptic ulcer at any time" holds for this patient.
+```
+Woman, adult.
+Suspected chest infection; assessed on the medical ward.
+Has two cats.
+Abdomen soft and non-tender.
+Prefers morning appointments.
+Paints watercolors as a hobby.
+Currently aged 67 years.
+```
+
+
+## G64
+
+Rule: For knee osteoarthritis pain, prescribe naproxen. Score 2 points if the patient is allergic to penicillin; 1 point if the patient or a first-degree relative (parent, sibling or child) has had a venous thromboembolism at any time; 3 points if the current heart rate is above 90/min. If the score is 6 or more, prescribe acetaminophen instead.
+
+**G64-C1**
+
+Facts: patient: penicillin allergy present (current) [line: "Known penicillin allergy with angioedema."]; friend: venous thromboembolism present (current) [line: "Her friend is being treated for a pulmonary embolism."]; patient: heart rate = 98 (current) [line: "Heart rate now 98/min on a pulse check."]
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "venous thromboembolism (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "venous thromboembolism (patient or first-degree relative)" holds for this patient.
+```
+Woman of 58 years.
+Knee osteoarthritis with pain on walking.
+Known penicillin allergy with angioedema.
+Free T4 of 1.2 ng/dL in 2019.
+Knits as a hobby.
+Her friend burned a hand on a stove years ago.
+Photographs local wildlife.
+In 2008, lipase was 30 U/L.
+Enjoys board games.
+Lives in a second-floor apartment.
+Her friend is being treated for a pulmonary embolism.
+Prefers morning appointments.
+Her sister lives with psoriasis.
+Teeth in good repair.
+Heart rate now 98/min on a pulse check.
+During a checkup in 2009, free T3 was 3.2 pg/mL.
+Drives a car.
+Owns a bicycle.
+Plays the piano.
+Her friend sprained a thumb last month.
+Sees a dentist yearly.
+Her wife has recovered from a dislocated finger.
+During a checkup in 2011, total protein was 7.0 g/dL.
+```
+
+**G64-C2**
+
+Facts: patient: penicillin allergy present (current) [line: "Known penicillin allergy with angioedema."]; patient: heart rate = 98 (current) [line: "Current heart rate 98/min."]; venous thromboembolism: not mentioned (counts as absent)
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "venous thromboembolism (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "venous thromboembolism (patient or first-degree relative)" holds for this patient.
+```
+Female patient of 58 years.
+Knee osteoarthritis with pain on walking.
+Teeth in good repair.
+Free T4 of 1.2 ng/dL in 2019.
+Her friend sprained a thumb last month.
+Her wife has recovered from a dislocated finger.
+Lives in a second-floor apartment.
+Enjoys board games.
+In 2008, lipase was 30 U/L.
+Her sister lives with psoriasis.
+Photographs local wildlife.
+Plays the piano.
+Her friend burned a hand on a stove years ago.
+Sees a dentist yearly.
+Owns a bicycle.
+Knits as a hobby.
+Known penicillin allergy with angioedema.
+Prefers morning appointments.
+Current heart rate 98/min.
+Drives a car.
+During a checkup in 2009, free T3 was 3.2 pg/mL.
+During a checkup in 2011, total protein was 7.0 g/dL.
+```
+
+**G64-C3**
+
+Facts: patient: penicillin allergy present (current) [line: "Known penicillin allergy with angioedema."]; patient: heart rate = 98 (current) [line: "Heart rate now 98/min on a pulse check."]; venous thromboembolism: not mentioned (counts as absent)
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "venous thromboembolism (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "venous thromboembolism (patient or first-degree relative)" holds for this patient.
+```
+Woman of 58 years.
+Knee osteoarthritis with pain on walking.
+Known penicillin allergy with angioedema.
+Free T4 of 1.2 ng/dL in 2019.
+Knits as a hobby.
+Her friend burned a hand on a stove years ago.
+Photographs local wildlife.
+In 2008, lipase was 30 U/L.
+Enjoys board games.
+Lives in a second-floor apartment.
+Prefers morning appointments.
+Her sister lives with psoriasis.
+Teeth in good repair.
+Heart rate now 98/min on a pulse check.
+During a checkup in 2009, free T3 was 3.2 pg/mL.
+Drives a car.
+Owns a bicycle.
+Plays the piano.
+Her friend sprained a thumb last month.
+Sees a dentist yearly.
+Her wife has recovered from a dislocated finger.
+During a checkup in 2011, total protein was 7.0 g/dL.
+```
+
+**G64-C4**
+
+Facts: patient: penicillin allergy present (current) [line: "Known penicillin allergy with angioedema."]; father: venous thromboembolism present (current) [line: "Her father is being treated for a pulmonary embolism."]; patient: heart rate = 98 (current) [line: "Heart rate now 98/min on a pulse check."]
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "venous thromboembolism (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "venous thromboembolism (patient or first-degree relative)" holds for this patient.
+```
+Woman of 58 years.
+Knee osteoarthritis with pain on walking.
+Known penicillin allergy with angioedema.
+Free T4 of 1.2 ng/dL in 2019.
+Knits as a hobby.
+Her friend burned a hand on a stove years ago.
+Photographs local wildlife.
+In 2008, lipase was 30 U/L.
+Enjoys board games.
+Lives in a second-floor apartment.
+Her father is being treated for a pulmonary embolism.
+Prefers morning appointments.
+Her sister lives with psoriasis.
+Teeth in good repair.
+Heart rate now 98/min on a pulse check.
+During a checkup in 2009, free T3 was 3.2 pg/mL.
+Drives a car.
+Owns a bicycle.
+Plays the piano.
+Her friend sprained a thumb last month.
+Sees a dentist yearly.
+Her wife has recovered from a dislocated finger.
+During a checkup in 2011, total protein was 7.0 g/dL.
+```
+
+**G64-C5**
+
+Facts: patient: penicillin allergy present (current) [line: "Known penicillin allergy with angioedema."]; venous thromboembolism: stated as unknown [line: "Venous thromboembolism (patient or first-degree relative): unknown."]; patient: heart rate = 98 (current) [line: "Heart rate now 98/min on a pulse check."]
+
+Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "venous thromboembolism (patient or first-degree relative)" does not hold for this patient. | s' = Under the rule, the condition "venous thromboembolism (patient or first-degree relative)" holds for this patient.
+```
+Woman of 58 years.
+Knee osteoarthritis with pain on walking.
+Known penicillin allergy with angioedema.
+Free T4 of 1.2 ng/dL in 2019.
+Knits as a hobby.
+Her friend burned a hand on a stove years ago.
+Photographs local wildlife.
+In 2008, lipase was 30 U/L.
+Enjoys board games.
+Lives in a second-floor apartment.
+Venous thromboembolism (patient or first-degree relative): unknown.
+Prefers morning appointments.
+Her sister lives with psoriasis.
+Teeth in good repair.
+Heart rate now 98/min on a pulse check.
+During a checkup in 2009, free T3 was 3.2 pg/mL.
+Drives a car.
+Owns a bicycle.
+Plays the piano.
+Her friend sprained a thumb last month.
+Sees a dentist yearly.
+Her wife has recovered from a dislocated finger.
+During a checkup in 2011, total protein was 7.0 g/dL.
+```
+
+
+## G65
+
+Rule: For inpatient VTE prophylaxis, prescribe enoxaparin. If the patient has new confusion and the current eGFR is below 45 mL/min/1.73 m2, prescribe intermittent pneumatic compression instead.
+
+**G65-C1**
+
+Facts: patient: eGFR = 38 (current) [line: "Current eGFR 38 mL/min/1.73 m2."]; patient: new confusion present (current) [line: "Newly disoriented and unable to give a clear history."]
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe intermittent pneumatic compression.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 45" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 45" holds for this patient.
+```
+Woman of 57 years.
+Admitted for community-acquired pneumonia; immobile.
+Her sister wears contact lenses.
+Sleeps seven hours a night.
+Her friend has recovered from a dislocated finger.
+Prefers morning appointments.
+During a checkup in 2016, total protein was 7.0 g/dL.
+In 2023, lipase was 30 U/L.
+Lives in a second-floor apartment.
+Prefers to be addressed by first name.
+Uses sunscreen in summer.
+Her wife has a lazy eye.
+Drives a car.
+Current eGFR 38 mL/min/1.73 m2.
+Enjoys board games.
+During a checkup in 2014, free T3 was 3.2 pg/mL.
+Knits as a hobby.
+Owns a bicycle.
+Pupils equal and reactive to light.
+Photographs local wildlife.
+Sees a dentist yearly.
+Newly disoriented and unable to give a clear history.
+Paints watercolors as a hobby.
+```
+
+**G65-C2**
+
+Facts: patient: eGFR = 45 (current) [line: "Current eGFR 45 mL/min/1.73 m2."]; patient: new confusion present (current) [line: "Newly disoriented and unable to give a clear history."]
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe intermittent pneumatic compression.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 45" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 45" holds for this patient.
+```
+Woman of 57 years.
+Admitted for community-acquired pneumonia; immobile.
+Her sister wears contact lenses.
+Sleeps seven hours a night.
+Her friend has recovered from a dislocated finger.
+Prefers morning appointments.
+During a checkup in 2016, total protein was 7.0 g/dL.
+In 2023, lipase was 30 U/L.
+Lives in a second-floor apartment.
+Prefers to be addressed by first name.
+Uses sunscreen in summer.
+Her wife has a lazy eye.
+Drives a car.
+Current eGFR 45 mL/min/1.73 m2.
+Enjoys board games.
+During a checkup in 2014, free T3 was 3.2 pg/mL.
+Knits as a hobby.
+Owns a bicycle.
+Pupils equal and reactive to light.
+Photographs local wildlife.
+Sees a dentist yearly.
+Newly disoriented and unable to give a clear history.
+Paints watercolors as a hobby.
+```
+
+**G65-C3**
+
+Facts: patient: eGFR = 69 (current) [line: "Current eGFR 69 mL/min/1.73 m2."]; patient: new confusion present (current) [line: "Newly disoriented and unable to give a clear history."]
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe intermittent pneumatic compression.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 45" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 45" holds for this patient.
+```
+Woman of 57 years.
+Admitted for community-acquired pneumonia; immobile.
+Her sister wears contact lenses.
+Sleeps seven hours a night.
+Her friend has recovered from a dislocated finger.
+Prefers morning appointments.
+During a checkup in 2016, total protein was 7.0 g/dL.
+In 2023, lipase was 30 U/L.
+Lives in a second-floor apartment.
+Prefers to be addressed by first name.
+Uses sunscreen in summer.
+Her wife has a lazy eye.
+Drives a car.
+Current eGFR 69 mL/min/1.73 m2.
+Enjoys board games.
+During a checkup in 2014, free T3 was 3.2 pg/mL.
+Knits as a hobby.
+Owns a bicycle.
+Pupils equal and reactive to light.
+Photographs local wildlife.
+Sees a dentist yearly.
+Newly disoriented and unable to give a clear history.
+Paints watercolors as a hobby.
+```
+
+**G65-C4**
+
+Facts: patient: new confusion present (current) [line: "Newly disoriented and unable to give a clear history."]; patient: eGFR = 69 (current) [line: "eGFR now 69 mL/min/1.73 m2."]
+
+Claims: s = Prescribe enoxaparin. | s' = Prescribe intermittent pneumatic compression.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 45" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 45" holds for this patient.
+```
+Female patient of 57 years.
+Admitted for community-acquired pneumonia; immobile.
+Newly disoriented and unable to give a clear history.
+Drives a car.
+In 2023, lipase was 30 U/L.
+Sleeps seven hours a night.
+Sees a dentist yearly.
+Owns a bicycle.
+Her sister wears contact lenses.
+Uses sunscreen in summer.
+During a checkup in 2016, total protein was 7.0 g/dL.
+Her wife has a lazy eye.
+Paints watercolors as a hobby.
+Lives in a second-floor apartment.
+Knits as a hobby.
+Prefers to be addressed by first name.
+Prefers morning appointments.
+Her friend has recovered from a dislocated finger.
+Photographs local wildlife.
+eGFR now 69 mL/min/1.73 m2.
+Enjoys board games.
+Pupils equal and reactive to light.
+During a checkup in 2014, free T3 was 3.2 pg/mL.
+```
+
+
+## G66
+
+Rule: For heart failure with reduced ejection fraction, prescribe spironolactone. If the current weight is 60 kg or less or the age of the patient is 75 years or more, prescribe dapagliflozin instead.
+
+**G66-C1**
+
+Facts: patient: age = 73 (current) [line: "Current age 73 years."]; patient: weight = 87 (current) [line: "Latest weight 87 kg."]
+
+Claims: s = Prescribe spironolactone. | s' = Prescribe dapagliflozin.
+
+Criterion claims: s = Under the rule, the condition "age at least 75" does not hold for this patient. | s' = Under the rule, the condition "age at least 75" holds for this patient.
+```
+An adult woman.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+In 2013, lipase was 30 U/L.
+Sees a dentist yearly.
+Teeth in good repair.
+Plays the piano.
+Her sister burned a hand on a stove years ago.
+Drives a car.
+Owns a bicycle.
+Free T4 of 1.2 ng/dL in 2012.
+Paints watercolors as a hobby.
+Knits as a hobby.
+Her sister sprained a thumb last month.
+Prefers to be addressed by first name.
+Lives in a second-floor apartment.
+Uses sunscreen in summer.
+Prefers morning appointments.
+Pupils equal and reactive to light.
+Her wife wears contact lenses.
+Current age 73 years.
+Has two cats.
+Sleeps seven hours a night.
+Her wife has recovered from a dislocated finger.
+Latest weight 87 kg.
+```
+
+**G66-C2**
+
+Facts: patient: age = 67 (current) [line: "Currently aged 67 years."]; patient: weight = 87 (current) [line: "Current weight 87 kg."]
+
+Claims: s = Prescribe spironolactone. | s' = Prescribe dapagliflozin.
+
+Criterion claims: s = Under the rule, the condition "age at least 75" does not hold for this patient. | s' = Under the rule, the condition "age at least 75" holds for this patient.
+```
+Woman, adult.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Teeth in good repair.
+Her wife has recovered from a dislocated finger.
+Drives a car.
+Currently aged 67 years.
+Her wife wears contact lenses.
+Her sister burned a hand on a stove years ago.
+Prefers to be addressed by first name.
+In 2013, lipase was 30 U/L.
+Sleeps seven hours a night.
+Owns a bicycle.
+Current weight 87 kg.
+Sees a dentist yearly.
+Has two cats.
+Her sister sprained a thumb last month.
+Free T4 of 1.2 ng/dL in 2012.
+Uses sunscreen in summer.
+Plays the piano.
+Pupils equal and reactive to light.
+Paints watercolors as a hobby.
+Knits as a hobby.
+Lives in a second-floor apartment.
+Prefers morning appointments.
+```
+
+**G66-C3**
+
+Facts: patient: age = 84 (current) [line: "Current age 84 years."]; patient: weight = 87 (current) [line: "Latest weight 87 kg."]
+
+Claims: s = Prescribe spironolactone. | s' = Prescribe dapagliflozin.
+
+Criterion claims: s = Under the rule, the condition "age at least 75" does not hold for this patient. | s' = Under the rule, the condition "age at least 75" holds for this patient.
+```
+An adult woman.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+In 2013, lipase was 30 U/L.
+Sees a dentist yearly.
+Teeth in good repair.
+Plays the piano.
+Her sister burned a hand on a stove years ago.
+Drives a car.
+Owns a bicycle.
+Free T4 of 1.2 ng/dL in 2012.
+Paints watercolors as a hobby.
+Knits as a hobby.
+Her sister sprained a thumb last month.
+Prefers to be addressed by first name.
+Lives in a second-floor apartment.
+Uses sunscreen in summer.
+Prefers morning appointments.
+Pupils equal and reactive to light.
+Her wife wears contact lenses.
+Current age 84 years.
+Has two cats.
+Sleeps seven hours a night.
+Her wife has recovered from a dislocated finger.
+Latest weight 87 kg.
+```
+
+**G66-C4**
+
+Facts: patient: age = 67 (current) [line: "Current age 67 years."]; patient: weight = 87 (current) [line: "Latest weight 87 kg."]
+
+Claims: s = Prescribe spironolactone. | s' = Prescribe dapagliflozin.
+
+Criterion claims: s = Under the rule, the condition "age at least 75" does not hold for this patient. | s' = Under the rule, the condition "age at least 75" holds for this patient.
+```
+An adult woman.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+In 2013, lipase was 30 U/L.
+Sees a dentist yearly.
+Teeth in good repair.
+Plays the piano.
+Her sister burned a hand on a stove years ago.
+Drives a car.
+Owns a bicycle.
+Free T4 of 1.2 ng/dL in 2012.
+Paints watercolors as a hobby.
+Knits as a hobby.
+Her sister sprained a thumb last month.
+Prefers to be addressed by first name.
+Lives in a second-floor apartment.
+Uses sunscreen in summer.
+Prefers morning appointments.
+Pupils equal and reactive to light.
+Her wife wears contact lenses.
+Current age 67 years.
+Has two cats.
+Sleeps seven hours a night.
+Her wife has recovered from a dislocated finger.
+Latest weight 87 kg.
+```
+
+
+## G67
+
+Rule: For contraception, prescribe a combined oral contraceptive. If the current eGFR is below 50 mL/min/1.73 m2 or the patient currently has tonsillar exudate, prescribe a progestin-only pill instead.
+
+**G67-C1**
+
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils a little red, surfaces clear."]; patient: eGFR = 49 (current) [line: "Current eGFR 49 mL/min/1.73 m2."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 50" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 50" holds for this patient.
+```
+Woman of 24 years.
+Requests contraception.
+Paints watercolors as a hobby.
+Prefers morning appointments.
+Tonsils a little red, surfaces clear.
+Her friend has a lazy eye.
+During a checkup in 2023, free T3 was 3.2 pg/mL.
+In 2020, folate was 12 ng/mL.
+Owns a bicycle.
+Her roommate burned a hand on a stove years ago.
+Drives a car.
+Plays the piano.
+Her father has recovered from a dislocated finger.
+Uses sunscreen in summer.
+Sleeps seven hours a night.
+Pupils equal and reactive to light.
+Prefers to be addressed by first name.
+Free T4 of 1.2 ng/dL in 2024.
+Her roommate wears contact lenses.
+Current eGFR 49 mL/min/1.73 m2.
+Enjoys board games.
+Photographs local wildlife.
+Teeth in good repair.
+Sees a dentist yearly.
+```
+
+**G67-C2**
+
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils a little red, surfaces clear."]; patient: eGFR = 90 (current) [line: "eGFR now 90 mL/min/1.73 m2."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 50" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 50" holds for this patient.
+```
+Female patient of 24 years.
+Requests contraception.
+Sleeps seven hours a night.
+Drives a car.
+During a checkup in 2023, free T3 was 3.2 pg/mL.
+Free T4 of 1.2 ng/dL in 2024.
+Teeth in good repair.
+Sees a dentist yearly.
+Her roommate wears contact lenses.
+Tonsils a little red, surfaces clear.
+Prefers morning appointments.
+Pupils equal and reactive to light.
+Prefers to be addressed by first name.
+Her father has recovered from a dislocated finger.
+Enjoys board games.
+Photographs local wildlife.
+Owns a bicycle.
+Plays the piano.
+Her friend has a lazy eye.
+In 2020, folate was 12 ng/mL.
+Paints watercolors as a hobby.
+Uses sunscreen in summer.
+eGFR now 90 mL/min/1.73 m2.
+Her roommate burned a hand on a stove years ago.
+```
+
+**G67-C3**
+
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils a little red, surfaces clear."]; patient: eGFR = 53 (current) [line: "Current eGFR 53 mL/min/1.73 m2."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 50" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 50" holds for this patient.
+```
+Woman of 24 years.
+Requests contraception.
+Paints watercolors as a hobby.
+Prefers morning appointments.
+Tonsils a little red, surfaces clear.
+Her friend has a lazy eye.
+During a checkup in 2023, free T3 was 3.2 pg/mL.
+In 2020, folate was 12 ng/mL.
+Owns a bicycle.
+Her roommate burned a hand on a stove years ago.
+Drives a car.
+Plays the piano.
+Her father has recovered from a dislocated finger.
+Uses sunscreen in summer.
+Sleeps seven hours a night.
+Pupils equal and reactive to light.
+Prefers to be addressed by first name.
+Free T4 of 1.2 ng/dL in 2024.
+Her roommate wears contact lenses.
+Current eGFR 53 mL/min/1.73 m2.
+Enjoys board games.
+Photographs local wildlife.
+Teeth in good repair.
+Sees a dentist yearly.
+```
+
+**G67-C4**
+
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils a little red, surfaces clear."]; patient: eGFR = 90 (current) [line: "Current eGFR 90 mL/min/1.73 m2."]
+
+Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
+
+Criterion claims: s = Under the rule, the condition "eGFR below 50" does not hold for this patient. | s' = Under the rule, the condition "eGFR below 50" holds for this patient.
+```
+Woman of 24 years.
+Requests contraception.
+Paints watercolors as a hobby.
+Prefers morning appointments.
+Tonsils a little red, surfaces clear.
+Her friend has a lazy eye.
+During a checkup in 2023, free T3 was 3.2 pg/mL.
+In 2020, folate was 12 ng/mL.
+Owns a bicycle.
+Her roommate burned a hand on a stove years ago.
+Drives a car.
+Plays the piano.
+Her father has recovered from a dislocated finger.
+Uses sunscreen in summer.
+Sleeps seven hours a night.
+Pupils equal and reactive to light.
+Prefers to be addressed by first name.
+Free T4 of 1.2 ng/dL in 2024.
+Her roommate wears contact lenses.
+Current eGFR 90 mL/min/1.73 m2.
+Enjoys board games.
+Photographs local wildlife.
+Teeth in good repair.
+Sees a dentist yearly.
+```
+
+
+## G68
+
+Rule: For musculoskeletal pain, prescribe ibuprofen. If at least two of the following apply, prescribe acetaminophen instead: the current white cell count is above 12.0 x10^9/L; the patient has ever had angioedema (current or past); the patient has active cancer.
+
+**G68-C1**
+
+Facts: patient: white cell count = 4.6 (current) [line: "Latest WBC is 4.6 x10^9/L."]; patient: angioedema present (past) [line: "An episode of angioedema years ago, with full recovery."]; cancer: stated as unknown [line: "Active cancer: status unclear from the records at hand."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "active cancer" does not hold for this patient. | s' = Under the rule, the condition "active cancer" holds for this patient.
+```
+Woman of 20 years.
+Acute low back pain after lifting.
+Latest WBC is 4.6 x10^9/L.
+Has two cats.
+Prefers morning appointments.
+An episode of angioedema years ago, with full recovery.
+Plays the piano.
+Active cancer: status unclear from the records at hand.
+Lives in a second-floor apartment.
+```
+
+**G68-C2**
+
+Facts: patient: white cell count = 4.6 (current) [line: "Latest WBC is 4.6 x10^9/L."]; patient: angioedema present (past) [line: "An episode of angioedema years ago, with full recovery."]; patient: cancer present (current) [line: "Has metastatic lung cancer, receiving palliative treatment."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "active cancer" does not hold for this patient. | s' = Under the rule, the condition "active cancer" holds for this patient.
+```
+Woman of 20 years.
+Acute low back pain after lifting.
+Latest WBC is 4.6 x10^9/L.
+Has two cats.
+Prefers morning appointments.
+An episode of angioedema years ago, with full recovery.
+Plays the piano.
+Has metastatic lung cancer, receiving palliative treatment.
+Lives in a second-floor apartment.
+```
+
+**G68-C3**
+
+Facts: patient: white cell count = 4.6 (current) [line: "Latest WBC is 4.6 x10^9/L."]; patient: angioedema present (past) [line: "An episode of angioedema years ago, with full recovery."]; patient: cancer denied by name (current) [line: "Free of cancer throughout life."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "active cancer" does not hold for this patient. | s' = Under the rule, the condition "active cancer" holds for this patient.
+```
+Woman of 20 years.
+Acute low back pain after lifting.
+Latest WBC is 4.6 x10^9/L.
+Has two cats.
+Prefers morning appointments.
+An episode of angioedema years ago, with full recovery.
+Plays the piano.
+Free of cancer throughout life.
+Lives in a second-floor apartment.
+```
+
+**G68-C4**
+
+Facts: patient: white cell count = 4.6 (current) [line: "Current white cell count 4.6 x10^9/L."]; patient: angioedema present (past) [line: "An episode of angioedema years ago, with full recovery."]; cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "active cancer" does not hold for this patient. | s' = Under the rule, the condition "active cancer" holds for this patient.
+```
+Female patient of 20 years.
+Acute low back pain after lifting.
+Prefers morning appointments.
+Current white cell count 4.6 x10^9/L.
+Plays the piano.
+An episode of angioedema years ago, with full recovery.
+Has two cats.
+Lives in a second-floor apartment.
+Weight steady over the past year.
+```
+
+**G68-C5**
+
+Facts: patient: white cell count = 4.6 (current) [line: "Latest WBC is 4.6 x10^9/L."]; patient: angioedema present (past) [line: "An episode of angioedema years ago, with full recovery."]; cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]
+
+Claims: s = Prescribe ibuprofen. | s' = Prescribe acetaminophen.
+
+Criterion claims: s = Under the rule, the condition "active cancer" does not hold for this patient. | s' = Under the rule, the condition "active cancer" holds for this patient.
+```
+Woman of 20 years.
+Acute low back pain after lifting.
+Latest WBC is 4.6 x10^9/L.
+Has two cats.
+Prefers morning appointments.
+An episode of angioedema years ago, with full recovery.
+Plays the piano.
+Weight steady over the past year.
+Lives in a second-floor apartment.
+```
+
+
+## G69
+
+Rule: BAP-65 (as used here, partial): 1 point each for a current blood urea nitrogen of 25 mg/dL or more; current altered mental status (confusion or disorientation); a current heart rate of 109/min or more. Age is scored separately and is not part of this question.
+
+**G69-C1**
+
+Facts: altered mental status: not named; a general line implies absence (counts as absent) [line: "Gives a clear account of the illness."]; patient: blood urea nitrogen = 20 (current) [line: "Blood urea nitrogen now: 20 mg/dL."]; patient: heart rate = 82 (current) [line: "Heart rate now 82/min on a pulse check."]
+
+Claims: s = The altered mental status criterion contributes 0 points. | s' = The altered mental status criterion contributes 1 point.
+```
+Female patient of 70 years.
+Acute exacerbation of COPD; assessed in the emergency department.
+Gives a clear account of the illness.
+Has two cats.
+Her wife burned a hand on a stove years ago.
+Prefers to be addressed by first name.
+Photographs local wildlife.
+Owns a bicycle.
+Enjoys board games.
+In 2012, folate was 12 ng/mL.
+Blood urea nitrogen now: 20 mg/dL.
+Her sister has recovered from a dislocated finger.
+Lives in a second-floor apartment.
+Her friend has a lazy eye.
+Heart rate now 82/min on a pulse check.
+Plays the piano.
+Prefers morning appointments.
+Paints watercolors as a hobby.
+Sleeps seven hours a night.
+Sees a dentist yearly.
+Teeth in good repair.
+Her wife lives with psoriasis.
+In 2013, lipase was 30 U/L.
+Drives a car.
+```
+
+**G69-C2**
+
+Facts: patient: heart rate = 82 (current) [line: "Current heart rate 82/min."]; patient: blood urea nitrogen = 20 (current) [line: "Blood urea nitrogen 20 mg/dL on the current labs."]; patient: altered mental status present (past (2022)) [line: "Formerly had an episode of confusion with dehydration in 2022."]
+
+Claims: s = The altered mental status criterion contributes 0 points. | s' = The altered mental status criterion contributes 1 point.
+```
+Woman of 70 years.
+Acute exacerbation of COPD; assessed in the emergency department.
+Enjoys board games.
+Owns a bicycle.
+In 2013, lipase was 30 U/L.
+Sees a dentist yearly.
+Her sister has recovered from a dislocated finger.
+Prefers morning appointments.
+Plays the piano.
+Prefers to be addressed by first name.
+In 2012, folate was 12 ng/mL.
+Lives in a second-floor apartment.
+Teeth in good repair.
+Current heart rate 82/min.
+Paints watercolors as a hobby.
+Her wife lives with psoriasis.
+Photographs local wildlife.
+Has two cats.
+Drives a car.
+Her wife burned a hand on a stove years ago.
+Blood urea nitrogen 20 mg/dL on the current labs.
+Her friend has a lazy eye.
+Sleeps seven hours a night.
+Formerly had an episode of confusion with dehydration in 2022.
+```
+
+**G69-C3**
+
+Facts: patient: heart rate = 82 (current) [line: "Current heart rate 82/min."]; patient: blood urea nitrogen = 20 (current) [line: "Blood urea nitrogen 20 mg/dL on the current labs."]; altered mental status: not named; a general line implies absence (counts as absent) [line: "Gives a clear account of the illness."]
+
+Claims: s = The altered mental status criterion contributes 0 points. | s' = The altered mental status criterion contributes 1 point.
+```
+Woman of 70 years.
+Acute exacerbation of COPD; assessed in the emergency department.
+Enjoys board games.
+Owns a bicycle.
+In 2013, lipase was 30 U/L.
+Sees a dentist yearly.
+Her sister has recovered from a dislocated finger.
+Prefers morning appointments.
+Plays the piano.
+Prefers to be addressed by first name.
+In 2012, folate was 12 ng/mL.
+Lives in a second-floor apartment.
+Teeth in good repair.
+Current heart rate 82/min.
+Paints watercolors as a hobby.
+Her wife lives with psoriasis.
+Photographs local wildlife.
+Has two cats.
+Drives a car.
+Her wife burned a hand on a stove years ago.
+Blood urea nitrogen 20 mg/dL on the current labs.
+Her friend has a lazy eye.
+Sleeps seven hours a night.
+Gives a clear account of the illness.
+```
+
+**G69-C4**
+
+Facts: patient: heart rate = 82 (current) [line: "Current heart rate 82/min."]; patient: blood urea nitrogen = 20 (current) [line: "Blood urea nitrogen 20 mg/dL on the current labs."]; patient: altered mental status present (current) [line: "Disoriented to time and place, which is new for the patient."]
+
+Claims: s = The altered mental status criterion contributes 0 points. | s' = The altered mental status criterion contributes 1 point.
+```
+Woman of 70 years.
+Acute exacerbation of COPD; assessed in the emergency department.
+Enjoys board games.
+Owns a bicycle.
+In 2013, lipase was 30 U/L.
+Sees a dentist yearly.
+Her sister has recovered from a dislocated finger.
+Prefers morning appointments.
+Plays the piano.
+Prefers to be addressed by first name.
+In 2012, folate was 12 ng/mL.
+Lives in a second-floor apartment.
+Teeth in good repair.
+Current heart rate 82/min.
+Paints watercolors as a hobby.
+Her wife lives with psoriasis.
+Photographs local wildlife.
+Has two cats.
+Drives a car.
+Her wife burned a hand on a stove years ago.
+Blood urea nitrogen 20 mg/dL on the current labs.
+Her friend has a lazy eye.
+Sleeps seven hours a night.
+Disoriented to time and place, which is new for the patient.
+```
+
+
+## G70
+
+Rule: qSOFA (as used here): 1 point each for a respiratory rate of 22/min or more; altered mentation; systolic blood pressure of 100 mmHg or less. Only current findings count.
+
+**G70-C1**
+
+Facts: altered mentation: not named; a general line implies absence (counts as absent) [line: "Speech clear; follows commands."]; patient: respiratory rate = 15 (current) [line: "Current respiratory rate 15/min."]; systolic blood pressure: not mentioned (unknown)
+
+Claims: s = The systolic blood pressure criterion contributes 0 points. | s' = The systolic blood pressure criterion contributes 1 point.
+```
+Male patient of 57 years.
+Suspected urinary sepsis, assessed in the emergency department.
+Speech clear; follows commands.
+Has two cats.
+Current respiratory rate 15/min.
+```
+
+**G70-C2**
+
+Facts: patient: systolic blood pressure = 97 (current) [line: "Current systolic blood pressure 97 mmHg."]; altered mentation: not named; a general line implies absence (counts as absent) [line: "Speech clear; follows commands."]; patient: respiratory rate = 15 (current) [line: "Current respiratory rate 15/min."]
+
+Claims: s = The systolic blood pressure criterion contributes 0 points. | s' = The systolic blood pressure criterion contributes 1 point.
+```
+Male patient of 57 years.
+Suspected urinary sepsis, assessed in the emergency department.
+Current systolic blood pressure 97 mmHg.
+Speech clear; follows commands.
+Has two cats.
+Current respiratory rate 15/min.
+```
+
+**G70-C3**
+
+Facts: patient: systolic blood pressure = 131 (current) [line: "Current systolic blood pressure 131 mmHg."]; altered mentation: not named; a general line implies absence (counts as absent) [line: "Speech clear; follows commands."]; patient: respiratory rate = 15 (current) [line: "Current respiratory rate 15/min."]
+
+Claims: s = The systolic blood pressure criterion contributes 0 points. | s' = The systolic blood pressure criterion contributes 1 point.
+```
+Male patient of 57 years.
+Suspected urinary sepsis, assessed in the emergency department.
+Current systolic blood pressure 131 mmHg.
+Speech clear; follows commands.
+Has two cats.
+Current respiratory rate 15/min.
+```
+
+**G70-C4**
+
+Facts: altered mentation: not named; a general line implies absence (counts as absent) [line: "Speech clear; follows commands."]; patient: respiratory rate = 15 (current) [line: "Observations now: respiratory rate 15/min."]; patient: systolic blood pressure = 131 (current) [line: "Observations now: blood pressure 131/87 mmHg."]
+
+Claims: s = The systolic blood pressure criterion contributes 0 points. | s' = The systolic blood pressure criterion contributes 1 point.
+```
+Man of 57 years.
+Suspected urinary sepsis, assessed in the emergency department.
+Has two cats.
+Speech clear; follows commands.
+Observations now: respiratory rate 15/min.
+Observations now: blood pressure 131/87 mmHg.
+```
+
+**G70-C5**
+
+Facts: patient: systolic blood pressure = 101 (current) [line: "Current systolic blood pressure 101 mmHg."]; altered mentation: not named; a general line implies absence (counts as absent) [line: "Speech clear; follows commands."]; patient: respiratory rate = 15 (current) [line: "Current respiratory rate 15/min."]
+
+Claims: s = The systolic blood pressure criterion contributes 0 points. | s' = The systolic blood pressure criterion contributes 1 point.
+```
+Male patient of 57 years.
+Suspected urinary sepsis, assessed in the emergency department.
+Current systolic blood pressure 101 mmHg.
+Speech clear; follows commands.
+Has two cats.
+Current respiratory rate 15/min.
+```
+
+
+## G71
+
+Rule: For heart failure with reduced ejection fraction, add spironolactone. If the current serum potassium is above 4.5 mmol/L, add dapagliflozin instead.
+
+**G71-C1**
+
+Facts: patient: potassium = 4.0 (current) [line: "Current serum potassium 4.0 mmol/L."]
+
+Claims: s = Add spironolactone. | s' = Add dapagliflozin.
+
+Criterion claims: s = Under the rule, the condition "potassium above 4.5" does not hold for this patient. | s' = Under the rule, the condition "potassium above 4.5" holds for this patient.
+```
+Woman of 60 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Plays the piano.
+Owns a bicycle.
+Current serum potassium 4.0 mmol/L.
+Uses sunscreen in summer.
+```
+
+**G71-C2**
+
+Facts: patient: potassium = 4.5 (current) [line: "Current serum potassium 4.5 mmol/L."]
+
+Claims: s = Add spironolactone. | s' = Add dapagliflozin.
+
+Criterion claims: s = Under the rule, the condition "potassium above 4.5" does not hold for this patient. | s' = Under the rule, the condition "potassium above 4.5" holds for this patient.
+```
+Woman of 60 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Plays the piano.
+Owns a bicycle.
+Current serum potassium 4.5 mmol/L.
+Uses sunscreen in summer.
+```
+
+**G71-C3**
+
+Facts: patient: potassium = 4.8 (current) [line: "Current serum potassium 4.8 mmol/L."]
+
+Claims: s = Add spironolactone. | s' = Add dapagliflozin.
+
+Criterion claims: s = Under the rule, the condition "potassium above 4.5" does not hold for this patient. | s' = Under the rule, the condition "potassium above 4.5" holds for this patient.
+```
+Woman of 60 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Plays the piano.
+Owns a bicycle.
+Current serum potassium 4.8 mmol/L.
+Uses sunscreen in summer.
+```
+
+**G71-C4**
+
+Facts: patient: potassium = 4.0 (current) [line: "Latest potassium result: 4.0 mmol/L."]
+
+Claims: s = Add spironolactone. | s' = Add dapagliflozin.
+
+Criterion claims: s = Under the rule, the condition "potassium above 4.5" does not hold for this patient. | s' = Under the rule, the condition "potassium above 4.5" holds for this patient.
+```
+Female patient of 60 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Plays the piano.
+Uses sunscreen in summer.
+Owns a bicycle.
+Latest potassium result: 4.0 mmol/L.
+```
+
+
+## G72
+
+Rule: For thromboprophylaxis in a medical inpatient, prescribe compression stockings. Score 3 points for active cancer; 3 points for a venous thromboembolism of the patient, current or previous; 1 point for age 70 years or more; 1 point for current heart failure. If the score is 4 or more, prescribe enoxaparin instead.
+
+**G72-C1**
+
+Facts: patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]; patient: age = 41 (current) [line: "Current age 41 years."]; patient: cancer present (current) [line: "Has metastatic lung cancer, receiving palliative treatment."]
+
+Claims: s = Prescribe compression stockings. | s' = Prescribe enoxaparin.
+
+Criterion claims: s = Under the rule, the condition "venous thromboembolism" does not hold for this patient. | s' = Under the rule, the condition "venous thromboembolism" holds for this patient.
+```
+An adult man.
+Admitted with community-acquired pneumonia; expected to stay in bed for several days.
+Has an acute pulmonary embolism, diagnosed this week.
+Heart sounds without a gallop.
+Owns a bicycle.
+Current age 41 years.
+Teeth in good repair.
+Has metastatic lung cancer, receiving palliative treatment.
+Sees a dentist yearly.
+```
+
+**G72-C2**
+
+Facts: venous thromboembolism: not named; a general line implies absence (counts as absent) [line: "Coagulation tests normal on recent bloodwork."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]; patient: age = 41 (current) [line: "Current age 41 years."]; patient: cancer present (current) [line: "Has metastatic lung cancer, receiving palliative treatment."]
+
+Claims: s = Prescribe compression stockings. | s' = Prescribe enoxaparin.
+
+Criterion claims: s = Under the rule, the condition "venous thromboembolism" does not hold for this patient. | s' = Under the rule, the condition "venous thromboembolism" holds for this patient.
+```
+An adult man.
+Admitted with community-acquired pneumonia; expected to stay in bed for several days.
+Coagulation tests normal on recent bloodwork.
+Heart sounds without a gallop.
+Owns a bicycle.
+Current age 41 years.
+Teeth in good repair.
+Has metastatic lung cancer, receiving palliative treatment.
+Sees a dentist yearly.
+```
+
+**G72-C3**
+
+Facts: sister: venous thromboembolism present (current) [line: "His sister is being treated for a pulmonary embolism."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]; patient: age = 41 (current) [line: "Current age 41 years."]; patient: cancer present (current) [line: "Has metastatic lung cancer, receiving palliative treatment."]
+
+Claims: s = Prescribe compression stockings. | s' = Prescribe enoxaparin.
+
+Criterion claims: s = Under the rule, the condition "venous thromboembolism" does not hold for this patient. | s' = Under the rule, the condition "venous thromboembolism" holds for this patient.
+```
+An adult man.
+Admitted with community-acquired pneumonia; expected to stay in bed for several days.
+His sister is being treated for a pulmonary embolism.
+Heart sounds without a gallop.
+Owns a bicycle.
+Current age 41 years.
+Teeth in good repair.
+Has metastatic lung cancer, receiving palliative treatment.
+Sees a dentist yearly.
+```
+
+**G72-C4**
+
+Facts: patient: age = 41 (current) [line: "Currently aged 41 years."]; patient: cancer present (current) [line: "Has metastatic lung cancer, receiving palliative treatment."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]; venous thromboembolism: not named; a general line implies absence (counts as absent) [line: "Coagulation tests normal on recent bloodwork."]
+
+Claims: s = Prescribe compression stockings. | s' = Prescribe enoxaparin.
+
+Criterion claims: s = Under the rule, the condition "venous thromboembolism" does not hold for this patient. | s' = Under the rule, the condition "venous thromboembolism" holds for this patient.
+```
+Man, adult.
+Admitted with community-acquired pneumonia; expected to stay in bed for several days.
+Currently aged 41 years.
+Teeth in good repair.
+Has metastatic lung cancer, receiving palliative treatment.
+Owns a bicycle.
+Heart sounds without a gallop.
+Coagulation tests normal on recent bloodwork.
+Sees a dentist yearly.
+```
+
+
+## G73
+
+Rule: For vaginal candidiasis, prescribe oral fluconazole. If at least two of the following apply, prescribe clotrimazole pessaries instead: the patient is currently taking aspirin; the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time; the current serum potassium is above 5.0 mmol/L.
+
+**G73-C1**
+
+Facts: sister: diabetes present (past) [line: "Her sister had diabetes years ago that went away after a change in diet."]; patient: serum potassium = 5.0 (current) [line: "Latest potassium result: 5.0 mmol/L."]; aspirin use: not mentioned (counts as absent)
+
+Claims: s = Prescribe oral fluconazole. | s' = Prescribe clotrimazole pessaries.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Woman of 52 years.
+Vaginal itching and discharge; candidiasis confirmed on microscopy.
+Drives a car.
+Knits as a hobby.
+Lives in a second-floor apartment.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+Her sister had diabetes years ago that went away after a change in diet.
+During a checkup in 2023, free T3 was 3.2 pg/mL.
+Free T4 of 1.2 ng/dL in 2019.
+Her uncle has a lazy eye.
+Photographs local wildlife.
+Her sister burned a hand on a stove years ago.
+Sleeps seven hours a night.
+Prefers to be addressed by first name.
+Enjoys board games.
+Paints watercolors as a hobby.
+Teeth in good repair.
+Latest potassium result: 5.0 mmol/L.
+Her father wears contact lenses.
+Uses sunscreen in summer.
+```
+
+**G73-C2**
+
+Facts: sister: diabetes present (past) [line: "Her sister had diabetes years ago that went away after a change in diet."]; patient: serum potassium = 3.8 (current) [line: "Latest potassium result: 3.8 mmol/L."]; aspirin use: not mentioned (counts as absent)
+
+Claims: s = Prescribe oral fluconazole. | s' = Prescribe clotrimazole pessaries.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Woman of 52 years.
+Vaginal itching and discharge; candidiasis confirmed on microscopy.
+Drives a car.
+Knits as a hobby.
+Lives in a second-floor apartment.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+Her sister had diabetes years ago that went away after a change in diet.
+During a checkup in 2023, free T3 was 3.2 pg/mL.
+Free T4 of 1.2 ng/dL in 2019.
+Her uncle has a lazy eye.
+Photographs local wildlife.
+Her sister burned a hand on a stove years ago.
+Sleeps seven hours a night.
+Prefers to be addressed by first name.
+Enjoys board games.
+Paints watercolors as a hobby.
+Teeth in good repair.
+Latest potassium result: 3.8 mmol/L.
+Her father wears contact lenses.
+Uses sunscreen in summer.
+```
+
+**G73-C3**
+
+Facts: sister: diabetes present (past) [line: "Her sister had diabetes years ago that went away after a change in diet."]; patient: serum potassium = 3.8 (current) [line: "Current serum potassium 3.8 mmol/L."]; aspirin use: not mentioned (counts as absent)
+
+Claims: s = Prescribe oral fluconazole. | s' = Prescribe clotrimazole pessaries.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Female patient of 52 years.
+Vaginal itching and discharge; candidiasis confirmed on microscopy.
+Enjoys board games.
+Uses sunscreen in summer.
+Her father wears contact lenses.
+Her uncle has a lazy eye.
+Sleeps seven hours a night.
+Photographs local wildlife.
+Knits as a hobby.
+Her sister had diabetes years ago that went away after a change in diet.
+Free T4 of 1.2 ng/dL in 2019.
+Her sister burned a hand on a stove years ago.
+Prefers to be addressed by first name.
+Drives a car.
+Current serum potassium 3.8 mmol/L.
+Lives in a second-floor apartment.
+During a checkup in 2023, free T3 was 3.2 pg/mL.
+Teeth in good repair.
+Paints watercolors as a hobby.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+```
+
+**G73-C4**
+
+Facts: sister: diabetes present (past) [line: "Her sister had diabetes years ago that went away after a change in diet."]; patient: serum potassium = 5.5 (current) [line: "Latest potassium result: 5.5 mmol/L."]; aspirin use: not mentioned (counts as absent)
+
+Claims: s = Prescribe oral fluconazole. | s' = Prescribe clotrimazole pessaries.
+
+Criterion claims: s = Under the rule, the condition "serum potassium above 5.0" does not hold for this patient. | s' = Under the rule, the condition "serum potassium above 5.0" holds for this patient.
+```
+Woman of 52 years.
+Vaginal itching and discharge; candidiasis confirmed on microscopy.
+Drives a car.
+Knits as a hobby.
+Lives in a second-floor apartment.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+Her sister had diabetes years ago that went away after a change in diet.
+During a checkup in 2023, free T3 was 3.2 pg/mL.
+Free T4 of 1.2 ng/dL in 2019.
+Her uncle has a lazy eye.
+Photographs local wildlife.
+Her sister burned a hand on a stove years ago.
+Sleeps seven hours a night.
+Prefers to be addressed by first name.
+Enjoys board games.
+Paints watercolors as a hobby.
+Teeth in good repair.
+Latest potassium result: 5.5 mmol/L.
+Her father wears contact lenses.
+Uses sunscreen in summer.
+```
+
+
+## G74
+
+Rule: For newly diagnosed hypertension, prescribe lisinopril. If the patient currently has heart failure or the current heart rate is above 90/min, prescribe amlodipine instead.
+
+**G74-C1**
+
+Facts: patient: heart rate = 79 (current) [line: "Current heart rate 79/min."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "current heart failure" does not hold for this patient. | s' = Under the rule, the condition "current heart failure" holds for this patient.
+```
+Man of 72 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+During a checkup in 2008, total protein was 7.0 g/dL.
+Sees a dentist yearly.
+Knits as a hobby.
+Enjoys board games.
+Prefers to be addressed by first name.
+Prefers morning appointments.
+His roommate burned a hand on a stove years ago.
+Current heart rate 79/min.
+During a checkup in 2013, free T3 was 3.2 pg/mL.
+In 2024, lipase was 30 U/L.
+Teeth in good repair.
+His roommate has a lazy eye.
+Paints watercolors as a hobby.
+His friend lives with psoriasis.
+His sister sprained a thumb last month.
+Heart sounds without a gallop.
+Drives a car.
+Photographs local wildlife.
+Sleeps seven hours a night.
+```
+
+**G74-C2**
+
+Facts: heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]; patient: heart rate = 79 (current) [line: "Heart rate now 79/min on a pulse check."]
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "current heart failure" does not hold for this patient. | s' = Under the rule, the condition "current heart failure" holds for this patient.
+```
+Male patient of 72 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+Drives a car.
+Sleeps seven hours a night.
+Prefers to be addressed by first name.
+His roommate burned a hand on a stove years ago.
+Photographs local wildlife.
+His sister sprained a thumb last month.
+During a checkup in 2013, free T3 was 3.2 pg/mL.
+Paints watercolors as a hobby.
+Sees a dentist yearly.
+His roommate has a lazy eye.
+Heart sounds without a gallop.
+Heart rate now 79/min on a pulse check.
+During a checkup in 2008, total protein was 7.0 g/dL.
+Enjoys board games.
+In 2024, lipase was 30 U/L.
+His friend lives with psoriasis.
+Prefers morning appointments.
+Knits as a hobby.
+Teeth in good repair.
+```
+
+**G74-C3**
+
+Facts: roommate: heart failure present (current) [line: "His roommate is treated for heart failure."]; patient: heart rate = 79 (current) [line: "Heart rate now 79/min on a pulse check."]
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "current heart failure" does not hold for this patient. | s' = Under the rule, the condition "current heart failure" holds for this patient.
+```
+Male patient of 72 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+Drives a car.
+Sleeps seven hours a night.
+Prefers to be addressed by first name.
+His roommate burned a hand on a stove years ago.
+Photographs local wildlife.
+His sister sprained a thumb last month.
+During a checkup in 2013, free T3 was 3.2 pg/mL.
+Paints watercolors as a hobby.
+Sees a dentist yearly.
+His roommate has a lazy eye.
+His roommate is treated for heart failure.
+Heart rate now 79/min on a pulse check.
+During a checkup in 2008, total protein was 7.0 g/dL.
+Enjoys board games.
+In 2024, lipase was 30 U/L.
+His friend lives with psoriasis.
+Prefers morning appointments.
+Knits as a hobby.
+Teeth in good repair.
+```
+
+**G74-C4**
+
+Facts: patient: heart failure present (current) [line: "Has heart failure, treated with diuretics."]; patient: heart rate = 79 (current) [line: "Heart rate now 79/min on a pulse check."]
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "current heart failure" does not hold for this patient. | s' = Under the rule, the condition "current heart failure" holds for this patient.
+```
+Male patient of 72 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+Drives a car.
+Sleeps seven hours a night.
+Prefers to be addressed by first name.
+His roommate burned a hand on a stove years ago.
+Photographs local wildlife.
+His sister sprained a thumb last month.
+During a checkup in 2013, free T3 was 3.2 pg/mL.
+Paints watercolors as a hobby.
+Sees a dentist yearly.
+His roommate has a lazy eye.
+Has heart failure, treated with diuretics.
+Heart rate now 79/min on a pulse check.
+During a checkup in 2008, total protein was 7.0 g/dL.
+Enjoys board games.
+In 2024, lipase was 30 U/L.
+His friend lives with psoriasis.
+Prefers morning appointments.
+Knits as a hobby.
+Teeth in good repair.
+```
+
+
+## G75
+
+Rule: For newly diagnosed hypertension, prescribe lisinopril. If the patient has ever had a peptic ulcer (current or past) and the current blood urea nitrogen is above 19 mg/dL, prescribe amlodipine instead.
+
+**G75-C1**
+
+Facts: patient: peptic ulcer denied by name (current) [line: "Has never had a peptic ulcer."]; patient: blood urea nitrogen = 24 (current) [line: "Blood urea nitrogen now: 24 mg/dL."]
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "peptic ulcer at any time" does not hold for this patient. | s' = Under the rule, the condition "peptic ulcer at any time" holds for this patient.
+```
+Man of 79 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+In 2011, folate was 12 ng/mL.
+Prefers morning appointments.
+Teeth in good repair.
+Sleeps seven hours a night.
+His friend has recovered from a dislocated finger.
+Has never had a peptic ulcer.
+During a checkup in 2005, free T3 was 3.2 pg/mL.
+Zinc of 85 mcg/dL in 2021.
+Plays the piano.
+Enjoys board games.
+Photographs local wildlife.
+Uses sunscreen in summer.
+Sees a dentist yearly.
+Blood urea nitrogen now: 24 mg/dL.
+Has two cats.
+Pupils equal and reactive to light.
+Drives a car.
+His friend wears contact lenses.
+```
+
+**G75-C2**
+
+Facts: peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: blood urea nitrogen = 24 (current) [line: "Blood urea nitrogen now: 24 mg/dL."]
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "peptic ulcer at any time" does not hold for this patient. | s' = Under the rule, the condition "peptic ulcer at any time" holds for this patient.
+```
+Man of 79 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+In 2011, folate was 12 ng/mL.
+Prefers morning appointments.
+Teeth in good repair.
+Sleeps seven hours a night.
+His friend has recovered from a dislocated finger.
+Appetite good; no indigestion.
+During a checkup in 2005, free T3 was 3.2 pg/mL.
+Zinc of 85 mcg/dL in 2021.
+Plays the piano.
+Enjoys board games.
+Photographs local wildlife.
+Uses sunscreen in summer.
+Sees a dentist yearly.
+Blood urea nitrogen now: 24 mg/dL.
+Has two cats.
+Pupils equal and reactive to light.
+Drives a car.
+His friend wears contact lenses.
+```
+
+**G75-C3**
+
+Facts: patient: peptic ulcer present (current) [line: "Has an active duodenal ulcer."]; patient: blood urea nitrogen = 24 (current) [line: "Blood urea nitrogen now: 24 mg/dL."]
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "peptic ulcer at any time" does not hold for this patient. | s' = Under the rule, the condition "peptic ulcer at any time" holds for this patient.
+```
+Man of 79 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+In 2011, folate was 12 ng/mL.
+Prefers morning appointments.
+Teeth in good repair.
+Sleeps seven hours a night.
+His friend has recovered from a dislocated finger.
+Has an active duodenal ulcer.
+During a checkup in 2005, free T3 was 3.2 pg/mL.
+Zinc of 85 mcg/dL in 2021.
+Plays the piano.
+Enjoys board games.
+Photographs local wildlife.
+Uses sunscreen in summer.
+Sees a dentist yearly.
+Blood urea nitrogen now: 24 mg/dL.
+Has two cats.
+Pupils equal and reactive to light.
+Drives a car.
+His friend wears contact lenses.
+```
+
+**G75-C4**
+
+Facts: peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: blood urea nitrogen = 24 (current) [line: "Blood urea nitrogen 24 mg/dL on the current labs."]
+
+Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
+
+Criterion claims: s = Under the rule, the condition "peptic ulcer at any time" does not hold for this patient. | s' = Under the rule, the condition "peptic ulcer at any time" holds for this patient.
+```
+Male patient of 79 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+His friend has recovered from a dislocated finger.
+Prefers morning appointments.
+Plays the piano.
+In 2011, folate was 12 ng/mL.
+Sleeps seven hours a night.
+Has two cats.
+During a checkup in 2005, free T3 was 3.2 pg/mL.
+Appetite good; no indigestion.
+Enjoys board games.
+Teeth in good repair.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+Blood urea nitrogen 24 mg/dL on the current labs.
+Drives a car.
+Zinc of 85 mcg/dL in 2021.
+His friend wears contact lenses.
+Photographs local wildlife.
+Uses sunscreen in summer.
+```

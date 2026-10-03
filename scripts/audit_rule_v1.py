@@ -745,7 +745,7 @@ def sample_sheets(out_dir, missing, seed=2026):
             fl = facts(c, rule)
             ans = {t: ("neither" if k == "missing" else "s'" if claim[(t, "s_prime")]["label"] else "s")
                    for t in ("conclusion", "criterion") if (t, "s") in claim}
-            case_id = f"{group}-C{j + 1}"
+            case_id = f"A{gno % 4 + 1}-{group}-C{j + 1}"      # unique across the four sheets
             row = {"author": author, "row": len(sheets[author]) + 1, "group": group, "case": case_id, "set": name,
                    "rule_text": c["rule_text"], "conclusion_s": c["claim_text"],
                    "conclusion_s_prime": claim[("conclusion", "s_prime")]["claim_text"],
