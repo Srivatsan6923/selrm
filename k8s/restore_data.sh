@@ -11,6 +11,11 @@ tar -xf "$ROOT/env/selrm-env-$ENVTAG.tar" -C /opt
 PY=/opt/selrm-env/venv/bin/python
 cp -r "$ROOT/code/$CODE" /tmp/code
 cd /tmp/code
+# builders that derive a set from frozen parents (e.g. scripts/build_aux_corpora.py) read the parents' records,
+# which are not in git: link every verified record file on the PVC into the snapshot's data/ (read only)
+( cd "$ROOT/data" && find . -name records.jsonl ) | while read -r f; do
+  [ -e "data/$f" ] || { mkdir -p "data/$(dirname "$f")"; ln -s "$ROOT/data/$f" "data/$f"; }
+done
 "$PY" "$@" --restore
 NAME="$NAME" "$PY" - <<'EOF'
 import hashlib, json, os, shutil
