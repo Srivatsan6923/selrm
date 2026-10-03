@@ -40,13 +40,13 @@ def main():
         if summ.get("all"):
             summ["CI95"] = {m: list(bootstrap_ci(T, m)) for m in ("TA", "Rev", "Hold")}
         summ["eval"] = {"mode": "program_on_predicted_ledger", "source_run": a.src, **stats_all[s]}
-        json.dump(summ, open(f"{out}/summary_{name}.json", "w"), indent=1)
+        json.dump(summ, open(f"{out}/summary_{name}.json", "w", newline="\n"), indent=1)
     commit = subprocess.run(["git", "-C", ROOT, "rev-parse", "--short=12", "HEAD"], capture_output=True, text=True).stdout.strip()
     tot = {k: sum(v.get(k, 0) for v in stats_all.values()) for k in ("matched", "unmatched", "no_answer", "malformed", "records")}
     json.dump({"run_id": a.out, "kind": "eval (CPU)", "source_run": a.src, "program": "role A rule_v1 freeze e40789bd5d7a",
                "eval_sets": list(stats_all), "git_commit": commit, **tot, "per_set": stats_all},
-              open(f"{out}/meta.json", "w"), indent=1)
-    open(f"{out}/DONE", "w").write(datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") + "\n")
+              open(f"{out}/meta.json", "w", newline="\n"), indent=1)
+    open(f"{out}/DONE", "w", newline="\n").write(datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") + "\n")
     print(json.dumps(tot))
 
 

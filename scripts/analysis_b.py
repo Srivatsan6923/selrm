@@ -171,11 +171,11 @@ def program_ledger_section():
     T, Tj = triplets(rid), triplets("B-F-ledger2-triplets-s0")
     s, sj = summarise(T)["all"], summarise(Tj)["all"]
     d, lo, hi = paired_diff(T, Tj, "TA")
-    meta = json.load(open(f"{RG}/{rid}/meta.json"))
+    meta = json.load(open(f"{RG}/{rid}/summary_rule_v1~test_L2.json"))["eval"]      # test_L2 counts
     print(f"Program on the predicted ledger: TA {s['TA']:.1f} (Rev {s['Rev']:.1f}, Hold {s['Hold']:.1f}); the trained "
           f"judge on the same ledgers: TA {sj['TA']:.1f}; paired difference {d:+.1f} [{lo:+.1f}, {hi:+.1f}]. "
-          f"Ledger entries matched to case mentions: {meta.get('matched')}; unmatched: {meta.get('unmatched')}; records "
-          f"without a program answer: {meta.get('no_answer')}." + NL)
+          f"On test_L2, ledger entries matched to case mentions: {meta.get('matched')}; unmatched: {meta.get('unmatched')}; "
+          f"malformed ledgers: {meta.get('malformed')}; records without a program answer: {meta.get('no_answer')}." + NL)
 
 
 def macro_section():
