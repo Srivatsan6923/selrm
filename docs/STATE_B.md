@@ -1,5 +1,5 @@
 # STATE role B (maintained by Claude Code)
-Updated: 2026-10-03 ~05:20 UTC (Sat). Plan: docs/FINAL_TASKS_B.md (3 Oct; replaces every earlier directive).
+Updated: 2026-10-03 ~05:45 UTC (Sat). Plan: docs/FINAL_TASKS_B.md (3 Oct; replaces every earlier directive).
 Run freeze: Wed 7 Oct 23:59 (UTC assumed). Decisions: docs/DECISIONS_B.md. Analyses: docs/ANALYSIS_B.md.
 
 ## P0 status
@@ -24,9 +24,13 @@ Run freeze: Wed 7 Oct 23:59 (UTC assumed). Decisions: docs/DECISIONS_B.md. Analy
 -> 76-77 folds -> 80-81 diversity -> 85 second backbone (granite-4.1-8b) -> 92-99 unlisted rows.
 
 ## GPUs held
-- 10 runner Jobs on the latest code (6 x A100, 2 x A40, 1 x L40, 1 x A6000), all Pending since 04:56 UTC: the
-  cluster has no free card of these types (scheduler: Insufficient nvidia.com/a100). Namespace A100 quota 7/9
-  (C shares it; B uses at most 6). 24 GB cards are not used: training peaks at 21-27 GB.
+- 10 runner Jobs (code 625e935: every queued format except conddrv) on 6 x A100, 2 x A40, 1 x L40, 1 x A6000,
+  all Pending since 04:56 UTC: the cluster has no free card of these types (scheduler: Insufficient
+  nvidia.com/a100). Namespace A100 quota 7/9 (C shares it; B uses at most 6). 24 GB cards are not used: training
+  peaks at 21-27 GB.
+- 2 runner Jobs on H100 at priority class opportunistic (code 072d46d, max 3 runs, 12 h), scheduled at 05:40 UTC.
+  Preemptible: a preempted run is re-claimed from scratch.
+- B-AB-conddrv-s0 needs a runner on code >= bc9d2bc (the H100 runners, or any runner submitted later).
 - Sync pod selrm-b-sync created ~03:00 UTC (6 h deadline): recreate before ~09:00 UTC (delete the Completed pod
   first, then sync-up).
 
@@ -35,7 +39,10 @@ verdict x {natural, balanced, blocks, triplets}; rationale x {natural, blocks, t
 ledger2 x {blocks, triplets}; B-BB-qwen3.5-4b verdict x blocks; all B-C0 validation runs; B-T0 timing.
 
 ## P1 work without GPUs
-- B-AB-conddrv-s0 (condition derived by the reader): new reader format, to implement.
+- B-AB-conddrv-s0 (condition derived by the reader): format conddrv implemented, CPU self-test passes, queued
+  (priority 63), prep OK.
+- New sets from A (P0.6): check that their records carry gold ledgers before the reader formats are run on them
+  (pretok check_gold requires one per (case, condition)); C's xr_v1 convention: selrm.metrics.crossed_accuracy.
 - Premise gate: needs the step check (C/D). Probe re-weighting step 2 after its scores run.
 - Medical-data rows, B-DIS: need C's clinical pairs.
 
