@@ -131,8 +131,8 @@
    "note": "untrained backbone, frozen verdict prompt, pointwise u (Table 4 critic row; Table 2 backbone row)"
   },
   {
-   "run_id": "C-TF-promptledger",
-   "priority": 20,
+   "run_id": "C-TF-promptledger--p1",
+   "priority": 20.1,
    "format": "ledger2",
    "adapter": null,
    "bs_score": 128,
@@ -140,17 +140,41 @@
    "sets": [
     "rule_v1/dev_missing",
     "rule_v1/dev",
-    "rule_v1/missing",
-    "rule_v1/test_L2",
+    "rule_v1/missing"
+   ],
+   "note": "untrained backbone, frozen reader (ledger) and judge prompts; strict malformed check primary, lenient normalisation secondary",
+   "merge_into": "C-TF-promptledger"
+  },
+  {
+   "run_id": "C-TF-promptledger--p2",
+   "priority": 20.2,
+   "format": "ledger2",
+   "adapter": null,
+   "bs_score": 128,
+   "max_new": 768,
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "note": "untrained backbone, frozen reader (ledger) and judge prompts; strict malformed check primary, lenient normalisation secondary",
+   "merge_into": "C-TF-promptledger"
+  },
+  {
+   "run_id": "C-TF-promptledger--p3",
+   "priority": 20.3,
+   "format": "ledger2",
+   "adapter": null,
+   "bs_score": 128,
+   "max_new": 768,
+   "sets": [
     "rule_v1/test_L3alt",
     "xr_v1/test"
    ],
    "note": "untrained backbone, frozen reader (ledger) and judge prompts; strict malformed check primary, lenient normalisation secondary",
-   "min_gb": 30
+   "merge_into": "C-TF-promptledger"
   },
   {
-   "run_id": "C-TF-promptsum",
-   "priority": 20,
+   "run_id": "C-TF-promptsum--p1",
+   "priority": 20.1,
    "format": "summary2",
    "adapter": null,
    "bs_score": 128,
@@ -158,13 +182,37 @@
    "sets": [
     "rule_v1/dev_missing",
     "rule_v1/dev",
-    "rule_v1/missing",
-    "rule_v1/test_L2",
+    "rule_v1/missing"
+   ],
+   "note": "untrained backbone, frozen reader (prose) and judge prompts",
+   "merge_into": "C-TF-promptsum"
+  },
+  {
+   "run_id": "C-TF-promptsum--p2",
+   "priority": 20.2,
+   "format": "summary2",
+   "adapter": null,
+   "bs_score": 128,
+   "max_new": 768,
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "note": "untrained backbone, frozen reader (prose) and judge prompts",
+   "merge_into": "C-TF-promptsum"
+  },
+  {
+   "run_id": "C-TF-promptsum--p3",
+   "priority": 20.3,
+   "format": "summary2",
+   "adapter": null,
+   "bs_score": 128,
+   "max_new": 768,
+   "sets": [
     "rule_v1/test_L3alt",
     "xr_v1/test"
    ],
    "note": "untrained backbone, frozen reader (prose) and judge prompts",
-   "min_gb": 30
+   "merge_into": "C-TF-promptsum"
   },
   {
    "run_id": "C-ME-critic",
