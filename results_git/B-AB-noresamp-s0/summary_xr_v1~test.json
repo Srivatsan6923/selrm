@@ -1,0 +1,44 @@
+{
+ "run_id": "B-AB-noresamp-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 78.75,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 96.29166666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 96.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 64.0,
+   "XA_window": 55.0
+  },
+  "criterion": {
+   "XA": 81.75,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 96.79166666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 70.0,
+   "XA_window": 57.0
+  }
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 34,
+  "mode": null,
+  "malformed_rate": 0.0142,
+  "gen_not_stopped": 0,
+  "seconds": 125.2,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
