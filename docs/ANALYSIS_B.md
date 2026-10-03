@@ -261,6 +261,7 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | B-LOKO-time-ledger2-s0 | 0.3 | 30000 | 15000 | 4526 | 30.2% | 797 |
 | B-LOKO-time-summary2-s0 | 0.3 | 30000 | 15000 | 4526 | 30.2% | 797 |
 | B-SC-summary2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-TR-clinonly-s0 | 0.3 | 30000 | 15000 | 4561 | 30.4% | 291 |
 
 ## 9. Field interventions on the ledger x triplets adapter (test_L2)
 
@@ -410,6 +411,8 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-NS-xr_v1-B-F-verdict-triplets-s0 | 90.2 | 97.7 | 100.0 | 100.0 | 95.0 | 66.0 |
 | B-NS-xr_v1-B-F-verdict-triplets-s1 | 91.2 | 98.4 | 100.0 | 100.0 | 94.0 | 71.0 |
 | B-SC-summary2-triplets-s0 | 91.5 | 98.6 | 96.0 | 100.0 | 98.0 | 72.0 |
+| B-TR-clinonly-s0 | 35.5 | 88.0 | 15.0 | 25.0 | 55.0 | 47.0 |
+| B-TR-fover-s0 | 67.0 | 94.4 | 93.0 | 40.0 | 92.0 | 43.0 |
 
 ## 13. Core cells across seeds (test_L2; FINAL_TASKS_B P0.3; mean and s.d. over the finished seeds)
 
