@@ -194,6 +194,12 @@ def main():
         print(exec_sync("sh", "-c", a.args[0]), end="")
     elif a.cmd == "runner":
         code = a.code or sha()
+        # a Job started on a snapshot that is not on the PVC fails at once in its init container
+        if subprocess.run(["kubectl", "-n", NS, "exec", "selrm-c-sync", "--", "test", "-d", f"{ROOT}/code/{code}"],
+                          capture_output=True).returncode:
+            if code != sha():
+                sys.exit(f"code snapshot {code} is not on the PVC")
+            push_code()
         if not a.bcode:
             sys.exit("--bcode (B's code snapshot under /pvcb/selrm/code) is required")
         stem = a.args[0].replace("_", "-").replace(".json", "")
