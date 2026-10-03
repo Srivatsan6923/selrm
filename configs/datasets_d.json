@@ -1,0 +1,29 @@
+{
+ "note": "Datasets used by role D (candidate pools, selection). Verified against the live sources on 2026-10-02 (Hugging Face API dataset sha; GitHub API licence). Files are downloaded inside the pool jobs at these revisions and checked against these sha256 values.",
+ "medqa_test": {
+  "hf_dataset": "bigbio/med_qa",
+  "revision": "484a6c066fe8e75c83edea0c88b5169316714fcd",
+  "file": "med_qa_en_4options_source/test-00000-of-00001.parquet",
+  "sha256": "b50b49fad2642c10ed343c6174d5ab0cb8efad434e7b66465ac471094eb57deb",
+  "n_questions": 1273,
+  "options": 4,
+  "licence": "MIT (original MedQA repository github.com/jind11/MedQA, GitHub API licence field, 2026-10-02); the BigBio card lists 'unknown'",
+  "cross_check": "GBaker/MedQA-USMLE-4-options@0fb93dd23a7339b6dcd27e241cb9b5eca62d4d18 phrases_no_exclude_test.jsonl has the same 1,273 questions (cc-by-4.0 card)",
+  "verified": "2026-10-02"
+ },
+ "careqa_en": {
+  "hf_dataset": "HPAI-BSC/CareQA",
+  "revision": "1d976cc544ccb9dfc96e14439e6840e8a810cec5",
+  "file": "CareQA_en.json",
+  "sha256": "1d694124ee73130d0fcff7bafa9f61d0de26d0f2f9398a24559e53bb9aea3c40",
+  "n_questions": 5621,
+  "options": 4,
+  "licence": "apache-2.0 (dataset card)",
+  "verified": "2026-10-02"
+ },
+ "policy": {
+  "model": "unsloth/Qwen3.5-9B",
+  "revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+  "note": "frozen policy for candidate pools = B's pinned backbone (configs/models_b.json)"
+ }
+}
