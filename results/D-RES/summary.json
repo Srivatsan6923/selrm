@@ -1,0 +1,96 @@
+{
+ "run_id": "D-RES",
+ "note": "Resources per scored claim (D-RES; App. G \"Resources\"), from the runs' own meta.json files.",
+ "systems": {
+  "verdict": {
+   "run_id": "B-F-verdict-triplets-s0",
+   "passes_per_claim": 1,
+   "claims": 135550,
+   "reader_units": null,
+   "generated_tokens": 0,
+   "generated_tokens_per_claim": 0.0,
+   "generated_tokens_per_reader_unit": null,
+   "eval_gpu_seconds": 2352.2,
+   "eval_gpu_seconds_per_1000_claims": 17.3530062707488,
+   "gpu": "NVIDIA A100-SXM4-80GB",
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "rule_v1/readapply",
+    "rule_v1/test_L0",
+    "rule_v1/test_L1",
+    "rule_v1/test_L2",
+    "rule_v1/test_L3alt",
+    "rule_v1/test_L3inv",
+    "rule_v1/test_hard"
+   ]
+  },
+  "rationale": {
+   "run_id": "B-F-rationale-triplets-s0",
+   "passes_per_claim": 2,
+   "claims": 135550,
+   "reader_units": null,
+   "generated_tokens": 5019597,
+   "generated_tokens_per_claim": 37.03133161195131,
+   "generated_tokens_per_reader_unit": null,
+   "eval_gpu_seconds": 9224.2,
+   "eval_gpu_seconds_per_1000_claims": 68.05016599040944,
+   "gpu": "NVIDIA A100-SXM4-80GB",
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "rule_v1/readapply",
+    "rule_v1/test_L0",
+    "rule_v1/test_L1",
+    "rule_v1/test_L2",
+    "rule_v1/test_L3alt",
+    "rule_v1/test_L3inv",
+    "rule_v1/test_hard"
+   ]
+  },
+  "summary2": {
+   "run_id": "B-F-summary2-triplets-s0",
+   "passes_per_claim": 2,
+   "claims": 43432,
+   "reader_units": 11800,
+   "generated_tokens": 415668,
+   "generated_tokens_per_claim": 9.570547062074047,
+   "generated_tokens_per_reader_unit": 35.22610169491526,
+   "eval_gpu_seconds": 1219.4,
+   "eval_gpu_seconds_per_1000_claims": 28.076072941609873,
+   "gpu": "NVIDIA A100-SXM4-80GB",
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2",
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ]
+  },
+  "ledger2": {
+   "run_id": "B-F-ledger2-triplets-s0",
+   "passes_per_claim": 2,
+   "claims": 135550,
+   "reader_units": 38800,
+   "generated_tokens": 1357003,
+   "generated_tokens_per_claim": 10.011088159350793,
+   "generated_tokens_per_reader_unit": 34.97430412371134,
+   "eval_gpu_seconds": 5058.5,
+   "eval_gpu_seconds_per_1000_claims": 37.31833271855404,
+   "gpu": "NVIDIA A100-PCIE-40GB",
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "rule_v1/readapply",
+    "rule_v1/test_L0",
+    "rule_v1/test_L1",
+    "rule_v1/test_L2",
+    "rule_v1/test_L3alt",
+    "rule_v1/test_L3inv",
+    "rule_v1/test_hard"
+   ]
+  }
+ }
+}
