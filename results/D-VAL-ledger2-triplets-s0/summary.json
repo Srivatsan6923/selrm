@@ -1,0 +1,36 @@
+{
+ "run_id": "D-VAL-ledger2-triplets-s0",
+ "set": "rule_v1/test_L2",
+ "what": "B's kept adapter B-F-ledger2-triplets-s0 merged into the base weights (scripts/merge_adapter.py) and served by vLLM 0.30.0 (scripts/score_pool.py validate), compared with B's own HF/PEFT scores of the same adapter",
+ "criteria_fixed_before_run": "DECISIONS_D 2026-10-03: preference-sign agreement >= 99%, TA within 0.5 points of B's, reader output identical for >= 90% of records",
+ "passed": true,
+ "reader_output_identical_share": 0.9989059080962801,
+ "gpu": "NVIDIA H100 (opportunistic, SDSC)",
+ "merged_model": "/pvc/merged/B-F-ledger2-triplets-s0 (MERGED.json: adapter sha256 fd4371ce...)",
+ "records": 29248,
+ "reader_output_identical": 29216,
+ "u_pearson": 0.9996955192970357,
+ "u_mean_abs_diff": 0.3674013564664732,
+ "preference_sign_agreement": 0.999625,
+ "n_preferences": 8000,
+ "vllm": {
+  "Rev": 99.15,
+  "Hold": 99.9,
+  "TA": 99.05,
+  "BaseAcc": 99.5,
+  "Tie": 0.05,
+  "PresHold": 99.65,
+  "n": 2000
+ },
+ "b": {
+  "Rev": 99.25,
+  "Hold": 99.95,
+  "TA": 99.2,
+  "BaseAcc": 99.6,
+  "Tie": 0.0,
+  "PresHold": 99.65,
+  "n": 2000
+ },
+ "judge_token_missing_from_top20": 12,
+ "seconds": 203.9
+}
