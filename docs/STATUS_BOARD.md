@@ -43,8 +43,8 @@ Updated 2026-10-03 ~07:00 UTC after merge 3 (main 201e360: 71 tests pass; rule_v
 | D-P0.2 | make_tables.py with provenance, seeds, paired tests + Holm | D | done; specs follow the other roles' run ids (docs/RESULT_KEYS.md) | scripts/make_tables.py, tables/ |
 | D-P0.3 | update_paper.py, build that fails on placeholders, v13 sources | D | done: 185 numbers wired to keys; report docs/PAPER_NUMBERS.md | scripts/update_paper.py, scripts/build_paper.py |
 | D-P0.4 | Kits: error sheets, citation checklist, development timeline | D | error sheets and citation checklist done; timeline running | audit/, docs/CITATIONS_TODO.csv, docs/TIMELINE.md |
-| D-P0.5 | Length plan to 8 pages | D | running | docs/LENGTH_PLAN.md |
-| D-P1 | Pools, Table 5, selection pressure, GRPO, resources, final audit | D | code ready; NRP env built; merged ledger models being validated against B's scores; pool jobs wait for GPUs | scripts/make_pool.py, score_pool.py, select_eval.py |
+| D-P0.5 | Length plan to 8 pages | D | done (proposal): 20 moves take the main text from 10.9 to 7.9 pages in a trial build, no experiment removed; the authors apply it (H6) | docs/LENGTH_PLAN.md, tools/length_plan/ |
+| D-P1 | Pools, Table 5, selection pressure, GRPO, resources, final audit | D | code ready (pools for MedQA test/dev, CareQA 1,000, MedEinst 500 pairs; scoring; selection; GRPO script); merged-adapter validation queued on NRP (us-west GPUs saturated); D-RES done for existing runs | scripts/make_pool.py, score_pool.py, select_eval.py, grpo_d.py |
 | H1 | Read 75 rendered groups each (300) | authors | kit ready (A): audit/fidelity_author{1..4}.csv | audit/fidelity_<name>.csv |
 | H2 | Write 40 challenge cases each; second author checks | authors | kit ready (A): challenge_v1/form_author{1..4}.md | challenge_v1/notes_<name>.jsonl |
 | H3 | Sign off each registered criterion's program | two authors | waits for A-P0.5 | docs/EC_SIGNOFF.csv |
