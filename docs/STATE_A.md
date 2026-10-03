@@ -1,45 +1,61 @@
 # STATE role A (maintained by Claude Code)
-Updated: Fri 2 Oct 2026, late evening. Paused on the user's instruction: no new runs. Nothing of role A is running.
+Updated: Fri 2 Oct 2026, late evening. Working on FINAL_TASKS_A (P0 in order, then P1), plus the
+lead's addendum of 2 Oct: `docs/PAPER_VS_CODE.md`; the paper follows the code; windows only in
+the new sets.
 
-## Done
-46 tests pass, and shortcut validation passes on every triplet set.
-- **Engine (`selrm/engine.py`):**
-  - canonical records, invariants and tiers;
-  - near-miss kinds numeric, boundary, subject, negation and time;
-  - missing twins and reading/application pairs;
-  - meaning-preserving presentation edits.
-- **Rule library: 353 rules.**
-  - 104 hand-written, including 43 scoring rules (batches C1–C3 and S1–S4 merged);
-  - 250 grammar-sampled;
-  - 60 invented rules for L3-inv, test only.
-  - Signature classes and 3 folds are in `selrm/folds.py`.
-- **Phrase banks: 53 concepts, 1,428 templates.** Sources are in `tools/phrase_kit`. The generators there regenerate `selrm/phrases.py` byte-identically.
-- **rule_v1 frozen on 2 Oct.**
-  - Fold 1 has 36 sets, including the 6 corpora for the two new experiments: `train_triplets_lo_{subject,negation,time}` and `train_dose_{05,12,25}`.
-  - `rule_v1_fold2` and `rule_v1_fold3` have 4 sets each.
-  - `data/REGISTRY.json`, the MANIFESTs and FOLDS are committed.
-  - Records are rebuilt with `scripts/build_rule_v1.py` and checked against the sha256 values. B's cluster rebuild matched.
-- **Results:** `results/A-D14-*` (shortcut scorers), `results/A-D15` (statistics), `docs/SAMPLE_TRIPLETS.md`.
-- **Audits:** two rounds read 450 rendered groups and found no label errors. Every fix was applied before the freeze.
-- **Tools for other roles:**
-  - `selrm/reference.py`: check code and reference graphs (A-D13);
-  - `scripts/rewrite_tier.py`: the A-D11 pipeline. Its self-test passes; it waits for an API key.
+## P0 status
+1. **Audit of rule_v1: done.**
+   - Outputs: `docs/DATA_AUDIT_rule_v1.md`, `docs/PAPER_VS_CODE.md`, `tables/data_stats.json`,
+     `data/rule_v1/{RULE_MANIFEST,RULE_SOURCES,KNOWN_ISSUES}.json`.
+   - Re-executed check: 0 violations over 16,200 groups.
+   - Sources of the 103 hand-written rules were checked by model agents: 97 simplified, 6
+     synthetic, 53 with a stated contradiction.
+   - Reviewer disclosure: the 450 groups were read by 6 LLM sessions and no person
+     (`audit/model_review/`).
+   - H1 sheets: `audit/fidelity_author{1..4}.csv`.
+   - Regenerate with `python scripts/audit_rule_v1.py && python scripts/render_docs.py`.
+2. **xr_v1: done and frozen.**
+   - 400 items: window, currency, subject, inclusivity.
+   - Validation scorers all at XA 0; the program at XA 100.
+   - Code: `selrm/xr.py`, `scripts/build_xr_v1.py` (`--restore` writes the records).
+   - Change request filed for the new case kinds.
+3. **challenge_v1 kit: done.**
+   - 160 specifications in `challenge_v1/form_author{1..4}.md` with `WRITING_GUIDE.md`.
+   - Assembler: `scripts/challenge_v1.py assemble`.
+   - Freeze after H2.
+4. **Corpora for B: done.**
+   - `train_triplets_no_boundary` is new and frozen.
+   - `no_subject`, `no_time` and `nm05/12/25` are registry aliases of `lo_*` and `dose_*`.
+5. **ec_v1: in progress.**
+   - Mined from ClinicalTrials.gov (`scripts/ec_mine.py`): 8,425 candidates, then 294 selected,
+     with TrialGPT trials and texts excluded (C's `configs/trialgpt_exclusions.json`).
+   - Formalisation workflow `ec-formalize` (run `wf_5de76e48-8f4`) is running: 12 batches, each
+     with a formalizer and two skeptics.
+   - Next:
+     - save its result to `ec_v1/formalized.json`;
+     - run `python scripts/build_ec_v1.py prepare`, which writes `docs/EC_SIGNOFF.csv` and
+       `ec_v1/EXCLUSIONS.csv`;
+     - hand the sheet to two authors (H3);
+     - run `freeze` once both have signed off.
+6. **rewrite_v1: ready, blocked.**
+   - `scripts/rewrite_tier.py` writes `rewrite_v1/test` plus the audit file
+     `data/rewrite_v1/rejected.jsonl`.
+   - Waits for `OPENROUTER_API_KEY` (compute request #1).
 
-## Running
-None.
-
-## Next
-1. **A-D11:** once `OPENROUTER_API_KEY` exists, run `python scripts/rewrite_tier.py --n 1000 --freeze`. Then report the acceptance rate and add a HANDOFFS line.
-2. **If C's pilot (Sun 4 Oct) is NO-GO:** build rule_v2 under new names, with a 60% hard-tier share and the combined tiers.
-3. **Appendix B and C text**, from `results/A-D15`, `results/A-D14-*` and `docs/DECISIONS_A.md`.
+## P1 (after P0)
+- Appendix B and C text from the audit.
+- MedCalc-Bench as a separate named set, if time allows.
+- Folds 2-3, diversity corpora, check code and reference graphs: already registered or done.
 
 ## Open compute requests
-- #1 (2 Oct): an OpenRouter API key, as environment variable `OPENROUTER_API_KEY`, for A-D11. Cost is about $2–3.
+- #1 (2 Oct): `OPENROUTER_API_KEY` for rewrite_v1, about $2-3.
 
-## Blockers
-- A-D11 waits for request #1.
+## Human tasks prepared by A
+- H1: `audit/fidelity_author{1..4}.csv`.
+- H2: `challenge_v1/form_author{1..4}.md`.
+- H3: `docs/EC_SIGNOFF.csv`, written by `build_ec_v1.py prepare`.
 
-## Schedule
-Ahead. rule_v1 was frozen on Fri 2 Oct; the target was Sat 3 Oct 18:00.
-
-The one-page summary is in `docs/SUMMARY_A.md`.
+## Notes for whoever resumes
+- Commit as Srivatsan Sarvesan <srivatsan6923@gmail.com>, with no assistant trailers.
+- rule_v1 is frozen. Never regenerate or edit it; new sets get new names.
+- Bash heredocs mangle backslashes. Edit Python files with the Edit tool.

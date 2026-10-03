@@ -1,5 +1,6 @@
 """Clinical-set evaluation from per-example scores (owner C). No GPU.
   python scripts/eval_clinical.py trialgpt --split dev|test [--results results_git] [--data scratch/rv1]
+  python scripts/eval_clinical.py medeinst [--results results_git]   (every run with MedEinst test scores)
 TrialGPT (docs/TRIALGPT_PROTOCOL.md): for every system run found, the acceptance threshold
 tau comes from the run's own rule_v1/dev_missing scores (selrm.metrics.mr_threshold, 5%
 false rejection); per item NEI if max(u_s, u_s') < tau or u_s = u_s', else met / not met
@@ -19,7 +20,8 @@ SYSTEMS = [  # (name in run ids, row label, format). Test runs: C-TG-<name> for 
     # (mirrors C-TF-<name>), C-TG-<name>-s<k> for B's adapters (mirrors B-F-<name>-s<k>); dev: C-TG-<name>-dev
     ("critic", "Untrained backbone, verdict (critic)", "verdict"),
     ("promptsum", "Untrained backbone, prompted summary", "summary2"),
-    ("promptledger", "Untrained backbone, prompted ledger", "ledger2"),
+    ("promptledger", "Untrained backbone, prompted ledger (frozen malformed check)", "ledger2"),
+    ("promptledger-lenient", "Untrained backbone, prompted ledger (format-normalised readout)", "ledger2"),
     ("verdict-blocks", "Verdict only x blocks", "verdict"),
     ("verdict-triplets", "Verdict only x triplets", "verdict"),
     ("summary2-blocks", "Prose summary x blocks", "summary2"),
@@ -27,7 +29,7 @@ SYSTEMS = [  # (name in run ids, row label, format). Test runs: C-TG-<name> for 
     ("ledger2-blocks", "Ledger x blocks", "ledger2"),
     ("ledger2-triplets", "Ledger x triplets", "ledger2"),
 ]
-UNTRAINED = ("critic", "promptsum", "promptledger")
+UNTRAINED = ("critic", "promptsum", "promptledger", "promptledger-lenient")
 
 
 def run_ids(res, name, split):
@@ -114,8 +116,8 @@ def evaluate(recs, sc, tau, fmt):
                                          "expert": set(r["meta"]["expert_sentences"]), "note": r["case_text"]})
         s = sc[r["iid"]]
         it["u"][r["claim_role"]] = s["u"]
-        if "reader_output" in s:
-            it["reader"] = s["reader_output"]
+        if "reader_output" in s:      # a re-judged run's quotes come from the ledger its judge read
+            it["reader"] = s.get("ledger_lenient") or s["reader_output"]
     for it in items.values():
         it["pred"] = predict(it["u"]["s"], it["u"]["s_prime"], tau)
         d = it["u"]["s"] - it["u"]["s_prime"]
@@ -176,16 +178,19 @@ def summary(items, tau, run, split):
             "bootstrap": {"unit": "patient", "B": 1000, "seed": 0}}
 
 
-def run_system(res, data, recs, dm, split, name, fmt, variant="", run=None):
-    sfx = "~lenient" if variant else ""
-    sc = scores(f"{res}/{run}/scores_clin_v1~trialgpt_{split}{sfx}.jsonl")
-    sd = scores(f"{res}/{run}/scores_rule_v1~dev_missing{sfx}.jsonl")
+def run_system(recs, dm, split, fmt, run_dir):
+    """(items, summary) of one run, or (None, None) if it has no scores for the split yet."""
+    sc = scores(f"{run_dir}/scores_clin_v1~trialgpt_{split}.jsonl")
+    src = f"{run_dir}/scores_rule_v1~dev_missing.jsonl"
+    if not os.path.exists(src):          # test run of a system with a dev run: same adapter, code and set
+        src = re.sub(r"(-s0)?$", "-dev", run_dir, count=1) + "/scores_rule_v1~dev_missing.jsonl"
+    sd = scores(src)
     if sc is None or sd is None:
-        return run, None, None
+        return None, None
     tau = M.mr_threshold(dm, [sd[r["iid"]]["u"] for r in dm])
-    items = evaluate(recs, {k: v | ({"reader_output": scores(f"{res}/{run}/scores_clin_v1~trialgpt_{split}.jsonl")[k]["reader_output"]}
-                                    if variant else {}) for k, v in sc.items()}, tau, fmt)
-    return run, items, summary(items, tau, run, split)
+    items = evaluate(recs, sc, tau, fmt)
+    return items, summary(items, tau, os.path.basename(run_dir), split) | {
+        "threshold_source": os.path.relpath(src, os.path.dirname(os.path.dirname(run_dir))).replace(os.sep, "/")}
 
 
 def fmt_num(x, nd=1):
@@ -194,27 +199,30 @@ def fmt_num(x, nd=1):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("dataset", choices=["trialgpt"])
+    ap.add_argument("dataset", choices=["trialgpt", "medeinst", "keypairs", "nli4ct"])
     ap.add_argument("--split", default="dev", choices=["dev", "test"])
     ap.add_argument("--results", default=f"{REPO}/results_git")
     ap.add_argument("--data", default=os.environ.get("SELRM_DATA", f"{REPO}/scratch/rv1"))
+    ap.add_argument("--data-c", default=f"{REPO}/data", help="C's sets (clin_v1/...)")
     a = ap.parse_args()
+    if a.dataset == "medeinst":
+        return medeinst(a)
+    if a.dataset == "keypairs":
+        return keypairs(a)
+    if a.dataset == "nli4ct":
+        return nli4ct(a)
     recs = load_jsonl(f"{REPO}/data/clin_v1/trialgpt_{a.split}/records.jsonl")
     dm = dataset(a.data, "rule_v1/dev_missing")
     rows, items_by = [], {}
-    combos = [(name, label, fmt, variant, rid) for name, label, fmt in SYSTEMS
-              for variant in ([""] + (["lenient"] if fmt == "ledger2" else []))
-              for rid in run_ids(a.results, name, a.split)]
-    for name, label, fmt, variant, rid in combos:
-        run, items, summ = run_system(a.results, a.data, recs, dm, a.split, name, fmt, variant, rid)
-        seed = rid.rsplit("-s", 1)[1] if rid[-3:-1] == "-s" else None
-        key = name + ("~lenient" if variant else "") + (f"@s{seed}" if seed not in (None, "0") else "")
-        rows.append((key, label + (" (lenient ledger parse)" if variant else "") + (f", seed {seed}" if seed else ""),
-                     run, summ))
+    for name, label, fmt, run in [(n, l, f, r) for n, l, f in SYSTEMS for r in run_ids(a.results, n, a.split)]:
+        items, summ = run_system(recs, dm, a.split, fmt, f"{a.results}/{run}")
+        seed = run.rsplit("-s", 1)[1] if run[-3:-1] == "-s" else None
+        key = name + (f"@s{seed}" if seed not in (None, "0") else "")
+        rows.append((key, label + (f", seed {seed}" if seed else ""), run, summ))
         if summ is None:
             continue
         items_by[key] = items
-        out = f"{a.results}/{run}/summary_clin_v1~trialgpt_{a.split}{'~lenient' if variant else ''}.json"
+        out = f"{a.results}/{run}/summary_clin_v1~trialgpt_{a.split}.json"
         old = json.load(open(out, encoding="utf-8")) if os.path.exists(out) else {}
         summ["eval"] = old.get("eval")
         json.dump(summ, open(out, "w", encoding="utf-8", newline="\n"), indent=1)
@@ -235,6 +243,214 @@ def main():
                   open(f"{a.results}/C-TG-comparisons_{a.split}.json", "w", encoding="utf-8", newline="\n"), indent=1)
     if a.split == "test":
         write_report(rows, comps)
+
+
+# ---------------------------------------------------------------- MedEinst
+
+ME_SET = "clin_v1/medeinst_test"
+ME_COMPARISONS = [("ledger2-triplets-s0", "critic"), ("ledger2-triplets-s0", "summary2-triplets-s0")]   # plan (4), (5)
+
+
+def me_pairs(recs, sc):
+    """One item per pair: d on the control (base) and on the trap (flip); flags from the records."""
+    P = {}
+    for r in recs:
+        p = P.setdefault(r["tid"], {"tid": r["tid"], "labels": r["rid"], "u": {}, "flags": r["meta"]})
+        p["u"][(r["case_kind"], r["claim_role"])] = sc[r["iid"]]["u"]
+    out = []
+    for p in P.values():
+        u = p["u"]
+        dc, dt = u[("base", "s")] - u[("base", "s_prime")], u[("flip", "s")] - u[("flip", "s_prime")]
+        out.append({"tid": p["tid"], "labels": p["labels"], "control": dc > 0, "trap": dt < 0, "tie": dc == 0 or dt == 0,
+                    "trapped": dc > 0 and dt > 0, "no_diff": p["flags"].get("no_content_diff", False),
+                    "overlap": p["flags"].get("overlap_ref", False), "meta": p["flags"]})
+    return out
+
+
+KP_SETS = ("clin_v1/keypairs_medqa", "clin_v1/keypairs_careqa", "clin_v1/keypairs_medqa_oneway",
+           "clin_v1/keypairs_careqa_oneway")
+
+
+def keypairs(a):
+    """Key pairs: reversal = each question preferred with its own key (ties fail); by stem-similarity tercile
+    and by category of the first question; bootstrap over pairs."""
+    L = ["# Key pairs: results (role C)", "",
+         "Generated by `scripts/eval_clinical.py keypairs` from `results_git/*/scores_clin_v1~keypairs_*.jsonl` (no typed "
+         "numbers). Definitions and yields: `data/clin_v1/keypairs_*/MANIFEST.json`; the v13 definition gives very few "
+         "pairs (see docs/DECISIONS_C.md).", ""]
+    for set_name in KP_SETS:
+        recs = load_jsonl(f"{a.data_c}/{set_name}/records.jsonl")
+        L += [f"## {set_name}", "", "| run | Reversal [95% CI] | n | q1 correct | q2 correct | ties | by tercile 1/2/3 |",
+              "|---|---|---|---|---|---|---|"]
+        for d in sorted(os.listdir(a.results)):
+            f = f"{a.results}/{d}/scores_{set_name.replace('/', '~')}.jsonl"
+            if not os.path.exists(f) or not os.path.exists(f"{a.results}/{d}/DONE"):
+                continue
+            items = me_pairs(recs, scores(f))
+            rv = M.cluster_bootstrap(items, "tid", reversal)
+            terc = {t: reversal(v) for t in (1, 2, 3) if (v := [x for x in items if x["meta"]["tercile"] == t])}
+            cats = collections.defaultdict(list)
+            for x in items:
+                cats[str(x["meta"]["category"][0])].append(x)
+            summ = {"run_id": d, "set": set_name, "Reversal": rv[0], "CI95": [rv[1], rv[2]], "n_pairs": len(items),
+                    "q1_acc": pct(items, "control"), "q2_acc": pct(items, "trap"), "tie_rate": pct(items, "tie"),
+                    "Reversal_by_tercile": terc, "Reversal_by_category": {k: reversal(v) for k, v in sorted(cats.items())},
+                    "n_by_category": {k: len(v) for k, v in sorted(cats.items())},
+                    "bootstrap": {"unit": "pair", "B": 1000, "seed": 0}}
+            out = f"{a.results}/{d}/summary_{set_name.replace('/', '~')}.json"
+            old = json.load(open(out, encoding="utf-8")) if os.path.exists(out) else {}
+            summ["eval"] = old.get("eval")
+            json.dump(summ, open(out, "w", encoding="utf-8", newline="\n"), indent=1)
+            L.append(f"| {d} | {rv[0]:.1f} [{rv[1]:.1f}, {rv[2]:.1f}] | {len(items)} | {summ['q1_acc']:.1f} | "
+                     f"{summ['q2_acc']:.1f} | {summ['tie_rate']:.1f} | " + " / ".join(f"{terc.get(t, float('nan')):.1f}" for t in (1, 2, 3)) + " |")
+            print(set_name, d, f"Reversal {rv[0]:.1f} [{rv[1]:.1f}, {rv[2]:.1f}] n={len(items)}")
+        L.append("")
+    open(f"{REPO}/docs/KEYPAIRS_RESULTS.md", "w", encoding="utf-8", newline="\n").write("\n".join(L) + "\n")
+    print("wrote docs/KEYPAIRS_RESULTS.md")
+
+
+def pct(xs, key):
+    return 100.0 * sum(x[key] for x in xs) / len(xs)
+
+
+def reversal(xs):
+    return 100.0 * sum(x["control"] and x["trap"] for x in xs) / len(xs)
+
+
+def me_summary(items, run):
+    ctrl = [x for x in items if x["control"]]
+    rv = M.cluster_bootstrap(items, "tid", reversal)
+    rv_lab = M.cluster_bootstrap(items, "labels", reversal)
+    sub = lambda f: [x for x in items if f(x)]
+    return {"run_id": run, "set": ME_SET, "Reversal": rv[0], "CI95": [rv[1], rv[2]], "CI95_label_pairs": [rv_lab[1], rv_lab[2]],
+            "n_pairs": len(items), "control_acc": pct(items, "control"), "trap_acc": pct(items, "trap"),
+            "bias_trap_rate": 100.0 * sum(x["trapped"] for x in ctrl) / len(ctrl) if ctrl else None,
+            "n_control_correct": len(ctrl), "tie_rate": pct(items, "tie"),
+            "Reversal_excl_no_content_diff": reversal(sub(lambda x: not x["no_diff"])),
+            "Reversal_excl_overlap_ref": reversal(sub(lambda x: not x["overlap"])),
+            "n_no_content_diff": sum(x["no_diff"] for x in items), "n_overlap_ref": sum(x["overlap"] for x in items),
+            "definitions": "control correct: d(control) > 0; trap correct: d(trap) < 0; Reversal = both (ties fail); "
+                           "bias_trap_rate = share of control-correct pairs with d(trap) > 0 (MedEinst's R_bias on two candidates)",
+            "bootstrap": {"unit": "pair (CI95) and (y_gt, y_bias) label pair (CI95_label_pairs)", "B": 1000, "seed": 0}}
+
+
+def medeinst(a):
+    recs = load_jsonl(f"{a.data_c}/clin_v1/medeinst_test/records.jsonl")
+    rows, items_by = [], {}
+    for d in sorted(os.listdir(a.results)):
+        f = f"{a.results}/{d}/scores_{ME_SET.replace('/', '~')}.jsonl"
+        if not os.path.exists(f) or not os.path.exists(f"{a.results}/{d}/DONE"):
+            continue
+        items = me_pairs(recs, scores(f))
+        s = me_summary(items, d)
+        out = f"{a.results}/{d}/summary_{ME_SET.replace('/', '~')}.json"
+        old = json.load(open(out, encoding="utf-8")) if os.path.exists(out) else {}
+        s["eval"] = old.get("eval")
+        json.dump(s, open(out, "w", encoding="utf-8", newline="\n"), indent=1)
+        items_by[d.replace("C-ME-", "")] = items
+        rows.append((d, s))
+        print(f"{d:28s} Reversal {s['Reversal']:.1f} [{s['CI95'][0]:.1f}, {s['CI95'][1]:.1f}] control {s['control_acc']:.1f} "
+              f"trap {s['trap_acc']:.1f} bias-trap {s['bias_trap_rate'] or float('nan'):.1f} ties {s['tie_rate']:.1f}")
+    comps = []
+    for x, y in ME_COMPARISONS:
+        if x in items_by and y in items_by:
+            bx, by = {i["tid"]: i for i in items_by[x]}, {i["tid"]: i for i in items_by[y]}
+            pairs = [{"tid": t, "a": bx[t], "b": by[t]} for t in sorted(bx.keys() & by.keys())]
+            r = M.paired_cluster_bootstrap(pairs, "tid", lambda ps: reversal([p["a"] for p in ps]),
+                                           lambda ps: reversal([p["b"] for p in ps]))
+            comps.append((x, y, r))
+            print(f"paired Reversal {x} - {y}: {r['diff']:.1f} [{r['lo']:.1f}, {r['hi']:.1f}] p={r['p']:.3f}")
+    if comps:
+        json.dump({f"{x} - {y}": r for x, y, r in comps},
+                  open(f"{a.results}/C-ME-comparisons.json", "w", encoding="utf-8", newline="\n"), indent=1)
+    L = ["# MedEinst test pairs: results (role C)", "",
+         "Generated by `scripts/eval_clinical.py medeinst` from `results_git/*/scores_clin_v1~medeinst_test.jsonl` "
+         "(no typed numbers). Two candidate diagnoses per pair (control y_gt, trap y_bias); see "
+         "`data/clin_v1/medeinst_test/MANIFEST.json` for the release, normalisation and flags.", "",
+         "| run | Reversal [95% CI pairs] | CI label pairs | control acc | trap acc | bias-trap rate | ties | excl. no-diff | excl. overlap |",
+         "|---|---|---|---|---|---|---|---|---|"]
+    for d, s in rows:
+        L.append(f"| {d} | {s['Reversal']:.1f} [{s['CI95'][0]:.1f}, {s['CI95'][1]:.1f}] | [{s['CI95_label_pairs'][0]:.1f}, "
+                 f"{s['CI95_label_pairs'][1]:.1f}] | {s['control_acc']:.1f} | {s['trap_acc']:.1f} | "
+                 f"{fmt_num(s['bias_trap_rate'])} | {s['tie_rate']:.1f} | {s['Reversal_excl_no_content_diff']:.1f} | "
+                 f"{s['Reversal_excl_overlap_ref']:.1f} |")
+    if comps:
+        L += ["", "Paired differences in Reversal (same pairs, bootstrap over pairs, 1,000 resamples):", ""]
+        L += [f"- {x} minus {y}: {r['diff']:.1f} [{r['lo']:.1f}, {r['hi']:.1f}], p = {r['p']:.3f} ({r['n_items']} pairs)"
+              for x, y, r in comps]
+    open(f"{REPO}/docs/MEDEINST_RESULTS.md", "w", encoding="utf-8", newline="\n").write("\n".join(L) + "\n")
+    print("wrote docs/MEDEINST_RESULTS.md")
+
+
+# ---------------------------------------------------------------- NLI4CT-P
+
+NLI_SETS = ("clin_v1/nli4ct_test", "clin_v1/nli4ct_dev")
+
+
+def nli_metrics(recs, pred):
+    """The SemEval-2024 Task 2 scorer's definitions (ai-systems/Task-2-SemEval-2024, evaluate.py; data 267230cc,
+    scorer HEAD 7f32fa6c whose consistency follows paper Eq. 2 and the 2025 erratum; HEAD's call sites crash, so
+    the formulas are reproduced here). pred: {uuid: 'Entailment'|'Contradiction'}. F1 = binary F1 of the
+    Entailment class (the scorer's sklearn default), macro-F1 alongside.
+    Faithfulness: altering items, Prediction(x) != gold Label(original). Consistency: preserving items,
+    Prediction(x) == Prediction(original) (HEAD, Eq. 2); consistency_acc: Prediction(x) == gold Label(x) (267230cc)."""
+    gold = {r["meta"]["uuid"]: r["meta"]["label_name"] for r in recs}
+    meta = {r["meta"]["uuid"]: r["meta"] for r in recs}
+    def f1(ids, positive="Entailment"):
+        g = [gold[i] == positive for i in ids]
+        p = [pred[i] == positive for i in ids]
+        tp = sum(a and b for a, b in zip(g, p))
+        prec = tp / sum(p) if sum(p) else 0.0
+        rec = tp / sum(g) if sum(g) else 0.0
+        return 2 * prec * rec / (prec + rec) if prec + rec else 0.0
+    ctrl = [u for u, m in meta.items() if m["causal_type"] is None]
+    contrast = [u for u, m in meta.items() if m["causal_type"] is not None]
+    alter = [u for u in contrast if meta[u]["causal_type"] == "Altering"]
+    keep = [u for u in contrast if meta[u]["causal_type"] == "Preserving"]
+    out = {"Control_F1": f1(ctrl), "Control_macroF1": (f1(ctrl) + f1(ctrl, "Contradiction")) / 2,
+           "Contrast_F1": f1(contrast),
+           "Faithfulness": sum(pred[u] != gold[meta[u]["original_uuid"]] for u in alter) / len(alter) if alter else None,
+           "Consistency": sum(pred[u] == pred[meta[u]["original_uuid"]] for u in keep) / len(keep) if keep else None,
+           "Consistency_acc": sum(pred[u] == gold[u] for u in keep) / len(keep) if keep else None,
+           "n_control": len(ctrl), "n_altering": len(alter), "n_preserving": len(keep)}
+    for iv in sorted({meta[u]["intervention"] for u in contrast}):
+        ids = [u for u in contrast if meta[u]["intervention"] == iv]
+        out[f"acc_{iv}"] = sum(pred[u] == gold[u] for u in ids) / len(ids)
+    out["Average"] = (out["Control_F1"] + (out["Faithfulness"] or 0) + (out["Consistency"] or 0)) / 3
+    return out
+
+
+def nli4ct(a):
+    L = ["# NLI4CT-P: results (role C)", "",
+         "Generated by `scripts/eval_clinical.py nli4ct` (no typed numbers). Entailment iff u > 0 (fixed before scoring). "
+         "Definitions: the task scorer's (binary Entailment F1; faithfulness on altering, consistency on preserving "
+         "items; Average = mean of F1, faithfulness, consistency). Fractions, as the task reports them.", ""]
+    for set_name in NLI_SETS:
+        p = f"{a.data_c}/{set_name}/records.jsonl"
+        if not os.path.exists(p):
+            continue
+        recs = load_jsonl(p)
+        L += [f"## {set_name}", "", "| run | Control F1 | macro-F1 | Faithfulness | Consistency | Consistency (acc.) | Contrast F1 | Average |",
+              "|---|---|---|---|---|---|---|---|"]
+        for d in sorted(os.listdir(a.results)):
+            f = f"{a.results}/{d}/scores_{set_name.replace('/', '~')}.jsonl"
+            if not os.path.exists(f) or not os.path.exists(f"{a.results}/{d}/DONE"):
+                continue
+            sc = scores(f)
+            pred = {r["meta"]["uuid"]: "Entailment" if sc[r["iid"]]["u"] > 0 else "Contradiction" for r in recs}
+            m = nli_metrics(recs, pred)
+            summ = {"run_id": d, "set": set_name, "prediction_rule": "Entailment iff u > 0", "macroF1": m["Control_macroF1"],
+                    "faithfulness": m["Faithfulness"], "consistency": m["Consistency"]} | m
+            out = f"{a.results}/{d}/summary_{set_name.replace('/', '~')}.json"
+            old = json.load(open(out, encoding="utf-8")) if os.path.exists(out) else {}
+            summ["eval"] = old.get("eval")
+            json.dump(summ, open(out, "w", encoding="utf-8", newline="\n"), indent=1)
+            L.append(f"| {d} | {m['Control_F1']:.3f} | {m['Control_macroF1']:.3f} | {m['Faithfulness']:.3f} | "
+                     f"{m['Consistency']:.3f} | {m['Consistency_acc']:.3f} | {m['Contrast_F1']:.3f} | {m['Average']:.3f} |")
+            print(set_name, d, {k: round(v, 3) for k, v in m.items() if isinstance(v, float)})
+        L.append("")
+    open(f"{REPO}/docs/NLI4CT_RESULTS.md", "w", encoding="utf-8", newline="\n").write("\n".join(L) + "\n")
+    print("wrote docs/NLI4CT_RESULTS.md")
 
 
 def write_report(rows, comps):

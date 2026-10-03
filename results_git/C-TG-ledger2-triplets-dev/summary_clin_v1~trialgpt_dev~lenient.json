@@ -1,0 +1,12 @@
+{
+ "run_id": "C-TG-ledger2-triplets-dev",
+ "set": "clin_v1/trialgpt_dev~lenient",
+ "claim_type": "conclusion",
+ "eval": {
+  "reader_units": 213,
+  "malformed_units": 2,
+  "malformed_rate": 0.0094,
+  "seconds": 22.5,
+  "mode": "lenient"
+ }
+}

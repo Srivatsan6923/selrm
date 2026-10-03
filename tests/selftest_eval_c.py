@@ -53,9 +53,13 @@ sets = ["rule_v1/dev_missing", "clin_v1/trialgpt_dev"]
 runs = [{"run_id": "ST-verdict", "priority": 1, "format": "verdict", "adapter": None, "base_model": "tiny/qwen35",
          "hp": hp, "bs_score": 8, "sets": sets},
         {"run_id": "ST-ledger", "priority": 2, "format": "ledger2", "adapter": None, "base_model": "tiny/qwen35",
-         "hp": hp, "bs_score": 8, "bs_gen": 8, "max_new": 16, "lenient": True, "sets": sets},
+         "hp": hp, "bs_score": 8, "bs_gen": 8, "max_new": 16, "sets": sets},
+        {"run_id": "ST-ledger-lenient", "priority": 5, "format": "ledger2", "adapter": None, "base_model": "tiny/qwen35",
+         "hp": hp, "bs_score": 8, "rejudge_from": "ST-ledger", "sets": sets},
         {"run_id": "ST-summary", "priority": 3, "format": "summary2", "adapter": None, "base_model": "tiny/qwen35",
          "hp": hp, "bs_score": 8, "bs_gen": 8, "max_new": 16, "sets": sets},
+        {"run_id": "ST-nocase", "priority": 4, "format": "verdict", "adapter": None, "base_model": "tiny/qwen35",
+         "hp": hp, "bs_score": 8, "nocase": True, "sets": sets},
         {"run_id": "ST-skipped", "priority": 0, "format": "rationale", "adapter": None, "base_model": "tiny/qwen35",
          "hp": hp, "sets": sets}]
 os.makedirs(f"{croot}/tasks", exist_ok=True)
@@ -71,8 +75,25 @@ for run in ("ST-verdict", "ST-ledger", "ST-summary"):
     assert "DONE" in files and "meta.json" in files, files
     for s in ("rule_v1~dev_missing", "clin_v1~trialgpt_dev"):
         assert f"scores_{s}.jsonl" in files and f"summary_{s}.json" in files, (run, s)
-        if run == "ST-ledger":
-            assert f"scores_{s}~lenient.jsonl" in files, (run, s)
+
 assert not os.path.exists(f"{croot}/results/ST-skipped/DONE")
+lj = sorted(os.listdir(f"{croot}/results/ST-ledger-lenient"))
+print("ST-ledger-lenient", lj)
+assert "DONE" in lj and "scores_rule_v1~dev_missing.jsonl" in lj and "scores_clin_v1~trialgpt_dev.jsonl" in lj
+row = json.loads(open(f"{croot}/results/ST-ledger-lenient/scores_rule_v1~dev_missing.jsonl", encoding="utf-8").readline())
+assert "reader_output" in row and "ledger_lenient" in row
+sys.path.insert(0, f"{REPO}/scripts")
+import eval_c
+case = "Female, 30 years.\nSerum potassium today: 5.3 mmol/L\nRecords from 2007 list serum potassium at 4.6 mmol/L."
+tab = ("| need | found | subject | status | time |\n| :--- | :--- | :--- | :--- :--- |\n"
+       "| potassium above 5.0 | 5.3 mmol/L | patient | present | current |\n"
+       "| potassium above 5.0 | **4.6 mmol/L** | patient | present | past (2007) |")
+got = eval_c.lenient_ledger(tab, case)
+assert got and got.count("need:") == 2 and "found: 4.6 mmol/L" in got, got
+assert eval_c.lenient_ledger(tab.replace("4.6", "9.9"), case) is None
+nc = sorted(os.listdir(f"{croot}/results/ST-nocase"))
+print("ST-nocase", nc)
+assert "scores_nocase~rule_v1~dev_missing.jsonl" in nc and "scores_nocase~clin_v1~trialgpt_dev.jsonl" in nc
+assert all(json.loads(l)["case_text"] == "" for l in open(f"{croot}/data/nocase/rule_v1/dev_missing.jsonl", encoding="utf-8"))
 assert os.path.exists(f"{croot}/tok/tiny--qwen35/eval/clin_v1/trialgpt_dev/reader_ledger.npz")
 print("selftest_eval_c OK")

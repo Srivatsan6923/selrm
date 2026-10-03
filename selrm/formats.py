@@ -24,8 +24,9 @@ ledger2_verify  ledger2 examples + verification examples (one ledger entry and t
              field is as the case records it, - for an entry with one corrupted field), B-AB-verify
 verdict_bt   verdict prompts of the two claims of a case; Bradley-Terry loss on u(correct) - u(wrong)
              (B-AB-pairwise; n//2 pairs = n sequences; missing-input cases have no preferred claim)
-conddrv      ledger2 whose reader gets the two candidate answers (conclusion claims) instead of the condition
-             under test and names the condition itself in need (B-AB-conddrv, "condition derived by the reader")
+conddrv      ledger2 whose reader gets the claim instead of the condition under test and names the condition
+             itself in need (B-AB-conddrv, v13 "condition derived": the reader is given the rule and the claim);
+             one reader output per record, the judge as in ledger2
 genprm       GENPRM prompt -> ```python check``` + its output + answer (B-TR-genprm; the check is A's
              render_check_code, A-D13, rendered by scripts/render_checks.py; one per record)
 """
@@ -45,11 +46,11 @@ PROSE = ("summary2", "summary2_case")       # reader writes free prose (never ma
 JUDGE_CASE = ("Rule: {rule}\n\nCase:\n{case}\n\nEvidence record:\n{record}\n\nClaim: {claim}\n\n"
               "Is the claim correct for this case under the stated rule? Answer + or -.")
 # condition derived by the reader (Table 9 ablation; B-defined prompt, READER_LEDGER without the condition)
-READER_DERIVE = ("Rule: {rule}\n\nCase:\n{case}\n\nCandidate answers:\nA. {a}\nB. {b}\n\n"
-                 "Find the condition of the rule on which these answers differ, then write the evidence ledger "
-                 "for it: one entry per relevant mention in the case, with the fields need, found, subject, "
-                 "status, time. Quote the case verbatim in 'found' (or give the value). If nothing is mentioned, "
-                 "write found: not mentioned. Record facts only; do not decide any claim.")
+READER_DERIVE = ("Rule: {rule}\n\nCase:\n{case}\n\nClaim: {claim}\n\n"
+                 "Find the condition of the rule that this claim depends on, then write the evidence ledger for "
+                 "it: one entry per relevant mention in the case, with the fields need, found, subject, status, "
+                 "time. Quote the case verbatim in 'found' (or give the value). If nothing is mentioned, write "
+                 "found: not mentioned. Record facts only; do not decide the claim.")
 # verification pass (Table 9 "+ verification pass"; B-defined prompt, the frozen prompts have none)
 VERIFY = ("Rule: {rule}\n\nCase:\n{case}\n\nCondition under test: {condition}\n\nLedger entry:\n{entry}\n\n"
           "Is every field of this entry (found, subject, status, time) as the case records it? Answer + or -.")
@@ -127,23 +128,10 @@ def genprm_target(code: str, out: str) -> str:
     return "```python\n" + code + "```\nOutput: " + out + "\n"
 
 
-def add_answers(records: list) -> list:
-    """Sets r["answers"] on every record: the two conclusion claims of its case, sorted (the conddrv reader's
-    input; the same for base, flip and near, so it carries no label)."""
-    ans = {}
-    for r in records:
-        if r["claim_type"] == "conclusion":
-            ans.setdefault((r["tid"], r["case_kind"]), set()).add(r["claim_text"])
-    for r in records:
-        r["answers"] = sorted(ans[(r["tid"], r["case_kind"])])
-    return records
-
-
 def reader_for(rec: dict, fmt: str) -> str:
     """Reader prompt of a format: the frozen ledger or prose reader, or READER_DERIVE for conddrv."""
     if fmt == "conddrv":
-        a, b = rec["answers"]
-        return READER_DERIVE.format(rule=rec["rule_text"], case=rec["case_text"], a=a, b=b)
+        return READER_DERIVE.format(rule=rec["rule_text"], case=rec["case_text"], claim=rec["claim_text"])
     return reader_prompt(rec, prose=fmt in PROSE)
 
 
@@ -165,15 +153,21 @@ def read_bit(text: str):
     return next((h for h, line in BITS.items() if line == last), "bad")
 
 
-def reader_unit(rec: dict) -> tuple:
-    return rec["tid"], rec["case_kind"], rec["condition"]
+def reader_unit(rec: dict, fmt: str = "") -> tuple:
+    """One reader output per (case, condition); conddrv's reader sees the claim: one per record."""
+    return (rec["iid"],) if fmt == "conddrv" else (rec["tid"], rec["case_kind"], rec["condition"])
 
 
-def reader_units(records) -> list:
-    """One representative record per (case, condition), in file order."""
+def unit_key(rec: dict, fmt: str = "") -> str:
+    """Key of a reader prompt in the pre-tokenised eval file."""
+    return rec["iid"] if fmt == "conddrv" else "/".join(rec["iid"].split("/")[:2])
+
+
+def reader_units(records, fmt: str = "") -> list:
+    """One representative record per reader unit, in file order."""
     units = {}
     for r in records:
-        units.setdefault(reader_unit(r), r)
+        units.setdefault(reader_unit(r, fmt), r)
     return list(units.values())
 
 
@@ -269,11 +263,8 @@ def build_examples(records, fmt: str, n: int | None = None, resample_p: float = 
         groups.setdefault((v["s"]["rid"], v["s"]["condition"], key[2]), []).append(key)
     n_pairs = (n - n // 2) // 2
     n_reader = n - 2 * n_pairs
-    if fmt == "conddrv":
-        add_answers(records)
-    ex = [{"prompt": reader_for(r, fmt), "completion": gold_record(r, fmt),
-           "part": "reader", "src": "/".join(r["iid"].split("/")[:2])}
-          for r in _take(reader_units(records), n_reader, rng)]
+    ex = [{"prompt": reader_for(r, fmt), "completion": gold_record(r, fmt), "part": "reader", "src": unit_key(r, fmt)}
+          for r in _take(reader_units(records, fmt), n_reader, rng)]
     sel, swapped = [], 0
     keys = sorted(pairs)
     if pair_weights is not None:        # probe re-weighting: judge pairs drawn in proportion to their group's weight
@@ -295,7 +286,7 @@ def build_examples(records, fmt: str, n: int | None = None, resample_p: float = 
             ex.append({"prompt": judge_for(r, gold_record(r, fmt), fmt), "completion": answer(r),
                        "part": "judge", "src": r["iid"]})
     stats = {"n": len(ex), "reader": n_reader, "judge": 2 * n_pairs, "pairs_swapped": swapped,
-             "unique_judge_pairs": len(set(sel)), "reader_units": len(reader_units(records)),
+             "unique_judge_pairs": len(set(sel)), "reader_units": len(reader_units(records, fmt)),
              "judge_pairs_available": len(pairs), "resample_groups": len(groups),
              "label1": sum(e["completion"] == "+" for e in ex if e["part"] == "judge")}
     return ex, stats

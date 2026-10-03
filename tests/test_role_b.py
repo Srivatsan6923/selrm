@@ -53,13 +53,14 @@ def test_two_stage_isolation_and_targets():
     judge = [e for e in ex if e["part"] == "judge"]
     assert judge and all(any(c in e["prompt"] for c in cases) for e in judge)
     assert [e["completion"] for e in ex if e["part"] == "reader"] == [e["completion"] for e in ex2 if e["part"] == "reader"]
-    # conddrv: the reader gets both candidate answers and no condition; targets and judge examples are ledger2's
-    ex, _ = build_examples(recs, "conddrv")
-    ex2, _ = build_examples(recs, "ledger2")
-    rd = [e["prompt"] for e in ex if e["part"] == "reader"]
-    assert rd and all("Condition under test" not in p and "\nA. " in p and "\nB. " in p for p in rd)
-    assert [(e["completion"], e["part"] == "judge" and e["prompt"]) for e in ex] == \
-           [(e["completion"], e["part"] == "judge" and e["prompt"]) for e in ex2]
+    # conddrv: the reader gets its record's claim and no condition (one unit per record); ledger2 targets; judge blind
+    ex, st = build_examples(recs, "conddrv")
+    by = {r["iid"]: r for r in recs}
+    rd = [e for e in ex if e["part"] == "reader"]
+    assert rd and st["reader_units"] == len(recs)
+    assert all("Condition under test" not in e["prompt"] and f"Claim: {by[e['src']]['claim_text']}" in e["prompt"]
+               and e["completion"] == gold_record(by[e["src"]], "ledger2") for e in rd)
+    assert all(not any(c in e["prompt"] for c in cases) for e in ex if e["part"] == "judge")
 
 
 def test_resampling_and_determinism():

@@ -1,0 +1,1619 @@
+{
+ "commit": "11f77f7c869ada3738055ff46651c952794c42f5",
+ "l3alt": {
+  "concepts": {
+   "alt_enzyme": 174,
+   "bun": 47,
+   "creatinine": 137,
+   "egfr": 361,
+   "hemoglobin": 117,
+   "neutrophils": 35,
+   "platelets": 69,
+   "potassium": 60
+  },
+  "criteria": 18,
+  "flips_between_thresholds_pct": 100.0,
+  "groups": 1000,
+  "near_miss_kinds": {
+   "boundary": 333,
+   "numeric": 334,
+   "time": 333
+  },
+  "rules": 17,
+  "threshold_moved": {
+   "higher": 575,
+   "lower": 425
+  },
+  "thresholds_moved_per_group": {
+   "1": 1000
+  }
+ },
+ "library_semantics": {
+  "constraint_claim_token_diff_le2_pct": 100.0,
+  "constraint_claim_token_diff_max": 2,
+  "constraint_rules": 310,
+  "criteria": 791,
+  "criteria_counting_family": 70,
+  "criteria_counting_past": 241,
+  "criteria_past_or_family_pct": 30.5,
+  "finding_criteria": 459,
+  "finding_criteria_past_or_family_pct": 52.5,
+  "numeric_concepts": 21,
+  "numeric_concepts_dimensionless": [
+   "arterial_ph",
+   "inr"
+  ],
+  "numeric_concepts_one_unit": 19,
+  "numeric_criteria": 332,
+  "numeric_criteria_by_operator": {
+   "<": 61,
+   "<=": 35,
+   ">": 151,
+   ">=": 85
+  },
+  "numeric_criteria_counting_past": 0,
+  "numeric_criteria_unit_in_rule_text": 287,
+  "numeric_criteria_unit_not_in_rule_text": [],
+  "numeric_criteria_with_a_unit": 287,
+  "rule_texts_with_time_window": [
+   "s3_jhfrat"
+  ],
+  "units": {
+   "age": [
+    "years"
+   ],
+   "alt_enzyme": [
+    "U/L"
+   ],
+   "arterial_ph": [],
+   "bmi": [
+    "kg/m2"
+   ],
+   "bun": [
+    "mg/dL"
+   ],
+   "calf_swelling": [
+    "cm"
+   ],
+   "creatinine": [
+    "mg/dL"
+   ],
+   "egfr": [
+    "mL/min/1.73"
+   ],
+   "heart_rate": [
+    "/min"
+   ],
+   "hemoglobin": [
+    "g/dL"
+   ],
+   "inr": [],
+   "map": [
+    "mmHg"
+   ],
+   "neutrophils": [
+    "x10^9/L"
+   ],
+   "platelets": [
+    "x10^9/L"
+   ],
+   "potassium": [
+    "mmol/L"
+   ],
+   "rr": [
+    "/min"
+   ],
+   "sbp": [
+    "mmHg"
+   ],
+   "spo2": [
+    "%"
+   ],
+   "temperature": [
+    "C"
+   ],
+   "wbc": [
+    "x10^9/L"
+   ],
+   "weight": [
+    "kg"
+   ]
+  }
+ },
+ "near_miss_kinds": {
+  "L0": {
+   "boundary": {
+    "n": 200,
+    "pct": 20.0
+   },
+   "groups": 1000,
+   "negation": {
+    "n": 200,
+    "pct": 20.0
+   },
+   "numeric": {
+    "n": 200,
+    "pct": 20.0
+   },
+   "subject": {
+    "n": 200,
+    "pct": 20.0
+   },
+   "time": {
+    "n": 200,
+    "pct": 20.0
+   }
+  },
+  "L1": {
+   "boundary": {
+    "n": 200,
+    "pct": 20.0
+   },
+   "groups": 1000,
+   "negation": {
+    "n": 200,
+    "pct": 20.0
+   },
+   "numeric": {
+    "n": 200,
+    "pct": 20.0
+   },
+   "subject": {
+    "n": 200,
+    "pct": 20.0
+   },
+   "time": {
+    "n": 200,
+    "pct": 20.0
+   }
+  },
+  "L2": {
+   "boundary": {
+    "n": 400,
+    "pct": 20.0
+   },
+   "groups": 2000,
+   "negation": {
+    "n": 400,
+    "pct": 20.0
+   },
+   "numeric": {
+    "n": 400,
+    "pct": 20.0
+   },
+   "subject": {
+    "n": 400,
+    "pct": 20.0
+   },
+   "time": {
+    "n": 400,
+    "pct": 20.0
+   }
+  },
+  "L3alt": {
+   "boundary": {
+    "n": 333,
+    "pct": 33.3
+   },
+   "groups": 1000,
+   "numeric": {
+    "n": 334,
+    "pct": 33.4
+   },
+   "time": {
+    "n": 333,
+    "pct": 33.3
+   }
+  },
+  "L3inv": {
+   "boundary": {
+    "n": 200,
+    "pct": 20.0
+   },
+   "groups": 1000,
+   "negation": {
+    "n": 200,
+    "pct": 20.0
+   },
+   "numeric": {
+    "n": 200,
+    "pct": 20.0
+   },
+   "subject": {
+    "n": 200,
+    "pct": 20.0
+   },
+   "time": {
+    "n": 200,
+    "pct": 20.0
+   }
+  },
+  "dev": {
+   "boundary": {
+    "n": 60,
+    "pct": 20.0
+   },
+   "groups": 300,
+   "negation": {
+    "n": 60,
+    "pct": 20.0
+   },
+   "numeric": {
+    "n": 60,
+    "pct": 20.0
+   },
+   "subject": {
+    "n": 60,
+    "pct": 20.0
+   },
+   "time": {
+    "n": 60,
+    "pct": 20.0
+   }
+  },
+  "f2L2": {
+   "boundary": {
+    "n": 400,
+    "pct": 20.0
+   },
+   "groups": 2000,
+   "negation": {
+    "n": 400,
+    "pct": 20.0
+   },
+   "numeric": {
+    "n": 400,
+    "pct": 20.0
+   },
+   "subject": {
+    "n": 400,
+    "pct": 20.0
+   },
+   "time": {
+    "n": 400,
+    "pct": 20.0
+   }
+  },
+  "f2dev": {
+   "boundary": {
+    "n": 60,
+    "pct": 20.0
+   },
+   "groups": 300,
+   "negation": {
+    "n": 60,
+    "pct": 20.0
+   },
+   "numeric": {
+    "n": 60,
+    "pct": 20.0
+   },
+   "subject": {
+    "n": 60,
+    "pct": 20.0
+   },
+   "time": {
+    "n": 60,
+    "pct": 20.0
+   }
+  },
+  "f3L2": {
+   "boundary": {
+    "n": 400,
+    "pct": 20.0
+   },
+   "groups": 2000,
+   "negation": {
+    "n": 400,
+    "pct": 20.0
+   },
+   "numeric": {
+    "n": 400,
+    "pct": 20.0
+   },
+   "subject": {
+    "n": 400,
+    "pct": 20.0
+   },
+   "time": {
+    "n": 400,
+    "pct": 20.0
+   }
+  },
+  "f3dev": {
+   "boundary": {
+    "n": 60,
+    "pct": 20.0
+   },
+   "groups": 300,
+   "negation": {
+    "n": 60,
+    "pct": 20.0
+   },
+   "numeric": {
+    "n": 60,
+    "pct": 20.0
+   },
+   "subject": {
+    "n": 60,
+    "pct": 20.0
+   },
+   "time": {
+    "n": 60,
+    "pct": 20.0
+   }
+  },
+  "hard": {
+   "boundary": {
+    "n": 200,
+    "pct": 20.0
+   },
+   "groups": 1000,
+   "negation": {
+    "n": 200,
+    "pct": 20.0
+   },
+   "numeric": {
+    "n": 200,
+    "pct": 20.0
+   },
+   "subject": {
+    "n": 200,
+    "pct": 20.0
+   },
+   "time": {
+    "n": 200,
+    "pct": 20.0
+   }
+  }
+ },
+ "overlap": {
+  "L0": {
+   "base_states": 862,
+   "base_states_shared": 480,
+   "cases": 4000,
+   "cases_with_train_cue_pct": 6.3,
+   "cases_with_train_relative_pct": 0.0,
+   "flip_lines_with_train_cue_pct": 0.0,
+   "near_line_train_cue_words": [],
+   "near_lines_with_train_cue_pct": 0.0,
+   "near_lines_with_train_relative_pct": 0.0,
+   "program_pct": 100.0,
+   "rule_text_pct": 100.0,
+   "rules": 218,
+   "rules_with_source": 66,
+   "source_shared_with_train_pct": 93.9,
+   "structure_pct": 100.0,
+   "subexpression_pct": 100.0,
+   "templates": 373,
+   "templates_shared": 0,
+   "train_cue_words_seen": [
+    "no",
+    "today"
+   ],
+   "train_relatives_seen": []
+  },
+  "L1": {
+   "base_states": 629,
+   "base_states_shared": 0,
+   "cases": 4000,
+   "cases_with_train_cue_pct": 4.5,
+   "cases_with_train_relative_pct": 0.0,
+   "flip_lines_with_train_cue_pct": 0.0,
+   "near_line_train_cue_words": [],
+   "near_lines_with_train_cue_pct": 0.0,
+   "near_lines_with_train_relative_pct": 0.0,
+   "program_pct": 37.0,
+   "rule_text_pct": 0.0,
+   "rules": 27,
+   "rules_with_source": 8,
+   "source_shared_with_train_pct": 0.0,
+   "structure_pct": 77.8,
+   "subexpression_pct": 89.5,
+   "templates": 250,
+   "templates_shared": 0,
+   "train_cue_words_seen": [
+    "no"
+   ],
+   "train_relatives_seen": []
+  },
+  "L2": {
+   "base_states": 1775,
+   "base_states_shared": 0,
+   "cases": 8000,
+   "cases_with_train_cue_pct": 3.8,
+   "cases_with_train_relative_pct": 0.0,
+   "flip_lines_with_train_cue_pct": 0.0,
+   "near_line_train_cue_words": [],
+   "near_lines_with_train_cue_pct": 0.0,
+   "near_lines_with_train_relative_pct": 0.0,
+   "program_pct": 0.0,
+   "rule_text_pct": 0.0,
+   "rules": 103,
+   "rules_with_source": 20,
+   "source_shared_with_train_pct": 5.0,
+   "structure_pct": 0.0,
+   "subexpression_pct": 76.3,
+   "templates": 358,
+   "templates_shared": 0,
+   "train_cue_words_seen": [
+    "no",
+    "today"
+   ],
+   "train_relatives_seen": []
+  },
+  "L3alt": {
+   "base_states": 797,
+   "base_states_shared": 196,
+   "cases": 4000,
+   "cases_with_train_cue_pct": 13.0,
+   "cases_with_train_relative_pct": 0.0,
+   "flip_lines_with_train_cue_pct": 0.0,
+   "near_line_train_cue_words": [],
+   "near_lines_with_train_cue_pct": 0.0,
+   "near_lines_with_train_relative_pct": 0.0,
+   "program_pct": 100.0,
+   "rule_text_pct": 100.0,
+   "rules": 17,
+   "rules_with_source": 17,
+   "source_shared_with_train_pct": 94.1,
+   "structure_pct": 100.0,
+   "subexpression_pct": 100.0,
+   "templates": 74,
+   "templates_shared": 0,
+   "train_cue_words_seen": [
+    "no",
+    "today"
+   ],
+   "train_relatives_seen": []
+  },
+  "L3inv": {
+   "base_states": 752,
+   "base_states_shared": 0,
+   "cases": 4000,
+   "cases_with_train_cue_pct": 5.8,
+   "cases_with_train_relative_pct": 0.0,
+   "flip_lines_with_train_cue_pct": 0.0,
+   "near_line_train_cue_words": [],
+   "near_lines_with_train_cue_pct": 0.0,
+   "near_lines_with_train_relative_pct": 0.0,
+   "program_pct": 20.0,
+   "rule_text_pct": 0.0,
+   "rules": 60,
+   "rules_with_source": 0,
+   "source_shared_with_train_pct": null,
+   "structure_pct": 58.3,
+   "subexpression_pct": 96.1,
+   "templates": 313,
+   "templates_shared": 0,
+   "train_cue_words_seen": [
+    "no",
+    "today"
+   ],
+   "train_relatives_seen": []
+  },
+  "dev": {
+   "base_states": 280,
+   "base_states_shared": 162,
+   "cases": 1200,
+   "cases_with_train_cue_pct": 5.2,
+   "cases_with_train_relative_pct": 0.0,
+   "flip_lines_with_train_cue_pct": 0.0,
+   "near_line_train_cue_words": [],
+   "near_lines_with_train_cue_pct": 0.0,
+   "near_lines_with_train_relative_pct": 0.0,
+   "program_pct": 100.0,
+   "rule_text_pct": 100.0,
+   "rules": 157,
+   "rules_with_source": 45,
+   "source_shared_with_train_pct": 95.6,
+   "structure_pct": 100.0,
+   "subexpression_pct": 100.0,
+   "templates": 285,
+   "templates_shared": 0,
+   "train_cue_words_seen": [
+    "no",
+    "today"
+   ],
+   "train_relatives_seen": []
+  },
+  "f2L2": {
+   "base_states": 1517,
+   "base_states_shared": 0,
+   "cases": 8000,
+   "cases_with_train_cue_pct": 5.6,
+   "cases_with_train_relative_pct": 0.0,
+   "flip_lines_with_train_cue_pct": 0.0,
+   "near_line_train_cue_words": [],
+   "near_lines_with_train_cue_pct": 0.0,
+   "near_lines_with_train_relative_pct": 0.0,
+   "program_pct": 0.0,
+   "rule_text_pct": 0.0,
+   "rules": 74,
+   "rules_with_source": 27,
+   "source_shared_with_train_pct": 7.4,
+   "structure_pct": 0.0,
+   "subexpression_pct": 72.1,
+   "templates": 276,
+   "templates_shared": 0,
+   "train_cue_words_seen": [
+    "no"
+   ],
+   "train_relatives_seen": []
+  },
+  "f2dev": {
+   "base_states": 291,
+   "base_states_shared": 105,
+   "cases": 1200,
+   "cases_with_train_cue_pct": 2.7,
+   "cases_with_train_relative_pct": 0.0,
+   "flip_lines_with_train_cue_pct": 0.0,
+   "near_line_train_cue_words": [],
+   "near_lines_with_train_cue_pct": 0.0,
+   "near_lines_with_train_relative_pct": 0.0,
+   "program_pct": 100.0,
+   "rule_text_pct": 100.0,
+   "rules": 164,
+   "rules_with_source": 39,
+   "source_shared_with_train_pct": 94.9,
+   "structure_pct": 100.0,
+   "subexpression_pct": 100.0,
+   "templates": 292,
+   "templates_shared": 0,
+   "train_cue_words_seen": [
+    "no",
+    "today"
+   ],
+   "train_relatives_seen": []
+  },
+  "f3L2": {
+   "base_states": 1381,
+   "base_states_shared": 0,
+   "cases": 8000,
+   "cases_with_train_cue_pct": 9.2,
+   "cases_with_train_relative_pct": 0.0,
+   "flip_lines_with_train_cue_pct": 0.0,
+   "near_line_train_cue_words": [],
+   "near_lines_with_train_cue_pct": 0.0,
+   "near_lines_with_train_relative_pct": 0.0,
+   "program_pct": 0.0,
+   "rule_text_pct": 0.0,
+   "rules": 97,
+   "rules_with_source": 29,
+   "source_shared_with_train_pct": 13.8,
+   "structure_pct": 0.0,
+   "subexpression_pct": 85.3,
+   "templates": 378,
+   "templates_shared": 0,
+   "train_cue_words_seen": [
+    "no",
+    "today"
+   ],
+   "train_relatives_seen": []
+  },
+  "f3dev": {
+   "base_states": 289,
+   "base_states_shared": 93,
+   "cases": 1200,
+   "cases_with_train_cue_pct": 3.8,
+   "cases_with_train_relative_pct": 0.0,
+   "flip_lines_with_train_cue_pct": 0.0,
+   "near_line_train_cue_words": [],
+   "near_lines_with_train_cue_pct": 0.0,
+   "near_lines_with_train_relative_pct": 0.0,
+   "program_pct": 100.0,
+   "rule_text_pct": 100.0,
+   "rules": 149,
+   "rules_with_source": 38,
+   "source_shared_with_train_pct": 97.4,
+   "structure_pct": 100.0,
+   "subexpression_pct": 100.0,
+   "templates": 290,
+   "templates_shared": 0,
+   "train_cue_words_seen": [
+    "no",
+    "today"
+   ],
+   "train_relatives_seen": []
+  },
+  "hard": {
+   "base_states": 944,
+   "base_states_shared": 0,
+   "cases": 4000,
+   "cases_with_train_cue_pct": 4.8,
+   "cases_with_train_relative_pct": 0.0,
+   "flip_lines_with_train_cue_pct": 0.0,
+   "near_line_train_cue_words": [],
+   "near_lines_with_train_cue_pct": 0.0,
+   "near_lines_with_train_relative_pct": 0.0,
+   "program_pct": 0.0,
+   "rule_text_pct": 0.0,
+   "rules": 103,
+   "rules_with_source": 20,
+   "source_shared_with_train_pct": 5.0,
+   "structure_pct": 0.0,
+   "subexpression_pct": 76.3,
+   "templates": 345,
+   "templates_shared": 0,
+   "train_cue_words_seen": [
+    "no",
+    "today"
+   ],
+   "train_relatives_seen": []
+  }
+ },
+ "overlap_train_side": {
+  "cases_with_test_cue_pct": 4.6,
+  "cases_with_test_relative_pct": 0.0,
+  "distinct_train_case_texts": 40487,
+  "test_cue_words_seen": [
+   "current",
+   "without"
+  ],
+  "test_relatives_seen": []
+ },
+ "rejects": {
+  "logged": {
+   "L0": {
+    "by_reason": {
+     "pres": 11
+    },
+    "proposed": 1011,
+    "rejected": 11
+   },
+   "L1": {
+    "by_reason": {
+     "pres": 7
+    },
+    "proposed": 1007,
+    "rejected": 7
+   },
+   "L2": {
+    "by_reason": {},
+    "proposed": 2000,
+    "rejected": 0
+   },
+   "L3alt": {
+    "by_reason": {},
+    "proposed": 1000,
+    "rejected": 0
+   },
+   "L3inv": {
+    "by_reason": {
+     "pres": 6
+    },
+    "proposed": 1006,
+    "rejected": 6
+   },
+   "abl_conclusion_triplets": {
+    "by_reason": {
+     "pres": 119
+    },
+    "proposed": 10619,
+    "rejected": 119
+   },
+   "abl_nopres_triplets": {
+    "by_reason": {
+     "pres": 84
+    },
+    "proposed": 6908,
+    "rejected": 84
+   },
+   "abl_probe_blocks": {
+    "by_reason": {
+     "pres": 64
+    },
+    "proposed": 5681,
+    "rejected": 64
+   },
+   "dev": {
+    "by_reason": {
+     "pres": 6
+    },
+    "proposed": 306,
+    "rejected": 6
+   },
+   "hard": {
+    "by_reason": {},
+    "proposed": 1000,
+    "rejected": 0
+   },
+   "train_balanced": {
+    "by_reason": {
+     "pres": 169
+    },
+    "proposed": 16242,
+    "rejected": 169
+   },
+   "train_blocks": {
+    "by_reason": {
+     "pres": 64
+    },
+    "proposed": 5681,
+    "rejected": 64
+   },
+   "train_dose_05": {
+    "by_reason": {
+     "pres": 64
+    },
+    "proposed": 5672,
+    "rejected": 64
+   },
+   "train_dose_12": {
+    "by_reason": {
+     "pres": 64
+    },
+    "proposed": 5675,
+    "rejected": 64
+   },
+   "train_dose_25": {
+    "by_reason": {
+     "pres": 64
+    },
+    "proposed": 5677,
+    "rejected": 64
+   },
+   "train_natural": {
+    "by_reason": {
+     "pres": 169
+    },
+    "proposed": 16242,
+    "rejected": 169
+   },
+   "train_triplets": {
+    "by_reason": {
+     "pres": 65
+    },
+    "proposed": 5688,
+    "rejected": 65
+   },
+   "train_triplets_lo_boundary": {
+    "by_reason": {
+     "pres": 45
+    },
+    "proposed": 5605,
+    "rejected": 45
+   },
+   "train_triplets_lo_negation": {
+    "by_reason": {
+     "pres": 40
+    },
+    "proposed": 5694,
+    "rejected": 40
+   },
+   "train_triplets_lo_subject": {
+    "by_reason": {
+     "pres": 44
+    },
+    "proposed": 5692,
+    "rejected": 44
+   },
+   "train_triplets_lo_time": {
+    "by_reason": {
+     "pres": 61
+    },
+    "proposed": 5688,
+    "rejected": 61
+   }
+  },
+  "missing_twins_regenerated": {
+   "dev_missing": {
+    "by_reason": {
+     "pres": 6
+    },
+    "groups": 300,
+    "proposed": 306,
+    "rejected": 6
+   },
+   "missing": {
+    "by_reason": {},
+    "groups": 1000,
+    "proposed": 1000,
+    "rejected": 0
+   }
+  }
+ },
+ "requirements": {
+  "L0": {
+   "competing_mentions": 89,
+   "composition": 580,
+   "composition_with_other_condition_met": 344,
+   "delabelled": 6,
+   "groups": 1000,
+   "long_note": 349,
+   "none_of_these": 178,
+   "numerical_semantics": 226,
+   "rule_dependent_subject_scope": 7,
+   "rule_dependent_time_scope": 40,
+   "superseded_value": 23,
+   "temporal_selection": 89
+  },
+  "L1": {
+   "competing_mentions": 118,
+   "composition": 589,
+   "composition_with_other_condition_met": 357,
+   "delabelled": 1,
+   "groups": 1000,
+   "long_note": 312,
+   "none_of_these": 176,
+   "numerical_semantics": 237,
+   "rule_dependent_subject_scope": 12,
+   "rule_dependent_time_scope": 20,
+   "superseded_value": 35,
+   "temporal_selection": 118
+  },
+  "L2": {
+   "competing_mentions": 268,
+   "composition": 1656,
+   "composition_with_other_condition_met": 1526,
+   "delabelled": 6,
+   "groups": 2000,
+   "long_note": 603,
+   "none_of_these": 145,
+   "numerical_semantics": 498,
+   "rule_dependent_subject_scope": 24,
+   "rule_dependent_time_scope": 54,
+   "superseded_value": 67,
+   "temporal_selection": 268
+  },
+  "L3alt": {
+   "altered_threshold": 1000,
+   "competing_mentions": 333,
+   "groups": 1000,
+   "none_of_these": 0,
+   "numerical_semantics": 333,
+   "temporal_selection": 333
+  },
+  "L3inv": {
+   "competing_mentions": 117,
+   "composition": 814,
+   "composition_with_other_condition_met": 544,
+   "delabelled": 5,
+   "groups": 1000,
+   "long_note": 335,
+   "none_of_these": 66,
+   "numerical_semantics": 232,
+   "rule_dependent_subject_scope": 8,
+   "rule_dependent_time_scope": 33,
+   "superseded_value": 31,
+   "temporal_selection": 117
+  },
+  "dev": {
+   "competing_mentions": 31,
+   "composition": 185,
+   "composition_with_other_condition_met": 104,
+   "delabelled": 1,
+   "groups": 300,
+   "long_note": 114,
+   "none_of_these": 48,
+   "numerical_semantics": 66,
+   "rule_dependent_subject_scope": 1,
+   "rule_dependent_time_scope": 8,
+   "superseded_value": 8,
+   "temporal_selection": 31
+  },
+  "f2L2": {
+   "competing_mentions": 358,
+   "composition": 1328,
+   "composition_with_other_condition_met": 110,
+   "delabelled": 2,
+   "groups": 2000,
+   "long_note": 621,
+   "none_of_these": 148,
+   "numerical_semantics": 444,
+   "rule_dependent_subject_scope": 20,
+   "rule_dependent_time_scope": 19,
+   "superseded_value": 87,
+   "temporal_selection": 358
+  },
+  "f2dev": {
+   "competing_mentions": 28,
+   "composition": 214,
+   "composition_with_other_condition_met": 186,
+   "groups": 300,
+   "long_note": 105,
+   "none_of_these": 40,
+   "numerical_semantics": 73,
+   "rule_dependent_subject_scope": 2,
+   "rule_dependent_time_scope": 10,
+   "superseded_value": 7,
+   "temporal_selection": 28
+  },
+  "f3L2": {
+   "competing_mentions": 200,
+   "composition": 1206,
+   "composition_with_other_condition_met": 872,
+   "delabelled": 5,
+   "groups": 2000,
+   "long_note": 641,
+   "none_of_these": 335,
+   "numerical_semantics": 487,
+   "rule_dependent_subject_scope": 15,
+   "rule_dependent_time_scope": 87,
+   "superseded_value": 50,
+   "temporal_selection": 200
+  },
+  "f3dev": {
+   "competing_mentions": 37,
+   "composition": 206,
+   "composition_with_other_condition_met": 142,
+   "groups": 300,
+   "long_note": 109,
+   "none_of_these": 32,
+   "numerical_semantics": 78,
+   "rule_dependent_subject_scope": 3,
+   "rule_dependent_time_scope": 7,
+   "superseded_value": 7,
+   "temporal_selection": 37
+  },
+  "hard": {
+   "competing_mentions": 138,
+   "composition": 815,
+   "composition_with_other_condition_met": 749,
+   "delabelled": 3,
+   "groups": 1000,
+   "long_note": 917,
+   "none_of_these": 0,
+   "numerical_semantics": 241,
+   "rule_dependent_subject_scope": 11,
+   "rule_dependent_time_scope": 25,
+   "superseded_value": 80,
+   "temporal_selection": 138
+  }
+ },
+ "review_summary": {
+  "label_disputed_round1": [
+   11,
+   9,
+   10,
+   12
+  ],
+  "label_disputed_round2": [
+   0,
+   0
+  ],
+  "outside_missing_items": [
+   "1.17 criterion claim on flip: condition labelled 'in the family' although the criterion also counts the patient",
+   "1.59 same as 1.17",
+   "1.67 flip: 'Confused on arrival' read as not current",
+   "1.41 age 'on arrival' (weaker)",
+   "1.65 flip: one node against the rule's plural (weaker)",
+   "4.12 near: 'absent from the pharmacy dispensing record' (denial in test wording, 'unknown' in train wording)",
+   "4.23 pres: age 'on arrival'"
+  ]
+ },
+ "reviewers": {
+  "groups": 450,
+  "groups_round1": 300,
+  "groups_round2": 150,
+  "people": 0,
+  "per_session": [
+   {
+    "groups": 75,
+    "reader": "Audit rendered triplets part 1",
+    "reviewer": "LLM agent session (general-purpose tool-using agent; no human)",
+    "round": 1,
+    "started_utc": "2026-10-02T09:49:25.671Z"
+   },
+   {
+    "groups": 75,
+    "reader": "Audit rendered triplets part 2",
+    "reviewer": "LLM agent session (general-purpose tool-using agent; no human)",
+    "round": 1,
+    "started_utc": "2026-10-02T09:49:32.868Z"
+   },
+   {
+    "groups": 75,
+    "reader": "Audit rendered triplets part 3",
+    "reviewer": "LLM agent session (general-purpose tool-using agent; no human)",
+    "round": 1,
+    "started_utc": "2026-10-02T09:49:39.916Z"
+   },
+   {
+    "groups": 75,
+    "reader": "Audit rendered triplets part 4",
+    "reviewer": "LLM agent session (general-purpose tool-using agent; no human)",
+    "round": 1,
+    "started_utc": "2026-10-02T09:49:47.037Z"
+   },
+   {
+    "groups": 75,
+    "reader": "Second-round audit part A",
+    "reviewer": "LLM agent session (general-purpose tool-using agent; no human)",
+    "round": 2,
+    "started_utc": "2026-10-02T10:14:46.275Z"
+   },
+   {
+    "groups": 75,
+    "reader": "Second-round audit part B",
+    "reviewer": "LLM agent session (general-purpose tool-using agent; no human)",
+    "round": 2,
+    "started_utc": "2026-10-02T10:14:54.656Z"
+   }
+  ],
+  "rounds": {
+   "1": 4,
+   "2": 2
+  },
+  "sessions": 6
+ },
+ "rules": {
+  "by_module": {
+   "constraint": 40,
+   "grammar_curated": 11,
+   "grammar_sampled": 250,
+   "invented": 60,
+   "pilot": 11,
+   "score": 41
+  },
+  "fold1": {
+   "l1_rules": 27,
+   "l2_rules": 103,
+   "train_rules": 223
+  },
+  "fold1_l2_classes": [
+   "all|finding|ext",
+   "all|mixed|ext",
+   "any|numeric|-",
+   "kofn|mixed|ext",
+   "score|mixed|cur"
+  ],
+  "folds": 3,
+  "hand_written": 103,
+  "hand_written_by_kind": {
+   "constraint": 60,
+   "score": 43
+  },
+  "hand_written_provenance": {
+   "simplified_source": 97,
+   "synthetic": 6
+  },
+  "invented_test_only": 60,
+  "library": 353,
+  "provenance": {
+   "simplified_source": 97,
+   "synthetic": 256
+  },
+  "sampled_by_kind": {
+   "constraint": 250
+  },
+  "signature_classes": 21,
+  "sources_checked": 103,
+  "sources_simplifications_listed": 494,
+  "sources_verified_online": 91,
+  "sources_with_contradictions": 53
+ },
+ "run_id": "A-AUDIT",
+ "sample_sheets": {
+  "groups": 300,
+  "per_kind": {
+   "boundary": 64,
+   "negation": 54,
+   "numeric": 64,
+   "subject": 54,
+   "time": 64
+  },
+  "per_set": {
+   "L0": 20,
+   "L1": 20,
+   "L2": 150,
+   "L3alt": 30,
+   "L3inv": 30,
+   "hard": 50
+  },
+  "rows_per_author": {
+   "author1": 320,
+   "author2": 320,
+   "author3": 325,
+   "author4": 311
+  },
+  "with_missing_twin": 76
+ },
+ "semantics": {
+  "all_test_and_dev": {
+   "cases": 47600,
+   "cases_naming_year_2025_or_2026": 0,
+   "cases_stating_a_reference_date": 0,
+   "dated_years_max": 2024,
+   "dated_years_min": 2005,
+   "finding_bases": 5156,
+   "finding_bases_generic_absence_line": 3572,
+   "finding_bases_naming_concept": 0,
+   "finding_bases_no_line": 1584,
+   "finding_inputs": 56740,
+   "finding_inputs_two_or_more_mentions": 0,
+   "finding_inputs_unmentioned": 10216,
+   "generator_reference_year": 2026,
+   "groups_rule_text_names_a_window": 23,
+   "groups_rule_text_names_a_window_time_near_miss": 3,
+   "numeric_flips": 6744,
+   "numeric_flips_at_threshold": 457,
+   "numeric_flips_inclusive": 1198,
+   "numeric_flips_strict": 5546,
+   "numeric_inputs": 56592,
+   "numeric_inputs_one_counted_value": 56592,
+   "numeric_inputs_with_older_value": 6868,
+   "past_mentions": 13591,
+   "past_mentions_with_year": 8117
+  },
+  "test_L2": {
+   "cases": 8000,
+   "cases_naming_year_2025_or_2026": 0,
+   "cases_stating_a_reference_date": 0,
+   "dated_years_max": 2024,
+   "dated_years_min": 2005,
+   "finding_bases": 932,
+   "finding_bases_generic_absence_line": 646,
+   "finding_bases_naming_concept": 0,
+   "finding_bases_no_line": 286,
+   "finding_inputs": 12548,
+   "finding_inputs_two_or_more_mentions": 0,
+   "finding_inputs_unmentioned": 1740,
+   "generator_reference_year": 2026,
+   "groups_rule_text_names_a_window": 12,
+   "groups_rule_text_names_a_window_time_near_miss": 2,
+   "numeric_flips": 1068,
+   "numeric_flips_at_threshold": 98,
+   "numeric_flips_inclusive": 254,
+   "numeric_flips_strict": 814,
+   "numeric_inputs": 10952,
+   "numeric_inputs_one_counted_value": 10952,
+   "numeric_inputs_with_older_value": 1072,
+   "past_mentions": 3602,
+   "past_mentions_with_year": 1914
+  }
+ },
+ "source": "tables/data_stats.json (scripts/audit_rule_v1.py)",
+ "structure": {
+  "per_family": {
+   "test_L2": {
+    "additive_score": {
+     "competing_mentions_pct": 11.0,
+     "conditions_max": 1,
+     "conditions_mean": 1.0,
+     "depth_max": 1,
+     "depth_mean": 1.0,
+     "distinct_structures": 13,
+     "evidence_mentions_mean": 1.07,
+     "exception_pct": 0.0,
+     "judgments": 344,
+     "numeric_pct": 54.1,
+     "rules": 17,
+     "signature_classes": 1,
+     "temporal_pct": 20.9
+    },
+    "any_of": {
+     "competing_mentions_pct": 66.7,
+     "conditions_max": 2,
+     "conditions_mean": 2.0,
+     "depth_max": 2,
+     "depth_mean": 2.0,
+     "distinct_structures": 1,
+     "evidence_mentions_mean": 2.67,
+     "exception_pct": 100.0,
+     "judgments": 6,
+     "numeric_pct": 100.0,
+     "rules": 1,
+     "signature_classes": 1,
+     "temporal_pct": 66.7
+    },
+    "g_all_of": {
+     "competing_mentions_pct": 12.3,
+     "conditions_max": 2,
+     "conditions_mean": 2.0,
+     "depth_max": 2,
+     "depth_mean": 2.0,
+     "distinct_structures": 10,
+     "evidence_mentions_mean": 2.06,
+     "exception_pct": 100.0,
+     "judgments": 528,
+     "numeric_pct": 65.7,
+     "rules": 32,
+     "signature_classes": 2,
+     "temporal_pct": 61.6
+    },
+    "g_any_of": {
+     "competing_mentions_pct": 21.7,
+     "conditions_max": 2,
+     "conditions_mean": 2.0,
+     "depth_max": 2,
+     "depth_mean": 2.0,
+     "distinct_structures": 4,
+     "evidence_mentions_mean": 2.22,
+     "exception_pct": 100.0,
+     "judgments": 120,
+     "numeric_pct": 100.0,
+     "rules": 9,
+     "signature_classes": 1,
+     "temporal_pct": 21.7
+    },
+    "g_score_cutoff": {
+     "competing_mentions_pct": 14.1,
+     "conditions_max": 4,
+     "conditions_mean": 3.78,
+     "depth_max": 2,
+     "depth_mean": 2.0,
+     "distinct_structures": 15,
+     "evidence_mentions_mean": 3.67,
+     "exception_pct": 100.0,
+     "judgments": 434,
+     "numeric_pct": 100.0,
+     "rules": 18,
+     "signature_classes": 1,
+     "temporal_pct": 64.3
+    },
+    "g_two_of_three": {
+     "competing_mentions_pct": 13.4,
+     "conditions_max": 3,
+     "conditions_mean": 3.0,
+     "depth_max": 2,
+     "depth_mean": 2.0,
+     "distinct_structures": 14,
+     "evidence_mentions_mean": 2.88,
+     "exception_pct": 100.0,
+     "judgments": 522,
+     "numeric_pct": 100.0,
+     "rules": 24,
+     "signature_classes": 1,
+     "temporal_pct": 49.8
+    },
+    "score_cutoff": {
+     "competing_mentions_pct": 8.7,
+     "conditions_max": 4,
+     "conditions_mean": 3.41,
+     "depth_max": 2,
+     "depth_mean": 2.0,
+     "distinct_structures": 2,
+     "evidence_mentions_mean": 3.09,
+     "exception_pct": 100.0,
+     "judgments": 46,
+     "numeric_pct": 100.0,
+     "rules": 2,
+     "signature_classes": 1,
+     "temporal_pct": 34.8
+    }
+   },
+   "train_triplets": {
+    "additive_score": {
+     "competing_mentions_pct": 13.0,
+     "conditions_max": 1,
+     "conditions_mean": 1.0,
+     "depth_max": 1,
+     "depth_mean": 1.0,
+     "distinct_structures": 23,
+     "evidence_mentions_mean": 1.11,
+     "exception_pct": 0.0,
+     "judgments": 738,
+     "numeric_pct": 64.4,
+     "rules": 23,
+     "signature_classes": 3,
+     "temporal_pct": 25.5
+    },
+    "age_limit": {
+     "competing_mentions_pct": 0.0,
+     "conditions_max": 1,
+     "conditions_mean": 1.0,
+     "depth_max": 1,
+     "depth_mean": 1.0,
+     "distinct_structures": 1,
+     "evidence_mentions_mean": 1.0,
+     "exception_pct": 100.0,
+     "judgments": 18,
+     "numeric_pct": 100.0,
+     "rules": 2,
+     "signature_classes": 1,
+     "temporal_pct": 0.0
+    },
+    "all_of": {
+     "competing_mentions_pct": 17.5,
+     "conditions_max": 2,
+     "conditions_mean": 2.0,
+     "depth_max": 2,
+     "depth_mean": 2.0,
+     "distinct_structures": 4,
+     "evidence_mentions_mean": 2.16,
+     "exception_pct": 100.0,
+     "judgments": 103,
+     "numeric_pct": 100.0,
+     "rules": 4,
+     "signature_classes": 2,
+     "temporal_pct": 19.4
+    },
+    "allergy_switch": {
+     "competing_mentions_pct": 0.0,
+     "conditions_max": 1,
+     "conditions_mean": 1.0,
+     "depth_max": 1,
+     "depth_mean": 1.0,
+     "distinct_structures": 1,
+     "evidence_mentions_mean": 0.92,
+     "exception_pct": 100.0,
+     "judgments": 113,
+     "numeric_pct": 0.0,
+     "rules": 5,
+     "signature_classes": 1,
+     "temporal_pct": 12.4
+    },
+    "any_of": {
+     "competing_mentions_pct": 7.3,
+     "conditions_max": 2,
+     "conditions_mean": 2.0,
+     "depth_max": 2,
+     "depth_mean": 2.0,
+     "distinct_structures": 3,
+     "evidence_mentions_mean": 1.91,
+     "exception_pct": 100.0,
+     "judgments": 123,
+     "numeric_pct": 100.0,
+     "rules": 3,
+     "signature_classes": 2,
+     "temporal_pct": 20.3
+    },
+    "drug_interaction": {
+     "competing_mentions_pct": 0.0,
+     "conditions_max": 1,
+     "conditions_mean": 1.0,
+     "depth_max": 1,
+     "depth_mean": 1.0,
+     "distinct_structures": 1,
+     "evidence_mentions_mean": 0.89,
+     "exception_pct": 100.0,
+     "judgments": 91,
+     "numeric_pct": 0.0,
+     "rules": 5,
+     "signature_classes": 1,
+     "temporal_pct": 11.0
+    },
+    "family_switch": {
+     "competing_mentions_pct": 0.0,
+     "conditions_max": 1,
+     "conditions_mean": 1.0,
+     "depth_max": 1,
+     "depth_mean": 1.0,
+     "distinct_structures": 1,
+     "evidence_mentions_mean": 0.92,
+     "exception_pct": 100.0,
+     "judgments": 52,
+     "numeric_pct": 0.0,
+     "rules": 4,
+     "signature_classes": 1,
+     "temporal_pct": 59.6
+    },
+    "g_all_of": {
+     "competing_mentions_pct": 8.9,
+     "conditions_max": 2,
+     "conditions_mean": 2.0,
+     "depth_max": 2,
+     "depth_mean": 2.0,
+     "distinct_structures": 7,
+     "evidence_mentions_mean": 2.07,
+     "exception_pct": 100.0,
+     "judgments": 807,
+     "numeric_pct": 93.6,
+     "rules": 24,
+     "signature_classes": 3,
+     "temporal_pct": 13.3
+    },
+    "g_any_of": {
+     "competing_mentions_pct": 7.2,
+     "conditions_max": 2,
+     "conditions_mean": 2.0,
+     "depth_max": 2,
+     "depth_mean": 2.0,
+     "distinct_structures": 12,
+     "evidence_mentions_mean": 1.81,
+     "exception_pct": 100.0,
+     "judgments": 1258,
+     "numeric_pct": 65.3,
+     "rules": 46,
+     "signature_classes": 4,
+     "temporal_pct": 25.9
+    },
+    "g_score_cutoff": {
+     "competing_mentions_pct": 6.6,
+     "conditions_max": 4,
+     "conditions_mean": 3.43,
+     "depth_max": 2,
+     "depth_mean": 2.0,
+     "distinct_structures": 12,
+     "evidence_mentions_mean": 3.28,
+     "exception_pct": 100.0,
+     "judgments": 468,
+     "numeric_pct": 69.7,
+     "rules": 16,
+     "signature_classes": 3,
+     "temporal_pct": 25.2
+    },
+    "g_single": {
+     "competing_mentions_pct": 9.2,
+     "conditions_max": 1,
+     "conditions_mean": 1.0,
+     "depth_max": 1,
+     "depth_mean": 1.0,
+     "distinct_structures": 7,
+     "evidence_mentions_mean": 1.06,
+     "exception_pct": 100.0,
+     "judgments": 829,
+     "numeric_pct": 40.0,
+     "rules": 45,
+     "signature_classes": 3,
+     "temporal_pct": 27.9
+    },
+    "g_two_of_three": {
+     "competing_mentions_pct": 6.4,
+     "conditions_max": 3,
+     "conditions_mean": 3.0,
+     "depth_max": 2,
+     "depth_mean": 2.0,
+     "distinct_structures": 12,
+     "evidence_mentions_mean": 2.72,
+     "exception_pct": 100.0,
+     "judgments": 471,
+     "numeric_pct": 60.3,
+     "rules": 18,
+     "signature_classes": 3,
+     "temporal_pct": 32.9
+    },
+    "history_switch": {
+     "competing_mentions_pct": 0.0,
+     "conditions_max": 1,
+     "conditions_mean": 1.0,
+     "depth_max": 1,
+     "depth_mean": 1.0,
+     "distinct_structures": 1,
+     "evidence_mentions_mean": 0.97,
+     "exception_pct": 100.0,
+     "judgments": 74,
+     "numeric_pct": 0.0,
+     "rules": 6,
+     "signature_classes": 1,
+     "temporal_pct": 52.7
+    },
+    "lab_threshold": {
+     "competing_mentions_pct": 23.3,
+     "conditions_max": 1,
+     "conditions_mean": 1.0,
+     "depth_max": 1,
+     "depth_mean": 1.0,
+     "distinct_structures": 3,
+     "evidence_mentions_mean": 1.23,
+     "exception_pct": 100.0,
+     "judgments": 331,
+     "numeric_pct": 100.0,
+     "rules": 13,
+     "signature_classes": 1,
+     "temporal_pct": 23.3
+    },
+    "score_cutoff": {
+     "competing_mentions_pct": 12.0,
+     "conditions_max": 3,
+     "conditions_mean": 3.0,
+     "depth_max": 2,
+     "depth_mean": 2.0,
+     "distinct_structures": 1,
+     "evidence_mentions_mean": 3.02,
+     "exception_pct": 100.0,
+     "judgments": 25,
+     "numeric_pct": 100.0,
+     "rules": 1,
+     "signature_classes": 1,
+     "temporal_pct": 12.0
+    },
+    "state_switch": {
+     "competing_mentions_pct": 0.0,
+     "conditions_max": 1,
+     "conditions_mean": 1.0,
+     "depth_max": 1,
+     "depth_mean": 1.0,
+     "distinct_structures": 1,
+     "evidence_mentions_mean": 0.95,
+     "exception_pct": 100.0,
+     "judgments": 112,
+     "numeric_pct": 0.0,
+     "rules": 7,
+     "signature_classes": 1,
+     "temporal_pct": 17.0
+    },
+    "two_of_three": {
+     "competing_mentions_pct": 20.0,
+     "conditions_max": 3,
+     "conditions_mean": 3.0,
+     "depth_max": 2,
+     "depth_mean": 2.0,
+     "distinct_structures": 1,
+     "evidence_mentions_mean": 3.2,
+     "exception_pct": 100.0,
+     "judgments": 10,
+     "numeric_pct": 100.0,
+     "rules": 1,
+     "signature_classes": 1,
+     "temporal_pct": 20.0
+    }
+   }
+  },
+  "test_L2": {
+   "competing_mentions_pct": 13.4,
+   "conditions_max": 4,
+   "conditions_mean": 2.51,
+   "depth_max": 2,
+   "depth_mean": 1.83,
+   "distinct_structures": 56,
+   "evidence_mentions_mean": 2.49,
+   "exception_pct": 82.8,
+   "judgments": 2000,
+   "numeric_pct": 83.0,
+   "rules": 103,
+   "signature_classes": 5,
+   "temporal_pct": 49.1
+  },
+  "train_triplets": {
+   "competing_mentions_pct": 9.0,
+   "conditions_max": 4,
+   "conditions_mean": 1.79,
+   "depth_max": 2,
+   "depth_mean": 1.58,
+   "distinct_structures": 74,
+   "evidence_mentions_mean": 1.75,
+   "exception_pct": 86.9,
+   "judgments": 5623,
+   "numeric_pct": 64.1,
+   "rules": 223,
+   "signature_classes": 16,
+   "temporal_pct": 24.3
+  }
+ },
+ "target_claim_check": {
+  "by_check": {},
+  "groups": {
+   "L0": 1000,
+   "L1": 1000,
+   "L2": 2000,
+   "L3alt": 1000,
+   "L3inv": 1000,
+   "dev": 300,
+   "dev_missing": 300,
+   "f2L2": 2000,
+   "f2dev": 300,
+   "f3L2": 2000,
+   "f3dev": 300,
+   "hard": 1000,
+   "missing": 1000,
+   "readapply": 3000
+  },
+  "groups_total": 16200,
+  "records": {
+   "L0": 14992,
+   "L1": 14968,
+   "L2": 29248,
+   "L3alt": 13048,
+   "L3inv": 16000,
+   "dev": 4560,
+   "dev_missing": 2280,
+   "f2L2": 30848,
+   "f2dev": 4456,
+   "f3L2": 27640,
+   "f3dev": 4520,
+   "hard": 14520,
+   "missing": 7344,
+   "readapply": 18590
+  },
+  "records_total": 203014,
+  "sets": [
+   "rule_v1/dev",
+   "rule_v1/dev_missing",
+   "rule_v1/missing",
+   "rule_v1/readapply",
+   "rule_v1/test_L0",
+   "rule_v1/test_L1",
+   "rule_v1/test_L2",
+   "rule_v1/test_L3alt",
+   "rule_v1/test_L3inv",
+   "rule_v1/test_hard",
+   "rule_v1_fold2/dev",
+   "rule_v1_fold2/test_L2",
+   "rule_v1_fold3/dev",
+   "rule_v1_fold3/test_L2"
+  ],
+  "violations": 0
+ }
+}

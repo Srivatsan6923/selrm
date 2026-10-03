@@ -36,7 +36,16 @@ Every reader output of the two-stage runs (one per case and condition, on every 
 
 ## 3. Program-supplied ledger: transitions on test_L2 (B-F-ledger2-triplets-s0)
 
-not run (B-AE-oracle-ledger pending)
+| near-miss kind | n | reader ledger solved, program ledger solved | rescued (reader wrong, program right) | broken (reader right, program wrong) | neither |
+|---|---|---|---|---|---|
+| all | 2000 | 1984 | 12 | 0 | 4 |
+| boundary | 400 | 400 | 0 | 0 | 0 |
+| negation | 400 | 393 | 5 | 0 | 2 |
+| numeric | 400 | 400 | 0 | 0 | 0 |
+| subject | 400 | 391 | 7 | 0 | 2 |
+| time | 400 | 400 | 0 | 0 | 0 |
+
+TA with the program-supplied ledger 99.8 vs the reader's ledger 99.2; paired difference +0.6 [+0.2, +1.1], p < 0.001.
 
 ## 4. Rule program applied to the predicted ledger (B-F-ledger2-triplets-s0, test_L2)
 
@@ -100,7 +109,62 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 
 ## 9. Field interventions on the ledger x triplets adapter (test_L2)
 
-Edits: not run (B-AE-field-edit pending).
+Edit subject, status or time of one mention in a correct ledger; agreement of the judge with the program's verdict after the edit:
 
-Swaps: not run (B-AE-field-swap pending).
+| group | n | verdicts that follow the program (%) |
+|---|---|---|
+| all | 43462 | 62.7 |
+| field=subject | 14856 | 71.2 |
+| field=status | 14856 | 45.3 |
+| field=time | 13750 | 72.4 |
+| changed=0 | 12496 | 99.7 |
+| changed=1 | 30966 | 47.8 |
+| kind=finding | 18936 | 71.0 |
+| kind=numeric | 24526 | 56.3 |
+| kind=finding,changed=0 | 10284 | 99.7 |
+| kind=finding,changed=1 | 8652 | 37.0 |
+| kind=numeric,changed=0 | 2212 | 99.5 |
+| kind=numeric,changed=1 | 22314 | 52.0 |
+
+By condition kind or case, field and whether the edit changes the program's verdict. The edit changes the field only; found keeps the case's quotation. A measurement edited to no applicable value is missing input (neither claim holds):
+
+| group | field | verdict changes | n | follow the program (%) |
+|---|---|---|---|---|
+| case base | status | no | 284 | 98.9 |
+| case base | status | yes | 3144 | 31.2 |
+| case base | subject | no | 1576 | 100.0 |
+| case base | subject | yes | 1852 | 50.0 |
+| case base | time | no | 1292 | 99.9 |
+| case base | time | yes | 1852 | 50.0 |
+| case flip | status | no | 284 | 99.6 |
+| case flip | status | yes | 3716 | 44.8 |
+| case flip | subject | no | 608 | 99.5 |
+| case flip | subject | yes | 3392 | 73.7 |
+| case flip | time | no | 1064 | 97.7 |
+| case flip | time | yes | 2652 | 71.3 |
+| case near | status | no | 1348 | 99.8 |
+| case near | status | yes | 2652 | 34.9 |
+| case near | subject | no | 1348 | 100.0 |
+| case near | subject | yes | 2652 | 43.0 |
+| case near | time | no | 1600 | 99.9 |
+| case near | time | yes | 2116 | 46.0 |
+| case pres | status | no | 254 | 98.8 |
+| case pres | status | yes | 3174 | 31.4 |
+| case pres | subject | no | 1546 | 100.0 |
+| case pres | subject | yes | 1882 | 50.0 |
+| case pres | time | no | 1292 | 99.9 |
+| case pres | time | yes | 1882 | 50.0 |
+| finding | status | no | 1064 | 99.9 |
+| finding | status | yes | 5248 | 16.3 |
+| finding | subject | no | 3972 | 99.9 |
+| finding | subject | yes | 2340 | 72.1 |
+| finding | time | no | 5248 | 99.5 |
+| finding | time | yes | 1064 | 61.8 |
+| numeric | status | no | 1106 | 99.2 |
+| numeric | status | yes | 7438 | 50.0 |
+| numeric | subject | no | 1106 | 99.9 |
+| numeric | subject | yes | 7438 | 51.4 |
+| numeric | time | yes | 7438 | 54.8 |
+
+Swap in the ledger of another case (same rule, condition and claim): the judge returns the verdict that ledger implies in 99.9% of 29136 records.
 

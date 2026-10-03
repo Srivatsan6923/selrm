@@ -1,0 +1,37 @@
+{
+ "source": "zhui711/MedEinst",
+ "revision": "354f4b527e764a8f2bebea8f71be55e0a6966402",
+ "licence": "CC BY 4.0 (MedEinst; DDXPlus CC BY 4.0)",
+ "git_commit": "af3b2fc42d4fdcf26b75ab2a1891d748199e5d4a",
+ "python": "3.12.7",
+ "claims": "s = 'The most likely diagnosis is <y_gt>.', s_prime = same with <y_bias>; base = control, flip = trap",
+ "normalisation": "trailing whitespace removed per line (Markdown double-space leak on trap narratives)",
+ "split": "test",
+ "source_file": "test.jsonl",
+ "source_sha256": "b6b688fa41f788c17cdbf5076b5215782c9eb00efec1a3d3384c002836550a57",
+ "flags": {
+  "no_content_diff": 82,
+  "overlap_ref": 63
+ },
+ "labels": 46,
+ "name": "clin_v1/medeinst_test",
+ "n_records": 21532,
+ "n_pairs": 5383,
+ "sha256": "e8f373d223583dc6c14dd8a4c70324bb2ea06659be9cb9f1cd28baa96893c284",
+ "created": "2026-10-02",
+ "frozen": true,
+ "shortcut_validation": {
+  "claim_only_reversal": 0.0,
+  "note_claim_only": "Proposition 1 (i): u(s,x) = g(s) gives d(control) = d(trap), so no pair reverses",
+  "trailing_double_space_marker_before_normalisation": {
+   "control": 0,
+   "trap": 4033
+  },
+  "after_normalisation": {
+   "base": 0,
+   "flip": 0
+  },
+  "share_trap_longer_than_control": 57.24,
+  "n_pairs": 5383
+ }
+}

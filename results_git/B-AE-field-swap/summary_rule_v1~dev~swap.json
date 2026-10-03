@@ -1,0 +1,11 @@
+{
+ "run_id": "B-AE-field-swap",
+ "set": "rule_v1/dev",
+ "mode": "ledger_swap",
+ "n": 2688,
+ "agreement": 100.0,
+ "eval": {
+  "seconds": 92.8,
+  "u_path": "fp32-hidden"
+ }
+}

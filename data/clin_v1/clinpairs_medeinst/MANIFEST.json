@@ -1,0 +1,13 @@
+{
+ "git_commit": "4c083922f2a20759d777b00030cdb15c57ec8b9e",
+ "python": "3.12.7",
+ "builder": "scripts/clinpairs_prep.py",
+ "source": "clin_v1/medeinst_ref_train",
+ "skipped_no_own_line": 2239,
+ "name": "clin_v1/clinpairs_medeinst",
+ "n_records": 31228,
+ "n_groups": 7807,
+ "sha256": "5b0e7e9a3fdd2c958d020a34eab2b8636c11a012e176125207c222fda28ee37a",
+ "created": "2026-10-02",
+ "frozen": true
+}

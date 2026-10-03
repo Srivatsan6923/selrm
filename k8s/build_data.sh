@@ -38,6 +38,7 @@ for name, e in built.items():           # publish set by set (tmp dir + rename),
     os.replace(dst + ".tmp", dst)
 reg = json.load(open(f"{root}/REGISTRY.json")) if os.path.exists(f"{root}/REGISTRY.json") else {}
 reg.update({k: exp[k] for k in built})
+reg.update({k: v for k, v in exp.items() if v.get("alias_of") in reg})   # A's alias names of published sets
 json.dump(reg, open(f"{root}/REGISTRY.json.tmp", "w"), indent=1, sort_keys=True)
 os.replace(f"{root}/REGISTRY.json.tmp", f"{root}/REGISTRY.json")
 print("published", len(built), "sets to", root)

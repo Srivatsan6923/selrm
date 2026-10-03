@@ -1,0 +1,12 @@
+{
+ "run_id": "C-TG-ledger2-blocks-dev",
+ "set": "clin_v1/trialgpt_dev~lenient",
+ "claim_type": "conclusion",
+ "eval": {
+  "reader_units": 213,
+  "malformed_units": 0,
+  "malformed_rate": 0.0,
+  "seconds": 34.3,
+  "mode": "lenient"
+ }
+}
