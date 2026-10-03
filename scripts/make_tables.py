@@ -788,6 +788,10 @@ def catalog():
 
 
 def main():
+    # selrm.metrics.paired_diff iterates a set of triplet ids, whose order depends on the hash
+    # seed; a fixed seed makes every interval reproducible (change request to C, 3 Oct).
+    if os.environ.get("PYTHONHASHSEED") != "0":      # (os.exec* loses the output on Windows)
+        sys.exit(subprocess.run([sys.executable, *sys.argv], env=os.environ | {"PYTHONHASHSEED": "0"}).returncode)
     ap = argparse.ArgumentParser()
     ap.add_argument("--paper", default=os.path.join(ROOT, "paper", "latex_v13", "main.tex"))
     ap.add_argument("--out", default=os.path.join(ROOT, "tables"))
