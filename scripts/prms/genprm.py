@@ -84,8 +84,9 @@ def load(model_dir, base_dir=None, device="cuda", dtype="bfloat16"):
     probe = "Question: Rule: a b\n\nCase:\n  c."  # transformers 5 reads the declared 'LlamaTokenizer' (byte-level BPE)
     assert tok.decode(tok.encode(probe, add_special_tokens=False)) == probe, \
         "tokenizer drops spaces: load it from a directory that has the released config.json"
-    model = AutoModelForCausalLM.from_pretrained(model_dir, revision=rev, dtype=getattr(torch, dtype))
-    return model.to(device).eval(), tok
+    # straight onto the device: an 8B bf16 copy in host memory would exceed the runner pod's 12 GiB
+    model = AutoModelForCausalLM.from_pretrained(model_dir, revision=rev, dtype=getattr(torch, dtype), device_map=device)
+    return model.eval(), tok
 
 
 def build_inputs(rec):

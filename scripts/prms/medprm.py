@@ -72,8 +72,9 @@ def load(model_dir, base_dir=None, device="cuda", dtype="bfloat16"):
     """Full fine-tuned checkpoint, no adapter: base_dir is unused. model_dir is a local copy or HF_ID (pinned)."""
     rev = REVISION if model_dir == HF_ID else None
     tok = AutoTokenizer.from_pretrained(model_dir, revision=rev)
-    model = AutoModelForCausalLM.from_pretrained(model_dir, revision=rev, dtype=getattr(torch, dtype))
-    return model.to(device).eval(), tok
+    # straight onto the device: an 8B bf16 copy in host memory would exceed the runner pod's 12 GiB
+    model = AutoModelForCausalLM.from_pretrained(model_dir, revision=rev, dtype=getattr(torch, dtype), device_map=device)
+    return model.eval(), tok
 
 
 def build_inputs(rec):
