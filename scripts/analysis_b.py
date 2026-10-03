@@ -286,6 +286,20 @@ def field_section():
         print("|---|---|---|")
         for k, v in d["by"].items():
             print(f"| {k} | {v['n']} | {v['agreement']:.1f} |")
+        cnt = collections.defaultdict(lambda: [0, 0])
+        for line in open(f"{RG}/B-AE-field-edit/scores_rule_v1~test_L2~edit.jsonl", encoding="utf-8"):
+            r = json.loads(line)
+            ok = (r["u"] > 0) == (r["expected"] == 1)
+            for key in ((r["kind"], r["field"], r["changed"]), ("case " + r["iid"].split("/")[1], r["field"], r["changed"])):
+                cnt[key][0] += ok
+                cnt[key][1] += 1
+        print(NL + "By condition kind or case, field and whether the edit changes the program's verdict. The edit changes "
+              "the field only; found keeps the case's quotation. A measurement edited to no applicable value is missing "
+              "input (neither claim holds):" + NL)
+        print("| group | field | verdict changes | n | follow the program (%) |")
+        print("|---|---|---|---|---|")
+        for k in sorted(cnt):
+            print(f"| {k[0]} | {k[1]} | {'yes' if k[2] else 'no'} | {cnt[k][1]} | {100 * cnt[k][0] / cnt[k][1]:.1f} |")
     else:
         print("Edits: not run (B-AE-field-edit pending).")
     print()

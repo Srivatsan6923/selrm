@@ -1,0 +1,6 @@
+2026-10-03T05:47:27Z eval only: base /work/models/unsloth--Qwen3.5-9B, adapter /pvc/selrm/adapters/B-F-ledger2-triplets-s0
+2026-10-03T05:48:24Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0147)
+2026-10-03T05:48:28Z padding self-check: max |u_batch - u_single| = 0.0719 (tol 0.625) -> left padding
+2026-10-03T05:49:07Z B-AE-oracle-ledger rule_v1/dev: TA 100.0 Rev 100.0 Hold 100.0 n=300 (99.2 s)
+2026-10-03T05:53:35Z B-AE-oracle-ledger rule_v1/test_L2: TA 99.8 Rev 99.8 Hold 100.0 n=2000 (267.8 s)
+2026-10-03T05:53:35Z DONE B-AE-oracle-ledger in 6.4 min, GPU util mean 90.4
