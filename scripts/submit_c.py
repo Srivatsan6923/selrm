@@ -88,6 +88,8 @@ def push_code():
     code = sha()
     dirty = subprocess.run(["git", "-C", REPO, "status", "--porcelain", "--", *CODE_DIRS],
                            capture_output=True, text=True).stdout.strip()
+    dirty = "
+".join(l for l in dirty.splitlines() if "__pycache__" not in l)
     if dirty:
         sys.exit(f"commit first; uncommitted changes:\n{dirty}")
     buf = io.BytesIO()
