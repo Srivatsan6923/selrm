@@ -1,0 +1,171 @@
+% Appendix B and C text drafted by role A from the rule_v1 audit (FINAL_TASKS A, P1).
+% Every number is a result key (docs/RESULT_KEYS.md): sum/A-AUDIT/<field> reads results/A-AUDIT/summary.json
+% (scripts/audit_rule_v1.py -> tables/data_stats.json -> scripts/render_docs.py); sum/A-SETS/<field> reads
+% results/A-SETS/summary.json (scripts/export_set_summaries.py). Wording follows docs/PAPER_VS_CODE.md.
+% The authors rewrite this in their own words (H6); the facts and keys must survive the rewrite.
+
+% ---------------------------------------------------------------- Appendix B
+\paragraph{Manifest and provenance.}
+The released manifest gives, for each of the \res{sum/A-AUDIT/rules.library@int} rules:
+\begin{itemize}
+\item its source or specification;
+\item the text shown in prompts;
+\item the program and the applicability semantics of each criterion;
+\item its tests and its version.
+\end{itemize}
+The \res{sum/A-AUDIT/rules.sampled_by_kind.constraint@int} grammar-sampled rules are synthetic.
+For each of the \res{sum/A-AUDIT/rules.hand_written@int} hand-written rules, we searched for the source
+document. We recorded the supporting text, every simplification and every contradiction with the source.
+\begin{itemize}
+\item The source was found and opened for \res{sum/A-AUDIT/rules.sources_verified_online@int} rules.
+\item \res{sum/A-AUDIT/rules.hand_written_provenance.simplified_source@int} rules are simplified source
+rules and \res{sum/A-AUDIT/rules.hand_written_provenance.synthetic@int} are synthetic; none restates its
+source verbatim.
+\item \res{sum/A-AUDIT/rules.sources_with_contradictions@int} rules contradict their source in at least one
+respect, for example a threshold or an alternative the source does not support.
+\end{itemize}
+Model agents carried out this search, and a second agent tried to refute each record. An author has not
+yet checked the formalisations against their sources. Because every prompt states the rule, correctness is
+relative to the stated text for all rules, and no rule is presented as clinical guidance.
+
+\paragraph{Constraint rules and claims.}
+Each constraint rule states a default option, one or more conditions and an alternative. The hand-written
+rules were written directly as programs together with their rule text. Tests execute every threshold one
+step below, at and above it, and check that the operator wording of the text matches the program. The
+remaining constraint rules are sampled from a typed grammar. The sampler never pairs a condition with an
+alternative that the condition rules out, and never pairs it with a setting that the condition
+contradicts. The two options of a rule are plain orders whose lengths differ by at most
+\res{sum/A-AUDIT/library_semantics.constraint_claim_token_diff_max@int} tokens.
+
+\paragraph{Rendering audit.}
+Before the freeze, \res{sum/A-AUDIT/reviewers.sessions@int} LLM agent sessions read
+\res{sum/A-AUDIT/reviewers.groups@int} rendered groups in two rounds, and no person took part. Each session
+checked four things:
+\begin{itemize}
+\item that every stated answer follows from a literal reading of the rule and the case;
+\item consistency and plausibility;
+\item rendering;
+\item give-aways.
+\end{itemize}
+No stored label disagreed with the program. In the first round, the sessions marked some answers as
+disputable under a literal reading. These were mostly missing-input lines worded ``not recorded'', which
+reads as absent, and a few condition labels and time phrases. Their wording was changed. The second round
+found none. Presentation edits that changed a fact, alternatives ruled out by their condition, and
+near-misses that differed from the flip in more than one attribute were removed. These sessions read
+pre-freeze versions of the generator. The authors' reading of \res{sum/A-AUDIT/sample_sheets.groups@int}
+frozen groups is the human check of text fidelity.
+
+\paragraph{Splits and overlap.}
+In each of \res{sum/A-AUDIT/rules.folds@int} folds, 5 of the \res{sum/A-AUDIT/rules.signature_classes@int}
+signature classes are held out for L2. Between the training rules of fold 1 and L2, the following share
+anything with training:
+\begin{itemize}
+\item canonical programs: \res{sum/A-AUDIT/overlap.L2.program_pct@1}\%;
+\item parameter-normalised structures: \res{sum/A-AUDIT/overlap.L2.structure_pct@1}\%;
+\item rule texts: \res{sum/A-AUDIT/overlap.L2.rule_text_pct@1}\%;
+\item rendering templates: \res{sum/A-AUDIT/overlap.L2.templates_shared@int};
+\item base states: \res{sum/A-AUDIT/overlap.L2.base_states_shared@int};
+\item source documents, among L2 rules with a source:
+\res{sum/A-AUDIT/overlap.L2.source_shared_with_train_pct@1}\%.
+\end{itemize}
+Criterion subexpressions are mostly shared (\res{sum/A-AUDIT/overlap.L2.subexpression_pct@1}\%), so L2
+tests new compositions of familiar conditions. Cue words for relatives, negation and time are split in
+the same way as templates. The line that a flip or near-miss adds never contains a training cue word
+(\res{sum/A-AUDIT/overlap.L2.near_lines_with_train_cue_pct@1}\% of near-miss lines). Among rules shared
+with training (L0, development, L3-alt), base states can recur:
+\res{sum/A-AUDIT/overlap.L0.base_states_shared@int} of \res{sum/A-AUDIT/overlap.L0.base_states@int} in L0.
+A rule has few distinct states.
+
+\paragraph{L3-alt.}
+Each of the \res{sum/A-AUDIT/l3alt.groups@int} groups moves exactly one threshold of a measured criterion.
+The flip lies between the original and the altered threshold
+(\res{sum/A-AUDIT/l3alt.flips_between_thresholds_pct@1}\%), so the original rule gives the other answer
+on it. Its near-miss kinds are therefore the numeric ones only: numeric
+(\res{sum/A-AUDIT/l3alt.near_miss_kinds.numeric@int}), at the threshold
+(\res{sum/A-AUDIT/l3alt.near_miss_kinds.boundary@int}) and an older value
+(\res{sum/A-AUDIT/l3alt.near_miss_kinds.time@int}).
+
+% ---------------------------------------------------------------- Appendix C
+\paragraph{Invariants.}
+Every edit is checked on the target claim by executing the program. A flip must change the claim, and a
+near-miss or a presentation edit must not; this holds for rules that combine criteria too. Flips are
+decisive by construction, because the other criteria are held met or unmet so that the target alone
+decides the conclusion. No proposal is ever rejected because a second criterion changes. The only rejected
+proposals are presentation edits that would change nothing but the header
+(\res{sum/A-AUDIT/rejects.logged.L2.rejected@int} of \res{sum/A-AUDIT/rejects.logged.L2.proposed@int} in
+L2). A missing twin is kept only if two completions of the decisive input, the base and the flip mention,
+reach both outcomes. This is sufficient for ``undetermined''.
+\begin{itemize}
+\item The equalities $h_k(x)=0$, $h_k(\xf)=h_k(\xn)=1$ ($h_k\equiv 1$ for measured inputs) are checked on
+the rendered text, and every ledger quote must occur in its case.
+\item The program runs on the generator's state; nothing is parsed from the text.
+\item A re-execution of all labels, invariants and missing twins on every test and development set
+(\res{sum/A-AUDIT/target_claim_check.groups_total@int} groups) found
+\res{sum/A-AUDIT/target_claim_check.violations@int} violations.
+\end{itemize}
+
+\paragraph{Semantics.}
+\emph{Several mentions.} A finding criterion holds if any mention it counts has status present. A
+measurement criterion counts exactly one value, the patient's current value. Earlier values are reported
+as past and are not counted; every case states exactly one current value of each measured input
+(\res{sum/A-AUDIT/semantics.all_test_and_dev.numeric_inputs_one_counted_value@int} of
+\res{sum/A-AUDIT/semantics.all_test_and_dev.numeric_inputs@int}). \emph{Conflicting values.} A case holds
+at most one mention of each finding, so a counted ``absent'' and a counted ``present'' never meet.
+\emph{Numbers.} Each measured input has one unit across all templates, and the rule text states it
+(\res{sum/A-AUDIT/library_semantics.numeric_criteria_unit_in_rule_text@int} of
+\res{sum/A-AUDIT/library_semantics.numeric_criteria_with_a_unit@int} criteria). No edit changes a unit.
+Thresholds are strict or inclusive as the text says. A value exactly at a strict threshold is its own
+near-miss kind; at an inclusive threshold the same value is a flip.
+\emph{Time.} A mention is current or past, and
+\res{sum/A-AUDIT/semantics.all_test_and_dev.past_mentions_with_year@int} of
+\res{sum/A-AUDIT/semantics.all_test_and_dev.past_mentions@int} past mentions carry a year. Cases state no
+reference date and rule\_v1 has no time windows. The rule-side items and the registered criteria state a
+visit date; there, ``within $W$ months'' counts the day exactly $W$ months earlier, and the rule text says
+so. \emph{Omission.} Measurements that are not given are unknown, and history items that are not mentioned
+are absent, unless the case says they are unknown. This is a stipulation of the generator. No finding base
+names the decisive concept.
+\begin{itemize}
+\item \res{sum/A-AUDIT/semantics.all_test_and_dev.finding_bases_generic_absence_line@int} of
+\res{sum/A-AUDIT/semantics.all_test_and_dev.finding_bases@int} finding bases carry a general line implying
+its absence.
+\item \res{sum/A-AUDIT/semantics.all_test_and_dev.finding_bases_no_line@int} say nothing.
+\end{itemize}
+
+\paragraph{Near-miss kinds.}
+In L2 each kind accounts for 20\% of the triplets: numeric (\res{sum/A-AUDIT/near_miss_kinds.L2.numeric.n@int}),
+at a strict threshold (\res{sum/A-AUDIT/near_miss_kinds.L2.boundary.n@int}), another subject
+(\res{sum/A-AUDIT/near_miss_kinds.L2.subject.n@int}), explicit absence
+(\res{sum/A-AUDIT/near_miss_kinds.L2.negation.n@int}) and a time outside the predicate
+(\res{sum/A-AUDIT/near_miss_kinds.L2.time.n@int}). For criteria whose predicate counts past or family
+findings, such mentions are flips.
+
+\paragraph{Harder cases, by requirement.}
+L2 triplets per requirement (a triplet can meet several):
+\begin{itemize}
+\item rule-dependent time scope: \res{sum/A-AUDIT/requirements.L2.rule_dependent_time_scope@int};
+\item an older value beside the current one: \res{sum/A-AUDIT/requirements.L2.temporal_selection@int};
+\item composition with another condition met:
+\res{sum/A-AUDIT/requirements.L2.composition_with_other_condition_met@int};
+\item numerical semantics at a threshold: \res{sum/A-AUDIT/requirements.L2.numerical_semantics@int};
+\item long note: \res{sum/A-AUDIT/requirements.L2.long_note@int};
+\item superseded value: \res{sum/A-AUDIT/requirements.L2.superseded_value@int};
+\item none of these: \res{sum/A-AUDIT/requirements.L2.none_of_these@int}.
+\end{itemize}
+Competing mentions of the form ``a relative has the finding; the patient explicitly does not'' are not
+generated.
+
+\paragraph{Rule-side items.}
+Each of the \res{sum/A-SETS/xr_v1.n_items@int} items keeps a case fixed and pairs two rules that differ
+only in the applicability clause:
+\begin{itemize}
+\item time window (\res{sum/A-SETS/xr_v1.by_dimension.window@int});
+\item currency (\res{sum/A-SETS/xr_v1.by_dimension.currency@int});
+\item subject (\res{sum/A-SETS/xr_v1.by_dimension.subject@int});
+\item threshold inclusivity, upper and lower (\res{sum/A-SETS/xr_v1.by_dimension.inclusivity@int}).
+\end{itemize}
+There are three phrasings per clause. The three cases are the contested form, an uncontested positive and
+a negative, and an item is solved only if all six judgments are right. A scorer that ignores the rule text,
+one that never counts the contested form and one that always counts it all reach crossed accuracy
+\res{sum/A-SETS/xr_v1.validation.crossed_accuracy.ignores_rule_text_counting_rule.XA@int}; the program
+reaches \res{sum/A-SETS/xr_v1.validation.crossed_accuracy.program.XA@int}. All rules are synthetic
+interventions on grammar scenarios.

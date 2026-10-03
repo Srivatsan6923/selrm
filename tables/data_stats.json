@@ -1,5 +1,5 @@
 {
- "commit": "813e921a358d470d790c6a5c1f0666ddd260b85f",
+ "commit": "11f77f7c869ada3738055ff46651c952794c42f5",
  "rules": {
   "library": 353,
   "invented_test_only": 60,
@@ -20,12 +20,17 @@
    "constraint": 250
   },
   "provenance": {
-   "unreviewed": 103,
-   "synthetic": 250
+   "simplified_source": 97,
+   "synthetic": 256
   },
   "hand_written_provenance": {
-   "unreviewed": 103
+   "simplified_source": 97,
+   "synthetic": 6
   },
+  "sources_checked": 103,
+  "sources_verified_online": 91,
+  "sources_with_contradictions": 53,
+  "sources_simplifications_listed": 494,
   "signature_classes": 21,
   "folds": 3,
   "fold1": {
@@ -300,6 +305,13 @@
     "rejected": 65,
     "by_reason": {
      "pres": 65
+    }
+   },
+   "rule_v1/train_triplets_lo_boundary": {
+    "proposed": 5605,
+    "rejected": 45,
+    "by_reason": {
+     "pres": 45
     }
    },
    "rule_v1/train_triplets_lo_negation": {
@@ -762,8 +774,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 162,
    "base_states": 280,
-   "rules_with_source": 0,
-   "source_shared_with_train_pct": null
+   "rules_with_source": 45,
+   "source_shared_with_train_pct": 95.6
   },
   "rule_v1/test_L0": {
    "rules": 218,
@@ -787,8 +799,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 480,
    "base_states": 862,
-   "rules_with_source": 0,
-   "source_shared_with_train_pct": null
+   "rules_with_source": 66,
+   "source_shared_with_train_pct": 93.9
   },
   "rule_v1/test_L1": {
    "rules": 27,
@@ -811,8 +823,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 0,
    "base_states": 629,
-   "rules_with_source": 0,
-   "source_shared_with_train_pct": null
+   "rules_with_source": 8,
+   "source_shared_with_train_pct": 0.0
   },
   "rule_v1/test_L2": {
    "rules": 103,
@@ -836,8 +848,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 0,
    "base_states": 1775,
-   "rules_with_source": 0,
-   "source_shared_with_train_pct": null
+   "rules_with_source": 20,
+   "source_shared_with_train_pct": 5.0
   },
   "rule_v1/test_L3alt": {
    "rules": 17,
@@ -861,8 +873,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 196,
    "base_states": 797,
-   "rules_with_source": 0,
-   "source_shared_with_train_pct": null
+   "rules_with_source": 17,
+   "source_shared_with_train_pct": 94.1
   },
   "rule_v1/test_L3inv": {
    "rules": 60,
@@ -911,8 +923,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 0,
    "base_states": 944,
-   "rules_with_source": 0,
-   "source_shared_with_train_pct": null
+   "rules_with_source": 20,
+   "source_shared_with_train_pct": 5.0
   },
   "rule_v1_fold2/dev": {
    "rules": 164,
@@ -936,8 +948,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 105,
    "base_states": 291,
-   "rules_with_source": 0,
-   "source_shared_with_train_pct": null
+   "rules_with_source": 39,
+   "source_shared_with_train_pct": 94.9
   },
   "rule_v1_fold2/test_L2": {
    "rules": 74,
@@ -960,8 +972,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 0,
    "base_states": 1517,
-   "rules_with_source": 0,
-   "source_shared_with_train_pct": null
+   "rules_with_source": 27,
+   "source_shared_with_train_pct": 7.4
   },
   "rule_v1_fold3/dev": {
    "rules": 149,
@@ -985,8 +997,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 93,
    "base_states": 289,
-   "rules_with_source": 0,
-   "source_shared_with_train_pct": null
+   "rules_with_source": 38,
+   "source_shared_with_train_pct": 97.4
   },
   "rule_v1_fold3/test_L2": {
    "rules": 97,
@@ -1010,8 +1022,8 @@
    "near_lines_with_train_relative_pct": 0.0,
    "base_states_shared": 0,
    "base_states": 1381,
-   "rules_with_source": 0,
-   "source_shared_with_train_pct": null
+   "rules_with_source": 29,
+   "source_shared_with_train_pct": 13.8
   }
  },
  "overlap_train_side": {

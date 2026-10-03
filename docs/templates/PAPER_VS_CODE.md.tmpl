@@ -216,11 +216,16 @@ history items absent unless the case says otherwise)." *Matches.*
 
 ## Section 3.1, "Tests the renderer does not determine"
 
-**3.1-22.** Rule-side edits, crossed accuracy (XA). *Not yet.*
-- `xr_v1` is P0.2. It needs a time attribute that rule_v1 does not have, so it is built in a
-  separate module and leaves rule_v1's hashes unchanged.
+**3.1-22.** Rule-side edits, crossed accuracy (XA). *Matches; the set is frozen.*
+- `xr_v1`: 400 items in four dimensions (window, currency, subject, inclusivity), three phrasings
+  per clause; XA as described.
+- The window dimension uses a duration attribute and a stated visit date in a separate module
+  (`selrm/xr.py`); rule_v1's hashes are unchanged.
+- The paper's examples ("ever" vs "within the last six months"; "the patient" vs "the patient or a
+  first-degree relative") are dimensions of the set.
 
-**3.1-23.** Author-written cases. *Not yet.* The `challenge_v1` kit is P0.3.
+**3.1-23.** Author-written cases. *Kit ready; the set exists after H2.* `challenge_v1`: 160 state
+specifications, 32 per near-miss kind, with a second-author check.
 
 **3.1-24.** Rewritten cases. *Not yet.* The pipeline is ready (`scripts/rewrite_tier.py`) and is
 waiting for an API key.
@@ -345,7 +350,9 @@ definitions for rule_v1:
 
 ## Appendix C, "Rule-side items" and "Text tiers"
 
-**C-18.** Rule-side items. *Not yet* (xr_v1).
+**C-18.** Rule-side items. *Matches*, with numbers now: 400 items, 3 phrasings per clause (see
+`docs/drafts/appendix_BC_A.tex` for the keyed text). "solve no item by construction" holds and is
+measured: XA 0 for every rule-blind, never-count and always-count scorer.
 
 **C-19.** "notes rewritten by \ph{Gemma-3-27B} ... (\ph{8.7}% rejected)." *Does not match.*
 - The configured rewriter is `google/gemma-4-31b-it`, with the extractors

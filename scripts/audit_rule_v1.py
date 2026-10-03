@@ -41,7 +41,7 @@ FOLDS = json.loads((DATA / "rule_v1" / "FOLDS.json").read_text(encoding="utf-8")
 F1 = FOLDS["folds"]["1"]
 CASES = ("base", "flip", "near", "pres")
 TRAIN_MAIN = [f"rule_v1/train_{k}" for k in ("natural", "balanced", "blocks", "triplets")]
-TEST_SETS = sorted(n for n, v in REG.items() if v["split"] in ("test", "dev"))
+TEST_SETS = sorted(n for n, v in REG.items() if v["split"] in ("test", "dev") and n.startswith("rule_v1"))
 TRIPLET_SETS = [n for n in TEST_SETS if not n.endswith(("missing", "readapply"))]
 DECISION = re.compile(r"\b(prescribe|counts?|holds?|points?)\b")
 T0 = time.time()
@@ -268,7 +268,7 @@ def rejects():
     from their frozen seeds to count proposals rejected only because of the twin."""
     out = {}
     for name, v in REG.items():
-        if not name.startswith("rule_v1/"):
+        if not name.startswith("rule_v1/") or v.get("alias_of"):
             continue
         m = json.loads((DATA / v["manifest"]).read_text(encoding="utf-8"))
         rj = m.get("rejects")
@@ -349,6 +349,13 @@ def hits(rx, texts):
     return pct(sum(map(bool, found)), len(found)), sorted(set().union(*found)) if found else []
 
 
+def source_tokens(src):
+    """Document identifiers in a source record: DOIs, PMIDs, URLs, NICE guidance codes."""
+    ids = re.findall(r"(?i)(10\.\d{4,9}/[^\s;,)]+|pmid:?\s*\d+|https?://[^\s;,)]+|\b(?:ng|cg|ta)\d{2,4}\b)",
+                     src.get("source_identifier") or "")
+    return {re.sub(r"\s+", "", t).lower().rstrip(".") for t in ids}
+
+
 def base_state_key(rec):
     return (rec["rid"], tuple(sorted((m["concept"], str(m["value"]), m["subject"], m["status"], m["time"])
                                      for m in rec["state"])))
@@ -390,7 +397,7 @@ def overlap(train_rules, train_tpl, train_states, train_sources, sets, sources):
             "near_lines_with_train_relative_pct": hits(PERSON_RE["train"], edits["near"])[0],
             "base_states_shared": len(bases & train_states), "base_states": len(bases),
             "rules_with_source": len(srcd),
-            "source_shared_with_train_pct": pct(sum(sources[r.rid]["source_identifier"] in train_sources
+            "source_shared_with_train_pct": pct(sum(bool(source_tokens(sources[r.rid]) & train_sources)
                                                     for r in srcd), len(srcd))}
     return out
 
@@ -647,6 +654,10 @@ def main():
                        "sampled_by_kind": dict(Counter(m["kind"] for m in man if m["module"] == "grammar_sampled")),
                        "provenance": dict(Counter(m["provenance"] for m in man if m["module"] != "invented")),
                        "hand_written_provenance": dict(Counter(m["provenance"] for m in hand)),
+                       "sources_checked": len(sources),
+                       "sources_verified_online": sum(bool(s.get("source_verified")) for s in sources.values()),
+                       "sources_with_contradictions": sum(bool(s.get("contradictions")) for s in sources.values()),
+                       "sources_simplifications_listed": sum(len(s.get("simplifications", [])) for s in sources.values()),
                        "signature_classes": len(FOLDS["classes"]), "folds": len(FOLDS["folds"]),
                        "fold1": {k: len(F1[k]) for k in ("train_rules", "l1_rules", "l2_rules")},
                        "fold1_l2_classes": F1["l2_classes"]},
@@ -686,8 +697,7 @@ def main():
                 texts.add(r["case_text"])
         if fold == "1":
             train_texts = texts
-        train_sources = {sources[r.rid]["source_identifier"] for r in train_rules
-                         if sources.get(r.rid, {}).get("source_identifier")}
+        train_sources = {t for r in train_rules if r.rid in sources for t in source_tokens(sources[r.rid])}
         stats["overlap"].update(overlap(train_rules, train_tpl, train_states, train_sources,
                                         {n: v for n, v in sets.items() if n.startswith(prefix)}, sources))
         log(f"overlap fold {fold}")
