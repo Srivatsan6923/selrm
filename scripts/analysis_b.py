@@ -6,7 +6,7 @@ import collections, glob, json, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
-from selrm.metrics import _flags, bootstrap_ci, decisions, paired_test, summarise
+from selrm.metrics import _flags, bootstrap_ci, decisions, paired_test, seed_table, summarise
 from report_b import RG, records
 
 NL = "\n"
@@ -361,6 +361,22 @@ def xr_section():
     print()
 
 
+def seeds_section():
+    print("## 13. Core cells across seeds (test_L2; FINAL_TASKS_B P0.3; mean and s.d. over the finished seeds)" + NL)
+    print("| cell | metric | s0 | s1 | s2 | s3 | s4 | mean | s.d. | n |")
+    print("|---|---|---|---|---|---|---|---|---|---|")
+    for fmt in ("verdict", "summary2", "ledger2"):
+        for corpus in ("blocks", "triplets"):
+            S = {sd: json.load(open(p))["all"] for sd in range(5)
+                 if os.path.exists(p := f"{RG}/B-F-{fmt}-{corpus}-s{sd}/summary_rule_v1~test_L2.json") and done(f"B-F-{fmt}-{corpus}-s{sd}")}
+            for m in ("TA", "Rev", "Hold"):
+                t = seed_table({sd: v[m] for sd, v in S.items()})
+                cells = " | ".join(f"{S[sd][m]:.1f}" if sd in S else "-" for sd in range(5))
+                f = lambda x: "-" if x is None else f"{x:.1f}"
+                print(f"| {fmt} x {corpus} | {m} | {cells} | {f(t['mean'])} | {f(t['sd'])} | {t['n']} |")
+    print()
+
+
 def main():
     sys.stdout.reconfigure(newline="\n")
     print("# Role B analyses on existing predictions (FINAL_TASKS_B P0.1)" + NL)
@@ -368,7 +384,7 @@ def main():
           "\"not run\" = the input result does not exist yet." + NL)
     for f in (paired_section, leakage_section, transitions_section, program_ledger_section, macro_section,
               natural_balanced_section, budget_section, resampling_section, field_section, loko_section,
-              case_visible_section, xr_section):
+              case_visible_section, xr_section, seeds_section):
         f()
 
 
