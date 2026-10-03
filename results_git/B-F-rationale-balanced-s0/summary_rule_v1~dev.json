@@ -1,0 +1,271 @@
+{
+ "run_id": "B-F-rationale-balanced-s0",
+ "set": "rule_v1/dev",
+ "claim_type": "conclusion",
+ "all": {
+  "Rev": 98.66666666666667,
+  "Hold": 74.33333333333333,
+  "TA": 73.0,
+  "BaseAcc": 99.33333333333333,
+  "Tie": 0.0,
+  "PresHold": 99.66666666666667,
+  "n": 300
+ },
+ "nm_kind=negation": {
+  "Rev": 96.66666666666667,
+  "Hold": 100.0,
+  "TA": 96.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 60
+ },
+ "tier=easy": {
+  "Rev": 98.87005649717514,
+  "Hold": 76.27118644067797,
+  "TA": 75.14124293785311,
+  "BaseAcc": 98.87005649717514,
+  "Tie": 0.0,
+  "PresHold": 99.43502824858757,
+  "n": 177
+ },
+ "level=L0": {
+  "Rev": 98.66666666666667,
+  "Hold": 74.33333333333333,
+  "TA": 73.0,
+  "BaseAcc": 99.33333333333333,
+  "Tie": 0.0,
+  "PresHold": 99.66666666666667,
+  "n": 300
+ },
+ "family=g_two_of_three": {
+  "Rev": 100.0,
+  "Hold": 53.333333333333336,
+  "TA": 53.333333333333336,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 30
+ },
+ "nm_kind=time": {
+  "Rev": 100.0,
+  "Hold": 45.0,
+  "TA": 45.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 60
+ },
+ "family=any_of": {
+  "Rev": 100.0,
+  "Hold": 83.33333333333333,
+  "TA": 83.33333333333333,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 6
+ },
+ "nm_kind=numeric": {
+  "Rev": 100.0,
+  "Hold": 98.33333333333333,
+  "TA": 98.33333333333333,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 60
+ },
+ "family=lab_threshold": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 13
+ },
+ "family=g_any_of": {
+  "Rev": 97.33333333333333,
+  "Hold": 64.0,
+  "TA": 61.333333333333336,
+  "BaseAcc": 97.33333333333333,
+  "Tie": 0.0,
+  "PresHold": 98.66666666666667,
+  "n": 75
+ },
+ "nm_kind=subject": {
+  "Rev": 100.0,
+  "Hold": 28.333333333333332,
+  "TA": 28.333333333333332,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 60
+ },
+ "family=g_single": {
+  "Rev": 100.0,
+  "Hold": 84.78260869565217,
+  "TA": 84.78260869565217,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 46
+ },
+ "family=g_all_of": {
+  "Rev": 100.0,
+  "Hold": 86.36363636363636,
+  "TA": 86.36363636363636,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 44
+ },
+ "nm_kind=boundary": {
+  "Rev": 96.66666666666667,
+  "Hold": 100.0,
+  "TA": 96.66666666666667,
+  "BaseAcc": 96.66666666666667,
+  "Tie": 0.0,
+  "PresHold": 98.33333333333333,
+  "n": 60
+ },
+ "tier=long": {
+  "Rev": 98.24561403508773,
+  "Hold": 71.9298245614035,
+  "TA": 70.17543859649123,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 114
+ },
+ "family=g_score_cutoff": {
+  "Rev": 90.9090909090909,
+  "Hold": 77.27272727272727,
+  "TA": 68.18181818181819,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 22
+ },
+ "family=history_switch": {
+  "Rev": 100.0,
+  "Hold": 80.0,
+  "TA": 80.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 5
+ },
+ "family=family_switch": {
+  "Rev": 100.0,
+  "Hold": 75.0,
+  "TA": 75.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 4
+ },
+ "tier=superseded": {
+  "Rev": 100.0,
+  "Hold": 62.5,
+  "TA": 62.5,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 8
+ },
+ "family=additive_score": {
+  "Rev": 100.0,
+  "Hold": 76.66666666666667,
+  "TA": 76.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 30
+ },
+ "family=drug_interaction": {
+  "Rev": 100.0,
+  "Hold": 50.0,
+  "TA": 50.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 4
+ },
+ "family=state_switch": {
+  "Rev": 100.0,
+  "Hold": 66.66666666666667,
+  "TA": 66.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 6
+ },
+ "family=allergy_switch": {
+  "Rev": 100.0,
+  "Hold": 57.142857142857146,
+  "TA": 57.142857142857146,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 7
+ },
+ "tier=delabelled": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 1
+ },
+ "family=all_of": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 5
+ },
+ "family=two_of_three": {
+  "Rev": 100.0,
+  "Hold": 66.66666666666667,
+  "TA": 66.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 3
+ },
+ "CI95": {
+  "TA": [
+   67.71929824561404,
+   78.49829351535836
+  ],
+  "Rev": [
+   97.31543624161074,
+   99.68051118210863
+  ],
+  "Hold": [
+   69.36619718309859,
+   79.72508591065292
+  ]
+ },
+ "step": {
+  "criterion": {
+   "Rev": 99.62962962962963,
+   "Hold": 75.92592592592592,
+   "TA": 75.55555555555556,
+   "BaseAcc": 99.62962962962963,
+   "Tie": 0.0,
+   "PresHold": 99.62962962962963,
+   "n": 270
+  }
+ },
+ "eval": {
+  "rationale_no_answer": 0,
+  "gen_not_stopped": 0,
+  "seconds": 187.0,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

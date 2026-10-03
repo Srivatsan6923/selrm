@@ -77,6 +77,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-verdict-blocks-s0 | 58.2 | 59.8 | 103 | 65.6 | 7 |
 | B-F-verdict-triplets-s0 | 91.3 | 92.4 | 103 | 92.1 | 7 |
 | B-F-rationale-natural-s0 | 55.1 | 55.9 | 103 | 56.7 | 7 |
+| B-F-rationale-balanced-s0 | 64.7 | 64.8 | 103 | 65.0 | 7 |
 | B-F-rationale-blocks-s0 | 61.5 | 61.4 | 103 | 57.7 | 7 |
 | B-F-rationale-triplets-s0 | 91.0 | 92.0 | 103 | 90.1 | 7 |
 | B-F-summary2-blocks-s0 | 67.3 | 68.7 | 103 | 68.6 | 7 |
@@ -91,7 +92,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-verdict-natural-s0 | 92.0 | 65.0 | 99.0 | 65.6 | 65.0 | 58.0 |
 | B-F-verdict-balanced-s0 | 93.7 | 53.1 | 97.4 | 54.3 | 52.9 | 49.1 |
 | B-F-rationale-natural-s0 | 83.2 | 69.0 | 97.8 | 70.2 | 68.7 | 55.1 |
-| B-F-rationale-balanced-s0 | not run | | | | | |
+| B-F-rationale-balanced-s0 | 91.4 | 70.4 | 96.8 | 72.0 | 69.7 | 64.7 |
 | B-F-summary2-natural-s0 | not run | | | | | |
 | B-F-summary2-balanced-s0 | not run | | | | | |
 | B-F-value2-natural-s0 | not run | | | | | |
@@ -106,6 +107,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-BB-qwen3.5-4b-verdict-blocks-s0 | NVIDIA L40 | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 1.90 | 0.40 |
 | B-F-ledger2-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 13044356 | 1045348 | 938 | 1.76 | 1.03 |
 | B-F-ledger2-triplets-s0 | NVIDIA A100-PCIE-40GB | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 2.29 | 1.41 |
+| B-F-rationale-balanced-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | - | - | 15970047 | 2094038 | 938 | 0.62 | 1.30 |
 | B-F-rationale-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 15979819 | 2088516 | 938 | 1.74 | 2.50 |
 | B-F-rationale-natural-s0 | NVIDIA A100-SXM4-80GB | 60000 | 60000 | - | - | 15851199 | 2034704 | 938 | 1.70 | 2.42 |
 | B-F-rationale-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 16138949 | 2144515 | 938 | 1.78 | 2.56 |
