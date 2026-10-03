@@ -35,10 +35,11 @@ PROMPT = ("Answer the following medical exam question. Reason step by step in nu
 # The pinned snapshot has no generation_config.json: stop tokens <|im_end|> and <|endoftext|>
 # are given explicitly (configs/models_b.json note) and vLLM's own defaults are used.
 SAMPLING = {"temperature": 0.7, "top_p": 0.95, "max_tokens": 1536, "stop_token_ids": [248046, 248044]}
-POOLS = {   # name: (dataset key in configs/datasets_d.json, split rows, N, subset size with 64 samples)
-    "medqa_test": ("medqa_test", None, 16, 300),
-    "medqa_dev": ("medqa_dev", 500, 16, 0),     # calibration pool (D-CAL); first 500 questions
-    "careqa_en": ("careqa_en", None, 16, 0),
+POOLS = {   # name: (dataset key in configs/datasets_d.json, first rows, N, subset size with 64 samples,
+           #        random sample of questions)
+    "medqa_test": ("medqa_test", None, 16, 300, 0),
+    "medqa_dev": ("medqa_dev", 500, 16, 0, 0),       # calibration pool (D-CAL); first 500 questions
+    "careqa_en": ("careqa_en", None, 16, 0, 1000),   # a fixed random 1,000 of 5,621 (scoring cost; DECISIONS_D)
 }
 STEP = re.compile(r"^\s*(?:Step\s*)?(\d{1,2})[.):]\s+(.*\S)")
 FINAL = re.compile(r"Final answer:\s*\**\s*\(?([A-Ea-e])\)?(?![A-Za-z])")
@@ -88,13 +89,17 @@ def main():
     ap.add_argument("--limit", type=int, default=0, help="first k questions only (smoke test)")
     ap.add_argument("--tp", type=int, default=1)
     a = ap.parse_args()
-    key, rows, n, n_sub = POOLS[a.pool]
+    key, rows, n, n_sub, n_sample = POOLS[a.pool]
     out = os.path.join(a.out, a.pool + (f"_limit{a.limit}" if a.limit else ""))
     if os.path.exists(os.path.join(out, "DONE")):
         print("exists:", out)
         return
     os.makedirs(out, exist_ok=True)
-    qs = questions(key, rows)[: a.limit or None]
+    qs = questions(key, rows)
+    if n_sample:
+        keep = set(random.Random(f"pool-sample-v1.{a.pool}").sample([q["qid"] for q in qs], n_sample))
+        qs = [q for q in qs if q["qid"] in keep]
+    qs = qs[: a.limit or None]
     rng = random.Random(f"pool-subset-v1.{a.pool}")
     sub = set(rng.sample([q["qid"] for q in qs], min(n_sub, len(qs)))) if n_sub else set()
 
@@ -133,6 +138,7 @@ def main():
     man = {"pool": a.pool, "dataset": CFG[key], "policy": pol, "model_path": model, "prompt": PROMPT,
            "chat_template": "tokenizer.apply_chat_template(enable_thinking=False)", "sampling": SAMPLING,
            "n_per_question": n, "subset64": sorted(sub), "seed_rule": "sha256(pool|qid)[:8] per question",
+           "question_sample": {"n": n_sample, "seed": f"pool-sample-v1.{a.pool}"} if n_sample else None,
            "n_questions": len(qs), "n_samples": n_s, "eligible": n_el,
            "ineligible_share": round(1 - n_el / max(1, n_s), 4), "generated_tokens": n_tok,
            "wall_seconds": round(wall, 1), "vllm": vllm.__version__, "torch": torch.__version__,
