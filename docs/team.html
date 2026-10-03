@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SelRM Team</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero reveal">
+      <div class="eyebrow">Who is doing what</div>
+      <h1>Team &amp; tasks</h1>
+      <p>Four roles, one GPU each. State files, the status board and the handoff log, in one place.</p>
+    </header>
+
+    <section class="grid g2" id="roles"></section>
+
+    <section>
+      <div class="section-head reveal"><h2>Task board</h2><span class="muted small">docs/STATUS_BOARD.md</span></div>
+      <div class="kanban reveal" id="kanban"></div>
+    </section>
+
+    <section class="grid g2">
+      <div>
+        <div class="section-head reveal"><h2>Handoffs</h2><span class="muted small">latest first</span></div>
+        <div class="card reveal"><ul class="list feed" id="handoffs"></ul></div>
+      </div>
+      <div>
+        <div class="section-head reveal"><h2>Integrity checks</h2></div>
+        <div class="card reveal"><ul class="list" id="checks"></ul></div>
+        <div class="section-head reveal" style="margin-top:32px"><h2>Recent commits</h2></div>
+        <div class="card reveal"><ul class="list" id="commits"></ul></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/team.js"></script>
+</body>
+</html>

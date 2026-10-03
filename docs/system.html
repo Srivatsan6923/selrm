@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SelRM System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero reveal">
+      <div class="eyebrow">How it fits together</div>
+      <h1>The pipeline</h1>
+      <p>Rules become labelled triplets, triplets train reward models, models get audited, the best ones pick answers.</p>
+    </header>
+
+    <section>
+      <div class="card flow reveal" id="flow"></div>
+    </section>
+
+    <section>
+      <div class="section-head reveal"><h2>Rule library</h2><span class="muted small">from results/A-D15</span></div>
+      <div class="grid g4" id="library"></div>
+    </section>
+
+    <section>
+      <div class="section-head reveal"><h2>Datasets</h2><span class="muted small">data/REGISTRY.json · sha256-checked</span></div>
+      <div class="chips reveal" id="split-filter" style="margin-bottom:14px"></div>
+      <div class="table-wrap reveal"><table id="registry"></table></div>
+    </section>
+
+    <section>
+      <div class="section-head reveal"><h2>Code</h2><span class="muted small">first docstring line of each module</span></div>
+      <div class="grid g2" id="modules"></div>
+    </section>
+  </main>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/system.js"></script>
+</body>
+</html>

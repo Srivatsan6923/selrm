@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SelRM Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero reveal">
+      <div class="eyebrow">SelRM · NAACL / COLING 2027</div>
+      <h1>Learning When to Change</h1>
+      <p>Medical reward models should flip when decisive evidence flips, and hold when look-alike evidence doesn't apply.</p>
+      <div class="hero-meta" id="countdown"></div>
+    </header>
+
+    <section class="grid g4" id="stats"></section>
+
+    <section>
+      <div class="section-head reveal"><h2>The test</h2><span class="muted small">One rule, three cases, one triplet</span></div>
+      <div class="card reveal" id="triplet"></div>
+    </section>
+
+    <section>
+      <div class="section-head reveal"><h2>Run progress</h2><a href="runs.html" class="small">All runs →</a></div>
+      <div class="card reveal" id="progress"></div>
+    </section>
+
+    <section>
+      <div class="section-head reveal"><h2>Timeline</h2><span class="muted small" id="today"></span></div>
+      <div class="card reveal" id="timeline"></div>
+    </section>
+  </main>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/overview.js"></script>
+</body>
+</html>
