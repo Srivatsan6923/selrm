@@ -1,5 +1,5 @@
 # STATE role D (lead; maintained by the D session)
-Updated: 2026-10-03 ~09:35 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
+Updated: 2026-10-03 ~11:45 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
 
 ## Where D works
 - Clone `D:/NAACL27/selrm-role-d` (github Srivatsan6923/selrm): D's work on `role-d`; publish with
@@ -31,13 +31,14 @@ Updated: 2026-10-03 ~09:35 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo roo
   - medqa_test: running on a west H100 (selrm-d-pipe-medqa-test-13393, since 08:50 UTC).
   - medqa_kp (714 key-pair questions; then 64 samples on 150 pairs): running on a west H100
     (selrm-d-pipe-medqa-kp-16468, since ~09:05 UTC; k8s/kp_pipeline_d.sh).
-  - careqa_en, medeinst_test: racing west h100-opp (selrm-d-pipe-careqa-en-18980, -medeinst-test-18983) against
-    central 2 x 24 GB (selrm-d-c-pipe-careqa-en-14212, -medeinst-test-14215); a monitor deletes the later starter.
+  - careqa_en: done; selection committed (results_git/D-SEL-*/summary_sel~careqa.json).
+  - medeinst_test: running on a west H100 (selrm-d-pipe-medeinst-test-18983).
   Rates per 8,000 traces on H100: 343 s generation, 306 s Med-PRM, 1,051 s ledger.
-- GRPO (ROLE.md: Qwen3.5-4B LoRA; rewards outcome, refgraph, stepcheck, ledger2-blocks, ledger2-triplets; 2 seeds,
-  1-2k steps, group 8): CPU smoke test passed (refgraph); GPU path = k8s/grpo_d.sh (vLLM rollouts in the training
-  process; ledger rewards serve the merged ledger on a second GPU). Setup check D-RL-setup-outcome (64 prompts,
-  60 steps) submitted on h100-opp (selrm-d-grpo-setup-outcome-19687): gives s/step for Monday's ladder decision.
+- GRPO (ROLE.md: Qwen3.5-4B LoRA; rewards outcome, refgraph, stepcheck, ledger2-blocks, ledger2-triplets; group 8):
+  setup check passed (results_git/D-RL-setup-outcome: 64-prompt overfit, ~26 s/step on H100; untrained policy at
+  89.3% on held-out pairs). Queued on h100-opp, seed 0, 1,000 steps (k8s/grpo_d.sh; checkpoint + resume every 200):
+  selrm-d-grpo-{outcome,refgraph,stepcheck}-s0-*; ledger2-{blocks,triplets} (2 GPUs each) after the pools.
+  Outputs /pvc/grpo/D-RL-<reward>-s0 -> pull (without ckpt/) into results_git/.
 - Sync pod selrm-d-sync recreated 09:25 UTC (expires ~15:25 UTC; `submit_d.py sync-down` then `sync-up`);
   the central sync pod is deleted (all pools run in the west).
 - Lessons: cross-region CephFS reads ~5 MB/s (jobs require their PVC's region); vLLM needs
