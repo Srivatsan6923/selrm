@@ -91,6 +91,13 @@ def test_update_paper_keeps_prose():
     assert g.crossed(ans, recs)["XA"] == 100.0
     ans[0]["answer"] = None          # one unanswered cell is a tie and fails the item
     assert g.crossed(ans, recs)["XA"] == 0.0
+    # TrialGPT: truth from the claim labels, N/A left out, no final answer = NEI
+    tg = [{"tid": t, "iid": f"{t}/{r}", "claim_role": r, "label": lab, "meta": {"expert_eligibility": e}}
+          for t, (ls, lp, e) in {"m": (1, 0, "included"), "n": (0, 1, "not included"), "x": (0, 0, "not enough information"),
+                                 "na": (0, 0, "not applicable")}.items() for r, lab in (("s", ls), ("s_prime", lp))]
+    rows = [{"tid": t, "iid_a": f"{t}/s", "iid_b": f"{t}/s_prime", "answer": a} for t, a in
+            (("m", "A"), ("n", "A"), ("x", None), ("na", "A"))]
+    assert g.tg_classes(rows, tg) == (["met", "not met", "NEI"], ["met", "met", "NEI"])
     up = load("update_paper")
     t = "a\n% <tables:x>\nold\n% </tables:x>\nb\n\\placeholderstrue"
     t2 = "a\n% <tables:x>\nnew\nrows\n% </tables:x>\nb\n\\placeholdersfalse"

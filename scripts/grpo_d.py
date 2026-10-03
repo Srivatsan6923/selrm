@@ -291,6 +291,46 @@ def summarize_xr(out_dir, records, run_id):
     return summ
 
 
+def tg_classes(rows, records):
+    """TrialGPT criterion items (C's clin_v1/trialgpt_test; docs/TRIALGPT_PROTOCOL.md): truth from the claim labels
+    (met: 'meets' claim labelled 1; not met: 'does not meet' labelled 1; NEI otherwise), N/A items left out; a
+    policy's class from its choice, and NEI when it gives no final answer (a policy cannot abstain otherwise)."""
+    by = {}
+    for r in records:
+        by.setdefault(r["tid"], {})[r["claim_role"]] = r
+    gold, pred = [], []
+    role = {r["iid"]: r["claim_role"] for r in records}
+    for row in rows:
+        c = by[row["tid"]]
+        if c["s"]["meta"]["expert_eligibility"] == "not applicable":
+            continue
+        g = "met" if int(c["s"]["label"]) == 1 else "not met" if int(c["s_prime"]["label"]) == 1 else "NEI"
+        ch = {"A": row["iid_a"], "B": row["iid_b"]}.get(row["answer"])
+        gold.append(g)
+        pred.append("NEI" if ch is None else "met" if role[ch] == "s" else "not met")
+    return gold, pred
+
+
+def summarize_tg(out_dir, records, run_id):
+    """summary_clin_v1~trialgpt_test.json from eval_tg_step<N>.jsonl: macro-F1 over {met, not met, NEI} on the
+    non-N/A items (primary, as C reports systems) and forced-choice accuracy on met / not-met items."""
+    from selrm import metrics as M
+    steps = sorted(int(m.group(1)) for m in (re.match(r"eval_tg_step(\d+)\.jsonl$", f) for f in os.listdir(out_dir)) if m)
+    rows = [json.loads(x) for x in open(os.path.join(out_dir, f"eval_tg_step{steps[-1]}.jsonl"), encoding="utf-8")]
+    gold, pred = tg_classes(rows, records)
+    res = M.prf(gold, pred, labels=["met", "not met", "NEI"])
+    fc = [p == g for g, p in zip(gold, pred) if g != "NEI"]
+    summ = {"run_id": run_id, "set": "clin_v1/trialgpt_test", "macroF1": res["macroF1"], "acc": res["acc"],
+            "per_class": res["per_class"], "confusion": res["confusion"], "n": res["n"],
+            "forced_choice_acc": 100.0 * sum(fc) / len(fc) if fc else None, "n_forced": len(fc),
+            "no_answer_share": 100.0 * sum(r["answer"] is None for r in rows) / len(rows),
+            "final_step": steps[-1], "from_files": [f"eval_tg_step{steps[-1]}.jsonl"],
+            "scoring": "no final answer = NEI; N/A items left out (docs/TRIALGPT_PROTOCOL.md classes)"}
+    json.dump(summ, open(os.path.join(out_dir, "summary_clin_v1~trialgpt_test.json"), "w", encoding="utf-8",
+                         newline="\n"), indent=1)
+    return summ
+
+
 def summarize(out_dir):
     """summary_rule_v1~test_L2.json from the run's per-example evaluation files: start = eval_step0.jsonl, final =
     the highest eval_step<N>.jsonl; the in-training curve (curve.jsonl) is kept as it is."""
@@ -329,9 +369,11 @@ def main():
     ap.add_argument("--eval-from", dest="eval_from", nargs="+", default=None,
                     help="no training: evaluate 'base' (the untrained policy) and/or LoRA checkpoint dirs of a run on "
                          "its evaluation triplets -> OUT/eval_step<N>.jsonl (N = 0 for base, else the checkpoint step)")
-    ap.add_argument("--eval-sets", dest="eval_sets", nargs="+", default=["l2"], choices=["l2", "xr"],
+    ap.add_argument("--eval-sets", dest="eval_sets", nargs="+", default=["l2"], choices=["l2", "xr", "tg"],
                     help="with --eval-from: l2 = the run's held-out L2 triplets; xr = xr_v1 (all 400 items, "
-                         "OUT/eval_xr_step<N>.jsonl and summary_xr_v1~test.json)")
+                         "OUT/eval_xr_step<N>.jsonl and summary_xr_v1~test.json); tg = TrialGPT test criteria "
+                         "(OUT/eval_tg_step<N>.jsonl and summary_clin_v1~trialgpt_test.json)")
+    ap.add_argument("--tg-records", dest="tg_records", default="/pvc/data/clin_v1/trialgpt_test/records.jsonl")
     a = ap.parse_args()
     import torch
     from datasets import Dataset
@@ -363,7 +405,9 @@ def main():
         arch = AutoConfig.from_pretrained(a.policy).architectures[0]
         base = getattr(transformers, arch).from_pretrained(a.policy, dtype=torch.bfloat16).to("cuda")
         xr = load(os.path.join(a.data, "xr_v1", "test", "records.jsonl")) if "xr" in a.eval_sets else []
-        sets = {"l2": (ev, "eval_step"), "xr": (tasks(xr, kinds=XR_KINDS, tag="xr"), "eval_xr_step")}
+        tg = load(a.tg_records) if "tg" in a.eval_sets else []
+        sets = {"l2": (ev, "eval_step"), "xr": (tasks(xr, kinds=XR_KINDS, tag="xr"), "eval_xr_step"),
+                "tg": (tasks(tg, kinds=("base",), tag="tg"), "eval_tg_step")}
         for src in a.eval_from:
             m = re.search(r"checkpoint-(\d+)", src)
             model = base if src == "base" else PeftModel.from_pretrained(base, src)
@@ -385,6 +429,8 @@ def main():
             print("summary", json.dumps(summarize(a.out)), flush=True)
         if xr:
             print("xr", json.dumps(summarize_xr(a.out, xr, os.path.basename(a.out.rstrip("/")))), flush=True)
+        if tg:
+            print("tg", json.dumps(summarize_tg(a.out, tg, os.path.basename(a.out.rstrip("/")))), flush=True)
         return
     reward = {"outcome": lambda: outcome_reward, "refgraph": lambda: make_refgraph_reward(recs_by_iid),
               "ledger2-blocks": lambda: make_ledger_reward(a.ledger_url, a.ledger_model, recs_by_iid),
