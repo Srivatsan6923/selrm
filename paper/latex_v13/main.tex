@@ -1094,7 +1094,7 @@ Table~\ref{tab:downstream} tests the verifier as a process reward: selection
 among samples of a fixed policy. It says nothing about a policy optimised
 against the reward (Appendix~\ref{app:more}).
 The combined reward and the step check improve accuracy on MedQA and CareQA
-by similar amounts (difference \res{d/run/D-SEL-combined/sel:medqa/top/acc|run/D-SEL-stepcheck/sel:medqa/top/acc} [\ph{$-$0.2}, \ph{1.6}] on MedQA,
+by similar amounts (difference \res{d/run/D-SEL-combined/sel:medqa/top/acc|run/D-SEL-stepcheck/sel:medqa/top/acc} [\res{cmp/sel-mqa-comb-step/lo}, \res{cmp/sel-mqa-comb-step/hi}] on MedQA,
 non-inferior at a margin of one point). On both members of a key pair the
 combined reward reaches \res{run/D-SEL-combined/sel:keypairs/top/pair_acc}\% against \res{run/D-SEL-stepcheck/sel:keypairs/top/pair_acc}\%, and on MedEinst pairs
 \res{run/D-SEL-combined/sel:medeinst/top/pair_acc}\% against \res{run/D-SEL-stepcheck/sel:medeinst/top/pair_acc}\%, with control accuracy unchanged. Swapping in

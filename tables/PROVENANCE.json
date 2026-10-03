@@ -1,7 +1,7 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "1c113838983fb4a0c0fb2abe4f09894e7e9d0e1e",
- "uncommitted_changes": false,
+ "code_commit": "76eff196b68b70c9d65a01f025f24b1a0d2c8f85",
+ "uncommitted_changes": true,
  "records": {
   "rule_v1/dev_missing": {
    "file": "data/rule_v1/dev_missing/records.jsonl",
@@ -424,6 +424,16 @@
    "value": "\\ph{tbd}",
    "number": null,
    "comparison": "p6b"
+  },
+  "cmp/sel-mqa-comb-step/hi": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "sel-mqa-comb-step"
+  },
+  "cmp/sel-mqa-comb-step/lo": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "sel-mqa-comb-step"
   },
   "d/a15/rules_total|a15/rules_by_kind.score|a15/rules_by_source.grammar_sampled@int": {
    "value": "60",

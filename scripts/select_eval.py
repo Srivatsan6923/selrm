@@ -28,7 +28,9 @@ results/D-CAL/summary.json (temperatures, combination weights, dev likelihoods; 
 are left out of the dev pool);
 results/D-SELN/summary_sel~keypairs.json (slices selector=<name> with N1..N64: key-pair accuracy
 among the first N samples of the key-pair questions extended to 64 samples).
-Intervals and paired tests come from selrm.metrics (C) once it has an item-level bootstrap.
+results_git/D-SEL-comparisons.json: paired differences a - b of two selectors on identical items
+(SEL_CMP), bootstrap over questions (key pairs, MedEinst: whole pairs) with C's
+selrm.metrics.paired_cluster_bootstrap (1,000 resamples, seed 0); read by make_tables as cmp/<name>/<field>.
 """
 import argparse
 import json
@@ -36,11 +38,25 @@ import math
 import os
 from collections import Counter
 
+import sys
+
 import numpy as np
 from scipy.optimize import minimize
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, ROOT)
+from selrm import metrics as M  # noqa: E402
+
 DEV = "medqa_dev"
+# Paired selector comparisons stated in the text of Table 5 (name, pool, a, b): a - b.
+SEL_CMP = [("sel-mqa-comb-step", "medqa_test", "combined", "stepcheck"),
+           ("sel-cqa-comb-step", "careqa_en", "combined", "stepcheck"),
+           ("sel-key-comb-step", "medqa_kp", "combined", "stepcheck"),
+           ("sel-me-comb-step", "medeinst_test", "combined", "stepcheck"),
+           ("sel-mqa-comb-swap", "medqa_test", "combined", "combined-swap"),
+           ("sel-mqa-step-swap", "medqa_test", "stepcheck", "stepcheck-swap"),
+           ("sel-mqa-comb-nonear", "medqa_test", "combined", "no-nearmiss"),
+           ("sel-me-comb-nonear", "medeinst_test", "combined", "no-nearmiss")]
 
 
 POOL_SET = {"medqa_test": "medqa", "careqa_en": "careqa", "medeinst_test": "medeinst",
@@ -88,6 +104,26 @@ def keypair_acc(pairs, correct):
     """Share of key pairs whose two questions are both answered correctly by the selected traces."""
     full = [(a, b) for a, b in pairs if a in correct and b in correct]
     return (100.0 * sum(correct[a] and correct[b] for a, b in full) / len(full) if full else None), len(full)
+
+
+def units(pool, qs, rows):
+    """{unit: correct}: per question, or per pair (both questions right) for key pairs and MedEinst."""
+    c = {r["qid"]: r["correct"] for r in rows}
+    if pool == "medqa_kp":
+        return {f"{a}|{b}": c[a] and c[b] for a, b in PAIRS if a in c and b in c}
+    if pool == "medeinst_test":
+        by = {}
+        for q, v in c.items():
+            by.setdefault(qs[q]["meta"]["case_id"], []).append(v)
+        return {k: all(v) for k, v in by.items() if len(v) == 2}
+    return c
+
+
+def compare(ua, ub):
+    """a - b in points on identical units, paired bootstrap over units (C's paired_cluster_bootstrap)."""
+    items = [(k, ua[k], ub[k]) for k in sorted(ua.keys() & ub.keys())]
+    pct = lambda i: (lambda xs: 100.0 * sum(x[i] for x in xs) / len(xs))
+    return M.paired_cluster_bootstrap(items, lambda x: x[0], pct(1), pct(2))
 
 
 def sig(x):
@@ -229,6 +265,7 @@ def main():
     os.makedirs(os.path.join(a.out, "D-CAL"), exist_ok=True)
     json.dump(cal, open(os.path.join(a.out, "D-CAL", "summary.json"), "w", encoding="utf-8", newline="\n"), indent=1)
     open(os.path.join(a.out, "D-CAL", "DONE"), "w").close()
+    by_sel = {}
     for pool in a.pool or ("medqa_test", "careqa_en", "medeinst_test", "medqa_kp"):
         if not os.path.exists(os.path.join(a.pools, pool, "DONE")):
             continue
@@ -249,6 +286,7 @@ def main():
             extra = {"N": 16} | (pair_metrics(qs, rows) if pool == "medeinst_test" else {})
             if pool == "medqa_kp":
                 extra |= dict(zip(("pair_acc", "n_pairs"), keypair_acc(PAIRS, {r["qid"]: r["correct"] for r in rows})))
+            by_sel[(pool, name)] = units(pool, qs, rows)
             s = write(a.out, f"D-SEL-{name}", POOL_SET[pool], rows, extra)
             print(pool, name, round(s["acc"], 1), {k: v for k, v in extra.items() if k.endswith("acc")})
         ext = {q for q, ss in by_q.items() if len(ss) >= 64}
@@ -266,8 +304,17 @@ def main():
             json.dump({"run_id": "D-SELN", "set": "sel/keypairs", "n_pairs": len(kp)} | curve,
                       open(os.path.join(d, "summary_sel~keypairs.json"), "w", encoding="utf-8", newline="\n"), indent=1)
             open(os.path.join(d, "DONE"), "w").close()
+    cp = os.path.join(a.out, "D-SEL-comparisons.json")
+    cmp = json.load(open(cp, encoding="utf-8")) if os.path.exists(cp) else {}
+    for name, pool, x, y in SEL_CMP:
+        if (pool, x) in by_sel and (pool, y) in by_sel:
+            cmp[name] = {"pool": pool, "a": x, "b": y, "set": f"sel/{POOL_SET[pool]}",
+                         "metric": "acc" if pool in ("medqa_test", "careqa_en") else "pair_acc"} | compare(
+                by_sel[(pool, x)], by_sel[(pool, y)])
+    if cmp:
+        json.dump(cmp, open(cp, "w", encoding="utf-8", newline="\n"), indent=1)
     for run in os.listdir(a.out):
-        if run.startswith("D-SEL"):
+        if run.startswith("D-SEL") and os.path.isdir(os.path.join(a.out, run)):
             open(os.path.join(a.out, run, "DONE"), "w").close()
 
 

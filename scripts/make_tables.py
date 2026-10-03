@@ -29,7 +29,7 @@ Keys, as used in \res{...} (fields are separated by '/'):
   meta/<prefix>/<dotted.field>[/<stat>]   a meta.json field (mean over seeds by default)
   a15/<dotted.field>                      results/A-D15/summary.json
   sum/<run_id>/<dotted.field>            results/<run_id>/summary.json (a run without per-set summaries)
-  cmp/<name>/<field>                      primary comparison: diff lo hi p padj n
+  cmp/<name>/<field>                      primary comparison: diff lo hi p padj n (also sel-*: D-SEL-comparisons.json)
   d/<key>|<key>[|<key>...]                first key minus the others
   min/<key>|<key>...  max/<key>|<key>...  smallest / largest of several keys
 A key may end in @<format>: @0 @1 @2 @3 (decimals), @pct1 @pct2 (x100), @int.
@@ -450,6 +450,10 @@ def comparisons():
         for c, q in zip(_CMP.values(), holm(ps)):
             c["padj"] = q
     _CMP["holm"] = {"n": len(COMPARISONS)}
+    for top in TOPS:   # answer-selection comparisons (scripts/select_eval.py); not in the Holm family
+        p = os.path.join(ROOT, top, "D-SEL-comparisons.json")
+        for k, v in ((load_json(p) or {}) if os.path.exists(p) else {}).items():
+            _CMP[k] = v | {"n": v.get("n_clusters"), "file": rel(p), "file_commit": file_commit(p)}
     return _CMP
 
 

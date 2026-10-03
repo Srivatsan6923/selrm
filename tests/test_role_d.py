@@ -58,6 +58,9 @@ def test_selection(tmp_path):
     assert kp == {"D-SEL-single": 0.0, "D-SEL-combined": 100.0}, kp
     cal = json.load(open(tmp_path / "res" / "D-CAL" / "summary.json"))
     assert (cal["excluded_keypair_questions"], cal["n_traces"]) == (1, 6), cal
+    cmp = json.load(open(tmp_path / "res" / "D-SEL-comparisons.json"))   # kept across the two runs
+    assert cmp["sel-mqa-comb-step"]["diff"] == 0.0 and cmp["sel-key-comb-step"]["n_clusters"] == 2, cmp
+    assert se.compare({"a": 1, "b": 0}, {"a": 0, "b": 0})["diff"] == 50.0
     se2 = load("select_eval")
     assert se2.keypair_acc([("a", "b"), ("c", "d"), ("e", "z")], {"a": 1, "b": 1, "c": 1, "d": 0, "e": 1}) == (50.0, 2)
     qs2 = {f"m-{c}-{t}": {"meta": {"case_id": c, "case_type": t}} for c in ("x", "y") for t in ("control", "trap")}
