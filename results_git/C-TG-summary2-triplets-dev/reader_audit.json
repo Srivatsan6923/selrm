@@ -33,21 +33,23 @@
  "sets": {
   "clin_v1/trialgpt_dev": {
    "units": 213,
-   "decision_language_any": 3.29,
+   "condition_removed": true,
+   "decision_language_any": 0.47,
    "decision_language_verdict": 0.0,
-   "decision_language_criterion": 0.47,
-   "decision_language_action": 1.88,
-   "decision_language_compare": 0.94,
+   "decision_language_criterion": 0.0,
+   "decision_language_action": 0.47,
+   "decision_language_compare": 0.0,
    "malformed_rate_strict": 0.0,
    "mean_chars": 181.7
   },
   "rule_v1/dev_missing": {
    "units": 600,
-   "decision_language_any": 45.0,
+   "condition_removed": true,
+   "decision_language_any": 0.0,
    "decision_language_verdict": 0.0,
    "decision_language_criterion": 0.0,
    "decision_language_action": 0.0,
-   "decision_language_compare": 45.0,
+   "decision_language_compare": 0.0,
    "malformed_rate_strict": 0.0,
    "mean_chars": 126.3
   }
