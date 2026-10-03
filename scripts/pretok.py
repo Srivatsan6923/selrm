@@ -11,7 +11,7 @@ completion ends with the end-of-turn token so generation formats learn to stop.
 Gold ledgers must pass the eval-time malformed check (formats.well_formed), and all
 records of one (case, condition) must carry the same ledger and prose, else prep stops.
 Files are written under pid-unique temporary names and renamed; READY is written last."""
-import argparse, json, os, subprocess, sys
+import argparse, json, os, subprocess, sys, uuid
 import numpy as np
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO)
@@ -84,7 +84,7 @@ def tok_ids(tok, texts, bs=2048):
 
 
 def save_npz(path, **arrays):
-    tmp = f"{path}.{os.getpid()}.tmp.npz"
+    tmp = f"{path}.{uuid.uuid4().hex}.tmp.npz"     # unique across pods (pids repeat in containers)
     np.savez(tmp, **arrays)
     os.replace(tmp, path)
 
@@ -182,7 +182,7 @@ def build_train(root, spec, tok, end):
               "len_mean": float(lens.mean()), "len_max": int(lens.max()),
               "completion_tokens": int(off[-1] - np.sum(npr)), "end_of_turn": end,
               "parts": {k: sum(e["part"] == k for e in ex) for k in sorted({e["part"] for e in ex})}}
-    tmp = f"{d}/stats.json.{os.getpid()}"
+    tmp = f"{d}/stats.json.{uuid.uuid4().hex}"
     json.dump(stats, open(tmp, "w"), indent=1)
     os.replace(tmp, f"{d}/stats.json")
     open(f"{d}/READY", "w").write("ok\n")
