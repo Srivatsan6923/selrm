@@ -82,5 +82,27 @@
  "python": "3.12.7",
  "created": "2026-10-02",
  "frozen": true,
- "sha256": "351d15ab9b5c1a73ad7b30063e741c273c5775866c867351b7fd70ea014f4f99"
+ "sha256": "351d15ab9b5c1a73ad7b30063e741c273c5775866c867351b7fd70ea014f4f99",
+ "shortcut_validation": {
+  "predictors": {
+   "always met": {
+    "acc": 18.18,
+    "macroF1": 10.26
+   },
+   "always not_met": {
+    "acc": 51.25,
+    "macroF1": 22.59
+   },
+   "always nei": {
+    "acc": 30.57,
+    "macroF1": 15.61
+   },
+   "type prior from dev {'inclusion': 'nei', 'exclusion': 'not_met'}": {
+    "acc": 66.67,
+    "macroF1": 45.97
+   }
+  },
+  "n_items": 759,
+  "note": "case-blind predictors on non-N/A items; a claim-only scorer equals a constant predictor"
+ }
 }
