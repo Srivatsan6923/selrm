@@ -284,9 +284,17 @@ def budget_scorer(eval_local, model, tok, bs_score, bs_gen, max_new, log, gb):
     """B's Scorer whose batches also respect a token budget (prompt tokens, plus max_new when generating), set
     from GPU memory: long prompts (MedEinst, NLI4CT-P) at a fixed batch size ran 24 GB cards out of memory.
     Batch composition changes speed only (B's left-padding self-check runs as before)."""
-    budget = None if gb >= 60 else (12000 if gb < 30 else 40000)
+    budget = None if gb >= 60 else (8000 if gb < 30 else 40000)
 
     class BudgetScorer(eval_local.Scorer):
+        def check_padding(self, seqs, n=8):
+            """B's check scores n prompts spread over the length range in one batch; with long prompts (MedEinst)
+            that batch alone ran 24 GB cards out of memory, so it draws from the prompts that fit the budget."""
+            if budget is None:
+                return super().check_padding(seqs, n)
+            fit = [s for s in seqs if len(s) * n <= budget] or sorted(seqs, key=len)[:n]
+            return super().check_padding(fit, n)
+
         def _batches(self, seqs, bs):
             if budget is None or self.pad_ok is False:
                 return super()._batches(seqs, bs)
