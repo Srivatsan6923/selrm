@@ -33,6 +33,9 @@ def test_selection(tmp_path):
     write_pool(tmp_path / "pools" / "medqa_test", qs, ss)
     write_pool(tmp_path / "pools" / "medqa_dev", qs, ss)
     for pool in ("medqa_test", "medqa_dev"):
+        json.dump({"n_questions": 4, "n_samples": 12, "ineligible_share": 0.3333},
+                  open(tmp_path / "pools" / pool / "MANIFEST.json", "w"))
+    for pool in ("medqa_test", "medqa_dev"):
         d = tmp_path / "scores" / pool
         os.makedirs(d, exist_ok=True)
         for n, good in (("medprm", 1), ("ledger2-triplets", 0), ("ledger2-blocks", 1)):

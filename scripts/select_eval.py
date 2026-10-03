@@ -227,6 +227,14 @@ def main():
         if not os.path.exists(os.path.join(a.pools, pool, "DONE")):
             continue
         qs, by_q = load_pool(os.path.join(a.pools, pool))
+        man = json.load(open(os.path.join(a.pools, pool, "MANIFEST.json"), encoding="utf-8"))
+        d = os.path.join(a.out, f"D-POOL-{pool}")          # the pool's own facts as a result (App. G)
+        os.makedirs(d, exist_ok=True)
+        json.dump({"run_id": f"D-POOL-{pool}"} | {k: man.get(k) for k in (
+            "n_questions", "n_samples", "eligible", "ineligible_share", "generated_tokens", "wall_seconds", "gpu",
+            "vllm", "sampling", "policy", "question_sample")}, open(os.path.join(d, "summary.json"), "w",
+                                                                 encoding="utf-8", newline="\n"), indent=1)
+        open(os.path.join(d, "DONE"), "w").close()
         sc = {n: load_scores(os.path.join(a.scores, pool, f"{n}.jsonl")) for n in
               ("medprm", "medprm-swap", "ledger2-triplets", "ledger2-triplets-swap", "ledger2-blocks")}
         sel = selectors(cal, sc)
