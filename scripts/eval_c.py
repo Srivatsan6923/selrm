@@ -16,7 +16,7 @@ Runs with these options go in task files that only runners with this code read."
 import argparse, gc, json, os, re, socket, sys, time, traceback
 
 KEYS = ("need", "found", "subject", "status", "time")
-GEN = 6     # runner capability generation: runs with min_gen > GEN are skipped (3: topk, n_groups subsets, budgets; 4: ThinkPRM wrapper; 5: xr_v1 subsets keep whole items; 6: MedS3 loader fix)
+GEN = 7     # runner capability generation: runs with min_gen > GEN are skipped (3: topk, n_groups subsets, budgets; 4: ThinkPRM wrapper; 5: xr_v1 subsets keep whole items; 6: MedS3 loader fix; 7: hidden states)
 LENIENT_VERSION = 2      # 2: markdown tables (decided on the development sets, 3 Oct, before any test scoring)
 
 
@@ -282,6 +282,48 @@ def topk_pass(sc, root, rid, set_name, out_dir, log, tag, k=50):
     return {"set": set_name, "n": len(rows), "k": k, "eval": {"seconds": round(time.time() - t0, 1), "mode": "topk"}}
 
 
+def hidden_pass(sc, root, rid, set_name, out_dir, log, tag, spec):
+    """Verdict prompts of a set: the residual stream (decoder-layer outputs, float16) at the answer position for the
+    exploratory probe (scripts/probe.py); records of one claim type and role and the given case kinds. Same
+    pre-tokenised prompts and left padding as the log-odds readout, so the last position is the answer position."""
+    import numpy as np
+    import torch
+    import eval_local
+    from selrm.formats import dataset_path
+    t0 = time.time()
+    recs = load_jsonl(dataset_path(root, set_name))
+    seqs, keys = eval_local.unpack(f"{root}/tok/{tag}/eval/{set_name}/verdict.npz", len(sc.tok))
+    assert keys == [r["iid"] for r in recs], "eval prompts out of sync with records"
+    keep = [i for i, r in enumerate(recs) if r["claim_type"] == spec.get("claim_type", "conclusion")
+            and r["claim_role"] == spec.get("claim_role", "s") and r["case_kind"] in spec.get("case_kinds", ["base", "flip", "near"])]
+    blocks = max((m for n, m in sc.model.named_modules() if n.endswith("layers") and isinstance(m, torch.nn.ModuleList)), key=len)
+    layers = spec.get("layers") or sorted({len(blocks) // 4, len(blocks) // 2, 3 * len(blocks) // 4, len(blocks) - 1})
+    grab = {}
+
+    def hook(l):
+        return lambda m, i, o: grab.__setitem__(l, (o[0] if isinstance(o, tuple) else o)[:, -1, :].float().cpu())
+    hooks = [blocks[l].register_forward_hook(hook(l)) for l in layers]
+    sub, out = [seqs[i] for i in keep], None
+    try:
+        with torch.no_grad():
+            for b in sc._batches(sub, sc.bs_score):
+                ids, att = sc._left_pad([sub[i] for i in b])
+                grab.clear()
+                sc.model(input_ids=ids, attention_mask=att, logits_to_keep=1, use_cache=False)
+                h = torch.stack([grab[l] for l in layers], dim=1).numpy().astype(np.float16)   # (batch, layers, d)
+                out = np.zeros((len(sub),) + h.shape[1:], dtype=np.float16) if out is None else out
+                out[b] = h
+    finally:
+        for x in hooks:
+            x.remove()
+    name = set_name.replace("/", "~")
+    np.savez_compressed(f"{out_dir}/hidden_{name}.npz", h=out, iid=np.array([recs[i]["iid"] for i in keep]),
+                        layers=np.array(layers), n_layers=len(blocks))
+    log(f"{rid} {set_name} residual stream at layers {layers} of {len(blocks)} for {len(keep)} records "
+        f"({time.time() - t0:.0f} s)")
+    return {"set": set_name, "n": len(keep), "layers": layers, "eval": {"seconds": round(time.time() - t0, 1), "mode": "hidden"}}
+
+
 def budget_scorer(eval_local, model, tok, bs_score, bs_gen, max_new, log, gb):
     """B's Scorer whose batches also respect a token budget (prompt tokens, plus max_new when generating), set
     from GPU memory: long prompts (MedEinst, NLI4CT-P) at a fixed batch size ran 24 GB cards out of memory.
@@ -357,6 +399,11 @@ def run_one(spec, a, mon, log, owner):
             if spec.get("topk"):                  # sampling-noise check: next-token distribution, verdict format
                 os.makedirs(rdir, exist_ok=True)
                 summ[s] = topk_pass(sc, root, rid, s, rdir, log, tag, spec["topk"])
+                secs[s] = summ[s]["eval"]["seconds"]
+                continue
+            if spec.get("hidden"):                # exploratory probe: residual stream at the answer position
+                os.makedirs(rdir, exist_ok=True)
+                summ[s] = hidden_pass(sc, root, rid, s, rdir, log, tag, spec["hidden"])
                 secs[s] = summ[s]["eval"]["seconds"]
                 continue
             orig = s
