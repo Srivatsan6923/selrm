@@ -12,6 +12,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 S = json.loads((ROOT / "tables" / "data_stats.json").read_text(encoding="utf-8"))
+_SETS = ROOT / "results" / "A-SETS" / "summary.json"
+if _SETS.exists():                # facts of the new sets (xr_v1, ec_v1, ...) from their manifests
+    S["sets"] = json.loads(_SETS.read_text(encoding="utf-8"))
 _RV = ROOT / "audit" / "model_review" / "summary.json"
 if _RV.exists():                 # the model reviewers' own counts, quoted in that file
     _rv = json.loads(_RV.read_text(encoding="utf-8"))["sessions"]
@@ -44,12 +47,13 @@ def fmt(x):
     if isinstance(x, float):
         return f"{x:,.1f}" if abs(x) >= 1000 else f"{x:g}"
     if isinstance(x, int) and not isinstance(x, bool):
-        return f"{x:,}"
+        return f"{x:,}" if abs(x) >= 10000 else str(x)       # no separator in years and small counts
     return str(x)
 
 
 def short(name):
-    return name.split("/")[-1]
+    head, _, tail = name.partition("/")
+    return tail if head == "rule_v1" else f"{head.replace('rule_v1_', '')} {tail}"
 
 
 def md_table(head, rows):
@@ -186,7 +190,8 @@ def export_run():
     """results/A-AUDIT: the audit as a run summary, so make_tables reads it as sum/A-AUDIT/<field>."""
     d = ROOT / "results" / "A-AUDIT"
     d.mkdir(parents=True, exist_ok=True)
-    body = dict(short_keys(S), run_id="A-AUDIT", source="tables/data_stats.json (scripts/audit_rule_v1.py)")
+    body = dict(short_keys({k: v for k, v in S.items() if k != "sets"}), run_id="A-AUDIT",
+                source="tables/data_stats.json (scripts/audit_rule_v1.py)")
     (d / "summary.json").write_text(json.dumps(body, indent=1, sort_keys=True), encoding="utf-8")
     (d / "DONE").write_text("", encoding="utf-8")
 

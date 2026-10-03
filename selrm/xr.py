@@ -13,8 +13,9 @@ changes its code or hashes. Every case states a visit date (a `visit_date` pseud
 state, so the state alone determines the label). An event carries its date; "within the W months
 before the visit date" counts an event on or after the date exactly W calendar months before the
 visit (that boundary day counts; the rule text says so). Events are rendered as "N months ago" or
-as a month and year, and keep at least two months from every window edge, so the month-level
-rendering cannot change a label.
+as a month and year. They keep at least two months from the window's start (W months before the
+visit), and positive events lie 1 to W-2 months before the visit, so the month-level rendering
+cannot change a label.
 """
 from __future__ import annotations
 

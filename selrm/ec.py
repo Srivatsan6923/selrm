@@ -181,7 +181,8 @@ def window_group(f, kind, seed):
     sex = population(f)[0] or rng.choice(("female", "male"))
     poss = "Her" if sex == "female" else "His"
     age = rng.randint(*population(f)[1])
-    tpl = [t for t in xr.EVENTS[c][2] if not (step and "completed" in t)]   # no finished course within weeks
+    # within days or weeks: no finished course of treatment, and no line that dates the treatment, not the event
+    tpl = [t for t in xr.EVENTS[c][2] if not (step and ("completed" in t or t.startswith("Was treated for")))]
 
     def event(d, subject="patient"):
         when = _when(visit, d, unit, form)
@@ -290,17 +291,31 @@ def boundary_tests(f):
     return [(lab, c.evaluate([m])) for lab, m in rows] + [("not mentioned", c.evaluate([]))]
 
 
+DISPLAY = {"mech_valve": "a mechanical heart valve", "hit": "heparin-induced thrombocytopenia",
+           "pen_allergy": "a penicillin allergy", "sulfa_allergy": "a sulfonamide allergy",
+           "contrast_allergy": "an allergy to iodinated contrast", "peptic_ulcer": "a peptic ulcer",
+           "vascular": "a myocardial infarction (or, outside windows, peripheral artery disease)",
+           "vte": "a venous thromboembolism", "chf": "heart failure", "cad": "coronary artery disease",
+           "bleeding": "a major bleed", "stroke": "a stroke or TIA", "cancer": "cancer", "asthma": "asthma",
+           "diabetes": "diabetes", "hypertension": "hypertension", "pregnancy": "pregnancy",
+           "angioedema": "angioedema", "warfarin": "warfarin treatment", "aspirin": "aspirin use",
+           "lithium": "lithium treatment", "methotrexate": "methotrexate treatment",
+           "clarithromycin": "clarithromycin treatment", "fall": "a fall"}
+NUMERIC = {"hemoglobin": ("hemoglobin", "g/dL"), "neutrophils": ("neutrophil count", "x10^9/L"),
+           "bmi": ("body mass index", "kg/m2"), "inr": ("INR", ""), "age": ("age", "years")}
+
+
 def program_text(f):
     if f["input"] == "numeric":
-        u = RG.NUMERIC_NAMES.get(f["concept"], (None, ""))[1]
-        return f"met iff the patient's current {f['concept']} value {f['op']} {f['threshold']:g} {u}".strip()
+        name, u = NUMERIC.get(f["concept"]) or RG.NUMERIC_NAMES.get(f["concept"], (f["concept"], ""))
+        return f"met iff the patient's current {name} {f['op']} {f['threshold']:g} {u}".strip()
     who = "the patient or a first-degree relative" if f["subjects"] == "family" else "the patient"
     when = {"current": "now (the criterion does not say whether a past occurrence counts; no case states one)"
             if time_unsettled(f) else "now (current)", "ever": "at any time (current or past)",
             "window": f"within the {f['window_n']} {f['window_unit']} before the visit date (boundary day counts)"}[f["times"]]
     extra = f"; also listed in the text but never mentioned in cases: {', '.join(f['other_disjuncts'])}" \
         if f["other_disjuncts"] else ""
-    return f"met iff {who} has {f['concept']} {when}{extra}"
+    return f"met iff {who} has {DISPLAY.get(f['concept'], f['concept'].replace('_', ' '))} {when}{extra}"
 
 
 def rendered_ok(recs):

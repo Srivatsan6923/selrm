@@ -2,8 +2,9 @@
 
 You write short patient notes from fact lists, in your own words. A program decides the correct
 answer from the facts, so a note is correct when it states exactly the listed facts: no more, no
-fewer, nothing ambiguous. Do not look at generated cases (`data/`, `docs/SAMPLE_TRIPLETS.md`,
-`audit/fidelity_sheets.md`) before you have finished writing.
+fewer, nothing ambiguous. Do not look at generated cases (`data/`, `docs/SAMPLE_TRIPLETS.md`, the
+H1 sheets in `audit/h1/`, `ec_v1/SIGNOFF_CASES.md`) before you have finished writing. **Write your
+H2 notes before you start H1 or H3**, which show generated cases.
 
 ## What you write for each group
 

@@ -26,7 +26,7 @@ from selrm.metrics import decisions, summarise  # noqa: E402
 ROOT = Path(__file__).resolve().parents[1]
 KIT, SHEET = ROOT / "ec_v1", ROOT / "docs" / "EC_SIGNOFF.csv"
 COLS = ["crit_id", "nct_id", "criterion_type", "original_text", "rule_text_shown", "simplifications",
-        "never_mentioned_disjuncts", "registry_context", "program", "executed_tests", "near_miss_kinds", "groups",
+        "text_edits", "never_mentioned_disjuncts", "registry_context", "program", "executed_tests", "near_miss_kinds", "groups",
         "verification", "cases", "records_sha256",
         "reviewer_1", "program_ok_1", "cases_ok_1", "comment_1", "reviewer_2", "program_ok_2", "cases_ok_2", "comment_2"]
 
@@ -147,6 +147,18 @@ def records_sha(recs):
     return hashlib.sha256("".join(json.dumps(r, sort_keys=True) + "\n" for r in recs).encode("utf-8")).hexdigest()
 
 
+def text_edits(original, shown):
+    """Every word-level difference between the registered and the shown text (computed, so none is
+    missed by the formaliser's own list)."""
+    import difflib
+    a, b = original.split(), shown.split()
+    out = []
+    for tag, i1, i2, j1, j2 in difflib.SequenceMatcher(None, a, b, autojunk=False).get_opcodes():
+        if tag != "equal":
+            out.append(f"'{' '.join(a[i1:i2])}' -> '{' '.join(b[j1:j2])}'")
+    return "; ".join(out) or "none"
+
+
 def verification(f):
     if f.get("rescued"):
         return "rescued: " + f["rescued"]
@@ -158,6 +170,7 @@ def sheet_row(f, recs):
     return {"crit_id": f["cand"], "nct_id": f["nct_id"], "criterion_type": f["criterion_type"],
             "original_text": f["original_text"], "rule_text_shown": ec.full_text(f),
             "simplifications": " | ".join(f["simplifications"]) or "none",
+            "text_edits": text_edits(f["original_text"], f["rule_text"]),
             "never_mentioned_disjuncts": ", ".join(f["other_disjuncts"]) or "none",
             "registry_context": f.get("registry_parent") or "standalone item", "program": ec.program_text(f),
             "executed_tests": tests, "near_miss_kinds": ", ".join(ec.kinds(f)),

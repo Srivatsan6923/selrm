@@ -64,6 +64,72 @@
     "phrasing 1, dated": 33,
     "phrasing 2, relative": 33
    }
+  },
+  {
+   "id": "age_outside_scenario",
+   "items": [
+    11,
+    99,
+    171,
+    191,
+    295,
+    395,
+    399
+   ],
+   "reason": "Age-inclusivity items take the patient's age from the threshold, not from the scenario's age range, so some cases are implausible for their scenario (e.g. a request for contraception at 57 or older). Labels are unaffected."
+  },
+  {
+   "id": "dvt_completed_treatment_recent",
+   "items": [
+    188,
+    292,
+    300
+   ],
+   "reason": "A DVT template says the clot was 'diagnosed ... and completed treatment'; at under three months before the visit this is clinically implausible (treatment lasts at least three months). Labels are unaffected."
+  },
+  {
+   "id": "hip_osteoarthritis_pairings",
+   "items": [
+    12,
+    19,
+    21,
+    28,
+    43,
+    119,
+    136,
+    143,
+    153,
+    164,
+    173,
+    178,
+    186,
+    217,
+    239,
+    278,
+    281,
+    325,
+    330,
+    367,
+    370,
+    392
+   ],
+   "reason": "The hip-osteoarthritis scenario chooses between naproxen alone and naproxen with omeprazole, which only gastrointestinal risk plausibly affects; the fit table pairs it with other conditions by word match. Labels are unaffected."
+  },
+  {
+   "id": "claim_length",
+   "reason": "The conclusion claims are the scenario's two options and differ in length by up to 2 words (rule_v1's constraint rules: at most 2). Scorers that use claim likelihood should compare within an item, which XA does."
+  },
+  {
+   "id": "prose_field",
+   "reason": "The stored prose field quotes the full rule clause as the condition, which reads awkwardly; do not use xr_v1's prose as a program-supplied summary."
+  },
+  {
+   "id": "manifest_commit",
+   "reason": "MANIFEST git_commit (6966837) predates the commit that added the generator (2df9308, selrm/xr.py and scripts/build_xr_v1.py). The records regenerate byte-identically from the current code: python scripts/build_xr_v1.py --restore checks the frozen sha256."
+  },
+  {
+   "id": "window_margin_wording",
+   "reason": "The generator keeps at least two months between an event and the start of the window (W months before the visit). Positive events are 1 to W-2 months before the visit, so for a 3-month window they are exactly 1 month before it. The month-level date can never reach the visit date, so labels are unaffected; the MANIFEST's 'every window edge' overstates this."
   }
  ]
 }

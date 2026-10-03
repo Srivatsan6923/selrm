@@ -53,8 +53,8 @@ def unit(concept):
 
 
 def name(c):
-    if c.kind == "numeric":
-        return c.label
+    if c.kind == "numeric":                        # the rule's own name for the input (not, e.g., 'urea' for BUN)
+        return RG.NUMERIC_NAMES.get(c.concept, (c.label, None))[0]
     return NAME.get(c.concept) or re.sub(r"\s*\(patient or first-degree relative\)|^(current|active) | at any time$",
                                          "", c.label)
 
@@ -84,6 +84,8 @@ def fact(m, by_concept):
         return None if m["form"] == "generic" else f"{who} explicitly does not have {name(c)} (a clear denial)"
     if m["time"] == "current":
         return f"{who} has {name(c)} now"
+    if c.counts_past:                              # counted anyway: no need to say it ended
+        return f"{who} had {name(c)} in the past ({when})"
     return f"{who} had {name(c)} in the past ({when}); it is over or resolved, not current"
 
 
@@ -175,7 +177,7 @@ def form(s):
     for k, lab in (("flip", "FLIP"), ("near", "NEAR-MISS")):
         e = s["edits"][k]
         where = f"replaces your line for fact {e['fact']}" if e["op"] == "replace" else "is added to the base note"
-        lines.append(f"{lab}: one line that {where}, stating: {e['text']}.")
+        lines.append(f"  {lab} (instruction): one line that {where}, stating: {e['text']}.")
     lines += [f"Every line that mentions {s['concept']} must contain one of these words (a longer word that starts "
               f"with one is fine): {shown(s['keywords'], D.RULES_BY_ID[s['rid']].crit(s['cid']).concept)}.", "",
               "header: ", "reason: "] + [f"fact {f['n']}: " for f in s["facts"]] + \
@@ -337,7 +339,7 @@ def _line_of(s, n, k, m):
 
 def assemble(freeze=False, kit_dir=KIT):
     S = {json.loads(l)["gid"]: json.loads(l) for l in open(kit_dir / "specs.jsonl", encoding="utf-8")}
-    report, recs, done = ["# challenge_v1 assembly report\n"], [], Counter()
+    report, recs, done, seen = ["# challenge_v1 assembly report\n"], [], Counter(), {}
     for md in sorted(kit_dir.glob("notes_*.md")):
         who = md.stem[len("notes_"):]
         notes = parse(md.read_text(encoding="utf-8"))
@@ -348,12 +350,16 @@ def assemble(freeze=False, kit_dir=KIT):
             if gid not in S:
                 report.append(f"- {who} {gid}: unknown group id")
                 continue
+            if gid in seen:
+                report.append(f"- {who} {gid}: already submitted in notes_{seen[gid]}.md; not used again")
+                continue
+            seen[gid] = who
             errs = check(S[gid], n)
             if errs:
                 report.append(f"- {who} {gid}: " + "; ".join(errs))
                 done["rejected"] += 1
             else:
-                recs += records(S[gid], n, who)
+                recs += records(S[gid], n, S[gid]["author"])   # the assigned id, never a person's name
                 done["accepted"] += 1
     missing = sorted(set(S) - {r["tid"].split(".")[-1] for r in recs})
     report.append(f"\naccepted {done['accepted']}, rejected {done['rejected']}, not yet written or accepted {len(missing)}")

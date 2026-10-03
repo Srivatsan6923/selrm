@@ -21,6 +21,14 @@ def main():
     prep = ROOT / "ec_v1" / "prepare_summary.json"
     if prep.exists():
         out["ec_v1_prepare"] = json.loads(prep.read_text(encoding="utf-8"))
+    specs = ROOT / "challenge_v1" / "specs.jsonl"
+    if specs.exists():
+        rows = [json.loads(l) for l in open(specs, encoding="utf-8")]
+        kinds = {}
+        for r in rows:
+            kinds[r["nm_kind"]] = kinds.get(r["nm_kind"], 0) + 1
+        out["challenge_v1_kit"] = {"specs": len(rows), "by_kind": kinds,
+                                   "authors": len({r["author"] for r in rows})}
     d = ROOT / "results" / "A-SETS"
     d.mkdir(parents=True, exist_ok=True)
     (d / "summary.json").write_text(json.dumps(out, indent=1, sort_keys=True), encoding="utf-8")
