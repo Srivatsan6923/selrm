@@ -9,7 +9,7 @@ PVC selrm-b read-only at /pvcb (env tarball, base weights, rule_v1 data, adapter
   python scripts/submit_c.py push FILE DEST             # small file -> /pvc/selrmc/DEST
   python scripts/submit_c.py sh "CMD"                   # run a shell command in the sync pod
   python scripts/submit_c.py runner TASKS.json --gpu l40 --hours 8 [--bcode SHA] [--n 1]
-  python scripts/submit_c.py pull [RUN_ID ...]          # finished runs -> results/<run_id>/
+  python scripts/submit_c.py pull [RUN_ID ...]          # finished runs -> results_git/<run_id>/ (as role B)
 """
 import argparse, io, json, os, subprocess, sys, tarfile, time
 
@@ -139,11 +139,11 @@ def runner_job(name, tasks, code, bcode, env_tag, gpu, hours, cpu=2, mem="12Gi",
 
 
 def pull(run_ids):
-    """Finished runs (DONE) -> results/<run_id>/ (meta, summaries, scores, DONE, logs)."""
+    """Finished runs (DONE) -> results_git/<run_id>/ (meta, summaries, scores, DONE, logs), as role B."""
     have = exec_sync("sh", "-c", f"cd {ROOT}/results 2>/dev/null && ls -d */DONE 2>/dev/null | cut -d/ -f1").split()
     want = [r for r in (run_ids or have) if r in have]
     for rid in want:
-        local = f"{REPO}/results/{rid}/DONE"
+        local = f"{REPO}/results_git/{rid}/DONE"
         if os.path.exists(local) and open(local).read() == exec_sync("cat", f"{ROOT}/results/{rid}/DONE"):
             continue
         data = subprocess.run(["kubectl", "-n", NS, "exec", "selrm-c-sync", "--", "sh", "-c",
@@ -151,7 +151,7 @@ def pull(run_ids):
                                f"$(ls {rid}/summary_*.json {rid}/scores_*.jsonl {rid}/gpu_util.csv {rid}/run.log 2>/dev/null)"],
                               capture_output=True, check=True).stdout
         with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
-            tar.extractall(f"{REPO}/results", filter="data")
+            tar.extractall(f"{REPO}/results_git", filter="data")
         print(f"pulled {rid} ({len(data)} bytes gz)")
     print("not DONE on the PVC:", " ".join(sorted(set(run_ids or []) - set(have))) or "-")
 

@@ -1,0 +1,26 @@
+{
+ "clin_v1/trialgpt_dev": {
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/trialgpt_dev/MANIFEST.json",
+  "n_groups": 213,
+  "n_records": 426,
+  "path": "clin_v1/trialgpt_dev/records.jsonl",
+  "sha256": "62d7cf315a8d8867ec791b51b89ec8b23be43a54e4a40698abdd360347079e4c",
+  "split": "dev",
+  "tier": "external"
+ },
+ "clin_v1/trialgpt_test": {
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/trialgpt_test/MANIFEST.json",
+  "n_groups": 801,
+  "n_records": 1602,
+  "path": "clin_v1/trialgpt_test/records.jsonl",
+  "sha256": "351d15ab9b5c1a73ad7b30063e741c273c5775866c867351b7fd70ea014f4f99",
+  "split": "test",
+  "tier": "external"
+ }
+}
