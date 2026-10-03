@@ -26,9 +26,66 @@ from selrm.metrics import decisions, summarise  # noqa: E402
 ROOT = Path(__file__).resolve().parents[1]
 KIT, SHEET = ROOT / "ec_v1", ROOT / "docs" / "EC_SIGNOFF.csv"
 COLS = ["crit_id", "nct_id", "criterion_type", "original_text", "rule_text_shown", "simplifications",
-        "never_mentioned_disjuncts", "program", "executed_tests", "near_miss_kinds", "groups",
+        "never_mentioned_disjuncts", "registry_context", "program", "executed_tests", "near_miss_kinds", "groups",
         "example_base", "example_flip", "example_near", "example_answers",
         "reviewer_1", "program_ok_1", "cases_ok_1", "comment_1", "reviewer_2", "program_ok_2", "cases_ok_2", "comment_2"]
+
+
+# Accepted by the formalizer, rejected by one verifier only for a near-miss kind; that verifier named the
+# kinds under which it accepts (quoted). Restricting the kinds cannot add an ambiguous case.
+RESCUE = {
+    "k005": (["numeric", "boundary"], "Re-submit with near_kinds ['numeric','boundary']."),
+    "k216": (["subject", "negation"], "time near-miss ambiguous (a past delivery leaves 'breastfeeding' open); "
+                                      "subject and negation confirmed by both verifiers"),
+    "k218": (["subject", "negation"], "It would be acceptable with near_kinds = [subject, negation]."),
+    "k219": (["subject", "negation"], "It would be acceptable with near_kinds = [subject, negation]."),
+    "k220": (["subject", "negation"], "It would be acceptable with near_kinds = [subject, negation]."),
+    "k221": (["subject", "negation"], "It would be acceptable with near_kinds = [subject, negation]."),
+}
+QUALIFIER = re.compile(r"(?i)history|presence|within|up to|before|after|prior|previous|since|during|such as|doubt")
+
+
+def norm(t):
+    return re.sub(r"[^a-z0-9]+", " ", t.lower()).strip()
+
+
+def post(items, ctx):
+    """Rescues, registry context (section and nesting) and duplicates, in that order; every change is
+    recorded on the item (rescued, exclusion_reason, simplifications, registry_parent)."""
+    def drop(f, why):
+        f["final"], f["exclusion_reason"] = "exclude", why
+    for f in items:
+        if f["cand"] in RESCUE and f["decision"] == "accept" and f["final"] != "accept":
+            kinds, quote = RESCUE[f["cand"]]
+            f.update(near_kinds=kinds, final="accept", rescued=f"near-miss kinds restricted to {kinds} as the "
+                                                                f"rejecting verifier specified: {quote}")
+        c = ctx.get(f["cand"])
+        if f["final"] != "accept" or not c:
+            continue
+        parent = c.get("parent") or ""
+        if c.get("not_found"):
+            drop(f, "the line was not found in the live registry record")
+        elif c.get("type_mismatch"):
+            drop(f, f"the registry lists it under {c['section']}, not {c['mined_type']}")
+        elif c.get("under_intro") and f["criterion_type"] == "inclusion":
+            drop(f, f"one condition of a compound inclusion criterion ('{parent}'): necessary, not sufficient")
+        elif c.get("under_intro") and QUALIFIER.search(parent):
+            drop(f, f"the parent line ('{parent}') qualifies its items")
+        elif c.get("under_intro"):
+            f["registry_parent"] = parent
+            f["simplifications"] = f["simplifications"] + [
+                f"shown alone: one item of the compound exclusion criterion '{parent}', any item of which excludes"]
+    seen = {}
+    for f in sorted(items, key=lambda f: f["cand"]):
+        if f["final"] != "accept":
+            continue
+        key = (norm(f["rule_text"]), f["criterion_type"], f["concept"], f["op"], f["threshold"], f["times"],
+               f["subjects"], f["window_n"], f["window_unit"])
+        if key in seen:
+            drop(f, f"duplicate of {seen[key]} (same text and program, another trial or arm)")
+        else:
+            seen[key] = f["cand"]
+    return items
 
 
 def guard(f):
@@ -89,20 +146,28 @@ def sheet_row(f, recs):
     return {"crit_id": f["cand"], "nct_id": f["nct_id"], "criterion_type": f["criterion_type"],
             "original_text": f["original_text"], "rule_text_shown": ec.full_text(f),
             "simplifications": " | ".join(f["simplifications"]) or "none",
-            "never_mentioned_disjuncts": ", ".join(f["other_disjuncts"]) or "none", "program": ec.program_text(f),
+            "never_mentioned_disjuncts": ", ".join(f["other_disjuncts"]) or "none",
+            "registry_context": f.get("registry_parent") or "standalone item", "program": ec.program_text(f),
             "executed_tests": tests, "near_miss_kinds": ", ".join(ec.kinds(f)),
             "groups": len({r["tid"] for r in recs}),
             "example_base": case["base"]["case_text"], "example_flip": case["flip"]["case_text"],
             "example_near": case["near"]["case_text"],
             "example_answers": f"near-miss kind {case['near']['nm_kind']}: base not met, flip met, near-miss not met",
-            **{c: "" for c in COLS[15:]}}
+            **{c: "" for c in COLS[COLS.index("reviewer_1"):]}}
+
+
+def load_items():
+    """Agent formalisations (ec_v1/formalized.json) with the mined text, trial and type, after post()."""
+    src = json.loads((KIT / "formalized.json").read_text(encoding="utf-8"))
+    sel = {json.loads(l)["cand"]: json.loads(l) for l in open(KIT / "selected.jsonl", encoding="utf-8")}
+    ctx = json.loads((KIT / "registry_context.json").read_text(encoding="utf-8"))
+    items = [dict(f, original_text=sel[f["cand"]]["text"], nct_id=sel[f["cand"]]["nct_id"],
+                  criterion_type=sel[f["cand"]]["type"]) for f in src["items"]]
+    return post(items, ctx)
 
 
 def prepare():
-    src = json.loads((KIT / "formalized.json").read_text(encoding="utf-8"))
-    sel = {json.loads(l)["cand"]: json.loads(l) for l in open(KIT / "selected.jsonl", encoding="utf-8")}
-    items = [dict(f, original_text=sel[f["cand"]]["text"], nct_id=sel[f["cand"]]["nct_id"],
-                  criterion_type=sel[f["cand"]]["type"]) for f in src["items"]]
+    items = load_items()
     keep, recs, excl = render(items)
     ok, sc = shortcut_check(recs)
     with open(SHEET, "w", encoding="utf-8", newline="") as fh:
@@ -119,7 +184,13 @@ def prepare():
     d.mkdir(parents=True, exist_ok=True)
     (d / "records.jsonl").write_text("".join(json.dumps(r, sort_keys=True) + "\n" for r in recs), encoding="utf-8",
                                      newline="\n")
-    summary = {"candidates": len(items), "accepted_by_agents": sum(f["final"] == "accept" for f in items),
+    summary = {"candidates": len(items), "accepted_by_agents": sum(f["decision"] == "accept" for f in items),
+               "confirmed_by_both_verifiers": sum(bool(f["verdicts"]) and all(v["verdict"] == "confirm"
+                                                                             for v in f["verdicts"])
+                                                  and len(f["verdicts"]) == 2 for f in items),
+               "rescued": sorted(f["cand"] for f in items if f.get("rescued")),
+               "kept_as_exclusion_subitems": sorted(f["cand"] for f in items if f.get("registry_parent")
+                                                    and f["final"] == "accept"),
                "kept": len(keep), "excluded": len(excl), "groups": len({r["tid"] for r in recs}),
                "records": len(recs), "by_concept": dict(Counter(f["concept"] for f in keep)),
                "by_type": dict(Counter(f["criterion_type"] for f in keep)),
@@ -142,10 +213,7 @@ def freeze():
     pending = [r["crit_id"] for r in rows if not (r["program_ok_1"].strip() and r["program_ok_2"].strip())]
     if pending:
         sys.exit(f"refusing to freeze: {len(pending)} criteria lack two sign-offs")
-    src = json.loads((KIT / "formalized.json").read_text(encoding="utf-8"))
-    sel = {json.loads(l)["cand"]: json.loads(l) for l in open(KIT / "selected.jsonl", encoding="utf-8")}
-    items = [dict(f, original_text=sel[f["cand"]]["text"], nct_id=sel[f["cand"]]["nct_id"],
-                  criterion_type=sel[f["cand"]]["type"]) for f in src["items"] if f["cand"] in approved]
+    items = [f for f in load_items() if f["cand"] in approved]
     keep, recs, _ = render(items)
     ok, sc = shortcut_check(recs)
     if not ok:

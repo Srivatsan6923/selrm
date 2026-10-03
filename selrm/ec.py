@@ -126,9 +126,10 @@ def _when(visit, d, unit, form):
         return f"on {d.day} {xr.MONTHS[d.month - 1]} {d.year}" if unit in UNIT_DAYS else \
             f"in {xr.MONTHS[d.month - 1]} {d.year}"
     days = (visit - d).days
-    if unit in UNIT_DAYS:
-        k = days // UNIT_DAYS[unit]
-        return f"{k} {unit[:-1] if k == 1 else unit} ago"
+    if unit == "days" or (unit == "weeks" and days < 14):
+        return f"{days} day{'s' * (days != 1)} ago"
+    if unit == "weeks":
+        return f"{days // 7} weeks ago"
     months = (visit.year - d.year) * 12 + visit.month - d.month
     return f"{months // 12} years ago" if unit == "years" else f"{months} month{'s' * (months != 1)} ago"
 
@@ -154,7 +155,7 @@ def window_group(f, kind, seed):
     sex = rng.choice(("female", "male"))
     poss = "Her" if sex == "female" else "His"
     age = rng.randint(40, 80)
-    tpl = xr.EVENTS[c][2]
+    tpl = [t for t in xr.EVENTS[c][2] if not (step and "completed" in t)]   # no finished course within weeks
 
     def event(d, subject="patient"):
         when = _when(visit, d, unit, form)
@@ -254,8 +255,8 @@ def boundary_tests(f):
     rows = [("patient, present now", Mention(f["concept"], "finding")),
             ("patient, past or resolved", Mention(f["concept"], "finding", time="past")),
             ("patient, explicit denial", Mention(f["concept"], "finding", status="absent")),
-            ("father, present now", Mention(f["concept"], "finding", subject="father")),
-            ("uncle, present now", Mention(f["concept"], "finding", subject="uncle"))]
+            ("sister, present now", Mention(f["concept"], "finding", subject="sister")),
+            ("friend, present now", Mention(f["concept"], "finding", subject="friend"))]
     return [(lab, c.evaluate([m])) for lab, m in rows] + [("not mentioned", c.evaluate([]))]
 
 

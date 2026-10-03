@@ -1,4 +1,114 @@
 {
+ "ec_v1_prepare": {
+  "accepted_by_agents": 132,
+  "by_concept": {
+   "age": 3,
+   "angioedema": 1,
+   "asthma": 1,
+   "bmi": 7,
+   "bun": 2,
+   "cad": 2,
+   "cancer": 1,
+   "chf": 1,
+   "contrast_allergy": 1,
+   "creatinine": 4,
+   "diabetes": 2,
+   "egfr": 3,
+   "heart_rate": 3,
+   "hemoglobin": 5,
+   "hit": 6,
+   "inr": 4,
+   "lithium": 1,
+   "mech_valve": 4,
+   "methotrexate": 1,
+   "neutrophils": 5,
+   "peptic_ulcer": 5,
+   "platelets": 4,
+   "potassium": 6,
+   "pregnancy": 4,
+   "rr": 1,
+   "sbp": 4,
+   "stroke": 1,
+   "sulfa_allergy": 4,
+   "temperature": 1,
+   "vascular": 3,
+   "vte": 4,
+   "warfarin": 1,
+   "wbc": 1,
+   "weight": 4
+  },
+  "by_kind": {
+   "boundary": 88,
+   "negation": 86,
+   "numeric": 114,
+   "subject": 86,
+   "time": 124
+  },
+  "by_times": {
+   "current": 26,
+   "ever": 13,
+   "window": 4
+  },
+  "by_type": {
+   "exclusion": 82,
+   "inclusion": 18
+  },
+  "candidates": 294,
+  "confirmed_by_both_verifiers": 108,
+  "excluded": 194,
+  "groups": 498,
+  "kept": 100,
+  "kept_as_exclusion_subitems": [
+   "k053",
+   "k096",
+   "k134",
+   "k135",
+   "k165",
+   "k176",
+   "k179",
+   "k182",
+   "k199",
+   "k205",
+   "k213",
+   "k221",
+   "k230",
+   "k261",
+   "k269"
+  ],
+  "records": 3984,
+  "rescued": [
+   "k005",
+   "k216",
+   "k218",
+   "k219",
+   "k220",
+   "k221"
+  ],
+  "shortcut_validation": {
+   "result": "PASS",
+   "scorers": {
+    "always_default": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 498
+    },
+    "concept_named": {
+     "Hold": 0.0,
+     "Rev": 38.55421686746988,
+     "TA": 0.0,
+     "n": 498
+    },
+    "program": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 498
+    }
+   }
+  },
+  "trials": 90
+ },
  "run_id": "A-SETS",
  "xr_v1": {
   "by_concept": {

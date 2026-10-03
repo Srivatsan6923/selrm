@@ -20,5 +20,5 @@ A-AUDIT,A,no,"AppB,AppC,Sec3.1",doc,"audit of rule_v1: re-executed target-claim 
 A-XR,A,no,"Sec3.1,AppC",data,"xr_v1 rule-side items: 400 items x 2 rules x 3 cases, validation scorers",xr_v1/test,-,CPU,3,2,P0,-,done,"selrm/xr.py; scripts/build_xr_v1.py; frozen"
 A-CH,A,no,"Sec3.1,AppC",data,"challenge_v1 kit: 160 state specifications, forms, assembler (freeze after H2)",challenge_v1,-,CPU,2,1.5,P0,-,kit done,"scripts/challenge_v1.py; challenge_v1/"
 A-LOKO,A,no,Sec7.4,data,"boundary leave-out corpus; no_*/nm* names as registry aliases",rule_v1/train_triplets_lo_boundary,-,CPU,0.3,0.2,P0,A-D16,done,"aliases: alias_of in REGISTRY"
-A-EC,A,no,"Sec3.2,AppD",data,"ec_v1 registered criteria: mining, agent formalisation with two verifiers, rendering, sign-off sheet (freeze after H3)",ec_v1,-,CPU+API(agents),6,,P0,C TrialGPT ids,running,"scripts/ec_mine.py; scripts/build_ec_v1.py; selrm/ec.py"
+A-EC,A,no,"Sec3.2,AppD",data,"ec_v1 registered criteria: mining, agent formalisation with two verifiers, rendering, sign-off sheet (freeze after H3)",ec_v1,-,CPU+API(agents),6,5,P0,C TrialGPT ids,sign-off sheet ready,"scripts/ec_mine.py; scripts/build_ec_v1.py; selrm/ec.py"
 A-SETS,A,no,"AppC",doc,"facts of the new sets from their MANIFESTs as a run summary (sum/A-SETS/...)",-,-,CPU,0.1,0.1,P1,A-XR,done,scripts/export_set_summaries.py
