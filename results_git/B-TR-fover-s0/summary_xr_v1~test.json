@@ -1,0 +1,39 @@
+{
+ "run_id": "B-TR-fover-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 67.0,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 94.375,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 93.0,
+   "XA_inclusivity": 40.0,
+   "XA_subject": 92.0,
+   "XA_window": 43.0
+  },
+  "criterion": {
+   "XA": 87.5,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 97.875,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 81.0,
+   "XA_subject": 98.0,
+   "XA_window": 71.0
+  }
+ },
+ "eval": {
+  "seconds": 60.5,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
