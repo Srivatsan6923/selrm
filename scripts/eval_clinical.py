@@ -115,8 +115,8 @@ def evaluate(recs, sc, tau, fmt):
                                          "expert": set(r["meta"]["expert_sentences"]), "note": r["case_text"]})
         s = sc[r["iid"]]
         it["u"][r["claim_role"]] = s["u"]
-        if "reader_output" in s:
-            it["reader"] = s["reader_output"]
+        if "reader_output" in s:      # a re-judged run's quotes come from the ledger its judge read
+            it["reader"] = s.get("ledger_lenient") or s["reader_output"]
     for it in items.values():
         it["pred"] = predict(it["u"]["s"], it["u"]["s_prime"], tau)
         d = it["u"]["s"] - it["u"]["s_prime"]
