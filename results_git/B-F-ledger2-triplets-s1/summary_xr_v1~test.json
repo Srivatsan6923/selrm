@@ -1,0 +1,18 @@
+{
+ "run_id": "B-F-ledger2-triplets-s1",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 16,
+  "mode": null,
+  "malformed_rate": 0.0067,
+  "gen_not_stopped": 0,
+  "seconds": 136.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
