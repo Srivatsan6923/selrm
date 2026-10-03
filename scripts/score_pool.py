@@ -150,6 +150,9 @@ def run_medprm(a):
     qs, ss = load_pool(a.pool)
     vig = vignettes(qs, a.swap)
     tok = AutoTokenizer.from_pretrained(a.model)
+    if tok.pad_token is None:          # Llama 3.1 has none; padded positions are masked and never read
+        tok.pad_token = tok.eos_token
+    tok.padding_side = "right"
     model = AutoModelForCausalLM.from_pretrained(a.model, dtype=torch.bfloat16).cuda().eval()
     plus = tok(" +", add_special_tokens=False)["input_ids"][0]
     minus = tok(" -", add_special_tokens=False)["input_ids"][0]
