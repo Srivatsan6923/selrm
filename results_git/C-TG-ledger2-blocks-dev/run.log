@@ -1,0 +1,10 @@
+2026-10-03T05:47:44Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-ledger2-blocks-s0
+2026-10-03T05:49:48Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0073)
+2026-10-03T05:49:52Z padding self-check: max |u_batch - u_single| = 0.0134 (tol 0.629) -> left padding
+2026-10-03T05:52:52Z generate: batch 25/38, 12910 tokens, 72 tok/s
+2026-10-03T05:57:52Z C-TG-ledger2-blocks-dev rule_v1/dev_missing: TA nan Rev nan Hold nan n=None (606.4 s)
+2026-10-03T06:01:19Z C-TG-ledger2-blocks-dev rule_v1/dev_missing lenient: TA nan malformed 0/600
+2026-10-03T06:01:19Z C-TG-ledger2-blocks-dev clin_v1/trialgpt_dev prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_dev/reader_ledger.npz', 'exists')
+2026-10-03T06:04:17Z C-TG-ledger2-blocks-dev clin_v1/trialgpt_dev: TA nan Rev nan Hold nan n=None (177.8 s)
+2026-10-03T06:04:52Z C-TG-ledger2-blocks-dev clin_v1/trialgpt_dev lenient: TA nan malformed 0/213
+2026-10-03T06:04:52Z DONE C-TG-ledger2-blocks-dev in 17.7 min, GPU util mean 71.1

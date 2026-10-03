@@ -1,0 +1,15 @@
+{
+ "run_id": "C-TG-ledger2-triplets-dev",
+ "set": "rule_v1/dev_missing~lenient",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "reader_units": 600,
+  "malformed_units": 0,
+  "malformed_rate": 0.0,
+  "seconds": 128.2,
+  "mode": "lenient"
+ }
+}

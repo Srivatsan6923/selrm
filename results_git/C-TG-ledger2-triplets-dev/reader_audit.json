@@ -1,0 +1,55 @@
+{
+ "patterns": {
+  "verdict": [
+   "\\bthe claim (?:is|was) (?:not )?(?:correct|incorrect|true|false|right|wrong)\\b",
+   "\\banswer\\s*:",
+   "(?:^|\\n)\\s*[+\\-]\\s*$"
+  ],
+  "criterion": [
+   "\\b(?:criterion|condition|requirement)s? (?:is|are|was|were) (?:not )?(?:met|satisfied|fulfilled)\\b",
+   "\\b(?:meets|does not meet|do not meet|fails to meet)\\b",
+   "\\b(?:not )?eligible\\b",
+   "\\bdoes not apply\\b",
+   "\\bapplies\\b",
+   "\\bsatisf(?:ies|y|ied)\\b",
+   "\\bcontradict",
+   "\\bfalls? (?:within|outside)\\b",
+   "\\bwithin the (?:specified |required )?range\\b",
+   "\\bfulfil"
+  ],
+  "action": [
+   "\\btherefore\\b",
+   "\\bthus\\b",
+   "\\bhence\\b",
+   "\\bshould(?: not)?\\b",
+   "\\brecommend",
+   "\\bis indicated\\b",
+   "\\bcontraindicat"
+  ],
+  "compare": [
+   "\\b(?:above|below|greater than|less than|exceeds?|higher than|lower than|at or above|at or below)\\s+\\d"
+  ]
+ },
+ "sets": {
+  "clin_v1/trialgpt_dev": {
+   "units": 213,
+   "decision_language_any": 6.1,
+   "decision_language_verdict": 0.0,
+   "decision_language_criterion": 0.47,
+   "decision_language_action": 3.76,
+   "decision_language_compare": 2.35,
+   "malformed_rate_strict": 0.0563,
+   "mean_chars": 230.4
+  },
+  "rule_v1/dev_missing": {
+   "units": 600,
+   "decision_language_any": 45.0,
+   "decision_language_verdict": 0.0,
+   "decision_language_criterion": 0.0,
+   "decision_language_action": 0.0,
+   "decision_language_compare": 45.0,
+   "malformed_rate_strict": 0.0017,
+   "mean_chars": 113.7
+  }
+ }
+}

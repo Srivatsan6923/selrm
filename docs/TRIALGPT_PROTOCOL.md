@@ -126,3 +126,5 @@ clinical records.
   and markdown key-value lines (scripts/eval_c.py lenient_ledger, version 2) and keeps the verbatim-quote
   rule; it re-judges the saved reader outputs and generates nothing. Trained readers are read with the
   frozen check only.
+- 3 Oct 2026: two-stage readers on the test portion generate up to 768 new tokens (development portion: 2 of 213
+  ledger x triplets outputs stopped at the 384-token cap and were malformed). A cap only; no other change.

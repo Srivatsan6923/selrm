@@ -75,7 +75,7 @@
    "sets": [
     "clin_v1/trialgpt_test"
    ],
-   "max_new": 384
+   "max_new": 768
   },
   {
    "run_id": "C-TG-ledger2-triplets-s0",
@@ -87,7 +87,7 @@
    "sets": [
     "clin_v1/trialgpt_test"
    ],
-   "max_new": 384
+   "max_new": 768
   },
   {
    "run_id": "C-TG-summary2-triplets-s0",
@@ -99,7 +99,7 @@
    "sets": [
     "clin_v1/trialgpt_test"
    ],
-   "max_new": 384
+   "max_new": 768
   }
  ],
  "note": "TrialGPT test portion: scored once per system after the dev check (protocol section 7); tau from the system's dev run (C-TG-<x>-dev scores_rule_v1~dev_missing)"
