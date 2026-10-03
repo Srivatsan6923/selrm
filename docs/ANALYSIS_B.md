@@ -168,3 +168,17 @@ By condition kind or case, field and whether the edit changes the program's verd
 
 Swap in the ledger of another case (same rule, condition and claim): the judge returns the verdict that ledger implies in 99.9% of 29136 records.
 
+## 10. Leave one near-miss kind out (test_L2, triplets of the held-out kind; FINAL_TASKS_B P0.5)
+
+| held-out kind | format | trained without the kind | trained on all kinds (B-F-<format>-triplets-s0) | without - all [95% CI], p |
+|---|---|---|---|---|
+| subject | verdict | not run | | |
+| subject | summary2 | not run | | |
+| subject | ledger2 | not run | | |
+| time | verdict | not run | | |
+| time | summary2 | not run | | |
+| time | ledger2 | not run | | |
+| boundary | verdict | not run | | |
+| boundary | summary2 | not run | | |
+| boundary | ledger2 | not run | | |
+
