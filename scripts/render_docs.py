@@ -77,10 +77,12 @@ def t_overlap():
              o[n]["rule_text_pct"], f"{fmt(o[n]['templates_shared'])} of {fmt(o[n]['templates'])}",
              o[n]["cases_with_train_cue_pct"], o[n]["cases_with_train_relative_pct"],
              f"{fmt(o[n]['base_states_shared'])} of {fmt(o[n]['base_states'])}",
+             f"{fmt(o[n]['patient_states_shared_any_rule'])} of {fmt(o[n]['patient_states'])}",
              o[n]["source_shared_with_train_pct"]) for n in SETS if n in o]
     return md_table(["Set", "Rules", "Program in train (%)", "Structure in train (%)", "Subexpressions in train (%)",
                      "Rule text in train (%)", "Templates shared", "Cases with a train cue word (%)",
-                     "Cases with a train relative (%)", "Base states shared", "Source shared (%)"], rows)
+                     "Cases with a train relative (%)", "Base states shared (same rule)",
+                     "Patient states shared (any rule)", "Source shared (%)"], rows)
 
 
 REQ = [("rule_dependent_time_scope", "Rule-dependent time scope (time near-miss on a finding another rule counts in the past)"),

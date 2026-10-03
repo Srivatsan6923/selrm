@@ -642,7 +642,7 @@ def facts(rec, rule):
     lines, out = mention_lines(rec), []
     for i, m in enumerate(rec["state"]):
         c = next((x for x in rule.criteria if x.concept == m["concept"]), None)
-        what = c.label if c else m["concept"]
+        what = neutral(c) if c else m["concept"]
         q = f' [line: "{lines[i]}"]' if lines.get(i) else ""
         who = "patient" if m["subject"] == "patient" else m["subject"]
         when = "current" if m["time"] == "current" else f"past ({m['year']})" if m.get("year") else "past"
@@ -657,9 +657,14 @@ def facts(rec, rule):
         else:
             out.append(f"{who}: {what} present ({when}){q}")
     named = {m["concept"] for m in rec["state"]}
-    out += [f"{c.label}: not mentioned ({'counts as absent' if c.kind == 'finding' else 'unknown'})"
+    out += [f"{neutral(c)}: not mentioned ({'counts as absent' if c.kind == 'finding' else 'unknown'})"
             for c in rule.criteria if c.concept not in named]
     return out
+
+
+def neutral(c):
+    """The condition's name without the rule's scope words (a past mention of 'active cancer' is cancer)."""
+    return re.sub(r"\s*\(patient or first-degree relative\)|^(current|active) | at any time$", "", c.label)
 
 
 H1_README = """# H1: rendering fidelity (authors)
