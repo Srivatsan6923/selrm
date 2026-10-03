@@ -168,6 +168,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-verdict-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 1.51 | 0.65 |
 | B-F-verdict-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 0.64 | 0.31 |
 | B-F-verdict-triplets-s2 | NVIDIA L40 | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 3.24 | 1.64 |
+| B-LOKO-boundary-ledger2-s0 | NVIDIA A100-SXM4-80GB | None | 60000 | 30000 | 30000 | 13132713 | 1115843 | 938 | 1.75 | 0.41 |
 | B-LOKO-boundary-summary2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 11979662 | 1139596 | 938 | 0.71 | 0.26 |
 | B-LOKO-boundary-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 12970250 | 120000 | 938 | 0.69 | 0.14 |
 | B-LOKO-subject-ledger2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13213846 | 1073236 | 938 | 0.82 | 0.27 |
@@ -201,6 +202,7 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | B-F-summary2-triplets-s2 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-value2-balanced-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-F-value2-natural-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
+| B-LOKO-boundary-ledger2-s0 | 0.3 | 30000 | 15000 | 4529 | 30.2% | 797 |
 | B-LOKO-boundary-summary2-s0 | 0.3 | 30000 | 15000 | 4529 | 30.2% | 797 |
 | B-LOKO-subject-ledger2-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
 | B-LOKO-subject-summary2-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
@@ -281,7 +283,7 @@ Swap in the ledger of another case (same rule, condition and claim): the judge r
 | time | ledger2 | 86.2 | 100.0 | -13.8 [-18.9, -8.8], p < 0.001 |
 | boundary | verdict | 49.8 | 93.2 | -43.5 [-54.2, -32.3], p < 0.001 |
 | boundary | summary2 | 99.0 | 100.0 | -1.0 [-3.2, +0.0], p 0.690 |
-| boundary | ledger2 | not run | | |
+| boundary | ledger2 | 87.0 | 100.0 | -13.0 [-22.1, -5.2], p < 0.001 |
 
 ## 11. Summary pipeline whose judge also sees the case (test_L2, triplets corpus, seed 0; FINAL_TASKS_B P0.4)
 
@@ -313,6 +315,7 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-F-value2-balanced-s0 | 57.8 | 90.4 | 60.0 | 100.0 | 12.0 | 59.0 |
 | B-F-value2-natural-s0 | 29.2 | 82.6 | 70.0 | 0.0 | 0.0 | 47.0 |
 | B-F-verdict-triplets-s2 | 90.0 | 98.0 | 100.0 | 100.0 | 100.0 | 60.0 |
+| B-LOKO-boundary-ledger2-s0 | 85.8 | 97.6 | 100.0 | 89.0 | 95.0 | 59.0 |
 | B-LOKO-boundary-summary2-s0 | 92.5 | 98.8 | 99.0 | 100.0 | 98.0 | 73.0 |
 | B-LOKO-boundary-verdict-s0 | 83.0 | 96.0 | 100.0 | 97.0 | 100.0 | 35.0 |
 | B-LOKO-subject-ledger2-s0 | 90.8 | 98.5 | 98.0 | 100.0 | 91.0 | 74.0 |

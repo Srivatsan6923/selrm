@@ -1,0 +1,44 @@
+{
+ "run_id": "B-LOKO-boundary-ledger2-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 85.75,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 97.625,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 89.0,
+   "XA_subject": 95.0,
+   "XA_window": 59.0
+  },
+  "criterion": {
+   "XA": 89.75,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 98.29166666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 95.0,
+   "XA_window": 64.0
+  }
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 5,
+  "mode": null,
+  "malformed_rate": 0.0021,
+  "gen_not_stopped": 0,
+  "seconds": 227.3,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
