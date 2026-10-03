@@ -61,31 +61,40 @@ def test_mr_matches_role_b_formula():
 def test_paired_and_holm():
     R, S = build([(f"t{i}", {"base": 1, "flip": -1, "near": 1}, f"r{i % 5}") for i in range(20)])
     T = M.decisions(R, S)
-    out = M.paired_test(T, T)
-    assert out["diff"] == 0 and out["lo"] == 0 and out["hi"] == 0 and out["p"] == 1.0 and out["n_clusters"] == 5
-    R2, S2 = build([(f"t{i}", {"base": 1, "flip": -1, "near": -1 if i < 10 else 1}, f"r{i % 5}") for i in range(20)])
-    out2 = M.paired_test(T, M.decisions(R2, S2))
-    assert abs(out2["diff"] - 50.0) < 1e-9 and out2["p"] < 0.05
-    assert M.paired_diff(T, M.decisions(R2, S2))[0] == out2["diff"]
+    diff, lo, hi, p = M.paired_test(T, T)
+    assert diff == 0 and lo == 0 and hi == 0 and p == 1.0
+    T2 = M.decisions(*build([(f"t{i}", {"base": 1, "flip": -1, "near": -1 if i < 10 else 1}, f"r{i % 5}")
+                             for i in range(20)]))
+    diff, lo, hi, p = M.paired_test(T, T2)
+    assert abs(diff - 50.0) < 1e-9 and p < 0.05
+    assert M.paired_diff(T, T2) == (diff, lo, hi)             # same resampling as paired_diff
+    assert M.paired_test(T, T2, unit="family")[0] == diff
     h = M.holm({"a": 0.01, "b": 0.04, "c": 0.03})
-    assert abs(h["a"]["p_holm"] - 0.03) < 1e-12 and abs(h["c"]["p_holm"] - 0.06) < 1e-12
-    assert abs(h["b"]["p_holm"] - 0.06) < 1e-12 and h["a"]["reject"] and not h["b"]["reject"]
+    assert abs(h["a"] - 0.03) < 1e-12 and abs(h["c"] - 0.06) < 1e-12 and abs(h["b"] - 0.06) < 1e-12
+    hl = M.holm([0.04, 0.01, 0.03])
+    assert [round(x, 12) for x in hl] == [0.06, 0.03, 0.06]
+
+
+def xr_records():
+    """A-style xr_v1 records: tid per (item, rule), three case kinds, meta.xr.item, nm_kind = dimension."""
+    R, S = [], []
+    for item, ok, dim in (("x1", True, "window"), ("x2", False, "window"), ("x3", True, "subject")):
+        for rule in ("a", "b"):
+            for c, kind in enumerate(("base", "flip", "near")):
+                y = 1 if (rule == "a") == (c == 0) else -1
+                d = y if (ok or (rule, c) != ("b", 2)) else -y
+                for role, lb, u in (("s", int(y > 0), d), ("s_prime", int(y < 0), 0.0)):
+                    R.append(rec(f"{item}.{rule}", kind, role, lb, nm=dim, meta={"xr": {"item": item}}))
+                    S.append(u)
+    return R, S
 
 
 def test_crossed_accuracy():
-    R, S = [], []
-    for item, ok in (("x1", True), ("x2", False)):
-        for rule in ("a", "b"):
-            for c in range(3):
-                y = 1 if (rule == "a") == (c == 0) else -1
-                d = y if (ok or (rule, c) != ("b", 2)) else -y
-                tid = f"{item}_{rule}{c}"
-                for role, lb, u in (("s", int(y > 0), d), ("s_prime", int(y < 0), 0.0)):
-                    R.append(rec(tid, "base", role, lb, meta={"xr_item": item}))
-                    S.append(u)
+    R, S = xr_records()
     out = M.crossed_accuracy(R, S)
-    assert out["n_items"] == 2 and out["XA"] == 50.0 and out["n_cells"] == 12
-    assert abs(out["CellAcc"] - 100 * 11 / 12) < 1e-9
+    assert out["n_items"] == 3 and abs(out["XA"] - 200 / 3) < 1e-9 and out["n_cells"] == 18
+    assert out["XA_window"] == 50.0 and out["XA_subject"] == 100.0 and out["items_incomplete"] == 0
+    assert abs(out["CellAcc"] - 100 * 17 / 18) < 1e-9
 
 
 def test_step_revisions():
@@ -112,6 +121,19 @@ def test_prf_and_cluster_bootstrap():
     assert lo <= pt <= hi
     st = M.seed_table({0: 90.0, 1: 92.0, 2: 94.0})
     assert st["mean"] == 92.0 and abs(st["sd"] - 2.0) < 1e-12
+
+
+def test_reproducible_across_hash_seeds():
+    """CIs must not depend on PYTHONHASHSEED (set iteration order of string keys)."""
+    import subprocess
+    code = ("import sys; sys.path[:0] = ['tests', '.']; import test_metrics_c as T; from selrm import metrics as M; "
+            "Ta = M.decisions(*T.build([(f't{i}', {'base': 1, 'flip': -1, 'near': 1 - 2 * (i % 3 == 0)}, f'r{i % 7}') "
+            "for i in range(60)])); Tb = M.decisions(*T.build([(f't{i}', {'base': 1, 'flip': -1, 'near': 1 - 2 * (i % 4 == 0)}, "
+            "f'r{i % 7}') for i in range(60)])); print(M.bootstrap_ci(Ta), M.paired_diff(Ta, Tb), M.paired_test(Ta, Tb))")
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    outs = {subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, cwd=root,
+                           env=os.environ | {"PYTHONHASHSEED": h}).stdout for h in ("1", "2", "3")}
+    assert len(outs) == 1 and outs.pop().strip(), outs
 
 
 if __name__ == "__main__":

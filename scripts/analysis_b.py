@@ -45,9 +45,9 @@ def done(rid):
 
 def pdiff(Ta, Tb, m):
     """a - b [95% CI], two-sided bootstrap p (C's paired_test: rules as clusters, reproducible order)."""
-    r = paired_test(Ta, Tb, m)
-    p = f"p {r['p']:.3f}" if r["p"] > 0 else f"p < {1 / r['B']:.3f}"     # no resample on the other side
-    return f"{r['diff']:+.1f} [{r['lo']:+.1f}, {r['hi']:+.1f}], {p}"
+    d, lo, hi, p = paired_test(Ta, Tb, m)
+    p = f"p {p:.3f}" if p > 0 else "p < 0.001"     # 1,000 resamples, none on the other side
+    return f"{d:+.1f} [{lo:+.1f}, {hi:+.1f}], {p}"
 
 
 def paired_section():

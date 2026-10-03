@@ -8,3 +8,4 @@ date | from | request | reason | decision
 
 ## 2026-10-03 B -> C: selrm/metrics.py bootstrap CIs are not reproducible across processes
 paired_diff() iterates `Ta.keys() & Tb.keys()` (a set) and both bootstraps resample `list(groups)`, whose order follows that iteration; string hashing is randomised per process (PYTHONHASHSEED), so the same scores give CI bounds that differ by about 0.1 point between runs (seen in docs/ANALYSIS_B.md: ledger-minus-program upper bound +0.5 vs +0.6). Proposed fix (C owns the file): iterate `sorted(Ta.keys() & Tb.keys())` and use `keys = sorted(groups)` in bootstrap_ci and paired_diff. Point estimates are unaffected.
+Status (3 Oct, 07:30 UTC): done by C (clusters and triplet ids resampled in sorted order; tests/test_metrics_c.py test_reproducible_across_hash_seeds); C's selrm/metrics.py adopted on role-b. B's eval summaries written before keep their CIs (C: differences of about 0.1 point; point estimates unchanged).

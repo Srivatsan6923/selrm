@@ -65,7 +65,7 @@ def bootstrap_ci(T, metric="TA", unit="rid", B=1000, seed=0, alpha=0.05):
         f = _flags(t)
         if f is not None and metric in f:
             groups[t[unit]].append(f[metric])
-    keys, rng, stats = list(groups), random.Random(seed), []
+    keys, rng, stats = sorted(groups, key=str), random.Random(seed), []   # sorted: reproducible across processes
     for _ in range(B):
         vals = [v for k in (rng.choice(keys) for _ in keys) for v in groups[k]]
         stats.append(100.0 * sum(vals) / len(vals))
@@ -76,11 +76,11 @@ def bootstrap_ci(T, metric="TA", unit="rid", B=1000, seed=0, alpha=0.05):
 def paired_diff(Ta, Tb, metric="TA", unit="rid", B=1000, seed=0, alpha=0.05):
     """Difference a - b on the same triplets, same resampled rules. -> (diff, lo, hi)"""
     groups = collections.defaultdict(list)
-    for tid in Ta.keys() & Tb.keys():
+    for tid in sorted(Ta.keys() & Tb.keys()):   # sorted: a set's order changes with PYTHONHASHSEED
         fa, fb = _flags(Ta[tid]), _flags(Tb[tid])
         if fa is not None and fb is not None:
             groups[Ta[tid][unit]].append((fa[metric], fb[metric]))
-    keys, rng, stats = list(groups), random.Random(seed), []
+    keys, rng, stats = sorted(groups, key=str), random.Random(seed), []
     point = [p for k in keys for p in groups[k]]
     diff = 100.0 * (sum(a for a, _ in point) - sum(b for _, b in point)) / len(point)
     for _ in range(B):
@@ -138,26 +138,29 @@ def paired_cluster_bootstrap(items, unit, stat_a, stat_b, B=1000, seed=0, alpha=
 
 
 def paired_test(Ta, Tb, metric="TA", unit="rid", B=1000, seed=0, alpha=0.05):
-    """paired_diff with a p-value and counts; unit = "rid", "family" or a callable on a
-    triplet. Triplets present and complete in both runs only."""
+    """paired_diff with a two-sided bootstrap p-value: -> (diff, lo, hi, p). unit = "rid",
+    "family" or a callable on a triplet; triplets complete in both runs only, each kept whole
+    inside its resampled cluster. Same resampling as paired_diff, so diff/lo/hi agree with it."""
     items = []
     for tid in sorted(Ta.keys() & Tb.keys()):
         fa, fb = _flags(Ta[tid]), _flags(Tb[tid])
         if fa is not None and fb is not None and metric in fa and metric in fb:
             items.append({"u": _unit_fn(unit)(Ta[tid]), "a": fa[metric], "b": fb[metric]})
     mean = lambda key: (lambda xs: 100.0 * sum(x[key] for x in xs) / len(xs))
-    return paired_cluster_bootstrap(items, "u", mean("a"), mean("b"), B, seed, alpha) | {"metric": metric}
+    r = paired_cluster_bootstrap(items, "u", mean("a"), mean("b"), B, seed, alpha)
+    return r["diff"], r["lo"], r["hi"], r["p"]
 
 
-def holm(pvals, alpha=0.05):
-    """Holm step-down adjustment. pvals: {name: p} or list. -> {name: {"p", "p_holm", "reject"}}."""
+def holm(pvals):
+    """Holm step-down adjusted p-values, in the input's shape: list -> list, {name: p} -> {name: p_adj}.
+    Reject a hypothesis at level alpha iff its adjusted p <= alpha."""
     named = dict(pvals) if isinstance(pvals, dict) else dict(enumerate(pvals))
     order = sorted(named, key=lambda k: named[k])
-    m, out, running = len(order), {}, 0.0
+    m, adj, running = len(order), {}, 0.0
     for i, k in enumerate(order):
         running = max(running, min(1.0, (m - i) * named[k]))
-        out[k] = {"p": named[k], "p_holm": running, "reject": running <= alpha}
-    return out
+        adj[k] = running
+    return adj if isinstance(pvals, dict) else [adj[i] for i in range(len(pvals))]
 
 
 # ---------------------------------------------------------------- rule-tier extensions
@@ -288,21 +291,31 @@ def judgments(records, scores, claim_type="conclusion"):
     return out
 
 
-def crossed_accuracy(records, scores, item_of=lambda r: r["meta"]["xr_item"], claim_type="conclusion"):
-    """XA for rule-side items (xr_v1): an item (two rules x three cases, cells sharing
-    meta.xr_item) is solved iff every cell with a correct claim has d of the correct sign
-    (ties fail). -> {"XA", "n_items", "CellAcc", "n_cells", "cells_without_label"}"""
-    items, cells, skipped = collections.defaultdict(list), [], 0
+def crossed_accuracy(records, scores, item_of=lambda r: r["meta"]["xr"]["item"], claim_type="conclusion",
+                     cells=6, by="nm_kind"):
+    """XA for rule-side items (xr_v1, A's records: meta.xr.item, nm_kind = dimension): an item
+    (two rules x three cases) is solved iff it has `cells` judgments and every one has d of the
+    sign of the program label (ties fail); also per dimension and per-judgment accuracy.
+    Agrees with A's selrm.xr.crossed_accuracy (its validation copy)."""
+    items, oks, dims, skipped = collections.defaultdict(list), [], {}, 0
     for j in judgments(records, scores, claim_type).values():
         if j["y"] == 0:
             skipped += 1
             continue
         ok = j["d"] * j["y"] > 0
-        items[item_of(j["rec"])].append(ok)
-        cells.append(ok)
-    return {"XA": 100.0 * sum(all(v) for v in items.values()) / len(items) if items else None,
-            "n_items": len(items), "CellAcc": 100.0 * sum(cells) / len(cells) if cells else None,
-            "n_cells": len(cells), "cells_without_label": skipped}
+        k = item_of(j["rec"])
+        items[k].append(ok)
+        dims[k] = j["rec"].get(by)
+        oks.append(ok)
+    solved = {k: len(v) == cells and all(v) for k, v in items.items()}
+    pct = lambda xs: 100.0 * sum(xs) / len(xs) if xs else None
+    per = collections.defaultdict(list)
+    for k, s in solved.items():
+        per[dims[k]].append(s)
+    return {"XA": pct(list(solved.values())), "n_items": len(solved),
+            "items_incomplete": sum(len(v) != cells for v in items.values()),
+            "CellAcc": pct(oks), "n_cells": len(oks), "cells_without_label": skipped,
+            **{f"XA_{d}": pct(v) for d, v in sorted(per.items(), key=lambda x: str(x[0]))}}
 
 
 def seed_table(values):

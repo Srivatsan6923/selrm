@@ -48,6 +48,7 @@ def main():
     ap.add_argument("--set", action="append")
     ap.add_argument("--data", default=os.environ.get("SELRM_DATA", f"{REPO}/scratch/rv1"))
     ap.add_argument("--out")
+    ap.add_argument("--write-summary", action="store_true", help="also write RUN_DIR/summary_<set>.json")
     a = ap.parse_args()
     sets = a.set or sorted(os.path.basename(p)[7:-6].replace("~", "/")
                            for p in glob.glob(f"{a.run_dir}/scores_rule_v1~*.jsonl") if p.count("~") == 1)
@@ -63,6 +64,19 @@ def main():
         dm, mi = records(a.data, "rule_v1/dev_missing"), records(a.data, "rule_v1/missing")
         tau = M.mr_threshold(dm, [ud[r["iid"]] for r in dm])
         res["missing"] = M.missing_rejection(mi, [ut[r["iid"]] for r in mi], tau)
+    if a.write_summary:                  # RESULTS_SCHEMA summary_<set>.json for runs C produces off-GPU
+        for s, m in res.items():
+            if not isinstance(m, dict) or "summary" not in m:
+                continue
+            summ = {"run_id": res["run"], "set": s, "claim_type": "conclusion"} | m["summary"]
+            if "CI95_rule" in m:
+                summ["CI95"] = m["CI95_rule"]
+            if m.get("step"):
+                summ["step"] = m["step"]
+            if s == "rule_v1/test_L2" and "missing" in res:
+                summ |= {k: res["missing"][k] for k in ("MR", "FR", "threshold")}
+            json.dump(summ, open(f"{a.run_dir}/summary_{s.replace('/', '~')}.json", "w", encoding="utf-8",
+                                 newline="\n"), indent=1)
     text = json.dumps(res, indent=1)
     if a.out:
         open(a.out, "w", encoding="utf-8", newline="\n").write(text)
