@@ -38,6 +38,20 @@ from selrm.smoke import ledger_to_prose  # noqa: E402
 API = "https://openrouter.ai/api/v1/chat/completions"
 REWRITER = "google/gemma-4-31b-it"                               # verified on openrouter.ai/api/v1/models, 2 Oct 2026
 EXTRACTORS = ("deepseek/deepseek-v4-pro", "openai/gpt-oss-120b")  # two families, neither the rewriter's
+# Provider routing per model: the cheapest endpoints that serve the published weights (cost plan of 3 Oct 2026,
+# prices from openrouter.ai/api/v1/models/<id>/endpoints); re-quantised endpoints are excluded.
+ROUTES = {
+    "google/gemma-4-31b-it": {"provider": {"order": ["crusoe/bf16", "parasail/fp8", "deepinfra/fp8"],
+                                           "allow_fallbacks": True, "quantizations": ["bf16", "fp8"],
+                                           "ignore": ["chutes", "novita", "siliconflow"]}},
+    "deepseek/deepseek-v4-pro": {"provider": {"order": ["streamlake/fp8", "parasail/fp8"], "allow_fallbacks": True,
+                                              "quantizations": ["fp8"],
+                                              "max_price": {"prompt": 0.5, "completion": 3.5}},
+                                 "reasoning": {"enabled": False}},
+    "openai/gpt-oss-120b": {"provider": {"order": ["coreweave/fp4", "dekallm/bf16", "akashml/bf16"],
+                                         "allow_fallbacks": True, "ignore": ["google-vertex", "deepinfra"]},
+                            "reasoning": {"effort": "low"}},
+}
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "rewrite_v1"
 CASES = ("base", "flip", "near", "pres")
@@ -68,6 +82,7 @@ def _key(model, messages, params):
 
 
 def call(model, prompt, params, cache=OUT / "cache", tries=6):
+    params = {**params, **ROUTES.get(model, {})}       # the model's provider routing is part of the cache key
     messages = [{"role": "user", "content": prompt}]
     path = cache / f"{_key(model, messages, params)}.json"
     if path.exists():
@@ -85,7 +100,8 @@ def call(model, prompt, params, cache=OUT / "cache", tries=6):
             content = resp["choices"][0]["message"]["content"]
             cache.mkdir(parents=True, exist_ok=True)
             path.write_text(json.dumps({"model": model, "params": params, "content": content,
-                                        "provider_model": resp.get("model"), "usage": resp.get("usage"),
+                                        "provider_model": resp.get("model"), "provider": resp.get("provider"),
+                                        "usage": resp.get("usage"),
                                         "date": datetime.date.today().isoformat()}), encoding="utf-8")
             return content
         except Exception as e:                     # rate limits, timeouts, provider errors
@@ -303,7 +319,7 @@ def main():
                "by": {key: {v: {"tried": c[(v, True)] + c[(v, False)], "accepted": c[(v, True)]}
                             for v in sorted({v for v, _ in c})} for key, c in by.items()},
                "reasons": dict(Counter(results[t][1].split(":")[-1].strip() for t in tids if not results[t][0])),
-               "rewriter": REWRITER, "extractors": list(EXTRACTORS), "rewrite_params": rp,
+               "rewriter": REWRITER, "extractors": list(EXTRACTORS), "routes": ROUTES, "rewrite_params": rp,
                "extract_params": ep, "date": datetime.date.today().isoformat()}
     rejected = [x for t in tids if not results[t][0] for x in results[t][2]]
     OUT.mkdir(parents=True, exist_ok=True)

@@ -180,7 +180,8 @@ def main():
     summary = {"run_id": "A-D11-train", "groups_tried": len(tried), "groups_accepted": len(accepted),
                "acceptance_rate": 100.0 * len(accepted) / len(tried), "target_share": SHARE,
                "reasons": dict(Counter(results[t][1].split(":")[-1].strip() for t in tried if not results[t][0])),
-               "rewriter": RT.REWRITER, "extractors": list(RT.EXTRACTORS), "rewrite_params": rp, "extract_params": ep,
+               "rewriter": RT.REWRITER, "extractors": list(RT.EXTRACTORS), "routes": RT.ROUTES,
+               "rewrite_params": rp, "extract_params": ep,
                "dry_run": a.dry_run, "date": created}
     for k, s in stats.items():
         name, d = f"rule_v1x/{k}", out_root / "rule_v1x" / k
@@ -196,7 +197,7 @@ def main():
                "records_rewritten": s["records_rewritten"],
                "records_rewritten_with_test_cue_words": s["records_with_test_cue_words"],
                "rewriting": {x: summary[x] for x in ("groups_tried", "groups_accepted", "acceptance_rate", "reasons",
-                                                     "rewriter", "extractors", "rewrite_params", "extract_params")},
+                                                     "rewriter", "extractors", "routes", "rewrite_params", "extract_params")},
                "shortcut_validation": {"result": "n/a", "output": "training corpus without complete triplets"}}
         (d / "MANIFEST.json").write_text(json.dumps(man, indent=1, sort_keys=True), encoding="utf-8")
         if man["frozen"]:
