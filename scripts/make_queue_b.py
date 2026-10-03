@@ -147,6 +147,7 @@ def transfer(seeds, registry, version):
                     {"corpus": f"{version}/train_triplets", "mix": {"corpus": clin, "share": 0.5}})
             runs.append({"run_id": r["run_id"], "seed": int(m[2]), "format": "ledger2", "n_examples": 60000, **data,
                          "priority": priority(r["run_id"], int(m[2]), r["priority"]), "max_drop": 0.01,
+                         "hp": {"per_device": 8},    # long clinical notes: 16 x 1024 tokens OOMs on 40 GB cards
                          "keep_adapter": True, "eval": dict(EVAL), "eval_sets": [f"{version}/{s}" for s in TRANSFER]})
     # MedEinst with diseases held out (FINAL_TASKS_B P1, 3 runs): ledger2 on C's training-disease pairs
     corpus = "clin_v1/clinpairs_medeinst_dis"
@@ -157,6 +158,7 @@ def transfer(seeds, registry, version):
                 runs.append({"run_id": r["run_id"], "seed": int(m[1]), "format": "ledger2", "corpus": corpus,
                              "n_examples": 60000, "priority": priority(r["run_id"], int(m[1]), r["priority"]),
                              "max_drop": 0.01,     # long notes: 0.75% of examples exceed max_len 1024 (dropped)
+                             "hp": {"per_device": 8},    # long notes: 16 x 1024 tokens OOMs on 40 GB cards (same batch 64)
                              "keep_adapter": True, "eval": dict(EVAL),
                              "eval_sets": ["clin_v1/medeinst_dis_test", f"{version}/dev", f"{version}/test_L2"]})
     return runs

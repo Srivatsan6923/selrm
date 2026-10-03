@@ -43,7 +43,10 @@
     "rule_v1/dev_missing",
     "rule_v1/missing",
     "xr_v1/test"
-   ]
+   ],
+   "hp": {
+    "per_device": 8
+   }
   },
   {
    "run_id": "B-TR-tripclin-s0",
@@ -70,7 +73,10 @@
     "rule_v1/dev_missing",
     "rule_v1/missing",
     "xr_v1/test"
-   ]
+   ],
+   "hp": {
+    "per_device": 8
+   }
   },
   {
    "run_id": "B-DIS-s0",
@@ -91,7 +97,10 @@
     "rule_v1/dev",
     "rule_v1/test_L2",
     "xr_v1/test"
-   ]
+   ],
+   "hp": {
+    "per_device": 8
+   }
   }
  ]
 }
