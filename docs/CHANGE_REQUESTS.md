@@ -2,3 +2,4 @@
 
 date | from | request | reason | decision
 ---|---|---|---|---
+2026-10-02 | A | Record contract for rule-side items (xr_v1): (1) `case_kind` adds `contested`, `positive`, `negative` (selrm/schema.py CASE_KINDS, validation only; rule_v1 regenerates byte-identically); (2) for xr_v1 `nm_kind` and `family` are the dimension (`window`, `currency`, `subject`, `inclusivity`), `tier` = `rule_side`, `level` = `xr`; (3) `meta.xr` = {item, variant (`count` counts the contested form, `nocount` does not), case_role, dimension, concept, phrasing, visit_date, pair or direction, date_form, synthetic_intervention, source}; (4) one item = tids `xr_v1.test.<item>.count` and `.nocount`, three cases each; crossed accuracy (all six conclusion judgments right) is implemented as `selrm.xr.crossed_accuracy(records, scores)` for A's validation; C may move it into selrm/metrics.py. | FINAL_TASKS A P0.2 (rule-side items; XA); INTERFACES section 1 lists only the triplet case kinds | 

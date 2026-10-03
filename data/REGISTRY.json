@@ -526,5 +526,17 @@
   "sha256": "09428ca2bd259b52ec9170646a97547719c26d4abe65a27eb0304d5cd784be03",
   "split": "train",
   "tier": "mixed"
+ },
+ "xr_v1/test": {
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "xr",
+  "manifest": "xr_v1/test/MANIFEST.json",
+  "n_groups": 800,
+  "n_records": 9600,
+  "path": "xr_v1/test/records.jsonl",
+  "sha256": "1392aeccc8e135dd18eb40b37c82dd255418d68aa7d85a3ff254d95f6ae689c9",
+  "split": "test",
+  "tier": "rule_side"
  }
 }
