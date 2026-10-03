@@ -1,5 +1,5 @@
 {
- "git_commit": "4c083922f2a20759d777b00030cdb15c57ec8b9e",
+ "git_commit": "fc67926ee0c7dfbce2bdee63d54987b18d86368d",
  "python": "3.12.7",
  "builder": "scripts/clinpairs_prep.py",
  "split_rule": "held-out diseases = random.Random(20261003).sample(46 sorted diagnosis names, 12)",
@@ -23,5 +23,16 @@
  "n_groups": 115,
  "sha256": "52ad02970bc011b1f2c7ebfc711747950ada8f065b97914da7289a99af5c682a",
  "created": "2026-10-02",
- "frozen": true
+ "frozen": true,
+ "shortcut_validation": {
+  "claims_swapping_label_within_pair": 230,
+  "claims": 230,
+  "claim_only_solvable_pairs": 0,
+  "label1_share": 50.0,
+  "trailing_double_space_after_normalisation": {
+   "base": 0,
+   "flip": 0
+  },
+  "share_trap_longer_than_control": 55.65
+ }
 }

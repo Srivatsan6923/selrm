@@ -45,6 +45,11 @@ def row(run, data, cache):
         return None
     out = {}
     for s in LADDER:
+        sp = f"{RES}/{run}/summary_{s.replace('/', '~')}.json"
+        sm = json.load(open(sp, encoding="utf-8")) if os.path.exists(sp) else {}
+        if sm.get("all") and sm.get("CI95"):      # the run's summary file: the numbers the paper's tables read
+            out[s] = sm["all"] | {"CI": sm["CI95"]["TA"]}
+            continue
         u = scores(run, s)
         if u is None:
             continue

@@ -1,0 +1,39 @@
+{
+ "run_id": "C-DG-shift",
+ "set": "rule_v1/test_L0",
+ "analysed_set": "rule_v1/missing",
+ "definition": "scripts/diagnostics.py shift (v13 App. F, Eq. 1-2)",
+ "signal=C-AUD-qwen35-9b": {
+  "crossed": 43.145161290322584,
+  "short": 17.338709677419356,
+  "unmoved": 23.588709677419356,
+  "wrong": 15.92741935483871,
+  "kappa": 0.5015805921710157,
+  "tau": 0.3665151372551918,
+  "counts": {
+   "wrong_direction": 79,
+   "baseline_agrees": 504,
+   "unmoved": 117,
+   "short": 86,
+   "crossed": 214
+  },
+  "n_opposed": 496,
+  "source_run": "C-TF-critic"
+ },
+ "signal=B-F-verdict-blocks": {
+  "crossed": 95.79158316633267,
+  "short": 0.0,
+  "unmoved": 0.40080160320641284,
+  "wrong": 3.8076152304609217,
+  "kappa": 1.0075502877018347,
+  "tau": 0.8356252908706665,
+  "counts": {
+   "crossed": 478,
+   "baseline_agrees": 501,
+   "unmoved": 2,
+   "wrong_direction": 19
+  },
+  "n_opposed": 499,
+  "source_run": "B-F-verdict-blocks-s0"
+ }
+}

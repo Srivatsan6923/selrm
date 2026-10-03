@@ -49,6 +49,7 @@ def main():
     ap.add_argument("--data", default=os.environ.get("SELRM_DATA", f"{REPO}/scratch/rv1"))
     ap.add_argument("--out")
     ap.add_argument("--write-summary", action="store_true", help="also write RUN_DIR/summary_<set>.json")
+    ap.add_argument("--xr-data", default=f"{REPO}/scratch/acode_xr/data", help="A's xr_v1 records and KNOWN_ISSUES")
     a = ap.parse_args()
     sets = a.set or sorted(os.path.basename(p)[7:-6].replace("~", "/")
                            for p in glob.glob(f"{a.run_dir}/scores_rule_v1~*.jsonl") if p.count("~") == 1)
@@ -64,19 +65,35 @@ def main():
         dm, mi = records(a.data, "rule_v1/dev_missing"), records(a.data, "rule_v1/missing")
         tau = M.mr_threshold(dm, [ud[r["iid"]] for r in dm])
         res["missing"] = M.missing_rejection(mi, [ut[r["iid"]] for r in mi], tau)
-    if a.write_summary:                  # RESULTS_SCHEMA summary_<set>.json for runs C produces off-GPU
+    ux = run_scores(a.run_dir, "xr_v1/test")
+    xp = f"{a.xr_data}/xr_v1/test/records.jsonl"
+    if ux and os.path.exists(xp):
+        xr = [r for r in load_jsonl(xp) if r["iid"] in ux]
+        known = {i for x in json.load(open(f"{a.xr_data}/xr_v1/KNOWN_ISSUES.json", encoding="utf-8"))["issues"]
+                 for i in x["items"]}
+        res["xr_v1/test"] = M.crossed_accuracy(xr, [ux[r["iid"]] for r in xr]) | {
+            "without_known_issues": M.crossed_accuracy(xr, [ux[r["iid"]] for r in xr], exclude=known)}
+    if a.write_summary:      # RESULTS_SCHEMA summaries: written where missing, merged where a GPU job wrote one
+        def merge(s, new):
+            p = f"{a.run_dir}/summary_{s.replace('/', '~')}.json"
+            old = json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
+            json.dump({"run_id": res["run"], "set": s} | old | new, open(p, "w", encoding="utf-8", newline="\n"), indent=1)
         for s, m in res.items():
             if not isinstance(m, dict) or "summary" not in m:
                 continue
-            summ = {"run_id": res["run"], "set": s, "claim_type": "conclusion"} | m["summary"]
+            p = f"{a.run_dir}/summary_{s.replace('/', '~')}.json"
+            if os.path.exists(p) and json.load(open(p, encoding="utf-8")).get("all"):
+                continue                 # the GPU job's summary (same metrics) stays as written
+            summ = {"claim_type": "conclusion"} | m["summary"]
             if "CI95_rule" in m:
                 summ["CI95"] = m["CI95_rule"]
             if m.get("step"):
                 summ["step"] = m["step"]
-            if s == "rule_v1/test_L2" and "missing" in res:
-                summ |= {k: res["missing"][k] for k in ("MR", "FR", "threshold")}
-            json.dump(summ, open(f"{a.run_dir}/summary_{s.replace('/', '~')}.json", "w", encoding="utf-8",
-                                 newline="\n"), indent=1)
+            merge(s, summ)
+        if "missing" in res:             # make_tables reads MR, FR, threshold at the top of the missing summary
+            merge("rule_v1/missing", {k: res["missing"][k] for k in ("MR", "FR", "threshold", "n_missing", "n_supported")})
+        if "xr_v1/test" in res:          # ... and XA, n_items at the top of the xr_v1 summary
+            merge("xr_v1/test", res["xr_v1/test"])
     text = json.dumps(res, indent=1)
     if a.out:
         open(a.out, "w", encoding="utf-8", newline="\n").write(text)

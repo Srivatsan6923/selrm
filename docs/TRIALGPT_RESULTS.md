@@ -10,7 +10,9 @@ Protocol: `docs/TRIALGPT_PROTOCOL.md`. Test portion: 43 patients; N/A items repo
 | Untrained backbone, prompted ledger (frozen malformed check) | C-TG-promptledger | 15.8 [13.8, 17.7] | 30.7 [25.9, 35.7] | 0.0 | 0.5 | 46.9 | 758 of 759 | 0.2 | - / 0.0 | -20.00 |
 | Untrained backbone, prompted ledger (format-normalised readout) | C-TG-promptledger-lenient | 54.0 [51.3, 56.5] | 62.3 [58.0, 66.4] | 72.0 | 73.9 | 16.2 | 65 of 759 | 86.0 | 61.1 / 43.5 | -0.57 |
 | Verdict only x blocks, seed 0 | C-TG-verdict-blocks-s0 | 64.8 [60.3, 69.2] | 65.7 [60.7, 70.7] | 61.6 | 72.0 | 60.9 | 425 of 759 | 92.8 | - | 7.87 |
+| Verdict only x blocks, seed 2 | C-TG-verdict-blocks-s2 | not run | | | | | | | | |
 | Verdict only x triplets, seed 0 | C-TG-verdict-triplets-s0 | 70.8 [66.3, 75.3] | 71.1 [66.3, 75.8] | 72.3 | 77.7 | 62.6 | 340 of 759 | 92.8 | - | 6.89 |
+| Verdict only x triplets, seed 1 | C-TG-verdict-triplets-s1 | not run | | | | | | | | |
 | Prose summary x blocks, seed 0 | C-TG-summary2-blocks-s0 | not run | | | | | | | | |
 | Prose summary x triplets, seed 0 | C-TG-summary2-triplets-s0 | 69.2 [65.1, 72.9] | 69.0 [64.2, 73.3] | 78.1 | 75.7 | 53.8 | 259 of 759 | 87.5 | 61.4 / 60.5 | 13.05 |
 | Ledger x blocks, seed 0 | C-TG-ledger2-blocks-s0 | 70.9 [66.7, 74.6] | 71.8 [67.3, 75.9] | 71.8 | 79.1 | 61.7 | 296 of 759 | 85.8 | 57.8 / 61.8 | 11.07 |
@@ -25,7 +27,7 @@ Threshold-source sensitivity: tau and macro-F1 with tau computed from the same m
 
 | System | run | tau reported | tau alternative | macro-F1 reported | macro-F1 at alternative tau | accuracy at alternative tau | alternative source | evidence P / R, malformed without quotes |
 |---|---|---|---|---|---|---|---|---|
-| Untrained backbone, verdict (critic) | C-TG-critic | -0.359 | - | 65.7 | - | - | not available | - |
+| Untrained backbone, verdict (critic) | C-TG-critic | -0.359 | -0.352 | 65.7 | 65.7 | 70.4 | results_git/C-TF-critic | - |
 | Untrained backbone, prompted summary | C-TG-promptsum | -0.195 | -0.147 | 68.0 | 68.6 | 71.5 | results_git/C-TF-promptsum--p1 | - |
 | Untrained backbone, prompted ledger (frozen malformed check) | C-TG-promptledger | -20.000 | - | 15.8 | - | - | not available | - / 0.0 |
 | Untrained backbone, prompted ledger (format-normalised readout) | C-TG-promptledger-lenient | -0.573 | - | 54.0 | - | - | not available | 61.1 / 43.5 |
