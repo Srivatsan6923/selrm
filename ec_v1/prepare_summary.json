@@ -27,10 +27,10 @@
   "k261",
   "k269"
  ],
- "kept": 99,
- "excluded": 195,
- "groups": 245,
- "records": 1960,
+ "kept": 95,
+ "excluded": 199,
+ "groups": 235,
+ "records": 1880,
  "by_concept": {
   "age": 3,
   "angioedema": 1,
@@ -43,7 +43,7 @@
   "contrast_allergy": 1,
   "creatinine": 4,
   "diabetes": 2,
-  "egfr": 3,
+  "egfr": 2,
   "heart_rate": 3,
   "hemoglobin": 5,
   "hit": 6,
@@ -63,12 +63,11 @@
   "vascular": 3,
   "vte": 4,
   "warfarin": 1,
-  "wbc": 1,
-  "weight": 4
+  "weight": 2
  },
  "by_type": {
-  "inclusion": 18,
-  "exclusion": 81
+  "inclusion": 17,
+  "exclusion": 78
  },
  "by_times": {
   "ever": 13,
@@ -76,13 +75,13 @@
   "window": 4
  },
  "by_kind": {
-  "numeric": 56,
+  "numeric": 52,
+  "boundary": 39,
   "subject": 43,
   "negation": 43,
-  "boundary": 42,
-  "time": 61
+  "time": 58
  },
- "trials": 89,
+ "trials": 85,
  "shortcut_validation": {
   "result": "PASS",
   "scorers": {
@@ -90,19 +89,19 @@
     "TA": 0.0,
     "Rev": 0.0,
     "Hold": 100.0,
-    "n": 245
+    "n": 235
    },
    "concept_named": {
     "TA": 0.0,
-    "Rev": 39.183673469387756,
+    "Rev": 40.851063829787236,
     "Hold": 0.0,
-    "n": 245
+    "n": 235
    },
    "program": {
     "TA": 100.0,
     "Rev": 100.0,
     "Hold": 100.0,
-    "n": 245
+    "n": 235
    }
   }
  }

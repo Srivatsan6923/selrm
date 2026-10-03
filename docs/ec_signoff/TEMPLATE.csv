@@ -1,0 +1,96 @@
+﻿crit_id,fingerprint,program_ok,cases_ok,comment,criterion
+k001,8091b6866fd4dbc6,,,,Inclusion criterion: 40 years of age or more.
+k005,d6e1550cd0a3c9f2,,,,Inclusion criterion: Age below 70 years
+k007,d591724c402ae234,,,,Inclusion criterion: age > 35 years
+k017,7b0aa14c106f3145,,,,Exclusion criterion: Patients with a known history of angioedema
+k031,5024eb6e962a2a73,,,,Exclusion criterion: Clinical asthma
+k045,62eab539fa7e83ad,,,,Inclusion criterion: BMI >30kg/m2
+k046,94ab511c4fae1a80,,,,Exclusion criterion: Obesity (BMI ≥ 35 kg/m2)
+k047,ed4437ec3f9c2a7d,,,,Inclusion criterion: Obesity (BMI greater than or equal to 30 kg/m2)
+k049,2250f231408b5164,,,,Exclusion criterion: Morbid obesity (BMI > 40 kg/m2)
+k050,a93674b9b206e9fa,,,,Inclusion criterion: BMI: >25 kg/m2
+k051,1c09296908c0c342,,,,Inclusion criterion: BMI <40Kg / M ^ 2
+k052,8a6bf72bec421e55,,,,Inclusion criterion: BMI> 35 kg/m2
+k053,ff182429edf74f97,,,,Exclusion criterion: Blood urea nitrogen (BUN) > 27 mg/dL
+k058,3c1389777408e4ae,,,,Exclusion criterion: Blood Urea Nitrogen (BUN) > 95 mg/dL
+k062,c8ae9727e4b3fc4a,,,,Exclusion criterion: Have known coronary artery disease
+k065,a91345e4dc8aa1ed,,,,Exclusion criterion: coronary artery disease
+k067,694f9a87459fc115,,,,Exclusion criterion: History of active or inactive cancer
+k075,779be62402c8d5a4,,,,Exclusion criterion: History of heart failure
+k089,a8586737c06b6450,,,,Exclusion criterion: Allergic to iodine contrast agents in the past
+k095,24d3618a201b78c0,,,,Exclusion criterion: Subject who has serum creatinine >= 1.5mg/dL
+k096,d6d0901d75c21d34,,,,Exclusion criterion: Creatinine > 1.8 mg/dL
+k098,8924c7b7c8d2b466,,,,Exclusion criterion: Have renal failure (serum creatinine greater than 2.0mg/dl)
+k099,47a798f5abdc6693,,,,Inclusion criterion: Must have adequate renal function (serum creatinine <1.5 mg/dL).
+k103,b823942514ad9110,,,,Exclusion criterion: Participants diagnosed with Diabetes Mellitus
+k106,197de77f1d319f2e,,,,Exclusion criterion: Diabetes Mellitus
+k113,102128f3bc463515,,,,Exclusion criterion: eGFR: < 30 mL/min/1.73 m2
+k117,a5cfffae6d840edb,,,,Exclusion criterion: eGFR <60mls/min/1.73m²
+k123,c82f929e5e31d54f,,,,Exclusion criterion: Heart rate less than 45 beats per minute (BPM)
+k125,cb64b400981ced10,,,,Exclusion criterion: Presence of bradycardia (heart rate below 60 beats per minute) or sick sinus syndrome
+k127,bda06fa4b748f350,,,,Exclusion criterion: Heart rate <60 beats per minute
+k129,7576c5aa6cebac04,,,,Inclusion criterion: Have haemoglobin of 9.0 g/dl or less
+k130,47558076c69416dc,,,,Inclusion criterion: Hemoglobin ≥ 8 g/dl
+k132,28ddb7e835030edb,,,,Exclusion criterion: Hemoglobin < 8g /dl
+k134,cf6417378f74b855,,,,Exclusion criterion: Patients with a Haemoglobin < 9 g/dl.
+k135,131131ff7a133e1a,,,,Exclusion criterion: Hemoglobin ≤7.0 g/dL
+k136,0303c77036f528cb,,,,Exclusion criterion: personal history of heparin-induced thrombocytopenia
+k137,92eb79b26262bbf0,,,,Exclusion criterion: Allergy to heparin or history of heparin-induced thrombocytopenia
+k138,8e002365f933b8e2,,,,Exclusion criterion: History of heparin induced thrombocytopenia.
+k139,29a12209b4e2a201,,,,Exclusion criterion: With previous heparin-induced thrombocytopenia
+k140,9504f96c93c34120,,,,Exclusion criterion: History of sensitivity to heparin or heparin-induced thrombocytopenia
+k141,a8e77c0f41454d8a,,,,Exclusion criterion: Diagnosis of Heparin-Induced Thrombocytopenia (HIT)
+k152,1cc3ebddca10710d,,,,Exclusion criterion: International Normalized Ratio (INR) >1.5
+k154,351af67a29c7c75f,,,,Exclusion criterion: Has International Normalized Ratio greater than 1.7
+k155,0a22918f9ef8eccb,,,,Exclusion criterion: International normalized ratio (INR) > 3
+k159,1bce21c7f0cb3adc,,,,Exclusion criterion: Base line INR >2
+k161,380c079b71a8a83d,,,,Exclusion criterion: Current use of Lithium
+k163,d80d180c71f6c518,,,,Exclusion criterion: Mechanical heart valve
+k165,d6093224a32eb1e8,,,,Exclusion criterion: History of mechanical valve replacement
+k166,c9434bab5e453a94,,,,Exclusion criterion: Any mechanical prosthetic heart valve
+k169,ec4418e3ace2c525,,,,Exclusion criterion: Mechanical heart prosthetic valve
+k174,59e0b12d883ef563,,,,Exclusion criterion: patients taking methotrexate
+k176,a4dcdb1374cbd008,,,,Exclusion criterion: Neutrophil < 0.5 x10^9/L
+k179,74beee944a938ea9,,,,Exclusion criterion: Neutrophil count ≤ 1.0 x10^9/L
+k180,0fec7a29c917d6fa,,,,Exclusion criterion: Absolute neutrophil count <1.5 x10^9/L
+k181,b6b49d3bf13b30a8,,,,Exclusion criterion: Absolute neutrophil count (ANC) <1.0 x10^9/L
+k182,fa4ba59853aab660,,,,Exclusion criterion: Absolute neutrophil count < 0.5 x10^9/L
+k192,3df7aae17ce64c23,,,,"Inclusion criterion: Diagnosed with gastritis, duodenitis, or peptic ulcer"
+k193,c89ddfd4729dd7f4,,,,Exclusion criterion: Active gastric or duodenal ulcers
+k194,1847e28cf86feb47,,,,"Exclusion criterion: Active peptic ulcer, ulcerative colitis, Crohn disease, celiac disease, inflammatory bowel disease"
+k196,a2aaff60553a0487,,,,Exclusion criterion: Active liver or peptic ulcer disease
+k197,45b66792a3e34164,,,,Inclusion criterion: Patients with identified gastric or duodenal ulcer
+k199,fb454d5dcde540ab,,,,Exclusion criterion: Platelets < 125 x10^9/L
+k202,ab0af119fb5e1bf6,,,,Exclusion criterion: Platelet count <50 x10^9/L
+k203,f847ddac9006e19f,,,,Exclusion criterion: Thrombocytopenia with platelet count <30 × 10⁹/L
+k205,4549937a1544695e,,,,Exclusion criterion: Platelet count < 90 x10^9/L at the selection visit
+k207,604f5193ae79f2f6,,,,Exclusion criterion: Patients with serum potassium > 5.2 mmol/L
+k208,fd38eff6d29aaa96,,,,Exclusion criterion: Potassium is < 3.5 mmol/L
+k209,eceaa5049aa9750c,,,,Inclusion criterion: serum potassium ≥5.5 mmol/L
+k211,9bc77ec8cedbc86a,,,,Exclusion criterion: Serum potassium level >5.5 mmol/L
+k213,1248075698d2d16c,,,,Exclusion criterion: Hypokalaemia: serum potassium level <3.4 mmol/l
+k214,e65ccad0fa7a4694,,,,Exclusion criterion: Serum potassium > 4.8 mmol/L
+k216,63ac6309773e3977,,,,Exclusion criterion: Pregnant or breastfeeding women
+k218,d4c9c6349e337786,,,,Exclusion criterion: Pregnant or nursing women
+k219,ff1b827b69e1dc25,,,,Exclusion criterion: Currently pregnant or breastfeeding
+k221,0a9892f7799f7391,,,,Exclusion criterion: Pregnant or nursing females
+k225,d0c1270001dec24b,,,,Exclusion criterion: Respiratory rate> 30 breaths / minute
+k230,086df307f7eaddea,,,,Exclusion criterion: Hypotension (systolic blood pressure <90 mmHg).
+k231,722ad5223359beb6,,,,Exclusion criterion: Cardiogenic shock or systolic blood pressure below 100 mmHg
+k233,c7bc34dcde68aeac,,,,Inclusion criterion: systolic blood pressure: >90 mmHg
+k235,43dec2714528c809,,,,Exclusion criterion: Systolic blood pressure less than or equal to 90 mmHg
+k245,4a622381178356fc,,,,Exclusion criterion: Participant with a prior stroke of any etiology or transient ischemic attack (TIA)
+k247,571f15652bfc4355,,,,Exclusion criterion: Patients with sulfa allergy will be excluded.
+k248,5ebed3e6bb3e4509,,,,Exclusion criterion: Allergy to sulfa drugs
+k249,0b79c066f31c54a3,,,,Exclusion criterion: Patient with known allergy to Tamsulosin or sulfa drugs
+k250,0c79bff8b064a820,,,,Exclusion criterion: Has known hypersensitivity to sulfonamides.
+k260,dce513038a61394e,,,,Exclusion criterion: myocardial infarction within the previous 3 months (the day exactly 3 months before the visit counts)
+k261,8200bdd5669e53c3,,,,Exclusion criterion: A heart attack (myocardial infarct) in the past twelve months (the day exactly twelve months before the visit counts)
+k266,9abf5cf83258b728,,,,Exclusion criterion: Myocardial infarction within three months (the day exactly three months before the visit counts)
+k269,249e6af33e540785,,,,Exclusion criterion: Current or past deep vein thrombosis or pulmonary embolism
+k271,a85197e89e5ab889,,,,Exclusion criterion: Subject has history of deep vein thrombosis and/or pulmonary embolism
+k272,e2a4428385351358,,,,Exclusion criterion: Venous thromboembolism within the last 4 weeks (the day exactly 4 weeks before the visit counts)
+k273,9c78f864d6d53c0c,,,,Exclusion criterion: Known pulmonary embolism (PE) or deep vein thrombosis (DVT)
+k281,a76023faafca5185,,,,Exclusion criterion: Currently taking warfarin
+k287,128e48856fbfa0c5,,,,Inclusion criterion: More than 60 Kg of weigh
+k291,c58dcbdddfaffaaf,,,,Inclusion criterion: Body weight equal or above 55 kg

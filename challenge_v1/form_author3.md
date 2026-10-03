@@ -1,7 +1,7 @@
 # challenge_v1 writing form: author3
 
-Read `challenge_v1/WRITING_GUIDE.md` first. Fill in every field after the colon. Save this file as `challenge_v1/notes_<your name>.md`.
-40 groups; your second author fills `check_ok` and `check_comment`.
+Read `challenge_v1/WRITING_GUIDE.md` first. Fill in every field after the colon. Save this file as `challenge_v1/notes_author3.md` (UTF-8).
+40 groups. Your second author checks them in this same file: `check_ok` (yes or no, with the fingerprint from `challenge_v1/ASSEMBLY_REPORT.md`) and `check_comment`.
 
 ## c012   (writer: author3; checker: author4)
 
@@ -661,7 +661,7 @@ Patient: 56-year-old female. Reason for the visit: Sore throat for two days.
 
 BASE note: one line for each fact below, in this order, in your own words.
   fact 1: temperature: 36.9 C, the current value
-  fact 2: the patient had a myocardial infarction or peripheral artery disease in the past (in 2009)
+  fact 2: the patient had a myocardial infarction (heart attack) in the past (in 2009)
   FLIP (instruction): one line that replaces your line for fact 1, stating: temperature: 39.2 C, the current value.
   NEAR-MISS (instruction): one line that replaces your line for fact 1, stating: temperature: 37.7 C, the current value.
 Every line that mentions temperature must contain one of these words (a longer word that starts with one is fine): 'temperature'.

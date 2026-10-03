@@ -1,5 +1,5 @@
 {
- "commit": "d212ab4b5616e7e3f97ea6ecef5fc0873ac9a7f0",
+ "commit": "412a4d296539290f848ce7a37632f2fd9d496947",
  "code_modified_since_commit": false,
  "rules": {
   "library": 353,
@@ -242,6 +242,14 @@
   },
   "violations": 0,
   "by_check": {}
+ },
+ "known_semantic_limits": {
+  "general_line_contradicts_condition": {
+   "groups": 4,
+   "cases": 7
+  },
+  "criterion_claim_without_scope": 146,
+  "criterion_claim_without_scope_invented": 26
  },
  "rejects": {
   "logged": {
@@ -1749,6 +1757,7 @@
    "author3": 325,
    "author4": 311
   },
-  "rows_with_criterion_claims": 1059
+  "rows_with_criterion_claims": 1059,
+  "rows_with_known_contradiction": 2
  }
 }

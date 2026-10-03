@@ -1,7 +1,7 @@
 # challenge_v1 writing form: author2
 
-Read `challenge_v1/WRITING_GUIDE.md` first. Fill in every field after the colon. Save this file as `challenge_v1/notes_<your name>.md`.
-40 groups; your second author fills `check_ok` and `check_comment`.
+Read `challenge_v1/WRITING_GUIDE.md` first. Fill in every field after the colon. Save this file as `challenge_v1/notes_author2.md` (UTF-8).
+40 groups. Your second author checks them in this same file: `check_ok` (yes or no, with the fingerprint from `challenge_v1/ASSEMBLY_REPORT.md`) and `check_comment`.
 
 ## c002   (writer: author2; checker: author3)
 
@@ -248,7 +248,7 @@ Patient: 63-year-old female. Reason for the visit: First day after elective tota
 
 BASE note: one line for each fact below, in this order, in your own words.
   fact 1: systolic blood pressure: 137 mmHg, the current value
-  fact 2: the patient had a myocardial infarction or peripheral artery disease in the past (years ago)
+  fact 2: the patient had a myocardial infarction (heart attack) in the past (years ago)
   FLIP (instruction): one line that replaces your line for fact 1, stating: systolic blood pressure: 90 mmHg, the current value.
   NEAR-MISS (instruction): one line that replaces your line for fact 1, stating: systolic blood pressure: 93 mmHg, the current value.
 Every line that mentions systolic blood pressure must contain one of these words (a longer word that starts with one is fine): 'systolic' | 'blood pressure' | 'bp'.
@@ -348,7 +348,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 2: weight: 79 kg, the current value
   FLIP (instruction): one line that replaces your line for fact 2, stating: weight: 60 kg, the current value.
   NEAR-MISS (instruction): one line that replaces your line for fact 2, stating: weight: 63 kg, the current value.
-Every line that mentions weight must contain one of these words (a longer word that starts with one is fine): 'weight' | 'weighs'.
+Every line that mentions weight must contain one of these words (a longer word that starts with one is fine): 'weight' | 'weighs' | 'weighed'.
 
 header: 
 reason: 
@@ -414,7 +414,7 @@ Rule, for context only (do not refer to it in the note): For thromboprophylaxis 
 Patient: 65-year-old female. Reason for the visit: First day after elective total hip replacement.
 
 BASE note: one line for each fact below, in this order, in your own words.
-  fact 1: the patient had a myocardial infarction or peripheral artery disease in the past (in 2024)
+  fact 1: the patient had a myocardial infarction (heart attack) in the past (in 2024)
   fact 2: systolic blood pressure: 126 mmHg, the current value
   FLIP (instruction): one line that replaces your line for fact 2, stating: systolic blood pressure: 79 mmHg, the current value.
   NEAR-MISS (instruction): one line that replaces your line for fact 2, stating: systolic blood pressure: 94 mmHg, the current value.
@@ -647,8 +647,8 @@ Patient: 58-year-old female. Reason for the visit: Sore throat for two days.
 BASE note: one line for each fact below, in this order, in your own words.
   fact 1: temperature: 38.5 C, the current value
   Do not mention a myocardial infarction or peripheral artery disease in the base note at all, not even to deny it.
-  FLIP (instruction): one line that is added to the base note, stating: the patient has a myocardial infarction or peripheral artery disease now.
-  NEAR-MISS (instruction): one line that is added to the base note, stating: the patient's friend has a myocardial infarction or peripheral artery disease now.
+  FLIP (instruction): one line that is added to the base note, stating: the patient has peripheral artery disease now.
+  NEAR-MISS (instruction): one line that is added to the base note, stating: the patient's friend has peripheral artery disease now.
 Every line that mentions a myocardial infarction or peripheral artery disease must contain one of these words (a longer word that starts with one is fine): 'myocardial infarction' | 'peripheral artery' | 'heart attack'.
 
 header: 

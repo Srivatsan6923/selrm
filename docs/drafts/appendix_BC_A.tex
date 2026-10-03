@@ -40,7 +40,9 @@ step below, at and above it, and check that the operator wording of the text mat
 remaining constraint rules are sampled from a typed grammar. The sampler never pairs a condition with an
 alternative that the condition rules out, or with a setting it contradicts. The two options of a rule are
 plain orders whose lengths differ by at most
-\res{sum/A-AUDIT/library_semantics.constraint_claim_word_diff_max@int} words.
+\res{sum/A-AUDIT/library_semantics.constraint_claim_word_diff_max@int} words. A criterion claim names the
+condition by the criterion's label. For \res{sum/A-AUDIT/known_semantic_limits.criterion_claim_without_scope@int}
+criteria that count past or family mentions, that label leaves out the scope, which the rule text states.
 
 \paragraph{Rendering audit.}
 Before the freeze, \res{sum/A-AUDIT/reviewers.sessions@int} LLM agent sessions read
@@ -143,6 +145,10 @@ consistent with its absence. \res{sum/A-AUDIT/semantics.all_test_and_dev.finding
 of these negate a broader class.
 \item \res{sum/A-AUDIT/semantics.all_test_and_dev.finding_bases_no_line@int} say nothing.
 \end{itemize}
+In \res{sum/A-AUDIT/known_semantic_limits.general_line_contradicts_condition.cases@int} cases
+(\res{sum/A-AUDIT/known_semantic_limits.general_line_contradicts_condition.groups@int} groups), such a
+general line contradicts a condition that is met (``Face and neck without swelling'' beside swollen neck
+lymph nodes). The labels are unaffected, and these cases are listed as a known issue.
 
 \paragraph{Near-miss kinds.}
 In L2 each kind accounts for 20\% of the triplets: numeric (\res{sum/A-AUDIT/near_miss_kinds.L2.numeric.n@int}),

@@ -2,6 +2,8 @@
 
 Answers are the program's: base, near-miss and presentation cases do not meet the criterion, the flip meets it. Sign off a criterion's cases only if every case below is unambiguous under its rule text.
 
+Conventions the answers follow (as in ec_v1/SIGNOFF_GUIDE.md): a condition the case does not mention is absent; a general line ("No allergies.") means absence; a finding counts only now unless the rule text counts the past; a measurement counts only as its current value; 'above'/'below' are strict and 'or more'/'or less' inclusive; ages are in completed years.
+
 <a id="k001"></a>
 ## k001 (NCT02204488)
 
@@ -57,6 +59,40 @@ Photographs local wildlife.
 Inclusion criterion: Age below 70 years
 
 Program: met iff the patient's current age < 70 years
+
+### near-miss kind: boundary
+
+**base** (does not meet)
+```
+An adult woman.
+Screening visit for a clinical trial.
+Currently aged 79 years.
+Photographs local wildlife.
+```
+
+**flip** (meets)
+```
+An adult woman.
+Screening visit for a clinical trial.
+Currently aged 66 years.
+Photographs local wildlife.
+```
+
+**near** (does not meet)
+```
+An adult woman.
+Screening visit for a clinical trial.
+Currently aged 70 years.
+Photographs local wildlife.
+```
+
+**pres** (does not meet)
+```
+Woman, adult.
+Screening visit for a clinical trial.
+Photographs local wildlife.
+Current age 79 years.
+```
 
 ### near-miss kind: numeric
 
@@ -1827,42 +1863,38 @@ Plays the piano.
 
 **base** (does not meet)
 ```
-Woman of 69 years.
+Man of 44 years.
 Screening visit for a clinical trial.
-Sleeps seven hours a night.
-No allergies at present.
-Plays the piano.
-Photographs local wildlife.
+Lives in a second-floor apartment.
+Reports no allergies of any kind.
+Has two cats.
 ```
 
 **flip** (meets)
 ```
-Woman of 69 years.
+Man of 44 years.
 Screening visit for a clinical trial.
-Sleeps seven hours a night.
-Carries an alert card for a severe iodinated contrast allergy.
-Plays the piano.
-Photographs local wildlife.
+Lives in a second-floor apartment.
+An iodinated contrast allergy recorded years ago has been outgrown; recent contrast scans were uneventful.
+Has two cats.
 ```
 
 **near** (does not meet)
 ```
-Woman of 69 years.
+Man of 44 years.
 Screening visit for a clinical trial.
-Sleeps seven hours a night.
-Her wife needs premedication before iodinated contrast because of an allergy.
-Plays the piano.
-Photographs local wildlife.
+Lives in a second-floor apartment.
+His sister needs premedication before iodinated contrast because of an allergy.
+Has two cats.
 ```
 
 **pres** (does not meet)
 ```
-Female patient of 69 years.
+Male patient of 44 years.
 Screening visit for a clinical trial.
-Photographs local wildlife.
-Sleeps seven hours a night.
-Plays the piano.
-No allergies at present.
+Has two cats.
+Reports no allergies of any kind.
+Lives in a second-floor apartment.
 ```
 
 <a id="k095"></a>
@@ -2596,89 +2628,6 @@ eGFR now 57 mL/min/1.73 m2.
 Prefers to be addressed by first name.
 ```
 
-<a id="k115"></a>
-## k115 (NCT05194397)
-
-Exclusion criterion: Kidney disease (eGFR < 60 ml/min/1.73 m2)
-
-Program: met iff the patient's current eGFR < 60 mL/min/1.73 m2
-
-### near-miss kind: boundary
-
-**base** (does not meet)
-```
-Female patient of 30 years.
-Screening visit for a clinical trial.
-Lives in a second-floor apartment.
-Drives a car.
-Enjoys board games.
-eGFR now 91 mL/min/1.73 m2.
-```
-
-**flip** (meets)
-```
-Female patient of 30 years.
-Screening visit for a clinical trial.
-Lives in a second-floor apartment.
-Drives a car.
-Enjoys board games.
-eGFR now 45 mL/min/1.73 m2.
-```
-
-**near** (does not meet)
-```
-Female patient of 30 years.
-Screening visit for a clinical trial.
-Lives in a second-floor apartment.
-Drives a car.
-Enjoys board games.
-eGFR now 60 mL/min/1.73 m2.
-```
-
-**pres** (does not meet)
-```
-Woman of 30 years.
-Screening visit for a clinical trial.
-Current eGFR 91 mL/min/1.73 m2.
-Lives in a second-floor apartment.
-Drives a car.
-Enjoys board games.
-```
-
-### near-miss kind: numeric
-
-**base** (does not meet)
-```
-Man of 30 years.
-Screening visit for a clinical trial.
-Current eGFR 81 mL/min/1.73 m2.
-Knits as a hobby.
-```
-
-**flip** (meets)
-```
-Man of 30 years.
-Screening visit for a clinical trial.
-Current eGFR 58 mL/min/1.73 m2.
-Knits as a hobby.
-```
-
-**near** (does not meet)
-```
-Man of 30 years.
-Screening visit for a clinical trial.
-Current eGFR 62 mL/min/1.73 m2.
-Knits as a hobby.
-```
-
-**pres** (does not meet)
-```
-Male patient of 30 years.
-Screening visit for a clinical trial.
-Knits as a hobby.
-eGFR now 81 mL/min/1.73 m2.
-```
-
 <a id="k117"></a>
 ## k117 (NCT02653209)
 
@@ -2829,7 +2778,7 @@ Drives a car.
 ```
 Female patient of 49 years.
 Screening visit for a clinical trial.
-Current heart rate 32/min.
+Current heart rate 40/min.
 Drives a car.
 ```
 
@@ -2853,38 +2802,46 @@ Heart rate now 83/min on a pulse check.
 
 **base** (does not meet)
 ```
-Female patient of 84 years.
+Woman of 72 years.
 Screening visit for a clinical trial.
+Pupils equal and reactive to light.
 Heart rate now 55/min on a pulse check.
-Owns a bicycle.
-Lives in a second-floor apartment.
+Uses sunscreen in summer.
+Plays the piano.
+Knits as a hobby.
 ```
 
 **flip** (meets)
 ```
-Female patient of 84 years.
+Woman of 72 years.
 Screening visit for a clinical trial.
-Heart rate now 42/min on a pulse check.
-Owns a bicycle.
-Lives in a second-floor apartment.
+Pupils equal and reactive to light.
+Heart rate now 43/min on a pulse check.
+Uses sunscreen in summer.
+Plays the piano.
+Knits as a hobby.
 ```
 
 **near** (does not meet)
 ```
-Female patient of 84 years.
+Woman of 72 years.
 Screening visit for a clinical trial.
+Pupils equal and reactive to light.
 Heart rate now 49/min on a pulse check.
-Owns a bicycle.
-Lives in a second-floor apartment.
+Uses sunscreen in summer.
+Plays the piano.
+Knits as a hobby.
 ```
 
 **pres** (does not meet)
 ```
-Woman of 84 years.
+Female patient of 72 years.
 Screening visit for a clinical trial.
+Uses sunscreen in summer.
+Knits as a hobby.
 Current heart rate 55/min.
-Lives in a second-floor apartment.
-Owns a bicycle.
+Plays the piano.
+Pupils equal and reactive to light.
 ```
 
 ### near-miss kind: time
@@ -2907,7 +2864,7 @@ Screening visit for a clinical trial.
 Photographs local wildlife.
 Back in 2021, heart rate stood at 77/min.
 Paints watercolors as a hobby.
-Heart rate now 34/min on a pulse check.
+Heart rate now 41/min on a pulse check.
 Knits as a hobby.
 ```
 
@@ -2916,7 +2873,7 @@ Knits as a hobby.
 Woman of 48 years.
 Screening visit for a clinical trial.
 Photographs local wildlife.
-Back in 2021, heart rate stood at 39/min.
+Back in 2021, heart rate stood at 42/min.
 Paints watercolors as a hobby.
 Heart rate now 50/min on a pulse check.
 Knits as a hobby.
@@ -3677,7 +3634,7 @@ Screening visit for a clinical trial.
 Latest Hgb result: 9.0 g/dL.
 Plays the piano.
 Uses sunscreen in summer.
-Records from 2016 list Hgb at 5.9 g/dL.
+Records from 2016 list Hgb at 6.3 g/dL.
 ```
 
 **pres** (does not meet)
@@ -5314,7 +5271,7 @@ Sees a dentist yearly.
 ```
 Man of 79 years.
 Screening visit for a clinical trial.
-Latest neutrophil count: 0.2 x10^9/L.
+Latest neutrophil count: 0.3 x10^9/L.
 Drives a car.
 Sees a dentist yearly.
 ```
@@ -5379,46 +5336,50 @@ Sleeps seven hours a night.
 
 **base** (does not meet)
 ```
-Man of 80 years.
+Man of 72 years.
 Screening visit for a clinical trial.
-Records from 2006 list neutrophil count at 1.1 x10^9/L.
+Prefers to be addressed by first name.
 Plays the piano.
-Current neutrophil count 1.2 x10^9/L.
+Knits as a hobby.
 Lives in a second-floor apartment.
-Sees a dentist yearly.
+Current neutrophil count 1.2 x10^9/L.
+Records from 2005 list neutrophil count at 1.1 x10^9/L.
 ```
 
 **flip** (meets)
 ```
-Man of 80 years.
+Man of 72 years.
 Screening visit for a clinical trial.
-Records from 2006 list neutrophil count at 1.1 x10^9/L.
+Prefers to be addressed by first name.
 Plays the piano.
-Current neutrophil count 0.4 x10^9/L.
+Knits as a hobby.
 Lives in a second-floor apartment.
-Sees a dentist yearly.
+Current neutrophil count 0.3 x10^9/L.
+Records from 2005 list neutrophil count at 1.1 x10^9/L.
 ```
 
 **near** (does not meet)
 ```
-Man of 80 years.
+Man of 72 years.
 Screening visit for a clinical trial.
-Records from 2006 list neutrophil count at 0.3 x10^9/L.
+Prefers to be addressed by first name.
 Plays the piano.
-Current neutrophil count 1.2 x10^9/L.
+Knits as a hobby.
 Lives in a second-floor apartment.
-Sees a dentist yearly.
+Current neutrophil count 1.2 x10^9/L.
+Records from 2005 list neutrophil count at 0.4 x10^9/L.
 ```
 
 **pres** (does not meet)
 ```
-Male patient of 80 years.
+Male patient of 72 years.
 Screening visit for a clinical trial.
-Latest neutrophil count: 1.2 x10^9/L.
-Sees a dentist yearly.
 Lives in a second-floor apartment.
+Latest neutrophil count: 1.2 x10^9/L.
+Back in 2005, neutrophil count stood at 1.1 x10^9/L.
+Knits as a hobby.
 Plays the piano.
-Back in 2006, neutrophil count stood at 1.1 x10^9/L.
+Prefers to be addressed by first name.
 ```
 
 <a id="k179"></a>
@@ -5796,7 +5757,7 @@ Latest neutrophil count: 1.3 x10^9/L.
 Man of 58 years.
 Screening visit for a clinical trial.
 Sleeps seven hours a night.
-Latest neutrophil count: 0.3 x10^9/L.
+Latest neutrophil count: 0.4 x10^9/L.
 ```
 
 **near** (does not meet)
@@ -5832,7 +5793,7 @@ Owns a bicycle.
 ```
 Woman of 45 years.
 Screening visit for a clinical trial.
-Current neutrophil count 0.1 x10^9/L.
+Current neutrophil count 0.2 x10^9/L.
 Enjoys board games.
 Pupils equal and reactive to light.
 Photographs local wildlife.
@@ -5879,7 +5840,7 @@ Male patient of 39 years.
 Screening visit for a clinical trial.
 Paints watercolors as a hobby.
 Knits as a hobby.
-Current neutrophil count 0.1 x10^9/L.
+Current neutrophil count 0.2 x10^9/L.
 Records from 2014 list neutrophil count at 1.3 x10^9/L.
 ```
 
@@ -6756,7 +6717,7 @@ Woman of 44 years.
 Screening visit for a clinical trial.
 Has two cats.
 Paints watercolors as a hobby.
-Current platelet count 19 x10^9/L.
+Current platelet count 26 x10^9/L.
 Lives in a second-floor apartment.
 Prefers to be addressed by first name.
 ```
@@ -6800,7 +6761,7 @@ Pupils equal and reactive to light.
 Man of 78 years.
 Screening visit for a clinical trial.
 Has two cats.
-Current platelet count 23 x10^9/L.
+Current platelet count 28 x10^9/L.
 Sees a dentist yearly.
 Pupils equal and reactive to light.
 ```
@@ -6829,38 +6790,50 @@ Has two cats.
 
 **base** (does not meet)
 ```
-Female patient of 57 years.
+Female patient of 30 years.
 Screening visit for a clinical trial.
+Paints watercolors as a hobby.
+Owns a bicycle.
+Records from 2022 list platelet count at 61 x10^9/L.
+Sleeps seven hours a night.
+Photographs local wildlife.
 Platelet count now 65 x10^9/L.
-Back in 2009, platelet count stood at 77 x10^9/L.
-Enjoys board games.
 ```
 
 **flip** (meets)
 ```
-Female patient of 57 years.
+Female patient of 30 years.
 Screening visit for a clinical trial.
-Platelet count now 11 x10^9/L.
-Back in 2009, platelet count stood at 77 x10^9/L.
-Enjoys board games.
+Paints watercolors as a hobby.
+Owns a bicycle.
+Records from 2022 list platelet count at 61 x10^9/L.
+Sleeps seven hours a night.
+Photographs local wildlife.
+Platelet count now 21 x10^9/L.
 ```
 
 **near** (does not meet)
 ```
-Female patient of 57 years.
+Female patient of 30 years.
 Screening visit for a clinical trial.
+Paints watercolors as a hobby.
+Owns a bicycle.
+Records from 2022 list platelet count at 22 x10^9/L.
+Sleeps seven hours a night.
+Photographs local wildlife.
 Platelet count now 65 x10^9/L.
-Back in 2009, platelet count stood at 27 x10^9/L.
-Enjoys board games.
 ```
 
 **pres** (does not meet)
 ```
-Woman of 57 years.
+Woman of 30 years.
 Screening visit for a clinical trial.
+Owns a bicycle.
+Sleeps seven hours a night.
+Paints watercolors as a hobby.
+Photographs local wildlife.
 Current platelet count 65 x10^9/L.
-Enjoys board games.
-Records from 2009 list platelet count at 77 x10^9/L.
+Back in 2022, platelet count stood at 61 x10^9/L.
 ```
 
 <a id="k205"></a>
@@ -7729,7 +7702,7 @@ Paints watercolors as a hobby.
 
 Exclusion criterion: Pregnant or breastfeeding women
 
-Program: met iff the patient has pregnancy now (the criterion does not say whether a past occurrence counts; no case states one); also listed in the text but never mentioned in cases: breastfeeding
+Program: met iff the patient has pregnancy now (current); also listed in the text but never mentioned in cases: breastfeeding
 
 ### near-miss kind: negation
 
@@ -7814,7 +7787,7 @@ Owns a bicycle.
 
 Exclusion criterion: Pregnant or nursing women
 
-Program: met iff the patient has pregnancy now (the criterion does not say whether a past occurrence counts; no case states one); also listed in the text but never mentioned in cases: nursing
+Program: met iff the patient has pregnancy now (current); also listed in the text but never mentioned in cases: nursing
 
 ### near-miss kind: negation
 
@@ -7895,7 +7868,7 @@ Photographs local wildlife.
 
 Exclusion criterion: Currently pregnant or breastfeeding
 
-Program: met iff the patient has pregnancy now (the criterion does not say whether a past occurrence counts; no case states one); also listed in the text but never mentioned in cases: breastfeeding
+Program: met iff the patient has pregnancy now (current); also listed in the text but never mentioned in cases: breastfeeding
 
 ### near-miss kind: negation
 
@@ -7986,7 +7959,7 @@ Plays the piano.
 
 Exclusion criterion: Pregnant or nursing females
 
-Program: met iff the patient has pregnancy now (the criterion does not say whether a past occurrence counts; no case states one); also listed in the text but never mentioned in cases: nursing
+Program: met iff the patient has pregnancy now (current); also listed in the text but never mentioned in cases: nursing
 
 ### near-miss kind: negation
 
@@ -8223,7 +8196,7 @@ Man of 65 years.
 Screening visit for a clinical trial.
 Paints watercolors as a hobby.
 Photographs local wildlife.
-Current systolic blood pressure 71 mmHg.
+Current systolic blood pressure 82 mmHg.
 ```
 
 **near** (does not meet)
@@ -8263,7 +8236,7 @@ Screening visit for a clinical trial.
 Enjoys board games.
 Lives in a second-floor apartment.
 Uses sunscreen in summer.
-Observations now: blood pressure 70/54 mmHg.
+Observations now: blood pressure 82/60 mmHg.
 ```
 
 **near** (does not meet)
@@ -8303,7 +8276,7 @@ Male patient of 59 years.
 Screening visit for a clinical trial.
 Knits as a hobby.
 Back in 2017, systolic blood pressure stood at 153 mmHg.
-Observations now: blood pressure 71/54 mmHg.
+Observations now: blood pressure 82/60 mmHg.
 ```
 
 **near** (does not meet)
@@ -8311,7 +8284,7 @@ Observations now: blood pressure 71/54 mmHg.
 Male patient of 59 years.
 Screening visit for a clinical trial.
 Knits as a hobby.
-Back in 2017, systolic blood pressure stood at 83 mmHg.
+Back in 2017, systolic blood pressure stood at 88 mmHg.
 Observations now: blood pressure 141/93 mmHg.
 ```
 
@@ -8347,7 +8320,7 @@ Lives in a second-floor apartment.
 Man of 61 years.
 Screening visit for a clinical trial.
 Plays the piano.
-Observations now: blood pressure 79/58 mmHg.
+Observations now: blood pressure 83/61 mmHg.
 Lives in a second-floor apartment.
 ```
 
@@ -8384,7 +8357,7 @@ Observations now: blood pressure 132/88 mmHg.
 Male patient of 52 years.
 Screening visit for a clinical trial.
 Uses sunscreen in summer.
-Observations now: blood pressure 81/60 mmHg.
+Observations now: blood pressure 85/62 mmHg.
 ```
 
 **near** (does not meet)
@@ -8426,7 +8399,7 @@ Teeth in good repair.
 Sees a dentist yearly.
 Back in 2023, systolic blood pressure stood at 125 mmHg.
 Owns a bicycle.
-Observations now: blood pressure 80/59 mmHg.
+Observations now: blood pressure 84/61 mmHg.
 ```
 
 **near** (does not meet)
@@ -8436,7 +8409,7 @@ Screening visit for a clinical trial.
 Enjoys board games.
 Teeth in good repair.
 Sees a dentist yearly.
-Back in 2023, systolic blood pressure stood at 94 mmHg.
+Back in 2023, systolic blood pressure stood at 98 mmHg.
 Owns a bicycle.
 Observations now: blood pressure 129/86 mmHg.
 ```
@@ -8595,7 +8568,7 @@ Lives in a second-floor apartment.
 Woman of 62 years.
 Screening visit for a clinical trial.
 Paints watercolors as a hobby.
-Observations now: blood pressure 69/53 mmHg.
+Observations now: blood pressure 81/60 mmHg.
 Owns a bicycle.
 Photographs local wildlife.
 Lives in a second-floor apartment.
@@ -8640,7 +8613,7 @@ Sleeps seven hours a night.
 Man of 37 years.
 Screening visit for a clinical trial.
 Records from 2013 list systolic blood pressure at 145 mmHg.
-Current systolic blood pressure 82 mmHg.
+Current systolic blood pressure 88 mmHg.
 Drives a car.
 Sleeps seven hours a night.
 ```
@@ -8649,7 +8622,7 @@ Sleeps seven hours a night.
 ```
 Man of 37 years.
 Screening visit for a clinical trial.
-Records from 2013 list systolic blood pressure at 76 mmHg.
+Records from 2013 list systolic blood pressure at 85 mmHg.
 Current systolic blood pressure 152 mmHg.
 Drives a car.
 Sleeps seven hours a night.
@@ -9095,7 +9068,7 @@ Medication allergies: none at present.
 
 Exclusion criterion: myocardial infarction within the previous 3 months (the day exactly 3 months before the visit counts)
 
-Program: met iff the patient has a myocardial infarction (or, outside windows, peripheral artery disease) within the 3 months before the visit date (boundary day counts)
+Program: met iff the patient has a myocardial infarction (heart attack) within the 3 months before the visit date (boundary day counts)
 
 ### near-miss kind: negation
 
@@ -9218,7 +9191,7 @@ Uses sunscreen in summer.
 
 Exclusion criterion: A heart attack (myocardial infarct) in the past twelve months (the day exactly twelve months before the visit counts)
 
-Program: met iff the patient has a myocardial infarction (or, outside windows, peripheral artery disease) within the 12 months before the visit date (boundary day counts)
+Program: met iff the patient has a myocardial infarction (heart attack) within the 12 months before the visit date (boundary day counts)
 
 ### near-miss kind: negation
 
@@ -9349,7 +9322,7 @@ Knits as a hobby.
 
 Exclusion criterion: Myocardial infarction within three months (the day exactly three months before the visit counts)
 
-Program: met iff the patient has a myocardial infarction (or, outside windows, peripheral artery disease) within the 3 months before the visit date (boundary day counts)
+Program: met iff the patient has a myocardial infarction (heart attack) within the 3 months before the visit date (boundary day counts)
 
 ### near-miss kind: negation
 
@@ -10008,139 +9981,6 @@ Current anticoagulants: none.
 Plays the piano.
 ```
 
-<a id="k285"></a>
-## k285 (NCT04226950)
-
-Exclusion criterion: WBC < 4 x10^9/L
-
-Program: met iff the patient's current white cell count < 4 x10^9/L
-
-### near-miss kind: boundary
-
-**base** (does not meet)
-```
-Woman of 18 years.
-Screening visit for a clinical trial.
-Lives in a second-floor apartment.
-Current white cell count 8.2 x10^9/L.
-Sees a dentist yearly.
-```
-
-**flip** (meets)
-```
-Woman of 18 years.
-Screening visit for a clinical trial.
-Lives in a second-floor apartment.
-Current white cell count 1.7 x10^9/L.
-Sees a dentist yearly.
-```
-
-**near** (does not meet)
-```
-Woman of 18 years.
-Screening visit for a clinical trial.
-Lives in a second-floor apartment.
-Current white cell count 4.0 x10^9/L.
-Sees a dentist yearly.
-```
-
-**pres** (does not meet)
-```
-Female patient of 18 years.
-Screening visit for a clinical trial.
-Sees a dentist yearly.
-Latest WBC is 8.2 x10^9/L.
-Lives in a second-floor apartment.
-```
-
-### near-miss kind: numeric
-
-**base** (does not meet)
-```
-Woman of 18 years.
-Screening visit for a clinical trial.
-Prefers morning appointments.
-Sees a dentist yearly.
-Latest WBC is 5.6 x10^9/L.
-Plays the piano.
-Sleeps seven hours a night.
-```
-
-**flip** (meets)
-```
-Woman of 18 years.
-Screening visit for a clinical trial.
-Prefers morning appointments.
-Sees a dentist yearly.
-Latest WBC is 2.2 x10^9/L.
-Plays the piano.
-Sleeps seven hours a night.
-```
-
-**near** (does not meet)
-```
-Woman of 18 years.
-Screening visit for a clinical trial.
-Prefers morning appointments.
-Sees a dentist yearly.
-Latest WBC is 4.7 x10^9/L.
-Plays the piano.
-Sleeps seven hours a night.
-```
-
-**pres** (does not meet)
-```
-Female patient of 18 years.
-Screening visit for a clinical trial.
-Current white cell count 5.6 x10^9/L.
-Sees a dentist yearly.
-Plays the piano.
-Sleeps seven hours a night.
-Prefers morning appointments.
-```
-
-### near-miss kind: time
-
-**base** (does not meet)
-```
-Man of 18 years.
-Screening visit for a clinical trial.
-Back in 2024, white cell count stood at 6.9 x10^9/L.
-Prefers morning appointments.
-Latest WBC is 7.6 x10^9/L.
-Prefers to be addressed by first name.
-```
-
-**flip** (meets)
-```
-Man of 18 years.
-Screening visit for a clinical trial.
-Back in 2024, white cell count stood at 6.9 x10^9/L.
-Prefers morning appointments.
-Latest WBC is 3.2 x10^9/L.
-Prefers to be addressed by first name.
-```
-
-**near** (does not meet)
-```
-Man of 18 years.
-Screening visit for a clinical trial.
-Back in 2024, white cell count stood at 2.8 x10^9/L.
-Prefers morning appointments.
-Latest WBC is 7.6 x10^9/L.
-Prefers to be addressed by first name.
-```
-
-**pres** (does not meet)
-```
-Male patient of 18 years.
-Screening visit for a clinical trial.
-Prefers morning appointments.
-Current white cell count 7.6 x10^9/L.
-Prefers to be addressed by first name.
-Records from 2024 list white cell count at 6.9 x10^9/L.
-```
-
 <a id="k287"></a>
 ## k287 (NCT02408185)
 
@@ -10272,244 +10112,6 @@ Records from 2015 list weight at 50 kg.
 Pupils equal and reactive to light.
 Prefers to be addressed by first name.
 Current weight 51 kg.
-```
-
-<a id="k288"></a>
-## k288 (NCT04327791)
-
-Inclusion criterion: Weight > 40 kg
-
-Program: met iff the patient's current weight > 40 kg
-
-### near-miss kind: boundary
-
-**base** (does not meet)
-```
-Female patient of 73 years.
-Screening visit for a clinical trial.
-Latest weight 38 kg.
-Has two cats.
-Prefers to be addressed by first name.
-```
-
-**flip** (meets)
-```
-Female patient of 73 years.
-Screening visit for a clinical trial.
-Latest weight 50 kg.
-Has two cats.
-Prefers to be addressed by first name.
-```
-
-**near** (does not meet)
-```
-Female patient of 73 years.
-Screening visit for a clinical trial.
-Latest weight 40 kg.
-Has two cats.
-Prefers to be addressed by first name.
-```
-
-**pres** (does not meet)
-```
-Woman of 73 years.
-Screening visit for a clinical trial.
-Current weight 38 kg.
-Prefers to be addressed by first name.
-Has two cats.
-```
-
-### near-miss kind: numeric
-
-**base** (does not meet)
-```
-Male patient of 65 years.
-Screening visit for a clinical trial.
-Prefers to be addressed by first name.
-Latest weight 33 kg.
-```
-
-**flip** (meets)
-```
-Male patient of 65 years.
-Screening visit for a clinical trial.
-Prefers to be addressed by first name.
-Latest weight 43 kg.
-```
-
-**near** (does not meet)
-```
-Male patient of 65 years.
-Screening visit for a clinical trial.
-Prefers to be addressed by first name.
-Latest weight 37 kg.
-```
-
-**pres** (does not meet)
-```
-Man of 65 years.
-Screening visit for a clinical trial.
-Current weight 33 kg.
-Prefers to be addressed by first name.
-```
-
-### near-miss kind: time
-
-**base** (does not meet)
-```
-Man of 77 years.
-Screening visit for a clinical trial.
-Records from 2015 list weight at 33 kg.
-Drives a car.
-Lives in a second-floor apartment.
-Current weight 34 kg.
-```
-
-**flip** (meets)
-```
-Man of 77 years.
-Screening visit for a clinical trial.
-Records from 2015 list weight at 33 kg.
-Drives a car.
-Lives in a second-floor apartment.
-Current weight 45 kg.
-```
-
-**near** (does not meet)
-```
-Man of 77 years.
-Screening visit for a clinical trial.
-Records from 2015 list weight at 42 kg.
-Drives a car.
-Lives in a second-floor apartment.
-Current weight 34 kg.
-```
-
-**pres** (does not meet)
-```
-Male patient of 77 years.
-Screening visit for a clinical trial.
-Latest weight 34 kg.
-Lives in a second-floor apartment.
-Back in 2015, weight stood at 33 kg.
-Drives a car.
-```
-
-<a id="k289"></a>
-## k289 (NCT00303459)
-
-Exclusion criterion: Body weight < 40 kg
-
-Program: met iff the patient's current weight < 40 kg
-
-### near-miss kind: boundary
-
-**base** (does not meet)
-```
-Woman of 53 years.
-Screening visit for a clinical trial.
-Current weight 72 kg.
-Sees a dentist yearly.
-```
-
-**flip** (meets)
-```
-Woman of 53 years.
-Screening visit for a clinical trial.
-Current weight 34 kg.
-Sees a dentist yearly.
-```
-
-**near** (does not meet)
-```
-Woman of 53 years.
-Screening visit for a clinical trial.
-Current weight 40 kg.
-Sees a dentist yearly.
-```
-
-**pres** (does not meet)
-```
-Female patient of 53 years.
-Screening visit for a clinical trial.
-Sees a dentist yearly.
-Latest weight 72 kg.
-```
-
-### near-miss kind: numeric
-
-**base** (does not meet)
-```
-Female patient of 56 years.
-Screening visit for a clinical trial.
-Current weight 54 kg.
-Owns a bicycle.
-Drives a car.
-```
-
-**flip** (meets)
-```
-Female patient of 56 years.
-Screening visit for a clinical trial.
-Current weight 34 kg.
-Owns a bicycle.
-Drives a car.
-```
-
-**near** (does not meet)
-```
-Female patient of 56 years.
-Screening visit for a clinical trial.
-Current weight 43 kg.
-Owns a bicycle.
-Drives a car.
-```
-
-**pres** (does not meet)
-```
-Woman of 56 years.
-Screening visit for a clinical trial.
-Owns a bicycle.
-Latest weight 54 kg.
-Drives a car.
-```
-
-### near-miss kind: time
-
-**base** (does not meet)
-```
-Male patient of 33 years.
-Screening visit for a clinical trial.
-Latest weight 55 kg.
-Back in 2019, weight stood at 68 kg.
-Plays the piano.
-```
-
-**flip** (meets)
-```
-Male patient of 33 years.
-Screening visit for a clinical trial.
-Latest weight 34 kg.
-Back in 2019, weight stood at 68 kg.
-Plays the piano.
-```
-
-**near** (does not meet)
-```
-Male patient of 33 years.
-Screening visit for a clinical trial.
-Latest weight 55 kg.
-Back in 2019, weight stood at 37 kg.
-Plays the piano.
-```
-
-**pres** (does not meet)
-```
-Man of 33 years.
-Screening visit for a clinical trial.
-Plays the piano.
-Current weight 55 kg.
-Records from 2019 list weight at 68 kg.
 ```
 
 <a id="k291"></a>
