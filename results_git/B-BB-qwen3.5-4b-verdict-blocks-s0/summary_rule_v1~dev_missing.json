@@ -1,0 +1,13 @@
+{
+ "run_id": "B-BB-qwen3.5-4b-verdict-blocks-s0",
+ "set": "rule_v1/dev_missing",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "seconds": 59.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
