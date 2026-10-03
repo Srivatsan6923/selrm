@@ -7,7 +7,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 from selrm.metrics import _flags, bootstrap_ci, decisions, paired_cluster_bootstrap, paired_test, seed_table, summarise
-from report_b import RG, records
+from report_b import DATA, RG, records
 
 NL = "\n"
 KINDS = ("boundary", "negation", "numeric", "subject", "time")
@@ -15,20 +15,43 @@ CELLS = [(f, c) for f in ("verdict", "rationale", "summary2", "value2", "ledger2
          for c in ("natural", "balanced", "blocks", "triplets")]
 
 
-def scores(rid, set_name):
+def scores(rid, set_name, full=False):
+    """{iid: row}; only u unless full (reader outputs are large)."""
     p = f"{RG}/{rid}/scores_{set_name.replace('/', '~')}.jsonl"
     if not os.path.exists(p):
         return None
-    return {r["iid"]: r for r in map(json.loads, open(p, encoding="utf-8"))}
+    return {r["iid"]: (r if full else {"u": r["u"]}) for r in map(json.loads, open(p, encoding="utf-8"))}
 
 
+SLIM = ("iid", "tid", "case_kind", "claim_type", "claim_role", "label", "rid", "nm_kind", "tier", "level", "family",
+        "claim_text")
+REG = json.load(open(f"{DATA}/REGISTRY.json"))
 _rec_cache = {}
 
 
 def recs(set_name):
+    """Records without case texts, ledgers and prose (all the analyses need; cached per set)."""
     if set_name not in _rec_cache:
-        _rec_cache[set_name] = records(set_name)
+        _rec_cache[set_name] = [{k: r[k] for k in SLIM} for r in stream(set_name)]
     return _rec_cache[set_name]
+
+
+def stream(set_name):
+    """Records of a set, one line at a time (the full files hold case texts, ledgers and prose)."""
+    return map(json.loads, open(f"{DATA}/{REG[set_name]['path']}", encoding="utf-8"))
+
+
+_claims_cache = {}
+
+
+def claims_by_unit(set_name):
+    """{case unit: lower-cased claim texts}, the only record content the leakage check needs."""
+    if set_name not in _claims_cache:
+        c = collections.defaultdict(set)
+        for r in stream(set_name):
+            c["/".join(r["iid"].split("/")[:2])].add(r["claim_text"].strip().lower())
+        _claims_cache[set_name] = c
+    return _claims_cache[set_name]
 
 
 def triplets(rid, set_name="rule_v1/test_L2"):
@@ -128,12 +151,10 @@ def leakage_section():
             m = json.load(open(f"{RG}/{rid}/meta.json"))
             outs, hit_claim, hits = {}, 0, collections.Counter()
             for s in m["eval_sets"]:
-                S = scores(rid, s)
+                S = scores(rid, s, full=True)
                 if S is None:
                     continue
-                claims = collections.defaultdict(set)
-                for r in recs(s):
-                    claims["/".join(r["iid"].split("/")[:2])].add(r["claim_text"].strip().lower())
+                claims = claims_by_unit(s)
                 for iid, row in S.items():
                     unit = "/".join(iid.split("/")[:2])
                     if unit in outs or "reader_output" not in row:
@@ -260,10 +281,7 @@ def budget_section():
         if not ps or not str(m.get("corpus", "")).startswith("rule_v1") or m.get("provisional"):
             continue
         parts = ps.get("parts", {})
-        try:
-            n_corpus = len(records(m["corpus"]))
-        except Exception:
-            n_corpus = None
+        n_corpus = REG.get(m["corpus"], {}).get("n_records")
         print(f"| {d} | {m['gpu'].split(',')[0]} | {n_corpus} | {ps.get('examples')} | {parts.get('reader', '-')} | "
               f"{parts.get('judge', '-')} | {ps.get('tokens')} | {ps.get('completion_tokens')} | {tr.get('steps')} | "
               f"{tr.get('train_seconds', 0) / 3600:.2f} | {m.get('eval_seconds', 0) / 3600:.2f} |")

@@ -1,0 +1,17 @@
+{
+ "run_id": "B-TR-genprm-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "check_missing": 0,
+  "check_error": 149,
+  "gen_not_stopped": 0,
+  "gen_tokens": 869502,
+  "seconds": 1151.7,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

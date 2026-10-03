@@ -1,4 +1,4 @@
-# STATE role B (maintained by Claude Code)
+# STATE role B
 Updated: 2026-10-03 ~18:40 UTC (Sat). Plan: docs/FINAL_TASKS_B.md (3 Oct; replaces every earlier directive).
 Run freeze: Wed 7 Oct 23:59 (UTC assumed). Decisions: docs/DECISIONS_B.md. Analyses: docs/ANALYSIS_B.md.
 
@@ -53,12 +53,6 @@ ledger2 x {blocks, triplets}; B-BB-qwen3.5-4b verdict x blocks; all B-C0 validat
   (pretok check_gold requires one per (case, condition)); C's xr_v1 convention: selrm.metrics.crossed_accuracy.
 - Premise gate: needs the step check (C/D). Probe re-weighting step 2 after its scores run.
 - Medical-data rows, B-DIS: need C's clinical pairs.
-
-## Paused (18:00 UTC, laptop memory)
-- Claude Code stopped a pull + resummarize + analysis step for low system memory; the user chooses how to resume
-  (slim analysis_b.py to load one set at a time, or free memory). Not pulled yet: B-F-summary2-blocks-s4, B-DIS-s2,
-  B-FOLD2-ledger2-{blocks,triplets}-s0, B-FOLD3-verdict-blocks-s0 (and later finishers); B-AB-probe-rw-s0 and
-  B-FOLD2-verdict-blocks-s0 are pulled but not re-summarised. Cluster runs continue.
 
 ## Before the tables
 - Summaries written by runners on code before e86e9f7 carry CIs from the old bootstrap (process-dependent order;

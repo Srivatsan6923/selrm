@@ -63,7 +63,7 @@ def check_block(text):
 
 def run_checks(codes, batch=1024):
     """Executed output of each check (None -> "error"); batches of 1024 per interpreter.
-    ponytail: a check stuck inside one C call outlives its alarm; the batch then times out
+    Known limit: a check stuck inside one C call outlives its alarm; the batch then times out
     and its unfinished checks count as "error"."""
     import subprocess
     outs = ["error"] * len(codes)
