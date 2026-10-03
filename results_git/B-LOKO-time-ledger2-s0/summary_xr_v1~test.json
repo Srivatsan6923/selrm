@@ -1,0 +1,18 @@
+{
+ "run_id": "B-LOKO-time-ledger2-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 21,
+  "mode": null,
+  "malformed_rate": 0.0088,
+  "gen_not_stopped": 0,
+  "seconds": 145.0,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
