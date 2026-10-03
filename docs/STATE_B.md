@@ -49,6 +49,11 @@ ledger2 x {blocks, triplets}; B-BB-qwen3.5-4b verdict x blocks; all B-C0 validat
 - Premise gate: needs the step check (C/D). Probe re-weighting step 2 after its scores run.
 - Medical-data rows, B-DIS: need C's clinical pairs.
 
+## Before the tables
+- Summaries written by runners on code before e86e9f7 carry CIs from the old bootstrap (process-dependent order;
+  ~0.1 point): recompute every summary from its scores file with the final selrm/metrics.py before make_tables.
+- Regenerate docs/PROJECTION_B.md once an H100 training run has finished (H100 speed is unmeasured until then).
+
 ## Open compute requests
 - #1 (2 Oct): read-only GitHub token secret `selrm-github-ro`; confirm `hf-token-srivatsan` is the user's (needed to
   publish kept adapters to a private HF repo). Until then kept adapters stay on the PVC.
