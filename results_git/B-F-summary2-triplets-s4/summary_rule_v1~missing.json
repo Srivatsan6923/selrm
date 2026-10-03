@@ -1,0 +1,18 @@
+{
+ "run_id": "B-F-summary2-triplets-s4",
+ "set": "rule_v1/missing",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "reader_units": 2000,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 224.9,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
