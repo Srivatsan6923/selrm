@@ -24,6 +24,7 @@
  "run/A-D14-bag_of_words/L2/all/TA": "7.0",
  "run/A-D14-trigger_all/L2/all/TA": "99.5",
  "run/A-D14-trigger_train/L2/all/TA": "54.0",
+ "run/B-AE-oracle-ledger/L2/all/TA": "99.8",
  "run/B-AE-program-ledger/L2/all/TA": "99.4",
  "run/B-BB-qwen3.5-4b-verdict-blocks/L2/all/TA": "49.9",
  "run/B-F-ledger2-blocks/L2/all/TA": "75.3",

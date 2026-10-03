@@ -1,6 +1,6 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "d2b66b95063496aeeb6c5f5f9537c3ea2af0c514",
+ "code_commit": "f036367ed8b8c0fbd56c1d8bf1aa512c5b69b741",
  "uncommitted_changes": true,
  "records": {
   "rule_v1/dev_missing": {
@@ -1964,28 +1964,118 @@
    "seeds_found": []
   },
   "run/B-AE-oracle-ledger/L2/all/Hold": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "100.0",
+   "number": 99.95,
+   "runs": [
+    {
+     "run_id": "B-AE-oracle-ledger",
+     "seed": null,
+     "file": "results_git/B-AE-oracle-ledger/summary_rule_v1~test_L2.json",
+     "field": "all.Hold",
+     "file_commit": "f9ead72f68dbcaefea8b0f9fe3e83d21d95a5322",
+     "code_commit": "072d46d62faf"
+    }
+   ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/B-AE-oracle-ledger/L2/all/Hold/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-AE-oracle-ledger",
+     "seed": null,
+     "file": "results_git/B-AE-oracle-ledger/summary_rule_v1~test_L2.json",
+     "field": "all.Hold",
+     "file_commit": "f9ead72f68dbcaefea8b0f9fe3e83d21d95a5322",
+     "code_commit": "072d46d62faf"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/B-AE-oracle-ledger/L2/all/Rev": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "99.8",
+   "number": 99.85,
+   "runs": [
+    {
+     "run_id": "B-AE-oracle-ledger",
+     "seed": null,
+     "file": "results_git/B-AE-oracle-ledger/summary_rule_v1~test_L2.json",
+     "field": "all.Rev",
+     "file_commit": "f9ead72f68dbcaefea8b0f9fe3e83d21d95a5322",
+     "code_commit": "072d46d62faf"
+    }
+   ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/B-AE-oracle-ledger/L2/all/Rev/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-AE-oracle-ledger",
+     "seed": null,
+     "file": "results_git/B-AE-oracle-ledger/summary_rule_v1~test_L2.json",
+     "field": "all.Rev",
+     "file_commit": "f9ead72f68dbcaefea8b0f9fe3e83d21d95a5322",
+     "code_commit": "072d46d62faf"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/B-AE-oracle-ledger/L2/all/TA": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "99.8",
+   "number": 99.8,
+   "runs": [
+    {
+     "run_id": "B-AE-oracle-ledger",
+     "seed": null,
+     "file": "results_git/B-AE-oracle-ledger/summary_rule_v1~test_L2.json",
+     "field": "all.TA",
+     "file_commit": "f9ead72f68dbcaefea8b0f9fe3e83d21d95a5322",
+     "code_commit": "072d46d62faf"
+    }
+   ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/B-AE-oracle-ledger/L2/all/TA/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-AE-oracle-ledger",
+     "seed": null,
+     "file": "results_git/B-AE-oracle-ledger/summary_rule_v1~test_L2.json",
+     "field": "all.TA",
+     "file_commit": "f9ead72f68dbcaefea8b0f9fe3e83d21d95a5322",
+     "code_commit": "072d46d62faf"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/B-AE-oracle-ledger/missing/top/MR": {
    "value": "\\ph{tbd}",
@@ -12434,19 +12524,19 @@
     "row": "\\ \\ program-supplied ledger",
     "col": "Rev",
     "key": "run/B-AE-oracle-ledger/L2/all/Rev",
-    "value": "\\ph{tbd}"
+    "value": "99.8"
    },
    {
     "row": "\\ \\ program-supplied ledger",
     "col": "Hold",
     "key": "run/B-AE-oracle-ledger/L2/all/Hold",
-    "value": "\\ph{tbd}"
+    "value": "100.0"
    },
    {
     "row": "\\ \\ program-supplied ledger",
     "col": "TA",
     "key": "run/B-AE-oracle-ledger/L2/all/TA",
-    "value": "\\ph{tbd}"
+    "value": "99.8"
    },
    {
     "row": "\\ \\ program-supplied ledger",
