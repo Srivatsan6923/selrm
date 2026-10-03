@@ -1,0 +1,31 @@
+{
+ "verified_on": "2026-10-02",
+ "verified_via": "huggingface.co/api/datasets and api.github.com",
+ "datasets": {
+  "ncbi/MedCalc-Bench-v1.0": {
+   "sha": "7eb352c5953c0d9c47fe44dc4e085bb56a370c66",
+   "license": "cc-by-4.0",
+   "files": [
+    "test_data.csv",
+    "train_data.csv"
+   ]
+  },
+  "ncbi/MedCalc-Bench-v1.2": {
+   "sha": "915b1aad1fd2aa67790f369658cc365dfd440e90",
+   "license": "cc-by-sa-4.0",
+   "files": [
+    "test_data_11_18_final.csv",
+    "train_data_11_18_final.csv"
+   ]
+  },
+  "ncbi/MedCalc-Bench": {
+   "sha": "83a1a56d6b53f8d4c0e03f0ba9699becf524a595",
+   "license": "cc-by-sa-4.0"
+  }
+ },
+ "code": {
+  "github": "ncbi-nlp/MedCalc-Bench",
+  "license": "none declared (no licence file): do not copy calculator code"
+ },
+ "status": "deferred (FINAL_TASKS A P1, if time allows); the paper prints 'not run' / 'not included'"
+}
