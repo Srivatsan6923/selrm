@@ -34,7 +34,10 @@ GPU = {"a40": ("nvidia.com/a40", None), "a6000": ("nvidia.com/rtxa6000", None),
        "l40": ("nvidia.com/gpu", ["NVIDIA-L40", "NVIDIA-L40S"]),
        "a100": ("nvidia.com/a100", ["NVIDIA-A100-SXM4-80GB", "NVIDIA-A100-80GB-PCIe", "NVIDIA-A100-PCIE-40GB"]),
        "24gb": ("nvidia.com/gpu", ["NVIDIA-GeForce-RTX-3090", "NVIDIA-A10", "NVIDIA-GeForce-RTX-4090", "NVIDIA-RTX-A5000"]),
-       "pro6000": ("nvidia.com/gpu", ["NVIDIA-RTX-PRO-6000-Blackwell-Max-Q-Workstation-Edition"])}
+       "pro6000": ("nvidia.com/gpu", ["NVIDIA-RTX-PRO-6000-Blackwell-Max-Q-Workstation-Edition"]),
+       # opportunistic H100s (priorityClassName opportunistic, as role B; preemptible: every step is resumable)
+       "h100-opp": ("nvidia.com/h100", None)}
+OPPORTUNISTIC = {"h100-opp"}
 CPU_ONLY = {"key": "feature.node.kubernetes.io/pci-10de.present", "operator": "NotIn", "values": ["true"]}
 DRIVER = {"key": "nvidia.com/cuda.driver.major", "operator": "Gt", "values": ["579"]}
 VOLS = [{"name": "pvc", "persistentVolumeClaim": {"claimName": PVC}},
@@ -88,7 +91,8 @@ def gpu_job(name, code, env_tag, gpu, hours, args, cpu=3, mem="24Gi", models=("/
     terms = [DRIVER] + ([{"key": "nvidia.com/gpu.product", "operator": "In", "values": products}] if products else [])
     # us-west only: the CephFS pools are there, and reading 19 GB of weights from another region took about an
     # hour (3 Oct). us-west holds 36 of 48 RTX 3090, all 17 L40, 5 of 8 A6000 and 2 of 3 A40 nodes.
-    terms.append({"key": "topology.kubernetes.io/region", "operator": "In", "values": ["us-west"]})
+    if gpu not in OPPORTUNISTIC:      # the opportunistic H100s are at SDSC (us-west) anyway
+        terms.append({"key": "topology.kubernetes.io/region", "operator": "In", "values": ["us-west"]})
     env = f"/pvc/env/selrm-d-env-{env_tag}.tar"     # the gzip copy halves the bytes read from CephFS
     stage = (f"set -e; if [ -f {env}.gz ]; then tar -xzf {env}.gz -C /opt; else tar -xf {env} -C /opt; fi; "
              f"cp -r /pvc/code/{code} /work/code; "
@@ -115,6 +119,8 @@ def gpu_job(name, code, env_tag, gpu, hours, args, cpu=3, mem="24Gi", models=("/
                            "volumeMounts": MNTS + work + [{"name": "dshm", "mountPath": "/dev/shm"}]}],
            "volumes": VOLS + [{"name": "work", "emptyDir": {}}, {"name": "env", "emptyDir": {}},
                               {"name": "dshm", "emptyDir": {"medium": "Memory", "sizeLimit": "8Gi"}}]}
+    if gpu in OPPORTUNISTIC:
+        pod["priorityClassName"] = "opportunistic"
     return job(name, pod, hours, "gpu")
 
 
