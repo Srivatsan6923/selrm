@@ -1,0 +1,167 @@
+{
+ "runs": [
+  {
+   "run_id": "C-AUD-medprm--p1",
+   "prm": "medprm",
+   "format": "prm",
+   "priority": 10,
+   "bs": 8,
+   "min_gen": 3,
+   "claim_types": [
+    "conclusion",
+    "criterion",
+    "applicability"
+   ],
+   "sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ],
+   "merge_into": "C-AUD-medprm"
+  },
+  {
+   "run_id": "C-AUD-medprm--p2",
+   "prm": "medprm",
+   "format": "prm",
+   "priority": 20,
+   "bs": 8,
+   "min_gen": 3,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "xr_v1/test"
+   ],
+   "merge_into": "C-AUD-medprm"
+  },
+  {
+   "run_id": "C-AUD-medprm--p3",
+   "prm": "medprm",
+   "format": "prm",
+   "priority": 30,
+   "bs": 8,
+   "min_gen": 3,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "clin_v1/medeinst_test",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway",
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa"
+   ],
+   "merge_into": "C-AUD-medprm"
+  },
+  {
+   "run_id": "C-AUD-meds3--p1",
+   "prm": "meds3prm",
+   "format": "prm",
+   "priority": 11,
+   "bs": 8,
+   "min_gen": 3,
+   "claim_types": [
+    "conclusion",
+    "criterion",
+    "applicability"
+   ],
+   "sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ],
+   "merge_into": "C-AUD-meds3"
+  },
+  {
+   "run_id": "C-AUD-meds3--p2",
+   "prm": "meds3prm",
+   "format": "prm",
+   "priority": 21,
+   "bs": 8,
+   "min_gen": 3,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "xr_v1/test"
+   ],
+   "merge_into": "C-AUD-meds3"
+  },
+  {
+   "run_id": "C-AUD-meds3--p3",
+   "prm": "meds3prm",
+   "format": "prm",
+   "priority": 31,
+   "bs": 8,
+   "min_gen": 3,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "clin_v1/medeinst_test",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway",
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa"
+   ],
+   "merge_into": "C-AUD-meds3"
+  },
+  {
+   "run_id": "C-AUD-fover--p1",
+   "prm": "foverprm",
+   "format": "prm",
+   "priority": 12,
+   "bs": 8,
+   "min_gen": 3,
+   "claim_types": [
+    "conclusion",
+    "criterion",
+    "applicability"
+   ],
+   "sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ],
+   "merge_into": "C-AUD-fover"
+  },
+  {
+   "run_id": "C-AUD-fover--p2",
+   "prm": "foverprm",
+   "format": "prm",
+   "priority": 22,
+   "bs": 8,
+   "min_gen": 3,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "xr_v1/test"
+   ],
+   "merge_into": "C-AUD-fover"
+  },
+  {
+   "run_id": "C-AUD-fover--p3",
+   "prm": "foverprm",
+   "format": "prm",
+   "priority": 32,
+   "bs": 8,
+   "min_gen": 3,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "clin_v1/medeinst_test",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway",
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa"
+   ],
+   "merge_into": "C-AUD-fover"
+  }
+ ],
+ "note": "released PRMs as released (scripts/prms); runners with --online and --models ''; generative PRMs (thinkprm, genprm) are added after their wrappers are reviewed"
+}
