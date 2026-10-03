@@ -1,5 +1,5 @@
 # STATE role D (lead; maintained by the D session)
-Updated: 2026-10-03 ~08:40 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
+Updated: 2026-10-03 ~09:20 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
 
 ## Where D works
 - Clone `D:/NAACL27/selrm-role-d` (github Srivatsan6923/selrm): D's work on `role-d`; publish with
@@ -26,14 +26,16 @@ Updated: 2026-10-03 ~08:40 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo roo
 - P1: D-RES; pool/scoring/selection code; merged-adapter validation passed (D-VAL-ledger2-triplets-s0).
 ## In progress
 - Pools (k8s/pool_pipeline_d.sh <pool> <tp>; one site per pool; scores in /pvc/scores/<pool>/<scorer>.jsonl):
-  - medqa_dev (calibration): west H100 job selrm-d-pipe-medqa-dev-13389; pool, medprm and ledger2-triplets done
-    (rates per 8,000 traces on H100: 343 s generation, 306 s Med-PRM, 1,051 s ledger).
-  - medqa_test: racing west h100-opp (selrm-d-pipe-medqa-test-13393) vs west 2 x 24 GB (-24gb-14264); a monitor
-    deletes the copy that starts second.
-  - medqa_kp (714 key-pair questions; then 64 samples on 150 pairs): k8s/kp_pipeline_d.sh; racing west h100-opp
-    (selrm-d-pipe-medqa-kp-16468) vs central 2 x 24 GB (selrm-d-c-pipe-medqa-kp-24gb-16470).
-  - careqa_en, medeinst_test: central 2 x 24 GB (selrm-d-c-pipe-careqa-en-14212, -medeinst-test-14215).
-  All but medqa_dev pending since ~08:00 UTC (cluster GPUs saturated).
+  - medqa_dev: done and scored; pulled to D:/NAACL27/d_pools (checksummed); D-CAL committed (results_git/D-CAL:
+    Platt scaling; Med-PRM dev AUC 0.65, ledger 0.51/0.48).
+  - medqa_test: running on a west H100 (selrm-d-pipe-medqa-test-13393, since 08:50 UTC).
+  - medqa_kp (714 key-pair questions; then 64 samples on 150 pairs): running on a west H100
+    (selrm-d-pipe-medqa-kp-16468, since ~09:05 UTC; k8s/kp_pipeline_d.sh).
+  - careqa_en, medeinst_test: racing west h100-opp (selrm-d-pipe-careqa-en-18980, -medeinst-test-18983) against
+    central 2 x 24 GB (selrm-d-c-pipe-careqa-en-14212, -medeinst-test-14215); a monitor deletes the later starter.
+  Rates per 8,000 traces on H100: 343 s generation, 306 s Med-PRM, 1,051 s ledger.
+- GRPO: CPU smoke test (Qwen3-0.6B, --smoke) passed for the reference-graph reward (selrm-d-grpo-smoke-refgraph-17721);
+  outcome reward running. Evaluation reports base-flip pair accuracy (v13's metric) and triplet accuracy.
 - Sync pods expire 6 h after start (selrm-d-sync ~11:30 UTC, selrm-d-sync-c ~13:30 UTC): recreate with
   `submit_d.py sync-down/sync-up [--site central]` before pulling.
 - Lessons: cross-region CephFS reads ~5 MB/s (jobs require their PVC's region); vLLM needs
