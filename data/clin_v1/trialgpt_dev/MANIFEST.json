@@ -1,0 +1,83 @@
+{
+ "name": "clin_v1/trialgpt_dev",
+ "source": "ncbi/TrialGPT-Criterion-Annotations",
+ "revision": "1cfcafde94a1560a33b4addc1638664fe28fc059",
+ "source_file": "data/train-00000-of-00001.parquet",
+ "source_sha256": "14c547184fac9b013cd17441fd028845b40150c76b022e58334f5494077e5234",
+ "licence": "public domain (NCBI notice in LICENSE)",
+ "split_rule": "patient-disjoint; dev = random.Random(20261003).sample(sorted 53 patient ids, 10)",
+ "patients": [
+  "sigir-20141",
+  "sigir-201410",
+  "sigir-201415",
+  "sigir-201418",
+  "sigir-201426",
+  "sigir-20143",
+  "sigir-201511",
+  "sigir-201513",
+  "sigir-201519",
+  "sigir-20158"
+ ],
+ "n_items": 213,
+ "n_records": 426,
+ "n_trials": 20,
+ "by_category": {
+  "nei": 61,
+  "met": 22,
+  "not_met": 117,
+  "na": 13
+ },
+ "by_type_eligibility": {
+  "inclusion|not enough information": 41,
+  "inclusion|included": 19,
+  "exclusion|not excluded": 110,
+  "exclusion|not enough information": 20,
+  "exclusion|not applicable": 11,
+  "inclusion|not included": 7,
+  "exclusion|excluded": 3,
+  "inclusion|not applicable": 2
+ },
+ "inputs": "case_text = note as released; rule_text = '<Type> criterion: <criterion_text>'; condition = criterion_text; claims fixed (meets / does not meet)",
+ "dropped_fields": [
+  "gpt4_explanation",
+  "gpt4_sentences",
+  "gpt4_eligibility",
+  "explanation_correctness"
+ ],
+ "dropped_items": [
+  {
+   "annotation_id": 883,
+   "patient_id": "sigir-201519",
+   "trial_id": "NCT02213809",
+   "expert_eligibility": "not excluded",
+   "reason": "no criterion text in the release"
+  }
+ ],
+ "git_commit": "a3da60a1b8cf1d925a91ec5989a161ff7300aee3",
+ "python": "3.12.7",
+ "created": "2026-10-02",
+ "frozen": true,
+ "sha256": "62d7cf315a8d8867ec791b51b89ec8b23be43a54e4a40698abdd360347079e4c",
+ "shortcut_validation": {
+  "predictors": {
+   "always met": {
+    "acc": 11.0,
+    "macroF1": 6.61
+   },
+   "always not_met": {
+    "acc": 58.5,
+    "macroF1": 24.61
+   },
+   "always nei": {
+    "acc": 30.5,
+    "macroF1": 15.58
+   },
+   "type prior from dev {'inclusion': 'nei', 'exclusion': 'not_met'}": {
+    "acc": 75.5,
+    "macroF1": 50.69
+   }
+  },
+  "n_items": 200,
+  "note": "case-blind predictors on non-N/A items; a claim-only scorer equals a constant predictor"
+ }
+}
