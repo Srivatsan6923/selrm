@@ -33,8 +33,8 @@ Run freeze: Wed 7 Oct 23:59 (UTC assumed). Decisions: docs/DECISIONS_B.md. Analy
   Pending: 5 x A100, 2 x A40, 1 x A6000 (runner code 625e935), 3 x H100 (code 3b62811). A100 quota shared with C
   (B at most 6). 24 GB cards are not used: training peaks at 21-27 GB. H100 runs resume from their last 20-min
   checkpoint if preempted.
-- Sync pod selrm-b-sync created ~03:00 UTC (6 h deadline): recreate before ~09:00 UTC (delete the Completed pod
-  first, then sync-up).
+- Sync pod selrm-b-sync started 08:10 UTC (6 h deadline): recreate before ~14:00 UTC (`kubectl -n ecepxie delete pod
+  selrm-b-sync`, then `python scripts/submit_b.py sync-up`).
 - Never run two data jobs (build-data, restore-data) at once: each rewrites the PVC registry.
 
 ## Done (rule_v1 seed 0, provisional; docs/FACTORIAL_B_S0.md)
