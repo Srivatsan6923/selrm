@@ -1,0 +1,229 @@
+{
+ "run_id": "B-F-ledger2-blocks-s3",
+ "set": "rule_v1/test_L1",
+ "claim_type": "conclusion",
+ "all": {
+  "Rev": 99.3,
+  "Hold": 58.6,
+  "TA": 58.1,
+  "BaseAcc": 99.3,
+  "Tie": 0.0,
+  "PresHold": 99.4,
+  "n": 1000
+ },
+ "nm_kind=boundary": {
+  "Rev": 100.0,
+  "Hold": 46.5,
+  "TA": 46.5,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 200
+ },
+ "tier=easy": {
+  "Rev": 98.92638036809817,
+  "Hold": 58.282208588957054,
+  "TA": 57.515337423312886,
+  "BaseAcc": 98.92638036809817,
+  "Tie": 0.0,
+  "PresHold": 99.079754601227,
+  "n": 652
+ },
+ "level=L1": {
+  "Rev": 99.3,
+  "Hold": 58.6,
+  "TA": 58.1,
+  "BaseAcc": 99.3,
+  "Tie": 0.0,
+  "PresHold": 99.4,
+  "n": 1000
+ },
+ "family=two_of_three": {
+  "Rev": 100.0,
+  "Hold": 36.36363636363637,
+  "TA": 36.36363636363637,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 121
+ },
+ "nm_kind=negation": {
+  "Rev": 97.5,
+  "Hold": 100.0,
+  "TA": 97.5,
+  "BaseAcc": 97.5,
+  "Tie": 0.0,
+  "PresHold": 98.5,
+  "n": 200
+ },
+ "family=g_single": {
+  "Rev": 100.0,
+  "Hold": 64.1891891891892,
+  "TA": 64.1891891891892,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 148
+ },
+ "tier=long": {
+  "Rev": 100.0,
+  "Hold": 61.85897435897436,
+  "TA": 61.85897435897436,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 312
+ },
+ "family=g_any_of": {
+  "Rev": 100.0,
+  "Hold": 59.05172413793103,
+  "TA": 59.05172413793103,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 232
+ },
+ "nm_kind=subject": {
+  "Rev": 99.0,
+  "Hold": 2.0,
+  "TA": 2.0,
+  "BaseAcc": 99.0,
+  "Tie": 0.0,
+  "PresHold": 98.5,
+  "n": 200
+ },
+ "family=drug_interaction": {
+  "Rev": 100.0,
+  "Hold": 66.66666666666667,
+  "TA": 66.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 33
+ },
+ "nm_kind=numeric": {
+  "Rev": 100.0,
+  "Hold": 98.5,
+  "TA": 98.5,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 200
+ },
+ "family=additive_score": {
+  "Rev": 100.0,
+  "Hold": 79.84496124031008,
+  "TA": 79.84496124031008,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 129
+ },
+ "nm_kind=time": {
+  "Rev": 100.0,
+  "Hold": 46.0,
+  "TA": 46.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 200
+ },
+ "tier=superseded": {
+  "Rev": 100.0,
+  "Hold": 34.285714285714285,
+  "TA": 34.285714285714285,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 35
+ },
+ "family=g_all_of": {
+  "Rev": 100.0,
+  "Hold": 60.689655172413794,
+  "TA": 60.689655172413794,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 145
+ },
+ "family=g_score_cutoff": {
+  "Rev": 100.0,
+  "Hold": 27.586206896551722,
+  "TA": 27.586206896551722,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 29
+ },
+ "family=lab_threshold": {
+  "Rev": 100.0,
+  "Hold": 47.5,
+  "TA": 47.5,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 80
+ },
+ "family=g_two_of_three": {
+  "Rev": 100.0,
+  "Hold": 61.29032258064516,
+  "TA": 61.29032258064516,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 62
+ },
+ "family=history_switch": {
+  "Rev": 66.66666666666667,
+  "Hold": 61.904761904761905,
+  "TA": 38.095238095238095,
+  "BaseAcc": 66.66666666666667,
+  "Tie": 0.0,
+  "PresHold": 71.42857142857143,
+  "n": 21
+ },
+ "tier=delabelled": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 1
+ },
+ "CI95": {
+  "TA": [
+   49.685534591194966,
+   66.66666666666667
+  ],
+  "Rev": [
+   97.60820045558087,
+   100.0
+  ],
+  "Hold": [
+   50.476190476190474,
+   66.97459584295612
+  ]
+ },
+ "step": {
+  "criterion": {
+   "Rev": 99.19632606199771,
+   "Hold": 68.31228473019517,
+   "TA": 67.73823191733639,
+   "BaseAcc": 99.19632606199771,
+   "Tie": 0.0,
+   "PresHold": 99.31113662456946,
+   "n": 871
+  }
+ },
+ "eval": {
+  "reader_units": 4000,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 216.7,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
