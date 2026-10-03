@@ -1,0 +1,7 @@
+{
+ "run_id": "D-SEL-stepcheck",
+ "set": "sel/medqa",
+ "acc": 86.17439120188531,
+ "n": 1273,
+ "N": 16
+}

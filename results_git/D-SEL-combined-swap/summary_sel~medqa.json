@@ -1,0 +1,7 @@
+{
+ "run_id": "D-SEL-combined-swap",
+ "set": "sel/medqa",
+ "acc": 85.62450903377848,
+ "n": 1273,
+ "N": 16
+}

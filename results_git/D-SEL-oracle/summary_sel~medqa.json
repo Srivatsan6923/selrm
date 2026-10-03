@@ -1,0 +1,7 @@
+{
+ "run_id": "D-SEL-oracle",
+ "set": "sel/medqa",
+ "acc": 97.48625294579733,
+ "n": 1273,
+ "N": 16
+}
