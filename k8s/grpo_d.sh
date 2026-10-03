@@ -28,7 +28,8 @@ case $R in
     if [ "$(nvidia-smi -L | wc -l)" -ge 2 ]; then G=1; SM=0.9; else G=0; SM=0.32; EXTRA="--vllm-mem 0.22"; fi
     CUDA_VISIBLE_DEVICES=$G /opt/selrm-env/venv/bin/vllm serve "$M" --port 8001 --dtype bfloat16 --max-model-len 8192 \
         --logprobs-mode raw_logits --max-logprobs 20 --generation-config vllm --enable-prefix-caching --seed 0 \
-        --gpu-memory-utilization $SM --limit-mm-per-prompt '{"image": 0, "video": 0}' > "$OUT/vllm_server.log" 2>&1 &
+        --gpu-memory-utilization $SM --max-num-seqs 256 --limit-mm-per-prompt '{"image": 0, "video": 0}' \
+        > "$OUT/vllm_server.log" 2>&1 &   # 256: one recurrent-state block per running sequence (264 fit at 32%)
     n=0   # server start-up: poll its model list, at most 10 minutes
     until $PY -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8001/v1/models', timeout=5)" 2>/dev/null; do
       n=$((n + 1)); [ $n -gt 120 ] && { echo "ledger server did not start"; tail -20 "$OUT/vllm_server.log"; exit 1; }
