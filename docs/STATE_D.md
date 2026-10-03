@@ -1,5 +1,5 @@
 # STATE role D (lead; maintained by the D session)
-Updated: 2026-10-03 ~09:20 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
+Updated: 2026-10-03 ~09:35 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
 
 ## Where D works
 - Clone `D:/NAACL27/selrm-role-d` (github Srivatsan6923/selrm): D's work on `role-d`; publish with
@@ -34,10 +34,12 @@ Updated: 2026-10-03 ~09:20 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo roo
   - careqa_en, medeinst_test: racing west h100-opp (selrm-d-pipe-careqa-en-18980, -medeinst-test-18983) against
     central 2 x 24 GB (selrm-d-c-pipe-careqa-en-14212, -medeinst-test-14215); a monitor deletes the later starter.
   Rates per 8,000 traces on H100: 343 s generation, 306 s Med-PRM, 1,051 s ledger.
-- GRPO: CPU smoke test (Qwen3-0.6B, --smoke) passed for the reference-graph reward (selrm-d-grpo-smoke-refgraph-17721);
-  outcome reward running. Evaluation reports base-flip pair accuracy (v13's metric) and triplet accuracy.
-- Sync pods expire 6 h after start (selrm-d-sync ~11:30 UTC, selrm-d-sync-c ~13:30 UTC): recreate with
-  `submit_d.py sync-down/sync-up [--site central]` before pulling.
+- GRPO (ROLE.md: Qwen3.5-4B LoRA; rewards outcome, refgraph, stepcheck, ledger2-blocks, ledger2-triplets; 2 seeds,
+  1-2k steps, group 8): CPU smoke test passed (refgraph); GPU path = k8s/grpo_d.sh (vLLM rollouts in the training
+  process; ledger rewards serve the merged ledger on a second GPU). Setup check D-RL-setup-outcome (64 prompts,
+  60 steps) submitted on h100-opp (selrm-d-grpo-setup-outcome-19687): gives s/step for Monday's ladder decision.
+- Sync pod selrm-d-sync recreated 09:25 UTC (expires ~15:25 UTC; `submit_d.py sync-down` then `sync-up`);
+  the central sync pod is deleted (all pools run in the west).
 - Lessons: cross-region CephFS reads ~5 MB/s (jobs require their PVC's region); vLLM needs
   VLLM_USE_FLASHINFER_SAMPLER=0; transformers 5 apply_chat_template(tokenize=True) returns a dict (tokenise the
   rendered text); argparse keeps '--' (the launcher strips it); a pod mounting the same PVC twice (rw + ro) hung in
