@@ -139,6 +139,16 @@ def run_one(spec, a, mon, log, owner):
         summ, secs = {}, {}
         for s in spec["sets"]:
             root = a.broot if s.startswith("rule_v1") else a.root
+            if spec.get("nocase"):                # default correction: u(s, no case); copies with case_text ""
+                src = load_jsonl(__import__("selrm.formats", fromlist=["dataset_path"]).dataset_path(root, s))
+                s, root = f"nocase/{s}", a.root
+                path = f"{a.root}/data/{s}.jsonl"
+                if not os.path.exists(path):
+                    os.makedirs(os.path.dirname(path), exist_ok=True)
+                    with open(f"{path}.{os.getpid()}.tmp", "w", encoding="utf-8") as f:
+                        for r in src:
+                            f.write(json.dumps(r | {"case_text": ""}) + "\n")
+                    os.replace(f"{path}.{os.getpid()}.tmp", path)
             if root == a.root:                    # C's sets: pre-tokenise once, same code and tokenizer as B
                 log(f"{rid} {s} prompts: {build_eval_c(a.root, spec['format'], tag, s, tok)}")
             summ[s] = eval_local.evaluate(sc, root, rid, spec["format"], s, rdir, log, tag, spec.get("mode"))

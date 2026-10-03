@@ -56,6 +56,8 @@ runs = [{"run_id": "ST-verdict", "priority": 1, "format": "verdict", "adapter": 
          "hp": hp, "bs_score": 8, "bs_gen": 8, "max_new": 16, "lenient": True, "sets": sets},
         {"run_id": "ST-summary", "priority": 3, "format": "summary2", "adapter": None, "base_model": "tiny/qwen35",
          "hp": hp, "bs_score": 8, "bs_gen": 8, "max_new": 16, "sets": sets},
+        {"run_id": "ST-nocase", "priority": 4, "format": "verdict", "adapter": None, "base_model": "tiny/qwen35",
+         "hp": hp, "bs_score": 8, "nocase": True, "sets": sets},
         {"run_id": "ST-skipped", "priority": 0, "format": "rationale", "adapter": None, "base_model": "tiny/qwen35",
          "hp": hp, "sets": sets}]
 os.makedirs(f"{croot}/tasks", exist_ok=True)
@@ -74,5 +76,9 @@ for run in ("ST-verdict", "ST-ledger", "ST-summary"):
         if run == "ST-ledger":
             assert f"scores_{s}~lenient.jsonl" in files, (run, s)
 assert not os.path.exists(f"{croot}/results/ST-skipped/DONE")
+nc = sorted(os.listdir(f"{croot}/results/ST-nocase"))
+print("ST-nocase", nc)
+assert "scores_nocase~rule_v1~dev_missing.jsonl" in nc and "scores_nocase~clin_v1~trialgpt_dev.jsonl" in nc
+assert all(json.loads(l)["case_text"] == "" for l in open(f"{croot}/data/nocase/rule_v1/dev_missing.jsonl", encoding="utf-8"))
 assert os.path.exists(f"{croot}/tok/tiny--qwen35/eval/clin_v1/trialgpt_dev/reader_ledger.npz")
 print("selftest_eval_c OK")
