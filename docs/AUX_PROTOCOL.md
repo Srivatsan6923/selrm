@@ -111,17 +111,24 @@ preferred. Compared across the recipes of S1 and recipe (4): in-domain plus
 denied-evidence near-misses built from the reference pairs.
 
 ### S2 details (role C, 3 Oct 2026)
-- Construction (`scripts/medeinst_neg.py`): MedEinst has no structured
-  findings; the distinguishing finding is the trap narrative's single added
-  top-level line. Pairs with no such line (1,368 test pairs) or with more
-  than one (78) are left out: 3,937 test items. The denial is one line,
-  '- <template>' with the finding line verbatim in the template's slot,
-  appended to the control's section (Symptoms or Antecedents) that holds the
-  line in the trap. Templates: role A's negation phrase bank, test-split
-  phrases for clin_v1/medeinst_neg, train-split phrases for
-  clin_v1/medeinst_neg_train (the same construction on the reference pairs:
-  7,523 items). Both sets are frozen, and their sha256 added here, when A's
-  bank is in; until then they exist only as unregistered builds.
+- Construction (`scripts/medeinst_neg.py`; this paragraph was revised on
+  3 Oct to role A's bank interface before the sets were frozen and before
+  any model saw them): MedEinst has no structured findings; the
+  distinguishing finding is the trap narrative's single added top-level line.
+  Left out: pairs with no such line (1,368 test pairs) or with more than one
+  (78), and findings that contain negation wording (238: denying them would
+  assert their opposite). The finding phrase is the line without its
+  first-person or question frame ('Do you have heart failure?' -> 'heart
+  failure'); the denial is one line, '- ' + role A's deny(phrase, split, key)
+  (selrm/negation_bank.py at commit e794752; test-split templates such as
+  'Negative for X.', 'X: absent.'; train-split templates such as 'Denies X.',
+  'No X.'; the splits share no cue), appended to the control's section
+  (Symptoms or Antecedents) that holds the line in the trap.
+- Frozen sets: clin_v1/medeinst_neg, 3,699 test items, sha256
+  4cb7eaba80c33e2aaa10c6ca4671b46ef7d08e31e76e552e0c89fbb9bd49b293;
+  clin_v1/medeinst_neg_train (the same construction on the reference pairs,
+  train-split templates), 7,072 items, sha256
+  a470e9504364065989ea669daa6b6e634a2a58544fe3002f842f5b090449d633.
 - 46 test items deny a past-history line that names a diagnosis
   (meta.diagnosis_named); hold is reported with and without them.
 - Shortcut validation (MANIFEST): the denied finding is named in every case,

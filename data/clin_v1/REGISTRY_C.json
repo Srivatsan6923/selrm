@@ -119,6 +119,30 @@
   "split": "test",
   "tier": "external"
  },
+ "clin_v1/medeinst_neg": {
+  "created": "2026-10-03",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/medeinst_neg/MANIFEST.json",
+  "n_groups": 3699,
+  "n_records": 7398,
+  "path": "clin_v1/medeinst_neg/records.jsonl",
+  "sha256": "4cb7eaba80c33e2aaa10c6ca4671b46ef7d08e31e76e552e0c89fbb9bd49b293",
+  "split": "test",
+  "tier": "external"
+ },
+ "clin_v1/medeinst_neg_train": {
+  "created": "2026-10-03",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/medeinst_neg_train/MANIFEST.json",
+  "n_groups": 7072,
+  "n_records": 14144,
+  "path": "clin_v1/medeinst_neg_train/records.jsonl",
+  "sha256": "a470e9504364065989ea669daa6b6e634a2a58544fe3002f842f5b090449d633",
+  "split": "train",
+  "tier": "external"
+ },
  "clin_v1/medeinst_ref_dev": {
   "created": "2026-10-02",
   "frozen": true,
