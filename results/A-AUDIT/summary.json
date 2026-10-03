@@ -1,6 +1,6 @@
 {
  "code_modified_since_commit": false,
- "commit": "d50bc5ba73806cc4b0ae52e9b5949f05a43761c9",
+ "commit": "d212ab4b5616e7e3f97ea6ecef5fc0873ac9a7f0",
  "l3alt": {
   "concepts": {
    "alt_enzyme": 174,
@@ -27,6 +27,28 @@
   },
   "thresholds_moved_per_group": {
    "1": 1000
+  }
+ },
+ "lexicons": {
+  "current_cues": {
+   "shared": 0,
+   "test": 5,
+   "train": 3
+  },
+  "negation_cues": {
+   "shared": 0,
+   "test": 6,
+   "train": 3
+  },
+  "persons": {
+   "shared": 0,
+   "test": 6,
+   "train": 12
+  },
+  "time_cues": {
+   "shared": 0,
+   "test": 8,
+   "train": 8
   }
  },
  "library_semantics": {
@@ -80,7 +102,7 @@
     "mg/dL"
    ],
    "egfr": [
-    "mL/min/1.73"
+    "mL/min/1.73 m2"
    ],
    "heart_rate": [
     "/min"
@@ -736,10 +758,62 @@
     "proposed": 306,
     "rejected": 6
    },
+   "f2L2": {
+    "by_reason": {},
+    "proposed": 2000,
+    "rejected": 0
+   },
+   "f2dev": {
+    "by_reason": {
+     "pres": 2
+    },
+    "proposed": 302,
+    "rejected": 2
+   },
+   "f3L2": {
+    "by_reason": {
+     "pres": 21
+    },
+    "proposed": 2021,
+    "rejected": 21
+   },
+   "f3dev": {
+    "by_reason": {},
+    "proposed": 300,
+    "rejected": 0
+   },
    "hard": {
     "by_reason": {},
     "proposed": 1000,
     "rejected": 0
+   },
+   "rule_v1_fold2~train_blocks": {
+    "by_reason": {
+     "pres": 44
+    },
+    "proposed": 5790,
+    "rejected": 44
+   },
+   "rule_v1_fold2~train_triplets": {
+    "by_reason": {
+     "pres": 44
+    },
+    "proposed": 5789,
+    "rejected": 44
+   },
+   "rule_v1_fold3~train_blocks": {
+    "by_reason": {
+     "pres": 43
+    },
+    "proposed": 5584,
+    "rejected": 43
+   },
+   "rule_v1_fold3~train_triplets": {
+    "by_reason": {
+     "pres": 43
+    },
+    "proposed": 5588,
+    "rejected": 43
    },
    "train_balanced": {
     "by_reason": {
@@ -834,7 +908,25 @@
     "proposed": 1000,
     "rejected": 0
    }
-  }
+  },
+  "sets_without_reject_log": [
+   "rule_v1/dev_missing",
+   "rule_v1/div_base_16",
+   "rule_v1/div_new_128",
+   "rule_v1/div_new_223",
+   "rule_v1/div_new_32",
+   "rule_v1/div_new_63",
+   "rule_v1/div_new_64",
+   "rule_v1/div_patients_128",
+   "rule_v1/div_patients_223",
+   "rule_v1/div_patients_32",
+   "rule_v1/div_patients_63",
+   "rule_v1/div_patients_64",
+   "rule_v1/div_same_32",
+   "rule_v1/div_same_63",
+   "rule_v1/missing",
+   "rule_v1/readapply"
+  ]
  },
  "requirements": {
   "L0": {
@@ -1675,5 +1767,11 @@
    "rule_v1_fold3/test_L2"
   ],
   "violations": 0
+ },
+ "training_corpora_records": {
+  "train_balanced": 60000,
+  "train_blocks": 60004,
+  "train_natural": 60000,
+  "train_triplets": 60004
  }
 }

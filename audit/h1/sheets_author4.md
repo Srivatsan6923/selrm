@@ -127,7 +127,7 @@ Rule: For vaginal candidiasis, prescribe oral fluconazole. If at least two of th
 
 **A4-G02-C1**
 
-Facts: patient: serum potassium = 5.4 (current) [line: "Latest potassium result: 5.4 mmol/L."]; patient: diabetes present (past (2014)) [line: "Formerly diabetic; in remission since 2014."]; aspirin use: not mentioned (counts as absent)
+Facts: patient: serum potassium = 5.4 (current) [line: "Latest potassium result: 5.4 mmol/L."]; patient: diabetes present (past) [line: "Formerly diabetic; in remission since 2014."]; aspirin use: not mentioned (counts as absent)
 
 Claims: s = Prescribe oral fluconazole. | s' = Prescribe clotrimazole pessaries.
 
@@ -256,7 +256,7 @@ Rule: For Pallis disease, prescribe brexadol. Score 2 points if the patient has 
 
 **A4-G03-C1**
 
-Facts: patient: calf swelling = 0.3 (current) [line: "Difference in calf circumference now 0.3 cm."]; patient: diabetes present (past) [line: "Had diabetes years ago that went into remission on a low-calorie diet."]; patient: heparin-induced thrombocytopenia present (past (2019)) [line: "Formerly had heparin-induced thrombocytopenia during a hospital stay in 2019; blood counts recovered afterward."]
+Facts: patient: calf swelling = 0.3 (current) [line: "Difference in calf circumference now 0.3 cm."]; patient: diabetes present (past) [line: "Had diabetes years ago that went into remission on a low-calorie diet."]; patient: heparin-induced thrombocytopenia present (past) [line: "Formerly had heparin-induced thrombocytopenia during a hospital stay in 2019; blood counts recovered afterward."]
 
 Claims: s = Prescribe brexadol. | s' = Prescribe corlitane.
 
@@ -274,7 +274,7 @@ Formerly had heparin-induced thrombocytopenia during a hospital stay in 2019; bl
 
 **A4-G03-C2**
 
-Facts: patient: calf swelling = 2.6 (current) [line: "Difference in calf circumference now 2.6 cm."]; patient: diabetes present (past) [line: "Had diabetes years ago that went into remission on a low-calorie diet."]; patient: heparin-induced thrombocytopenia present (past (2019)) [line: "Formerly had heparin-induced thrombocytopenia during a hospital stay in 2019; blood counts recovered afterward."]
+Facts: patient: calf swelling = 2.6 (current) [line: "Difference in calf circumference now 2.6 cm."]; patient: diabetes present (past) [line: "Had diabetes years ago that went into remission on a low-calorie diet."]; patient: heparin-induced thrombocytopenia present (past) [line: "Formerly had heparin-induced thrombocytopenia during a hospital stay in 2019; blood counts recovered afterward."]
 
 Claims: s = Prescribe brexadol. | s' = Prescribe corlitane.
 
@@ -292,7 +292,7 @@ Formerly had heparin-induced thrombocytopenia during a hospital stay in 2019; bl
 
 **A4-G03-C3**
 
-Facts: patient: calf swelling = 5.2 (current) [line: "Difference in calf circumference now 5.2 cm."]; patient: diabetes present (past) [line: "Had diabetes years ago that went into remission on a low-calorie diet."]; patient: heparin-induced thrombocytopenia present (past (2019)) [line: "Formerly had heparin-induced thrombocytopenia during a hospital stay in 2019; blood counts recovered afterward."]
+Facts: patient: calf swelling = 5.2 (current) [line: "Difference in calf circumference now 5.2 cm."]; patient: diabetes present (past) [line: "Had diabetes years ago that went into remission on a low-calorie diet."]; patient: heparin-induced thrombocytopenia present (past) [line: "Formerly had heparin-induced thrombocytopenia during a hospital stay in 2019; blood counts recovered afterward."]
 
 Claims: s = Prescribe brexadol. | s' = Prescribe corlitane.
 
@@ -310,7 +310,7 @@ Formerly had heparin-induced thrombocytopenia during a hospital stay in 2019; bl
 
 **A4-G03-C4**
 
-Facts: patient: calf swelling = 0.3 (current) [line: "Current calf swelling 0.3 cm compared with the other leg."]; patient: heparin-induced thrombocytopenia present (past (2019)) [line: "Formerly had heparin-induced thrombocytopenia during a hospital stay in 2019; blood counts recovered afterward."]; patient: diabetes present (past) [line: "Had diabetes years ago that went into remission on a low-calorie diet."]
+Facts: patient: calf swelling = 0.3 (current) [line: "Current calf swelling 0.3 cm compared with the other leg."]; patient: heparin-induced thrombocytopenia present (past) [line: "Formerly had heparin-induced thrombocytopenia during a hospital stay in 2019; blood counts recovered afterward."]; patient: diabetes present (past) [line: "Had diabetes years ago that went into remission on a low-calorie diet."]
 
 Claims: s = Prescribe brexadol. | s' = Prescribe corlitane.
 
@@ -671,7 +671,7 @@ Rule: For heart failure with reduced ejection fraction, add spironolactone. If t
 
 **A4-G08-C1**
 
-Facts: patient: potassium = 5.3 (past (2017)) [line: "Back in 2017, serum potassium stood at 5.3 mmol/L."]; patient: potassium = 4.1 (current) [line: "Current serum potassium 4.1 mmol/L."]
+Facts: patient: potassium = 5.3 (past) [line: "Back in 2017, serum potassium stood at 5.3 mmol/L."]; patient: potassium = 4.1 (current) [line: "Current serum potassium 4.1 mmol/L."]
 
 Claims: s = Add spironolactone. | s' = Add dapagliflozin.
 
@@ -689,7 +689,7 @@ Enjoys board games.
 
 **A4-G08-C2**
 
-Facts: patient: potassium = 4.2 (past (2017)) [line: "Back in 2017, serum potassium stood at 4.2 mmol/L."]; patient: potassium = 4.1 (current) [line: "Current serum potassium 4.1 mmol/L."]
+Facts: patient: potassium = 4.2 (past) [line: "Back in 2017, serum potassium stood at 4.2 mmol/L."]; patient: potassium = 4.1 (current) [line: "Current serum potassium 4.1 mmol/L."]
 
 Claims: s = Add spironolactone. | s' = Add dapagliflozin.
 
@@ -707,7 +707,7 @@ Enjoys board games.
 
 **A4-G08-C3**
 
-Facts: patient: potassium = 4.2 (past (2017)) [line: "Back in 2017, serum potassium stood at 4.2 mmol/L."]; patient: potassium = 5.0 (current) [line: "Current serum potassium 5.0 mmol/L."]
+Facts: patient: potassium = 4.2 (past) [line: "Back in 2017, serum potassium stood at 4.2 mmol/L."]; patient: potassium = 5.0 (current) [line: "Current serum potassium 5.0 mmol/L."]
 
 Claims: s = Add spironolactone. | s' = Add dapagliflozin.
 
@@ -725,7 +725,7 @@ Enjoys board games.
 
 **A4-G08-C4**
 
-Facts: patient: potassium = 4.2 (past (2017)) [line: "Records from 2017 list serum potassium at 4.2 mmol/L."]; patient: potassium = 4.1 (current) [line: "Latest potassium result: 4.1 mmol/L."]
+Facts: patient: potassium = 4.2 (past) [line: "Records from 2017 list serum potassium at 4.2 mmol/L."]; patient: potassium = 4.1 (current) [line: "Latest potassium result: 4.1 mmol/L."]
 
 Claims: s = Add spironolactone. | s' = Add dapagliflozin.
 
@@ -748,7 +748,7 @@ Rule: For heart failure with reduced ejection fraction, prescribe spironolactone
 
 **A4-G09-C1**
 
-Facts: patient: eGFR = 52 (past (2017)) [line: "Records from 2017 list eGFR at 52 mL/min/1.73 m2."]; angioedema: not named; a general line implies absence (counts as absent) [line: "Face and neck without swelling on examination."]; patient: white cell count = 12.6 (current) [line: "Latest WBC is 12.6 x10^9/L."]; patient: eGFR = 40 (current) [line: "Current eGFR 40 mL/min/1.73 m2."]; patient: heart rate = 63 (current) [line: "Heart rate now 63/min on a pulse check."]
+Facts: patient: eGFR = 52 (past) [line: "Records from 2017 list eGFR at 52 mL/min/1.73 m2."]; angioedema: not named; a general line implies absence (counts as absent) [line: "Face and neck without swelling on examination."]; patient: white cell count = 12.6 (current) [line: "Latest WBC is 12.6 x10^9/L."]; patient: eGFR = 40 (current) [line: "Current eGFR 40 mL/min/1.73 m2."]; patient: heart rate = 63 (current) [line: "Heart rate now 63/min on a pulse check."]
 
 Claims: s = Prescribe spironolactone. | s' = Prescribe dapagliflozin.
 
@@ -769,7 +769,7 @@ Heart rate now 63/min on a pulse check.
 
 **A4-G09-C2**
 
-Facts: patient: eGFR = 52 (past (2017)) [line: "Records from 2017 list eGFR at 52 mL/min/1.73 m2."]; angioedema: not named; a general line implies absence (counts as absent) [line: "Face and neck without swelling on examination."]; patient: white cell count = 12.6 (current) [line: "Latest WBC is 12.6 x10^9/L."]; patient: eGFR = 69 (current) [line: "Current eGFR 69 mL/min/1.73 m2."]; patient: heart rate = 63 (current) [line: "Heart rate now 63/min on a pulse check."]
+Facts: patient: eGFR = 52 (past) [line: "Records from 2017 list eGFR at 52 mL/min/1.73 m2."]; angioedema: not named; a general line implies absence (counts as absent) [line: "Face and neck without swelling on examination."]; patient: white cell count = 12.6 (current) [line: "Latest WBC is 12.6 x10^9/L."]; patient: eGFR = 69 (current) [line: "Current eGFR 69 mL/min/1.73 m2."]; patient: heart rate = 63 (current) [line: "Heart rate now 63/min on a pulse check."]
 
 Claims: s = Prescribe spironolactone. | s' = Prescribe dapagliflozin.
 
@@ -790,7 +790,7 @@ Heart rate now 63/min on a pulse check.
 
 **A4-G09-C3**
 
-Facts: patient: eGFR = 35 (past (2017)) [line: "Records from 2017 list eGFR at 35 mL/min/1.73 m2."]; angioedema: not named; a general line implies absence (counts as absent) [line: "Face and neck without swelling on examination."]; patient: white cell count = 12.6 (current) [line: "Latest WBC is 12.6 x10^9/L."]; patient: eGFR = 69 (current) [line: "Current eGFR 69 mL/min/1.73 m2."]; patient: heart rate = 63 (current) [line: "Heart rate now 63/min on a pulse check."]
+Facts: patient: eGFR = 35 (past) [line: "Records from 2017 list eGFR at 35 mL/min/1.73 m2."]; angioedema: not named; a general line implies absence (counts as absent) [line: "Face and neck without swelling on examination."]; patient: white cell count = 12.6 (current) [line: "Latest WBC is 12.6 x10^9/L."]; patient: eGFR = 69 (current) [line: "Current eGFR 69 mL/min/1.73 m2."]; patient: heart rate = 63 (current) [line: "Heart rate now 63/min on a pulse check."]
 
 Claims: s = Prescribe spironolactone. | s' = Prescribe dapagliflozin.
 
@@ -811,7 +811,7 @@ Heart rate now 63/min on a pulse check.
 
 **A4-G09-C4**
 
-Facts: patient: heart rate = 63 (current) [line: "Current heart rate 63/min."]; patient: eGFR = 69 (current) [line: "eGFR now 69 mL/min/1.73 m2."]; patient: eGFR = 52 (past (2017)) [line: "Back in 2017, eGFR stood at 52 mL/min/1.73 m2."]; patient: white cell count = 12.6 (current) [line: "Current white cell count 12.6 x10^9/L."]; angioedema: not named; a general line implies absence (counts as absent) [line: "Face and neck without swelling on examination."]
+Facts: patient: heart rate = 63 (current) [line: "Current heart rate 63/min."]; patient: eGFR = 69 (current) [line: "eGFR now 69 mL/min/1.73 m2."]; patient: eGFR = 52 (past) [line: "Back in 2017, eGFR stood at 52 mL/min/1.73 m2."]; patient: white cell count = 12.6 (current) [line: "Current white cell count 12.6 x10^9/L."]; angioedema: not named; a general line implies absence (counts as absent) [line: "Face and neck without swelling on examination."]
 
 Claims: s = Prescribe spironolactone. | s' = Prescribe dapagliflozin.
 
@@ -1912,7 +1912,7 @@ Rule: For dual antiplatelet therapy after a myocardial infarction, prescribe asp
 
 **A4-G21-C1**
 
-Facts: patient: serum creatinine = 2.5 (current) [line: "Current serum creatinine 2.5 mg/dL."]; patient: heart failure present (past (2005)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2005 and off all heart medicines since."]
+Facts: patient: serum creatinine = 2.5 (current) [line: "Current serum creatinine 2.5 mg/dL."]; patient: heart failure present (past) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2005 and off all heart medicines since."]
 
 Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
 
@@ -1944,7 +1944,7 @@ Knits as a hobby.
 
 **A4-G21-C2**
 
-Facts: patient: serum creatinine = 1.1 (current) [line: "Current serum creatinine 1.1 mg/dL."]; patient: heart failure present (past (2005)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2005 and off all heart medicines since."]
+Facts: patient: serum creatinine = 1.1 (current) [line: "Current serum creatinine 1.1 mg/dL."]; patient: heart failure present (past) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2005 and off all heart medicines since."]
 
 Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
 
@@ -1976,7 +1976,7 @@ Knits as a hobby.
 
 **A4-G21-C3**
 
-Facts: patient: heart failure present (past (2005)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2005 and off all heart medicines since."]; patient: serum creatinine = 1.1 (current) [line: "Latest creatinine result: 1.1 mg/dL."]
+Facts: patient: heart failure present (past) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2005 and off all heart medicines since."]; patient: serum creatinine = 1.1 (current) [line: "Latest creatinine result: 1.1 mg/dL."]
 
 Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
 
@@ -2008,7 +2008,7 @@ Lives in a second-floor apartment.
 
 **A4-G21-C4**
 
-Facts: patient: serum creatinine = 1.8 (current) [line: "Current serum creatinine 1.8 mg/dL."]; patient: heart failure present (past (2005)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2005 and off all heart medicines since."]
+Facts: patient: serum creatinine = 1.8 (current) [line: "Current serum creatinine 1.8 mg/dL."]; patient: heart failure present (past) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2005 and off all heart medicines since."]
 
 Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
 
@@ -2169,7 +2169,7 @@ Teeth in good repair.
 
 **A4-G22-C5**
 
-Facts: venous thromboembolism: not named; a general line implies absence (counts as absent) [line: "Varicose veins: none seen."]; patient: heart failure present (past (2005)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2005 and off all heart medicines since."]; patient: weight = 58 (current) [line: "Current weight 58 kg."]
+Facts: venous thromboembolism: not named; a general line implies absence (counts as absent) [line: "Varicose veins: none seen."]; patient: heart failure present (past) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2005 and off all heart medicines since."]; patient: weight = 58 (current) [line: "Current weight 58 kg."]
 
 Claims: s = Prescribe apixaban. | s' = Prescribe warfarin.
 
@@ -2205,7 +2205,7 @@ Rule: For inpatient VTE prophylaxis, prescribe enoxaparin. If at least two of th
 
 **A4-G23-C1**
 
-Facts: patient: venous thromboembolism present (past (2018)) [line: "Recovered from a pulmonary embolism in 2018."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Sleeps flat on one pillow."]; patient: heart rate = 100 (current) [line: "Current heart rate 100/min."]
+Facts: patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2018."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Sleeps flat on one pillow."]; patient: heart rate = 100 (current) [line: "Current heart rate 100/min."]
 
 Claims: s = Prescribe enoxaparin. | s' = Prescribe intermittent pneumatic compression.
 
@@ -3896,7 +3896,7 @@ Rule: For anemia after hip fracture surgery, prescribe oral iron. If the current
 
 **A4-G38-C1**
 
-Facts: patient: hemoglobin = 11.3 (current) [line: "Latest Hgb result: 11.3 g/dL."]; patient: hemoglobin = 7.3 (past (2007)) [line: "Records from 2007 list Hgb at 7.3 g/dL."]
+Facts: patient: hemoglobin = 11.3 (current) [line: "Latest Hgb result: 11.3 g/dL."]; patient: hemoglobin = 7.3 (past) [line: "Records from 2007 list Hgb at 7.3 g/dL."]
 
 Claims: s = Prescribe oral iron. | s' = Prescribe a red cell transfusion.
 
@@ -3911,7 +3911,7 @@ Records from 2007 list Hgb at 7.3 g/dL.
 
 **A4-G38-C2**
 
-Facts: patient: hemoglobin = 11.3 (current) [line: "Latest Hgb result: 11.3 g/dL."]; patient: hemoglobin = 10.6 (past (2007)) [line: "Records from 2007 list Hgb at 10.6 g/dL."]
+Facts: patient: hemoglobin = 11.3 (current) [line: "Latest Hgb result: 11.3 g/dL."]; patient: hemoglobin = 10.6 (past) [line: "Records from 2007 list Hgb at 10.6 g/dL."]
 
 Claims: s = Prescribe oral iron. | s' = Prescribe a red cell transfusion.
 
@@ -3926,7 +3926,7 @@ Records from 2007 list Hgb at 10.6 g/dL.
 
 **A4-G38-C3**
 
-Facts: patient: hemoglobin = 9.2 (current) [line: "Latest Hgb result: 9.2 g/dL."]; patient: hemoglobin = 10.6 (past (2007)) [line: "Records from 2007 list Hgb at 10.6 g/dL."]
+Facts: patient: hemoglobin = 9.2 (current) [line: "Latest Hgb result: 9.2 g/dL."]; patient: hemoglobin = 10.6 (past) [line: "Records from 2007 list Hgb at 10.6 g/dL."]
 
 Claims: s = Prescribe oral iron. | s' = Prescribe a red cell transfusion.
 
@@ -3941,7 +3941,7 @@ Records from 2007 list Hgb at 10.6 g/dL.
 
 **A4-G38-C4**
 
-Facts: patient: hemoglobin = 10.6 (past (2007)) [line: "Back in 2007, Hgb stood at 10.6 g/dL."]; patient: hemoglobin = 11.3 (current) [line: "Current Hgb 11.3 g/dL."]
+Facts: patient: hemoglobin = 10.6 (past) [line: "Back in 2007, Hgb stood at 10.6 g/dL."]; patient: hemoglobin = 11.3 (current) [line: "Current Hgb 11.3 g/dL."]
 
 Claims: s = Prescribe oral iron. | s' = Prescribe a red cell transfusion.
 
@@ -4724,7 +4724,7 @@ Lives in a second-floor apartment.
 
 **A4-G45-C2**
 
-Facts: penicillin allergy: not named; a general line implies absence (counts as absent) [line: "Drug allergies: none known."]; patient: clarithromycin present (past (2009)) [line: "Formerly took clarithromycin for a chest infection in 2009."]
+Facts: penicillin allergy: not named; a general line implies absence (counts as absent) [line: "Drug allergies: none known."]; patient: clarithromycin present (past) [line: "Formerly took clarithromycin for a chest infection in 2009."]
 
 Claims: s = Prescribe zephalin. | s' = Prescribe trivosan.
 
@@ -5213,7 +5213,7 @@ Prefers morning appointments.
 
 **A4-G50-C2**
 
-Facts: patient: age = 42 (current) [line: "Current age 42 years."]; patient: heart rate = 98 (current) [line: "Heart rate now 98/min on a pulse check."]; patient: peptic ulcer present (past (2009)) [line: "Formerly treated for a peptic ulcer; endoscopy in 2009 showed it had gone."]
+Facts: patient: age = 42 (current) [line: "Current age 42 years."]; patient: heart rate = 98 (current) [line: "Heart rate now 98/min on a pulse check."]; patient: peptic ulcer present (past) [line: "Formerly treated for a peptic ulcer; endoscopy in 2009 showed it had gone."]
 
 Claims: s = Prescribe oral fluconazole. | s' = Prescribe clotrimazole pessaries.
 
@@ -5624,7 +5624,7 @@ Rule: For vaginal candidiasis, prescribe oral fluconazole. If the patient has ev
 
 **A4-G54-C1**
 
-Facts: patient: venous thromboembolism present (past (2024)) [line: "Recovered from a pulmonary embolism in 2024."]; serum creatinine: not mentioned (unknown)
+Facts: patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2024."]; serum creatinine: not mentioned (unknown)
 
 Claims: s = Prescribe oral fluconazole. | s' = Prescribe clotrimazole pessaries.
 
@@ -5640,7 +5640,7 @@ Enjoys board games.
 
 **A4-G54-C2**
 
-Facts: patient: serum creatinine = 0.9 (current) [line: "Current serum creatinine 0.9 mg/dL."]; patient: venous thromboembolism present (past (2024)) [line: "Recovered from a pulmonary embolism in 2024."]; patient: serum creatinine = 1.0 (past (2021)) [line: "Back in 2021, serum creatinine stood at 1.0 mg/dL."]
+Facts: patient: serum creatinine = 0.9 (current) [line: "Current serum creatinine 0.9 mg/dL."]; patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2024."]; patient: serum creatinine = 1.0 (past) [line: "Back in 2021, serum creatinine stood at 1.0 mg/dL."]
 
 Claims: s = Prescribe oral fluconazole. | s' = Prescribe clotrimazole pessaries.
 
@@ -5658,7 +5658,7 @@ Enjoys board games.
 
 **A4-G54-C3**
 
-Facts: patient: serum creatinine = 2.8 (current) [line: "Current serum creatinine 2.8 mg/dL."]; patient: venous thromboembolism present (past (2024)) [line: "Recovered from a pulmonary embolism in 2024."]; patient: serum creatinine = 1.0 (past (2021)) [line: "Back in 2021, serum creatinine stood at 1.0 mg/dL."]
+Facts: patient: serum creatinine = 2.8 (current) [line: "Current serum creatinine 2.8 mg/dL."]; patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2024."]; patient: serum creatinine = 1.0 (past) [line: "Back in 2021, serum creatinine stood at 1.0 mg/dL."]
 
 Claims: s = Prescribe oral fluconazole. | s' = Prescribe clotrimazole pessaries.
 
@@ -5676,7 +5676,7 @@ Enjoys board games.
 
 **A4-G54-C4**
 
-Facts: patient: serum creatinine = 0.9 (current) [line: "Current serum creatinine 0.9 mg/dL."]; patient: venous thromboembolism present (past (2024)) [line: "Recovered from a pulmonary embolism in 2024."]; patient: serum creatinine = 2.7 (past (2021)) [line: "Back in 2021, serum creatinine stood at 2.7 mg/dL."]
+Facts: patient: serum creatinine = 0.9 (current) [line: "Current serum creatinine 0.9 mg/dL."]; patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2024."]; patient: serum creatinine = 2.7 (past) [line: "Back in 2021, serum creatinine stood at 2.7 mg/dL."]
 
 Claims: s = Prescribe oral fluconazole. | s' = Prescribe clotrimazole pessaries.
 
@@ -5694,7 +5694,7 @@ Enjoys board games.
 
 **A4-G54-C5**
 
-Facts: patient: serum creatinine = 0.9 (current) [line: "Latest creatinine result: 0.9 mg/dL."]; patient: venous thromboembolism present (past (2024)) [line: "Recovered from a pulmonary embolism in 2024."]; patient: serum creatinine = 1.0 (past (2021)) [line: "Records from 2021 list serum creatinine at 1.0 mg/dL."]
+Facts: patient: serum creatinine = 0.9 (current) [line: "Latest creatinine result: 0.9 mg/dL."]; patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2024."]; patient: serum creatinine = 1.0 (past) [line: "Records from 2021 list serum creatinine at 1.0 mg/dL."]
 
 Claims: s = Prescribe oral fluconazole. | s' = Prescribe clotrimazole pessaries.
 
@@ -5734,7 +5734,7 @@ Has an acute pulmonary embolism, diagnosed this week.
 
 **A4-G55-C2**
 
-Facts: patient: weight = 76 (current) [line: "Current weight 76 kg."]; patient: weight = 48 (past (2024)) [line: "Records from 2024 list weight at 48 kg."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]
+Facts: patient: weight = 76 (current) [line: "Current weight 76 kg."]; patient: weight = 48 (past) [line: "Records from 2024 list weight at 48 kg."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]
 
 Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
 
@@ -5753,7 +5753,7 @@ Has an acute pulmonary embolism, diagnosed this week.
 
 **A4-G55-C3**
 
-Facts: patient: weight = 76 (current) [line: "Latest weight 76 kg."]; patient: weight = 94 (past (2024)) [line: "Back in 2024, weight stood at 94 kg."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]
+Facts: patient: weight = 76 (current) [line: "Latest weight 76 kg."]; patient: weight = 94 (past) [line: "Back in 2024, weight stood at 94 kg."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]
 
 Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
 
@@ -5772,7 +5772,7 @@ Has an acute pulmonary embolism, diagnosed this week.
 
 **A4-G55-C4**
 
-Facts: patient: weight = 76 (current) [line: "Current weight 76 kg."]; patient: weight = 94 (past (2024)) [line: "Records from 2024 list weight at 94 kg."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]
+Facts: patient: weight = 76 (current) [line: "Current weight 76 kg."]; patient: weight = 94 (past) [line: "Records from 2024 list weight at 94 kg."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]
 
 Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
 
@@ -5791,7 +5791,7 @@ Has an acute pulmonary embolism, diagnosed this week.
 
 **A4-G55-C5**
 
-Facts: patient: weight = 59 (current) [line: "Current weight 59 kg."]; patient: weight = 94 (past (2024)) [line: "Records from 2024 list weight at 94 kg."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]
+Facts: patient: weight = 59 (current) [line: "Current weight 59 kg."]; patient: weight = 94 (past) [line: "Records from 2024 list weight at 94 kg."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]
 
 Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
 
@@ -5957,7 +5957,7 @@ Rule: For primary prevention, start atorvastatin. If the current ALT is above 80
 
 **A4-G58-C1**
 
-Facts: patient: ALT = 32 (past (2007)) [line: "Back in 2007, ALT stood at 32 U/L."]; patient: ALT = 14 (current) [line: "ALT now 14 U/L."]
+Facts: patient: ALT = 32 (past) [line: "Back in 2007, ALT stood at 32 U/L."]; patient: ALT = 14 (current) [line: "ALT now 14 U/L."]
 
 Claims: s = Start atorvastatin. | s' = Start ezetimibe.
 
@@ -5973,7 +5973,7 @@ Knits as a hobby.
 
 **A4-G58-C2**
 
-Facts: patient: ALT = 32 (past (2007)) [line: "Back in 2007, ALT stood at 32 U/L."]; patient: ALT = 113 (current) [line: "ALT now 113 U/L."]
+Facts: patient: ALT = 32 (past) [line: "Back in 2007, ALT stood at 32 U/L."]; patient: ALT = 113 (current) [line: "ALT now 113 U/L."]
 
 Claims: s = Start atorvastatin. | s' = Start ezetimibe.
 
@@ -5989,7 +5989,7 @@ Knits as a hobby.
 
 **A4-G58-C3**
 
-Facts: patient: ALT = 32 (past (2007)) [line: "Records from 2007 list ALT at 32 U/L."]; patient: ALT = 14 (current) [line: "Current ALT 14 U/L."]
+Facts: patient: ALT = 32 (past) [line: "Records from 2007 list ALT at 32 U/L."]; patient: ALT = 14 (current) [line: "Current ALT 14 U/L."]
 
 Claims: s = Start atorvastatin. | s' = Start ezetimibe.
 
@@ -6005,7 +6005,7 @@ Knits as a hobby.
 
 **A4-G58-C4**
 
-Facts: patient: ALT = 294 (past (2007)) [line: "Back in 2007, ALT stood at 294 U/L."]; patient: ALT = 14 (current) [line: "ALT now 14 U/L."]
+Facts: patient: ALT = 294 (past) [line: "Back in 2007, ALT stood at 294 U/L."]; patient: ALT = 14 (current) [line: "ALT now 14 U/L."]
 
 Claims: s = Start atorvastatin. | s' = Start ezetimibe.
 
@@ -6362,7 +6362,7 @@ Rule: For heart failure with reduced ejection fraction, add spironolactone. If t
 
 **A4-G63-C1**
 
-Facts: patient: potassium = 3.6 (past (2006)) [line: "Back in 2006, serum potassium stood at 3.6 mmol/L."]; patient: potassium = 3.7 (current) [line: "Latest potassium result: 3.7 mmol/L."]
+Facts: patient: potassium = 3.6 (past) [line: "Back in 2006, serum potassium stood at 3.6 mmol/L."]; patient: potassium = 3.7 (current) [line: "Latest potassium result: 3.7 mmol/L."]
 
 Claims: s = Add spironolactone. | s' = Add dapagliflozin.
 
@@ -6379,7 +6379,7 @@ Drives a car.
 
 **A4-G63-C2**
 
-Facts: patient: potassium = 3.7 (current) [line: "Current serum potassium 3.7 mmol/L."]; patient: potassium = 5.2 (past (2006)) [line: "Records from 2006 list serum potassium at 5.2 mmol/L."]
+Facts: patient: potassium = 3.7 (current) [line: "Current serum potassium 3.7 mmol/L."]; patient: potassium = 5.2 (past) [line: "Records from 2006 list serum potassium at 5.2 mmol/L."]
 
 Claims: s = Add spironolactone. | s' = Add dapagliflozin.
 
@@ -6396,7 +6396,7 @@ Records from 2006 list serum potassium at 5.2 mmol/L.
 
 **A4-G63-C3**
 
-Facts: patient: potassium = 4.7 (current) [line: "Current serum potassium 4.7 mmol/L."]; patient: potassium = 3.6 (past (2006)) [line: "Records from 2006 list serum potassium at 3.6 mmol/L."]
+Facts: patient: potassium = 4.7 (current) [line: "Current serum potassium 4.7 mmol/L."]; patient: potassium = 3.6 (past) [line: "Records from 2006 list serum potassium at 3.6 mmol/L."]
 
 Claims: s = Add spironolactone. | s' = Add dapagliflozin.
 
@@ -6413,7 +6413,7 @@ Records from 2006 list serum potassium at 3.6 mmol/L.
 
 **A4-G63-C4**
 
-Facts: patient: potassium = 3.7 (current) [line: "Current serum potassium 3.7 mmol/L."]; patient: potassium = 3.6 (past (2006)) [line: "Records from 2006 list serum potassium at 3.6 mmol/L."]
+Facts: patient: potassium = 3.7 (current) [line: "Current serum potassium 3.7 mmol/L."]; patient: potassium = 3.6 (past) [line: "Records from 2006 list serum potassium at 3.6 mmol/L."]
 
 Claims: s = Add spironolactone. | s' = Add dapagliflozin.
 
@@ -6497,7 +6497,7 @@ Sees a dentist yearly.
 
 **A4-G64-C3**
 
-Facts: wife: angioedema present (past (2010)) [line: "Her wife recovered from an episode of angioedema in 2010."]; patient: tender cervical lymph nodes present (current) [line: "Anterior cervical lymph nodes enlarged and tender to touch."]
+Facts: wife: angioedema present (past) [line: "Her wife recovered from an episode of angioedema in 2010."]; patient: tender cervical lymph nodes present (current) [line: "Anterior cervical lymph nodes enlarged and tender to touch."]
 
 Claims: s = Prescribe oral fluconazole. | s' = Prescribe clotrimazole pessaries.
 
@@ -6922,7 +6922,7 @@ Rule: For contraception, prescribe a combined oral contraceptive. If the current
 
 **A4-G68-C1**
 
-Facts: patient: eGFR = 61 (current) [line: "Current eGFR 61 mL/min/1.73 m2."]; patient: eGFR = 26 (past (2008)) [line: "Back in 2008, eGFR stood at 26 mL/min/1.73 m2."]; sister: diabetes present (current) [line: "Her sister is diabetic."]
+Facts: patient: eGFR = 61 (current) [line: "Current eGFR 61 mL/min/1.73 m2."]; patient: eGFR = 26 (past) [line: "Back in 2008, eGFR stood at 26 mL/min/1.73 m2."]; sister: diabetes present (current) [line: "Her sister is diabetic."]
 
 Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
 
@@ -6939,7 +6939,7 @@ Her sister is diabetic.
 
 **A4-G68-C2**
 
-Facts: patient: eGFR = 18 (current) [line: "Current eGFR 18 mL/min/1.73 m2."]; patient: eGFR = 78 (past (2008)) [line: "Back in 2008, eGFR stood at 78 mL/min/1.73 m2."]; sister: diabetes present (current) [line: "Her sister is diabetic."]
+Facts: patient: eGFR = 18 (current) [line: "Current eGFR 18 mL/min/1.73 m2."]; patient: eGFR = 78 (past) [line: "Back in 2008, eGFR stood at 78 mL/min/1.73 m2."]; sister: diabetes present (current) [line: "Her sister is diabetic."]
 
 Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
 
@@ -6956,7 +6956,7 @@ Her sister is diabetic.
 
 **A4-G68-C3**
 
-Facts: patient: eGFR = 61 (current) [line: "eGFR now 61 mL/min/1.73 m2."]; sister: diabetes present (current) [line: "Her sister is diabetic."]; patient: eGFR = 78 (past (2008)) [line: "Records from 2008 list eGFR at 78 mL/min/1.73 m2."]
+Facts: patient: eGFR = 61 (current) [line: "eGFR now 61 mL/min/1.73 m2."]; sister: diabetes present (current) [line: "Her sister is diabetic."]; patient: eGFR = 78 (past) [line: "Records from 2008 list eGFR at 78 mL/min/1.73 m2."]
 
 Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
 
@@ -6973,7 +6973,7 @@ Plays the piano.
 
 **A4-G68-C4**
 
-Facts: patient: eGFR = 61 (current) [line: "Current eGFR 61 mL/min/1.73 m2."]; patient: eGFR = 78 (past (2008)) [line: "Back in 2008, eGFR stood at 78 mL/min/1.73 m2."]; sister: diabetes present (current) [line: "Her sister is diabetic."]
+Facts: patient: eGFR = 61 (current) [line: "Current eGFR 61 mL/min/1.73 m2."]; patient: eGFR = 78 (past) [line: "Back in 2008, eGFR stood at 78 mL/min/1.73 m2."]; sister: diabetes present (current) [line: "Her sister is diabetic."]
 
 Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
 
@@ -7302,7 +7302,7 @@ Rule: For newly diagnosed type 2 diabetes, prescribe metformin. If at least two 
 
 **A4-G72-C1**
 
-Facts: peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Abdomen soft and non-tender."]; patient: heart failure present (past (2016)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2016 and off all heart medicines since."]; patient: age = 42 (current) [line: "Currently aged 42 years."]
+Facts: peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Abdomen soft and non-tender."]; patient: heart failure present (past) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2016 and off all heart medicines since."]; patient: age = 42 (current) [line: "Currently aged 42 years."]
 
 Claims: s = Prescribe metformin. | s' = Prescribe sitagliptin.
 
@@ -7321,7 +7321,7 @@ Currently aged 42 years.
 
 **A4-G72-C2**
 
-Facts: patient: heart failure present (past (2016)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2016 and off all heart medicines since."]; patient: age = 42 (current) [line: "Current age 42 years."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]
+Facts: patient: heart failure present (past) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2016 and off all heart medicines since."]; patient: age = 42 (current) [line: "Current age 42 years."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]
 
 Claims: s = Prescribe metformin. | s' = Prescribe sitagliptin.
 
@@ -7340,7 +7340,7 @@ Prefers morning appointments.
 
 **A4-G72-C3**
 
-Facts: patient: heart failure present (past (2016)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2016 and off all heart medicines since."]; patient: age = 42 (current) [line: "Current age 42 years."]; peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Abdomen soft and non-tender."]
+Facts: patient: heart failure present (past) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2016 and off all heart medicines since."]; patient: age = 42 (current) [line: "Current age 42 years."]; peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Abdomen soft and non-tender."]
 
 Claims: s = Prescribe metformin. | s' = Prescribe sitagliptin.
 
@@ -7359,7 +7359,7 @@ Prefers morning appointments.
 
 **A4-G72-C4**
 
-Facts: patient: heart failure present (past (2016)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2016 and off all heart medicines since."]; patient: age = 42 (current) [line: "Current age 42 years."]; patient: peptic ulcer denied by name (current) [line: "Medical record negative for peptic ulcer, current or past."]
+Facts: patient: heart failure present (past) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2016 and off all heart medicines since."]; patient: age = 42 (current) [line: "Current age 42 years."]; patient: peptic ulcer denied by name (current) [line: "Medical record negative for peptic ulcer, current or past."]
 
 Claims: s = Prescribe metformin. | s' = Prescribe sitagliptin.
 

@@ -8,7 +8,7 @@ Rule: For musculoskeletal pain, prescribe ibuprofen. If the patient or a first-d
 
 **A3-G01-C1**
 
-Facts: father: coronary artery disease present (current) [line: "Her father has known coronary artery disease."]; patient: penicillin allergy present (past (2021)) [line: "Outgrew a penicillin allergy by 2021."]
+Facts: father: coronary artery disease present (current) [line: "Her father has known coronary artery disease."]; patient: penicillin allergy present (past) [line: "Outgrew a penicillin allergy by 2021."]
 
 Claims: s = Prescribe ibuprofen. | s' = Prescribe acetaminophen.
 
@@ -546,7 +546,7 @@ Rule: For thromboprophylaxis after hip replacement, prescribe enoxaparin. If the
 
 **A3-G06-C1**
 
-Facts: patient: eGFR = 68 (past (2016)) [line: "Back in 2016, eGFR stood at 68 mL/min/1.73 m2."]; patient: eGFR = 49 (current) [line: "eGFR now 49 mL/min/1.73 m2."]
+Facts: patient: eGFR = 68 (past) [line: "Back in 2016, eGFR stood at 68 mL/min/1.73 m2."]; patient: eGFR = 49 (current) [line: "eGFR now 49 mL/min/1.73 m2."]
 
 Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
 
@@ -562,7 +562,7 @@ eGFR now 49 mL/min/1.73 m2.
 
 **A3-G06-C2**
 
-Facts: patient: eGFR = 41 (past (2016)) [line: "Back in 2016, eGFR stood at 41 mL/min/1.73 m2."]; patient: eGFR = 55 (current) [line: "eGFR now 55 mL/min/1.73 m2."]
+Facts: patient: eGFR = 41 (past) [line: "Back in 2016, eGFR stood at 41 mL/min/1.73 m2."]; patient: eGFR = 55 (current) [line: "eGFR now 55 mL/min/1.73 m2."]
 
 Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
 
@@ -578,7 +578,7 @@ eGFR now 55 mL/min/1.73 m2.
 
 **A3-G06-C3**
 
-Facts: patient: eGFR = 55 (current) [line: "Current eGFR 55 mL/min/1.73 m2."]; patient: eGFR = 68 (past (2016)) [line: "Records from 2016 list eGFR at 68 mL/min/1.73 m2."]
+Facts: patient: eGFR = 55 (current) [line: "Current eGFR 55 mL/min/1.73 m2."]; patient: eGFR = 68 (past) [line: "Records from 2016 list eGFR at 68 mL/min/1.73 m2."]
 
 Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
 
@@ -594,7 +594,7 @@ Teeth in good repair.
 
 **A3-G06-C4**
 
-Facts: patient: eGFR = 68 (past (2016)) [line: "Back in 2016, eGFR stood at 68 mL/min/1.73 m2."]; patient: eGFR = 55 (current) [line: "eGFR now 55 mL/min/1.73 m2."]
+Facts: patient: eGFR = 68 (past) [line: "Back in 2016, eGFR stood at 68 mL/min/1.73 m2."]; patient: eGFR = 55 (current) [line: "eGFR now 55 mL/min/1.73 m2."]
 
 Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
 
@@ -615,7 +615,7 @@ Rule: For hip osteoarthritis pain, prescribe naproxen alone. If the patient has 
 
 **A3-G07-C1**
 
-Facts: patient: serum creatinine = 0.6 (current) [line: "Current serum creatinine 0.6 mg/dL."]; patient: diabetes present (past) [line: "Had diabetes years ago that went into remission on a low-calorie diet."]; patient: serum creatinine = 1.9 (past (2021)) [line: "Back in 2021, serum creatinine stood at 1.9 mg/dL."]
+Facts: patient: serum creatinine = 0.6 (current) [line: "Current serum creatinine 0.6 mg/dL."]; patient: diabetes present (past) [line: "Had diabetes years ago that went into remission on a low-calorie diet."]; patient: serum creatinine = 1.9 (past) [line: "Back in 2021, serum creatinine stood at 1.9 mg/dL."]
 
 Claims: s = Prescribe naproxen alone. | s' = Prescribe naproxen with omeprazole.
 
@@ -647,7 +647,7 @@ Her friend wears contact lenses.
 
 **A3-G07-C2**
 
-Facts: patient: serum creatinine = 0.6 (current) [line: "Current serum creatinine 0.6 mg/dL."]; patient: diabetes present (past) [line: "Had diabetes years ago that went into remission on a low-calorie diet."]; patient: serum creatinine = 1.1 (past (2021)) [line: "Back in 2021, serum creatinine stood at 1.1 mg/dL."]
+Facts: patient: serum creatinine = 0.6 (current) [line: "Current serum creatinine 0.6 mg/dL."]; patient: diabetes present (past) [line: "Had diabetes years ago that went into remission on a low-calorie diet."]; patient: serum creatinine = 1.1 (past) [line: "Back in 2021, serum creatinine stood at 1.1 mg/dL."]
 
 Claims: s = Prescribe naproxen alone. | s' = Prescribe naproxen with omeprazole.
 
@@ -709,7 +709,7 @@ Her friend wears contact lenses.
 
 **A3-G07-C4**
 
-Facts: patient: diabetes present (past) [line: "Had diabetes years ago that went into remission on a low-calorie diet."]; patient: serum creatinine = 1.1 (past (2021)) [line: "Records from 2021 list serum creatinine at 1.1 mg/dL."]; patient: serum creatinine = 0.6 (current) [line: "Latest creatinine result: 0.6 mg/dL."]
+Facts: patient: diabetes present (past) [line: "Had diabetes years ago that went into remission on a low-calorie diet."]; patient: serum creatinine = 1.1 (past) [line: "Records from 2021 list serum creatinine at 1.1 mg/dL."]; patient: serum creatinine = 0.6 (current) [line: "Latest creatinine result: 0.6 mg/dL."]
 
 Claims: s = Prescribe naproxen alone. | s' = Prescribe naproxen with omeprazole.
 
@@ -741,7 +741,7 @@ Prefers morning appointments.
 
 **A3-G07-C5**
 
-Facts: patient: serum creatinine = 1.7 (current) [line: "Current serum creatinine 1.7 mg/dL."]; patient: diabetes present (past) [line: "Had diabetes years ago that went into remission on a low-calorie diet."]; patient: serum creatinine = 1.1 (past (2021)) [line: "Back in 2021, serum creatinine stood at 1.1 mg/dL."]
+Facts: patient: serum creatinine = 1.7 (current) [line: "Current serum creatinine 1.7 mg/dL."]; patient: diabetes present (past) [line: "Had diabetes years ago that went into remission on a low-calorie diet."]; patient: serum creatinine = 1.1 (past) [line: "Back in 2021, serum creatinine stood at 1.1 mg/dL."]
 
 Claims: s = Prescribe naproxen alone. | s' = Prescribe naproxen with omeprazole.
 
@@ -959,7 +959,7 @@ Uses sunscreen in summer.
 
 **A3-G10-C2**
 
-Facts: patient: heart failure present (current) [line: "Current heart failure with ankle swelling."]; patient: serum creatinine = 1.2 (past (2018)) [line: "Back in 2018, serum creatinine stood at 1.2 mg/dL."]; patient: serum creatinine = 2.2 (current) [line: "Current serum creatinine 2.2 mg/dL."]
+Facts: patient: heart failure present (current) [line: "Current heart failure with ankle swelling."]; patient: serum creatinine = 1.2 (past) [line: "Back in 2018, serum creatinine stood at 1.2 mg/dL."]; patient: serum creatinine = 2.2 (current) [line: "Current serum creatinine 2.2 mg/dL."]
 
 Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
 
@@ -977,7 +977,7 @@ Current serum creatinine 2.2 mg/dL.
 
 **A3-G10-C3**
 
-Facts: patient: heart failure present (current) [line: "Current heart failure with ankle swelling."]; patient: serum creatinine = 1.2 (past (2018)) [line: "Back in 2018, serum creatinine stood at 1.2 mg/dL."]; patient: serum creatinine = 0.7 (current) [line: "Current serum creatinine 0.7 mg/dL."]
+Facts: patient: heart failure present (current) [line: "Current heart failure with ankle swelling."]; patient: serum creatinine = 1.2 (past) [line: "Back in 2018, serum creatinine stood at 1.2 mg/dL."]; patient: serum creatinine = 0.7 (current) [line: "Current serum creatinine 0.7 mg/dL."]
 
 Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
 
@@ -995,7 +995,7 @@ Current serum creatinine 0.7 mg/dL.
 
 **A3-G10-C4**
 
-Facts: patient: heart failure present (current) [line: "Current heart failure with ankle swelling."]; patient: serum creatinine = 2.4 (past (2018)) [line: "Back in 2018, serum creatinine stood at 2.4 mg/dL."]; patient: serum creatinine = 0.7 (current) [line: "Current serum creatinine 0.7 mg/dL."]
+Facts: patient: heart failure present (current) [line: "Current heart failure with ankle swelling."]; patient: serum creatinine = 2.4 (past) [line: "Back in 2018, serum creatinine stood at 2.4 mg/dL."]; patient: serum creatinine = 0.7 (current) [line: "Current serum creatinine 0.7 mg/dL."]
 
 Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
 
@@ -1013,7 +1013,7 @@ Current serum creatinine 0.7 mg/dL.
 
 **A3-G10-C5**
 
-Facts: patient: serum creatinine = 1.2 (past (2018)) [line: "Records from 2018 list serum creatinine at 1.2 mg/dL."]; patient: heart failure present (current) [line: "Current heart failure with ankle swelling."]; patient: serum creatinine = 0.7 (current) [line: "Latest creatinine result: 0.7 mg/dL."]
+Facts: patient: serum creatinine = 1.2 (past) [line: "Records from 2018 list serum creatinine at 1.2 mg/dL."]; patient: heart failure present (current) [line: "Current heart failure with ankle swelling."]; patient: serum creatinine = 0.7 (current) [line: "Latest creatinine result: 0.7 mg/dL."]
 
 Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
 
@@ -1522,7 +1522,7 @@ Rule: For suspected infection on the medical ward, prescribe oral amoxicillin. I
 
 **A3-G15-C1**
 
-Facts: myocardial infarction or peripheral artery disease: not named; a general line implies absence (counts as absent) [line: "Walks without calf pain."]; patient: peptic ulcer present (past (2010)) [line: "Formerly treated for a peptic ulcer; endoscopy in 2010 showed it had gone."]; age: not mentioned (unknown)
+Facts: myocardial infarction or peripheral artery disease: not named; a general line implies absence (counts as absent) [line: "Walks without calf pain."]; patient: peptic ulcer present (past) [line: "Formerly treated for a peptic ulcer; endoscopy in 2010 showed it had gone."]; age: not mentioned (unknown)
 
 Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
 
@@ -1539,7 +1539,7 @@ Has two cats.
 
 **A3-G15-C2**
 
-Facts: myocardial infarction or peripheral artery disease: not named; a general line implies absence (counts as absent) [line: "Walks without calf pain."]; patient: peptic ulcer present (past (2010)) [line: "Formerly treated for a peptic ulcer; endoscopy in 2010 showed it had gone."]; patient: age = 53 (current) [line: "Current age 53 years."]
+Facts: myocardial infarction or peripheral artery disease: not named; a general line implies absence (counts as absent) [line: "Walks without calf pain."]; patient: peptic ulcer present (past) [line: "Formerly treated for a peptic ulcer; endoscopy in 2010 showed it had gone."]; patient: age = 53 (current) [line: "Current age 53 years."]
 
 Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
 
@@ -1557,7 +1557,7 @@ Current age 53 years.
 
 **A3-G15-C3**
 
-Facts: myocardial infarction or peripheral artery disease: not named; a general line implies absence (counts as absent) [line: "Walks without calf pain."]; patient: peptic ulcer present (past (2010)) [line: "Formerly treated for a peptic ulcer; endoscopy in 2010 showed it had gone."]; patient: age = 62 (current) [line: "Current age 62 years."]
+Facts: myocardial infarction or peripheral artery disease: not named; a general line implies absence (counts as absent) [line: "Walks without calf pain."]; patient: peptic ulcer present (past) [line: "Formerly treated for a peptic ulcer; endoscopy in 2010 showed it had gone."]; patient: age = 62 (current) [line: "Current age 62 years."]
 
 Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
 
@@ -1575,7 +1575,7 @@ Current age 62 years.
 
 **A3-G15-C4**
 
-Facts: myocardial infarction or peripheral artery disease: not named; a general line implies absence (counts as absent) [line: "Walks without calf pain."]; patient: peptic ulcer present (past (2010)) [line: "Formerly treated for a peptic ulcer; endoscopy in 2010 showed it had gone."]; patient: age = 65 (current) [line: "Current age 65 years."]
+Facts: myocardial infarction or peripheral artery disease: not named; a general line implies absence (counts as absent) [line: "Walks without calf pain."]; patient: peptic ulcer present (past) [line: "Formerly treated for a peptic ulcer; endoscopy in 2010 showed it had gone."]; patient: age = 65 (current) [line: "Current age 65 years."]
 
 Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
 
@@ -1593,7 +1593,7 @@ Current age 65 years.
 
 **A3-G15-C5**
 
-Facts: patient: peptic ulcer present (past (2010)) [line: "Formerly treated for a peptic ulcer; endoscopy in 2010 showed it had gone."]; myocardial infarction or peripheral artery disease: not named; a general line implies absence (counts as absent) [line: "Walks without calf pain."]; patient: age = 53 (current) [line: "Currently aged 53 years."]
+Facts: patient: peptic ulcer present (past) [line: "Formerly treated for a peptic ulcer; endoscopy in 2010 showed it had gone."]; myocardial infarction or peripheral artery disease: not named; a general line implies absence (counts as absent) [line: "Walks without calf pain."]; patient: age = 53 (current) [line: "Currently aged 53 years."]
 
 Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
 
@@ -2624,7 +2624,7 @@ Sees a dentist yearly.
 
 **A3-G27-C2**
 
-Facts: patient: age = 51 (current) [line: "Current age 51 years."]; patient: diabetes present (past (2019)) [line: "Formerly diabetic; in remission since 2019."]; stroke/TIA: not named; a general line implies absence (counts as absent) [line: "Power and sensation normal in all limbs."]; heart failure: not mentioned (counts as absent); hypertension: not mentioned (counts as absent)
+Facts: patient: age = 51 (current) [line: "Current age 51 years."]; patient: diabetes present (past) [line: "Formerly diabetic; in remission since 2019."]; stroke/TIA: not named; a general line implies absence (counts as absent) [line: "Power and sensation normal in all limbs."]; heart failure: not mentioned (counts as absent); hypertension: not mentioned (counts as absent)
 
 Claims: s = The diabetes criterion contributes 0 points. | s' = The diabetes criterion contributes 1 point.
 ```
@@ -3084,7 +3084,7 @@ Rule: For newly diagnosed hypertension, prescribe lisinopril. If the patient has
 
 **A3-G31-C1**
 
-Facts: patient: blood urea nitrogen = 29 (past (2011)) [line: "Records from 2011 list blood urea nitrogen at 29 mg/dL."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen now: 13 mg/dL."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]
+Facts: patient: blood urea nitrogen = 29 (past) [line: "Records from 2011 list blood urea nitrogen at 29 mg/dL."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen now: 13 mg/dL."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]
 
 Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
 
@@ -3101,7 +3101,7 @@ Active peptic ulcer disease.
 
 **A3-G31-C2**
 
-Facts: patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen 13 mg/dL on the current labs."]; patient: blood urea nitrogen = 15 (past (2011)) [line: "Back in 2011, blood urea nitrogen stood at 15 mg/dL."]
+Facts: patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen 13 mg/dL on the current labs."]; patient: blood urea nitrogen = 15 (past) [line: "Back in 2011, blood urea nitrogen stood at 15 mg/dL."]
 
 Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
 
@@ -3118,7 +3118,7 @@ Paints watercolors as a hobby.
 
 **A3-G31-C3**
 
-Facts: patient: blood urea nitrogen = 15 (past (2011)) [line: "Records from 2011 list blood urea nitrogen at 15 mg/dL."]; patient: blood urea nitrogen = 30 (current) [line: "Blood urea nitrogen now: 30 mg/dL."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]
+Facts: patient: blood urea nitrogen = 15 (past) [line: "Records from 2011 list blood urea nitrogen at 15 mg/dL."]; patient: blood urea nitrogen = 30 (current) [line: "Blood urea nitrogen now: 30 mg/dL."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]
 
 Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
 
@@ -3135,7 +3135,7 @@ Active peptic ulcer disease.
 
 **A3-G31-C4**
 
-Facts: patient: blood urea nitrogen = 15 (past (2011)) [line: "Records from 2011 list blood urea nitrogen at 15 mg/dL."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen now: 13 mg/dL."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]
+Facts: patient: blood urea nitrogen = 15 (past) [line: "Records from 2011 list blood urea nitrogen at 15 mg/dL."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen now: 13 mg/dL."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]
 
 Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
 
@@ -3846,7 +3846,7 @@ Pupils equal and reactive to light.
 
 **A3-G37-C3**
 
-Facts: patient: heart rate = 80 (current) [line: "Heart rate now 80/min on a pulse check."]; patient: white cell count = 13.1 (current) [line: "Latest WBC is 13.1 x10^9/L."]; patient: eGFR = 87 (current) [line: "eGFR now 87 mL/min/1.73 m2."]; sister: angioedema present (past (2006)) [line: "His sister recovered from an episode of angioedema in 2006."]
+Facts: patient: heart rate = 80 (current) [line: "Heart rate now 80/min on a pulse check."]; patient: white cell count = 13.1 (current) [line: "Latest WBC is 13.1 x10^9/L."]; patient: eGFR = 87 (current) [line: "eGFR now 87 mL/min/1.73 m2."]; sister: angioedema present (past) [line: "His sister recovered from an episode of angioedema in 2006."]
 
 Claims: s = Prescribe spironolactone. | s' = Prescribe dapagliflozin.
 
@@ -4532,7 +4532,7 @@ Enjoys board games.
 
 **A3-G43-C4**
 
-Facts: patient: myocardial infarction or peripheral artery disease present (past (2016)) [line: "Recovered from a heart attack in 2016."]; patient: temperature = 38.3 (current) [line: "Temperature now 38.3 C (tympanic)."]
+Facts: patient: myocardial infarction or peripheral artery disease present (past) [line: "Recovered from a heart attack in 2016."]; patient: temperature = 38.3 (current) [line: "Temperature now 38.3 C (tympanic)."]
 
 Claims: s = Prescribe ibuprofen. | s' = Prescribe penicillin V.
 
@@ -4822,7 +4822,7 @@ Plays the piano.
 
 **A3-G47-C2**
 
-Facts: diabetes: not named; a general line implies absence (counts as absent) [line: "Random glucose 92 mg/dL."]; patient: major bleeding present (past (2006)) [line: "Recovered from a major lower gastrointestinal bleed in 2006 that required transfusion."]; patient: angioedema present (current) [line: "Recurrent angioedema, under allergy follow-up."]; patient: cancer present (current) [line: "Has metastatic lung cancer, receiving palliative treatment."]
+Facts: diabetes: not named; a general line implies absence (counts as absent) [line: "Random glucose 92 mg/dL."]; patient: major bleeding present (past) [line: "Recovered from a major lower gastrointestinal bleed in 2006 that required transfusion."]; patient: angioedema present (current) [line: "Recurrent angioedema, under allergy follow-up."]; patient: cancer present (current) [line: "Has metastatic lung cancer, receiving palliative treatment."]
 
 Claims: s = Prescribe velimor. | s' = Prescribe quantrel.
 
@@ -6238,7 +6238,7 @@ Enjoys board games.
 
 **A3-G63-C2**
 
-Facts: patient: eGFR = 20 (current) [line: "eGFR now 20 mL/min/1.73 m2."]; father: venous thromboembolism present (past (2013)) [line: "Her father recovered from a pulmonary embolism in 2013."]; patient: ALT = 12 (current) [line: "Current ALT 12 U/L."]
+Facts: patient: eGFR = 20 (current) [line: "eGFR now 20 mL/min/1.73 m2."]; father: venous thromboembolism present (past) [line: "Her father recovered from a pulmonary embolism in 2013."]; patient: ALT = 12 (current) [line: "Current ALT 12 U/L."]
 
 Claims: s = Prescribe brexadol. | s' = Prescribe corlitane.
 
@@ -6975,7 +6975,7 @@ Uses sunscreen in summer.
 
 **A3-G70-C2**
 
-Facts: patient: white cell count = 12.9 (current) [line: "Latest WBC is 12.9 x10^9/L."]; patient: myocardial infarction or peripheral artery disease present (past (2024)) [line: "Recovered from a heart attack in 2024."]; tonsillar exudate: not mentioned (counts as absent)
+Facts: patient: white cell count = 12.9 (current) [line: "Latest WBC is 12.9 x10^9/L."]; patient: myocardial infarction or peripheral artery disease present (past) [line: "Recovered from a heart attack in 2024."]; tonsillar exudate: not mentioned (counts as absent)
 
 Claims: s = Prescribe ibuprofen. | s' = Prescribe penicillin V.
 
@@ -7176,7 +7176,7 @@ Rule: For newly diagnosed hypertension, prescribe lisinopril. If the patient has
 
 **A3-G73-C1**
 
-Facts: patient: blood urea nitrogen = 10 (past (2023)) [line: "Back in 2023, blood urea nitrogen stood at 10 mg/dL."]; patient: peptic ulcer present (past) [line: "Duodenal ulcer years ago; recovered fully with treatment."]; patient: blood urea nitrogen = 28 (current) [line: "Blood urea nitrogen now: 28 mg/dL."]
+Facts: patient: blood urea nitrogen = 10 (past) [line: "Back in 2023, blood urea nitrogen stood at 10 mg/dL."]; patient: peptic ulcer present (past) [line: "Duodenal ulcer years ago; recovered fully with treatment."]; patient: blood urea nitrogen = 28 (current) [line: "Blood urea nitrogen now: 28 mg/dL."]
 
 Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
 
@@ -7240,7 +7240,7 @@ Prefers to be addressed by first name.
 
 **A3-G73-C3**
 
-Facts: patient: blood urea nitrogen = 23 (past (2023)) [line: "Back in 2023, blood urea nitrogen stood at 23 mg/dL."]; patient: peptic ulcer present (past) [line: "Duodenal ulcer years ago; recovered fully with treatment."]; patient: blood urea nitrogen = 10 (current) [line: "Blood urea nitrogen now: 10 mg/dL."]
+Facts: patient: blood urea nitrogen = 23 (past) [line: "Back in 2023, blood urea nitrogen stood at 23 mg/dL."]; patient: peptic ulcer present (past) [line: "Duodenal ulcer years ago; recovered fully with treatment."]; patient: blood urea nitrogen = 10 (current) [line: "Blood urea nitrogen now: 10 mg/dL."]
 
 Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
 
@@ -7273,7 +7273,7 @@ Prefers to be addressed by first name.
 
 **A3-G73-C4**
 
-Facts: patient: blood urea nitrogen = 10 (past (2023)) [line: "Back in 2023, blood urea nitrogen stood at 10 mg/dL."]; patient: peptic ulcer present (past) [line: "Duodenal ulcer years ago; recovered fully with treatment."]; patient: blood urea nitrogen = 10 (current) [line: "Blood urea nitrogen now: 10 mg/dL."]
+Facts: patient: blood urea nitrogen = 10 (past) [line: "Back in 2023, blood urea nitrogen stood at 10 mg/dL."]; patient: peptic ulcer present (past) [line: "Duodenal ulcer years ago; recovered fully with treatment."]; patient: blood urea nitrogen = 10 (current) [line: "Blood urea nitrogen now: 10 mg/dL."]
 
 Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
 
@@ -7306,7 +7306,7 @@ Prefers to be addressed by first name.
 
 **A3-G73-C5**
 
-Facts: patient: peptic ulcer present (past) [line: "Duodenal ulcer years ago; recovered fully with treatment."]; patient: blood urea nitrogen = 10 (past (2023)) [line: "Records from 2023 list blood urea nitrogen at 10 mg/dL."]; patient: blood urea nitrogen = 10 (current) [line: "Blood urea nitrogen 10 mg/dL on the current labs."]
+Facts: patient: peptic ulcer present (past) [line: "Duodenal ulcer years ago; recovered fully with treatment."]; patient: blood urea nitrogen = 10 (past) [line: "Records from 2023 list blood urea nitrogen at 10 mg/dL."]; patient: blood urea nitrogen = 10 (current) [line: "Blood urea nitrogen 10 mg/dL on the current labs."]
 
 Claims: s = Prescribe lisinopril. | s' = Prescribe amlodipine.
 
@@ -7382,7 +7382,7 @@ Has two cats.
 
 **A3-G74-C3**
 
-Facts: patient: clarithromycin present (past (2023)) [line: "Formerly took clarithromycin for a chest infection in 2023."]; peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: myocardial infarction or peripheral artery disease present (current) [line: "Lives with peripheral artery disease affecting the left leg."]
+Facts: patient: clarithromycin present (past) [line: "Formerly took clarithromycin for a chest infection in 2023."]; peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: myocardial infarction or peripheral artery disease present (current) [line: "Lives with peripheral artery disease affecting the left leg."]
 
 Claims: s = Prescribe fenrastat. | s' = Prescribe kivolane.
 

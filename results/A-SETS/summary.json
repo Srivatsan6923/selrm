@@ -1,4 +1,15 @@
 {
+ "challenge_v1_kit": {
+  "authors": 4,
+  "by_kind": {
+   "boundary": 32,
+   "negation": 32,
+   "numeric": 32,
+   "subject": 32,
+   "time": 32
+  },
+  "specs": 160
+ },
  "ec_v1_prepare": {
   "accepted_by_agents": 132,
   "by_concept": {

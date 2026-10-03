@@ -7,7 +7,7 @@ Answers are the program's: base, near-miss and presentation cases do not meet th
 
 Inclusion criterion: 40 years of age or more.
 
-Program: met iff the patient's current age value >= 40 years
+Program: met iff the patient's current age >= 40 years
 
 ### near-miss kind: numeric
 
@@ -56,7 +56,7 @@ Photographs local wildlife.
 
 Inclusion criterion: Age below 70 years
 
-Program: met iff the patient's current age value < 70 years
+Program: met iff the patient's current age < 70 years
 
 ### near-miss kind: numeric
 
@@ -101,7 +101,7 @@ Has two cats.
 
 Inclusion criterion: age > 35 years
 
-Program: met iff the patient's current age value > 35 years
+Program: met iff the patient's current age > 35 years
 
 ### near-miss kind: numeric
 
@@ -338,7 +338,7 @@ Photographs local wildlife.
 
 Inclusion criterion: BMI >30kg/m2
 
-Program: met iff the patient's current bmi value > 30
+Program: met iff the patient's current body mass index > 30 kg/m2
 
 ### near-miss kind: boundary
 
@@ -475,7 +475,7 @@ Photographs local wildlife.
 
 Exclusion criterion: Obesity (BMI ≥ 35 kg/m2)
 
-Program: met iff the patient's current bmi value >= 35
+Program: met iff the patient's current body mass index >= 35 kg/m2
 
 ### near-miss kind: numeric
 
@@ -570,7 +570,7 @@ Back in 2012, body mass index stood at 28.2 kg/m2.
 
 Inclusion criterion: Obesity (BMI greater than or equal to 30 kg/m2)
 
-Program: met iff the patient's current bmi value >= 30
+Program: met iff the patient's current body mass index >= 30 kg/m2
 
 ### near-miss kind: numeric
 
@@ -665,7 +665,7 @@ Sleeps seven hours a night.
 
 Exclusion criterion: Morbid obesity (BMI > 40 kg/m2)
 
-Program: met iff the patient's current bmi value > 40
+Program: met iff the patient's current body mass index > 40 kg/m2
 
 ### near-miss kind: numeric
 
@@ -756,7 +756,7 @@ Paints watercolors as a hobby.
 
 Inclusion criterion: BMI: >25 kg/m2
 
-Program: met iff the patient's current bmi value > 25
+Program: met iff the patient's current body mass index > 25 kg/m2
 
 ### near-miss kind: boundary
 
@@ -889,7 +889,7 @@ Latest BMI is 17.8 kg/m2.
 
 Inclusion criterion: BMI <40Kg / M ^ 2
 
-Program: met iff the patient's current bmi value < 40
+Program: met iff the patient's current body mass index < 40 kg/m2
 
 ### near-miss kind: boundary
 
@@ -1030,7 +1030,7 @@ Current body mass index 43.3 kg/m2.
 
 Inclusion criterion: BMI> 35 kg/m2
 
-Program: met iff the patient's current bmi value > 35
+Program: met iff the patient's current body mass index > 35 kg/m2
 
 ### near-miss kind: boundary
 
@@ -1163,7 +1163,7 @@ Records from 2006 list body mass index at 33.5 kg/m2.
 
 Exclusion criterion: Blood urea nitrogen (BUN) > 27 mg/dL
 
-Program: met iff the patient's current bun value > 27 mg/dL
+Program: met iff the patient's current blood urea nitrogen > 27 mg/dL
 
 ### near-miss kind: boundary
 
@@ -1308,7 +1308,7 @@ Enjoys board games.
 
 Exclusion criterion: Blood Urea Nitrogen (BUN) > 95 mg/dL
 
-Program: met iff the patient's current bun value > 95 mg/dL
+Program: met iff the patient's current blood urea nitrogen > 95 mg/dL
 
 ### near-miss kind: boundary
 
@@ -1429,7 +1429,7 @@ Drives a car.
 
 Exclusion criterion: Have known coronary artery disease
 
-Program: met iff the patient has cad now (the criterion does not say whether a past occurrence counts; no case states one)
+Program: met iff the patient has coronary artery disease now (the criterion does not say whether a past occurrence counts; no case states one)
 
 ### near-miss kind: negation
 
@@ -1520,7 +1520,7 @@ Plays the piano.
 
 Exclusion criterion: coronary artery disease
 
-Program: met iff the patient has cad now (the criterion does not say whether a past occurrence counts; no case states one)
+Program: met iff the patient has coronary artery disease now (the criterion does not say whether a past occurrence counts; no case states one)
 
 ### near-miss kind: negation
 
@@ -1692,7 +1692,7 @@ Uses sunscreen in summer.
 
 Exclusion criterion: History of heart failure
 
-Program: met iff the patient has chf at any time (current or past)
+Program: met iff the patient has heart failure at any time (current or past)
 
 ### near-miss kind: negation
 
@@ -1781,7 +1781,7 @@ Enjoys board games.
 
 Exclusion criterion: Allergic to iodine contrast agents in the past
 
-Program: met iff the patient has contrast_allergy at any time (current or past)
+Program: met iff the patient has an allergy to iodinated contrast at any time (current or past)
 
 ### near-miss kind: negation
 
@@ -1870,7 +1870,7 @@ No allergies at present.
 
 Exclusion criterion: Subject who has serum creatinine >= 1.5mg/dL
 
-Program: met iff the patient's current creatinine value >= 1.5 mg/dL
+Program: met iff the patient's current serum creatinine >= 1.5 mg/dL
 
 ### near-miss kind: numeric
 
@@ -1961,7 +1961,7 @@ Records from 2005 list serum creatinine at 1.3 mg/dL.
 
 Exclusion criterion: Creatinine > 1.8 mg/dL
 
-Program: met iff the patient's current creatinine value > 1.8 mg/dL
+Program: met iff the patient's current serum creatinine > 1.8 mg/dL
 
 ### near-miss kind: boundary
 
@@ -2048,7 +2048,7 @@ Current serum creatinine 0.5 mg/dL.
 
 Exclusion criterion: Have renal failure (serum creatinine greater than 2.0mg/dl)
 
-Program: met iff the patient's current creatinine value > 2 mg/dL
+Program: met iff the patient's current serum creatinine > 2 mg/dL
 
 ### near-miss kind: boundary
 
@@ -2177,7 +2177,7 @@ Owns a bicycle.
 
 Inclusion criterion: Must have adequate renal function (serum creatinine <1.5 mg/dL).
 
-Program: met iff the patient's current creatinine value < 1.5 mg/dL
+Program: met iff the patient's current serum creatinine < 1.5 mg/dL
 
 ### near-miss kind: boundary
 
@@ -2476,7 +2476,7 @@ Paints watercolors as a hobby.
 
 Exclusion criterion: eGFR: < 30 mL/min/1.73 m2
 
-Program: met iff the patient's current egfr value < 30 mL/min/1.73 m2
+Program: met iff the patient's current eGFR < 30 mL/min/1.73 m2
 
 ### near-miss kind: boundary
 
@@ -2601,7 +2601,7 @@ Prefers to be addressed by first name.
 
 Exclusion criterion: Kidney disease (eGFR < 60 ml/min/1.73 m2)
 
-Program: met iff the patient's current egfr value < 60 mL/min/1.73 m2
+Program: met iff the patient's current eGFR < 60 mL/min/1.73 m2
 
 ### near-miss kind: boundary
 
@@ -2684,7 +2684,7 @@ eGFR now 81 mL/min/1.73 m2.
 
 Exclusion criterion: eGFR <60mls/min/1.73m²
 
-Program: met iff the patient's current egfr value < 60 mL/min/1.73 m2
+Program: met iff the patient's current eGFR < 60 mL/min/1.73 m2
 
 ### near-miss kind: boundary
 
@@ -2813,7 +2813,7 @@ Photographs local wildlife.
 
 Exclusion criterion: Heart rate less than 45 beats per minute (BPM)
 
-Program: met iff the patient's current heart_rate value < 45 /min
+Program: met iff the patient's current heart rate < 45 /min
 
 ### near-miss kind: boundary
 
@@ -2938,7 +2938,7 @@ Knits as a hobby.
 
 Exclusion criterion: Presence of bradycardia (heart rate below 60 beats per minute) or sick sinus syndrome
 
-Program: met iff the patient's current heart_rate value < 60 /min
+Program: met iff the patient's current heart rate < 60 /min
 
 ### near-miss kind: boundary
 
@@ -3059,7 +3059,7 @@ Heart rate now 81/min on a pulse check.
 
 Exclusion criterion: Heart rate <60 beats per minute
 
-Program: met iff the patient's current heart_rate value < 60 /min
+Program: met iff the patient's current heart rate < 60 /min
 
 ### near-miss kind: boundary
 
@@ -3188,7 +3188,7 @@ Back in 2015, heart rate stood at 97/min.
 
 Inclusion criterion: Have haemoglobin of 9.0 g/dl or less
 
-Program: met iff the patient's current hemoglobin value <= 9
+Program: met iff the patient's current hemoglobin <= 9 g/dL
 
 ### near-miss kind: numeric
 
@@ -3271,7 +3271,7 @@ Sleeps seven hours a night.
 
 Inclusion criterion: Hemoglobin ≥ 8 g/dl
 
-Program: met iff the patient's current hemoglobin value >= 8
+Program: met iff the patient's current hemoglobin >= 8 g/dL
 
 ### near-miss kind: numeric
 
@@ -3362,7 +3362,7 @@ Current Hgb 7.3 g/dL.
 
 Exclusion criterion: Hemoglobin < 8g /dl
 
-Program: met iff the patient's current hemoglobin value < 8
+Program: met iff the patient's current hemoglobin < 8 g/dL
 
 ### near-miss kind: boundary
 
@@ -3491,7 +3491,7 @@ Latest Hgb result: 11.4 g/dL.
 
 Exclusion criterion: Patients with a Haemoglobin < 9 g/dl.
 
-Program: met iff the patient's current hemoglobin value < 9
+Program: met iff the patient's current hemoglobin < 9 g/dL
 
 ### near-miss kind: boundary
 
@@ -3608,7 +3608,7 @@ Current Hgb 11.9 g/dL.
 
 Exclusion criterion: Hemoglobin ≤7.0 g/dL
 
-Program: met iff the patient's current hemoglobin value <= 7
+Program: met iff the patient's current hemoglobin <= 7 g/dL
 
 ### near-miss kind: numeric
 
@@ -3695,7 +3695,7 @@ Uses sunscreen in summer.
 
 Exclusion criterion: personal history of heparin-induced thrombocytopenia
 
-Program: met iff the patient has hit at any time (current or past)
+Program: met iff the patient has heparin-induced thrombocytopenia at any time (current or past)
 
 ### near-miss kind: negation
 
@@ -3786,7 +3786,7 @@ Uses sunscreen in summer.
 
 Exclusion criterion: Allergy to heparin or history of heparin-induced thrombocytopenia
 
-Program: met iff the patient has hit at any time (current or past); also listed in the text but never mentioned in cases: allergy to heparin
+Program: met iff the patient has heparin-induced thrombocytopenia at any time (current or past); also listed in the text but never mentioned in cases: allergy to heparin
 
 ### near-miss kind: negation
 
@@ -3861,7 +3861,7 @@ Last received heparin more than a year ago.
 
 Exclusion criterion: History of heparin induced thrombocytopenia.
 
-Program: met iff the patient has hit at any time (current or past)
+Program: met iff the patient has heparin-induced thrombocytopenia at any time (current or past)
 
 ### near-miss kind: negation
 
@@ -3942,7 +3942,7 @@ Owns a bicycle.
 
 Exclusion criterion: With previous heparin-induced thrombocytopenia
 
-Program: met iff the patient has hit at any time (current or past)
+Program: met iff the patient has heparin-induced thrombocytopenia at any time (current or past)
 
 ### near-miss kind: negation
 
@@ -4031,7 +4031,7 @@ Uses sunscreen in summer.
 
 Exclusion criterion: History of sensitivity to heparin or heparin-induced thrombocytopenia
 
-Program: met iff the patient has hit at any time (current or past); also listed in the text but never mentioned in cases: history of sensitivity to heparin
+Program: met iff the patient has heparin-induced thrombocytopenia at any time (current or past); also listed in the text but never mentioned in cases: history of sensitivity to heparin
 
 ### near-miss kind: negation
 
@@ -4128,7 +4128,7 @@ Drives a car.
 
 Exclusion criterion: Diagnosis of Heparin-Induced Thrombocytopenia (HIT)
 
-Program: met iff the patient has hit now (the criterion does not say whether a past occurrence counts; no case states one)
+Program: met iff the patient has heparin-induced thrombocytopenia now (the criterion does not say whether a past occurrence counts; no case states one)
 
 ### near-miss kind: negation
 
@@ -4213,7 +4213,7 @@ Prefers to be addressed by first name.
 
 Exclusion criterion: International Normalized Ratio (INR) >1.5
 
-Program: met iff the patient's current inr value > 1.5
+Program: met iff the patient's current INR > 1.5
 
 ### near-miss kind: boundary
 
@@ -4346,7 +4346,7 @@ Latest international normalized ratio (INR): 1.1.
 
 Exclusion criterion: Has International Normalized Ratio greater than 1.7
 
-Program: met iff the patient's current inr value > 1.7
+Program: met iff the patient's current INR > 1.7
 
 ### near-miss kind: boundary
 
@@ -4463,7 +4463,7 @@ Prefers to be addressed by first name.
 
 Exclusion criterion: International normalized ratio (INR) > 3
 
-Program: met iff the patient's current inr value > 3
+Program: met iff the patient's current INR > 3
 
 ### near-miss kind: boundary
 
@@ -4592,7 +4592,7 @@ Paints watercolors as a hobby.
 
 Exclusion criterion: Base line INR >2
 
-Program: met iff the patient's current inr value > 2
+Program: met iff the patient's current INR > 2
 
 ### near-miss kind: boundary
 
@@ -4721,7 +4721,7 @@ Records from 2015 list international normalized ratio at 1.8.
 
 Exclusion criterion: Current use of Lithium
 
-Program: met iff the patient has lithium now (current)
+Program: met iff the patient has lithium treatment now (current)
 
 ### near-miss kind: negation
 
@@ -4848,7 +4848,7 @@ Photographs local wildlife.
 
 Exclusion criterion: Mechanical heart valve
 
-Program: met iff the patient has mech_valve now (the criterion does not say whether a past occurrence counts; no case states one)
+Program: met iff the patient has a mechanical heart valve now (the criterion does not say whether a past occurrence counts; no case states one)
 
 ### near-miss kind: negation
 
@@ -4929,7 +4929,7 @@ Drives a car.
 
 Exclusion criterion: History of mechanical valve replacement
 
-Program: met iff the patient has mech_valve at any time (current or past)
+Program: met iff the patient has a mechanical heart valve at any time (current or past)
 
 ### near-miss kind: negation
 
@@ -5012,7 +5012,7 @@ Teeth in good repair.
 
 Exclusion criterion: Any mechanical prosthetic heart valve
 
-Program: met iff the patient has mech_valve now (the criterion does not say whether a past occurrence counts; no case states one)
+Program: met iff the patient has a mechanical heart valve now (the criterion does not say whether a past occurrence counts; no case states one)
 
 ### near-miss kind: negation
 
@@ -5099,7 +5099,7 @@ Drives a car.
 
 Exclusion criterion: Mechanical heart prosthetic valve
 
-Program: met iff the patient has mech_valve now (the criterion does not say whether a past occurrence counts; no case states one)
+Program: met iff the patient has a mechanical heart valve now (the criterion does not say whether a past occurrence counts; no case states one)
 
 ### near-miss kind: negation
 
@@ -5176,7 +5176,7 @@ Photographs local wildlife.
 
 Exclusion criterion: patients taking methotrexate
 
-Program: met iff the patient has methotrexate now (current)
+Program: met iff the patient has methotrexate treatment now (current)
 
 ### near-miss kind: negation
 
@@ -5297,7 +5297,7 @@ Teeth in good repair.
 
 Exclusion criterion: Neutrophil < 0.5 x10^9/L
 
-Program: met iff the patient's current neutrophils value < 0.5
+Program: met iff the patient's current neutrophil count < 0.5 x10^9/L
 
 ### near-miss kind: boundary
 
@@ -5426,7 +5426,7 @@ Back in 2006, neutrophil count stood at 1.1 x10^9/L.
 
 Exclusion criterion: Neutrophil count ≤ 1.0 x10^9/L
 
-Program: met iff the patient's current neutrophils value <= 1
+Program: met iff the patient's current neutrophil count <= 1 x10^9/L
 
 ### near-miss kind: numeric
 
@@ -5513,7 +5513,7 @@ Current neutrophil count 1.5 x10^9/L.
 
 Exclusion criterion: Absolute neutrophil count <1.5 x10^9/L
 
-Program: met iff the patient's current neutrophils value < 1.5
+Program: met iff the patient's current neutrophil count < 1.5 x10^9/L
 
 ### near-miss kind: boundary
 
@@ -5646,7 +5646,7 @@ Sees a dentist yearly.
 
 Exclusion criterion: Absolute neutrophil count (ANC) <1.0 x10^9/L
 
-Program: met iff the patient's current neutrophils value < 1
+Program: met iff the patient's current neutrophil count < 1 x10^9/L
 
 ### near-miss kind: boundary
 
@@ -5779,7 +5779,7 @@ Back in 2012, neutrophil count stood at 2.4 x10^9/L.
 
 Exclusion criterion: Absolute neutrophil count < 0.5 x10^9/L
 
-Program: met iff the patient's current neutrophils value < 0.5
+Program: met iff the patient's current neutrophil count < 0.5 x10^9/L
 
 ### near-miss kind: boundary
 
@@ -5908,7 +5908,7 @@ Back in 2014, neutrophil count stood at 1.3 x10^9/L.
 
 Inclusion criterion: Diagnosed with gastritis, duodenitis, or peptic ulcer
 
-Program: met iff the patient has peptic_ulcer now (the criterion does not say whether a past occurrence counts; no case states one); also listed in the text but never mentioned in cases: gastritis, duodenitis
+Program: met iff the patient has a peptic ulcer now (the criterion does not say whether a past occurrence counts; no case states one); also listed in the text but never mentioned in cases: gastritis, duodenitis
 
 ### near-miss kind: negation
 
@@ -5997,7 +5997,7 @@ Plays the piano.
 
 Exclusion criterion: Active gastric or duodenal ulcers
 
-Program: met iff the patient has peptic_ulcer now (current)
+Program: met iff the patient has a peptic ulcer now (current)
 
 ### near-miss kind: negation
 
@@ -6124,7 +6124,7 @@ Prefers morning appointments.
 
 Exclusion criterion: Active peptic ulcer, ulcerative colitis, Crohn disease, celiac disease, inflammatory bowel disease
 
-Program: met iff the patient has peptic_ulcer now (current); also listed in the text but never mentioned in cases: ulcerative colitis, Crohn disease, celiac disease, inflammatory bowel disease
+Program: met iff the patient has a peptic ulcer now (current); also listed in the text but never mentioned in cases: ulcerative colitis, Crohn disease, celiac disease, inflammatory bowel disease
 
 ### near-miss kind: negation
 
@@ -6245,7 +6245,7 @@ Knits as a hobby.
 
 Exclusion criterion: Active liver or peptic ulcer disease
 
-Program: met iff the patient has peptic_ulcer now (current); also listed in the text but never mentioned in cases: active liver disease
+Program: met iff the patient has a peptic ulcer now (current); also listed in the text but never mentioned in cases: active liver disease
 
 ### near-miss kind: negation
 
@@ -6378,7 +6378,7 @@ Paints watercolors as a hobby.
 
 Inclusion criterion: Patients with identified gastric or duodenal ulcer
 
-Program: met iff the patient has peptic_ulcer now (the criterion does not say whether a past occurrence counts; no case states one)
+Program: met iff the patient has a peptic ulcer now (the criterion does not say whether a past occurrence counts; no case states one)
 
 ### near-miss kind: negation
 
@@ -6465,7 +6465,7 @@ Appetite good; no indigestion.
 
 Exclusion criterion: Platelets < 125 x10^9/L
 
-Program: met iff the patient's current platelets value < 125 x10^9/L
+Program: met iff the patient's current platelet count < 125 x10^9/L
 
 ### near-miss kind: boundary
 
@@ -6594,7 +6594,7 @@ Back in 2012, platelet count stood at 174 x10^9/L.
 
 Exclusion criterion: Platelet count <50 x10^9/L
 
-Program: met iff the patient's current platelets value < 50 x10^9/L
+Program: met iff the patient's current platelet count < 50 x10^9/L
 
 ### near-miss kind: boundary
 
@@ -6735,7 +6735,7 @@ Prefers to be addressed by first name.
 
 Exclusion criterion: Thrombocytopenia with platelet count <30 × 10⁹/L
 
-Program: met iff the patient's current platelets value < 30 x10^9/L
+Program: met iff the patient's current platelet count < 30 x10^9/L
 
 ### near-miss kind: boundary
 
@@ -6868,7 +6868,7 @@ Records from 2009 list platelet count at 77 x10^9/L.
 
 Exclusion criterion: Platelet count < 90 x10^9/L at the selection visit
 
-Program: met iff the patient's current platelets value < 90 x10^9/L
+Program: met iff the patient's current platelet count < 90 x10^9/L
 
 ### near-miss kind: boundary
 
@@ -6993,7 +6993,7 @@ Back in 2009, platelet count stood at 137 x10^9/L.
 
 Exclusion criterion: Patients with serum potassium > 5.2 mmol/L
 
-Program: met iff the patient's current potassium value > 5.2 mmol/L
+Program: met iff the patient's current serum potassium > 5.2 mmol/L
 
 ### near-miss kind: boundary
 
@@ -7130,7 +7130,7 @@ Records from 2018 list serum potassium at 4.7 mmol/L.
 
 Exclusion criterion: Potassium is < 3.5 mmol/L
 
-Program: met iff the patient's current potassium value < 3.5 mmol/L
+Program: met iff the patient's current serum potassium < 3.5 mmol/L
 
 ### near-miss kind: boundary
 
@@ -7271,7 +7271,7 @@ Paints watercolors as a hobby.
 
 Inclusion criterion: serum potassium ≥5.5 mmol/L
 
-Program: met iff the patient's current potassium value >= 5.5 mmol/L
+Program: met iff the patient's current serum potassium >= 5.5 mmol/L
 
 ### near-miss kind: numeric
 
@@ -7362,7 +7362,7 @@ Owns a bicycle.
 
 Exclusion criterion: Serum potassium level >5.5 mmol/L
 
-Program: met iff the patient's current potassium value > 5.5 mmol/L
+Program: met iff the patient's current serum potassium > 5.5 mmol/L
 
 ### near-miss kind: boundary
 
@@ -7475,7 +7475,7 @@ Records from 2024 list serum potassium at 4.2 mmol/L.
 
 Exclusion criterion: Hypokalaemia: serum potassium level <3.4 mmol/l
 
-Program: met iff the patient's current potassium value < 3.4 mmol/L
+Program: met iff the patient's current serum potassium < 3.4 mmol/L
 
 ### near-miss kind: boundary
 
@@ -7604,7 +7604,7 @@ Back in 2020, serum potassium stood at 4.0 mmol/L.
 
 Exclusion criterion: Serum potassium > 4.8 mmol/L
 
-Program: met iff the patient's current potassium value > 4.8 mmol/L
+Program: met iff the patient's current serum potassium > 4.8 mmol/L
 
 ### near-miss kind: boundary
 
@@ -8079,7 +8079,7 @@ Has two cats.
 
 Exclusion criterion: Respiratory rate> 30 breaths / minute
 
-Program: met iff the patient's current rr value > 30 /min
+Program: met iff the patient's current respiratory rate > 30 /min
 
 ### near-miss kind: boundary
 
@@ -8204,7 +8204,7 @@ Pupils equal and reactive to light.
 
 Exclusion criterion: Hypotension (systolic blood pressure <90 mmHg).
 
-Program: met iff the patient's current sbp value < 90 mmHg
+Program: met iff the patient's current systolic blood pressure < 90 mmHg
 
 ### near-miss kind: boundary
 
@@ -8329,7 +8329,7 @@ Records from 2017 list systolic blood pressure at 153 mmHg.
 
 Exclusion criterion: Cardiogenic shock or systolic blood pressure below 100 mmHg
 
-Program: met iff the patient's current sbp value < 100 mmHg
+Program: met iff the patient's current systolic blood pressure < 100 mmHg
 
 ### near-miss kind: boundary
 
@@ -8458,7 +8458,7 @@ Sees a dentist yearly.
 
 Inclusion criterion: systolic blood pressure: >90 mmHg
 
-Program: met iff the patient's current sbp value > 90 mmHg
+Program: met iff the patient's current systolic blood pressure > 90 mmHg
 
 ### near-miss kind: boundary
 
@@ -8575,7 +8575,7 @@ Observations now: blood pressure 82/60 mmHg.
 
 Exclusion criterion: Systolic blood pressure less than or equal to 90 mmHg
 
-Program: met iff the patient's current sbp value <= 90 mmHg
+Program: met iff the patient's current systolic blood pressure <= 90 mmHg
 
 ### near-miss kind: numeric
 
@@ -8670,7 +8670,7 @@ Drives a car.
 
 Exclusion criterion: Participant with a prior stroke of any etiology or transient ischemic attack (TIA)
 
-Program: met iff the patient has stroke at any time (current or past)
+Program: met iff the patient has a stroke or TIA at any time (current or past)
 
 ### near-miss kind: negation
 
@@ -8751,7 +8751,7 @@ Owns a bicycle.
 
 Exclusion criterion: Patients with sulfa allergy will be excluded.
 
-Program: met iff the patient has sulfa_allergy now (the criterion does not say whether a past occurrence counts; no case states one)
+Program: met iff the patient has a sulfonamide allergy now (the criterion does not say whether a past occurrence counts; no case states one)
 
 ### near-miss kind: negation
 
@@ -8834,7 +8834,7 @@ Sleeps seven hours a night.
 
 Exclusion criterion: Allergy to sulfa drugs
 
-Program: met iff the patient has sulfa_allergy now (the criterion does not say whether a past occurrence counts; no case states one)
+Program: met iff the patient has a sulfonamide allergy now (the criterion does not say whether a past occurrence counts; no case states one)
 
 ### near-miss kind: negation
 
@@ -8921,7 +8921,7 @@ Has two cats.
 
 Exclusion criterion: Patient with known allergy to Tamsulosin or sulfa drugs
 
-Program: met iff the patient has sulfa_allergy now (the criterion does not say whether a past occurrence counts; no case states one); also listed in the text but never mentioned in cases: known allergy to tamsulosin
+Program: met iff the patient has a sulfonamide allergy now (the criterion does not say whether a past occurrence counts; no case states one); also listed in the text but never mentioned in cases: known allergy to tamsulosin
 
 ### near-miss kind: negation
 
@@ -9008,7 +9008,7 @@ Current drug allergies: none.
 
 Exclusion criterion: Has known hypersensitivity to sulfonamides.
 
-Program: met iff the patient has sulfa_allergy now (the criterion does not say whether a past occurrence counts; no case states one)
+Program: met iff the patient has a sulfonamide allergy now (the criterion does not say whether a past occurrence counts; no case states one)
 
 ### near-miss kind: negation
 
@@ -9095,7 +9095,7 @@ Medication allergies: none at present.
 
 Exclusion criterion: myocardial infarction within the previous 3 months (the day exactly 3 months before the visit counts)
 
-Program: met iff the patient has vascular within the 3 months before the visit date (boundary day counts)
+Program: met iff the patient has a myocardial infarction (or, outside windows, peripheral artery disease) within the 3 months before the visit date (boundary day counts)
 
 ### near-miss kind: negation
 
@@ -9218,7 +9218,7 @@ Uses sunscreen in summer.
 
 Exclusion criterion: A heart attack (myocardial infarct) in the past twelve months (the day exactly twelve months before the visit counts)
 
-Program: met iff the patient has vascular within the 12 months before the visit date (boundary day counts)
+Program: met iff the patient has a myocardial infarction (or, outside windows, peripheral artery disease) within the 12 months before the visit date (boundary day counts)
 
 ### near-miss kind: negation
 
@@ -9349,7 +9349,7 @@ Knits as a hobby.
 
 Exclusion criterion: Myocardial infarction within three months (the day exactly three months before the visit counts)
 
-Program: met iff the patient has vascular within the 3 months before the visit date (boundary day counts)
+Program: met iff the patient has a myocardial infarction (or, outside windows, peripheral artery disease) within the 3 months before the visit date (boundary day counts)
 
 ### near-miss kind: negation
 
@@ -9472,7 +9472,7 @@ Prefers to be addressed by first name.
 
 Exclusion criterion: Current or past deep vein thrombosis or pulmonary embolism
 
-Program: met iff the patient has vte at any time (current or past)
+Program: met iff the patient has a venous thromboembolism at any time (current or past)
 
 ### near-miss kind: negation
 
@@ -9563,7 +9563,7 @@ Sleeps seven hours a night.
 
 Exclusion criterion: Subject has history of deep vein thrombosis and/or pulmonary embolism
 
-Program: met iff the patient has vte at any time (current or past)
+Program: met iff the patient has a venous thromboembolism at any time (current or past)
 
 ### near-miss kind: negation
 
@@ -9650,7 +9650,7 @@ Drives a car.
 
 Exclusion criterion: Venous thromboembolism within the last 4 weeks (the day exactly 4 weeks before the visit counts)
 
-Program: met iff the patient has vte within the 4 weeks before the visit date (boundary day counts)
+Program: met iff the patient has a venous thromboembolism within the 4 weeks before the visit date (boundary day counts)
 
 ### near-miss kind: negation
 
@@ -9669,7 +9669,7 @@ Owns a bicycle.
 Man of 73 years.
 Visit date: 20 February 2025.
 Screening visit for a clinical trial.
-Was treated for a deep vein thrombosis of the right leg 3 weeks ago.
+Had a pulmonary embolism 3 weeks ago, treated with anticoagulation.
 Lives in a second-floor apartment.
 Sees a dentist yearly.
 Owns a bicycle.
@@ -9714,7 +9714,7 @@ Male patient of 79 years.
 Visit date: 19 November 2025.
 Screening visit for a clinical trial.
 Prefers morning appointments.
-Was treated for a deep vein thrombosis of the right leg on 1 November 2025.
+Had a pulmonary embolism on 1 November 2025, treated with anticoagulation.
 Paints watercolors as a hobby.
 Uses sunscreen in summer.
 ```
@@ -9757,7 +9757,7 @@ Male patient of 31 years.
 Visit date: 2 July 2024.
 Screening visit for a clinical trial.
 Prefers morning appointments.
-Was treated for a deep vein thrombosis of the right leg 8 days ago.
+Had a pulmonary embolism 8 days ago, treated with anticoagulation.
 Sleeps seven hours a night.
 ```
 
@@ -9767,7 +9767,7 @@ Male patient of 31 years.
 Visit date: 2 July 2024.
 Screening visit for a clinical trial.
 Prefers morning appointments.
-Was treated for a deep vein thrombosis of the right leg 9 weeks ago.
+Had a pulmonary embolism 9 weeks ago, treated with anticoagulation.
 Sleeps seven hours a night.
 ```
 
@@ -9785,7 +9785,7 @@ Prefers morning appointments.
 
 Exclusion criterion: Known pulmonary embolism (PE) or deep vein thrombosis (DVT)
 
-Program: met iff the patient has vte now (the criterion does not say whether a past occurrence counts; no case states one)
+Program: met iff the patient has a venous thromboembolism now (the criterion does not say whether a past occurrence counts; no case states one)
 
 ### near-miss kind: negation
 
@@ -9876,7 +9876,7 @@ Knits as a hobby.
 
 Exclusion criterion: Currently taking warfarin
 
-Program: met iff the patient has warfarin now (current)
+Program: met iff the patient has warfarin treatment now (current)
 
 ### near-miss kind: negation
 
@@ -10013,7 +10013,7 @@ Plays the piano.
 
 Exclusion criterion: WBC < 4 x10^9/L
 
-Program: met iff the patient's current wbc value < 4 x10^9/L
+Program: met iff the patient's current white cell count < 4 x10^9/L
 
 ### near-miss kind: boundary
 
@@ -10146,7 +10146,7 @@ Records from 2024 list white cell count at 6.9 x10^9/L.
 
 Inclusion criterion: More than 60 Kg of weigh
 
-Program: met iff the patient's current weight value > 60 kg
+Program: met iff the patient's current weight > 60 kg
 
 ### near-miss kind: boundary
 
@@ -10279,7 +10279,7 @@ Current weight 51 kg.
 
 Inclusion criterion: Weight > 40 kg
 
-Program: met iff the patient's current weight value > 40 kg
+Program: met iff the patient's current weight > 40 kg
 
 ### near-miss kind: boundary
 
@@ -10400,7 +10400,7 @@ Drives a car.
 
 Exclusion criterion: Body weight < 40 kg
 
-Program: met iff the patient's current weight value < 40 kg
+Program: met iff the patient's current weight < 40 kg
 
 ### near-miss kind: boundary
 
@@ -10517,7 +10517,7 @@ Records from 2019 list weight at 68 kg.
 
 Inclusion criterion: Body weight equal or above 55 kg
 
-Program: met iff the patient's current weight value >= 55 kg
+Program: met iff the patient's current weight >= 55 kg
 
 ### near-miss kind: numeric
 

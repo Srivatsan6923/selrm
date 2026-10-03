@@ -1,5 +1,5 @@
 {
- "commit": "d50bc5ba73806cc4b0ae52e9b5949f05a43761c9",
+ "commit": "d212ab4b5616e7e3f97ea6ecef5fc0873ac9a7f0",
  "code_modified_since_commit": false,
  "rules": {
   "library": 353,
@@ -104,7 +104,7 @@
     "mg/dL"
    ],
    "egfr": [
-    "mL/min/1.73"
+    "mL/min/1.73 m2"
    ],
    "heart_rate": [
     "/min"
@@ -153,6 +153,34 @@
   "constraint_rules": 310,
   "constraint_claim_word_diff_max": 2,
   "constraint_claim_word_diff_le2_pct": 100.0
+ },
+ "training_corpora_records": {
+  "train_natural": 60000,
+  "train_balanced": 60000,
+  "train_blocks": 60004,
+  "train_triplets": 60004
+ },
+ "lexicons": {
+  "negation_cues": {
+   "train": 3,
+   "test": 6,
+   "shared": 0
+  },
+  "time_cues": {
+   "train": 8,
+   "test": 8,
+   "shared": 0
+  },
+  "current_cues": {
+   "train": 3,
+   "test": 5,
+   "shared": 0
+  },
+  "persons": {
+   "train": 12,
+   "test": 6,
+   "shared": 0
+  }
  },
  "target_claim_check": {
   "sets": [
@@ -357,8 +385,78 @@
     "by_reason": {
      "pres": 61
     }
+   },
+   "rule_v1_fold2/dev": {
+    "proposed": 302,
+    "rejected": 2,
+    "by_reason": {
+     "pres": 2
+    }
+   },
+   "rule_v1_fold2/test_L2": {
+    "proposed": 2000,
+    "rejected": 0,
+    "by_reason": {}
+   },
+   "rule_v1_fold2/train_blocks": {
+    "proposed": 5790,
+    "rejected": 44,
+    "by_reason": {
+     "pres": 44
+    }
+   },
+   "rule_v1_fold2/train_triplets": {
+    "proposed": 5789,
+    "rejected": 44,
+    "by_reason": {
+     "pres": 44
+    }
+   },
+   "rule_v1_fold3/dev": {
+    "proposed": 300,
+    "rejected": 0,
+    "by_reason": {}
+   },
+   "rule_v1_fold3/test_L2": {
+    "proposed": 2021,
+    "rejected": 21,
+    "by_reason": {
+     "pres": 21
+    }
+   },
+   "rule_v1_fold3/train_blocks": {
+    "proposed": 5584,
+    "rejected": 43,
+    "by_reason": {
+     "pres": 43
+    }
+   },
+   "rule_v1_fold3/train_triplets": {
+    "proposed": 5588,
+    "rejected": 43,
+    "by_reason": {
+     "pres": 43
+    }
    }
   },
+  "sets_without_reject_log": [
+   "rule_v1/dev_missing",
+   "rule_v1/div_base_16",
+   "rule_v1/div_new_128",
+   "rule_v1/div_new_223",
+   "rule_v1/div_new_32",
+   "rule_v1/div_new_63",
+   "rule_v1/div_new_64",
+   "rule_v1/div_patients_128",
+   "rule_v1/div_patients_223",
+   "rule_v1/div_patients_32",
+   "rule_v1/div_patients_63",
+   "rule_v1/div_patients_64",
+   "rule_v1/div_same_32",
+   "rule_v1/div_same_63",
+   "rule_v1/missing",
+   "rule_v1/readapply"
+  ],
   "missing_twins_regenerated": {
    "rule_v1/missing": {
     "groups": 1000,

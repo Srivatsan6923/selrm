@@ -8,7 +8,7 @@ Rule: For Quorin syndrome, prescribe ostravin. If the patient has active cancer 
 
 **A1-G01-C1**
 
-Facts: heart failure: not named; a general line implies absence (counts as absent) [line: "Sleeps flat on one pillow."]; patient: cancer present (past (2017)) [line: "Formerly had kidney cancer, cured by surgery in 2017."]
+Facts: heart failure: not named; a general line implies absence (counts as absent) [line: "Sleeps flat on one pillow."]; patient: cancer present (past) [line: "Formerly had kidney cancer, cured by surgery in 2017."]
 
 Claims: s = Prescribe ostravin. | s' = Prescribe dalmerol.
 
@@ -142,7 +142,7 @@ Rule: For Varnell syndrome, prescribe lorvatide. If the current temperature is a
 
 **A1-G03-C1**
 
-Facts: patient: venous thromboembolism present (past (2014)) [line: "Recovered from a pulmonary embolism in 2014."]; patient: temperature = 37.4 (current) [line: "Temperature now 37.4 C (tympanic)."]
+Facts: patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2014."]; patient: temperature = 37.4 (current) [line: "Temperature now 37.4 C (tympanic)."]
 
 Claims: s = Prescribe lorvatide. | s' = Prescribe pemraxin.
 
@@ -157,7 +157,7 @@ Teeth in good repair.
 
 **A1-G03-C2**
 
-Facts: patient: temperature = 37.4 (current) [line: "Current temperature 37.4 C."]; patient: venous thromboembolism present (past (2014)) [line: "Recovered from a pulmonary embolism in 2014."]
+Facts: patient: temperature = 37.4 (current) [line: "Current temperature 37.4 C."]; patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2014."]
 
 Claims: s = Prescribe lorvatide. | s' = Prescribe pemraxin.
 
@@ -172,7 +172,7 @@ Teeth in good repair.
 
 **A1-G03-C3**
 
-Facts: patient: venous thromboembolism present (past (2014)) [line: "Recovered from a pulmonary embolism in 2014."]; patient: temperature = 38.0 (current) [line: "Temperature now 38.0 C (tympanic)."]
+Facts: patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2014."]; patient: temperature = 38.0 (current) [line: "Temperature now 38.0 C (tympanic)."]
 
 Claims: s = Prescribe lorvatide. | s' = Prescribe pemraxin.
 
@@ -187,7 +187,7 @@ Teeth in good repair.
 
 **A1-G03-C4**
 
-Facts: patient: venous thromboembolism present (past (2014)) [line: "Recovered from a pulmonary embolism in 2014."]; patient: temperature = 38.8 (current) [line: "Temperature now 38.8 C (tympanic)."]
+Facts: patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2014."]; patient: temperature = 38.8 (current) [line: "Temperature now 38.8 C (tympanic)."]
 
 Claims: s = Prescribe lorvatide. | s' = Prescribe pemraxin.
 
@@ -599,7 +599,7 @@ Rule: For thromboprophylaxis after hip replacement, prescribe enoxaparin. If at 
 
 **A1-G08-C1**
 
-Facts: patient: weight = 86 (current) [line: "Latest weight 86 kg."]; patient: weight = 69 (past (2008)) [line: "Records from 2008 list weight at 69 kg."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]; venous thromboembolism: not mentioned (counts as absent)
+Facts: patient: weight = 86 (current) [line: "Latest weight 86 kg."]; patient: weight = 69 (past) [line: "Records from 2008 list weight at 69 kg."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]; venous thromboembolism: not mentioned (counts as absent)
 
 Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
 
@@ -632,7 +632,7 @@ Owns a bicycle.
 
 **A1-G08-C2**
 
-Facts: patient: weight = 58 (past (2008)) [line: "Back in 2008, weight stood at 58 kg."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]; patient: weight = 86 (current) [line: "Current weight 86 kg."]; venous thromboembolism: not mentioned (counts as absent)
+Facts: patient: weight = 58 (past) [line: "Back in 2008, weight stood at 58 kg."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]; patient: weight = 86 (current) [line: "Current weight 86 kg."]; venous thromboembolism: not mentioned (counts as absent)
 
 Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
 
@@ -665,7 +665,7 @@ Owns a bicycle.
 
 **A1-G08-C3**
 
-Facts: patient: weight = 69 (past (2008)) [line: "Back in 2008, weight stood at 69 kg."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]; patient: weight = 60 (current) [line: "Current weight 60 kg."]; venous thromboembolism: not mentioned (counts as absent)
+Facts: patient: weight = 69 (past) [line: "Back in 2008, weight stood at 69 kg."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]; patient: weight = 60 (current) [line: "Current weight 60 kg."]; venous thromboembolism: not mentioned (counts as absent)
 
 Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
 
@@ -698,7 +698,7 @@ Owns a bicycle.
 
 **A1-G08-C4**
 
-Facts: patient: weight = 69 (past (2008)) [line: "Back in 2008, weight stood at 69 kg."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]; patient: weight = 86 (current) [line: "Current weight 86 kg."]; venous thromboembolism: not mentioned (counts as absent)
+Facts: patient: weight = 69 (past) [line: "Back in 2008, weight stood at 69 kg."]; patient: peptic ulcer present (current) [line: "Active peptic ulcer disease."]; patient: weight = 86 (current) [line: "Current weight 86 kg."]; venous thromboembolism: not mentioned (counts as absent)
 
 Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
 
@@ -1387,7 +1387,7 @@ Drives a car.
 
 **A1-G14-C2**
 
-Facts: patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: ALT = 38 (current) [line: "Current ALT 38 U/L."]; patient: ALT = 126 (past (2022)) [line: "Records from 2022 list ALT at 126 U/L."]
+Facts: patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: ALT = 38 (current) [line: "Current ALT 38 U/L."]; patient: ALT = 126 (past) [line: "Records from 2022 list ALT at 126 U/L."]
 
 Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
 
@@ -1406,7 +1406,7 @@ Records from 2022 list ALT at 126 U/L.
 
 **A1-G14-C3**
 
-Facts: peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: ALT = 33 (past (2022)) [line: "Back in 2022, ALT stood at 33 U/L."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; patient: ALT = 38 (current) [line: "ALT now 38 U/L."]
+Facts: peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: ALT = 33 (past) [line: "Back in 2022, ALT stood at 33 U/L."]; patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; patient: ALT = 38 (current) [line: "ALT now 38 U/L."]
 
 Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
 
@@ -1425,7 +1425,7 @@ ALT now 38 U/L.
 
 **A1-G14-C4**
 
-Facts: patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: ALT = 38 (current) [line: "Current ALT 38 U/L."]; patient: ALT = 33 (past (2022)) [line: "Records from 2022 list ALT at 33 U/L."]
+Facts: patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: ALT = 38 (current) [line: "Current ALT 38 U/L."]; patient: ALT = 33 (past) [line: "Records from 2022 list ALT at 33 U/L."]
 
 Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
 
@@ -1444,7 +1444,7 @@ Records from 2022 list ALT at 33 U/L.
 
 **A1-G14-C5**
 
-Facts: patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: ALT = 143 (current) [line: "Current ALT 143 U/L."]; patient: ALT = 33 (past (2022)) [line: "Records from 2022 list ALT at 33 U/L."]
+Facts: patient: venous thromboembolism present (current) [line: "Has an acute pulmonary embolism, diagnosed this week."]; peptic ulcer: not named; a general line implies absence (counts as absent) [line: "Appetite good; no indigestion."]; patient: ALT = 143 (current) [line: "Current ALT 143 U/L."]; patient: ALT = 33 (past) [line: "Records from 2022 list ALT at 33 U/L."]
 
 Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
 
@@ -1468,7 +1468,7 @@ Rule: For dual antiplatelet therapy after a myocardial infarction, prescribe asp
 
 **A1-G15-C1**
 
-Facts: patient: serum potassium = 4.1 (current) [line: "Latest potassium result: 4.1 mmol/L."]; father: venous thromboembolism present (past (2019)) [line: "Her father recovered from a pulmonary embolism in 2019."]; patient: serum potassium = 5.8 (past (2014)) [line: "Back in 2014, serum potassium stood at 5.8 mmol/L."]
+Facts: patient: serum potassium = 4.1 (current) [line: "Latest potassium result: 4.1 mmol/L."]; father: venous thromboembolism present (past) [line: "Her father recovered from a pulmonary embolism in 2019."]; patient: serum potassium = 5.8 (past) [line: "Back in 2014, serum potassium stood at 5.8 mmol/L."]
 
 Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
 
@@ -1484,7 +1484,7 @@ Back in 2014, serum potassium stood at 5.8 mmol/L.
 
 **A1-G15-C2**
 
-Facts: patient: serum potassium = 3.9 (past (2014)) [line: "Records from 2014 list serum potassium at 3.9 mmol/L."]; father: venous thromboembolism present (past (2019)) [line: "Her father recovered from a pulmonary embolism in 2019."]; patient: serum potassium = 4.1 (current) [line: "Current serum potassium 4.1 mmol/L."]
+Facts: patient: serum potassium = 3.9 (past) [line: "Records from 2014 list serum potassium at 3.9 mmol/L."]; father: venous thromboembolism present (past) [line: "Her father recovered from a pulmonary embolism in 2019."]; patient: serum potassium = 4.1 (current) [line: "Current serum potassium 4.1 mmol/L."]
 
 Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
 
@@ -1500,7 +1500,7 @@ Current serum potassium 4.1 mmol/L.
 
 **A1-G15-C3**
 
-Facts: patient: serum potassium = 4.1 (current) [line: "Latest potassium result: 4.1 mmol/L."]; father: venous thromboembolism present (past (2019)) [line: "Her father recovered from a pulmonary embolism in 2019."]; patient: serum potassium = 3.9 (past (2014)) [line: "Back in 2014, serum potassium stood at 3.9 mmol/L."]
+Facts: patient: serum potassium = 4.1 (current) [line: "Latest potassium result: 4.1 mmol/L."]; father: venous thromboembolism present (past) [line: "Her father recovered from a pulmonary embolism in 2019."]; patient: serum potassium = 3.9 (past) [line: "Back in 2014, serum potassium stood at 3.9 mmol/L."]
 
 Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
 
@@ -1516,7 +1516,7 @@ Back in 2014, serum potassium stood at 3.9 mmol/L.
 
 **A1-G15-C4**
 
-Facts: father: venous thromboembolism present (past (2019)) [line: "Her father recovered from a pulmonary embolism in 2019."]; serum potassium: not mentioned (unknown)
+Facts: father: venous thromboembolism present (past) [line: "Her father recovered from a pulmonary embolism in 2019."]; serum potassium: not mentioned (unknown)
 
 Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
 
@@ -1530,7 +1530,7 @@ Knits as a hobby.
 
 **A1-G15-C5**
 
-Facts: patient: serum potassium = 5.6 (current) [line: "Latest potassium result: 5.6 mmol/L."]; father: venous thromboembolism present (past (2019)) [line: "Her father recovered from a pulmonary embolism in 2019."]; patient: serum potassium = 3.9 (past (2014)) [line: "Back in 2014, serum potassium stood at 3.9 mmol/L."]
+Facts: patient: serum potassium = 5.6 (current) [line: "Latest potassium result: 5.6 mmol/L."]; father: venous thromboembolism present (past) [line: "Her father recovered from a pulmonary embolism in 2019."]; patient: serum potassium = 3.9 (past) [line: "Back in 2014, serum potassium stood at 3.9 mmol/L."]
 
 Claims: s = Prescribe aspirin plus ticagrelor. | s' = Prescribe aspirin plus clopidogrel.
 
@@ -1782,7 +1782,7 @@ Rule: For cellulitis of the lower leg, prescribe cephalexin. If at least two of 
 
 **A1-G19-C1**
 
-Facts: patient: weight = 53 (current) [line: "Latest weight 53 kg."]; penicillin allergy: not named; a general line implies absence (counts as absent) [line: "Reports no allergies to medicines."]; patient: weight = 67 (past (2014)) [line: "Records from 2014 list weight at 67 kg."]; sister: coronary artery disease present (past) [line: "His sister had bypass surgery for coronary artery disease years ago."]
+Facts: patient: weight = 53 (current) [line: "Latest weight 53 kg."]; penicillin allergy: not named; a general line implies absence (counts as absent) [line: "Reports no allergies to medicines."]; patient: weight = 67 (past) [line: "Records from 2014 list weight at 67 kg."]; sister: coronary artery disease present (past) [line: "His sister had bypass surgery for coronary artery disease years ago."]
 
 Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
 
@@ -1802,7 +1802,7 @@ Knits as a hobby.
 
 **A1-G19-C2**
 
-Facts: sister: coronary artery disease present (past) [line: "His sister had bypass surgery for coronary artery disease years ago."]; penicillin allergy: not named; a general line implies absence (counts as absent) [line: "Reports no allergies to medicines."]; patient: weight = 67 (past (2014)) [line: "Back in 2014, weight stood at 67 kg."]; patient: weight = 80 (current) [line: "Current weight 80 kg."]
+Facts: sister: coronary artery disease present (past) [line: "His sister had bypass surgery for coronary artery disease years ago."]; penicillin allergy: not named; a general line implies absence (counts as absent) [line: "Reports no allergies to medicines."]; patient: weight = 67 (past) [line: "Back in 2014, weight stood at 67 kg."]; patient: weight = 80 (current) [line: "Current weight 80 kg."]
 
 Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
 
@@ -1822,7 +1822,7 @@ Prefers to be addressed by first name.
 
 **A1-G19-C3**
 
-Facts: patient: weight = 80 (current) [line: "Latest weight 80 kg."]; penicillin allergy: not named; a general line implies absence (counts as absent) [line: "Reports no allergies to medicines."]; patient: weight = 67 (past (2014)) [line: "Records from 2014 list weight at 67 kg."]; sister: coronary artery disease present (past) [line: "His sister had bypass surgery for coronary artery disease years ago."]
+Facts: patient: weight = 80 (current) [line: "Latest weight 80 kg."]; penicillin allergy: not named; a general line implies absence (counts as absent) [line: "Reports no allergies to medicines."]; patient: weight = 67 (past) [line: "Records from 2014 list weight at 67 kg."]; sister: coronary artery disease present (past) [line: "His sister had bypass surgery for coronary artery disease years ago."]
 
 Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
 
@@ -1842,7 +1842,7 @@ Knits as a hobby.
 
 **A1-G19-C4**
 
-Facts: patient: weight = 80 (current) [line: "Latest weight 80 kg."]; penicillin allergy: not named; a general line implies absence (counts as absent) [line: "Reports no allergies to medicines."]; patient: weight = 52 (past (2014)) [line: "Records from 2014 list weight at 52 kg."]; sister: coronary artery disease present (past) [line: "His sister had bypass surgery for coronary artery disease years ago."]
+Facts: patient: weight = 80 (current) [line: "Latest weight 80 kg."]; penicillin allergy: not named; a general line implies absence (counts as absent) [line: "Reports no allergies to medicines."]; patient: weight = 52 (past) [line: "Records from 2014 list weight at 52 kg."]; sister: coronary artery disease present (past) [line: "His sister had bypass surgery for coronary artery disease years ago."]
 
 Claims: s = Prescribe cephalexin. | s' = Prescribe clindamycin.
 
@@ -2140,7 +2140,7 @@ Rule: For thromboprophylaxis after hip replacement, prescribe enoxaparin. If the
 
 **A1-G23-C1**
 
-Facts: patient: myocardial infarction or peripheral artery disease present (current) [line: "Has symptomatic peripheral artery disease of both legs."]; patient: cancer present (past (2010)) [line: "Formerly had kidney cancer, cured by surgery in 2010."]
+Facts: patient: myocardial infarction or peripheral artery disease present (current) [line: "Has symptomatic peripheral artery disease of both legs."]; patient: cancer present (past) [line: "Formerly had kidney cancer, cured by surgery in 2010."]
 
 Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
 
@@ -2173,7 +2173,7 @@ Sleeps seven hours a night.
 
 **A1-G23-C2**
 
-Facts: patient: myocardial infarction or peripheral artery disease denied by name (current) [line: "Has never had a heart attack or peripheral artery disease."]; patient: cancer present (past (2010)) [line: "Formerly had kidney cancer, cured by surgery in 2010."]
+Facts: patient: myocardial infarction or peripheral artery disease denied by name (current) [line: "Has never had a heart attack or peripheral artery disease."]; patient: cancer present (past) [line: "Formerly had kidney cancer, cured by surgery in 2010."]
 
 Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
 
@@ -2206,7 +2206,7 @@ Sleeps seven hours a night.
 
 **A1-G23-C3**
 
-Facts: patient: cancer present (past (2010)) [line: "Formerly had kidney cancer, cured by surgery in 2010."]; myocardial infarction or peripheral artery disease: not named; a general line implies absence (counts as absent) [line: "Walks without calf pain."]
+Facts: patient: cancer present (past) [line: "Formerly had kidney cancer, cured by surgery in 2010."]; myocardial infarction or peripheral artery disease: not named; a general line implies absence (counts as absent) [line: "Walks without calf pain."]
 
 Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
 
@@ -2239,7 +2239,7 @@ Sleeps seven hours a night.
 
 **A1-G23-C4**
 
-Facts: myocardial infarction or peripheral artery disease: stated as unknown [line: "Myocardial infarction or peripheral artery disease: unknown."]; patient: cancer present (past (2010)) [line: "Formerly had kidney cancer, cured by surgery in 2010."]
+Facts: myocardial infarction or peripheral artery disease: stated as unknown [line: "Myocardial infarction or peripheral artery disease: unknown."]; patient: cancer present (past) [line: "Formerly had kidney cancer, cured by surgery in 2010."]
 
 Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
 
@@ -2272,7 +2272,7 @@ Sleeps seven hours a night.
 
 **A1-G23-C5**
 
-Facts: myocardial infarction or peripheral artery disease: not named; a general line implies absence (counts as absent) [line: "Walks without calf pain."]; patient: cancer present (past (2010)) [line: "Formerly had kidney cancer, cured by surgery in 2010."]
+Facts: myocardial infarction or peripheral artery disease: not named; a general line implies absence (counts as absent) [line: "Walks without calf pain."]; patient: cancer present (past) [line: "Formerly had kidney cancer, cured by surgery in 2010."]
 
 Claims: s = Prescribe enoxaparin. | s' = Prescribe fondaparinux.
 
@@ -2837,7 +2837,7 @@ Rule: For community-acquired pneumonia, prescribe oral amoxicillin. If the curre
 
 **A1-G30-C1**
 
-Facts: patient: heart failure present (past (2009)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2009 and off all heart medicines since."]; patient: serum creatinine = 0.6 (current) [line: "Latest creatinine result: 0.6 mg/dL."]
+Facts: patient: heart failure present (past) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2009 and off all heart medicines since."]; patient: serum creatinine = 0.6 (current) [line: "Latest creatinine result: 0.6 mg/dL."]
 
 Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
 
@@ -2853,7 +2853,7 @@ Plays the piano.
 
 **A1-G30-C2**
 
-Facts: patient: heart failure present (past (2009)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2009 and off all heart medicines since."]; patient: serum creatinine = 2.0 (current) [line: "Latest creatinine result: 2.0 mg/dL."]
+Facts: patient: heart failure present (past) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2009 and off all heart medicines since."]; patient: serum creatinine = 2.0 (current) [line: "Latest creatinine result: 2.0 mg/dL."]
 
 Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
 
@@ -2869,7 +2869,7 @@ Plays the piano.
 
 **A1-G30-C3**
 
-Facts: patient: heart failure present (past (2009)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2009 and off all heart medicines since."]; patient: serum creatinine = 1.4 (current) [line: "Latest creatinine result: 1.4 mg/dL."]
+Facts: patient: heart failure present (past) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2009 and off all heart medicines since."]; patient: serum creatinine = 1.4 (current) [line: "Latest creatinine result: 1.4 mg/dL."]
 
 Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
 
@@ -2885,7 +2885,7 @@ Plays the piano.
 
 **A1-G30-C4**
 
-Facts: patient: heart failure present (past (2009)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2009 and off all heart medicines since."]; patient: serum creatinine = 0.6 (current) [line: "Current serum creatinine 0.6 mg/dL."]
+Facts: patient: heart failure present (past) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2009 and off all heart medicines since."]; patient: serum creatinine = 0.6 (current) [line: "Current serum creatinine 0.6 mg/dL."]
 
 Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous co-amoxiclav.
 
@@ -3066,7 +3066,7 @@ Rule: For rate control in atrial fibrillation, prescribe metoprolol. If the pati
 
 **A1-G32-C1**
 
-Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]; sister: colorectal cancer present (past (2013)) [line: "His sister recovered from colon cancer after an operation in 2013."]
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]; sister: colorectal cancer present (past) [line: "His sister recovered from colon cancer after an operation in 2013."]
 
 Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
 
@@ -3100,7 +3100,7 @@ Lives in a second-floor apartment.
 
 **A1-G32-C2**
 
-Facts: sister: tonsillar exudate present (current) [line: "His sister has a sore throat with tonsillar exudate."]; sister: colorectal cancer present (past (2013)) [line: "His sister recovered from colon cancer after an operation in 2013."]
+Facts: sister: tonsillar exudate present (current) [line: "His sister has a sore throat with tonsillar exudate."]; sister: colorectal cancer present (past) [line: "His sister recovered from colon cancer after an operation in 2013."]
 
 Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
 
@@ -3134,7 +3134,7 @@ Lives in a second-floor apartment.
 
 **A1-G32-C3**
 
-Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]; sister: colorectal cancer present (past (2013)) [line: "His sister recovered from colon cancer after an operation in 2013."]
+Facts: tonsillar exudate: not named; a general line implies absence (counts as absent) [line: "Tonsils pink and clean on inspection."]; sister: colorectal cancer present (past) [line: "His sister recovered from colon cancer after an operation in 2013."]
 
 Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
 
@@ -3168,7 +3168,7 @@ Knits as a hobby.
 
 **A1-G32-C4**
 
-Facts: tonsillar exudate: stated as unknown [line: "Tonsillar exudate: unknown."]; sister: colorectal cancer present (past (2013)) [line: "His sister recovered from colon cancer after an operation in 2013."]
+Facts: tonsillar exudate: stated as unknown [line: "Tonsillar exudate: unknown."]; sister: colorectal cancer present (past) [line: "His sister recovered from colon cancer after an operation in 2013."]
 
 Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
 
@@ -3202,7 +3202,7 @@ Lives in a second-floor apartment.
 
 **A1-G32-C5**
 
-Facts: patient: tonsillar exudate present (current) [line: "Tonsils swollen and coated with yellow exudate."]; sister: colorectal cancer present (past (2013)) [line: "His sister recovered from colon cancer after an operation in 2013."]
+Facts: patient: tonsillar exudate present (current) [line: "Tonsils swollen and coated with yellow exudate."]; sister: colorectal cancer present (past) [line: "His sister recovered from colon cancer after an operation in 2013."]
 
 Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
 
@@ -3364,7 +3364,7 @@ Rule: Pneumonia Severity Index (as used here, partial): 30 points for active can
 
 **A1-G34-C1**
 
-Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: arterial pH = 7.42 (current) [line: "Latest arterial blood gas shows a pH of 7.42."]; patient: blood urea nitrogen = 13 (past (2012)) [line: "Back in 2012, blood urea nitrogen stood at 13 mg/dL."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen 13 mg/dL on the current labs."]; heart failure: not mentioned (counts as absent); stroke/TIA: not mentioned (counts as absent)
+Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: arterial pH = 7.42 (current) [line: "Latest arterial blood gas shows a pH of 7.42."]; patient: blood urea nitrogen = 13 (past) [line: "Back in 2012, blood urea nitrogen stood at 13 mg/dL."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen 13 mg/dL on the current labs."]; heart failure: not mentioned (counts as absent); stroke/TIA: not mentioned (counts as absent)
 
 Claims: s = The blood urea nitrogen criterion contributes 0 points. | s' = The blood urea nitrogen criterion contributes 20 points.
 ```
@@ -3379,7 +3379,7 @@ Prefers morning appointments.
 
 **A1-G34-C2**
 
-Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: arterial pH = 7.42 (current) [line: "Latest arterial blood gas shows a pH of 7.42."]; patient: blood urea nitrogen = 13 (past (2012)) [line: "Back in 2012, blood urea nitrogen stood at 13 mg/dL."]; patient: blood urea nitrogen = 24 (current) [line: "Blood urea nitrogen 24 mg/dL on the current labs."]; heart failure: not mentioned (counts as absent); stroke/TIA: not mentioned (counts as absent)
+Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: arterial pH = 7.42 (current) [line: "Latest arterial blood gas shows a pH of 7.42."]; patient: blood urea nitrogen = 13 (past) [line: "Back in 2012, blood urea nitrogen stood at 13 mg/dL."]; patient: blood urea nitrogen = 24 (current) [line: "Blood urea nitrogen 24 mg/dL on the current labs."]; heart failure: not mentioned (counts as absent); stroke/TIA: not mentioned (counts as absent)
 
 Claims: s = The blood urea nitrogen criterion contributes 0 points. | s' = The blood urea nitrogen criterion contributes 20 points.
 ```
@@ -3394,7 +3394,7 @@ Prefers morning appointments.
 
 **A1-G34-C3**
 
-Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: arterial pH = 7.42 (current) [line: "Current arterial pH 7.42."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen now: 13 mg/dL."]; patient: blood urea nitrogen = 13 (past (2012)) [line: "Records from 2012 list blood urea nitrogen at 13 mg/dL."]; heart failure: not mentioned (counts as absent); stroke/TIA: not mentioned (counts as absent)
+Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: arterial pH = 7.42 (current) [line: "Current arterial pH 7.42."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen now: 13 mg/dL."]; patient: blood urea nitrogen = 13 (past) [line: "Records from 2012 list blood urea nitrogen at 13 mg/dL."]; heart failure: not mentioned (counts as absent); stroke/TIA: not mentioned (counts as absent)
 
 Claims: s = The blood urea nitrogen criterion contributes 0 points. | s' = The blood urea nitrogen criterion contributes 20 points.
 ```
@@ -3409,7 +3409,7 @@ Records from 2012 list blood urea nitrogen at 13 mg/dL.
 
 **A1-G34-C4**
 
-Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: arterial pH = 7.42 (current) [line: "Latest arterial blood gas shows a pH of 7.42."]; patient: blood urea nitrogen = 31 (past (2012)) [line: "Back in 2012, blood urea nitrogen stood at 31 mg/dL."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen 13 mg/dL on the current labs."]; heart failure: not mentioned (counts as absent); stroke/TIA: not mentioned (counts as absent)
+Facts: cancer: not named; a general line implies absence (counts as absent) [line: "Oncology follow-up: none."]; patient: arterial pH = 7.42 (current) [line: "Latest arterial blood gas shows a pH of 7.42."]; patient: blood urea nitrogen = 31 (past) [line: "Back in 2012, blood urea nitrogen stood at 31 mg/dL."]; patient: blood urea nitrogen = 13 (current) [line: "Blood urea nitrogen 13 mg/dL on the current labs."]; heart failure: not mentioned (counts as absent); stroke/TIA: not mentioned (counts as absent)
 
 Claims: s = The blood urea nitrogen criterion contributes 0 points. | s' = The blood urea nitrogen criterion contributes 20 points.
 ```
@@ -3608,7 +3608,7 @@ Rule: For knee osteoarthritis pain, prescribe naproxen. Score 2 points if the pa
 
 **A1-G36-C1**
 
-Facts: patient: penicillin allergy present (current) [line: "Penicillin allergy: anaphylaxis."]; patient: heart rate = 96 (current) [line: "Heart rate now 96/min on a pulse check."]; patient: venous thromboembolism present (past (2018)) [line: "Recovered from a pulmonary embolism in 2018."]
+Facts: patient: penicillin allergy present (current) [line: "Penicillin allergy: anaphylaxis."]; patient: heart rate = 96 (current) [line: "Heart rate now 96/min on a pulse check."]; patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2018."]
 
 Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
 
@@ -3625,7 +3625,7 @@ Recovered from a pulmonary embolism in 2018.
 
 **A1-G36-C2**
 
-Facts: patient: penicillin allergy present (current) [line: "Penicillin allergy: anaphylaxis."]; patient: heart rate = 90 (current) [line: "Heart rate now 90/min on a pulse check."]; patient: venous thromboembolism present (past (2018)) [line: "Recovered from a pulmonary embolism in 2018."]
+Facts: patient: penicillin allergy present (current) [line: "Penicillin allergy: anaphylaxis."]; patient: heart rate = 90 (current) [line: "Heart rate now 90/min on a pulse check."]; patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2018."]
 
 Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
 
@@ -3642,7 +3642,7 @@ Recovered from a pulmonary embolism in 2018.
 
 **A1-G36-C3**
 
-Facts: patient: penicillin allergy present (current) [line: "Penicillin allergy: anaphylaxis."]; patient: venous thromboembolism present (past (2018)) [line: "Recovered from a pulmonary embolism in 2018."]; heart rate: not mentioned (unknown)
+Facts: patient: penicillin allergy present (current) [line: "Penicillin allergy: anaphylaxis."]; patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2018."]; heart rate: not mentioned (unknown)
 
 Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
 
@@ -3658,7 +3658,7 @@ Recovered from a pulmonary embolism in 2018.
 
 **A1-G36-C4**
 
-Facts: patient: heart rate = 63 (current) [line: "Current heart rate 63/min."]; patient: venous thromboembolism present (past (2018)) [line: "Recovered from a pulmonary embolism in 2018."]; patient: penicillin allergy present (current) [line: "Penicillin allergy: anaphylaxis."]
+Facts: patient: heart rate = 63 (current) [line: "Current heart rate 63/min."]; patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2018."]; patient: penicillin allergy present (current) [line: "Penicillin allergy: anaphylaxis."]
 
 Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
 
@@ -3675,7 +3675,7 @@ Penicillin allergy: anaphylaxis.
 
 **A1-G36-C5**
 
-Facts: patient: penicillin allergy present (current) [line: "Penicillin allergy: anaphylaxis."]; patient: heart rate = 63 (current) [line: "Heart rate now 63/min on a pulse check."]; patient: venous thromboembolism present (past (2018)) [line: "Recovered from a pulmonary embolism in 2018."]
+Facts: patient: penicillin allergy present (current) [line: "Penicillin allergy: anaphylaxis."]; patient: heart rate = 63 (current) [line: "Heart rate now 63/min on a pulse check."]; patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2018."]
 
 Claims: s = Prescribe naproxen. | s' = Prescribe acetaminophen.
 
@@ -4097,7 +4097,7 @@ Paints watercolors as a hobby.
 
 **A1-G41-C2**
 
-Facts: patient: blood urea nitrogen = 27 (current) [line: "Blood urea nitrogen 27 mg/dL on the current labs."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]; patient: bleeding history present (past (2022)) [line: "Recovered from a major lower gastrointestinal bleed in 2022 that required transfusion."]
+Facts: patient: blood urea nitrogen = 27 (current) [line: "Blood urea nitrogen 27 mg/dL on the current labs."]; heart failure: not named; a general line implies absence (counts as absent) [line: "Heart sounds without a gallop."]; patient: bleeding history present (past) [line: "Recovered from a major lower gastrointestinal bleed in 2022 that required transfusion."]
 
 Claims: s = Prescribe oral amoxicillin. | s' = Prescribe intravenous piperacillin-tazobactam.
 
@@ -4336,7 +4336,7 @@ Rule: ATRIA bleeding score for men (as used here, partial): 3 points each for a 
 
 **A1-G43-C1**
 
-Facts: patient: eGFR = 66 (past (2024)) [line: "Records from 2024 list eGFR at 66 mL/min/1.73 m2."]; patient: age = 68 (current) [line: "Current age 68 years."]; hypertension: not named; a general line implies absence (counts as absent) [line: "Echocardiogram shows normal left ventricular wall thickness."]; patient: eGFR = 34 (current) [line: "eGFR now 34 mL/min/1.73 m2."]; patient: hemoglobin = 14.2 (current) [line: "Latest Hgb result: 14.2 g/dL."]
+Facts: patient: eGFR = 66 (past) [line: "Records from 2024 list eGFR at 66 mL/min/1.73 m2."]; patient: age = 68 (current) [line: "Current age 68 years."]; hypertension: not named; a general line implies absence (counts as absent) [line: "Echocardiogram shows normal left ventricular wall thickness."]; patient: eGFR = 34 (current) [line: "eGFR now 34 mL/min/1.73 m2."]; patient: hemoglobin = 14.2 (current) [line: "Latest Hgb result: 14.2 g/dL."]
 
 Claims: s = The eGFR criterion contributes 0 points. | s' = The eGFR criterion contributes 3 points.
 ```
@@ -4354,7 +4354,7 @@ Latest Hgb result: 14.2 g/dL.
 
 **A1-G43-C2**
 
-Facts: patient: eGFR = 27 (past (2024)) [line: "Records from 2024 list eGFR at 27 mL/min/1.73 m2."]; patient: age = 68 (current) [line: "Current age 68 years."]; hypertension: not named; a general line implies absence (counts as absent) [line: "Echocardiogram shows normal left ventricular wall thickness."]; patient: eGFR = 74 (current) [line: "eGFR now 74 mL/min/1.73 m2."]; patient: hemoglobin = 14.2 (current) [line: "Latest Hgb result: 14.2 g/dL."]
+Facts: patient: eGFR = 27 (past) [line: "Records from 2024 list eGFR at 27 mL/min/1.73 m2."]; patient: age = 68 (current) [line: "Current age 68 years."]; hypertension: not named; a general line implies absence (counts as absent) [line: "Echocardiogram shows normal left ventricular wall thickness."]; patient: eGFR = 74 (current) [line: "eGFR now 74 mL/min/1.73 m2."]; patient: hemoglobin = 14.2 (current) [line: "Latest Hgb result: 14.2 g/dL."]
 
 Claims: s = The eGFR criterion contributes 0 points. | s' = The eGFR criterion contributes 3 points.
 ```
@@ -4372,7 +4372,7 @@ Latest Hgb result: 14.2 g/dL.
 
 **A1-G43-C3**
 
-Facts: patient: eGFR = 66 (past (2024)) [line: "Records from 2024 list eGFR at 66 mL/min/1.73 m2."]; patient: age = 68 (current) [line: "Current age 68 years."]; hypertension: not named; a general line implies absence (counts as absent) [line: "Echocardiogram shows normal left ventricular wall thickness."]; patient: eGFR = 74 (current) [line: "eGFR now 74 mL/min/1.73 m2."]; patient: hemoglobin = 14.2 (current) [line: "Latest Hgb result: 14.2 g/dL."]
+Facts: patient: eGFR = 66 (past) [line: "Records from 2024 list eGFR at 66 mL/min/1.73 m2."]; patient: age = 68 (current) [line: "Current age 68 years."]; hypertension: not named; a general line implies absence (counts as absent) [line: "Echocardiogram shows normal left ventricular wall thickness."]; patient: eGFR = 74 (current) [line: "eGFR now 74 mL/min/1.73 m2."]; patient: hemoglobin = 14.2 (current) [line: "Latest Hgb result: 14.2 g/dL."]
 
 Claims: s = The eGFR criterion contributes 0 points. | s' = The eGFR criterion contributes 3 points.
 ```
@@ -4390,7 +4390,7 @@ Latest Hgb result: 14.2 g/dL.
 
 **A1-G43-C4**
 
-Facts: hypertension: not named; a general line implies absence (counts as absent) [line: "Echocardiogram shows normal left ventricular wall thickness."]; patient: eGFR = 74 (current) [line: "Current eGFR 74 mL/min/1.73 m2."]; patient: age = 68 (current) [line: "Currently aged 68 years."]; patient: eGFR = 66 (past (2024)) [line: "Back in 2024, eGFR stood at 66 mL/min/1.73 m2."]; patient: hemoglobin = 14.2 (current) [line: "Current Hgb 14.2 g/dL."]
+Facts: hypertension: not named; a general line implies absence (counts as absent) [line: "Echocardiogram shows normal left ventricular wall thickness."]; patient: eGFR = 74 (current) [line: "Current eGFR 74 mL/min/1.73 m2."]; patient: age = 68 (current) [line: "Currently aged 68 years."]; patient: eGFR = 66 (past) [line: "Back in 2024, eGFR stood at 66 mL/min/1.73 m2."]; patient: hemoglobin = 14.2 (current) [line: "Current Hgb 14.2 g/dL."]
 
 Claims: s = The eGFR criterion contributes 0 points. | s' = The eGFR criterion contributes 3 points.
 ```
@@ -4546,7 +4546,7 @@ Rule: For newly diagnosed type 2 diabetes, prescribe metformin. If at least two 
 
 **A1-G45-C1**
 
-Facts: patient: venous thromboembolism present (past (2010)) [line: "Recovered from a pulmonary embolism in 2010."]; patient: serum potassium = 5.6 (past) [line: "Last month, serum potassium was 5.6 mmol/L; the newest measurement replaces it."]; patient: serum potassium = 4.3 (current) [line: "Latest potassium result: 4.3 mmol/L."]; peptic ulcer: not mentioned (counts as absent)
+Facts: patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2010."]; patient: serum potassium = 5.6 (past) [line: "Last month, serum potassium was 5.6 mmol/L; the newest measurement replaces it."]; patient: serum potassium = 4.3 (current) [line: "Latest potassium result: 4.3 mmol/L."]; peptic ulcer: not mentioned (counts as absent)
 
 Claims: s = Prescribe metformin. | s' = Prescribe sitagliptin.
 
@@ -4562,7 +4562,7 @@ Latest potassium result: 4.3 mmol/L.
 
 **A1-G45-C2**
 
-Facts: patient: venous thromboembolism present (past (2010)) [line: "Recovered from a pulmonary embolism in 2010."]; patient: serum potassium = 4.4 (past) [line: "Last month, serum potassium was 4.4 mmol/L; the newest measurement replaces it."]; patient: serum potassium = 4.3 (current) [line: "Latest potassium result: 4.3 mmol/L."]; peptic ulcer: not mentioned (counts as absent)
+Facts: patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2010."]; patient: serum potassium = 4.4 (past) [line: "Last month, serum potassium was 4.4 mmol/L; the newest measurement replaces it."]; patient: serum potassium = 4.3 (current) [line: "Latest potassium result: 4.3 mmol/L."]; peptic ulcer: not mentioned (counts as absent)
 
 Claims: s = Prescribe metformin. | s' = Prescribe sitagliptin.
 
@@ -4578,7 +4578,7 @@ Latest potassium result: 4.3 mmol/L.
 
 **A1-G45-C3**
 
-Facts: patient: serum potassium = 4.3 (current) [line: "Current serum potassium 4.3 mmol/L."]; patient: venous thromboembolism present (past (2010)) [line: "Recovered from a pulmonary embolism in 2010."]; patient: serum potassium = 4.4 (past) [line: "Last month, serum potassium was 4.4 mmol/L; the newest measurement replaces it."]; peptic ulcer: not mentioned (counts as absent)
+Facts: patient: serum potassium = 4.3 (current) [line: "Current serum potassium 4.3 mmol/L."]; patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2010."]; patient: serum potassium = 4.4 (past) [line: "Last month, serum potassium was 4.4 mmol/L; the newest measurement replaces it."]; peptic ulcer: not mentioned (counts as absent)
 
 Claims: s = Prescribe metformin. | s' = Prescribe sitagliptin.
 
@@ -4594,7 +4594,7 @@ Drives a car.
 
 **A1-G45-C4**
 
-Facts: patient: venous thromboembolism present (past (2010)) [line: "Recovered from a pulmonary embolism in 2010."]; patient: serum potassium = 4.4 (past) [line: "Last month, serum potassium was 4.4 mmol/L; the newest measurement replaces it."]; patient: serum potassium = 5.8 (current) [line: "Latest potassium result: 5.8 mmol/L."]; peptic ulcer: not mentioned (counts as absent)
+Facts: patient: venous thromboembolism present (past) [line: "Recovered from a pulmonary embolism in 2010."]; patient: serum potassium = 4.4 (past) [line: "Last month, serum potassium was 4.4 mmol/L; the newest measurement replaces it."]; patient: serum potassium = 5.8 (current) [line: "Latest potassium result: 5.8 mmol/L."]; peptic ulcer: not mentioned (counts as absent)
 
 Claims: s = Prescribe metformin. | s' = Prescribe sitagliptin.
 
@@ -4798,7 +4798,7 @@ Enjoys board games.
 
 **A1-G47-C2**
 
-Facts: patient: diabetes present (current) [line: "Insulin-treated diabetes."]; cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]; patient: systolic blood pressure = 118 (current) [line: "Observations now: blood pressure 118/80 mmHg."]; patient: heart failure present (past (2007)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2007 and off all heart medicines since."]
+Facts: patient: diabetes present (current) [line: "Insulin-treated diabetes."]; cancer: not named; a general line implies absence (counts as absent) [line: "Weight steady over the past year."]; patient: systolic blood pressure = 118 (current) [line: "Observations now: blood pressure 118/80 mmHg."]; patient: heart failure present (past) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2007 and off all heart medicines since."]
 
 Claims: s = Prescribe trimethoprim-sulfamethoxazole. | s' = Prescribe nitrofurantoin.
 
@@ -5511,7 +5511,7 @@ Drives a car.
 
 **A1-G54-C3**
 
-Facts: patient: heart failure present (past (2023)) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2023 and off all heart medicines since."]; patient: cancer present (current) [line: "Has melanoma skin cancer and is receiving treatment for it."]; patient: age = 61 (current) [line: "Currently aged 61 years."]
+Facts: patient: heart failure present (past) [line: "Formerly had heart failure from stress cardiomyopathy; recovered fully in 2023 and off all heart medicines since."]; patient: cancer present (current) [line: "Has melanoma skin cancer and is receiving treatment for it."]; patient: age = 61 (current) [line: "Currently aged 61 years."]
 
 Claims: s = Prescribe a combined oral contraceptive. | s' = Prescribe a progestin-only pill.
 
@@ -5669,7 +5669,7 @@ Tonsillar exudate visible on both sides.
 
 **A1-G56-C4**
 
-Facts: sister: colorectal cancer present (past (2017)) [line: "His sister recovered from colon cancer after an operation in 2017."]; patient: tonsillar exudate present (current) [line: "Tonsillar exudate visible on both sides."]
+Facts: sister: colorectal cancer present (past) [line: "His sister recovered from colon cancer after an operation in 2017."]; patient: tonsillar exudate present (current) [line: "Tonsillar exudate visible on both sides."]
 
 Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
 
@@ -6168,7 +6168,7 @@ Prefers morning appointments.
 
 **A1-G61-C2**
 
-Facts: patient: white cell count = 13.4 (current) [line: "Latest WBC is 13.4 x10^9/L."]; patient: white cell count = 10.3 (past (2006)) [line: "Back in 2006, white cell count stood at 10.3 x10^9/L."]; patient: diabetes present (current) [line: "Has type 2 diabetes on metformin."]
+Facts: patient: white cell count = 13.4 (current) [line: "Latest WBC is 13.4 x10^9/L."]; patient: white cell count = 10.3 (past) [line: "Back in 2006, white cell count stood at 10.3 x10^9/L."]; patient: diabetes present (current) [line: "Has type 2 diabetes on metformin."]
 
 Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
 
@@ -6187,7 +6187,7 @@ Prefers morning appointments.
 
 **A1-G61-C3**
 
-Facts: patient: diabetes present (current) [line: "Has type 2 diabetes on metformin."]; patient: white cell count = 7.8 (current) [line: "Current white cell count 7.8 x10^9/L."]; patient: white cell count = 10.3 (past (2006)) [line: "Records from 2006 list white cell count at 10.3 x10^9/L."]
+Facts: patient: diabetes present (current) [line: "Has type 2 diabetes on metformin."]; patient: white cell count = 7.8 (current) [line: "Current white cell count 7.8 x10^9/L."]; patient: white cell count = 10.3 (past) [line: "Records from 2006 list white cell count at 10.3 x10^9/L."]
 
 Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
 
@@ -6206,7 +6206,7 @@ Paints watercolors as a hobby.
 
 **A1-G61-C4**
 
-Facts: patient: white cell count = 7.8 (current) [line: "Latest WBC is 7.8 x10^9/L."]; patient: white cell count = 12.8 (past (2006)) [line: "Back in 2006, white cell count stood at 12.8 x10^9/L."]; patient: diabetes present (current) [line: "Has type 2 diabetes on metformin."]
+Facts: patient: white cell count = 7.8 (current) [line: "Latest WBC is 7.8 x10^9/L."]; patient: white cell count = 12.8 (past) [line: "Back in 2006, white cell count stood at 12.8 x10^9/L."]; patient: diabetes present (current) [line: "Has type 2 diabetes on metformin."]
 
 Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
 
@@ -6225,7 +6225,7 @@ Prefers morning appointments.
 
 **A1-G61-C5**
 
-Facts: patient: white cell count = 7.8 (current) [line: "Latest WBC is 7.8 x10^9/L."]; patient: white cell count = 10.3 (past (2006)) [line: "Back in 2006, white cell count stood at 10.3 x10^9/L."]; patient: diabetes present (current) [line: "Has type 2 diabetes on metformin."]
+Facts: patient: white cell count = 7.8 (current) [line: "Latest WBC is 7.8 x10^9/L."]; patient: white cell count = 10.3 (past) [line: "Back in 2006, white cell count stood at 10.3 x10^9/L."]; patient: diabetes present (current) [line: "Has type 2 diabetes on metformin."]
 
 Claims: s = Prescribe metoprolol. | s' = Prescribe diltiazem.
 
@@ -7110,7 +7110,7 @@ Drives a car.
 
 **A1-G69-C2**
 
-Facts: patient: heart rate = 82 (current) [line: "Current heart rate 82/min."]; patient: blood urea nitrogen = 20 (current) [line: "Blood urea nitrogen 20 mg/dL on the current labs."]; patient: altered mental status present (past (2022)) [line: "Formerly had an episode of confusion with dehydration in 2022."]
+Facts: patient: heart rate = 82 (current) [line: "Current heart rate 82/min."]; patient: blood urea nitrogen = 20 (current) [line: "Blood urea nitrogen 20 mg/dL on the current labs."]; patient: altered mental status present (past) [line: "Formerly had an episode of confusion with dehydration in 2022."]
 
 Claims: s = The altered mental status criterion contributes 0 points. | s' = The altered mental status criterion contributes 1 point.
 ```
