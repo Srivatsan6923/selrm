@@ -11,8 +11,14 @@ R=$1; RUN=$2; shift 2
 PY=/opt/selrm-env/venv/bin/python
 OUT=/pvc/grpo/$RUN
 mkdir -p "$OUT"
-[ -f "$OUT/DONE" ] && { echo "exists: $OUT"; exit 0; }
 EXTRA=""
+case " $* " in
+  *" --eval-from "*)    # evaluation only (finished run): no reward model, no ledger server
+    $PY -u scripts/grpo_d.py --reward "$R" --policy /pvcb/selrm/models/unsloth--Qwen3.5-4B --data /pvcb/selrm/data \
+        --out "$OUT" "$@"
+    echo "GRPO EVAL DONE $RUN"; exit 0 ;;
+esac
+[ -f "$OUT/DONE" ] && { echo "exists: $OUT"; exit 0; }
 case $R in
   ledger2-blocks|ledger2-triplets)
     M=/pvc/merged/B-F-$R-s0

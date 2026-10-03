@@ -214,13 +214,14 @@ def make_stepcheck_reward(medprm_dir, recs_by_iid, device="cuda:0"):
 
 
 # ------------------------------------------------------------------ evaluation by the rule program
-def evaluate(model, tok, items, max_new=512, bs=32):
+def evaluate(model, tok, items, max_new=512, bs=32, out=None):
     """Greedy answers judged by the rule program's labels: accuracy per case kind, on base-flip pairs
-    (both right; v13's policy-training metric) and on whole triplets."""
+    (both right; v13's policy-training metric) and on whole triplets. With out: one line per task
+    {tid, case_kind, gold, answer, correct, text} (per-example outputs of every evaluation)."""
     import torch
     model.eval()
     tok.padding_side = "left"
-    per = {}
+    per, rows = {}, []
     for i in range(0, len(items), bs):
         batch = items[i:i + bs]
         texts = [tok.apply_chat_template(x["prompt"], tokenize=False, add_generation_prompt=True,
@@ -229,7 +230,14 @@ def evaluate(model, tok, items, max_new=512, bs=32):
         with torch.no_grad():
             gen = model.generate(**enc, max_new_tokens=max_new, do_sample=False)
         for x, g in zip(batch, gen[:, enc["input_ids"].shape[1]:]):
-            per.setdefault(x["tid"], {})[x["case_kind"]] = answer(tok.decode(g, skip_special_tokens=True)) == x["gold"]
+            text = tok.decode(g, skip_special_tokens=True)
+            ans = answer(text)
+            per.setdefault(x["tid"], {})[x["case_kind"]] = ans == x["gold"]
+            rows.append({"tid": x["tid"], "case_kind": x["case_kind"], "gold": x["gold"], "answer": ans,
+                         "correct": ans == x["gold"], "text": text})
+    if out:
+        with open(out, "w", encoding="utf-8", newline="\n") as f:
+            f.writelines(json.dumps(r) + "\n" for r in rows)
     model.train()
     pct = lambda xs: 100.0 * sum(xs) / len(xs) if xs else None
     acc = {k: pct([t[k] for t in per.values() if k in t]) for k in ("base", "flip", "near")}
@@ -256,6 +264,9 @@ def main():
     ap.add_argument("--overfit", type=int, default=0, help="train on this many prompts only (64: setup check)")
     ap.add_argument("--smoke", action="store_true", help="plumbing check on CPU with a small policy: groups of 4, "
                                                           "32-token completions; never a result")
+    ap.add_argument("--eval-from", dest="eval_from", nargs="+", default=None,
+                    help="no training: evaluate 'base' (the untrained policy) and/or LoRA checkpoint dirs of a run on "
+                         "its evaluation triplets -> OUT/eval_step<N>.jsonl (N = 0 for base, else the checkpoint step)")
     a = ap.parse_args()
     import torch
     from datasets import Dataset
@@ -263,7 +274,7 @@ def main():
     from transformers import AutoTokenizer, TrainerCallback
     from trl import GRPOConfig, GRPOTrainer
     os.makedirs(a.out, exist_ok=True)
-    if os.path.exists(os.path.join(a.out, "DONE")):
+    if not a.eval_from and os.path.exists(os.path.join(a.out, "DONE")):
         print("exists:", a.out)
         return
     train = load(os.path.join(a.data, "rule_v1", "train_triplets", "records.jsonl"))
@@ -277,6 +288,19 @@ def main():
     tids = sorted({r["tid"] for r in test})
     keep = set(random.Random("grpo-eval-v1").sample(tids, min(a.eval_triplets, len(tids))))
     ev = tasks([r for r in test if r["tid"] in keep], tag="eval")
+    if a.eval_from:
+        from peft import PeftModel
+        from transformers import AutoModelForCausalLM
+        tok = AutoTokenizer.from_pretrained(a.policy)
+        base = AutoModelForCausalLM.from_pretrained(a.policy, dtype=torch.bfloat16).to("cuda")
+        for src in a.eval_from:
+            m = re.search(r"checkpoint-(\d+)", src)
+            model = base if src == "base" else PeftModel.from_pretrained(base, src)
+            acc = evaluate(model, tok, ev, out=os.path.join(a.out, f"eval_step{m.group(1) if m else 0}.jsonl"))
+            print("eval-from", src, json.dumps(acc), flush=True)
+            if src != "base":
+                base = model.unload()
+        return
     reward = {"outcome": lambda: outcome_reward, "refgraph": lambda: make_refgraph_reward(recs_by_iid),
               "ledger2-blocks": lambda: make_ledger_reward(a.ledger_url, a.ledger_model, recs_by_iid),
               "ledger2-triplets": lambda: make_ledger_reward(a.ledger_url, a.ledger_model, recs_by_iid),
@@ -309,7 +333,8 @@ def main():
     class Eval(TrainerCallback):
         def on_step_end(self, args, state, control, model=None, **kw):
             if state.global_step % a.eval_every == 0 or state.global_step == a.steps:
-                acc = evaluate(model, tok, ev, *((32, 4) if a.smoke else ()))
+                acc = evaluate(model, tok, ev, *((32, 4) if a.smoke else ()),
+                               out=os.path.join(a.out, f"eval_step{state.global_step}.jsonl"))
                 row = {"step": state.global_step, "reward": window(state, "reward"),
                        "train_outcome": window(state, "rewards/outcome_monitor/mean" if a.reward != "outcome"
                                                else "rewards/outcome/mean")} | acc
@@ -324,7 +349,7 @@ def main():
                           peft_config=LoraConfig(r=16, lora_alpha=32, lora_dropout=0.0, task_type="CAUSAL_LM",
                                                  target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj",
                                                                  "up_proj", "down_proj"]))
-    start = evaluate(trainer.model, tok, ev, *((32, 4) if a.smoke else ()))
+    start = evaluate(trainer.model, tok, ev, *((32, 4) if a.smoke else ()), out=os.path.join(a.out, "eval_step0.jsonl"))
     curve.insert(0, {"step": 0, "reward": None} | start)
     ck = os.path.join(a.out, "ckpt")
     trainer.train(resume_from_checkpoint=True if os.path.isdir(ck) and any(
