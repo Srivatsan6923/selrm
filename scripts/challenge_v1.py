@@ -92,54 +92,99 @@ def fact(m, by_concept):
     return f"{who} had {what} in the past ({when}); it is over or resolved, not current"
 
 
-# 'child' is left out: "as a child" describes the patient's own past
 PERSON_WORDS = sorted(set(P.PERSONS) | {"son", "daughter", "mother", "father", "sister", "brother", "wife", "husband",
-                                       "partner", "parent", "sibling", "aunt", "uncle", "cousin", "niece",
-                                       "nephew", "grandmother", "grandfather", "friend", "neighbor", "neighbour"})
-PERSON_RE = re.compile(r"(?i)(?<![\w-])(" + "|".join(map(re.escape, PERSON_WORDS)) + r")s?(?![\w-])")
-DENIAL_WORDS = r"\b(no|not|never|denies|denied|without|negative|free of|ruled out|none|nor|absent|nil|excluded)\b|\bnon-|n't\b"
-DENIAL = re.compile("(?i)" + DENIAL_WORDS)
-OVER_WORDS = (r"resolved|(is|was|now|long|all) over|over now|no longer|stopped|outgrown|outgrew|recovered|"
-              r"remission|cured|ceased|discontinued|not current|none since|used to|former(ly)?|healed|gone|"
-              r"went away|cleared|settled|ended|quit|off|explanted|removed|replaced|completed")
-OVER = re.compile(r"(?i)\b(" + OVER_WORDS + r")\b")
-NOT_OVER = re.compile(r"(?i)\b(still|ongoing)\b")
-PAST = re.compile(r"(?i)\b(ago|previous(ly)?|history|until|past|earlier|had|was|were|yesterday|(19|20)\d\d|"
-                  + OVER_WORDS + r")\b")
-REPORTING = re.compile(r"(?i)\b(reports?|reported|says?|said|notes?|noted|noticed|states?|stated|describes?|"
-                       r"described|according to|tells?|told)\b")
+                                       "partner", "parent", "sibling", "child", "children", "twin", "spouse", "aunt",
+                                       "uncle", "cousin", "niece", "nephew", "grandmother", "grandfather", "friend",
+                                       "neighbor", "neighbour"})
+PERSON_RE = re.compile(r"(?i)(?<!\w)(?:step-?|half-)?(" + "|".join(map(re.escape, PERSON_WORDS))
+                       + r")s?(?:-in-law)?(?![\w-])")
+OWN_PAST = re.compile(r"(?i)\bas an? (?:child|kid|teenager|teen|baby|infant|toddler)\b")   # the patient's own past
+NEG = r"\b(?:no|not|never|denies|denied|without|negative|free of|ruled out|none|nor|absent|nil|excluded)\b|n't\b"
+DENIAL = re.compile("(?i)" + NEG + r"|\bnon-")
+POST_NEG = r"\b(?:none|nil|absent|negative|excluded|ruled out|denied|not present)\b|\b(?:no|not)\s*(?=[,;.()]|$)"
+CLAUSE = r"(?:(?!apart from|except|other than|\bbut\b)[^,;.()])*?"   # within one clause, no exception
+OVER_WORDS = (r"resolved|(?:is|was|now|long|all) over|over now|no longer|stopped|outgrown|outgrew|recovered|"
+              r"remission|cured|ceased|discontinued|not current|none since|no recurrence|now tolerates|until|used to|"
+              r"former(?:ly)?|healed|gone|went away|cleared|settled|ended|quit|off|explanted|removed|replaced|completed")
+OVER = re.compile(r"(?i)\b(?:" + OVER_WORDS + r")\b")
+NOT_OVER = re.compile(r"(?i)\b(?:still|ongoing|not yet)\b")
+PAST = re.compile(r"(?i)\b(?:ago|previous(?:ly)?|history|past|earlier|had|was|were|yesterday|childhood|"
+                  r"as an? (?:child|kid|teenager|teen|baby|infant)|(?:19|20)\d\d|" + OVER_WORDS + r")\b")
+NOT_CURRENT = re.compile(r"(?i)\b(?:history of|h/o|previous(?:ly)?|prior|in the past|ago|formerly|former|used to|"
+                         r"resolved|no longer|outgrown|outgrew|in remission|cured|recovered from|childhood|"
+                         r"as an? (?:child|kid|teenager|teen))\b|(?<!since )(?<!from )\b(?:19|20)\d\d\b")
+ENDED = r"\b(?:stopped|discontinued|ceased|quit)\b"
+REPORTING = re.compile(r"(?i)\b(?:reports?|reported|says?|said|notes?|noted|notices?|noticed|states?|stated|"
+                       r"describes?|described|according to|tells?|told|collateral|brought|worried|concerned|"
+                       r"thinks?|thought|believes?|mentions?|mentioned|observed|informs?|informed)\b"
+                       r"|\bper (?:his|her|their|the|a)\b")
 SEX = {"female": re.compile(r"(?i)\b(woman|female|lady|girl|f|mrs|ms|miss)\b|\d\s*f\b"),
        "male": re.compile(r"(?i)\b(man|male|gentleman|boy|m|mr)\b|\d\s*m\b")}
-NUMBER = re.compile(r"(?<![\d.])\d+(?:\.\d+)?(?!\d|\.\d)")
+PRONOUNS = {"female": r"\b(?:she|her|hers|herself)\b", "male": r"\b(?:he|him|his|himself)\b"}
+AGE_WORDS = re.compile(r"(?i)\b(?:\w+ties|elderly|young|younger|older|old|teen\w*|middle-aged|senior|aged|"
+                       r"adolescent|retired|pensioner)\b")
+MEDICAL = re.compile(r"(?i)\b(?:pulse|bpm|tachy\w*|brady\w*|febrile|afebrile|fevers?|pyrex\w*|sats|saturation|"
+                     r"oxygen|o2|cannula|nebuli[sz]\w*|bp|blood pressure|hypertens\w*|hypotens\w*|medications?|"
+                     r"medicines?|tablets?|pills?|prescri\w*|mg|insulin|metformin|furosemide|diuretics?|warfarin|"
+                     r"apixaban|rivaroxaban|dabigatran|edoxaban|heparin|aspirin|clopidogrel|statins?|inhalers?|"
+                     r"steroids?|antibiotics?|chemo\w*|dialysis|transfus\w*)\b")
+SYNONYMS = (r"fevers?|febrile|afebrile|pyrex\w*|temperature", r"bp|blood pressure|hypertens\w*|hypotens\w*",
+            r"sats|saturation|oxygen|o2|spo2", r"pulse|bpm|tachy\w*|brady\w*|heart rate")
+NUMBER = re.compile(r"(?<![\w.^])\d+(?:\.\d+)?(?!\d|\.\d)")
+UNIT_NOISE = re.compile(r"(?i)[x×]\s*10\s*\^?\s*9|10\s*\^\s*9|10⁹|/\s*1\.73\s*m(?:2|²)?")   # numbers inside units
 EXTRA_WORDS = {"fall": r"\bf(a|e)ll(s|en|ing)?\b", "weight": r"\bweigh"}      # natural forms the keywords miss
 UNIT_RE = {"mg/dL": r"mg\s*/\s*dl", "mmol/L": r"mmol\s*/\s*l|meq\s*/\s*l", "x10^9/L": r"10\s*\^?\s*9|10⁹|×\s*10",
            "mL/min/1.73 m2": r"ml\s*/\s*min", "g/dL": r"g\s*/\s*dl", "mmHg": r"mm\s*hg", "/min": r"/\s*min|per minute|bpm|breaths|beats",
            "C": r"[°º]\s*c\b|(?<=\d)\s*c\b|celsius|degrees", "%": r"%|percent", "kg": r"(?<![a-z])kg\b|kilogram",
-           "kg/m2": r"kg\s*/\s*m", "U/L": r"u\s*/\s*l|units", "years": r"year|\byrs?\b|\baged?\b",
+           "kg/m2": r"kg\s*/\s*m", "U/L": r"u\s*/\s*l|units", "years": r"year|\byrs?\b|\baged?\b|\by\.?\s*/?\s*o\b",
            "cm": r"(?<![a-z])cm\b|centimet"}
 
 
-def kw_pattern(kw):
-    """Keywords are lower-case stems matched at the start of a word; a trailing space marks a whole word."""
-    return re.compile(r"(?i)\b" + re.escape(kw.strip()) + (r"\b" if kw.endswith(" ") else ""))
+def kw_pattern(kw, strict=False):
+    """Keywords are lower-case stems matched at the start of a word; a trailing space marks a whole word.
+    strict (for lines that should not touch the rule at all): short stems match whole words only, so
+    'bungalow' does not name BUN."""
+    whole = kw.endswith(" ") or (strict and len(kw.strip()) <= 4)
+    return re.compile(r"(?i)\b" + re.escape(kw.strip()) + (r"\b" if whole else ""))
 
 
-def named_word(text, keywords, concept=None):
+def named_word(text, keywords, concept=None, strict=False):
     """The whole word through which text names the condition ('Agent' for the stem 'age'), or None."""
     extra = EXTRA_WORDS.get(concept)
     m = (extra and re.search("(?i)" + extra, text)) or \
-        next((m for k in keywords for m in [kw_pattern(k).search(text)] if m), None)
+        next((m for k in keywords for m in [kw_pattern(k, strict).search(text)] if m), None)
     return m.group(0) + re.match(r"[\w-]*", text[m.end():]).group(0) if m else None
 
 
-def names(text, keywords, concept=None):
-    return named_word(text, keywords, concept) is not None
+def names(text, keywords, concept=None, strict=False):
+    return named_word(text, keywords, concept, strict) is not None
 
 
-def denies(text, keywords, concept=None):
-    """A denial word before the condition's name in the same clause ('no asthma', 'never had a DVT')."""
-    alts = [re.escape(k.strip()) for k in keywords] + ([EXTRA_WORDS[concept][2:]] if concept in EXTRA_WORDS else [])
-    return bool(re.search("(?i)(" + DENIAL_WORDS + r")[^,;.]*\b(" + "|".join(alts) + ")", text))
+def _kw(keywords, concept=None):
+    return "(?:" + "|".join([re.escape(k.strip()) for k in keywords]
+                            + ([EXTRA_WORDS[concept][2:]] if concept in EXTRA_WORDS else [])) + ")"
+
+
+def negated(text, keywords, concept=None):
+    """The condition's name is denied within one clause: a denial word before it ('no asthma', 'never had
+    a DVT'; not 'no allergies apart from penicillin'), 'non-' on the name itself ('non-diabetic'), or a
+    denial after it ('Diabetes: none', 'DVT ruled out')."""
+    kw = _kw(keywords, concept)
+    return bool(re.search(f"(?i)(?:{NEG}){CLAUSE}\\b{kw}", text) or re.search(f"(?i)\\bnon-{kw}", text)
+                or re.search(f"(?i)\\b{kw}[\\w-]*{CLAUSE}(?:{POST_NEG})", text))
+
+
+def in_setting(word, setting):
+    """The reason for the visit already gives this word, or a synonym of it ('febrile' for 'fever')."""
+    cls = next((c for c in SYNONYMS if re.fullmatch(f"(?i){c}", word)), re.escape(word))
+    return bool(re.search(rf"(?i)\b(?:{cls})\b", setting))
+
+
+def numbers(line, year=None):
+    """(number, position) for each number a line states, leaving out numbers inside units (10^9, 1.73 m2),
+    digits attached to letters (SpO2) and the mention's own year."""
+    clean = UNIT_NOISE.sub(lambda m: " " * len(m.group(0)), line)
+    return [(x.group(0), x.start()) for x in NUMBER.finditer(clean) if x.group(0) != str(year)]
 
 
 def stated_value(line, keywords, concept, year=None):
@@ -148,8 +193,7 @@ def stated_value(line, keywords, concept, year=None):
     hits = [m.end() for k in keywords for m in [kw_pattern(k).search(line)] if m]
     extra = EXTRA_WORDS.get(concept) and re.search("(?i)" + EXTRA_WORDS[concept], line)
     start = min(hits + ([extra.end()] if extra else []), default=0)
-    nums = [x.group(0) for x in NUMBER.finditer(line, start) if x.group(0) != str(year)]
-    return nums[0] if nums else None
+    return next((v for v, pos in numbers(line, year) if pos >= start), None)
 
 
 def shown(keywords, concept=None):
@@ -157,9 +201,11 @@ def shown(keywords, concept=None):
     return " | ".join(f"'{k.strip()}'" for k in keywords) + extra
 
 
-def fingerprint(n):
-    """Six hex digits that identify the written lines of a group; the checker approves exactly these."""
-    lines = [n.get("header", ""), n.get("reason", "")] + [n[k] for k in sorted(n) if k.startswith("fact ")] + \
+def fingerprint(n, s):
+    """Six hex digits that identify a group's written lines and the facts they state; the second author
+    approves exactly these, so a later edit, or a change of the facts, needs a new check."""
+    lines = [s["gid"]] + [f["text"] for f in s["facts"]] + [s["edits"][k]["text"] for k in ("flip", "near")] + \
+        [n.get("header", ""), n.get("reason", "")] + [n[k] for k in sorted(n) if k.startswith("fact ")] + \
         list(n.get("extra", [])) + [n.get("FLIP", ""), n.get("NEAR", "")]
     return hashlib.sha1("\n".join(lines).encode("utf-8")).hexdigest()[:6]
 
@@ -241,9 +287,9 @@ def kit():
     for a in AUTHORS:
         mine = sorted((s for s in S if s["author"] == a), key=lambda s: s["gid"])
         head = (f"# challenge_v1 writing form: {a}\n\nRead `challenge_v1/WRITING_GUIDE.md` first. Fill in every "
-                f"field after the colon. Save this file as `challenge_v1/notes_{a}.md`.\n"
-                f"{len(mine)} groups; your second author fills `check_ok` (yes and the fingerprint from "
-                f"`challenge_v1/ASSEMBLY_REPORT.md`, or no) and `check_comment`.\n\n")
+                f"field after the colon. Save this file as `challenge_v1/notes_{a}.md` (UTF-8).\n"
+                f"{len(mine)} groups. Your second author checks them in this same file: `check_ok` (yes or no, "
+                f"with the fingerprint from `challenge_v1/ASSEMBLY_REPORT.md`) and `check_comment`.\n\n")
         (KIT / f"form_{a}.md").write_text(head + "\n".join(form(s) for s in mine), encoding="utf-8")
     print(json.dumps({"groups": len(S), "by_kind": Counter(s["nm_kind"] for s in S),
                       "by_author": Counter(s["author"] for s in S),
@@ -255,11 +301,13 @@ FIELD = re.compile(r"^(header|reason|fact \d+|extra|FLIP|NEAR|check_ok|check_com
 
 
 def parse(md):
-    """{gid: {field: value}} from a filled form (extra may repeat)."""
-    out, cur = {}, None
+    """{gid: {field: value}} from a filled form (extra may repeat), and the group ids that occur twice."""
+    out, cur, twice = {}, None, set()
     for line in md.splitlines():
         m = re.match(r"^## (c\d{3})\b", line)
         if m:
+            if m.group(1) in out:
+                twice.add(m.group(1))
             cur = out.setdefault(m.group(1), {"extra": []})
             continue
         m = FIELD.match(line)
@@ -270,16 +318,24 @@ def parse(md):
                     cur["extra"].append(v)
             else:
                 cur[k] = v
-    return out
+    return out, twice
 
 
 def check(s, n):
-    """Problems of one filled group ([] if none). Each FLIP, NEAR and fact line is checked against its
-    mention: required words, value (the first number after the input's name) with its unit, year,
-    person, denial, past or over; the base must not name the decisive finding; no case may name a
-    condition the specification leaves unmentioned, and extra lines name no input of the rule; the
-    header gives the stated age and sex. A group that passes needs the second author's approval of
-    exactly its text: check_ok: yes <fingerprint>."""
+    """Problems of one filled group ([] if none).
+    - Header: the stated age (on 'adult' forms none, and no age words) and sex.
+    - Reason and extra lines: the reason adds no input of the rule and no number or medical word that the
+      reason for the visit lacks; extra lines carry no input of the rule, no number, no medical word.
+    - Cases: the base never names the decisive finding; no case names a condition the specification
+      leaves unmentioned; FLIP and NEAR differ.
+    - Each fact, FLIP and NEAR line against its mention: a listed word for the condition under test; the
+      value exactly as given, as the only number after its name, with its unit; the year; the person (a
+      relative has the condition rather than reports it; the patient's lines name no one else and use the
+      patient's pronouns); a denial tied to the name for an absent fact and none for a present one; a
+      current fact reads as current, a fact marked over says so in words, an undated past fact reads as
+      past.
+    A group that passes needs the second author's approval of exactly its text and facts:
+    check_ok: yes <fingerprint>."""
     errs = []
     need = ["header", "reason", "FLIP", "NEAR"] + [f"fact {f['n']}" for f in s["facts"]]
     errs += [f"{k} is empty" for k in need if not n.get(k)]
@@ -287,25 +343,35 @@ def check(s, n):
         return errs
     rule = D.RULES_BY_ID[s["rid"]]
     crit = rule.crit(s["cid"])
+    adult, sex = s["patient"].startswith("adult"), s["sex"]
+    other = "male" if sex == "female" else "female"
     hdr = n["header"]
-    if s["patient"].startswith("adult"):
-        if re.search(r"\d", hdr):
-            errs.append("header: give no age here (the age is a fact of the rule)")
+    if adult:
+        if re.search(r"\d", hdr) or AGE_WORDS.search(hdr):
+            errs.append("header: give no age and no age words here (the age is a fact of the rule)")
     elif not re.search(r"(?<!\d)" + re.match(r"\d+", s["patient"]).group(0) + r"(?!\d)", hdr):
         errs.append(f"header: the age {re.match(r'[0-9]+', s['patient']).group(0)} is not given")
-    sex = "female" if s["patient"].endswith("female") else "male"
-    other = "male" if sex == "female" else "female"
     if not SEX[sex].search(hdr) or SEX[other].search(hdr):
         errs.append(f"header: the sex ({sex}) is not given clearly")
     for x in n.get("extra", []):
-        for c in rule.criteria:
-            w = named_word(x, c.keywords, c.concept)
-            if w:
-                errs.append(f"extra: the word '{w}' names {c.label}; extra lines must be unrelated to the rule")
+        why = [f"the word '{w}' names {c.label}" for c in rule.criteria
+               for w in [named_word(x, c.keywords, c.concept, strict=True)] if w]
+        med, aged = MEDICAL.search(x), adult and AGE_WORDS.search(x)
+        why += ([f"'{med.group(0)}' is medical"] if med else []) + (["it gives a number"] if re.search(r"\d", x) else []) \
+            + ([f"'{aged.group(0)}' hints at the age"] if aged else [])
+        if why:
+            errs.append(f"extra '{x[:40]}': {'; '.join(why)}; extra lines must be unrelated to the rule and to health")
+    reason, setting = n["reason"], s["setting"]
     for c in rule.criteria:
-        w = named_word(n["reason"], c.keywords, c.concept)
-        if w and not names(s["setting"], c.keywords, c.concept):
+        w = named_word(reason, c.keywords, c.concept, strict=True)
+        if w and not names(setting, c.keywords, c.concept):
             errs.append(f"reason: the word '{w}' names {c.label}, which the reason for the visit does not")
+    given = {v for v, _ in numbers(setting)}
+    added = [m.group(0) for m in MEDICAL.finditer(reason) if not in_setting(m.group(0), setting)]
+    added += [v for v, _ in numbers(reason) if v not in given]
+    added += [m.group(0) for m in AGE_WORDS.finditer(reason) if adult and not AGE_WORDS.search(setting)]
+    if added:
+        errs.append(f"reason: adds {', '.join(repr(a) for a in added)}, which the reason for the visit does not give")
     for k, t in assemble_texts(s, n).items():
         if crit.kind == "finding" and k == "base" and names(t, s["keywords"], crit.concept):
             errs.append(f"base: names {s['concept']}, which the base must not mention")
@@ -313,6 +379,8 @@ def check(s, n):
         for c in rule.criteria:
             if c is not crit and c.kind == "finding" and c.concept not in stated and names(t, c.keywords, c.concept):
                 errs.append(f"{k}: mentions {c.label}, which the specification leaves unmentioned")
+    if n["FLIP"].strip().lower() == n["NEAR"].strip().lower():
+        errs.append("FLIP and NEAR are the same line")
     lines = [(f"fact {f['n']}", f["mention"], n[f"fact {f['n']}"]) for f in s["facts"]] + \
             [(key, s["edits"][k]["mention"], n[key]) for k, key in (("flip", "FLIP"), ("near", "NEAR"))]
     for label, m, line in lines:
@@ -322,39 +390,60 @@ def check(s, n):
         if m["kind"] == "numeric":
             v, u = E.fmt(m["value"], c), unit(c.concept)
             got = stated_value(line, c.keywords, c.concept, m.get("year"))
+            reading = re.sub(re.escape(v) + r"\s*/\s*\d+", v, line) if c.concept == "sbp" else line   # 150/90
+            count = len(numbers(reading, m.get("year")))
             if got is None:
                 errs.append(f"{label}: the value {v} is not in the line")
-            elif float(got) != float(v):
-                errs.append(f"{label}: the first number after the {name(c)} is {got}, not the value {v}")
+            elif got != v:
+                errs.append(f"{label}: write the value exactly as given, {v} (the line gives {got})")
+            elif count > 1:
+                errs.append(f"{label}: gives {count} numbers; state only the value {v}"
+                            + (f" and the year {m['year']}" if m.get("year") else ""))
             if u and u in UNIT_RE and not re.search("(?i)" + UNIT_RE[u], line):
                 errs.append(f"{label}: the unit {u} is not in the line")
+            if m["time"] == "past" and re.search(r"(?i)\b(?:today|now|current(?:ly)?)\b", line):
+                errs.append(f"{label}: an earlier value must not read as today's")
         if m.get("year") and str(m["year"]) not in line:
             errs.append(f"{label}: the year {m['year']} is not in the line")
         if m["subject"] != "patient":
             if not re.search(r"(?i)(?<![\w-])" + re.escape(m["subject"]) + r"(?!-in-law)(?![\w-])", line):
                 errs.append(f"{label}: the person '{m['subject']}' is not named")
             if REPORTING.search(line):
-                errs.append(f"{label}: the {m['subject']} must have the condition, not report it")
-        elif PERSON_RE.search(line):
-            errs.append(f"{label}: names another person, but the fact is about the patient")
-        if m["kind"] == "finding" and m["status"] == "absent" and not DENIAL.search(line):
-            errs.append(f"{label}: should be a clear denial")
-        if m["kind"] == "finding" and m["status"] == "present" and m["time"] == "current" \
-                and denies(line, c.keywords, c.concept):
-            errs.append(f"{label}: reads as a denial, but the fact is present now")
-        if m["status"] == "present" and m["time"] == "past":
-            if not c.counts_past and m["kind"] == "finding" and c.concept != "fall" \
-                    and (not OVER.search(line) or NOT_OVER.search(line)):
+                errs.append(f"{label}: the {m['subject']} must have the condition; do not report it "
+                            f"('per', 'says', 'worried about')")
+            wrong = re.search(r"(?i)\b" + ("his" if sex == "female" else "her") + r"\s+" + re.escape(m["subject"]), line)
+            if wrong:
+                errs.append(f"{label}: '{wrong.group(0)}' does not fit a {sex} patient")
+        else:
+            if PERSON_RE.search(OWN_PAST.sub("", line)):
+                errs.append(f"{label}: names another person, but the fact is about the patient")
+            wrong = re.search("(?i)" + PRONOUNS[other], line)
+            if wrong:
+                errs.append(f"{label}: '{wrong.group(0)}' does not fit a {sex} patient")
+        if m["kind"] == "finding":
+            over = m["status"] == "present" and m["time"] == "past" and not c.counts_past and c.concept != "fall"
+            if m["status"] == "absent" and not negated(line, c.keywords, c.concept):
+                errs.append(f"{label}: should be a clear denial of {name(c)} ('No ...', 'Denies ...', '...: none')")
+            elif m["status"] == "present" and not over and negated(line, c.keywords, c.concept):
+                errs.append(f"{label}: reads as a denial, but the fact is present")
+            if m["status"] == "present" and m["time"] == "current" and c.concept != "fall" and (
+                    NOT_CURRENT.search(re.sub(r"(?i)\bsince\s+\w+", "", line))
+                    or re.search(f"(?i){ENDED}{CLAUSE}\\b{_kw(c.keywords, c.concept)}", line)):
+                errs.append(f"{label}: reads as past or over, but the fact is current (no 'history of', 'previous', "
+                            f"'resolved' or year; 'since <year>' is fine)")
+            if over and (not OVER.search(line) or NOT_OVER.search(line)):
                 errs.append(f"{label}: must say that it is over (resolved, no longer, outgrown, ...); "
                             f"a date alone is not enough")
-            elif not m.get("year") and not PAST.search(line):
-                errs.append(f"{label}: does not read as past or earlier")
+        if m["status"] == "present" and m["time"] == "past" and not m.get("year") and not PAST.search(line):
+            errs.append(f"{label}: does not read as past or earlier")
     if errs:
         return errs
-    ok, fp = n.get("check_ok", "").strip().lower(), fingerprint(n)
-    if ok.startswith("no"):
-        errs.append(f"the second author answered no ({n.get('check_comment', '')}); revise, then ask for a new check")
-    elif ok != f"yes {fp}":
+    fp = fingerprint(n, s)
+    words = re.sub(r"[^a-z0-9]+", " ", n.get("check_ok", "").lower()).split()
+    if words[:1] == ["no"] and words[1:2] in ([], [fp]):
+        errs.append(f"the second author answered no ({n.get('check_comment', '')}); revise the lines, clear check_ok "
+                    f"and check_comment, and ask for a new check (fingerprint now {fp})")
+    elif words != ["yes", fp]:
         errs.append(f"passes the checks; awaiting the second author: check_ok: yes {fp}")
     return errs
 
@@ -414,15 +503,25 @@ def _line_of(s, n, k, m):
     return n["FLIP" if k == "flip" else "NEAR"]
 
 
-def assemble(freeze=False, kit_dir=KIT):
+def assemble(freeze=False, kit_dir=KIT, restore=False):
+    """Checks every notes_<authorN>.md and writes ASSEMBLY_REPORT.md. A group is read only from its
+    writer's file, where the second author also writes check_ok. freeze registers the set once all
+    groups are accepted; restore rewrites the records of the frozen set and checks its sha256."""
     S = {json.loads(l)["gid"]: json.loads(l) for l in open(kit_dir / "specs.jsonl", encoding="utf-8")}
-    report, recs, done, seen = ["# challenge_v1 assembly report\n"], [], Counter(), {}
+    report, recs, done = ["# challenge_v1 assembly report\n"], [], Counter()
     for md in sorted(kit_dir.glob("notes_*.md")):
         who = md.stem[len("notes_"):]
         if who not in AUTHORS:                      # file names carry the assigned id, never a person's name
             report.append(f"- {md.name}: not read; rename it to notes_<authorN>.md (one of {', '.join(AUTHORS)})")
             continue
-        notes = parse(md.read_text(encoding="utf-8-sig"))
+        raw = md.read_bytes()
+        try:
+            text = raw.decode("utf-8-sig")
+        except UnicodeDecodeError:
+            text = raw.decode("cp1252", errors="replace")
+            report.append(f"- {md.name}: not saved as UTF-8 (read as Windows-1252); save it as UTF-8")
+        notes, twice = parse(text)
+        report += [f"- {who} {gid}: written twice in {md.name}; keep one" for gid in sorted(twice)]
         with open(md.with_suffix(".jsonl"), "w", encoding="utf-8", newline="\n") as f:
             for gid, n in sorted(notes.items()):
                 f.write(json.dumps(dict(gid=gid, author=who, **n), sort_keys=True) + "\n")
@@ -430,40 +529,50 @@ def assemble(freeze=False, kit_dir=KIT):
             if gid not in S:
                 report.append(f"- {who} {gid}: unknown group id")
                 continue
-            if gid in seen:
-                report.append(f"- {who} {gid}: already submitted in notes_{seen[gid]}.md; not used again")
+            if S[gid]["author"] != who:
+                report.append(f"- {who} {gid}: belongs to {S[gid]['author']}; the group and its check go in "
+                              f"notes_{S[gid]['author']}.md")
                 continue
-            seen[gid] = who
-            errs = check(S[gid], n)
+            errs = check(S[gid], n) + ([f"written twice in {md.name}"] if gid in twice else [])
+            if not errs:
+                try:
+                    recs += records(S[gid], n, S[gid]["author"])   # the assigned id, never a person's name
+                except (AssertionError, ValueError, KeyError) as e:
+                    errs = [f"internal check failed ({e!r}); please tell role A"]
             if errs:
                 report.append(f"- {who} {gid}: " + "; ".join(errs))
                 done["awaiting check" if errs[0].startswith("passes the checks") else "rejected"] += 1
             else:
-                recs += records(S[gid], n, S[gid]["author"])   # the assigned id, never a person's name
                 done["accepted"] += 1
     missing = sorted(set(S) - {r["tid"].split(".")[-1] for r in recs})
     report.append(f"\naccepted {done['accepted']}, awaiting check {done['awaiting check']}, rejected {done['rejected']}, "
                   f"not yet written or accepted {len(missing)}")
     (kit_dir / "ASSEMBLY_REPORT.md").write_text("\n".join(report) + "\n", encoding="utf-8")
     print(report[-1].strip())
-    if freeze:
+    if freeze or restore:
         if missing:
-            sys.exit(f"refusing to freeze: {len(missing)} groups missing")
-        _register(recs)
+            sys.exit(f"refusing to {'freeze' if freeze else 'restore'}: {len(missing)} groups missing")
+        _register(recs, restore)
     return recs, report
 
 
-def _register(recs):
+def _register(recs, restore=False):
     reg_path = ROOT / "data" / "REGISTRY.json"
     registry = json.loads(reg_path.read_text(encoding="utf-8"))
     name = f"{SET}/test"
-    if registry.get(name, {}).get("frozen"):
-        sys.exit(f"refusing to rebuild: {name} is frozen")
     d = ROOT / "data" / SET / "test"
-    d.mkdir(parents=True, exist_ok=True)
     lines = [json.dumps(r, sort_keys=True) + "\n" for r in recs]
-    (d / "records.jsonl").write_text("".join(lines), encoding="utf-8", newline="\n")
     sha = hashlib.sha256("".join(lines).encode("utf-8")).hexdigest()
+    if restore:                                     # records are not in git; rebuild them from the notes
+        if sha != registry.get(name, {}).get("sha256"):
+            sys.exit(f"refusing to restore {name}: sha256 {sha[:16]} differs from the registry")
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "records.jsonl").write_text("".join(lines), encoding="utf-8", newline="\n")
+        return print(f"restored {name}: sha256 matches")
+    if registry.get(name, {}).get("frozen"):
+        sys.exit(f"refusing to rebuild: {name} is frozen (use --restore to write its records)")
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "records.jsonl").write_text("".join(lines), encoding="utf-8", newline="\n")
     created = datetime.date.today().isoformat()
     man = {"name": "test", "set": SET, "split": "test", "level": "L2", "tier": "author", "created": created,
            "generator": "scripts/challenge_v1.py assemble", "frozen": True, "n_groups": len({r["tid"] for r in recs}),
@@ -485,5 +594,6 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=("kit", "assemble"))
     ap.add_argument("--freeze", action="store_true")
+    ap.add_argument("--restore", action="store_true", help="rewrite the frozen records from the notes")
     a = ap.parse_args()
-    kit() if a.cmd == "kit" else assemble(a.freeze)
+    kit() if a.cmd == "kit" else assemble(a.freeze, restore=a.restore)

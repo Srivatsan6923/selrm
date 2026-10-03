@@ -12,6 +12,7 @@ the freeze.
 import csv
 import datetime
 import hashlib
+import io
 import json
 import os
 import re
@@ -60,8 +61,10 @@ def post(items, ctx):
     for f in items:
         if f["cand"] in RESCUE and f["decision"] == "accept" and f["final"] != "accept":
             kinds, quote = RESCUE[f["cand"]]
-            f.update(near_kinds=kinds, final="accept", rescued=f"near-miss kinds restricted to {kinds} as the "
-                                                                f"rejecting verifier specified: {quote}")
+            who = "both verifiers" if sum(v["verdict"] == "reject" for v in f["verdicts"]) == 2 else \
+                "the rejecting verifier"
+            f.update(near_kinds=kinds, final="accept", rescued=f"near-miss kinds restricted to {kinds} as {who} "
+                                                                f"specified: {quote}")
         c = ctx.get(f["cand"])
         if f["final"] != "accept" or not c:
             continue
@@ -94,9 +97,10 @@ def post(items, ctx):
 def guard(f):
     """Reasons the code itself excludes an accepted formalisation."""
     p = f.get("population") or {}
-    if p.get("max_age") is not None and p["max_age"] < 23:
-        return f"the trial enrols children or young people (registered age up to {p['max_age']:g} years); adult " \
-               f"cases would cover fewer than five years of age"
+    lo, hi = ec.population(f)[1]
+    if hi - lo < 4:                                  # the ages the cases can take, after the adult floors
+        return f"the registered ages ({p.get('min_age') or 'no minimum'} to {p.get('max_age') or 'no maximum'}) " \
+               f"leave the cases {'no adult age' if hi < lo else f'only ages {lo} to {hi}'}"
     if f["input"] == "numeric" and f["concept"] in ec.SOFT:
         slo, shi = ec.SOFT[f["concept"]]
         nd, t = ec.NUM[f["concept"]][1], f["threshold"]
@@ -195,7 +199,7 @@ def verification(f):
 
 def sheet_row(f, recs):
     tests = "; ".join(f"{lab} -> {'met' if y else 'not met'}" for lab, y in ec.boundary_tests(f))
-    if f["concept"] == "age" and f["op"] in ("<", ">"):
+    if ec.age_arguable(f):
         tests += "; no case states the age at the threshold (ages are in completed years)"
     skipped = not_rendered(f)
     return {"crit_id": f["cand"], "nct_id": f["nct_id"], "criterion_type": f["criterion_type"],
@@ -215,7 +219,12 @@ def cases_md(keep, recs):
     out = ["# ec_v1: every rendered case, by criterion (H3)",
            "",
            "Answers are the program's: base, near-miss and presentation cases do not meet the criterion, the flip "
-           "meets it. Sign off a criterion's cases only if every case below is unambiguous under its rule text."]
+           "meets it. Sign off a criterion's cases only if every case below is unambiguous under its rule text.",
+           "",
+           "Conventions the answers follow (as in ec_v1/SIGNOFF_GUIDE.md): a condition the case does not mention is "
+           "absent; a general line (\"No allergies.\") means absence; a finding counts only now unless the rule "
+           "text counts the past; a measurement counts only as its current value; 'above'/'below' are strict and "
+           "'or more'/'or less' inclusive; ages are in completed years."]
     for f in keep:
         rs = [r for r in recs if r["rid"] == f"ec_{f['cand']}" and r["claim_role"] == "s_prime"]
         out += ["", f'<a id="{f["cand"]}"></a>', f"## {f['cand']} ({f['nct_id']})", "", ec.full_text(f), "",
@@ -243,7 +252,7 @@ def load_items():
 
 
 def reviewer_files():
-    return [p for p in sorted(REVIEWS.glob("*.csv")) if p.stem != "TEMPLATE"]
+    return [p for p in sorted(REVIEWS.glob("*.csv")) if p.stem not in ("TEMPLATE", "MERGED")]
 
 
 def prepare(force=False):
@@ -257,15 +266,16 @@ def prepare(force=False):
     keep, recs, excl = render(items)
     ok, sc = shortcut_check(recs)
     REVIEWS.mkdir(parents=True, exist_ok=True)
-    with open(SHEET, "w", encoding="utf-8", newline="") as fh, \
-            open(REVIEWS / "TEMPLATE.csv", "w", encoding="utf-8", newline="") as th:
-        w, t = csv.DictWriter(fh, fieldnames=COLS), csv.DictWriter(th, fieldnames=REVIEW_COLS)
+    with open(SHEET, "w", encoding="utf-8-sig", newline="") as fh, \
+            open(REVIEWS / "TEMPLATE.csv", "w", encoding="utf-8-sig", newline="") as th:   # BOM: Excel reads UTF-8
+        w, t = csv.DictWriter(fh, fieldnames=COLS), csv.DictWriter(th, fieldnames=REVIEW_COLS + ["criterion"])
         w.writeheader()
         t.writeheader()
         for f in keep:
             row = sheet_row(f, [r for r in recs if r["rid"] == f"ec_{f['cand']}"])
             w.writerow(row)
-            t.writerow({"crit_id": row["crit_id"], "fingerprint": row["fingerprint"]})
+            t.writerow({"crit_id": row["crit_id"], "fingerprint": row["fingerprint"],
+                        "criterion": row["rule_text_shown"]})        # read-only, to keep each decision on its row
     (KIT / "SIGNOFF_CASES.md").write_text(cases_md(keep, recs), encoding="utf-8")
     with open(KIT / "EXCLUSIONS.csv", "w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
@@ -300,53 +310,83 @@ def yes_no(v):
     return {"yes": "yes", "y": "yes", "no": "no", "n": "no"}.get((v or "").strip().lower())
 
 
+def read_csv(p):
+    """Rows of a CSV saved by Excel or an editor: UTF-8 (with or without BOM), else Windows-1252. None
+    when the separator is a semicolon (Excel in comma-decimal locales)."""
+    raw = p.read_bytes()
+    try:
+        text = raw.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        text = raw.decode("cp1252", errors="replace")
+    head = text.split("\n", 1)[0]
+    if ";" in head and "," not in head:
+        return None
+    return list(csv.DictReader(io.StringIO(text, newline="")))
+
+
 def read_reviews():
-    """{crit_id: [(reviewer, row)]} from docs/ec_signoff/<authorN>.csv, plus the problems found. A row
-    with no decision and no comment is not a review (that reviewer left the criterion to others)."""
+    """{crit_id: [(reviewer, row)]} from docs/ec_signoff/<authorN>.csv, plus the problems found. A row is a
+    review when it holds a decision (program_ok or cases_ok); rows left empty, or with a comment only,
+    belong to criteria the reviewer left to others."""
     out, bad = {}, []
     for p in reviewer_files():
         if p.stem not in AUTHORS:
             bad.append(f"{p.name}: rename it to <authorN>.csv (one of {', '.join(AUTHORS)})")
             continue
-        try:
-            rows = list(csv.DictReader(open(p, encoding="utf-8-sig", newline="")))
-        except UnicodeDecodeError:
-            bad.append(f"{p.name}: not UTF-8; save it as 'CSV UTF-8 (comma delimited)'")
+        rows = read_csv(p)
+        if rows is None:
+            bad.append(f"{p.name}: separated by ';'; save it as 'CSV UTF-8 (comma delimited)'")
             continue
         if rows and set(REVIEW_COLS) - set(rows[0]):
             bad.append(f"{p.name}: missing columns {sorted(set(REVIEW_COLS) - set(rows[0]))}")
             continue
-        ids = Counter((r["crit_id"] or "").strip() for r in rows)
-        bad += [f"{p.name}: {c} appears {n} times" for c, n in ids.items() if n > 1]
+        ids = Counter()
         for r in rows:
-            if any((r[c] or "").strip() for c in ("program_ok", "cases_ok", "comment")):
-                out.setdefault(r["crit_id"].strip(), []).append((p.stem, r))
+            cid = (r["crit_id"] or "").strip()
+            decided = any((r[c] or "").strip() for c in ("program_ok", "cases_ok"))
+            ids[cid] += bool(cid)
+            if decided and not cid:
+                bad.append(f"{p.name}: a decision in a row without crit_id")
+            elif decided:
+                out.setdefault(cid, []).append((p.stem, r))
+        bad += [f"{p.name}: {c} appears {n} times" for c, n in ids.items() if n > 1]
+    template = REVIEWS / "TEMPLATE.csv"
+    if template.exists() and any(any((r.get(c) or "").strip() for c in ("program_ok", "cases_ok"))
+                                 for r in read_csv(template) or []):
+        bad.append("TEMPLATE.csv holds decisions; copy it to <authorN>.csv and decide in that copy")
     return out, bad
 
 
 def freeze():
-    """Keeps the criteria that two reviewers approved (program_ok and cases_ok yes from both). Refuses
-    unless every presented criterion has exactly two reviews, each of the current fingerprint, with
+    """Keeps the criteria that every reviewer approved, each reviewed at least twice (program_ok and
+    cases_ok yes). Refuses unless the sheet is current (its fingerprints are those of the cases rendered
+    now) and every criterion on it has two or more reviews, each of the current fingerprint, with
     program_ok yes or no, cases_ok yes or no (blank allowed after program_ok no) and a comment for every
-    no. Criteria not approved are listed in the manifest as rejected at sign-off."""
+    no. Any no rejects a criterion; rejected criteria are listed in the manifest."""
     reg_path = ROOT / "data" / "REGISTRY.json"
     registry = json.loads(reg_path.read_text(encoding="utf-8"))
     if registry.get("ec_v1/test", {}).get("frozen"):
-        sys.exit("refusing to rebuild: ec_v1/test is frozen")
+        sys.exit("refusing to rebuild: ec_v1/test is frozen (restore writes its records)")
     keep_all, recs_all, _ = render(load_items())
     fps = {f["cand"]: fingerprint(f, [r for r in recs_all if r["rid"] == f"ec_{f['cand']}"]) for f in keep_all}
+    sheet = {r["crit_id"]: r["fingerprint"] for r in read_csv(SHEET) or []}
+    stale = sorted(c for c in set(sheet) | set(fps) if sheet.get(c) != fps.get(c))
+    if stale:
+        sys.exit(f"refusing to freeze: docs/EC_SIGNOFF.csv does not match the cases rendered now ({', '.join(stale)}); "
+                 f"role A runs prepare --force, then reviewers re-read the changed criteria")
     reviews, bad = read_reviews()
     bad += [f"{c}: not a criterion on the sheet" for c in reviews if c not in fps]
     for c, fp in fps.items():
         rs = reviews.get(c, [])
-        if len(rs) != 2:
-            bad.append(f"{c}: {len(rs)} review(s) ({', '.join(w for w, _ in rs) or 'none'}); exactly two are needed")
+        if len(rs) < 2:
+            bad.append(f"{c}: {len(rs)} review(s) ({', '.join(w for w, _ in rs) or 'none'}); at least two are needed")
             continue
         for who, r in rs:
             p, k = yes_no(r["program_ok"]), yes_no(r["cases_ok"])
-            if (r["fingerprint"] or "").strip() != fp:
-                bad.append(f"{c} ({who}): signed another version (fingerprint {r['fingerprint']!r}, now {fp}); "
-                           f"review it again")
+            signed = (r["fingerprint"] or "").strip()
+            if signed != fp:
+                bad.append(f"{c} ({who}): " + ("fingerprint missing" if not signed else "signed an earlier version")
+                           + "; re-read it in ec_v1/SIGNOFF_CASES.md and copy its fingerprint from TEMPLATE.csv")
             if p is None or (k is None and not (p == "no" and not (r["cases_ok"] or "").strip())):
                 bad.append(f"{c} ({who}): program_ok must be yes or no, cases_ok yes or no (blank only after "
                            f"program_ok no)")
@@ -362,11 +402,10 @@ def freeze():
     recs = [r for r in recs_all if r["rid"] in {f"ec_{c}" for c in approved}]
     with open(REVIEWS / "MERGED.csv", "w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
-        w.writerow(["crit_id", "fingerprint", "approved"] + [f"{x}_{i}" for i in (1, 2)
-                                                             for x in ("reviewer", "program_ok", "cases_ok", "comment")])
+        w.writerow(["crit_id", "fingerprint", "approved", "reviewer", "program_ok", "cases_ok", "comment"])
         for c in fps:
-            w.writerow([c, fps[c], "yes" if c in approved else "no"]
-                       + [v for who, r in reviews[c] for v in (who, r["program_ok"], r["cases_ok"], r["comment"])])
+            w.writerows([c, fps[c], "yes" if c in approved else "no", who, r["program_ok"], r["cases_ok"], r["comment"]]
+                        for who, r in reviews[c])
     ok, sc = shortcut_check(recs)
     if not ok:
         sys.exit("shortcut validation FAILED")
@@ -391,8 +430,22 @@ def freeze():
     print(f"ec_v1/test frozen: {len(keep)} criteria, {man['n_groups']} groups, sha256 {sha[:16]}")
 
 
+def restore():
+    """Rewrites data/ec_v1/test/records.jsonl (records are not kept in git) from the code and the
+    manifest's signed-off criteria, and checks the manifest's sha256."""
+    d = ROOT / "data" / "ec_v1" / "test"
+    man = json.loads((d / "MANIFEST.json").read_text(encoding="utf-8"))
+    _, recs, _ = render([f for f in load_items() if f["cand"] in set(man["signed_off"])])
+    lines = "".join(json.dumps(r, sort_keys=True) + "\n" for r in recs)
+    sha = hashlib.sha256(lines.encode("utf-8")).hexdigest()
+    if sha != man["sha256"]:
+        sys.exit(f"refusing to restore ec_v1/test: sha256 {sha[:16]} differs from the manifest")
+    (d / "records.jsonl").write_text(lines, encoding="utf-8", newline="\n")
+    print("restored ec_v1/test: sha256 matches")
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
-    if cmd not in ("prepare", "freeze"):
-        sys.exit("usage: python scripts/build_ec_v1.py prepare [--force] | freeze")
-    prepare("--force" in sys.argv) if cmd == "prepare" else freeze()
+    if cmd not in ("prepare", "freeze", "restore"):
+        sys.exit("usage: python scripts/build_ec_v1.py prepare [--force] | freeze | restore")
+    prepare("--force" in sys.argv) if cmd == "prepare" else freeze() if cmd == "freeze" else restore()

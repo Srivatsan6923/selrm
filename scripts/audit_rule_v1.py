@@ -664,7 +664,7 @@ def facts(rec, rule):
         elif m["status"] == "absent":
             out.append(f"{who}: {what} denied by name{q}")     # the quoted line sets the scope ('never', 'now')
         elif m["form"] == "delabelled":
-            out.append(f"{who}: {what} label removed after testing (not allergic now){q}")
+            out.append(f"{who}: {what} label removed (de-labelled; not allergic now){q}")
         else:
             out.append(f"{who}: {what} present ({when}){q}")
     named = {m["concept"] for m in rec["state"]}
@@ -680,17 +680,22 @@ def neutral(c):
 
 H1_README = """# H1: rendering fidelity (authors)
 
-Each of you reads 75 groups: `sheet_authorN.csv`, or the same rows in `sheets_authorN.md`. Save your
-answers as `audit/h1/answers_authorN.csv`, with your assigned id and not your name: a copy of your
-sheet with the answer columns filled in. No script ever writes that file. Do not open `key.csv`
-until you have finished; it holds the program's answers. Afterwards, `python scripts/h1_aggregate.py`
-compares your answers with the key.
+Each of you reads 75 groups: `sheet_authorN.csv`, or the same rows in `sheets_authorN.md`.
+
+Before you type anything, save a copy of your sheet as `audit/h1/answers_authorN.csv`, with your
+assigned id and not your name, and answer only in that copy: regenerating the kit rewrites the
+sheets. In Excel, save as "CSV UTF-8 (comma delimited)". No script ever writes the answers file.
+Do not open `key.csv` until you have finished; it holds the program's answers. Afterwards,
+`python scripts/h1_aggregate.py` compares your answers with the key.
 
 ## How to read a row
 - Read the case text and answer q2 and q3 first. Only then read Facts and answer q1. Facts are the
-  program's reading of the case, so reading them first would steer your answers.
+  program's reading of the case, so reading them first would steer your answers. The CSV columns
+  come in this order.
 - The cases of a group share most lines: two cases differ in one line (replaced or added), and one
-  case rewords and reorders another. Check the shared lines once per group.
+  case rewords and reorders another. Some groups have a fifth case in which the decisive line is
+  missing or says the value is unknown; there the answer is usually "neither". Check the shared
+  lines once per group.
 
 ## Conventions the labels follow
 - A history item (a finding) that is not mentioned is absent. A measurement that is not mentioned is
@@ -700,9 +705,10 @@ compares your answers with the key.
   with a year, or described as earlier, replaced or yesterday, is not current.
 - Numbers are compared with the stated operator: "above"/"below" are strict, "or more"/"or less"
   are inclusive.
-- General lines such as "Steady on feet; balance normal." never name the condition. Facts lists
-  them as "not named; a general line implies absence (counts as absent)". Do not report them as a
-  missing fact.
+- General lines such as "Walks independently, with no recent trips or slips." do not name the
+  condition. Facts lists them as "not named; a general line implies absence (counts as absent)",
+  and class-level denials such as "Drug allergies: none known." the same way. Answer q1 = y for
+  them, and do not report them as a missing fact.
 - Conditions that the case does not mention are listed as "not mentioned", with "(counts as
   absent)" for a finding and "(unknown)" for a measurement.
 - "Denied by name" covers whatever the quoted line covers, for example "never" or "now".
@@ -721,11 +727,12 @@ compares your answers with the key.
   conditions: value (in the rule's unit), person, current or past, denial? And does no other line
   of the case bear on a condition of the rule? The header, the setting and unrelated lines are out
   of scope unless they bear on a condition.
-- **problem_type** when q1 is n or an answer is unclear: dropped negation, wrong subject, ambiguous
-  time, conflicting measurement, wording, other. Add a note.
+- **problem_type** when q1 is n or an answer is unclear: one of dropped negation, wrong subject,
+  ambiguous time, conflicting lines, wording, other. Add a note. Answer q1, q2 and q3 even then.
 
-Write the answers exactly as shown: y or n for q1; s, s' or neither for q2 and q3. The script
-refuses any other value and lists the rows to correct.
+Write the answers exactly as shown: y or n for q1; s, s' or neither for q2 and q3; problem_type
+from the list above, required when q1 is n. The script refuses any other value and lists the rows
+to correct.
 """
 CLASH = ("angioedema", "Face and neck without swelling on examination.", "neck_nodes")
 
@@ -770,9 +777,15 @@ def sample_sheets(out_dir, missing, known=None, seed=2026):
     rng.shuffle(picked)
     h1 = out_dir / "h1"
     h1.mkdir(parents=True, exist_ok=True)
+    answers = ["q1_facts_ok", "q2_conclusion", "q3_criterion", "problem_type", "note"]
+    for old in sorted(h1.glob("sheet_author*.csv")):     # answers typed into a sheet would be overwritten
+        if any(any((r.get(a) or "").strip() for a in answers)
+               for r in csv.DictReader(open(old, encoding="utf-8-sig", newline=""))):
+            sys.exit(f"refusing to rewrite {old.name}: it holds answers; save it as "
+                     f"{old.name.replace('sheet_', 'answers_')} first")
     cols = ["author", "row", "group", "case", "set", "rule_text", "conclusion_s", "conclusion_s_prime",
-            "criterion_s", "criterion_s_prime", "context", "case_text", "facts", "q1_facts_ok", "q2_conclusion",
-            "q3_criterion", "problem_type", "note"]
+            "criterion_s", "criterion_s_prime", "context", "case_text", "q2_conclusion", "q3_criterion", "facts",
+            "q1_facts_ok", "problem_type", "note"]          # the case and q2/q3 before the program's facts
     sheets, keys, md = defaultdict(list), [], defaultdict(list)
     order_rng = random.Random(seed + 1)
     for gno, (name, tid, G) in enumerate(picked):
@@ -797,7 +810,7 @@ def sample_sheets(out_dir, missing, known=None, seed=2026):
                    "criterion_s": claim.get(("criterion", "s"), {}).get("claim_text", ""),
                    "criterion_s_prime": claim.get(("criterion", "s_prime"), {}).get("claim_text", ""),
                    "facts": " | ".join(fl), "context": f"header: {body[0]} / setting: {body[1]}",
-                   "case_text": c["case_text"], **{x: "" for x in cols[13:]}}
+                   "case_text": c["case_text"], **{x: "" for x in answers}}
             sheets[author].append(row)
             keys.append({"author": author, "case": case_id, "tid": tid, "set": name, "case_kind": k,
                          "near_miss_kind": c["nm_kind"], "tier": c["tier"], "level": c["level"],
@@ -808,11 +821,12 @@ def sample_sheets(out_dir, missing, known=None, seed=2026):
                               + "\nFacts (for q1, after q2 and q3):\n" + "".join(f"- {x}\n" for x in fl))
     flagged = [k["case"] for k in keys if k["case_kind"] in (known or {}).get(k["tid"], ())]
     note = (f"\n## Known issue in these sheets\nCases {', '.join(flagged)} contain the general line "
-            f"\"{CLASH[1]}\", which contradicts their swollen neck lymph nodes. Report it as 'conflicting "
-            f"measurement'.\n") if flagged else ""
+            f"\"{CLASH[1]}\", which contradicts their swollen neck lymph nodes. Answer q1 = n with "
+            f"problem_type 'conflicting lines', and answer q2 and q3 by the conventions (the general line "
+            f"counts as absence of angioedema).\n") if flagged else ""
     (h1 / "README.md").write_text(H1_README + note, encoding="utf-8")
     for author, rows in sheets.items():
-        with open(h1 / f"sheet_{author}.csv", "w", encoding="utf-8", newline="") as f:
+        with open(h1 / f"sheet_{author}.csv", "w", encoding="utf-8-sig", newline="") as f:   # BOM: Excel reads UTF-8
             w = csv.DictWriter(f, fieldnames=cols)
             w.writeheader()
             w.writerows(rows)
@@ -881,12 +895,14 @@ def main():
     window_tids = sorted({r["tid"] for n in TRIPLET_SETS for r in load(n)
                           if WINDOW.search(RB[r["rid"]].rule_text())})
     clash = clashes()
-    unscoped = sorted(f"{rule.rid}.{c.cid}" for rule in LIBRARY for c in rule.criteria
+    unscoped = sorted(f"{rule.rid}.{c.cid}" for rule in list(LIBRARY) + list(INVENTED) for c in rule.criteria
                       if c.kind == "finding" and (c.counts_past or c.counts_family)
                       and not SCOPE_WORDS.search(E.condition_text(c, c.threshold)))
+    invented_ids = {r.rid for r in INVENTED}
     stats["known_semantic_limits"] = {
         "general_line_contradicts_condition": {"groups": len(clash), "cases": sum(len(k) for k in clash.values())},
-        "criterion_claim_without_scope": len(unscoped)}
+        "criterion_claim_without_scope": len(unscoped),
+        "criterion_claim_without_scope_invented": sum(u.split(".")[0] in invented_ids for u in unscoped)}
     (DATA / "rule_v1" / "KNOWN_ISSUES.json").write_text(json.dumps(
         {"generated_by": "scripts/audit_rule_v1.py", "commit": stats["commit"], "checked_sets": TEST_SETS,
          "issues": issues,

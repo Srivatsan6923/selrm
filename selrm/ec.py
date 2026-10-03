@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import datetime as dt
 import random
+import re
 from dataclasses import asdict
 
 from selrm import engine as E
@@ -46,8 +47,8 @@ def full_text(f):
     return f"{f['criterion_type'].capitalize()} criterion: {f['rule_text']}"
 
 
-# plausible values for the cases that do not meet a criterion (base, near-miss, context); flips that a
-# criterion forces outside these keep the hard limits of NUM
+# plausible values for every case; a criterion whose threshold leaves no plausible value on one side is
+# excluded (scripts/build_ec_v1.py guard), so the hard limits of NUM are only a fallback
 SOFT = {"platelets": (20, 600), "creatinine": (0.4, 10), "egfr": (8, 130), "hemoglobin": (6, 18),
         "alt_enzyme": (8, 600), "potassium": (2.8, 6.8), "inr": (0.8, 5), "neutrophils": (0.2, 15), "wbc": (1.0, 30),
         "bmi": (17, 60), "weight": (45, 160), "age": (18, 95), "sbp": (80, 200), "heart_rate": (40, 160),
@@ -63,9 +64,11 @@ def criterion(f):
         t = f["threshold"]
         side = 8 * nd
         if f["op"] in (">", ">="):
-            dr, fr = (max(slo if slo < t - nd else lo, t - side), t - nd / 2), (t, min(hi, t + side))
+            dr = (max(slo if slo < t - nd else lo, t - side), t - nd / 2)
+            fr = (t, min(shi if shi > t + nd / 2 else hi, t + side))
         else:
-            dr, fr = (t + nd / 2, min(shi if shi > t + nd else hi, t + side)), (max(lo, t - side), t)
+            dr = (t + nd / 2, min(shi if shi > t + nd else hi, t + side))
+            fr = (max(slo if slo < t - nd / 2 else lo, t - side), t)
         return Criterion("c", f["concept"], "numeric", f["rule_text"], keywords(f["concept"]), op=f["op"],
                          threshold=t, default_range=dr, flip_range=fr, near_delta=nd, decimals=dec,
                          nm=tuple(k for k in kinds if k in ("numeric", "time")) or ("numeric",))
@@ -106,7 +109,13 @@ def kinds(f):
         return [k for k in f["near_kinds"] if k in ("time", "subject", "negation")]
     c = criterion(f)
     return [k for k in f["near_kinds"] if k in E.nm_kinds(c) and (k != "boundary" or c.op in ("<", ">"))
-            and not (k == "boundary" and c.concept == "age")]     # age in completed years: arguable at the threshold
+            and not (k == "boundary" and age_arguable(f))]
+
+
+def age_arguable(f):
+    """Ages are stated in completed years, so 'over 65' or '65 or younger' is arguable for a patient
+    aged 65; 'below 70' and '70 or older' are not."""
+    return f["concept"] == "age" and f["op"] in (">", "<=")
 
 
 def _to_ec(recs, f):
@@ -260,8 +269,24 @@ def groups(f, seeds=(0,)):
             if f["times"] == "window":
                 out += window_group(f, kind, seed)
             else:
-                out += _to_ec(E.make_group(rule(f), "c", kind, "easy", "test", seed, SET, "registered"), f)
+                out += _to_ec(_engine_group(f, kind, seed), f)
     return out
+
+
+PRESENT_ONLY = re.compile(r"(?i)\b(at present|currently|current|now|today|at the moment|presently)\b")
+
+
+def _engine_group(f, kind, seed):
+    """One engine group. For a criterion that counts past occurrences, a general line scoped to the
+    present ('No allergies at present.') leaves the past open, so such a draw is replaced by the
+    next seed (seed + 1000, ...)."""
+    generic = set(P.BANKS.get(f["concept"], {}).get("generic", []))
+    for s in range(seed, seed + 50_000, 1000):
+        recs = E.make_group(rule(f), "c", kind, "easy", "test", s, SET, "registered")
+        if f["times"] != "ever" or not any(line in generic and PRESENT_ONLY.search(line) for r in recs
+                                           for line in r["case_text"].split("\n")):
+            return recs
+    raise RuntimeError("every draw has a present-scoped general line")
 
 
 def boundary_tests(f):
@@ -271,7 +296,7 @@ def boundary_tests(f):
         step = 10 ** -dec
         t = f["threshold"]
         vals = (round(t - step, dec), t, round(t + step, dec))
-        if f["concept"] == "age" and f["op"] in ("<", ">"):
+        if age_arguable(f):
             vals = (round(t - step, dec), round(t + step, dec))    # no case states the age at the threshold
         return [(f"current value {E.fmt(v, criterion(f))}", OPS[f["op"]](v, t)) for v in vals]
     if f["times"] == "window":

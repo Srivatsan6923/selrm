@@ -52,3 +52,50 @@ def test_invalid_answers_stop_the_script(tmp_path, monkeypatch, answers):
 def test_named_answer_files_are_refused(tmp_path, monkeypatch):
     with pytest.raises(SystemExit, match="rename"):
         _run(tmp_path, monkeypatch, [("A1-G01-C1", "y", "s", "s", "")], name="answers_alice.csv")
+
+
+def _answers(tmp_path, name, rows, delimiter=",", encoding="utf-8-sig"):
+    with open(tmp_path / name, "w", encoding=encoding, newline="") as f:
+        w = csv.DictWriter(f, fieldnames=["case", "q1_facts_ok", "q2_conclusion", "q3_criterion", "problem_type", "note"],
+                           delimiter=delimiter)
+        w.writeheader()
+        w.writerows({"case": c, "q1_facts_ok": a, "q2_conclusion": b, "q3_criterion": q, "problem_type": p, "note": n}
+                    for c, a, b, q, p, n in rows)
+
+
+GOOD = [("A1-G01-C1", "y", "s", "s", "", ""), ("A1-G01-C2", "y", "s'", "s'", "", ""), ("A1-G01-C3", "y", "s", "", "", "")]
+
+
+@pytest.mark.parametrize("rows, kwargs, message", [
+    (GOOD, {"delimiter": ";"}, "missing columns"),                                   # Excel in a comma-decimal locale
+    (GOOD + GOOD[:1], {}, "appears 2 times"),
+    (GOOD[:2] + [("A1-G01-C3", "", "", "", "", "cannot tell")], {}, "q1_facts_ok"),  # a note without answers
+    (GOOD[:2] + [("A1-G01-C3", "n", "s", "", "", "")], {}, "problem_type is empty"),
+    (GOOD[:2] + [("A1-G01-C3", "n", "s", "", "time", "")], {}, "problem_type='time'"),
+])
+def test_files_with_errors_are_left_out(tmp_path, monkeypatch, rows, kwargs, message):
+    monkeypatch.setattr(h1, "ROOT", tmp_path)
+    monkeypatch.setattr(h1, "H1", tmp_path)
+    _write(tmp_path / "key.csv", KEY)
+    _answers(tmp_path, "answers_author1.csv", rows, **kwargs)
+    with pytest.raises(SystemExit, match=message):
+        h1.main()
+    out = json.loads((tmp_path / "results" / "A-H1" / "summary.json").read_text(encoding="utf-8"))
+    assert out["files_left_out"] == ["answers_author1.csv"] and not out["complete"]
+    assert not (tmp_path / "results" / "A-H1" / "DONE").exists()
+
+
+def test_windows_1252_problem_variants_and_completeness(tmp_path, monkeypatch):
+    monkeypatch.setattr(h1, "ROOT", tmp_path)
+    monkeypatch.setattr(h1, "H1", tmp_path)
+    _write(tmp_path / "key.csv", KEY)
+    _answers(tmp_path, "answers_author1.csv", GOOD[:2], encoding="cp1252")
+    h1.main()
+    out = json.loads((tmp_path / "results" / "A-H1" / "summary.json").read_text(encoding="utf-8"))
+    assert out["answered_by_author"] == {"author1": "2/3"} and not out["complete"]
+    _answers(tmp_path, "answers_author1.csv", GOOD[:2] + [("A1-G01-C3", "n", "s", "", "Conflicting-lines", "don’t")],
+             encoding="cp1252")
+    h1.main()
+    out = json.loads((tmp_path / "results" / "A-H1" / "summary.json").read_text(encoding="utf-8"))
+    assert out["complete"] and out["problem_types"] == {"conflicting lines": 1}
+    assert (tmp_path / "results" / "A-H1" / "DONE").exists()
