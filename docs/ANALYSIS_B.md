@@ -53,6 +53,8 @@ Every reader output of the two-stage runs (one per case and condition, on every 
 | B-F-summary2-triplets-s0 | 10500 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-triplets-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-triplets-s2 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-value2-natural-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-value2-balanced-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-blocks-s0 | 37497 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-blocks-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-blocks-s2 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -93,6 +95,8 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-summary2-balanced-s0 | 72.5 | 71.6 | 103 | 67.2 | 7 |
 | B-F-summary2-blocks-s0 | 67.3 | 68.7 | 103 | 68.6 | 7 |
 | B-F-summary2-triplets-s0 | 98.0 | 97.8 | 103 | 98.8 | 7 |
+| B-F-value2-natural-s0 | 43.0 | 44.6 | 103 | 42.9 | 7 |
+| B-F-value2-balanced-s0 | 71.9 | 70.9 | 103 | 67.7 | 7 |
 | B-F-ledger2-blocks-s0 | 75.3 | 75.3 | 103 | 72.8 | 7 |
 | B-F-ledger2-triplets-s0 | 99.2 | 99.1 | 103 | 98.7 | 7 |
 
@@ -106,8 +110,8 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-rationale-balanced-s0 | 91.4 | 70.4 | 96.8 | 72.0 | 69.7 | 64.7 |
 | B-F-summary2-natural-s0 | 97.3 | 47.0 | 97.3 | 46.9 | 45.7 | 45.7 |
 | B-F-summary2-balanced-s0 | 99.6 | 72.8 | 99.8 | 72.8 | 72.6 | 72.5 |
-| B-F-value2-natural-s0 | not run | | | | | |
-| B-F-value2-balanced-s0 | not run | | | | | |
+| B-F-value2-natural-s0 | 98.3 | 43.9 | 98.3 | 43.7 | 43.0 | 43.0 |
+| B-F-value2-balanced-s0 | 99.2 | 72.6 | 99.2 | 72.5 | 71.9 | 71.9 |
 | B-F-ledger2-natural-s0 | not run | | | | | |
 | B-F-ledger2-balanced-s0 | not run | | | | | |
 
@@ -133,6 +137,8 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-summary2-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 1.60 | 0.34 |
 | B-F-summary2-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 0.67 | 0.65 |
 | B-F-summary2-triplets-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 0.72 | 0.70 |
+| B-F-value2-balanced-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 12238812 | 644511 | 938 | 0.72 | 0.15 |
+| B-F-value2-natural-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 12154474 | 617784 | 938 | 0.79 | 0.16 |
 | B-F-verdict-balanced-s0 | NVIDIA A100-SXM4-80GB | 60000 | 60000 | - | - | 12976009 | 120000 | 938 | 1.48 | 0.65 |
 | B-F-verdict-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 1.51 | 0.65 |
 | B-F-verdict-blocks-s1 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 1.51 | 0.65 |
@@ -170,6 +176,8 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | B-F-summary2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-summary2-triplets-s1 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-summary2-triplets-s2 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-value2-balanced-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
+| B-F-value2-natural-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-LOKO-boundary-summary2-s0 | 0.3 | 30000 | 15000 | 4529 | 30.2% | 797 |
 | B-LOKO-subject-ledger2-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
 | B-LOKO-subject-summary2-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
@@ -277,6 +285,8 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-F-summary2-natural-s0 | 25.8 | 87.6 | 16.0 | 54.0 | 3.0 | 30.0 |
 | B-F-summary2-triplets-s1 | 92.5 | 98.8 | 100.0 | 100.0 | 99.0 | 71.0 |
 | B-F-summary2-triplets-s2 | 90.2 | 98.4 | 100.0 | 100.0 | 100.0 | 61.0 |
+| B-F-value2-balanced-s0 | 57.8 | 90.4 | 60.0 | 100.0 | 12.0 | 59.0 |
+| B-F-value2-natural-s0 | 29.2 | 82.6 | 70.0 | 0.0 | 0.0 | 47.0 |
 | B-F-verdict-triplets-s2 | 90.0 | 98.0 | 100.0 | 100.0 | 100.0 | 60.0 |
 | B-LOKO-boundary-summary2-s0 | 92.5 | 98.8 | 99.0 | 100.0 | 98.0 | 73.0 |
 | B-LOKO-boundary-verdict-s0 | 83.0 | 96.0 | 100.0 | 97.0 | 100.0 | 35.0 |
