@@ -22,13 +22,13 @@ Disagreement by near-miss kind (triplet solved = TA):
 | subject | 400 | 365 | 26 | 8 | 1 |
 | time | 400 | 399 | 1 | 0 | 0 |
 
-Seeds 0, 1, 2 pooled (same-seed pairs; rules as clusters):
+Seeds 0, 1, 2, 3 pooled (same-seed pairs; rules as clusters):
 
 | metric | ledger | summary | ledger - summary [95% CI], p |
 |---|---|---|---|
-| TA | 99.1 | 98.0 | +1.1 [+0.4, +1.9], p 0.002 |
-| Rev | 99.2 | 98.2 | +1.0 [+0.3, +1.9], p 0.008 |
-| Hold | 99.9 | 99.8 | +0.1 [-0.0, +0.3], p 0.208 |
+| TA | 99.1 | 98.2 | +0.9 [+0.3, +1.6], p 0.006 |
+| Rev | 99.2 | 98.4 | +0.9 [+0.2, +1.6], p 0.010 |
+| Hold | 99.9 | 99.8 | +0.1 [-0.0, +0.2], p 0.288 |
 
 **blocks** (B-F-ledger2-blocks-s0 vs B-F-summary2-blocks-s0, seed 0):
 
@@ -85,6 +85,7 @@ Every reader output of the two-stage runs (one per case and condition, on every 
 | B-F-ledger2-triplets-s0 | 37497 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-triplets-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-triplets-s2 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-ledger2-triplets-s3 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## 3. Program-supplied ledger: transitions on test_L2 (B-F-ledger2-triplets-s0)
 
@@ -157,6 +158,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-ledger2-triplets-s0 | NVIDIA A100-PCIE-40GB | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 2.29 | 1.41 |
 | B-F-ledger2-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 0.94 | 0.56 |
 | B-F-ledger2-triplets-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 0.78 | 0.67 |
+| B-F-ledger2-triplets-s3 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 0.80 | 0.67 |
 | B-F-rationale-balanced-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | - | - | 15970047 | 2094038 | 938 | 0.62 | 1.30 |
 | B-F-rationale-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 15979819 | 2088516 | 938 | 1.74 | 2.50 |
 | B-F-rationale-natural-s0 | NVIDIA A100-SXM4-80GB | 60000 | 60000 | - | - | 15851199 | 2034704 | 938 | 1.70 | 2.42 |
@@ -214,6 +216,7 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | B-F-ledger2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-ledger2-triplets-s1 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-ledger2-triplets-s2 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-ledger2-triplets-s3 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-summary2-balanced-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-F-summary2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-summary2-blocks-s1 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
@@ -328,6 +331,7 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | run | XA | cell accuracy | XA currency | XA inclusivity | XA subject | XA window |
 |---|---|---|---|---|---|---|
 | B-AB-bitonly-judge-s0 | 97.8 | 99.6 | 100.0 | 100.0 | 100.0 | 91.0 |
+| B-AB-concept-s0 | 12.0 | 73.9 | 35.0 | 2.0 | 0.0 | 11.0 |
 | B-F-ledger2-balanced-s0 | 54.5 | 92.4 | 87.0 | 44.0 | 31.0 | 56.0 |
 | B-F-ledger2-blocks-s1 | 37.8 | 87.0 | 46.0 | 28.0 | 25.0 | 52.0 |
 | B-F-ledger2-blocks-s2 | 71.0 | 95.2 | 88.0 | 98.0 | 55.0 | 43.0 |
@@ -335,6 +339,7 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-F-ledger2-blocks-s4 | 82.2 | 97.0 | 100.0 | 84.0 | 87.0 | 58.0 |
 | B-F-ledger2-triplets-s1 | 88.8 | 98.0 | 100.0 | 100.0 | 87.0 | 68.0 |
 | B-F-ledger2-triplets-s2 | 91.5 | 98.6 | 99.0 | 100.0 | 100.0 | 67.0 |
+| B-F-ledger2-triplets-s3 | 94.0 | 99.0 | 100.0 | 100.0 | 100.0 | 76.0 |
 | B-F-summary2-balanced-s0 | 65.8 | 94.3 | 30.0 | 98.0 | 92.0 | 43.0 |
 | B-F-summary2-blocks-s1 | 51.0 | 91.8 | 45.0 | 24.0 | 94.0 | 41.0 |
 | B-F-summary2-blocks-s2 | 62.5 | 93.8 | 92.0 | 12.0 | 95.0 | 51.0 |
@@ -392,9 +397,9 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | ledger2 x blocks | TA | 75.3 | 59.5 | 74.9 | 60.6 | 84.5 | 71.0 | 10.7 | 5 |
 | ledger2 x blocks | Rev | 98.7 | 99.5 | 99.9 | 99.5 | 99.0 | 99.3 | 0.5 | 5 |
 | ledger2 x blocks | Hold | 76.2 | 59.7 | 74.9 | 60.9 | 85.4 | 71.4 | 10.9 | 5 |
-| ledger2 x triplets | TA | 99.2 | 99.0 | 99.2 | - | - | 99.1 | 0.1 | 3 |
-| ledger2 x triplets | Rev | 99.2 | 99.2 | 99.3 | - | - | 99.2 | 0.1 | 3 |
-| ledger2 x triplets | Hold | 100.0 | 99.9 | 99.8 | - | - | 99.9 | 0.1 | 3 |
+| ledger2 x triplets | TA | 99.2 | 99.0 | 99.2 | 99.2 | - | 99.1 | 0.1 | 4 |
+| ledger2 x triplets | Rev | 99.2 | 99.2 | 99.3 | 99.2 | - | 99.2 | 0.1 | 4 |
+| ledger2 x triplets | Hold | 100.0 | 99.9 | 99.8 | 100.0 | - | 99.9 | 0.1 | 4 |
 
 ## 14. What the ledger's subject/status/time fields add: ledger minus value ledger (test_L2, seed 0)
 
@@ -413,4 +418,5 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 |---|---|---|---|---|
 | B-F-ledger2-triplets-s0 | 99.2 | 99.2 | 100.0 | - |
 | B-AB-bitonly-judge-s0 | 99.3 | 99.5 | 99.9 | +0.1 [-0.2, +0.6], p 0.552 |
+| B-AB-concept-s0 | 26.8 | 34.4 | 58.4 | -72.5 [-76.0, -68.4], p < 0.001 |
 

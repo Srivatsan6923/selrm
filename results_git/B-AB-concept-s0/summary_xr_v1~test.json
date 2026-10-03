@@ -1,0 +1,45 @@
+{
+ "run_id": "B-AB-concept-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 12.0,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 73.875,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 35.0,
+   "XA_inclusivity": 2.0,
+   "XA_subject": 0.0,
+   "XA_window": 11.0
+  },
+  "criterion": {
+   "XA": 12.0,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 73.875,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 35.0,
+   "XA_inclusivity": 2.0,
+   "XA_subject": 0.0,
+   "XA_window": 11.0
+  }
+ },
+ "eval": {
+  "seconds": 17.0,
+  "concept_train_acc": {
+   "mentioned": 99.87,
+   "subject_patient": 100.0,
+   "status_present": 100.0,
+   "time_current": 99.8,
+   "patient_present_current": 99.99
+  },
+  "units": 2400
+ }
+}

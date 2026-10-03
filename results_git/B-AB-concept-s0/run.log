@@ -1,0 +1,5 @@
+2026-10-03T14:36:07Z concept heads fitted on 13656 units in 130 s; train accuracy {'mentioned': 99.87, 'subject_patient': 100.0, 'status_present': 100.0, 'time_current': 99.8, 'patient_present_current': 99.99}
+2026-10-03T14:36:19Z B-AB-concept-s0 rule_v1/dev: TA 36.3 n=300 (concept scorer)
+2026-10-03T14:37:37Z B-AB-concept-s0 rule_v1/test_L2: TA 26.8 n=2000 (concept scorer)
+2026-10-03T14:37:54Z B-AB-concept-s0 xr_v1/test: TA nan n=None (concept scorer)
+2026-10-03T14:37:54Z DONE B-AB-concept-s0 in 4.2 min, GPU util mean 87.5
