@@ -1,5 +1,5 @@
 # STATE role B (maintained by Claude Code)
-Updated: 2026-10-03 ~10:45 UTC (Sat). Plan: docs/FINAL_TASKS_B.md (3 Oct; replaces every earlier directive).
+Updated: 2026-10-03 ~12:40 UTC (Sat). Plan: docs/FINAL_TASKS_B.md (3 Oct; replaces every earlier directive).
 Run freeze: Wed 7 Oct 23:59 (UTC assumed). Decisions: docs/DECISIONS_B.md. Analyses: docs/ANALYSIS_B.md.
 
 ## P0 status
@@ -8,12 +8,10 @@ Run freeze: Wed 7 Oct 23:59 (UTC assumed). Decisions: docs/DECISIONS_B.md. Analy
    edits that should change the verdict are followed in 47.8% (handoff 3 Oct). Left: the blocks half of the
    paired ledger-summary comparison after summary2 x blocks.
 2. B-F-summary2-blocks-s0: DONE (L2 TA 67.3); paired ledger-summary on blocks in ANALYSIS_B section 1.
-3. Core seeds 1-2: DONE verdict x blocks s1-s2, verdict x triplets s1, summary2 x blocks s2, summary2 x triplets
-   s1-s2, ledger2 x blocks s1; running (09:10 UTC) verdict x triplets s2 (L40), summary2 x blocks s1 (A6000), ledger2 x
-   blocks s2 (A100), ledger2 x triplets s1-s2 (H100). Blocks cells vary a lot across seeds (handoff 3 Oct).
+3. Core seeds 1-2: DONE (12 runs; ANALYSIS_B section 13 mean +- s.d.; seed-pooled ledger-summary in section 1).
+   Blocks cells vary a lot across seeds (handoff 3 Oct).
 4. B-SC-summary2-triplets-s0: DONE (L2 TA 98.8 vs 98.0 blind; ANALYSIS_B section 11).
-5. LOKO {verdict, summary2, ledger2} x {subject, time, boundary}: subject x 3 and time x verdict DONE
-   (ANALYSIS_B section 10); the rest queued or running (40-42).
+5. LOKO: 8 of 9 DONE (ANALYSIS_B section 10); B-LOKO-boundary-ledger2-s0 running (A100).
 6. New sets: xr_v1/test registered by A (efe0128) and restored on the PVC (sha256 = A's). Every not-started training
    run (except folds and diversity curves) now evaluates on it and keeps its adapter; kept adapters of finished runs
    get eval-only runs B-NS-xr_v1-<run> (configs/queues/v2/b_ns.json, priority 45). Summaries carry crossed accuracy
