@@ -1,0 +1,4 @@
+2026-10-03T07:20:07Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-03T07:20:08Z token budget per batch: 12000
+2026-10-03T07:51:44Z C-DG-noise rule_v1/test_L2 top-50 logits for 29248 records (1896 s)
+2026-10-03T07:51:46Z DONE C-DG-noise in 32.1 min, GPU util mean 94.4

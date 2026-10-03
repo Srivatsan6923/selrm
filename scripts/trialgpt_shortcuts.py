@@ -27,7 +27,7 @@ def main():
         gold = [c for _, c in xs]
         preds = {f"always {c}": [c] * len(xs) for c in CATS}
         preds[f"type prior from dev {prior}"] = [prior[t] for t, _ in xs]
-        res = {k: {m: round(v, 2) for m, v in prf(gold, p, CATS).items() if m in ("macroF1", "acc")} for k, p in preds.items()}
+        res = {k: {m: v for m, v in prf(gold, p, CATS).items() if m in ("macroF1", "acc")} for k, p in preds.items()}
         path = f"{REPO}/data/clin_v1/trialgpt_{split}/MANIFEST.json"
         man = json.load(open(path, encoding="utf-8"))
         man["shortcut_validation"] = {"predictors": res, "n_items": len(xs),

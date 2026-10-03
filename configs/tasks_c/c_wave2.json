@@ -19,21 +19,46 @@
    "note": "default correction (Table 4): u(s, no case) for u(s,x) + a[u(s,x) - u(s,no case)], a chosen on rule_v1/dev"
   },
   {
-   "run_id": "C-TF-promptledger-lenient",
+   "run_id": "C-TF-promptledger-lenient--p1",
    "priority": 25,
    "format": "ledger2",
    "adapter": null,
    "bs_score": 128,
-   "rejudge_from": "C-TF-promptledger",
+   "rejudge_from": "C-TF-promptledger--p1",
    "sets": [
     "rule_v1/dev_missing",
     "rule_v1/dev",
-    "rule_v1/missing",
-    "rule_v1/test_L2",
+    "rule_v1/missing"
+   ],
+   "note": "format-normalised readout (lenient_ledger v2) of C-TF-promptledger's reader outputs",
+   "merge_into": "C-TF-promptledger-lenient"
+  },
+  {
+   "run_id": "C-TF-promptledger-lenient--p2",
+   "priority": 25,
+   "format": "ledger2",
+   "adapter": null,
+   "bs_score": 128,
+   "rejudge_from": "C-TF-promptledger--p2",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "note": "format-normalised readout (lenient_ledger v2) of C-TF-promptledger's reader outputs",
+   "merge_into": "C-TF-promptledger-lenient"
+  },
+  {
+   "run_id": "C-TF-promptledger-lenient--p3",
+   "priority": 25,
+   "format": "ledger2",
+   "adapter": null,
+   "bs_score": 128,
+   "rejudge_from": "C-TF-promptledger--p3",
+   "sets": [
     "rule_v1/test_L3alt",
     "xr_v1/test"
    ],
-   "note": "format-normalised readout (lenient_ledger v2) of C-TF-promptledger's reader outputs"
+   "note": "format-normalised readout (lenient_ledger v2) of C-TF-promptledger's reader outputs",
+   "merge_into": "C-TF-promptledger-lenient"
   },
   {
    "run_id": "C-TG-promptledger-lenient-dev",
@@ -58,6 +83,27 @@
    "sets": [
     "clin_v1/medeinst_test"
    ]
+  },
+  {
+   "run_id": "C-TF-genprog",
+   "priority": 35,
+   "format": "genprm",
+   "adapter": null,
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gb": 30,
+   "n_groups": 1000,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "rule_v1/test_L2",
+    "rule_v1/test_L3alt",
+    "xr_v1/test"
+   ],
+   "note": "generated-program verifier (Table 4 training-free): untrained backbone with B's GENPRM prompt; the generated check is executed (restricted interpreter) and the answer read after its output; 1,000 groups per set (n/5 per kind), conclusion claims"
   }
  ],
  "note": "needs runner code >= b9b5c9b (nocase); never put such runs in a file older runners read"

@@ -1,0 +1,140 @@
+{
+ "run_id": "C-TG-promptledger-lenient-dev",
+ "set": "clin_v1/trialgpt_dev",
+ "protocol": "docs/TRIALGPT_PROTOCOL.md",
+ "threshold": -0.5728464722633362,
+ "n_items": 213,
+ "n_scored": 200,
+ "macroF1": 54.81372339199579,
+ "macroF1_CI95": [
+  43.30415263748598,
+  62.437397732936525
+ ],
+ "acc": 64.5,
+ "acc_CI95": [
+  55.0,
+  72.0
+ ],
+ "per_class": {
+  "met": {
+   "P": 62.5,
+   "R": 68.18181818181817,
+   "F1": 65.21739130434783,
+   "n": 22
+  },
+  "not_met": {
+   "P": 65.21739130434783,
+   "R": 89.74358974358975,
+   "F1": 75.53956834532374,
+   "n": 117
+  },
+  "nei": {
+   "P": 60.0,
+   "R": 14.754098360655737,
+   "F1": 23.684210526315788,
+   "n": 61
+  }
+ },
+ "confusion": {
+  "met": {
+   "not_met": 7,
+   "met": 15
+  },
+  "not_met": {
+   "nei": 6,
+   "not_met": 105,
+   "met": 6
+  },
+  "nei": {
+   "not_met": 49,
+   "nei": 9,
+   "met": 3
+  }
+ },
+ "pred_distribution": {
+  "not_met": 161,
+  "met": 24,
+  "nei": 15
+ },
+ "macroF1_five_names": 44.58494033826705,
+ "per_class_five_names": {
+  "included": {
+   "P": 93.75,
+   "R": 78.94736842105263,
+   "F1": 85.71428571428572,
+   "n": 19
+  },
+  "not included": {
+   "P": 15.217391304347828,
+   "R": 100.0,
+   "F1": 26.41509433962264,
+   "n": 7
+  },
+  "excluded": {
+   "P": 0.0,
+   "R": 0.0,
+   "F1": 0.0,
+   "n": 3
+  },
+  "not excluded": {
+   "P": 85.21739130434783,
+   "R": 89.0909090909091,
+   "F1": 87.1111111111111,
+   "n": 110
+  },
+  "not enough information": {
+   "P": 60.0,
+   "R": 14.754098360655737,
+   "F1": 23.684210526315788,
+   "n": 61
+  }
+ },
+ "by_type": {
+  "inclusion": {
+   "macroF1": 44.62283682956365,
+   "acc": 40.298507462686565,
+   "n": 67
+  },
+  "exclusion": {
+   "macroF1": 37.925925925925924,
+   "acc": 76.69172932330827,
+   "n": 133
+  }
+ },
+ "not_applicable": {
+  "n": 13,
+  "pred": {
+   "not_met": 13
+  }
+ },
+ "forced_choice_acc": 87.76978417266187,
+ "n_forced": 139,
+ "evidence": {
+  "precision": 48.51485148514851,
+  "n_items_pred": 48,
+  "recall": 47.57281553398058,
+  "n_items_gold": 73,
+  "items_without_quote": 165
+ },
+ "per_trial_acc": {
+  "n_trials": 16,
+  "min": 33.333333333333336,
+  "median": 68.33333333333334,
+  "max": 88.88888888888889
+ },
+ "bootstrap": {
+  "unit": "patient",
+  "B": 1000,
+  "seed": 0
+ },
+ "threshold_source": "results_git/C-TG-promptledger-lenient-dev/scores_rule_v1~dev_missing.jsonl",
+ "eval": {
+  "reader_units": 213,
+  "malformed_units": 6,
+  "malformed_rate": 0.0282,
+  "seconds": 63.6,
+  "mode": "rejudge",
+  "lenient_version": 2,
+  "source_run": "C-TG-promptledger-dev"
+ }
+}

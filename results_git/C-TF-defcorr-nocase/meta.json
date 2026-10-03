@@ -1,0 +1,103 @@
+{
+ "run_id": "C-TF-defcorr-nocase",
+ "role": "C",
+ "model": "unsloth/Qwen3.5-9B",
+ "model_revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+ "adapter": null,
+ "adapter_run": null,
+ "provider": "local (NRP Nautilus)",
+ "access_date": "2026-10-03",
+ "reasoning": "chat template with enable_thinking=False",
+ "format": "verdict",
+ "mode": null,
+ "rejudge_from": null,
+ "lenient_version": null,
+ "sets": [
+  "rule_v1/dev_missing",
+  "rule_v1/dev",
+  "rule_v1/missing",
+  "rule_v1/test_L2",
+  "rule_v1/test_L3alt",
+  "xr_v1/test",
+  "clin_v1/medeinst_test"
+ ],
+ "max_new": 384,
+ "eval_batch": {
+  "score": 64,
+  "generate": 64
+ },
+ "hp": {
+  "max_len": 4096
+ },
+ "eval_seconds_by_set": {
+  "nocase/rule_v1/dev_missing": 82.7,
+  "nocase/rule_v1/dev": 81.6,
+  "nocase/rule_v1/missing": 148.6,
+  "nocase/rule_v1/test_L2": 589.6,
+  "nocase/rule_v1/test_L3alt": 220.9,
+  "nocase/xr_v1/test": 159.9,
+  "nocase/clin_v1/medeinst_test": 205.5
+ },
+ "eval_generated_tokens": 0,
+ "pad_check_ok": true,
+ "eval_u_path": "fp32-hidden",
+ "eval_peak_mem_gb": 17.55,
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA RTX 5000 Ada Generation, 595.91.07, 32760 MiB",
+ "node": "k8s-gpu-6.ucsc.edu",
+ "pod": "selrm-c-run-c-wave2-32gb-10408-0-6klgs",
+ "scoring_code": "role-b ac524e8062ef",
+ "git_commit": "e445da33532b",
+ "wall_seconds": 1542.1,
+ "summaries": {
+  "nocase/rule_v1/dev_missing": null,
+  "nocase/rule_v1/dev": {
+   "Rev": 0.0,
+   "Hold": 20.333333333333332,
+   "TA": 0.0,
+   "BaseAcc": 20.333333333333332,
+   "Tie": 0.0,
+   "PresHold": 20.333333333333332,
+   "n": 300
+  },
+  "nocase/rule_v1/missing": null,
+  "nocase/rule_v1/test_L2": {
+   "Rev": 0.0,
+   "Hold": 50.25,
+   "TA": 0.0,
+   "BaseAcc": 50.25,
+   "Tie": 0.0,
+   "PresHold": 50.25,
+   "n": 2000
+  },
+  "nocase/rule_v1/test_L3alt": {
+   "Rev": 0.0,
+   "Hold": 0.0,
+   "TA": 0.0,
+   "BaseAcc": 0.0,
+   "Tie": 0.0,
+   "PresHold": 0.0,
+   "n": 1000
+  },
+  "nocase/xr_v1/test": null,
+  "nocase/clin_v1/medeinst_test": null
+ },
+ "gpu_util_mean": 93.8,
+ "gpu_util_p10": 75.0,
+ "gpu_windows_below40": 0.0,
+ "gpu_samples": 49,
+ "gpu_hours": 0.428
+}

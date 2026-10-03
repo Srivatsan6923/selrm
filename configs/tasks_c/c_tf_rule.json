@@ -131,8 +131,8 @@
    "note": "untrained backbone, frozen verdict prompt, pointwise u (Table 4 critic row; Table 2 backbone row)"
   },
   {
-   "run_id": "C-TF-promptledger",
-   "priority": 20,
+   "run_id": "C-TF-promptledger--p1",
+   "priority": 20.1,
    "format": "ledger2",
    "adapter": null,
    "bs_score": 128,
@@ -140,17 +140,41 @@
    "sets": [
     "rule_v1/dev_missing",
     "rule_v1/dev",
-    "rule_v1/missing",
-    "rule_v1/test_L2",
+    "rule_v1/missing"
+   ],
+   "note": "untrained backbone, frozen reader (ledger) and judge prompts; strict malformed check primary, lenient normalisation secondary",
+   "merge_into": "C-TF-promptledger"
+  },
+  {
+   "run_id": "C-TF-promptledger--p2",
+   "priority": 20.2,
+   "format": "ledger2",
+   "adapter": null,
+   "bs_score": 128,
+   "max_new": 768,
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "note": "untrained backbone, frozen reader (ledger) and judge prompts; strict malformed check primary, lenient normalisation secondary",
+   "merge_into": "C-TF-promptledger"
+  },
+  {
+   "run_id": "C-TF-promptledger--p3",
+   "priority": 20.3,
+   "format": "ledger2",
+   "adapter": null,
+   "bs_score": 128,
+   "max_new": 768,
+   "sets": [
     "rule_v1/test_L3alt",
     "xr_v1/test"
    ],
    "note": "untrained backbone, frozen reader (ledger) and judge prompts; strict malformed check primary, lenient normalisation secondary",
-   "min_gb": 30
+   "merge_into": "C-TF-promptledger"
   },
   {
-   "run_id": "C-TF-promptsum",
-   "priority": 20,
+   "run_id": "C-TF-promptsum--p1",
+   "priority": 20.1,
    "format": "summary2",
    "adapter": null,
    "bs_score": 128,
@@ -158,307 +182,79 @@
    "sets": [
     "rule_v1/dev_missing",
     "rule_v1/dev",
-    "rule_v1/missing",
-    "rule_v1/test_L2",
+    "rule_v1/missing"
+   ],
+   "note": "untrained backbone, frozen reader (prose) and judge prompts",
+   "merge_into": "C-TF-promptsum"
+  },
+  {
+   "run_id": "C-TF-promptsum--p2",
+   "priority": 20.2,
+   "format": "summary2",
+   "adapter": null,
+   "bs_score": 128,
+   "max_new": 768,
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "note": "untrained backbone, frozen reader (prose) and judge prompts",
+   "merge_into": "C-TF-promptsum"
+  },
+  {
+   "run_id": "C-TF-promptsum--p3",
+   "priority": 20.3,
+   "format": "summary2",
+   "adapter": null,
+   "bs_score": 128,
+   "max_new": 768,
+   "sets": [
     "rule_v1/test_L3alt",
     "xr_v1/test"
    ],
    "note": "untrained backbone, frozen reader (prose) and judge prompts",
-   "min_gb": 30
+   "merge_into": "C-TF-promptsum"
   },
   {
-   "run_id": "C-ME-critic",
-   "priority": 12,
-   "format": "verdict",
-   "adapter": null,
-   "adapter_run": null,
-   "bs_score": 64,
-   "sets": [
-    "clin_v1/medeinst_test"
-   ]
-  },
-  {
-   "run_id": "C-ME-verdict-blocks-s0",
-   "priority": 13,
-   "format": "verdict",
-   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s0",
-   "adapter_run": "B-F-verdict-blocks-s0",
-   "bs_score": 64,
-   "sets": [
-    "clin_v1/medeinst_test"
-   ]
-  },
-  {
-   "run_id": "C-ME-verdict-triplets-s0",
-   "priority": 14,
-   "format": "verdict",
-   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s0",
-   "adapter_run": "B-F-verdict-triplets-s0",
-   "bs_score": 64,
-   "sets": [
-    "clin_v1/medeinst_test"
-   ]
-  },
-  {
-   "run_id": "C-ME-ledger2-triplets-s0",
-   "priority": 15,
-   "format": "ledger2",
-   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s0",
-   "adapter_run": "B-F-ledger2-triplets-s0",
-   "bs_score": 64,
-   "sets": [
-    "clin_v1/medeinst_test"
-   ],
-   "max_new": 384
-  },
-  {
-   "run_id": "C-ME-ledger2-blocks-s0",
-   "priority": 16,
-   "format": "ledger2",
-   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-blocks-s0",
-   "adapter_run": "B-F-ledger2-blocks-s0",
-   "bs_score": 64,
-   "sets": [
-    "clin_v1/medeinst_test"
-   ],
-   "max_new": 384
-  },
-  {
-   "run_id": "C-ME-summary2-triplets-s0",
-   "priority": 17,
+   "run_id": "C-TG-summary2-blocks-dev",
+   "priority": 1,
    "format": "summary2",
-   "adapter": "/pvcb/selrm/adapters/B-F-summary2-triplets-s0",
-   "adapter_run": "B-F-summary2-triplets-s0",
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-blocks-s0",
+   "adapter_run": "B-F-summary2-blocks-s0",
    "bs_score": 64,
    "sets": [
-    "clin_v1/medeinst_test"
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev"
    ],
-   "max_new": 384
+   "max_new": 384,
+   "note": "TrialGPT development portion for summary2 x blocks (protocol section 7); test run follows the dev check"
   },
   {
-   "run_id": "C-ME-promptsum",
-   "priority": 18,
-   "format": "summary2",
-   "adapter": null,
-   "adapter_run": null,
-   "bs_score": 64,
-   "sets": [
-    "clin_v1/medeinst_test"
-   ],
-   "max_new": 768,
-   "min_gb": 30
-  },
-  {
-   "run_id": "C-ME-promptledger",
-   "priority": 19,
-   "format": "ledger2",
-   "adapter": null,
-   "adapter_run": null,
-   "bs_score": 64,
-   "sets": [
-    "clin_v1/medeinst_test"
-   ],
-   "max_new": 768,
-   "min_gb": 30
-  },
-  {
-   "run_id": "C-KP-critic",
-   "priority": 30,
+   "run_id": "C-TG-verdict-blocks-s2",
+   "priority": 2,
    "format": "verdict",
-   "adapter": null,
-   "adapter_run": null,
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s2",
+   "adapter_run": "B-F-verdict-blocks-s2",
    "bs_score": 64,
    "sets": [
-    "clin_v1/keypairs_medqa",
-    "clin_v1/keypairs_careqa",
-    "clin_v1/keypairs_medqa_oneway",
-    "clin_v1/keypairs_careqa_oneway"
-   ]
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed 2: tau from its own dev_missing scores; dev portion scored first"
   },
   {
-   "run_id": "C-KP-verdict-blocks-s0",
-   "priority": 31,
+   "run_id": "C-TG-verdict-triplets-s1",
+   "priority": 3,
    "format": "verdict",
-   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s0",
-   "adapter_run": "B-F-verdict-blocks-s0",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s1",
+   "adapter_run": "B-F-verdict-triplets-s1",
    "bs_score": 64,
    "sets": [
-    "clin_v1/keypairs_medqa",
-    "clin_v1/keypairs_careqa",
-    "clin_v1/keypairs_medqa_oneway",
-    "clin_v1/keypairs_careqa_oneway"
-   ]
-  },
-  {
-   "run_id": "C-KP-verdict-triplets-s0",
-   "priority": 32,
-   "format": "verdict",
-   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s0",
-   "adapter_run": "B-F-verdict-triplets-s0",
-   "bs_score": 64,
-   "sets": [
-    "clin_v1/keypairs_medqa",
-    "clin_v1/keypairs_careqa",
-    "clin_v1/keypairs_medqa_oneway",
-    "clin_v1/keypairs_careqa_oneway"
-   ]
-  },
-  {
-   "run_id": "C-KP-ledger2-triplets-s0",
-   "priority": 33,
-   "format": "ledger2",
-   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s0",
-   "adapter_run": "B-F-ledger2-triplets-s0",
-   "bs_score": 64,
-   "sets": [
-    "clin_v1/keypairs_medqa",
-    "clin_v1/keypairs_careqa",
-    "clin_v1/keypairs_medqa_oneway",
-    "clin_v1/keypairs_careqa_oneway"
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
    ],
-   "max_new": 768
-  },
-  {
-   "run_id": "C-KP-ledger2-blocks-s0",
-   "priority": 34,
-   "format": "ledger2",
-   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-blocks-s0",
-   "adapter_run": "B-F-ledger2-blocks-s0",
-   "bs_score": 64,
-   "sets": [
-    "clin_v1/keypairs_medqa",
-    "clin_v1/keypairs_careqa",
-    "clin_v1/keypairs_medqa_oneway",
-    "clin_v1/keypairs_careqa_oneway"
-   ],
-   "max_new": 768
-  },
-  {
-   "run_id": "C-KP-summary2-triplets-s0",
-   "priority": 35,
-   "format": "summary2",
-   "adapter": "/pvcb/selrm/adapters/B-F-summary2-triplets-s0",
-   "adapter_run": "B-F-summary2-triplets-s0",
-   "bs_score": 64,
-   "sets": [
-    "clin_v1/keypairs_medqa",
-    "clin_v1/keypairs_careqa",
-    "clin_v1/keypairs_medqa_oneway",
-    "clin_v1/keypairs_careqa_oneway"
-   ],
-   "max_new": 768
-  },
-  {
-   "run_id": "C-KP-promptsum",
-   "priority": 36,
-   "format": "summary2",
-   "adapter": null,
-   "adapter_run": null,
-   "bs_score": 64,
-   "sets": [
-    "clin_v1/keypairs_medqa",
-    "clin_v1/keypairs_careqa",
-    "clin_v1/keypairs_medqa_oneway",
-    "clin_v1/keypairs_careqa_oneway"
-   ],
-   "max_new": 768
-  },
-  {
-   "run_id": "C-KP-promptledger",
-   "priority": 37,
-   "format": "ledger2",
-   "adapter": null,
-   "adapter_run": null,
-   "bs_score": 64,
-   "sets": [
-    "clin_v1/keypairs_medqa",
-    "clin_v1/keypairs_careqa",
-    "clin_v1/keypairs_medqa_oneway",
-    "clin_v1/keypairs_careqa_oneway"
-   ],
-   "max_new": 768
-  },
-  {
-   "run_id": "C-NL-critic",
-   "priority": 40,
-   "format": "verdict",
-   "adapter": null,
-   "adapter_run": null,
-   "bs_score": 32,
-   "sets": [
-    "clin_v1/nli4ct_test"
-   ]
-  },
-  {
-   "run_id": "C-NL-verdict-blocks-s0",
-   "priority": 41,
-   "format": "verdict",
-   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s0",
-   "adapter_run": "B-F-verdict-blocks-s0",
-   "bs_score": 32,
-   "sets": [
-    "clin_v1/nli4ct_test"
-   ]
-  },
-  {
-   "run_id": "C-NL-verdict-triplets-s0",
-   "priority": 42,
-   "format": "verdict",
-   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s0",
-   "adapter_run": "B-F-verdict-triplets-s0",
-   "bs_score": 32,
-   "sets": [
-    "clin_v1/nli4ct_test"
-   ]
-  },
-  {
-   "run_id": "C-NL-ledger2-triplets-s0",
-   "priority": 43,
-   "format": "ledger2",
-   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s0",
-   "adapter_run": "B-F-ledger2-triplets-s0",
-   "bs_score": 32,
-   "sets": [
-    "clin_v1/nli4ct_test"
-   ],
-   "max_new": 768
-  },
-  {
-   "run_id": "C-NL-ledger2-blocks-s0",
-   "priority": 44,
-   "format": "ledger2",
-   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-blocks-s0",
-   "adapter_run": "B-F-ledger2-blocks-s0",
-   "bs_score": 32,
-   "sets": [
-    "clin_v1/nli4ct_test"
-   ],
-   "max_new": 768
-  },
-  {
-   "run_id": "C-NL-summary2-triplets-s0",
-   "priority": 45,
-   "format": "summary2",
-   "adapter": "/pvcb/selrm/adapters/B-F-summary2-triplets-s0",
-   "adapter_run": "B-F-summary2-triplets-s0",
-   "bs_score": 32,
-   "sets": [
-    "clin_v1/nli4ct_test"
-   ],
-   "max_new": 768
-  },
-  {
-   "run_id": "C-CP-medqa-train-reader",
-   "priority": 11,
-   "format": "ledger2",
-   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s0",
-   "adapter_run": "B-F-ledger2-triplets-s0",
-   "bs_score": 64,
-   "max_new": 768,
-   "sets": [
-    "clin_v1/keypairs_medqa_train"
-   ],
-   "note": "ledger targets for C's clinical training pairs (v13 App.: sampled once from the frozen rule-trained reader, kept if quotes occur in the case and the frozen judge returns the keyed verdict on all four cells); greedy decoding"
+   "note": "TrialGPT seed 1: tau from its own dev_missing scores; dev portion scored first"
   }
  ],
  "note": "wave 1: TrialGPT development portion (priority 1-8) and the untrained-backbone rule-tier rows (10, 20); runners re-read this file before every claim"

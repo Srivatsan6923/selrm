@@ -86,20 +86,20 @@
  "shortcut_validation": {
   "predictors": {
    "always met": {
-    "acc": 18.18,
-    "macroF1": 10.26
+    "acc": 18.181818181818183,
+    "macroF1": 10.256410256410257
    },
    "always not_met": {
-    "acc": 51.25,
-    "macroF1": 22.59
+    "acc": 51.25164690382082,
+    "macroF1": 22.59001161440186
    },
    "always nei": {
-    "acc": 30.57,
-    "macroF1": 15.61
+    "acc": 30.566534914361,
+    "macroF1": 15.607130844265052
    },
    "type prior from dev {'inclusion': 'nei', 'exclusion': 'not_met'}": {
-    "acc": 66.67,
-    "macroF1": 45.97
+    "acc": 66.66666666666667,
+    "macroF1": 45.9659418202765
    }
   },
   "n_items": 759,

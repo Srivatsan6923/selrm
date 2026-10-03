@@ -1,0 +1,136 @@
+{
+ "run_id": "C-TG-critic",
+ "set": "clin_v1/trialgpt_test",
+ "protocol": "docs/TRIALGPT_PROTOCOL.md",
+ "threshold": -0.3585851192474365,
+ "n_items": 801,
+ "n_scored": 759,
+ "n_patients": 43,
+ "macroF1": 65.70071104760866,
+ "macroF1_CI95": [
+  61.76067884437168,
+  69.72261033479323
+ ],
+ "acc": 70.35573122529644,
+ "acc_CI95": [
+  65.88720770288859,
+  74.5945945945946
+ ],
+ "per_class": {
+  "met": {
+   "P": 57.534246575342465,
+   "R": 91.30434782608695,
+   "F1": 70.58823529411764,
+   "n": 138
+  },
+  "not_met": {
+   "P": 78.28162291169451,
+   "R": 84.31876606683805,
+   "F1": 81.18811881188118,
+   "n": 389
+  },
+  "nei": {
+   "P": 66.11570247933885,
+   "R": 34.48275862068966,
+   "F1": 45.3257790368272,
+   "n": 232
+  }
+ },
+ "confusion": {
+  "met": {
+   "met": 126,
+   "nei": 6,
+   "not_met": 6
+  },
+  "not_met": {
+   "not_met": 328,
+   "met": 26,
+   "nei": 35
+  },
+  "nei": {
+   "not_met": 85,
+   "met": 67,
+   "nei": 80
+  }
+ },
+ "pred_distribution": {
+  "not_met": 419,
+  "met": 219,
+  "nei": 121
+ },
+ "macroF1_five_names": 48.737312324492564,
+ "per_class_five_names": {
+  "included": {
+   "P": 67.77777777777779,
+   "R": 93.12977099236642,
+   "F1": 78.45659163987139,
+   "n": 131
+  },
+  "not included": {
+   "P": 18.75,
+   "R": 18.75,
+   "F1": 18.75,
+   "n": 16
+  },
+  "excluded": {
+   "P": 10.256410256410255,
+   "R": 57.14285714285714,
+   "F1": 17.391304347826086,
+   "n": 7
+  },
+  "not excluded": {
+   "P": 80.64516129032258,
+   "R": 87.1313672922252,
+   "F1": 83.76288659793813,
+   "n": 373
+  },
+  "not enough information": {
+   "P": 66.11570247933885,
+   "R": 34.48275862068966,
+   "F1": 45.3257790368272,
+   "n": 232
+  }
+ },
+ "by_type": {
+  "inclusion": {
+   "macroF1": 53.29313423325974,
+   "acc": 68.92857142857143,
+   "n": 280
+  },
+  "exclusion": {
+   "macroF1": 39.60041658976454,
+   "acc": 71.18997912317327,
+   "n": 479
+  }
+ },
+ "not_applicable": {
+  "n": 42,
+  "pred": {
+   "not_met": 35,
+   "met": 2,
+   "nei": 5
+  }
+ },
+ "forced_choice_acc": 92.78937381404175,
+ "n_forced": 527,
+ "evidence": null,
+ "evidence_malformed_without_quotes": null,
+ "per_trial_acc": {
+  "n_trials": 64,
+  "min_items": 5,
+  "min": 40.625,
+  "median": 70.71428571428572,
+  "max": 100.0
+ },
+ "bootstrap": {
+  "unit": "patient",
+  "B": 1000,
+  "seed": 0
+ },
+ "threshold_source": "results_git/C-TG-critic-dev/scores_rule_v1~dev_missing.jsonl",
+ "eval": {
+  "seconds": 150.3,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

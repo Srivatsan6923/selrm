@@ -128,3 +128,17 @@ clinical records.
   frozen check only.
 - 3 Oct 2026: two-stage readers on the test portion generate up to 768 new tokens (development portion: 2 of 213
   ledger x triplets outputs stopped at the 384-token cap and were malformed). A cap only; no other change.
+
+## 11. Corrections after test scoring (bug fixes and clarifications; nothing re-tuned)
+Found by an independent recomputation of every reported number (all primary numbers, CIs and
+comparisons reproduced exactly). Before and after values are in `docs/DECISIONS_C.md` (3 Oct).
+- Evidence quotes (section 6): a `found` value written over several lines is read in full, one
+  quote per line (it was cut after its first line); a quote that occurs only inside a sentence's
+  number label does not select that sentence; precision with no predicted sentence is undefined.
+  Found values of ledgers that fail the frozen check count, as coded before test; the reading in
+  which they carry no quotes is reported beside it.
+- Per-trial accuracy (section 8) counts trials with at least 5 non-N/A test items.
+- Threshold source (section 5): the test runs of the untrained backbone and of seed-0 adapters take
+  tau from the system's development run (same model, adapter, records and scoring code); later
+  seeds score `rule_v1/dev_missing` in their own run. The report gives tau and macro-F1 from an
+  independent run of the same model as a sensitivity check.

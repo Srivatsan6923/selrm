@@ -88,29 +88,19 @@ def wait_running(pod, timeout=600):
 
 
 def push_code():
+    """Snapshot of the committed tree (git archive HEAD of CODE_DIRS): uncommitted files are never pushed."""
     code = sha()
-    dirty = subprocess.run(["git", "-C", REPO, "status", "--porcelain", "--", *CODE_DIRS],
-                           capture_output=True, text=True).stdout.strip()
-    dirty = "\n".join(l for l in dirty.splitlines() if "__pycache__" not in l)
-    if dirty:
-        sys.exit(f"commit first; uncommitted changes:\n{dirty}")
-    buf = io.BytesIO()
-    with tarfile.open(fileobj=buf, mode="w") as tar:
-        for d in CODE_DIRS:
-            tar.add(os.path.join(REPO, d), arcname=d,
-                    filter=lambda ti: None if "__pycache__" in ti.name or ti.name.endswith(".pyc") else ti)
-        data = (code + "\n").encode()
-        ti = tarfile.TarInfo("COMMIT"); ti.size = len(data)
-        tar.addfile(ti, io.BytesIO(data))
+    data = subprocess.run(["git", "-C", REPO, "archive", "--format=tar", "HEAD", *CODE_DIRS],
+                          capture_output=True, check=True).stdout
     dest = f"{ROOT}/code/{code}"
-    exec_sync("sh", "-c", f"mkdir -p {dest}.tmp && tar -xf - -C {dest}.tmp && rm -rf {dest} && mv {dest}.tmp {dest}",
-              inp=buf.getvalue())
-    print(f"code {code} -> {dest} ({len(buf.getvalue())} bytes)")
+    exec_sync("sh", "-c", f"mkdir -p {dest}.tmp && tar -xf - -C {dest}.tmp && echo {code} > {dest}.tmp/COMMIT && "
+                          f"rm -rf {dest} && mv {dest}.tmp {dest}", inp=data)
+    print(f"code {code} -> {dest} ({len(data)} bytes)")
     return code
 
 
 def runner_job(name, tasks, code, bcode, env_tag, gpu, hours, cpu=2, mem="12Gi", models=("unsloth--Qwen3.5-9B",),
-               formats=""):
+               formats="", online=False):
     """GPU runner: init container stages env, B's and C's code and the base weights on local NVMe;
     main container runs scripts/eval_c.py over a task list (claim -> evaluate -> DONE -> next)."""
     resource, products = GPU[gpu]
@@ -131,8 +121,9 @@ def runner_job(name, tasks, code, bcode, env_tag, gpu, hours, cpu=2, mem="12Gi",
                                        "--root", ROOT, "--broot", BROOT, "--bcode", "/work/bcode",
                                        "--tasks", f"{ROOT}/tasks/{tasks}", "--formats", formats],
                            "env": [{"name": k, "value": v} for k, v in {
-                               "SELRM_MODELS": "/work/models", "HF_HOME": "/work/hf", "HF_HUB_OFFLINE": "1",
-                               "TRANSFORMERS_OFFLINE": "1", "TRITON_CACHE_DIR": "/work/triton",
+                               "SELRM_MODELS": "/work/models", "HF_HOME": "/work/hf",
+                               "HF_HUB_OFFLINE": "0" if online else "1", "TRANSFORMERS_OFFLINE": "0" if online else "1",
+                               "TRITON_CACHE_DIR": "/work/triton",
                                "PYTHONPYCACHEPREFIX": "/work/pycache", "OMP_NUM_THREADS": "3",
                                "MKL_NUM_THREADS": "3", "TOKENIZERS_PARALLELISM": "false",
                                "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"}.items()]
@@ -178,6 +169,7 @@ def main():
     ap.add_argument("--code", default=None)
     ap.add_argument("--models", default="unsloth--Qwen3.5-9B")
     ap.add_argument("--formats", default="", help="runner claims only runs of these formats (comma list)")
+    ap.add_argument("--online", action="store_true", help="Hub access on (PRM runs download their weights)")
     a = ap.parse_args()
     if a.cmd == "sync-up":
         apply(sync_pod()); wait_running("selrm-c-sync"); print("selrm-c-sync running")
@@ -205,7 +197,8 @@ def main():
         stem = a.args[0].replace("_", "-").replace(".json", "")
         for i in range(a.n):
             apply(runner_job(f"selrm-c-run-{stem}-{a.gpu}-{int(time.time()) % 100000}-{i}", a.args[0], code, a.bcode,
-                             a.env, a.gpu, a.hours, models=tuple(a.models.split(",")), formats=a.formats))
+                             a.env, a.gpu, a.hours, models=tuple(m for m in a.models.split(",") if m),
+                             formats=a.formats, online=a.online))
     elif a.cmd == "pull":
         pull(a.args)
     else:

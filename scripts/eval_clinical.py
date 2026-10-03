@@ -7,7 +7,7 @@ false rejection); per item NEI if max(u_s, u_s') < tau or u_s = u_s', else met /
 by the larger score. Writes results_git/<run>/summary_clin_v1~trialgpt_<split>.json
 (replacing the triplet summary the GPU job wrote, which is empty for these records) and,
 for the test split, docs/TRIALGPT_RESULTS.md. Every number comes from scores files."""
-import argparse, collections, json, os, re, statistics, sys
+import argparse, collections, json, os, re, statistics, subprocess, sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO)
@@ -30,14 +30,27 @@ SYSTEMS = [  # (name in run ids, row label, format). Test runs: C-TG-<name> for 
     ("ledger2-triplets", "Ledger x triplets", "ledger2"),
 ]
 UNTRAINED = ("critic", "promptsum", "promptledger", "promptledger-lenient")
+MALFORMED_U = -20.0     # INTERFACES 3: a malformed ledger scores -20 on both claims
+# threshold-source sensitivity: rule_v1/dev_missing scores of the same model from an independent run
+ALT_TAU = {"critic": "C-TF-critic", "promptsum": "C-TF-promptsum--p1", "promptledger": "C-TF-promptledger--p1",
+           "promptledger-lenient": "C-TF-promptledger-lenient--p1"}   # adapters: B's run B-F-<name>-s<k> (origin/role-b)
 
 
-def run_ids(res, name, split):
+def planned_runs():
+    out = set()
+    for f in os.listdir(f"{REPO}/configs/tasks_c"):
+        out |= {r["run_id"] for r in json.load(open(f"{REPO}/configs/tasks_c/{f}", encoding="utf-8"))["runs"]}
+    return out
+
+
+def run_ids(res, name, split, planned=frozenset()):
+    """Run ids of a system: every seed that is scored or listed in a task file (so a queued seed prints 'not run')."""
     if split == "dev":
         return [f"C-TG-{name}-dev"]
     if name in UNTRAINED:
         return [f"C-TG-{name}"]
-    return [f"C-TG-{name}-s{k}" for k in range(5) if os.path.isdir(f"{res}/C-TG-{name}-s{k}")] or [f"C-TG-{name}-s0"]
+    return [r for r in (f"C-TG-{name}-s{k}" for k in range(5)) if os.path.isdir(f"{res}/{r}") or r in planned] \
+        or [f"C-TG-{name}-s0"]
 COMPARISONS = [("ledger2-triplets", "critic"), ("ledger2-triplets", "ledger2-blocks")]   # analysis plan (6)
 
 
@@ -57,30 +70,27 @@ def dataset(data, name):
 
 # ---------------------------------------------------------------- evidence quotes
 
-def note_sentences(note):
-    """{sentence id: (start, end)} of a released note ('<k>. text' per line)."""
-    out, pos = {}, 0
-    for line in note.split("\n"):
-        m = re.match(r"^(\d+)\.\s", line)
-        if m:
-            out[int(m.group(1))] = (pos, pos + len(line))
-        pos += len(line) + 1
-    return out
-
-
 def quotes(text, fmt):
-    """Quoted spans of a reader output: ledger found values; double-quoted spans of prose."""
+    """Quoted spans of a reader output: ledger found values (each line of a multi-line value is its own
+    quote, since the note has one sentence per line); double-quoted spans of prose."""
     if fmt == "ledger2":
-        out = []
+        out, key = [], None
         for raw in text.split("\n"):
             line = re.sub(r"^(?:[-*•+]|\d+[.)])\s+", "", raw.strip().strip("`").strip()).replace("**", "")
-            m = re.match(r"^found\s*:\s*(.*)$", line, flags=re.I)
+            m = re.match(r"^(need|found|subject|status|time)\s*:\s*(.*)$", line, flags=re.I)
             if m:
-                v = m.group(1).strip()
-                if len(v) >= 2 and v[0] == v[-1] and v[0] in "\"'":
-                    v = v[1:-1].strip()
-                if v and v.lower().rstrip(".") != "not mentioned":
-                    out.append(v)
+                key, v = m.group(1).lower(), m.group(2).strip()
+            elif not line:
+                key = None
+                continue
+            else:
+                v = line
+            if key != "found":
+                continue
+            if len(v) >= 2 and v[0] == v[-1] and v[0] in "\"'":
+                v = v[1:-1].strip()
+            if v and v.lower().rstrip(".") != "not mentioned":
+                out.append(v)
         return out
     if fmt == "summary2":
         return [a or b for a, b in re.findall(r'"([^"\n]+)"|“([^”\n]+)”', text)]
@@ -88,14 +98,17 @@ def quotes(text, fmt):
 
 
 def sentence_ids(note, qs):
-    """Numbered sentences overlapping any verbatim occurrence of a quote."""
-    spans, ids = note_sentences(note), set()
-    for q in qs:
-        start = note.find(q)
-        while start >= 0:
-            end = start + len(q)
-            ids |= {k for k, (a, b) in spans.items() if a < end and start < b}
-            start = note.find(q, start + 1)
+    """Numbered note sentences ('<k>. text' per line) holding a verbatim occurrence of a quote that reaches
+    past the '<k>. ' label (a quote such as '5' does not match the label of sentence 5)."""
+    ids = set()
+    for line in note.split("\n"):
+        m = re.match(r"^(\d+)\.\s", line)
+        for q in qs if m else ():
+            start = line.find(q)
+            while start >= 0 and start + len(q) <= m.end():
+                start = line.find(q, start + 1)
+            if start >= 0:
+                ids.add(int(m.group(1)))
     return ids
 
 
@@ -123,6 +136,7 @@ def evaluate(recs, sc, tau, fmt):
         d = it["u"]["s"] - it["u"]["s_prime"]
         it["forced"] = "met" if d > 0 else ("not_met" if d < 0 else "tie")
         it["quoted"] = sentence_ids(it["note"], quotes(it.get("reader", ""), fmt)) if "reader" in it else None
+        it["malformed"] = fmt == "ledger2" and it["u"]["s"] == it["u"]["s_prime"] == MALFORMED_U
     return list(items.values())
 
 
@@ -134,16 +148,19 @@ def accuracy(xs):
     return M.prf([x["gold"] for x in xs], [x["pred"] for x in xs], CATS)["acc"]
 
 
-def evidence(items):
-    pred = [x for x in items if x["quoted"]]
-    gold = [x for x in items if x["expert"]]
+def evidence(items, drop_malformed=False):
+    """Micro P/R of quoted vs expert sentences (protocol section 6); None where a denominator is empty.
+    drop_malformed: ledgers rejected by the frozen check carry no quotes (sensitivity reading)."""
     if not any(x["quoted"] is not None for x in items):
         return None
-    hit_p = sum(len(x["quoted"] & x["expert"]) for x in pred)
-    hit_r = sum(len((x["quoted"] or set()) & x["expert"]) for x in gold)
-    return {"precision": 100.0 * hit_p / max(1, sum(len(x["quoted"]) for x in pred)), "n_items_pred": len(pred),
-            "recall": 100.0 * hit_r / max(1, sum(len(x["expert"]) for x in gold)), "n_items_gold": len(gold),
-            "items_without_quote": sum(not x["quoted"] for x in items)}
+    q = lambda x: set() if drop_malformed and x["malformed"] else (x["quoted"] or set())
+    pred = [x for x in items if q(x)]
+    gold = [x for x in items if x["expert"]]
+    n_p, n_g = sum(len(q(x)) for x in pred), sum(len(x["expert"]) for x in gold)
+    return {"precision": 100.0 * sum(len(q(x) & x["expert"]) for x in pred) / n_p if n_p else None,
+            "n_items_pred": len(pred),
+            "recall": 100.0 * sum(len(q(x) & x["expert"]) for x in gold) / n_g if n_g else None,
+            "n_items_gold": len(gold), "items_without_quote": sum(not q(x) for x in items)}
 
 
 def summary(items, tau, run, split):
@@ -162,9 +179,9 @@ def summary(items, tau, run, split):
     trials = collections.defaultdict(list)
     for x in main:
         trials[x["trial"]].append(x["gold"] == x["pred"])
-    tacc = sorted(100.0 * sum(v) / len(v) for v in trials.values() if len(v) >= 5)
+    tacc = sorted(100.0 * sum(v) / len(v) for v in trials.values() if len(v) >= 5)   # >= 5 non-N/A items
     return {"run_id": run, "set": f"clin_v1/trialgpt_{split}", "protocol": "docs/TRIALGPT_PROTOCOL.md",
-            "threshold": tau, "n_items": len(items), "n_scored": len(main),
+            "threshold": tau, "n_items": len(items), "n_scored": len(main), "n_patients": len({x["patient"] for x in main}),
             "macroF1": rep["macroF1"], "macroF1_CI95": [f1[1], f1[2]], "acc": rep["acc"], "acc_CI95": [acc[1], acc[2]],
             "per_class": rep["per_class"], "confusion": rep["confusion"],
             "pred_distribution": dict(collections.Counter(x["pred"] for x in main)),
@@ -173,24 +190,48 @@ def summary(items, tau, run, split):
             "not_applicable": {"n": sum(na.values()), "pred": dict(na)},
             "forced_choice_acc": 100.0 * sum(x["forced"] == x["gold"] for x in fc) / len(fc) if fc else None,
             "n_forced": len(fc), "evidence": evidence(items),
-            "per_trial_acc": {"n_trials": len(tacc), "min": tacc[0] if tacc else None,
+            "evidence_malformed_without_quotes": evidence(items, True) if any(x["malformed"] for x in items) else None,
+            "per_trial_acc": {"n_trials": len(tacc), "min_items": 5, "min": tacc[0] if tacc else None,
                               "median": statistics.median(tacc) if tacc else None, "max": tacc[-1] if tacc else None},
             "bootstrap": {"unit": "patient", "B": 1000, "seed": 0}}
 
 
-def run_system(recs, dm, split, fmt, run_dir):
+def alt_tau_scores(res, name, seed):
+    """(source, dev_missing scores) of the same model from an independent run, or (None, None)."""
+    if name in ALT_TAU:
+        p = f"{res}/{ALT_TAU[name]}/scores_rule_v1~dev_missing.jsonl"
+        return (f"results_git/{ALT_TAU[name]}", scores(p)) if os.path.exists(p) else (None, None)
+    src = f"origin/role-b:results_git/B-F-{name}-s{seed or 0}/scores_rule_v1~dev_missing.jsonl"
+    p = subprocess.run(["git", "-C", REPO, "show", src], capture_output=True, encoding="utf-8")
+    if p.returncode:
+        return None, None
+    return src, {r["iid"]: r for r in (json.loads(l) for l in p.stdout.splitlines() if l.strip())}
+
+
+def run_system(recs, dm, split, fmt, run_dir, name=None, seed=None):
     """(items, summary) of one run, or (None, None) if it has no scores for the split yet."""
     sc = scores(f"{run_dir}/scores_clin_v1~trialgpt_{split}.jsonl")
     src = f"{run_dir}/scores_rule_v1~dev_missing.jsonl"
-    if not os.path.exists(src):          # test run of a system with a dev run: same adapter, code and set
-        src = re.sub(r"(-s0)?$", "-dev", run_dir, count=1) + "/scores_rule_v1~dev_missing.jsonl"
+    if not os.path.exists(src) and not re.search(r"-s[1-9]$", run_dir):
+        # seed-0 and untrained test runs: tau from the system's dev run (same model, adapter, set and B's scoring
+        # code; other runner commit and GPU). Later seeds score rule_v1/dev_missing in their own run.
+        src = re.sub(r"-s0$", "", run_dir) + "-dev/scores_rule_v1~dev_missing.jsonl"
     sd = scores(src)
+    if sc is not None and sd is None:
+        print(f"WARNING {os.path.basename(run_dir)}: test scores but no rule_v1/dev_missing scores for tau ({src})")
     if sc is None or sd is None:
         return None, None
     tau = M.mr_threshold(dm, [sd[r["iid"]]["u"] for r in dm])
     items = evaluate(recs, sc, tau, fmt)
-    return items, summary(items, tau, os.path.basename(run_dir), split) | {
+    out = summary(items, tau, os.path.basename(run_dir), split) | {
         "threshold_source": os.path.relpath(src, os.path.dirname(os.path.dirname(run_dir))).replace(os.sep, "/")}
+    if split == "test" and name:
+        asrc, alt = alt_tau_scores(os.path.dirname(run_dir), name, seed)
+        if alt and all(r["iid"] in alt for r in dm):
+            atau = M.mr_threshold(dm, [alt[r["iid"]]["u"] for r in dm])
+            main = [x | {"pred": predict(x["u"]["s"], x["u"]["s_prime"], atau)} for x in items if x["gold"] != "na"]
+            out["threshold_alt"] = {"source": asrc, "tau": atau, "macroF1": macro_f1(main), "acc": accuracy(main)}
+    return items, out
 
 
 def fmt_num(x, nd=1):
@@ -213,10 +254,10 @@ def main():
         return nli4ct(a)
     recs = load_jsonl(f"{REPO}/data/clin_v1/trialgpt_{a.split}/records.jsonl")
     dm = dataset(a.data, "rule_v1/dev_missing")
-    rows, items_by = [], {}
-    for name, label, fmt, run in [(n, l, f, r) for n, l, f in SYSTEMS for r in run_ids(a.results, n, a.split)]:
-        items, summ = run_system(recs, dm, a.split, fmt, f"{a.results}/{run}")
+    rows, items_by, planned = [], {}, planned_runs()
+    for name, label, fmt, run in [(n, l, f, r) for n, l, f in SYSTEMS for r in run_ids(a.results, n, a.split, planned)]:
         seed = run.rsplit("-s", 1)[1] if run[-3:-1] == "-s" else None
+        items, summ = run_system(recs, dm, a.split, fmt, f"{a.results}/{run}", name, seed)
         key = name + (f"@s{seed}" if seed not in (None, "0") else "")
         rows.append((key, label + (f", seed {seed}" if seed else ""), run, summ))
         if summ is None:
@@ -454,9 +495,13 @@ def nli4ct(a):
 
 
 def write_report(rows, comps):
+    done = [s for _, _, _, s in rows if s]
+    npat = sorted({s["n_patients"] for s in done})
     L = ["# TrialGPT criterion annotations: results (role C)", "",
          "Generated by `scripts/eval_clinical.py trialgpt --split test` from `results_git/C-TG-*/` (no typed numbers).",
-         "Protocol: `docs/TRIALGPT_PROTOCOL.md`. Test portion: 43 patients; N/A items reported separately.", "",
+         f"Protocol: `docs/TRIALGPT_PROTOCOL.md`. Test portion: {'/'.join(map(str, npat))} patients; N/A items "
+         "reported separately. Evidence P / R: protocol section 6; a multi-line `found` value gives one quote per "
+         "line; a quote must reach past a sentence's number label.", "",
          "| System | run | macro-F1 [95% CI] | accuracy [95% CI] | F1 met | F1 not met | F1 NEI | NEI predicted | forced choice | evidence P / R | tau |",
          "|---|---|---|---|---|---|---|---|---|---|---|"]
     for key, label, run, s in rows:
@@ -470,10 +515,55 @@ def write_report(rows, comps):
                  f" | {s['pred_distribution'].get('nei', 0)} of {s['n_scored']} | {fmt_num(s['forced_choice_acc'])}"
                  f" | {(fmt_num(ev['precision']) + ' / ' + fmt_num(ev['recall'])) if ev else '-'} | {fmt_num(s['threshold'], 2)} |")
     if comps:
-        L += ["", "Paired differences in macro-F1 (same items, patient bootstrap, 1,000 resamples; Holm across the "
-                  "primary comparisons is applied by the lead):", ""]
+        L += ["", f"Paired differences in macro-F1 (same items, patient bootstrap, {comps[0][2]['B']:,} resamples; comparison (6) of the "
+                  "analysis plan; Holm across the primary comparisons is applied by the lead):", ""]
         L += [f"- {x} minus {y}: {r['diff']:.1f} [{r['lo']:.1f}, {r['hi']:.1f}], p = {r['p']:.3f} "
               f"({r['n_items']} items, {r['n_clusters']} patients)" for x, y, r in comps]
+    seeds = collections.defaultdict(dict)
+    for key, _, run, s in rows:
+        if s and key.split("@")[0] not in UNTRAINED:
+            seeds[key.split("@")[0]][run.rsplit("-s", 1)[1]] = s
+    multi = {k: v for k, v in seeds.items() if len(v) > 1}
+    if multi:
+        L += ["", "Seeds (protocol section 8): macro-F1 per seed, mean and s.d. (n - 1):", "",
+              "| System | macro-F1 by seed | mean | s.d. | accuracy mean | accuracy s.d. |", "|---|---|---|---|---|---|"]
+        for k, v in multi.items():
+            f1, ac = M.seed_table({sd: s["macroF1"] for sd, s in v.items()}), M.seed_table({sd: s["acc"] for sd, s in v.items()})
+            L.append(f"| {k} | {', '.join(f's{sd} {fmt_num(x)}' for sd, x in f1['seeds'].items())} | {fmt_num(f1['mean'])} | "
+                     f"{fmt_num(f1['sd'])} | {fmt_num(ac['mean'])} | {fmt_num(ac['sd'])} |")
+    L += ["", "Threshold-source sensitivity: tau and macro-F1 with tau computed from the same model's rule_v1/dev_missing "
+              "scores in an independent run (adapters: B's evaluation run of the adapter; untrained backbone: role C's "
+              "rule-tier run), against the reported tau (from the system's TrialGPT development run; seeds 1+ from "
+              "their own run). Evidence P / R with malformed ledgers carrying no quotes (frozen check; ledger rows):", "",
+          "| System | run | tau reported | tau alternative | macro-F1 reported | macro-F1 at alternative tau | accuracy at alternative tau | alternative source | evidence P / R, malformed without quotes |",
+          "|---|---|---|---|---|---|---|---|---|"]
+    for key, label, run, s in rows:
+        if s is None:
+            continue
+        t, em = s.get("threshold_alt") or {}, s.get("evidence_malformed_without_quotes")
+        L.append(f"| {label} | {run} | {fmt_num(s['threshold'], 3)} | {fmt_num(t.get('tau'), 3)} | {fmt_num(s['macroF1'])} | "
+                 f"{fmt_num(t.get('macroF1'))} | {fmt_num(t.get('acc'))} | {t.get('source', 'not available').split('/scores_')[0]} | "
+                 f"{(fmt_num(em['precision']) + ' / ' + fmt_num(em['recall'])) if em else '-'} |")
+    L += ["", "By criterion type, the dataset's five category names, predictions on not-applicable items, per-trial "
+              "accuracy (trials with at least 5 non-N/A items) and decision language in reader outputs "
+              "(scripts/reader_audit.py):", "",
+          "| System | macro-F1 inclusion (n) | macro-F1 exclusion (n) | macro-F1, five names | N/A items: predicted | per-trial acc. min / median / max | decision language |",
+          "|---|---|---|---|---|---|---|"]
+    for key, label, run, s in rows:
+        if s is None:
+            continue
+        bt, pt = s["by_type"], s["per_trial_acc"]
+        aud = f"{REPO}/results_git/{run}/reader_audit.json"
+        dl = json.load(open(aud, encoding="utf-8"))["sets"].get(s["set"], {}).get("decision_language_any") if os.path.exists(aud) else None
+        L.append(f"| {label} | {fmt_num(bt['inclusion']['macroF1'])} ({bt['inclusion']['n']}) | "
+                 f"{fmt_num(bt['exclusion']['macroF1'])} ({bt['exclusion']['n']}) | {fmt_num(s['macroF1_five_names'])} | "
+                 f"{', '.join(f'{k} {v}' for k, v in sorted(s['not_applicable']['pred'].items()))} | "
+                 f"{fmt_num(pt['min'])} / {fmt_num(pt['median'])} / {fmt_num(pt['max'])} | {fmt_num(dl)} |")
+    man = json.load(open(f"{REPO}/data/clin_v1/trialgpt_test/MANIFEST.json", encoding="utf-8"))
+    dev = {r["meta"]["patient_id"] for r in load_jsonl(f"{REPO}/data/clin_v1/trialgpt_dev/records.jsonl")}
+    L += ["", "Case-blind predictors on the same items (shortcut validation in the set's MANIFEST): " +
+          "; ".join(f"{k}: macro-F1 {v['macroF1']:.1f}, accuracy {v['acc']:.1f}" for k, v in man["shortcut_validation"]["predictors"].items()) + ".",
+          "", f"Development-portion numbers ({len(dev)} patients) are in results_git/C-TG-*-dev and are not test results."]
     open(f"{REPO}/docs/TRIALGPT_RESULTS.md", "w", encoding="utf-8", newline="\n").write("\n".join(L) + "\n")
     print("wrote docs/TRIALGPT_RESULTS.md")
 

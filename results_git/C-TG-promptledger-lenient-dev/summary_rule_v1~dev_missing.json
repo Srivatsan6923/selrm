@@ -1,0 +1,17 @@
+{
+ "run_id": "C-TG-promptledger-lenient-dev",
+ "set": "rule_v1/dev_missing",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "reader_units": 600,
+  "malformed_units": 15,
+  "malformed_rate": 0.025,
+  "seconds": 558.0,
+  "mode": "rejudge",
+  "lenient_version": 2,
+  "source_run": "C-TG-promptledger-dev"
+ }
+}

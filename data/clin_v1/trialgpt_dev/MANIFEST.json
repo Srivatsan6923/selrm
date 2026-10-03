@@ -62,19 +62,19 @@
   "predictors": {
    "always met": {
     "acc": 11.0,
-    "macroF1": 6.61
+    "macroF1": 6.606606606606605
    },
    "always not_met": {
     "acc": 58.5,
-    "macroF1": 24.61
+    "macroF1": 24.605678233438486
    },
    "always nei": {
     "acc": 30.5,
-    "macroF1": 15.58
+    "macroF1": 15.581098339719029
    },
    "type prior from dev {'inclusion': 'nei', 'exclusion': 'not_met'}": {
     "acc": 75.5,
-    "macroF1": 50.69
+    "macroF1": 50.6875
    }
   },
   "n_items": 200,
