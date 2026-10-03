@@ -25,5 +25,16 @@
   "model": "unsloth/Qwen3.5-9B",
   "revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
   "note": "frozen policy for candidate pools = B's pinned backbone (configs/models_b.json)"
+ },
+ "medqa_dev": {
+  "hf_dataset": "bigbio/med_qa",
+  "revision": "484a6c066fe8e75c83edea0c88b5169316714fcd",
+  "file": "med_qa_en_4options_source/validation-00000-of-00001.parquet",
+  "sha256": "6962f5537d8a349244208f02583ee9bc5ef2807e4aee912c33dfbd240feb5620",
+  "n_questions": 1272,
+  "options": 4,
+  "licence": "as medqa_test",
+  "use": "calibration pool for the combined reward (D-CAL); never a test set",
+  "verified": "2026-10-02"
  }
 }
