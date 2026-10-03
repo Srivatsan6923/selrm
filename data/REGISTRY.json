@@ -617,6 +617,30 @@
   "split": "train",
   "tier": "mixed"
  },
+ "rule_v1x/aux_blocks_20k": {
+  "created": "2026-10-03",
+  "derived_from": "rule_v1/train_blocks",
+  "frozen": true,
+  "level": "L0",
+  "manifest": "rule_v1x/aux_blocks_20k/MANIFEST.json",
+  "n_groups": 1881,
+  "n_records": 20002,
+  "path": "rule_v1x/aux_blocks_20k/records.jsonl",
+  "sha256": "444484217e37ccca64676fb585cfd1abac98e9ba380dac984e5ff4b371db28df",
+  "split": "train"
+ },
+ "rule_v1x/aux_triplets_20k": {
+  "created": "2026-10-03",
+  "derived_from": "rule_v1/train_triplets",
+  "frozen": true,
+  "level": "L0",
+  "manifest": "rule_v1x/aux_triplets_20k/MANIFEST.json",
+  "n_groups": 1882,
+  "n_records": 20006,
+  "path": "rule_v1x/aux_triplets_20k/records.jsonl",
+  "sha256": "98b413be3efaac807da51d5df1f1a10bf111202c43f6ffd8c96e83c9aae77215",
+  "split": "train"
+ },
  "xr_v1/test": {
   "created": "2026-10-02",
   "frozen": true,
