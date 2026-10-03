@@ -1,9 +1,8 @@
 """Audit of two-stage reader outputs (owner C): does a ledger or summary carry a decision?
-  python scripts/reader_audit.py RUN_DIR [--set NAME ...] [--data DIR]
-Per set, over reader units (one output per case and condition): strict malformed rate (B's
-formats.well_formed via eval_c's copy of its rules is not imported here: the strict rate is read
-from the run's summary), share of outputs with decision language, by pattern class, and with the
-text of either claim. Decision language (heuristic, lower case):
+  python scripts/reader_audit.py RUN_DIR [--set NAME ...]
+Per set, over reader units (one output per case and condition): the strict malformed rate (read from
+the run's summary) and the share of outputs with decision language, by pattern class.
+Decision language (heuristic, case-insensitive):
   verdict   'the claim is/was (in)correct|true|false', 'answer:', a final line that is only + or -
   criterion "(criterion|condition) is/was (not) met|satisfied|fulfilled", "meets/does not meet", satisfies,
             contradicts, falls within/outside (the range),
@@ -41,7 +40,6 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("run_dir")
     ap.add_argument("--set", action="append")
-    ap.add_argument("--data", default=None, help="records dir (REGISTRY.json); needed for the claim-text check")
     a = ap.parse_args()
     files = sorted(glob.glob(f"{a.run_dir}/scores_*.jsonl"))
     out = {}
