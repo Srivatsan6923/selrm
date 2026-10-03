@@ -1,6 +1,606 @@
 {
+ "a15/folds.1.n_classes@int": {
+  "number": 21,
+  "value": "21"
+ },
+ "a15/folds.1.overlap_train_vs_L2.criterion_subexpressions": {
+  "number": 76.28865979381443,
+  "value": "76.3"
+ },
+ "a15/folds.1.overlap_train_vs_L2.programs": {
+  "number": 0.0,
+  "value": "0.0"
+ },
+ "a15/folds.1.overlap_train_vs_L2.rule_texts": {
+  "number": 0.0,
+  "value": "0.0"
+ },
+ "a15/rules_by_kind.score@int": {
+  "number": 43,
+  "value": "43"
+ },
+ "a15/rules_by_source.grammar_sampled@int": {
+  "number": 250,
+  "value": "250"
+ },
+ "a15/rules_total@int": {
+  "number": 353,
+  "value": "353"
+ },
  "cmp/holm/n": {
   "number": 7,
   "value": "7"
+ },
+ "cmp/p3/diff": {
+  "number": 1.2,
+  "value": "1.2"
+ },
+ "cmp/p3/hi": {
+  "number": 2.247191011235955,
+  "value": "2.2"
+ },
+ "cmp/p3/lo": {
+  "number": 0.20376974019358127,
+  "value": "0.2"
+ },
+ "d/a15/rules_total|a15/rules_by_kind.score|a15/rules_by_source.grammar_sampled@int": {
+  "number": 60,
+  "value": "60"
+ },
+ "d/run/B-F-ledger2-blocks/L2/all/TA|run/B-F-verdict-blocks/L2/all/TA": {
+  "number": 17.099999999999994,
+  "value": "17.1"
+ },
+ "d/run/B-F-ledger2-blocks/clin_v1:medeinst_test/top/Reversal|run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "d/run/B-F-ledger2-blocks/clin_v1:nli4ct/top/faithfulness|run/B-F-ledger2-triplets/clin_v1:nli4ct/top/faithfulness": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "d/run/B-F-ledger2-triplets/L2/all/TA/s0|run/B-F-summary2-triplets/L2/all/TA/s0": {
+  "number": 1.2000000000000028,
+  "value": "1.2"
+ },
+ "d/run/B-F-ledger2-triplets/L2/all/TA|run/B-F-summary2-triplets/L2/all/TA": {
+  "number": 1.2000000000000028,
+  "value": "1.2"
+ },
+ "d/run/B-F-ledger2-triplets/L2/all/TA|run/B-F-verdict-triplets/L2/all/TA": {
+  "number": 7.900000000000006,
+  "value": "7.9"
+ },
+ "d/run/B-F-ledger2-triplets/clin_v1:nli4ct/top/consistency|run/B-F-ledger2-blocks/clin_v1:nli4ct/top/consistency": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "d/run/B-F-rationale-triplets/clin_v1:medeinst_test/top/Reversal|run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "d/run/B-F-verdict-triplets/dev/all/TA|run/B-F-verdict-triplets/L2/all/TA@0": {
+  "number": 8.366666666666674,
+  "value": "8"
+ },
+ "d/run/B-TR-steperr/clin_v1:medeinst_test/top/Reversal|run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "d/run/D-SEL-combined/sel:medqa/top/acc|run/D-SEL-no-nearmiss/sel:medqa/top/acc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "d/run/D-SEL-combined/sel:medqa/top/acc|run/D-SEL-stepcheck/sel:medqa/top/acc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "d/run/D-SELN/sel:keypairs/selector=oracle/N64|run/D-SELN/sel:keypairs/selector=combined/N64": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "d/run/D-SELN/sel:keypairs/selector=oracle/N64|run/D-SELN/sel:keypairs/selector=stepcheck/N64": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "max/run/B-F-ledger2-blocks/dev/eval/malformed_rate/max|run/B-F-ledger2-blocks/dev_missing/eval/malformed_rate/max|run/B-F-ledger2-blocks/missing/eval/malformed_rate/max|run/B-F-ledger2-blocks/readapply/eval/malformed_rate/max|run/B-F-ledger2-blocks/L0/eval/malformed_rate/max|run/B-F-ledger2-blocks/L1/eval/malformed_rate/max|run/B-F-ledger2-blocks/L2/eval/malformed_rate/max|run/B-F-ledger2-blocks/L3alt/eval/malformed_rate/max|run/B-F-ledger2-blocks/L3inv/eval/malformed_rate/max|run/B-F-ledger2-blocks/hard/eval/malformed_rate/max|run/B-F-ledger2-triplets/dev/eval/malformed_rate/max|run/B-F-ledger2-triplets/dev_missing/eval/malformed_rate/max|run/B-F-ledger2-triplets/missing/eval/malformed_rate/max|run/B-F-ledger2-triplets/readapply/eval/malformed_rate/max|run/B-F-ledger2-triplets/L0/eval/malformed_rate/max|run/B-F-ledger2-triplets/L1/eval/malformed_rate/max|run/B-F-ledger2-triplets/L2/eval/malformed_rate/max|run/B-F-ledger2-triplets/L3alt/eval/malformed_rate/max|run/B-F-ledger2-triplets/L3inv/eval/malformed_rate/max|run/B-F-ledger2-triplets/hard/eval/malformed_rate/max@pct2": {
+  "number": 0.0017,
+  "value": "0.17"
+ },
+ "max/run/B-F-ledger2-triplets/dev/eval/malformed_rate/max|run/B-F-ledger2-triplets/dev_missing/eval/malformed_rate/max|run/B-F-ledger2-triplets/missing/eval/malformed_rate/max|run/B-F-ledger2-triplets/readapply/eval/malformed_rate/max|run/B-F-ledger2-triplets/L0/eval/malformed_rate/max|run/B-F-ledger2-triplets/L1/eval/malformed_rate/max|run/B-F-ledger2-triplets/L2/eval/malformed_rate/max|run/B-F-ledger2-triplets/L3alt/eval/malformed_rate/max|run/B-F-ledger2-triplets/L3inv/eval/malformed_rate/max|run/B-F-ledger2-triplets/hard/eval/malformed_rate/max@pct2": {
+  "number": 0.0017,
+  "value": "0.17"
+ },
+ "max/run/B-F-verdict-blocks/L2/nm_kind=negation/TA|run/B-F-verdict-blocks/L2/nm_kind=numeric/TA@0": {
+  "number": 93.25,
+  "value": "93"
+ },
+ "max/run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "max/run/C-AUD-meds3/L2/all/Rev|run/C-AUD-medprm/L2/all/Rev|run/C-AUD-fover/L2/all/Rev|run/C-AUD-injerr/L2/all/Rev|run/C-AUD-thinkprm/L2/all/Rev|run/C-AUD-genprm/L2/all/Rev": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "max/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "max/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA|run/C-AUD-qwen35-9b/L2/all/TA|run/C-AUD-llama70b/L2/all/TA|run/C-AUD-qwen35-27b/L2/all/TA|run/C-AUD-kimi-k3/L2/all/TA|run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "max/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA|run/C-AUD-qwen35-9b/L2/all/TA|run/C-AUD-llama70b/L2/all/TA|run/C-AUD-qwen35-27b/L2/all/TA|run/C-AUD-kimi-k3/L2/all/TA|run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA@0": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "max/run/C-AUD-qwen35-9b/L2/all/Hold|run/C-AUD-llama70b/L2/all/Hold|run/C-AUD-qwen35-27b/L2/all/Hold|run/C-AUD-kimi-k3/L2/all/Hold@0": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "min/run/B-F-verdict-blocks/L2/nm_kind=negation/TA|run/B-F-verdict-blocks/L2/nm_kind=numeric/TA@0": {
+  "number": 92.0,
+  "value": "92"
+ },
+ "min/run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "min/run/C-AUD-meds3/L2/all/Rev|run/C-AUD-medprm/L2/all/Rev|run/C-AUD-fover/L2/all/Rev|run/C-AUD-injerr/L2/all/Rev|run/C-AUD-thinkprm/L2/all/Rev|run/C-AUD-genprm/L2/all/Rev": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "min/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "min/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA|run/C-AUD-qwen35-9b/L2/all/TA|run/C-AUD-llama70b/L2/all/TA|run/C-AUD-qwen35-27b/L2/all/TA|run/C-AUD-kimi-k3/L2/all/TA|run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "min/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA|run/C-AUD-qwen35-9b/L2/all/TA|run/C-AUD-llama70b/L2/all/TA|run/C-AUD-qwen35-27b/L2/all/TA|run/C-AUD-kimi-k3/L2/all/TA|run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA@0": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "min/run/C-AUD-qwen35-9b/L2/all/Hold|run/C-AUD-llama70b/L2/all/Hold|run/C-AUD-qwen35-27b/L2/all/Hold|run/C-AUD-kimi-k3/L2/all/Hold@0": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/A-D14-attribute_blind/L2/all/TA": {
+  "number": 40.0,
+  "value": "40.0"
+ },
+ "run/A-D14-bag_of_words/L2/all/TA": {
+  "number": 7.05,
+  "value": "7.0"
+ },
+ "run/A-D14-trigger_all/L2/all/TA": {
+  "number": 99.5,
+  "value": "99.5"
+ },
+ "run/A-D14-trigger_train/L2/all/TA": {
+  "number": 53.95,
+  "value": "54.0"
+ },
+ "run/B-AB-bitonly-judge/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-AB-bitonly-judge/clin_v1:medeinst_test/top/Reversal": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-AB-conddrv/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-AB-verify/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-AE-field-edit/L2/top/agreement": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-AE-field-swap/L2/top/agreement": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-AE-oracle-ledger/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-AE-program-ledger/L2/all/TA": {
+  "number": 99.4,
+  "value": "99.4"
+ },
+ "run/B-BB-qwen3.5-4b-verdict-blocks/L2/all/TA": {
+  "number": 49.85,
+  "value": "49.9"
+ },
+ "run/B-DIV-base-16/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-DIV-new-223/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-DIV-patients-223/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-DIV-same-63/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-F-ledger2-blocks/L2/all/TA": {
+  "number": 75.3,
+  "value": "75.3"
+ },
+ "run/B-F-ledger2-blocks/L2/all/TA/hi": {
+  "number": 78.51329354313619,
+  "value": "78.5"
+ },
+ "run/B-F-ledger2-blocks/L2/all/TA/lo": {
+  "number": 71.95979899497488,
+  "value": "72.0"
+ },
+ "run/B-F-ledger2-blocks/L2/nm_kind=boundary/TA": {
+  "number": 72.0,
+  "value": "72.0"
+ },
+ "run/B-F-ledger2-blocks/L2/nm_kind=subject/TA": {
+  "number": 48.5,
+  "value": "48.5"
+ },
+ "run/B-F-ledger2-blocks/readapply/all/TA": {
+  "number": 76.0,
+  "value": "76.0"
+ },
+ "run/B-F-ledger2-triplets/L2/all/TA": {
+  "number": 99.2,
+  "value": "99.2"
+ },
+ "run/B-F-ledger2-triplets/L2/all/TA/hi": {
+  "number": 99.69604863221885,
+  "value": "99.7"
+ },
+ "run/B-F-ledger2-triplets/L2/all/TA/lo": {
+  "number": 98.6336032388664,
+  "value": "98.6"
+ },
+ "run/B-F-ledger2-triplets/L2/all/TA/s0": {
+  "number": 99.2,
+  "value": "99.2"
+ },
+ "run/B-F-ledger2-triplets/L2/all/TA@0": {
+  "number": 99.2,
+  "value": "99"
+ },
+ "run/B-F-ledger2-triplets/L3inv/all/TA": {
+  "number": 97.9,
+  "value": "97.9"
+ },
+ "run/B-F-ledger2-triplets/challenge_v1:test/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal/hi": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal/lo": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal@0": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-F-ledger2-triplets/clin_v1:nli4ct/top/macroF1": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-F-ledger2-triplets/ec_v1:test/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-F-ledger2-triplets/rewrite_v1:test/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-F-ledger2-triplets/xr_v1:test/top/XA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-F-rationale-blocks/L2/all/TA": {
+  "number": 61.5,
+  "value": "61.5"
+ },
+ "run/B-F-rationale-triplets/L2/all/Hold": {
+  "number": 99.6,
+  "value": "99.6"
+ },
+ "run/B-F-rationale-triplets/L2/all/Rev": {
+  "number": 91.3,
+  "value": "91.3"
+ },
+ "run/B-F-rationale-triplets/L2/all/TA": {
+  "number": 91.05,
+  "value": "91.0"
+ },
+ "run/B-F-summary2-blocks/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-F-summary2-triplets/L2/all/TA": {
+  "number": 98.0,
+  "value": "98.0"
+ },
+ "run/B-F-summary2-triplets/L2/all/TA/hi": {
+  "number": 98.85057471264368,
+  "value": "98.9"
+ },
+ "run/B-F-summary2-triplets/L2/all/TA/lo": {
+  "number": 97.04533876719307,
+  "value": "97.0"
+ },
+ "run/B-F-summary2-triplets/clin_v1:medeinst_test/top/Reversal": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-F-verdict-balanced/L2/all/Rev": {
+  "number": 93.65,
+  "value": "93.7"
+ },
+ "run/B-F-verdict-balanced/L2/all/TA": {
+  "number": 49.15,
+  "value": "49.1"
+ },
+ "run/B-F-verdict-balanced/L2/all/TA/hi": {
+  "number": 53.13479623824451,
+  "value": "53.1"
+ },
+ "run/B-F-verdict-balanced/L2/all/TA/lo": {
+  "number": 45.55719194894453,
+  "value": "45.6"
+ },
+ "run/B-F-verdict-blocks/L2/all/Hold": {
+  "number": 61.55,
+  "value": "61.5"
+ },
+ "run/B-F-verdict-blocks/L2/all/Rev": {
+  "number": 93.1,
+  "value": "93.1"
+ },
+ "run/B-F-verdict-blocks/L2/all/TA": {
+  "number": 58.2,
+  "value": "58.2"
+ },
+ "run/B-F-verdict-blocks/L2/all/TA/hi": {
+  "number": 62.46925725528775,
+  "value": "62.5"
+ },
+ "run/B-F-verdict-blocks/L2/all/TA/lo": {
+  "number": 54.18939018344075,
+  "value": "54.2"
+ },
+ "run/B-F-verdict-blocks/L2/nm_kind=boundary/TA": {
+  "number": 33.75,
+  "value": "33.8"
+ },
+ "run/B-F-verdict-blocks/L2/nm_kind=subject/TA": {
+  "number": 11.5,
+  "value": "11.5"
+ },
+ "run/B-F-verdict-blocks/L3alt/all/TA": {
+  "number": 94.6,
+  "value": "94.6"
+ },
+ "run/B-F-verdict-blocks/readapply/all/TA": {
+  "number": 77.7,
+  "value": "77.7"
+ },
+ "run/B-F-verdict-natural/L2/all/Rev": {
+  "number": 92.05,
+  "value": "92.0"
+ },
+ "run/B-F-verdict-natural/L2/all/TA": {
+  "number": 58.0,
+  "value": "58.0"
+ },
+ "run/B-F-verdict-natural/L2/all/TA/hi": {
+  "number": 61.90217391304348,
+  "value": "61.9"
+ },
+ "run/B-F-verdict-natural/L2/all/TA/lo": {
+  "number": 54.06976744186046,
+  "value": "54.1"
+ },
+ "run/B-F-verdict-triplets/L2/all/Hold": {
+  "number": 97.65,
+  "value": "97.7"
+ },
+ "run/B-F-verdict-triplets/L2/all/Rev": {
+  "number": 92.35,
+  "value": "92.3"
+ },
+ "run/B-F-verdict-triplets/L2/all/TA": {
+  "number": 91.3,
+  "value": "91.3"
+ },
+ "run/B-F-verdict-triplets/L2/all/TA/hi": {
+  "number": 95.03397804495556,
+  "value": "95.0"
+ },
+ "run/B-F-verdict-triplets/L2/all/TA/lo": {
+  "number": 87.28643216080403,
+  "value": "87.3"
+ },
+ "run/B-F-verdict-triplets/L3inv/all/TA": {
+  "number": 96.9,
+  "value": "96.9"
+ },
+ "run/B-F-verdict-triplets/challenge_v1:test/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-F-verdict-triplets/dev/all/TA": {
+  "number": 99.66666666666667,
+  "value": "99.7"
+ },
+ "run/B-F-verdict-triplets/ec_v1:test/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-F-verdict-triplets/readapply/all/TA": {
+  "number": 99.4,
+  "value": "99.4"
+ },
+ "run/B-F-verdict-triplets/xr_v1:test/top/XA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-LOKO-boundary-ledger2/L2/nm_kind=boundary/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-LOKO-boundary-verdict/L2/nm_kind=boundary/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-LOKO-subject-ledger2/L2/nm_kind=subject/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-LOKO-subject-verdict/L2/nm_kind=subject/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-LOKO-time-ledger2/L2/nm_kind=time/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-LOKO-time-verdict/L2/nm_kind=time/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-SC-summary2-triplets/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-TR-fover/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-TR-genprm/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-TR-genprm/L3alt/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/B-TR-genprm/clin_v1:medeinst_test/top/Reversal": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-AUD-qwen35-27b/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-DG-shift/L0/signal=C-AUD-medprm/crossed": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-DG-shift/L0/signal=C-AUD-medprm/kappa@2": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-DG-shift/L0/signal=C-AUD-medprm/short": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-DG-shift/L0/signal=C-AUD-medprm/unmoved": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-DG-shift/L0/signal=C-AUD-medprm/wrong": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-TF-critic/clin_v1:medeinst_test/top/Reversal": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-TF-critic/clin_v1:medeinst_test/top/Reversal@0": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-TF-critic/clin_v1:nli4ct/top/macroF1": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-TF-defcorr/L2/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-TG-ledger2-blocks/clin_v1:trialgpt_test/top/macroF1": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/evidence/precision": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/evidence/recall": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/macroF1": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-TG-verdict-blocks/clin_v1:trialgpt_test/top/macroF1": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/macroF1": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/D-SEL-combined/sel:keypairs/top/pair_acc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/D-SEL-combined/sel:medeinst/top/pair_acc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/D-SEL-combined/sel:medqa/top/acc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/D-SEL-stepcheck/sel:keypairs/top/pair_acc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/D-SEL-stepcheck/sel:medeinst/top/pair_acc": {
+  "number": null,
+  "value": "\\ph{tbd}"
  }
 }

@@ -1,6 +1,6 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "8c97d6e7649dbe794fec7852b7219229396c6b05",
+ "code_commit": "afa9be331f91a2fd702e865c4a053a900b39b8ab",
  "uncommitted_changes": true,
  "records": {
   "rule_v1/dev_missing": {
@@ -97,6 +97,48 @@
      "seed": null,
      "file": "results/A-D15/summary.json",
      "field": "folds.1.n_classes",
+     "file_commit": "e40789bd5d7a19fd9fe2ddc319d9a53bf8f16b6f",
+     "code_commit": null
+    }
+   ]
+  },
+  "a15/folds.1.overlap_train_vs_L2.criterion_subexpressions": {
+   "value": "76.3",
+   "number": 76.28865979381443,
+   "runs": [
+    {
+     "run_id": "A-D15",
+     "seed": null,
+     "file": "results/A-D15/summary.json",
+     "field": "folds.1.overlap_train_vs_L2.criterion_subexpressions",
+     "file_commit": "e40789bd5d7a19fd9fe2ddc319d9a53bf8f16b6f",
+     "code_commit": null
+    }
+   ]
+  },
+  "a15/folds.1.overlap_train_vs_L2.programs": {
+   "value": "0.0",
+   "number": 0.0,
+   "runs": [
+    {
+     "run_id": "A-D15",
+     "seed": null,
+     "file": "results/A-D15/summary.json",
+     "field": "folds.1.overlap_train_vs_L2.programs",
+     "file_commit": "e40789bd5d7a19fd9fe2ddc319d9a53bf8f16b6f",
+     "code_commit": null
+    }
+   ]
+  },
+  "a15/folds.1.overlap_train_vs_L2.rule_texts": {
+   "value": "0.0",
+   "number": 0.0,
+   "runs": [
+    {
+     "run_id": "A-D15",
+     "seed": null,
+     "file": "results/A-D15/summary.json",
+     "field": "folds.1.overlap_train_vs_L2.rule_texts",
      "file_commit": "e40789bd5d7a19fd9fe2ddc319d9a53bf8f16b6f",
      "code_commit": null
     }
@@ -373,6 +415,338 @@
     "a15/rules_total",
     "a15/rules_by_kind.score",
     "a15/rules_by_source.grammar_sampled"
+   ]
+  },
+  "d/run/B-F-ledger2-blocks/L2/all/TA|run/B-F-verdict-blocks/L2/all/TA": {
+   "value": "17.1",
+   "number": 17.099999999999994,
+   "d": [
+    "run/B-F-ledger2-blocks/L2/all/TA",
+    "run/B-F-verdict-blocks/L2/all/TA"
+   ]
+  },
+  "d/run/B-F-ledger2-blocks/clin_v1:medeinst_test/top/Reversal|run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "d": [
+    "run/B-F-ledger2-blocks/clin_v1:medeinst_test/top/Reversal",
+    "run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal"
+   ]
+  },
+  "d/run/B-F-ledger2-blocks/clin_v1:nli4ct/top/faithfulness|run/B-F-ledger2-triplets/clin_v1:nli4ct/top/faithfulness": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "d": [
+    "run/B-F-ledger2-blocks/clin_v1:nli4ct/top/faithfulness",
+    "run/B-F-ledger2-triplets/clin_v1:nli4ct/top/faithfulness"
+   ]
+  },
+  "d/run/B-F-ledger2-triplets/L2/all/TA/s0|run/B-F-summary2-triplets/L2/all/TA/s0": {
+   "value": "1.2",
+   "number": 1.2000000000000028,
+   "d": [
+    "run/B-F-ledger2-triplets/L2/all/TA/s0",
+    "run/B-F-summary2-triplets/L2/all/TA/s0"
+   ]
+  },
+  "d/run/B-F-ledger2-triplets/L2/all/TA|run/B-F-summary2-triplets/L2/all/TA": {
+   "value": "1.2",
+   "number": 1.2000000000000028,
+   "d": [
+    "run/B-F-ledger2-triplets/L2/all/TA",
+    "run/B-F-summary2-triplets/L2/all/TA"
+   ]
+  },
+  "d/run/B-F-ledger2-triplets/L2/all/TA|run/B-F-verdict-triplets/L2/all/TA": {
+   "value": "7.9",
+   "number": 7.900000000000006,
+   "d": [
+    "run/B-F-ledger2-triplets/L2/all/TA",
+    "run/B-F-verdict-triplets/L2/all/TA"
+   ]
+  },
+  "d/run/B-F-ledger2-triplets/clin_v1:nli4ct/top/consistency|run/B-F-ledger2-blocks/clin_v1:nli4ct/top/consistency": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "d": [
+    "run/B-F-ledger2-triplets/clin_v1:nli4ct/top/consistency",
+    "run/B-F-ledger2-blocks/clin_v1:nli4ct/top/consistency"
+   ]
+  },
+  "d/run/B-F-rationale-triplets/clin_v1:medeinst_test/top/Reversal|run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "d": [
+    "run/B-F-rationale-triplets/clin_v1:medeinst_test/top/Reversal",
+    "run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal"
+   ]
+  },
+  "d/run/B-F-verdict-triplets/dev/all/TA|run/B-F-verdict-triplets/L2/all/TA@0": {
+   "value": "8",
+   "number": 8.366666666666674,
+   "d": [
+    "run/B-F-verdict-triplets/dev/all/TA",
+    "run/B-F-verdict-triplets/L2/all/TA"
+   ]
+  },
+  "d/run/B-TR-steperr/clin_v1:medeinst_test/top/Reversal|run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "d": [
+    "run/B-TR-steperr/clin_v1:medeinst_test/top/Reversal",
+    "run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal"
+   ]
+  },
+  "d/run/D-SEL-combined/sel:medqa/top/acc|run/D-SEL-no-nearmiss/sel:medqa/top/acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "d": [
+    "run/D-SEL-combined/sel:medqa/top/acc",
+    "run/D-SEL-no-nearmiss/sel:medqa/top/acc"
+   ]
+  },
+  "d/run/D-SEL-combined/sel:medqa/top/acc|run/D-SEL-stepcheck/sel:medqa/top/acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "d": [
+    "run/D-SEL-combined/sel:medqa/top/acc",
+    "run/D-SEL-stepcheck/sel:medqa/top/acc"
+   ]
+  },
+  "d/run/D-SELN/sel:keypairs/selector=oracle/N64|run/D-SELN/sel:keypairs/selector=combined/N64": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "d": [
+    "run/D-SELN/sel:keypairs/selector=oracle/N64",
+    "run/D-SELN/sel:keypairs/selector=combined/N64"
+   ]
+  },
+  "d/run/D-SELN/sel:keypairs/selector=oracle/N64|run/D-SELN/sel:keypairs/selector=stepcheck/N64": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "d": [
+    "run/D-SELN/sel:keypairs/selector=oracle/N64",
+    "run/D-SELN/sel:keypairs/selector=stepcheck/N64"
+   ]
+  },
+  "max/run/B-F-ledger2-blocks/dev/eval/malformed_rate/max|run/B-F-ledger2-blocks/dev_missing/eval/malformed_rate/max|run/B-F-ledger2-blocks/missing/eval/malformed_rate/max|run/B-F-ledger2-blocks/readapply/eval/malformed_rate/max|run/B-F-ledger2-blocks/L0/eval/malformed_rate/max|run/B-F-ledger2-blocks/L1/eval/malformed_rate/max|run/B-F-ledger2-blocks/L2/eval/malformed_rate/max|run/B-F-ledger2-blocks/L3alt/eval/malformed_rate/max|run/B-F-ledger2-blocks/L3inv/eval/malformed_rate/max|run/B-F-ledger2-blocks/hard/eval/malformed_rate/max|run/B-F-ledger2-triplets/dev/eval/malformed_rate/max|run/B-F-ledger2-triplets/dev_missing/eval/malformed_rate/max|run/B-F-ledger2-triplets/missing/eval/malformed_rate/max|run/B-F-ledger2-triplets/readapply/eval/malformed_rate/max|run/B-F-ledger2-triplets/L0/eval/malformed_rate/max|run/B-F-ledger2-triplets/L1/eval/malformed_rate/max|run/B-F-ledger2-triplets/L2/eval/malformed_rate/max|run/B-F-ledger2-triplets/L3alt/eval/malformed_rate/max|run/B-F-ledger2-triplets/L3inv/eval/malformed_rate/max|run/B-F-ledger2-triplets/hard/eval/malformed_rate/max@pct2": {
+   "value": "0.17",
+   "number": 0.0017,
+   "max": [
+    "run/B-F-ledger2-blocks/dev/eval/malformed_rate/max",
+    "run/B-F-ledger2-blocks/dev_missing/eval/malformed_rate/max",
+    "run/B-F-ledger2-blocks/missing/eval/malformed_rate/max",
+    "run/B-F-ledger2-blocks/readapply/eval/malformed_rate/max",
+    "run/B-F-ledger2-blocks/L0/eval/malformed_rate/max",
+    "run/B-F-ledger2-blocks/L1/eval/malformed_rate/max",
+    "run/B-F-ledger2-blocks/L2/eval/malformed_rate/max",
+    "run/B-F-ledger2-blocks/L3alt/eval/malformed_rate/max",
+    "run/B-F-ledger2-blocks/L3inv/eval/malformed_rate/max",
+    "run/B-F-ledger2-blocks/hard/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/dev/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/dev_missing/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/missing/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/readapply/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/L0/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/L1/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/L2/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/L3alt/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/L3inv/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/hard/eval/malformed_rate/max"
+   ]
+  },
+  "max/run/B-F-ledger2-triplets/dev/eval/malformed_rate/max|run/B-F-ledger2-triplets/dev_missing/eval/malformed_rate/max|run/B-F-ledger2-triplets/missing/eval/malformed_rate/max|run/B-F-ledger2-triplets/readapply/eval/malformed_rate/max|run/B-F-ledger2-triplets/L0/eval/malformed_rate/max|run/B-F-ledger2-triplets/L1/eval/malformed_rate/max|run/B-F-ledger2-triplets/L2/eval/malformed_rate/max|run/B-F-ledger2-triplets/L3alt/eval/malformed_rate/max|run/B-F-ledger2-triplets/L3inv/eval/malformed_rate/max|run/B-F-ledger2-triplets/hard/eval/malformed_rate/max@pct2": {
+   "value": "0.17",
+   "number": 0.0017,
+   "max": [
+    "run/B-F-ledger2-triplets/dev/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/dev_missing/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/missing/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/readapply/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/L0/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/L1/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/L2/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/L3alt/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/L3inv/eval/malformed_rate/max",
+    "run/B-F-ledger2-triplets/hard/eval/malformed_rate/max"
+   ]
+  },
+  "max/run/B-F-verdict-blocks/L2/nm_kind=negation/TA|run/B-F-verdict-blocks/L2/nm_kind=numeric/TA@0": {
+   "value": "93",
+   "number": 93.25,
+   "max": [
+    "run/B-F-verdict-blocks/L2/nm_kind=negation/TA",
+    "run/B-F-verdict-blocks/L2/nm_kind=numeric/TA"
+   ]
+  },
+  "max/run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "max": [
+    "run/C-AUD-closed-1/L2/all/TA",
+    "run/C-AUD-closed-2/L2/all/TA",
+    "run/C-AUD-closed-3/L2/all/TA"
+   ]
+  },
+  "max/run/C-AUD-meds3/L2/all/Rev|run/C-AUD-medprm/L2/all/Rev|run/C-AUD-fover/L2/all/Rev|run/C-AUD-injerr/L2/all/Rev|run/C-AUD-thinkprm/L2/all/Rev|run/C-AUD-genprm/L2/all/Rev": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "max": [
+    "run/C-AUD-meds3/L2/all/Rev",
+    "run/C-AUD-medprm/L2/all/Rev",
+    "run/C-AUD-fover/L2/all/Rev",
+    "run/C-AUD-injerr/L2/all/Rev",
+    "run/C-AUD-thinkprm/L2/all/Rev",
+    "run/C-AUD-genprm/L2/all/Rev"
+   ]
+  },
+  "max/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "max": [
+    "run/C-AUD-meds3/L2/all/TA",
+    "run/C-AUD-medprm/L2/all/TA",
+    "run/C-AUD-fover/L2/all/TA",
+    "run/C-AUD-injerr/L2/all/TA",
+    "run/C-AUD-thinkprm/L2/all/TA",
+    "run/C-AUD-genprm/L2/all/TA"
+   ]
+  },
+  "max/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA|run/C-AUD-qwen35-9b/L2/all/TA|run/C-AUD-llama70b/L2/all/TA|run/C-AUD-qwen35-27b/L2/all/TA|run/C-AUD-kimi-k3/L2/all/TA|run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "max": [
+    "run/C-AUD-meds3/L2/all/TA",
+    "run/C-AUD-medprm/L2/all/TA",
+    "run/C-AUD-fover/L2/all/TA",
+    "run/C-AUD-injerr/L2/all/TA",
+    "run/C-AUD-thinkprm/L2/all/TA",
+    "run/C-AUD-genprm/L2/all/TA",
+    "run/C-AUD-qwen35-9b/L2/all/TA",
+    "run/C-AUD-llama70b/L2/all/TA",
+    "run/C-AUD-qwen35-27b/L2/all/TA",
+    "run/C-AUD-kimi-k3/L2/all/TA",
+    "run/C-AUD-closed-1/L2/all/TA",
+    "run/C-AUD-closed-2/L2/all/TA",
+    "run/C-AUD-closed-3/L2/all/TA"
+   ]
+  },
+  "max/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA|run/C-AUD-qwen35-9b/L2/all/TA|run/C-AUD-llama70b/L2/all/TA|run/C-AUD-qwen35-27b/L2/all/TA|run/C-AUD-kimi-k3/L2/all/TA|run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA@0": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "max": [
+    "run/C-AUD-meds3/L2/all/TA",
+    "run/C-AUD-medprm/L2/all/TA",
+    "run/C-AUD-fover/L2/all/TA",
+    "run/C-AUD-injerr/L2/all/TA",
+    "run/C-AUD-thinkprm/L2/all/TA",
+    "run/C-AUD-genprm/L2/all/TA",
+    "run/C-AUD-qwen35-9b/L2/all/TA",
+    "run/C-AUD-llama70b/L2/all/TA",
+    "run/C-AUD-qwen35-27b/L2/all/TA",
+    "run/C-AUD-kimi-k3/L2/all/TA",
+    "run/C-AUD-closed-1/L2/all/TA",
+    "run/C-AUD-closed-2/L2/all/TA",
+    "run/C-AUD-closed-3/L2/all/TA"
+   ]
+  },
+  "max/run/C-AUD-qwen35-9b/L2/all/Hold|run/C-AUD-llama70b/L2/all/Hold|run/C-AUD-qwen35-27b/L2/all/Hold|run/C-AUD-kimi-k3/L2/all/Hold@0": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "max": [
+    "run/C-AUD-qwen35-9b/L2/all/Hold",
+    "run/C-AUD-llama70b/L2/all/Hold",
+    "run/C-AUD-qwen35-27b/L2/all/Hold",
+    "run/C-AUD-kimi-k3/L2/all/Hold"
+   ]
+  },
+  "min/run/B-F-verdict-blocks/L2/nm_kind=negation/TA|run/B-F-verdict-blocks/L2/nm_kind=numeric/TA@0": {
+   "value": "92",
+   "number": 92.0,
+   "min": [
+    "run/B-F-verdict-blocks/L2/nm_kind=negation/TA",
+    "run/B-F-verdict-blocks/L2/nm_kind=numeric/TA"
+   ]
+  },
+  "min/run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "min": [
+    "run/C-AUD-closed-1/L2/all/TA",
+    "run/C-AUD-closed-2/L2/all/TA",
+    "run/C-AUD-closed-3/L2/all/TA"
+   ]
+  },
+  "min/run/C-AUD-meds3/L2/all/Rev|run/C-AUD-medprm/L2/all/Rev|run/C-AUD-fover/L2/all/Rev|run/C-AUD-injerr/L2/all/Rev|run/C-AUD-thinkprm/L2/all/Rev|run/C-AUD-genprm/L2/all/Rev": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "min": [
+    "run/C-AUD-meds3/L2/all/Rev",
+    "run/C-AUD-medprm/L2/all/Rev",
+    "run/C-AUD-fover/L2/all/Rev",
+    "run/C-AUD-injerr/L2/all/Rev",
+    "run/C-AUD-thinkprm/L2/all/Rev",
+    "run/C-AUD-genprm/L2/all/Rev"
+   ]
+  },
+  "min/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "min": [
+    "run/C-AUD-meds3/L2/all/TA",
+    "run/C-AUD-medprm/L2/all/TA",
+    "run/C-AUD-fover/L2/all/TA",
+    "run/C-AUD-injerr/L2/all/TA",
+    "run/C-AUD-thinkprm/L2/all/TA",
+    "run/C-AUD-genprm/L2/all/TA"
+   ]
+  },
+  "min/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA|run/C-AUD-qwen35-9b/L2/all/TA|run/C-AUD-llama70b/L2/all/TA|run/C-AUD-qwen35-27b/L2/all/TA|run/C-AUD-kimi-k3/L2/all/TA|run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "min": [
+    "run/C-AUD-meds3/L2/all/TA",
+    "run/C-AUD-medprm/L2/all/TA",
+    "run/C-AUD-fover/L2/all/TA",
+    "run/C-AUD-injerr/L2/all/TA",
+    "run/C-AUD-thinkprm/L2/all/TA",
+    "run/C-AUD-genprm/L2/all/TA",
+    "run/C-AUD-qwen35-9b/L2/all/TA",
+    "run/C-AUD-llama70b/L2/all/TA",
+    "run/C-AUD-qwen35-27b/L2/all/TA",
+    "run/C-AUD-kimi-k3/L2/all/TA",
+    "run/C-AUD-closed-1/L2/all/TA",
+    "run/C-AUD-closed-2/L2/all/TA",
+    "run/C-AUD-closed-3/L2/all/TA"
+   ]
+  },
+  "min/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA|run/C-AUD-qwen35-9b/L2/all/TA|run/C-AUD-llama70b/L2/all/TA|run/C-AUD-qwen35-27b/L2/all/TA|run/C-AUD-kimi-k3/L2/all/TA|run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA@0": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "min": [
+    "run/C-AUD-meds3/L2/all/TA",
+    "run/C-AUD-medprm/L2/all/TA",
+    "run/C-AUD-fover/L2/all/TA",
+    "run/C-AUD-injerr/L2/all/TA",
+    "run/C-AUD-thinkprm/L2/all/TA",
+    "run/C-AUD-genprm/L2/all/TA",
+    "run/C-AUD-qwen35-9b/L2/all/TA",
+    "run/C-AUD-llama70b/L2/all/TA",
+    "run/C-AUD-qwen35-27b/L2/all/TA",
+    "run/C-AUD-kimi-k3/L2/all/TA",
+    "run/C-AUD-closed-1/L2/all/TA",
+    "run/C-AUD-closed-2/L2/all/TA",
+    "run/C-AUD-closed-3/L2/all/TA"
+   ]
+  },
+  "min/run/C-AUD-qwen35-9b/L2/all/Hold|run/C-AUD-llama70b/L2/all/Hold|run/C-AUD-qwen35-27b/L2/all/Hold|run/C-AUD-kimi-k3/L2/all/Hold@0": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "min": [
+    "run/C-AUD-qwen35-9b/L2/all/Hold",
+    "run/C-AUD-llama70b/L2/all/Hold",
+    "run/C-AUD-qwen35-27b/L2/all/Hold",
+    "run/C-AUD-kimi-k3/L2/all/Hold"
    ]
   },
   "run/A-D14-always_default/L2/all/Hold": {
@@ -1573,6 +1947,22 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/B-AE-field-edit/L2/top/agreement": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/B-AE-field-swap/L2/top/agreement": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/B-AE-oracle-ledger/L2/all/Hold": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -1829,6 +2219,25 @@
     null
    ]
   },
+  "run/B-BB-qwen3.5-4b-verdict-blocks/L2/all/TA": {
+   "value": "49.9",
+   "number": 49.85,
+   "runs": [
+    {
+     "run_id": "B-BB-qwen3.5-4b-verdict-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-BB-qwen3.5-4b-verdict-blocks-s0/summary_rule_v1~test_L2.json",
+     "field": "all.TA",
+     "file_commit": "f16af67a5677cdc127d8a5978103d14541989d7f",
+     "code_commit": "0fc51fbaf215"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
   "run/B-DIV-base-16/L2/all/TA": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -2051,6 +2460,25 @@
     0
    ]
   },
+  "run/B-F-ledger2-blocks/L0/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-blocks-s0/summary_rule_v1~test_L0.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "09fd29cb9e1e62e28e015e0e6a3819f13926f6fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L0",
+   "stat": "max",
+   "seeds_found": [
+    0
+   ]
+  },
   "run/B-F-ledger2-blocks/L1/all/TA": {
    "value": "78.2",
    "number": 78.2,
@@ -2085,6 +2513,25 @@
    ],
    "set": "rule_v1/test_L1",
    "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-blocks/L1/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-blocks-s0/summary_rule_v1~test_L1.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "09fd29cb9e1e62e28e015e0e6a3819f13926f6fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L1",
+   "stat": "max",
    "seeds_found": [
     0
    ]
@@ -2258,6 +2705,25 @@
    ],
    "set": "rule_v1/test_L2",
    "stat": "s0",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-blocks/L2/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0001,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-blocks-s0/summary_rule_v1~test_L2.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "09fd29cb9e1e62e28e015e0e6a3819f13926f6fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "max",
    "seeds_found": [
     0
    ]
@@ -2490,6 +2956,25 @@
     0
    ]
   },
+  "run/B-F-ledger2-blocks/L3alt/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-blocks-s0/summary_rule_v1~test_L3alt.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "09fd29cb9e1e62e28e015e0e6a3819f13926f6fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L3alt",
+   "stat": "max",
+   "seeds_found": [
+    0
+   ]
+  },
   "run/B-F-ledger2-blocks/L3inv/all/TA": {
    "value": "70.1",
    "number": 70.1,
@@ -2524,6 +3009,25 @@
    ],
    "set": "rule_v1/test_L3inv",
    "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-blocks/L3inv/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-blocks-s0/summary_rule_v1~test_L3inv.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "09fd29cb9e1e62e28e015e0e6a3819f13926f6fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L3inv",
+   "stat": "max",
    "seeds_found": [
     0
    ]
@@ -2598,6 +3102,44 @@
     0
    ]
   },
+  "run/B-F-ledger2-blocks/dev/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-blocks-s0/summary_rule_v1~dev.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "09fd29cb9e1e62e28e015e0e6a3819f13926f6fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/dev",
+   "stat": "max",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-blocks/dev_missing/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-blocks-s0/summary_rule_v1~dev_missing.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "09fd29cb9e1e62e28e015e0e6a3819f13926f6fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/dev_missing",
+   "stat": "max",
+   "seeds_found": [
+    0
+   ]
+  },
   "run/B-F-ledger2-blocks/ec_v1:test/all/TA": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -2644,6 +3186,44 @@
     0
    ]
   },
+  "run/B-F-ledger2-blocks/hard/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0003,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-blocks-s0/summary_rule_v1~test_hard.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "09fd29cb9e1e62e28e015e0e6a3819f13926f6fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_hard",
+   "stat": "max",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-blocks/missing/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-blocks-s0/summary_rule_v1~missing.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "09fd29cb9e1e62e28e015e0e6a3819f13926f6fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/missing",
+   "stat": "max",
+   "seeds_found": [
+    0
+   ]
+  },
   "run/B-F-ledger2-blocks/missing/top/MR": {
    "value": "100.0",
    "number": 100.0,
@@ -2678,6 +3258,44 @@
    ],
    "set": "rule_v1/missing",
    "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-blocks/readapply/all/TA": {
+   "value": "76.0",
+   "number": 76.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-blocks-s0/summary_rule_v1~readapply.json",
+     "field": "all.TA",
+     "file_commit": "09fd29cb9e1e62e28e015e0e6a3819f13926f6fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/readapply",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-blocks/readapply/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-blocks-s0/summary_rule_v1~readapply.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "09fd29cb9e1e62e28e015e0e6a3819f13926f6fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/readapply",
+   "stat": "max",
    "seeds_found": [
     0
    ]
@@ -2736,6 +3354,25 @@
     0
    ]
   },
+  "run/B-F-ledger2-triplets/L0/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/summary_rule_v1~test_L0.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L0",
+   "stat": "max",
+   "seeds_found": [
+    0
+   ]
+  },
   "run/B-F-ledger2-triplets/L1/all/TA": {
    "value": "99.1",
    "number": 99.1,
@@ -2770,6 +3407,25 @@
    ],
    "set": "rule_v1/test_L1",
    "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L1/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0003,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/summary_rule_v1~test_L1.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L1",
+   "stat": "max",
    "seeds_found": [
     0
    ]
@@ -2943,6 +3599,44 @@
    ],
    "set": "rule_v1/test_L2",
    "stat": "s0",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/all/TA@0": {
+   "value": "99",
+   "number": 99.2,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/summary_rule_v1~test_L2.json",
+     "field": "all.TA",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0001,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/summary_rule_v1~test_L2.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "max",
    "seeds_found": [
     0
    ]
@@ -3840,6 +4534,25 @@
     0
    ]
   },
+  "run/B-F-ledger2-triplets/L3alt/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/summary_rule_v1~test_L3alt.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L3alt",
+   "stat": "max",
+   "seeds_found": [
+    0
+   ]
+  },
   "run/B-F-ledger2-triplets/L3inv/all/TA": {
    "value": "97.9",
    "number": 97.9,
@@ -3878,6 +4591,33 @@
     0
    ]
   },
+  "run/B-F-ledger2-triplets/L3inv/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0005,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/summary_rule_v1~test_L3inv.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L3inv",
+   "stat": "max",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/challenge_v1:test/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "challenge_v1/test",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/B-F-ledger2-triplets/clin_v1:keypairs_medqa/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -3894,6 +4634,30 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal/hi": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/medeinst_test",
+   "stat": "hi",
+   "seeds_found": []
+  },
+  "run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal/lo": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/medeinst_test",
+   "stat": "lo",
+   "seeds_found": []
+  },
+  "run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal@0": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/medeinst_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/B-F-ledger2-triplets/clin_v1:nli4ct/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -3903,6 +4667,14 @@
    "seeds_found": []
   },
   "run/B-F-ledger2-triplets/clin_v1:nli4ct/top/faithfulness": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/nli4ct",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/B-F-ledger2-triplets/clin_v1:nli4ct/top/macroF1": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
@@ -3944,6 +4716,44 @@
    ],
    "set": "rule_v1/dev",
    "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/dev/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0008,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/summary_rule_v1~dev.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/dev",
+   "stat": "max",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/dev_missing/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0017,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/summary_rule_v1~dev_missing.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/dev_missing",
+   "stat": "max",
    "seeds_found": [
     0
    ]
@@ -3994,6 +4804,44 @@
     0
    ]
   },
+  "run/B-F-ledger2-triplets/hard/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.001,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/summary_rule_v1~test_hard.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_hard",
+   "stat": "max",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/missing/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/summary_rule_v1~missing.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/missing",
+   "stat": "max",
+   "seeds_found": [
+    0
+   ]
+  },
   "run/B-F-ledger2-triplets/missing/top/MR": {
    "value": "99.9",
    "number": 99.9,
@@ -4031,6 +4879,33 @@
    "seeds_found": [
     0
    ]
+  },
+  "run/B-F-ledger2-triplets/readapply/eval/malformed_rate/max": {
+   "value": "0.0",
+   "number": 0.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/summary_rule_v1~readapply.json",
+     "field": "eval.malformed_rate",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/readapply",
+   "stat": "max",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/rewrite_v1:test/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rewrite_v1/test",
+   "stat": "mean",
+   "seeds_found": []
   },
   "run/B-F-ledger2-triplets/xr_v1:test/top/XA": {
    "value": "\\ph{tbd}",
@@ -4816,6 +5691,25 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/B-F-verdict-balanced/L2/all/Rev": {
+   "value": "93.7",
+   "number": 93.65,
+   "runs": [
+    {
+     "run_id": "B-F-verdict-balanced-s0",
+     "seed": 0,
+     "file": "results_git/B-F-verdict-balanced-s0/summary_rule_v1~test_L2.json",
+     "field": "all.Rev",
+     "file_commit": "f81e35b863b9a9b12510d58fc530837314b00be4",
+     "code_commit": "452a6e9a3d45"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
   "run/B-F-verdict-balanced/L2/all/TA": {
    "value": "49.1",
    "number": 49.15,
@@ -5023,6 +5917,25 @@
    ],
    "set": "rule_v1/test_L2",
    "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-verdict-blocks/L2/all/Rev": {
+   "value": "93.1",
+   "number": 93.1,
+   "runs": [
+    {
+     "run_id": "B-F-verdict-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-verdict-blocks-s0/summary_rule_v1~test_L2.json",
+     "field": "all.Rev",
+     "file_commit": "a8d41118090ca62af81ac37e4ff2d1ffa33e46fd",
+     "code_commit": "452a6e9a3d45"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
    "seeds_found": [
     0
    ]
@@ -5544,6 +6457,25 @@
     0
    ]
   },
+  "run/B-F-verdict-blocks/readapply/all/TA": {
+   "value": "77.7",
+   "number": 77.7,
+   "runs": [
+    {
+     "run_id": "B-F-verdict-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-verdict-blocks-s0/summary_rule_v1~readapply.json",
+     "field": "all.TA",
+     "file_commit": "a8d41118090ca62af81ac37e4ff2d1ffa33e46fd",
+     "code_commit": "452a6e9a3d45"
+    }
+   ],
+   "set": "rule_v1/readapply",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
   "run/B-F-verdict-blocks/xr_v1:test/top/XA": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -5551,6 +6483,25 @@
    "set": "xr_v1/test",
    "stat": "mean",
    "seeds_found": []
+  },
+  "run/B-F-verdict-natural/L2/all/Rev": {
+   "value": "92.0",
+   "number": 92.05,
+   "runs": [
+    {
+     "run_id": "B-F-verdict-natural-s0",
+     "seed": 0,
+     "file": "results_git/B-F-verdict-natural-s0/summary_rule_v1~test_L2.json",
+     "field": "all.Rev",
+     "file_commit": "3834b8f7b26e385e8856a9e276a7a6b3716be969",
+     "code_commit": "ffb1e4f0e30b"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
   },
   "run/B-F-verdict-natural/L2/all/TA": {
    "value": "58.0",
@@ -5759,6 +6710,25 @@
    ],
    "set": "rule_v1/test_L2",
    "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-verdict-triplets/L2/all/Rev": {
+   "value": "92.3",
+   "number": 92.35,
+   "runs": [
+    {
+     "run_id": "B-F-verdict-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-verdict-triplets-s0/summary_rule_v1~test_L2.json",
+     "field": "all.Rev",
+     "file_commit": "a8d41118090ca62af81ac37e4ff2d1ffa33e46fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
    "seeds_found": [
     0
    ]
@@ -6126,6 +7096,14 @@
     0
    ]
   },
+  "run/B-F-verdict-triplets/challenge_v1:test/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "challenge_v1/test",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/B-F-verdict-triplets/clin_v1:keypairs_medqa/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -6280,6 +7258,25 @@
     0
    ]
   },
+  "run/B-F-verdict-triplets/readapply/all/TA": {
+   "value": "99.4",
+   "number": 99.4,
+   "runs": [
+    {
+     "run_id": "B-F-verdict-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-verdict-triplets-s0/summary_rule_v1~readapply.json",
+     "field": "all.TA",
+     "file_commit": "a8d41118090ca62af81ac37e4ff2d1ffa33e46fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/readapply",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
   "run/B-F-verdict-triplets/xr_v1:test/top/XA": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -6328,6 +7325,14 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/B-LOKO-boundary-verdict/L2/nm_kind=boundary/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/B-LOKO-subject-ledger2/L2/nm_kind=subject/Hold": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -6368,6 +7373,14 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/B-LOKO-subject-verdict/L2/nm_kind=subject/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/B-LOKO-time-ledger2/L2/nm_kind=time/Hold": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -6405,6 +7418,14 @@
    "number": null,
    "runs": [],
    "set": "rule_v1/missing",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/B-LOKO-time-verdict/L2/nm_kind=time/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": []
   },
@@ -7568,6 +8589,14 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/C-DG-shift/L0/signal=C-AUD-medprm/kappa@2": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rule_v1/test_L0",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/C-DG-shift/L0/signal=C-AUD-medprm/short": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -8106,6 +9135,14 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/C-TF-critic/clin_v1:medeinst_test/top/Reversal@0": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/medeinst_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/C-TF-critic/clin_v1:nli4ct/top/consistency": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -8115,6 +9152,14 @@
    "seeds_found": []
   },
   "run/C-TF-critic/clin_v1:nli4ct/top/faithfulness": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/nli4ct",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-TF-critic/clin_v1:nli4ct/top/macroF1": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
@@ -8387,6 +9432,22 @@
    "seeds_found": []
   },
   "run/C-TG-ledger2-blocks/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/evidence/precision": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/evidence/recall": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],

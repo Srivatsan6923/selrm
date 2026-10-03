@@ -120,8 +120,10 @@ class Run:
             if f.startswith("summary") and f.endswith(".json"):
                 d = load_json(fp)
                 s = d.get("set") if isinstance(d, dict) and isinstance(d.get("set"), str) else None
-                s = s or f[len("summary_"):-5].replace("~", "/").replace("__", "/")
-                self.summaries[s] = (fp, d)
+                by_name = f[len("summary_"):-5].replace("~", "/").replace("__", "/")
+                # a variant file of the same set (e.g. summary_clin_v1~trialgpt_test~lenient.json) is
+                # keyed by its file name, so it never replaces the canonical summary of that set
+                self.summaries[s if s and by_name == s else by_name] = (fp, d)
             elif f.startswith("scores_") and f.endswith(".jsonl"):
                 self.scores[f[len("scores_"):-6].replace("~", "/").replace("__", "/")] = fp
 
