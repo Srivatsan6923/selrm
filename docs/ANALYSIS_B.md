@@ -157,6 +157,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-AB-decfield-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 13462612 | 1223333 | 938 | 1.78 | 0.36 |
 | B-AB-nopres-s0 | NVIDIA H100 80GB HBM3 | 60006 | 60000 | 30000 | 30000 | 13210507 | 1086470 | 938 | 0.79 | 0.20 |
 | B-AB-noresamp-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13161060 | 1073333 | 938 | 0.69 | 0.16 |
+| B-AB-pairwise-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 13054885 | 0 | 938 | 0.97 | 0.10 |
 | B-AB-verify-s0 | NVIDIA H100 80GB HBM3 | 60004 | 70000 | 30000 | 30000 | 15785386 | 1093333 | 1094 | 0.89 | 0.24 |
 | B-BB-qwen3.5-4b-verdict-blocks-s0 | NVIDIA L40 | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 1.90 | 0.40 |
 | B-F-ledger2-balanced-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 13046129 | 1048600 | 938 | 0.74 | 0.18 |
@@ -359,6 +360,7 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-AB-decfield-s0 | 98.8 | 99.8 | 100.0 | 100.0 | 100.0 | 95.0 |
 | B-AB-nopres-s0 | 90.0 | 98.3 | 99.0 | 100.0 | 100.0 | 61.0 |
 | B-AB-noresamp-s0 | 78.8 | 96.3 | 96.0 | 100.0 | 64.0 | 55.0 |
+| B-AB-pairwise-s0 | 92.5 | 98.6 | 100.0 | 100.0 | 99.0 | 71.0 |
 | B-AB-verify-s0 | 91.5 | 98.6 | 100.0 | 100.0 | 100.0 | 66.0 |
 | B-F-ledger2-balanced-s0 | 54.5 | 92.4 | 87.0 | 44.0 | 31.0 | 56.0 |
 | B-F-ledger2-blocks-s1 | 37.8 | 87.0 | 46.0 | 28.0 | 25.0 | 52.0 |
@@ -455,6 +457,7 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-AB-decfield-s0 | 99.5 | 99.7 | 99.8 | +0.3 [-0.1, +0.8], p 0.206 |
 | B-AB-nopres-s0 | 98.7 | 99.3 | 99.3 | -0.5 [-1.2, +0.0], p 0.094 |
 | B-AB-noresamp-s0 | 98.8 | 98.8 | 100.0 | -0.4 [-0.9, +0.1], p 0.158 |
+| B-AB-pairwise-s0 | 91.4 | 91.8 | 98.2 | -7.8 [-12.3, -4.0], p < 0.001 |
 | B-AB-verify-s0 | 99.8 | 99.8 | 100.0 | +0.6 [+0.1, +1.2], p 0.012 |
 | B-AE-pred-bit-program | 99.5 | 99.7 | 99.8 | +0.3 [-0.1, +0.8], p 0.206 |
 | B-AE-program-ledger | 99.4 | 99.4 | 100.0 | +0.2 [+0.0, +0.6], p 0.238 |
