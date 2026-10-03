@@ -1,0 +1,29 @@
+{
+ "name": "clin_v1/nli4ct_dev",
+ "source": "github.com/ai-systems/Task-2-SemEval-2024",
+ "revision": "7f32fa6c",
+ "source_file": "gold_practice_test.json",
+ "source_sha256": "557583292755b76caed8229f2cfbe15c316cca3805aff7bbff72902de4859785",
+ "ctr_files": 999,
+ "licence": "none stated by the organisers",
+ "n_records": 2142,
+ "split": "dev",
+ "by_intervention": {
+  "Contradiction": 600,
+  "Numerical_contradiction": 78,
+  "Numerical_paraphrase": 64,
+  "Original": 200,
+  "Paraphrase": 600,
+  "Text_appended": 600
+ },
+ "entailment": 730,
+ "prediction_rule": "Entailment iff u > 0",
+ "shortcut_validation": {
+  "note": "a constant predictor: all-Entailment gives Control F1 0.667 (binary, official scorer); all-Contradiction gives Faithfulness 1.0 and F1 0.0"
+ },
+ "git_commit": "51e312516591b8a6032a562cfd0021536fc96b71",
+ "python": "3.12.7",
+ "sha256": "62935e59f9b12ffaf0d87979d06bc061a5c0cfbc37c3635b2b1d22b9c73a564c",
+ "created": "2026-10-02",
+ "frozen": true
+}

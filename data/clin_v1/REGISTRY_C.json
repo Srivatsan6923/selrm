@@ -95,6 +95,30 @@
   "split": "test",
   "tier": "external"
  },
+ "clin_v1/nli4ct_dev": {
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/nli4ct_dev/MANIFEST.json",
+  "n_groups": 2142,
+  "n_records": 2142,
+  "path": "clin_v1/nli4ct_dev/records.jsonl",
+  "sha256": "62935e59f9b12ffaf0d87979d06bc061a5c0cfbc37c3635b2b1d22b9c73a564c",
+  "split": "dev",
+  "tier": "external"
+ },
+ "clin_v1/nli4ct_test": {
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/nli4ct_test/MANIFEST.json",
+  "n_groups": 5500,
+  "n_records": 5500,
+  "path": "clin_v1/nli4ct_test/records.jsonl",
+  "sha256": "e8102c29f2dacc921fb929a52cba132e93fd4aaf333a6d7325af2687701ecf64",
+  "split": "test",
+  "tier": "external"
+ },
  "clin_v1/trialgpt_dev": {
   "created": "2026-10-02",
   "frozen": true,
