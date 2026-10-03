@@ -133,6 +133,12 @@
   "seed": 0
  },
  "threshold_source": "results_git/C-TG-promptledger-dev/scores_rule_v1~dev_missing.jsonl",
+ "threshold_alt": {
+  "source": "results_git/C-TF-promptledger--p1",
+  "tau": -20.0,
+  "macroF1": 15.793835793835795,
+  "acc": 30.69828722002635
+ },
  "eval": {
   "reader_units": 801,
   "malformed_units": 799,

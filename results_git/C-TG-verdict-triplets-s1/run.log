@@ -1,0 +1,9 @@
+2026-10-03T09:03:25Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-verdict-triplets-s1
+2026-10-03T09:03:28Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0158)
+2026-10-03T09:03:30Z padding self-check: max |u_batch - u_single| = 0.0597 (tol 0.915) -> left padding
+2026-10-03T09:06:47Z C-TG-verdict-triplets-s1 rule_v1/dev_missing: TA nan Rev nan Hold nan n=None (200.4 s)
+2026-10-03T09:06:47Z C-TG-verdict-triplets-s1 clin_v1/trialgpt_dev prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_dev/verdict.npz', 'exists')
+2026-10-03T09:07:24Z C-TG-verdict-triplets-s1 clin_v1/trialgpt_dev: TA nan Rev nan Hold nan n=None (36.5 s)
+2026-10-03T09:07:24Z C-TG-verdict-triplets-s1 clin_v1/trialgpt_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_test/verdict.npz', 'exists')
+2026-10-03T09:09:46Z C-TG-verdict-triplets-s1 clin_v1/trialgpt_test: TA nan Rev nan Hold nan n=None (141.8 s)
+2026-10-03T09:09:47Z DONE C-TG-verdict-triplets-s1 in 7.1 min, GPU util mean 92.4
