@@ -34,7 +34,7 @@ Sets: `L2 dev L0 L1 L3alt L3inv hard missing dev_missing readapply f2L2 f3L2` = 
 | MedEinst | the system's own run id | `summary_clin_v1~medeinst_test.json` top-level `Reversal`, `control_acc`, `trap_acc`, `n_pairs`, `CI95` |
 | Key pairs | system run id | `summary_clin_v1~keypairs_medqa.json` (and `_careqa`) top-level `Reversal` |
 | NLI4CT-P | system run id | `summary_clin_v1~nli4ct.json` top-level `macroF1`, `faithfulness`, `consistency` |
-| TrialGPT | system run id | `summary_trialgpt~test.json` top-level `macroF1`, `accuracy`, `evidence_precision`, `evidence_recall`, `CI95` |
+| TrialGPT | C-TG-<x> (C scores system B-F-<x> / C-TF-<x>) | `summary_clin_v1~trialgpt_test.json` top-level `macroF1`, `acc`, `macroF1_CI95`, `per_class`; nested `evidence` {`precision`, `recall`} (key slice `evidence`); a variant file `summary_clin_v1~trialgpt_test~lenient.json` is read as set `clin_v1/trialgpt_test/lenient` |
 | Selection (D) | D-SEL-* | `summary_sel~{medqa,careqa,keypairs,medeinst}.json` top-level `acc`, `pair_acc`, `control_acc`, `trap_acc`, `n` |
 | Selection pressure (D) | D-SELN | `summary_sel~keypairs.json` slices `selector=<combined/stepcheck/oracle>` with fields `N1`..`N64` |
 | Shift classes, kappa (C) | C-DG-shift | `summary_rule_v1~test_L0.json` slices `signal=<run prefix>` with `crossed short unmoved wrong kappa` |
