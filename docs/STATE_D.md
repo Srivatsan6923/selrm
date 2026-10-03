@@ -1,5 +1,5 @@
 # STATE role D (lead; maintained by the D session)
-Updated: 2026-10-03 ~07:35 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
+Updated: 2026-10-03 ~08:40 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
 
 ## Where D works
 - Clone `D:/NAACL27/selrm-role-d` (github Srivatsan6923/selrm): D's work on `role-d`; publish with
@@ -16,44 +16,44 @@ Updated: 2026-10-03 ~07:35 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo roo
   48 GB cards were saturated on 3 Oct. vLLM needs VLLM_USE_FLASHINFER_SAMPLER=0 (set by the launcher).
 
 ## Done
-- P0.1 merges 1-2 (main ec31d81 + lead commits); STATUS_BOARD; integrity checks (no rule_v1 hash change; all
-  52 registry sets frozen; scored sets frozen); change requests answered/filed.
+- P0.1 merges 1-4 (main 1c11383: 85 tests; rule_v1 hashes unchanged; scored sets frozen); STATUS_BOARD; change
+  requests answered/filed (open: tooling markers, A/B/C). Key-pair decision: C's one-directional sets
+  (keypairs_medqa_oneway 357, keypairs_careqa_oneway 225) for every key-pair column (DECISIONS_D 3 Oct).
 - P0.2 make_tables.py (keys, seeds, pooled CIs, C's paired_test/holm, MR, near-miss decisions, macro); tables/.
-- P0.3 update_paper.py, build_paper.py; v13 wired: 185 numbers are keys (two reviewers per section); report of the
-  4 rejected mappings and 317 numbers without a key: docs/PAPER_NUMBERS.md. Build fails while placeholders remain.
-- P0.4 error sheets (audit/error_sheet*.csv, ERROR_CODING.md) and citation checklist (docs/CITATIONS_TODO.csv).
-- P1: D-RES (results/D-RES); pool/scoring/selection code; tests/test_role_d.py.
-
+- P0.3 update_paper.py, build_paper.py; v13 wired (docs/PAPER_NUMBERS.md). Build fails while placeholders remain.
+- P0.4 error sheets, citation checklist, development timeline (docs/TIMELINE.md, scripts/timeline.py --check).
+- P0.5 length plan (docs/LENGTH_PLAN.md).
+- P1: D-RES; pool/scoring/selection code; merged-adapter validation passed (D-VAL-ledger2-triplets-s0).
 ## In progress
-- Workflow wf_e31e6623-e81: verification of docs/TIMELINE.md (untracked until its verdict).
-- NRP west: validation of the merged ledger model against B's test_L2 scores running on an opportunistic H100
-  (selrm-d-validate-l2t-h100-11263) and staging on 2 x 24 GB (selrm-d-validate-l2t-24gb-9709): keep the first that
-  finishes; acceptance criteria DECISIONS_D 3 Oct. Pool smoke tests pending (selrm-d-pool-smoke-24gb-9712, -l40-9972).
-- NRP central (second site, us-central): PVC selrm-d-central, sync pod selrm-d-sync-c, mirror job
-  selrm-d-mirror-central-12448 (env, code, adapters, validation records from the west; pinned base model and Med-PRM
-  from Hugging Face; merges the two adapters there). Jobs there: `--site central`, paths /pvc/selrm/... instead of
-  /pvcb/selrm/..., and the central merged copies are validated like the west ones before use.
+- Pools (k8s/pool_pipeline_d.sh <pool> <tp>; one site per pool; scores in /pvc/scores/<pool>/<scorer>.jsonl):
+  - medqa_dev (calibration): west H100 job selrm-d-pipe-medqa-dev-13389; pool, medprm and ledger2-triplets done
+    (rates per 8,000 traces on H100: 343 s generation, 306 s Med-PRM, 1,051 s ledger).
+  - medqa_test: racing west h100-opp (selrm-d-pipe-medqa-test-13393) vs west 2 x 24 GB (-24gb-14264); a monitor
+    deletes the copy that starts second.
+  - medqa_kp (714 key-pair questions; then 64 samples on 150 pairs): k8s/kp_pipeline_d.sh; racing west h100-opp
+    (selrm-d-pipe-medqa-kp-16468) vs central 2 x 24 GB (selrm-d-c-pipe-medqa-kp-24gb-16470).
+  - careqa_en, medeinst_test: central 2 x 24 GB (selrm-d-c-pipe-careqa-en-14212, -medeinst-test-14215).
+  All but medqa_dev pending since ~08:00 UTC (cluster GPUs saturated).
+- Sync pods expire 6 h after start (selrm-d-sync ~11:30 UTC, selrm-d-sync-c ~13:30 UTC): recreate with
+  `submit_d.py sync-down/sync-up [--site central]` before pulling.
 - Lessons: cross-region CephFS reads ~5 MB/s (jobs require their PVC's region); vLLM needs
   VLLM_USE_FLASHINFER_SAMPLER=0; transformers 5 apply_chat_template(tokenize=True) returns a dict (tokenise the
   rendered text); argparse keeps '--' (the launcher strips it); a pod mounting the same PVC twice (rw + ro) hung in
   ContainerCreating (central mounts once); opportunistic H100s (priorityClassName opportunistic) are usable.
-
 ## Next
-1. Validation passes -> pipelines (k8s/pool_pipeline_d.sh <pool> <tp>): medqa_dev (calibration; scorers medprm
-   ledger2-triplets ledger2-blocks), medqa_test, careqa_en, medeinst_test (all five scorers); pull /pvc/pools and
-   /pvc/scores (submit_d.py pull), run select_eval.py (--keypairs once C publishes them), make_tables, update_paper.
-   Validation fails -> score with B's HF+PEFT code path (scripts/eval_local.Scorer) on smaller pools; log it.
-2. When C publishes the MedQA key pairs: write /pvc/pools/medqa_test.extend.json (their qids) and run the pipeline
-   with --ext (samples 16-63, scored as <scorer>.ext.jsonl) for Fig. 3 right.
+1. When a pool's scores exist: `submit_d.py pull /pvc/pools/<pool> <local>` and /pvc/scores/<pool> (central:
+   --site central), run select_eval.py (D-CAL needs medqa_dev; medqa_kp gives sel/keypairs and D-SELN), then
+   make_tables, update_paper, results_summary; commit results D-CAL, D-POOL-*, D-SEL-*, D-SELN.
+2. If the pools are still pending around 12:00 UTC: COMPUTE REQUEST for a Colab 96 GB GPU session (STATE plan).
 3. Daily merge (worktree D:/NAACL27/selrm-merge), board, results summary; Mon 5: schedule ladder incl. the GRPO
-   decision (scripts/grpo_d.py ready, env v2).
-
+   decision (scripts/grpo_d.py ready, env v2); Wed 7 run freeze; Thu 8 RESULTS_SUMMARY; Sat 10 final audit.
+4. Human decisions on the board: H7a framing (C's TrialGPT report is in), H7 gates, H6 prose incl. key pairs.
 ## Open compute requests
 - none. If NRP stays saturated for the pools, ask for the Colab 96 GB GPU session (COMPUTE REQUEST).
 
 ## Blockers
-- Table 5 key-pair and MedEinst columns: C's clin_v1 key pairs (asked to use configs/datasets_d.json MedQA rows)
-  and MedEinst sets.
+- Table 5 MedEinst column: C's MedEinst runs are separate; D's MedEinst pool is its own 500 pairs (pending GPU).
+- Closed-judge row of Table 5: needs an API key (C's COMPUTE REQUEST #1).
 
 ## Schedule
 - P0 on time. Run freeze Wed 7 Oct 23:59; final audit Sat 10 Oct.

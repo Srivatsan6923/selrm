@@ -2,7 +2,7 @@
 
 Plan: `FINAL_TASKS_{A,B,C,D}.md` and `HUMAN_TASKS.md` (repo root) replace every earlier directive.
 Statuses: not started / running / done / blocked (reason) / dropped.
-Updated 2026-10-03 ~08:50 UTC after merge 4 (main 1c11383: 85 tests pass; rule_v1 hashes unchanged; scored sets frozen).
+Updated 2026-10-03 ~08:35 UTC after merge 4 (main 1c11383: 85 tests pass; rule_v1 hashes unchanged; scored sets frozen).
 
 ## Integrity checks (lead, at every merge)
 | Check | Result | Evidence |
