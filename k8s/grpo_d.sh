@@ -22,9 +22,10 @@ esac
 case $R in
   ledger2-blocks|ledger2-triplets)
     M=/pvc/merged/B-F-$R-s0
-    # two GPUs: the server owns the second; one GPU (80-96 GB): the server takes 22% of it first and the
-    # rollout engine 25% instead of 35% (memory only: same model, prompts and sampling)
-    if [ "$(nvidia-smi -L | wc -l)" -ge 2 ]; then G=1; SM=0.9; else G=0; SM=0.22; EXTRA="--vllm-mem 0.25"; fi
+    # two GPUs: the server owns the second; one GPU (80-96 GB): the server takes 32% of it first and the
+    # rollout engine 22% instead of 35% (memory only: same model, prompts and sampling); a 22% server share
+    # left it a negative KV cache (weights 16.8 GiB; 3 Oct); training itself takes about 33 GB
+    if [ "$(nvidia-smi -L | wc -l)" -ge 2 ]; then G=1; SM=0.9; else G=0; SM=0.32; EXTRA="--vllm-mem 0.22"; fi
     CUDA_VISIBLE_DEVICES=$G /opt/selrm-env/venv/bin/vllm serve "$M" --port 8001 --dtype bfloat16 --max-model-len 8192 \
         --logprobs-mode raw_logits --max-logprobs 20 --generation-config vllm --enable-prefix-caching --seed 0 \
         --gpu-memory-utilization $SM --limit-mm-per-prompt '{"image": 0, "video": 0}' > "$OUT/vllm_server.log" 2>&1 &
