@@ -1,0 +1,49 @@
+{
+ "run_id": "D-RL-ledger2-triplets-s0",
+ "set": "clin_v1/trialgpt_test",
+ "macroF1": 49.63094542858996,
+ "acc": 64.16337285902503,
+ "per_class": {
+  "met": {
+   "P": 58.87850467289719,
+   "R": 91.30434782608695,
+   "F1": 71.59090909090908,
+   "n": 138
+  },
+  "not met": {
+   "P": 66.23853211009174,
+   "R": 92.80205655526991,
+   "F1": 77.30192719486081,
+   "n": 389
+  },
+  "NEI": {
+   "P": 0.0,
+   "R": 0.0,
+   "F1": 0.0,
+   "n": 232
+  }
+ },
+ "confusion": {
+  "met": {
+   "met": 126,
+   "not met": 12
+  },
+  "not met": {
+   "not met": 361,
+   "met": 28
+  },
+  "NEI": {
+   "met": 60,
+   "not met": 172
+  }
+ },
+ "n": 759,
+ "forced_choice_acc": 92.40986717267552,
+ "n_forced": 527,
+ "no_answer_share": 0.0,
+ "final_step": 1000,
+ "from_files": [
+  "eval_tg_step1000.jsonl"
+ ],
+ "scoring": "no final answer = NEI; N/A items left out (docs/TRIALGPT_PROTOCOL.md classes)"
+}
