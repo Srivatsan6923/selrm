@@ -1,14 +1,13 @@
 # STATE role B (maintained by Claude Code)
-Updated: 2026-10-03 ~05:45 UTC (Sat). Plan: docs/FINAL_TASKS_B.md (3 Oct; replaces every earlier directive).
+Updated: 2026-10-03 ~06:30 UTC (Sat). Plan: docs/FINAL_TASKS_B.md (3 Oct; replaces every earlier directive).
 Run freeze: Wed 7 Oct 23:59 (UTC assumed). Decisions: docs/DECISIONS_B.md. Analyses: docs/ANALYSIS_B.md.
 
 ## P0 status
-1. Analyses on existing predictions (docs/ANALYSIS_B.md, `python scripts/analysis_b.py`): done for paired
-   ledger-summary (triplets), verdict leakage, program on the predicted ledger (results_git/B-AE-program-ledger),
-   macro-averages, natural/balanced, budget, resampling. Waiting for GPU runs (queue priority 0):
-   B-AE-oracle-ledger (2x2 transitions), B-AE-field-edit and B-AE-field-swap (field interventions); the blocks
-   half of the paired comparison waits for summary2 x blocks.
-2. B-F-summary2-blocks-s0: queued (priority 10).
+1. Analyses on existing predictions (docs/ANALYSIS_B.md, `python scripts/analysis_b.py > docs/ANALYSIS_B.md`): done
+   (sections 1-9; B-AE-oracle-ledger, B-AE-field-edit, B-AE-field-swap DONE 05:53-06:00 UTC on H100s). Field
+   edits that should change the verdict are followed in 47.8% (handoff 3 Oct). Left: the blocks half of the
+   paired ledger-summary comparison after summary2 x blocks.
+2. B-F-summary2-blocks-s0: training on an H100 runner since 06:00 UTC.
 3. Core seeds 1-2 ({verdict, summary2, ledger2} x {blocks, triplets}): 12 runs queued (priority 20).
 4. B-SC-summary2-triplets-s0 (format summary2_case: judge sees rule, case, prose, claim): queued (30), prep done.
 5. LOKO {verdict, summary2, ledger2} x {subject, time, boundary}: waiting for A's
@@ -28,8 +27,9 @@ Run freeze: Wed 7 Oct 23:59 (UTC assumed). Decisions: docs/DECISIONS_B.md. Analy
   all Pending since 04:56 UTC: the cluster has no free card of these types (scheduler: Insufficient
   nvidia.com/a100). Namespace A100 quota 7/9 (C shares it; B uses at most 6). 24 GB cards are not used: training
   peaks at 21-27 GB.
-- 2 runner Jobs on H100 at priority class opportunistic (code 072d46d, max 3 runs, 12 h), scheduled at 05:40 UTC.
-  Preemptible: a preempted run is re-claimed from scratch.
+- 6 runner Jobs on H100 at priority class opportunistic (outside the A100 quota): 2 from 05:40 UTC (code 072d46d,
+  max 3 runs), 4 from 06:15 UTC (code 3b62811, max 6 runs, 16 h; 1 running, 3 pending). Preemptible: the run resumes
+  from its last 20-min checkpoint when another runner claims it. One A100 runner started 06:00 UTC.
 - B-AB-conddrv-s0 needs a runner on code >= bc9d2bc (the H100 runners, or any runner submitted later).
 - Sync pod selrm-b-sync created ~03:00 UTC (6 h deadline): recreate before ~09:00 UTC (delete the Completed pod
   first, then sync-up).
