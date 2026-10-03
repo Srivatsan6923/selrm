@@ -1,0 +1,44 @@
+{
+ "run_id": "B-F-ledger2-triplets-s4",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 85.0,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 97.25,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 72.0,
+   "XA_window": 68.0
+  },
+  "criterion": {
+   "XA": 85.0,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 97.20833333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 72.0,
+   "XA_window": 68.0
+  }
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 34,
+  "mode": null,
+  "malformed_rate": 0.0142,
+  "gen_not_stopped": 0,
+  "seconds": 131.2,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
