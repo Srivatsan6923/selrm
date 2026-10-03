@@ -28,6 +28,9 @@ SYSTEMS = [  # (name in run ids, row label, format). Test runs: C-TG-<name> for 
     ("summary2-triplets", "Prose summary x triplets", "summary2"),
     ("ledger2-blocks", "Ledger x blocks", "ledger2"),
     ("ledger2-triplets", "Ledger x triplets", "ledger2"),
+    ("ledger2-balanced", "Ledger x balanced", "ledger2"),
+    ("TR-fover", "Verdict only, FoVer data (B-TR-fover)", "verdict"),
+    ("TR-clinonly", "Ledger, clinical pairs only (B-TR-clinonly)", "ledger2"),
     ("sc-summary2-triplets", "Summary x triplets, judge sees the case (secondary analysis S3)", "summary2"),
 ]
 UNTRAINED = ("critic", "promptsum", "promptledger", "promptledger-lenient")
