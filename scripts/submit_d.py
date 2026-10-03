@@ -99,7 +99,7 @@ def gpu_job(name, code, env_tag, gpu, hours, args, cpu=4, mem="40Gi", models=("/
                                "HF_HOME": "/work/hf", "TRITON_CACHE_DIR": "/work/triton", "VLLM_CACHE_ROOT": "/work/vllm",
                                "PYTHONPYCACHEPREFIX": "/work/pycache", "TOKENIZERS_PARALLELISM": "false",
                                "OMP_NUM_THREADS": "4", "SELRM_MODELS": "/work/models"}.items()],
-                           "resources": res(cpu * n_gpu, mem, "80Gi", {resource: str(n_gpu)}),
+                           "resources": res(cpu, mem, "80Gi", {resource: str(n_gpu)}),
                            "volumeMounts": MNTS + work + [{"name": "dshm", "mountPath": "/dev/shm"}]}],
            "volumes": VOLS + [{"name": "work", "emptyDir": {}}, {"name": "env", "emptyDir": {}},
                               {"name": "dshm", "emptyDir": {"medium": "Memory", "sizeLimit": "8Gi"}}]}
