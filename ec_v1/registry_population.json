@@ -1,0 +1,710 @@
+{
+ "NCT00061373": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 85.0,
+  "healthy_volunteers": false
+ },
+ "NCT00124137": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT00143611": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT00157807": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 75.0,
+  "healthy_volunteers": false
+ },
+ "NCT00174967": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 85.0,
+  "healthy_volunteers": false
+ },
+ "NCT00247130": {
+  "sex": "ALL",
+  "min_age": 20.0,
+  "max_age": 80.0,
+  "healthy_volunteers": false
+ },
+ "NCT00303459": {
+  "sex": "ALL",
+  "min_age": 12.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT00381888": {
+  "sex": "FEMALE",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT00430248": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 85.0,
+  "healthy_volunteers": false
+ },
+ "NCT00552799": {
+  "sex": "ALL",
+  "min_age": 16.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT00555217": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT00574808": {
+  "sex": "ALL",
+  "min_age": 40.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT00671580": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT00676130": {
+  "sex": "ALL",
+  "min_age": 1.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT00730028": {
+  "sex": "ALL",
+  "min_age": 0.5,
+  "max_age": 85.0,
+  "healthy_volunteers": false
+ },
+ "NCT00743639": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 70.0,
+  "healthy_volunteers": false
+ },
+ "NCT00774748": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT00786474": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": true
+ },
+ "NCT00789802": {
+  "sex": "FEMALE",
+  "min_age": 18.0,
+  "max_age": 45.0,
+  "healthy_volunteers": true
+ },
+ "NCT00839657": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT00916773": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 65.0,
+  "healthy_volunteers": true
+ },
+ "NCT00937911": {
+  "sex": "ALL",
+  "min_age": 20.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT00973765": {
+  "sex": "ALL",
+  "min_age": 16.0,
+  "max_age": null,
+  "healthy_volunteers": true
+ },
+ "NCT01114204": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT01181544": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT01219959": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT01308528": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT01321099": {
+  "sex": "ALL",
+  "min_age": 1.0,
+  "max_age": 3.0,
+  "healthy_volunteers": true
+ },
+ "NCT01371747": {
+  "sex": "ALL",
+  "min_age": 30.0,
+  "max_age": 80.0,
+  "healthy_volunteers": false
+ },
+ "NCT01422681": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 90.0,
+  "healthy_volunteers": false
+ },
+ "NCT01431339": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 85.0,
+  "healthy_volunteers": false
+ },
+ "NCT01485315": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT01545349": {
+  "sex": "ALL",
+  "min_age": 65.0,
+  "max_age": 80.0,
+  "healthy_volunteers": true
+ },
+ "NCT01736514": {
+  "sex": "ALL",
+  "min_age": 20.0,
+  "max_age": 65.0,
+  "healthy_volunteers": false
+ },
+ "NCT01756495": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 65.0,
+  "healthy_volunteers": true
+ },
+ "NCT01944774": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 75.0,
+  "healthy_volunteers": false
+ },
+ "NCT01964053": {
+  "sex": "ALL",
+  "min_age": 21.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT02052388": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 85.0,
+  "healthy_volunteers": false
+ },
+ "NCT02056678": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT02059551": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 99.0,
+  "healthy_volunteers": false
+ },
+ "NCT02137187": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT02195232": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT02202967": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 90.0,
+  "healthy_volunteers": false
+ },
+ "NCT02204488": {
+  "sex": "FEMALE",
+  "min_age": 40.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT02293395": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT02408185": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT02582177": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 65.0,
+  "healthy_volunteers": false
+ },
+ "NCT02585713": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT02586233": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT02653209": {
+  "sex": "ALL",
+  "min_age": 30.0,
+  "max_age": 80.0,
+  "healthy_volunteers": false
+ },
+ "NCT02679664": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT02682563": {
+  "sex": "ALL",
+  "min_age": 35.0,
+  "max_age": 75.0,
+  "healthy_volunteers": false
+ },
+ "NCT02924727": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT03005366": {
+  "sex": "ALL",
+  "min_age": 20.0,
+  "max_age": 65.0,
+  "healthy_volunteers": false
+ },
+ "NCT03055026": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT03208361": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 75.0,
+  "healthy_volunteers": false
+ },
+ "NCT03234322": {
+  "sex": "ALL",
+  "min_age": 35.0,
+  "max_age": null,
+  "healthy_volunteers": true
+ },
+ "NCT03247998": {
+  "sex": "ALL",
+  "min_age": 19.0,
+  "max_age": 95.0,
+  "healthy_volunteers": false
+ },
+ "NCT03291249": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 120.0,
+  "healthy_volunteers": false
+ },
+ "NCT03368599": {
+  "sex": "ALL",
+  "min_age": 20.0,
+  "max_age": 75.0,
+  "healthy_volunteers": false
+ },
+ "NCT03372200": {
+  "sex": "ALL",
+  "min_age": 20.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT03574363": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 85.0,
+  "healthy_volunteers": false
+ },
+ "NCT03637400": {
+  "sex": "ALL",
+  "min_age": 9.0,
+  "max_age": 85.0,
+  "healthy_volunteers": false
+ },
+ "NCT03664167": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT03674021": {
+  "sex": "ALL",
+  "min_age": 21.0,
+  "max_age": 99.0,
+  "healthy_volunteers": false
+ },
+ "NCT03692065": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT03804697": {
+  "sex": "ALL",
+  "min_age": null,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT03819114": {
+  "sex": "FEMALE",
+  "min_age": 16.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT03988842": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 75.0,
+  "healthy_volunteers": false
+ },
+ "NCT04025983": {
+  "sex": "ALL",
+  "min_age": 10.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT04039477": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT04066764": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 75.0,
+  "healthy_volunteers": false
+ },
+ "NCT04067505": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 75.0,
+  "healthy_volunteers": false
+ },
+ "NCT04226950": {
+  "sex": "ALL",
+  "min_age": null,
+  "max_age": 19.0,
+  "healthy_volunteers": false
+ },
+ "NCT04248894": {
+  "sex": "ALL",
+  "min_age": 30.0,
+  "max_age": 65.0,
+  "healthy_volunteers": false
+ },
+ "NCT04256525": {
+  "sex": "FEMALE",
+  "min_age": 18.0,
+  "max_age": 75.0,
+  "healthy_volunteers": false
+ },
+ "NCT04257500": {
+  "sex": "FEMALE",
+  "min_age": 18.0,
+  "max_age": 40.0,
+  "healthy_volunteers": false
+ },
+ "NCT04276155": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT04317703": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 55.0,
+  "healthy_volunteers": true
+ },
+ "NCT04327791": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT04345848": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT04375696": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 65.0,
+  "healthy_volunteers": true
+ },
+ "NCT04422405": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 65.0,
+  "healthy_volunteers": false
+ },
+ "NCT04433338": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 65.0,
+  "healthy_volunteers": false
+ },
+ "NCT04508439": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 90.0,
+  "healthy_volunteers": false
+ },
+ "NCT04609605": {
+  "sex": "ALL",
+  "min_age": 20.0,
+  "max_age": 70.0,
+  "healthy_volunteers": true
+ },
+ "NCT04645550": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT04682366": {
+  "sex": "FEMALE",
+  "min_age": 21.0,
+  "max_age": 99.0,
+  "healthy_volunteers": false
+ },
+ "NCT04755686": {
+  "sex": "ALL",
+  "min_age": 65.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT04815811": {
+  "sex": "ALL",
+  "min_age": 0.5,
+  "max_age": 7.0,
+  "healthy_volunteers": false
+ },
+ "NCT04853758": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT04896528": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 85.0,
+  "healthy_volunteers": false
+ },
+ "NCT04933942": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT05194397": {
+  "sex": "ALL",
+  "min_age": 10.0,
+  "max_age": 30.0,
+  "healthy_volunteers": false
+ },
+ "NCT05285878": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 65.0,
+  "healthy_volunteers": false
+ },
+ "NCT05491109": {
+  "sex": "ALL",
+  "min_age": 21.0,
+  "max_age": 99.0,
+  "healthy_volunteers": false
+ },
+ "NCT05515432": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 82.0,
+  "healthy_volunteers": false
+ },
+ "NCT05535920": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT05554822": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT05818137": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT05907564": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 80.0,
+  "healthy_volunteers": false
+ },
+ "NCT06160687": {
+  "sex": "ALL",
+  "min_age": 13.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT06202521": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT06204640": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT06229288": {
+  "sex": "ALL",
+  "min_age": 65.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT06383390": {
+  "sex": "ALL",
+  "min_age": 45.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT06472921": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 80.0,
+  "healthy_volunteers": false
+ },
+ "NCT06968429": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT07001397": {
+  "sex": "ALL",
+  "min_age": null,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT07084142": {
+  "sex": "ALL",
+  "min_age": 60.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT07270263": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT07307729": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT07492875": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 105.0,
+  "healthy_volunteers": false
+ },
+ "NCT07495722": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 80.0,
+  "healthy_volunteers": false
+ },
+ "NCT07538726": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": 55.0,
+  "healthy_volunteers": false
+ },
+ "NCT07577232": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT07606872": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ },
+ "NCT07804654": {
+  "sex": "ALL",
+  "min_age": 18.0,
+  "max_age": null,
+  "healthy_volunteers": false
+ }
+}

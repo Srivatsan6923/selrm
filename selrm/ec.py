@@ -46,17 +46,26 @@ def full_text(f):
     return f"{f['criterion_type'].capitalize()} criterion: {f['rule_text']}"
 
 
+# plausible values for the cases that do not meet a criterion (base, near-miss, context); flips that a
+# criterion forces outside these keep the hard limits of NUM
+SOFT = {"platelets": (20, 600), "creatinine": (0.4, 10), "egfr": (8, 130), "hemoglobin": (6, 18),
+        "alt_enzyme": (8, 600), "potassium": (2.8, 6.8), "inr": (0.8, 5), "neutrophils": (0.2, 15), "wbc": (1.0, 30),
+        "bmi": (17, 60), "weight": (45, 160), "age": (18, 95), "sbp": (80, 200), "heart_rate": (40, 160),
+        "temperature": (35.8, 40.5), "spo2": (80, 100), "rr": (10, 40), "bun": (5, 120)}
+
+
 def criterion(f):
     """The program of a formalised criterion as a rule_v1 Criterion (cid 'c')."""
     kinds = tuple(f["near_kinds"])
     if f["input"] == "numeric":
         dec, nd, lo, hi = NUM[f["concept"]]
+        slo, shi = SOFT[f["concept"]]
         t = f["threshold"]
         side = 8 * nd
         if f["op"] in (">", ">="):
-            dr, fr = (max(lo, t - side), t - nd / 2), (t, min(hi, t + side))
+            dr, fr = (max(slo if slo < t - nd else lo, t - side), t - nd / 2), (t, min(hi, t + side))
         else:
-            dr, fr = (t + nd / 2, min(hi, t + side)), (max(lo, t - side), t)
+            dr, fr = (t + nd / 2, min(shi if shi > t + nd else hi, t + side)), (max(lo, t - side), t)
         return Criterion("c", f["concept"], "numeric", f["rule_text"], keywords(f["concept"]), op=f["op"],
                          threshold=t, default_range=dr, flip_range=fr, near_delta=nd, decimals=dec,
                          nm=tuple(k for k in kinds if k in ("numeric", "time")) or ("numeric",))
@@ -65,12 +74,28 @@ def criterion(f):
                      nm=tuple(k for k in kinds if k in ("subject", "negation", "time")))
 
 
+def population(f):
+    """Sex and age range of the cases: the formalisation's sex restriction, then the trial's registered
+    sex and ages (ec_v1/registry_population.json), within the generator's adult range."""
+    p = f.get("population") or {}
+    sex = "female" if f["sex"] == "female" or p.get("sex") == "FEMALE" else \
+        "male" if f["sex"] == "male" or p.get("sex") == "MALE" else None
+    lo = max(18, int(p.get("min_age") or 0), 20 if sex == "female" else 30)
+    hi = min(95, int(p.get("max_age") or 95), 44 if f["concept"] == "pregnancy" else 85)
+    return sex, (lo, hi) if lo <= hi else (max(18, int(p.get("min_age") or 18)), hi)
+
+
 def rule(f):
-    sex = "female" if f["sex"] == "female" else None
-    ages = (20, 44) if sex == "female" else (30, 75)
+    sex, ages = population(f)
     return Rule(f"ec_{f['cand']}", "constraint", f["nct_id"], full_text(f).replace("{", "{{").replace("}", "}}"),
                 [criterion(f)], SETTING, default="(not met)", alternative="(met)", sex=sex, age_range=ages,
                 family="ec", logic="any")
+
+
+def time_unsettled(f):
+    """A current-only finding whose text does not say whether a past occurrence counts: the formaliser
+    left out the time near-miss, and no case states a past occurrence."""
+    return f["input"] == "finding" and f["times"] == "current" and "time" not in f["near_kinds"]
 
 
 def kinds(f):
@@ -78,7 +103,8 @@ def kinds(f):
     if f["times"] == "window":
         return [k for k in f["near_kinds"] if k in ("time", "subject", "negation")]
     c = criterion(f)
-    return [k for k in f["near_kinds"] if k in E.nm_kinds(c) and (k != "boundary" or c.op in ("<", ">"))]
+    return [k for k in f["near_kinds"] if k in E.nm_kinds(c) and (k != "boundary" or c.op in ("<", ">"))
+            and not (k == "boundary" and c.concept == "age")]     # age in completed years: arguable at the threshold
 
 
 def _to_ec(recs, f):
@@ -152,9 +178,9 @@ def window_group(f, kind, seed):
         k = rng.randint(1, max(1, months - 2)) if inside else rng.randint(months + 2, months + 30)
         return xr.add_months(visit, -k)
     form = rng.choice(("relative", "dated"))
-    sex = rng.choice(("female", "male"))
+    sex = population(f)[0] or rng.choice(("female", "male"))
     poss = "Her" if sex == "female" else "His"
-    age = rng.randint(40, 80)
+    age = rng.randint(*population(f)[1])
     tpl = [t for t in xr.EVENTS[c][2] if not (step and "completed" in t)]   # no finished course within weeks
 
     def event(d, subject="patient"):
@@ -222,8 +248,9 @@ def window_group(f, kind, seed):
 
 
 # ---------------------------------------------------------------- groups and tests
-def groups(f, seeds=(0, 1)):
-    """Records of every (near-miss kind, seed) group of one criterion."""
+def groups(f, seeds=(0,)):
+    """Records of every (near-miss kind, seed) group of one criterion: one group per kind, so that the
+    authors' sign-off covers every case of the set."""
     out = []
     for kind in kinds(f):
         for seed in seeds:
@@ -240,8 +267,10 @@ def boundary_tests(f):
         dec, nd, lo, hi = NUM[f["concept"]]
         step = 10 ** -dec
         t = f["threshold"]
-        return [(f"current value {E.fmt(v, criterion(f))}", OPS[f["op"]](v, t))
-                for v in (round(t - step, dec), t, round(t + step, dec))]
+        vals = (round(t - step, dec), t, round(t + step, dec))
+        if f["concept"] == "age" and f["op"] in ("<", ">"):
+            vals = (round(t - step, dec), round(t + step, dec))    # no case states the age at the threshold
+        return [(f"current value {E.fmt(v, criterion(f))}", OPS[f["op"]](v, t)) for v in vals]
     if f["times"] == "window":
         visit = dt.date(2025, 3, 15)
         start = window_start(visit, f["window_n"], f["window_unit"])
@@ -252,11 +281,12 @@ def boundary_tests(f):
                                (visit - dt.timedelta(days=1), "day before the visit"))]
     from selrm.rules import Mention
     c = criterion(f)
-    rows = [("patient, present now", Mention(f["concept"], "finding")),
-            ("patient, past or resolved", Mention(f["concept"], "finding", time="past")),
-            ("patient, explicit denial", Mention(f["concept"], "finding", status="absent")),
-            ("sister, present now", Mention(f["concept"], "finding", subject="sister")),
-            ("friend, present now", Mention(f["concept"], "finding", subject="friend"))]
+    rows = [("patient, present now", Mention(f["concept"], "finding"))]
+    if not time_unsettled(f):                      # otherwise the text does not decide it, and no case shows it
+        rows.append(("patient, past or resolved", Mention(f["concept"], "finding", time="past")))
+    rows += [("patient, explicit denial", Mention(f["concept"], "finding", status="absent")),
+             ("sister, present now", Mention(f["concept"], "finding", subject="sister")),
+             ("friend, present now", Mention(f["concept"], "finding", subject="friend"))]
     return [(lab, c.evaluate([m])) for lab, m in rows] + [("not mentioned", c.evaluate([]))]
 
 
@@ -265,7 +295,8 @@ def program_text(f):
         u = RG.NUMERIC_NAMES.get(f["concept"], (None, ""))[1]
         return f"met iff the patient's current {f['concept']} value {f['op']} {f['threshold']:g} {u}".strip()
     who = "the patient or a first-degree relative" if f["subjects"] == "family" else "the patient"
-    when = {"current": "now (current)", "ever": "at any time (current or past)",
+    when = {"current": "now (the criterion does not say whether a past occurrence counts; no case states one)"
+            if time_unsettled(f) else "now (current)", "ever": "at any time (current or past)",
             "window": f"within the {f['window_n']} {f['window_unit']} before the visit date (boundary day counts)"}[f["times"]]
     extra = f"; also listed in the text but never mentioned in cases: {', '.join(f['other_disjuncts'])}" \
         if f["other_disjuncts"] else ""

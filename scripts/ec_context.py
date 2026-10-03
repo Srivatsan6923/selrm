@@ -19,16 +19,40 @@ KIT = ROOT / "ec_v1"
 BULLET = re.compile(r"^(\s*)(?:[*\-•]|\d{1,2}[.)])\s+(.*)$")
 
 
-def fetch(nct):
-    url = f"https://clinicaltrials.gov/api/v2/studies/{nct}?fields=EligibilityCriteria&format=json"
+def fetch(nct, module=False):
+    """The eligibility text of a trial (or, with module=True, its whole eligibility module: sex,
+    minimumAge, maximumAge, ...)."""
+    fields = "EligibilityModule" if module else "EligibilityCriteria"
+    url = f"https://clinicaltrials.gov/api/v2/studies/{nct}?fields={fields}&format=json"
     req = urllib.request.Request(url, headers={"User-Agent": "selrm-research/1.0"})
     for attempt in range(4):
         try:
             with urllib.request.urlopen(req, timeout=60) as r:
-                return json.load(r)["protocolSection"]["eligibilityModule"]["eligibilityCriteria"]
+                el = json.load(r)["protocolSection"]["eligibilityModule"]
+                return el if module else el["eligibilityCriteria"]
         except OSError:
             time.sleep(5 * (attempt + 1))
     raise RuntimeError(nct)
+
+
+def years(age):
+    """'18 Years', '12 Months', '6 Weeks' -> years (None if not given)."""
+    m = re.match(r"(\d+(?:\.\d+)?)\s*(year|month|week|day)", (age or "").lower())
+    if not m:
+        return None
+    return round(float(m.group(1)) / {"year": 1, "month": 12, "week": 52, "day": 365}[m.group(2)], 2)
+
+
+def population(ncts):
+    """Registered sex and age range of each trial (ec_v1/registry_population.json)."""
+    out = {}
+    for nct in sorted(ncts):
+        el = fetch(nct, module=True)
+        out[nct] = {"sex": el.get("sex", "ALL"), "min_age": years(el.get("minimumAge")),
+                    "max_age": years(el.get("maximumAge")), "healthy_volunteers": el.get("healthyVolunteers")}
+        time.sleep(0.3)
+    (KIT / "registry_population.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
+    return out
 
 
 def norm(t):
@@ -87,6 +111,9 @@ def main():
         c["type_mismatch"] = c["section"] is not None and c["section"] != s["type"]
         out[it["cand"]] = c
     (KIT / "registry_texts.json").write_text(json.dumps(texts, indent=1, ensure_ascii=False), encoding="utf-8")
+    pop = population(texts)
+    print("trials with a registered age or sex limit:",
+          sum(1 for p in pop.values() if p["sex"] != "ALL" or (p["max_age"] or 99) < 90 or (p["min_age"] or 0) > 18))
     (KIT / "registry_context.json").write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")
     flagged = {k: v for k, v in out.items() if v.get("type_mismatch") or v.get("under_intro") or v.get("not_found")}
     print(len(out), "checked;", len(flagged), "flagged")

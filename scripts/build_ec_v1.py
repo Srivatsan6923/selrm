@@ -27,12 +27,13 @@ ROOT = Path(__file__).resolve().parents[1]
 KIT, SHEET = ROOT / "ec_v1", ROOT / "docs" / "EC_SIGNOFF.csv"
 COLS = ["crit_id", "nct_id", "criterion_type", "original_text", "rule_text_shown", "simplifications",
         "never_mentioned_disjuncts", "registry_context", "program", "executed_tests", "near_miss_kinds", "groups",
-        "example_base", "example_flip", "example_near", "example_answers",
+        "verification", "cases", "records_sha256",
         "reviewer_1", "program_ok_1", "cases_ok_1", "comment_1", "reviewer_2", "program_ok_2", "cases_ok_2", "comment_2"]
 
 
-# Accepted by the formalizer, rejected by one verifier only for a near-miss kind; that verifier named the
-# kinds under which it accepts (quoted). Restricting the kinds cannot add an ambiguous case.
+# Accepted by the formalizer and rejected by the verifier(s) only for a near-miss kind (one verifier for the
+# pregnancy rows, both for k005), each naming the kinds under which it accepts (quoted). Restricting the
+# kinds cannot add an ambiguous case. The sign-off sheet marks these rows (column verification).
 RESCUE = {
     "k005": (["numeric", "boundary"], "Re-submit with near_kinds ['numeric','boundary']."),
     "k216": (["subject", "negation"], "time near-miss ambiguous (a past delivery leaves 'breastfeeding' open); "
@@ -90,6 +91,9 @@ def post(items, ctx):
 
 def guard(f):
     """Reasons the code itself excludes an accepted formalisation."""
+    p = f.get("population") or {}
+    if p.get("max_age") is not None and p["max_age"] < 18:
+        return f"the trial enrols children only (registered age up to {p['max_age']:g} years); cases are adults"
     if f["subjects"] == "family" and re.search(r"(?i)family history", f["rule_text"]):
         return "family history counts relatives only; the program's family scope also counts the patient"
     if f["times"] == "window" and f["concept"] not in ec.xr.EVENTS:
@@ -139,9 +143,17 @@ def render(items):
     return keep, out, excl
 
 
+def records_sha(recs):
+    return hashlib.sha256("".join(json.dumps(r, sort_keys=True) + "\n" for r in recs).encode("utf-8")).hexdigest()
+
+
+def verification(f):
+    if f.get("rescued"):
+        return "rescued: " + f["rescued"]
+    return "confirmed by both model verifiers"
+
+
 def sheet_row(f, recs):
-    first = min(r["tid"] for r in recs)
-    case = {r["case_kind"]: r for r in recs if r["tid"] == first and r["claim_role"] == "s_prime"}
     tests = "; ".join(f"{lab} -> {'met' if y else 'not met'}" for lab, y in ec.boundary_tests(f))
     return {"crit_id": f["cand"], "nct_id": f["nct_id"], "criterion_type": f["criterion_type"],
             "original_text": f["original_text"], "rule_text_shown": ec.full_text(f),
@@ -149,11 +161,29 @@ def sheet_row(f, recs):
             "never_mentioned_disjuncts": ", ".join(f["other_disjuncts"]) or "none",
             "registry_context": f.get("registry_parent") or "standalone item", "program": ec.program_text(f),
             "executed_tests": tests, "near_miss_kinds": ", ".join(ec.kinds(f)),
-            "groups": len({r["tid"] for r in recs}),
-            "example_base": case["base"]["case_text"], "example_flip": case["flip"]["case_text"],
-            "example_near": case["near"]["case_text"],
-            "example_answers": f"near-miss kind {case['near']['nm_kind']}: base not met, flip met, near-miss not met",
+            "groups": len({r["tid"] for r in recs}), "verification": verification(f),
+            "cases": f"ec_v1/SIGNOFF_CASES.md#{f['cand']}", "records_sha256": records_sha(recs)[:16],
             **{c: "" for c in COLS[COLS.index("reviewer_1"):]}}
+
+
+def cases_md(keep, recs):
+    """Every case of every group, by criterion: what the authors sign off as cases_ok."""
+    out = ["# ec_v1: every rendered case, by criterion (H3)",
+           "",
+           "Answers are the program's: base, near-miss and presentation cases do not meet the criterion, the flip "
+           "meets it. Sign off a criterion's cases only if every case below is unambiguous under its rule text."]
+    for f in keep:
+        rs = [r for r in recs if r["rid"] == f"ec_{f['cand']}" and r["claim_role"] == "s_prime"]
+        out += ["", f'<a id="{f["cand"]}"></a>', f"## {f['cand']} ({f['nct_id']})", "", ec.full_text(f), "",
+                f"Program: {ec.program_text(f)}"]
+        for tid in sorted({r["tid"] for r in rs}):
+            g = {r["case_kind"]: r for r in rs if r["tid"] == tid}
+            out += ["", f"### near-miss kind: {g['base']['nm_kind']}"]
+            for k in ("base", "flip", "near", "pres"):
+                if k in g:
+                    out += ["", f"**{k}** ({'meets' if g[k]['label'] else 'does not meet'})", "```",
+                            g[k]["case_text"], "```"]
+    return "\n".join(out) + "\n"
 
 
 def load_items():
@@ -161,8 +191,10 @@ def load_items():
     src = json.loads((KIT / "formalized.json").read_text(encoding="utf-8"))
     sel = {json.loads(l)["cand"]: json.loads(l) for l in open(KIT / "selected.jsonl", encoding="utf-8")}
     ctx = json.loads((KIT / "registry_context.json").read_text(encoding="utf-8"))
+    pop = json.loads((KIT / "registry_population.json").read_text(encoding="utf-8"))
     items = [dict(f, original_text=sel[f["cand"]]["text"], nct_id=sel[f["cand"]]["nct_id"],
-                  criterion_type=sel[f["cand"]]["type"]) for f in src["items"]]
+                  criterion_type=sel[f["cand"]]["type"], population=pop.get(sel[f["cand"]]["nct_id"]))
+             for f in src["items"]]
     return post(items, ctx)
 
 
@@ -175,6 +207,7 @@ def prepare():
         w.writeheader()
         for f in keep:
             w.writerow(sheet_row(f, [r for r in recs if r["rid"] == f"ec_{f['cand']}"]))
+    (KIT / "SIGNOFF_CASES.md").write_text(cases_md(keep, recs), encoding="utf-8")
     with open(KIT / "EXCLUSIONS.csv", "w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(["crit_id", "nct_id", "type", "original_text", "reason"])
@@ -205,16 +238,34 @@ def prepare():
 
 
 def freeze():
+    """Keeps the criteria with four yeses from two different reviewers. Refuses unless every row is fully
+    signed off (both reviewers named, all four decisions yes or no, a comment for every no), and unless the
+    approved criteria render exactly the records the authors reviewed (records_sha256 on the sheet)."""
     rows = list(csv.DictReader(open(SHEET, encoding="utf-8")))
-    yes = lambda v: v.strip().lower() in ("yes", "y", "ok")  # noqa: E731
-    approved = {r["crit_id"] for r in rows if r["reviewer_1"].strip() and r["reviewer_2"].strip()
-                and r["reviewer_1"].strip() != r["reviewer_2"].strip()
-                and all(yes(r[c]) for c in ("program_ok_1", "cases_ok_1", "program_ok_2", "cases_ok_2"))}
-    pending = [r["crit_id"] for r in rows if not (r["program_ok_1"].strip() and r["program_ok_2"].strip())]
-    if pending:
-        sys.exit(f"refusing to freeze: {len(pending)} criteria lack two sign-offs")
+    decisions = ("program_ok_1", "cases_ok_1", "program_ok_2", "cases_ok_2")
+    norm = lambda v: {"yes": "yes", "y": "yes", "ok": "yes", "no": "no", "n": "no"}.get(v.strip().lower())  # noqa: E731
+    bad = []
+    for r in rows:
+        if not r["reviewer_1"].strip() or not r["reviewer_2"].strip() or \
+                r["reviewer_1"].strip().lower() == r["reviewer_2"].strip().lower():
+            bad.append(f"{r['crit_id']}: two different reviewers are needed")
+        if any(norm(r[c]) is None for c in decisions):
+            bad.append(f"{r['crit_id']}: every decision must be yes or no")
+        for i in ("1", "2"):
+            if "no" in (norm(r[f"program_ok_{i}"]), norm(r[f"cases_ok_{i}"])) and not r[f"comment_{i}"].strip():
+                bad.append(f"{r['crit_id']}: reviewer {i} says no without a comment")
+    if bad:
+        sys.exit("refusing to freeze:\n" + "\n".join(bad))
+    approved = {r["crit_id"] for r in rows if all(norm(r[c]) == "yes" for c in decisions)}
+    reviewed = {r["crit_id"]: r["records_sha256"] for r in rows}
     items = [f for f in load_items() if f["cand"] in approved]
-    keep, recs, _ = render(items)
+    keep, recs, excl = render(items)
+    if excl:
+        sys.exit(f"refusing to freeze: approved criteria no longer render: {[f['cand'] for f, _ in excl]}")
+    changed = [f["cand"] for f in keep
+               if records_sha([r for r in recs if r["rid"] == f"ec_{f['cand']}"])[:16] != reviewed[f["cand"]]]
+    if changed:
+        sys.exit(f"refusing to freeze: the records of {changed} differ from those the authors reviewed")
     ok, sc = shortcut_check(recs)
     if not ok:
         sys.exit("shortcut validation FAILED")
@@ -231,7 +282,7 @@ def freeze():
     man = {"name": "test", "set": "ec_v1", "split": "test", "level": "registered", "created": created, "frozen": True,
            "generator": "scripts/build_ec_v1.py (selrm/ec.py)", "criteria": len(keep),
            "trials": len({f["nct_id"] for f in keep}), "n_groups": len({r["tid"] for r in recs}), "n_records": len(recs),
-           "sha256": sha, "git_commit": D.git_commit(), "signed_off": sorted(approved),
+           "sha256": sha, "git_commit": D.git_commit(), "signed_off": sorted(f["cand"] for f in keep),
            "rejected_at_signoff": sorted(r["crit_id"] for r in rows if r["crit_id"] not in approved),
            "shortcut_validation": {"result": "PASS", "scorers": sc}}
     (d / "MANIFEST.json").write_text(json.dumps(man, indent=1, sort_keys=True), encoding="utf-8")

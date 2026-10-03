@@ -30,7 +30,6 @@
    "sbp": 4,
    "stroke": 1,
    "sulfa_allergy": 4,
-   "temperature": 1,
    "vascular": 3,
    "vte": 4,
    "warfarin": 1,
@@ -38,11 +37,11 @@
    "weight": 4
   },
   "by_kind": {
-   "boundary": 88,
-   "negation": 86,
-   "numeric": 114,
-   "subject": 86,
-   "time": 124
+   "boundary": 42,
+   "negation": 43,
+   "numeric": 56,
+   "subject": 43,
+   "time": 61
   },
   "by_times": {
    "current": 26,
@@ -50,14 +49,14 @@
    "window": 4
   },
   "by_type": {
-   "exclusion": 82,
+   "exclusion": 81,
    "inclusion": 18
   },
   "candidates": 294,
   "confirmed_by_both_verifiers": 108,
-  "excluded": 194,
-  "groups": 498,
-  "kept": 100,
+  "excluded": 195,
+  "groups": 245,
+  "kept": 99,
   "kept_as_exclusion_subitems": [
    "k053",
    "k096",
@@ -75,7 +74,7 @@
    "k261",
    "k269"
   ],
-  "records": 3984,
+  "records": 1960,
   "rescued": [
    "k005",
    "k216",
@@ -91,23 +90,23 @@
      "Hold": 100.0,
      "Rev": 0.0,
      "TA": 0.0,
-     "n": 498
+     "n": 245
     },
     "concept_named": {
      "Hold": 0.0,
-     "Rev": 38.55421686746988,
+     "Rev": 39.183673469387756,
      "TA": 0.0,
-     "n": 498
+     "n": 245
     },
     "program": {
      "Hold": 100.0,
      "Rev": 100.0,
      "TA": 100.0,
-     "n": 498
+     "n": 245
     }
    }
   },
-  "trials": 90
+  "trials": 89
  },
  "run_id": "A-SETS",
  "xr_v1": {
