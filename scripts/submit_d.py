@@ -33,7 +33,8 @@ import time
 NS = "ecepxie"
 IMAGE = "nvcr.io/nvidia/cuda:13.0.3-cudnn-devel-ubuntu24.04"
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CODE_DIRS = ("selrm", "scripts", "k8s", "configs")
+CODE_DIRS = ("selrm", "scripts", "k8s", "configs",
+             "data/xr_v1/KNOWN_ISSUES.json")   # read by jobs that score xr_v1 (a job failed without it, 3 Oct)
 LABELS = {"app": "selrm-d"}
 SITES = {"west": {"pvc": "selrm-d", "pvcb": "selrm-b", "region": "us-west", "storage": "rook-cephfs",
                   "sync": "selrm-d-sync"},
