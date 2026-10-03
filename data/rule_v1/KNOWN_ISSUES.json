@@ -1,6 +1,6 @@
 {
  "generated_by": "scripts/audit_rule_v1.py",
- "commit": "11f77f7c869ada3738055ff46651c952794c42f5",
+ "commit": "d212ab4b5616e7e3f97ea6ecef5fc0873ac9a7f0",
  "checked_sets": [
   "rule_v1/dev",
   "rule_v1/dev_missing",
@@ -17,5 +17,44 @@
   "rule_v1_fold3/dev",
   "rule_v1_fold3/test_L2"
  ],
- "issues": []
+ "issues": [],
+ "semantic_limits": [
+  {
+   "id": "rule_text_names_a_window",
+   "tids": [
+    "rule_v1.test.s3_jhfrat.age.numeric.easy.1460",
+    "rule_v1.test.s3_jhfrat.age.numeric.long.1601",
+    "rule_v1.test.s3_jhfrat.age.numeric.long.890",
+    "rule_v1.test.s3_jhfrat.conf.negation.easy.1939",
+    "rule_v1.test.s3_jhfrat.conf.negation.easy.880",
+    "rule_v1.test.s3_jhfrat.conf.negation.long.1290",
+    "rule_v1.test.s3_jhfrat.conf.negation.long.889",
+    "rule_v1.test.s3_jhfrat.conf.subject.easy.1133",
+    "rule_v1.test.s3_jhfrat.conf.subject.easy.1551",
+    "rule_v1.test.s3_jhfrat.conf.subject.easy.84",
+    "rule_v1.test.s3_jhfrat.conf.subject.easy.978",
+    "rule_v1.test.s3_jhfrat.conf.subject.long.380",
+    "rule_v1.test.s3_jhfrat.conf.subject.long.552",
+    "rule_v1.test.s3_jhfrat.conf.subject.long.702",
+    "rule_v1.test.s3_jhfrat.fall.negation.long.526",
+    "rule_v1.test.s3_jhfrat.fall.negation.long.652",
+    "rule_v1.test.s3_jhfrat.fall.negation.long.90",
+    "rule_v1.test.s3_jhfrat.fall.subject.long.261",
+    "rule_v1.test.s3_jhfrat.fall.time.easy.955",
+    "rule_v1.test.s3_jhfrat.fall.time.easy.970",
+    "rule_v1.test.s3_jhfrat.fall.time.long.829",
+    "rule_v1_fold3.dev.s3_jhfrat.age.numeric.easy.30",
+    "rule_v1_fold3.dev.s3_jhfrat.fall.negation.long.206"
+   ],
+   "reason": "The rule text names a window ('in the six months before this admission'); the program counts current mentions only and past mentions are dated or 'years ago'. With no visit date in the case, these labels rely on the unstated year."
+  },
+  {
+   "id": "negation_near_miss_two_attributes",
+   "reason": "On criteria that count past or family mentions, a negation near-miss (the patient's current denial) differs from a past or relative flip in time or subject as well as status; counts in tables/data_stats.json (semantics)."
+  },
+  {
+   "id": "presentation_diastolic",
+   "reason": "Presentation edits may switch between 'blood pressure x/y' and systolic-only templates, so a derived diastolic value can appear or disappear; the state is unchanged."
+  }
+ ]
 }

@@ -2,8 +2,9 @@
 
 You write short patient notes from fact lists, in your own words. A program decides the correct
 answer from the facts, so a note is correct when it states exactly the listed facts: no more, no
-fewer, nothing ambiguous. Do not look at generated cases (`data/`, `docs/SAMPLE_TRIPLETS.md`,
-`audit/fidelity_sheets.md`) before you have finished writing.
+fewer, nothing ambiguous. Do not look at generated cases (`data/`, `docs/SAMPLE_TRIPLETS.md`, the
+H1 sheets in `audit/h1/`, `ec_v1/SIGNOFF_CASES.md`) before you have finished writing. **Write your
+H2 notes before you start H1 or H3**, which show generated cases.
 
 ## What you write for each group
 
@@ -41,9 +42,9 @@ So FLIP and NEAR must make sense in place of the line they replace.
 4. **Denials.** "Explicitly does not have X" must be a clear denial that names X.
 5. **Not mentioned means absent.** The base note must not mention the condition under test at all,
    not even to deny it, when the form says so. Anything not listed is simply not mentioned.
-6. **Required strings.** Every line that mentions the condition under test must contain one of the
-   strings the form lists. Use them in ordinary wording: "diabet" is matched by "diabetes" and
-   "diabetic".
+6. **Required words.** Every line that mentions the condition under test must contain one of the
+   words the form lists, as a word or as the start of a longer word: 'diabet' is matched by
+   "diabetes" and "diabetic", 'bp' by "BP".
 7. **The rule stays out of the note.** Do not mention the rule, a decision, a drug choice or a
    threshold. Do not hint at what matters.
 8. **Plain clinical English.** Use short lines, the abbreviations a clinician would use, and no
@@ -63,13 +64,32 @@ So FLIP and NEAR must make sense in place of the line they replace.
 ```
 header: Man, 37.
 reason: Five days of a dry, tickly cough.
-fact 1: Breathing comfortably at 18/min.
+fact 1: Respiratory rate 18/min.
 extra: Works as a bus driver.
-FLIP: Asthma, using his reliever inhaler most days.
-NEAR: His uncle is being treated for asthma.
+FLIP: Has asthma.
+NEAR: His uncle has asthma.
 check_ok:
 check_comment:
 ```
+
+Each line states its fact and nothing more. The respiratory rate is named and the unit kept; the
+flip names no treatment, since a treatment could hint at the rule's alternative.
+
+## What the assembler checks
+
+The assembler reports any of the following, so fix and re-run.
+- **Header:** the age, when the form gives one ("adult" forms take no age), and the sex.
+- **Base:** for a finding under test, the base never names it.
+- **Each line about the condition under test:** one of the listed words.
+- **Values:** each value as a number (128 does not count as 28), with its unit.
+- **Dates and people:** years as given; a relative's fact names that relative; a patient's fact
+  names no other person.
+- **Denials and time:** a denial reads as a denial; a present fact does not; an undated past fact
+  reads as past.
+- **No unlisted conditions:** no case names another condition of the rule that the form leaves
+  unmentioned.
+
+These checks cannot judge meaning. The second author does that.
 
 ## Second author (check)
 

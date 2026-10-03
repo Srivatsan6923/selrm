@@ -1,0 +1,1058 @@
+{
+ "k001": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k003": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k004": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k005": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k006": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k007": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k008": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": true,
+  "parent": "Inclusion Criteria: All patients with ischemic stroke who:",
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k011": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k017": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k031": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k045": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k046": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k047": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k049": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k050": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k051": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k052": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k053": {
+  "section": "exclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Abnormal laboratory tests defined as any of the following:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k056": {
+  "section": "inclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Adequate organ function within 28 days of study entry defined as:",
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k058": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k062": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k063": {
+  "section": "inclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Participants have established atherosclerotic cardiovascular disease (ASCVD) and/or chronic kidney disease (CKD), as evidenced at least one of the following:",
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k064": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k065": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k067": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k075": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k089": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k095": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k096": {
+  "section": "exclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Abnormal laboratory tests defined as any of the following:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k098": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k099": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k103": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k106": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k108": {
+  "section": "inclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Men and women over 40 years of age, who meet at least one of the following criteria:",
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k111": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k113": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k115": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k117": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k118": {
+  "section": "exclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Any of the following laboratory values at Screening:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k123": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k125": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k126": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k127": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k128": {
+  "section": "inclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k129": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k130": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k132": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k134": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": true,
+  "parent": "Exclusion Criteria Related to the Underlying Condition:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k135": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": true,
+  "parent": "Key Exclusion Criteria include:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k136": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k137": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k138": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k139": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k140": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k141": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k142": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k143": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k148": {
+  "section": "exclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Contraindication to estrogen use, such as presence or history of:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k152": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k154": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k155": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k156": {
+  "section": "exclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Changes the security checks up to 48 h before randomization:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k159": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k161": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k162": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k163": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k165": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": true,
+  "parent": "The exclusion criteria include any of the following:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k166": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k169": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k170": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k174": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k175": {
+  "section": "inclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Blood test:",
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k176": {
+  "section": "exclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Abnormal laboratory tests defined as any of the following:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k177": {
+  "section": "inclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Participants must have preserved organ and marrow function as defined below:",
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k179": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": true,
+  "parent": "ECG and laboratory findings:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k180": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k181": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k182": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": true,
+  "parent": "Patients presenting with any of the following:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k188": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": true,
+  "parent": "Any doubt about the certainty of the diagnosis of either the index episode or the previous episode (if applicable), will be grounds for exclusion. Additionally, patients with any of the following will be excluded:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k192": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k193": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k194": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k196": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k197": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k199": {
+  "section": "exclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Abnormal laboratory tests defined as any of the following:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k200": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k202": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k203": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k205": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": true,
+  "parent": "Bleeding risks :",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k207": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k208": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k209": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k211": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k213": {
+  "section": "exclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Contraindication for the usage of Modifast meal replacements:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k214": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k216": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k218": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k219": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k220": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k221": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": true,
+  "parent": "Patients presenting with any of the following:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k225": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k226": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k227": {
+  "section": "inclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k230": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": true,
+  "parent": "Patients with any one of the following criteria will be excluded from the current study:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k231": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k233": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k235": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k236": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": true
+ },
+ "k245": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k247": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k248": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k249": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k250": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k254": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": true,
+  "parent": "(2) Pneumonia with pleural effusion with :",
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k255": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k260": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k261": {
+  "section": "exclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Contraindication for the usage of Modifast meal replacements:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k263": {
+  "section": "exclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "A medical history or current diagnosis of any of the following:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k266": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k267": {
+  "section": "exclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Contraindication to estrogen use, such as presence or history of:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k269": {
+  "section": "exclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Contraindications to NuvaRing use:",
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k271": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k272": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k273": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k281": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k283": {
+  "section": "inclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k285": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k286": {
+  "section": "inclusion",
+  "indented": true,
+  "under_intro": true,
+  "parent": "Have one or more of the following systemic signs:",
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k287": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k288": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ },
+ "k289": {
+  "section": "exclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "exclusion",
+  "type_mismatch": false
+ },
+ "k291": {
+  "section": "inclusion",
+  "indented": false,
+  "under_intro": false,
+  "parent": null,
+  "mined_type": "inclusion",
+  "type_mismatch": false
+ }
+}
