@@ -94,7 +94,8 @@ def gpu_job(name, code, env_tag, gpu, hours, args, cpu=4, mem="40Gi", models=("/
            "initContainers": [{"name": "stage", "image": IMAGE, "command": ["sh", "-c", stage],
                                "resources": res(3, "8Gi", "80Gi"), "volumeMounts": MNTS + work}],
            "containers": [{"name": "main", "image": IMAGE, "workingDir": "/work/code",
-                           "command": ["/opt/selrm-env/venv/bin/python", "-u", *args],
+                           "command": ["sh", *args] if args[0].endswith(".sh") else
+                                      ["/opt/selrm-env/venv/bin/python", "-u", *args],
                            "env": [{"name": k, "value": v} for k, v in {
                                "HF_HOME": "/work/hf", "TRITON_CACHE_DIR": "/work/triton", "VLLM_CACHE_ROOT": "/work/vllm",
                                "PYTHONPYCACHEPREFIX": "/work/pycache", "TOKENIZERS_PARALLELISM": "false",
