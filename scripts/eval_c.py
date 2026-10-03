@@ -127,6 +127,8 @@ def build_eval_c(root, fmt, tag, set_name, tok):
     import numpy as np, pretok
     from selrm.formats import dataset_path, reader_units
     spec = {"format": fmt, "base_model": tag.replace("--", "/")}
+    if hasattr(pretok, "unit_key"):    # B's code from 3 Oct on: format-aware reader units, no gold check on our sets
+        return pretok.build_eval(root, spec, set_name, tok)
     path = pretok.eval_path(root, spec, set_name)
     if os.path.exists(path):
         return path, "exists"
