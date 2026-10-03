@@ -293,9 +293,12 @@ ME_COMPARISONS = [("ledger2-triplets-s0", "critic"), ("ledger2-triplets-s0", "su
 
 
 def me_pairs(recs, sc):
-    """One item per pair: d on the control (base) and on the trap (flip); flags from the records."""
+    """One item per pair: d on the control (base) and on the trap (flip); flags from the records. Pairs a run did
+    not score (fixed subsets of the generative PRMs) are left out; a partly scored pair raises."""
     P = {}
     for r in recs:
+        if r["iid"] not in sc:
+            continue
         p = P.setdefault(r["tid"], {"tid": r["tid"], "labels": r["rid"], "u": {}, "flags": r["meta"]})
         p["u"][(r["case_kind"], r["claim_role"])] = sc[r["iid"]]["u"]
     out = []
