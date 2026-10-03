@@ -155,6 +155,25 @@ def exec_sync(*cmd, inp=None):
     return kubectl("exec", "-i", SITE["sync"], "--", *cmd, inp=inp)
 
 
+def push_code():
+    """Code snapshot of HEAD -> /pvc/code/<sha12> (the directories jobs run from)."""
+    code, buf = sha(), io.BytesIO()
+    with tarfile.open(fileobj=buf, mode="w:gz") as t:
+        for d in CODE_DIRS:
+            t.add(os.path.join(REPO, d), arcname=d, filter=lambda x: None if "__pycache__" in x.name else x)
+    exec_sync("sh", "-c", f"mkdir -p /pvc/code/{code} && tar -xzf - -C /pvc/code/{code} && echo {code} > /pvc/code/{code}/COMMIT",
+              inp=buf.getvalue())
+    print("pushed", code, "to", SITE["pvc"])
+
+
+def ensure_code(code):
+    """A job's code snapshot must be on the PVC; HEAD's is pushed when missing (a job failed staging on 3 Oct)."""
+    if exec_sync("sh", "-c", f"test -d /pvc/code/{code} && echo yes || echo no").strip() != "yes":
+        if code != sha():
+            sys.exit(f"code snapshot {code} is not on {SITE['pvc']}; push it from a checkout of that commit")
+        push_code()
+
+
 def main():
     global SITE
     ap = argparse.ArgumentParser()
@@ -190,14 +209,7 @@ def main():
     elif a.cmd == "sync-down":
         print(kubectl("delete", "pod", SITE["sync"], "--wait=false", check=False))
     elif a.cmd == "push-code":
-        code, buf = sha(), io.BytesIO()
-        with tarfile.open(fileobj=buf, mode="w:gz") as t:
-            for d in CODE_DIRS:
-                t.add(os.path.join(REPO, d), arcname=d,
-                      filter=lambda x: None if "__pycache__" in x.name else x)
-        exec_sync("sh", "-c", f"mkdir -p /pvc/code/{code} && tar -xzf - -C /pvc/code/{code} && echo {code} > /pvc/code/{code}/COMMIT",
-                  inp=buf.getvalue())
-        print("pushed", code, "to", SITE["pvc"])
+        push_code()
     elif a.cmd == "build-env":
         code = a.code or sha()
         apply(cpu_job(f"selrm-d-build-env-{a.rest[0]}", ["bash", f"/pvc/code/{code}/k8s/build_env_d.sh", a.rest[0]],
@@ -215,10 +227,12 @@ def main():
     elif a.cmd == "gpu":
         name, args = a.rest[0], a.rest[1:] + extra
         models = a.models.split(",") if a.models is not None else ("/pvcb/selrm/models/unsloth--Qwen3.5-9B",)
+        ensure_code(a.code or sha())
         apply(gpu_job(f"selrm-d-{tag}{name}-{int(time.time()) % 100000}", a.code or sha(), a.env, a.gpu, a.hours,
                       args, models=models, n_gpu=a.n_gpu, cpu=a.gpu_cpu, mem=a.gpu_mem))
     elif a.cmd == "cpu":        # a python (or .sh) script of the code snapshot, on a CPU node
         name, args, code = a.rest[0], a.rest[1:] + extra, a.code or sha()
+        ensure_code(code)
         cmd = (f"set -e; cd /pvc/code/{code}; sh " + " ".join(args) if args[0].endswith(".sh") else
                f"set -e; tar -xf /pvc/env/selrm-d-env-{a.env}.tar -C /opt; cd /pvc/code/{code}; "
                "/opt/selrm-env/venv/bin/python -u " + " ".join(args))
