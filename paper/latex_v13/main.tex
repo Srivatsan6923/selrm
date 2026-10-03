@@ -2046,16 +2046,16 @@ price of the backbone per claim. Latency and hardware are in the repository.
 \paragraph{Policy training.}
 This is the only experiment in which a policy is optimised against a learned
 reward, and the only basis for statements about reward exploitation. GRPO
-from one \bb{} initialisation on rule triplets, \ph{3} runs, \ph{8}
-rollouts per prompt, \ph{2000} steps, advantages standardised within a group.
+from one \bb{} initialisation on rule triplets, \ph{3} runs, \res{meta/D-RL-outcome/group_size@int}
+rollouts per prompt, \res{meta/D-RL-outcome/steps@int} steps, advantages standardised within a group.
 Before each run we check that reward terms are not collinear within groups
-and that the setup fits a \ph{64}-prompt subset. Accuracy on base--flip pairs
-of held-out structures, judged by the rule program, moves from \ph{38.6}\% to
-\ph{52.3}\% with an outcome reward, \ph{33.9}\% with the injected-error PRM
-and \ph{63.5}\% with \method{}. A reference-graph reward after
+and that the setup fits a \res{meta/D-RL-setup-outcome/train_tasks@int}-prompt subset. Accuracy on base--flip pairs
+of held-out structures, judged by the rule program, moves from \res{run/D-RL-outcome/L2/top/start_pair}\% to
+\res{run/D-RL-outcome/L2/top/acc_pair}\% with an outcome reward, \res{run/D-RL-stepcheck/L2/top/acc_pair}\% with the injected-error PRM
+and \res{run/D-RL-ledger2-triplets/L2/top/acc_pair}\% with \method{}. A reference-graph reward after
 \citet{medceg2025}, which scores a rollout by its coverage of the decisive
 findings and of the chain from finding to criterion to conclusion, gives
-\ph{58.0}\%; the rule program supplies the graph, so this reward, like the
+\res{run/D-RL-refgraph/L2/top/acc_pair}\%; the rule program supplies the graph, so this reward, like the
 outcome reward, uses the answer for each case.
 
 \paragraph{Selection protocol.}

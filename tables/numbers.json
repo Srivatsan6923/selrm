@@ -147,6 +147,18 @@
   "number": null,
   "value": "\\ph{tbd}"
  },
+ "meta/D-RL-outcome/group_size@int": {
+  "number": 8.0,
+  "value": "8"
+ },
+ "meta/D-RL-outcome/steps@int": {
+  "number": 1000.0,
+  "value": "1{,}000"
+ },
+ "meta/D-RL-setup-outcome/train_tasks@int": {
+  "number": 64.0,
+  "value": "64"
+ },
  "min/run/B-F-verdict-blocks/L2/nm_kind=negation/TA|run/B-F-verdict-blocks/L2/nm_kind=numeric/TA@0": {
   "number": 89.6,
   "value": "90"
@@ -590,6 +602,26 @@
  "run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/macroF1": {
   "number": 70.47438292613096,
   "value": "70.5"
+ },
+ "run/D-RL-ledger2-triplets/L2/top/acc_pair": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/D-RL-outcome/L2/top/acc_pair": {
+  "number": 96.66666666666667,
+  "value": "96.7"
+ },
+ "run/D-RL-outcome/L2/top/start_pair": {
+  "number": 88.66666666666667,
+  "value": "88.7"
+ },
+ "run/D-RL-refgraph/L2/top/acc_pair": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/D-RL-stepcheck/L2/top/acc_pair": {
+  "number": 38.666666666666664,
+  "value": "38.7"
  },
  "run/D-SEL-combined-logistic/sel:keypairs/top/pair_acc": {
   "number": 77.87114845938375,
