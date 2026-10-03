@@ -94,8 +94,10 @@ def rule(f):
 
 def time_unsettled(f):
     """A current-only finding whose text does not say whether a past occurrence counts: the formaliser
-    left out the time near-miss, and no case states a past occurrence."""
-    return f["input"] == "finding" and f["times"] == "current" and "time" not in f["near_kinds"]
+    left out the time near-miss, and no case states a past occurrence. Rescued rows lost the time kind
+    for another reason (scripts/build_ec_v1.py RESCUE), so their time scope stays settled."""
+    return f["input"] == "finding" and f["times"] == "current" and "time" not in f["near_kinds"] \
+        and not f.get("rescued")
 
 
 def kinds(f):
@@ -294,7 +296,7 @@ def boundary_tests(f):
 DISPLAY = {"mech_valve": "a mechanical heart valve", "hit": "heparin-induced thrombocytopenia",
            "pen_allergy": "a penicillin allergy", "sulfa_allergy": "a sulfonamide allergy",
            "contrast_allergy": "an allergy to iodinated contrast", "peptic_ulcer": "a peptic ulcer",
-           "vascular": "a myocardial infarction (or, outside windows, peripheral artery disease)",
+           "vascular": "a myocardial infarction or peripheral artery disease",
            "vte": "a venous thromboembolism", "chf": "heart failure", "cad": "coronary artery disease",
            "bleeding": "a major bleed", "stroke": "a stroke or TIA", "cancer": "cancer", "asthma": "asthma",
            "diabetes": "diabetes", "hypertension": "hypertension", "pregnancy": "pregnancy",
@@ -315,7 +317,9 @@ def program_text(f):
             "window": f"within the {f['window_n']} {f['window_unit']} before the visit date (boundary day counts)"}[f["times"]]
     extra = f"; also listed in the text but never mentioned in cases: {', '.join(f['other_disjuncts'])}" \
         if f["other_disjuncts"] else ""
-    return f"met iff {who} has {DISPLAY.get(f['concept'], f['concept'].replace('_', ' '))} {when}{extra}"
+    what = "a myocardial infarction (heart attack)" if f["concept"] == "vascular" and f["times"] == "window" \
+        else DISPLAY.get(f["concept"], f["concept"].replace("_", " "))     # window cases render heart attacks only
+    return f"met iff {who} has {what} {when}{extra}"
 
 
 def rendered_ok(recs):

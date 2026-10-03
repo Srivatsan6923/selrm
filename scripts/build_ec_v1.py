@@ -1,12 +1,13 @@
 """ec_v1: registered eligibility criteria (FINAL_TASKS A P0.5).
 
   python scripts/build_ec_v1.py prepare   # ec_v1/formalized.json -> unsigned records, sign-off sheet, exclusions
-  python scripts/build_ec_v1.py freeze    # keeps the criteria both authors approved in docs/EC_SIGNOFF.csv
+  python scripts/build_ec_v1.py freeze    # keeps the criteria two reviewers approved in docs/ec_signoff/
 
 Pipeline: scripts/ec_mine.py (ClinicalTrials.gov, TrialGPT trials and texts excluded) -> formalisation by
 model agents with two adversarial verifiers (ec_v1/formalized.json; a criterion is kept only if both
 confirm) -> this script (render, check, sheet) -> two authors sign off each program and its rendered
-cases (H3) -> freeze. Nothing is scored before the freeze.
+cases, each in their own file docs/ec_signoff/<authorN>.csv (H3) -> freeze. Nothing is scored before
+the freeze.
 """
 import csv
 import datetime
@@ -24,11 +25,12 @@ from selrm import ec  # noqa: E402
 from selrm.metrics import decisions, summarise  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
-KIT, SHEET = ROOT / "ec_v1", ROOT / "docs" / "EC_SIGNOFF.csv"
+KIT, SHEET, REVIEWS = ROOT / "ec_v1", ROOT / "docs" / "EC_SIGNOFF.csv", ROOT / "docs" / "ec_signoff"
+AUTHORS = ("author1", "author2", "author3", "author4")
 COLS = ["crit_id", "nct_id", "criterion_type", "original_text", "rule_text_shown", "simplifications",
         "text_edits", "never_mentioned_disjuncts", "registry_context", "program", "executed_tests", "near_miss_kinds", "groups",
-        "verification", "cases", "records_sha256",
-        "reviewer_1", "program_ok_1", "cases_ok_1", "comment_1", "reviewer_2", "program_ok_2", "cases_ok_2", "comment_2"]
+        "verification", "cases", "fingerprint"]
+REVIEW_COLS = ["crit_id", "fingerprint", "program_ok", "cases_ok", "comment"]
 
 
 # Accepted by the formalizer and rejected by the verifier(s) only for a near-miss kind (one verifier for the
@@ -92,8 +94,15 @@ def post(items, ctx):
 def guard(f):
     """Reasons the code itself excludes an accepted formalisation."""
     p = f.get("population") or {}
-    if p.get("max_age") is not None and p["max_age"] < 18:
-        return f"the trial enrols children only (registered age up to {p['max_age']:g} years); cases are adults"
+    if p.get("max_age") is not None and p["max_age"] < 23:
+        return f"the trial enrols children or young people (registered age up to {p['max_age']:g} years); adult " \
+               f"cases would cover fewer than five years of age"
+    if f["input"] == "numeric" and f["concept"] in ec.SOFT:
+        slo, shi = ec.SOFT[f["concept"]]
+        nd, t = ec.NUM[f["concept"]][1], f["threshold"]
+        if not slo + nd <= t <= shi - nd:
+            return f"the threshold {t:g} lies at or outside the plausible range {slo:g}-{shi:g}, so the cases on " \
+                   f"one side would be implausible for a screening visit"
     if f["subjects"] == "family" and re.search(r"(?i)family history", f["rule_text"]):
         return "family history counts relatives only; the program's family scope also counts the patient"
     if f["times"] == "window" and f["concept"] not in ec.xr.EVENTS:
@@ -147,6 +156,25 @@ def records_sha(recs):
     return hashlib.sha256("".join(json.dumps(r, sort_keys=True) + "\n" for r in recs).encode("utf-8")).hexdigest()
 
 
+def fingerprint(f, recs):
+    """What a reviewer signs: the rendered records, the rule text, the program and its never-mentioned
+    disjuncts. Any change to one of them voids the sign-off."""
+    parts = [records_sha(recs), ec.full_text(f), ec.program_text(f), ", ".join(f["other_disjuncts"])]
+    return hashlib.sha256("\n".join(parts).encode("utf-8")).hexdigest()[:16]
+
+
+def not_rendered(f):
+    """Near-miss kinds the formalisation allows but the generator does not render, with the reason."""
+    out = []
+    for k in f["near_kinds"]:
+        if k not in ec.kinds(f):
+            why = "ages are in completed years, so a case at the threshold is arguable" if \
+                k == "boundary" and f["concept"] == "age" else "a boundary case needs a strict threshold" if \
+                k == "boundary" else "the generator cannot build it for this criterion"
+            out.append(f"{k} ({why})")
+    return out
+
+
 def text_edits(original, shown):
     """Every word-level difference between the registered and the shown text (computed, so none is
     missed by the formaliser's own list)."""
@@ -167,16 +195,19 @@ def verification(f):
 
 def sheet_row(f, recs):
     tests = "; ".join(f"{lab} -> {'met' if y else 'not met'}" for lab, y in ec.boundary_tests(f))
+    if f["concept"] == "age" and f["op"] in ("<", ">"):
+        tests += "; no case states the age at the threshold (ages are in completed years)"
+    skipped = not_rendered(f)
     return {"crit_id": f["cand"], "nct_id": f["nct_id"], "criterion_type": f["criterion_type"],
             "original_text": f["original_text"], "rule_text_shown": ec.full_text(f),
             "simplifications": " | ".join(f["simplifications"]) or "none",
             "text_edits": text_edits(f["original_text"], f["rule_text"]),
             "never_mentioned_disjuncts": ", ".join(f["other_disjuncts"]) or "none",
             "registry_context": f.get("registry_parent") or "standalone item", "program": ec.program_text(f),
-            "executed_tests": tests, "near_miss_kinds": ", ".join(ec.kinds(f)),
+            "executed_tests": tests,
+            "near_miss_kinds": ", ".join(ec.kinds(f)) + (f"; not rendered: {', '.join(skipped)}" if skipped else ""),
             "groups": len({r["tid"] for r in recs}), "verification": verification(f),
-            "cases": f"ec_v1/SIGNOFF_CASES.md#{f['cand']}", "records_sha256": records_sha(recs)[:16],
-            **{c: "" for c in COLS[COLS.index("reviewer_1"):]}}
+            "cases": f"ec_v1/SIGNOFF_CASES.md#{f['cand']}", "fingerprint": fingerprint(f, recs)}
 
 
 def cases_md(keep, recs):
@@ -211,15 +242,30 @@ def load_items():
     return post(items, ctx)
 
 
-def prepare():
+def reviewer_files():
+    return [p for p in sorted(REVIEWS.glob("*.csv")) if p.stem != "TEMPLATE"]
+
+
+def prepare(force=False):
+    """Writes the sheet, every case and a blank review template. Refuses while reviewer files exist
+    (unless force), so that the cases do not change under a sign-off in progress."""
+    if reviewer_files() and not force:
+        sys.exit(f"refusing to prepare: sign-off files exist in {REVIEWS.relative_to(ROOT)} "
+                 f"({', '.join(p.name for p in reviewer_files())}); rerun with --force to regenerate the sheet, "
+                 f"after which every changed fingerprint needs a new review")
     items = load_items()
     keep, recs, excl = render(items)
     ok, sc = shortcut_check(recs)
-    with open(SHEET, "w", encoding="utf-8", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=COLS)
+    REVIEWS.mkdir(parents=True, exist_ok=True)
+    with open(SHEET, "w", encoding="utf-8", newline="") as fh, \
+            open(REVIEWS / "TEMPLATE.csv", "w", encoding="utf-8", newline="") as th:
+        w, t = csv.DictWriter(fh, fieldnames=COLS), csv.DictWriter(th, fieldnames=REVIEW_COLS)
         w.writeheader()
+        t.writeheader()
         for f in keep:
-            w.writerow(sheet_row(f, [r for r in recs if r["rid"] == f"ec_{f['cand']}"]))
+            row = sheet_row(f, [r for r in recs if r["rid"] == f"ec_{f['cand']}"])
+            w.writerow(row)
+            t.writerow({"crit_id": row["crit_id"], "fingerprint": row["fingerprint"]})
     (KIT / "SIGNOFF_CASES.md").write_text(cases_md(keep, recs), encoding="utf-8")
     with open(KIT / "EXCLUSIONS.csv", "w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
@@ -250,42 +296,80 @@ def prepare():
         sys.exit("shortcut validation FAILED")
 
 
+def yes_no(v):
+    return {"yes": "yes", "y": "yes", "no": "no", "n": "no"}.get((v or "").strip().lower())
+
+
+def read_reviews():
+    """{crit_id: [(reviewer, row)]} from docs/ec_signoff/<authorN>.csv, plus the problems found. A row
+    with no decision and no comment is not a review (that reviewer left the criterion to others)."""
+    out, bad = {}, []
+    for p in reviewer_files():
+        if p.stem not in AUTHORS:
+            bad.append(f"{p.name}: rename it to <authorN>.csv (one of {', '.join(AUTHORS)})")
+            continue
+        try:
+            rows = list(csv.DictReader(open(p, encoding="utf-8-sig", newline="")))
+        except UnicodeDecodeError:
+            bad.append(f"{p.name}: not UTF-8; save it as 'CSV UTF-8 (comma delimited)'")
+            continue
+        if rows and set(REVIEW_COLS) - set(rows[0]):
+            bad.append(f"{p.name}: missing columns {sorted(set(REVIEW_COLS) - set(rows[0]))}")
+            continue
+        ids = Counter((r["crit_id"] or "").strip() for r in rows)
+        bad += [f"{p.name}: {c} appears {n} times" for c, n in ids.items() if n > 1]
+        for r in rows:
+            if any((r[c] or "").strip() for c in ("program_ok", "cases_ok", "comment")):
+                out.setdefault(r["crit_id"].strip(), []).append((p.stem, r))
+    return out, bad
+
+
 def freeze():
-    """Keeps the criteria with four yeses from two different reviewers. Refuses unless every row is fully
-    signed off (both reviewers named, all four decisions yes or no, a comment for every no), and unless the
-    approved criteria render exactly the records the authors reviewed (records_sha256 on the sheet)."""
-    rows = list(csv.DictReader(open(SHEET, encoding="utf-8")))
-    decisions = ("program_ok_1", "cases_ok_1", "program_ok_2", "cases_ok_2")
-    norm = lambda v: {"yes": "yes", "y": "yes", "ok": "yes", "no": "no", "n": "no"}.get(v.strip().lower())  # noqa: E731
-    bad = []
-    for r in rows:
-        if not r["reviewer_1"].strip() or not r["reviewer_2"].strip() or \
-                r["reviewer_1"].strip().lower() == r["reviewer_2"].strip().lower():
-            bad.append(f"{r['crit_id']}: two different reviewers are needed")
-        if any(norm(r[c]) is None for c in decisions):
-            bad.append(f"{r['crit_id']}: every decision must be yes or no")
-        for i in ("1", "2"):
-            if "no" in (norm(r[f"program_ok_{i}"]), norm(r[f"cases_ok_{i}"])) and not r[f"comment_{i}"].strip():
-                bad.append(f"{r['crit_id']}: reviewer {i} says no without a comment")
-    if bad:
-        sys.exit("refusing to freeze:\n" + "\n".join(bad))
-    approved = {r["crit_id"] for r in rows if all(norm(r[c]) == "yes" for c in decisions)}
-    reviewed = {r["crit_id"]: r["records_sha256"] for r in rows}
-    items = [f for f in load_items() if f["cand"] in approved]
-    keep, recs, excl = render(items)
-    if excl:
-        sys.exit(f"refusing to freeze: approved criteria no longer render: {[f['cand'] for f, _ in excl]}")
-    changed = [f["cand"] for f in keep
-               if records_sha([r for r in recs if r["rid"] == f"ec_{f['cand']}"])[:16] != reviewed[f["cand"]]]
-    if changed:
-        sys.exit(f"refusing to freeze: the records of {changed} differ from those the authors reviewed")
-    ok, sc = shortcut_check(recs)
-    if not ok:
-        sys.exit("shortcut validation FAILED")
+    """Keeps the criteria that two reviewers approved (program_ok and cases_ok yes from both). Refuses
+    unless every presented criterion has exactly two reviews, each of the current fingerprint, with
+    program_ok yes or no, cases_ok yes or no (blank allowed after program_ok no) and a comment for every
+    no. Criteria not approved are listed in the manifest as rejected at sign-off."""
     reg_path = ROOT / "data" / "REGISTRY.json"
     registry = json.loads(reg_path.read_text(encoding="utf-8"))
     if registry.get("ec_v1/test", {}).get("frozen"):
         sys.exit("refusing to rebuild: ec_v1/test is frozen")
+    keep_all, recs_all, _ = render(load_items())
+    fps = {f["cand"]: fingerprint(f, [r for r in recs_all if r["rid"] == f"ec_{f['cand']}"]) for f in keep_all}
+    reviews, bad = read_reviews()
+    bad += [f"{c}: not a criterion on the sheet" for c in reviews if c not in fps]
+    for c, fp in fps.items():
+        rs = reviews.get(c, [])
+        if len(rs) != 2:
+            bad.append(f"{c}: {len(rs)} review(s) ({', '.join(w for w, _ in rs) or 'none'}); exactly two are needed")
+            continue
+        for who, r in rs:
+            p, k = yes_no(r["program_ok"]), yes_no(r["cases_ok"])
+            if (r["fingerprint"] or "").strip() != fp:
+                bad.append(f"{c} ({who}): signed another version (fingerprint {r['fingerprint']!r}, now {fp}); "
+                           f"review it again")
+            if p is None or (k is None and not (p == "no" and not (r["cases_ok"] or "").strip())):
+                bad.append(f"{c} ({who}): program_ok must be yes or no, cases_ok yes or no (blank only after "
+                           f"program_ok no)")
+            if "no" in (p, k) and not (r["comment"] or "").strip():
+                bad.append(f"{c} ({who}): a no needs a comment")
+    if bad:
+        sys.exit("refusing to freeze:\n" + "\n".join(bad))
+    approved = {c for c in fps if all(yes_no(r["program_ok"]) == yes_no(r["cases_ok"]) == "yes"
+                                      for _, r in reviews[c])}
+    if not approved:
+        sys.exit("no criterion approved; nothing to freeze")
+    keep = [f for f in keep_all if f["cand"] in approved]
+    recs = [r for r in recs_all if r["rid"] in {f"ec_{c}" for c in approved}]
+    with open(REVIEWS / "MERGED.csv", "w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["crit_id", "fingerprint", "approved"] + [f"{x}_{i}" for i in (1, 2)
+                                                             for x in ("reviewer", "program_ok", "cases_ok", "comment")])
+        for c in fps:
+            w.writerow([c, fps[c], "yes" if c in approved else "no"]
+                       + [v for who, r in reviews[c] for v in (who, r["program_ok"], r["cases_ok"], r["comment"])])
+    ok, sc = shortcut_check(recs)
+    if not ok:
+        sys.exit("shortcut validation FAILED")
     d = ROOT / "data" / "ec_v1" / "test"
     d.mkdir(parents=True, exist_ok=True)
     lines = "".join(json.dumps(r, sort_keys=True) + "\n" for r in recs)
@@ -296,7 +380,8 @@ def freeze():
            "generator": "scripts/build_ec_v1.py (selrm/ec.py)", "criteria": len(keep),
            "trials": len({f["nct_id"] for f in keep}), "n_groups": len({r["tid"] for r in recs}), "n_records": len(recs),
            "sha256": sha, "git_commit": D.git_commit(), "signed_off": sorted(f["cand"] for f in keep),
-           "rejected_at_signoff": sorted(r["crit_id"] for r in rows if r["crit_id"] not in approved),
+           "rejected_at_signoff": sorted(set(fps) - approved),
+           "reviewers": {c: sorted(w for w, _ in reviews[c]) for c in sorted(fps)},
            "shortcut_validation": {"result": "PASS", "scorers": sc}}
     (d / "MANIFEST.json").write_text(json.dumps(man, indent=1, sort_keys=True), encoding="utf-8")
     registry["ec_v1/test"] = {"path": "ec_v1/test/records.jsonl", "split": "test", "level": "registered",
@@ -307,4 +392,7 @@ def freeze():
 
 
 if __name__ == "__main__":
-    {"prepare": prepare, "freeze": freeze}[sys.argv[1]]()
+    cmd = sys.argv[1] if len(sys.argv) > 1 else ""
+    if cmd not in ("prepare", "freeze"):
+        sys.exit("usage: python scripts/build_ec_v1.py prepare [--force] | freeze")
+    prepare("--force" in sys.argv) if cmd == "prepare" else freeze()
