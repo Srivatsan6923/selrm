@@ -1,0 +1,220 @@
+{
+ "bleeding": {
+  "generic": [
+   "No melena or hematemesis.",
+   "Hemoglobin normal on today's blood count.",
+   "No hematuria or hemoptysis.",
+   "Conjunctivae pink, with no pallor.",
+   "Examination shows no signs of blood loss.",
+   "Bowel habit normal, without any blood in the stool."
+  ],
+  "present": [
+   "Active major upper gastrointestinal bleed, requiring blood transfusion.",
+   "Ongoing major bleeding from the lower bowel, receiving blood transfusion.",
+   "Major retroperitoneal bleed seen on a CT scan this morning, needing urgent treatment.",
+   "Vomiting large amounts of blood today from a major bleed in the esophagus.",
+   "Currently has a major bleed from a duodenal ulcer, with transfusion under way.",
+   "Major bleed from the stomach at present, with hemoglobin falling."
+  ],
+  "past": [
+   "Major gastrointestinal bleed in {year} needing transfusion, resolved with endoscopic treatment.",
+   "Previously transfused for a major bleed from a stomach ulcer, which healed in {year}.",
+   "Major bleed from a ruptured spleen in {year}, which stopped after emergency surgery.",
+   "Major postoperative bleed from a knee wound in {year}, resolved with a repeat procedure.",
+   "Major intracranial bleed after a fall years ago, with full recovery.",
+   "Recovered from a major lower gastrointestinal bleed in {year} that required transfusion."
+  ],
+  "absent": [
+   "No history of major bleeding.",
+   "Denies any major bleeding, past or present.",
+   "Reports no major bleeding episodes, recent or remote.",
+   "Bleeding history: no major bleeds.",
+   "Has never had a major bleed.",
+   "Medical records negative for major bleeding at any time."
+  ],
+  "rel": [
+   "{Poss} {rel} is hospitalized with a major gastrointestinal bleed.",
+   "{Poss} {rel} has an active major bleed from a stomach ulcer.",
+   "{Poss} {rel} is in intensive care today with a major brain bleed.",
+   "{Poss} {rel} is in the emergency room with a major bleed from a deep cut.",
+   "{Poss} {rel} is currently being transfused for a major bleed.",
+   "{Poss} {rel} has major bleeding from the bowel at present."
+  ],
+  "rel_past": [
+   "{Poss} {rel} had a major gastrointestinal bleed in {year}.",
+   "{Poss} {rel} previously had a major bleed from a stomach ulcer, which healed.",
+   "{Poss} {rel} had a major bleed during an operation in {year}, which the surgeons controlled.",
+   "{Poss} {rel} had a major bleed after a car crash; the bleeding stopped with treatment.",
+   "{Poss} {rel} needed a blood transfusion for a major bleed years ago.",
+   "{Poss} {rel} recovered from a major intracranial bleed in {year}."
+  ]
+ },
+ "cancer": {
+  "generic": [
+   "Recent screening tests all normal.",
+   "No unexplained weight loss or new lumps.",
+   "Has not been referred to an oncology clinic.",
+   "Not undergoing chemotherapy or radiotherapy.",
+   "Oncology follow-up: none.",
+   "Weight steady over the past year."
+  ],
+  "present": [
+   "Active colon cancer under oncology treatment.",
+   "Non-Hodgkin lymphoma diagnosed this year, on active treatment.",
+   "Takes oral targeted therapy for active chronic myeloid leukemia.",
+   "Gastric carcinoma on chemotherapy ahead of planned surgery.",
+   "Has metastatic lung cancer, receiving palliative treatment.",
+   "Has melanoma skin cancer and is receiving treatment for it."
+  ],
+  "past": [
+   "Colon cancer removed surgically in {year}, in remission since.",
+   "Previously treated for Hodgkin lymphoma, with treatment completed in {year}; remains in remission.",
+   "Bladder cancer treated in {year}, with all follow-up checks clear.",
+   "Completed chemotherapy for acute leukemia in {year}; still in remission.",
+   "Had thyroid cancer years ago and is now cured.",
+   "Formerly had kidney cancer, cured by surgery in {year}."
+  ],
+  "absent": [
+   "No history of cancer of any kind.",
+   "Denies any cancer, past or present.",
+   "No cancer, whether active or in remission.",
+   "No leukemia, lymphoma or other cancer at any time.",
+   "Has never had cancer.",
+   "Free of cancer throughout life."
+  ],
+  "rel": [
+   "{Poss} {rel} has active colon cancer.",
+   "{Poss} {rel} has lymphoma and is on active treatment.",
+   "{Poss} {rel} has pancreatic cancer and began chemotherapy this week.",
+   "{Poss} {rel} is hospitalized with advanced stomach cancer.",
+   "{Poss} {rel} is being treated for leukemia.",
+   "{Poss} {rel} has lung cancer that has spread to the liver."
+  ]
+ },
+ "exudate": {
+  "generic": [
+   "Tonsils normal in appearance.",
+   "Throat mildly red; tonsils otherwise unremarkable.",
+   "Tonsillar surfaces smooth and pink.",
+   "Both tonsils look healthy.",
+   "Tonsils pink and clean on inspection.",
+   "Tonsils a little red, surfaces clear."
+  ],
+  "present": [
+   "White exudate on both tonsils.",
+   "Patchy exudate over the right tonsil.",
+   "Creamy exudate in the tonsillar crypts today.",
+   "Spots of exudate on the left tonsil.",
+   "Tonsils swollen and coated with yellow exudate.",
+   "Tonsillar exudate visible on both sides."
+  ],
+  "past": [
+   "Tonsillar exudate during tonsillitis in {year}, resolved with antibiotics.",
+   "Previously had white exudate on the tonsils in {year}, since resolved.",
+   "Mononucleosis in {year} caused tonsillar exudate that has since resolved.",
+   "In {year}, exudate coated both tonsils and then resolved after a course of antibiotics.",
+   "Had exudate on the tonsils with strep throat years ago, which cleared within days.",
+   "Recovered fully from tonsillitis with exudate in {year}."
+  ],
+  "absent": [
+   "No tonsillar exudate.",
+   "Exudate not seen on either tonsil.",
+   "No exudate today, despite red and enlarged tonsils.",
+   "There is no exudate over the tonsils this morning.",
+   "Tonsils free of exudate.",
+   "Tonsillar exudate absent on examination."
+  ],
+  "rel": [
+   "{Poss} {rel} has tonsillitis with white exudate on the tonsils.",
+   "{Poss} {rel} has strep throat, with exudate on both tonsils.",
+   "{Poss} {rel} is home sick, with thick exudate over both tonsils.",
+   "{Poss} {rel}'s tonsils are coated with exudate this morning.",
+   "{Poss} {rel} has a sore throat with tonsillar exudate.",
+   "{Poss} {rel} currently has a throat infection with tonsillar exudate."
+  ]
+ },
+ "neck_nodes": {
+  "generic": [
+   "Neck soft and nontender.",
+   "Neck supple, with nothing abnormal felt.",
+   "No neck masses.",
+   "Neck feels normal on examination.",
+   "Neck palpation unremarkable.",
+   "Front of the neck without tenderness or swelling."
+  ],
+  "present": [
+   "Tender anterior cervical lymph nodes on both sides.",
+   "Tender anterior cervical lymphadenopathy.",
+   "The anterior cervical lymph nodes are tender today, more so on the right.",
+   "Tender anterior cervical lymph nodes on the left.",
+   "Anterior cervical lymph nodes enlarged and tender to touch.",
+   "Tender, swollen lymph nodes in the front of the neck."
+  ],
+  "past": [
+   "Tender anterior cervical lymph nodes during tonsillitis in {year}, since resolved.",
+   "Previously had tender, swollen lymph nodes at the front of the neck in {year}, since resolved.",
+   "During mononucleosis in {year}, the anterior cervical lymph nodes were tender; this resolved with rest.",
+   "Pharyngitis in {year} with tender anterior cervical lymph nodes, both since resolved.",
+   "Tender anterior cervical lymph nodes with a throat infection years ago, which went down within two weeks.",
+   "Formerly had tender anterior cervical lymphadenopathy in {year}, with full recovery."
+  ],
+  "absent": [
+   "No tender anterior cervical lymph nodes.",
+   "Anterior cervical lymph nodes not enlarged or tender.",
+   "No tender anterior cervical lymphadenopathy today.",
+   "The anterior cervical lymph nodes are small and not tender.",
+   "Neck supple, without tender lymph nodes.",
+   "Palpation of the neck negative for tender lymph nodes."
+  ],
+  "rel": [
+   "{Poss} {rel} has tender lymph nodes at the front of the neck.",
+   "{Poss} {rel} has tender, swollen anterior cervical lymph nodes.",
+   "{Poss} {rel}'s anterior cervical lymph nodes are tender this morning.",
+   "{Poss} {rel} is seeing a doctor today about tender anterior cervical lymph nodes.",
+   "{Poss} {rel} has a throat infection with tender anterior cervical lymph nodes.",
+   "{Poss} {rel} currently has tender anterior cervical lymphadenopathy."
+  ]
+ },
+ "aspirin": {
+  "generic": [
+   "Takes no antiplatelet medicines.",
+   "Not on any antiplatelet medication.",
+   "No platelet-inhibiting drugs on the medication list.",
+   "Takes no daily pill to stop platelets from clumping.",
+   "Antiplatelet therapy: none at present.",
+   "Current antiplatelet drugs: none."
+  ],
+  "present": [
+   "Takes aspirin 81 mg daily.",
+   "Medication list: aspirin 81 mg, taken each morning.",
+   "Takes one enteric-coated aspirin with breakfast every day.",
+   "Active medications today include aspirin 81 mg once daily.",
+   "Currently on low-dose aspirin each day.",
+   "Swallows one low-dose aspirin each night."
+  ],
+  "past": [
+   "Took low-dose aspirin until {year}, when it was stopped on medical advice.",
+   "Previously on aspirin 81 mg; stopped in {year} and not restarted.",
+   "Aspirin was stopped at a medication review in {year}.",
+   "Completed a six-week course of aspirin after ankle surgery in {year}.",
+   "Formerly took a daily aspirin, discontinued years ago.",
+   "Quit low-dose aspirin in {year} and has stayed off it since."
+  ],
+  "absent": [
+   "Denies any aspirin use.",
+   "Not taking aspirin.",
+   "Does not take aspirin or any product containing it.",
+   "Reports no aspirin use, prescribed or over the counter.",
+   "Has never taken aspirin.",
+   "Medication history negative for aspirin."
+  ],
+  "rel": [
+   "{Poss} {rel} takes aspirin daily.",
+   "{Poss} {rel} takes aspirin 81 mg every morning.",
+   "{Poss} {rel} has taken aspirin every day for several years and still does.",
+   "{Poss} {rel} keeps aspirin in a weekly pill organizer and takes it every evening.",
+   "{Poss} {rel} is on low-dose aspirin.",
+   "{Poss} {rel} uses a daily aspirin for heart protection."
+  ]
+ }
+}

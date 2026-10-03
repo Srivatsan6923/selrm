@@ -46,7 +46,8 @@ def ledger_to_prose(ledger) -> str:
     sents = []
     for e in ledger:
         if e["found"] == "not mentioned":
-            sents.append(f"The note does not mention {e['need']}.")
+            sents.append(f"The note records no value for {e['need']}; the input is unknown."
+                         if e["status"] == "unknown" else f"The note does not mention {e['need']}.")
             continue
         who = "the patient" if e["subject"] == "patient" else e["subject"].replace("other (", "the patient's ").rstrip(")")
         when = "at present" if e["time"] == "current" else "in the " + e["time"]

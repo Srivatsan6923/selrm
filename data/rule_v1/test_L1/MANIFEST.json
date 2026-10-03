@@ -1,0 +1,131 @@
+{
+ "cases_by_kind": {
+  "base": 1000,
+  "flip": 1000,
+  "near": 1000,
+  "pres": 1000
+ },
+ "created": "2026-10-02",
+ "fold": 1,
+ "fold_seed": 27,
+ "frozen": true,
+ "generator": "scripts/build_rule_v1.py",
+ "git_commit": "59034a3dc24319fe2f1c596f7ad89336617da76f",
+ "groups_by": {
+  "class": {
+   "all|mixed|cur": 105,
+   "all|numeric|-": 40,
+   "any|finding|ext": 52,
+   "any|mixed|cur": 72,
+   "any|mixed|ext": 108,
+   "kofn|finding|ext": 53,
+   "kofn|mixed|cur": 121,
+   "kofn|numeric|-": 38,
+   "score|mixed|ext": 94,
+   "score|numeric|-": 35,
+   "single|finding|cur": 101,
+   "single|finding|ext": 65,
+   "single|numeric|-": 116
+  },
+  "family": {
+   "additive_score": 129,
+   "drug_interaction": 33,
+   "g_all_of": 145,
+   "g_any_of": 232,
+   "g_score_cutoff": 29,
+   "g_single": 148,
+   "g_two_of_three": 62,
+   "history_switch": 21,
+   "lab_threshold": 80,
+   "two_of_three": 121
+  },
+  "level": {
+   "L1": 1000
+  },
+  "nm_kind": {
+   "boundary": 200,
+   "negation": 200,
+   "numeric": 200,
+   "subject": 200,
+   "time": 200
+  },
+  "rid": {
+   "c1_cat_platelets": 44,
+   "c1_valacyclovir": 36,
+   "c2_t2d_hf": 21,
+   "gs032": 40,
+   "gs034": 36,
+   "gs036": 42,
+   "gs051": 22,
+   "gs059": 22,
+   "gs077": 21,
+   "gs080": 25,
+   "gs097": 48,
+   "gs136": 72,
+   "gs151": 15,
+   "gs158": 14,
+   "gs165": 66,
+   "gs176": 22,
+   "gs185": 38,
+   "gs202": 24,
+   "gs213": 23,
+   "gs225": 57,
+   "gs235": 29,
+   "s1_idsa_minor": 35,
+   "s2_chads2": 37,
+   "s3_hctci": 57,
+   "two_pneumonia": 65,
+   "two_throat": 56,
+   "yeast_warfarin": 33
+  },
+  "tier": {
+   "delabelled": 1,
+   "easy": 652,
+   "long": 312,
+   "superseded": 35
+  }
+ },
+ "labels": {
+  "0": 7484,
+  "1": 7484
+ },
+ "level": "L1",
+ "n_cases": 4000,
+ "n_groups": 1000,
+ "n_records": 14968,
+ "name": "test_L1",
+ "python": "3.12.7",
+ "record_share": {
+  "base": 0.25,
+  "flip": 0.25,
+  "near": 0.25,
+  "pres": 0.25
+ },
+ "rejects": {
+  "by_reason": {
+   "reject gs059 negation pres": 1,
+   "reject gs080 negation pres": 2,
+   "reject gs176 negation pres": 1,
+   "reject gs213 negation pres": 1,
+   "reject yeast_warfarin negation pres": 1,
+   "reject yeast_warfarin subject pres": 1
+  },
+  "proposed": 1007,
+  "rejected": 7
+ },
+ "set": "rule_v1",
+ "sha256": "fd2f86614171eb0bb9d58b557cf396ab28624f2ddf96bc8bb121b76a5a9d4b4b",
+ "shortcut_validation": {
+  "output": "always_default  all: Rev 0 Hold 100 TA 0 (n=1000) | nm_kind=boundary: Rev 0 Hold 100 TA 0 (n=200) | nm_kind=negation: Rev 0 Hold 100 TA 0 (n=200) | nm_kind=numeric: Rev 0 Hold 100 TA 0 (n=200) | nm_kind=subject: Rev 0 Hold 100 TA 0 (n=200) | nm_kind=time: Rev 0 Hold 100 TA 0 (n=200)\nconcept_named   all: Rev 48 Hold 0 TA 0 (n=1000) | nm_kind=boundary: Rev 0 Hold 0 TA 0 (n=200) | nm_kind=negation: Rev 100 Hold 0 TA 0 (n=200) | nm_kind=numeric: Rev 0 Hold 0 TA 0 (n=200) | nm_kind=subject: Rev 100 Hold 0 TA 0 (n=200) | nm_kind=time: Rev 41 Hold 0 TA 0 (n=200)\noracle          all: Rev 100 Hold 100 TA 100 (n=1000) | nm_kind=boundary: Rev 100 Hold 100 TA 100 (n=200) | nm_kind=negation: Rev 100 Hold 100 TA 100 (n=200) | nm_kind=numeric: Rev 100 Hold 100 TA 100 (n=200) | nm_kind=subject: Rev 100 Hold 100 TA 100 (n=200) | nm_kind=time: Rev 100 Hold 100 TA 100 (n=200)\nSHORTCUT VALIDATION: PASS",
+  "result": "PASS"
+ },
+ "split": "test",
+ "template_split_hash": "1020bdc7bdae5d60515ad2344eacd0527a297730bb5a9648e09da1291e101ad5",
+ "templates": "test",
+ "tiers": [
+  "delabelled",
+  "easy",
+  "long",
+  "superseded"
+ ]
+}
