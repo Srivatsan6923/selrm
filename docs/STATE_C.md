@@ -1,9 +1,9 @@
 # STATE role C (maintained by Claude Code)
-Updated: 2026-10-03 ~09:10 UTC (Sat). Task list: FINAL_TASKS_C.md. Branch role-c, clone D:\NAACL27\selrm-role-c.
+Updated: 2026-10-03 ~16:55 UTC (Sat). Task list: FINAL_TASKS_C.md. Branch role-c, clone D:\NAACL27\selrm-role-c.
 
 ## Compute and how runs work
 - NRP namespace ecepxie: own PVC selrm-c (/pvc/selrmc); B's PVC selrm-b read-only at /pvcb. Objects selrm-c-*.
-- Sync pod selrm-c-sync recreated ~08:23 UTC; it expires after 6 h (~14:20 UTC): `python scripts/submit_c.py sync-down`,
+- Sync pod selrm-c-sync recreated ~16:40 UTC; it expires after 6 h (~22:40 UTC): `python scripts/submit_c.py sync-down`,
   wait until it is gone, then `sync-up`.
 - Launcher scripts/submit_c.py: sync-up/down, push-code (git archive HEAD), push FILE DEST, sh CMD,
   runner TASKS --gpu {a100,l40,a40,a6000,32gb,24gb} --bcode ac524e8062ef [--code SHA] [--online for PRM runs]
@@ -20,46 +20,38 @@ Updated: 2026-10-03 ~09:10 UTC (Sat). Task list: FINAL_TASKS_C.md. Branch role-c
   scratch/topk/<run>/ by kubectl exec tar).
 
 ## Done
-- P0.1 TrialGPT: protocol (sections 10 amendments, 11 corrections after test), dev check of all 9 systems (incl.
-  summary2-blocks), test scored for 9 systems + verdict-blocks seed 2; report regenerated after an independent
-  verification (docs/TRIALGPT_RESULTS.md: seed table, threshold-source sensitivity). Comparison (6) not supported.
-- P0.2 critic: results_git/C-TF-critic (every rule_v1 set + xr_v1; MR, XA in summaries); default correction
-  results_git/C-TF-defcorr (alpha -> inf on dev, extended grid) + C-ME-defcorr; docs/RESULTS_C.md (rows + ladder).
-- P0.3 metrics (selrm/metrics.py; crossed_accuracy as A's selrm.xr: raises on incomplete items, exclude=).
-- P0.5 general-purpose trigger tagger: results_git/C-SC-gptrigger (L2 TA 77.7).
-- Diagnostics: C-TF-critic/diagnostics.json (G, L0 columns); results_git/C-DG-shift (slices signal=C-AUD-qwen35-9b
-  from C-TF-critic, signal=B-F-verdict-blocks from B-F-verdict-blocks-s0); sampling noise results_git/C-DG-noise
-  (noise_check.json T 0.7 / top-p 0.95; noise_check_T1.json T 1.0).
-- Clinical pairs for B complete (clinpairs_train 7,929 = MedEinst 7,807 + MedQA 122); shortcut validation in every
-  pair-set MANIFEST incl. medeinst_dis_test.
-- PRM wrappers reviewed; GPU loading fixed (straight to device; MedS3 without second warm-up, runner generation 6).
-- Scripts ready, waiting for inputs: scripts/ref_extract_program.py (C-REF-extract-program from the merged
-  C-TF-promptledger-lenient), scripts/probe.py (C-DG-probe hidden states, generation 7), scripts/dg_shift.py (add
-  C-AUD-medprm when merged).
-- External ids verified; clinical sets built; not run (logged): CondMedQA, EHRNote-ChatQA, MedPRMBench ablation,
-  injected-error PRM, pilot.
+- P0.1 TrialGPT: all required systems + summary x blocks, seeds verdict-blocks-s2 / verdict-triplets-s1;
+  docs/TRIALGPT_RESULTS.md (seed table, threshold sensitivity). Comparison (6) not supported.
+- P0.2 + P1 training-free rows (docs/RESULTS_C.md): critic 27.1, prompted summary 67.5, prompted ledger strict 0.1 /
+  format-normalised 59.5, default correction 26.4, generated-program verifier 89.8 (1,000-triplet subset); MR / XA
+  in summaries (score.py --write-summary). Reference C-REF-extract-program 2.1 (vocabulary, see handoff).
+- P0.3 metrics; P0.5 trigger tagger (77.7).
+- Audit PRMs merged: C-AUD-medprm 11.9, C-AUD-meds3 10.0, C-AUD-fover 31.8 (rule sets, xr_v1, MedEinst, key pairs).
+- Clinical: MedEinst (docs/MEDEINST_RESULTS.md; comparisons (4), (5) in results_git/C-ME-comparisons.json with
+  label-pair clusters: primary negative), key pairs (docs/KEYPAIRS_RESULTS.md), NLI4CT-P (docs/NLI4CT_RESULTS.md).
+- Diagnostics: C-DG-shift (9B judge, verdict x blocks, Med-PRM), C-DG-noise, C-TF-critic/diagnostics.json;
+  probe results_git/C-DG-probe/probe.json (activations in scratch/probe, sha256 checked).
+- Clinical training pairs for B; Med-PRM per-example scores for B's premise gate (handoff 3 Oct).
 
-## In progress (09:10 UTC)
-- c_tf_rule: C-TF-promptledger--p2 (L2), lenient rejudges --p1..3 (also on c_wave2), C-TF-promptsum--p2/--p3,
-  C-TF-promptledger--p3, C-TG-summary2-blocks-s0, C-TG-verdict-triplets-s1, C-DG-probe (generation 7 only).
-- c_wave2: C-TF-genprog (32 GB runner). c_long2: C-ME-* (verdict-blocks-s0, verdict-triplets-s0, ledger2-triplets-s0
-  running), then C-KP-*, C-NL-*. c_prm: C-AUD-medprm--p1/--p2, C-AUD-fover--p1, C-AUD-meds3--p1 running; ThinkPRM on
-  a6000 / l40 runners (pending).
-- Background watcher: scratchpad/watch_done.sh (exits when a run gains DONE).
+## In progress (16:55 UTC)
+- C-AUD-genprm--p1 (re-queued; 24gbf runner, 12 h), C-AUD-thinkprm--p2 / --p3 (l40 / a6000 runners, 12 h).
+- C-ME-ledger2-blocks-s0, C-NL-ledger2-blocks-s0, C-NL-ledger2-triplets-s0 (c_long2 24 GB runners);
+  C-ME-promptsum, C-ME-promptledger (+ -lenient rejudge) on the >= 30 GB c_long2 runners (32gb, l40).
+- C-ME-ledger2-triplets-s0-lenient (POST HOC re-read) on the c_tf_rule 24gbf runner.
 
 ## Next
-1. As parts finish: pull; merge_parts.py C-TF-promptsum / C-TF-promptledger / C-TF-promptledger-lenient /
-   C-AUD-<prm>; score.py --write-summary on merged runs; reader_audit.py; report_c.py; ref_extract_program.py;
-   dg_shift.py C-AUD-medprm=results_git/C-AUD-medprm; handoff P0.2 rows to D.
-2. TrialGPT: when C-TG-summary2-blocks-s0 / -verdict-triplets-s1 land, eval_clinical trialgpt --split test.
-3. MedEinst / key pairs / NLI4CT-P: eval_clinical medeinst | keypairs | nli4ct as C-ME / C-KP / C-NL runs land;
-   comparisons (4), (5) in results_git/C-ME-comparisons.json.
-4. Probe: when C-DG-probe is DONE, fetch hidden_*.npz to scratch (not git), python scripts/probe.py <dir>.
-5. API audit when COMPUTE REQUEST #1 is granted: run ids C-AUD-closed-1 (GPT), -closed-2 (Gemini), -closed-3
-   (Claude), C-AUD-llama70b, C-AUD-kimi-k3 (lead's make_tables names); L2 estimate: GPT $265 (1,000 triplets),
-   Claude $106, Gemini $63, Kimi $12, Llama $3; references C-REF-closed-zero / -closed-ledger.
-6. More systems when B registers them (ledger2-balanced, B-TR-*): C-TG-<x>, C-ME-<x>.
-7. P0.4 ec_v1 / challenge_v1 / rewrite_v1 when A freezes them.
+1. As runs land: pull; merge C-AUD-genprm / C-AUD-thinkprm parts; score.py --write-summary; eval_clinical medeinst /
+   nli4ct; report_c.py; handoff the remaining rows.
+2. API audit when COMPUTE REQUEST #1 is granted (run ids C-AUD-closed-1/2/3, C-AUD-llama70b, C-AUD-kimi-k3;
+   references C-REF-closed-zero / -closed-ledger; closed extractor for C-REF-extract-program).
+3. More systems when B registers them (ledger2-balanced, B-TR-*): C-TG-<x>, C-ME-<x>, C-KP-<x>, C-NL-<x>.
+4. P0.4 ec_v1 / challenge_v1 / rewrite_v1 when A freezes them.
+
+## Notes
+- Runner jobs die at their --hours deadline (activeDeadlineSeconds); generative PRM parts need 12 h.
+- Large files from the PVC: split -b 20000000 on the pod, copy chunks with kubectl exec sh -c cat, check sha256
+  (a single kubectl exec stream breaks above ~75 MB).
+- Old runners (code before generation 3) ignore min_gen: put generation-gated runs in task files only new runners read.
 
 ## Local scratch (not in git; .git/info/exclude)
 scratch/rv1 (rule_v1 eval records), scratch/acode (A 59034a3), scratch/acode_xr (A 2df9308 + KNOWN_ISSUES.json from
