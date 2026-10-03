@@ -675,6 +675,26 @@
    "corpus": "rule_v1/train_triplets_no_boundary",
    "pvc": "selrm-b",
    "pvc_path": "selrm/adapters/B-LOKO-boundary-bit_reader-s0"
+  },
+  "B-LOKO-subject-verdict-s2": {
+   "run_id": "B-LOKO-subject-verdict-s2",
+   "path": null,
+   "status": "DONE (seed 2); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v1/train_triplets_no_subject",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-LOKO-subject-verdict-s2"
+  },
+  "B-SC-summary2-blocks-s0": {
+   "run_id": "B-SC-summary2-blocks-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "summary2_case",
+   "corpus": "rule_v1/train_blocks",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-SC-summary2-blocks-s0"
   }
  }
 }
