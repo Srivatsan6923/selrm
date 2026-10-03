@@ -1,0 +1,14 @@
+# Role-C volume (results, clinical sets, pre-tokenised prompts of C's sets). Role B's volume
+# selrm-b is mounted read-only by C's pods for the env tarball, weights, rule_v1 data and adapters.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: selrm-c
+  namespace: ecepxie
+  labels: {app: selrm-c}
+spec:
+  storageClassName: rook-cephfs
+  accessModes: [ReadWriteMany]
+  resources:
+    requests:
+      storage: 60Gi
