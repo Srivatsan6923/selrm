@@ -1,0 +1,100 @@
+{
+ "note": "clin_v1/medeinst_neg zero-shot for the case-blind rows (B code ac524e8)",
+ "runs": [
+  {
+   "run_id": "C-MN-critic",
+   "priority": 1,
+   "format": "verdict",
+   "adapter": null,
+   "adapter_run": null,
+   "bs_score": 64,
+   "min_gen": 3,
+   "sets": [
+    "clin_v1/medeinst_neg"
+   ],
+   "note": "medeinst_neg zero-shot (S2/S3 context: case-blind rows next to the case-visible ones)"
+  },
+  {
+   "run_id": "C-MN-verdict-blocks-s0",
+   "priority": 2,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s0",
+   "adapter_run": "B-F-verdict-blocks-s0",
+   "bs_score": 64,
+   "min_gen": 3,
+   "sets": [
+    "clin_v1/medeinst_neg"
+   ],
+   "note": "medeinst_neg zero-shot (S2/S3 context: case-blind rows next to the case-visible ones)"
+  },
+  {
+   "run_id": "C-MN-verdict-triplets-s0",
+   "priority": 2,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s0",
+   "adapter_run": "B-F-verdict-triplets-s0",
+   "bs_score": 64,
+   "min_gen": 3,
+   "sets": [
+    "clin_v1/medeinst_neg"
+   ],
+   "note": "medeinst_neg zero-shot (S2/S3 context: case-blind rows next to the case-visible ones)"
+  },
+  {
+   "run_id": "C-MN-summary2-triplets-s0",
+   "priority": 3,
+   "format": "summary2",
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-triplets-s0",
+   "adapter_run": "B-F-summary2-triplets-s0",
+   "bs_score": 64,
+   "min_gen": 3,
+   "sets": [
+    "clin_v1/medeinst_neg"
+   ],
+   "note": "medeinst_neg zero-shot (S2/S3 context: case-blind rows next to the case-visible ones)",
+   "max_new": 384
+  },
+  {
+   "run_id": "C-MN-ledger2-triplets-s0",
+   "priority": 3,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s0",
+   "adapter_run": "B-F-ledger2-triplets-s0",
+   "bs_score": 64,
+   "min_gen": 3,
+   "sets": [
+    "clin_v1/medeinst_neg"
+   ],
+   "note": "medeinst_neg zero-shot (S2/S3 context: case-blind rows next to the case-visible ones)",
+   "max_new": 384
+  },
+  {
+   "run_id": "C-MN-summary2-blocks-s0",
+   "priority": 4,
+   "format": "summary2",
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-blocks-s0",
+   "adapter_run": "B-F-summary2-blocks-s0",
+   "bs_score": 64,
+   "min_gen": 3,
+   "sets": [
+    "clin_v1/medeinst_neg"
+   ],
+   "note": "medeinst_neg zero-shot (S2/S3 context: case-blind rows next to the case-visible ones)",
+   "max_new": 384
+  },
+  {
+   "run_id": "C-MN-ledger2-blocks-s0",
+   "priority": 4,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-blocks-s0",
+   "adapter_run": "B-F-ledger2-blocks-s0",
+   "bs_score": 64,
+   "min_gen": 3,
+   "sets": [
+    "clin_v1/medeinst_neg"
+   ],
+   "note": "medeinst_neg zero-shot (S2/S3 context: case-blind rows next to the case-visible ones)",
+   "max_new": 384
+  }
+ ]
+}

@@ -58,6 +58,20 @@
    ],
    "max_new": 384,
    "note": "S3 (secondary): MedEinst, case-visible judge (reader cap 384 as for the other trained readers)"
+  },
+  {
+   "run_id": "C-MN-sc-summary2-triplets-s0",
+   "priority": 6,
+   "format": "summary2_case",
+   "adapter": "/pvcb/selrm/adapters/B-SC-summary2-triplets-s0",
+   "adapter_run": "B-SC-summary2-triplets-s0",
+   "bs_score": 64,
+   "min_gen": 3,
+   "max_new": 384,
+   "sets": [
+    "clin_v1/medeinst_neg"
+   ],
+   "note": "S3 (secondary): hold on denied evidence, case-visible judge"
   }
  ]
 }
