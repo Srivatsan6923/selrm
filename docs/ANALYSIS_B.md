@@ -22,7 +22,23 @@ Disagreement by near-miss kind (triplet solved = TA):
 | subject | 400 | 365 | 26 | 8 | 1 |
 | time | 400 | 399 | 1 | 0 | 0 |
 
-- blocks: not run (B-F-summary2-blocks-s0 missing)
+**blocks** (B-F-ledger2-blocks-s0 vs B-F-summary2-blocks-s0, seed 0):
+
+| metric | ledger | summary | ledger - summary [95% CI], p |
+|---|---|---|---|
+| TA | 75.3 | 67.3 | +8.0 [+4.1, +12.2], p < 0.001 |
+| Rev | 98.7 | 96.8 | +1.9 [+0.6, +3.5], p < 0.001 |
+| Hold | 76.2 | 70.1 | +6.1 [+2.4, +9.9], p 0.002 |
+
+Disagreement by near-miss kind (triplet solved = TA):
+
+| near-miss kind | n | both | ledger only | summary only | neither |
+|---|---|---|---|---|---|
+| boundary | 400 | 109 | 179 | 13 | 99 |
+| negation | 400 | 367 | 23 | 4 | 6 |
+| numeric | 400 | 399 | 0 | 1 | 0 |
+| subject | 400 | 161 | 33 | 68 | 138 |
+| time | 400 | 178 | 57 | 46 | 119 |
 
 ## 2. Do generated summaries or ledgers contain a verdict?
 
@@ -30,6 +46,7 @@ Every reader output of the two-stage runs (one per case and condition, on every 
 
 | run | reader outputs | contains a claim sentence | answer token line | answer/verdict word | claim judged | criterion decided | applies line | counts / does not count |
 |---|---|---|---|---|---|---|---|---|
+| B-F-summary2-blocks-s0 | 37497 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-triplets-s0 | 10500 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-blocks-s0 | 37497 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-triplets-s0 | 37497 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -62,6 +79,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-rationale-natural-s0 | 55.1 | 55.9 | 103 | 56.7 | 7 |
 | B-F-rationale-blocks-s0 | 61.5 | 61.4 | 103 | 57.7 | 7 |
 | B-F-rationale-triplets-s0 | 91.0 | 92.0 | 103 | 90.1 | 7 |
+| B-F-summary2-blocks-s0 | 67.3 | 68.7 | 103 | 68.6 | 7 |
 | B-F-summary2-triplets-s0 | 98.0 | 97.8 | 103 | 98.8 | 7 |
 | B-F-ledger2-blocks-s0 | 75.3 | 75.3 | 103 | 72.8 | 7 |
 | B-F-ledger2-triplets-s0 | 99.2 | 99.1 | 103 | 98.7 | 7 |
@@ -91,11 +109,14 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-rationale-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 15979819 | 2088516 | 938 | 1.74 | 2.50 |
 | B-F-rationale-natural-s0 | NVIDIA A100-SXM4-80GB | 60000 | 60000 | - | - | 15851199 | 2034704 | 938 | 1.70 | 2.42 |
 | B-F-rationale-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 16138949 | 2144515 | 938 | 1.78 | 2.56 |
+| B-F-summary2-blocks-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 11864845 | 1055547 | 938 | 0.90 | 0.56 |
 | B-F-summary2-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 1.60 | 0.34 |
 | B-F-verdict-balanced-s0 | NVIDIA A100-SXM4-80GB | 60000 | 60000 | - | - | 12976009 | 120000 | 938 | 1.48 | 0.65 |
 | B-F-verdict-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 1.51 | 0.65 |
+| B-F-verdict-blocks-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 0.64 | 0.31 |
 | B-F-verdict-natural-s0 | NVIDIA A100-SXM4-80GB | 60000 | 60000 | - | - | 12916495 | 120000 | 938 | 1.56 | 0.68 |
 | B-F-verdict-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 1.51 | 0.65 |
+| B-F-verdict-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 0.64 | 0.31 |
 
 ## 8. Was donor-ledger resampling active?
 
@@ -105,6 +126,7 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 |---|---|---|---|---|---|---|
 | B-F-ledger2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-ledger2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-summary2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-summary2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 
 ## 9. Field interventions on the ledger x triplets adapter (test_L2)
