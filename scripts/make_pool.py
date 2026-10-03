@@ -116,8 +116,9 @@ def main():
     for q in qs:
         user = PROMPT.format(question=q["question"],
                              options="\n".join(f"{k}. {v}" for k, v in q["options"].items()))
-        ids = tok.apply_chat_template([{"role": "user", "content": user}], add_generation_prompt=True,
-                                      enable_thinking=False, tokenize=True)
+        text = tok.apply_chat_template([{"role": "user", "content": user}], add_generation_prompt=True,
+                                       enable_thinking=False, tokenize=False)
+        ids = tok(text, add_special_tokens=False).input_ids     # as B's evaluation (eval_local.chat_ids)
         seed = int(hashlib.sha256(f"{a.pool}|{q['qid']}".encode()).hexdigest()[:8], 16)
         prompts.append({"prompt_token_ids": ids})
         params.append(vllm.SamplingParams(n=64 if q["qid"] in sub else n, seed=seed, **SAMPLING))
