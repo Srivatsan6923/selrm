@@ -32,7 +32,7 @@ def test_budget_and_balance():
         if fmt == "ledger2_verify":
             st = dict(st, reader=st["reader"], judge=st["judge"])
         assert ans.count("+") == ans.count("-"), fmt
-        if fmt in ("summary2", "summary2_case", "value2", "ledger2", "ledger2_verify"):
+        if fmt in ("summary2", "summary2_case", "value2", "ledger2", "ledger2_verify", "conddrv"):
             assert st["reader"] + st["judge"] == len(recs) and abs(st["reader"] - st["judge"]) <= 1
 
 
@@ -53,6 +53,13 @@ def test_two_stage_isolation_and_targets():
     judge = [e for e in ex if e["part"] == "judge"]
     assert judge and all(any(c in e["prompt"] for c in cases) for e in judge)
     assert [e["completion"] for e in ex if e["part"] == "reader"] == [e["completion"] for e in ex2 if e["part"] == "reader"]
+    # conddrv: the reader gets both candidate answers and no condition; targets and judge examples are ledger2's
+    ex, _ = build_examples(recs, "conddrv")
+    ex2, _ = build_examples(recs, "ledger2")
+    rd = [e["prompt"] for e in ex if e["part"] == "reader"]
+    assert rd and all("Condition under test" not in p and "\nA. " in p and "\nB. " in p for p in rd)
+    assert [(e["completion"], e["part"] == "judge" and e["prompt"]) for e in ex] == \
+           [(e["completion"], e["part"] == "judge" and e["prompt"]) for e in ex2]
 
 
 def test_resampling_and_determinism():

@@ -24,6 +24,8 @@ ledger2_verify  ledger2 examples + verification examples (one ledger entry and t
              field is as the case records it, - for an entry with one corrupted field), B-AB-verify
 verdict_bt   verdict prompts of the two claims of a case; Bradley-Terry loss on u(correct) - u(wrong)
              (B-AB-pairwise; n//2 pairs = n sequences; missing-input cases have no preferred claim)
+conddrv      ledger2 whose reader gets the two candidate answers (conclusion claims) instead of the condition
+             under test and names the condition itself in need (B-AB-conddrv, "condition derived by the reader")
 genprm       GENPRM prompt -> ```python check``` + its output + answer (B-TR-genprm; the check is A's
              render_check_code, A-D13, rendered by scripts/render_checks.py; one per record)
 """
@@ -35,13 +37,19 @@ from selrm.prompts import (answer, judge_prompt, ledger_to_text, rationale_promp
                            reader_prompt, verdict_prompt)
 
 FORMATS = ("verdict", "rationale", "summary2", "summary2_case", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader",
-           "verdict_bt", "ledger2_verify", "genprm")
+           "verdict_bt", "ledger2_verify", "genprm", "conddrv")
 VERSION = 2                  # bump when example construction changes (part of the pretok key)
-TWO_STAGE = ("summary2", "summary2_case", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader", "ledger2_verify")
+TWO_STAGE = ("summary2", "summary2_case", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader", "ledger2_verify", "conddrv")
 PROSE = ("summary2", "summary2_case")       # reader writes free prose (never malformed)
 # summary pipeline whose judge also sees the case (FINAL_TASKS_B P0.4; B-defined prompt: the frozen JUDGE has no case)
 JUDGE_CASE = ("Rule: {rule}\n\nCase:\n{case}\n\nEvidence record:\n{record}\n\nClaim: {claim}\n\n"
               "Is the claim correct for this case under the stated rule? Answer + or -.")
+# condition derived by the reader (Table 9 ablation; B-defined prompt, READER_LEDGER without the condition)
+READER_DERIVE = ("Rule: {rule}\n\nCase:\n{case}\n\nCandidate answers:\nA. {a}\nB. {b}\n\n"
+                 "Find the condition of the rule on which these answers differ, then write the evidence ledger "
+                 "for it: one entry per relevant mention in the case, with the fields need, found, subject, "
+                 "status, time. Quote the case verbatim in 'found' (or give the value). If nothing is mentioned, "
+                 "write found: not mentioned. Record facts only; do not decide any claim.")
 # verification pass (Table 9 "+ verification pass"; B-defined prompt, the frozen prompts have none)
 VERIFY = ("Rule: {rule}\n\nCase:\n{case}\n\nCondition under test: {condition}\n\nLedger entry:\n{entry}\n\n"
           "Is every field of this entry (found, subject, status, time) as the case records it? Answer + or -.")
@@ -119,6 +127,26 @@ def genprm_target(code: str, out: str) -> str:
     return "```python\n" + code + "```\nOutput: " + out + "\n"
 
 
+def add_answers(records: list) -> list:
+    """Sets r["answers"] on every record: the two conclusion claims of its case, sorted (the conddrv reader's
+    input; the same for base, flip and near, so it carries no label)."""
+    ans = {}
+    for r in records:
+        if r["claim_type"] == "conclusion":
+            ans.setdefault((r["tid"], r["case_kind"]), set()).add(r["claim_text"])
+    for r in records:
+        r["answers"] = sorted(ans[(r["tid"], r["case_kind"])])
+    return records
+
+
+def reader_for(rec: dict, fmt: str) -> str:
+    """Reader prompt of a format: the frozen ledger or prose reader, or READER_DERIVE for conddrv."""
+    if fmt == "conddrv":
+        a, b = rec["answers"]
+        return READER_DERIVE.format(rule=rec["rule_text"], case=rec["case_text"], a=a, b=b)
+    return reader_prompt(rec, prose=fmt in PROSE)
+
+
 def judge_for(rec: dict, text: str, fmt: str) -> str:
     """Judge prompt for a reader output: the frozen JUDGE (rule, record, claim), or JUDGE_CASE for summary2_case."""
     if fmt == "summary2_case":
@@ -158,7 +186,7 @@ def well_formed(text: str, case_text: str, fmt: str) -> bool:
     text = text.strip()
     if fmt == "bit_reader":
         return text in BITS.values()
-    if fmt == "ledger2_verify":
+    if fmt in ("ledger2_verify", "conddrv"):
         fmt = "ledger2"
     if fmt in ("ledger2_dec", "dec_judge"):
         head, sep, last = text.rpartition("\n\n")
@@ -241,7 +269,9 @@ def build_examples(records, fmt: str, n: int | None = None, resample_p: float = 
         groups.setdefault((v["s"]["rid"], v["s"]["condition"], key[2]), []).append(key)
     n_pairs = (n - n // 2) // 2
     n_reader = n - 2 * n_pairs
-    ex = [{"prompt": reader_prompt(r, prose=fmt in PROSE), "completion": gold_record(r, fmt),
+    if fmt == "conddrv":
+        add_answers(records)
+    ex = [{"prompt": reader_for(r, fmt), "completion": gold_record(r, fmt),
            "part": "reader", "src": "/".join(r["iid"].split("/")[:2])}
           for r in _take(reader_units(records), n_reader, rng)]
     sel, swapped = [], 0

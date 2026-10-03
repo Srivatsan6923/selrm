@@ -24,7 +24,7 @@ from selrm.prompts import judge_prompt, ledger_to_text
 KIND = {"verdict": "verdict", "verdict_bt": "verdict", "rationale": "rationale", "summary2": "reader_prose",
         "summary2_case": "reader_prose", "value2": "reader_ledger", "ledger2": "reader_ledger", "ledger2_dec": "reader_ledger",
         "dec_judge": "reader_ledger", "bit_reader": "reader_ledger", "ledger2_verify": "reader_ledger",
-        "genprm": "genprm"}
+        "genprm": "genprm", "conddrv": "reader_derive"}
 PROGRAM_U = 10.0            # |u| when the rule program decides from the predicted bit
 MODES = (None, "oracle_ledger", "program_bit", "ledger_swap", "verify", "ledger_edit")
 # Executes generated checks one per stdin line (JSON string) in a separate interpreter: no imports

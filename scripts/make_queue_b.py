@@ -156,7 +156,7 @@ def backbones(seeds, registry, version):
 
 # Table 9 ablations: changes against ledger2 x triplets (corpus names inside <version>/)
 ABLATIONS = {"decfield": {"format": "ledger2_dec"}, "bitonly-judge": {"format": "dec_judge"},
-             "bitonly-reader": {"format": "bit_reader"}, "verify": {"format": "ledger2_verify", "mode": "verify"},
+             "bitonly-reader": {"format": "bit_reader"}, "conddrv": {"format": "conddrv"}, "verify": {"format": "ledger2_verify", "mode": "verify"},
              "concept": {"kind": "concept"}, "nopres": {"corpus": "abl_nopres_triplets"},
              "noresamp": {"resample_p": 0}, "pairwise": {"format": "verdict_bt"},
              "concl-only": {"corpus": "abl_conclusion_triplets"}}
