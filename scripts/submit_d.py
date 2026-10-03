@@ -141,6 +141,10 @@ def main():
     ap.add_argument("--n-gpu", dest="n_gpu", type=int, default=1, help="GPUs per pod (e.g. 2 x 24gb with --tp 2)")
     ap.add_argument("--mem", default="32Gi")
     a, extra = ap.parse_known_args()
+    if "--" in a.rest:                     # "... NAME -- script args": argparse keeps the separator
+        i = a.rest.index("--")
+        a.rest = a.rest[:i] + a.rest[i + 1:]
+    extra = [x for x in extra if x != "--"]
     if a.cmd == "pvc":
         apply({"apiVersion": "v1", "kind": "PersistentVolumeClaim",
                "metadata": {"name": PVC, "namespace": NS, "labels": LABELS},
