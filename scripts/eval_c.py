@@ -4,30 +4,52 @@ position, two-stage reader generated once per (case, condition), malformed ledge
 so C's rows and B's rows come from one code path (INTERFACES 3).
   python scripts/eval_c.py --root ROOT --broot BROOT --bcode BCODE --tasks TASKS.json
 Task file: {"runs": [{"run_id", "format", "adapter": null | path, "sets": [...], "priority",
-            "max_new": 384, "lenient": false, "hp": {...}}]}
+            "max_new": 384, "min_gb": 0, "nocase": false, "rejudge_from": null, "hp": {...}}]}
 Sets named rule_v1* are read from B's root (records and pre-tokenised prompts, read-only);
-other sets (clin_v1/...) from C's root, pre-tokenised here on first use with B's
-pretok.build_eval (same tokenizer, same chat template). Outputs per run:
-ROOT/results/<run_id>/{meta.json, scores_<set>.jsonl, summary_<set>.json, run.log,
-gpu_util.csv, DONE}; with lenient=true (ledger2 only) also scores_<set>~lenient.jsonl and
-summary_<set>~lenient.json: the same reader outputs, normalised by lenient_ledger() before
-the malformed check, judged again."""
+other sets (clin_v1/..., xr_v1/...) from C's root, pre-tokenised here on first use with B's
+functions (same tokenizer, same chat template). Outputs per run:
+ROOT/results/<run_id>/{meta.json, scores_<set>.jsonl, summary_<set>.json, run.log, gpu_util.csv, DONE}.
+nocase: score copies of the sets with case_text "" (default correction, u(s, no case)).
+rejudge_from: no generation; the source run's reader outputs are normalised by lenient_ledger()
+(format-normalised readout of untrained readers) and judged; claimable once the source is DONE.
+Runs with these options go in task files that only runners with this code read."""
 import argparse, gc, json, os, re, socket, sys, time, traceback
 
 KEYS = ("need", "found", "subject", "status", "time")
+LENIENT_VERSION = 2      # 2: markdown tables (decided on the development sets, 3 Oct, before any test scoring)
+
+
+def table_entries(text):
+    """Entries of a markdown table whose header names the five fields (any order, any case), or None."""
+    rows = [l.strip() for l in text.replace("\r", "").split("\n") if l.strip().startswith("|")]
+    if len(rows) < 2:
+        return None
+    head = [c.strip().strip("*").strip().lower() for c in rows[0].strip("|").split("|")]
+    if not set(KEYS) <= set(head):
+        return None
+    entries = []
+    for row in rows[1:]:
+        cells = [c.strip() for c in row.strip("|").split("|")]
+        if all(re.fullmatch(r"[\s:\-]*", c) for c in cells):          # separator row
+            continue
+        if len(cells) != len(head):
+            return None
+        entries.append({k: cells[head.index(k)].replace("**", "").strip() for k in KEYS})
+    return entries
 
 
 def lenient_ledger(text, case_text):
     """Canonical ledger text from a reader output with markdown noise, or None.
-    Strips code fences, bullets, numbering and bold/italic markers; reads 'key: value'
+    A markdown table with the five fields as columns gives one entry per row. Otherwise:
+    strips code fences, bullets, numbering and bold/italic markers; reads 'key: value'
     lines whose key is a ledger field (any case); a 'need' line opens an entry; other
     lines are ignored. Every entry needs the five fields in order; a quoted found is
     unquoted; found must be 'not mentioned' or a verbatim substring of the case, as in
     the strict check. ponytail: line-based; a value continued on a second line is cut."""
-    entries, cur = [], None
-    for raw in text.replace("\r", "").split("\n"):
+    entries, cur = table_entries(text), None
+    for raw in ([] if entries else text.replace("\r", "").split("\n")):
         line = raw.strip().strip("`").strip()
-        line = re.sub(r"^(?:[-*•+]|\d+[.)])\s+", "", line).replace("**", "").replace("__", "")
+        line = re.sub(r"^(?:[-*\u2022+]|\d+[.)])\s+", "", line).replace("**", "").replace("__", "")
         line = re.sub(r"^[*_]+([A-Za-z]+)[*_]+\s*:", r"\1:", line)
         m = re.match(r"^([A-Za-z]+)\s*:\s*(.*)$", line)
         if not m or m.group(1).lower() not in KEYS:
@@ -35,7 +57,7 @@ def lenient_ledger(text, case_text):
         k, v = m.group(1).lower(), m.group(2).strip()
         if k == "need":
             cur = {}
-            entries.append(cur)
+            entries = (entries or []) + [cur]
         if cur is None or k in cur:
             return None
         cur[k] = v
@@ -60,15 +82,17 @@ def load_jsonl(path):
         return [json.loads(line) for line in f]
 
 
-def lenient_pass(sc, root, rid, set_name, out_dir, log):
-    """Judge again on the leniently normalised reader outputs of the strict pass."""
+def rejudge(sc, root, rid, set_name, src_dir, out_dir, log):
+    """Format-normalised readout of another run's reader outputs (lenient_ledger, LENIENT_VERSION):
+    the judge reads the normalised ledger; judge forward passes only, nothing is regenerated.
+    Malformed after normalisation -> u = -20 for both claims, as in the strict check."""
     import eval_local
     from selrm.formats import MALFORMED_U, dataset_path, reader_unit
     from selrm.prompts import judge_prompt
     t0 = time.time()
     recs = load_jsonl(dataset_path(root, set_name))
     name = set_name.replace("/", "~")
-    out = {r["iid"]: r["reader_output"] for r in load_jsonl(f"{out_dir}/scores_{name}.jsonl")}
+    out = {r["iid"]: r["reader_output"] for r in load_jsonl(f"{src_dir}/scores_{name}.jsonl")}
     norm = {}
     for r in recs:
         k = reader_unit(r)
@@ -80,16 +104,19 @@ def lenient_pass(sc, root, rid, set_name, out_dir, log):
         got = sc.score(eval_local.chat_ids(sc.tok, [judge_prompt(recs[i], norm[reader_unit(recs[i])]) for i in idx]))
         for i, x in zip(idx, got):
             u[i] = float(x)
-    with open(f"{out_dir}/scores_{name}~lenient.jsonl", "w", encoding="utf-8") as f:
+    os.makedirs(out_dir, exist_ok=True)
+    with open(f"{out_dir}/scores_{name}.jsonl", "w", encoding="utf-8") as f:
         for r, x in zip(recs, u):
-            f.write(json.dumps({"iid": r["iid"], "u": x, "ledger_lenient": norm[reader_unit(r)]}) + "\n")
-    summ = eval_local.summarize(recs, u, rid, set_name + "~lenient")
+            f.write(json.dumps({"iid": r["iid"], "u": x, "reader_output": out[r["iid"]],
+                                "ledger_lenient": norm[reader_unit(r)]}) + "\n")
+    summ = eval_local.summarize(recs, u, rid, set_name)
     bad = sum(v is None for v in norm.values())
     summ["eval"] = {"reader_units": len(norm), "malformed_units": bad, "malformed_rate": round(bad / max(1, len(norm)), 4),
-                    "seconds": round(time.time() - t0, 1), "mode": "lenient"}
-    json.dump(summ, open(f"{out_dir}/summary_{name}~lenient.json", "w"), indent=1)
+                    "seconds": round(time.time() - t0, 1), "mode": "rejudge", "lenient_version": LENIENT_VERSION,
+                    "source_run": os.path.basename(src_dir)}
+    json.dump(summ, open(f"{out_dir}/summary_{name}.json", "w"), indent=1)
     a = summ.get("all", {})
-    log(f"{rid} {set_name} lenient: TA {a.get('TA', float('nan')):.1f} malformed {bad}/{len(norm)}")
+    log(f"{rid} {set_name} rejudge (lenient v{LENIENT_VERSION}): TA {a.get('TA', float('nan')):.1f} malformed {bad}/{len(norm)}")
     return summ
 
 
@@ -132,26 +159,42 @@ def run_one(spec, a, mon, log, owner):
         model, tok = finetune.load_for_eval(base, spec.get("adapter"), hp["max_len"], hp)
         log(f"loaded base {base}, adapter {spec.get('adapter')}")
         bs_score, bs_gen = spec.get("bs_score", 64), spec.get("bs_gen", 128)
-        if torch.cuda.is_available() and torch.cuda.get_device_properties(0).total_memory < 30 * 2**30:
-            bs_score, bs_gen = min(bs_score, 16), min(bs_gen, 16)     # 24 GB cards: 18.8 GB of weights
+        mem = torch.cuda.get_device_properties(0).total_memory / 2**30 if torch.cuda.is_available() else 99
+        if mem < 30:                              # 24 GB cards: 18.8 GB of weights
+            bs_score, bs_gen = min(bs_score, 16), min(bs_gen, 16)
+        elif mem < 40:                            # 32 GB cards
+            bs_score, bs_gen = min(bs_score, 64), min(bs_gen, 64)
         sc = eval_local.Scorer(model, tok, bs_score, bs_gen, spec.get("max_new", 384), log)
         tag = spec.get("base_model", "unsloth/Qwen3.5-9B").replace("/", "--")
         summ, secs = {}, {}
         for s in spec["sets"]:
             root = a.broot if s.startswith("rule_v1") else a.root
+            if spec.get("nocase"):                # default correction: u(s, no case); copies with case_text ""
+                src = load_jsonl(__import__("selrm.formats", fromlist=["dataset_path"]).dataset_path(root, s))
+                s, root = f"nocase/{s}", a.root
+                path = f"{a.root}/data/{s}.jsonl"
+                if not os.path.exists(path):
+                    os.makedirs(os.path.dirname(path), exist_ok=True)
+                    with open(f"{path}.{os.getpid()}.tmp", "w", encoding="utf-8") as f:
+                        for r in src:
+                            f.write(json.dumps(r | {"case_text": ""}) + "\n")
+                    os.replace(f"{path}.{os.getpid()}.tmp", path)
+            if spec.get("rejudge_from"):          # format-normalised readout of another run's reader outputs
+                summ[s] = rejudge(sc, root, rid, s, f"{a.root}/results/{spec['rejudge_from']}", rdir, log)
+                secs[s] = summ[s]["eval"]["seconds"]
+                continue
             if root == a.root:                    # C's sets: pre-tokenise once, same code and tokenizer as B
                 log(f"{rid} {s} prompts: {build_eval_c(a.root, spec['format'], tag, s, tok)}")
             summ[s] = eval_local.evaluate(sc, root, rid, spec["format"], s, rdir, log, tag, spec.get("mode"))
             secs[s] = summ[s].get("eval", {}).get("seconds")
-            if spec.get("lenient") and spec["format"] == "ledger2":
-                summ[s + "~lenient"] = lenient_pass(sc, root, rid, s, rdir, log)
         vers, gpu = __import__("train_eval_job").versions()
         meta = {"run_id": rid, "role": "C", "model": spec.get("base_model", "unsloth/Qwen3.5-9B"),
                 "model_revision": open(f"{base}/REVISION").read().strip() if os.path.exists(f"{base}/REVISION") else None,
                 "adapter": spec.get("adapter"), "adapter_run": spec.get("adapter_run"),
                 "provider": "local (NRP Nautilus)", "access_date": time.strftime("%Y-%m-%d"),
                 "reasoning": "chat template with enable_thinking=False", "format": spec["format"],
-                "mode": spec.get("mode"), "lenient": bool(spec.get("lenient")), "sets": spec["sets"],
+                "mode": spec.get("mode"), "rejudge_from": spec.get("rejudge_from"),
+                "lenient_version": LENIENT_VERSION if spec.get("rejudge_from") else None, "sets": spec["sets"],
                 "max_new": sc.max_new, "eval_batch": {"score": sc.bs_score, "generate": sc.bs_gen},
                 "hp": {k: hp[k] for k in ("max_len",)}, "eval_seconds_by_set": secs,
                 "eval_generated_tokens": sc.gen_tokens, "pad_check_ok": sc.pad_ok, "eval_u_path": sc.u_path,
@@ -214,6 +257,7 @@ def main():
     while True:
         runs = sorted(json.load(open(a.tasks))["runs"], key=lambda r: r.get("priority", 9))
         pick = next((r for r in runs if (not only or r["format"] in only) and (not gpu or gb >= r.get("min_gb", 0))
+                     and (not r.get("rejudge_from") or os.path.exists(f"{a.root}/results/{r['rejudge_from']}/DONE"))
                      and runq.state(f"{a.root}/results/{r['run_id']}") == "free"
                      and runq.claim(f"{a.root}/results/{r['run_id']}", owner)), None)
         if pick is None:

@@ -1,0 +1,33 @@
+{
+ "name": "clin_v1/keypairs_medqa",
+ "source": "bigbio/med_qa",
+ "revision": "484a6c066fe8e75c83edea0c88b5169316714fcd",
+ "source_file": "med_qa_en_4options_source/test-00000-of-00001.parquet",
+ "source_sha256": "b50b49fad2642c10ed343c6174d5ab0cb8efad434e7b66465ac471094eb57deb",
+ "split": "test",
+ "mode": "strict",
+ "case_description_required": true,
+ "questions": 1273,
+ "exclusions": {
+  "kept": 1202,
+  "no case description": 65,
+  "negative lead-in": 6
+ },
+ "questions_kept": 1202,
+ "n_pairs": 13,
+ "yield_questions_in_pairs": 0.0216,
+ "categories_in_pairs": {
+  "step2&3": 7,
+  "step1": 19
+ },
+ "git_commit": "07326b6da73a764f5cabe9144f128314048b894e",
+ "python": "3.12.7",
+ "rule": "a case description (a patient vignette: an age or patient noun and at least one sentence\nbefore the final question), a lead-in that is not negatively phrased (except, not, least, false, incorrect,\nuntrue, cannot, never, contraindicated as the asked property), no option that refers to other options\n(all/none/both/neither of the above/following, 'A and B'), stem of at least 8 tokens. Candidate pairs within\none split: keys differ and each key occurs (normalised text) among the other's options. One-to-one matching:\ngreedy by TF-IDF cosine of the stems, highest first, each question in at most one pair (ties: smaller ids).\nRecords: block per pair, base = question 1, flip = question 2; case_text = the complete question stem; claims\ns = 'The answer is <key 1>.' and s_prime = 'The answer is <key 2>.'; rule_text ''; reader condition = the two\ncandidate answers. meta: ids, stem similarity and its tercile, category / exam step.\nVariant 'oneway' (proposed to the lead, 3 Oct: the v13 definition yields 13 MedQA-test and 3 CareQA pairs): at\nleast one key is among the other's options; MedQA test and validation pooled (validation is used by no role);\nCareQA without the case-description requirement (most CareQA items are knowledge questions).",
+ "sha256": "291f5117787d2ef84047b631c865bc42181902f87c9e87edc48abba89f5f7938",
+ "created": "2026-10-02",
+ "frozen": true,
+ "shortcut_validation": {
+  "claim_only_reversal": 0.0,
+  "note": "Proposition 1 (i): a claim-only scorer gives d(q1) = d(q2), so no pair reverses"
+ }
+}

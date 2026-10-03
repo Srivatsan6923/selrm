@@ -1,0 +1,134 @@
+{
+ "run_id": "C-TG-promptledger-dev",
+ "set": "clin_v1/trialgpt_dev",
+ "protocol": "docs/TRIALGPT_PROTOCOL.md",
+ "threshold": -20.0,
+ "n_items": 213,
+ "n_scored": 200,
+ "macroF1": 15.581098339719029,
+ "macroF1_CI95": [
+  12.440191387559807,
+  18.343195266272186
+ ],
+ "acc": 30.5,
+ "acc_CI95": [
+  22.941176470588236,
+  37.95918367346939
+ ],
+ "per_class": {
+  "met": {
+   "P": 0.0,
+   "R": 0.0,
+   "F1": 0.0,
+   "n": 22
+  },
+  "not_met": {
+   "P": 0.0,
+   "R": 0.0,
+   "F1": 0.0,
+   "n": 117
+  },
+  "nei": {
+   "P": 30.5,
+   "R": 100.0,
+   "F1": 46.74329501915709,
+   "n": 61
+  }
+ },
+ "confusion": {
+  "met": {
+   "nei": 22
+  },
+  "not_met": {
+   "nei": 117
+  },
+  "nei": {
+   "nei": 61
+  }
+ },
+ "pred_distribution": {
+  "nei": 200
+ },
+ "macroF1_five_names": 9.348659003831418,
+ "per_class_five_names": {
+  "included": {
+   "P": 0.0,
+   "R": 0.0,
+   "F1": 0.0,
+   "n": 19
+  },
+  "not included": {
+   "P": 0.0,
+   "R": 0.0,
+   "F1": 0.0,
+   "n": 7
+  },
+  "excluded": {
+   "P": 0.0,
+   "R": 0.0,
+   "F1": 0.0,
+   "n": 3
+  },
+  "not excluded": {
+   "P": 0.0,
+   "R": 0.0,
+   "F1": 0.0,
+   "n": 110
+  },
+  "not enough information": {
+   "P": 30.5,
+   "R": 100.0,
+   "F1": 46.74329501915709,
+   "n": 61
+  }
+ },
+ "by_type": {
+  "inclusion": {
+   "macroF1": 25.308641975308642,
+   "acc": 61.19402985074627,
+   "n": 67
+  },
+  "exclusion": {
+   "macroF1": 8.71459694989107,
+   "acc": 15.037593984962406,
+   "n": 133
+  }
+ },
+ "not_applicable": {
+  "n": 13,
+  "pred": {
+   "nei": 13
+  }
+ },
+ "forced_choice_acc": 0.0,
+ "n_forced": 139,
+ "evidence": {
+  "precision": 0.0,
+  "n_items_pred": 0,
+  "recall": 0.0,
+  "n_items_gold": 73,
+  "items_without_quote": 213
+ },
+ "per_trial_acc": {
+  "n_trials": 16,
+  "min": 10.0,
+  "median": 26.19047619047619,
+  "max": 54.54545454545455
+ },
+ "bootstrap": {
+  "unit": "patient",
+  "B": 1000,
+  "seed": 0
+ },
+ "threshold_source": "results_git/C-TG-promptledger-dev/scores_rule_v1~dev_missing.jsonl",
+ "eval": {
+  "reader_units": 213,
+  "malformed_units": 213,
+  "mode": null,
+  "malformed_rate": 1.0,
+  "gen_not_stopped": 1,
+  "seconds": 360.8,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
