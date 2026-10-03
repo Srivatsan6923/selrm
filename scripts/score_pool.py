@@ -62,7 +62,7 @@ def vignettes(qs, swap):
 
 # ------------------------------------------------------------------ ledger model (vLLM)
 class Ledger:
-    def __init__(self, model, fmt):
+    def __init__(self, model, fmt, tp=1):
         import vllm
         from transformers import AutoTokenizer
         self.vllm, self.fmt = vllm, fmt
@@ -70,6 +70,7 @@ class Ledger:
         self.plus, self.minus = (self.tok.convert_tokens_to_ids(t) for t in ("+", "-"))
         assert len(self.tok("+", add_special_tokens=False).input_ids) == 1
         self.llm = vllm.LLM(model=model, dtype="bfloat16", max_model_len=8192, enable_prefix_caching=True,
+                            tensor_parallel_size=tp,
                             seed=0, generation_config="vllm", logprobs_mode="raw_logits", max_logprobs=20,
                             limit_mm_per_prompt={"image": 0, "video": 0})
         self.missing = 0
@@ -121,7 +122,7 @@ class Ledger:
 def run_ledger(a):
     qs, ss = load_pool(a.pool)
     vig = vignettes(qs, a.swap)
-    lm = Ledger(a.model, a.fmt)
+    lm = Ledger(a.model, a.fmt, a.tp)
     recs, where = [], []
     for j, s in enumerate(ss):
         for k, st in enumerate(s["steps"]):
@@ -188,7 +189,7 @@ def run_validate(a):
     from selrm import metrics as M
     recs = [json.loads(line) for line in open(a.records, encoding="utf-8")]
     b = {j["iid"]: j for j in map(json.loads, open(a.b_scores, encoding="utf-8"))}
-    lm = Ledger(a.model, a.fmt)
+    lm = Ledger(a.model, a.fmt, a.tp)
     t0 = time.time()
     res = lm.score(recs)
     os.makedirs(a.out, exist_ok=True)
@@ -235,6 +236,7 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--swap", action="store_true")
     ap.add_argument("--batch", type=int, default=8)
+    ap.add_argument("--tp", type=int, default=1, help="tensor parallel GPUs (2 on 24 GB cards)")
     ap.add_argument("--records")
     ap.add_argument("--b-scores", dest="b_scores")
     a = ap.parse_args()
