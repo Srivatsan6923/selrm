@@ -1,0 +1,13 @@
+{
+ "run_id": "B-F-verdict-blocks-s4",
+ "set": "rule_v1/missing",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "seconds": 75.5,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
