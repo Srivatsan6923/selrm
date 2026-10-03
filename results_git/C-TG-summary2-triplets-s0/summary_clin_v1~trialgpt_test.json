@@ -5,6 +5,7 @@
  "threshold": 13.051193237304688,
  "n_items": 801,
  "n_scored": 759,
+ "n_patients": 43,
  "macroF1": 69.18907390344371,
  "macroF1_CI95": [
   65.07952067764508,
@@ -113,14 +114,16 @@
  "forced_choice_acc": 87.4762808349146,
  "n_forced": 527,
  "evidence": {
-  "precision": 60.80305927342256,
-  "n_items_pred": 404,
-  "recall": 60.68702290076336,
+  "precision": 61.434108527131784,
+  "n_items_pred": 401,
+  "recall": 60.49618320610687,
   "n_items_gold": 332,
-  "items_without_quote": 397
+  "items_without_quote": 400
  },
+ "evidence_malformed_without_quotes": null,
  "per_trial_acc": {
   "n_trials": 64,
+  "min_items": 5,
   "min": 20.0,
   "median": 70.0,
   "max": 100.0
@@ -131,6 +134,12 @@
   "seed": 0
  },
  "threshold_source": "results_git/C-TG-summary2-triplets-dev/scores_rule_v1~dev_missing.jsonl",
+ "threshold_alt": {
+  "source": "origin/role-b:results_git/B-F-summary2-triplets-s0/scores_rule_v1~dev_missing.jsonl",
+  "tau": 13.128402709960938,
+  "macroF1": 69.13630841655096,
+  "acc": 69.03820816864295
+ },
  "eval": {
   "reader_units": 801,
   "malformed_units": 0,

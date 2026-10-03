@@ -5,6 +5,7 @@
  "threshold": 14.70350456237793,
  "n_items": 801,
  "n_scored": 759,
+ "n_patients": 43,
  "macroF1": 69.09251785304396,
  "macroF1_CI95": [
   64.25270926901763,
@@ -111,14 +112,22 @@
  "forced_choice_acc": 87.66603415559773,
  "n_forced": 527,
  "evidence": {
-  "precision": 58.12720848056537,
+  "precision": 55.625,
   "n_items_pred": 413,
-  "recall": 62.786259541984734,
+  "recall": 67.93893129770993,
   "n_items_gold": 332,
   "items_without_quote": 388
  },
+ "evidence_malformed_without_quotes": {
+  "precision": 57.64705882352941,
+  "n_items_pred": 384,
+  "recall": 56.10687022900763,
+  "n_items_gold": 332,
+  "items_without_quote": 417
+ },
  "per_trial_acc": {
   "n_trials": 64,
+  "min_items": 5,
   "min": 11.11111111111111,
   "median": 72.07792207792208,
   "max": 100.0
@@ -129,6 +138,12 @@
   "seed": 0
  },
  "threshold_source": "results_git/C-TG-ledger2-triplets-dev/scores_rule_v1~dev_missing.jsonl",
+ "threshold_alt": {
+  "source": "origin/role-b:results_git/B-F-ledger2-triplets-s0/scores_rule_v1~dev_missing.jsonl",
+  "tau": 14.693622589111328,
+  "macroF1": 69.09251785304396,
+  "acc": 70.61923583662714
+ },
  "eval": {
   "reader_units": 801,
   "malformed_units": 32,

@@ -290,6 +290,43 @@
    ],
    "max_new": 768,
    "min_gen": 3
+  },
+  {
+   "run_id": "C-ME-summary2-blocks-s0",
+   "priority": 20,
+   "format": "summary2",
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-blocks-s0",
+   "adapter_run": "B-F-summary2-blocks-s0",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "max_new": 384,
+   "min_gen": 3
+  },
+  {
+   "run_id": "C-ME-verdict-blocks-s2",
+   "priority": 21,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s2",
+   "adapter_run": "B-F-verdict-blocks-s2",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "min_gen": 3
+  },
+  {
+   "run_id": "C-ME-verdict-triplets-s1",
+   "priority": 22,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s1",
+   "adapter_run": "B-F-verdict-triplets-s1",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "min_gen": 3
   }
  ],
  "note": "long prompts; runner code with the budgeted padding check (GEN >= 3 and the check_padding fix)"

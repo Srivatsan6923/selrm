@@ -2,7 +2,8 @@
 judge (the untrained backbone), from the same forward passes. No GPU.
   python scripts/noise_check.py RUN_DIR [--logodds results_git/C-TF-critic] [--set rule_v1/test_L2]
 RUN_DIR holds topk_<set>.jsonl (scripts/eval_c.py, task field topk): the top-k next-token logits at the answer
-position of every verdict prompt. The sampled readout draws N tokens per record at temperature T with nucleus
+position of every verdict prompt, with the '+' and '-' logits. The log-odds readout is logit('+') - logit('-') of the
+same forward passes; --logodds adds the fp32 readout of a scoring run of the same model as a cross-check. The sampled readout draws N tokens per record at temperature T with nucleus
 top-p (v13: verdict frequencies over 32 samples; T 0.7, top-p 0.95, the generation settings of the runner),
 renormalised over the top-k tokens (the mass outside them is reported as coverage); the record's score is the
 share of '+' among the N draws, so d = share(s) - share(s'), and equal shares are ties (failures). Ten simulation
@@ -44,7 +45,8 @@ def nucleus(top_ids, top_logits, T, top_p):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("run_dir")
-    ap.add_argument("--logodds", default=f"{REPO}/results_git/C-TF-critic")
+    ap.add_argument("--logodds", default=None, help="optional scoring run of the same model (cross-check)")
+    ap.add_argument("--tok", default=f"{REPO}/scratch/qwen35_tok", help="tokenizer: '+' and '-' ids as B's Scorer")
     ap.add_argument("--set", default="rule_v1/test_L2")
     ap.add_argument("--data", default=os.environ.get("SELRM_DATA", f"{REPO}/scratch/rv1"))
     ap.add_argument("--n", type=int, default=32)
@@ -55,22 +57,15 @@ def main():
     name = a.set.replace("/", "~")
     top = {r["iid"]: r for r in load_jsonl(f"{a.run_dir}/topk_{name}.jsonl")}
     recs = [r for r in records(a.data, a.set) if r["iid"] in top]
-    plus_id = minus_id = None
-    lo = {r["iid"]: r["u"] for r in load_jsonl(f"{a.logodds}/scores_{name}.jsonl")}
+    from transformers import AutoTokenizer
+    plus_id, minus_id = (AutoTokenizer.from_pretrained(a.tok).convert_tokens_to_ids(t) for t in ("+", "-"))
     cover = []
     dist = {}
     for r in recs:
         t = top[r["iid"]]
         cover.append(sum(math.exp(l - t["logsumexp"]) for l in t["top_logits"]))
         dist[r["iid"]] = nucleus(t["top_ids"], t["top_logits"], a.T, a.top_p)
-        if plus_id is None:            # '+' and '-' ids: the tokens whose logits equal the saved plus / minus logits
-            for i, l in zip(t["top_ids"], t["top_logits"]):
-                if abs(l - t["plus"]) < 1e-3 and plus_id is None:
-                    plus_id = i
-                if abs(l - t["minus"]) < 1e-3 and minus_id is None:
-                    minus_id = i
-    T_lo = M.decisions(recs, [lo[r["iid"]] for r in recs])
-    base = M.summarise(T_lo)["all"]
+    base = M.summarise(M.decisions(recs, [top[r["iid"]]["plus"] - top[r["iid"]]["minus"] for r in recs]))["all"]
     res = []
     for seed in range(a.seeds):
         rng = random.Random(seed)
@@ -86,7 +81,12 @@ def main():
     out = {"set": a.set, "n_triplets": base["n"], "logodds": base, "sampled": agg, "samples_per_record": a.n,
            "temperature": a.T, "top_p": a.top_p, "seeds": a.seeds, "plus_id": plus_id, "minus_id": minus_id,
            "topk_coverage": {"median": statistics.median(cover), "min": min(cover)},
+           "plus_minus_in_topk": sum(plus_id in top[r["iid"]]["top_ids"] and minus_id in top[r["iid"]]["top_ids"] for r in recs),
            "note": "sampled readout = share of '+' among N draws from the model's next-token distribution (top-k, T, top-p)"}
+    if a.logodds:
+        lo = {r["iid"]: r["u"] for r in load_jsonl(f"{a.logodds}/scores_{name}.jsonl")}
+        out["logodds_run"] = {"run": os.path.basename(a.logodds.rstrip("/")),
+                              "summary": M.summarise(M.decisions(recs, [lo[r["iid"]] for r in recs]))["all"]}
     json.dump(out, open(f"{a.run_dir}/noise_check.json", "w", encoding="utf-8", newline="\n"), indent=1)
     print(json.dumps(out, indent=1))
 

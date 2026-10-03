@@ -5,6 +5,7 @@
  "threshold": 7.872409820556641,
  "n_items": 801,
  "n_scored": 759,
+ "n_patients": 43,
  "macroF1": 64.83139167213699,
  "macroF1_CI95": [
   60.31710024518289,
@@ -112,8 +113,10 @@
  "forced_choice_acc": 92.78937381404175,
  "n_forced": 527,
  "evidence": null,
+ "evidence_malformed_without_quotes": null,
  "per_trial_acc": {
   "n_trials": 64,
+  "min_items": 5,
   "min": 22.22222222222222,
   "median": 65.94202898550725,
   "max": 100.0
@@ -124,6 +127,12 @@
   "seed": 0
  },
  "threshold_source": "results_git/C-TG-verdict-blocks-dev/scores_rule_v1~dev_missing.jsonl",
+ "threshold_alt": {
+  "source": "origin/role-b:results_git/B-F-verdict-blocks-s0/scores_rule_v1~dev_missing.jsonl",
+  "tau": 7.878490447998047,
+  "macroF1": 64.83139167213699,
+  "acc": 65.74440052700922
+ },
  "eval": {
   "seconds": 162.9,
   "pad_ok": true,

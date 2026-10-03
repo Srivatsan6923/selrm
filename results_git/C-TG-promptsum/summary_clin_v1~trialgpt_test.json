@@ -5,6 +5,7 @@
  "threshold": -0.19486954808235168,
  "n_items": 801,
  "n_scored": 759,
+ "n_patients": 43,
  "macroF1": 68.00105445599257,
  "macroF1_CI95": [
   64.84605342669859,
@@ -119,8 +120,10 @@
   "n_items_gold": 332,
   "items_without_quote": 777
  },
+ "evidence_malformed_without_quotes": null,
  "per_trial_acc": {
   "n_trials": 64,
+  "min_items": 5,
   "min": 37.5,
   "median": 75.0,
   "max": 100.0
@@ -131,6 +134,12 @@
   "seed": 0
  },
  "threshold_source": "results_git/C-TG-promptsum-dev/scores_rule_v1~dev_missing.jsonl",
+ "threshold_alt": {
+  "source": "results_git/C-TF-promptsum--p1",
+  "tau": -0.14666470885276794,
+  "macroF1": 68.57359126076155,
+  "acc": 71.54150197628458
+ },
  "eval": {
   "reader_units": 801,
   "malformed_units": 0,

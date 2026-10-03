@@ -5,6 +5,7 @@
  "threshold": -0.5728464722633362,
  "n_items": 801,
  "n_scored": 759,
+ "n_patients": 43,
  "macroF1": 54.03533446375877,
  "macroF1_CI95": [
   51.25476347808051,
@@ -118,8 +119,16 @@
   "n_items_gold": 332,
   "items_without_quote": 582
  },
+ "evidence_malformed_without_quotes": {
+  "precision": 61.1260053619303,
+  "n_items_pred": 219,
+  "recall": 43.51145038167939,
+  "n_items_gold": 332,
+  "items_without_quote": 582
+ },
  "per_trial_acc": {
   "n_trials": 64,
+  "min_items": 5,
   "min": 20.0,
   "median": 66.66666666666667,
   "max": 100.0
