@@ -75,6 +75,7 @@ Every reader output of the two-stage runs (one per case and condition, on every 
 | B-F-value2-natural-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-value2-balanced-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-value2-blocks-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-value2-triplets-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-balanced-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-blocks-s0 | 37497 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-blocks-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -119,6 +120,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-value2-natural-s0 | 43.0 | 44.6 | 103 | 42.9 | 7 |
 | B-F-value2-balanced-s0 | 71.9 | 70.9 | 103 | 67.7 | 7 |
 | B-F-value2-blocks-s0 | 70.7 | 69.8 | 103 | 65.0 | 7 |
+| B-F-value2-triplets-s0 | 85.7 | 85.4 | 103 | 78.4 | 7 |
 | B-F-ledger2-balanced-s0 | 49.4 | 50.8 | 103 | 52.5 | 7 |
 | B-F-ledger2-blocks-s0 | 75.3 | 75.3 | 103 | 72.8 | 7 |
 | B-F-ledger2-triplets-s0 | 99.2 | 99.1 | 103 | 98.7 | 7 |
@@ -167,6 +169,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-value2-balanced-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 12238812 | 644511 | 938 | 0.72 | 0.15 |
 | B-F-value2-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 12239958 | 642454 | 938 | 1.78 | 0.30 |
 | B-F-value2-natural-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 12154474 | 617784 | 938 | 0.79 | 0.16 |
+| B-F-value2-triplets-s0 | NVIDIA A100-PCIE-40GB | 60004 | 60000 | 30000 | 30000 | 12340082 | 662031 | 938 | 2.14 | 0.38 |
 | B-F-verdict-balanced-s0 | NVIDIA A100-SXM4-80GB | 60000 | 60000 | - | - | 12976009 | 120000 | 938 | 1.48 | 0.65 |
 | B-F-verdict-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 1.51 | 0.65 |
 | B-F-verdict-blocks-s1 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 1.51 | 0.65 |
@@ -216,6 +219,7 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | B-F-value2-balanced-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-F-value2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-value2-natural-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
+| B-F-value2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-LOKO-boundary-ledger2-s0 | 0.3 | 30000 | 15000 | 4529 | 30.2% | 797 |
 | B-LOKO-boundary-summary2-s0 | 0.3 | 30000 | 15000 | 4529 | 30.2% | 797 |
 | B-LOKO-subject-ledger2-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
@@ -331,6 +335,7 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-F-value2-balanced-s0 | 57.8 | 90.4 | 60.0 | 100.0 | 12.0 | 59.0 |
 | B-F-value2-blocks-s0 | 70.0 | 94.2 | 83.0 | 100.0 | 42.0 | 55.0 |
 | B-F-value2-natural-s0 | 29.2 | 82.6 | 70.0 | 0.0 | 0.0 | 47.0 |
+| B-F-value2-triplets-s0 | 70.5 | 94.5 | 97.0 | 100.0 | 21.0 | 64.0 |
 | B-F-verdict-blocks-s3 | 40.2 | 88.5 | 89.0 | 37.0 | 18.0 | 17.0 |
 | B-F-verdict-blocks-s4 | 37.8 | 89.6 | 35.0 | 34.0 | 36.0 | 46.0 |
 | B-F-verdict-triplets-s2 | 90.0 | 98.0 | 100.0 | 100.0 | 100.0 | 60.0 |
