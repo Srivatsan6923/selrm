@@ -1,0 +1,48 @@
+{
+ "run_id": "B-AE-program-ledger",
+ "kind": "eval (CPU)",
+ "source_run": "B-F-ledger2-triplets-s0",
+ "program": "role A rule_v1 freeze e40789bd5d7a",
+ "eval_sets": [
+  "rule_v1/dev",
+  "rule_v1/test_L2",
+  "rule_v1/dev_missing",
+  "rule_v1/missing"
+ ],
+ "git_commit": "d678071f9ae2",
+ "matched": 21326,
+ "unmatched": 37,
+ "no_answer": 1283,
+ "malformed": 5,
+ "records": 43432,
+ "per_set": {
+  "rule_v1/dev": {
+   "matched": 2312,
+   "unmatched": 2,
+   "no_answer": 0,
+   "malformed": 2,
+   "records": 4560
+  },
+  "rule_v1/test_L2": {
+   "matched": 15343,
+   "unmatched": 29,
+   "no_answer": 0,
+   "malformed": 1,
+   "records": 29248
+  },
+  "rule_v1/dev_missing": {
+   "matched": 858,
+   "unmatched": 0,
+   "no_answer": 279,
+   "malformed": 2,
+   "records": 2280
+  },
+  "rule_v1/missing": {
+   "matched": 2813,
+   "unmatched": 6,
+   "no_answer": 1004,
+   "malformed": 0,
+   "records": 7344
+  }
+ }
+}
