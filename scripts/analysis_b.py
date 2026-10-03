@@ -375,19 +375,27 @@ def loko_section():
 
 
 def case_visible_section():
-    print("## 11. Summary pipeline whose judge also sees the case (test_L2, triplets corpus, seed 0; FINAL_TASKS_B P0.4)" + NL)
-    a, b, c = "B-SC-summary2-triplets-s0", "B-F-summary2-triplets-s0", "B-F-ledger2-triplets-s0"
-    if not all(map(done, (a, b, c))):
-        print("not run" + NL)
-        return
-    T = {r: triplets(r) for r in (a, b, c)}
-    print("| run | judge sees | TA | Rev | Hold |")
-    print("|---|---|---|---|---|")
-    for r, sees in ((a, "rule, case, prose record, claim"), (b, "rule, prose record, claim"), (c, "rule, ledger, claim")):
-        s = summarise(T[r])["all"]
-        print(f"| {r} | {sees} | {s['TA']:.1f} | {s['Rev']:.1f} | {s['Hold']:.1f} |")
-    print(NL + f"Case-visible minus blind summary judge, TA: {pdiff(T[a], T[b], 'TA')}; ledger minus case-visible summary "
-          f"judge, TA: {pdiff(T[c], T[a], 'TA')}." + NL)
+    print("## 11. Judges that also see the case (test_L2; FINAL_TASKS_B P0.4, NEXT_TASKS_B 2)" + NL)
+    print("Case-visible judge: rule, case, record, claim (B-SC summary2_case, B-LC ledger2_case); blind judge: rule, "
+          "record, claim (B-F). Seed 0 paired; seeds listed with the mean." + NL)
+    print("| corpus | record | case-visible TA / Rev / Hold (s0) | blind TA / Rev / Hold (s0) | case-visible - blind TA "
+          "[95% CI], p | case-visible TA s0 / s1 / s2 | mean |")
+    print("|---|---|---|---|---|---|---|")
+    for corpus in ("triplets", "blocks"):
+        for rec, cv, blind in (("prose", "B-SC-summary2", "B-F-summary2"), ("ledger", "B-LC-ledger2", "B-F-ledger2")):
+            a, b = f"{cv}-{corpus}-s0", f"{blind}-{corpus}-s0"
+            if not (done(a) and done(b)):
+                print(f"| {corpus} | {rec} | not run | | | | |")
+                continue
+            Ta, Tb = triplets(a), triplets(b)
+            sa, sb = summarise(Ta)["all"], summarise(Tb)["all"]
+            seeds = {sd: summarise(triplets(f"{cv}-{corpus}-s{sd}"))["all"]["TA"] for sd in range(3)
+                     if done(f"{cv}-{corpus}-s{sd}")}
+            f3 = lambda s: f"{s['TA']:.1f} / {s['Rev']:.1f} / {s['Hold']:.1f}"
+            print(f"| {corpus} | {rec} | {f3(sa)} | {f3(sb)} | {pdiff(Ta, Tb, 'TA')} | "
+                  + " / ".join(f"{seeds[sd]:.1f}" if sd in seeds else "-" for sd in range(3))
+                  + f" | {sum(seeds.values()) / len(seeds):.1f} |")
+    print()
 
 
 def xr_section():
