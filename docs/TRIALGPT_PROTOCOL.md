@@ -116,3 +116,13 @@ An external, expert-annotated evaluation on synthetic patient summaries: agreeme
 physician criterion-level judgments, not clinical validation, not trial screening and not
 diagnosis. The patient summaries were written for retrieval research and are not
 clinical records.
+
+## 10. Amendments (each made on development data, before any test scoring)
+- 3 Oct 2026: the untrained backbone's prompted ledger is read in two ways, each its own row:
+  (a) the frozen malformed check (INTERFACES 3), as fixed above; (b) a format-normalised readout
+  (run C-TG-promptledger-lenient), because the untrained reader writes its ledger as a markdown table or
+  with markdown key-value lines, which the frozen check rejects (rule_v1/dev_missing: 586 of 600 reader
+  outputs were still rejected by a line-based normalisation that did not read tables). (b) reads tables
+  and markdown key-value lines (scripts/eval_c.py lenient_ledger, version 2) and keeps the verbatim-quote
+  rule; it re-judges the saved reader outputs and generates nothing. Trained readers are read with the
+  frozen check only.

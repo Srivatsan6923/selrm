@@ -16,6 +16,36 @@
     "xr_v1/test"
    ],
    "note": "default correction (Table 4): u(s, no case) for u(s,x) + a[u(s,x) - u(s,no case)], a chosen on rule_v1/dev"
+  },
+  {
+   "run_id": "C-TF-promptledger-lenient",
+   "priority": 25,
+   "format": "ledger2",
+   "adapter": null,
+   "bs_score": 128,
+   "rejudge_from": "C-TF-promptledger",
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/dev",
+    "rule_v1/missing",
+    "rule_v1/test_L2",
+    "rule_v1/test_L3alt",
+    "xr_v1/test"
+   ],
+   "note": "format-normalised readout (lenient_ledger v2) of C-TF-promptledger's reader outputs"
+  },
+  {
+   "run_id": "C-TG-promptledger-lenient-dev",
+   "priority": 6,
+   "format": "ledger2",
+   "adapter": null,
+   "bs_score": 64,
+   "rejudge_from": "C-TG-promptledger-dev",
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev"
+   ],
+   "note": "format-normalised readout of the TrialGPT development run"
   }
  ],
  "note": "needs runner code >= b9b5c9b (nocase); never put such runs in a file older runners read"

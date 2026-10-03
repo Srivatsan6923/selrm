@@ -19,7 +19,8 @@ SYSTEMS = [  # (name in run ids, row label, format). Test runs: C-TG-<name> for 
     # (mirrors C-TF-<name>), C-TG-<name>-s<k> for B's adapters (mirrors B-F-<name>-s<k>); dev: C-TG-<name>-dev
     ("critic", "Untrained backbone, verdict (critic)", "verdict"),
     ("promptsum", "Untrained backbone, prompted summary", "summary2"),
-    ("promptledger", "Untrained backbone, prompted ledger", "ledger2"),
+    ("promptledger", "Untrained backbone, prompted ledger (frozen malformed check)", "ledger2"),
+    ("promptledger-lenient", "Untrained backbone, prompted ledger (format-normalised readout)", "ledger2"),
     ("verdict-blocks", "Verdict only x blocks", "verdict"),
     ("verdict-triplets", "Verdict only x triplets", "verdict"),
     ("summary2-blocks", "Prose summary x blocks", "summary2"),
@@ -27,7 +28,7 @@ SYSTEMS = [  # (name in run ids, row label, format). Test runs: C-TG-<name> for 
     ("ledger2-blocks", "Ledger x blocks", "ledger2"),
     ("ledger2-triplets", "Ledger x triplets", "ledger2"),
 ]
-UNTRAINED = ("critic", "promptsum", "promptledger")
+UNTRAINED = ("critic", "promptsum", "promptledger", "promptledger-lenient")
 
 
 def run_ids(res, name, split):
@@ -176,16 +177,15 @@ def summary(items, tau, run, split):
             "bootstrap": {"unit": "patient", "B": 1000, "seed": 0}}
 
 
-def run_system(res, data, recs, dm, split, name, fmt, variant="", run=None):
-    sfx = "~lenient" if variant else ""
-    sc = scores(f"{res}/{run}/scores_clin_v1~trialgpt_{split}{sfx}.jsonl")
-    sd = scores(f"{res}/{run}/scores_rule_v1~dev_missing{sfx}.jsonl")
+def run_system(recs, dm, split, fmt, run_dir):
+    """(items, summary) of one run, or (None, None) if it has no scores for the split yet."""
+    sc = scores(f"{run_dir}/scores_clin_v1~trialgpt_{split}.jsonl")
+    sd = scores(f"{run_dir}/scores_rule_v1~dev_missing.jsonl")
     if sc is None or sd is None:
-        return run, None, None
+        return None, None
     tau = M.mr_threshold(dm, [sd[r["iid"]]["u"] for r in dm])
-    items = evaluate(recs, {k: v | ({"reader_output": scores(f"{res}/{run}/scores_clin_v1~trialgpt_{split}.jsonl")[k]["reader_output"]}
-                                    if variant else {}) for k, v in sc.items()}, tau, fmt)
-    return run, items, summary(items, tau, run, split)
+    items = evaluate(recs, sc, tau, fmt)
+    return items, summary(items, tau, os.path.basename(run_dir), split)
 
 
 def fmt_num(x, nd=1):
@@ -202,19 +202,15 @@ def main():
     recs = load_jsonl(f"{REPO}/data/clin_v1/trialgpt_{a.split}/records.jsonl")
     dm = dataset(a.data, "rule_v1/dev_missing")
     rows, items_by = [], {}
-    combos = [(name, label, fmt, variant, rid) for name, label, fmt in SYSTEMS
-              for variant in ([""] + (["lenient"] if fmt == "ledger2" else []))
-              for rid in run_ids(a.results, name, a.split)]
-    for name, label, fmt, variant, rid in combos:
-        run, items, summ = run_system(a.results, a.data, recs, dm, a.split, name, fmt, variant, rid)
-        seed = rid.rsplit("-s", 1)[1] if rid[-3:-1] == "-s" else None
-        key = name + ("~lenient" if variant else "") + (f"@s{seed}" if seed not in (None, "0") else "")
-        rows.append((key, label + (" (lenient ledger parse)" if variant else "") + (f", seed {seed}" if seed else ""),
-                     run, summ))
+    for name, label, fmt, run in [(n, l, f, r) for n, l, f in SYSTEMS for r in run_ids(a.results, n, a.split)]:
+        items, summ = run_system(recs, dm, a.split, fmt, f"{a.results}/{run}")
+        seed = run.rsplit("-s", 1)[1] if run[-3:-1] == "-s" else None
+        key = name + (f"@s{seed}" if seed not in (None, "0") else "")
+        rows.append((key, label + (f", seed {seed}" if seed else ""), run, summ))
         if summ is None:
             continue
         items_by[key] = items
-        out = f"{a.results}/{run}/summary_clin_v1~trialgpt_{a.split}{'~lenient' if variant else ''}.json"
+        out = f"{a.results}/{run}/summary_clin_v1~trialgpt_{a.split}.json"
         old = json.load(open(out, encoding="utf-8")) if os.path.exists(out) else {}
         summ["eval"] = old.get("eval")
         json.dump(summ, open(out, "w", encoding="utf-8", newline="\n"), indent=1)

@@ -39,8 +39,7 @@
     "rule_v1/dev_missing",
     "clin_v1/trialgpt_dev"
    ],
-   "max_new": 768,
-   "lenient": true
+   "max_new": 768
   },
   {
    "run_id": "C-TG-verdict-blocks-dev",
@@ -80,8 +79,7 @@
     "rule_v1/dev_missing",
     "clin_v1/trialgpt_dev"
    ],
-   "max_new": 384,
-   "lenient": true
+   "max_new": 384
   },
   {
    "run_id": "C-TG-ledger2-triplets-dev",
@@ -95,8 +93,7 @@
     "rule_v1/dev_missing",
     "clin_v1/trialgpt_dev"
    ],
-   "max_new": 384,
-   "lenient": true
+   "max_new": 384
   },
   {
    "run_id": "C-TG-summary2-triplets-dev",
@@ -140,7 +137,6 @@
    "adapter": null,
    "bs_score": 128,
    "max_new": 768,
-   "lenient": true,
    "sets": [
     "rule_v1/dev_missing",
     "rule_v1/dev",
