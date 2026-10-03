@@ -65,6 +65,20 @@ def tg(prefix):
         if prefix.startswith(head):
             return "C-TG-" + prefix[len(head):]
     return prefix
+
+
+# C scores the clinical sets of every system under its own mirrored runs (HANDOFFS 3 Oct):
+# MedEinst C-ME-<x>[-s<k>], TrialGPT C-TG-<x>[-s<k>], for systems B-F-<x> and C-TF-<x>.
+CLINICAL_RUNS = {"clin_v1/medeinst_test": "C-ME-", "clin_v1/trialgpt_test": "C-TG-"}
+
+
+def clinical_alias(prefix, set_):
+    head = CLINICAL_RUNS.get(set_)
+    if head and not prefix.startswith(head):
+        for h in ("B-F-", "C-TF-"):
+            if prefix.startswith(h):
+                return head + prefix[len(h):]
+    return prefix
 SEL = {"mqa": "sel:medqa", "cqa": "sel:careqa", "key": "sel:keypairs", "me": "sel:medeinst"}
 SEEDS = range(5)
 TBD = r"\ph{tbd}"
@@ -304,6 +318,7 @@ def derived(r, set_, sl, metric):
 def run_value(rest, spec):
     prefix, sab, sl, metric, *st = rest.split("/")
     stat, set_ = (st[0] if st else "mean"), set_name(sab)
+    prefix = clinical_alias(prefix, set_)
     runs = seeds(prefix)
     vals = []
     for k, r in runs:
@@ -383,9 +398,17 @@ COMPARISONS = [
     ("p3", "B-F-ledger2-triplets", "B-F-summary2-triplets", "L2", "TA"),
     ("p4", "B-F-ledger2-triplets", "C-TF-critic", MEDEINST, "Reversal"),
     ("p5", "B-F-ledger2-triplets", "B-F-summary2-triplets", MEDEINST, "Reversal"),
-    ("p6a", "C-TG-ledger2-triplets", "C-TG-critic", TRIALGPT, "macroF1"),   # C writes these two with a patient
-    ("p6b", "C-TG-ledger2-triplets", "C-TG-ledger2-blocks", TRIALGPT, "macroF1"),   # bootstrap (C-TG-comparisons_test.json)
+    ("p6a", "C-TG-ledger2-triplets", "C-TG-critic", TRIALGPT, "macroF1"),
+    ("p6b", "C-TG-ledger2-triplets", "C-TG-ledger2-blocks", TRIALGPT, "macroF1"),
 ]
+# Clinical comparisons are computed by C with selrm.metrics.paired_cluster_bootstrap (pairs for MedEinst,
+# patients for TrialGPT) and written to these files; make_tables reads them (scripts/eval_clinical.py).
+CLINICAL_COMPARISONS = {
+    "p4": ("C-ME-comparisons.json", "ledger2-triplets-s0 - critic"),
+    "p5": ("C-ME-comparisons.json", "ledger2-triplets-s0 - summary2-triplets-s0"),
+    "p6a": ("C-TG-comparisons_test.json", "ledger2-triplets - critic"),
+    "p6b": ("C-TG-comparisons_test.json", "ledger2-triplets - ledger2-blocks"),
+}
 _CMP = {}
 
 
@@ -407,6 +430,16 @@ def comparisons():
                 out["n"], out["seeds"] = len(Ta.keys() & Tb.keys()), [str(k) for k in common]
                 if test:
                     out["p"] = test(Ta, Tb, metric)[-1]
+        elif name in CLINICAL_COMPARISONS:
+            fname, key = CLINICAL_COMPARISONS[name]
+            for top in TOPS:
+                p = os.path.join(ROOT, top, fname)
+                r = (load_json(p) or {}).get(key) if os.path.exists(p) else None
+                if isinstance(r, dict) and r.get("diff") is not None:
+                    out |= {f: r.get(f) for f in ("diff", "lo", "hi", "p")} | {
+                        "n": r.get("n") or r.get("n_clusters"), "file": rel(p), "file_commit": file_commit(p),
+                        "computed_by": "C: selrm.metrics.paired_cluster_bootstrap (scripts/eval_clinical.py)"}
+                    break
         _CMP[name] = out
     ps = [c.get("p") for c in _CMP.values()]
     if holm and all(p is not None for p in ps):

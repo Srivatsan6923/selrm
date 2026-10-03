@@ -1,6 +1,6 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "afa9be331f91a2fd702e865c4a053a900b39b8ab",
+ "code_commit": "d2b66b95063496aeeb6c5f5f9537c3ea2af0c514",
  "uncommitted_changes": true,
  "records": {
   "rule_v1/dev_missing": {
