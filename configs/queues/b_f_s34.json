@@ -23,7 +23,8 @@
     "rule_v1/test_L2",
     "rule_v1/test_L3alt",
     "rule_v1/test_L3inv",
-    "rule_v1/test_hard"
+    "rule_v1/test_hard",
+    "xr_v1/test"
    ]
   },
   {
@@ -49,7 +50,8 @@
     "rule_v1/test_L2",
     "rule_v1/test_L3alt",
     "rule_v1/test_L3inv",
-    "rule_v1/test_hard"
+    "rule_v1/test_hard",
+    "xr_v1/test"
    ]
   },
   {
@@ -75,7 +77,8 @@
     "rule_v1/test_L2",
     "rule_v1/test_L3alt",
     "rule_v1/test_L3inv",
-    "rule_v1/test_hard"
+    "rule_v1/test_hard",
+    "xr_v1/test"
    ]
   },
   {
@@ -101,7 +104,8 @@
     "rule_v1/test_L2",
     "rule_v1/test_L3alt",
     "rule_v1/test_L3inv",
-    "rule_v1/test_hard"
+    "rule_v1/test_hard",
+    "xr_v1/test"
    ]
   },
   {
@@ -127,7 +131,8 @@
     "rule_v1/test_L2",
     "rule_v1/test_L3alt",
     "rule_v1/test_L3inv",
-    "rule_v1/test_hard"
+    "rule_v1/test_hard",
+    "xr_v1/test"
    ]
   },
   {
@@ -153,7 +158,8 @@
     "rule_v1/test_L2",
     "rule_v1/test_L3alt",
     "rule_v1/test_L3inv",
-    "rule_v1/test_hard"
+    "rule_v1/test_hard",
+    "xr_v1/test"
    ]
   },
   {
@@ -179,7 +185,8 @@
     "rule_v1/test_L2",
     "rule_v1/test_L3alt",
     "rule_v1/test_L3inv",
-    "rule_v1/test_hard"
+    "rule_v1/test_hard",
+    "xr_v1/test"
    ]
   },
   {
@@ -205,7 +212,8 @@
     "rule_v1/test_L2",
     "rule_v1/test_L3alt",
     "rule_v1/test_L3inv",
-    "rule_v1/test_hard"
+    "rule_v1/test_hard",
+    "xr_v1/test"
    ]
   },
   {
@@ -231,7 +239,8 @@
     "rule_v1/test_L2",
     "rule_v1/test_L3alt",
     "rule_v1/test_L3inv",
-    "rule_v1/test_hard"
+    "rule_v1/test_hard",
+    "xr_v1/test"
    ]
   },
   {
@@ -257,7 +266,8 @@
     "rule_v1/test_L2",
     "rule_v1/test_L3alt",
     "rule_v1/test_L3inv",
-    "rule_v1/test_hard"
+    "rule_v1/test_hard",
+    "xr_v1/test"
    ]
   },
   {
@@ -283,7 +293,8 @@
     "rule_v1/test_L2",
     "rule_v1/test_L3alt",
     "rule_v1/test_L3inv",
-    "rule_v1/test_hard"
+    "rule_v1/test_hard",
+    "xr_v1/test"
    ]
   },
   {
@@ -309,7 +320,8 @@
     "rule_v1/test_L2",
     "rule_v1/test_L3alt",
     "rule_v1/test_L3inv",
-    "rule_v1/test_hard"
+    "rule_v1/test_hard",
+    "xr_v1/test"
    ]
   }
  ]

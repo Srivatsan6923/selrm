@@ -11,6 +11,9 @@ out = subprocess.run(["kubectl", "-n", "ecepxie", "exec", "selrm-b-sync", "--", 
                       "&& echo ${d%/}; done"], capture_output=True, text=True, check=True).stdout.split()
 busy = set(out)
 print(len(busy), "busy run dirs on the PVC")
+adapters = subprocess.run(["kubectl", "-n", "ecepxie", "exec", "selrm-b-sync", "--", "sh", "-c", "ls /pvc/selrm/adapters"],
+                          capture_output=True, text=True, check=True).stdout.split()
+print(len(adapters), "adapters on the PVC")
 FILES = {  # queue file -> generator (FINAL_TASKS_B, 3 Oct)
     "b_f_s0.json": lambda: Q.factorial({0}, REG, V),
     "b_f_key_s12.json": lambda: Q.factorial({1, 2}, REG, V, key_only=True),
@@ -29,12 +32,13 @@ FILES = {  # queue file -> generator (FINAL_TASKS_B, 3 Oct)
     "v2/b_probe_rw_s0.json": lambda: Q.probe_rw(V),
     "b_new_s0.json": lambda: Q.newexp({0}, REG, V),
     "b_sc_s0.json": lambda: Q.summary_case(REG, V),
+    "v2/b_ns.json": lambda: Q.ns_eval(REG, adapters),      # P0.6: kept adapters on A's new sets
 }
 for name, gen in FILES.items():
     path = f"configs/queues/{name}"
     old = {r["run_id"]: r for r in json.load(open(path))["runs"]} if os.path.exists(path) else {}
     runs, kept = [], []
-    for r in gen():
+    for r in Q.with_new_sets(gen(), REG):
         if r["run_id"] in busy and r["run_id"] in old:
             runs.append(old[r["run_id"]]); kept.append(r["run_id"])
         else:

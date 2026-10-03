@@ -18,7 +18,7 @@ import torch
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from selrm.formats import (MALFORMED_U, PROSE, TWO_STAGE, judge_for, dataset_path, gold_record, judge_view, read_bit,
                            reader_unit, reader_units, unit_key, well_formed)
-from selrm.metrics import bootstrap_ci, decisions, summarise
+from selrm.metrics import bootstrap_ci, crossed_accuracy, decisions, summarise
 from selrm.prompts import judge_prompt, ledger_to_text
 
 KIND = {"verdict": "verdict", "verdict_bt": "verdict", "rationale": "rationale", "summary2": "reader_prose",
@@ -429,6 +429,9 @@ def summarize(recs, scores, run_id, set_name):
         step[ct] = summarise(decisions(recs, scores, ct)).get("all", {})
     if step:
         out["step"] = step
+    if recs and "xr" in recs[0]["meta"]:     # xr_v1 rule-side items: crossed accuracy; A keeps the item in meta.xr.item
+        out["xr"] = {ct: crossed_accuracy(recs, scores, item_of=lambda r: r["meta"]["xr"]["item"], claim_type=ct)
+                     for ct in sorted({r["claim_type"] for r in recs})}
     return out
 
 

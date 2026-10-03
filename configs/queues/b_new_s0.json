@@ -16,7 +16,8 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0"
+    "rule_v1/test_L0",
+    "xr_v1/test"
    ]
   },
   {
@@ -35,7 +36,8 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0"
+    "rule_v1/test_L0",
+    "xr_v1/test"
    ]
   },
   {
@@ -54,7 +56,8 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0"
+    "rule_v1/test_L0",
+    "xr_v1/test"
    ]
   },
   {
@@ -73,7 +76,8 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0"
+    "rule_v1/test_L0",
+    "xr_v1/test"
    ]
   },
   {
@@ -92,7 +96,8 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0"
+    "rule_v1/test_L0",
+    "xr_v1/test"
    ]
   },
   {
@@ -111,7 +116,8 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0"
+    "rule_v1/test_L0",
+    "xr_v1/test"
    ]
   },
   {
@@ -130,7 +136,8 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0"
+    "rule_v1/test_L0",
+    "xr_v1/test"
    ]
   },
   {
@@ -149,7 +156,8 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0"
+    "rule_v1/test_L0",
+    "xr_v1/test"
    ]
   },
   {
@@ -168,7 +176,8 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
-    "rule_v1/test_L0"
+    "rule_v1/test_L0",
+    "xr_v1/test"
    ]
   },
   {
@@ -178,7 +187,7 @@
    "seed": 0,
    "n_examples": 60000,
    "priority": 99,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -186,7 +195,8 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2"
+    "rule_v1/test_L2",
+    "xr_v1/test"
    ]
   },
   {
@@ -196,7 +206,7 @@
    "seed": 0,
    "n_examples": 60000,
    "priority": 99,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -204,7 +214,8 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2"
+    "rule_v1/test_L2",
+    "xr_v1/test"
    ]
   },
   {
@@ -214,7 +225,7 @@
    "seed": 0,
    "n_examples": 60000,
    "priority": 99,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -222,7 +233,8 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2"
+    "rule_v1/test_L2",
+    "xr_v1/test"
    ]
   },
   {
@@ -232,7 +244,7 @@
    "seed": 0,
    "n_examples": 60000,
    "priority": 99,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -240,7 +252,8 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2"
+    "rule_v1/test_L2",
+    "xr_v1/test"
    ]
   },
   {
@@ -250,7 +263,7 @@
    "seed": 0,
    "n_examples": 60000,
    "priority": 99,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -258,7 +271,8 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2"
+    "rule_v1/test_L2",
+    "xr_v1/test"
    ]
   },
   {
@@ -268,7 +282,7 @@
    "seed": 0,
    "n_examples": 60000,
    "priority": 99,
-   "keep_adapter": false,
+   "keep_adapter": true,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -276,7 +290,8 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2"
+    "rule_v1/test_L2",
+    "xr_v1/test"
    ]
   }
  ]

@@ -16,7 +16,8 @@
     "rule_v1/test_L2",
     "rule_v1/test_L3alt",
     "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/missing",
+    "xr_v1/test"
    ],
    "format": "verdict",
    "corpus": "fover_v1/train"
@@ -37,7 +38,8 @@
     "rule_v1/test_L2",
     "rule_v1/test_L3alt",
     "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/missing",
+    "xr_v1/test"
    ],
    "format": "verdict",
    "corpus": "fover_v1/train"
