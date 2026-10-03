@@ -1,6 +1,6 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "0a7f0efc90a692b9a913ff550bb884f8c46861e0",
+ "code_commit": "8c97d6e7649dbe794fec7852b7219229396c6b05",
  "uncommitted_changes": true,
  "records": {
   "rule_v1/dev_missing": {
@@ -207,7 +207,7 @@
    "comparison": "p1"
   },
   "cmp/p1/p": {
-   "value": "0.000",
+   "value": "$<$0.001",
    "number": 0.0,
    "comparison": "p1"
   },
@@ -232,7 +232,7 @@
    "comparison": "p2"
   },
   "cmp/p2/p": {
-   "value": "0.000",
+   "value": "$<$0.001",
    "number": 0.0,
    "comparison": "p2"
   },
@@ -12535,7 +12535,7 @@
     "row": "p1",
     "col": "p",
     "key": "cmp/p1/p",
-    "value": "0.000"
+    "value": "$<$0.001"
    },
    {
     "row": "p1",
@@ -12565,7 +12565,7 @@
     "row": "p2",
     "col": "p",
     "key": "cmp/p2/p",
-    "value": "0.000"
+    "value": "$<$0.001"
    },
    {
     "row": "p2",

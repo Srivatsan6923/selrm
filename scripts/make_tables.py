@@ -261,6 +261,8 @@ def _resolve(key):
         name, fld = rest.split("/")
         c = comparisons().get(name)
         x = c.get(fld) if c else None
+        if fld in ("p", "padj") and x == 0:      # no bootstrap resample on the other side: p < 1/B
+            return x, r"$<$0.001", {"comparison": name}
         return x, fmt(x, spec or ("3" if fld in ("p", "padj") else None), fld == "n"), {"comparison": name}
     raise KeyError(f"unknown key head {head!r}")
 
