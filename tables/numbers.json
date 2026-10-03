@@ -44,12 +44,12 @@
   "value": "0.2"
  },
  "cmp/sel-mqa-comb-step/hi": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 0.15710919088766673,
+  "value": "0.2"
  },
  "cmp/sel-mqa-comb-step/lo": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": -2.120974076983501,
+  "value": "-2.1"
  },
  "d/a15/rules_total|a15/rules_by_kind.score|a15/rules_by_source.grammar_sampled@int": {
   "number": 60,
@@ -96,20 +96,20 @@
   "value": "\\ph{tbd}"
  },
  "d/run/D-SEL-combined/sel:medqa/top/acc|run/D-SEL-no-nearmiss/sel:medqa/top/acc": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 0.2356637863315001,
+  "value": "0.2"
  },
  "d/run/D-SEL-combined/sel:medqa/top/acc|run/D-SEL-stepcheck/sel:medqa/top/acc": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": -0.864100549882167,
+  "value": "-0.9"
  },
  "d/run/D-SELN/sel:keypairs/selector=oracle/N64|run/D-SELN/sel:keypairs/selector=combined/N64": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 20.66666666666667,
+  "value": "20.7"
  },
  "d/run/D-SELN/sel:keypairs/selector=oracle/N64|run/D-SELN/sel:keypairs/selector=stepcheck/N64": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 18.66666666666667,
+  "value": "18.7"
  },
  "max/run/B-F-ledger2-blocks/dev/eval/malformed_rate/max|run/B-F-ledger2-blocks/dev_missing/eval/malformed_rate/max|run/B-F-ledger2-blocks/missing/eval/malformed_rate/max|run/B-F-ledger2-blocks/readapply/eval/malformed_rate/max|run/B-F-ledger2-blocks/L0/eval/malformed_rate/max|run/B-F-ledger2-blocks/L1/eval/malformed_rate/max|run/B-F-ledger2-blocks/L2/eval/malformed_rate/max|run/B-F-ledger2-blocks/L3alt/eval/malformed_rate/max|run/B-F-ledger2-blocks/L3inv/eval/malformed_rate/max|run/B-F-ledger2-blocks/hard/eval/malformed_rate/max|run/B-F-ledger2-triplets/dev/eval/malformed_rate/max|run/B-F-ledger2-triplets/dev_missing/eval/malformed_rate/max|run/B-F-ledger2-triplets/missing/eval/malformed_rate/max|run/B-F-ledger2-triplets/readapply/eval/malformed_rate/max|run/B-F-ledger2-triplets/L0/eval/malformed_rate/max|run/B-F-ledger2-triplets/L1/eval/malformed_rate/max|run/B-F-ledger2-triplets/L2/eval/malformed_rate/max|run/B-F-ledger2-triplets/L3alt/eval/malformed_rate/max|run/B-F-ledger2-triplets/L3inv/eval/malformed_rate/max|run/B-F-ledger2-triplets/hard/eval/malformed_rate/max@pct2": {
   "number": 0.0017,
@@ -592,44 +592,44 @@
   "value": "70.8"
  },
  "run/D-SEL-combined-logistic/sel:keypairs/top/pair_acc": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 77.87114845938375,
+  "value": "77.9"
  },
  "run/D-SEL-combined-logistic/sel:medqa/top/acc": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 86.09583660644148,
+  "value": "86.1"
  },
  "run/D-SEL-combined-product/sel:keypairs/top/pair_acc": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 78.15126050420169,
+  "value": "78.2"
  },
  "run/D-SEL-combined-product/sel:medqa/top/acc": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 86.09583660644148,
+  "value": "86.1"
  },
  "run/D-SEL-combined/sel:keypairs/top/pair_acc": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 76.75070028011204,
+  "value": "76.8"
  },
  "run/D-SEL-combined/sel:medeinst/top/pair_acc": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 22.6,
+  "value": "22.6"
  },
  "run/D-SEL-combined/sel:medqa/top/acc": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 85.31029065200315,
+  "value": "85.3"
  },
  "run/D-SEL-stepcheck/sel:keypairs/top/pair_acc": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 77.87114845938375,
+  "value": "77.9"
  },
  "run/D-SEL-stepcheck/sel:medeinst/top/pair_acc": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 22.6,
+  "value": "22.6"
  },
  "sum/D-POOL-medqa_test/ineligible_share@pct1": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 0.0336,
+  "value": "3.4"
  },
  "sum/D-RES/systems.ledger2.generated_tokens_per_claim@0": {
   "number": 10.011088159350793,

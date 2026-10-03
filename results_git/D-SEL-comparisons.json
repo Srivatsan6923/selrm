@@ -96,5 +96,19 @@
   "B": 1000,
   "n_items": 500,
   "n_clusters": 500
+ },
+ "sel-key-comb-step": {
+  "pool": "medqa_kp",
+  "a": "combined",
+  "b": "stepcheck",
+  "set": "sel/keypairs",
+  "metric": "pair_acc",
+  "diff": -1.1204481792717047,
+  "lo": -3.3613445378151283,
+  "hi": 1.4005602240896309,
+  "p": 0.424,
+  "B": 1000,
+  "n_items": 357,
+  "n_clusters": 357
  }
 }

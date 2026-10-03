@@ -1,0 +1,26 @@
+{
+ "run_id": "D-POOL-medqa_kp",
+ "n_questions": 714,
+ "n_samples": 11424,
+ "eligible": 11157,
+ "ineligible_share": 0.0234,
+ "generated_tokens": 4572553,
+ "wall_seconds": 470.8,
+ "gpu": "NVIDIA H100 80GB HBM3",
+ "vllm": "0.30.0",
+ "sampling": {
+  "temperature": 0.7,
+  "top_p": 0.95,
+  "max_tokens": 1536,
+  "stop_token_ids": [
+   248046,
+   248044
+  ]
+ },
+ "policy": {
+  "model": "unsloth/Qwen3.5-9B",
+  "revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+  "note": "frozen policy for candidate pools = B's pinned backbone (configs/models_b.json)"
+ },
+ "question_sample": null
+}

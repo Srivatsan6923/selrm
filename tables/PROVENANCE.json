@@ -1,6 +1,6 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "76eff196b68b70c9d65a01f025f24b1a0d2c8f85",
+ "code_commit": "0c851c504c411e85b806e23e56d8e83116318649",
  "uncommitted_changes": true,
  "records": {
   "rule_v1/dev_missing": {
@@ -102,6 +102,142 @@
   },
   "holm": {
    "n": 7
+  },
+  "sel-cqa-comb-step": {
+   "pool": "careqa_en",
+   "a": "combined",
+   "b": "stepcheck",
+   "set": "sel/careqa",
+   "metric": "acc",
+   "diff": -0.09999999999999432,
+   "lo": -1.5,
+   "hi": 1.3999999999999915,
+   "p": 0.94,
+   "B": 1000,
+   "n_items": 1000,
+   "n_clusters": 1000,
+   "n": 1000,
+   "file": "results_git/D-SEL-comparisons.json",
+   "file_commit": "0c851c504c411e85b806e23e56d8e83116318649"
+  },
+  "sel-mqa-comb-step": {
+   "pool": "medqa_test",
+   "a": "combined",
+   "b": "stepcheck",
+   "set": "sel/medqa",
+   "metric": "acc",
+   "diff": -0.864100549882167,
+   "lo": -2.120974076983501,
+   "hi": 0.15710919088766673,
+   "p": 0.126,
+   "B": 1000,
+   "n_items": 1273,
+   "n_clusters": 1273,
+   "n": 1273,
+   "file": "results_git/D-SEL-comparisons.json",
+   "file_commit": "0c851c504c411e85b806e23e56d8e83116318649"
+  },
+  "sel-me-comb-step": {
+   "pool": "medeinst_test",
+   "a": "combined",
+   "b": "stepcheck",
+   "set": "sel/medeinst",
+   "metric": "pair_acc",
+   "diff": 0.0,
+   "lo": -1.4000000000000021,
+   "hi": 1.4000000000000021,
+   "p": 1.0,
+   "B": 1000,
+   "n_items": 500,
+   "n_clusters": 500,
+   "n": 500,
+   "file": "results_git/D-SEL-comparisons.json",
+   "file_commit": "0c851c504c411e85b806e23e56d8e83116318649"
+  },
+  "sel-mqa-comb-swap": {
+   "pool": "medqa_test",
+   "a": "combined",
+   "b": "combined-swap",
+   "set": "sel/medqa",
+   "metric": "acc",
+   "diff": -0.31421838177533346,
+   "lo": -2.199528672427334,
+   "hi": 1.5710919088766673,
+   "p": 0.822,
+   "B": 1000,
+   "n_items": 1273,
+   "n_clusters": 1273,
+   "n": 1273,
+   "file": "results_git/D-SEL-comparisons.json",
+   "file_commit": "0c851c504c411e85b806e23e56d8e83116318649"
+  },
+  "sel-mqa-step-swap": {
+   "pool": "medqa_test",
+   "a": "stepcheck",
+   "b": "stepcheck-swap",
+   "set": "sel/medqa",
+   "metric": "acc",
+   "diff": 0.5498821681068335,
+   "lo": -1.099764336213667,
+   "hi": 2.4351924587588343,
+   "p": 0.554,
+   "B": 1000,
+   "n_items": 1273,
+   "n_clusters": 1273,
+   "n": 1273,
+   "file": "results_git/D-SEL-comparisons.json",
+   "file_commit": "0c851c504c411e85b806e23e56d8e83116318649"
+  },
+  "sel-mqa-comb-nonear": {
+   "pool": "medqa_test",
+   "a": "combined",
+   "b": "no-nearmiss",
+   "set": "sel/medqa",
+   "metric": "acc",
+   "diff": 0.2356637863315001,
+   "lo": -0.864100549882167,
+   "hi": 1.2568735271013338,
+   "p": 0.742,
+   "B": 1000,
+   "n_items": 1273,
+   "n_clusters": 1273,
+   "n": 1273,
+   "file": "results_git/D-SEL-comparisons.json",
+   "file_commit": "0c851c504c411e85b806e23e56d8e83116318649"
+  },
+  "sel-me-comb-nonear": {
+   "pool": "medeinst_test",
+   "a": "combined",
+   "b": "no-nearmiss",
+   "set": "sel/medeinst",
+   "metric": "pair_acc",
+   "diff": 0.6000000000000014,
+   "lo": -1.0,
+   "hi": 2.200000000000003,
+   "p": 0.518,
+   "B": 1000,
+   "n_items": 500,
+   "n_clusters": 500,
+   "n": 500,
+   "file": "results_git/D-SEL-comparisons.json",
+   "file_commit": "0c851c504c411e85b806e23e56d8e83116318649"
+  },
+  "sel-key-comb-step": {
+   "pool": "medqa_kp",
+   "a": "combined",
+   "b": "stepcheck",
+   "set": "sel/keypairs",
+   "metric": "pair_acc",
+   "diff": -1.1204481792717047,
+   "lo": -3.3613445378151283,
+   "hi": 1.4005602240896309,
+   "p": 0.424,
+   "B": 1000,
+   "n_items": 357,
+   "n_clusters": 357,
+   "n": 357,
+   "file": "results_git/D-SEL-comparisons.json",
+   "file_commit": "0c851c504c411e85b806e23e56d8e83116318649"
   }
  },
  "keys": {
@@ -426,13 +562,13 @@
    "comparison": "p6b"
   },
   "cmp/sel-mqa-comb-step/hi": {
-   "value": "\\ph{tbd}",
-   "number": null,
+   "value": "0.2",
+   "number": 0.15710919088766673,
    "comparison": "sel-mqa-comb-step"
   },
   "cmp/sel-mqa-comb-step/lo": {
-   "value": "\\ph{tbd}",
-   "number": null,
+   "value": "-2.1",
+   "number": -2.120974076983501,
    "comparison": "sel-mqa-comb-step"
   },
   "d/a15/rules_total|a15/rules_by_kind.score|a15/rules_by_source.grammar_sampled@int": {
@@ -525,32 +661,32 @@
    ]
   },
   "d/run/D-SEL-combined/sel:medqa/top/acc|run/D-SEL-no-nearmiss/sel:medqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
+   "value": "0.2",
+   "number": 0.2356637863315001,
    "d": [
     "run/D-SEL-combined/sel:medqa/top/acc",
     "run/D-SEL-no-nearmiss/sel:medqa/top/acc"
    ]
   },
   "d/run/D-SEL-combined/sel:medqa/top/acc|run/D-SEL-stepcheck/sel:medqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
+   "value": "-0.9",
+   "number": -0.864100549882167,
    "d": [
     "run/D-SEL-combined/sel:medqa/top/acc",
     "run/D-SEL-stepcheck/sel:medqa/top/acc"
    ]
   },
   "d/run/D-SELN/sel:keypairs/selector=oracle/N64|run/D-SELN/sel:keypairs/selector=combined/N64": {
-   "value": "\\ph{tbd}",
-   "number": null,
+   "value": "20.7",
+   "number": 20.66666666666667,
    "d": [
     "run/D-SELN/sel:keypairs/selector=oracle/N64",
     "run/D-SELN/sel:keypairs/selector=combined/N64"
    ]
   },
   "d/run/D-SELN/sel:keypairs/selector=oracle/N64|run/D-SELN/sel:keypairs/selector=stepcheck/N64": {
-   "value": "\\ph{tbd}",
-   "number": null,
+   "value": "18.7",
+   "number": 18.66666666666667,
    "d": [
     "run/D-SELN/sel:keypairs/selector=oracle/N64",
     "run/D-SELN/sel:keypairs/selector=stepcheck/N64"
@@ -12125,641 +12261,2545 @@
    "seeds_found": []
   },
   "run/D-SEL-combined-logistic/sel:keypairs/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "77.9",
+   "number": 77.87114845938375,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined-logistic",
+     "seed": null,
+     "file": "results_git/D-SEL-combined-logistic/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-combined-logistic/sel:medqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "86.1",
+   "number": 86.09583660644148,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined-logistic",
+     "seed": null,
+     "file": "results_git/D-SEL-combined-logistic/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-combined-product/sel:keypairs/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "78.2",
+   "number": 78.15126050420169,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined-product",
+     "seed": null,
+     "file": "results_git/D-SEL-combined-product/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-combined-product/sel:medqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "86.1",
+   "number": 86.09583660644148,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined-product",
+     "seed": null,
+     "file": "results_git/D-SEL-combined-product/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-combined-swap/sel:careqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "88.1",
+   "number": 88.1,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-combined-swap/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
    "set": "sel/careqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-combined-swap/sel:careqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-combined-swap/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/careqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-combined-swap/sel:keypairs/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "76.8",
+   "number": 76.75070028011204,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-combined-swap/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-combined-swap/sel:keypairs/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-combined-swap/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/keypairs",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-combined-swap/sel:medeinst/top/control_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "71.8",
+   "number": 71.8,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-combined-swap/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-combined-swap/sel:medeinst/top/control_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-combined-swap/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-combined-swap/sel:medeinst/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "23.0",
+   "number": 23.0,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-combined-swap/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-combined-swap/sel:medeinst/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-combined-swap/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-combined-swap/sel:medeinst/top/trap_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "49.0",
+   "number": 49.0,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-combined-swap/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-combined-swap/sel:medeinst/top/trap_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-combined-swap/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-combined-swap/sel:medqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "85.6",
+   "number": 85.62450903377848,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-combined-swap/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-combined-swap/sel:medqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-combined-swap/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-combined/sel:careqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "88.9",
+   "number": 88.9,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined",
+     "seed": null,
+     "file": "results_git/D-SEL-combined/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
    "set": "sel/careqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-combined/sel:careqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined",
+     "seed": null,
+     "file": "results_git/D-SEL-combined/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/careqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-combined/sel:keypairs/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "76.8",
+   "number": 76.75070028011204,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined",
+     "seed": null,
+     "file": "results_git/D-SEL-combined/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-combined/sel:keypairs/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined",
+     "seed": null,
+     "file": "results_git/D-SEL-combined/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/keypairs",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-combined/sel:medeinst/top/control_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "73.8",
+   "number": 73.8,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined",
+     "seed": null,
+     "file": "results_git/D-SEL-combined/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-combined/sel:medeinst/top/control_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined",
+     "seed": null,
+     "file": "results_git/D-SEL-combined/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-combined/sel:medeinst/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "22.6",
+   "number": 22.6,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined",
+     "seed": null,
+     "file": "results_git/D-SEL-combined/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-combined/sel:medeinst/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined",
+     "seed": null,
+     "file": "results_git/D-SEL-combined/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-combined/sel:medeinst/top/trap_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "46.4",
+   "number": 46.4,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined",
+     "seed": null,
+     "file": "results_git/D-SEL-combined/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-combined/sel:medeinst/top/trap_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined",
+     "seed": null,
+     "file": "results_git/D-SEL-combined/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-combined/sel:medqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "85.3",
+   "number": 85.31029065200315,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined",
+     "seed": null,
+     "file": "results_git/D-SEL-combined/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-combined/sel:medqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-combined",
+     "seed": null,
+     "file": "results_git/D-SEL-combined/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-ledger/sel:careqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "88.4",
+   "number": 88.4,
+   "runs": [
+    {
+     "run_id": "D-SEL-ledger",
+     "seed": null,
+     "file": "results_git/D-SEL-ledger/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
    "set": "sel/careqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-ledger/sel:careqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-ledger",
+     "seed": null,
+     "file": "results_git/D-SEL-ledger/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/careqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-ledger/sel:keypairs/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "71.1",
+   "number": 71.1484593837535,
+   "runs": [
+    {
+     "run_id": "D-SEL-ledger",
+     "seed": null,
+     "file": "results_git/D-SEL-ledger/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-ledger/sel:keypairs/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-ledger",
+     "seed": null,
+     "file": "results_git/D-SEL-ledger/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/keypairs",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-ledger/sel:medeinst/top/control_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "73.2",
+   "number": 73.2,
+   "runs": [
+    {
+     "run_id": "D-SEL-ledger",
+     "seed": null,
+     "file": "results_git/D-SEL-ledger/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-ledger/sel:medeinst/top/control_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-ledger",
+     "seed": null,
+     "file": "results_git/D-SEL-ledger/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-ledger/sel:medeinst/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "26.2",
+   "number": 26.2,
+   "runs": [
+    {
+     "run_id": "D-SEL-ledger",
+     "seed": null,
+     "file": "results_git/D-SEL-ledger/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-ledger/sel:medeinst/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-ledger",
+     "seed": null,
+     "file": "results_git/D-SEL-ledger/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-ledger/sel:medeinst/top/trap_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "49.8",
+   "number": 49.8,
+   "runs": [
+    {
+     "run_id": "D-SEL-ledger",
+     "seed": null,
+     "file": "results_git/D-SEL-ledger/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-ledger/sel:medeinst/top/trap_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-ledger",
+     "seed": null,
+     "file": "results_git/D-SEL-ledger/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-ledger/sel:medqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "83.8",
+   "number": 83.81775333857031,
+   "runs": [
+    {
+     "run_id": "D-SEL-ledger",
+     "seed": null,
+     "file": "results_git/D-SEL-ledger/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-ledger/sel:medqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-ledger",
+     "seed": null,
+     "file": "results_git/D-SEL-ledger/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-no-nearmiss/sel:careqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "88.9",
+   "number": 88.9,
+   "runs": [
+    {
+     "run_id": "D-SEL-no-nearmiss",
+     "seed": null,
+     "file": "results_git/D-SEL-no-nearmiss/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
    "set": "sel/careqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-no-nearmiss/sel:careqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-no-nearmiss",
+     "seed": null,
+     "file": "results_git/D-SEL-no-nearmiss/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/careqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-no-nearmiss/sel:keypairs/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "76.5",
+   "number": 76.47058823529412,
+   "runs": [
+    {
+     "run_id": "D-SEL-no-nearmiss",
+     "seed": null,
+     "file": "results_git/D-SEL-no-nearmiss/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-no-nearmiss/sel:keypairs/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-no-nearmiss",
+     "seed": null,
+     "file": "results_git/D-SEL-no-nearmiss/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/keypairs",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-no-nearmiss/sel:medeinst/top/control_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "74.4",
+   "number": 74.4,
+   "runs": [
+    {
+     "run_id": "D-SEL-no-nearmiss",
+     "seed": null,
+     "file": "results_git/D-SEL-no-nearmiss/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-no-nearmiss/sel:medeinst/top/control_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-no-nearmiss",
+     "seed": null,
+     "file": "results_git/D-SEL-no-nearmiss/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-no-nearmiss/sel:medeinst/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "22.0",
+   "number": 22.0,
+   "runs": [
+    {
+     "run_id": "D-SEL-no-nearmiss",
+     "seed": null,
+     "file": "results_git/D-SEL-no-nearmiss/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-no-nearmiss/sel:medeinst/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-no-nearmiss",
+     "seed": null,
+     "file": "results_git/D-SEL-no-nearmiss/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-no-nearmiss/sel:medeinst/top/trap_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "45.6",
+   "number": 45.6,
+   "runs": [
+    {
+     "run_id": "D-SEL-no-nearmiss",
+     "seed": null,
+     "file": "results_git/D-SEL-no-nearmiss/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-no-nearmiss/sel:medeinst/top/trap_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-no-nearmiss",
+     "seed": null,
+     "file": "results_git/D-SEL-no-nearmiss/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-no-nearmiss/sel:medqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "85.1",
+   "number": 85.07462686567165,
+   "runs": [
+    {
+     "run_id": "D-SEL-no-nearmiss",
+     "seed": null,
+     "file": "results_git/D-SEL-no-nearmiss/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-no-nearmiss/sel:medqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-no-nearmiss",
+     "seed": null,
+     "file": "results_git/D-SEL-no-nearmiss/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-oracle/sel:careqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "97.1",
+   "number": 97.1,
+   "runs": [
+    {
+     "run_id": "D-SEL-oracle",
+     "seed": null,
+     "file": "results_git/D-SEL-oracle/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
    "set": "sel/careqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-oracle/sel:careqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-oracle",
+     "seed": null,
+     "file": "results_git/D-SEL-oracle/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/careqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-oracle/sel:keypairs/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "94.7",
+   "number": 94.67787114845939,
+   "runs": [
+    {
+     "run_id": "D-SEL-oracle",
+     "seed": null,
+     "file": "results_git/D-SEL-oracle/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-oracle/sel:keypairs/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-oracle",
+     "seed": null,
+     "file": "results_git/D-SEL-oracle/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/keypairs",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-oracle/sel:medeinst/top/control_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "87.4",
+   "number": 87.4,
+   "runs": [
+    {
+     "run_id": "D-SEL-oracle",
+     "seed": null,
+     "file": "results_git/D-SEL-oracle/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-oracle/sel:medeinst/top/control_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-oracle",
+     "seed": null,
+     "file": "results_git/D-SEL-oracle/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-oracle/sel:medeinst/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "59.4",
+   "number": 59.4,
+   "runs": [
+    {
+     "run_id": "D-SEL-oracle",
+     "seed": null,
+     "file": "results_git/D-SEL-oracle/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-oracle/sel:medeinst/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-oracle",
+     "seed": null,
+     "file": "results_git/D-SEL-oracle/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-oracle/sel:medeinst/top/trap_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "72.0",
+   "number": 72.0,
+   "runs": [
+    {
+     "run_id": "D-SEL-oracle",
+     "seed": null,
+     "file": "results_git/D-SEL-oracle/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-oracle/sel:medeinst/top/trap_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-oracle",
+     "seed": null,
+     "file": "results_git/D-SEL-oracle/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-oracle/sel:medqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "97.5",
+   "number": 97.48625294579733,
+   "runs": [
+    {
+     "run_id": "D-SEL-oracle",
+     "seed": null,
+     "file": "results_git/D-SEL-oracle/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-oracle/sel:medqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-oracle",
+     "seed": null,
+     "file": "results_git/D-SEL-oracle/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-selfcons/sel:careqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "89.4",
+   "number": 89.4,
+   "runs": [
+    {
+     "run_id": "D-SEL-selfcons",
+     "seed": null,
+     "file": "results_git/D-SEL-selfcons/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
    "set": "sel/careqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-selfcons/sel:careqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-selfcons",
+     "seed": null,
+     "file": "results_git/D-SEL-selfcons/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/careqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-selfcons/sel:keypairs/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "78.7",
+   "number": 78.71148459383754,
+   "runs": [
+    {
+     "run_id": "D-SEL-selfcons",
+     "seed": null,
+     "file": "results_git/D-SEL-selfcons/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-selfcons/sel:keypairs/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-selfcons",
+     "seed": null,
+     "file": "results_git/D-SEL-selfcons/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/keypairs",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-selfcons/sel:medeinst/top/control_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "73.2",
+   "number": 73.2,
+   "runs": [
+    {
+     "run_id": "D-SEL-selfcons",
+     "seed": null,
+     "file": "results_git/D-SEL-selfcons/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-selfcons/sel:medeinst/top/control_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-selfcons",
+     "seed": null,
+     "file": "results_git/D-SEL-selfcons/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-selfcons/sel:medeinst/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "20.6",
+   "number": 20.6,
+   "runs": [
+    {
+     "run_id": "D-SEL-selfcons",
+     "seed": null,
+     "file": "results_git/D-SEL-selfcons/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-selfcons/sel:medeinst/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-selfcons",
+     "seed": null,
+     "file": "results_git/D-SEL-selfcons/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-selfcons/sel:medeinst/top/trap_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "45.8",
+   "number": 45.8,
+   "runs": [
+    {
+     "run_id": "D-SEL-selfcons",
+     "seed": null,
+     "file": "results_git/D-SEL-selfcons/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-selfcons/sel:medeinst/top/trap_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-selfcons",
+     "seed": null,
+     "file": "results_git/D-SEL-selfcons/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-selfcons/sel:medqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "87.8",
+   "number": 87.82403770620581,
+   "runs": [
+    {
+     "run_id": "D-SEL-selfcons",
+     "seed": null,
+     "file": "results_git/D-SEL-selfcons/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-selfcons/sel:medqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-selfcons",
+     "seed": null,
+     "file": "results_git/D-SEL-selfcons/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-single/sel:careqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "87.0",
+   "number": 87.0,
+   "runs": [
+    {
+     "run_id": "D-SEL-single",
+     "seed": null,
+     "file": "results_git/D-SEL-single/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
    "set": "sel/careqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-single/sel:careqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-single",
+     "seed": null,
+     "file": "results_git/D-SEL-single/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/careqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-single/sel:keypairs/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "70.3",
+   "number": 70.30812324929973,
+   "runs": [
+    {
+     "run_id": "D-SEL-single",
+     "seed": null,
+     "file": "results_git/D-SEL-single/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-single/sel:keypairs/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-single",
+     "seed": null,
+     "file": "results_git/D-SEL-single/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/keypairs",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-single/sel:medeinst/top/control_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "71.6",
+   "number": 71.6,
+   "runs": [
+    {
+     "run_id": "D-SEL-single",
+     "seed": null,
+     "file": "results_git/D-SEL-single/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-single/sel:medeinst/top/control_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-single",
+     "seed": null,
+     "file": "results_git/D-SEL-single/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-single/sel:medeinst/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "22.0",
+   "number": 22.0,
+   "runs": [
+    {
+     "run_id": "D-SEL-single",
+     "seed": null,
+     "file": "results_git/D-SEL-single/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-single/sel:medeinst/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-single",
+     "seed": null,
+     "file": "results_git/D-SEL-single/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-single/sel:medeinst/top/trap_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "44.8",
+   "number": 44.8,
+   "runs": [
+    {
+     "run_id": "D-SEL-single",
+     "seed": null,
+     "file": "results_git/D-SEL-single/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-single/sel:medeinst/top/trap_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-single",
+     "seed": null,
+     "file": "results_git/D-SEL-single/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-single/sel:medqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "82.9",
+   "number": 82.8750981932443,
+   "runs": [
+    {
+     "run_id": "D-SEL-single",
+     "seed": null,
+     "file": "results_git/D-SEL-single/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-single/sel:medqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-single",
+     "seed": null,
+     "file": "results_git/D-SEL-single/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-stepcheck-swap/sel:careqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "88.1",
+   "number": 88.1,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck-swap/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
    "set": "sel/careqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-stepcheck-swap/sel:careqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck-swap/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/careqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-stepcheck-swap/sel:keypairs/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "76.8",
+   "number": 76.75070028011204,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck-swap/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-stepcheck-swap/sel:keypairs/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck-swap/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/keypairs",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-stepcheck-swap/sel:medeinst/top/control_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "71.8",
+   "number": 71.8,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck-swap/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-stepcheck-swap/sel:medeinst/top/control_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck-swap/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-stepcheck-swap/sel:medeinst/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "23.0",
+   "number": 23.0,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck-swap/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-stepcheck-swap/sel:medeinst/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck-swap/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-stepcheck-swap/sel:medeinst/top/trap_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "49.0",
+   "number": 49.0,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck-swap/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-stepcheck-swap/sel:medeinst/top/trap_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck-swap/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-stepcheck-swap/sel:medqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "85.6",
+   "number": 85.62450903377848,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck-swap/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-stepcheck-swap/sel:medqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck-swap",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck-swap/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-stepcheck/sel:careqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "89.0",
+   "number": 89.0,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
    "set": "sel/careqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-stepcheck/sel:careqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck/summary_sel~careqa.json",
+     "field": "top.acc",
+     "file_commit": "25bd98f423cf1c29e08a463a7a30a70211afc201",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/careqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-stepcheck/sel:keypairs/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "77.9",
+   "number": 77.87114845938375,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-stepcheck/sel:keypairs/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck/summary_sel~keypairs.json",
+     "field": "top.pair_acc",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/keypairs",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-stepcheck/sel:medeinst/top/control_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "74.6",
+   "number": 74.6,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-stepcheck/sel:medeinst/top/control_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck/summary_sel~medeinst.json",
+     "field": "top.control_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-stepcheck/sel:medeinst/top/pair_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "22.6",
+   "number": 22.6,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-stepcheck/sel:medeinst/top/pair_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck/summary_sel~medeinst.json",
+     "field": "top.pair_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-stepcheck/sel:medeinst/top/trap_acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "46.0",
+   "number": 46.0,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medeinst",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-stepcheck/sel:medeinst/top/trap_acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck/summary_sel~medeinst.json",
+     "field": "top.trap_acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medeinst",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SEL-stepcheck/sel:medqa/top/acc": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "86.2",
+   "number": 86.17439120188531,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
    "set": "sel/medqa",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/D-SEL-stepcheck/sel:medqa/top/acc/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-SEL-stepcheck",
+     "seed": null,
+     "file": "results_git/D-SEL-stepcheck/summary_sel~medqa.json",
+     "field": "top.acc",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ],
+   "set": "sel/medqa",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=combined/N1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "67.3",
+   "number": 67.33333333333333,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=combined.N1",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=combined/N16": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "78.0",
+   "number": 78.0,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=combined.N16",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=combined/N2": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "71.3",
+   "number": 71.33333333333333,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=combined.N2",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=combined/N32": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "78.0",
+   "number": 78.0,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=combined.N32",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=combined/N4": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "72.0",
+   "number": 72.0,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=combined.N4",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=combined/N64": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "76.0",
+   "number": 76.0,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=combined.N64",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=combined/N8": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "78.0",
+   "number": 78.0,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=combined.N8",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=oracle/N1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "67.3",
+   "number": 67.33333333333333,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=oracle.N1",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=oracle/N16": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "94.0",
+   "number": 94.0,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=oracle.N16",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=oracle/N2": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "80.0",
+   "number": 80.0,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=oracle.N2",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=oracle/N32": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "95.3",
+   "number": 95.33333333333333,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=oracle.N32",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=oracle/N4": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "87.3",
+   "number": 87.33333333333333,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=oracle.N4",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=oracle/N64": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "96.7",
+   "number": 96.66666666666667,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=oracle.N64",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=oracle/N8": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "91.3",
+   "number": 91.33333333333333,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=oracle.N8",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=stepcheck/N1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "67.3",
+   "number": 67.33333333333333,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=stepcheck.N1",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=stepcheck/N16": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "79.3",
+   "number": 79.33333333333333,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=stepcheck.N16",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=stepcheck/N2": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "70.7",
+   "number": 70.66666666666667,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=stepcheck.N2",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=stepcheck/N32": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "79.3",
+   "number": 79.33333333333333,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=stepcheck.N32",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=stepcheck/N4": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "72.7",
+   "number": 72.66666666666667,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=stepcheck.N4",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=stepcheck/N64": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "78.0",
+   "number": 78.0,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=stepcheck.N64",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "run/D-SELN/sel:keypairs/selector=stepcheck/N8": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "78.0",
+   "number": 78.0,
+   "runs": [
+    {
+     "run_id": "D-SELN",
+     "seed": null,
+     "file": "results_git/D-SELN/summary_sel~keypairs.json",
+     "field": "selector=stepcheck.N8",
+     "file_commit": "uncommitted",
+     "code_commit": null
+    }
+   ],
    "set": "sel/keypairs",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
   },
   "sum/D-POOL-medqa_test/ineligible_share@pct1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": []
+   "value": "3.4",
+   "number": 0.0336,
+   "runs": [
+    {
+     "run_id": "D-POOL-medqa_test",
+     "seed": null,
+     "file": "results_git/D-POOL-medqa_test/summary.json",
+     "field": "ineligible_share",
+     "file_commit": "0c851c504c411e85b806e23e56d8e83116318649",
+     "code_commit": null
+    }
+   ]
   },
   "sum/D-RES/systems.ledger2.generated_tokens_per_claim@0": {
    "value": "10",
@@ -14500,289 +16540,289 @@
     "row": "Single sample",
     "col": "MQA",
     "key": "run/D-SEL-single/sel:medqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "82.9"
    },
    {
     "row": "Single sample",
     "col": "CQA",
     "key": "run/D-SEL-single/sel:careqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "87.0"
    },
    {
     "row": "Single sample",
     "col": "Key",
     "key": "run/D-SEL-single/sel:keypairs/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "70.3"
    },
    {
     "row": "Single sample",
     "col": "pair",
     "key": "run/D-SEL-single/sel:medeinst/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "22.0"
    },
    {
     "row": "Single sample",
     "col": "ctrl",
     "key": "run/D-SEL-single/sel:medeinst/top/control_acc",
-    "value": "\\ph{tbd}"
+    "value": "71.6"
    },
    {
     "row": "Single sample",
     "col": "trap",
     "key": "run/D-SEL-single/sel:medeinst/top/trap_acc",
-    "value": "\\ph{tbd}"
+    "value": "44.8"
    },
    {
     "row": "Self-consistency",
     "col": "MQA",
     "key": "run/D-SEL-selfcons/sel:medqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "87.8"
    },
    {
     "row": "Self-consistency",
     "col": "CQA",
     "key": "run/D-SEL-selfcons/sel:careqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "89.4"
    },
    {
     "row": "Self-consistency",
     "col": "Key",
     "key": "run/D-SEL-selfcons/sel:keypairs/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "78.7"
    },
    {
     "row": "Self-consistency",
     "col": "pair",
     "key": "run/D-SEL-selfcons/sel:medeinst/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "20.6"
    },
    {
     "row": "Self-consistency",
     "col": "ctrl",
     "key": "run/D-SEL-selfcons/sel:medeinst/top/control_acc",
-    "value": "\\ph{tbd}"
+    "value": "73.2"
    },
    {
     "row": "Self-consistency",
     "col": "trap",
     "key": "run/D-SEL-selfcons/sel:medeinst/top/trap_acc",
-    "value": "\\ph{tbd}"
+    "value": "45.8"
    },
    {
     "row": "Step check",
     "col": "MQA",
     "key": "run/D-SEL-stepcheck/sel:medqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "86.2"
    },
    {
     "row": "Step check",
     "col": "CQA",
     "key": "run/D-SEL-stepcheck/sel:careqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "89.0"
    },
    {
     "row": "Step check",
     "col": "Key",
     "key": "run/D-SEL-stepcheck/sel:keypairs/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "77.9"
    },
    {
     "row": "Step check",
     "col": "pair",
     "key": "run/D-SEL-stepcheck/sel:medeinst/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "22.6"
    },
    {
     "row": "Step check",
     "col": "ctrl",
     "key": "run/D-SEL-stepcheck/sel:medeinst/top/control_acc",
-    "value": "\\ph{tbd}"
+    "value": "74.6"
    },
    {
     "row": "Step check",
     "col": "trap",
     "key": "run/D-SEL-stepcheck/sel:medeinst/top/trap_acc",
-    "value": "\\ph{tbd}"
+    "value": "46.0"
    },
    {
     "row": "\\ \\ \\ vignette swapped",
     "col": "MQA",
     "key": "run/D-SEL-stepcheck-swap/sel:medqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "85.6"
    },
    {
     "row": "\\ \\ \\ vignette swapped",
     "col": "CQA",
     "key": "run/D-SEL-stepcheck-swap/sel:careqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "88.1"
    },
    {
     "row": "\\ \\ \\ vignette swapped",
     "col": "Key",
     "key": "run/D-SEL-stepcheck-swap/sel:keypairs/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "76.8"
    },
    {
     "row": "\\ \\ \\ vignette swapped",
     "col": "pair",
     "key": "run/D-SEL-stepcheck-swap/sel:medeinst/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "23.0"
    },
    {
     "row": "\\ \\ \\ vignette swapped",
     "col": "ctrl",
     "key": "run/D-SEL-stepcheck-swap/sel:medeinst/top/control_acc",
-    "value": "\\ph{tbd}"
+    "value": "71.8"
    },
    {
     "row": "\\ \\ \\ vignette swapped",
     "col": "trap",
     "key": "run/D-SEL-stepcheck-swap/sel:medeinst/top/trap_acc",
-    "value": "\\ph{tbd}"
+    "value": "49.0"
    },
    {
     "row": "Ledger score",
     "col": "MQA",
     "key": "run/D-SEL-ledger/sel:medqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "83.8"
    },
    {
     "row": "Ledger score",
     "col": "CQA",
     "key": "run/D-SEL-ledger/sel:careqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "88.4"
    },
    {
     "row": "Ledger score",
     "col": "Key",
     "key": "run/D-SEL-ledger/sel:keypairs/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "71.1"
    },
    {
     "row": "Ledger score",
     "col": "pair",
     "key": "run/D-SEL-ledger/sel:medeinst/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "26.2"
    },
    {
     "row": "Ledger score",
     "col": "ctrl",
     "key": "run/D-SEL-ledger/sel:medeinst/top/control_acc",
-    "value": "\\ph{tbd}"
+    "value": "73.2"
    },
    {
     "row": "Ledger score",
     "col": "trap",
     "key": "run/D-SEL-ledger/sel:medeinst/top/trap_acc",
-    "value": "\\ph{tbd}"
+    "value": "49.8"
    },
    {
     "row": "Combined",
     "col": "MQA",
     "key": "run/D-SEL-combined/sel:medqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "85.3"
    },
    {
     "row": "Combined",
     "col": "CQA",
     "key": "run/D-SEL-combined/sel:careqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "88.9"
    },
    {
     "row": "Combined",
     "col": "Key",
     "key": "run/D-SEL-combined/sel:keypairs/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "76.8"
    },
    {
     "row": "Combined",
     "col": "pair",
     "key": "run/D-SEL-combined/sel:medeinst/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "22.6"
    },
    {
     "row": "Combined",
     "col": "ctrl",
     "key": "run/D-SEL-combined/sel:medeinst/top/control_acc",
-    "value": "\\ph{tbd}"
+    "value": "73.8"
    },
    {
     "row": "Combined",
     "col": "trap",
     "key": "run/D-SEL-combined/sel:medeinst/top/trap_acc",
-    "value": "\\ph{tbd}"
+    "value": "46.4"
    },
    {
     "row": "\\ \\ \\ vignette swapped",
     "col": "MQA",
     "key": "run/D-SEL-combined-swap/sel:medqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "85.6"
    },
    {
     "row": "\\ \\ \\ vignette swapped",
     "col": "CQA",
     "key": "run/D-SEL-combined-swap/sel:careqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "88.1"
    },
    {
     "row": "\\ \\ \\ vignette swapped",
     "col": "Key",
     "key": "run/D-SEL-combined-swap/sel:keypairs/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "76.8"
    },
    {
     "row": "\\ \\ \\ vignette swapped",
     "col": "pair",
     "key": "run/D-SEL-combined-swap/sel:medeinst/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "23.0"
    },
    {
     "row": "\\ \\ \\ vignette swapped",
     "col": "ctrl",
     "key": "run/D-SEL-combined-swap/sel:medeinst/top/control_acc",
-    "value": "\\ph{tbd}"
+    "value": "71.8"
    },
    {
     "row": "\\ \\ \\ vignette swapped",
     "col": "trap",
     "key": "run/D-SEL-combined-swap/sel:medeinst/top/trap_acc",
-    "value": "\\ph{tbd}"
+    "value": "49.0"
    },
    {
     "row": "\\ \\ \\ no near-misses",
     "col": "MQA",
     "key": "run/D-SEL-no-nearmiss/sel:medqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "85.1"
    },
    {
     "row": "\\ \\ \\ no near-misses",
     "col": "CQA",
     "key": "run/D-SEL-no-nearmiss/sel:careqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "88.9"
    },
    {
     "row": "\\ \\ \\ no near-misses",
     "col": "Key",
     "key": "run/D-SEL-no-nearmiss/sel:keypairs/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "76.5"
    },
    {
     "row": "\\ \\ \\ no near-misses",
     "col": "pair",
     "key": "run/D-SEL-no-nearmiss/sel:medeinst/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "22.0"
    },
    {
     "row": "\\ \\ \\ no near-misses",
     "col": "ctrl",
     "key": "run/D-SEL-no-nearmiss/sel:medeinst/top/control_acc",
-    "value": "\\ph{tbd}"
+    "value": "74.4"
    },
    {
     "row": "\\ \\ \\ no near-misses",
     "col": "trap",
     "key": "run/D-SEL-no-nearmiss/sel:medeinst/top/trap_acc",
-    "value": "\\ph{tbd}"
+    "value": "45.6"
    },
    {
     "row": "\\ph{Claude Opus 5.5}",
@@ -14824,37 +16864,37 @@
     "row": "Oracle selection",
     "col": "MQA",
     "key": "run/D-SEL-oracle/sel:medqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "97.5"
    },
    {
     "row": "Oracle selection",
     "col": "CQA",
     "key": "run/D-SEL-oracle/sel:careqa/top/acc",
-    "value": "\\ph{tbd}"
+    "value": "97.1"
    },
    {
     "row": "Oracle selection",
     "col": "Key",
     "key": "run/D-SEL-oracle/sel:keypairs/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "94.7"
    },
    {
     "row": "Oracle selection",
     "col": "pair",
     "key": "run/D-SEL-oracle/sel:medeinst/top/pair_acc",
-    "value": "\\ph{tbd}"
+    "value": "59.4"
    },
    {
     "row": "Oracle selection",
     "col": "ctrl",
     "key": "run/D-SEL-oracle/sel:medeinst/top/control_acc",
-    "value": "\\ph{tbd}"
+    "value": "87.4"
    },
    {
     "row": "Oracle selection",
     "col": "trap",
     "key": "run/D-SEL-oracle/sel:medeinst/top/trap_acc",
-    "value": "\\ph{tbd}"
+    "value": "72.0"
    }
   ],
   "ablation": [
@@ -16846,127 +18886,127 @@
     "row": "\\method",
     "col": "1",
     "key": "run/D-SELN/sel:keypairs/selector=combined/N1",
-    "value": "\\ph{tbd}"
+    "value": "67.3"
    },
    {
     "row": "\\method",
     "col": "2",
     "key": "run/D-SELN/sel:keypairs/selector=combined/N2",
-    "value": "\\ph{tbd}"
+    "value": "71.3"
    },
    {
     "row": "\\method",
     "col": "4",
     "key": "run/D-SELN/sel:keypairs/selector=combined/N4",
-    "value": "\\ph{tbd}"
+    "value": "72.0"
    },
    {
     "row": "\\method",
     "col": "8",
     "key": "run/D-SELN/sel:keypairs/selector=combined/N8",
-    "value": "\\ph{tbd}"
+    "value": "78.0"
    },
    {
     "row": "\\method",
     "col": "16",
     "key": "run/D-SELN/sel:keypairs/selector=combined/N16",
-    "value": "\\ph{tbd}"
+    "value": "78.0"
    },
    {
     "row": "\\method",
     "col": "32",
     "key": "run/D-SELN/sel:keypairs/selector=combined/N32",
-    "value": "\\ph{tbd}"
+    "value": "78.0"
    },
    {
     "row": "\\method",
     "col": "64",
     "key": "run/D-SELN/sel:keypairs/selector=combined/N64",
-    "value": "\\ph{tbd}"
+    "value": "76.0"
    },
    {
     "row": "step check",
     "col": "1",
     "key": "run/D-SELN/sel:keypairs/selector=stepcheck/N1",
-    "value": "\\ph{tbd}"
+    "value": "67.3"
    },
    {
     "row": "step check",
     "col": "2",
     "key": "run/D-SELN/sel:keypairs/selector=stepcheck/N2",
-    "value": "\\ph{tbd}"
+    "value": "70.7"
    },
    {
     "row": "step check",
     "col": "4",
     "key": "run/D-SELN/sel:keypairs/selector=stepcheck/N4",
-    "value": "\\ph{tbd}"
+    "value": "72.7"
    },
    {
     "row": "step check",
     "col": "8",
     "key": "run/D-SELN/sel:keypairs/selector=stepcheck/N8",
-    "value": "\\ph{tbd}"
+    "value": "78.0"
    },
    {
     "row": "step check",
     "col": "16",
     "key": "run/D-SELN/sel:keypairs/selector=stepcheck/N16",
-    "value": "\\ph{tbd}"
+    "value": "79.3"
    },
    {
     "row": "step check",
     "col": "32",
     "key": "run/D-SELN/sel:keypairs/selector=stepcheck/N32",
-    "value": "\\ph{tbd}"
+    "value": "79.3"
    },
    {
     "row": "step check",
     "col": "64",
     "key": "run/D-SELN/sel:keypairs/selector=stepcheck/N64",
-    "value": "\\ph{tbd}"
+    "value": "78.0"
    },
    {
     "row": "oracle",
     "col": "1",
     "key": "run/D-SELN/sel:keypairs/selector=oracle/N1",
-    "value": "\\ph{tbd}"
+    "value": "67.3"
    },
    {
     "row": "oracle",
     "col": "2",
     "key": "run/D-SELN/sel:keypairs/selector=oracle/N2",
-    "value": "\\ph{tbd}"
+    "value": "80.0"
    },
    {
     "row": "oracle",
     "col": "4",
     "key": "run/D-SELN/sel:keypairs/selector=oracle/N4",
-    "value": "\\ph{tbd}"
+    "value": "87.3"
    },
    {
     "row": "oracle",
     "col": "8",
     "key": "run/D-SELN/sel:keypairs/selector=oracle/N8",
-    "value": "\\ph{tbd}"
+    "value": "91.3"
    },
    {
     "row": "oracle",
     "col": "16",
     "key": "run/D-SELN/sel:keypairs/selector=oracle/N16",
-    "value": "\\ph{tbd}"
+    "value": "94.0"
    },
    {
     "row": "oracle",
     "col": "32",
     "key": "run/D-SELN/sel:keypairs/selector=oracle/N32",
-    "value": "\\ph{tbd}"
+    "value": "95.3"
    },
    {
     "row": "oracle",
     "col": "64",
     "key": "run/D-SELN/sel:keypairs/selector=oracle/N64",
-    "value": "\\ph{tbd}"
+    "value": "96.7"
    }
   ],
   "fig-diag": [
