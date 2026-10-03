@@ -1,0 +1,308 @@
+{
+ "verified": "2026-10-03",
+ "models": [
+  {
+   "name": "gpt",
+   "table": "Closed judge (current OpenAI flagship)",
+   "id": "openai/gpt-6-astra",
+   "readout": "choice",
+   "params": {
+    "max_tokens": 4000,
+    "extra_body": {
+     "reasoning": {
+      "effort": "low"
+     }
+    }
+   },
+   "price_in": 10.0,
+   "price_out": 50.0,
+   "est_completion_tokens": 600,
+   "logprobs": false,
+   "reasoning_note": "reasoning mandatory; effort low (fixed for every run)",
+   "provider": "openrouter",
+   "base_url": "https://openrouter.ai/api/v1",
+   "key_env": "OPENROUTER_API_KEY",
+   "verified": "2026-10-03",
+   "source": "https://openrouter.ai/api/v1/models",
+   "revision": "openai/gpt-6-astra-20260903 (OpenRouter canonical_slug); OpenAI snapshot id 'gpt-6-astra' (only snapshot listed)",
+   "license": "proprietary (OpenAI API terms)",
+   "gated": "no",
+   "independent_check": "facts confirmed; wording corrections only (scratch record of workflow wf_7fd2fd5e-25b)"
+  },
+  {
+   "name": "gemini",
+   "table": "Closed judge (current Gemini Pro)",
+   "id": "google/gemini-3.1-pro-preview",
+   "readout": "choice",
+   "params": {
+    "max_tokens": 4000,
+    "extra_body": {
+     "reasoning": {
+      "effort": "low"
+     }
+    }
+   },
+   "price_in": 2.0,
+   "price_out": 12.0,
+   "est_completion_tokens": 600,
+   "logprobs": false,
+   "reasoning_note": "reasoning mandatory; effort low (mapped to thinkingLevel by OpenRouter)",
+   "provider": "openrouter",
+   "base_url": "https://openrouter.ai/api/v1",
+   "key_env": "OPENROUTER_API_KEY",
+   "verified": "2026-10-03",
+   "source": "https://openrouter.ai/api/v1/models",
+   "revision": "google/gemini-3.1-pro-preview-20260219 (OpenRouter canonical_slug); Gemini API model code gemini-3.1-pro-preview (Preview status)",
+   "license": "proprietary (Google Gemini API terms)",
+   "gated": "no",
+   "independent_check": "facts confirmed; wording corrections only (scratch record of workflow wf_7fd2fd5e-25b)"
+  },
+  {
+   "name": "claude",
+   "table": "Closed judge (current Claude Opus)",
+   "id": "anthropic/claude-opus-5.5",
+   "readout": "choice",
+   "params": {
+    "max_tokens": 4000,
+    "extra_body": {
+     "reasoning": {
+      "effort": "low"
+     }
+    }
+   },
+   "price_in": 4.0,
+   "price_out": 20.0,
+   "est_completion_tokens": 600,
+   "logprobs": false,
+   "reasoning_note": "reasoning mandatory; effort low",
+   "provider": "openrouter",
+   "base_url": "https://openrouter.ai/api/v1",
+   "key_env": "OPENROUTER_API_KEY",
+   "verified": "2026-10-03",
+   "source": "https://openrouter.ai/api/v1/models",
+   "revision": "anthropic/claude-opus-5.5-20260921 (OpenRouter canonical_slug); Claude API ID claude-opus-5-5 (dateless pinned snapshot)",
+   "license": "proprietary (Anthropic commercial terms)",
+   "gated": "no",
+   "independent_check": "facts confirmed; wording corrections only (scratch record of workflow wf_7fd2fd5e-25b)"
+  },
+  {
+   "name": "kimi-k3",
+   "table": "Kimi K3",
+   "id": "moonshotai/kimi-k3",
+   "readout": "logprob",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     },
+     "provider": {
+      "require_parameters": true
+     }
+    }
+   },
+   "price_in": 3.0,
+   "price_out": 15.0,
+   "est_completion_tokens": 1,
+   "logprobs": true,
+   "reasoning_note": "reasoning disabled; logprob-capable providers only (require_parameters)",
+   "provider": "openrouter",
+   "base_url": "https://openrouter.ai/api/v1",
+   "key_env": "OPENROUTER_API_KEY",
+   "verified": "2026-10-03",
+   "source": "https://openrouter.ai/api/v1/models",
+   "revision": "moonshotai/kimi-k3-20260715 (OpenRouter canonical_slug); HF moonshotai/Kimi-K3@f831ab66814297da540d832a5235f8e904f29d06",
+   "license": "other (HF card license_name 'kimi-k3'; open weights)",
+   "gated": "no",
+   "independent_check": "confirmed"
+  },
+  {
+   "name": "llama-3.3-70b",
+   "table": "Llama-3.3-70B",
+   "id": "meta-llama/llama-3.3-70b-instruct",
+   "readout": "logprob",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "provider": {
+      "require_parameters": true
+     }
+    }
+   },
+   "price_in": 0.71,
+   "price_out": 0.71,
+   "est_completion_tokens": 1,
+   "logprobs": true,
+   "reasoning_note": "not a reasoning model; logprob-capable providers only (fp8/fp16 serving, see run meta)",
+   "provider": "openrouter",
+   "base_url": "https://openrouter.ai/api/v1",
+   "key_env": "OPENROUTER_API_KEY",
+   "verified": "2026-10-03",
+   "source": "https://openrouter.ai/api/v1/models",
+   "revision": "meta-llama/llama-3.3-70b-instruct (OpenRouter canonical_slug); HF meta-llama/Llama-3.3-70B-Instruct@6f6073b423013f6a7d4d9f39144961bfbfbc386b",
+   "license": "llama3.3 (Llama 3.3 Community License, HF card)",
+   "gated": "no",
+   "independent_check": "confirmed"
+  },
+  {
+   "name": "glm-5.3",
+   "table": "GLM-5.3 (outside v13 Table 2)",
+   "id": "z-ai/glm-5.3",
+   "readout": "choice",
+   "params": {
+    "max_tokens": 4000,
+    "extra_body": {
+     "reasoning": {
+      "effort": "low"
+     }
+    }
+   },
+   "price_in": 1.4,
+   "price_out": 4.4,
+   "est_completion_tokens": 600,
+   "logprobs": true,
+   "reasoning_note": "reasoning mandatory; effort low; logprobs exist but come after reasoning, so choice readout",
+   "provider": "openrouter",
+   "base_url": "https://openrouter.ai/api/v1",
+   "key_env": "OPENROUTER_API_KEY",
+   "verified": "2026-10-03",
+   "source": "https://openrouter.ai/api/v1/models",
+   "revision": "z-ai/glm-5.3-20260816 (OpenRouter canonical_slug); HF zai-org/GLM-5.3@aca966e4e02791568aa6a4ced368624b3d897f42",
+   "license": "other (HF card license_name 'glm-5.3'; open weights)",
+   "gated": "no",
+   "independent_check": "confirmed"
+  },
+  {
+   "name": "nemotron-3-super",
+   "table": "Nemotron 3 Super (outside v13 Table 2)",
+   "id": "nvidia/nemotron-3-super-120b-a12b",
+   "readout": "logprob",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     },
+     "provider": {
+      "require_parameters": true
+     }
+    }
+   },
+   "price_in": 0.08,
+   "price_out": 0.45,
+   "est_completion_tokens": 1,
+   "logprobs": true,
+   "reasoning_note": "reasoning disabled; logprob-capable providers only",
+   "provider": "openrouter",
+   "base_url": "https://openrouter.ai/api/v1",
+   "key_env": "OPENROUTER_API_KEY",
+   "verified": "2026-10-03",
+   "source": "https://openrouter.ai/api/v1/models",
+   "revision": "nvidia/nemotron-3-super-120b-a12b-20230311 (OpenRouter canonical_slug, year typo as published); HF nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8@744b1880a37996c5d56bf454ae164dfd74d77c4e (BF16 repo @2dc98e2afe4face0e4ce40972a915c45368bd34a)",
+   "license": "other (HF card license_name 'nvidia-nemotron-open-model-license'; open weights)",
+   "gated": "no",
+   "independent_check": "confirmed"
+  }
+ ],
+ "local": [
+  {
+   "name": "qwen3.5-9b",
+   "table": "backbone (critic)",
+   "hf_id": "unsloth/Qwen3.5-9B",
+   "revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+   "note": "run C-TF-critic (= C-AUD-qwen35-9b), local log-odds",
+   "verified": "2026-10-02 (role B, configs/models_b.json on role-b)"
+  },
+  {
+   "name": "qwen3.5-27b",
+   "table": "Qwen3.5-27B",
+   "hf_id": "unsloth/Qwen3.5-27B",
+   "note": "55.6 GB bf16 (needs an 80 GB card); weights byte-identical to Qwen/Qwen3.5-27B",
+   "verified": "2026-10-03",
+   "source": "https://huggingface.co/unsloth/Qwen3.5-27B",
+   "revision": "68443620da0c3847c1ba5042b5dcf1e78c42bfba",
+   "license": "apache-2.0 (card metadata; license_link points to Qwen/Qwen3.5-27B LICENSE)",
+   "gated": "no",
+   "independent_check": "confirmed"
+  },
+  {
+   "name": "llama-3.3-70b-local",
+   "table": "Llama-3.3-70B (local alternative)",
+   "hf_id": "unsloth/Llama-3.3-70B-Instruct-bnb-4bit",
+   "note": "Meta's repo is gated and the account is not approved; API row preferred (llama-3.3-70b)",
+   "verified": "2026-10-03",
+   "source": "https://huggingface.co/unsloth/Llama-3.3-70B-Instruct-bnb-4bit",
+   "revision": "644fb67263c036423f7bdfa771cc43b3389eab45",
+   "license": "llama3.3 (card metadata)",
+   "gated": "no",
+   "independent_check": "confirmed"
+  }
+ ],
+ "prms": [
+  {
+   "name": "med-prm",
+   "table": "Med-PRM",
+   "hf_id": "dmis-lab/llama-3.1-medprm-reward-v1.0",
+   "scoring": "steps end with ' ки'; step reward = softmax over the '+'/'-' logits at the marker (model card)",
+   "verified": "2026-10-03",
+   "source": "https://huggingface.co/dmis-lab/llama-3.1-medprm-reward-v1.0",
+   "revision": "6948b9e942fa0275dff8ff902a1833f1298974d4",
+   "license": "MIT (card metadata 'license: mit')",
+   "gated": "no",
+   "independent_check": "facts confirmed; wording corrections only (scratch record of workflow wf_7fd2fd5e-25b)"
+  },
+  {
+   "name": "meds3-prm",
+   "table": "MedS3 PRM",
+   "hf_id": "pixas/MedSSS_PRM",
+   "base": "pixas/MedSSS_Policy",
+   "scoring": "PEFT LoRA token-classification head (2 classes) on MedSSS_Policy (Llama-3.1-8B)",
+   "verified": "2026-10-03",
+   "source": "https://huggingface.co/pixas/MedSSS_PRM",
+   "revision": "c9e78716a50f54295977ec3155d45304cad6bc02",
+   "license": "MIT (card metadata)",
+   "gated": "no",
+   "independent_check": "confirmed"
+  },
+  {
+   "name": "fover-prm",
+   "table": "FoVer PRM",
+   "hf_id": "ryokamoi/Llama-3.1-8B-FoVer-PRM-2026",
+   "scoring": "FoVer input format; P(correct) from the 'correct'/'incorrect' token logits (model card)",
+   "verified": "2026-10-03",
+   "source": "https://huggingface.co/ryokamoi/Llama-3.1-8B-FoVer-PRM-2026",
+   "revision": "964c5c779d8e6ee4907e2b38c914cb3972e06c36",
+   "license": "llama3.1 (card metadata)",
+   "gated": "no",
+   "independent_check": "confirmed"
+  },
+  {
+   "name": "thinkprm",
+   "table": "ThinkPRM",
+   "hf_id": "launch/ThinkPRM-14B",
+   "scoring": "generative verification chain; step verdicts read from the chain (model card)",
+   "verified": "2026-10-03",
+   "source": "https://huggingface.co/launch/ThinkPRM-14B",
+   "revision": "1d1b415037cccf826fab6cc1b02c1dac199c0c0f",
+   "license": "apache-2.0 (card metadata)",
+   "gated": "no",
+   "independent_check": "confirmed"
+  },
+  {
+   "name": "genprm-7b",
+   "table": "GenPRM-7B",
+   "hf_id": "GenPRM/GenPRM-7B",
+   "scoring": "generative critique with code execution, up to 8,192 tokens (model card / repo)",
+   "verified": "2026-10-03",
+   "source": "https://huggingface.co/GenPRM/GenPRM-7B",
+   "revision": "0ea3fa755896b5448a33458fd0b010501dbea21e",
+   "license": "MIT (card metadata); GitHub code MIT",
+   "gated": "no",
+   "independent_check": "facts confirmed; wording corrections only (scratch record of workflow wf_7fd2fd5e-25b)"
+  }
+ ],
+ "notes": {
+  "injected-error PRM": "not run: MedPRMBench has no public data or model release (verified 2026-10-03, arXiv 2604.17282)",
+  "table2": "v13 Table 2 signals (lead's decision 3 Oct): 6 trained PRMs, backbone, Llama-3.3-70B, Qwen3.5-27B, Kimi K3, three closed flagships; GLM-5.3 and Nemotron are optional rows outside the table"
+ }
+}

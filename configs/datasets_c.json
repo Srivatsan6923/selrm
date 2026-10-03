@@ -1,0 +1,125 @@
+{
+ "verified": "2026-10-03",
+ "datasets": [
+  {
+   "id": "zhui711/MedEinst",
+   "use": "clin_v1/medeinst_* (scripts/medeinst_prep.py)",
+   "verified": "2026-10-03",
+   "source": "https://huggingface.co/datasets/zhui711/MedEinst",
+   "revision": "354f4b527e764a8f2bebea8f71be55e0a6966402",
+   "license": "cc-by-4.0. Source: card metadata, plus the README: 'This dataset is derived from the DDXPlus dataset. In strict compliance with the original CC-BY 4.0 license, we release MedEinst under the same CC-BY 4.0 license.' The README also says users 'must cite both our benchmark paper and the original DDXPlus paper'.",
+   "gated": "no",
+   "independent_check": "facts confirmed; wording corrections only (scratch record of workflow wf_7fd2fd5e-25b)"
+  },
+  {
+   "id": "GBaker/MedQA-USMLE-4-options",
+   "use": "key pairs (MedQA)",
+   "verified": "2026-10-03",
+   "source": "https://huggingface.co/datasets/GBaker/MedQA-USMLE-4-options",
+   "revision": "0fb93dd23a7339b6dcd27e241cb9b5eca62d4d18",
+   "license": "cc-by-4.0 (declared in the HF card YAML by the uploader)",
+   "gated": "no",
+   "independent_check": "confirmed"
+  },
+  {
+   "id": "bigbio/med_qa",
+   "use": "key pairs (MedQA, original 5-option)",
+   "verified": "2026-10-03",
+   "source": "https://huggingface.co/datasets/bigbio/med_qa",
+   "revision": "484a6c066fe8e75c83edea0c88b5169316714fcd",
+   "license": "unknown (card: license: unknown, bigbio_license_shortname: UNKNOWN)",
+   "gated": "no",
+   "independent_check": "confirmed"
+  },
+  {
+   "id": "HPAI-BSC/CareQA",
+   "use": "key pairs (CareQA)",
+   "verified": "2026-10-03",
+   "source": "https://huggingface.co/datasets/HPAI-BSC/CareQA",
+   "revision": "1d976cc544ccb9dfc96e14439e6840e8a810cec5",
+   "license": "apache-2.0",
+   "gated": "no",
+   "independent_check": "confirmed"
+  },
+  {
+   "id": "ai-systems/Task-2-SemEval-2024",
+   "use": "NLI4CT-P (official data + scorer)",
+   "verified": "2026-10-03",
+   "source": "https://github.com/ai-systems/Task-2-SemEval-2024/tree/7f32fa6c7db43e577f22e9fc6c28eef1cc6d223e",
+   "revision": "7f32fa6c7db43e577f22e9fc6c28eef1cc6d223e",
+   "license": "none stated: no LICENSE file; GitHub API license=null and /license returns 404. Open issue #2 'Request for license details' (2026-08-30, 0 replies). CodaLab T&C say 'You agree not to use or redistribute the shared task data except in the manner prescribed by its licence' but name no licence. The task website names none either.",
+   "gated": "no",
+   "independent_check": "facts confirmed; wording corrections only (scratch record of workflow wf_7fd2fd5e-25b)"
+  },
+  {
+   "id": "araag2/SemEval_NLI4CT",
+   "use": "NLI4CT-P gold test labels (mirror)",
+   "verified": "2026-10-03",
+   "source": "https://huggingface.co/datasets/araag2/SemEval_NLI4CT",
+   "revision": "75b856c3d91273bb9e3b1ac245c467e77eae9ace",
+   "license": "card tag cc-by-sa-4.0. This is the curator's claim (Artur Guimarães, INESC-ID) and does not trace to any licence from the original authors.",
+   "gated": "no",
+   "independent_check": "confirmed"
+  },
+  {
+   "id": "jashparekh/CondMedQA",
+   "use": "CondMedQA",
+   "verified": "2026-10-03",
+   "source": "https://huggingface.co/datasets/jashparekh/CondMedQA",
+   "revision": "73a3748d74abde89a9e20b3f3798d894035f1d53",
+   "license": "MIT (HF dataset card). Paper arXiv 2602.17911: CC BY 4.0.",
+   "gated": "no",
+   "independent_check": "facts confirmed; wording corrections only (scratch record of workflow wf_7fd2fd5e-25b)"
+  },
+  {
+   "id": "disi-unibo-nlp/ReMedQA",
+   "use": "ReMedQA (overlap note)",
+   "verified": "2026-10-03",
+   "source": "https://huggingface.co/datasets/disi-unibo-nlp/ReMedQA",
+   "revision": "3abb4b47a5859c7b46c0a1872a58c82e2e3029e3",
+   "license": "not declared: the HF card has no license field and the GitHub repo disi-unibo-nlp/remedqa has no LICENSE (API license null). The CC BY-SA 4.0 notice on the project page covers the website template adapted from Nerfies, not the data.",
+   "gated": "no",
+   "independent_check": "facts confirmed; wording corrections only (scratch record of workflow wf_7fd2fd5e-25b)"
+  },
+  {
+   "id": "ncbi/TrialGPT-Criterion-Annotations",
+   "use": "clin_v1/trialgpt_* (scripts/trialgpt_prep.py)",
+   "revision": "1cfcafde94a1560a33b4addc1638664fe28fc059",
+   "license": "public domain (NCBI)",
+   "verified": "2026-10-03"
+  },
+  {
+   "id": "arXiv:2604.17282 (no HF / GitHub / ModelScope data or model repo exists)",
+   "use": "status check",
+   "exists": false,
+   "verified": "2026-10-03",
+   "source": "https://arxiv.org/abs/2604.17282",
+   "revision": "arXiv v1 (2026-04-19T06:44:07Z), the only version as of 2026-10-03",
+   "license": "Paper: CC BY 4.0 (arXiv). Data and PRM: no licence stated because neither is released.",
+   "gated": "unknown",
+   "independent_check": "facts confirmed; wording corrections only (scratch record of workflow wf_7fd2fd5e-25b)"
+  },
+  {
+   "id": "arXiv:2606.15735; code: github.com/ji-youn-kim/EHRNote-ChatQA; data: not yet on PhysioNet",
+   "use": "status check",
+   "exists": false,
+   "verified": "2026-10-03",
+   "source": "https://github.com/ji-youn-kim/EHRNote-ChatQA",
+   "revision": "aa33511d43601ddca949d66a7b6f12c573640610 (GitHub master head, 2026-09-27; no tags or releases); paper arXiv v2 (2026-06-16)",
+   "license": "Code: MIT (GitHub). Data: not yet published, planned PhysioNet credentialed access, data licence/DUA not yet visible. Paper: CC BY 4.0.",
+   "gated": "yes",
+   "independent_check": "confirmed"
+  },
+  {
+   "id": "figshare 22687585 (DDXPlus Dataset (English)) and figshare 20043374 (DDXPlus Dataset, French original); docs: github.com/mila-iqia/ddxplus",
+   "use": "status check",
+   "exists": true,
+   "verified": "2026-10-03",
+   "source": "https://figshare.com/articles/dataset/DDXPlus_Dataset_English_/22687585",
+   "revision": "figshare 22687585 v2 (DOI 10.6084/m9.figshare.22687585.v2, 2026-03-09T20:13:00Z); figshare 20043374 v15 (DOI 10.6084/m9.figshare.20043374.v15, 2026-03-11T14:42:10Z); GitHub head 4f5ec677099ef99f7cc1dc0bfe2378bb29a29bda (2026-10-01)",
+   "license": "CC BY 4.0",
+   "gated": "no",
+   "independent_check": "facts confirmed; wording corrections only (scratch record of workflow wf_7fd2fd5e-25b)"
+  }
+ ]
+}
