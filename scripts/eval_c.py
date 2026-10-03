@@ -191,8 +191,21 @@ def run_prm(spec, a, mon, log, owner):
             root = a.broot if s.startswith("rule_v1") else a.root
             recs = subset(load_jsonl(dataset_path(root, s)), spec.get("n_groups", 0), tuple(spec.get("claim_types", ["conclusion"])))
             ts = time.time()
-            u = mod.score(model, tok, recs, batch_size=spec.get("bs", 8), max_new_tokens=spec.get("max_new"), log=log)
-            outs = getattr(mod, "LAST_OUTPUTS", None)
+            # length tiers keep long inputs (MedEinst, NLI4CT-P) in small batches; the wrapper batches within a tier
+            u, outs = [0.0] * len(recs), [None] * len(recs)
+            size = lambda r: len(r["rule_text"]) + len(r["case_text"]) + len(r["claim_text"])
+            for lo, hi, div in ((0, 3000, 1), (3000, 8000, 2), (8000, 10**9, 8)):
+                idx = [i for i, r in enumerate(recs) if lo <= size(r) < hi]
+                if not idx:
+                    continue
+                part = mod.score(model, tok, [recs[i] for i in idx], batch_size=max(1, spec.get("bs", 8) // div),
+                                 max_new_tokens=spec.get("max_new"), log=log)
+                po = getattr(mod, "LAST_OUTPUTS", None)
+                for k, i in enumerate(idx):
+                    u[i] = part[k]
+                    if po is not None and len(po) == len(idx):
+                        outs[i] = po[k]
+            outs = outs if any(o is not None for o in outs) else None
             name = s.replace("/", "~")
             os.makedirs(rdir, exist_ok=True)
             with open(f"{rdir}/scores_{name}.jsonl", "w", encoding="utf-8") as f:
@@ -235,6 +248,31 @@ def run_prm(spec, a, mon, log, owner):
             torch.cuda.empty_cache()
 
 
+def budget_scorer(eval_local, model, tok, bs_score, bs_gen, max_new, log, gb):
+    """B's Scorer whose batches also respect a token budget (prompt tokens, plus max_new when generating), set
+    from GPU memory: long prompts (MedEinst, NLI4CT-P) at a fixed batch size ran 24 GB cards out of memory.
+    Batch composition changes speed only (B's left-padding self-check runs as before)."""
+    budget = None if gb >= 60 else (12000 if gb < 30 else 40000)
+
+    class BudgetScorer(eval_local.Scorer):
+        def _batches(self, seqs, bs):
+            if budget is None or self.pad_ok is False:
+                return super()._batches(seqs, bs)
+            extra = self.max_new if bs == self.bs_gen else 0
+            order = sorted(range(len(seqs)), key=lambda i: (len(seqs[i]), i))
+            out, cur = [], []
+            for i in order:                       # ascending length: the new item is the longest in the batch
+                if cur and (len(cur) == bs or (len(cur) + 1) * (len(seqs[i]) + extra) > budget):
+                    out.append(cur)
+                    cur = []
+                cur.append(i)
+            return out + ([cur] if cur else [])
+
+    sc = BudgetScorer(model, tok, bs_score, bs_gen, max_new, log)
+    log(f"token budget per batch: {budget}")
+    return sc
+
+
 def run_one(spec, a, mon, log, owner):
     import torch
     import eval_local, finetune
@@ -255,7 +293,7 @@ def run_one(spec, a, mon, log, owner):
             bs_score, bs_gen = min(bs_score, 16), min(bs_gen, 16)
         elif mem < 40:                            # 32 GB cards
             bs_score, bs_gen = min(bs_score, 64), min(bs_gen, 64)
-        sc = eval_local.Scorer(model, tok, bs_score, bs_gen, spec.get("max_new", 384), log)
+        sc = budget_scorer(eval_local, model, tok, bs_score, bs_gen, spec.get("max_new", 384), log, mem)
         tag = spec.get("base_model", "unsloth/Qwen3.5-9B").replace("/", "--")
         summ, secs = {}, {}
         for s in spec["sets"]:
