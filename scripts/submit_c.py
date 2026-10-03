@@ -115,7 +115,10 @@ def runner_job(name, tasks, code, bcode, env_tag, gpu, hours, cpu=2, mem="12Gi",
     resource, products = GPU[gpu]
     terms = [DRIVER] + ([{"key": "nvidia.com/gpu.product", "operator": "In", "values": products}] if products else [])
     mounts = MNTS + [{"name": "work", "mountPath": "/work"}, {"name": "env", "mountPath": "/opt/selrm-env"}]
-    pod = {"restartPolicy": "Never", "affinity": affinity(terms),
+    aff = affinity(terms)      # prefer us-west (the CephFS pool; some remote nodes lack its CSI driver)
+    aff["nodeAffinity"]["preferredDuringSchedulingIgnoredDuringExecution"] = [{"weight": 100, "preference": {
+        "matchExpressions": [{"key": "topology.kubernetes.io/region", "operator": "In", "values": ["us-west"]}]}}]
+    pod = {"restartPolicy": "Never", "affinity": aff,
            "initContainers": [{"name": "stage", "image": IMAGE,
                                "command": ["sh", f"{ROOT}/code/{code}/k8s/stage_c.sh", env_tag, bcode, code, *models],
                                "resources": res(3, "8Gi", "64Gi"), "volumeMounts": mounts}],
