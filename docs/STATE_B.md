@@ -58,7 +58,9 @@ ledger2 x {blocks, triplets}; B-BB-qwen3.5-4b verdict x blocks; all B-C0 validat
 
 ## Before the tables
 - Summaries written by runners on code before e86e9f7 carry CIs from the old bootstrap (process-dependent order;
-  ~0.1 point): recompute every summary from its scores file with the final selrm/metrics.py before make_tables.
+  ~0.1 point): recompute every summary from its scores file with the final selrm/metrics.py before make_tables:
+  `python scripts/resummarize_b.py --all` (also adds xr crossed accuracy / clinical pair reversal to summaries
+  written by older runner code; run it on every pulled run that evaluated xr_v1 or a clinical pair set).
 - Regenerate docs/PROJECTION_B.md once an H100 training run has finished (H100 speed is unmeasured until then).
 
 ## Open compute requests
