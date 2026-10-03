@@ -110,10 +110,10 @@ def ablations(emit, pool, n, SET):
 
 def experiments(emit, rules, pool, n, SET):
     """Two later experiments. Leave one near-miss kind out: the triplets corpus over
-    groups of the other near-miss kinds only (subject, negation or time held out).
+    groups of the other near-miss kinds only (subject, negation, time or boundary held out).
     Near-miss dose: the blocks corpus with 5, 12 or 25% of base cases replaced by
     near-misses of all kinds (0% = train_blocks, 50% = train_triplets, same pool)."""
-    for held in ("subject", "negation", "time"):
+    for held in ("subject", "negation", "time", "boundary"):
         st = Counter()
         lo_pool = D.sample_specs(rules("train_rules"), len(pool), f"train.lo_{held}",
                                  kinds=[k for k in D.KINDS if k != held])

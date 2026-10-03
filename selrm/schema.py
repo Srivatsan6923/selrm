@@ -21,7 +21,8 @@ REQUIRED = {
     "prose": str,       # the same evidence as plain sentences (matched baseline)
     "meta": dict,       # template ids, seed, anything else
 }
-CASE_KINDS = {"base", "flip", "near", "pres", "missing", "read", "apply"}
+CASE_KINDS = {"base", "flip", "near", "pres", "missing", "read", "apply",
+              "contested", "positive", "negative"}      # the last three: rule-side items (xr_v1)
 CLAIM_TYPES = {"conclusion", "criterion", "applicability"}
 LEDGER_KEYS = ("need", "found", "subject", "status", "time")
 

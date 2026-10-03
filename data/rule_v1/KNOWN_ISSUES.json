@@ -1,0 +1,21 @@
+{
+ "generated_by": "scripts/audit_rule_v1.py",
+ "commit": "813e921a358d470d790c6a5c1f0666ddd260b85f",
+ "checked_sets": [
+  "rule_v1/dev",
+  "rule_v1/dev_missing",
+  "rule_v1/missing",
+  "rule_v1/readapply",
+  "rule_v1/test_L0",
+  "rule_v1/test_L1",
+  "rule_v1/test_L2",
+  "rule_v1/test_L3alt",
+  "rule_v1/test_L3inv",
+  "rule_v1/test_hard",
+  "rule_v1_fold2/dev",
+  "rule_v1_fold2/test_L2",
+  "rule_v1_fold3/dev",
+  "rule_v1_fold3/test_L2"
+ ],
+ "issues": []
+}
