@@ -24,7 +24,11 @@ for name in names:
     if h != e["sha256"] or not e.get("frozen"):
         raise SystemExit(f"MISMATCH or not frozen {name}: {h[:12]} vs {e['sha256'][:12]}")
     d = f"{root}/{os.path.dirname(e['path'])}"
-    if not os.path.exists(d):             # frozen sets are immutable; an existing copy was verified before
+    if os.path.exists(d):                 # an existing copy must be the registered version, never assumed to be
+        hd = hashlib.sha256(open(f"{root}/{e['path']}", "rb").read()).hexdigest()
+        if hd != e["sha256"]:
+            raise SystemExit(f"EXISTING COPY DIFFERS {name}: {hd[:12]} on B's PVC vs {e['sha256'][:12]} registered")
+    if not os.path.exists(d):
         os.makedirs(d + ".tmp", exist_ok=True)
         shutil.copyfile(src, f"{d}.tmp/{os.path.basename(e['path'])}")
         man = f"{code}/data/{os.path.dirname(e['path'])}/MANIFEST.json"
@@ -33,6 +37,7 @@ for name in names:
         os.replace(d + ".tmp", d)
     reg[name] = e
     print("copied", name, h[:12], e.get("n_records"))
+reg = json.load(open(f"{root}/REGISTRY.json")) | {n: reg[n] for n in names if n in reg}   # re-read: keep concurrent writes
 json.dump(reg, open(f"{root}/REGISTRY.json.tmp", "w"), indent=1, sort_keys=True)
 os.replace(f"{root}/REGISTRY.json.tmp", f"{root}/REGISTRY.json")
 EOF

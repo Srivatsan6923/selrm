@@ -456,16 +456,6 @@
    "pvc": "selrm-b",
    "pvc_path": "selrm/adapters/B-AB-bitonly-judge-s0"
   },
-  "B-AB-concept-s0": {
-   "run_id": "B-AB-concept-s0",
-   "path": null,
-   "status": "DONE (seed 0); on the PVC",
-   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
-   "format": "ledger2",
-   "corpus": "rule_v1/train_triplets",
-   "pvc": "selrm-b",
-   "pvc_path": "selrm/adapters/B-AB-concept-s0"
-  },
   "B-F-ledger2-triplets-s3": {
    "run_id": "B-F-ledger2-triplets-s3",
    "path": null,
@@ -655,16 +645,6 @@
    "corpus": "rule_v1/train_triplets",
    "pvc": "selrm-b",
    "pvc_path": "selrm/adapters/B-TR-genprm-s0"
-  },
-  "B-TR-tripclin-s0": {
-   "run_id": "B-TR-tripclin-s0",
-   "path": null,
-   "status": "DONE (seed 0); on the PVC",
-   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
-   "format": "ledger2",
-   "corpus": "rule_v1/train_triplets",
-   "pvc": "selrm-b",
-   "pvc_path": "selrm/adapters/B-TR-tripclin-s0"
   }
  }
 }

@@ -41,7 +41,7 @@ for name, gen in FILES.items():
     path = f"configs/queues/{name}"
     old = {r["run_id"]: r for r in json.load(open(path))["runs"]} if os.path.exists(path) else {}
     runs, kept = [], []
-    for r in Q.with_new_sets(gen(), REG):
+    for r in Q.gate_new_fields(Q.with_new_sets(gen(), REG)):
         if r["run_id"] in busy and r["run_id"] in old:
             runs.append(old[r["run_id"]]); kept.append(r["run_id"])
         else:

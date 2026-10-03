@@ -16,9 +16,11 @@ def main():
         d = os.path.dirname(meta)
         m = json.load(open(meta, encoding="utf-8"))
         rid = m["run_id"]
-        if (rid in known or rid.startswith(("B-C0", "B-T0")) or not m.get("keep_adapter") or not m.get("adapter_path")
+        trained = isinstance(m.get("train"), dict) and m["train"].get("steps") and not m["train"].get("eval_only")
+        if (rid in known or rid.startswith(("B-C0", "B-T0")) or not m.get("keep_adapter") or not trained
+                or not str(m.get("adapter_path") or "").endswith(f"/adapters/{rid}") or m.get("kind") == "concept"
                 or not os.path.exists(f"{d}/DONE")):
-            continue
+            continue                    # only trained runs whose own adapter directory was kept
         reg["systems"][rid] = {"run_id": rid, "path": None, "status": f"DONE (seed {m['seed']}); on the PVC",
                                "base_model": f"{m['model']}@{m['model_revision']}", "format": m["format"],
                                "corpus": m["corpus"], "pvc": "selrm-b", "pvc_path": f"selrm/adapters/{rid}"}

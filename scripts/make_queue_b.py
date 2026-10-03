@@ -46,10 +46,10 @@ def priority(rid, seed, mprio="P1"):
     cv = re.fullmatch(r"B-(SC|LC)-\w+-\w+-s(\d)", rid)
     if cv:
         return 10 if cv[2] == "0" else 15
+    if rid.startswith("B-AUX-"):              # item 3 before item 4 (its runs wait for C's and A's sets anyway)
+        return 17
     if rid.startswith("B-LOKO-") and (seed > 0 or "-bit_reader-" in rid):
         return 20
-    if rid.startswith("B-AUX-"):
-        return 30
     if rid.startswith("B-RW-"):
         return 35
     if rid.startswith("B-BB-") and seed == 0:
@@ -293,7 +293,9 @@ def newexp(seeds, registry, version):
             hits = sorted(n for n in frozen if n.endswith(f"/train_triplets_no_{m[2]}"))
             if not hits:
                 continue                                  # A has not registered the corpus yet
-            corpus, sets = hits[0], ("dev", "test_L2", "test_L0")
+            # seed 0 of the first three formats kept test_L0; NEXT_TASKS_B: other non-core runs dev and L2 (+ new sets)
+            corpus = hits[0]
+            sets = ("dev", "test_L2", "test_L0") if int(m[4]) == 0 and m[3] != "bit_reader" else ("dev", "test_L2")
         else:
             corpus, sets = f"{version}/train_dose_{m[2]}", ("dev", "test_L2")
             if corpus not in frozen:
@@ -338,13 +340,32 @@ def ns_eval(registry, adapters):
         if os.path.exists(meta):                          # runner may have claimed a run before its spec changed
             m = json.load(open(meta))
             spec = spec | {k: m[k] for k in ("format", "seed", "eval_sets")} | {"base_model": m["model"]}
+        # the source run's eval mode (e.g. the verification pass) from its summaries, and the runner generation its
+        # format or mode needs: a B-NS run scores the adapter exactly as the source run scored its own sets
+        mode = next((m for p in sorted(glob.glob(f"{ROOT}/results_git/{src}/summary_*.json"))
+                     if (m := json.load(open(p)).get("eval", {}).get("mode"))), spec.get("eval", {}).get("mode"))
+        gen = max(spec.get("min_gen", 0), FORMAT_MIN_GEN.get(spec["format"], 0), 2 if mode == "ledger_edit" else 0)
         for fam, sets in sorted(fams.items()):
             if set(sets) <= set(spec.get("eval_sets", [])):
                 continue
             rid = f"B-NS-{fam}-{src}"
             runs.append({"run_id": rid, "seed": spec["seed"], "priority": priority(rid, 0), "format": spec["format"],
-                         "train": False, "adapter": f"adapters/{src}", "eval": dict(EVAL), "eval_sets": sets}
-                        | {k: spec[k] for k in ("base_model", "min_gen", "kind") if k in spec})
+                         "train": False, "adapter": f"adapters/{src}", "eval_sets": sets,
+                         "eval": dict(EVAL) | ({"mode": mode} if mode else {})}
+                        | {k: spec[k] for k in ("base_model", "kind") if k in spec} | ({"min_gen": gen} if gen else {}))
+    return runs
+
+
+FORMAT_MIN_GEN = {"genprm": 2, "conddrv": 3, "ledger2_case": 4}     # runner generations that run a format correctly
+NEW_FIELDS = ("mix", "passes", "pad_examples", "train_meta_exclude", "save_epochs")
+
+
+def gate_new_fields(runs):
+    """Specs whose training data depends on fields older runners ignore (their train_key would name another
+    directory, and B-TR-tripclin-s0 was trained on plain triplets that way) need runner generation 4."""
+    for r in runs:
+        if any(k in r for k in NEW_FIELDS) or r.get("format") in FORMAT_MIN_GEN:
+            r["min_gen"] = max(r.get("min_gen", 0), 4 if any(k in r for k in NEW_FIELDS) else FORMAT_MIN_GEN[r["format"]])
     return runs
 
 
@@ -459,7 +480,7 @@ def main():
            "rewritten": lambda: rewritten(a.registry, a.version),
            "aux": lambda: aux(a.registry),
            "ns": lambda: ns_eval(a.registry, a.adapters.split(","))}
-    runs = [r for r in with_new_sets(gen[a.kind](), a.registry) if re.search(a.runs, r["run_id"])]
+    runs = [r for r in gate_new_fields(with_new_sets(gen[a.kind](), a.registry)) if re.search(a.runs, r["run_id"])]
     newer = [r["run_id"] for r in runs if r.get("min_gen", 0) >= 2]   # runners staged before 2 Oct 13:00 read the top level
     if newer and "v2" not in os.path.normpath(os.path.abspath(a.out)).split(os.sep):
         sys.exit(f"{newer} need runner code from 2 Oct 13:00 UTC on: write them under configs/queues/v2/ (docs/NRP_B.md)")
