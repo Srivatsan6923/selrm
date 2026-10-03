@@ -152,6 +152,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | run | GPU | corpus records | examples | reader targets | judge targets | tokens | completion tokens | steps | train h | eval h |
 |---|---|---|---|---|---|---|---|---|---|---|
 | B-AB-bitonly-judge-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 12447626 | 1223333 | 938 | 0.71 | 0.15 |
+| B-AB-bitonly-reader-s0 | NVIDIA A100-PCIE-40GB | 60004 | 60000 | 30000 | 30000 | 11434293 | 210000 | 938 | 2.05 | 0.28 |
 | B-AB-conddrv-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13617157 | 1073061 | 938 | 0.81 | 0.40 |
 | B-AB-decfield-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 13462612 | 1223333 | 938 | 1.78 | 0.36 |
 | B-AB-nopres-s0 | NVIDIA H100 80GB HBM3 | 60006 | 60000 | 30000 | 30000 | 13210507 | 1086470 | 938 | 0.79 | 0.20 |
@@ -219,6 +220,7 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | run | resample_p | judge examples | judge pairs (both claims) | pairs drawn from a donor case | share | (rule, condition, claim type) groups |
 |---|---|---|---|---|---|---|
 | B-AB-bitonly-judge-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-AB-bitonly-reader-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-AB-conddrv-s0 | 0.3 | 30000 | 15000 | 4546 | 30.3% | 795 |
 | B-AB-decfield-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-AB-nopres-s0 | 0.3 | 30000 | 15000 | 4548 | 30.3% | 797 |
@@ -351,6 +353,7 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | run | XA | cell accuracy | XA currency | XA inclusivity | XA subject | XA window |
 |---|---|---|---|---|---|---|
 | B-AB-bitonly-judge-s0 | 97.8 | 99.6 | 100.0 | 100.0 | 100.0 | 91.0 |
+| B-AB-bitonly-reader-s0 | 97.8 | 99.6 | 100.0 | 100.0 | 100.0 | 91.0 |
 | B-AB-concept-s0 | 12.0 | 73.9 | 35.0 | 2.0 | 0.0 | 11.0 |
 | B-AB-conddrv-s0 | 86.5 | 97.4 | 99.0 | 100.0 | 98.0 | 49.0 |
 | B-AB-decfield-s0 | 98.8 | 99.8 | 100.0 | 100.0 | 100.0 | 95.0 |
@@ -446,6 +449,7 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 |---|---|---|---|---|
 | B-F-ledger2-triplets-s0 | 99.2 | 99.2 | 100.0 | - |
 | B-AB-bitonly-judge-s0 | 99.3 | 99.5 | 99.9 | +0.1 [-0.2, +0.6], p 0.552 |
+| B-AB-bitonly-reader-s0 | 100.0 | 100.0 | 100.0 | +0.8 [+0.3, +1.4], p < 0.001 |
 | B-AB-concept-s0 | 26.8 | 34.4 | 58.4 | -72.5 [-76.0, -68.4], p < 0.001 |
 | B-AB-conddrv-s0 | 86.5 | 87.0 | 98.6 | -12.7 [-16.8, -8.9], p < 0.001 |
 | B-AB-decfield-s0 | 99.5 | 99.7 | 99.8 | +0.3 [-0.1, +0.8], p 0.206 |
