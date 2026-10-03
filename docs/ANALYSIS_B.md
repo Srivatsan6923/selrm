@@ -48,13 +48,13 @@ Disagreement by near-miss kind (triplet solved = TA):
 | subject | 400 | 161 | 33 | 68 | 138 |
 | time | 400 | 178 | 57 | 46 | 119 |
 
-Seeds 0, 1, 2, 3 pooled (same-seed pairs; rules as clusters):
+Seeds 0, 1, 2, 3, 4 pooled (same-seed pairs; rules as clusters):
 
 | metric | ledger | summary | ledger - summary [95% CI], p |
 |---|---|---|---|
-| TA | 67.6 | 64.9 | +2.7 [-0.1, +5.6], p 0.056 |
-| Rev | 99.4 | 98.0 | +1.4 [+0.7, +2.3], p < 0.001 |
-| Hold | 67.9 | 66.6 | +1.3 [-1.3, +3.9], p 0.362 |
+| TA | 71.0 | 65.8 | +5.2 [+2.6, +7.9], p < 0.001 |
+| Rev | 99.3 | 98.3 | +1.1 [+0.4, +1.8], p < 0.001 |
+| Hold | 71.4 | 67.3 | +4.1 [+1.6, +6.7], p 0.002 |
 
 ## 2. Do generated summaries or ledgers contain a verdict?
 
@@ -68,6 +68,7 @@ Every reader output of the two-stage runs (one per case and condition, on every 
 | B-F-summary2-blocks-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-blocks-s2 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-blocks-s3 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-summary2-blocks-s4 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-triplets-s0 | 10500 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-triplets-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-triplets-s2 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -158,6 +159,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-AB-nopres-s0 | NVIDIA H100 80GB HBM3 | 60006 | 60000 | 30000 | 30000 | 13210507 | 1086470 | 938 | 0.79 | 0.20 |
 | B-AB-noresamp-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13161060 | 1073333 | 938 | 0.69 | 0.16 |
 | B-AB-pairwise-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 13054885 | 0 | 938 | 0.97 | 0.10 |
+| B-AB-probe-rw-s0 | NVIDIA A100-SXM4-80GB | 92976 | 60000 | 30000 | 30000 | 13048522 | 1045348 | 938 | 1.74 | 0.33 |
 | B-AB-verify-s0 | NVIDIA H100 80GB HBM3 | 60004 | 70000 | 30000 | 30000 | 15785386 | 1093333 | 1094 | 0.89 | 0.24 |
 | B-BB-qwen3.5-4b-verdict-blocks-s0 | NVIDIA L40 | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 1.90 | 0.40 |
 | B-F-ledger2-balanced-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 13046129 | 1048600 | 938 | 0.74 | 0.18 |
@@ -181,6 +183,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-summary2-blocks-s1 | NVIDIA RTX A6000 | 60004 | 60000 | 30000 | 30000 | 11864845 | 1055547 | 938 | 3.46 | 2.21 |
 | B-F-summary2-blocks-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 11864845 | 1055547 | 938 | 0.66 | 0.68 |
 | B-F-summary2-blocks-s3 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 11864845 | 1055547 | 938 | 0.71 | 0.64 |
+| B-F-summary2-blocks-s4 | NVIDIA RTX A6000 | 60004 | 60000 | 30000 | 30000 | 11864845 | 1055547 | 938 | 3.49 | 2.21 |
 | B-F-summary2-natural-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 11740178 | 1012112 | 938 | 0.86 | 0.17 |
 | B-F-summary2-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 1.60 | 0.34 |
 | B-F-summary2-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 0.67 | 0.65 |
@@ -203,6 +206,23 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-verdict-triplets-s2 | NVIDIA L40 | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 3.24 | 1.64 |
 | B-F-verdict-triplets-s3 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 0.66 | 0.33 |
 | B-F-verdict-triplets-s4 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 0.60 | 0.34 |
+| B-FOLD2-ledger2-blocks-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13869436 | 1048753 | 938 | 0.81 | 0.14 |
+| B-FOLD2-ledger2-blocks-s1 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13869436 | 1048753 | 938 | 0.73 | 0.12 |
+| B-FOLD2-ledger2-blocks-s2 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13869436 | 1048753 | 938 | 0.73 | 0.13 |
+| B-FOLD2-ledger2-triplets-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13938048 | 1074512 | 938 | 0.74 | 0.11 |
+| B-FOLD2-ledger2-triplets-s1 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13938048 | 1074512 | 938 | 0.77 | 0.13 |
+| B-FOLD2-ledger2-triplets-s2 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13938048 | 1074512 | 938 | 0.76 | 0.13 |
+| B-FOLD2-verdict-blocks-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 14027420 | 120000 | 938 | 0.65 | 0.08 |
+| B-FOLD2-verdict-blocks-s1 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 14027420 | 120000 | 938 | 0.64 | 0.08 |
+| B-FOLD2-verdict-blocks-s2 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 14027420 | 120000 | 938 | 0.64 | 0.08 |
+| B-FOLD2-verdict-triplets-s0 | NVIDIA A100-PCIE-40GB | None | 60000 | - | - | 14066856 | 120000 | 938 | 2.11 | 0.22 |
+| B-FOLD2-verdict-triplets-s1 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 14066856 | 120000 | 938 | 0.64 | 0.08 |
+| B-FOLD3-ledger2-triplets-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13867712 | 1084501 | 938 | 0.81 | 0.15 |
+| B-FOLD3-verdict-blocks-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13938789 | 120000 | 938 | 0.64 | 0.07 |
+| B-FOLD3-verdict-blocks-s1 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13938789 | 120000 | 938 | 0.68 | 0.07 |
+| B-FOLD3-verdict-blocks-s2 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13938789 | 120000 | 938 | 0.64 | 0.07 |
+| B-FOLD3-verdict-triplets-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13975047 | 120000 | 938 | 0.64 | 0.07 |
+| B-FOLD3-verdict-triplets-s1 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13975047 | 120000 | 938 | 0.65 | 0.07 |
 | B-LOKO-boundary-ledger2-s0 | NVIDIA A100-SXM4-80GB | None | 60000 | 30000 | 30000 | 13132713 | 1115843 | 938 | 1.75 | 0.41 |
 | B-LOKO-boundary-summary2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 11979662 | 1139596 | 938 | 0.71 | 0.26 |
 | B-LOKO-boundary-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 12970250 | 120000 | 938 | 0.69 | 0.14 |
@@ -213,6 +233,8 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-LOKO-time-summary2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 11924379 | 1013232 | 938 | 0.72 | 0.24 |
 | B-LOKO-time-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13201513 | 120000 | 938 | 0.70 | 0.14 |
 | B-SC-summary2-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 15443373 | 1095740 | 938 | 1.67 | 0.41 |
+| B-TR-genprm-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 22589642 | 7275208 | 938 | 2.42 | 2.75 |
+| B-TR-tripclin-s0 | NVIDIA L40 | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 3.64 | 1.09 |
 
 ## 8. Was donor-ledger resampling active?
 
@@ -226,7 +248,11 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | B-AB-decfield-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-AB-nopres-s0 | 0.3 | 30000 | 15000 | 4548 | 30.3% | 797 |
 | B-AB-noresamp-s0 | 0 | 30000 | 15000 | 0 | 0.0% | 795 |
+| B-AB-probe-rw-s0 | 0.3 | 30000 | 15000 | 4503 | 30.0% | 795 |
 | B-AB-verify-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-DIS-s0 | 0.3 | 30000 | 15000 | 4533 | 30.2% | 86 |
+| B-DIS-s1 | 0.3 | 30000 | 15000 | 4533 | 30.2% | 86 |
+| B-DIS-s2 | 0.3 | 30000 | 15000 | 4533 | 30.2% | 86 |
 | B-F-ledger2-balanced-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-F-ledger2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-ledger2-blocks-s1 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
@@ -244,6 +270,7 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | B-F-summary2-blocks-s1 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-summary2-blocks-s2 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-summary2-blocks-s3 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
+| B-F-summary2-blocks-s4 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-summary2-natural-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-F-summary2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-summary2-triplets-s1 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
@@ -254,6 +281,13 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | B-F-value2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-value2-natural-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-F-value2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-FOLD2-ledger2-blocks-s0 | 0.3 | 30000 | 15000 | 4571 | 30.5% | 1051 |
+| B-FOLD2-ledger2-blocks-s1 | 0.3 | 30000 | 15000 | 4571 | 30.5% | 1051 |
+| B-FOLD2-ledger2-blocks-s2 | 0.3 | 30000 | 15000 | 4571 | 30.5% | 1051 |
+| B-FOLD2-ledger2-triplets-s0 | 0.3 | 30000 | 15000 | 4559 | 30.4% | 1051 |
+| B-FOLD2-ledger2-triplets-s1 | 0.3 | 30000 | 15000 | 4559 | 30.4% | 1051 |
+| B-FOLD2-ledger2-triplets-s2 | 0.3 | 30000 | 15000 | 4559 | 30.4% | 1051 |
+| B-FOLD3-ledger2-triplets-s0 | 0.3 | 30000 | 15000 | 4541 | 30.3% | 965 |
 | B-LOKO-boundary-ledger2-s0 | 0.3 | 30000 | 15000 | 4529 | 30.2% | 797 |
 | B-LOKO-boundary-summary2-s0 | 0.3 | 30000 | 15000 | 4529 | 30.2% | 797 |
 | B-LOKO-subject-ledger2-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
@@ -262,6 +296,7 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | B-LOKO-time-summary2-s0 | 0.3 | 30000 | 15000 | 4526 | 30.2% | 797 |
 | B-SC-summary2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-TR-clinonly-s0 | 0.3 | 30000 | 15000 | 4561 | 30.4% | 291 |
+| B-TR-tripclin-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 
 ## 9. Field interventions on the ledger x triplets adapter (test_L2)
 
@@ -362,7 +397,11 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-AB-nopres-s0 | 90.0 | 98.3 | 99.0 | 100.0 | 100.0 | 61.0 |
 | B-AB-noresamp-s0 | 78.8 | 96.3 | 96.0 | 100.0 | 64.0 | 55.0 |
 | B-AB-pairwise-s0 | 92.5 | 98.6 | 100.0 | 100.0 | 99.0 | 71.0 |
+| B-AB-probe-rw-s0 | 25.8 | 87.6 | 45.0 | 22.0 | 5.0 | 31.0 |
 | B-AB-verify-s0 | 91.5 | 98.6 | 100.0 | 100.0 | 100.0 | 66.0 |
+| B-DIS-s0 | 12.2 | 80.3 | 4.0 | 16.0 | 1.0 | 28.0 |
+| B-DIS-s1 | 16.5 | 78.1 | 6.0 | 33.0 | 10.0 | 17.0 |
+| B-DIS-s2 | 29.5 | 87.0 | 18.0 | 37.0 | 23.0 | 40.0 |
 | B-F-ledger2-balanced-s0 | 54.5 | 92.4 | 87.0 | 44.0 | 31.0 | 56.0 |
 | B-F-ledger2-blocks-s1 | 37.8 | 87.0 | 46.0 | 28.0 | 25.0 | 52.0 |
 | B-F-ledger2-blocks-s2 | 71.0 | 95.2 | 88.0 | 98.0 | 55.0 | 43.0 |
@@ -377,6 +416,7 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-F-summary2-blocks-s1 | 51.0 | 91.8 | 45.0 | 24.0 | 94.0 | 41.0 |
 | B-F-summary2-blocks-s2 | 62.5 | 93.8 | 92.0 | 12.0 | 95.0 | 51.0 |
 | B-F-summary2-blocks-s3 | 35.8 | 89.3 | 15.0 | 33.0 | 73.0 | 22.0 |
+| B-F-summary2-blocks-s4 | 70.2 | 95.0 | 69.0 | 51.0 | 94.0 | 67.0 |
 | B-F-summary2-natural-s0 | 25.8 | 87.6 | 16.0 | 54.0 | 3.0 | 30.0 |
 | B-F-summary2-triplets-s1 | 92.5 | 98.8 | 100.0 | 100.0 | 99.0 | 71.0 |
 | B-F-summary2-triplets-s2 | 90.2 | 98.4 | 100.0 | 100.0 | 100.0 | 61.0 |
@@ -413,6 +453,8 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-SC-summary2-triplets-s0 | 91.5 | 98.6 | 96.0 | 100.0 | 98.0 | 72.0 |
 | B-TR-clinonly-s0 | 35.5 | 88.0 | 15.0 | 25.0 | 55.0 | 47.0 |
 | B-TR-fover-s0 | 67.0 | 94.4 | 93.0 | 40.0 | 92.0 | 43.0 |
+| B-TR-genprm-s0 | 83.0 | 96.6 | 92.0 | 100.0 | 95.0 | 45.0 |
+| B-TR-tripclin-s0 | 91.2 | 98.2 | 100.0 | 100.0 | 89.0 | 76.0 |
 
 ## 13. Core cells across seeds (test_L2; FINAL_TASKS_B P0.3; mean and s.d. over the finished seeds)
 
@@ -424,9 +466,9 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | verdict x triplets | TA | 91.3 | 91.8 | 92.2 | 92.2 | 91.8 | 91.8 | 0.4 | 5 |
 | verdict x triplets | Rev | 92.3 | 92.7 | 93.0 | 92.9 | 92.0 | 92.6 | 0.4 | 5 |
 | verdict x triplets | Hold | 97.7 | 96.6 | 98.2 | 97.2 | 98.2 | 97.6 | 0.7 | 5 |
-| summary2 x blocks | TA | 67.3 | 57.9 | 72.2 | 62.2 | - | 64.9 | 6.2 | 4 |
-| summary2 x blocks | Rev | 96.8 | 98.6 | 97.4 | 99.2 | - | 98.0 | 1.1 | 4 |
-| summary2 x blocks | Hold | 70.1 | 59.0 | 74.6 | 62.8 | - | 66.6 | 7.1 | 4 |
+| summary2 x blocks | TA | 67.3 | 57.9 | 72.2 | 62.2 | 69.2 | 65.8 | 5.7 | 5 |
+| summary2 x blocks | Rev | 96.8 | 98.6 | 97.4 | 99.2 | 99.3 | 98.3 | 1.1 | 5 |
+| summary2 x blocks | Hold | 70.1 | 59.0 | 74.6 | 62.8 | 69.8 | 67.3 | 6.3 | 5 |
 | summary2 x triplets | TA | 98.0 | 98.1 | 98.0 | 98.9 | 99.5 | 98.5 | 0.7 | 5 |
 | summary2 x triplets | Rev | 98.5 | 98.1 | 98.0 | 98.9 | 99.5 | 98.6 | 0.6 | 5 |
 | summary2 x triplets | Hold | 99.3 | 100.0 | 100.0 | 100.0 | 100.0 | 99.9 | 0.3 | 5 |
@@ -461,7 +503,9 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-AB-nopres-s0 | 98.7 | 99.3 | 99.3 | -0.5 [-1.2, +0.0], p 0.094 |
 | B-AB-noresamp-s0 | 98.8 | 98.8 | 100.0 | -0.4 [-0.9, +0.1], p 0.158 |
 | B-AB-pairwise-s0 | 91.4 | 91.8 | 98.2 | -7.8 [-12.3, -4.0], p < 0.001 |
+| B-AB-probe-rw-s0 | 55.3 | 98.6 | 56.0 | -43.9 [-47.2, -40.6], p < 0.001 |
 | B-AB-verify-s0 | 99.8 | 99.8 | 100.0 | +0.6 [+0.1, +1.2], p 0.012 |
 | B-AE-pred-bit-program | 99.5 | 99.7 | 99.8 | +0.3 [-0.1, +0.8], p 0.206 |
 | B-AE-program-ledger | 99.4 | 99.4 | 100.0 | +0.2 [+0.0, +0.6], p 0.238 |
+| B-AE-premise-gate | 44.5 | 49.2 | 91.5 | -54.7 [-60.8, -48.2], p < 0.001 |
 
