@@ -1,0 +1,52 @@
+{
+ "run_id": "D-RL-refgraph-s0",
+ "set": "clin_v1/trialgpt_test",
+ "macroF1": 51.195965395555675,
+ "acc": 64.69038208168642,
+ "per_class": {
+  "met": {
+   "P": 62.944162436548226,
+   "R": 89.85507246376811,
+   "F1": 74.02985074626865,
+   "n": 138
+  },
+  "not met": {
+   "P": 65.46762589928058,
+   "R": 93.573264781491,
+   "F1": 77.03703703703704,
+   "n": 389
+  },
+  "NEI": {
+   "P": 50.0,
+   "R": 1.293103448275862,
+   "F1": 2.5210084033613445,
+   "n": 232
+  }
+ },
+ "confusion": {
+  "met": {
+   "met": 124,
+   "NEI": 2,
+   "not met": 12
+  },
+  "not met": {
+   "not met": 364,
+   "met": 24,
+   "NEI": 1
+  },
+  "NEI": {
+   "met": 49,
+   "not met": 180,
+   "NEI": 3
+  }
+ },
+ "n": 759,
+ "forced_choice_acc": 92.59962049335863,
+ "n_forced": 527,
+ "no_answer_share": 0.7490636704119851,
+ "final_step": 1000,
+ "from_files": [
+  "eval_tg_step1000.jsonl"
+ ],
+ "scoring": "no final answer = NEI; N/A items left out (docs/TRIALGPT_PROTOCOL.md classes)"
+}
