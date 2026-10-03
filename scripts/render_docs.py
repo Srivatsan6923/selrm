@@ -162,7 +162,35 @@ def render(text):
     return re.sub(r"\{\{([^}]+)\}\}", sub, text)
 
 
+SHORT = {"rule_v1/test_": "", "rule_v1/": "", "rule_v1_fold2/test_L2": "f2L2", "rule_v1_fold3/test_L2": "f3L2",
+         "rule_v1_fold2/dev": "f2dev", "rule_v1_fold3/dev": "f3dev"}
+
+
+def short_keys(x):
+    """Set names as the lead's result keys write them (L2, dev, f2L2, ...): no '/' or '.' in a key."""
+    if isinstance(x, dict):
+        out = {}
+        for k, v in x.items():
+            for a, b in SHORT.items():
+                if k.startswith(a):
+                    k = b + k[len(a):]
+                    break
+            out[k.replace(".", "_").replace("/", "~")] = short_keys(v)
+        return out
+    return [short_keys(v) for v in x] if isinstance(x, list) else x
+
+
+def export_run():
+    """results/A-AUDIT: the audit as a run summary, so make_tables reads it as sum/A-AUDIT/<field>."""
+    d = ROOT / "results" / "A-AUDIT"
+    d.mkdir(parents=True, exist_ok=True)
+    body = dict(short_keys(S), run_id="A-AUDIT", source="tables/data_stats.json (scripts/audit_rule_v1.py)")
+    (d / "summary.json").write_text(json.dumps(body, indent=1, sort_keys=True), encoding="utf-8")
+    (d / "DONE").write_text("", encoding="utf-8")
+
+
 def main():
+    export_run()
     for t in sorted((ROOT / "docs" / "templates").glob("*.md.tmpl")):
         out = ROOT / "docs" / t.name[:-5]
         out.write_text(render(t.read_text(encoding="utf-8")), encoding="utf-8")
