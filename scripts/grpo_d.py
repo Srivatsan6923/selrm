@@ -150,7 +150,37 @@ def make_ledger_reward(url, model_name, recs_by_iid):
     return reward
 
 
-def make_stepcheck_reward(medprm_dir, recs_by_iid, device="cuda:1"):
+def outcome_monitor(completions, gold, **_):
+    """The rule program's outcome on the training rollouts, logged with weight 0 (reward against program accuracy)."""
+    return outcome_reward(completions, gold)
+
+
+def with_group_log(reward, out_dir, group):
+    """Per reward call (completions come in consecutive groups of one prompt): the share of groups whose rewards
+    vary (GRPO learns only from those) and the mean within-group Pearson correlation of the reward with the rule
+    program's outcome (the collinearity check before each run; reward exploitation during it) -> groups.jsonl."""
+    import statistics
+
+    def f(**kw):
+        r = reward(**kw)
+        o = outcome_reward(kw["completions"], kw["gold"])
+        vary, corr = 0, []
+        for i in range(0, len(r), group):
+            rg, og = r[i:i + group], o[i:i + group]
+            if len(set(rg)) > 1:
+                vary += 1
+                if len(set(og)) > 1:
+                    corr.append(statistics.correlation(rg, og))
+        n = max(1, len(r) // group)
+        with open(os.path.join(out_dir, "groups.jsonl"), "a", encoding="utf-8") as fh:
+            fh.write(json.dumps({"groups": n, "share_varying": vary / n, "n_corr": len(corr),
+                                 "corr_with_outcome": statistics.fmean(corr) if corr else None}) + "\n")
+        return r
+    f.__name__ = reward.__name__
+    return f
+
+
+def make_stepcheck_reward(medprm_dir, recs_by_iid, device="cuda:0"):
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
     sys.path.insert(0, os.path.join(ROOT, "scripts"))
@@ -252,29 +282,42 @@ def main():
               "ledger2-triplets": lambda: make_ledger_reward(a.ledger_url, a.ledger_model, recs_by_iid),
               "stepcheck": lambda: make_stepcheck_reward(a.medprm, recs_by_iid)}[a.reward]()
     reward.__name__ = a.reward.replace("-", "_")
+    group = 4 if a.smoke else 8
+    reward = with_group_log(reward, a.out, group)
+    funcs = [reward] + ([outcome_monitor] if a.reward != "outcome" else [])
     tok = AutoTokenizer.from_pretrained(a.policy)
     cfg = GRPOConfig(output_dir=os.path.join(a.out, "ckpt"), seed=a.seed, max_steps=a.steps, learning_rate=1e-5,
                      # 16 x 4 = 64 completions per optimiser step = 8 prompts x group of 8
                      per_device_train_batch_size=4 if a.smoke else 16, gradient_accumulation_steps=1 if a.smoke else 4,
-                     num_generations=4 if a.smoke else 8, max_completion_length=32 if a.smoke else 512,
+                     num_generations=group, max_completion_length=32 if a.smoke else 512,
+                     # GRPO loss, advantages standardised within a group (v13 App. G); the outcome monitor has
+                     # weight 0; rollouts from vLLM inside the training process (TRL 'colocate')
+                     loss_type="grpo", scale_rewards="group", reward_weights=[1.0] + [0.0] * (len(funcs) - 1),
+                     use_vllm=not a.smoke, vllm_mode="colocate", vllm_gpu_memory_utilization=0.35,
+                     vllm_max_model_length=4096,
                      temperature=1.0, beta=0.0, logging_steps=1 if a.smoke else 10, save_steps=a.steps,
                      bf16=not a.smoke, report_to=[], chat_template_kwargs={"enable_thinking": False},
                      model_init_kwargs={"dtype": torch.bfloat16}, remove_unused_columns=False)
     curve = []
 
+    def window(state, key):
+        xs = [h[key] for h in state.log_history[-max(1, a.eval_every // 10):] if key in h]
+        return sum(xs) / len(xs) if xs else None
+
     class Eval(TrainerCallback):
         def on_step_end(self, args, state, control, model=None, **kw):
             if state.global_step % a.eval_every == 0 or state.global_step == a.steps:
-                rew = [h.get("reward") for h in state.log_history[-max(1, a.eval_every // 10):] if "reward" in h]
                 acc = evaluate(model, tok, ev, *((32, 4) if a.smoke else ()))
-                row = {"step": state.global_step, "reward": sum(rew) / len(rew) if rew else None} | acc
+                row = {"step": state.global_step, "reward": window(state, "reward"),
+                       "train_outcome": window(state, "rewards/outcome_monitor/mean" if a.reward != "outcome"
+                                               else "rewards/outcome/mean")} | acc
                 curve.append(row)
                 with open(os.path.join(a.out, "curve.jsonl"), "a", encoding="utf-8") as f:
                     f.write(json.dumps(row) + "\n")
                 print("eval", row, flush=True)
 
     t0 = time.time()
-    trainer = GRPOTrainer(model=a.policy, reward_funcs=[reward], args=cfg, train_dataset=Dataset.from_list(tr),
+    trainer = GRPOTrainer(model=a.policy, reward_funcs=funcs, args=cfg, train_dataset=Dataset.from_list(tr),
                           processing_class=tok, callbacks=[Eval()],
                           peft_config=LoraConfig(r=16, lora_alpha=32, lora_dropout=0.0, task_type="CAUSAL_LM",
                                                  target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj",
@@ -286,7 +329,7 @@ def main():
     run_id = os.path.basename(a.out.rstrip("/"))
     json.dump({"run_id": run_id, "set": "rule_v1/test_L2", "metric": "accuracy of the chosen claim by the rule program",
                "n_triplets": len(keep), "start": start, "final": {k: v for k, v in final.items() if k != "step"},
-               "top": None} | {f"acc_{k}": v for k, v in final.items() if k not in ("step", "reward")},
+               "top": None} | {f"acc_{k}": v for k, v in final.items() if k not in ("step", "reward", "train_outcome")},
               open(os.path.join(a.out, "summary_rule_v1~test_L2.json"), "w", encoding="utf-8"), indent=1)
     json.dump({"run_id": run_id, "reward": a.reward, "policy": a.policy, "seed": a.seed, "steps": a.steps,
                "train_tasks": len(tr), "eval_tasks": len(ev), "group_size": 8, "lora_r": 16, "lr": 1e-5,
