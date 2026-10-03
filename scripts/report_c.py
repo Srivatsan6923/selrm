@@ -11,6 +11,8 @@ sys.path.insert(0, REPO)
 from selrm import metrics as M
 
 RES = f"{REPO}/results_git"
+LADDER = ("rule_v1/test_L0", "rule_v1/test_L1", "rule_v1/test_L2", "rule_v1/test_L3inv", "rule_v1/test_L3alt",
+          "rule_v1/test_hard")
 ROWS = [("C-TF-critic", "Untrained backbone, verdict (critic)"),
         ("C-TF-promptsum", "Untrained backbone, prompted summary"),
         ("C-TF-promptledger", "Untrained backbone, prompted ledger (frozen malformed check)"),
@@ -42,7 +44,7 @@ def row(run, data, cache):
     if not os.path.exists(f"{RES}/{run}/DONE"):
         return None
     out = {}
-    for s in ("rule_v1/test_L2", "rule_v1/test_L3alt"):
+    for s in LADDER:
         u = scores(run, s)
         if u is None:
             continue
@@ -92,8 +94,9 @@ def main():
          "(A's rule-side items), all items / without A's known-issue items. n: L2 triplets scored (the generated-program verifier uses a fixed subset).", "",
          "| System | run | L2 TA [95% CI] | Rev | Hold | n | MR | L3-alt TA | XA (n items) / without known issues (n) | malformed | decision language |",
          "|---|---|---|---|---|---|---|---|---|---|---|"]
+    rows = {run: row(run, a.data, cache) for run, _ in ROWS}
     for run, label in ROWS:
-        r = row(run, a.data, cache)
+        r = rows[run]
         if r is None:
             L.append(f"| {label} | {run} | not run | | | | | | | | |")
             continue
@@ -106,6 +109,13 @@ def main():
                  f"{f1(l3.get('TA'))} | {f1(xr.get('XA'))} ({xr.get('n_items', '-')}) / {f1(xc.get('XA'))} ({xc.get('n_items', '-')}) | "
                  f"{f1(100 * r['eval']['malformed_rate'], 1) if r.get('eval', {}).get('malformed_rate') is not None else '-'} | "
                  f"{f1(au.get('decision_language_any'))} |")
+    L += ["", "Ladder (TA [95% CI over rules]; sets a run did not score are blank):", "",
+          "| System | run | " + " | ".join(x.split("test_")[1] for x in LADDER) + " |", "|---|---|" + "---|" * len(LADDER)]
+    for run, label in ROWS:
+        cells = [(rows[run] or {}).get(x) for x in LADDER]
+        if any(cells):
+            L.append(f"| {label} | {run} | " + " | ".join(f"{c['TA']:.1f} [{c['CI'][0]:.1f}, {c['CI'][1]:.1f}]" if c else ""
+                                                       for c in cells) + " |")
     open(f"{REPO}/docs/RESULTS_C.md", "w", encoding="utf-8", newline="\n").write("\n".join(L) + "\n")
     print("\n".join(L))
 
