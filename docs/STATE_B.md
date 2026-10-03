@@ -1,5 +1,5 @@
 # STATE role B (maintained by Claude Code)
-Updated: 2026-10-03 ~07:05 UTC (Sat). Plan: docs/FINAL_TASKS_B.md (3 Oct; replaces every earlier directive).
+Updated: 2026-10-03 ~09:15 UTC (Sat). Plan: docs/FINAL_TASKS_B.md (3 Oct; replaces every earlier directive).
 Run freeze: Wed 7 Oct 23:59 (UTC assumed). Decisions: docs/DECISIONS_B.md. Analyses: docs/ANALYSIS_B.md.
 
 ## P0 status
@@ -7,11 +7,12 @@ Run freeze: Wed 7 Oct 23:59 (UTC assumed). Decisions: docs/DECISIONS_B.md. Analy
    (sections 1-9; B-AE-oracle-ledger, B-AE-field-edit, B-AE-field-swap DONE 05:53-06:00 UTC on H100s). Field
    edits that should change the verdict are followed in 47.8% (handoff 3 Oct). Left: the blocks half of the
    paired ledger-summary comparison after summary2 x blocks.
-2. B-F-summary2-blocks-s0: training on an H100 runner since 06:00 UTC.
-3. Core seeds 1-2 ({verdict, summary2, ledger2} x {blocks, triplets}): 12 runs; verdict x {blocks, triplets} s1-s2
-   running since 06:08-06:38 UTC (A100, 2 x H100, L40); the rest queued (priority 20).
-4. B-SC-summary2-triplets-s0 (format summary2_case: judge sees rule, case, prose, claim): queued (30), prep done.
-5. LOKO {verdict, summary2, ledger2} x {subject, time, boundary}: 9 runs queued (40-42) on A's
+2. B-F-summary2-blocks-s0: DONE (L2 TA 67.3); paired ledger-summary on blocks in ANALYSIS_B section 1.
+3. Core seeds 1-2: DONE verdict x blocks s1-s2, verdict x triplets s1, summary2 x blocks s2, summary2 x triplets
+   s1-s2, ledger2 x blocks s1; running (09:10 UTC) verdict x triplets s2 (L40), summary2 x blocks s1 (A6000), ledger2 x
+   blocks s2 (A100), ledger2 x triplets s1-s2 (H100). Blocks cells vary a lot across seeds (handoff 3 Oct).
+4. B-SC-summary2-triplets-s0: running on an A100 since 08:20 UTC.
+5. LOKO {verdict, summary2, ledger2} x {subject, time, boundary}: subject x 3 running on H100s (09:10 UTC), rest queued (40-42) on A's
    rule_v1/train_triplets_no_{kind} (aliases of train_triplets_lo_{kind}; lo_boundary built in the cluster 06:45 UTC,
    sha256 = A's); eval dev, test_L2, test_L0 (+ xr_v1/test).
 6. New sets: xr_v1/test registered by A (efe0128) and restored on the PVC (sha256 = A's). Every not-started training
@@ -40,6 +41,13 @@ Run freeze: Wed 7 Oct 23:59 (UTC assumed). Decisions: docs/DECISIONS_B.md. Analy
 ## Done (rule_v1 seed 0, provisional; docs/FACTORIAL_B_S0.md)
 verdict x {natural, balanced, blocks, triplets}; rationale x {natural, blocks, triplets}; summary2 x triplets;
 ledger2 x {blocks, triplets}; B-BB-qwen3.5-4b verdict x blocks; all B-C0 validation runs; B-T0 timing.
+
+## P1 status
+- B-DIS-s0..s2 queued (74): ledger2 on C's clin_v1/clinpairs_medeinst_dis (copied from PVC selrm-c, sha256 = C's),
+  eval clin_v1/medeinst_dis_test (pair reversal) + rule dev/L2 + xr_v1. B-TR-steperr dropped (MedPRMBench unreleased).
+- B-TR-clinonly, B-TR-tripclin: wait for C's final clinpairs_train (with MedQA-train key pairs) under a new frozen
+  name (asked 3 Oct). tripclin needs a 1:1 mixture of two corpora (not implemented yet).
+- Premise gate: C publishes Med-PRM per-example scores (results_git/C-AUD-medprm on role-c, dev and test_L2).
 
 ## P1 work without GPUs
 - B-AB-conddrv-s0 (condition derived by the reader): format conddrv implemented, CPU self-test passes, queued
