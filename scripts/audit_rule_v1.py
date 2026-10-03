@@ -117,6 +117,7 @@ def unit_of(concept):
         for t in P.BANKS[concept].get(form, []):
             m = re.search(r"\{v\}(?:/\{dia\})?\s?([^\s;,]+?)(?=[\s;,]|\.?$|\.\s)", t)
             u = m.group(1).rstrip(".") if m else ""
+            u = u + " m2" if u.endswith("1.73") else u
             if u and not u.isalpha() or u in ("C", "cm", "kg", "mmHg", "years"):
                 out.add(u)
     return sorted(out)            # [] for a dimensionless input (INR, pH)
@@ -206,8 +207,10 @@ def check_triplet(rule, crit, ov, cases):
         named = any(kw in rec["case_text"].lower() for kw in crit.keywords)
         if named != (crit.kind == "numeric" or k in ("flip", "near")):
             v.append((k, "keyword", "named" if named else "not named"))
-        for e in rec["ledger"]:
-            if e["found"] != "not mentioned" and e["found"] not in rec["case_text"]:
+        target_lines = [ln for i, ln in mention_lines(rec).items() if ln
+                        and rec["state"][i]["concept"] == crit.concept]
+        for e in rec["ledger"]:                    # a quote must come from a line that renders the target
+            if e["found"] != "not mentioned" and not any(e["found"] in ln for ln in target_lines):
                 v.append((k, "ledger", e["found"][:60]))
         if DECISION.search(re.sub(r'"[^"]*"', "", rec["prose"]).replace(rec["condition"], "").lower()):
             v.append((k, "prose", "decision word"))
@@ -248,13 +251,16 @@ def check_missing(rule, crit, ov, recs):
     st = [m for m in state(miss[0]) if m.concept != crit.concept]
     comps = ([[Mention(crit.concept, "numeric", x)] for x in (crit.default_range[0], crit.flip_range[0])]
              if crit.kind == "numeric" else [[], [Mention(crit.concept, "finding")]])
-    outs = set()
+    outs = defaultdict(set)                         # per claim type, as engine._check_missing requires
     for comp in comps:
         try:
-            outs.add(tuple(E.case_labels(rule, crit, ov, st + comp).values()))
+            for t, y in E.case_labels(rule, crit, ov, st + comp).items():
+                outs[t].add(y)
         except ValueError:
             pass
-    return v + [("missing", "determined", "completions give one outcome")] * (len(outs) < 2)
+    return v + [("missing", "determined", f"completions give one outcome for {t}")
+                for t in ("conclusion", "criterion") if t in outs and outs[t] != {0, 1}] + \
+        [("missing", "determined", "no completion executes")] * (not outs)
 
 
 def target_claim_check():
@@ -288,17 +294,19 @@ def target_claim_check():
 def rejects():
     """Rejected proposals logged in the manifests, by reason; and the missing twins regenerated
     from their frozen seeds to count proposals rejected only because of the twin."""
-    out = {}
+    out, unlogged = {}, []
     for name, v in REG.items():
-        if not name.startswith("rule_v1/") or v.get("alias_of"):
+        if not name.startswith("rule_v1") or v.get("alias_of"):
             continue
         m = json.loads((DATA / v["manifest"]).read_text(encoding="utf-8"))
         rj = m.get("rejects")
-        if rj:
+        if rj:                                     # the logs keep only the text before ':' of each error
             reasons = Counter()
             for k, n in rj["by_reason"].items():
                 reasons[k.split()[-1]] += n
             out[name] = {"proposed": rj["proposed"], "rejected": rj["rejected"], "by_reason": dict(reasons)}
+        else:
+            unlogged.append(name)
     twins = {}
     for name, level, tpl in (("rule_v1/missing", "L2", None), ("rule_v1/dev_missing", "L0", "test")):
         st = Counter()
@@ -314,7 +322,7 @@ def rejects():
         twins[name] = {"groups": len(tids), "proposed": st["proposed"], "rejected": st["rejected"],
                        "by_reason": dict(reasons)}
         log(f"rejects regenerated: {name}")
-    return {"logged": out, "missing_twins_regenerated": twins}
+    return {"logged": out, "sets_without_reject_log": sorted(unlogged), "missing_twins_regenerated": twins}
 
 
 # ------------------------------------------------------------------ structure statistics
@@ -645,7 +653,7 @@ def facts(rec, rule):
         what = neutral(c) if c else m["concept"]
         q = f' [line: "{lines[i]}"]' if lines.get(i) else ""
         who = "patient" if m["subject"] == "patient" else m["subject"]
-        when = "current" if m["time"] == "current" else f"past ({m['year']})" if m.get("year") else "past"
+        when = "current" if m["time"] == "current" else "past"     # the quoted line says when (a year may be an end year)
         if m["status"] == "unknown":
             out.append(f"{what}: stated as unknown{q}")
         elif m["form"] == "generic":
@@ -810,7 +818,16 @@ def main():
                        "signature_classes": len(FOLDS["classes"]), "folds": len(FOLDS["folds"]),
                        "fold1": {k: len(F1[k]) for k in ("train_rules", "l1_rules", "l2_rules")},
                        "fold1_l2_classes": F1["l2_classes"]},
-             "library_semantics": library_semantics()}
+             "library_semantics": library_semantics(),
+             "training_corpora_records": {n.split("/")[-1]: REG[n]["n_records"] for n in TRAIN_MAIN},
+             "lexicons": {**{name: {"train": len(lex["train"]), "test": len(lex["test"]),
+                                    "shared": len(set(lex["train"]) & set(lex["test"]))}
+                             for name, lex in (("negation_cues", P.NEG_CUES), ("time_cues", P.TIME_CUES),
+                                               ("current_cues", P.CURRENT_CUES))},
+                          "persons": {"train": len(P.by_split(P.PERSONS, "train")),
+                                      "test": len(P.by_split(P.PERSONS, "test")),
+                                      "shared": len(set(P.by_split(P.PERSONS, "train"))
+                                                    & set(P.by_split(P.PERSONS, "test")))}}}
     log("manifest")
 
     issues, n_groups, n_records, cov = target_claim_check()
@@ -818,9 +835,24 @@ def main():
                                    "records": n_records, "records_total": sum(n_records.values()),
                                    "coverage": cov, "violations": len(issues),
                                    "by_check": dict(Counter(i["check"] for i in issues))}
+    window_tids = sorted({r["tid"] for n in TRIPLET_SETS for r in load(n)
+                          if WINDOW.search(RB[r["rid"]].rule_text())})
     (DATA / "rule_v1" / "KNOWN_ISSUES.json").write_text(json.dumps(
         {"generated_by": "scripts/audit_rule_v1.py", "commit": stats["commit"], "checked_sets": TEST_SETS,
-         "issues": issues}, indent=1), encoding="utf-8")
+         "issues": issues,
+         "semantic_limits": [
+             {"id": "rule_text_names_a_window", "tids": window_tids,
+              "reason": "The rule text names a window ('in the six months before this admission'); the program "
+                        "counts current mentions only and past mentions are dated or 'years ago'. With no visit "
+                        "date in the case, these labels rely on the unstated year."},
+             {"id": "negation_near_miss_two_attributes",
+              "reason": "On criteria that count past or family mentions, a negation near-miss (the patient's "
+                        "current denial) differs from a past or relative flip in time or subject as well as "
+                        "status; counts in tables/data_stats.json (semantics)."},
+             {"id": "presentation_diastolic",
+              "reason": "Presentation edits may switch between 'blood pressure x/y' and systolic-only templates, "
+                        "so a derived diastolic value can appear or disappear; the state is unchanged."}]},
+        indent=1), encoding="utf-8")
 
     stats["rejects"] = rejects()
 
