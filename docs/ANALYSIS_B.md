@@ -22,6 +22,14 @@ Disagreement by near-miss kind (triplet solved = TA):
 | subject | 400 | 365 | 26 | 8 | 1 |
 | time | 400 | 399 | 1 | 0 | 0 |
 
+Seeds 0, 1, 2 pooled (same-seed pairs; rules as clusters):
+
+| metric | ledger | summary | ledger - summary [95% CI], p |
+|---|---|---|---|
+| TA | 99.1 | 98.0 | +1.1 [+0.4, +1.9], p 0.002 |
+| Rev | 99.2 | 98.2 | +1.0 [+0.3, +1.9], p 0.008 |
+| Hold | 99.9 | 99.8 | +0.1 [-0.0, +0.3], p 0.208 |
+
 **blocks** (B-F-ledger2-blocks-s0 vs B-F-summary2-blocks-s0, seed 0):
 
 | metric | ledger | summary | ledger - summary [95% CI], p |
@@ -40,6 +48,14 @@ Disagreement by near-miss kind (triplet solved = TA):
 | subject | 400 | 161 | 33 | 68 | 138 |
 | time | 400 | 178 | 57 | 46 | 119 |
 
+Seeds 0, 1, 2 pooled (same-seed pairs; rules as clusters):
+
+| metric | ledger | summary | ledger - summary [95% CI], p |
+|---|---|---|---|
+| TA | 69.9 | 65.8 | +4.1 [+1.2, +7.2], p 0.006 |
+| Rev | 99.4 | 97.6 | +1.8 [+0.8, +2.9], p < 0.001 |
+| Hold | 70.2 | 67.9 | +2.4 [-0.3, +5.3], p 0.076 |
+
 ## 2. Do generated summaries or ledgers contain a verdict?
 
 Every reader output of the two-stage runs (one per case and condition, on every evaluated set) is checked for the record's own claim sentences (either claim, case-insensitive) and for decision phrasing: answer token line; answer/verdict word; claim judged; criterion decided; applies line; counts / does not count.
@@ -49,12 +65,14 @@ Every reader output of the two-stage runs (one per case and condition, on every 
 | B-F-summary2-natural-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-balanced-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-blocks-s0 | 37497 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-summary2-blocks-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-blocks-s2 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-triplets-s0 | 10500 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-triplets-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-triplets-s2 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-value2-natural-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-value2-balanced-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-ledger2-balanced-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-blocks-s0 | 37497 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-blocks-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-blocks-s2 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -97,6 +115,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-summary2-triplets-s0 | 98.0 | 97.8 | 103 | 98.8 | 7 |
 | B-F-value2-natural-s0 | 43.0 | 44.6 | 103 | 42.9 | 7 |
 | B-F-value2-balanced-s0 | 71.9 | 70.9 | 103 | 67.7 | 7 |
+| B-F-ledger2-balanced-s0 | 49.4 | 50.8 | 103 | 52.5 | 7 |
 | B-F-ledger2-blocks-s0 | 75.3 | 75.3 | 103 | 72.8 | 7 |
 | B-F-ledger2-triplets-s0 | 99.2 | 99.1 | 103 | 98.7 | 7 |
 
@@ -113,13 +132,14 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-value2-natural-s0 | 98.3 | 43.9 | 98.3 | 43.7 | 43.0 | 43.0 |
 | B-F-value2-balanced-s0 | 99.2 | 72.6 | 99.2 | 72.5 | 71.9 | 71.9 |
 | B-F-ledger2-natural-s0 | not run | | | | | |
-| B-F-ledger2-balanced-s0 | not run | | | | | |
+| B-F-ledger2-balanced-s0 | 96.7 | 51.6 | 96.7 | 51.0 | 49.4 | 49.4 |
 
 ## 7. Training budget per finished run
 
 | run | GPU | corpus records | examples | reader targets | judge targets | tokens | completion tokens | steps | train h | eval h |
 |---|---|---|---|---|---|---|---|---|---|---|
 | B-BB-qwen3.5-4b-verdict-blocks-s0 | NVIDIA L40 | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 1.90 | 0.40 |
+| B-F-ledger2-balanced-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 13046129 | 1048600 | 938 | 0.74 | 0.18 |
 | B-F-ledger2-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 13044356 | 1045348 | 938 | 1.76 | 1.03 |
 | B-F-ledger2-blocks-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13044356 | 1045348 | 938 | 0.77 | 0.65 |
 | B-F-ledger2-blocks-s2 | NVIDIA A100-PCIE-40GB | 60004 | 60000 | 30000 | 30000 | 13044356 | 1045348 | 938 | 2.25 | 1.52 |
@@ -132,6 +152,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-rationale-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 16138949 | 2144515 | 938 | 1.78 | 2.56 |
 | B-F-summary2-balanced-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 11867656 | 1059423 | 938 | 0.70 | 0.22 |
 | B-F-summary2-blocks-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 11864845 | 1055547 | 938 | 0.90 | 0.56 |
+| B-F-summary2-blocks-s1 | NVIDIA RTX A6000 | 60004 | 60000 | 30000 | 30000 | 11864845 | 1055547 | 938 | 3.46 | 2.21 |
 | B-F-summary2-blocks-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 11864845 | 1055547 | 938 | 0.66 | 0.68 |
 | B-F-summary2-natural-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 11740178 | 1012112 | 938 | 0.86 | 0.17 |
 | B-F-summary2-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 1.60 | 0.34 |
@@ -163,6 +184,7 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 
 | run | resample_p | judge examples | judge pairs (both claims) | pairs drawn from a donor case | share | (rule, condition, claim type) groups |
 |---|---|---|---|---|---|---|
+| B-F-ledger2-balanced-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-F-ledger2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-ledger2-blocks-s1 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-ledger2-blocks-s2 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
@@ -171,6 +193,7 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | B-F-ledger2-triplets-s2 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-summary2-balanced-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-F-summary2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
+| B-F-summary2-blocks-s1 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-summary2-blocks-s2 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-summary2-natural-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-F-summary2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
@@ -276,11 +299,13 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 
 | run | XA | cell accuracy | XA currency | XA inclusivity | XA subject | XA window |
 |---|---|---|---|---|---|---|
+| B-F-ledger2-balanced-s0 | 54.5 | 92.4 | 87.0 | 44.0 | 31.0 | 56.0 |
 | B-F-ledger2-blocks-s1 | 37.8 | 87.0 | 46.0 | 28.0 | 25.0 | 52.0 |
 | B-F-ledger2-blocks-s2 | 71.0 | 95.2 | 88.0 | 98.0 | 55.0 | 43.0 |
 | B-F-ledger2-triplets-s1 | 88.8 | 98.0 | 100.0 | 100.0 | 87.0 | 68.0 |
 | B-F-ledger2-triplets-s2 | 91.5 | 98.6 | 99.0 | 100.0 | 100.0 | 67.0 |
 | B-F-summary2-balanced-s0 | 65.8 | 94.3 | 30.0 | 98.0 | 92.0 | 43.0 |
+| B-F-summary2-blocks-s1 | 51.0 | 91.8 | 45.0 | 24.0 | 94.0 | 41.0 |
 | B-F-summary2-blocks-s2 | 62.5 | 93.8 | 92.0 | 12.0 | 95.0 | 51.0 |
 | B-F-summary2-natural-s0 | 25.8 | 87.6 | 16.0 | 54.0 | 3.0 | 30.0 |
 | B-F-summary2-triplets-s1 | 92.5 | 98.8 | 100.0 | 100.0 | 99.0 | 71.0 |
@@ -318,9 +343,9 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | verdict x triplets | TA | 91.3 | 91.8 | 92.2 | - | - | 91.8 | 0.5 | 3 |
 | verdict x triplets | Rev | 92.3 | 92.7 | 93.0 | - | - | 92.7 | 0.4 | 3 |
 | verdict x triplets | Hold | 97.7 | 96.6 | 98.2 | - | - | 97.5 | 0.8 | 3 |
-| summary2 x blocks | TA | 67.3 | - | 72.2 | - | - | 69.8 | 3.5 | 2 |
-| summary2 x blocks | Rev | 96.8 | - | 97.4 | - | - | 97.1 | 0.4 | 2 |
-| summary2 x blocks | Hold | 70.1 | - | 74.6 | - | - | 72.3 | 3.2 | 2 |
+| summary2 x blocks | TA | 67.3 | 57.9 | 72.2 | - | - | 65.8 | 7.3 | 3 |
+| summary2 x blocks | Rev | 96.8 | 98.6 | 97.4 | - | - | 97.6 | 0.9 | 3 |
+| summary2 x blocks | Hold | 70.1 | 59.0 | 74.6 | - | - | 67.9 | 8.1 | 3 |
 | summary2 x triplets | TA | 98.0 | 98.1 | 98.0 | - | - | 98.0 | 0.1 | 3 |
 | summary2 x triplets | Rev | 98.5 | 98.1 | 98.0 | - | - | 98.2 | 0.3 | 3 |
 | summary2 x triplets | Hold | 99.3 | 100.0 | 100.0 | - | - | 99.8 | 0.4 | 3 |

@@ -6,7 +6,7 @@ import collections, glob, json, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
-from selrm.metrics import _flags, bootstrap_ci, decisions, paired_test, seed_table, summarise
+from selrm.metrics import _flags, bootstrap_ci, decisions, paired_cluster_bootstrap, paired_test, seed_table, summarise
 from report_b import RG, records
 
 NL = "\n"
@@ -79,6 +79,25 @@ def paired_section():
             c = cnt[k]
             print(f"| {k} | {sum(c.values())} | {c['both']} | {c['ledger only']} | {c['summary only']} | {c['neither']} |")
         print()
+        seeds = [s for s in range(5) if done(f"B-F-ledger2-{corpus}-s{s}") and done(f"B-F-summary2-{corpus}-s{s}")]
+        if len(seeds) > 1:            # same-seed pairs pooled: items (seed, triplet), rules as clusters
+            items = {m: [] for m in ("TA", "Rev", "Hold")}
+            for s in seeds:
+                A, B = triplets(f"B-F-ledger2-{corpus}-s{s}"), triplets(f"B-F-summary2-{corpus}-s{s}")
+                for tid in sorted(A.keys() & B.keys()):
+                    fa, fb = _flags(A[tid]), _flags(B[tid])
+                    if fa is not None and fb is not None:
+                        for m in items:
+                            items[m].append({"u": A[tid]["rid"], "a": fa[m], "b": fb[m]})
+            mean = lambda key: (lambda xs: 100.0 * sum(x[key] for x in xs) / len(xs))
+            print(f"Seeds {', '.join(map(str, seeds))} pooled (same-seed pairs; rules as clusters):" + NL)
+            print("| metric | ledger | summary | ledger - summary [95% CI], p |")
+            print("|---|---|---|---|")
+            for m, xs in items.items():
+                r = paired_cluster_bootstrap(xs, "u", mean("a"), mean("b"))
+                p = f"p {r['p']:.3f}" if r["p"] > 0 else "p < 0.001"
+                print(f"| {m} | {mean('a')(xs):.1f} | {mean('b')(xs):.1f} | {r['diff']:+.1f} [{r['lo']:+.1f}, {r['hi']:+.1f}], {p} |")
+            print()
 
 
 VERDICT_PATTERNS = {
