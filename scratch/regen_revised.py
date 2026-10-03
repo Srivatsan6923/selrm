@@ -11,24 +11,24 @@ out = subprocess.run(["kubectl", "-n", "ecepxie", "exec", "selrm-b-sync", "--", 
                       "&& echo ${d%/}; done"], capture_output=True, text=True, check=True).stdout.split()
 busy = set(out)
 print(len(busy), "busy run dirs on the PVC")
-FILES = {  # queue file -> generator
+FILES = {  # queue file -> generator (FINAL_TASKS_B, 3 Oct)
     "b_f_s0.json": lambda: Q.factorial({0}, REG, V),
     "b_f_key_s12.json": lambda: Q.factorial({1, 2}, REG, V, key_only=True),
     "b_f_s12.json": lambda: [r for r in Q.factorial({1, 2}, REG, V) if (r["format"], r["corpus"].split("_")[-1])
-                             not in Q.KEY_CELLS],
+                             not in Q.CORE_CELLS],
+    "b_f_s34.json": lambda: Q.factorial({3, 4}, REG, V, key_only=True),
     "b_tr_s0.json": lambda: [r for r in Q.transfer({0}, REG, V) if r["format"] != "genprm"],
     "v2/b_genprm_s0.json": lambda: [r for r in Q.transfer({0}, REG, V) if r["format"] == "genprm"],
+    "b_tr_s1p.json": lambda: [r for r in Q.transfer({1, 2, 3, 4}, REG, V) if r["format"] != "genprm"],
+    "v2/b_genprm_s12.json": lambda: [r for r in Q.transfer({1, 2, 3, 4}, REG, V) if r["format"] == "genprm"],
     "b_x_s0.json": lambda: [r for r in Q.extras({0}, REG, V) if r["run_id"] != "B-AE-field-edit"],
     "v2/b_x2_s0.json": lambda: [r for r in Q.extras({0}, REG, V) if r["run_id"] == "B-AE-field-edit"],
     "b_x_s12.json": lambda: Q.extras({1, 2}, REG, V),
-    "b_f_s34.json": lambda: Q.factorial({3, 4}, REG, V, key_only=True),
-    "b_tr_s1p.json": lambda: [r for r in Q.transfer({1, 2, 3, 4}, REG, V) if r["format"] != "genprm"],
-    "v2/b_genprm_s12.json": lambda: [r for r in Q.transfer({1, 2, 3, 4}, REG, V) if r["format"] == "genprm"],
-    "v2/b_bb_s12.json": lambda: Q.backbones({1, 2}, REG, V),
     "v2/b_bb_s0.json": lambda: Q.backbones({0}, REG, V),
+    "v2/b_bb_s12.json": lambda: Q.backbones({1, 2}, REG, V),
     "v2/b_probe_rw_s0.json": lambda: Q.probe_rw(V),
-    "b_critic.json": lambda: Q.critic(REG, V),
     "b_new_s0.json": lambda: Q.newexp({0}, REG, V),
+    "b_sc_s0.json": lambda: Q.summary_case(REG, V),
 }
 for name, gen in FILES.items():
     path = f"configs/queues/{name}"

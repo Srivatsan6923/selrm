@@ -16,15 +16,15 @@ import argparse, json, os, sys, time
 import numpy as np
 import torch
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from selrm.formats import (MALFORMED_U, TWO_STAGE, dataset_path, gold_record, judge_view, read_bit,
+from selrm.formats import (MALFORMED_U, PROSE, TWO_STAGE, judge_for, dataset_path, gold_record, judge_view, read_bit,
                            reader_unit, reader_units, well_formed)
 from selrm.metrics import bootstrap_ci, decisions, summarise
 from selrm.prompts import judge_prompt, ledger_to_text
 
 KIND = {"verdict": "verdict", "verdict_bt": "verdict", "rationale": "rationale", "summary2": "reader_prose",
-        "value2": "reader_ledger", "ledger2": "reader_ledger", "ledger2_dec": "reader_ledger",
+        "summary2_case": "reader_prose", "value2": "reader_ledger", "ledger2": "reader_ledger", "ledger2_dec": "reader_ledger",
         "dec_judge": "reader_ledger", "bit_reader": "reader_ledger", "ledger2_verify": "reader_ledger",
-        "genprm": "genprm"}
+        "genprm": "genprm", "conddrv": "reader_derive"}
 PROGRAM_U = 10.0            # |u| when the rule program decides from the predicted bit
 MODES = (None, "oracle_ledger", "program_bit", "ledger_swap", "verify", "ledger_edit")
 # Executes generated checks one per stdin line (JSON string) in a separate interpreter: no imports
@@ -284,7 +284,7 @@ def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="u
             outs = [sc.tok.decode(g) for g in gens]
         text = {}
         for r, out, d in zip(units, outs, done):
-            ok = (d or fmt == "summary2") and well_formed(out, r["case_text"], fmt)   # a cut-off ledger is unparsable
+            ok = (d or fmt in PROSE) and well_formed(out, r["case_text"], fmt)   # a cut-off ledger is unparsable
             text[reader_unit(r)] = (out, ok)
         if mode == "verify":
             extra_v = verification_pass(sc, units, seqs, text, fmt)
@@ -294,7 +294,7 @@ def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="u
         else:
             idx = [i for i, r in enumerate(recs) if text[reader_unit(r)][1]]
             if idx:
-                u[idx] = sc.score(chat_ids(sc.tok, [judge_prompt(recs[i], judge_view(text[reader_unit(recs[i])][0], fmt))
+                u[idx] = sc.score(chat_ids(sc.tok, [judge_for(recs[i], text[reader_unit(recs[i])][0], fmt)
                                                     for i in idx]))
         rows = [{"iid": r["iid"], "u": float(x), "reader_output": text[reader_unit(r)][0]} for r, x in zip(recs, u)]
         bad = sum(not ok for _, ok in text.values())

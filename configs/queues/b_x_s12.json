@@ -3,7 +3,7 @@
   {
    "run_id": "B-AB-decfield-s1",
    "seed": 1,
-   "priority": 76,
+   "priority": 99,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -15,15 +15,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-AB-decfield-s2",
    "seed": 2,
-   "priority": 76,
+   "priority": 99,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -35,15 +33,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-AB-bitonly-reader-s1",
    "seed": 1,
-   "priority": 76,
+   "priority": 99,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -55,15 +51,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-AB-bitonly-reader-s2",
    "seed": 2,
-   "priority": 76,
+   "priority": 99,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -75,15 +69,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-FOLD2-verdict-blocks-s1",
    "seed": 1,
-   "priority": 54,
+   "priority": 77,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -101,7 +93,7 @@
   {
    "run_id": "B-FOLD2-verdict-blocks-s2",
    "seed": 2,
-   "priority": 54,
+   "priority": 77,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -119,7 +111,7 @@
   {
    "run_id": "B-FOLD2-verdict-triplets-s1",
    "seed": 1,
-   "priority": 54,
+   "priority": 77,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -137,7 +129,7 @@
   {
    "run_id": "B-FOLD2-verdict-triplets-s2",
    "seed": 2,
-   "priority": 54,
+   "priority": 77,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -155,7 +147,7 @@
   {
    "run_id": "B-FOLD2-ledger2-blocks-s1",
    "seed": 1,
-   "priority": 54,
+   "priority": 77,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -173,7 +165,7 @@
   {
    "run_id": "B-FOLD2-ledger2-blocks-s2",
    "seed": 2,
-   "priority": 54,
+   "priority": 77,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -191,7 +183,7 @@
   {
    "run_id": "B-FOLD2-ledger2-triplets-s1",
    "seed": 1,
-   "priority": 54,
+   "priority": 77,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -209,7 +201,7 @@
   {
    "run_id": "B-FOLD2-ledger2-triplets-s2",
    "seed": 2,
-   "priority": 54,
+   "priority": 77,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -227,7 +219,7 @@
   {
    "run_id": "B-FOLD3-verdict-blocks-s1",
    "seed": 1,
-   "priority": 54,
+   "priority": 77,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -245,7 +237,7 @@
   {
    "run_id": "B-FOLD3-verdict-blocks-s2",
    "seed": 2,
-   "priority": 54,
+   "priority": 77,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -263,7 +255,7 @@
   {
    "run_id": "B-FOLD3-verdict-triplets-s1",
    "seed": 1,
-   "priority": 54,
+   "priority": 77,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -281,7 +273,7 @@
   {
    "run_id": "B-FOLD3-verdict-triplets-s2",
    "seed": 2,
-   "priority": 54,
+   "priority": 77,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -299,7 +291,7 @@
   {
    "run_id": "B-FOLD3-ledger2-blocks-s1",
    "seed": 1,
-   "priority": 54,
+   "priority": 77,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -317,7 +309,7 @@
   {
    "run_id": "B-FOLD3-ledger2-blocks-s2",
    "seed": 2,
-   "priority": 54,
+   "priority": 77,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -335,7 +327,7 @@
   {
    "run_id": "B-FOLD3-ledger2-triplets-s1",
    "seed": 1,
-   "priority": 54,
+   "priority": 77,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -353,7 +345,7 @@
   {
    "run_id": "B-FOLD3-ledger2-triplets-s2",
    "seed": 2,
-   "priority": 54,
+   "priority": 77,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -371,7 +363,7 @@
   {
    "run_id": "B-DIV-base-16-s1",
    "seed": 1,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -383,15 +375,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-new-32-s1",
    "seed": 1,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -403,15 +393,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-new-63-s1",
    "seed": 1,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -423,15 +411,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-new-64-s1",
    "seed": 1,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -443,15 +429,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-new-128-s1",
    "seed": 1,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -463,15 +447,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-new-223-s1",
    "seed": 1,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -483,15 +465,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-same-32-s1",
    "seed": 1,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -503,15 +483,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-same-63-s1",
    "seed": 1,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -523,15 +501,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-patients-32-s1",
    "seed": 1,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -543,15 +519,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-patients-63-s1",
    "seed": 1,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -563,15 +537,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-patients-64-s1",
    "seed": 1,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -583,15 +555,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-patients-128-s1",
    "seed": 1,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -603,15 +573,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-patients-223-s1",
    "seed": 1,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -623,15 +591,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-base-16-s2",
    "seed": 2,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -643,15 +609,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-new-32-s2",
    "seed": 2,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -663,15 +627,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-new-63-s2",
    "seed": 2,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -683,15 +645,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-new-64-s2",
    "seed": 2,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -703,15 +663,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-new-128-s2",
    "seed": 2,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -723,15 +681,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-new-223-s2",
    "seed": 2,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -743,15 +699,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-same-32-s2",
    "seed": 2,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -763,15 +717,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-same-63-s2",
    "seed": 2,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -783,15 +735,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-patients-32-s2",
    "seed": 2,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -803,15 +753,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-patients-63-s2",
    "seed": 2,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -823,15 +771,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-patients-64-s2",
    "seed": 2,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -843,15 +789,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-patients-128-s2",
    "seed": 2,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -863,15 +807,13 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
    "run_id": "B-DIV-patients-223-s2",
    "seed": 2,
-   "priority": 90,
+   "priority": 81,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
@@ -883,9 +825,7 @@
    "keep_adapter": false,
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   }
  ]

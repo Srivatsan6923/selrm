@@ -1,181 +1,13 @@
 {
  "runs": [
   {
-   "run_id": "B-BB-qwen3.5-4b-verdict-blocks-s1",
-   "format": "verdict",
-   "corpus": "rule_v1/train_blocks",
-   "seed": 1,
-   "n_examples": 60000,
-   "base_model": "unsloth/Qwen3.5-4B",
-   "priority": 76,
-   "keep_adapter": false,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
-   ]
-  },
-  {
-   "run_id": "B-BB-qwen3.5-4b-verdict-blocks-s2",
-   "format": "verdict",
-   "corpus": "rule_v1/train_blocks",
-   "seed": 2,
-   "n_examples": 60000,
-   "base_model": "unsloth/Qwen3.5-4B",
-   "priority": 76,
-   "keep_adapter": false,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
-   ]
-  },
-  {
-   "run_id": "B-BB-qwen3.5-4b-verdict-triplets-s1",
-   "format": "verdict",
-   "corpus": "rule_v1/train_triplets",
-   "seed": 1,
-   "n_examples": 60000,
-   "base_model": "unsloth/Qwen3.5-4B",
-   "priority": 76,
-   "keep_adapter": false,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
-   ]
-  },
-  {
-   "run_id": "B-BB-qwen3.5-4b-verdict-triplets-s2",
-   "format": "verdict",
-   "corpus": "rule_v1/train_triplets",
-   "seed": 2,
-   "n_examples": 60000,
-   "base_model": "unsloth/Qwen3.5-4B",
-   "priority": 76,
-   "keep_adapter": false,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
-   ]
-  },
-  {
-   "run_id": "B-BB-qwen3.5-4b-ledger2-blocks-s1",
-   "format": "ledger2",
-   "corpus": "rule_v1/train_blocks",
-   "seed": 1,
-   "n_examples": 60000,
-   "base_model": "unsloth/Qwen3.5-4B",
-   "priority": 76,
-   "keep_adapter": false,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
-   ]
-  },
-  {
-   "run_id": "B-BB-qwen3.5-4b-ledger2-blocks-s2",
-   "format": "ledger2",
-   "corpus": "rule_v1/train_blocks",
-   "seed": 2,
-   "n_examples": 60000,
-   "base_model": "unsloth/Qwen3.5-4B",
-   "priority": 76,
-   "keep_adapter": false,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
-   ]
-  },
-  {
-   "run_id": "B-BB-qwen3.5-4b-ledger2-triplets-s1",
-   "format": "ledger2",
-   "corpus": "rule_v1/train_triplets",
-   "seed": 1,
-   "n_examples": 60000,
-   "base_model": "unsloth/Qwen3.5-4B",
-   "priority": 76,
-   "keep_adapter": false,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
-   ]
-  },
-  {
-   "run_id": "B-BB-qwen3.5-4b-ledger2-triplets-s2",
-   "format": "ledger2",
-   "corpus": "rule_v1/train_triplets",
-   "seed": 2,
-   "n_examples": 60000,
-   "base_model": "unsloth/Qwen3.5-4B",
-   "priority": 76,
-   "keep_adapter": false,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
-   ]
-  },
-  {
    "run_id": "B-BB-non-qwen-4to9b-verdict-blocks-s1",
    "format": "verdict",
    "corpus": "rule_v1/train_blocks",
    "seed": 1,
    "n_examples": 60000,
    "base_model": "unsloth/granite-4.1-8b",
-   "priority": 76,
+   "priority": 95,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -184,9 +16,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -196,7 +26,7 @@
    "seed": 2,
    "n_examples": 60000,
    "base_model": "unsloth/granite-4.1-8b",
-   "priority": 76,
+   "priority": 95,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -205,9 +35,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -217,7 +45,7 @@
    "seed": 1,
    "n_examples": 60000,
    "base_model": "unsloth/granite-4.1-8b",
-   "priority": 76,
+   "priority": 95,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -226,9 +54,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -238,7 +64,7 @@
    "seed": 2,
    "n_examples": 60000,
    "base_model": "unsloth/granite-4.1-8b",
-   "priority": 76,
+   "priority": 95,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -247,9 +73,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -259,7 +83,7 @@
    "seed": 1,
    "n_examples": 60000,
    "base_model": "unsloth/granite-4.1-8b",
-   "priority": 76,
+   "priority": 95,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -268,9 +92,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -280,7 +102,7 @@
    "seed": 2,
    "n_examples": 60000,
    "base_model": "unsloth/granite-4.1-8b",
-   "priority": 76,
+   "priority": 95,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -289,9 +111,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -301,7 +121,7 @@
    "seed": 1,
    "n_examples": 60000,
    "base_model": "unsloth/granite-4.1-8b",
-   "priority": 76,
+   "priority": 95,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -310,9 +130,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   },
   {
@@ -322,7 +140,7 @@
    "seed": 2,
    "n_examples": 60000,
    "base_model": "unsloth/granite-4.1-8b",
-   "priority": 76,
+   "priority": 95,
    "keep_adapter": false,
    "eval": {
     "bs_score": 128,
@@ -331,9 +149,7 @@
    },
    "eval_sets": [
     "rule_v1/dev",
-    "rule_v1/test_L2",
-    "rule_v1/dev_missing",
-    "rule_v1/missing"
+    "rule_v1/test_L2"
    ]
   }
  ]

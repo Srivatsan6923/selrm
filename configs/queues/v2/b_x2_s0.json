@@ -3,7 +3,7 @@
   {
    "run_id": "B-AE-field-edit",
    "seed": 0,
-   "priority": 50,
+   "priority": 0,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
