@@ -55,6 +55,7 @@ Every reader output of the two-stage runs (one per case and condition, on every 
 | B-F-ledger2-blocks-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-triplets-s0 | 37497 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-triplets-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-ledger2-triplets-s2 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## 3. Program-supplied ledger: transitions on test_L2 (B-F-ledger2-triplets-s0)
 
@@ -114,6 +115,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-ledger2-blocks-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13044356 | 1045348 | 938 | 0.77 | 0.65 |
 | B-F-ledger2-triplets-s0 | NVIDIA A100-PCIE-40GB | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 2.29 | 1.41 |
 | B-F-ledger2-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 0.94 | 0.56 |
+| B-F-ledger2-triplets-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 0.78 | 0.67 |
 | B-F-rationale-balanced-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | - | - | 15970047 | 2094038 | 938 | 0.62 | 1.30 |
 | B-F-rationale-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 15979819 | 2088516 | 938 | 1.74 | 2.50 |
 | B-F-rationale-natural-s0 | NVIDIA A100-SXM4-80GB | 60000 | 60000 | - | - | 15851199 | 2034704 | 938 | 1.70 | 2.42 |
@@ -130,6 +132,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-verdict-natural-s0 | NVIDIA A100-SXM4-80GB | 60000 | 60000 | - | - | 12916495 | 120000 | 938 | 1.56 | 0.68 |
 | B-F-verdict-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 1.51 | 0.65 |
 | B-F-verdict-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 0.64 | 0.31 |
+| B-LOKO-subject-ledger2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13213846 | 1073236 | 938 | 0.82 | 0.27 |
 | B-LOKO-subject-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13135729 | 120000 | 938 | 0.69 | 0.14 |
 
 ## 8. Was donor-ledger resampling active?
@@ -142,11 +145,13 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | B-F-ledger2-blocks-s1 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-ledger2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-ledger2-triplets-s1 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-ledger2-triplets-s2 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-summary2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-summary2-blocks-s2 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-summary2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-summary2-triplets-s1 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-summary2-triplets-s2 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-LOKO-subject-ledger2-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
 
 ## 9. Field interventions on the ledger x triplets adapter (test_L2)
 
@@ -215,7 +220,7 @@ Swap in the ledger of another case (same rule, condition and claim): the judge r
 |---|---|---|---|---|
 | subject | verdict | 7.0 | 91.0 | -84.0 [-89.2, -78.2], p < 0.001 |
 | subject | summary2 | not run | | |
-| subject | ledger2 | not run | | |
+| subject | ledger2 | 62.5 | 97.8 | -35.2 [-42.7, -27.9], p < 0.001 |
 | time | verdict | not run | | |
 | time | summary2 | not run | | |
 | time | ledger2 | not run | | |
