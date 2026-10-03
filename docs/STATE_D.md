@@ -1,5 +1,5 @@
 # STATE role D (lead; maintained by the D session)
-Updated: 2026-10-03 ~11:45 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
+Updated: 2026-10-03 ~12:35 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
 
 ## Where D works
 - Clone `D:/NAACL27/selrm-role-d` (github Srivatsan6923/selrm): D's work on `role-d`; publish with
@@ -25,15 +25,11 @@ Updated: 2026-10-03 ~11:45 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo roo
 - P0.5 length plan (docs/LENGTH_PLAN.md).
 - P1: D-RES; pool/scoring/selection code; merged-adapter validation passed (D-VAL-ledger2-triplets-s0).
 ## In progress
-- Pools (k8s/pool_pipeline_d.sh <pool> <tp>; one site per pool; scores in /pvc/scores/<pool>/<scorer>.jsonl):
-  - medqa_dev: done and scored; pulled to D:/NAACL27/d_pools (checksummed); D-CAL committed (results_git/D-CAL:
-    Platt scaling; Med-PRM dev AUC 0.65, ledger 0.51/0.48).
-  - medqa_test: running on a west H100 (selrm-d-pipe-medqa-test-13393, since 08:50 UTC).
-  - medqa_kp (714 key-pair questions; then 64 samples on 150 pairs): running on a west H100
-    (selrm-d-pipe-medqa-kp-16468, since ~09:05 UTC; k8s/kp_pipeline_d.sh).
-  - careqa_en: done; selection committed (results_git/D-SEL-*/summary_sel~careqa.json).
-  - medeinst_test: running on a west H100 (selrm-d-pipe-medeinst-test-18983).
-  Rates per 8,000 traces on H100: 343 s generation, 306 s Med-PRM, 1,051 s ledger.
+- Pools: all five done and pulled (D:/NAACL27/d_pools, checksummed); selection committed: D-CAL, D-POOL-*,
+  D-SEL-* (sel/medqa, careqa, medeinst, keypairs), D-SEL-comparisons.json, D-SELN (curve). Re-run (deterministic):
+  python scripts/select_eval.py --pools D:/NAACL27/d_pools/pools --scores D:/NAACL27/d_pools/scores --out results_git
+  When B-TR-tripclin-s0 exists: merge + validate it, score every pool with it (pipeline scorer to add:
+  ledger2-tripclin and its swap), Table 5 rows switch to it (DECISIONS_D 3 Oct).
 - GRPO (ROLE.md: Qwen3.5-4B LoRA; rewards outcome, refgraph, stepcheck, ledger2-blocks, ledger2-triplets; group 8):
   setup check passed (results_git/D-RL-setup-outcome: 64-prompt overfit, ~26 s/step on H100; untrained policy at
   89.3% on held-out pairs). Queued on h100-opp, seed 0, 1,000 steps (k8s/grpo_d.sh; checkpoint + resume every 200):
