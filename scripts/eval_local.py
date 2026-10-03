@@ -18,7 +18,7 @@ import torch
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from selrm.formats import (MALFORMED_U, PROSE, TWO_STAGE, judge_for, dataset_path, gold_record, judge_view, read_bit,
                            reader_unit, reader_units, unit_key, well_formed)
-from selrm.metrics import bootstrap_ci, crossed_accuracy, decisions, summarise
+from selrm.metrics import bootstrap_ci, cluster_bootstrap, crossed_accuracy, decisions, summarise
 from selrm.prompts import judge_prompt, ledger_to_text
 
 KIND = {"verdict": "verdict", "verdict_bt": "verdict", "rationale": "rationale", "summary2": "reader_prose",
@@ -417,6 +417,21 @@ def ledger_edit(sc, recs, fmt, run_id, set_name, out_dir, log, t0, root):
     return summ
 
 
+def pair_reversal(recs, scores):
+    """Pair sets without near-misses (C's MedEinst: base = control, flip = trap): a pair is solved iff d > 0 on base
+    and d < 0 on flip (ties fail), as C's eval_clinical.py; 95% CI resampling pairs."""
+    u = {}
+    for r, x in zip(recs, scores):
+        if r["claim_type"] == "conclusion":
+            u.setdefault(r["tid"], {})[(r["case_kind"], r["claim_role"])] = x
+    items = [{"tid": t, "base": v[("base", "s")] > v[("base", "s_prime")], "flip": v[("flip", "s")] < v[("flip", "s_prime")]}
+             for t, v in sorted(u.items()) if len(v) == 4]
+    rate = lambda key: (lambda xs: 100.0 * sum(all(x[k] for k in key) for x in xs) / len(xs))
+    point, lo, hi = cluster_bootstrap(items, "tid", rate(("base", "flip")))
+    return {"Reversal": point, "CI95": [lo, hi], "control_correct": rate(("base",))(items),
+            "trap_correct": rate(("flip",))(items), "n_pairs": len(items)}
+
+
 def summarize(recs, scores, run_id, set_name):
     """summarise() for every claim type present, CIs for the conclusion claim."""
     out = {"run_id": run_id, "set": set_name, "claim_type": "conclusion"}
@@ -429,6 +444,8 @@ def summarize(recs, scores, run_id, set_name):
         step[ct] = summarise(decisions(recs, scores, ct)).get("all", {})
     if step:
         out["step"] = step
+    if not out.get("all") and {r["case_kind"] for r in recs} == {"base", "flip"}:   # pair sets (MedEinst)
+        out["pairs"] = pair_reversal(recs, scores)
     if recs and "xr" in recs[0]["meta"]:     # xr_v1 rule-side items: crossed accuracy; A keeps the item in meta.xr.item
         out["xr"] = {ct: crossed_accuracy(recs, scores, item_of=lambda r: r["meta"]["xr"]["item"], claim_type=ct)
                      for ct in sorted({r["claim_type"] for r in recs})}

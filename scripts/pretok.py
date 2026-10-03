@@ -189,7 +189,8 @@ def build_eval(root, spec, set_name, tok):
     if kind in PROMPT:
         keys, texts = [r["iid"] for r in recs], [PROMPT[kind](r) for r in recs]
     else:
-        check_gold(recs, {"reader_ledger": ["ledger2", "value2"], "reader_derive": ["ledger2"]}.get(kind, []), set_name)
+        check_gold([r for r in recs if r["ledger"]],     # sets without gold ledgers (C's clinical test sets): nothing
+                   {"reader_ledger": ["ledger2", "value2"], "reader_derive": ["ledger2"]}.get(kind, []), set_name)
         units = reader_units(recs, spec["format"])
         keys = [unit_key(r, spec["format"]) for r in units]
         texts = [reader_for(r, spec["format"]) for r in units]

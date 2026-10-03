@@ -134,6 +134,16 @@ def transfer(seeds, registry, version):
                      "priority": priority(r["run_id"], seed, r["priority"]),
                      "keep_adapter": True,   # Table 4 rows (clinical columns)
                      "eval": dict(EVAL), "eval_sets": [f"{version}/{s}" for s in TRANSFER], **spec})
+    # MedEinst with diseases held out (FINAL_TASKS_B P1, 3 runs): ledger2 on C's training-disease pairs
+    corpus = "clin_v1/clinpairs_medeinst_dis"
+    if json.load(open(registry)).get(corpus, {}).get("frozen"):
+        for r in matrix():
+            m = re.fullmatch(r"B-DIS-s(\d)", r["run_id"])
+            if m and int(m[1]) in seeds and r["status"] not in ("done", "dropped", "deferred"):
+                runs.append({"run_id": r["run_id"], "seed": int(m[1]), "format": "ledger2", "corpus": corpus,
+                             "n_examples": 60000, "priority": priority(r["run_id"], int(m[1]), r["priority"]),
+                             "keep_adapter": True, "eval": dict(EVAL),
+                             "eval_sets": ["clin_v1/medeinst_dis_test", f"{version}/dev", f"{version}/test_L2"]})
     return runs
 
 

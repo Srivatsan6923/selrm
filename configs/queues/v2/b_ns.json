@@ -103,6 +103,23 @@
    "base_model": "unsloth/Qwen3.5-9B"
   },
   {
+   "run_id": "B-NS-xr_v1-B-F-verdict-blocks-s1",
+   "seed": 1,
+   "priority": 45,
+   "format": "verdict",
+   "train": false,
+   "adapter": "adapters/B-F-verdict-blocks-s1",
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "eval_sets": [
+    "xr_v1/test"
+   ],
+   "base_model": "unsloth/Qwen3.5-9B"
+  },
+  {
    "run_id": "B-NS-xr_v1-B-F-verdict-blocks-s2",
    "seed": 2,
    "priority": 45,
