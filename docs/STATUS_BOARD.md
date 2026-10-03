@@ -39,15 +39,15 @@ Updated 2026-10-03 ~06:30 UTC after daily merge 2 (role-a 11f77f7, role-b 072d46
 | C-P1 | audit of 13 signals, clinical sets, diagnostics | C | not started; API key requested (C #1) | docs/RUN_MATRIX_C.csv |
 | D-P0.1 | Integration (daily merges, board, freeze/hash checks, framing decision) | D | running: merges 1-2 done | main |
 | D-P0.2 | make_tables.py with provenance, seeds, paired tests + Holm | D | done; specs follow the other roles' run ids (docs/RESULT_KEYS.md) | scripts/make_tables.py, tables/ |
-| D-P0.3 | update_paper.py, build that fails on placeholders, v13 sources | D | tooling done; prose numbers being wired to keys | scripts/update_paper.py, scripts/build_paper.py |
-| D-P0.4 | Kits: error sheets, citation checklist, development timeline | D | running | audit/, docs/CITATIONS_TODO.csv, docs/TIMELINE.md |
+| D-P0.3 | update_paper.py, build that fails on placeholders, v13 sources | D | done: 185 numbers wired to keys; report docs/PAPER_NUMBERS.md | scripts/update_paper.py, scripts/build_paper.py |
+| D-P0.4 | Kits: error sheets, citation checklist, development timeline | D | error sheets and citation checklist done; timeline running | audit/, docs/CITATIONS_TODO.csv, docs/TIMELINE.md |
 | D-P0.5 | Length plan to 8 pages | D | running | docs/LENGTH_PLAN.md |
 | D-P1 | Pools, Table 5, selection pressure, GRPO, resources, final audit | D | code ready; NRP env built; merged ledger models being validated against B's scores; pool jobs wait for GPUs | scripts/make_pool.py, score_pool.py, select_eval.py |
 | H1 | Read 75 rendered groups each (300) | authors | kit ready (A): audit/fidelity_author{1..4}.csv | audit/fidelity_<name>.csv |
 | H2 | Write 40 challenge cases each; second author checks | authors | kit ready (A): challenge_v1/form_author{1..4}.md | challenge_v1/notes_<name>.jsonl |
 | H3 | Sign off each registered criterion's program | two authors | waits for A-P0.5 | docs/EC_SIGNOFF.csv |
-| H4 | Code 50 failures each (200) | authors | waits for D-P0.4 sheet | audit/errors_<name>.csv |
-| H5 | Open every cited paper; confirm the attributed sentence | authors | waits for D-P0.4 checklist | docs/CITATIONS_CHECKED.csv |
+| H4 | Code 50 failures each (200) | authors | kit ready (D): audit/error_sheet_part{1..4}.csv, audit/ERROR_CODING.md | audit/errors_<name>.csv |
+| H5 | Open every cited paper; confirm the attributed sentence | authors | kit ready (D): docs/CITATIONS_TODO.csv (63 keys, 13 flagged) | docs/CITATIONS_CHECKED.csv |
 | H6 | Introduction, discussion, error analysis, development history | lead + one author | Fri 9 - Sat 10 | paper/latex_v13/main.tex |
 | H7 | Decide gates G1-G3 (definitions are the authors'; not in the repo) | lead (human) | open (Sun 4, Wed 7) | docs/DECISIONS_D.md |
 | H7a | Framing decision after C's TrialGPT report | lead (human) | waits for C-P0.1 test results | docs/DECISIONS_D.md |
