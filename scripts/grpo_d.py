@@ -239,12 +239,35 @@ def evaluate(model, tok, items, max_new=512, bs=32, out=None):
         with open(out, "w", encoding="utf-8", newline="\n") as f:
             f.writelines(json.dumps(r) + "\n" for r in rows)
     model.train()
+    return accuracy(rows)
+
+
+def accuracy(rows):
+    """Rows {tid, case_kind, correct} -> accuracy per case kind, on base-flip pairs and on whole triplets."""
+    per = {}
+    for r in rows:
+        per.setdefault(r["tid"], {})[r["case_kind"]] = r["correct"]
     pct = lambda xs: 100.0 * sum(xs) / len(xs) if xs else None
     acc = {k: pct([t[k] for t in per.values() if k in t]) for k in ("base", "flip", "near")}
     acc["all"] = pct([v for t in per.values() for v in t.values()])
     acc["pair"] = pct([t["base"] and t["flip"] for t in per.values() if {"base", "flip"} <= set(t)])
     acc["triplet"] = pct([all(t.values()) for t in per.values() if len(t) == 3])
     return acc
+
+
+def summarize(out_dir):
+    """summary_rule_v1~test_L2.json from the run's per-example evaluation files: start = eval_step0.jsonl, final =
+    the highest eval_step<N>.jsonl; the in-training curve (curve.jsonl) is kept as it is."""
+    steps = sorted(int(m.group(1)) for m in (re.match(r"eval_step(\d+)\.jsonl$", f) for f in os.listdir(out_dir)) if m)
+    load_rows = lambda n: [json.loads(x) for x in open(os.path.join(out_dir, f"eval_step{n}.jsonl"), encoding="utf-8")]
+    start, final = accuracy(load_rows(0)), accuracy(load_rows(steps[-1]))
+    p = os.path.join(out_dir, "summary_rule_v1~test_L2.json")
+    old = json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
+    summ = {k: v for k, v in old.items() if not k.startswith("acc_")} | {
+        "start": start, "final": final, "final_step": steps[-1], "n_triplets": len({r["tid"] for r in load_rows(0)}),
+        "from_files": [f"eval_step0.jsonl", f"eval_step{steps[-1]}.jsonl"]} | {f"acc_{k}": v for k, v in final.items()}
+    json.dump(summ, open(p, "w", encoding="utf-8", newline="\n"), indent=1)
+    return summ
 
 
 def main():
@@ -300,6 +323,8 @@ def main():
             print("eval-from", src, json.dumps(acc), flush=True)
             if src != "base":
                 base = model.unload()
+        if os.path.exists(os.path.join(a.out, "DONE")):   # a finished run: its summary now rests on these files
+            print("summary", json.dumps(summarize(a.out)), flush=True)
         return
     reward = {"outcome": lambda: outcome_reward, "refgraph": lambda: make_refgraph_reward(recs_by_iid),
               "ledger2-blocks": lambda: make_ledger_reward(a.ledger_url, a.ledger_model, recs_by_iid),
@@ -354,12 +379,10 @@ def main():
     ck = os.path.join(a.out, "ckpt")
     trainer.train(resume_from_checkpoint=True if os.path.isdir(ck) and any(
         d.startswith("checkpoint-") for d in os.listdir(ck)) else None)
-    final = curve[-1]
     run_id = os.path.basename(a.out.rstrip("/"))
     json.dump({"run_id": run_id, "set": "rule_v1/test_L2", "metric": "accuracy of the chosen claim by the rule program",
-               "n_triplets": len(keep), "start": start, "final": {k: v for k, v in final.items() if k != "step"},
-               "top": None} | {f"acc_{k}": v for k, v in final.items() if k not in ("step", "reward", "train_outcome")},
-              open(os.path.join(a.out, "summary_rule_v1~test_L2.json"), "w", encoding="utf-8"), indent=1)
+               "top": None}, open(os.path.join(a.out, "summary_rule_v1~test_L2.json"), "w", encoding="utf-8"), indent=1)
+    summarize(a.out)
     json.dump({"run_id": run_id, "reward": a.reward, "policy": a.policy, "seed": a.seed, "steps": a.steps,
                "train_tasks": len(tr), "eval_tasks": len(ev), "group_size": 8, "lora_r": 16, "lr": 1e-5,
                "wall_seconds": round(time.time() - t0, 1), "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu"},

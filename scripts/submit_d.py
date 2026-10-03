@@ -171,6 +171,7 @@ def main():
     ap.add_argument("--gpu-cpu", dest="gpu_cpu", type=int, default=3)
     ap.add_argument("--gpu-mem", dest="gpu_mem", default="24Gi")
     ap.add_argument("--mem", default="32Gi")
+    ap.add_argument("--exclude", action="append", default=[], help="pull: tar pattern to leave out (e.g. ckpt)")
     a, extra = ap.parse_known_args()
     if "--" in a.rest:                     # "... NAME -- script args": argparse keeps the separator
         i = a.rest.index("--")
@@ -229,7 +230,8 @@ def main():
         # A raw tar stream of ~30 MB through kubectl exec was cut short on Windows (3 Oct): pack and checksum on
         # the pod, stream the gzip, compare the checksum, retry.
         tmp = f"/tmp/pull-{int(time.time())}.tgz"
-        want = exec_sync("sh", "-c", f"tar -czf {tmp} -C {os.path.dirname(remote)} {os.path.basename(remote)} && "
+        excl = " ".join(f"--exclude={e}" for e in a.exclude)
+        want = exec_sync("sh", "-c", f"tar -czf {tmp} {excl} -C {os.path.dirname(remote)} {os.path.basename(remote)} && "
                                      f"sha256sum {tmp} | cut -d' ' -f1").strip()
         import hashlib
         for _ in range(5):

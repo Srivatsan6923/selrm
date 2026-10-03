@@ -77,6 +77,10 @@ def test_keys():
 
 
 def test_update_paper_keeps_prose():
+    g = load("grpo_d")   # base-flip pairs and whole triplets from per-example rows
+    rows = [{"tid": "a", "case_kind": k, "correct": k != "near"} for k in ("base", "flip", "near")] + \
+           [{"tid": "b", "case_kind": k, "correct": k == "flip"} for k in ("base", "flip", "near")]
+    assert {k: g.accuracy(rows)[k] for k in ("pair", "triplet", "flip")} == {"pair": 50.0, "triplet": 0.0, "flip": 100.0}
     up = load("update_paper")
     t = "a\n% <tables:x>\nold\n% </tables:x>\nb\n\\placeholderstrue"
     t2 = "a\n% <tables:x>\nnew\nrows\n% </tables:x>\nb\n\\placeholdersfalse"
