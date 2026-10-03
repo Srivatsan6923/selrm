@@ -1,0 +1,137 @@
+{
+ "run_id": "C-TG-promptledger",
+ "set": "clin_v1/trialgpt_test",
+ "protocol": "docs/TRIALGPT_PROTOCOL.md",
+ "threshold": -20.0,
+ "n_items": 801,
+ "n_scored": 759,
+ "macroF1": 15.793835793835795,
+ "macroF1_CI95": [
+  13.840497079425658,
+  17.67584097859327
+ ],
+ "acc": 30.69828722002635,
+ "acc_CI95": [
+  25.905292479108635,
+  35.714285714285715
+ ],
+ "per_class": {
+  "met": {
+   "P": 0.0,
+   "R": 0.0,
+   "F1": 0.0,
+   "n": 138
+  },
+  "not_met": {
+   "P": 100.0,
+   "R": 0.2570694087403599,
+   "F1": 0.5128205128205128,
+   "n": 389
+  },
+  "nei": {
+   "P": 30.606860158311346,
+   "R": 100.0,
+   "F1": 46.86868686868687,
+   "n": 232
+  }
+ },
+ "confusion": {
+  "met": {
+   "nei": 138
+  },
+  "not_met": {
+   "nei": 388,
+   "not_met": 1
+  },
+  "nei": {
+   "nei": 232
+  }
+ },
+ "pred_distribution": {
+  "nei": 758,
+  "not_met": 1
+ },
+ "macroF1_five_names": 9.480689245395128,
+ "per_class_five_names": {
+  "included": {
+   "P": 0.0,
+   "R": 0.0,
+   "F1": 0.0,
+   "n": 131
+  },
+  "not included": {
+   "P": 0.0,
+   "R": 0.0,
+   "F1": 0.0,
+   "n": 16
+  },
+  "excluded": {
+   "P": 0.0,
+   "R": 0.0,
+   "F1": 0.0,
+   "n": 7
+  },
+  "not excluded": {
+   "P": 100.0,
+   "R": 0.2680965147453083,
+   "F1": 0.53475935828877,
+   "n": 373
+  },
+  "not enough information": {
+   "P": 30.606860158311346,
+   "R": 100.0,
+   "F1": 46.86868686868687,
+   "n": 232
+  }
+ },
+ "by_type": {
+  "inclusion": {
+   "macroF1": 21.468926553672315,
+   "acc": 47.5,
+   "n": 280
+  },
+  "exclusion": {
+   "macroF1": 11.61672798944692,
+   "acc": 20.876826722338205,
+   "n": 479
+  }
+ },
+ "not_applicable": {
+  "n": 42,
+  "pred": {
+   "nei": 41,
+   "not_met": 1
+  }
+ },
+ "forced_choice_acc": 0.18975332068311196,
+ "n_forced": 527,
+ "evidence": {
+  "precision": 0.0,
+  "n_items_pred": 0,
+  "recall": 0.0,
+  "n_items_gold": 332,
+  "items_without_quote": 801
+ },
+ "per_trial_acc": {
+  "n_trials": 64,
+  "min": 0.0,
+  "median": 29.285714285714285,
+  "max": 80.0
+ },
+ "bootstrap": {
+  "unit": "patient",
+  "B": 1000,
+  "seed": 0
+ },
+ "threshold_source": "results_git/C-TG-promptledger-dev/scores_rule_v1~dev_missing.jsonl",
+ "eval": {
+  "reader_units": 801,
+  "malformed_units": 799,
+  "mode": null,
+  "malformed_rate": 0.9975,
+  "gen_not_stopped": 11,
+  "seconds": 1158.2,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

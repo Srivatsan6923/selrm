@@ -1,0 +1,8 @@
+2026-10-03T06:30:02Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-03T06:30:05Z C-TG-promptsum clin_v1/trialgpt_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_test/reader_prose.npz', 'built 801 prompts, max 735 tokens')
+2026-10-03T06:30:05Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0070)
+2026-10-03T06:30:07Z padding self-check: max |u_batch - u_single| = 0.1277 (tol 0.710) -> left padding
+2026-10-03T06:33:01Z generate: batch 25/51, 29907 tokens, 172 tok/s
+2026-10-03T06:36:47Z generate: batch 50/51, 67765 tokens, 170 tok/s
+2026-10-03T06:38:26Z C-TG-promptsum clin_v1/trialgpt_test: TA nan Rev nan Hold nan n=None (501.5 s)
+2026-10-03T06:38:27Z DONE C-TG-promptsum in 8.7 min, GPU util mean 82.0

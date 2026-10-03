@@ -1,0 +1,142 @@
+{
+ "run_id": "C-TG-ledger2-blocks-s0",
+ "set": "clin_v1/trialgpt_test",
+ "protocol": "docs/TRIALGPT_PROTOCOL.md",
+ "threshold": 11.070781707763672,
+ "n_items": 801,
+ "n_scored": 759,
+ "macroF1": 70.87562116631884,
+ "macroF1_CI95": [
+  66.67800423173925,
+  74.55269848182404
+ ],
+ "acc": 71.80500658761528,
+ "acc_CI95": [
+  67.27941176470588,
+  75.85266030013642
+ ],
+ "per_class": {
+  "met": {
+   "P": 76.85950413223141,
+   "R": 67.3913043478261,
+   "F1": 71.81467181467181,
+   "n": 138
+  },
+  "not_met": {
+   "P": 84.50292397660819,
+   "R": 74.293059125964,
+   "F1": 79.06976744186046,
+   "n": 389
+  },
+  "nei": {
+   "P": 55.067567567567565,
+   "R": 70.25862068965517,
+   "F1": 61.742424242424235,
+   "n": 232
+  }
+ },
+ "confusion": {
+  "met": {
+   "met": 93,
+   "nei": 45
+  },
+  "not_met": {
+   "not_met": 289,
+   "nei": 88,
+   "met": 12
+  },
+  "nei": {
+   "nei": 163,
+   "met": 16,
+   "not_met": 53
+  }
+ },
+ "pred_distribution": {
+  "not_met": 342,
+  "met": 121,
+  "nei": 296
+ },
+ "macroF1_five_names": 55.84472816429451,
+ "per_class_five_names": {
+  "included": {
+   "P": 86.53846153846155,
+   "R": 68.70229007633588,
+   "F1": 76.59574468085107,
+   "n": 131
+  },
+  "not included": {
+   "P": 28.000000000000004,
+   "R": 43.75,
+   "F1": 34.146341463414636,
+   "n": 16
+  },
+  "excluded": {
+   "P": 17.647058823529413,
+   "R": 42.857142857142854,
+   "F1": 25.0,
+   "n": 7
+  },
+  "not excluded": {
+   "P": 88.95899053627761,
+   "R": 75.60321715817693,
+   "F1": 81.73913043478261,
+   "n": 373
+  },
+  "not enough information": {
+   "P": 55.067567567567565,
+   "R": 70.25862068965517,
+   "F1": 61.742424242424235,
+   "n": 232
+  }
+ },
+ "by_type": {
+  "inclusion": {
+   "macroF1": 61.092432470623784,
+   "acc": 71.42857142857143,
+   "n": 280
+  },
+  "exclusion": {
+   "macroF1": 51.973152767878354,
+   "acc": 72.02505219206681,
+   "n": 479
+  }
+ },
+ "not_applicable": {
+  "n": 42,
+  "pred": {
+   "nei": 15,
+   "not_met": 27
+  }
+ },
+ "forced_choice_acc": 85.7685009487666,
+ "n_forced": 527,
+ "evidence": {
+  "precision": 60.451977401129945,
+  "n_items_pred": 408,
+  "recall": 61.25954198473283,
+  "n_items_gold": 332,
+  "items_without_quote": 393
+ },
+ "per_trial_acc": {
+  "n_trials": 64,
+  "min": 33.333333333333336,
+  "median": 71.42857142857143,
+  "max": 100.0
+ },
+ "bootstrap": {
+  "unit": "patient",
+  "B": 1000,
+  "seed": 0
+ },
+ "threshold_source": "results_git/C-TG-ledger2-blocks-dev/scores_rule_v1~dev_missing.jsonl",
+ "eval": {
+  "reader_units": 801,
+  "malformed_units": 15,
+  "mode": null,
+  "malformed_rate": 0.0187,
+  "gen_not_stopped": 1,
+  "seconds": 1078.3,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

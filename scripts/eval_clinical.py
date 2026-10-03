@@ -470,10 +470,28 @@ def write_report(rows, comps):
                  f" | {s['pred_distribution'].get('nei', 0)} of {s['n_scored']} | {fmt_num(s['forced_choice_acc'])}"
                  f" | {(fmt_num(ev['precision']) + ' / ' + fmt_num(ev['recall'])) if ev else '-'} | {fmt_num(s['threshold'], 2)} |")
     if comps:
-        L += ["", "Paired differences in macro-F1 (same items, patient bootstrap, 1,000 resamples; Holm across the "
-                  "primary comparisons is applied by the lead):", ""]
+        L += ["", "Paired differences in macro-F1 (same items, patient bootstrap, 1,000 resamples; comparison (6) of the "
+                  "analysis plan; Holm across the primary comparisons is applied by the lead):", ""]
         L += [f"- {x} minus {y}: {r['diff']:.1f} [{r['lo']:.1f}, {r['hi']:.1f}], p = {r['p']:.3f} "
               f"({r['n_items']} items, {r['n_clusters']} patients)" for x, y, r in comps]
+    L += ["", "By criterion type, the dataset's five category names, predictions on not-applicable items, per-trial "
+              "accuracy (trials with at least 5 items) and decision language in reader outputs (scripts/reader_audit.py):", "",
+          "| System | macro-F1 inclusion (n) | macro-F1 exclusion (n) | macro-F1, five names | N/A items: predicted | per-trial acc. min / median / max | decision language |",
+          "|---|---|---|---|---|---|---|"]
+    for key, label, run, s in rows:
+        if s is None:
+            continue
+        bt, pt = s["by_type"], s["per_trial_acc"]
+        aud = f"{REPO}/results_git/{run}/reader_audit.json"
+        dl = json.load(open(aud, encoding="utf-8"))["sets"].get(s["set"], {}).get("decision_language_any") if os.path.exists(aud) else None
+        L.append(f"| {label} | {fmt_num(bt['inclusion']['macroF1'])} ({bt['inclusion']['n']}) | "
+                 f"{fmt_num(bt['exclusion']['macroF1'])} ({bt['exclusion']['n']}) | {fmt_num(s['macroF1_five_names'])} | "
+                 f"{', '.join(f'{k} {v}' for k, v in sorted(s['not_applicable']['pred'].items()))} | "
+                 f"{fmt_num(pt['min'])} / {fmt_num(pt['median'])} / {fmt_num(pt['max'])} | {fmt_num(dl)} |")
+    man = json.load(open(f"{REPO}/data/clin_v1/trialgpt_test/MANIFEST.json", encoding="utf-8"))
+    L += ["", "Case-blind predictors on the same items (shortcut validation in the set's MANIFEST): " +
+          "; ".join(f"{k}: macro-F1 {v['macroF1']:.1f}, accuracy {v['acc']:.1f}" for k, v in man["shortcut_validation"]["predictors"].items()) + ".",
+          "", "Development-portion numbers (10 patients) are in results_git/C-TG-*-dev and are not test results."]
     open(f"{REPO}/docs/TRIALGPT_RESULTS.md", "w", encoding="utf-8", newline="\n").write("\n".join(L) + "\n")
     print("wrote docs/TRIALGPT_RESULTS.md")
 

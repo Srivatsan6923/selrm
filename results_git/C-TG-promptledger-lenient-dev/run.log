@@ -1,0 +1,5 @@
+2026-10-03T06:49:19Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-03T06:50:16Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.1085)
+2026-10-03T06:58:38Z C-TG-promptledger-lenient-dev rule_v1/dev_missing rejudge (lenient v2): TA nan malformed 15/600
+2026-10-03T06:59:42Z C-TG-promptledger-lenient-dev clin_v1/trialgpt_dev rejudge (lenient v2): TA nan malformed 6/213
+2026-10-03T06:59:42Z DONE C-TG-promptledger-lenient-dev in 11.2 min, GPU util mean 88.7
