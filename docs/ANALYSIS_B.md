@@ -169,6 +169,7 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-verdict-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 1.51 | 0.65 |
 | B-F-verdict-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 0.64 | 0.31 |
 | B-F-verdict-triplets-s2 | NVIDIA L40 | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 3.24 | 1.64 |
+| B-F-verdict-triplets-s4 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 0.60 | 0.34 |
 | B-LOKO-boundary-ledger2-s0 | NVIDIA A100-SXM4-80GB | None | 60000 | 30000 | 30000 | 13132713 | 1115843 | 938 | 1.75 | 0.41 |
 | B-LOKO-boundary-summary2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 11979662 | 1139596 | 938 | 0.71 | 0.26 |
 | B-LOKO-boundary-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 12970250 | 120000 | 938 | 0.69 | 0.14 |
@@ -317,6 +318,7 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | B-F-value2-natural-s0 | 29.2 | 82.6 | 70.0 | 0.0 | 0.0 | 47.0 |
 | B-F-verdict-blocks-s3 | 40.2 | 88.5 | 89.0 | 37.0 | 18.0 | 17.0 |
 | B-F-verdict-triplets-s2 | 90.0 | 98.0 | 100.0 | 100.0 | 100.0 | 60.0 |
+| B-F-verdict-triplets-s4 | 85.5 | 96.4 | 100.0 | 100.0 | 99.0 | 43.0 |
 | B-LOKO-boundary-ledger2-s0 | 85.8 | 97.6 | 100.0 | 89.0 | 95.0 | 59.0 |
 | B-LOKO-boundary-summary2-s0 | 92.5 | 98.8 | 99.0 | 100.0 | 98.0 | 73.0 |
 | B-LOKO-boundary-verdict-s0 | 83.0 | 96.0 | 100.0 | 97.0 | 100.0 | 35.0 |
@@ -345,9 +347,9 @@ An item is solved iff all its cells are right (crossed accuracy XA, selrm.metric
 | verdict x blocks | TA | 58.2 | 53.5 | 60.0 | 47.6 | - | 54.8 | 5.5 | 4 |
 | verdict x blocks | Rev | 93.1 | 91.8 | 92.1 | 93.3 | - | 92.6 | 0.8 | 4 |
 | verdict x blocks | Hold | 61.5 | 59.1 | 64.8 | 51.3 | - | 59.2 | 5.8 | 4 |
-| verdict x triplets | TA | 91.3 | 91.8 | 92.2 | - | - | 91.8 | 0.5 | 3 |
-| verdict x triplets | Rev | 92.3 | 92.7 | 93.0 | - | - | 92.7 | 0.4 | 3 |
-| verdict x triplets | Hold | 97.7 | 96.6 | 98.2 | - | - | 97.5 | 0.8 | 3 |
+| verdict x triplets | TA | 91.3 | 91.8 | 92.2 | - | 91.8 | 91.8 | 0.4 | 4 |
+| verdict x triplets | Rev | 92.3 | 92.7 | 93.0 | - | 92.0 | 92.5 | 0.4 | 4 |
+| verdict x triplets | Hold | 97.7 | 96.6 | 98.2 | - | 98.2 | 97.7 | 0.8 | 4 |
 | summary2 x blocks | TA | 67.3 | 57.9 | 72.2 | - | - | 65.8 | 7.3 | 3 |
 | summary2 x blocks | Rev | 96.8 | 98.6 | 97.4 | - | - | 97.6 | 0.9 | 3 |
 | summary2 x blocks | Hold | 70.1 | 59.0 | 74.6 | - | - | 67.9 | 8.1 | 3 |
