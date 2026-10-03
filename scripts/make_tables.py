@@ -56,7 +56,15 @@ SETS = {"L2": "rule_v1/test_L2", "dev": "rule_v1/dev", "L0": "rule_v1/test_L0", 
 # Sets other roles have not published yet (names to be confirmed when they register them).
 XR, CHALLENGE, REWRITE, EC = "xr_v1:test", "challenge_v1:test", "rewrite_v1:test", "ec_v1:test"
 MEDEINST, KEY_MQA, KEY_CQA, NLI, TRIALGPT = ("clin_v1:medeinst_test", "clin_v1:keypairs_medqa",
-                                             "clin_v1:keypairs_careqa", "clin_v1:nli4ct", "trialgpt:test")
+                                             "clin_v1:keypairs_careqa", "clin_v1:nli4ct", "clin_v1:trialgpt_test")
+
+
+def tg(prefix):
+    """TrialGPT scores of a system live under C's run C-TG-<x> (HANDOFFS 3 Oct): B-F-<x> and C-TF-<x> -> C-TG-<x>."""
+    for head in ("B-F-", "C-TF-"):
+        if prefix.startswith(head):
+            return "C-TG-" + prefix[len(head):]
+    return prefix
 SEL = {"mqa": "sel:medqa", "cqa": "sel:careqa", "key": "sel:keypairs", "me": "sel:medeinst"}
 SEEDS = range(5)
 TBD = r"\ph{tbd}"
@@ -257,6 +265,38 @@ def _resolve(key):
     raise KeyError(f"unknown key head {head!r}")
 
 
+def scores_of(r, set_):
+    f = r.scores.get(set_)
+    if not f:
+        return None, None
+    u = {j["iid"]: j["u"] for j in map(json.loads, open(f, encoding="utf-8"))}
+    recs = records(set_)
+    return (recs, [u[x["iid"]] for x in recs]) if recs and all(x["iid"] in u for x in recs) else (None, None)
+
+
+def derived(r, set_, sl, metric):
+    """Statistics a summary file does not hold, computed by selrm.metrics from the run's scores:
+    MR/FR at 5% false rejection (threshold from dev_missing), near-miss decisions (slice
+    'nmt:<all|nm_kind=k>'), macro-averages (slice 'macro:<rid|family>'). -> (value, files) or (None, None)."""
+    if set_ == SETS["missing"] and sl == "top" and metric in ("MR", "FR", "threshold"):
+        dr, du = scores_of(r, SETS["dev_missing"])
+        mr, mu = scores_of(r, set_)
+        if dr is None or mr is None:
+            return None, None
+        out = M.missing_rejection(mr, mu, M.mr_threshold(dr, du))
+        return out[metric], [r.scores[SETS["dev_missing"]], r.scores[set_]]
+    if sl.startswith("nmt:") or sl.startswith("macro:"):
+        T = triplets(r, set_)
+        if T is None:
+            return None, None
+        if sl.startswith("nmt:"):
+            x = M.nearmiss_table(T).get(sl[4:], {}).get(metric)
+        else:
+            x = M.macro(T, metric, over=sl[6:])["macro"]
+        return x, [r.scores[set_]]
+    return None, None
+
+
 def run_value(rest, spec):
     prefix, sab, sl, metric, *st = rest.split("/")
     stat, set_ = (st[0] if st else "mean"), set_name(sab)
@@ -267,6 +307,10 @@ def run_value(rest, spec):
         x = field(fd[1], sl, metric) if fd else None
         if x is not None:
             vals.append((k, x, fd[0], r))
+        else:
+            x, files = derived(r, set_, sl, metric)
+            if x is not None:
+                vals.append((k, x, files[-1], r))
     prov = {"runs": [prov_run(r, f, f"{sl}.{metric}", k) for k, _, f, r in vals],
             "set": set_, "stat": stat, "seeds_found": [k for k, *_ in vals]}
     xs = [x for _, x, _, _ in vals]
@@ -335,8 +379,8 @@ COMPARISONS = [
     ("p3", "B-F-ledger2-triplets", "B-F-summary2-triplets", "L2", "TA"),
     ("p4", "B-F-ledger2-triplets", "C-TF-critic", MEDEINST, "Reversal"),
     ("p5", "B-F-ledger2-triplets", "B-F-summary2-triplets", MEDEINST, "Reversal"),
-    ("p6a", "B-F-ledger2-triplets", "C-TF-critic", TRIALGPT, "macroF1"),
-    ("p6b", "B-F-ledger2-triplets", "B-F-ledger2-blocks", TRIALGPT, "macroF1"),
+    ("p6a", "C-TG-ledger2-triplets", "C-TG-critic", TRIALGPT, "macroF1"),   # C writes these two with a patient
+    ("p6b", "C-TG-ledger2-triplets", "C-TG-ledger2-blocks", TRIALGPT, "macroF1"),   # bootstrap (C-TG-comparisons_test.json)
 ]
 _CMP = {}
 
@@ -504,7 +548,7 @@ def t_main():
             keys = {"L2": runkey(p, "L2", "TA"), "L3-alt": runkey(p, "L3alt", "TA"), "XA": f"run/{p}/{XR}/top/XA",
                     "Hold": runkey(p, "L2", "Hold"), "MR": f"run/{p}/missing/top/MR"}
             if p not in NO_CLINICAL:
-                keys |= {"Criteria": runkey(p, EC, "TA"), "TrialGPT": f"run/{p}/{TRIALGPT}/top/macroF1",
+                keys |= {"Criteria": runkey(p, EC, "TA"), "TrialGPT": f"run/{tg(p)}/{TRIALGPT}/top/macroF1",
                          "MedEinst": f"run/{p}/{MEDEINST}/top/Reversal"}
             rows.append((closed_label(lab, p), keys))
     return rows_tex("main", rows, cols)
@@ -599,9 +643,12 @@ def t_kinds():
                               for lab, p in systems], cols)
     n_row = rows_tex("kinds", [("$n$ (triplets)", {c: f"run/B-F-ledger2-triplets/L2/nm_kind={k}/n@int"
                                                    for c, k in KINDS})], cols)
-    # same decision / both correct / near-miss correct given base correct: selrm.metrics (C-P0.3)
-    extra = "".join(f"{lab} & " + r"\multicolumn{5}{c}{" + TBD + r"}\\" + "\n" for lab in
-                    ("Same decision on base and near-miss", "Both correct", "Near-miss correct given base correct"))
+    # near-miss decisions of the headline system (selrm.metrics.nearmiss_table on its L2 scores)
+    extra = rows_tex("kinds", [(f"\\method{{}} triplets: {lab}",
+                                {c: f"run/B-F-ledger2-triplets/L2/nmt:nm_kind={k}/{m}" for c, k in KINDS})
+                               for lab, m in (("same decision on base and near-miss", "SameDecision"),
+                                              ("both correct", "BothCorrect"),
+                                              ("near-miss correct given base correct", "NearGivenBase"))], cols)
     return body + "\\midrule\n" + n_row + extra
 
 

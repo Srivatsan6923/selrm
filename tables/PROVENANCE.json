@@ -1,8 +1,16 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "7200219dfa0980512a7fe96994f66ad8c64e1b7b",
+ "code_commit": "d9806ba1eeef4f3fa0405f2ed233175fe4cbb5eb",
  "uncommitted_changes": true,
  "records": {
+  "rule_v1/dev_missing": {
+   "file": "data/rule_v1/dev_missing/records.jsonl",
+   "sha256": "964ffec3c398bb9cd62c678906d657759eb2ed738604c9daf6ce467029884ae3"
+  },
+  "rule_v1/missing": {
+   "file": "data/rule_v1/missing/records.jsonl",
+   "sha256": "6a39ce392cff00c9efc16bb6598fd934b0ad8d9e46b1f90a07f7ec494655abc5"
+  },
   "rule_v1/test_L2": {
    "file": "data/rule_v1/test_L2/records.jsonl",
    "sha256": "e0b81644a7278070de3ac253426acb1bfbe5da8958cf9e68c00fb5b85b8ddbdd"
@@ -15,12 +23,13 @@
    "set": "rule_v1/test_L2",
    "metric": "TA",
    "diff": -8.85,
-   "lo": -11.885656970912738,
-   "hi": -5.727554179566564,
+   "lo": -11.9140625,
+   "hi": -5.847076461769116,
    "n": 2000,
    "seeds": [
     "0"
-   ]
+   ],
+   "p": 0.0
   },
   "p2": {
    "a": "B-F-verdict-triplets",
@@ -28,12 +37,13 @@
    "set": "rule_v1/test_L2",
    "metric": "TA",
    "diff": 33.1,
-   "lo": 29.569093610698367,
-   "hi": 36.69064748201439,
+   "lo": 29.375322663913266,
+   "hi": 36.771964461994074,
    "n": 2000,
    "seeds": [
     "0"
-   ]
+   ],
+   "p": 0.0
   },
   "p3": {
    "a": "B-F-ledger2-triplets",
@@ -41,12 +51,13 @@
    "set": "rule_v1/test_L2",
    "metric": "TA",
    "diff": 1.2,
-   "lo": 0.19704433497536947,
-   "hi": 2.2615535889872174,
+   "lo": 0.20376974019358127,
+   "hi": 2.247191011235955,
    "n": 2000,
    "seeds": [
     "0"
-   ]
+   ],
+   "p": 0.016
   },
   "p4": {
    "a": "B-F-ledger2-triplets",
@@ -61,15 +72,15 @@
    "metric": "Reversal"
   },
   "p6a": {
-   "a": "B-F-ledger2-triplets",
-   "b": "C-TF-critic",
-   "set": "trialgpt/test",
+   "a": "C-TG-ledger2-triplets",
+   "b": "C-TG-critic",
+   "set": "clin_v1/trialgpt_test",
    "metric": "macroF1"
   },
   "p6b": {
-   "a": "B-F-ledger2-triplets",
-   "b": "B-F-ledger2-blocks",
-   "set": "trialgpt/test",
+   "a": "C-TG-ledger2-triplets",
+   "b": "C-TG-ledger2-blocks",
+   "set": "clin_v1/trialgpt_test",
    "metric": "macroF1"
   },
   "holm": {
@@ -186,18 +197,18 @@
    "comparison": "p1"
   },
   "cmp/p1/hi": {
-   "value": "-5.7",
-   "number": -5.727554179566564,
+   "value": "-5.8",
+   "number": -5.847076461769116,
    "comparison": "p1"
   },
   "cmp/p1/lo": {
    "value": "-11.9",
-   "number": -11.885656970912738,
+   "number": -11.9140625,
    "comparison": "p1"
   },
   "cmp/p1/p": {
-   "value": "\\ph{tbd}",
-   "number": null,
+   "value": "0.000",
+   "number": 0.0,
    "comparison": "p1"
   },
   "cmp/p1/padj": {
@@ -211,18 +222,18 @@
    "comparison": "p2"
   },
   "cmp/p2/hi": {
-   "value": "36.7",
-   "number": 36.69064748201439,
+   "value": "36.8",
+   "number": 36.771964461994074,
    "comparison": "p2"
   },
   "cmp/p2/lo": {
-   "value": "29.6",
-   "number": 29.569093610698367,
+   "value": "29.4",
+   "number": 29.375322663913266,
    "comparison": "p2"
   },
   "cmp/p2/p": {
-   "value": "\\ph{tbd}",
-   "number": null,
+   "value": "0.000",
+   "number": 0.0,
    "comparison": "p2"
   },
   "cmp/p2/padj": {
@@ -236,18 +247,18 @@
    "comparison": "p3"
   },
   "cmp/p3/hi": {
-   "value": "2.3",
-   "number": 2.2615535889872174,
+   "value": "2.2",
+   "number": 2.247191011235955,
    "comparison": "p3"
   },
   "cmp/p3/lo": {
    "value": "0.2",
-   "number": 0.19704433497536947,
+   "number": 0.20376974019358127,
    "comparison": "p3"
   },
   "cmp/p3/p": {
-   "value": "\\ph{tbd}",
-   "number": null,
+   "value": "0.016",
+   "number": 0.016,
    "comparison": "p3"
   },
   "cmp/p3/padj": {
@@ -1874,14 +1885,6 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/B-F-ledger2-balanced/trialgpt:test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "trialgpt/test",
-   "stat": "mean",
-   "seeds_found": []
-  },
   "run/B-F-ledger2-balanced/xr_v1:test/top/XA": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -2522,20 +2525,42 @@
    ]
   },
   "run/B-F-ledger2-blocks/missing/top/MR": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "100.0",
+   "number": 100.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-blocks-s0/scores_rule_v1~missing.jsonl",
+     "field": "top.MR",
+     "file_commit": "09fd29cb9e1e62e28e015e0e6a3819f13926f6fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
    "set": "rule_v1/missing",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    0
+   ]
   },
-  "run/B-F-ledger2-blocks/trialgpt:test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "trialgpt/test",
-   "stat": "mean",
-   "seeds_found": []
+  "run/B-F-ledger2-blocks/missing/top/MR/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-blocks-s0/scores_rule_v1~missing.jsonl",
+     "field": "top.MR",
+     "file_commit": "09fd29cb9e1e62e28e015e0e6a3819f13926f6fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/missing",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
   },
   "run/B-F-ledger2-blocks/xr_v1:test/top/XA": {
    "value": "\\ph{tbd}",
@@ -3087,6 +3112,576 @@
     0
    ]
   },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=boundary/BothCorrect": {
+   "value": "100.0",
+   "number": 100.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=boundary.BothCorrect",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=boundary/BothCorrect/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=boundary.BothCorrect",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=boundary/NearGivenBase": {
+   "value": "100.0",
+   "number": 100.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=boundary.NearGivenBase",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=boundary/NearGivenBase/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=boundary.NearGivenBase",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=boundary/SameDecision": {
+   "value": "100.0",
+   "number": 100.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=boundary.SameDecision",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=boundary/SameDecision/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=boundary.SameDecision",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=negation/BothCorrect": {
+   "value": "99.0",
+   "number": 99.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=negation.BothCorrect",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=negation/BothCorrect/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=negation.BothCorrect",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=negation/NearGivenBase": {
+   "value": "100.0",
+   "number": 100.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=negation.NearGivenBase",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=negation/NearGivenBase/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=negation.NearGivenBase",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=negation/SameDecision": {
+   "value": "99.0",
+   "number": 99.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=negation.SameDecision",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=negation/SameDecision/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=negation.SameDecision",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=numeric/BothCorrect": {
+   "value": "100.0",
+   "number": 100.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=numeric.BothCorrect",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=numeric/BothCorrect/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=numeric.BothCorrect",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=numeric/NearGivenBase": {
+   "value": "100.0",
+   "number": 100.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=numeric.NearGivenBase",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=numeric/NearGivenBase/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=numeric.NearGivenBase",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=numeric/SameDecision": {
+   "value": "100.0",
+   "number": 100.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=numeric.SameDecision",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=numeric/SameDecision/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=numeric.SameDecision",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=subject/BothCorrect": {
+   "value": "98.8",
+   "number": 98.75,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=subject.BothCorrect",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=subject/BothCorrect/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=subject.BothCorrect",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=subject/NearGivenBase": {
+   "value": "99.7",
+   "number": 99.74747474747475,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=subject.NearGivenBase",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=subject/NearGivenBase/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=subject.NearGivenBase",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=subject/SameDecision": {
+   "value": "98.8",
+   "number": 98.75,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=subject.SameDecision",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=subject/SameDecision/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=subject.SameDecision",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=time/BothCorrect": {
+   "value": "100.0",
+   "number": 100.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=time.BothCorrect",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=time/BothCorrect/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=time.BothCorrect",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=time/NearGivenBase": {
+   "value": "100.0",
+   "number": 100.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=time.NearGivenBase",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=time/NearGivenBase/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=time.NearGivenBase",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=time/SameDecision": {
+   "value": "100.0",
+   "number": 100.0,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=time.SameDecision",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "mean",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-triplets/L2/nmt:nm_kind=time/SameDecision/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~test_L2.jsonl",
+     "field": "nmt:nm_kind=time.SameDecision",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
   "run/B-F-ledger2-triplets/L3alt/all/TA": {
    "value": "100.0",
    "number": 100.0,
@@ -3280,20 +3875,42 @@
    ]
   },
   "run/B-F-ledger2-triplets/missing/top/MR": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "99.9",
+   "number": 99.9,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~missing.jsonl",
+     "field": "top.MR",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
    "set": "rule_v1/missing",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    0
+   ]
   },
-  "run/B-F-ledger2-triplets/trialgpt:test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "trialgpt/test",
-   "stat": "mean",
-   "seeds_found": []
+  "run/B-F-ledger2-triplets/missing/top/MR/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-ledger2-triplets-s0/scores_rule_v1~missing.jsonl",
+     "field": "top.MR",
+     "file_commit": "c3bdac63158e0bba94f8526f2d5f376c61770651",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/missing",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
   },
   "run/B-F-ledger2-triplets/xr_v1:test/top/XA": {
    "value": "\\ph{tbd}",
@@ -3687,12 +4304,42 @@
    "seeds_found": []
   },
   "run/B-F-rationale-triplets/missing/top/MR": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "99.2",
+   "number": 99.2,
+   "runs": [
+    {
+     "run_id": "B-F-rationale-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-rationale-triplets-s0/scores_rule_v1~missing.jsonl",
+     "field": "top.MR",
+     "file_commit": "f16af67a5677cdc127d8a5978103d14541989d7f",
+     "code_commit": "ffb1e4f0e30b"
+    }
+   ],
    "set": "rule_v1/missing",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-rationale-triplets/missing/top/MR/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-rationale-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-rationale-triplets-s0/scores_rule_v1~missing.jsonl",
+     "field": "top.MR",
+     "file_commit": "f16af67a5677cdc127d8a5978103d14541989d7f",
+     "code_commit": "ffb1e4f0e30b"
+    }
+   ],
+   "set": "rule_v1/missing",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
   },
   "run/B-F-summary2-balanced/L2/all/TA": {
    "value": "\\ph{tbd}",
@@ -3940,20 +4587,42 @@
    "seeds_found": []
   },
   "run/B-F-summary2-triplets/missing/top/MR": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "100.0",
+   "number": 100.0,
+   "runs": [
+    {
+     "run_id": "B-F-summary2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-summary2-triplets-s0/scores_rule_v1~missing.jsonl",
+     "field": "top.MR",
+     "file_commit": "f16af67a5677cdc127d8a5978103d14541989d7f",
+     "code_commit": "c3bdac63158e"
+    }
+   ],
    "set": "rule_v1/missing",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    0
+   ]
   },
-  "run/B-F-summary2-triplets/trialgpt:test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "trialgpt/test",
-   "stat": "mean",
-   "seeds_found": []
+  "run/B-F-summary2-triplets/missing/top/MR/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-summary2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-summary2-triplets-s0/scores_rule_v1~missing.jsonl",
+     "field": "top.MR",
+     "file_commit": "f16af67a5677cdc127d8a5978103d14541989d7f",
+     "code_commit": "c3bdac63158e"
+    }
+   ],
+   "set": "rule_v1/missing",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
   },
   "run/B-F-summary2-triplets/xr_v1:test/top/XA": {
    "value": "\\ph{tbd}",
@@ -4758,20 +5427,42 @@
    ]
   },
   "run/B-F-verdict-blocks/missing/top/MR": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "100.0",
+   "number": 100.0,
+   "runs": [
+    {
+     "run_id": "B-F-verdict-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-verdict-blocks-s0/scores_rule_v1~missing.jsonl",
+     "field": "top.MR",
+     "file_commit": "a8d41118090ca62af81ac37e4ff2d1ffa33e46fd",
+     "code_commit": "452a6e9a3d45"
+    }
+   ],
    "set": "rule_v1/missing",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    0
+   ]
   },
-  "run/B-F-verdict-blocks/trialgpt:test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "trialgpt/test",
-   "stat": "mean",
-   "seeds_found": []
+  "run/B-F-verdict-blocks/missing/top/MR/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-verdict-blocks-s0",
+     "seed": 0,
+     "file": "results_git/B-F-verdict-blocks-s0/scores_rule_v1~missing.jsonl",
+     "field": "top.MR",
+     "file_commit": "a8d41118090ca62af81ac37e4ff2d1ffa33e46fd",
+     "code_commit": "452a6e9a3d45"
+    }
+   ],
+   "set": "rule_v1/missing",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
   },
   "run/B-F-verdict-blocks/xr_v1:test/top/XA": {
    "value": "\\ph{tbd}",
@@ -5472,20 +6163,42 @@
    ]
   },
   "run/B-F-verdict-triplets/missing/top/MR": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "100.0",
+   "number": 100.0,
+   "runs": [
+    {
+     "run_id": "B-F-verdict-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-verdict-triplets-s0/scores_rule_v1~missing.jsonl",
+     "field": "top.MR",
+     "file_commit": "a8d41118090ca62af81ac37e4ff2d1ffa33e46fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
    "set": "rule_v1/missing",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    0
+   ]
   },
-  "run/B-F-verdict-triplets/trialgpt:test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "trialgpt/test",
-   "stat": "mean",
-   "seeds_found": []
+  "run/B-F-verdict-triplets/missing/top/MR/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "B-F-verdict-triplets-s0",
+     "seed": 0,
+     "file": "results_git/B-F-verdict-triplets-s0/scores_rule_v1~missing.jsonl",
+     "field": "top.MR",
+     "file_commit": "a8d41118090ca62af81ac37e4ff2d1ffa33e46fd",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/missing",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
   },
   "run/B-F-verdict-triplets/xr_v1:test/top/XA": {
    "value": "\\ph{tbd}",
@@ -5671,6 +6384,14 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/B-TR-clinonly/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/B-TR-clinonly/ec_v1:test/all/TA": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -5684,14 +6405,6 @@
    "number": null,
    "runs": [],
    "set": "rule_v1/missing",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/B-TR-clinonly/trialgpt:test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "trialgpt/test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -5759,6 +6472,14 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/B-TR-fover/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/B-TR-fover/ec_v1:test/all/TA": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -5772,14 +6493,6 @@
    "number": null,
    "runs": [],
    "set": "rule_v1/missing",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/B-TR-fover/trialgpt:test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "trialgpt/test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -5847,6 +6560,14 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/B-TR-genprm/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/B-TR-genprm/ec_v1:test/all/TA": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -5860,14 +6581,6 @@
    "number": null,
    "runs": [],
    "set": "rule_v1/missing",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/B-TR-genprm/trialgpt:test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "trialgpt/test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -5935,6 +6648,14 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/B-TR-steperr/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/B-TR-steperr/ec_v1:test/all/TA": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -5948,14 +6669,6 @@
    "number": null,
    "runs": [],
    "set": "rule_v1/missing",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/B-TR-steperr/trialgpt:test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "trialgpt/test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -6023,6 +6736,14 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/B-TR-tripclin/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/B-TR-tripclin/ec_v1:test/all/TA": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -6036,14 +6757,6 @@
    "number": null,
    "runs": [],
    "set": "rule_v1/missing",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/B-TR-tripclin/trialgpt:test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "trialgpt/test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -6943,6 +7656,14 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/C-REF-closed-ledger/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/C-REF-closed-ledger/dev/all/TA": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -6972,14 +7693,6 @@
    "number": null,
    "runs": [],
    "set": "rule_v1/missing",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/C-REF-closed-ledger/trialgpt:test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "trialgpt/test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -7047,6 +7760,14 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/C-REF-closed-zero/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
   "run/C-REF-closed-zero/ec_v1:test/all/TA": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -7060,14 +7781,6 @@
    "number": null,
    "runs": [],
    "set": "rule_v1/missing",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/C-REF-closed-zero/trialgpt:test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "trialgpt/test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -7231,14 +7944,6 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-TF-critic/trialgpt:test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "trialgpt/test",
-   "stat": "mean",
-   "seeds_found": []
-  },
   "run/C-TF-critic/xr_v1:test/top/XA": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -7316,14 +8021,6 @@
    "number": null,
    "runs": [],
    "set": "rule_v1/missing",
-   "stat": "mean",
-   "seeds_found": []
-  },
-  "run/C-TF-defcorr/trialgpt:test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "trialgpt/test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -7447,19 +8144,83 @@
    "stat": "mean",
    "seeds_found": []
   },
-  "run/C-TF-promptledger/trialgpt:test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
-   "set": "trialgpt/test",
-   "stat": "mean",
-   "seeds_found": []
-  },
   "run/C-TF-promptledger/xr_v1:test/top/XA": {
    "value": "\\ph{tbd}",
    "number": null,
    "runs": [],
    "set": "xr_v1/test",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-TG-defcorr/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-TG-ledger2-balanced/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-TG-ledger2-blocks/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-TG-promptledger/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-TG-verdict-blocks/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test",
    "stat": "mean",
    "seeds_found": []
   },
@@ -8751,7 +9512,7 @@
    {
     "row": "Critic",
     "col": "TrialGPT",
-    "key": "run/C-TF-critic/trialgpt:test/top/macroF1",
+    "key": "run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1",
     "value": "\\ph{tbd}"
    },
    {
@@ -8799,7 +9560,7 @@
    {
     "row": "\\ \\ + default correction",
     "col": "TrialGPT",
-    "key": "run/C-TF-defcorr/trialgpt:test/top/macroF1",
+    "key": "run/C-TG-defcorr/clin_v1:trialgpt_test/top/macroF1",
     "value": "\\ph{tbd}"
    },
    {
@@ -8847,7 +9608,7 @@
    {
     "row": "\\ \\ + prompted ledger",
     "col": "TrialGPT",
-    "key": "run/C-TF-promptledger/trialgpt:test/top/macroF1",
+    "key": "run/C-TG-promptledger/clin_v1:trialgpt_test/top/macroF1",
     "value": "\\ph{tbd}"
    },
    {
@@ -8914,7 +9675,7 @@
     "row": "Verdict only, rule blocks",
     "col": "MR",
     "key": "run/B-F-verdict-blocks/missing/top/MR",
-    "value": "\\ph{tbd}"
+    "value": "100.0"
    },
    {
     "row": "Verdict only, rule blocks",
@@ -8925,7 +9686,7 @@
    {
     "row": "Verdict only, rule blocks",
     "col": "TrialGPT",
-    "key": "run/B-F-verdict-blocks/trialgpt:test/top/macroF1",
+    "key": "run/C-TG-verdict-blocks/clin_v1:trialgpt_test/top/macroF1",
     "value": "\\ph{tbd}"
    },
    {
@@ -8973,7 +9734,7 @@
    {
     "row": "Verdict only, FoVer data",
     "col": "TrialGPT",
-    "key": "run/B-TR-fover/trialgpt:test/top/macroF1",
+    "key": "run/B-TR-fover/clin_v1:trialgpt_test/top/macroF1",
     "value": "\\ph{tbd}"
    },
    {
@@ -9010,7 +9771,7 @@
     "row": "Verdict only, rule triplets",
     "col": "MR",
     "key": "run/B-F-verdict-triplets/missing/top/MR",
-    "value": "\\ph{tbd}"
+    "value": "100.0"
    },
    {
     "row": "Verdict only, rule triplets",
@@ -9021,7 +9782,7 @@
    {
     "row": "Verdict only, rule triplets",
     "col": "TrialGPT",
-    "key": "run/B-F-verdict-triplets/trialgpt:test/top/macroF1",
+    "key": "run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/macroF1",
     "value": "\\ph{tbd}"
    },
    {
@@ -9058,7 +9819,7 @@
     "row": "Evidence summary, rule triplets",
     "col": "MR",
     "key": "run/B-F-summary2-triplets/missing/top/MR",
-    "value": "\\ph{tbd}"
+    "value": "100.0"
    },
    {
     "row": "Evidence summary, rule triplets",
@@ -9069,7 +9830,7 @@
    {
     "row": "Evidence summary, rule triplets",
     "col": "TrialGPT",
-    "key": "run/B-F-summary2-triplets/trialgpt:test/top/macroF1",
+    "key": "run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/macroF1",
     "value": "\\ph{tbd}"
    },
    {
@@ -9117,7 +9878,7 @@
    {
     "row": "GenPRM-style verifier, rule triplets",
     "col": "TrialGPT",
-    "key": "run/B-TR-genprm/trialgpt:test/top/macroF1",
+    "key": "run/B-TR-genprm/clin_v1:trialgpt_test/top/macroF1",
     "value": "\\ph{tbd}"
    },
    {
@@ -9165,7 +9926,7 @@
    {
     "row": "\\method{}, rule balanced",
     "col": "TrialGPT",
-    "key": "run/B-F-ledger2-balanced/trialgpt:test/top/macroF1",
+    "key": "run/C-TG-ledger2-balanced/clin_v1:trialgpt_test/top/macroF1",
     "value": "\\ph{tbd}"
    },
    {
@@ -9202,7 +9963,7 @@
     "row": "\\method{}, rule blocks",
     "col": "MR",
     "key": "run/B-F-ledger2-blocks/missing/top/MR",
-    "value": "\\ph{tbd}"
+    "value": "100.0"
    },
    {
     "row": "\\method{}, rule blocks",
@@ -9213,7 +9974,7 @@
    {
     "row": "\\method{}, rule blocks",
     "col": "TrialGPT",
-    "key": "run/B-F-ledger2-blocks/trialgpt:test/top/macroF1",
+    "key": "run/C-TG-ledger2-blocks/clin_v1:trialgpt_test/top/macroF1",
     "value": "\\ph{tbd}"
    },
    {
@@ -9250,7 +10011,7 @@
     "row": "\\textbf{\\method}, rule triplets",
     "col": "MR",
     "key": "run/B-F-ledger2-triplets/missing/top/MR",
-    "value": "\\ph{tbd}"
+    "value": "99.9"
    },
    {
     "row": "\\textbf{\\method}, rule triplets",
@@ -9261,7 +10022,7 @@
    {
     "row": "\\textbf{\\method}, rule triplets",
     "col": "TrialGPT",
-    "key": "run/B-F-ledger2-triplets/trialgpt:test/top/macroF1",
+    "key": "run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1",
     "value": "\\ph{tbd}"
    },
    {
@@ -9309,7 +10070,7 @@
    {
     "row": "\\method{}, rule triplets + step-error data",
     "col": "TrialGPT",
-    "key": "run/B-TR-steperr/trialgpt:test/top/macroF1",
+    "key": "run/B-TR-steperr/clin_v1:trialgpt_test/top/macroF1",
     "value": "\\ph{tbd}"
    },
    {
@@ -9357,7 +10118,7 @@
    {
     "row": "\\method{}, clinical pairs only",
     "col": "TrialGPT",
-    "key": "run/B-TR-clinonly/trialgpt:test/top/macroF1",
+    "key": "run/B-TR-clinonly/clin_v1:trialgpt_test/top/macroF1",
     "value": "\\ph{tbd}"
    },
    {
@@ -9405,7 +10166,7 @@
    {
     "row": "\\method{}, rule triplets + clinical pairs",
     "col": "TrialGPT",
-    "key": "run/B-TR-tripclin/trialgpt:test/top/macroF1",
+    "key": "run/B-TR-tripclin/clin_v1:trialgpt_test/top/macroF1",
     "value": "\\ph{tbd}"
    },
    {
@@ -9453,7 +10214,7 @@
    {
     "row": "\\ph{Claude Opus 5.5}, zero-shot",
     "col": "TrialGPT",
-    "key": "run/C-REF-closed-zero/trialgpt:test/top/macroF1",
+    "key": "run/C-REF-closed-zero/clin_v1:trialgpt_test/top/macroF1",
     "value": "\\ph{tbd}"
    },
    {
@@ -9501,7 +10262,7 @@
    {
     "row": "\\ph{Claude Opus 5.5}, prompted ledger",
     "col": "TrialGPT",
-    "key": "run/C-REF-closed-ledger/trialgpt:test/top/macroF1",
+    "key": "run/C-REF-closed-ledger/clin_v1:trialgpt_test/top/macroF1",
     "value": "\\ph{tbd}"
    },
    {
@@ -10216,7 +10977,7 @@
     "row": "\\method{} (facts only)",
     "col": "MR",
     "key": "run/B-F-ledger2-triplets/missing/top/MR",
-    "value": "\\ph{tbd}"
+    "value": "99.9"
    },
    {
     "row": "\\method{} (facts only)",
@@ -10468,7 +11229,7 @@
     "row": "One-stage ledger",
     "col": "MR",
     "key": "run/B-F-rationale-triplets/missing/top/MR",
-    "value": "\\ph{tbd}"
+    "value": "99.2"
    },
    {
     "row": "One-stage ledger",
@@ -10528,7 +11289,7 @@
     "row": "Evidence summary (matched prose)",
     "col": "MR",
     "key": "run/B-F-summary2-triplets/missing/top/MR",
-    "value": "\\ph{tbd}"
+    "value": "100.0"
    },
    {
     "row": "Evidence summary (matched prose)",
@@ -10648,7 +11409,7 @@
     "row": "$-$ near-misses",
     "col": "MR",
     "key": "run/B-F-ledger2-blocks/missing/top/MR",
-    "value": "\\ph{tbd}"
+    "value": "100.0"
    },
    {
     "row": "$-$ near-misses",
@@ -11271,6 +12032,96 @@
     "col": "time",
     "key": "run/B-F-ledger2-triplets/L2/nm_kind=time/n@int",
     "value": "400"
+   },
+   {
+    "row": "\\method{} triplets: same decision on base and near-miss",
+    "col": "thr.",
+    "key": "run/B-F-ledger2-triplets/L2/nmt:nm_kind=boundary/SameDecision",
+    "value": "100.0"
+   },
+   {
+    "row": "\\method{} triplets: same decision on base and near-miss",
+    "col": "neg.",
+    "key": "run/B-F-ledger2-triplets/L2/nmt:nm_kind=negation/SameDecision",
+    "value": "99.0"
+   },
+   {
+    "row": "\\method{} triplets: same decision on base and near-miss",
+    "col": "num.",
+    "key": "run/B-F-ledger2-triplets/L2/nmt:nm_kind=numeric/SameDecision",
+    "value": "100.0"
+   },
+   {
+    "row": "\\method{} triplets: same decision on base and near-miss",
+    "col": "subj.",
+    "key": "run/B-F-ledger2-triplets/L2/nmt:nm_kind=subject/SameDecision",
+    "value": "98.8"
+   },
+   {
+    "row": "\\method{} triplets: same decision on base and near-miss",
+    "col": "time",
+    "key": "run/B-F-ledger2-triplets/L2/nmt:nm_kind=time/SameDecision",
+    "value": "100.0"
+   },
+   {
+    "row": "\\method{} triplets: both correct",
+    "col": "thr.",
+    "key": "run/B-F-ledger2-triplets/L2/nmt:nm_kind=boundary/BothCorrect",
+    "value": "100.0"
+   },
+   {
+    "row": "\\method{} triplets: both correct",
+    "col": "neg.",
+    "key": "run/B-F-ledger2-triplets/L2/nmt:nm_kind=negation/BothCorrect",
+    "value": "99.0"
+   },
+   {
+    "row": "\\method{} triplets: both correct",
+    "col": "num.",
+    "key": "run/B-F-ledger2-triplets/L2/nmt:nm_kind=numeric/BothCorrect",
+    "value": "100.0"
+   },
+   {
+    "row": "\\method{} triplets: both correct",
+    "col": "subj.",
+    "key": "run/B-F-ledger2-triplets/L2/nmt:nm_kind=subject/BothCorrect",
+    "value": "98.8"
+   },
+   {
+    "row": "\\method{} triplets: both correct",
+    "col": "time",
+    "key": "run/B-F-ledger2-triplets/L2/nmt:nm_kind=time/BothCorrect",
+    "value": "100.0"
+   },
+   {
+    "row": "\\method{} triplets: near-miss correct given base correct",
+    "col": "thr.",
+    "key": "run/B-F-ledger2-triplets/L2/nmt:nm_kind=boundary/NearGivenBase",
+    "value": "100.0"
+   },
+   {
+    "row": "\\method{} triplets: near-miss correct given base correct",
+    "col": "neg.",
+    "key": "run/B-F-ledger2-triplets/L2/nmt:nm_kind=negation/NearGivenBase",
+    "value": "100.0"
+   },
+   {
+    "row": "\\method{} triplets: near-miss correct given base correct",
+    "col": "num.",
+    "key": "run/B-F-ledger2-triplets/L2/nmt:nm_kind=numeric/NearGivenBase",
+    "value": "100.0"
+   },
+   {
+    "row": "\\method{} triplets: near-miss correct given base correct",
+    "col": "subj.",
+    "key": "run/B-F-ledger2-triplets/L2/nmt:nm_kind=subject/NearGivenBase",
+    "value": "99.7"
+   },
+   {
+    "row": "\\method{} triplets: near-miss correct given base correct",
+    "col": "time",
+    "key": "run/B-F-ledger2-triplets/L2/nmt:nm_kind=time/NearGivenBase",
+    "value": "100.0"
    }
   ],
   "shortcuts": [
@@ -11468,13 +12319,13 @@
     "row": "p1",
     "col": "hi",
     "key": "cmp/p1/hi",
-    "value": "-5.7"
+    "value": "-5.8"
    },
    {
     "row": "p1",
     "col": "p",
     "key": "cmp/p1/p",
-    "value": "\\ph{tbd}"
+    "value": "0.000"
    },
    {
     "row": "p1",
@@ -11492,19 +12343,19 @@
     "row": "p2",
     "col": "lo",
     "key": "cmp/p2/lo",
-    "value": "29.6"
+    "value": "29.4"
    },
    {
     "row": "p2",
     "col": "hi",
     "key": "cmp/p2/hi",
-    "value": "36.7"
+    "value": "36.8"
    },
    {
     "row": "p2",
     "col": "p",
     "key": "cmp/p2/p",
-    "value": "\\ph{tbd}"
+    "value": "0.000"
    },
    {
     "row": "p2",
@@ -11528,13 +12379,13 @@
     "row": "p3",
     "col": "hi",
     "key": "cmp/p3/hi",
-    "value": "2.3"
+    "value": "2.2"
    },
    {
     "row": "p3",
     "col": "p",
     "key": "cmp/p3/p",
-    "value": "\\ph{tbd}"
+    "value": "0.016"
    },
    {
     "row": "p3",
