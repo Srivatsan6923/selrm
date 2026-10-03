@@ -1,8 +1,8 @@
-"""Rewritten-note tier (A-D11): test cases rewritten as clinical notes by an open LLM,
-kept only where two extractors from other model families recover the full state.
+"""rewrite_v1 (A-D11): test_L2 triplets rewritten as clinical notes by an open LLM, kept only
+where two extractors from other model families recover the full state.
 
   python scripts/rewrite_tier.py --n 1000              # API calls (OPENROUTER_API_KEY), cached
-  python scripts/rewrite_tier.py --n 1000 --freeze     # also register rule_v1/rewritten (frozen)
+  python scripts/rewrite_tier.py --n 1000 --freeze     # also register rewrite_v1/test (frozen)
   python scripts/rewrite_tier.py --selftest            # acceptance and ledger logic, no API
 
 A group (base, flip, near, pres of one test_L2 triplet) is accepted only if, for every
@@ -10,7 +10,8 @@ case, both extractors return exactly the case's mentions: concept, value, subjec
 status and time (a generic absence line may be omitted or read as the patient's
 absence; a delabelled allergy may be read as present-past or absent). Labels stay the
 program's on the unchanged state; ledger quotes are re-anchored in the rewritten text.
-Every API response is cached under data/rule_v1/rewritten/cache/ (one JSON per call,
+Rejected groups are an audit file (data/rewrite_v1/rejected.jsonl: notes, extractions, reason) and are
+never scored. Every API response is cached under data/rewrite_v1/cache/ (one JSON per call,
 keyed by a hash of model, messages and parameters), so the set rebuilds from the
 cache without calls. The acceptance rate is written to results/A-D11/summary.json.
 """
@@ -38,7 +39,7 @@ API = "https://openrouter.ai/api/v1/chat/completions"
 REWRITER = "google/gemma-4-31b-it"                               # verified on openrouter.ai/api/v1/models, 2 Oct 2026
 EXTRACTORS = ("deepseek/deepseek-v4-pro", "openai/gpt-oss-120b")  # two families, neither the rewriter's
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "data" / "rule_v1" / "rewritten"
+OUT = ROOT / "data" / "rewrite_v1"
 CASES = ("base", "flip", "near", "pres")
 
 REWRITE = (
@@ -220,16 +221,22 @@ def process(tid, recs, rp, ep):
         if not ok:
             break
     out = []
+    if not ok:
+        return tid, False, why, [{"source_tid": tid, "reason": why, "notes": notes,
+                                  "extractions": {f"{k}|{x}": v for (k, x), v in ext.items()}}]
     if ok:
         cdict = {"kind": crit.kind, "concept": crit.concept}
         for r in recs:
             led = anchored_ledger(r, notes[r["case_kind"]], ext[(r["case_kind"], EXTRACTORS[0])], cdict, decimals)
             if led is None:
-                return tid, False, f"{r['case_kind']}: ledger quote not in note", []
+                why = f"{r['case_kind']}: ledger quote not in note"
+                return tid, False, why, [{"source_tid": tid, "reason": why, "notes": notes,
+                                          "extractions": {f"{k}|{x}": v for (k, x), v in ext.items()}}]
             meta = dict(r["meta"], tpl=[], rewritten={"from_tier": r["tier"], "rewriter": REWRITER,
-                                                      "extractors": list(EXTRACTORS)})
-            out.append(dict(r, tier="rewritten", case_text=notes[r["case_kind"]], ledger=led,
-                            prose=ledger_to_prose(led), meta=meta))
+                                                      "extractors": list(EXTRACTORS), "source_tid": tid})
+            new_tid = tid.replace("rule_v1.", "rewrite_v1.", 1)
+            out.append(dict(r, set="rewrite_v1", tid=new_tid, iid=r["iid"].replace(tid, new_tid, 1), tier="rewritten",
+                            case_text=notes[r["case_kind"]], ledger=led, prose=ledger_to_prose(led), meta=meta))
     return tid, ok, why, out
 
 
@@ -290,23 +297,28 @@ def main():
                "reasons": dict(Counter(results[t][1].split(":")[-1].strip() for t in tids if not results[t][0])),
                "rewriter": REWRITER, "extractors": list(EXTRACTORS), "rewrite_params": rp,
                "extract_params": ep, "date": datetime.date.today().isoformat()}
-    info = {"set": "rule_v1", "split": "test", "level": "L2", "templates": "rewritten",
+    rejected = [x for t in tids if not results[t][0] for x in results[t][2]]
+    OUT.mkdir(parents=True, exist_ok=True)
+    with open(OUT / "rejected.jsonl", "w", encoding="utf-8", newline="\n") as fh:
+        fh.writelines(json.dumps(x, sort_keys=True) + "\n" for x in rejected)
+    info = {"set": "rewrite_v1", "split": "test", "level": "L2", "templates": "rewritten",
             "frozen": a.freeze, "created": summary["date"], "generator": "scripts/rewrite_tier.py",
             "rewritten": {k: summary[k] for k in ("rewriter", "extractors", "groups_tried", "groups_accepted",
                                                   "acceptance_rate", "rewrite_params", "extract_params")}}
-    m = D.write(ROOT / "data" / "rule_v1", "rewritten", iter(recs), info, validate=True)
+    m = D.write(OUT, "test", iter(recs), info, validate=True)
     res = ROOT / "results" / "A-D11"
     res.mkdir(parents=True, exist_ok=True)
     (res / "summary.json").write_text(json.dumps(summary, indent=1), encoding="utf-8")
     (res / "DONE").write_text("")
     reg_path = ROOT / "data" / "REGISTRY.json"
     reg = json.loads(reg_path.read_text())
-    if reg.get("rule_v1/rewritten", {}).get("frozen"):
-        sys.exit("rule_v1/rewritten is frozen")
-    reg["rule_v1/rewritten"] = {"path": "rule_v1/rewritten/records.jsonl", "split": "test", "level": "L2",
-                                "tier": "rewritten", "n_groups": m["n_groups"], "n_records": m["n_records"],
-                                "manifest": "rule_v1/rewritten/MANIFEST.json", "frozen": a.freeze,
-                                "created": summary["date"], "sha256": m["sha256"]}
+    if reg.get("rewrite_v1/test", {}).get("frozen"):
+        sys.exit("rewrite_v1/test is frozen")
+    reg["rewrite_v1/test"] = {"path": "rewrite_v1/test/records.jsonl", "split": "test", "level": "L2",
+                              "tier": "rewritten", "n_groups": m["n_groups"], "n_records": m["n_records"],
+                              "manifest": "rewrite_v1/test/MANIFEST.json", "frozen": a.freeze,
+                              "created": summary["date"], "sha256": m["sha256"],
+                              "audit_file": "rewrite_v1/rejected.jsonl"}
     reg_path.write_text(json.dumps(reg, indent=1, sort_keys=True), encoding="utf-8")
     print(json.dumps({k: summary[k] for k in ("groups_tried", "groups_accepted", "acceptance_rate", "reasons")}))
 

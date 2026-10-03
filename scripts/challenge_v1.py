@@ -26,7 +26,6 @@ from selrm import datasets as D  # noqa: E402
 from selrm import engine as E  # noqa: E402
 from selrm import phrases as P  # noqa: E402
 from selrm import rules_grammar as RG  # noqa: E402
-from selrm.rules import Mention  # noqa: E402
 from selrm.schema import validate  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
