@@ -295,7 +295,9 @@ def main():
                      loss_type="grpo", scale_rewards="group", reward_weights=[1.0] + [0.0] * (len(funcs) - 1),
                      use_vllm=not a.smoke, vllm_mode="colocate", vllm_gpu_memory_utilization=0.35,
                      vllm_max_model_length=4096,
-                     temperature=1.0, beta=0.0, logging_steps=1 if a.smoke else 10, save_steps=a.steps,
+                     # checkpoints at every evaluation: a preempted pod resumes from the last one (Job retry)
+                     temperature=1.0, beta=0.0, logging_steps=1 if a.smoke else 10, save_steps=a.eval_every,
+                     save_total_limit=1,
                      bf16=not a.smoke, report_to=[], chat_template_kwargs={"enable_thinking": False},
                      model_init_kwargs={"dtype": torch.bfloat16}, remove_unused_columns=False)
     curve = []
@@ -324,7 +326,9 @@ def main():
                                                                  "up_proj", "down_proj"]))
     start = evaluate(trainer.model, tok, ev, *((32, 4) if a.smoke else ()))
     curve.insert(0, {"step": 0, "reward": None} | start)
-    trainer.train()
+    ck = os.path.join(a.out, "ckpt")
+    trainer.train(resume_from_checkpoint=True if os.path.isdir(ck) and any(
+        d.startswith("checkpoint-") for d in os.listdir(ck)) else None)
     final = curve[-1]
     run_id = os.path.basename(a.out.rstrip("/"))
     json.dump({"run_id": run_id, "set": "rule_v1/test_L2", "metric": "accuracy of the chosen claim by the rule program",
