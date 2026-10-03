@@ -14,7 +14,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 2: the patient had angioedema in the past (years ago); it is over or resolved, not current
 FLIP: one line that replaces your line for fact 1, stating: white cell count: 14.3 x10^9/L, the current value.
 NEAR-MISS: one line that replaces your line for fact 1, stating: white cell count: 12.0 x10^9/L, the current value.
-Every line that mentions white cell count must contain one of these strings (word stems are fine): white cell | wbc.
+Every line that mentions white cell count must contain one of these words (a longer word that starts with one is fine): 'white cell' | 'wbc'.
 
 header: 
 reason: 
@@ -38,7 +38,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention coronary artery disease in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient had coronary artery disease in the past (years ago); it is over or resolved, not current.
 NEAR-MISS: one line that is added to the base note, stating: the patient's sister had coronary artery disease in the past (years ago); it is over or resolved, not current.
-Every line that mentions coronary artery disease must contain one of these strings (word stems are fine): coronary.
+Every line that mentions coronary artery disease must contain one of these words (a longer word that starts with one is fine): 'coronary'.
 
 header: 
 reason: 
@@ -61,7 +61,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 2: the patient has a mechanical heart valve now
 FLIP: one line that replaces your line for fact 1, stating: serum potassium: 5.4 mmol/L, the current value.
 NEAR-MISS: one line that replaces your line for fact 1, stating: serum potassium: 4.9 mmol/L, the current value.
-Every line that mentions serum potassium must contain one of these strings (word stems are fine): potassium.
+Every line that mentions serum potassium must contain one of these words (a longer word that starts with one is fine): 'potassium'.
 
 header: 
 reason: 
@@ -85,7 +85,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention tonsillar exudate in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient has tonsillar exudate now.
 NEAR-MISS: one line that is added to the base note, stating: the patient's father has tonsillar exudate now.
-Every line that mentions tonsillar exudate must contain one of these strings (word stems are fine): exudate.
+Every line that mentions tonsillar exudate must contain one of these words (a longer word that starts with one is fine): 'exudate'.
 
 header: 
 reason: 
@@ -108,7 +108,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention a major bleed in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient had a major bleed in the past (in 2016); it is over or resolved, not current.
 NEAR-MISS: one line that is added to the base note, stating: the patient explicitly does not have a major bleed (a clear denial).
-Every line that mentions a major bleed must contain one of these strings (word stems are fine): bleed.
+Every line that mentions a major bleed must contain one of these words (a longer word that starts with one is fine): 'bleed'.
 
 header: 
 reason: 
@@ -130,7 +130,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention coronary artery disease in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient had coronary artery disease in the past (in 2011); it is over or resolved, not current.
 NEAR-MISS: one line that is added to the base note, stating: the patient's sister had coronary artery disease in the past (years ago); it is over or resolved, not current.
-Every line that mentions coronary artery disease must contain one of these strings (word stems are fine): coronary.
+Every line that mentions coronary artery disease must contain one of these words (a longer word that starts with one is fine): 'coronary'.
 
 header: 
 reason: 
@@ -154,7 +154,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 4: eGFR: 39 mL/min/1.73 m2, the current value
 FLIP: one line that replaces your line for fact 1, stating: heart rate: 101/min, the current value.
 NEAR-MISS: one line that replaces your line for fact 2, stating: an earlier heart rate of 101/min, measured in 2019.
-Every line that mentions heart rate must contain one of these strings (word stems are fine): heart rate.
+Every line that mentions heart rate must contain one of these words (a longer word that starts with one is fine): 'heart rate'.
 
 header: 
 reason: 
@@ -181,7 +181,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 4: temperature: 38.5 C, the current value
 FLIP: one line that replaces your line for fact 3, stating: age: 68 years, the current value.
 NEAR-MISS: one line that replaces your line for fact 3, stating: age: 62 years, the current value.
-Every line that mentions age must contain one of these strings (word stems are fine): age.
+Every line that mentions age must contain one of these words (a longer word that starts with one is fine): 'age'.
 
 header: 
 reason: 
@@ -206,7 +206,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 2: temperature: 36.5 C, the current value
 FLIP: one line that replaces your line for fact 1, stating: white cell count: 11.9 x10^9/L, the current value.
 NEAR-MISS: one line that replaces your line for fact 1, stating: white cell count: 10.0 x10^9/L, the current value.
-Every line that mentions white cell count must contain one of these strings (word stems are fine): white cell | wbc.
+Every line that mentions white cell count must contain one of these words (a longer word that starts with one is fine): 'white cell' | 'wbc'.
 
 header: 
 reason: 
@@ -229,7 +229,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 2: calf swelling: 3.4 cm, the current value
 FLIP: one line that replaces your line for fact 1, stating: age: 76 years, the current value.
 NEAR-MISS: one line that replaces your line for fact 1, stating: age: 65 years, the current value.
-Every line that mentions age must contain one of these strings (word stems are fine): age.
+Every line that mentions age must contain one of these words (a longer word that starts with one is fine): 'age'.
 
 header: 
 reason: 
@@ -252,7 +252,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention diabetes in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient has diabetes now.
 NEAR-MISS: one line that is added to the base note, stating: the patient explicitly does not have diabetes (a clear denial).
-Every line that mentions diabetes must contain one of these strings (word stems are fine): diabet.
+Every line that mentions diabetes must contain one of these words (a longer word that starts with one is fine): 'diabet'.
 
 header: 
 reason: 
@@ -277,7 +277,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 5: weight: 71 kg, the current value
 FLIP: one line that replaces your line for fact 5, stating: weight: 60 kg, the current value.
 NEAR-MISS: one line that replaces your line for fact 4, stating: an earlier weight of 57 kg, measured in 2017.
-Every line that mentions weight must contain one of these strings (word stems are fine): weight | weighs.
+Every line that mentions weight must contain one of these words (a longer word that starts with one is fine): 'weight' | 'weighs'.
 
 header: 
 reason: 
@@ -303,7 +303,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention a peptic ulcer in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient has a peptic ulcer now.
 NEAR-MISS: one line that is added to the base note, stating: the patient's sister has a peptic ulcer now.
-Every line that mentions a peptic ulcer must contain one of these strings (word stems are fine): ulcer.
+Every line that mentions a peptic ulcer must contain one of these words (a longer word that starts with one is fine): 'ulcer'.
 
 header: 
 reason: 
@@ -327,7 +327,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention new confusion in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient has new confusion now.
 NEAR-MISS: one line that is added to the base note, stating: the patient explicitly does not have new confusion (a clear denial).
-Every line that mentions new confusion must contain one of these strings (word stems are fine): confus | disorient.
+Every line that mentions new confusion must contain one of these words (a longer word that starts with one is fine): 'confus' | 'disorient'.
 
 header: 
 reason: 
@@ -351,7 +351,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 2: the patient had diabetes in the past (in 2014); it is over or resolved, not current
 FLIP: one line that replaces your line for fact 1, stating: eGFR: 28 mL/min/1.73 m2, the current value.
 NEAR-MISS: one line that replaces your line for fact 1, stating: eGFR: 30 mL/min/1.73 m2, the current value.
-Every line that mentions eGFR must contain one of these strings (word stems are fine): egfr.
+Every line that mentions eGFR must contain one of these words (a longer word that starts with one is fine): 'egfr'.
 
 header: 
 reason: 
@@ -374,7 +374,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 2: the patient's sister has a venous thromboembolism (DVT or pulmonary embolism) now
 FLIP: one line that replaces your line for fact 1, stating: serum potassium: 5.2 mmol/L, the current value.
 NEAR-MISS: one line that replaces your line for fact 1, stating: serum potassium: 5.0 mmol/L, the current value.
-Every line that mentions serum potassium must contain one of these strings (word stems are fine): potassium.
+Every line that mentions serum potassium must contain one of these words (a longer word that starts with one is fine): 'potassium'.
 
 header: 
 reason: 
@@ -398,7 +398,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention heart failure in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient has heart failure now.
 NEAR-MISS: one line that is added to the base note, stating: the patient had heart failure in the past (years ago); it is over or resolved, not current.
-Every line that mentions heart failure must contain one of these strings (word stems are fine): heart failure.
+Every line that mentions heart failure must contain one of these words (a longer word that starts with one is fine): 'heart failure'.
 
 header: 
 reason: 
@@ -422,7 +422,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 3: age: 60 years, the current value
 FLIP: one line that replaces your line for fact 2, stating: systolic blood pressure: 167 mmHg, the current value.
 NEAR-MISS: one line that replaces your line for fact 2, stating: systolic blood pressure: 160 mmHg, the current value.
-Every line that mentions systolic blood pressure must contain one of these strings (word stems are fine): systolic | blood pressure | bp .
+Every line that mentions systolic blood pressure must contain one of these words (a longer word that starts with one is fine): 'systolic' | 'blood pressure' | 'bp'.
 
 header: 
 reason: 
@@ -446,7 +446,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention a myocardial infarction or peripheral artery disease in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient has a myocardial infarction or peripheral artery disease now.
 NEAR-MISS: one line that is added to the base note, stating: the patient's wife has a myocardial infarction or peripheral artery disease now.
-Every line that mentions a myocardial infarction or peripheral artery disease must contain one of these strings (word stems are fine): myocardial infarction | peripheral artery | heart attack.
+Every line that mentions a myocardial infarction or peripheral artery disease must contain one of these words (a longer word that starts with one is fine): 'myocardial infarction' | 'peripheral artery' | 'heart attack'.
 
 header: 
 reason: 
@@ -468,7 +468,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention heart failure in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient has heart failure now.
 NEAR-MISS: one line that is added to the base note, stating: the patient's wife has heart failure now.
-Every line that mentions heart failure must contain one of these strings (word stems are fine): heart failure.
+Every line that mentions heart failure must contain one of these words (a longer word that starts with one is fine): 'heart failure'.
 
 header: 
 reason: 
@@ -490,7 +490,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention cancer in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient had cancer in the past (in 2014); it is over or resolved, not current.
 NEAR-MISS: one line that is added to the base note, stating: the patient explicitly does not have cancer (a clear denial).
-Every line that mentions cancer must contain one of these strings (word stems are fine): cancer | lymphoma | leukemia | myeloma | carcinoma.
+Every line that mentions cancer must contain one of these words (a longer word that starts with one is fine): 'cancer' | 'lymphoma' | 'leukemia' | 'myeloma' | 'carcinoma'.
 
 header: 
 reason: 
@@ -513,7 +513,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention a penicillin allergy in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient has a penicillin allergy now.
 NEAR-MISS: one line that is added to the base note, stating: the patient had a penicillin allergy in the past (years ago); it is over or resolved, not current.
-Every line that mentions a penicillin allergy must contain one of these strings (word stems are fine): penicillin.
+Every line that mentions a penicillin allergy must contain one of these words (a longer word that starts with one is fine): 'penicillin'.
 
 header: 
 reason: 
@@ -536,7 +536,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 2: the patient has a myocardial infarction or peripheral artery disease now
 FLIP: one line that replaces your line for fact 1, stating: age: 75 years, the current value.
 NEAR-MISS: one line that replaces your line for fact 1, stating: age: 63 years, the current value.
-Every line that mentions age must contain one of these strings (word stems are fine): age.
+Every line that mentions age must contain one of these words (a longer word that starts with one is fine): 'age'.
 
 header: 
 reason: 
@@ -560,7 +560,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 3: the patient had asthma in the past (years ago); it is over or resolved, not current
 FLIP: one line that replaces your line for fact 2, stating: systolic blood pressure: 172 mmHg, the current value.
 NEAR-MISS: one line that replaces your line for fact 2, stating: systolic blood pressure: 155 mmHg, the current value.
-Every line that mentions systolic blood pressure must contain one of these strings (word stems are fine): systolic | blood pressure | bp .
+Every line that mentions systolic blood pressure must contain one of these words (a longer word that starts with one is fine): 'systolic' | 'blood pressure' | 'bp'.
 
 header: 
 reason: 
@@ -585,7 +585,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 3: serum potassium: 3.9 mmol/L, the current value
 FLIP: one line that replaces your line for fact 3, stating: serum potassium: 5.2 mmol/L, the current value.
 NEAR-MISS: one line that replaces your line for fact 2, stating: an earlier serum potassium of 5.0 mmol/L, measured in 2017.
-Every line that mentions serum potassium must contain one of these strings (word stems are fine): potassium.
+Every line that mentions serum potassium must contain one of these words (a longer word that starts with one is fine): 'potassium'.
 
 header: 
 reason: 
@@ -609,7 +609,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention a penicillin allergy in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient has a penicillin allergy now.
 NEAR-MISS: one line that is added to the base note, stating: the patient's friend has a penicillin allergy now.
-Every line that mentions a penicillin allergy must contain one of these strings (word stems are fine): penicillin.
+Every line that mentions a penicillin allergy must contain one of these words (a longer word that starts with one is fine): 'penicillin'.
 
 header: 
 reason: 
@@ -632,7 +632,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention a major bleed in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient had a major bleed in the past (years ago); it is over or resolved, not current.
 NEAR-MISS: one line that is added to the base note, stating: the patient explicitly does not have a major bleed (a clear denial).
-Every line that mentions a major bleed must contain one of these strings (word stems are fine): bleed.
+Every line that mentions a major bleed must contain one of these words (a longer word that starts with one is fine): 'bleed'.
 
 header: 
 reason: 
@@ -655,7 +655,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 2: weight: 77 kg, the current value
 FLIP: one line that replaces your line for fact 1, stating: age: 81 years, the current value.
 NEAR-MISS: one line that replaces your line for fact 1, stating: age: 73 years, the current value.
-Every line that mentions age must contain one of these strings (word stems are fine): age.
+Every line that mentions age must contain one of these words (a longer word that starts with one is fine): 'age'.
 
 header: 
 reason: 
@@ -678,7 +678,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 2: heart rate: 69/min, the current value
 FLIP: one line that replaces your line for fact 1, stating: blood urea nitrogen: 21 mg/dL, the current value.
 NEAR-MISS: one line that replaces your line for fact 1, stating: blood urea nitrogen: 19 mg/dL, the current value.
-Every line that mentions blood urea nitrogen must contain one of these strings (word stems are fine): bun | urea nitrogen.
+Every line that mentions blood urea nitrogen must contain one of these words (a longer word that starts with one is fine): 'bun' | 'urea nitrogen'.
 
 header: 
 reason: 
@@ -701,7 +701,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention cancer in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient has cancer now.
 NEAR-MISS: one line that is added to the base note, stating: the patient's roommate has cancer now.
-Every line that mentions cancer must contain one of these strings (word stems are fine): cancer | lymphoma | leukemia | myeloma | carcinoma.
+Every line that mentions cancer must contain one of these words (a longer word that starts with one is fine): 'cancer' | 'lymphoma' | 'leukemia' | 'myeloma' | 'carcinoma'.
 
 header: 
 reason: 
@@ -724,7 +724,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 3: systolic blood pressure: 142 mmHg, the current value
 FLIP: one line that replaces your line for fact 3, stating: systolic blood pressure: 179 mmHg, the current value.
 NEAR-MISS: one line that replaces your line for fact 3, stating: systolic blood pressure: 160 mmHg, the current value.
-Every line that mentions systolic blood pressure must contain one of these strings (word stems are fine): systolic | blood pressure | bp .
+Every line that mentions systolic blood pressure must contain one of these words (a longer word that starts with one is fine): 'systolic' | 'blood pressure' | 'bp'.
 
 header: 
 reason: 
@@ -748,7 +748,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention diabetes in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient has diabetes now.
 NEAR-MISS: one line that is added to the base note, stating: the patient explicitly does not have diabetes (a clear denial).
-Every line that mentions diabetes must contain one of these strings (word stems are fine): diabet.
+Every line that mentions diabetes must contain one of these words (a longer word that starts with one is fine): 'diabet'.
 
 header: 
 reason: 
@@ -770,7 +770,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention a myocardial infarction or peripheral artery disease in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient has a myocardial infarction or peripheral artery disease now.
 NEAR-MISS: one line that is added to the base note, stating: the patient explicitly does not have a myocardial infarction or peripheral artery disease (a clear denial).
-Every line that mentions a myocardial infarction or peripheral artery disease must contain one of these strings (word stems are fine): myocardial infarction | peripheral artery | heart attack.
+Every line that mentions a myocardial infarction or peripheral artery disease must contain one of these words (a longer word that starts with one is fine): 'myocardial infarction' | 'peripheral artery' | 'heart attack'.
 
 header: 
 reason: 
@@ -793,7 +793,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 3: the patient has a myocardial infarction or peripheral artery disease now
 FLIP: one line that replaces your line for fact 1, stating: systolic blood pressure: 80 mmHg, the current value.
 NEAR-MISS: one line that replaces your line for fact 2, stating: an earlier systolic blood pressure of 85 mmHg, measured in 2023.
-Every line that mentions systolic blood pressure must contain one of these strings (word stems are fine): systolic | blood pressure | bp .
+Every line that mentions systolic blood pressure must contain one of these words (a longer word that starts with one is fine): 'systolic' | 'blood pressure' | 'bp'.
 
 header: 
 reason: 
@@ -818,7 +818,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 3: white cell count: 8.1 x10^9/L, the current value
 FLIP: one line that replaces your line for fact 2, stating: temperature: 39.0 C, the current value.
 NEAR-MISS: one line that replaces your line for fact 1, stating: an earlier temperature of 39.0 C, measured in 2010.
-Every line that mentions temperature must contain one of these strings (word stems are fine): temperature.
+Every line that mentions temperature must contain one of these words (a longer word that starts with one is fine): 'temperature'.
 
 header: 
 reason: 
@@ -844,7 +844,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention heart failure in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient has heart failure now.
 NEAR-MISS: one line that is added to the base note, stating: the patient had heart failure in the past (years ago); it is over or resolved, not current.
-Every line that mentions heart failure must contain one of these strings (word stems are fine): heart failure.
+Every line that mentions heart failure must contain one of these words (a longer word that starts with one is fine): 'heart failure'.
 
 header: 
 reason: 
@@ -868,7 +868,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 2: age: 57 years, the current value
 FLIP: one line that replaces your line for fact 2, stating: age: 75 years, the current value.
 NEAR-MISS: one line that replaces your line for fact 2, stating: age: 74 years, the current value.
-Every line that mentions age must contain one of these strings (word stems are fine): age.
+Every line that mentions age must contain one of these words (a longer word that starts with one is fine): 'age'.
 
 header: 
 reason: 
@@ -891,7 +891,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   Do not mention a mechanical heart valve in the base note at all, not even to deny it.
 FLIP: one line that is added to the base note, stating: the patient has a mechanical heart valve now.
 NEAR-MISS: one line that is added to the base note, stating: the patient explicitly does not have a mechanical heart valve (a clear denial).
-Every line that mentions a mechanical heart valve must contain one of these strings (word stems are fine): mechanical.
+Every line that mentions a mechanical heart valve must contain one of these words (a longer word that starts with one is fine): 'mechanical'.
 
 header: 
 reason: 
@@ -913,7 +913,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 2: calf swelling: 1.2 cm, the current value
 FLIP: one line that replaces your line for fact 2, stating: calf swelling: 3.2 cm, the current value.
 NEAR-MISS: one line that replaces your line for fact 2, stating: calf swelling: 2.5 cm, the current value.
-Every line that mentions calf swelling must contain one of these strings (word stems are fine): calf circumference | calf swelling.
+Every line that mentions calf swelling must contain one of these words (a longer word that starts with one is fine): 'calf circumference' | 'calf swelling'.
 
 header: 
 reason: 
@@ -936,7 +936,7 @@ BASE note: one line for each fact below, in this order, in your own words.
   fact 2: systolic blood pressure: 144 mmHg, the current value
 FLIP: one line that replaces your line for fact 2, stating: systolic blood pressure: 100 mmHg, the current value.
 NEAR-MISS: one line that replaces your line for fact 2, stating: systolic blood pressure: 105 mmHg, the current value.
-Every line that mentions systolic blood pressure must contain one of these strings (word stems are fine): systolic | blood pressure | bp .
+Every line that mentions systolic blood pressure must contain one of these words (a longer word that starts with one is fine): 'systolic' | 'blood pressure' | 'bp'.
 
 header: 
 reason: 

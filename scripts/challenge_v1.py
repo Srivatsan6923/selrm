@@ -72,12 +72,47 @@ def fact(m, by_concept):
             return f"an earlier {name(c)} of {v}, measured yesterday and replaced by today's value"
         return f"an earlier {name(c)} of {v}, measured in {m['year']}" if m["year"] else \
             f"an earlier {name(c)} of {v}, measured years ago"
+    when = f"in {m['year']}" if m["year"] else "years ago"
+    if c.concept == "fall":                       # an event, counted in the months before admission
+        if m["status"] == "absent":
+            return None if m["form"] == "generic" else \
+                f"{who} explicitly has not fallen in the past six months (a clear denial)"
+        if m["time"] == "current":
+            return f"{who} fell once at home in the weeks before this admission"
+        return f"{who} fell {when}, long before the past six months"
     if m["status"] == "absent":
         return None if m["form"] == "generic" else f"{who} explicitly does not have {name(c)} (a clear denial)"
     if m["time"] == "current":
         return f"{who} has {name(c)} now"
-    when = f"in {m['year']}" if m["year"] else "years ago"
     return f"{who} had {name(c)} in the past ({when}); it is over or resolved, not current"
+
+
+PERSON_WORDS = sorted(set(P.PERSONS) | {"son", "daughter", "mother", "father", "sister", "brother", "wife", "husband",
+                                       "partner", "parent", "sibling", "child", "aunt", "uncle", "cousin", "niece",
+                                       "nephew", "grandmother", "grandfather", "friend", "neighbor", "neighbour"})
+PERSON_RE = re.compile(r"(?i)(?<![\w-])(" + "|".join(map(re.escape, PERSON_WORDS)) + r")s?(?![\w-])")
+DENIAL = re.compile(r"(?i)\b(no|not|never|denies|denied|without|negative|free of|ruled out|none|nor)\b|n't\b")
+PAST = re.compile(r"(?i)\b(ago|previous(ly)?|history|resolved|until|former(ly)?|past|earlier|used to|had|"
+                  r"recovered|outgrew|outgrown|was|were|stopped|discontinued|yesterday|replaced|(19|20)\d\d)\b")
+SEX = re.compile(r"(?i)\b(woman|man|female|male|lady|gentleman)\b")
+FALL = re.compile(r"(?i)\bf(a|e)ll(s|en|ing)?\b")
+UNIT_RE = {"mg/dL": r"mg\s*/\s*dl", "mmol/L": r"mmol\s*/\s*l|meq\s*/\s*l", "x10^9/L": r"10\s*\^?\s*9|10⁹|×\s*10",
+           "mL/min/1.73 m2": r"ml\s*/\s*min", "g/dL": r"g\s*/\s*dl", "mmHg": r"mm\s*hg", "/min": r"/\s*min|per minute|bpm|breaths|beats",
+           "C": r"°\s*c\b|\bc\b|celsius|degrees", "%": r"%|percent", "kg": r"\bkg\b|kilogram", "kg/m2": r"kg\s*/\s*m",
+           "U/L": r"u\s*/\s*l|units", "years": r"year|\byrs?\b|\baged?\b", "cm": r"\bcm\b|centimet"}
+
+
+def kw_pattern(kw):
+    """Keywords are lower-case stems matched at the start of a word; a trailing space marks a whole word."""
+    return re.compile(r"(?i)\b" + re.escape(kw.strip()) + (r"\b" if kw.endswith(" ") else ""))
+
+
+def names(text, keywords, concept=None):
+    return bool(concept == "fall" and FALL.search(text)) or any(kw_pattern(k).search(text) for k in keywords)
+
+
+def shown(keywords, concept=None):
+    return " | ".join(f"'{k.strip()}'" for k in keywords) + (" | 'fell' | 'fall'" if concept == "fall" else "")
 
 
 def _diff(base, other):
@@ -141,8 +176,8 @@ def form(s):
         e = s["edits"][k]
         where = f"replaces your line for fact {e['fact']}" if e["op"] == "replace" else "is added to the base note"
         lines.append(f"{lab}: one line that {where}, stating: {e['text']}.")
-    lines += [f"Every line that mentions {s['concept']} must contain one of these strings (word stems are fine): "
-              f"{' | '.join(s['keywords'])}.", "",
+    lines += [f"Every line that mentions {s['concept']} must contain one of these words (a longer word that starts "
+              f"with one is fine): {shown(s['keywords'], D.RULES_BY_ID[s['rid']].crit(s['cid']).concept)}.", "",
               "header: ", "reason: "] + [f"fact {f['n']}: " for f in s["facts"]] + \
              ["extra: ", "FLIP: ", "NEAR: ", "check_ok: ", "check_comment: ", ""]
     return "\n".join(lines)
@@ -189,39 +224,57 @@ def parse(md):
 
 
 def check(s, n):
-    """Problems of one filled group ([] if none)."""
+    """Problems of one filled group ([] if none). Each FLIP, NEAR and fact line is checked against its
+    mention: required words, value as a number with its unit, year, person, denial, past; the base
+    must not name the decisive finding, and no case may name a condition the specification leaves
+    unmentioned; the header gives the stated age and sex."""
     errs = []
     need = ["header", "reason", "FLIP", "NEAR"] + [f"fact {f['n']}" for f in s["facts"]]
     errs += [f"{k} is empty" for k in need if not n.get(k)]
     if errs:
         return errs
-    crit = D.RULES_BY_ID[s["rid"]].crit(s["cid"])
-    texts = assemble_texts(s, n)
-    for k, t in texts.items():
-        low = t.lower()
-        named = any(kw in low for kw in s["keywords"])
-        if named != (crit.kind == "numeric" or k in ("flip", "near")):
-            errs.append(f"{k}: {'names' if named else 'does not name'} {s['concept']} (words: {', '.join(s['keywords'])})")
-        stated = {m["concept"] for m in s["states"][k]}
-        for c in D.RULES_BY_ID[s["rid"]].criteria:
-            if c is not crit and c.concept not in stated and any(kw in low for kw in c.keywords):
+    rule = D.RULES_BY_ID[s["rid"]]
+    crit = rule.crit(s["cid"])
+    hdr = n["header"]
+    if s["patient"].startswith("adult"):
+        if re.search(r"\d", hdr):
+            errs.append("header: give no age here (the age is a fact of the rule)")
+    elif not re.search(r"(?<!\d)" + re.match(r"\d+", s["patient"]).group(0) + r"(?!\d)", hdr):
+        errs.append(f"header: the age {re.match(r'[0-9]+', s['patient']).group(0)} is not given")
+    if not SEX.search(hdr):
+        errs.append("header: the sex is not given")
+    for k, t in assemble_texts(s, n).items():
+        if crit.kind == "finding" and k == "base" and names(t, s["keywords"], crit.concept):
+            errs.append(f"base: names {s['concept']}, which the base must not mention")
+        stated = {m["concept"] for m in s["states"][k] if m["form"] != "generic"}
+        for c in rule.criteria:
+            if c is not crit and c.kind == "finding" and c.concept not in stated and names(t, c.keywords, c.concept):
                 errs.append(f"{k}: mentions {c.label}, which the specification leaves unmentioned")
-    for f in s["facts"]:
-        m, line = f["mention"], n[f"fact {f['n']}"]
-        c = D.RULES_BY_ID[s["rid"]].crit(s["cid"]) if m["concept"] == crit.concept else \
-            next(x for x in D.RULES_BY_ID[s["rid"]].criteria if x.concept == m["concept"])
-        if m["kind"] == "numeric" and E.fmt(m["value"], c) not in line:
-            errs.append(f"fact {f['n']}: the value {E.fmt(m['value'], c)} is not in the line")
+    lines = [(f"fact {f['n']}", f["mention"], n[f"fact {f['n']}"]) for f in s["facts"]] + \
+            [(key, s["edits"][k]["mention"], n[key]) for k, key in (("flip", "FLIP"), ("near", "NEAR"))]
+    for label, m, line in lines:
+        c = next(x for x in rule.criteria if x.concept == m["concept"])
+        if c is crit and not names(line, s["keywords"], crit.concept):
+            errs.append(f"{label}: does not name {s['concept']} (use one of {shown(s['keywords'], crit.concept)})")
+        if m["kind"] == "numeric":
+            v, u = E.fmt(m["value"], c), unit(c.concept)
+            if not re.search(r"(?<![\d.])" + re.escape(v) + r"(?![\d.])", line):
+                errs.append(f"{label}: the value {v} is not in the line")
+            if u and u in UNIT_RE and not re.search("(?i)" + UNIT_RE[u], line):
+                errs.append(f"{label}: the unit {u} is not in the line")
         if m.get("year") and str(m["year"]) not in line:
-            errs.append(f"fact {f['n']}: the year {m['year']} is not in the line")
-    for k, key in (("flip", "FLIP"), ("near", "NEAR")):
-        m = s["edits"][k]["mention"]
-        if m["kind"] == "numeric" and E.fmt(m["value"], crit) not in n[key]:
-            errs.append(f"{key}: the value {E.fmt(m['value'], crit)} is not in the line")
-        if m["subject"] != "patient" and m["subject"] not in n[key].lower():
-            errs.append(f"{key}: the person '{m['subject']}' is not named")
-        if m.get("year") and str(m["year"]) not in n[key]:
-            errs.append(f"{key}: the year {m['year']} is not in the line")
+            errs.append(f"{label}: the year {m['year']} is not in the line")
+        if m["subject"] != "patient":
+            if not re.search(r"(?i)(?<![\w-])" + re.escape(m["subject"]) + r"(?!-in-law)(?![\w-])", line):
+                errs.append(f"{label}: the person '{m['subject']}' is not named")
+        elif PERSON_RE.search(line):
+            errs.append(f"{label}: names another person, but the fact is about the patient")
+        if m["kind"] == "finding" and m["status"] == "absent" and not DENIAL.search(line):
+            errs.append(f"{label}: should be a clear denial")
+        if m["kind"] == "finding" and m["status"] == "present" and m["time"] == "current" and DENIAL.search(line):
+            errs.append(f"{label}: reads as a denial, but the fact is present now")
+        if m["status"] == "present" and m["time"] == "past" and not m.get("year") and not PAST.search(line):
+            errs.append(f"{label}: does not read as past or earlier")
     if n.get("check_ok", "").lower() not in ("yes", "y", "ok"):
         errs.append("no second-author approval (check_ok: yes)")
     return errs
@@ -249,7 +302,9 @@ def records(s, n, author):
     for k, text in texts.items():
         st = E.state_from_json(s["states"][k])
         labels = E.case_labels(rule, crit, ov, st)
-        ledger = E.ledger(crit, thr, [(_line_of(s, n, k, m), m) for m in st if m.concept == crit.concept])
+        ledger = E.ledger(crit, thr, [(_line_of(s, n, k, m), m) for m in st
+                                      if m.concept == crit.concept and m.form != "generic"])   # no author line
+        assert all(e["found"] == "not mentioned" or e["found"] in text for e in ledger), (s["gid"], k)
         common = dict(tid=f"{SET}.test.{s['gid']}", set=SET, split="test", tier="author", level="L2", rid=rule.rid,
                       cid=crit.cid, family=rule.family, nm_kind=s["nm_kind"], case_kind=k, rule_text=s["rule_text"],
                       case_text=text, condition=E.condition_text(crit, thr),
