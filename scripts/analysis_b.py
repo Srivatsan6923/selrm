@@ -2,11 +2,11 @@
   python scripts/analysis_b.py > docs/ANALYSIS_B.md
 Reads results_git/<run>/ (summaries, scores with reader outputs, meta.json) and the rule_v1 records (rebuilt
 copy, SELRM_DATA, default scratch/rv1_local). A result that does not exist prints "not run"."""
-import collections, json, os, re, sys
+import collections, glob, json, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
-from selrm.metrics import _flags, bootstrap_ci, decisions, paired_test, summarise
+from selrm.metrics import _flags, bootstrap_ci, decisions, paired_cluster_bootstrap, paired_test, seed_table, summarise
 from report_b import RG, records
 
 NL = "\n"
@@ -79,6 +79,25 @@ def paired_section():
             c = cnt[k]
             print(f"| {k} | {sum(c.values())} | {c['both']} | {c['ledger only']} | {c['summary only']} | {c['neither']} |")
         print()
+        seeds = [s for s in range(5) if done(f"B-F-ledger2-{corpus}-s{s}") and done(f"B-F-summary2-{corpus}-s{s}")]
+        if len(seeds) > 1:            # same-seed pairs pooled: items (seed, triplet), rules as clusters
+            items = {m: [] for m in ("TA", "Rev", "Hold")}
+            for s in seeds:
+                A, B = triplets(f"B-F-ledger2-{corpus}-s{s}"), triplets(f"B-F-summary2-{corpus}-s{s}")
+                for tid in sorted(A.keys() & B.keys()):
+                    fa, fb = _flags(A[tid]), _flags(B[tid])
+                    if fa is not None and fb is not None:
+                        for m in items:
+                            items[m].append({"u": A[tid]["rid"], "a": fa[m], "b": fb[m]})
+            mean = lambda key: (lambda xs: 100.0 * sum(x[key] for x in xs) / len(xs))
+            print(f"Seeds {', '.join(map(str, seeds))} pooled (same-seed pairs; rules as clusters):" + NL)
+            print("| metric | ledger | summary | ledger - summary [95% CI], p |")
+            print("|---|---|---|---|")
+            for m, xs in items.items():
+                r = paired_cluster_bootstrap(xs, "u", mean("a"), mean("b"))
+                p = f"p {r['p']:.3f}" if r["p"] > 0 else "p < 0.001"
+                print(f"| {m} | {mean('a')(xs):.1f} | {mean('b')(xs):.1f} | {r['diff']:+.1f} [{r['lo']:+.1f}, {r['hi']:+.1f}], {p} |")
+            print()
 
 
 VERDICT_PATTERNS = {
@@ -330,13 +349,97 @@ def loko_section():
     print()
 
 
+def case_visible_section():
+    print("## 11. Summary pipeline whose judge also sees the case (test_L2, triplets corpus, seed 0; FINAL_TASKS_B P0.4)" + NL)
+    a, b, c = "B-SC-summary2-triplets-s0", "B-F-summary2-triplets-s0", "B-F-ledger2-triplets-s0"
+    if not all(map(done, (a, b, c))):
+        print("not run" + NL)
+        return
+    T = {r: triplets(r) for r in (a, b, c)}
+    print("| run | judge sees | TA | Rev | Hold |")
+    print("|---|---|---|---|---|")
+    for r, sees in ((a, "rule, case, prose record, claim"), (b, "rule, prose record, claim"), (c, "rule, ledger, claim")):
+        s = summarise(T[r])["all"]
+        print(f"| {r} | {sees} | {s['TA']:.1f} | {s['Rev']:.1f} | {s['Hold']:.1f} |")
+    print(NL + f"Case-visible minus blind summary judge, TA: {pdiff(T[a], T[b], 'TA')}; ledger minus case-visible summary "
+          f"judge, TA: {pdiff(T[c], T[a], 'TA')}." + NL)
+
+
+def xr_section():
+    print("## 12. Rule-side items (xr_v1/test; A's set, 400 items = 2 rules x 3 cases; conclusion claims)" + NL)
+    print("An item is solved iff all its cells are right (crossed accuracy XA, selrm.metrics.crossed_accuracy; "
+          "B-NS runs score a kept adapter, other runs evaluated the set themselves)." + NL)
+    print("| run | XA | cell accuracy | XA currency | XA inclusivity | XA subject | XA window |")
+    print("|---|---|---|---|---|---|---|")
+    for sp in sorted(glob.glob(f"{RG}/*/summary_xr_v1~test.json")):
+        x = json.load(open(sp)).get("xr", {}).get("conclusion")
+        if x:
+            g = lambda k: f"{x[k]:.1f}" if x.get(k) is not None else "-"
+            print(f"| {os.path.basename(os.path.dirname(sp))} | {g('XA')} | {g('CellAcc')} | {g('XA_currency')} | "
+                  f"{g('XA_inclusivity')} | {g('XA_subject')} | {g('XA_window')} |")
+    print()
+
+
+def seeds_section():
+    print("## 13. Core cells across seeds (test_L2; FINAL_TASKS_B P0.3; mean and s.d. over the finished seeds)" + NL)
+    print("| cell | metric | s0 | s1 | s2 | s3 | s4 | mean | s.d. | n |")
+    print("|---|---|---|---|---|---|---|---|---|---|")
+    for fmt in ("verdict", "summary2", "ledger2"):
+        for corpus in ("blocks", "triplets"):
+            S = {sd: json.load(open(p))["all"] for sd in range(5)
+                 if os.path.exists(p := f"{RG}/B-F-{fmt}-{corpus}-s{sd}/summary_rule_v1~test_L2.json") and done(f"B-F-{fmt}-{corpus}-s{sd}")}
+            for m in ("TA", "Rev", "Hold"):
+                t = seed_table({sd: v[m] for sd, v in S.items()})
+                cells = " | ".join(f"{S[sd][m]:.1f}" if sd in S else "-" for sd in range(5))
+                f = lambda x: "-" if x is None else f"{x:.1f}"
+                print(f"| {fmt} x {corpus} | {m} | {cells} | {f(t['mean'])} | {f(t['sd'])} | {t['n']} |")
+    print()
+
+
+def fields_section():
+    print("## 14. What the ledger's subject/status/time fields add: ledger minus value ledger (test_L2, seed 0)" + NL)
+    print("| corpus | metric | ledger | value ledger | ledger - value ledger [95% CI], p |")
+    print("|---|---|---|---|---|")
+    for corpus in ("blocks", "triplets"):
+        a, b = f"B-F-ledger2-{corpus}-s0", f"B-F-value2-{corpus}-s0"
+        if not (done(a) and done(b)):
+            print(f"| {corpus} | | not run | | |")
+            continue
+        Ta, Tb = triplets(a), triplets(b)
+        sa, sb = summarise(Ta)["all"], summarise(Tb)["all"]
+        for m in ("TA", "Rev", "Hold"):
+            print(f"| {corpus} | {m} | {sa[m]:.1f} | {sb[m]:.1f} | {pdiff(Ta, Tb, m)} |")
+    print()
+
+
+def ablation_section():
+    print("## 15. Ablations (Table 9; test_L2, seed 0; reference B-F-ledger2-triplets-s0)" + NL)
+    ref = "B-F-ledger2-triplets-s0"
+    runs = sorted(os.path.basename(d) for d in glob.glob(f"{RG}/B-AB-*-s0") if done(os.path.basename(d)))
+    runs += [r for r in ("B-AE-pred-bit-program", "B-AE-program-ledger") if done(r)]   # eval-only Table 9 rows
+    if not runs or not done(ref):
+        print("not run" + NL)
+        return
+    Tr = triplets(ref)
+    print("| run | TA | Rev | Hold | TA minus reference [95% CI], p |")
+    print("|---|---|---|---|---|")
+    for r in [ref] + runs:
+        T = triplets(r)
+        if not T:
+            continue
+        s = summarise(T)["all"]
+        print(f"| {r} | {s['TA']:.1f} | {s['Rev']:.1f} | {s['Hold']:.1f} | {'-' if r == ref else pdiff(T, Tr, 'TA')} |")
+    print()
+
+
 def main():
     sys.stdout.reconfigure(newline="\n")
     print("# Role B analyses on existing predictions (FINAL_TASKS_B P0.1)" + NL)
     print("Generated by scripts/analysis_b.py from results_git/ and the rule_v1 records; seed 0, provisional. "
           "\"not run\" = the input result does not exist yet." + NL)
     for f in (paired_section, leakage_section, transitions_section, program_ledger_section, macro_section,
-              natural_balanced_section, budget_section, resampling_section, field_section, loko_section):
+              natural_balanced_section, budget_section, resampling_section, field_section, loko_section,
+              case_visible_section, xr_section, seeds_section, fields_section, ablation_section):
         f()
 
 

@@ -277,6 +277,14 @@ def main():
         apply(cpu_job(f"selrm-b-restore-data-{code[:8]}-{int(time.time()) % 100000}",
                       ["bash", f"/pvc/selrm/code/{snapshot(a.code)}/k8s/restore_data.sh", a.env, code, *a.args[1:]],
                       cpu=2, mem="12Gi", eph="20Gi", hours=2))
+    elif a.cmd == "copy-c":          # copy-c <C code sha12> <set> [...]: C's frozen clin_v1 sets, PVC selrm-c read-only
+        job = cpu_job(f"selrm-b-copy-c-{int(time.time()) % 100000}",
+                      ["bash", f"/pvc/selrm/code/{snapshot(a.code)}/k8s/copy_c_data.sh", a.env, *a.args],
+                      cpu=1, mem="4Gi", eph="10Gi", hours=1)
+        pod = job["spec"]["template"]["spec"]
+        pod["volumes"].append({"name": "pvc-c", "persistentVolumeClaim": {"claimName": "selrm-c", "readOnly": True}})
+        pod["containers"][0]["volumeMounts"].append({"name": "pvc-c", "mountPath": "/c", "readOnly": True})
+        apply(job)
     elif a.cmd == "publish":         # publish <hf repo> --secret NAME:KEY  (only once the user confirmed the secret)
         name, key = a.secret.split(":")
         job = cpu_job(f"selrm-b-publish-{int(time.time()) % 100000}",

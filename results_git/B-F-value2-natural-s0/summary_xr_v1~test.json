@@ -1,0 +1,44 @@
+{
+ "run_id": "B-F-value2-natural-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 29.25,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 82.625,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 70.0,
+   "XA_inclusivity": 0.0,
+   "XA_subject": 0.0,
+   "XA_window": 47.0
+  },
+  "criterion": {
+   "XA": 38.25,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 84.75,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 91.0,
+   "XA_inclusivity": 12.0,
+   "XA_subject": 3.0,
+   "XA_window": 47.0
+  }
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 155,
+  "mode": null,
+  "malformed_rate": 0.0646,
+  "gen_not_stopped": 0,
+  "seconds": 129.3,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

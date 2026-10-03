@@ -1,0 +1,5 @@
+2026-10-03T10:41:07Z eval only: base /work/models/unsloth--Qwen3.5-9B, adapter /pvc/selrm/adapters/B-F-ledger2-blocks-s0
+2026-10-03T10:41:08Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0132)
+2026-10-03T10:41:09Z padding self-check: max |u_batch - u_single| = 0.1070 (tol 0.630) -> left padding
+2026-10-03T10:44:33Z B-NS-xr_v1-B-F-ledger2-blocks-s0 xr_v1/test: TA nan Rev nan Hold nan n=None (204.9 s)
+2026-10-03T10:44:33Z DONE B-NS-xr_v1-B-F-ledger2-blocks-s0 in 3.8 min, GPU util mean 62.5

@@ -1,0 +1,44 @@
+{
+ "run_id": "B-SC-summary2-triplets-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 91.5,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 98.58333333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 96.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 98.0,
+   "XA_window": 72.0
+  },
+  "criterion": {
+   "XA": 98.0,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 99.66666666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 99.0,
+   "XA_window": 93.0
+  }
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 288.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

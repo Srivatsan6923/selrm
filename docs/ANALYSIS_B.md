@@ -22,6 +22,14 @@ Disagreement by near-miss kind (triplet solved = TA):
 | subject | 400 | 365 | 26 | 8 | 1 |
 | time | 400 | 399 | 1 | 0 | 0 |
 
+Seeds 0, 1, 2, 3, 4 pooled (same-seed pairs; rules as clusters):
+
+| metric | ledger | summary | ledger - summary [95% CI], p |
+|---|---|---|---|
+| TA | 99.2 | 98.5 | +0.8 [+0.3, +1.3], p 0.004 |
+| Rev | 99.3 | 98.6 | +0.8 [+0.3, +1.3], p 0.006 |
+| Hold | 99.9 | 99.9 | +0.0 [-0.1, +0.1], p 0.604 |
+
 **blocks** (B-F-ledger2-blocks-s0 vs B-F-summary2-blocks-s0, seed 0):
 
 | metric | ledger | summary | ledger - summary [95% CI], p |
@@ -40,16 +48,47 @@ Disagreement by near-miss kind (triplet solved = TA):
 | subject | 400 | 161 | 33 | 68 | 138 |
 | time | 400 | 178 | 57 | 46 | 119 |
 
+Seeds 0, 1, 2, 3 pooled (same-seed pairs; rules as clusters):
+
+| metric | ledger | summary | ledger - summary [95% CI], p |
+|---|---|---|---|
+| TA | 67.6 | 64.9 | +2.7 [-0.1, +5.6], p 0.056 |
+| Rev | 99.4 | 98.0 | +1.4 [+0.7, +2.3], p < 0.001 |
+| Hold | 67.9 | 66.6 | +1.3 [-1.3, +3.9], p 0.362 |
+
 ## 2. Do generated summaries or ledgers contain a verdict?
 
 Every reader output of the two-stage runs (one per case and condition, on every evaluated set) is checked for the record's own claim sentences (either claim, case-insensitive) and for decision phrasing: answer token line; answer/verdict word; claim judged; criterion decided; applies line; counts / does not count.
 
 | run | reader outputs | contains a claim sentence | answer token line | answer/verdict word | claim judged | criterion decided | applies line | counts / does not count |
 |---|---|---|---|---|---|---|---|---|
+| B-F-summary2-natural-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-summary2-balanced-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-blocks-s0 | 37497 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-summary2-blocks-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-summary2-blocks-s2 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-summary2-blocks-s3 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-triplets-s0 | 10500 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-summary2-triplets-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-summary2-triplets-s2 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-summary2-triplets-s3 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-summary2-triplets-s4 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-value2-natural-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-value2-balanced-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-value2-blocks-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-value2-triplets-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-ledger2-natural-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-ledger2-balanced-s0 | 11600 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-blocks-s0 | 37497 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-ledger2-blocks-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-ledger2-blocks-s2 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-ledger2-blocks-s3 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-ledger2-blocks-s4 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-triplets-s0 | 37497 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-ledger2-triplets-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-ledger2-triplets-s2 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-ledger2-triplets-s3 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-ledger2-triplets-s4 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## 3. Program-supplied ledger: transitions on test_L2 (B-F-ledger2-triplets-s0)
 
@@ -80,8 +119,16 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-rationale-balanced-s0 | 64.7 | 64.8 | 103 | 65.0 | 7 |
 | B-F-rationale-blocks-s0 | 61.5 | 61.4 | 103 | 57.7 | 7 |
 | B-F-rationale-triplets-s0 | 91.0 | 92.0 | 103 | 90.1 | 7 |
+| B-F-summary2-natural-s0 | 45.7 | 46.2 | 103 | 44.5 | 7 |
+| B-F-summary2-balanced-s0 | 72.5 | 71.6 | 103 | 67.2 | 7 |
 | B-F-summary2-blocks-s0 | 67.3 | 68.7 | 103 | 68.6 | 7 |
 | B-F-summary2-triplets-s0 | 98.0 | 97.8 | 103 | 98.8 | 7 |
+| B-F-value2-natural-s0 | 43.0 | 44.6 | 103 | 42.9 | 7 |
+| B-F-value2-balanced-s0 | 71.9 | 70.9 | 103 | 67.7 | 7 |
+| B-F-value2-blocks-s0 | 70.7 | 69.8 | 103 | 65.0 | 7 |
+| B-F-value2-triplets-s0 | 85.7 | 85.4 | 103 | 78.4 | 7 |
+| B-F-ledger2-natural-s0 | 77.2 | 76.5 | 103 | 74.4 | 7 |
+| B-F-ledger2-balanced-s0 | 49.4 | 50.8 | 103 | 52.5 | 7 |
 | B-F-ledger2-blocks-s0 | 75.3 | 75.3 | 103 | 72.8 | 7 |
 | B-F-ledger2-triplets-s0 | 99.2 | 99.1 | 103 | 98.7 | 7 |
 
@@ -93,32 +140,79 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-F-verdict-balanced-s0 | 93.7 | 53.1 | 97.4 | 54.3 | 52.9 | 49.1 |
 | B-F-rationale-natural-s0 | 83.2 | 69.0 | 97.8 | 70.2 | 68.7 | 55.1 |
 | B-F-rationale-balanced-s0 | 91.4 | 70.4 | 96.8 | 72.0 | 69.7 | 64.7 |
-| B-F-summary2-natural-s0 | not run | | | | | |
-| B-F-summary2-balanced-s0 | not run | | | | | |
-| B-F-value2-natural-s0 | not run | | | | | |
-| B-F-value2-balanced-s0 | not run | | | | | |
-| B-F-ledger2-natural-s0 | not run | | | | | |
-| B-F-ledger2-balanced-s0 | not run | | | | | |
+| B-F-summary2-natural-s0 | 97.3 | 47.0 | 97.3 | 46.9 | 45.7 | 45.7 |
+| B-F-summary2-balanced-s0 | 99.6 | 72.8 | 99.8 | 72.8 | 72.6 | 72.5 |
+| B-F-value2-natural-s0 | 98.3 | 43.9 | 98.3 | 43.7 | 43.0 | 43.0 |
+| B-F-value2-balanced-s0 | 99.2 | 72.6 | 99.2 | 72.5 | 71.9 | 71.9 |
+| B-F-ledger2-natural-s0 | 99.4 | 77.8 | 99.5 | 77.7 | 77.3 | 77.2 |
+| B-F-ledger2-balanced-s0 | 96.7 | 51.6 | 96.7 | 51.0 | 49.4 | 49.4 |
 
 ## 7. Training budget per finished run
 
 | run | GPU | corpus records | examples | reader targets | judge targets | tokens | completion tokens | steps | train h | eval h |
 |---|---|---|---|---|---|---|---|---|---|---|
+| B-AB-bitonly-judge-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 12447626 | 1223333 | 938 | 0.71 | 0.15 |
+| B-AB-bitonly-reader-s0 | NVIDIA A100-PCIE-40GB | 60004 | 60000 | 30000 | 30000 | 11434293 | 210000 | 938 | 2.05 | 0.28 |
+| B-AB-conddrv-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13617157 | 1073061 | 938 | 0.81 | 0.40 |
+| B-AB-decfield-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 13462612 | 1223333 | 938 | 1.78 | 0.36 |
+| B-AB-nopres-s0 | NVIDIA H100 80GB HBM3 | 60006 | 60000 | 30000 | 30000 | 13210507 | 1086470 | 938 | 0.79 | 0.20 |
+| B-AB-noresamp-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13161060 | 1073333 | 938 | 0.69 | 0.16 |
+| B-AB-pairwise-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 13054885 | 0 | 938 | 0.97 | 0.10 |
+| B-AB-verify-s0 | NVIDIA H100 80GB HBM3 | 60004 | 70000 | 30000 | 30000 | 15785386 | 1093333 | 1094 | 0.89 | 0.24 |
 | B-BB-qwen3.5-4b-verdict-blocks-s0 | NVIDIA L40 | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 1.90 | 0.40 |
+| B-F-ledger2-balanced-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 13046129 | 1048600 | 938 | 0.74 | 0.18 |
 | B-F-ledger2-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 13044356 | 1045348 | 938 | 1.76 | 1.03 |
+| B-F-ledger2-blocks-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13044356 | 1045348 | 938 | 0.77 | 0.65 |
+| B-F-ledger2-blocks-s2 | NVIDIA A100-PCIE-40GB | 60004 | 60000 | 30000 | 30000 | 13044356 | 1045348 | 938 | 2.25 | 1.52 |
+| B-F-ledger2-blocks-s3 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13044356 | 1045348 | 938 | 0.78 | 0.65 |
+| B-F-ledger2-blocks-s4 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13044356 | 1045348 | 938 | 0.69 | 0.53 |
+| B-F-ledger2-natural-s0 | NVIDIA L40 | 60000 | 60000 | 30000 | 30000 | 12955030 | 1018856 | 938 | 3.72 | 0.72 |
 | B-F-ledger2-triplets-s0 | NVIDIA A100-PCIE-40GB | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 2.29 | 1.41 |
+| B-F-ledger2-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 0.94 | 0.56 |
+| B-F-ledger2-triplets-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 0.78 | 0.67 |
+| B-F-ledger2-triplets-s3 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 0.80 | 0.67 |
+| B-F-ledger2-triplets-s4 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 0.96 | 0.54 |
 | B-F-rationale-balanced-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | - | - | 15970047 | 2094038 | 938 | 0.62 | 1.30 |
 | B-F-rationale-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 15979819 | 2088516 | 938 | 1.74 | 2.50 |
 | B-F-rationale-natural-s0 | NVIDIA A100-SXM4-80GB | 60000 | 60000 | - | - | 15851199 | 2034704 | 938 | 1.70 | 2.42 |
 | B-F-rationale-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 16138949 | 2144515 | 938 | 1.78 | 2.56 |
+| B-F-summary2-balanced-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 11867656 | 1059423 | 938 | 0.70 | 0.22 |
 | B-F-summary2-blocks-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 11864845 | 1055547 | 938 | 0.90 | 0.56 |
+| B-F-summary2-blocks-s1 | NVIDIA RTX A6000 | 60004 | 60000 | 30000 | 30000 | 11864845 | 1055547 | 938 | 3.46 | 2.21 |
+| B-F-summary2-blocks-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 11864845 | 1055547 | 938 | 0.66 | 0.68 |
+| B-F-summary2-blocks-s3 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 11864845 | 1055547 | 938 | 0.71 | 0.64 |
+| B-F-summary2-natural-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 11740178 | 1012112 | 938 | 0.86 | 0.17 |
 | B-F-summary2-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 1.60 | 0.34 |
+| B-F-summary2-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 0.67 | 0.65 |
+| B-F-summary2-triplets-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 0.72 | 0.70 |
+| B-F-summary2-triplets-s3 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 0.64 | 0.54 |
+| B-F-summary2-triplets-s4 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 1.59 | 1.02 |
+| B-F-value2-balanced-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 12238812 | 644511 | 938 | 0.72 | 0.15 |
+| B-F-value2-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 12239958 | 642454 | 938 | 1.78 | 0.30 |
+| B-F-value2-natural-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | 30000 | 30000 | 12154474 | 617784 | 938 | 0.79 | 0.16 |
+| B-F-value2-triplets-s0 | NVIDIA A100-PCIE-40GB | 60004 | 60000 | 30000 | 30000 | 12340082 | 662031 | 938 | 2.14 | 0.38 |
 | B-F-verdict-balanced-s0 | NVIDIA A100-SXM4-80GB | 60000 | 60000 | - | - | 12976009 | 120000 | 938 | 1.48 | 0.65 |
 | B-F-verdict-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 1.51 | 0.65 |
+| B-F-verdict-blocks-s1 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 1.51 | 0.65 |
 | B-F-verdict-blocks-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 0.64 | 0.31 |
+| B-F-verdict-blocks-s3 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 0.67 | 0.35 |
+| B-F-verdict-blocks-s4 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 0.81 | 0.39 |
 | B-F-verdict-natural-s0 | NVIDIA A100-SXM4-80GB | 60000 | 60000 | - | - | 12916495 | 120000 | 938 | 1.56 | 0.68 |
 | B-F-verdict-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 1.51 | 0.65 |
 | B-F-verdict-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 0.64 | 0.31 |
+| B-F-verdict-triplets-s2 | NVIDIA L40 | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 3.24 | 1.64 |
+| B-F-verdict-triplets-s3 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 0.66 | 0.33 |
+| B-F-verdict-triplets-s4 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 0.60 | 0.34 |
+| B-LOKO-boundary-ledger2-s0 | NVIDIA A100-SXM4-80GB | None | 60000 | 30000 | 30000 | 13132713 | 1115843 | 938 | 1.75 | 0.41 |
+| B-LOKO-boundary-summary2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 11979662 | 1139596 | 938 | 0.71 | 0.26 |
+| B-LOKO-boundary-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 12970250 | 120000 | 938 | 0.69 | 0.14 |
+| B-LOKO-subject-ledger2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13213846 | 1073236 | 938 | 0.82 | 0.27 |
+| B-LOKO-subject-summary2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 12062378 | 1097188 | 938 | 0.74 | 0.25 |
+| B-LOKO-subject-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13135729 | 120000 | 938 | 0.69 | 0.14 |
+| B-LOKO-time-ledger2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13090214 | 995881 | 938 | 0.78 | 0.26 |
+| B-LOKO-time-summary2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 11924379 | 1013232 | 938 | 0.72 | 0.24 |
+| B-LOKO-time-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13201513 | 120000 | 938 | 0.70 | 0.14 |
+| B-SC-summary2-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 15443373 | 1095740 | 938 | 1.67 | 0.41 |
 
 ## 8. Was donor-ledger resampling active?
 
@@ -126,10 +220,47 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 
 | run | resample_p | judge examples | judge pairs (both claims) | pairs drawn from a donor case | share | (rule, condition, claim type) groups |
 |---|---|---|---|---|---|---|
+| B-AB-bitonly-judge-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-AB-bitonly-reader-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-AB-conddrv-s0 | 0.3 | 30000 | 15000 | 4546 | 30.3% | 795 |
+| B-AB-decfield-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-AB-nopres-s0 | 0.3 | 30000 | 15000 | 4548 | 30.3% | 797 |
+| B-AB-noresamp-s0 | 0 | 30000 | 15000 | 0 | 0.0% | 795 |
+| B-AB-verify-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-ledger2-balanced-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-F-ledger2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
+| B-F-ledger2-blocks-s1 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
+| B-F-ledger2-blocks-s2 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
+| B-F-ledger2-blocks-s3 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
+| B-F-ledger2-blocks-s4 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
+| B-F-ledger2-natural-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-F-ledger2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-ledger2-triplets-s1 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-ledger2-triplets-s2 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-ledger2-triplets-s3 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-ledger2-triplets-s4 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-summary2-balanced-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-F-summary2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
+| B-F-summary2-blocks-s1 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
+| B-F-summary2-blocks-s2 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
+| B-F-summary2-blocks-s3 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
+| B-F-summary2-natural-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
 | B-F-summary2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-summary2-triplets-s1 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-summary2-triplets-s2 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-summary2-triplets-s3 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-summary2-triplets-s4 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-value2-balanced-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
+| B-F-value2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
+| B-F-value2-natural-s0 | 0.3 | 30000 | 15000 | 4521 | 30.1% | 799 |
+| B-F-value2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-LOKO-boundary-ledger2-s0 | 0.3 | 30000 | 15000 | 4529 | 30.2% | 797 |
+| B-LOKO-boundary-summary2-s0 | 0.3 | 30000 | 15000 | 4529 | 30.2% | 797 |
+| B-LOKO-subject-ledger2-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
+| B-LOKO-subject-summary2-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
+| B-LOKO-time-ledger2-s0 | 0.3 | 30000 | 15000 | 4526 | 30.2% | 797 |
+| B-LOKO-time-summary2-s0 | 0.3 | 30000 | 15000 | 4526 | 30.2% | 797 |
+| B-SC-summary2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 
 ## 9. Field interventions on the ledger x triplets adapter (test_L2)
 
@@ -196,13 +327,138 @@ Swap in the ledger of another case (same rule, condition and claim): the judge r
 
 | held-out kind | format | trained without the kind | trained on all kinds (B-F-<format>-triplets-s0) | without - all [95% CI], p |
 |---|---|---|---|---|
-| subject | verdict | not run | | |
-| subject | summary2 | not run | | |
-| subject | ledger2 | not run | | |
-| time | verdict | not run | | |
-| time | summary2 | not run | | |
-| time | ledger2 | not run | | |
-| boundary | verdict | not run | | |
-| boundary | summary2 | not run | | |
-| boundary | ledger2 | not run | | |
+| subject | verdict | 7.0 | 91.0 | -84.0 [-89.2, -78.2], p < 0.001 |
+| subject | summary2 | 89.2 | 93.2 | -4.0 [-8.3, -0.3], p 0.048 |
+| subject | ledger2 | 62.5 | 97.8 | -35.2 [-42.7, -27.9], p < 0.001 |
+| time | verdict | 60.2 | 88.2 | -28.0 [-36.0, -20.6], p < 0.001 |
+| time | summary2 | 61.5 | 99.8 | -38.2 [-45.7, -31.3], p < 0.001 |
+| time | ledger2 | 86.2 | 100.0 | -13.8 [-18.9, -8.8], p < 0.001 |
+| boundary | verdict | 49.8 | 93.2 | -43.5 [-54.2, -32.3], p < 0.001 |
+| boundary | summary2 | 99.0 | 100.0 | -1.0 [-3.2, +0.0], p 0.690 |
+| boundary | ledger2 | 87.0 | 100.0 | -13.0 [-22.1, -5.2], p < 0.001 |
+
+## 11. Summary pipeline whose judge also sees the case (test_L2, triplets corpus, seed 0; FINAL_TASKS_B P0.4)
+
+| run | judge sees | TA | Rev | Hold |
+|---|---|---|---|---|
+| B-SC-summary2-triplets-s0 | rule, case, prose record, claim | 98.8 | 99.0 | 99.8 |
+| B-F-summary2-triplets-s0 | rule, prose record, claim | 98.0 | 98.5 | 99.3 |
+| B-F-ledger2-triplets-s0 | rule, ledger, claim | 99.2 | 99.2 | 100.0 |
+
+Case-visible minus blind summary judge, TA: +0.8 [+0.1, +1.5], p 0.024; ledger minus case-visible summary judge, TA: +0.4 [-0.3, +1.1], p 0.290.
+
+## 12. Rule-side items (xr_v1/test; A's set, 400 items = 2 rules x 3 cases; conclusion claims)
+
+An item is solved iff all its cells are right (crossed accuracy XA, selrm.metrics.crossed_accuracy; B-NS runs score a kept adapter, other runs evaluated the set themselves).
+
+| run | XA | cell accuracy | XA currency | XA inclusivity | XA subject | XA window |
+|---|---|---|---|---|---|---|
+| B-AB-bitonly-judge-s0 | 97.8 | 99.6 | 100.0 | 100.0 | 100.0 | 91.0 |
+| B-AB-bitonly-reader-s0 | 97.8 | 99.6 | 100.0 | 100.0 | 100.0 | 91.0 |
+| B-AB-concept-s0 | 12.0 | 73.9 | 35.0 | 2.0 | 0.0 | 11.0 |
+| B-AB-conddrv-s0 | 86.5 | 97.4 | 99.0 | 100.0 | 98.0 | 49.0 |
+| B-AB-decfield-s0 | 98.8 | 99.8 | 100.0 | 100.0 | 100.0 | 95.0 |
+| B-AB-nopres-s0 | 90.0 | 98.3 | 99.0 | 100.0 | 100.0 | 61.0 |
+| B-AB-noresamp-s0 | 78.8 | 96.3 | 96.0 | 100.0 | 64.0 | 55.0 |
+| B-AB-pairwise-s0 | 92.5 | 98.6 | 100.0 | 100.0 | 99.0 | 71.0 |
+| B-AB-verify-s0 | 91.5 | 98.6 | 100.0 | 100.0 | 100.0 | 66.0 |
+| B-F-ledger2-balanced-s0 | 54.5 | 92.4 | 87.0 | 44.0 | 31.0 | 56.0 |
+| B-F-ledger2-blocks-s1 | 37.8 | 87.0 | 46.0 | 28.0 | 25.0 | 52.0 |
+| B-F-ledger2-blocks-s2 | 71.0 | 95.2 | 88.0 | 98.0 | 55.0 | 43.0 |
+| B-F-ledger2-blocks-s3 | 44.5 | 90.8 | 67.0 | 66.0 | 3.0 | 42.0 |
+| B-F-ledger2-blocks-s4 | 82.2 | 97.0 | 100.0 | 84.0 | 87.0 | 58.0 |
+| B-F-ledger2-natural-s0 | 86.0 | 97.7 | 98.0 | 100.0 | 91.0 | 55.0 |
+| B-F-ledger2-triplets-s1 | 88.8 | 98.0 | 100.0 | 100.0 | 87.0 | 68.0 |
+| B-F-ledger2-triplets-s2 | 91.5 | 98.6 | 99.0 | 100.0 | 100.0 | 67.0 |
+| B-F-ledger2-triplets-s3 | 94.0 | 99.0 | 100.0 | 100.0 | 100.0 | 76.0 |
+| B-F-ledger2-triplets-s4 | 85.0 | 97.2 | 100.0 | 100.0 | 72.0 | 68.0 |
+| B-F-summary2-balanced-s0 | 65.8 | 94.3 | 30.0 | 98.0 | 92.0 | 43.0 |
+| B-F-summary2-blocks-s1 | 51.0 | 91.8 | 45.0 | 24.0 | 94.0 | 41.0 |
+| B-F-summary2-blocks-s2 | 62.5 | 93.8 | 92.0 | 12.0 | 95.0 | 51.0 |
+| B-F-summary2-blocks-s3 | 35.8 | 89.3 | 15.0 | 33.0 | 73.0 | 22.0 |
+| B-F-summary2-natural-s0 | 25.8 | 87.6 | 16.0 | 54.0 | 3.0 | 30.0 |
+| B-F-summary2-triplets-s1 | 92.5 | 98.8 | 100.0 | 100.0 | 99.0 | 71.0 |
+| B-F-summary2-triplets-s2 | 90.2 | 98.4 | 100.0 | 100.0 | 100.0 | 61.0 |
+| B-F-summary2-triplets-s3 | 89.2 | 98.0 | 98.0 | 100.0 | 100.0 | 59.0 |
+| B-F-summary2-triplets-s4 | 91.8 | 98.6 | 100.0 | 100.0 | 100.0 | 67.0 |
+| B-F-value2-balanced-s0 | 57.8 | 90.4 | 60.0 | 100.0 | 12.0 | 59.0 |
+| B-F-value2-blocks-s0 | 70.0 | 94.2 | 83.0 | 100.0 | 42.0 | 55.0 |
+| B-F-value2-natural-s0 | 29.2 | 82.6 | 70.0 | 0.0 | 0.0 | 47.0 |
+| B-F-value2-triplets-s0 | 70.5 | 94.5 | 97.0 | 100.0 | 21.0 | 64.0 |
+| B-F-verdict-blocks-s3 | 40.2 | 88.5 | 89.0 | 37.0 | 18.0 | 17.0 |
+| B-F-verdict-blocks-s4 | 37.8 | 89.6 | 35.0 | 34.0 | 36.0 | 46.0 |
+| B-F-verdict-triplets-s2 | 90.0 | 98.0 | 100.0 | 100.0 | 100.0 | 60.0 |
+| B-F-verdict-triplets-s3 | 87.2 | 97.2 | 100.0 | 99.0 | 100.0 | 50.0 |
+| B-F-verdict-triplets-s4 | 85.5 | 96.4 | 100.0 | 100.0 | 99.0 | 43.0 |
+| B-LOKO-boundary-ledger2-s0 | 85.8 | 97.6 | 100.0 | 89.0 | 95.0 | 59.0 |
+| B-LOKO-boundary-summary2-s0 | 92.5 | 98.8 | 99.0 | 100.0 | 98.0 | 73.0 |
+| B-LOKO-boundary-verdict-s0 | 83.0 | 96.0 | 100.0 | 97.0 | 100.0 | 35.0 |
+| B-LOKO-subject-ledger2-s0 | 90.8 | 98.5 | 98.0 | 100.0 | 91.0 | 74.0 |
+| B-LOKO-subject-summary2-s0 | 91.5 | 98.6 | 100.0 | 100.0 | 100.0 | 66.0 |
+| B-LOKO-subject-verdict-s0 | 69.8 | 94.5 | 100.0 | 99.0 | 33.0 | 47.0 |
+| B-LOKO-time-ledger2-s0 | 84.2 | 97.4 | 100.0 | 100.0 | 79.0 | 58.0 |
+| B-LOKO-time-summary2-s0 | 91.2 | 98.5 | 100.0 | 100.0 | 100.0 | 65.0 |
+| B-LOKO-time-verdict-s0 | 80.5 | 95.3 | 96.0 | 100.0 | 100.0 | 26.0 |
+| B-NS-xr_v1-B-F-ledger2-blocks-s0 | 76.0 | 96.0 | 100.0 | 74.0 | 68.0 | 62.0 |
+| B-NS-xr_v1-B-F-ledger2-triplets-s0 | 89.8 | 98.3 | 93.0 | 100.0 | 98.0 | 68.0 |
+| B-NS-xr_v1-B-F-rationale-triplets-s0 | 92.8 | 98.5 | 100.0 | 100.0 | 100.0 | 71.0 |
+| B-NS-xr_v1-B-F-summary2-blocks-s0 | 80.2 | 96.7 | 94.0 | 79.0 | 97.0 | 51.0 |
+| B-NS-xr_v1-B-F-summary2-triplets-s0 | 88.5 | 98.1 | 100.0 | 100.0 | 100.0 | 54.0 |
+| B-NS-xr_v1-B-F-verdict-blocks-s0 | 60.8 | 93.0 | 75.0 | 77.0 | 47.0 | 44.0 |
+| B-NS-xr_v1-B-F-verdict-blocks-s1 | 47.2 | 90.0 | 95.0 | 64.0 | 0.0 | 30.0 |
+| B-NS-xr_v1-B-F-verdict-blocks-s2 | 66.2 | 94.2 | 96.0 | 65.0 | 52.0 | 52.0 |
+| B-NS-xr_v1-B-F-verdict-triplets-s0 | 90.2 | 97.7 | 100.0 | 100.0 | 95.0 | 66.0 |
+| B-NS-xr_v1-B-F-verdict-triplets-s1 | 91.2 | 98.4 | 100.0 | 100.0 | 94.0 | 71.0 |
+| B-SC-summary2-triplets-s0 | 91.5 | 98.6 | 96.0 | 100.0 | 98.0 | 72.0 |
+
+## 13. Core cells across seeds (test_L2; FINAL_TASKS_B P0.3; mean and s.d. over the finished seeds)
+
+| cell | metric | s0 | s1 | s2 | s3 | s4 | mean | s.d. | n |
+|---|---|---|---|---|---|---|---|---|---|
+| verdict x blocks | TA | 58.2 | 53.5 | 60.0 | 47.6 | 49.0 | 53.7 | 5.4 | 5 |
+| verdict x blocks | Rev | 93.1 | 91.8 | 92.1 | 93.3 | 92.5 | 92.6 | 0.7 | 5 |
+| verdict x blocks | Hold | 61.5 | 59.1 | 64.8 | 51.3 | 52.9 | 57.9 | 5.7 | 5 |
+| verdict x triplets | TA | 91.3 | 91.8 | 92.2 | 92.2 | 91.8 | 91.8 | 0.4 | 5 |
+| verdict x triplets | Rev | 92.3 | 92.7 | 93.0 | 92.9 | 92.0 | 92.6 | 0.4 | 5 |
+| verdict x triplets | Hold | 97.7 | 96.6 | 98.2 | 97.2 | 98.2 | 97.6 | 0.7 | 5 |
+| summary2 x blocks | TA | 67.3 | 57.9 | 72.2 | 62.2 | - | 64.9 | 6.2 | 4 |
+| summary2 x blocks | Rev | 96.8 | 98.6 | 97.4 | 99.2 | - | 98.0 | 1.1 | 4 |
+| summary2 x blocks | Hold | 70.1 | 59.0 | 74.6 | 62.8 | - | 66.6 | 7.1 | 4 |
+| summary2 x triplets | TA | 98.0 | 98.1 | 98.0 | 98.9 | 99.5 | 98.5 | 0.7 | 5 |
+| summary2 x triplets | Rev | 98.5 | 98.1 | 98.0 | 98.9 | 99.5 | 98.6 | 0.6 | 5 |
+| summary2 x triplets | Hold | 99.3 | 100.0 | 100.0 | 100.0 | 100.0 | 99.9 | 0.3 | 5 |
+| ledger2 x blocks | TA | 75.3 | 59.5 | 74.9 | 60.6 | 84.5 | 71.0 | 10.7 | 5 |
+| ledger2 x blocks | Rev | 98.7 | 99.5 | 99.9 | 99.5 | 99.0 | 99.3 | 0.5 | 5 |
+| ledger2 x blocks | Hold | 76.2 | 59.7 | 74.9 | 60.9 | 85.4 | 71.4 | 10.9 | 5 |
+| ledger2 x triplets | TA | 99.2 | 99.0 | 99.2 | 99.2 | 99.7 | 99.2 | 0.3 | 5 |
+| ledger2 x triplets | Rev | 99.2 | 99.2 | 99.3 | 99.2 | 99.8 | 99.3 | 0.3 | 5 |
+| ledger2 x triplets | Hold | 100.0 | 99.9 | 99.8 | 100.0 | 99.9 | 99.9 | 0.1 | 5 |
+
+## 14. What the ledger's subject/status/time fields add: ledger minus value ledger (test_L2, seed 0)
+
+| corpus | metric | ledger | value ledger | ledger - value ledger [95% CI], p |
+|---|---|---|---|---|
+| blocks | TA | 75.3 | 70.7 | +4.6 [+1.3, +7.6], p 0.006 |
+| blocks | Rev | 98.7 | 98.0 | +0.7 [-0.0, +1.4], p 0.084 |
+| blocks | Hold | 76.2 | 72.3 | +3.9 [+0.7, +6.7], p 0.016 |
+| triplets | TA | 99.2 | 85.7 | +13.5 [+11.3, +15.9], p < 0.001 |
+| triplets | Rev | 99.2 | 99.1 | +0.2 [-0.6, +0.8], p 0.748 |
+| triplets | Hold | 100.0 | 86.6 | +13.4 [+11.2, +15.6], p < 0.001 |
+
+## 15. Ablations (Table 9; test_L2, seed 0; reference B-F-ledger2-triplets-s0)
+
+| run | TA | Rev | Hold | TA minus reference [95% CI], p |
+|---|---|---|---|---|
+| B-F-ledger2-triplets-s0 | 99.2 | 99.2 | 100.0 | - |
+| B-AB-bitonly-judge-s0 | 99.3 | 99.5 | 99.9 | +0.1 [-0.2, +0.6], p 0.552 |
+| B-AB-bitonly-reader-s0 | 100.0 | 100.0 | 100.0 | +0.8 [+0.3, +1.4], p < 0.001 |
+| B-AB-concept-s0 | 26.8 | 34.4 | 58.4 | -72.5 [-76.0, -68.4], p < 0.001 |
+| B-AB-conddrv-s0 | 86.5 | 87.0 | 98.6 | -12.7 [-16.8, -8.9], p < 0.001 |
+| B-AB-decfield-s0 | 99.5 | 99.7 | 99.8 | +0.3 [-0.1, +0.8], p 0.206 |
+| B-AB-nopres-s0 | 98.7 | 99.3 | 99.3 | -0.5 [-1.2, +0.0], p 0.094 |
+| B-AB-noresamp-s0 | 98.8 | 98.8 | 100.0 | -0.4 [-0.9, +0.1], p 0.158 |
+| B-AB-pairwise-s0 | 91.4 | 91.8 | 98.2 | -7.8 [-12.3, -4.0], p < 0.001 |
+| B-AB-verify-s0 | 99.8 | 99.8 | 100.0 | +0.6 [+0.1, +1.2], p 0.012 |
+| B-AE-pred-bit-program | 99.5 | 99.7 | 99.8 | +0.3 [-0.1, +0.8], p 0.206 |
+| B-AE-program-ledger | 99.4 | 99.4 | 100.0 | +0.2 [+0.0, +0.6], p 0.238 |
 

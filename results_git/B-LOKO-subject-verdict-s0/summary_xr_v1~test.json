@@ -1,0 +1,39 @@
+{
+ "run_id": "B-LOKO-subject-verdict-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 69.75,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 94.5,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 99.0,
+   "XA_subject": 33.0,
+   "XA_window": 47.0
+  },
+  "criterion": {
+   "XA": 70.5,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 95.04166666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 19.0,
+   "XA_window": 63.0
+  }
+ },
+ "eval": {
+  "seconds": 62.2,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

@@ -11,7 +11,7 @@ completion ends with the end-of-turn token so generation formats learn to stop.
 Gold ledgers must pass the eval-time malformed check (formats.well_formed), and all
 records of one (case, condition) must carry the same ledger and prose, else prep stops.
 Files are written under pid-unique temporary names and renamed; READY is written last."""
-import argparse, json, os, subprocess, sys
+import argparse, json, os, subprocess, sys, uuid
 import numpy as np
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO)
@@ -39,8 +39,9 @@ def max_len(spec):
 def train_key(spec):
     p = spec.get("resample_p", 0.3) if spec["format"] in TWO_STAGE else 0
     w = f"__w{os.path.basename(spec['pair_weights']).rsplit('.', 1)[0]}" if spec.get("pair_weights") else ""
+    m = f"__mix{spec['mix']['corpus'].replace('/', '~')}{spec['mix']['share']}" if spec.get("mix") else ""
     return (f"{spec['format']}__{spec['corpus'].replace('/', '~')}__n{spec.get('n_examples') or 'all'}"
-            f"__p{p}__c{spec.get('construction_seed', 0)}__L{max_len(spec)}{w}__v{VERSION}")
+            f"__p{p}__c{spec.get('construction_seed', 0)}__L{max_len(spec)}{w}{m}__v{VERSION}")
 
 
 def train_dir(root, spec):
@@ -83,7 +84,7 @@ def tok_ids(tok, texts, bs=2048):
 
 
 def save_npz(path, **arrays):
-    tmp = f"{path}.{os.getpid()}.tmp.npz"
+    tmp = f"{path}.{uuid.uuid4().hex}.tmp.npz"     # unique across pods (pids repeat in containers)
     np.savez(tmp, **arrays)
     os.replace(tmp, path)
 
@@ -140,10 +141,18 @@ def build_train(root, spec, tok, end):
                         spec["probe_scores"], "--set", spec["probe_set"], "--out", f"{root}/{spec['pair_weights']}"],
                        check=True)
     pw = json.load(open(f"{root}/{spec['pair_weights']}")) if spec.get("pair_weights") else None
-    ex, stats = build_examples(recs, spec["format"], n=spec.get("n_examples"),
+    n = spec.get("n_examples")
+    n2 = round(n * spec["mix"]["share"]) if spec.get("mix") else 0      # corpus mixtures (B-TR-tripclin, 1:1)
+    ex, stats = build_examples(recs, spec["format"], n=n - n2 if n2 else n,
                                resample_p=spec.get("resample_p", 0.3),
                                seed=spec.get("construction_seed", 0), pair_weights=pw,
                                codes=check_codes(root, spec) if spec["format"] == "genprm" else None)
+    if n2:
+        recs2 = load_jsonl(dataset_path(root, spec["mix"]["corpus"]))
+        check_gold(recs2, [spec["format"]], spec["mix"]["corpus"])
+        ex2, st2 = build_examples(recs2, spec["format"], n=n2, resample_p=spec.get("resample_p", 0.3),
+                                  seed=spec.get("construction_seed", 0))
+        ex, stats = ex + ex2, {"n": len(ex) + len(ex2), "corpus": stats, "mix": st2}
     if spec["format"] == "verdict_bt":            # prompt pairs (correct, wrong) stored as consecutive sequences
         A = tok_ids(tok, [chat(tok, e["prompt"]) for e in ex])
         B = tok_ids(tok, [chat(tok, e["prompt_b"]) for e in ex])
@@ -160,7 +169,7 @@ def build_train(root, spec, tok, end):
         npr.append(len(p))
     if spec["format"] == "verdict_bt" and over:
         raise SystemExit(f"{over} pair sequences exceed max_len {L} in {d}")   # dropping one breaks the pairing
-    if over > 0.005 * len(ex):
+    if over > spec.get("max_drop", 0.005) * len(ex):      # clinical corpora (long notes): max_drop 0.01
         raise SystemExit(f"{over} of {len(ex)} examples exceed max_len {L} in {d}")
     ids, off = pack(seqs)
     os.makedirs(d, exist_ok=True)
@@ -173,7 +182,7 @@ def build_train(root, spec, tok, end):
               "len_mean": float(lens.mean()), "len_max": int(lens.max()),
               "completion_tokens": int(off[-1] - np.sum(npr)), "end_of_turn": end,
               "parts": {k: sum(e["part"] == k for e in ex) for k in sorted({e["part"] for e in ex})}}
-    tmp = f"{d}/stats.json.{os.getpid()}"
+    tmp = f"{d}/stats.json.{uuid.uuid4().hex}"
     json.dump(stats, open(tmp, "w"), indent=1)
     os.replace(tmp, f"{d}/stats.json")
     open(f"{d}/READY", "w").write("ok\n")
@@ -189,7 +198,8 @@ def build_eval(root, spec, set_name, tok):
     if kind in PROMPT:
         keys, texts = [r["iid"] for r in recs], [PROMPT[kind](r) for r in recs]
     else:
-        check_gold(recs, {"reader_ledger": ["ledger2", "value2"], "reader_derive": ["ledger2"]}.get(kind, []), set_name)
+        check_gold([r for r in recs if r["ledger"]],     # sets without gold ledgers (C's clinical test sets): nothing
+                   {"reader_ledger": ["ledger2", "value2"], "reader_derive": ["ledger2"]}.get(kind, []), set_name)
         units = reader_units(recs, spec["format"])
         keys = [unit_key(r, spec["format"]) for r in units]
         texts = [reader_for(r, spec["format"]) for r in units]

@@ -1,0 +1,44 @@
+{
+ "run_id": "B-F-ledger2-natural-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 86.0,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 97.66666666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 98.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 91.0,
+   "XA_window": 55.0
+  },
+  "criterion": {
+   "XA": 89.5,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 98.16666666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 99.0,
+   "XA_window": 59.0
+  }
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 557.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

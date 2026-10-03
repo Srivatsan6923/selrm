@@ -1,0 +1,41 @@
+{
+ "run_id": "B-NS-xr_v1-B-F-rationale-triplets-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 92.75,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 98.45833333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 100.0,
+   "XA_window": 71.0
+  },
+  "criterion": {
+   "XA": 97.5,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 99.58333333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 100.0,
+   "XA_window": 90.0
+  }
+ },
+ "eval": {
+  "rationale_no_answer": 0,
+  "gen_not_stopped": 0,
+  "seconds": 387.9,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

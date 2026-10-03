@@ -1,0 +1,44 @@
+{
+ "run_id": "B-LOKO-subject-ledger2-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 90.75,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 98.45833333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 98.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 91.0,
+   "XA_window": 74.0
+  },
+  "criterion": {
+   "XA": 92.5,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 98.70833333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 99.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 96.0,
+   "XA_window": 75.0
+  }
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 1,
+  "mode": null,
+  "malformed_rate": 0.0004,
+  "gen_not_stopped": 0,
+  "seconds": 183.3,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

@@ -1,0 +1,18 @@
+{
+ "run_id": "B-F-summary2-blocks-s3",
+ "set": "rule_v1/dev_missing",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "reader_units": 600,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 37.3,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

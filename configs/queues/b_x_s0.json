@@ -20,25 +20,6 @@
    ]
   },
   {
-   "run_id": "B-AB-bitonly-judge-s0",
-   "seed": 0,
-   "priority": 61,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "format": "dec_judge",
-   "corpus": "rule_v1/train_triplets",
-   "n_examples": 60000,
-   "keep_adapter": true,
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "xr_v1/test"
-   ]
-  },
-  {
    "run_id": "B-AB-bitonly-reader-s0",
    "seed": 0,
    "priority": 62,
@@ -76,26 +57,6 @@
     "rule_v1/test_L2",
     "xr_v1/test"
    ]
-  },
-  {
-   "run_id": "B-AB-concept-s0",
-   "seed": 0,
-   "priority": 65,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "format": "ledger2",
-   "corpus": "rule_v1/train_triplets",
-   "n_examples": 60000,
-   "keep_adapter": true,
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "xr_v1/test"
-   ],
-   "kind": "concept"
   },
   {
    "run_id": "B-AB-probe-rw-s0-scores",
@@ -191,25 +152,6 @@
    ]
   },
   {
-   "run_id": "B-AE-oracle-ledger",
-   "seed": 0,
-   "priority": 0,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384,
-    "mode": "oracle_ledger"
-   },
-   "format": "ledger2",
-   "train": false,
-   "adapter": "adapters/B-F-ledger2-triplets-s0",
-   "a_code": "e40789bd5d7a",
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2"
-   ]
-  },
-  {
    "run_id": "B-AE-pred-bit-program",
    "seed": 0,
    "priority": 60,
@@ -222,25 +164,6 @@
    "format": "ledger2_dec",
    "train": false,
    "adapter": "adapters/B-AB-decfield-s0",
-   "a_code": "e40789bd5d7a",
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2"
-   ]
-  },
-  {
-   "run_id": "B-AE-field-swap",
-   "seed": 0,
-   "priority": 0,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384,
-    "mode": "ledger_swap"
-   },
-   "format": "ledger2",
-   "train": false,
-   "adapter": "adapters/B-F-ledger2-triplets-s0",
    "a_code": "e40789bd5d7a",
    "eval_sets": [
     "rule_v1/dev",

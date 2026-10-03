@@ -1,0 +1,112 @@
+{
+ "run_id": "B-F-summary2-blocks-s3",
+ "set": "rule_v1/test_L3alt",
+ "claim_type": "conclusion",
+ "all": {
+  "Rev": 100.0,
+  "Hold": 52.5,
+  "TA": 52.5,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 1000
+ },
+ "nm_kind=boundary": {
+  "Rev": 100.0,
+  "Hold": 57.35735735735736,
+  "TA": 57.35735735735736,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 333
+ },
+ "tier=alt": {
+  "Rev": 100.0,
+  "Hold": 52.5,
+  "TA": 52.5,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 1000
+ },
+ "level=L3-alt": {
+  "Rev": 100.0,
+  "Hold": 52.5,
+  "TA": 52.5,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 1000
+ },
+ "family=lab_threshold": {
+  "Rev": 100.0,
+  "Hold": 50.55467511885895,
+  "TA": 50.55467511885895,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 631
+ },
+ "nm_kind=time": {
+  "Rev": 100.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 333
+ },
+ "family=additive_score": {
+  "Rev": 100.0,
+  "Hold": 55.826558265582655,
+  "TA": 55.826558265582655,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 369
+ },
+ "nm_kind=numeric": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 334
+ },
+ "CI95": {
+  "TA": [
+   44.84848484848485,
+   60.536779324055665
+  ],
+  "Rev": [
+   100.0,
+   100.0
+  ],
+  "Hold": [
+   44.84848484848485,
+   60.536779324055665
+  ]
+ },
+ "step": {
+  "criterion": {
+   "Rev": 100.0,
+   "Hold": 63.391442155309036,
+   "TA": 63.391442155309036,
+   "BaseAcc": 100.0,
+   "Tie": 0.0,
+   "PresHold": 100.0,
+   "n": 631
+  }
+ },
+ "eval": {
+  "reader_units": 4000,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 202.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
