@@ -26,8 +26,6 @@ def main():
             sc = f"{RG}/{rid}/scores_{name}.jsonl"
             if name.count("~") != 1 or not os.path.exists(sc):
                 continue
-            if json.load(open(sp, encoding="utf-8")).get("eval", {}).get("mode") == "program_on_predicted_ledger":
-                continue
             set_name = name.replace("~", "/")
             if set_name not in reg:          # no local copy of this set (e.g. other folds): left as the runner wrote it
                 skipped.add(set_name)

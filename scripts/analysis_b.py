@@ -69,7 +69,7 @@ def done(rid):
 def pdiff(Ta, Tb, m):
     """a - b [95% CI], two-sided bootstrap p (C's paired_test: rules as clusters, reproducible order)."""
     d, lo, hi, p = paired_test(Ta, Tb, m)
-    p = f"p {p:.3f}" if p > 0 else "p < 0.001"     # 1,000 resamples, none on the other side
+    p = f"p {p:.3f}" if p > 0 else "p < 0.002"     # two-sided, 1,000 resamples: the smallest non-zero p is 0.002
     return f"{d:+.1f} [{lo:+.1f}, {hi:+.1f}], {p}"
 
 
@@ -118,7 +118,7 @@ def paired_section():
             print("|---|---|---|---|")
             for m, xs in items.items():
                 r = paired_cluster_bootstrap(xs, "u", mean("a"), mean("b"))
-                p = f"p {r['p']:.3f}" if r["p"] > 0 else "p < 0.001"
+                p = f"p {r['p']:.3f}" if r["p"] > 0 else "p < 0.002"
                 print(f"| {m} | {mean('a')(xs):.1f} | {mean('b')(xs):.1f} | {r['diff']:+.1f} [{r['lo']:+.1f}, {r['hi']:+.1f}], {p} |")
             print()
 
@@ -431,22 +431,27 @@ def fields_section():
 
 
 def ablation_section():
-    print("## 15. Ablations (Table 9; test_L2, seed 0; reference B-F-ledger2-triplets-s0)" + NL)
+    print("## 15. Ablations (Table 9; test_L2, seed 0; each row against its own reference: B-F-ledger2-triplets-s0 "
+          "unless named)" + NL)
     ref = "B-F-ledger2-triplets-s0"
+    own = {"B-AB-pairwise-s0": "B-F-verdict-triplets-s0",      # verdict format, Bradley-Terry instead of pointwise
+           "B-AB-probe-rw-s0": "B-F-ledger2-blocks-s0"}        # trained without near-misses (the '- near-misses' row)
     runs = sorted(os.path.basename(d) for d in glob.glob(f"{RG}/B-AB-*-s0") if done(os.path.basename(d)))
     runs += [r for r in ("B-AE-pred-bit-program", "B-AE-program-ledger", "B-AE-premise-gate") if done(r)]   # eval-only rows
     if not runs or not done(ref):
         print("not run" + NL)
         return
     Tr = triplets(ref)
-    print("| run | TA | Rev | Hold | TA minus reference [95% CI], p |")
-    print("|---|---|---|---|---|")
+    print("| run | TA | Rev | Hold | reference | TA minus reference [95% CI], p |")
+    print("|---|---|---|---|---|---|")
     for r in [ref] + runs:
         T = triplets(r)
         if not T:
             continue
         s = summarise(T)["all"]
-        print(f"| {r} | {s['TA']:.1f} | {s['Rev']:.1f} | {s['Hold']:.1f} | {'-' if r == ref else pdiff(T, Tr, 'TA')} |")
+        rr = own.get(r, ref)
+        cmp = "-" if r == ref else pdiff(T, Tr if rr == ref else triplets(rr), "TA") if done(rr) else "not run"
+        print(f"| {r} | {s['TA']:.1f} | {s['Rev']:.1f} | {s['Hold']:.1f} | {'-' if r == ref else rr} | {cmp} |")
     print()
 
 

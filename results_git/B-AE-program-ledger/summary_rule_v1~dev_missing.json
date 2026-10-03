@@ -2,6 +2,9 @@
  "run_id": "B-AE-program-ledger",
  "set": "rule_v1/dev_missing",
  "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
  "eval": {
   "mode": "program_on_predicted_ledger",
   "source_run": "B-F-ledger2-triplets-s0",
