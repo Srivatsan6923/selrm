@@ -16,7 +16,7 @@ Runs with these options go in task files that only runners with this code read."
 import argparse, gc, json, os, re, socket, sys, time, traceback
 
 KEYS = ("need", "found", "subject", "status", "time")
-GEN = 5     # runner capability generation: runs with min_gen > GEN are skipped (3: topk, n_groups subsets, budgets; 4: ThinkPRM wrapper; 5: xr_v1 subsets keep whole items)
+GEN = 6     # runner capability generation: runs with min_gen > GEN are skipped (3: topk, n_groups subsets, budgets; 4: ThinkPRM wrapper; 5: xr_v1 subsets keep whole items; 6: MedS3 loader fix)
 LENIENT_VERSION = 2      # 2: markdown tables (decided on the development sets, 3 Oct, before any test scoring)
 
 

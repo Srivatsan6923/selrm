@@ -60,7 +60,7 @@
    "format": "prm",
    "priority": 11,
    "bs": 8,
-   "min_gen": 3,
+   "min_gen": 6,
    "claim_types": [
     "conclusion",
     "criterion",
@@ -78,7 +78,7 @@
    "format": "prm",
    "priority": 21,
    "bs": 8,
-   "min_gen": 3,
+   "min_gen": 6,
    "claim_types": [
     "conclusion"
    ],
@@ -95,7 +95,7 @@
    "format": "prm",
    "priority": 31,
    "bs": 8,
-   "min_gen": 3,
+   "min_gen": 6,
    "claim_types": [
     "conclusion"
    ],
