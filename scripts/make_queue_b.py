@@ -316,7 +316,7 @@ def with_new_sets(runs, registry):
     adapter, so that sets A registers later are scored by B-NS eval-only runs (FINAL_TASKS_B P0.6)."""
     ns = new_sets(registry)
     for r in runs:
-        if r.get("train", True) and not r["run_id"].startswith(("B-FOLD", "B-DIV", "B-C0", "B-T0")):
+        if r.get("train", True) and not r["run_id"].startswith(("B-FOLD", "B-DIV", "B-C0", "B-T0", "B-AUX")):
             r["eval_sets"] = r["eval_sets"] + [s for s in ns if s not in r["eval_sets"]]
             r["keep_adapter"] = True
     return runs
@@ -364,6 +364,58 @@ def case_visible(registry, version):
     return runs
 
 
+# docs/AUX_PROTOCOL.md S1 (secondary analysis, specified 3 Oct after the planned comparisons failed): verdict format
+AUX_DS = {"nli4ct": {"train": "clin_v1/nli4ct_train", "dev": "clin_v1/nli4ct_dev", "test": ("clin_v1/nli4ct_test",)},
+          "medeinst": {"train": "clin_v1/medeinst_train", "dev": "clin_v1/medeinst_ref_dev",
+                       "test": ("clin_v1/medeinst_test", "clin_v1/medeinst_neg")},
+          "trialgpt": {"train": "clin_v1/trialgpt_cv", "dev": "clin_v1/trialgpt_dev", "test": ("clin_v1/trialgpt_cv",),
+                       "folds": 5}}
+AUX = {"2": "rule_v1x/aux_blocks_20k", "3": "rule_v1x/aux_triplets_20k", "4": "clin_v1/medeinst_neg_train"}
+AUX_EPOCHS = f"{ROOT}/configs/aux_epochs.json"      # {dataset: epochs}, fixed on dev by scripts/aux_epochs.py
+
+
+def aux(registry, seeds=(0, 1, 2)):
+    """S1 runs whose inputs are frozen in the registry. Epoch selection: B-AUX-<ds>-ep5-s0 (recipe 1, seed 0, five
+    epochs, an adapter saved after each) and B-AUX-<ds>-ep5-e<k> (adapter of epoch k on the dataset's dev split).
+    Grid, once configs/aux_epochs.json fixes the dataset's epochs E: B-AUX-<ds>[-f<fold>]-r<recipe>-s<seed>,
+    recipes 1 (E passes over the in-domain records), 1b (the same plus as many in-domain examples as recipe 3 has
+    auxiliary records), 2 and 3 (E passes plus every record of aux_blocks_20k / aux_triplets_20k once), 4 for MedEinst
+    (E passes plus every record of medeinst_neg_train once). TrialGPT: one run per held-out fold (fold and
+    not-applicable items excluded from training), scored on all of trialgpt_cv; C pools the held-out predictions."""
+    reg = json.load(open(registry))
+    ok = lambda name: reg.get(name, {}).get("frozen")
+    epochs = json.load(open(AUX_EPOCHS)).get("chosen", {}) if os.path.exists(AUX_EPOCHS) else {}
+    runs, base = [], {"format": "verdict", "keep_adapter": True, "eval": dict(EVAL), "max_drop": 0.01,
+                      "hp": {"per_device": 8}}          # long clinical notes (batch 64 unchanged)
+    for ds, c in AUX_DS.items():
+        if not ok(c["train"]):
+            continue
+        excl = lambda f: {"train_meta_exclude": {"fold": [f], "category": ["na"]}} if "folds" in c else {}
+        if ok(c["dev"]):                          # epoch selection; TrialGPT trains on folds 1-4 (fold 0 held out)
+            ep = f"B-AUX-{ds}-ep5-s0"
+            runs.append({**base, "run_id": ep, "seed": 0, "priority": priority(ep, 0), "corpus": c["train"],
+                         "passes": 1, "hp": {"per_device": 8, "epochs": 5}, "save_epochs": True, "eval_sets": []} | excl(0))
+            for k in range(1, 6):
+                runs.append({**base, "run_id": f"{ep}-e{k}", "seed": 0, "priority": priority(ep, 0), "train": False,
+                             "keep_adapter": False, "adapter": f"adapters/{ep}-e{k}", "eval_sets": [c["dev"]]})
+        if ds not in epochs:
+            continue
+        tests = [s for s in c["test"] if ok(s)]
+        recipes = {"1": {}, "1b": {"pad_examples": reg[AUX["3"]]["n_records"]},
+                   "2": {"mix": {"corpus": AUX["2"]}}, "3": {"mix": {"corpus": AUX["3"]}}}
+        if ds == "medeinst" and ok(AUX["4"]):
+            recipes["4"] = {"mix": {"corpus": AUX["4"]}}
+        for rc, extra in recipes.items():
+            if rc in ("2", "3", "4") and not ok(AUX[rc]):
+                continue
+            for sd in seeds:
+                for f in range(c.get("folds", 1)):
+                    rid = f"B-AUX-{ds}" + (f"-f{f}" if "folds" in c else "") + f"-r{rc}-s{sd}"
+                    runs.append({**base, "run_id": rid, "seed": sd, "priority": priority(rid, sd), "corpus": c["train"],
+                                 "passes": epochs[ds], "eval_sets": tests} | extra | excl(f))
+    return runs
+
+
 RW_CORPUS = "rule_v1x/train_triplets_rw"     # A's training-side rewrites (NEXT_TASKS_A 4), queued once frozen
 
 
@@ -385,7 +437,7 @@ def rewritten(registry, version):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("kind", choices=["smoke", "factorial", "transfer", "extras", "backbones", "probe_rw", "critic", "ns",
-                                     "newexp", "case_visible", "rewritten"])
+                                     "newexp", "case_visible", "rewritten", "aux"])
     ap.add_argument("out")
     ap.add_argument("--seeds", default="0")
     ap.add_argument("--registry", default=f"{ROOT}/data/REGISTRY.json")
@@ -405,6 +457,7 @@ def main():
            "newexp": lambda: newexp(seeds, a.registry, a.version),
            "case_visible": lambda: case_visible(a.registry, a.version),
            "rewritten": lambda: rewritten(a.registry, a.version),
+           "aux": lambda: aux(a.registry),
            "ns": lambda: ns_eval(a.registry, a.adapters.split(","))}
     runs = [r for r in with_new_sets(gen[a.kind](), a.registry) if re.search(a.runs, r["run_id"])]
     newer = [r["run_id"] for r in runs if r.get("min_gen", 0) >= 2]   # runners staged before 2 Oct 13:00 read the top level
