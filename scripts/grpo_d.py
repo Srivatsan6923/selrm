@@ -285,6 +285,8 @@ def main():
     ap.add_argument("--ledger-url", dest="ledger_url", default="http://127.0.0.1:8001")
     ap.add_argument("--ledger-model", dest="ledger_model", default=None)
     ap.add_argument("--medprm", default=None)
+    ap.add_argument("--vllm-mem", dest="vllm_mem", type=float, default=0.35,
+                    help="GPU memory share of the rollout engine (0.25 when the ledger server shares the GPU)")
     ap.add_argument("--overfit", type=int, default=0, help="train on this many prompts only (64: setup check)")
     ap.add_argument("--smoke", action="store_true", help="plumbing check on CPU with a small policy: groups of 4, "
                                                           "32-token completions; never a result")
@@ -349,7 +351,7 @@ def main():
                      # GRPO loss, advantages standardised within a group (v13 App. G); the outcome monitor has
                      # weight 0; rollouts from vLLM inside the training process (TRL 'colocate')
                      loss_type="grpo", scale_rewards="group", reward_weights=[1.0] + [0.0] * (len(funcs) - 1),
-                     use_vllm=not a.smoke, vllm_mode="colocate", vllm_gpu_memory_utilization=0.35,
+                     use_vllm=not a.smoke, vllm_mode="colocate", vllm_gpu_memory_utilization=a.vllm_mem,
                      vllm_max_model_length=4096,
                      # checkpoints at every evaluation: a preempted pod resumes from the last one (Job retry)
                      temperature=1.0, beta=0.0, logging_steps=1 if a.smoke else 10, save_steps=a.eval_every,
