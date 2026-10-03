@@ -37,8 +37,8 @@ one of the three author kits (21 confirmed, 17 low). All are addressed (`docs/DE
    `data/rewrite_v1/rejected.jsonl`.
 
 ## P1
-- Appendix B and C draft with result keys only: `docs/drafts/appendix_BC_A.tex` (70 keys, all
-  resolve).
+- Appendix B and C draft with result keys only: `docs/drafts/appendix_BC_A.tex` (73 keys, all
+  resolve; includes the two new known issues).
 - MedCalc-Bench: deferred. IDs are in `configs/medcalc_bench.json`; the code has no licence.
 - Folds 2-3, diversity corpora, check code and reference graphs: done earlier.
 
