@@ -142,6 +142,7 @@ def transfer(seeds, registry, version):
             if m and int(m[1]) in seeds and r["status"] not in ("done", "dropped", "deferred"):
                 runs.append({"run_id": r["run_id"], "seed": int(m[1]), "format": "ledger2", "corpus": corpus,
                              "n_examples": 60000, "priority": priority(r["run_id"], int(m[1]), r["priority"]),
+                             "max_drop": 0.01,     # long notes: 0.75% of examples exceed max_len 1024 (dropped)
                              "keep_adapter": True, "eval": dict(EVAL),
                              "eval_sets": ["clin_v1/medeinst_dis_test", f"{version}/dev", f"{version}/test_L2"]})
     return runs

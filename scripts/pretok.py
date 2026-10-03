@@ -160,7 +160,7 @@ def build_train(root, spec, tok, end):
         npr.append(len(p))
     if spec["format"] == "verdict_bt" and over:
         raise SystemExit(f"{over} pair sequences exceed max_len {L} in {d}")   # dropping one breaks the pairing
-    if over > 0.005 * len(ex):
+    if over > spec.get("max_drop", 0.005) * len(ex):      # clinical corpora (long notes): max_drop 0.01
         raise SystemExit(f"{over} of {len(ex)} examples exceed max_len {L} in {d}")
     ids, off = pack(seqs)
     os.makedirs(d, exist_ok=True)

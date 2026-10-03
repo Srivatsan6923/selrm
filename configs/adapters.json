@@ -135,6 +135,16 @@
    "corpus": "rule_v1/train_triplets",
    "pvc": "selrm-b",
    "pvc_path": "selrm/adapters/B-F-summary2-triplets-s2"
+  },
+  "B-F-ledger2-blocks-s1": {
+   "run_id": "B-F-ledger2-blocks-s1",
+   "path": null,
+   "status": "DONE (seed 1); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "ledger2",
+   "corpus": "rule_v1/train_blocks",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-F-ledger2-blocks-s1"
   }
  }
 }

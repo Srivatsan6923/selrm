@@ -29,6 +29,7 @@
    "corpus": "clin_v1/clinpairs_medeinst_dis",
    "n_examples": 60000,
    "priority": 74,
+   "max_drop": 0.01,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
