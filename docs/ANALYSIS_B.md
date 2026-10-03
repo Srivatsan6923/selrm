@@ -47,9 +47,14 @@ Every reader output of the two-stage runs (one per case and condition, on every 
 | run | reader outputs | contains a claim sentence | answer token line | answer/verdict word | claim judged | criterion decided | applies line | counts / does not count |
 |---|---|---|---|---|---|---|---|---|
 | B-F-summary2-blocks-s0 | 37497 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-summary2-blocks-s2 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-summary2-triplets-s0 | 10500 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-summary2-triplets-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-summary2-triplets-s2 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-blocks-s0 | 37497 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-ledger2-blocks-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | B-F-ledger2-triplets-s0 | 37497 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| B-F-ledger2-triplets-s1 | 39897 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## 3. Program-supplied ledger: transitions on test_L2 (B-F-ledger2-triplets-s0)
 
@@ -106,19 +111,26 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 |---|---|---|---|---|---|---|---|---|---|---|
 | B-BB-qwen3.5-4b-verdict-blocks-s0 | NVIDIA L40 | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 1.90 | 0.40 |
 | B-F-ledger2-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 13044356 | 1045348 | 938 | 1.76 | 1.03 |
+| B-F-ledger2-blocks-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13044356 | 1045348 | 938 | 0.77 | 0.65 |
 | B-F-ledger2-triplets-s0 | NVIDIA A100-PCIE-40GB | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 2.29 | 1.41 |
+| B-F-ledger2-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 13162612 | 1073333 | 938 | 0.94 | 0.56 |
 | B-F-rationale-balanced-s0 | NVIDIA H100 80GB HBM3 | 60000 | 60000 | - | - | 15970047 | 2094038 | 938 | 0.62 | 1.30 |
 | B-F-rationale-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 15979819 | 2088516 | 938 | 1.74 | 2.50 |
 | B-F-rationale-natural-s0 | NVIDIA A100-SXM4-80GB | 60000 | 60000 | - | - | 15851199 | 2034704 | 938 | 1.70 | 2.42 |
 | B-F-rationale-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 16138949 | 2144515 | 938 | 1.78 | 2.56 |
 | B-F-summary2-blocks-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 11864845 | 1055547 | 938 | 0.90 | 0.56 |
+| B-F-summary2-blocks-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 11864845 | 1055547 | 938 | 0.66 | 0.68 |
 | B-F-summary2-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 1.60 | 0.34 |
+| B-F-summary2-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 0.67 | 0.65 |
+| B-F-summary2-triplets-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 12007777 | 1095740 | 938 | 0.72 | 0.70 |
 | B-F-verdict-balanced-s0 | NVIDIA A100-SXM4-80GB | 60000 | 60000 | - | - | 12976009 | 120000 | 938 | 1.48 | 0.65 |
 | B-F-verdict-blocks-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 1.51 | 0.65 |
+| B-F-verdict-blocks-s1 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 1.51 | 0.65 |
 | B-F-verdict-blocks-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 12991303 | 120000 | 938 | 0.64 | 0.31 |
 | B-F-verdict-natural-s0 | NVIDIA A100-SXM4-80GB | 60000 | 60000 | - | - | 12916495 | 120000 | 938 | 1.56 | 0.68 |
 | B-F-verdict-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 1.51 | 0.65 |
 | B-F-verdict-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | - | - | 13094434 | 120000 | 938 | 0.64 | 0.31 |
+| B-LOKO-subject-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13135729 | 120000 | 938 | 0.69 | 0.14 |
 
 ## 8. Was donor-ledger resampling active?
 
@@ -127,9 +139,14 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | run | resample_p | judge examples | judge pairs (both claims) | pairs drawn from a donor case | share | (rule, condition, claim type) groups |
 |---|---|---|---|---|---|---|
 | B-F-ledger2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
+| B-F-ledger2-blocks-s1 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-ledger2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-ledger2-triplets-s1 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-F-summary2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
+| B-F-summary2-blocks-s2 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-F-summary2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-summary2-triplets-s1 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-F-summary2-triplets-s2 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 
 ## 9. Field interventions on the ledger x triplets adapter (test_L2)
 
@@ -196,7 +213,7 @@ Swap in the ledger of another case (same rule, condition and claim): the judge r
 
 | held-out kind | format | trained without the kind | trained on all kinds (B-F-<format>-triplets-s0) | without - all [95% CI], p |
 |---|---|---|---|---|
-| subject | verdict | not run | | |
+| subject | verdict | 7.0 | 91.0 | -84.0 [-89.2, -78.2], p < 0.001 |
 | subject | summary2 | not run | | |
 | subject | ledger2 | not run | | |
 | time | verdict | not run | | |
