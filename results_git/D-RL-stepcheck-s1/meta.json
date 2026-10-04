@@ -1,0 +1,14 @@
+{
+ "run_id": "D-RL-stepcheck-s1",
+ "reward": "stepcheck",
+ "policy": "/pvcb/selrm/models/unsloth--Qwen3.5-4B",
+ "seed": 1,
+ "steps": 1000,
+ "train_tasks": 11246,
+ "eval_tasks": 450,
+ "group_size": 8,
+ "lora_r": 16,
+ "lr": 1e-05,
+ "wall_seconds": 9833.0,
+ "gpu": "NVIDIA H100 80GB HBM3"
+}
