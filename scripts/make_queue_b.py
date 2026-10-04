@@ -398,7 +398,7 @@ AUX_EPOCHS = f"{ROOT}/configs/aux_epochs.json"      # {dataset: epochs}, fixed o
 def aux(registry, seeds=(0, 1, 2)):
     """S1 runs whose inputs are frozen in the registry. Epoch selection: B-AUX-<ds>-ep5-s0 (recipe 1, seed 0, five
     epochs, an adapter saved after each) and B-AUX-<ds>-ep5-e<k> (adapter of epoch k on the dataset's dev split).
-    Grid, once configs/aux_epochs.json fixes the dataset's epochs E: B-AUX-<ds>[-f<fold>]-r<recipe>-s<seed>,
+    Grid, once configs/aux_epochs.json fixes the dataset's epochs E: B-AUX-<ds>-r<recipe>-s<seed>[-f<fold>],
     recipes 1 (E passes over the in-domain records), 1b (the same plus as many in-domain examples as recipe 3 has
     auxiliary records), 2 and 3 (E passes plus every record of aux_blocks_20k / aux_triplets_20k once), 4 for MedEinst
     (E passes plus every record of medeinst_neg_train once). TrialGPT: one run per held-out fold (fold and
@@ -431,7 +431,7 @@ def aux(registry, seeds=(0, 1, 2)):
                 continue
             for sd in seeds:
                 for f in range(c.get("folds", 1)):
-                    rid = f"B-AUX-{ds}" + (f"-f{f}" if "folds" in c else "") + f"-r{rc}-s{sd}"
+                    rid = f"B-AUX-{ds}-r{rc}-s{sd}" + (f"-f{f}" if "folds" in c else "")   # C's eval_aux.py names
                     runs.append({**base, "run_id": rid, "seed": sd, "priority": priority(rid, sd), "corpus": c["train"],
                                  "passes": epochs[ds], "eval_sets": tests} | extra | excl(f))
     return runs

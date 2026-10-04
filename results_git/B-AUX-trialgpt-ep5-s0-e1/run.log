@@ -1,0 +1,5 @@
+2026-10-04T00:24:01Z eval only: base /work/models/unsloth--Qwen3.5-9B, adapter /pvc/selrm/adapters/B-AUX-trialgpt-ep5-s0-e1
+2026-10-04T00:24:02Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0083)
+2026-10-04T00:24:03Z padding self-check: max |u_batch - u_single| = 0.0866 (tol 0.642) -> left padding
+2026-10-04T00:24:08Z B-AUX-trialgpt-ep5-s0-e1 clin_v1/trialgpt_dev: TA nan Rev nan Hold nan n=None (6.9 s)
+2026-10-04T00:24:08Z DONE B-AUX-trialgpt-ep5-s0-e1 in 0.4 min, GPU util mean None

@@ -1,0 +1,10 @@
+{
+ "run_id": "B-AUX-trialgpt-ep5-s0-e3",
+ "set": "clin_v1/trialgpt_dev",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 7.4,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

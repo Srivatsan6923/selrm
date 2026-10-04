@@ -705,6 +705,26 @@
    "corpus": "rule_v1/train_triplets",
    "pvc": "selrm-b",
    "pvc_path": "selrm/adapters/B-SC-summary2-triplets-s2"
+  },
+  "B-AUX-trialgpt-ep5-s0": {
+   "run_id": "B-AUX-trialgpt-ep5-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "clin_v1/trialgpt_cv",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-AUX-trialgpt-ep5-s0"
+  },
+  "B-LC-ledger2-blocks-s0": {
+   "run_id": "B-LC-ledger2-blocks-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "ledger2_case",
+   "corpus": "rule_v1/train_blocks",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-LC-ledger2-blocks-s0"
   }
  }
 }
