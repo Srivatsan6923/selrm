@@ -1,0 +1,33 @@
+{
+ "run_id": "D-RL-ledger2-blocks-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "XA": 82.75,
+ "n_items": 400,
+ "n_incomplete": 0,
+ "n_excluded": 0,
+ "CellAcc": 97.125,
+ "n_cells": 2400,
+ "cells_without_label": 0,
+ "XA_currency": 89.0,
+ "XA_inclusivity": 81.0,
+ "XA_subject": 99.0,
+ "XA_window": 62.0,
+ "without_known_issues": {
+  "XA": 84.25414364640883,
+  "n_items": 362,
+  "n_incomplete": 0,
+  "n_excluded": 38,
+  "CellAcc": 97.37569060773481,
+  "n_cells": 2172,
+  "cells_without_label": 0,
+  "XA_currency": 87.05882352941177,
+  "XA_inclusivity": 90.9090909090909,
+  "XA_subject": 99.0,
+  "XA_window": 62.0
+ },
+ "final_step": 1000,
+ "from_files": [
+  "eval_xr_step1000.jsonl"
+ ]
+}
