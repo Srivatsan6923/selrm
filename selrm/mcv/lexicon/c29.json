@@ -1,0 +1,46 @@
+{"cid": 29,
+ "items": {
+  "Neoplastic disease": {
+   "np": "cancer",
+   "lexicon": ["cancer", "carcinom", "neoplas", "malignan", "tumou?r", "lymphoma", "hodgkin", "leuka?emi", "myeloma", "sarcoma", "melanoma", "metasta", "oncolog", "chemotherap", "cytotoxic", "radiotherap", "radiation therapy", "blastoma", "glioma", "mesothelioma", "myelodysplas", "seminoma", "\\bmass(es)?\\b", "\\b(CLL|AML|CML|MDS|HCC|NSCLC|SCLC)\\b"],
+   "relative_ok": true, "past_ok": true},
+  "Liver disease history": {
+   "np": "chronic liver disease",
+   "lexicon": ["liver", "hepat", "cirrho", "\\b(HCV|HBV|NASH|NAFLD|MELD|AST|ALT)\\b", "varices", "variceal", "\\bportal", "ascit", "jaundice", "icter", "transamin", "bilirubin", "cholang", "steato", "elastograph", "fibro-?scan", "ursodiol", "lactulose", "rifaximin", "tenofovir", "entecavir"],
+   "relative_ok": true, "past_ok": false},
+  "Congestive heart failure (CHF) history": {
+   "np": "congestive heart failure",
+   "lexicon": ["(heart|cardiac|pump|ventricular|myocardial|systolic|diastolic)( \\w+){0,2} (failure|dysfunction|decompensation|weakness|insufficiency)", "\\b(CHF|HF|HFrEF|HFpEF|LVEF|EF)\\b", "cardiomyopath", "ejection[- ]fraction", "pump function", "weak(ened)? heart", "dilated ventric", "(fluid|volume) overload", "structural( \\w+){0,2} heart disease", "pulmonary o?edema", "cor pulmonale", "orthopn", "paroxysmal nocturnal", "\\b(NT-?pro)?BNP\\b", "sacubitril", "furosemide", "torsemide", "bumetanide", "loop diuretic"],
+   "relative_ok": true, "past_ok": false},
+  "Cerebrovascular disease history": {
+   "np": "cerebrovascular disease",
+   "lexicon": ["stroke", "cerebro-?vascular", "\\b(CVA|TIA|tPA)\\b", "cerebral artery", "(cerebral|cerebellar|brain|lacunar|brainstem|cortical|parietal)( \\w+){0,2} infarct", "isch(a)?emic (event|insult|attack)", "transient (isch|neurolog)", "(intracranial|intracerebral|cerebral|subarachnoid|subdural) (ha?emorrhage|bleed)", "hemipar", "hemipleg", "aphasi", "focal (weakness|deficit|neurolog\\w* deficit)", "residual( \\w+){0,4} (weakness|deficit|spasticity|clumsiness)", "sided (drift|weakness)", "carotid (artery )?(surgery|stenosis|endarterectomy|disease|stent)", "thrombectomy", "thromboly"],
+   "relative_ok": true, "past_ok": false},
+  "Renal disease history": {
+   "np": "chronic kidney disease",
+   "lexicon": ["renal", "kidney", "\\b(CKD|ESRD|ESKD|AKI|CRF|e?GFR)\\b", "dialy", "nephr", "glomerul", "filtration", "ura?emi", "azota?emi", "arteriovenous (graft|fistula)", "tenckhoff", "sevelamer"],
+   "relative_ok": true, "past_ok": false},
+  "Altered mental status": {
+   "np": "altered mental status",
+   "lexicon": ["mental stat", "mentation", "mini-mental", "confus", "orient", "deliri", "letharg", "obtund", "somnol", "drows", "stupor", "responsive", "encephalopath", "\\bGCS\\b", "glasgow", "\\balert", "\\bawake", "conscious", "\\bcoma", "agitat", "cognit", "sensorium", "coheren", "attenti", "lucid", "spacey", "recogni[sz]", "command", "answer\\w* (\\w+ )?questions", "convers", "(the|exact|current|day.s|what) (date|day|month|year)\\b", "memory", "\\brecall"],
+   "relative_ok": false, "past_ok": true},
+  "Pleural effusion on x-ray": {
+   "np": "a pleural effusion on chest x-ray",
+   "lexicon": ["pleural", "effusion", "hydrothorax", "thoracentesis", "pleurocentesis", "costophrenic", "empyema", "chest tube", "meniscus", "layering", "stony", "blunt", "anechoic", "free fluid", "fluid (collection|level|accumulation)"],
+   "relative_ok": false, "past_ok": true}
+ },
+ "ineligible": {
+  "Age": "numeric",
+  "Sex": "categorical; levels (-10, 0)",
+  "Nursing home resident": "residence status; no natural noun phrase fits the has / free of / history of / had frames",
+  "Respiratory rate": "numeric",
+  "Systolic blood pressure": "numeric",
+  "Temperature": "numeric",
+  "Pulse": "numeric",
+  "pH": "numeric",
+  "BUN": "numeric",
+  "Sodium": "numeric",
+  "Glucose": "numeric",
+  "Hematocrit": "numeric",
+  "Partial pressure of oxygen": "numeric"
+ }}

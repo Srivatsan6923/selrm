@@ -18,6 +18,23 @@ def main():
             m = json.loads((ROOT / "data" / reg[name]["manifest"]).read_text(encoding="utf-8"))
             out[short] = {k: v for k, v in m.items() if k not in ("git_commit", "python", "template_split_hash")}
             out[short]["frozen"] = int(bool(reg[name].get("frozen")))
+    if "xr_v1" in out:                              # xr_v1 is reported on 400 items and on 362 without the known issues
+        known = json.loads((ROOT / "data" / "xr_v1" / "KNOWN_ISSUES.json").read_text(encoding="utf-8"))
+        items = sorted({i for issue in known["issues"] for i in issue["items"]})
+        out["xr_v1"]["known_issue_items"] = len(items)
+        out["xr_v1"]["n_items_without_known_issues"] = out["xr_v1"]["n_items"] - len(items)
+        path = ROOT / "data" / reg["xr_v1/test"]["path"]
+        if path.exists():                           # records are rebuilt by build_xr_v1.py --restore
+            import importlib.util
+            import sys
+            sys.path.insert(0, str(ROOT))
+            spec = importlib.util.spec_from_file_location("bx", ROOT / "scripts" / "build_xr_v1.py")
+            bx = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(bx)
+            from selrm import xr
+            recs = [json.loads(line) for line in open(path, encoding="utf-8")]
+            out["xr_v1"]["validation_without_known_issues"] = {
+                k: xr.crossed_accuracy(recs, s, exclude=items) for k, s in bx.scorers(recs).items()}
     prep = ROOT / "ec_v1" / "prepare_summary.json"
     if prep.exists():
         out["ec_v1_prepare"] = json.loads(prep.read_text(encoding="utf-8"))

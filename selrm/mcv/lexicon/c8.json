@@ -1,0 +1,117 @@
+{
+ "cid": 8,
+ "items": {
+  "Clinical signs and symptoms of DVT": {
+   "np": "clinical signs and symptoms of deep vein thrombosis",
+   "lexicon": [
+    "deep[- ]?(vein|venous)",
+    "\\bDVTs?\\b",
+    "thromb",
+    "phlegmasia",
+    "homans?'?s? sign",
+    "\\b(legs?|calf|calves|thighs?|limbs?|extremit\\w*|ankles?|foot|feet)\\W+(\\w+\\W+){0,4}(swell\\w*|swollen|edema\\w*|oedema\\w*|tender\\w*|pain\\w*|erythema\\w*|warm\\w*|red(ness)?)",
+    "(swell\\w*|swollen|edema\\w*|oedema\\w*|tender\\w*|pain\\w*|erythema\\w*|warm\\w*|red(ness)?)\\W+(\\w+\\W+){0,5}(legs?|calf|calves|thighs?|limbs?|extremit\\w*|ankles?|foot|feet)\\b",
+    "\\barms?\\W+(\\w+\\W+){0,4}(swell\\w*|swollen|o?edema\\w*)",
+    "(swell\\w*|swollen|o?edema\\w*)\\W+(\\w+\\W+){0,5}arms?\\b",
+    "pitting",
+    "(pedal|peripheral|ankle|leg) o?edema",
+    "venous (doppler|duplex|ultraso)",
+    "compression ultraso"
+   ],
+   "relative_ok": true,
+   "past_ok": false
+  },
+  "Previous, objectively diagnosed PE or DVT": {
+   "np": "objectively diagnosed deep vein thrombosis",
+   "lexicon": [
+    "deep[- ]?(vein|venous)",
+    "\\bDVTs?\\b",
+    "\\bPEs?\\b",
+    "\\bVTEs?\\b",
+    "embol",
+    "thromb",
+    "anti-?coagul",
+    "warfarin",
+    "coumadin",
+    "heparin",
+    "enoxaparin",
+    "rivaroxaban",
+    "apixaban",
+    "dabigatran",
+    "edoxaban",
+    "\\b[DN]OACs?\\b",
+    "\\bIVC filter",
+    "vena cava filter",
+    "blood clots?",
+    "clots? in",
+    "\\bLMWH\\b",
+    "fondaparinux",
+    "thrombolys"
+   ],
+   "relative_ok": true,
+   "past_ok": true
+  },
+  "Hemoptysis": {
+   "np": "hemoptysis",
+   "lexicon": [
+    "ha?emopt",
+    "cough\\w*\\W+(\\w+\\W+){0,3}blood",
+    "blood\\w*\\W+(\\w+\\W+){0,3}(sputum|cough|expectorat\\w*|phlegm)",
+    "(sputum|expectorat\\w*|phlegm)\\W+(\\w+\\W+){0,4}blood",
+    "ha?ematemesis",
+    "vomit\\w*\\W+(\\w+\\W+){0,5}blood",
+    "blood[- ]?(tinged|streaked|stained)",
+    "bloody",
+    "(pink|frothy|rusty|rust-colou?red)\\W+(\\w+\\W+){0,2}sputum"
+   ],
+   "relative_ok": true,
+   "past_ok": true
+  },
+  "Malignancy with treatment within 6 months or palliative": {
+   "np": "a malignancy under active chemotherapy",
+   "lexicon": [
+    "malignan",
+    "cancer",
+    "carcinoma",
+    "tumou?r",
+    "neoplas",
+    "lymphoma",
+    "leuk(a)?emia",
+    "myeloma",
+    "sarcoma",
+    "melanoma",
+    "blastoma",
+    "glioma",
+    "metasta",
+    "chemo",
+    "radiotherap",
+    "radiation",
+    "oncolog",
+    "palliat",
+    "hospice",
+    "mesothelioma",
+    "seminoma",
+    "\\bmass(es)?\\b",
+    "\\b(CLL|AML|CML|NSCLC|SCLC|HCC|MDS)\\b",
+    "ibrutinib",
+    "cytoreduc",
+    "hydroxyurea",
+    "cytarabine",
+    "immunotherap",
+    "pseudomyxoma",
+    "daratumumab",
+    "bortezomib",
+    "\\bblasts?\\b",
+    "lymphoproliferat",
+    "myeloproliferat"
+   ],
+   "relative_ok": true,
+   "past_ok": true
+  }
+ },
+ "ineligible": {
+  "PE is #1 diagnosis OR equally likely": "clinical judgement about the differential, not a patient finding that a noun phrase can state",
+  "Heart rate": "numeric item",
+  "Immobilization at least 3 days OR surgery in the previous 4 weeks": "event with a recency window; no natural noun phrase fits 'has/is free of/had ... some years ago' while keeping the 3-day or 4-week qualifier"
+ }
+}
