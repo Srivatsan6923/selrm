@@ -1,66 +1,55 @@
-# STATE role D (lead; maintained by the D session)
-Updated: 2026-10-03 ~19:10 UTC (Sat). Plan of record: FINAL_TASKS_D.md (repo root).
+# STATE role D (lead)
+Updated: 2026-10-08 (stage 2). Plan of record: STAGE2_TASKS_D.md, STAGE2_SPEC.md (= docs/INTERFACES.md section 9),
+docs/ANALYSIS_PLAN_STAGE2.md (commit 733ad25), HUMAN_TASKS_STAGE2.md. FINAL_TASKS and NEXT_TASKS are replaced.
+The run freeze of 7 Oct and the dates of 11-12 Oct are lifted (DECISIONS_D 8 Oct).
 
 ## Where D works
 - Clone `D:/NAACL27/selrm-role-d` (github Srivatsan6923/selrm): D's work on `role-d`; publish with
-  `git push origin role-d:main` (main = role-d + merges). Daily merges in a separate worktree
-  (`git worktree add D:/NAACL27/selrm-merge main`; resolve append-only tables with `scripts/union_merge.py`,
-  code conflicts in favour of the file's owner). `D:/selrm` is role A's tree: never use it.
-- Verified rule_v1 records in `data/rule_v1/<eval set>/records.jsonl` (gitignored) and, all 44 sets of 2 Oct,
-  in `D:/NAACL27/rule_v1_rebuild/`. LaTeX: tectonic at `D:/NAACL27/tools/tectonic.exe` (set TECTONIC).
+  `git push origin role-d` and `git push origin role-d:main`. Merges of role-a/b/c in the worktree
+  `D:/NAACL27/selrm-merge` (branch main; append-only tables with `scripts/union_merge.py`; code conflicts in
+  favour of the file's owner), push main, then `git merge origin/main` in the clone. `D:/selrm` is role A's
+  tree: never use it.
+- LaTeX: tectonic at `D:/NAACL27/tools/tectonic.exe` (TECTONIC). No pdflatex on this machine. Page check:
+  `python tools/length_plan/measure.py <pdf>`; the shipped v14 PDF (pdflatex) measures 7.999 pages and the same
+  source under tectonic 8.128, so a local build is within the limit when it measures 8.128 or less.
 - NRP (namespace ecepxie): PVC `selrm-d` (/pvc), B's PVC read-only (/pvcb). Launcher `scripts/submit_d.py`
-  (`export MSYS_NO_PATHCONV=1` in Git Bash). Env `/pvc/env/selrm-d-env-v1.tar` (vllm 0.30.0, torch 2.13.0 cu130,
-  transformers 5.18.0, peft 0.21.2). Sync pod `selrm-d-sync` (6 h max; recreate with sync-up). Merged ledger
-  models `/pvc/merged/B-F-ledger2-{triplets,blocks}-s0`; Med-PRM `/pvc/models/dmis-lab--llama-3.1-medprm-reward-v1.0`.
-  GPU jobs: `gpu NAME --gpu 24gb --n-gpu 2 ... --tp 2` (two 24 GB cards, tensor parallel) schedules fastest;
-  48 GB cards were saturated on 3 Oct. vLLM needs VLLM_USE_FLASHINFER_SAMPLER=0 (set by the launcher).
+  (`export MSYS_NO_PATHCONV=1` in Git Bash). Sync pod `selrm-d-sync` lives 6 h (`submit_d.py sync-down`, then
+  `sync-up`). Objects `selrm-d-*`, label app=selrm-d; never touch `selrm-b-*`.
+- Local pools and scores: `D:/NAACL27/d_pools/{pools,scores,grpo}`.
 
-## Done
-- P0.1 merges 1-4 (main 1c11383: 85 tests; rule_v1 hashes unchanged; scored sets frozen); STATUS_BOARD; change
-  requests answered/filed (open: tooling markers, A/B/C). Key-pair decision: C's one-directional sets
-  (keypairs_medqa_oneway 357, keypairs_careqa_oneway 225) for every key-pair column (DECISIONS_D 3 Oct).
-- P0.2 make_tables.py (keys, seeds, pooled CIs, C's paired_test/holm, MR, near-miss decisions, macro); tables/.
-- P0.3 update_paper.py, build_paper.py; v13 wired (docs/PAPER_NUMBERS.md). Build fails while placeholders remain.
-- P0.4 error sheets, citation checklist, development timeline (docs/TIMELINE.md, scripts/timeline.py --check).
-- P0.5 length plan (docs/LENGTH_PLAN.md).
-- P1: D-RES; pool/scoring/selection code; merged-adapter validation passed (D-VAL-ledger2-triplets-s0).
-## In progress
-- Pools: all five done and pulled (D:/NAACL27/d_pools, checksummed); selection committed: D-CAL, D-POOL-*,
-  D-SEL-* (sel/medqa, careqa, medeinst, keypairs), D-SEL-comparisons.json, D-SELN (curve). Re-run (deterministic):
-  python scripts/select_eval.py --pools D:/NAACL27/d_pools/pools --scores D:/NAACL27/d_pools/scores --out results_git
-- Clinical-pairs ledger (Table 5 caption): when B-TR-tripclin-s0 is DONE with its adapter on B's PVC, run
-  `submit_d.py gpu tripclin --gpu h100-opp --models "" --gpu-mem 64Gi --hours 10 -- k8s/tripclin_d.sh 1`
-  (merge, validation with the fixed criteria, then every pool + swaps + key-pair extension), pull the scores, then
-  `select_eval.py ... --ledger tripclin` (rows -rule keep the rule-only model; DECISIONS_D 3 Oct).
-- GRPO (D-RL-*, seed 0, 1,000 steps, Qwen3.5-4B LoRA, group 8; k8s/grpo_d.sh): committed outcome (pairs 88.7 ->
-  96.7) and stepcheck (88.0 -> 38.7, exploited); refgraph running (step 800); ledger2-triplets and ledger2-blocks
-  running since ~18:40 UTC on one H100 each (ledger server on the same GPU: server 32%, rollouts 22%,
-  --max-num-seqs 256), about 20 s/step. Finished runs started before per-example outputs need
-  `k8s/grpo_d.sh <reward> <run> --eval-from base /pvc/grpo/<run>/ckpt/checkpoint-1000` (24 GB GPU), then pull with
-  `submit_d.py pull /pvc/grpo/<run> D:/NAACL27/d_pools/grpo --exclude ckpt` and copy summary, curve, groups, meta,
-  eval_step*.jsonl, DONE into results_git/<run>. Ledger runs write eval_step*.jsonl themselves.
-- Claims audit of v13: docs/CLAIMS_AUDIT.md (872 statements; 98 contradicted, 50 partly; read main.tex at c43e751).
-- Sync pod selrm-d-sync recreated 16:45 UTC (expires ~22:45 UTC; `submit_d.py sync-down` then `sync-up`).
-- Lessons: cross-region CephFS reads ~5 MB/s (jobs require their PVC's region); vLLM needs
-  VLLM_USE_FLASHINFER_SAMPLER=0; transformers 5 apply_chat_template(tokenize=True) returns a dict (tokenise the
-  rendered text); argparse keeps '--' (the launcher strips it); a pod mounting the same PVC twice (rw + ro) hung in
-  ContainerCreating; opportunistic H100s are usable; a ~30 MB raw tar through kubectl exec was cut short (pull now
-  packs, checksums and retries); Qwen3.5 LoRA checkpoints from TRL need the image-text class to load (the text-only
-  class silently ignores the adapter); in Git Bash export MSYS_NO_PATHCONV=1 before kubectl exec with /pvc paths.
+## Done in stage 2 (8 Oct)
+- D0: plan on main (733ad25), hash in App. A, spec merged, role files in the root, decisions, board.
+- README.md and docs/TEAM_TASKS.md (people, tasks, due Sun 11 Oct), docs/PAPER_QUERIES.md.
+- D2: `scripts/red_cells.py` (count on the board, history in docs/RED_COUNT.csv): 215 tbd, 33 notes.
+- D4: patches prepared in paper/patches/ (G4_holds, G4_fails, P1 policy rewards); nothing applied.
+- D5: collected D-RL-ledger2-triplets-s1 (pairs 89.3 -> 43.3), D-RL-summary2-triplets-s0 (-> 52.0), rule-side and
+  TrialGPT answers of outcome-s1 and stepcheck-s1; `scripts/policy_analysis.py` -> results_git/D-RL-analysis,
+  audit/policy_outputs_D-RL-stepcheck-s*.md.
+- D6: swapped rows explained from the files (results_git/D-SEL-combined-swap/summary_sel~*.json: with a swapped
+  vignette the ledger's calibrated probability is the minimum in 0.03-0.4% of traces on MedQA, key pairs and
+  MedEinst, so the combined selector picks the step check's answer on every question; on CareQA 33 answers
+  differ, 14 right on each side). Not an implementation fault.
+- D8: citation checklist regenerated from v14 (94 keys, 28 with a VERIFY comment).
+
+## Running
+- GRPO jobs queued 8 Oct on h100-opp: refgraph-s1, and seed 2 of outcome, stepcheck, refgraph, ledger2-blocks,
+  ledger2-triplets (`k8s/grpo_d.sh <reward> D-RL-<reward>-s<k> --seed k --steps 1000 --eval-every 200
+  --eval-triplets 150`); evaluation-only jobs for xr/tg of ledger2-triplets-s1 and summary2-triplets-s0.
+  When DONE: `submit_d.py pull /pvc/grpo/<run> D:/NAACL27/d_pools/grpo --exclude ckpt`, copy everything except
+  vllm_server.log into results_git/<run>, `python scripts/policy_analysis.py`, commit.
+- D1: check of every black number of v14 against the result files (parts in the session scratchpad, to be
+  assembled into docs/PAPER_NUMBERS_V14.md), then typed numbers become result keys.
+
 ## Next
-1. When a pool's scores exist: `submit_d.py pull /pvc/pools/<pool> <local>` and /pvc/scores/<pool> (central:
-   --site central), run select_eval.py (D-CAL needs medqa_dev; medqa_kp gives sel/keypairs and D-SELN), then
-   make_tables, update_paper, results_summary; commit results D-CAL, D-POOL-*, D-SEL-*, D-SELN.
-2. If the pools are still pending around 12:00 UTC: COMPUTE REQUEST for a Colab 96 GB GPU session (STATE plan).
-3. Daily merge (worktree D:/NAACL27/selrm-merge), board, results summary; Mon 5: schedule ladder incl. the GRPO
-   decision (scripts/grpo_d.py ready, env v2); Wed 7 run freeze; Thu 8 RESULTS_SUMMARY; Sat 10 final audit.
-4. Human decisions on the board: H7a framing (C's TrialGPT report is in), H7 gates, H6 prose incl. key pairs.
-## Open compute requests
-- none. If NRP stays saturated for the pools, ask for the Colab 96 GB GPU session (COMPUTE REQUEST).
+1. D1.2: result keys inline in v14 (`\res{key}` reads numbers.tex; a missing result prints a red tbd); numbers
+   corrected to the files; mismatches listed in HANDOFFS for the human lead.
+2. D3: table shells for comparisons (7)-(12), MedCalc-V, gate, Table 14 (appendix until results exist).
+3. D7: merge at least daily; docs/CLAIMS_AUDIT_V14.md after each results merge; final audit.
+4. D5: after seed 2, three-seed table and the reward triplet profiles next to the policy outcome.
+5. D8: stage-2 sample sheets when A's sets exist; stage-2 failure sheets after C3.
+6. Gates G1-G4 as their inputs arrive (board).
 
-## Blockers
-- Table 5 MedEinst column: C's MedEinst runs are separate; D's MedEinst pool is its own 500 pairs (pending GPU).
-- Closed-judge row of Table 5: needs an API key (C's COMPUTE REQUEST #1).
-
-## Schedule
-- P0 on time. Run freeze Wed 7 Oct 23:59; final audit Sat 10 Oct.
+## Waiting on the human lead
+- H-S2-2 credentials (OpenRouter key; GitHub read secret and Hugging Face token for B).
+- Approval of paper/patches/P1_policy_ledger_rewards.md.
+- "Not run" sentences for items that will not be run (the lead proposes them when the owners report).
