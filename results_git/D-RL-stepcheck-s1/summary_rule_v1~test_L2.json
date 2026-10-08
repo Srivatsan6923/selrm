@@ -85,16 +85,16 @@
   "eval_step0.jsonl",
   "eval_step1000.jsonl"
  ],
- "start_base": 91.33333333333333,
- "start_flip": 98.0,
- "start_near": 90.66666666666667,
- "start_all": 93.33333333333333,
- "start_pair": 89.33333333333333,
- "start_triplet": 84.66666666666667,
  "acc_base": 67.33333333333333,
  "acc_flip": 86.0,
  "acc_near": 62.0,
  "acc_all": 71.77777777777777,
  "acc_pair": 54.666666666666664,
- "acc_triplet": 40.0
+ "acc_triplet": 40.0,
+ "start_base": 91.33333333333333,
+ "start_flip": 98.0,
+ "start_near": 90.66666666666667,
+ "start_all": 93.33333333333333,
+ "start_pair": 89.33333333333333,
+ "start_triplet": 84.66666666666667
 }

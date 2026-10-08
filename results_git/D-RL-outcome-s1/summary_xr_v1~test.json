@@ -1,0 +1,33 @@
+{
+ "run_id": "D-RL-outcome-s1",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "XA": 96.25,
+ "n_items": 400,
+ "n_incomplete": 0,
+ "n_excluded": 0,
+ "CellAcc": 99.375,
+ "n_cells": 2400,
+ "cells_without_label": 0,
+ "XA_currency": 100.0,
+ "XA_inclusivity": 100.0,
+ "XA_subject": 100.0,
+ "XA_window": 85.0,
+ "without_known_issues": {
+  "XA": 95.85635359116021,
+  "n_items": 362,
+  "n_incomplete": 0,
+  "n_excluded": 38,
+  "CellAcc": 99.30939226519337,
+  "n_cells": 2172,
+  "cells_without_label": 0,
+  "XA_currency": 100.0,
+  "XA_inclusivity": 100.0,
+  "XA_subject": 100.0,
+  "XA_window": 85.0
+ },
+ "final_step": 1000,
+ "from_files": [
+  "eval_xr_step1000.jsonl"
+ ]
+}
