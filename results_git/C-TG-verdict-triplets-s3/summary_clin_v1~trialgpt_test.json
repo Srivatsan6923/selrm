@@ -1,0 +1,140 @@
+{
+ "run_id": "C-TG-verdict-triplets-s3",
+ "set": "clin_v1/trialgpt_test",
+ "protocol": "docs/TRIALGPT_PROTOCOL.md",
+ "threshold": 6.777373313903809,
+ "n_items": 801,
+ "n_scored": 759,
+ "n_patients": 43,
+ "macroF1": 68.0347103310268,
+ "macroF1_CI95": [
+  62.957117932261944,
+  73.01454065997032
+ ],
+ "acc": 69.6969696969697,
+ "acc_CI95": [
+  64.41798941798942,
+  74.93917274939173
+ ],
+ "per_class": {
+  "met": {
+   "P": 87.8048780487805,
+   "R": 52.17391304347826,
+   "F1": 65.45454545454545,
+   "n": 138
+  },
+  "not_met": {
+   "P": 84.31952662721893,
+   "R": 73.26478149100257,
+   "F1": 78.40440165061898,
+   "n": 389
+  },
+  "nei": {
+   "P": 50.737463126843664,
+   "R": 74.13793103448276,
+   "F1": 60.24518388791594,
+   "n": 232
+  }
+ },
+ "confusion": {
+  "met": {
+   "met": 72,
+   "nei": 66
+  },
+  "not_met": {
+   "not_met": 285,
+   "nei": 101,
+   "met": 3
+  },
+  "nei": {
+   "nei": 172,
+   "met": 7,
+   "not_met": 53
+  }
+ },
+ "pred_distribution": {
+  "not_met": 338,
+  "met": 82,
+  "nei": 339
+ },
+ "macroF1_five_names": 49.32087644870343,
+ "per_class_five_names": {
+  "included": {
+   "P": 91.13924050632912,
+   "R": 54.961832061068705,
+   "F1": 68.57142857142857,
+   "n": 131
+  },
+  "not included": {
+   "P": 37.5,
+   "R": 37.5,
+   "F1": 37.5,
+   "n": 16
+  },
+  "excluded": {
+   "P": 0.0,
+   "R": 0.0,
+   "F1": 0.0,
+   "n": 7
+  },
+  "not excluded": {
+   "P": 86.64596273291926,
+   "R": 74.79892761394102,
+   "F1": 80.28776978417265,
+   "n": 373
+  },
+  "not enough information": {
+   "P": 50.737463126843664,
+   "R": 74.13793103448276,
+   "F1": 60.24518388791594,
+   "n": 232
+  }
+ },
+ "by_type": {
+  "inclusion": {
+   "macroF1": 59.67580113806529,
+   "acc": 69.28571428571429,
+   "n": 280
+  },
+  "exclusion": {
+   "macroF1": 41.51884816257665,
+   "acc": 69.93736951983298,
+   "n": 479
+  }
+ },
+ "not_applicable": {
+  "n": 42,
+  "pred": {
+   "nei": 10,
+   "not_met": 32
+  }
+ },
+ "forced_choice_acc": 92.97912713472486,
+ "n_forced": 527,
+ "evidence": null,
+ "evidence_malformed_without_quotes": null,
+ "per_trial_acc": {
+  "n_trials": 64,
+  "min_items": 5,
+  "min": 22.22222222222222,
+  "median": 69.78260869565217,
+  "max": 100.0
+ },
+ "bootstrap": {
+  "unit": "patient",
+  "B": 1000,
+  "seed": 0
+ },
+ "threshold_source": "results_git/C-TG-verdict-triplets-s3/scores_rule_v1~dev_missing.jsonl",
+ "threshold_alt": {
+  "source": "origin/role-b:results_git/B-F-verdict-triplets-s3/scores_rule_v1~dev_missing.jsonl",
+  "tau": 6.798053741455078,
+  "macroF1": 68.0347103310268,
+  "acc": 69.6969696969697
+ },
+ "eval": {
+  "seconds": 61.5,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

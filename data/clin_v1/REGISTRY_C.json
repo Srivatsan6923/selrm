@@ -119,6 +119,30 @@
   "split": "test",
   "tier": "external"
  },
+ "clin_v1/medeinst_neg": {
+  "created": "2026-10-03",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/medeinst_neg/MANIFEST.json",
+  "n_groups": 3699,
+  "n_records": 7398,
+  "path": "clin_v1/medeinst_neg/records.jsonl",
+  "sha256": "4cb7eaba80c33e2aaa10c6ca4671b46ef7d08e31e76e552e0c89fbb9bd49b293",
+  "split": "test",
+  "tier": "external"
+ },
+ "clin_v1/medeinst_neg_train": {
+  "created": "2026-10-03",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/medeinst_neg_train/MANIFEST.json",
+  "n_groups": 7072,
+  "n_records": 14144,
+  "path": "clin_v1/medeinst_neg_train/records.jsonl",
+  "sha256": "a470e9504364065989ea669daa6b6e634a2a58544fe3002f842f5b090449d633",
+  "split": "train",
+  "tier": "external"
+ },
  "clin_v1/medeinst_ref_dev": {
   "created": "2026-10-02",
   "frozen": true,
@@ -155,6 +179,19 @@
   "split": "test",
   "tier": "external"
  },
+ "clin_v1/medeinst_train": {
+  "alias_of": "clin_v1/clinpairs_medeinst",
+  "created": "2026-10-02",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/clinpairs_medeinst/MANIFEST.json",
+  "n_groups": 7807,
+  "n_records": 31228,
+  "path": "clin_v1/clinpairs_medeinst/records.jsonl",
+  "sha256": "5b0e7e9a3fdd2c958d020a34eab2b8636c11a012e176125207c222fda28ee37a",
+  "split": "train",
+  "tier": "external"
+ },
  "clin_v1/nli4ct_dev": {
   "created": "2026-10-02",
   "frozen": true,
@@ -177,6 +214,30 @@
   "path": "clin_v1/nli4ct_test/records.jsonl",
   "sha256": "e8102c29f2dacc921fb929a52cba132e93fd4aaf333a6d7325af2687701ecf64",
   "split": "test",
+  "tier": "external"
+ },
+ "clin_v1/nli4ct_train": {
+  "created": "2026-10-03",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/nli4ct_train/MANIFEST.json",
+  "n_groups": 1700,
+  "n_records": 1700,
+  "path": "clin_v1/nli4ct_train/records.jsonl",
+  "sha256": "a6865c75ca0a9c27e570a5197421f684ea3ae28b9483cea29f6b8a441716cdb4",
+  "split": "train",
+  "tier": "external"
+ },
+ "clin_v1/trialgpt_cv": {
+  "created": "2026-10-03",
+  "frozen": true,
+  "level": "external",
+  "manifest": "clin_v1/trialgpt_cv/MANIFEST.json",
+  "n_groups": 801,
+  "n_records": 1602,
+  "path": "clin_v1/trialgpt_cv/records.jsonl",
+  "sha256": "89f2229e731f5be56fe7e91554566f63f4777cb081dbc26ab4d6fb731b194c81",
+  "split": "cv",
   "tier": "external"
  },
  "clin_v1/trialgpt_dev": {
@@ -202,5 +263,57 @@
   "sha256": "351d15ab9b5c1a73ad7b30063e741c273c5775866c867351b7fd70ea014f4f99",
   "split": "test",
   "tier": "external"
+ },
+ "rule_v1/test_L2@none": {
+  "created": "2026-10-08",
+  "frozen": true,
+  "level": "L2",
+  "manifest": "views/rule_v1/test_L2@none/MANIFEST.json",
+  "n_groups": 2000,
+  "n_records": 29248,
+  "parent": "rule_v1/test_L2",
+  "path": "views/rule_v1/test_L2@none/records.jsonl",
+  "sha256": "cc16ab23aca96e6eb640b6b8739f66f6e00c77ba600503d2d12afcc5708f7842",
+  "split": "test",
+  "tier": "view"
+ },
+ "rule_v1/test_L2@wrong": {
+  "created": "2026-10-08",
+  "frozen": true,
+  "level": "L2",
+  "manifest": "views/rule_v1/test_L2@wrong/MANIFEST.json",
+  "n_groups": 2000,
+  "n_records": 29248,
+  "parent": "rule_v1/test_L2",
+  "path": "views/rule_v1/test_L2@wrong/records.jsonl",
+  "sha256": "e0912ce7f4f71ccaeb905bcb59830425f8e44ced551df4acd44d582e83976ed4",
+  "split": "test",
+  "tier": "view"
+ },
+ "rule_v1/test_L3inv@none": {
+  "created": "2026-10-08",
+  "frozen": true,
+  "level": "L3-inv",
+  "manifest": "views/rule_v1/test_L3inv@none/MANIFEST.json",
+  "n_groups": 1000,
+  "n_records": 16000,
+  "parent": "rule_v1/test_L3inv",
+  "path": "views/rule_v1/test_L3inv@none/records.jsonl",
+  "sha256": "6fb494011b602922579a67eae07c9f30ac0df6779d84199f4a28d38420d43c77",
+  "split": "test",
+  "tier": "view"
+ },
+ "rule_v1/test_L3inv@wrong": {
+  "created": "2026-10-08",
+  "frozen": true,
+  "level": "L3-inv",
+  "manifest": "views/rule_v1/test_L3inv@wrong/MANIFEST.json",
+  "n_groups": 1000,
+  "n_records": 16000,
+  "parent": "rule_v1/test_L3inv",
+  "path": "views/rule_v1/test_L3inv@wrong/records.jsonl",
+  "sha256": "f6ff606edb8ca2792c75684a69a919fa63c8a8b27b8beb9c6ce27803fa50bdef",
+  "split": "test",
+  "tier": "view"
  }
 }

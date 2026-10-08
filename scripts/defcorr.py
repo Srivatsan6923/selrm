@@ -86,6 +86,9 @@ def main():
         elif s not in ("rule_v1/missing", "rule_v1/dev_missing"):
             T = M.decisions(recs, [u[r["iid"]] for r in recs])
             summ |= M.summarise(T)
+            crit = M.summarise(M.decisions(recs, [u[r["iid"]] for r in recs], "criterion")).get("all")
+            if crit:                      # criterion-claim TA (the "step" block of B's summaries)
+                summ["step"] = {"criterion": crit}
             if summ.get("all"):
                 summ["CI95"] = {m: list(M.bootstrap_ci(T, m)) for m in ("TA", "Rev", "Hold")}
         json.dump(summ, open(f"{out}/summary_{s.replace('/', '~')}.json", "w", encoding="utf-8", newline="\n"), indent=1)

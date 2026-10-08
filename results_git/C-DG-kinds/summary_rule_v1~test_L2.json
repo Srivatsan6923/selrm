@@ -1,0 +1,347 @@
+{
+ "run_id": "C-DG-kinds",
+ "set": "rule_v1/test_L2",
+ "definition": "selrm.metrics.nearmiss_table by nm_kind (n, SameDecision, BothCorrect, n_base_correct, NearGivenBase, UnnecessaryReversal, TieGivenBase)",
+ "signal=C-TF-critic": {
+  "all": {
+   "n": 2000,
+   "SameDecision": 84.45,
+   "BothCorrect": 28.1,
+   "n_base_correct": 791,
+   "NearGivenBase": 71.04930467762325,
+   "UnnecessaryReversal": 28.95069532237674,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=time": {
+   "n": 400,
+   "SameDecision": 89.75,
+   "BothCorrect": 36.75,
+   "n_base_correct": 175,
+   "NearGivenBase": 84.0,
+   "UnnecessaryReversal": 16.0,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=subject": {
+   "n": 400,
+   "SameDecision": 94.0,
+   "BothCorrect": 19.75,
+   "n_base_correct": 94,
+   "NearGivenBase": 84.04255319148936,
+   "UnnecessaryReversal": 15.957446808510639,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=boundary": {
+   "n": 400,
+   "SameDecision": 62.5,
+   "BothCorrect": 17.75,
+   "n_base_correct": 218,
+   "NearGivenBase": 32.56880733944954,
+   "UnnecessaryReversal": 67.43119266055047,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=numeric": {
+   "n": 400,
+   "SameDecision": 89.25,
+   "BothCorrect": 41.75,
+   "n_base_correct": 203,
+   "NearGivenBase": 82.26600985221675,
+   "UnnecessaryReversal": 17.733990147783253,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=negation": {
+   "n": 400,
+   "SameDecision": 86.75,
+   "BothCorrect": 24.5,
+   "n_base_correct": 101,
+   "NearGivenBase": 97.02970297029702,
+   "UnnecessaryReversal": 2.9702970297029703,
+   "TieGivenBase": 0.0
+  },
+  "source_run": "C-TF-critic"
+ },
+ "signal=B-F-verdict-blocks": {
+  "all": {
+   "n": 2000,
+   "SameDecision": 64.65,
+   "BothCorrect": 61.15,
+   "n_base_correct": 1922,
+   "NearGivenBase": 63.63163371488033,
+   "UnnecessaryReversal": 36.36836628511967,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=time": {
+   "n": 400,
+   "SameDecision": 66.75,
+   "BothCorrect": 63.0,
+   "n_base_correct": 385,
+   "NearGivenBase": 65.45454545454545,
+   "UnnecessaryReversal": 34.54545454545455,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=subject": {
+   "n": 400,
+   "SameDecision": 19.75,
+   "BothCorrect": 14.25,
+   "n_base_correct": 378,
+   "NearGivenBase": 15.079365079365079,
+   "UnnecessaryReversal": 84.92063492063492,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=boundary": {
+   "n": 400,
+   "SameDecision": 40.0,
+   "BothCorrect": 37.5,
+   "n_base_correct": 390,
+   "NearGivenBase": 38.46153846153846,
+   "UnnecessaryReversal": 61.53846153846154,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=numeric": {
+   "n": 400,
+   "SameDecision": 97.5,
+   "BothCorrect": 94.5,
+   "n_base_correct": 383,
+   "NearGivenBase": 98.69451697127937,
+   "UnnecessaryReversal": 1.3054830287206267,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=negation": {
+   "n": 400,
+   "SameDecision": 99.25,
+   "BothCorrect": 96.5,
+   "n_base_correct": 386,
+   "NearGivenBase": 100.0,
+   "UnnecessaryReversal": 0.0,
+   "TieGivenBase": 0.0
+  },
+  "source_run": "B-F-verdict-blocks-s0"
+ },
+ "signal=B-F-verdict-triplets": {
+  "all": {
+   "n": 2000,
+   "SameDecision": 97.85,
+   "BothCorrect": 96.55,
+   "n_base_correct": 1952,
+   "NearGivenBase": 98.92418032786885,
+   "UnnecessaryReversal": 1.0758196721311475,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=time": {
+   "n": 400,
+   "SameDecision": 95.5,
+   "BothCorrect": 93.5,
+   "n_base_correct": 390,
+   "NearGivenBase": 95.8974358974359,
+   "UnnecessaryReversal": 4.102564102564102,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=subject": {
+   "n": 400,
+   "SameDecision": 98.0,
+   "BothCorrect": 96.5,
+   "n_base_correct": 386,
+   "NearGivenBase": 100.0,
+   "UnnecessaryReversal": 0.0,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=boundary": {
+   "n": 400,
+   "SameDecision": 99.0,
+   "BothCorrect": 99.0,
+   "n_base_correct": 396,
+   "NearGivenBase": 100.0,
+   "UnnecessaryReversal": 0.0,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=numeric": {
+   "n": 400,
+   "SameDecision": 99.0,
+   "BothCorrect": 97.75,
+   "n_base_correct": 391,
+   "NearGivenBase": 100.0,
+   "UnnecessaryReversal": 0.0,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=negation": {
+   "n": 400,
+   "SameDecision": 97.75,
+   "BothCorrect": 96.0,
+   "n_base_correct": 389,
+   "NearGivenBase": 98.7146529562982,
+   "UnnecessaryReversal": 1.2853470437017995,
+   "TieGivenBase": 0.0
+  },
+  "source_run": "B-F-verdict-triplets-s0"
+ },
+ "signal=B-F-ledger2-blocks": {
+  "all": {
+   "n": 2000,
+   "SameDecision": 75.8,
+   "BothCorrect": 75.35,
+   "n_base_correct": 1975,
+   "NearGivenBase": 76.30379746835443,
+   "UnnecessaryReversal": 23.645569620253166,
+   "TieGivenBase": 0.05063291139240506
+  },
+  "nm_kind=time": {
+   "n": 400,
+   "SameDecision": 58.75,
+   "BothCorrect": 58.75,
+   "n_base_correct": 399,
+   "NearGivenBase": 58.89724310776943,
+   "UnnecessaryReversal": 40.852130325814535,
+   "TieGivenBase": 0.2506265664160401
+  },
+  "nm_kind=subject": {
+   "n": 400,
+   "SameDecision": 51.0,
+   "BothCorrect": 48.75,
+   "n_base_correct": 387,
+   "NearGivenBase": 50.3875968992248,
+   "UnnecessaryReversal": 49.6124031007752,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=boundary": {
+   "n": 400,
+   "SameDecision": 72.0,
+   "BothCorrect": 72.0,
+   "n_base_correct": 400,
+   "NearGivenBase": 72.0,
+   "UnnecessaryReversal": 28.0,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=numeric": {
+   "n": 400,
+   "SameDecision": 99.75,
+   "BothCorrect": 99.75,
+   "n_base_correct": 399,
+   "NearGivenBase": 100.0,
+   "UnnecessaryReversal": 0.0,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=negation": {
+   "n": 400,
+   "SameDecision": 97.5,
+   "BothCorrect": 97.5,
+   "n_base_correct": 390,
+   "NearGivenBase": 100.0,
+   "UnnecessaryReversal": 0.0,
+   "TieGivenBase": 0.0
+  },
+  "source_run": "B-F-ledger2-blocks-s0"
+ },
+ "signal=B-F-ledger2-triplets": {
+  "all": {
+   "n": 2000,
+   "SameDecision": 99.55,
+   "BothCorrect": 99.55,
+   "n_base_correct": 1992,
+   "NearGivenBase": 99.94979919678715,
+   "UnnecessaryReversal": 0.050200803212851405,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=time": {
+   "n": 400,
+   "SameDecision": 100.0,
+   "BothCorrect": 100.0,
+   "n_base_correct": 400,
+   "NearGivenBase": 100.0,
+   "UnnecessaryReversal": 0.0,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=subject": {
+   "n": 400,
+   "SameDecision": 98.75,
+   "BothCorrect": 98.75,
+   "n_base_correct": 396,
+   "NearGivenBase": 99.74747474747475,
+   "UnnecessaryReversal": 0.25252525252525254,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=boundary": {
+   "n": 400,
+   "SameDecision": 100.0,
+   "BothCorrect": 100.0,
+   "n_base_correct": 400,
+   "NearGivenBase": 100.0,
+   "UnnecessaryReversal": 0.0,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=numeric": {
+   "n": 400,
+   "SameDecision": 100.0,
+   "BothCorrect": 100.0,
+   "n_base_correct": 400,
+   "NearGivenBase": 100.0,
+   "UnnecessaryReversal": 0.0,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=negation": {
+   "n": 400,
+   "SameDecision": 99.0,
+   "BothCorrect": 99.0,
+   "n_base_correct": 396,
+   "NearGivenBase": 100.0,
+   "UnnecessaryReversal": 0.0,
+   "TieGivenBase": 0.0
+  },
+  "source_run": "B-F-ledger2-triplets-s0"
+ },
+ "signal=B-F-summary2-triplets": {
+  "all": {
+   "n": 2000,
+   "SameDecision": 98.2,
+   "BothCorrect": 98.1,
+   "n_base_correct": 1973,
+   "NearGivenBase": 99.44247339077548,
+   "UnnecessaryReversal": 0.5575266092245311,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=time": {
+   "n": 400,
+   "SameDecision": 100.0,
+   "BothCorrect": 100.0,
+   "n_base_correct": 400,
+   "NearGivenBase": 100.0,
+   "UnnecessaryReversal": 0.0,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=subject": {
+   "n": 400,
+   "SameDecision": 94.0,
+   "BothCorrect": 93.5,
+   "n_base_correct": 385,
+   "NearGivenBase": 97.14285714285714,
+   "UnnecessaryReversal": 2.857142857142857,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=boundary": {
+   "n": 400,
+   "SameDecision": 100.0,
+   "BothCorrect": 100.0,
+   "n_base_correct": 400,
+   "NearGivenBase": 100.0,
+   "UnnecessaryReversal": 0.0,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=numeric": {
+   "n": 400,
+   "SameDecision": 100.0,
+   "BothCorrect": 100.0,
+   "n_base_correct": 400,
+   "NearGivenBase": 100.0,
+   "UnnecessaryReversal": 0.0,
+   "TieGivenBase": 0.0
+  },
+  "nm_kind=negation": {
+   "n": 400,
+   "SameDecision": 97.0,
+   "BothCorrect": 97.0,
+   "n_base_correct": 388,
+   "NearGivenBase": 100.0,
+   "UnnecessaryReversal": 0.0,
+   "TieGivenBase": 0.0
+  },
+  "source_run": "B-F-summary2-triplets-s0"
+ }
+}

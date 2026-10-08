@@ -1,0 +1,101 @@
+{
+ "patterns": {
+  "verdict": [
+   "\\bthe claim (?:is|was) (?:not )?(?:correct|incorrect|true|false|right|wrong)\\b",
+   "\\banswer\\s*:",
+   "(?:^|\\n)\\s*[+\\-]\\s*$"
+  ],
+  "criterion": [
+   "\\b(?:criterion|condition|requirement)s? (?:is|are|was|were) (?:not )?(?:met|satisfied|fulfilled)\\b",
+   "\\b(?:meets|does not meet|do not meet|fails to meet)\\b",
+   "\\b(?:not )?eligible\\b",
+   "\\bdoes not apply\\b",
+   "\\bapplies\\b",
+   "\\bsatisf(?:ies|y|ied)\\b",
+   "\\bcontradict",
+   "\\bfalls? (?:within|outside)\\b",
+   "\\bwithin the (?:specified |required )?range\\b",
+   "\\bfulfil"
+  ],
+  "action": [
+   "\\btherefore\\b",
+   "\\bthus\\b",
+   "\\bhence\\b",
+   "\\bshould(?: not)?\\b",
+   "\\brecommend",
+   "\\bis indicated\\b",
+   "\\bcontraindicat"
+  ],
+  "compare": [
+   "\\b(?:above|below|greater than|less than|exceeds?|higher than|lower than|at or above|at or below)\\s+\\d"
+  ]
+ },
+ "sets": {
+  "rule_v1/dev": {
+   "units": 1200,
+   "condition_removed": true,
+   "decision_language_any": 12.17,
+   "decision_language_verdict": 0.0,
+   "decision_language_criterion": 0.58,
+   "decision_language_action": 1.33,
+   "decision_language_compare": 10.67,
+   "malformed_rate_strict": 0.985,
+   "mean_chars": 333.0
+  },
+  "rule_v1/dev_missing": {
+   "units": 600,
+   "condition_removed": true,
+   "decision_language_any": 9.83,
+   "decision_language_verdict": 0.0,
+   "decision_language_criterion": 0.33,
+   "decision_language_action": 2.33,
+   "decision_language_compare": 8.0,
+   "malformed_rate_strict": 0.9717,
+   "mean_chars": 331.1
+  },
+  "rule_v1/missing": {
+   "units": 2000,
+   "condition_removed": true,
+   "decision_language_any": 8.25,
+   "decision_language_verdict": 0.0,
+   "decision_language_criterion": 0.35,
+   "decision_language_action": 1.25,
+   "decision_language_compare": 7.1,
+   "malformed_rate_strict": 0.9705,
+   "mean_chars": 324.2
+  },
+  "rule_v1/test_L2": {
+   "units": 8000,
+   "condition_removed": true,
+   "decision_language_any": 12.2,
+   "decision_language_verdict": 0.0,
+   "decision_language_criterion": 0.53,
+   "decision_language_action": 2.11,
+   "decision_language_compare": 10.05,
+   "malformed_rate_strict": 0.9875,
+   "mean_chars": 357.0
+  },
+  "rule_v1/test_L3alt": {
+   "units": 4000,
+   "condition_removed": true,
+   "decision_language_any": 16.12,
+   "decision_language_verdict": 0.0,
+   "decision_language_criterion": 0.07,
+   "decision_language_action": 0.03,
+   "decision_language_compare": 16.07,
+   "malformed_rate_strict": 0.9975,
+   "mean_chars": 216.2
+  },
+  "xr_v1/test": {
+   "units": 2400,
+   "condition_removed": false,
+   "decision_language_any": 6.0,
+   "decision_language_verdict": 0.0,
+   "decision_language_criterion": 1.54,
+   "decision_language_action": 0.0,
+   "decision_language_compare": 4.46,
+   "malformed_rate_strict": 1.0,
+   "mean_chars": 249.7
+  }
+ }
+}

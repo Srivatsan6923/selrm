@@ -1,0 +1,21 @@
+{
+ "run": "C-ME-ledger2-triplets-s0",
+ "set": "clin_v1/medeinst_test",
+ "units": 10766,
+ "counts": {
+  "well formed": 6903,
+  "entry not five lines": 3251,
+  "found not verbatim": 454,
+  "last entry cut": 144,
+  "other": 8,
+  "field names or order": 6
+ },
+ "shares": {
+  "well formed": 64.11852127066692,
+  "entry not five lines": 30.19691621772246,
+  "found not verbatim": 4.216979379528144,
+  "last entry cut": 1.3375441203789709,
+  "other": 0.0743080066877206,
+  "field names or order": 0.05573100501579045
+ }
+}

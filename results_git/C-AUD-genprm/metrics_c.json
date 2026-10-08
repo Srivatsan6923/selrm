@@ -1,0 +1,304 @@
+{
+ "run": "C-AUD-genprm",
+ "rule_v1/test_L2": {
+  "summary": {
+   "all": {
+    "Rev": 47.5,
+    "Hold": 61.5,
+    "TA": 33.5,
+    "BaseAcc": 69.0,
+    "Tie": 6.5,
+    "PresHold": 71.5,
+    "n": 200
+   },
+   "nm_kind=boundary": {
+    "Rev": 55.0,
+    "Hold": 75.0,
+    "TA": 47.5,
+    "BaseAcc": 72.5,
+    "Tie": 2.5,
+    "PresHold": 85.0,
+    "n": 40
+   },
+   "tier=easy": {
+    "Rev": 51.851851851851855,
+    "Hold": 69.62962962962963,
+    "TA": 39.25925925925926,
+    "BaseAcc": 72.5925925925926,
+    "Tie": 8.148148148148149,
+    "PresHold": 70.37037037037037,
+    "n": 135
+   },
+   "level=L2": {
+    "Rev": 47.5,
+    "Hold": 61.5,
+    "TA": 33.5,
+    "BaseAcc": 69.0,
+    "Tie": 6.5,
+    "PresHold": 71.5,
+    "n": 200
+   },
+   "family=additive_score": {
+    "Rev": 76.0,
+    "Hold": 84.0,
+    "TA": 68.0,
+    "BaseAcc": 92.0,
+    "Tie": 4.0,
+    "PresHold": 76.0,
+    "n": 25
+   },
+   "nm_kind=time": {
+    "Rev": 42.5,
+    "Hold": 65.0,
+    "TA": 30.0,
+    "BaseAcc": 60.0,
+    "Tie": 7.5,
+    "PresHold": 60.0,
+    "n": 40
+   },
+   "tier=long": {
+    "Rev": 35.714285714285715,
+    "Hold": 42.857142857142854,
+    "TA": 19.642857142857142,
+    "BaseAcc": 62.5,
+    "Tie": 3.5714285714285716,
+    "PresHold": 73.21428571428571,
+    "n": 56
+   },
+   "family=g_two_of_three": {
+    "Rev": 52.23880597014925,
+    "Hold": 61.19402985074627,
+    "TA": 37.3134328358209,
+    "BaseAcc": 70.14925373134328,
+    "Tie": 4.477611940298507,
+    "PresHold": 73.13432835820896,
+    "n": 67
+   },
+   "tier=superseded": {
+    "Rev": 62.5,
+    "Hold": 62.5,
+    "TA": 37.5,
+    "BaseAcc": 62.5,
+    "Tie": 0.0,
+    "PresHold": 87.5,
+    "n": 8
+   },
+   "family=g_any_of": {
+    "Rev": 53.84615384615385,
+    "Hold": 61.53846153846154,
+    "TA": 38.46153846153846,
+    "BaseAcc": 84.61538461538461,
+    "Tie": 15.384615384615385,
+    "PresHold": 84.61538461538461,
+    "n": 13
+   },
+   "nm_kind=numeric": {
+    "Rev": 60.0,
+    "Hold": 65.0,
+    "TA": 45.0,
+    "BaseAcc": 85.0,
+    "Tie": 7.5,
+    "PresHold": 77.5,
+    "n": 40
+   },
+   "family=g_all_of": {
+    "Rev": 51.724137931034484,
+    "Hold": 56.89655172413793,
+    "TA": 31.03448275862069,
+    "BaseAcc": 67.24137931034483,
+    "Tie": 5.172413793103448,
+    "PresHold": 82.75862068965517,
+    "n": 58
+   },
+   "nm_kind=subject": {
+    "Rev": 35.0,
+    "Hold": 32.5,
+    "TA": 15.0,
+    "BaseAcc": 62.5,
+    "Tie": 10.0,
+    "PresHold": 67.5,
+    "n": 40
+   },
+   "family=g_score_cutoff": {
+    "Rev": 8.823529411764707,
+    "Hold": 58.8235294117647,
+    "TA": 5.882352941176471,
+    "BaseAcc": 47.05882352941177,
+    "Tie": 11.764705882352942,
+    "PresHold": 47.05882352941177,
+    "n": 34
+   },
+   "nm_kind=negation": {
+    "Rev": 45.0,
+    "Hold": 70.0,
+    "TA": 30.0,
+    "BaseAcc": 65.0,
+    "Tie": 5.0,
+    "PresHold": 67.5,
+    "n": 40
+   },
+   "tier=delabelled": {
+    "Rev": 0.0,
+    "Hold": 0.0,
+    "TA": 0.0,
+    "BaseAcc": 0.0,
+    "Tie": 0.0,
+    "PresHold": 0.0,
+    "n": 1
+   },
+   "family=score_cutoff": {
+    "Rev": 33.333333333333336,
+    "Hold": 0.0,
+    "TA": 0.0,
+    "BaseAcc": 66.66666666666667,
+    "Tie": 0.0,
+    "PresHold": 0.0,
+    "n": 3
+   }
+  },
+  "CI95_rule": {
+   "TA": [
+    25.714285714285715,
+    41.11675126903553
+   ],
+   "Rev": [
+    38.46153846153846,
+    56.68202764976959
+   ],
+   "Hold": [
+    54.973821989528794,
+    68.05555555555556
+   ]
+  },
+  "CI95_family": {
+   "TA": [
+    17.272727272727273,
+    51.02040816326531
+   ],
+   "Rev": [
+    25.174825174825173,
+    63.29113924050633
+   ],
+   "Hold": [
+    55.4054054054054,
+    70.88607594936708
+   ]
+  },
+  "macro": {
+   "TA_rid": {
+    "macro": 30.596638655462186,
+    "n_groups": 85
+   },
+   "TA_family": {
+    "macro": 30.11530116619275,
+    "n_groups": 6
+   },
+   "Rev_rid": {
+    "macro": 44.694677871148464,
+    "n_groups": 85
+   },
+   "Rev_family": {
+    "macro": 45.99432674873927,
+    "n_groups": 6
+   },
+   "Hold_rid": {
+    "macro": 59.2156862745098,
+    "n_groups": 85
+   },
+   "Hold_family": {
+    "macro": 53.74209542085174,
+    "n_groups": 6
+   }
+  },
+  "nearmiss": {
+   "all": {
+    "n": 200,
+    "SameDecision": 62.5,
+    "BothCorrect": 47.5,
+    "n_base_correct": 138,
+    "NearGivenBase": 68.84057971014492,
+    "UnnecessaryReversal": 30.434782608695652,
+    "TieGivenBase": 0.7246376811594203
+   },
+   "nm_kind=boundary": {
+    "n": 40,
+    "SameDecision": 77.5,
+    "BothCorrect": 62.5,
+    "n_base_correct": 29,
+    "NearGivenBase": 86.20689655172414,
+    "UnnecessaryReversal": 13.793103448275861,
+    "TieGivenBase": 0.0
+   },
+   "nm_kind=time": {
+    "n": 40,
+    "SameDecision": 62.5,
+    "BothCorrect": 45.0,
+    "n_base_correct": 24,
+    "NearGivenBase": 75.0,
+    "UnnecessaryReversal": 25.0,
+    "TieGivenBase": 0.0
+   },
+   "nm_kind=numeric": {
+    "n": 40,
+    "SameDecision": 67.5,
+    "BothCorrect": 60.0,
+    "n_base_correct": 34,
+    "NearGivenBase": 70.58823529411765,
+    "UnnecessaryReversal": 29.41176470588235,
+    "TieGivenBase": 0.0
+   },
+   "nm_kind=subject": {
+    "n": 40,
+    "SameDecision": 47.5,
+    "BothCorrect": 22.5,
+    "n_base_correct": 25,
+    "NearGivenBase": 36.0,
+    "UnnecessaryReversal": 60.0,
+    "TieGivenBase": 4.0
+   },
+   "nm_kind=negation": {
+    "n": 40,
+    "SameDecision": 57.5,
+    "BothCorrect": 47.5,
+    "n_base_correct": 26,
+    "NearGivenBase": 73.07692307692308,
+    "UnnecessaryReversal": 26.923076923076923,
+    "TieGivenBase": 0.0
+   }
+  },
+  "step": {
+   "conclusion": {
+    "CorrectRevision": 47.5,
+    "n_changed": 200,
+    "UnnecessaryRevision": 37.75,
+    "n_unchanged": 400
+   }
+  }
+ },
+ "xr_v1/test": {
+  "XA": 23.0,
+  "n_items": 100,
+  "n_incomplete": 0,
+  "n_excluded": 0,
+  "CellAcc": 77.83333333333333,
+  "n_cells": 600,
+  "cells_without_label": 0,
+  "XA_currency": 24.0,
+  "XA_inclusivity": 24.0,
+  "XA_subject": 16.0,
+  "XA_window": 28.0,
+  "without_known_issues": {
+   "XA": 23.404255319148938,
+   "n_items": 94,
+   "n_incomplete": 0,
+   "n_excluded": 38,
+   "CellAcc": 77.83687943262412,
+   "n_cells": 564,
+   "cells_without_label": 0,
+   "XA_currency": 23.80952380952381,
+   "XA_inclusivity": 26.08695652173913,
+   "XA_subject": 16.0,
+   "XA_window": 28.0
+  }
+ }
+}

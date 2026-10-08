@@ -1,0 +1,25 @@
+{
+ "run_id": "C-TF-genprog",
+ "set": "rule_v1/missing",
+ "claim_type": "conclusion",
+ "eval": {
+  "check_missing": 27,
+  "check_error": 74,
+  "gen_not_stopped": 28,
+  "gen_tokens": 1227112,
+  "seconds": 4852.7,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ },
+ "subset": {
+  "n_groups": 1000,
+  "claim_types": [
+   "conclusion"
+  ]
+ },
+ "MR": 6.24360286591607,
+ "FR": 4.401228249744115,
+ "threshold": -1.8506746292114258,
+ "n_missing": 977,
+ "n_supported": 977
+}

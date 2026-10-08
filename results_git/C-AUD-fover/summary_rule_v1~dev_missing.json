@@ -1,0 +1,13 @@
+{
+ "run_id": "C-AUD-fover--p2",
+ "set": "rule_v1/dev_missing",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 87.1,
+  "n_records": 1200,
+  "n_groups": "all",
+  "claim_types": [
+   "conclusion"
+  ]
+ }
+}

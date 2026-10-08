@@ -1,0 +1,12 @@
+2026-10-03T23:40:57Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-ledger2-blocks-s4
+2026-10-03T23:40:57Z token budget per batch: 8000 (generation 24000)
+2026-10-03T23:40:58Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0120)
+2026-10-03T23:40:59Z padding self-check: max |u_batch - u_single| = 0.0872 (tol 0.594) -> left padding
+2026-10-03T23:42:19Z generate: batch 25/27, 18294 tokens, 228 tok/s
+2026-10-03T23:43:22Z C-TG-ledger2-blocks-s4 rule_v1/dev_missing: TA nan Rev nan Hold nan n=None (144.3 s)
+2026-10-03T23:43:22Z C-TG-ledger2-blocks-s4 clin_v1/trialgpt_dev prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_dev/reader_ledger.npz', 'exists')
+2026-10-03T23:44:40Z C-TG-ledger2-blocks-s4 clin_v1/trialgpt_dev: TA nan Rev nan Hold nan n=None (78.4 s)
+2026-10-03T23:44:40Z C-TG-ledger2-blocks-s4 clin_v1/trialgpt_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_test/reader_ledger.npz', 'exists')
+2026-10-03T23:47:52Z generate: batch 25/37, 24913 tokens, 130 tok/s
+2026-10-03T23:50:56Z C-TG-ledger2-blocks-s4 clin_v1/trialgpt_test: TA nan Rev nan Hold nan n=None (375.8 s)
+2026-10-03T23:50:57Z DONE C-TG-ledger2-blocks-s4 in 10.4 min, GPU util mean 76.1

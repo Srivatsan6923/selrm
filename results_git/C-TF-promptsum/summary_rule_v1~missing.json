@@ -1,0 +1,23 @@
+{
+ "run_id": "C-TF-promptsum--p1",
+ "set": "rule_v1/missing",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "reader_units": 2000,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 1011.3,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ },
+ "MR": 37.8,
+ "FR": 8.8,
+ "threshold": -0.14666470885276794,
+ "n_missing": 1000,
+ "n_supported": 1000
+}

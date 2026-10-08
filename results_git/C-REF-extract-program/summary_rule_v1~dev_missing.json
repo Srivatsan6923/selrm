@@ -1,0 +1,15 @@
+{
+ "run_id": "C-REF-extract-program",
+ "set": "rule_v1/dev_missing",
+ "claim_type": "conclusion",
+ "eval": {
+  "mode": "program_on_extracted_ledger",
+  "source_run": "C-TF-promptledger-lenient",
+  "field": "ledger_lenient",
+  "matched": 692,
+  "unmatched": 115,
+  "no_answer": 547,
+  "malformed": 29,
+  "records": 2280
+ }
+}

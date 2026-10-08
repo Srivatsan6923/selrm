@@ -1,0 +1,283 @@
+{
+ "note": "Stage 2, C1 (views built by scripts/crit_views.py; runner code with the view root)",
+ "runs": [
+  {
+   "run_id": "C-S2-ctrl-critic",
+   "priority": 1,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": null,
+   "adapter_run": null,
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set"
+  },
+  {
+   "run_id": "C-S2-ctrl-verdict-triplets-s0",
+   "priority": 2.0,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s0",
+   "adapter_run": "B-F-verdict-triplets-s0",
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set"
+  },
+  {
+   "run_id": "C-S2-ctrl-verdict-blocks-s0",
+   "priority": 2.0,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s0",
+   "adapter_run": "B-F-verdict-blocks-s0",
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set"
+  },
+  {
+   "run_id": "C-S2-ctrl-ledger2-triplets-s0",
+   "priority": 4.0,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s0",
+   "adapter_run": "B-F-ledger2-triplets-s0",
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set",
+   "max_new": 384
+  },
+  {
+   "run_id": "C-S2-ctrl-verdict-triplets-s1",
+   "priority": 2.1,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s1",
+   "adapter_run": "B-F-verdict-triplets-s1",
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set"
+  },
+  {
+   "run_id": "C-S2-ctrl-verdict-blocks-s1",
+   "priority": 2.1,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s1",
+   "adapter_run": "B-F-verdict-blocks-s1",
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set"
+  },
+  {
+   "run_id": "C-S2-ctrl-ledger2-triplets-s1",
+   "priority": 4.1,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s1",
+   "adapter_run": "B-F-ledger2-triplets-s1",
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set",
+   "max_new": 384
+  },
+  {
+   "run_id": "C-S2-ctrl-verdict-triplets-s2",
+   "priority": 2.2,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s2",
+   "adapter_run": "B-F-verdict-triplets-s2",
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set"
+  },
+  {
+   "run_id": "C-S2-ctrl-verdict-blocks-s2",
+   "priority": 2.2,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s2",
+   "adapter_run": "B-F-verdict-blocks-s2",
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set"
+  },
+  {
+   "run_id": "C-S2-ctrl-ledger2-triplets-s2",
+   "priority": 4.2,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s2",
+   "adapter_run": "B-F-ledger2-triplets-s2",
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set",
+   "max_new": 384
+  },
+  {
+   "run_id": "C-S2-ctrl-verdict-triplets-s3",
+   "priority": 2.3,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s3",
+   "adapter_run": "B-F-verdict-triplets-s3",
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set"
+  },
+  {
+   "run_id": "C-S2-ctrl-verdict-blocks-s3",
+   "priority": 2.3,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s3",
+   "adapter_run": "B-F-verdict-blocks-s3",
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set"
+  },
+  {
+   "run_id": "C-S2-ctrl-ledger2-triplets-s3",
+   "priority": 4.3,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s3",
+   "adapter_run": "B-F-ledger2-triplets-s3",
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set",
+   "max_new": 384
+  },
+  {
+   "run_id": "C-S2-ctrl-verdict-triplets-s4",
+   "priority": 2.4,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s4",
+   "adapter_run": "B-F-verdict-triplets-s4",
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set"
+  },
+  {
+   "run_id": "C-S2-ctrl-verdict-blocks-s4",
+   "priority": 2.4,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s4",
+   "adapter_run": "B-F-verdict-blocks-s4",
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set"
+  },
+  {
+   "run_id": "C-S2-ctrl-ledger2-triplets-s4",
+   "priority": 4.4,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s4",
+   "adapter_run": "B-F-ledger2-triplets-s4",
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set",
+   "max_new": 384
+  },
+  {
+   "run_id": "C-S2-ctrl-summary2-triplets-s0",
+   "priority": 3,
+   "format": "summary2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2@none",
+    "rule_v1/test_L2@wrong",
+    "rule_v1/test_L3inv@none",
+    "rule_v1/test_L3inv@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-triplets-s0",
+   "adapter_run": "B-F-summary2-triplets-s0",
+   "note": "STAGE2 C1: rule-tier controls (rule text removed / exchanged); labels of the parent set",
+   "max_new": 384
+  }
+ ]
+}

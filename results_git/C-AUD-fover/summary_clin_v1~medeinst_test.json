@@ -1,0 +1,37 @@
+{
+ "run_id": "C-AUD-fover",
+ "set": "clin_v1/medeinst_test",
+ "Reversal": 20.99201188928107,
+ "CI95": [
+  19.8402377856214,
+  22.050900984581087
+ ],
+ "CI95_label_pairs": [
+  11.851958525345623,
+  31.9452533488643
+ ],
+ "n_pairs": 5383,
+ "control_acc": 71.80011146201004,
+ "trap_acc": 48.09585732862716,
+ "bias_trap_rate": 70.76326002587322,
+ "n_control_correct": 3865,
+ "tie_rate": 0.0,
+ "Reversal_excl_no_content_diff": 21.316732691944917,
+ "Reversal_excl_overlap_ref": 21.071428571428573,
+ "n_no_content_diff": 82,
+ "n_overlap_ref": 63,
+ "definitions": "control correct: d(control) > 0; trap correct: d(trap) < 0; Reversal = both (ties fail); bias_trap_rate = share of control-correct pairs with d(trap) > 0 (MedEinst's R_bias on two candidates)",
+ "bootstrap": {
+  "unit": "pair (CI95) and (y_gt, y_bias) label pair (CI95_label_pairs)",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "seconds": 2119.5,
+  "n_records": 21532,
+  "n_groups": "all",
+  "claim_types": [
+   "conclusion"
+  ]
+ }
+}

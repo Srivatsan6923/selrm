@@ -1,0 +1,39 @@
+{
+ "run_id": "C-ME-promptledger",
+ "set": "clin_v1/medeinst_test",
+ "Reversal": 0.0,
+ "CI95": [
+  0.0,
+  0.0
+ ],
+ "CI95_label_pairs": [
+  0.0,
+  0.0
+ ],
+ "n_pairs": 5383,
+ "control_acc": 0.0,
+ "trap_acc": 0.0,
+ "bias_trap_rate": null,
+ "n_control_correct": 0,
+ "tie_rate": 100.0,
+ "Reversal_excl_no_content_diff": 0.0,
+ "Reversal_excl_overlap_ref": 0.0,
+ "n_no_content_diff": 82,
+ "n_overlap_ref": 63,
+ "definitions": "control correct: d(control) > 0; trap correct: d(trap) < 0; Reversal = both (ties fail); bias_trap_rate = share of control-correct pairs with d(trap) > 0 (MedEinst's R_bias on two candidates)",
+ "bootstrap": {
+  "unit": "pair (CI95) and (y_gt, y_bias) label pair (CI95_label_pairs)",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "reader_units": 10766,
+  "malformed_units": 10766,
+  "mode": null,
+  "malformed_rate": 1.0,
+  "gen_not_stopped": 1615,
+  "seconds": 11756.4,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

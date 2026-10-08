@@ -50,14 +50,18 @@ def choose(X, y, groups):
     return best
 
 
-def fit_eval(Xtr, ytr, gtr, Xte, yte, Rte):
+def fit_eval(Xtr, ytr, gtr, Xte, yte, Rte, seen):
     cv, li, c = choose(Xtr, ytr, gtr)
     sc = StandardScaler().fit(Xtr[:, li])
     m = LogisticRegression(C=c, max_iter=2000).fit(sc.transform(Xtr[:, li]), ytr)
     ok = m.predict(sc.transform(Xte[:, li])) == yte
-    items = [{"rid": r["rid"], "ok": bool(o)} for r, o in zip(Rte, ok)]
-    point, lo, hi = M.cluster_bootstrap(items, "rid", lambda xs: 100.0 * sum(x["ok"] for x in xs) / len(xs))
-    return {"acc": point, "CI95": [lo, hi], "layer_index": li, "C": c, "cv_acc_train": 100.0 * cv}
+    items = [{"rid": r["rid"], "ok": bool(o), "seen": r["condition"] in seen} for r, o in zip(Rte, ok)]
+    acc = lambda xs: 100.0 * sum(x["ok"] for x in xs) / len(xs)
+    point, lo, hi = M.cluster_bootstrap(items, "rid", acc)
+    un = [x for x in items if not x["seen"]]
+    p2, lo2, hi2 = M.cluster_bootstrap(un, "rid", acc) if un else (None, None, None)
+    return {"acc": point, "CI95": [lo, hi], "layer_index": li, "C": c, "cv_acc_train": 100.0 * cv,
+            "unseen_conditions": {"acc": p2, "CI95": [lo2, hi2], "n": len(un)}}
 
 
 def main():
@@ -68,8 +72,9 @@ def main():
     Xtr, Rtr, ytr, ctr, layers = load(a.run_dir, a.data, "test_L0")
     Xte, Rte, yte, cte, _ = load(a.run_dir, a.data, "test_L2")
     gtr = np.array([r["rid"] for r in Rtr])
-    probe = fit_eval(Xtr, ytr, gtr, Xte, yte, Rte)
-    control = fit_eval(Xtr, ctr, gtr, Xte, cte, Rte)
+    seen = {r["condition"] for r in Rtr}       # conditions of the training records (control labels are per condition)
+    probe = fit_eval(Xtr, ytr, gtr, Xte, yte, Rte, seen)
+    control = fit_eval(Xtr, ctr, gtr, Xte, cte, Rte, seen)
     out = {"run": os.path.basename(os.path.normpath(a.run_dir)), "train": "rule_v1/test_L0", "test": "rule_v1/test_L2",
            "records": "conclusion claim s of flip and near-miss cases", "target": "meta.criterion_holds",
            "layers": layers, "probe": probe | {"layer": layers[probe["layer_index"]]},

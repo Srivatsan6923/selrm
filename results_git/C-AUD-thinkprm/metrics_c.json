@@ -1,0 +1,304 @@
+{
+ "run": "C-AUD-thinkprm",
+ "rule_v1/test_L2": {
+  "summary": {
+   "all": {
+    "Rev": 96.5,
+    "Hold": 90.0,
+    "TA": 87.5,
+    "BaseAcc": 97.0,
+    "Tie": 0.0,
+    "PresHold": 97.5,
+    "n": 200
+   },
+   "nm_kind=boundary": {
+    "Rev": 95.0,
+    "Hold": 65.0,
+    "TA": 60.0,
+    "BaseAcc": 97.5,
+    "Tie": 0.0,
+    "PresHold": 97.5,
+    "n": 40
+   },
+   "tier=easy": {
+    "Rev": 96.29629629629629,
+    "Hold": 90.37037037037037,
+    "TA": 88.14814814814815,
+    "BaseAcc": 96.29629629629629,
+    "Tie": 0.0,
+    "PresHold": 97.03703703703704,
+    "n": 135
+   },
+   "level=L2": {
+    "Rev": 96.5,
+    "Hold": 90.0,
+    "TA": 87.5,
+    "BaseAcc": 97.0,
+    "Tie": 0.0,
+    "PresHold": 97.5,
+    "n": 200
+   },
+   "family=additive_score": {
+    "Rev": 100.0,
+    "Hold": 100.0,
+    "TA": 100.0,
+    "BaseAcc": 100.0,
+    "Tie": 0.0,
+    "PresHold": 100.0,
+    "n": 25
+   },
+   "nm_kind=time": {
+    "Rev": 97.5,
+    "Hold": 97.5,
+    "TA": 97.5,
+    "BaseAcc": 97.5,
+    "Tie": 0.0,
+    "PresHold": 95.0,
+    "n": 40
+   },
+   "tier=long": {
+    "Rev": 96.42857142857143,
+    "Hold": 87.5,
+    "TA": 83.92857142857143,
+    "BaseAcc": 98.21428571428571,
+    "Tie": 0.0,
+    "PresHold": 98.21428571428571,
+    "n": 56
+   },
+   "family=g_two_of_three": {
+    "Rev": 95.5223880597015,
+    "Hold": 86.56716417910448,
+    "TA": 82.08955223880596,
+    "BaseAcc": 97.01492537313433,
+    "Tie": 0.0,
+    "PresHold": 100.0,
+    "n": 67
+   },
+   "tier=superseded": {
+    "Rev": 100.0,
+    "Hold": 100.0,
+    "TA": 100.0,
+    "BaseAcc": 100.0,
+    "Tie": 0.0,
+    "PresHold": 100.0,
+    "n": 8
+   },
+   "family=g_any_of": {
+    "Rev": 100.0,
+    "Hold": 100.0,
+    "TA": 100.0,
+    "BaseAcc": 100.0,
+    "Tie": 0.0,
+    "PresHold": 100.0,
+    "n": 13
+   },
+   "nm_kind=numeric": {
+    "Rev": 97.5,
+    "Hold": 97.5,
+    "TA": 95.0,
+    "BaseAcc": 97.5,
+    "Tie": 0.0,
+    "PresHold": 100.0,
+    "n": 40
+   },
+   "family=g_all_of": {
+    "Rev": 93.10344827586206,
+    "Hold": 91.37931034482759,
+    "TA": 87.93103448275862,
+    "BaseAcc": 93.10344827586206,
+    "Tie": 0.0,
+    "PresHold": 91.37931034482759,
+    "n": 58
+   },
+   "nm_kind=subject": {
+    "Rev": 95.0,
+    "Hold": 92.5,
+    "TA": 87.5,
+    "BaseAcc": 95.0,
+    "Tie": 0.0,
+    "PresHold": 97.5,
+    "n": 40
+   },
+   "family=g_score_cutoff": {
+    "Rev": 100.0,
+    "Hold": 85.29411764705883,
+    "TA": 85.29411764705883,
+    "BaseAcc": 100.0,
+    "Tie": 0.0,
+    "PresHold": 100.0,
+    "n": 34
+   },
+   "nm_kind=negation": {
+    "Rev": 97.5,
+    "Hold": 97.5,
+    "TA": 97.5,
+    "BaseAcc": 97.5,
+    "Tie": 0.0,
+    "PresHold": 97.5,
+    "n": 40
+   },
+   "tier=delabelled": {
+    "Rev": 100.0,
+    "Hold": 100.0,
+    "TA": 100.0,
+    "BaseAcc": 100.0,
+    "Tie": 0.0,
+    "PresHold": 100.0,
+    "n": 1
+   },
+   "family=score_cutoff": {
+    "Rev": 100.0,
+    "Hold": 66.66666666666667,
+    "TA": 66.66666666666667,
+    "BaseAcc": 100.0,
+    "Tie": 0.0,
+    "PresHold": 100.0,
+    "n": 3
+   }
+  },
+  "CI95_rule": {
+   "TA": [
+    82.3529411764706,
+    92.51336898395722
+   ],
+   "Rev": [
+    93.37016574585635,
+    99.40119760479043
+   ],
+   "Hold": [
+    85.20408163265306,
+    94.54545454545455
+   ]
+  },
+  "CI95_family": {
+   "TA": [
+    83.62068965517241,
+    95.0
+   ],
+   "Rev": [
+    94.38202247191012,
+    100.0
+   ],
+   "Hold": [
+    86.36363636363636,
+    95.62043795620438
+   ]
+  },
+  "macro": {
+   "TA_rid": {
+    "macro": 89.9607843137255,
+    "n_groups": 85
+   },
+   "TA_family": {
+    "macro": 86.99689517254835,
+    "n_groups": 6
+   },
+   "Rev_rid": {
+    "macro": 96.76470588235294,
+    "n_groups": 85
+   },
+   "Rev_family": {
+    "macro": 98.10430605592727,
+    "n_groups": 6
+   },
+   "Hold_rid": {
+    "macro": 92.01960784313727,
+    "n_groups": 85
+   },
+   "Hold_family": {
+    "macro": 88.31787647294293,
+    "n_groups": 6
+   }
+  },
+  "nearmiss": {
+   "all": {
+    "n": 200,
+    "SameDecision": 89.0,
+    "BothCorrect": 88.0,
+    "n_base_correct": 194,
+    "NearGivenBase": 90.72164948453609,
+    "UnnecessaryReversal": 9.278350515463918,
+    "TieGivenBase": 0.0
+   },
+   "nm_kind=boundary": {
+    "n": 40,
+    "SameDecision": 62.5,
+    "BothCorrect": 62.5,
+    "n_base_correct": 39,
+    "NearGivenBase": 64.1025641025641,
+    "UnnecessaryReversal": 35.8974358974359,
+    "TieGivenBase": 0.0
+   },
+   "nm_kind=time": {
+    "n": 40,
+    "SameDecision": 100.0,
+    "BothCorrect": 97.5,
+    "n_base_correct": 39,
+    "NearGivenBase": 100.0,
+    "UnnecessaryReversal": 0.0,
+    "TieGivenBase": 0.0
+   },
+   "nm_kind=numeric": {
+    "n": 40,
+    "SameDecision": 95.0,
+    "BothCorrect": 95.0,
+    "n_base_correct": 39,
+    "NearGivenBase": 97.43589743589743,
+    "UnnecessaryReversal": 2.5641025641025643,
+    "TieGivenBase": 0.0
+   },
+   "nm_kind=subject": {
+    "n": 40,
+    "SameDecision": 87.5,
+    "BothCorrect": 87.5,
+    "n_base_correct": 38,
+    "NearGivenBase": 92.10526315789474,
+    "UnnecessaryReversal": 7.894736842105263,
+    "TieGivenBase": 0.0
+   },
+   "nm_kind=negation": {
+    "n": 40,
+    "SameDecision": 100.0,
+    "BothCorrect": 97.5,
+    "n_base_correct": 39,
+    "NearGivenBase": 100.0,
+    "UnnecessaryReversal": 0.0,
+    "TieGivenBase": 0.0
+   }
+  },
+  "step": {
+   "conclusion": {
+    "CorrectRevision": 96.5,
+    "n_changed": 200,
+    "UnnecessaryRevision": 6.75,
+    "n_unchanged": 400
+   }
+  }
+ },
+ "xr_v1/test": {
+  "XA": 100.0,
+  "n_items": 100,
+  "n_incomplete": 0,
+  "n_excluded": 0,
+  "CellAcc": 100.0,
+  "n_cells": 600,
+  "cells_without_label": 0,
+  "XA_currency": 100.0,
+  "XA_inclusivity": 100.0,
+  "XA_subject": 100.0,
+  "XA_window": 100.0,
+  "without_known_issues": {
+   "XA": 100.0,
+   "n_items": 94,
+   "n_incomplete": 0,
+   "n_excluded": 38,
+   "CellAcc": 100.0,
+   "n_cells": 564,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 100.0,
+   "XA_window": 100.0
+  }
+ }
+}

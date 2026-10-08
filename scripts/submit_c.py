@@ -28,6 +28,8 @@ GPU = {   # kind -> (resource, gpu.product values or None)
     "32gb": ("nvidia.com/gpu", ["NVIDIA-RTX-5000-Ada-Generation"]),
     "24gb": ("nvidia.com/gpu", ["NVIDIA-A10", "NVIDIA-GeForce-RTX-3090", "NVIDIA-L4", "NVIDIA-GeForce-RTX-4090",
                                 "NVIDIA-RTX-A5000", "NVIDIA-TITAN-RTX", "Quadro-RTX-6000"]),   # verdict runs only
+    # generation-heavy runs: without the L4 (300 GB/s; GenPRM ran 3x slower there and hit the job deadline)
+    "24gbf": ("nvidia.com/gpu", ["NVIDIA-A10", "NVIDIA-GeForce-RTX-3090", "NVIDIA-GeForce-RTX-4090", "NVIDIA-RTX-A5000"]),
 }
 CPU_ONLY = {"key": "feature.node.kubernetes.io/pci-10de.present", "operator": "NotIn", "values": ["true"]}
 DRIVER = {"key": "nvidia.com/cuda.driver.major", "operator": "Gt", "values": ["579"]}   # cu130 needs >= 580

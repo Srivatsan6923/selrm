@@ -1,0 +1,38 @@
+{
+ "run_id": "C-ME-promptledger-lenient",
+ "set": "clin_v1/medeinst_test",
+ "Reversal": 6.18614155675274,
+ "CI95": [
+  5.573100501579045,
+  6.817759613598366
+ ],
+ "CI95_label_pairs": [
+  3.2247449819019414,
+  9.877474081055608
+ ],
+ "n_pairs": 5383,
+ "control_acc": 21.177781906000373,
+ "trap_acc": 17.1279955415196,
+ "bias_trap_rate": 47.01754385964912,
+ "n_control_correct": 1140,
+ "tie_rate": 77.37321196358907,
+ "Reversal_excl_no_content_diff": 6.281833616298812,
+ "Reversal_excl_overlap_ref": 6.203007518796992,
+ "n_no_content_diff": 82,
+ "n_overlap_ref": 63,
+ "definitions": "control correct: d(control) > 0; trap correct: d(trap) < 0; Reversal = both (ties fail); bias_trap_rate = share of control-correct pairs with d(trap) > 0 (MedEinst's R_bias on two candidates)",
+ "bootstrap": {
+  "unit": "pair (CI95) and (y_gt, y_bias) label pair (CI95_label_pairs)",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "reader_units": 10766,
+  "malformed_units": 7290,
+  "malformed_rate": 0.6771,
+  "seconds": 568.6,
+  "mode": "rejudge",
+  "lenient_version": 2,
+  "source_run": "C-ME-promptledger"
+ }
+}

@@ -1,0 +1,14 @@
+2026-10-03T13:53:50Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-summary2-triplets-s0
+2026-10-03T13:53:51Z token budget per batch: 8000 (generation 24000)
+2026-10-03T13:53:52Z C-KP-summary2-triplets-s0 clin_v1/keypairs_medqa prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa/reader_prose.npz', 'built 26 prompts, max 454 tokens')
+2026-10-03T13:53:52Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0215)
+2026-10-03T13:53:54Z padding self-check: max |u_batch - u_single| = 0.1054 (tol 0.640) -> left padding
+2026-10-03T13:54:41Z C-KP-summary2-triplets-s0 clin_v1/keypairs_medqa: TA nan Rev nan Hold nan n=None (48.7 s)
+2026-10-03T13:54:41Z C-KP-summary2-triplets-s0 clin_v1/keypairs_careqa prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa/reader_prose.npz', 'built 6 prompts, max 168 tokens')
+2026-10-03T13:54:52Z C-KP-summary2-triplets-s0 clin_v1/keypairs_careqa: TA nan Rev nan Hold nan n=None (11.1 s)
+2026-10-03T13:54:54Z C-KP-summary2-triplets-s0 clin_v1/keypairs_medqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa_oneway/reader_prose.npz', 'built 714 prompts, max 578 tokens')
+2026-10-03T14:00:28Z generate: batch 25/32, 33404 tokens, 100 tok/s
+2026-10-03T14:03:10Z C-KP-summary2-triplets-s0 clin_v1/keypairs_medqa_oneway: TA nan Rev nan Hold nan n=None (495.6 s)
+2026-10-03T14:03:11Z C-KP-summary2-triplets-s0 clin_v1/keypairs_careqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa_oneway/reader_prose.npz', 'built 450 prompts, max 336 tokens')
+2026-10-03T14:09:32Z C-KP-summary2-triplets-s0 clin_v1/keypairs_careqa_oneway: TA nan Rev nan Hold nan n=None (381.4 s)
+2026-10-03T14:09:33Z DONE C-KP-summary2-triplets-s0 in 16.4 min, GPU util mean 90.8

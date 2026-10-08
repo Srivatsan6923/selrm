@@ -1,0 +1,5 @@
+2026-10-04T01:24:07Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-04T01:24:08Z token budget per batch: 40000 (generation 120000)
+2026-10-04T01:24:18Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.1155)
+2026-10-04T01:33:36Z C-ME-promptledger-lenient clin_v1/medeinst_test rejudge (lenient v2): TA nan malformed 7290/10766
+2026-10-04T01:33:37Z DONE C-ME-promptledger-lenient in 9.9 min, GPU util mean 95.3

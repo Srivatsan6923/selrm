@@ -1,0 +1,11 @@
+2026-10-03T22:18:43Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-summary2-triplets-s0
+2026-10-03T22:18:43Z token budget per batch: 8000 (generation 24000)
+2026-10-03T22:18:46Z C-MN-summary2-triplets-s0 clin_v1/medeinst_neg prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_neg/reader_prose.npz', 'built 3699 prompts, max 645 tokens')
+2026-10-03T22:18:46Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0220)
+2026-10-03T22:18:49Z padding self-check: max |u_batch - u_single| = 0.0962 (tol 0.608) -> left padding
+2026-10-03T22:27:35Z generate: batch 25/116, 88377 tokens, 168 tok/s
+2026-10-03T22:37:25Z generate: batch 50/116, 158309 tokens, 142 tok/s
+2026-10-03T22:47:12Z generate: batch 75/116, 227118 tokens, 133 tok/s
+2026-10-03T22:57:15Z generate: batch 100/116, 295239 tokens, 128 tok/s
+2026-10-03T23:10:22Z C-MN-summary2-triplets-s0 clin_v1/medeinst_neg: TA nan Rev nan Hold nan n=None (3096.3 s)
+2026-10-03T23:10:22Z DONE C-MN-summary2-triplets-s0 in 52.0 min, GPU util mean 95.5

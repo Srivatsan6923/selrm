@@ -313,6 +313,20 @@
    "note": "format-normalised readout (lenient_ledger v2) of C-TF-promptledger's reader outputs",
    "merge_into": "C-TF-promptledger-lenient",
    "min_gen": 3
+  },
+  {
+   "run_id": "C-ME-ledger2-triplets-s0-lenient",
+   "priority": 1,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s0",
+   "adapter_run": "B-F-ledger2-triplets-s0",
+   "bs_score": 64,
+   "min_gen": 3,
+   "rejudge_from": "C-ME-ledger2-triplets-s0",
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "note": "POST HOC sensitivity (decided after the primary MedEinst result): the trained ledger's saved reader outputs re-read with the format-normalised readout (lenient v2), because 30% of them fail the frozen check on multi-line quotes of bulleted narratives; never replaces the primary row"
   }
  ],
  "note": "wave 1: TrialGPT development portion (priority 1-8) and the untrained-backbone rule-tier rows (10, 20); runners re-read this file before every claim"

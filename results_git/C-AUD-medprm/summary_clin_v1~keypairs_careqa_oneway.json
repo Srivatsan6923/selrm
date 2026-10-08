@@ -1,0 +1,47 @@
+{
+ "run_id": "C-AUD-medprm",
+ "set": "clin_v1/keypairs_careqa_oneway",
+ "Reversal": 56.0,
+ "CI95": [
+  49.333333333333336,
+  62.666666666666664
+ ],
+ "n_pairs": 225,
+ "q1_acc": 77.77777777777777,
+ "q2_acc": 75.55555555555556,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 66.66666666666667,
+  "2": 60.0,
+  "3": 41.333333333333336
+ },
+ "Reversal_by_category": {
+  "Biology": 63.41463414634146,
+  "Chemistry": 25.0,
+  "Medicine": 60.46511627906977,
+  "Nursing": 51.515151515151516,
+  "Pharmacology": 66.07142857142857,
+  "Psychology": 50.0
+ },
+ "n_by_category": {
+  "Biology": 41,
+  "Chemistry": 24,
+  "Medicine": 43,
+  "Nursing": 33,
+  "Pharmacology": 56,
+  "Psychology": 28
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "seconds": 38.5,
+  "n_records": 900,
+  "n_groups": "all",
+  "claim_types": [
+   "conclusion"
+  ]
+ }
+}

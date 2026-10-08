@@ -33,7 +33,7 @@
   "inf": 53.0
  },
  "selection": "rule_v1/dev TA, ties -> smaller alpha",
- "date": "2026-10-03",
+ "date": "2026-10-08",
  "summaries": {
   "clin_v1/medeinst_test": "C-ME-defcorr (python scripts/eval_clinical.py medeinst)",
   "rule_v1/dev": {

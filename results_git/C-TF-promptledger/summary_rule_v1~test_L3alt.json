@@ -1,0 +1,112 @@
+{
+ "run_id": "C-TF-promptledger--p3",
+ "set": "rule_v1/test_L3alt",
+ "claim_type": "conclusion",
+ "all": {
+  "Rev": 0.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 0.3,
+  "Tie": 100.0,
+  "PresHold": 0.7,
+  "n": 1000
+ },
+ "nm_kind=boundary": {
+  "Rev": 0.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 0.0,
+  "Tie": 100.0,
+  "PresHold": 0.3003003003003003,
+  "n": 333
+ },
+ "tier=alt": {
+  "Rev": 0.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 0.3,
+  "Tie": 100.0,
+  "PresHold": 0.7,
+  "n": 1000
+ },
+ "level=L3-alt": {
+  "Rev": 0.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 0.3,
+  "Tie": 100.0,
+  "PresHold": 0.7,
+  "n": 1000
+ },
+ "family=lab_threshold": {
+  "Rev": 0.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 0.0,
+  "Tie": 100.0,
+  "PresHold": 0.0,
+  "n": 631
+ },
+ "nm_kind=time": {
+  "Rev": 0.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 0.0,
+  "Tie": 100.0,
+  "PresHold": 0.0,
+  "n": 333
+ },
+ "family=additive_score": {
+  "Rev": 0.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 0.8130081300813008,
+  "Tie": 100.0,
+  "PresHold": 1.897018970189702,
+  "n": 369
+ },
+ "nm_kind=numeric": {
+  "Rev": 0.0,
+  "Hold": 0.0,
+  "TA": 0.0,
+  "BaseAcc": 0.8982035928143712,
+  "Tie": 100.0,
+  "PresHold": 1.7964071856287425,
+  "n": 334
+ },
+ "CI95": {
+  "TA": [
+   0.0,
+   0.0
+  ],
+  "Rev": [
+   0.0,
+   0.0
+  ],
+  "Hold": [
+   0.0,
+   0.0
+  ]
+ },
+ "step": {
+  "criterion": {
+   "Rev": 0.0,
+   "Hold": 0.0,
+   "TA": 0.0,
+   "BaseAcc": 0.0,
+   "Tie": 100.0,
+   "PresHold": 0.0,
+   "n": 631
+  }
+ },
+ "eval": {
+  "reader_units": 4000,
+  "malformed_units": 3990,
+  "mode": null,
+  "malformed_rate": 0.9975,
+  "gen_not_stopped": 5,
+  "seconds": 2321.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

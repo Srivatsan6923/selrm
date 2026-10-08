@@ -1,0 +1,44 @@
+{
+ "run_id": "C-TF-genprog",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "eval": {
+  "check_missing": 5,
+  "check_error": 226,
+  "gen_not_stopped": 5,
+  "gen_tokens": 1312421,
+  "seconds": 4015.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ },
+ "subset": {
+  "n_groups": 1000,
+  "claim_types": [
+   "conclusion"
+  ]
+ },
+ "XA": 82.75,
+ "n_items": 400,
+ "n_incomplete": 0,
+ "n_excluded": 0,
+ "CellAcc": 96.75,
+ "n_cells": 2400,
+ "cells_without_label": 0,
+ "XA_currency": 93.0,
+ "XA_inclusivity": 83.0,
+ "XA_subject": 88.0,
+ "XA_window": 67.0,
+ "without_known_issues": {
+  "XA": 83.14917127071823,
+  "n_items": 362,
+  "n_incomplete": 0,
+  "n_excluded": 38,
+  "CellAcc": 96.8232044198895,
+  "n_cells": 2172,
+  "cells_without_label": 0,
+  "XA_currency": 91.76470588235294,
+  "XA_inclusivity": 88.31168831168831,
+  "XA_subject": 88.0,
+  "XA_window": 67.0
+ }
+}

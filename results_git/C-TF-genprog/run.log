@@ -1,0 +1,39 @@
+2026-10-03T07:56:49Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-03T07:56:49Z token budget per batch: 40000
+2026-10-03T07:56:51Z C-TF-genprog sub/1000_conclusion/rule_v1/dev_missing prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/sub/1000_conclusion/rule_v1/dev_missing/genprm.npz', 'built 1200 prompts, max 430 tokens')
+2026-10-03T07:56:51Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0333)
+2026-10-03T07:56:52Z padding self-check: max |u_batch - u_single| = 0.1918 (tol 0.545) -> left padding
+2026-10-03T08:15:06Z generate: batch 25/32, 280296 tokens, 256 tok/s
+2026-10-03T08:21:46Z C-TF-genprog sub/1000_conclusion/rule_v1/dev_missing: TA nan Rev nan Hold nan n=None (1495.2 s)
+2026-10-03T08:21:50Z C-TF-genprog sub/1000_conclusion/rule_v1/missing prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/sub/1000_conclusion/rule_v1/missing/genprm.npz', 'built 3908 prompts, max 491 tokens')
+2026-10-03T08:40:03Z generate: batch 25/104, 296922 tokens, 272 tok/s
+2026-10-03T08:58:58Z generate: batch 50/104, 610428 tokens, 274 tok/s
+2026-10-03T09:16:39Z generate: batch 75/104, 918384 tokens, 279 tok/s
+2026-10-03T09:34:27Z generate: batch 100/104, 1191745 tokens, 274 tok/s
+2026-10-03T09:42:43Z C-TF-genprog sub/1000_conclusion/rule_v1/missing: TA nan Rev nan Hold nan n=None (4852.7 s)
+2026-10-03T09:42:50Z C-TF-genprog sub/1000_conclusion/rule_v1/test_L2 prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/sub/1000_conclusion/rule_v1/test_L2/genprm.npz', 'built 8000 prompts, max 492 tokens')
+2026-10-03T09:56:15Z generate: batch 25/212, 263449 tokens, 327 tok/s
+2026-10-03T10:09:59Z generate: batch 50/212, 535339 tokens, 329 tok/s
+2026-10-03T10:24:48Z generate: batch 75/212, 819515 tokens, 325 tok/s
+2026-10-03T10:39:44Z generate: batch 100/212, 1103350 tokens, 323 tok/s
+2026-10-03T10:55:20Z generate: batch 125/212, 1404323 tokens, 323 tok/s
+2026-10-03T11:11:48Z generate: batch 150/212, 1698090 tokens, 318 tok/s
+2026-10-03T11:28:15Z generate: batch 175/212, 1933052 tokens, 306 tok/s
+2026-10-03T11:45:10Z generate: batch 200/212, 2192164 tokens, 299 tok/s
+2026-10-03T12:04:07Z C-TF-genprog sub/1000_conclusion/rule_v1/test_L2: TA 89.8 Rev 93.3 Hold 94.7 n=1000 (8476.7 s)
+2026-10-03T12:04:12Z C-TF-genprog sub/1000_conclusion/rule_v1/test_L3alt prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/sub/1000_conclusion/rule_v1/test_L3alt/genprm.npz', 'built 7992 prompts, max 322 tokens')
+2026-10-03T12:15:03Z generate: batch 25/199, 272162 tokens, 418 tok/s
+2026-10-03T12:26:11Z generate: batch 50/199, 545433 tokens, 414 tok/s
+2026-10-03T12:37:11Z generate: batch 75/199, 819228 tokens, 414 tok/s
+2026-10-03T12:48:38Z generate: batch 100/199, 1096182 tokens, 411 tok/s
+2026-10-03T13:02:08Z generate: batch 125/199, 1382715 tokens, 398 tok/s
+2026-10-03T13:16:21Z generate: batch 150/199, 1655345 tokens, 382 tok/s
+2026-10-03T13:31:51Z generate: batch 175/199, 1944148 tokens, 370 tok/s
+2026-10-03T13:56:48Z C-TF-genprog sub/1000_conclusion/rule_v1/test_L3alt: TA 96.3 Rev 98.6 Hold 97.6 n=999 (6756.5 s)
+2026-10-03T13:56:52Z C-TF-genprog sub/1000_conclusion/xr_v1/test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/sub/1000_conclusion/xr_v1/test/genprm.npz', 'built 4800 prompts, max 236 tokens')
+2026-10-03T14:07:41Z generate: batch 25/116, 267543 tokens, 412 tok/s
+2026-10-03T14:19:40Z generate: batch 50/116, 556661 tokens, 407 tok/s
+2026-10-03T14:32:16Z generate: batch 75/116, 841945 tokens, 396 tok/s
+2026-10-03T14:47:37Z generate: batch 100/116, 1128679 tokens, 371 tok/s
+2026-10-03T15:03:48Z C-TF-genprog sub/1000_conclusion/xr_v1/test: TA nan Rev nan Hold nan n=None (4015.6 s)
+2026-10-03T15:03:48Z DONE C-TF-genprog in 427.3 min, GPU util mean 96.0
