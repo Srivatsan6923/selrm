@@ -48,12 +48,23 @@ exploited too, so the link as written is not supported by the finished runs. Pro
 
 and, replacing "as its reversal rate of 19.4\% would suggest":
 > The two ledger rewards, which score written steps and never the final answer, are exploited as well
-> (to \res{run/D-RL-ledger2-blocks/L2/top/acc_pair} and \res{run/D-RL-ledger2-triplets/L2/top/acc_pair}): the
-> policy learns to write one step that restates a fact of the case and often gives no final answer.
+> (to es{run/D-RL-ledger2-blocks/L2/top/acc_pair} and es{run/D-RL-ledger2-triplets/L2/top/acc_pair}).
+> The collapsed policies write a single short step that restates the case header and then answer; most of
+> their errors are failures to hold, not to reverse.
 
-The second half of that sentence rests on the analysis of what the collapsed policies write (STAGE2_TASKS_D
-D5.3; fixed-seed sample of 50 outputs per reward), which is not finished. Until then only the first half is
-proposed.
+Evidence for the last sentence (`results_git/D-RL-analysis/summary.json`, from the saved outputs of all 450
+held-out cases per run; `audit/policy_outputs_D-RL-stepcheck-s*.md` shows 50 of them, fixed seed):
+
+| Run | one written step | errors on base or near | triplets answered with the flip's claim throughout |
+|---|---|---|---|
+| Med-PRM s0 / s1 | 100% / 100% | 92.3% / 83.5% | 44.0% / 21.3% |
+| ledger x triplets s0 / s1 | 84.9% / 99.8% | 88.6% / 90.5% | 26.0% / 38.7% |
+| ledger x blocks s0 / s1 | 99.8% / 99.3% | 90.5% / 25.8% | 43.3% / 4.0% |
+| outcome s0 / s1 | 0% / 0% | (few errors) | 1.3% / 1.3% |
+
+One run departs from the pattern and the sentence must not hide it: ledger x blocks, seed 1, collapses the
+other way (56.0% of triplets answered with the base claim throughout, i.e. failures to reverse). With that run
+the accurate wording is "most of their errors are failures to hold, in five of six runs".
 
 ### (c) Abstract, last sentence, and contribution (4)
 
