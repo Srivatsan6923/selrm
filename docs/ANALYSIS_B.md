@@ -218,6 +218,8 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-FOLD2-verdict-triplets-s0 | NVIDIA A100-PCIE-40GB | None | 60000 | - | - | 14066856 | 120000 | 938 | 2.11 | 0.22 |
 | B-FOLD2-verdict-triplets-s1 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 14066856 | 120000 | 938 | 0.64 | 0.08 |
 | B-FOLD2-verdict-triplets-s2 | NVIDIA A100-PCIE-40GB | None | 60000 | - | - | 14066856 | 120000 | 938 | 2.06 | 0.21 |
+| B-FOLD3-ledger2-blocks-s0 | NVIDIA RTX A6000 | None | 60000 | 30000 | 30000 | 13803804 | 1062852 | 938 | 3.97 | 0.49 |
+| B-FOLD3-ledger2-blocks-s1 | NVIDIA A100-SXM4-80GB | None | 60000 | 30000 | 30000 | 13803804 | 1062852 | 938 | 1.82 | 0.24 |
 | B-FOLD3-ledger2-blocks-s2 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13803804 | 1062852 | 938 | 0.80 | 0.14 |
 | B-FOLD3-ledger2-triplets-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13867712 | 1084501 | 938 | 0.81 | 0.15 |
 | B-FOLD3-ledger2-triplets-s1 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13867712 | 1084501 | 938 | 0.73 | 0.11 |
@@ -227,17 +229,41 @@ Program on the predicted ledger: TA 99.4 (Rev 99.4, Hold 100.0); the trained jud
 | B-FOLD3-verdict-blocks-s2 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13938789 | 120000 | 938 | 0.64 | 0.07 |
 | B-FOLD3-verdict-triplets-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13975047 | 120000 | 938 | 0.64 | 0.07 |
 | B-FOLD3-verdict-triplets-s1 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13975047 | 120000 | 938 | 0.65 | 0.07 |
+| B-FOLD3-verdict-triplets-s2 | NVIDIA L40 | None | 60000 | - | - | 13975047 | 120000 | 938 | 3.38 | 0.37 |
+| B-LC-ledger2-blocks-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 16418430 | 1045348 | 938 | 0.74 | 0.21 |
+| B-LC-ledger2-triplets-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 16598208 | 1073333 | 938 | 0.75 | 0.21 |
+| B-LC-ledger2-triplets-s1 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 16598208 | 1073333 | 938 | 0.71 | 0.20 |
+| B-LC-ledger2-triplets-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 16598208 | 1073333 | 938 | 0.75 | 0.22 |
+| B-LOKO-boundary-bit_reader-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 11321772 | 210000 | 938 | 0.63 | 0.10 |
 | B-LOKO-boundary-ledger2-s0 | NVIDIA A100-SXM4-80GB | None | 60000 | 30000 | 30000 | 13132713 | 1115843 | 938 | 1.75 | 0.41 |
 | B-LOKO-boundary-summary2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 11979662 | 1139596 | 938 | 0.71 | 0.26 |
+| B-LOKO-boundary-summary2-s1 | NVIDIA A100-PCIE-40GB | None | 60000 | 30000 | 30000 | 11979662 | 1139596 | 938 | 1.99 | 0.46 |
+| B-LOKO-boundary-summary2-s2 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 11979662 | 1139596 | 938 | 0.63 | 0.16 |
 | B-LOKO-boundary-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 12970250 | 120000 | 938 | 0.69 | 0.14 |
+| B-LOKO-boundary-verdict-s1 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 12970250 | 120000 | 938 | 0.61 | 0.10 |
+| B-LOKO-boundary-verdict-s2 | NVIDIA L40 | None | 60000 | - | - | 12970250 | 120000 | 938 | 3.18 | 0.51 |
+| B-LOKO-subject-bit_reader-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 11485500 | 210000 | 938 | 0.64 | 0.13 |
 | B-LOKO-subject-ledger2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13213846 | 1073236 | 938 | 0.82 | 0.27 |
 | B-LOKO-subject-summary2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 12062378 | 1097188 | 938 | 0.74 | 0.25 |
+| B-LOKO-subject-summary2-s1 | NVIDIA A100-SXM4-80GB | None | 60000 | 30000 | 30000 | 12062378 | 1097188 | 938 | 1.62 | 0.34 |
+| B-LOKO-subject-summary2-s2 | NVIDIA A40 | None | 60000 | 30000 | 30000 | 12062378 | 1097188 | 938 | 3.64 | 0.76 |
 | B-LOKO-subject-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13135729 | 120000 | 938 | 0.69 | 0.14 |
+| B-LOKO-subject-verdict-s1 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13135729 | 120000 | 938 | 0.47 | 0.09 |
+| B-LOKO-subject-verdict-s2 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13135729 | 120000 | 938 | 0.65 | 0.10 |
+| B-LOKO-time-bit_reader-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 11516143 | 210000 | 938 | 0.64 | 0.13 |
 | B-LOKO-time-ledger2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 13090214 | 995881 | 938 | 0.78 | 0.26 |
 | B-LOKO-time-summary2-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 11924379 | 1013232 | 938 | 0.72 | 0.24 |
+| B-LOKO-time-summary2-s1 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 11924379 | 1013232 | 938 | 0.63 | 0.14 |
+| B-LOKO-time-summary2-s2 | NVIDIA H100 80GB HBM3 | None | 60000 | 30000 | 30000 | 11924379 | 1013232 | 938 | 0.62 | 0.14 |
 | B-LOKO-time-verdict-s0 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13201513 | 120000 | 938 | 0.70 | 0.14 |
+| B-LOKO-time-verdict-s1 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13201513 | 120000 | 938 | 0.61 | 0.10 |
+| B-LOKO-time-verdict-s2 | NVIDIA H100 80GB HBM3 | None | 60000 | - | - | 13201513 | 120000 | 938 | 0.68 | 0.09 |
+| B-SC-summary2-blocks-s0 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 15238919 | 1055547 | 938 | 0.67 | 0.20 |
 | B-SC-summary2-triplets-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | 30000 | 30000 | 15443373 | 1095740 | 938 | 1.67 | 0.41 |
+| B-SC-summary2-triplets-s1 | NVIDIA A100-PCIE-40GB | 60004 | 60000 | 30000 | 30000 | 15443373 | 1095740 | 938 | 2.14 | 0.58 |
+| B-SC-summary2-triplets-s2 | NVIDIA H100 80GB HBM3 | 60004 | 60000 | 30000 | 30000 | 15443373 | 1095740 | 938 | 0.75 | 0.26 |
 | B-TR-genprm-s0 | NVIDIA A100-SXM4-80GB | 60004 | 60000 | - | - | 22589642 | 7275208 | 938 | 2.42 | 2.75 |
+| B-TR-tripclin-s0 | NVIDIA H100 80GB HBM3 | 60004 | 59910 | 30000 | 30000 | 15073852 | 1633300 | 937 | 1.12 | 0.24 |
 
 ## 8. Was donor-ledger resampling active?
 
@@ -290,17 +316,35 @@ Two-stage runs draw a judge pair's ledger, claim and label from another case of 
 | B-FOLD2-ledger2-triplets-s0 | 0.3 | 30000 | 15000 | 4559 | 30.4% | 1051 |
 | B-FOLD2-ledger2-triplets-s1 | 0.3 | 30000 | 15000 | 4559 | 30.4% | 1051 |
 | B-FOLD2-ledger2-triplets-s2 | 0.3 | 30000 | 15000 | 4559 | 30.4% | 1051 |
+| B-FOLD3-ledger2-blocks-s0 | 0.3 | 30000 | 15000 | 4537 | 30.2% | 965 |
+| B-FOLD3-ledger2-blocks-s1 | 0.3 | 30000 | 15000 | 4537 | 30.2% | 965 |
 | B-FOLD3-ledger2-blocks-s2 | 0.3 | 30000 | 15000 | 4537 | 30.2% | 965 |
 | B-FOLD3-ledger2-triplets-s0 | 0.3 | 30000 | 15000 | 4541 | 30.3% | 965 |
 | B-FOLD3-ledger2-triplets-s1 | 0.3 | 30000 | 15000 | 4541 | 30.3% | 965 |
 | B-FOLD3-ledger2-triplets-s2 | 0.3 | 30000 | 15000 | 4541 | 30.3% | 965 |
+| B-LC-ledger2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
+| B-LC-ledger2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-LC-ledger2-triplets-s1 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-LC-ledger2-triplets-s2 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-LOKO-boundary-bit_reader-s0 | 0.3 | 30000 | 15000 | 4529 | 30.2% | 797 |
 | B-LOKO-boundary-ledger2-s0 | 0.3 | 30000 | 15000 | 4529 | 30.2% | 797 |
 | B-LOKO-boundary-summary2-s0 | 0.3 | 30000 | 15000 | 4529 | 30.2% | 797 |
+| B-LOKO-boundary-summary2-s1 | 0.3 | 30000 | 15000 | 4529 | 30.2% | 797 |
+| B-LOKO-boundary-summary2-s2 | 0.3 | 30000 | 15000 | 4529 | 30.2% | 797 |
+| B-LOKO-subject-bit_reader-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
 | B-LOKO-subject-ledger2-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
 | B-LOKO-subject-summary2-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
+| B-LOKO-subject-summary2-s1 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
+| B-LOKO-subject-summary2-s2 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 796 |
+| B-LOKO-time-bit_reader-s0 | 0.3 | 30000 | 15000 | 4526 | 30.2% | 797 |
 | B-LOKO-time-ledger2-s0 | 0.3 | 30000 | 15000 | 4526 | 30.2% | 797 |
 | B-LOKO-time-summary2-s0 | 0.3 | 30000 | 15000 | 4526 | 30.2% | 797 |
+| B-LOKO-time-summary2-s1 | 0.3 | 30000 | 15000 | 4526 | 30.2% | 797 |
+| B-LOKO-time-summary2-s2 | 0.3 | 30000 | 15000 | 4526 | 30.2% | 797 |
+| B-SC-summary2-blocks-s0 | 0.3 | 30000 | 15000 | 4576 | 30.5% | 795 |
 | B-SC-summary2-triplets-s0 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-SC-summary2-triplets-s1 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
+| B-SC-summary2-triplets-s2 | 0.3 | 30000 | 15000 | 4530 | 30.2% | 795 |
 | B-TR-clinonly-s0 | 0.3 | 30000 | 15000 | 4561 | 30.4% | 291 |
 
 ## 9. Field interventions on the ledger x triplets adapter (test_L2)
@@ -366,99 +410,130 @@ Swap in the ledger of another case (same rule, condition and claim): the judge r
 
 ## 10. Leave one near-miss kind out (test_L2, triplets of the held-out kind; FINAL_TASKS_B P0.5)
 
-| held-out kind | format | trained without the kind | trained on all kinds (B-F-<format>-triplets-s0) | without - all [95% CI], p |
-|---|---|---|---|---|
-| subject | verdict | 7.0 | 91.0 | -84.0 [-89.2, -78.2], p < 0.002 |
-| subject | summary2 | 89.2 | 93.2 | -4.0 [-8.3, -0.3], p 0.048 |
-| subject | ledger2 | 62.5 | 97.8 | -35.2 [-42.7, -27.9], p < 0.002 |
-| time | verdict | 60.2 | 88.2 | -28.0 [-36.0, -20.6], p < 0.002 |
-| time | summary2 | 61.5 | 99.8 | -38.2 [-45.7, -31.3], p < 0.002 |
-| time | ledger2 | 86.2 | 100.0 | -13.8 [-18.9, -8.8], p < 0.002 |
-| boundary | verdict | 49.8 | 93.2 | -43.5 [-54.2, -32.3], p < 0.002 |
-| boundary | summary2 | 99.0 | 100.0 | -1.0 [-3.2, +0.0], p 0.690 |
-| boundary | ledger2 | 87.0 | 100.0 | -13.0 [-22.1, -5.2], p < 0.002 |
+Seed 0 against the same format trained on all kinds (B-F-<format>-triplets-s0; for the decision-bit reader the bit-only-reader ablation B-AB-bitonly-reader-s0); seeds 1-2 (NEXT_TASKS_B 4) listed with the mean.
 
-## 11. Summary pipeline whose judge also sees the case (test_L2, triplets corpus, seed 0; FINAL_TASKS_B P0.4)
+| held-out kind | format | trained without the kind (s0) | trained on all kinds | without - all [95% CI], p | s0 / s1 / s2 | mean |
+|---|---|---|---|---|---|---|
+| subject | verdict | 7.0 | 91.0 | -84.0 [-89.2, -78.2], p < 0.002 | 7.0 / 12.2 / 51.5 | 23.6 |
+| subject | summary2 | 89.2 | 93.2 | -4.0 [-8.3, -0.3], p 0.048 | 89.2 / 91.8 / 84.5 | 88.5 |
+| subject | ledger2 | 62.5 | 97.8 | -35.2 [-42.7, -27.9], p < 0.002 | 62.5 / - / - | 62.5 |
+| subject | bit_reader | 77.2 | 99.8 | -22.5 [-28.9, -16.8], p < 0.002 | 77.2 / - / - | 77.2 |
+| time | verdict | 60.2 | 88.2 | -28.0 [-36.0, -20.6], p < 0.002 | 60.2 / 61.5 / 56.0 | 59.2 |
+| time | summary2 | 61.5 | 99.8 | -38.2 [-45.7, -31.3], p < 0.002 | 61.5 / 72.5 / 45.5 | 59.8 |
+| time | ledger2 | 86.2 | 100.0 | -13.8 [-18.9, -8.8], p < 0.002 | 86.2 / - / - | 86.2 |
+| time | bit_reader | 71.0 | 100.0 | -29.0 [-36.3, -22.3], p < 0.002 | 71.0 / - / - | 71.0 |
+| boundary | verdict | 49.8 | 93.2 | -43.5 [-54.2, -32.3], p < 0.002 | 49.8 / 23.0 / 16.8 | 29.8 |
+| boundary | summary2 | 99.0 | 100.0 | -1.0 [-3.2, +0.0], p 0.690 | 99.0 / 99.0 / 70.5 | 89.5 |
+| boundary | ledger2 | 87.0 | 100.0 | -13.0 [-22.1, -5.2], p < 0.002 | 87.0 / - / - | 87.0 |
+| boundary | bit_reader | 97.8 | 100.0 | -2.2 [-5.5, +0.0], p 0.082 | 97.8 / - / - | 97.8 |
 
-| run | judge sees | TA | Rev | Hold |
-|---|---|---|---|---|
-| B-SC-summary2-triplets-s0 | rule, case, prose record, claim | 98.8 | 99.0 | 99.8 |
-| B-F-summary2-triplets-s0 | rule, prose record, claim | 98.0 | 98.5 | 99.3 |
-| B-F-ledger2-triplets-s0 | rule, ledger, claim | 99.2 | 99.2 | 100.0 |
+## 11. Judges that also see the case (test_L2; FINAL_TASKS_B P0.4, NEXT_TASKS_B 2)
 
-Case-visible minus blind summary judge, TA: +0.8 [+0.1, +1.5], p 0.024; ledger minus case-visible summary judge, TA: +0.4 [-0.3, +1.1], p 0.290.
+Case-visible judge: rule, case, record, claim (B-SC summary2_case, B-LC ledger2_case); blind judge: rule, record, claim (B-F). Seed 0 paired; seeds listed with the mean.
+
+| corpus | record | case-visible TA / Rev / Hold (s0) | blind TA / Rev / Hold (s0) | case-visible - blind TA [95% CI], p | case-visible TA s0 / s1 / s2 | mean |
+|---|---|---|---|---|---|---|
+| triplets | prose | 98.8 / 99.0 / 99.8 | 98.0 / 98.5 / 99.3 | +0.8 [+0.1, +1.5], p 0.024 | 98.8 / 99.0 / 99.6 | 99.1 |
+| triplets | ledger | 99.3 / 99.3 / 100.0 | 99.2 / 99.2 / 100.0 | +0.1 [-0.2, +0.5], p 0.514 | 99.3 / 97.7 / 99.0 | 98.7 |
+| blocks | prose | 68.1 / 99.8 / 68.3 | 67.3 / 96.8 / 70.1 | +0.8 [-3.6, +5.4], p 0.774 | 68.1 / - / - | 68.1 |
+| blocks | ledger | 78.5 / 99.8 / 78.7 | 75.3 / 98.7 / 76.2 | +3.2 [+0.0, +6.7], p 0.052 | 78.5 / - / - | 78.5 |
 
 ## 12. Rule-side items (xr_v1/test; A's set, 400 items = 2 rules x 3 cases; conclusion claims)
 
 An item is solved iff all its cells are right (crossed accuracy XA, selrm.metrics.crossed_accuracy; B-NS runs score a kept adapter, other runs evaluated the set themselves).
 
-| run | XA | cell accuracy | XA currency | XA inclusivity | XA subject | XA window |
-|---|---|---|---|---|---|---|
-| B-AB-bitonly-judge-s0 | 97.8 | 99.6 | 100.0 | 100.0 | 100.0 | 91.0 |
-| B-AB-bitonly-reader-s0 | 97.8 | 99.6 | 100.0 | 100.0 | 100.0 | 91.0 |
-| B-AB-concept-s0 | 12.0 | 73.9 | 35.0 | 2.0 | 0.0 | 11.0 |
-| B-AB-conddrv-s0 | 86.5 | 97.4 | 99.0 | 100.0 | 98.0 | 49.0 |
-| B-AB-decfield-s0 | 98.8 | 99.8 | 100.0 | 100.0 | 100.0 | 95.0 |
-| B-AB-nopres-s0 | 90.0 | 98.3 | 99.0 | 100.0 | 100.0 | 61.0 |
-| B-AB-noresamp-s0 | 78.8 | 96.3 | 96.0 | 100.0 | 64.0 | 55.0 |
-| B-AB-pairwise-s0 | 92.5 | 98.6 | 100.0 | 100.0 | 99.0 | 71.0 |
-| B-AB-probe-rw-s0 | 25.8 | 87.6 | 45.0 | 22.0 | 5.0 | 31.0 |
-| B-AB-verify-s0 | 91.5 | 98.6 | 100.0 | 100.0 | 100.0 | 66.0 |
-| B-DIS-s0 | 12.2 | 80.3 | 4.0 | 16.0 | 1.0 | 28.0 |
-| B-DIS-s1 | 16.5 | 78.1 | 6.0 | 33.0 | 10.0 | 17.0 |
-| B-DIS-s2 | 29.5 | 87.0 | 18.0 | 37.0 | 23.0 | 40.0 |
-| B-F-ledger2-balanced-s0 | 54.5 | 92.4 | 87.0 | 44.0 | 31.0 | 56.0 |
-| B-F-ledger2-blocks-s1 | 37.8 | 87.0 | 46.0 | 28.0 | 25.0 | 52.0 |
-| B-F-ledger2-blocks-s2 | 71.0 | 95.2 | 88.0 | 98.0 | 55.0 | 43.0 |
-| B-F-ledger2-blocks-s3 | 44.5 | 90.8 | 67.0 | 66.0 | 3.0 | 42.0 |
-| B-F-ledger2-blocks-s4 | 82.2 | 97.0 | 100.0 | 84.0 | 87.0 | 58.0 |
-| B-F-ledger2-natural-s0 | 86.0 | 97.7 | 98.0 | 100.0 | 91.0 | 55.0 |
-| B-F-ledger2-triplets-s1 | 88.8 | 98.0 | 100.0 | 100.0 | 87.0 | 68.0 |
-| B-F-ledger2-triplets-s2 | 91.5 | 98.6 | 99.0 | 100.0 | 100.0 | 67.0 |
-| B-F-ledger2-triplets-s3 | 94.0 | 99.0 | 100.0 | 100.0 | 100.0 | 76.0 |
-| B-F-ledger2-triplets-s4 | 85.0 | 97.2 | 100.0 | 100.0 | 72.0 | 68.0 |
-| B-F-summary2-balanced-s0 | 65.8 | 94.3 | 30.0 | 98.0 | 92.0 | 43.0 |
-| B-F-summary2-blocks-s1 | 51.0 | 91.8 | 45.0 | 24.0 | 94.0 | 41.0 |
-| B-F-summary2-blocks-s2 | 62.5 | 93.8 | 92.0 | 12.0 | 95.0 | 51.0 |
-| B-F-summary2-blocks-s3 | 35.8 | 89.3 | 15.0 | 33.0 | 73.0 | 22.0 |
-| B-F-summary2-blocks-s4 | 70.2 | 95.0 | 69.0 | 51.0 | 94.0 | 67.0 |
-| B-F-summary2-natural-s0 | 25.8 | 87.6 | 16.0 | 54.0 | 3.0 | 30.0 |
-| B-F-summary2-triplets-s1 | 92.5 | 98.8 | 100.0 | 100.0 | 99.0 | 71.0 |
-| B-F-summary2-triplets-s2 | 90.2 | 98.4 | 100.0 | 100.0 | 100.0 | 61.0 |
-| B-F-summary2-triplets-s3 | 89.2 | 98.0 | 98.0 | 100.0 | 100.0 | 59.0 |
-| B-F-summary2-triplets-s4 | 91.8 | 98.6 | 100.0 | 100.0 | 100.0 | 67.0 |
-| B-F-value2-balanced-s0 | 57.8 | 90.4 | 60.0 | 100.0 | 12.0 | 59.0 |
-| B-F-value2-blocks-s0 | 70.0 | 94.2 | 83.0 | 100.0 | 42.0 | 55.0 |
-| B-F-value2-natural-s0 | 29.2 | 82.6 | 70.0 | 0.0 | 0.0 | 47.0 |
-| B-F-value2-triplets-s0 | 70.5 | 94.5 | 97.0 | 100.0 | 21.0 | 64.0 |
-| B-F-verdict-blocks-s3 | 40.2 | 88.5 | 89.0 | 37.0 | 18.0 | 17.0 |
-| B-F-verdict-blocks-s4 | 37.8 | 89.6 | 35.0 | 34.0 | 36.0 | 46.0 |
-| B-F-verdict-triplets-s2 | 90.0 | 98.0 | 100.0 | 100.0 | 100.0 | 60.0 |
-| B-F-verdict-triplets-s3 | 87.2 | 97.2 | 100.0 | 99.0 | 100.0 | 50.0 |
-| B-F-verdict-triplets-s4 | 85.5 | 96.4 | 100.0 | 100.0 | 99.0 | 43.0 |
-| B-LOKO-boundary-ledger2-s0 | 85.8 | 97.6 | 100.0 | 89.0 | 95.0 | 59.0 |
-| B-LOKO-boundary-summary2-s0 | 92.5 | 98.8 | 99.0 | 100.0 | 98.0 | 73.0 |
-| B-LOKO-boundary-verdict-s0 | 83.0 | 96.0 | 100.0 | 97.0 | 100.0 | 35.0 |
-| B-LOKO-subject-ledger2-s0 | 90.8 | 98.5 | 98.0 | 100.0 | 91.0 | 74.0 |
-| B-LOKO-subject-summary2-s0 | 91.5 | 98.6 | 100.0 | 100.0 | 100.0 | 66.0 |
-| B-LOKO-subject-verdict-s0 | 69.8 | 94.5 | 100.0 | 99.0 | 33.0 | 47.0 |
-| B-LOKO-time-ledger2-s0 | 84.2 | 97.4 | 100.0 | 100.0 | 79.0 | 58.0 |
-| B-LOKO-time-summary2-s0 | 91.2 | 98.5 | 100.0 | 100.0 | 100.0 | 65.0 |
-| B-LOKO-time-verdict-s0 | 80.5 | 95.3 | 96.0 | 100.0 | 100.0 | 26.0 |
-| B-NS-xr_v1-B-F-ledger2-blocks-s0 | 76.0 | 96.0 | 100.0 | 74.0 | 68.0 | 62.0 |
-| B-NS-xr_v1-B-F-ledger2-triplets-s0 | 89.8 | 98.3 | 93.0 | 100.0 | 98.0 | 68.0 |
-| B-NS-xr_v1-B-F-rationale-triplets-s0 | 92.8 | 98.5 | 100.0 | 100.0 | 100.0 | 71.0 |
-| B-NS-xr_v1-B-F-summary2-blocks-s0 | 80.2 | 96.7 | 94.0 | 79.0 | 97.0 | 51.0 |
-| B-NS-xr_v1-B-F-summary2-triplets-s0 | 88.5 | 98.1 | 100.0 | 100.0 | 100.0 | 54.0 |
-| B-NS-xr_v1-B-F-verdict-blocks-s0 | 60.8 | 93.0 | 75.0 | 77.0 | 47.0 | 44.0 |
-| B-NS-xr_v1-B-F-verdict-blocks-s1 | 47.2 | 90.0 | 95.0 | 64.0 | 0.0 | 30.0 |
-| B-NS-xr_v1-B-F-verdict-blocks-s2 | 66.2 | 94.2 | 96.0 | 65.0 | 52.0 | 52.0 |
-| B-NS-xr_v1-B-F-verdict-triplets-s0 | 90.2 | 97.7 | 100.0 | 100.0 | 95.0 | 66.0 |
-| B-NS-xr_v1-B-F-verdict-triplets-s1 | 91.2 | 98.4 | 100.0 | 100.0 | 94.0 | 71.0 |
-| B-SC-summary2-triplets-s0 | 91.5 | 98.6 | 96.0 | 100.0 | 98.0 | 72.0 |
-| B-TR-clinonly-s0 | 35.5 | 88.0 | 15.0 | 25.0 | 55.0 | 47.0 |
-| B-TR-fover-s0 | 67.0 | 94.4 | 93.0 | 40.0 | 92.0 | 43.0 |
-| B-TR-genprm-s0 | 83.0 | 96.6 | 92.0 | 100.0 | 95.0 | 45.0 |
+XA- leaves out the items of data/xr_v1/KNOWN_ISSUES.json (A's list, found after the freeze).
+
+| run | XA | XA- | items in XA- | cell accuracy | XA currency | XA inclusivity | XA subject | XA window |
+|---|---|---|---|---|---|---|---|---|
+| B-AB-bitonly-judge-s0 | 97.8 | 97.5 | 362 | 99.6 | 100.0 | 100.0 | 100.0 | 91.0 |
+| B-AB-bitonly-reader-s0 | 97.8 | 97.5 | 362 | 99.6 | 100.0 | 100.0 | 100.0 | 91.0 |
+| B-AB-concept-s0 | 12.0 | 11.9 | 362 | 73.9 | 35.0 | 2.0 | 0.0 | 11.0 |
+| B-AB-conddrv-s0 | 86.5 | 85.1 | 362 | 97.4 | 99.0 | 100.0 | 98.0 | 49.0 |
+| B-AB-decfield-s0 | 98.8 | 98.6 | 362 | 99.8 | 100.0 | 100.0 | 100.0 | 95.0 |
+| B-AB-nopres-s0 | 90.0 | 89.0 | 362 | 98.3 | 99.0 | 100.0 | 100.0 | 61.0 |
+| B-AB-noresamp-s0 | 78.8 | 76.5 | 362 | 96.3 | 96.0 | 100.0 | 64.0 | 55.0 |
+| B-AB-pairwise-s0 | 92.5 | 91.7 | 362 | 98.6 | 100.0 | 100.0 | 99.0 | 71.0 |
+| B-AB-probe-rw-s0 | 25.8 | 26.8 | 362 | 87.6 | 45.0 | 22.0 | 5.0 | 31.0 |
+| B-AB-verify-s0 | 91.5 | 90.6 | 362 | 98.6 | 100.0 | 100.0 | 100.0 | 66.0 |
+| B-DIS-s0 | 12.2 | 10.8 | 362 | 80.3 | 4.0 | 16.0 | 1.0 | 28.0 |
+| B-DIS-s1 | 16.5 | 14.9 | 362 | 78.1 | 6.0 | 33.0 | 10.0 | 17.0 |
+| B-DIS-s2 | 29.5 | 28.5 | 362 | 87.0 | 18.0 | 37.0 | 23.0 | 40.0 |
+| B-F-ledger2-balanced-s0 | 54.5 | 55.5 | 362 | 92.4 | 87.0 | 44.0 | 31.0 | 56.0 |
+| B-F-ledger2-blocks-s1 | 37.8 | 40.3 | 362 | 87.0 | 46.0 | 28.0 | 25.0 | 52.0 |
+| B-F-ledger2-blocks-s2 | 71.0 | 68.0 | 362 | 95.2 | 88.0 | 98.0 | 55.0 | 43.0 |
+| B-F-ledger2-blocks-s3 | 44.5 | 39.0 | 362 | 90.8 | 67.0 | 66.0 | 3.0 | 42.0 |
+| B-F-ledger2-blocks-s4 | 82.2 | 80.4 | 362 | 97.0 | 100.0 | 84.0 | 87.0 | 58.0 |
+| B-F-ledger2-natural-s0 | 86.0 | 85.1 | 362 | 97.7 | 98.0 | 100.0 | 91.0 | 55.0 |
+| B-F-ledger2-triplets-s1 | 88.8 | 87.6 | 362 | 98.0 | 100.0 | 100.0 | 87.0 | 68.0 |
+| B-F-ledger2-triplets-s2 | 91.5 | 90.6 | 362 | 98.6 | 99.0 | 100.0 | 100.0 | 67.0 |
+| B-F-ledger2-triplets-s3 | 94.0 | 93.4 | 362 | 99.0 | 100.0 | 100.0 | 100.0 | 76.0 |
+| B-F-ledger2-triplets-s4 | 85.0 | 83.4 | 362 | 97.2 | 100.0 | 100.0 | 72.0 | 68.0 |
+| B-F-summary2-balanced-s0 | 65.8 | 66.3 | 362 | 94.3 | 30.0 | 98.0 | 92.0 | 43.0 |
+| B-F-summary2-blocks-s1 | 51.0 | 53.0 | 362 | 91.8 | 45.0 | 24.0 | 94.0 | 41.0 |
+| B-F-summary2-blocks-s2 | 62.5 | 65.2 | 362 | 93.8 | 92.0 | 12.0 | 95.0 | 51.0 |
+| B-F-summary2-blocks-s3 | 35.8 | 39.0 | 362 | 89.3 | 15.0 | 33.0 | 73.0 | 22.0 |
+| B-F-summary2-blocks-s4 | 70.2 | 72.9 | 362 | 95.0 | 69.0 | 51.0 | 94.0 | 67.0 |
+| B-F-summary2-natural-s0 | 25.8 | 27.1 | 362 | 87.6 | 16.0 | 54.0 | 3.0 | 30.0 |
+| B-F-summary2-triplets-s1 | 92.5 | 91.7 | 362 | 98.8 | 100.0 | 100.0 | 99.0 | 71.0 |
+| B-F-summary2-triplets-s2 | 90.2 | 89.2 | 362 | 98.4 | 100.0 | 100.0 | 100.0 | 61.0 |
+| B-F-summary2-triplets-s3 | 89.2 | 88.1 | 362 | 98.0 | 98.0 | 100.0 | 100.0 | 59.0 |
+| B-F-summary2-triplets-s4 | 91.8 | 90.9 | 362 | 98.6 | 100.0 | 100.0 | 100.0 | 67.0 |
+| B-F-value2-balanced-s0 | 57.8 | 56.4 | 362 | 90.4 | 60.0 | 100.0 | 12.0 | 59.0 |
+| B-F-value2-blocks-s0 | 70.0 | 66.9 | 362 | 94.2 | 83.0 | 100.0 | 42.0 | 55.0 |
+| B-F-value2-natural-s0 | 29.2 | 28.2 | 362 | 82.6 | 70.0 | 0.0 | 0.0 | 47.0 |
+| B-F-value2-triplets-s0 | 70.5 | 67.4 | 362 | 94.5 | 97.0 | 100.0 | 21.0 | 64.0 |
+| B-F-verdict-blocks-s3 | 40.2 | 40.9 | 362 | 88.5 | 89.0 | 37.0 | 18.0 | 17.0 |
+| B-F-verdict-blocks-s4 | 37.8 | 41.7 | 362 | 89.6 | 35.0 | 34.0 | 36.0 | 46.0 |
+| B-F-verdict-triplets-s2 | 90.0 | 89.0 | 362 | 98.0 | 100.0 | 100.0 | 100.0 | 60.0 |
+| B-F-verdict-triplets-s3 | 87.2 | 85.9 | 362 | 97.2 | 100.0 | 99.0 | 100.0 | 50.0 |
+| B-F-verdict-triplets-s4 | 85.5 | 84.0 | 362 | 96.4 | 100.0 | 100.0 | 99.0 | 43.0 |
+| B-LC-ledger2-blocks-s0 | 72.0 | 69.6 | 362 | 95.3 | 98.0 | 87.0 | 58.0 | 45.0 |
+| B-LC-ledger2-triplets-s0 | 97.8 | 97.5 | 362 | 99.6 | 98.0 | 100.0 | 100.0 | 93.0 |
+| B-LC-ledger2-triplets-s1 | 98.2 | 98.1 | 362 | 99.7 | 100.0 | 100.0 | 99.0 | 94.0 |
+| B-LC-ledger2-triplets-s2 | 95.5 | 95.0 | 362 | 99.2 | 100.0 | 100.0 | 99.0 | 83.0 |
+| B-LOKO-boundary-bit_reader-s0 | 96.8 | 96.4 | 362 | 99.5 | 100.0 | 100.0 | 100.0 | 87.0 |
+| B-LOKO-boundary-ledger2-s0 | 85.8 | 86.2 | 362 | 97.6 | 100.0 | 89.0 | 95.0 | 59.0 |
+| B-LOKO-boundary-summary2-s0 | 92.5 | 91.7 | 362 | 98.8 | 99.0 | 100.0 | 98.0 | 73.0 |
+| B-LOKO-boundary-summary2-s1 | 88.2 | 87.0 | 362 | 98.0 | 100.0 | 95.0 | 99.0 | 59.0 |
+| B-LOKO-boundary-summary2-s2 | 82.2 | 81.2 | 362 | 97.0 | 100.0 | 77.0 | 100.0 | 52.0 |
+| B-LOKO-boundary-verdict-s0 | 83.0 | 81.2 | 362 | 96.0 | 100.0 | 97.0 | 100.0 | 35.0 |
+| B-LOKO-boundary-verdict-s1 | 83.0 | 81.5 | 362 | 96.5 | 100.0 | 82.0 | 98.0 | 52.0 |
+| B-LOKO-boundary-verdict-s2 | 73.2 | 73.5 | 362 | 95.0 | 100.0 | 56.0 | 95.0 | 42.0 |
+| B-LOKO-subject-bit_reader-s0 | 95.8 | 95.3 | 362 | 99.2 | 100.0 | 100.0 | 100.0 | 83.0 |
+| B-LOKO-subject-ledger2-s0 | 90.8 | 89.8 | 362 | 98.5 | 98.0 | 100.0 | 91.0 | 74.0 |
+| B-LOKO-subject-summary2-s0 | 91.5 | 90.6 | 362 | 98.6 | 100.0 | 100.0 | 100.0 | 66.0 |
+| B-LOKO-subject-summary2-s1 | 93.5 | 92.8 | 362 | 98.7 | 100.0 | 100.0 | 98.0 | 76.0 |
+| B-LOKO-subject-summary2-s2 | 90.5 | 89.5 | 362 | 98.4 | 98.0 | 100.0 | 100.0 | 64.0 |
+| B-LOKO-subject-verdict-s0 | 69.8 | 66.6 | 362 | 94.5 | 100.0 | 99.0 | 33.0 | 47.0 |
+| B-LOKO-subject-verdict-s1 | 72.2 | 69.3 | 362 | 94.5 | 100.0 | 99.0 | 41.0 | 49.0 |
+| B-LOKO-subject-verdict-s2 | 87.2 | 85.9 | 362 | 97.3 | 100.0 | 100.0 | 97.0 | 52.0 |
+| B-LOKO-time-bit_reader-s0 | 89.5 | 88.4 | 362 | 98.2 | 81.0 | 100.0 | 99.0 | 78.0 |
+| B-LOKO-time-ledger2-s0 | 84.2 | 82.6 | 362 | 97.4 | 100.0 | 100.0 | 79.0 | 58.0 |
+| B-LOKO-time-summary2-s0 | 91.2 | 90.3 | 362 | 98.5 | 100.0 | 100.0 | 100.0 | 65.0 |
+| B-LOKO-time-summary2-s1 | 84.5 | 82.9 | 362 | 97.0 | 95.0 | 100.0 | 93.0 | 50.0 |
+| B-LOKO-time-summary2-s2 | 83.0 | 81.2 | 362 | 97.2 | 96.0 | 100.0 | 92.0 | 44.0 |
+| B-LOKO-time-verdict-s0 | 80.5 | 78.5 | 362 | 95.3 | 96.0 | 100.0 | 100.0 | 26.0 |
+| B-LOKO-time-verdict-s1 | 82.0 | 80.1 | 362 | 95.7 | 99.0 | 100.0 | 94.0 | 35.0 |
+| B-LOKO-time-verdict-s2 | 80.8 | 78.7 | 362 | 96.0 | 96.0 | 98.0 | 100.0 | 29.0 |
+| B-NS-xr_v1-B-F-ledger2-blocks-s0 | 76.0 | 74.6 | 362 | 96.0 | 100.0 | 74.0 | 68.0 | 62.0 |
+| B-NS-xr_v1-B-F-ledger2-triplets-s0 | 89.8 | 88.7 | 362 | 98.3 | 93.0 | 100.0 | 98.0 | 68.0 |
+| B-NS-xr_v1-B-F-rationale-triplets-s0 | 92.8 | 92.0 | 362 | 98.5 | 100.0 | 100.0 | 100.0 | 71.0 |
+| B-NS-xr_v1-B-F-summary2-blocks-s0 | 80.2 | 78.2 | 362 | 96.7 | 94.0 | 79.0 | 97.0 | 51.0 |
+| B-NS-xr_v1-B-F-summary2-triplets-s0 | 88.5 | 87.3 | 362 | 98.1 | 100.0 | 100.0 | 100.0 | 54.0 |
+| B-NS-xr_v1-B-F-verdict-blocks-s0 | 60.8 | 59.9 | 362 | 93.0 | 75.0 | 77.0 | 47.0 | 44.0 |
+| B-NS-xr_v1-B-F-verdict-blocks-s1 | 47.2 | 45.0 | 362 | 90.0 | 95.0 | 64.0 | 0.0 | 30.0 |
+| B-NS-xr_v1-B-F-verdict-blocks-s2 | 66.2 | 64.6 | 362 | 94.2 | 96.0 | 65.0 | 52.0 | 52.0 |
+| B-NS-xr_v1-B-F-verdict-triplets-s0 | 90.2 | 89.2 | 362 | 97.7 | 100.0 | 100.0 | 95.0 | 66.0 |
+| B-NS-xr_v1-B-F-verdict-triplets-s1 | 91.2 | 90.3 | 362 | 98.4 | 100.0 | 100.0 | 94.0 | 71.0 |
+| B-SC-summary2-blocks-s0 | 61.2 | 61.6 | 362 | 93.5 | 26.0 | 99.0 | 80.0 | 40.0 |
+| B-SC-summary2-triplets-s0 | 91.5 | 90.6 | 362 | 98.6 | 96.0 | 100.0 | 98.0 | 72.0 |
+| B-SC-summary2-triplets-s1 | 91.5 | 90.6 | 362 | 98.5 | 100.0 | 97.0 | 100.0 | 69.0 |
+| B-SC-summary2-triplets-s2 | 93.5 | 92.8 | 362 | 98.9 | 100.0 | 100.0 | 90.0 | 84.0 |
+| B-TR-clinonly-s0 | 35.5 | 35.9 | 362 | 88.0 | 15.0 | 25.0 | 55.0 | 47.0 |
+| B-TR-fover-s0 | 67.0 | 69.9 | 362 | 94.4 | 93.0 | 40.0 | 92.0 | 43.0 |
+| B-TR-genprm-s0 | 83.0 | 81.2 | 362 | 96.6 | 92.0 | 100.0 | 95.0 | 45.0 |
+| B-TR-tripclin-s0 | 90.2 | 89.2 | 362 | 98.3 | 96.0 | 100.0 | 90.0 | 75.0 |
 
 ## 13. Core cells across seeds (test_L2; FINAL_TASKS_B P0.3; mean and s.d. over the finished seeds)
 

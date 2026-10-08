@@ -14,6 +14,7 @@ print(len(busy), "busy run dirs on the PVC")
 adapters = subprocess.run(["kubectl", "-n", "ecepxie", "exec", "selrm-b-sync", "--", "sh", "-c", "ls /pvc/selrm/adapters"],
                           capture_output=True, text=True, check=True).stdout.split()
 print(len(adapters), "adapters on the PVC")
+L3INV = ["B-TR-fover-s0", "B-F-ledger2-natural-s0", "B-F-ledger2-balanced-s0", "B-TR-clinonly-s0", "B-TR-tripclin-s0"]
 FILES = {  # queue file -> generator (FINAL_TASKS_B, 3 Oct)
     "b_f_s0.json": lambda: Q.factorial({0}, REG, V),
     "b_f_key_s12.json": lambda: Q.factorial({1, 2}, REG, V, key_only=True),
@@ -36,6 +37,8 @@ FILES = {  # queue file -> generator (FINAL_TASKS_B, 3 Oct)
     "b_rw.json": lambda: Q.rewritten(REG, V),              # NEXT_TASKS_B 5, once A freezes train_triplets_rw
     "b_aux.json": lambda: Q.aux(REG),                       # NEXT_TASKS_B 3 (docs/AUX_PROTOCOL.md S1)
     "v2/b_ns.json": lambda: Q.ns_eval(REG, adapters),      # P0.6: kept adapters on A's new sets
+    "v2/b_l3inv.json": lambda: Q.ns_eval(REG, [a for a in L3INV if a in adapters],      # stage 2 B0: red cells of Table 20
+                                         fams={"L3inv": ["rule_v1/test_L3inv"]}),
 }
 for name, gen in FILES.items():
     path = f"configs/queues/{name}"

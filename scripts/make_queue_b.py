@@ -324,14 +324,14 @@ def with_new_sets(runs, registry):
     return runs
 
 
-def ns_eval(registry, adapters):
+def ns_eval(registry, adapters, fams=None):
     """B-NS-<family>-<run>: eval-only runs of kept adapters on each new-set family their run did not evaluate.
     adapters: run_ids with an adapter on the PVC; their specs come from configs/queues."""
     specs = {}
     for p in sorted(glob.glob(f"{ROOT}/configs/queues/**/*.json", recursive=True)):
         specs.update({r["run_id"]: r for r in json.load(open(p))["runs"]})
-    fams = {}
-    for s in new_sets(registry):
+    given, fams = fams is not None, fams or {}     # fams given: {name: [sets]} (e.g. Table 20's L3-inv column)
+    for s in ([] if given else new_sets(registry)):
         fams.setdefault(s.split("/")[0], []).append(s)
     runs = []
     for src in sorted(adapters):

@@ -25,6 +25,10 @@ def main():
                                "base_model": f"{m['model']}@{m['model_revision']}", "format": m["format"],
                                "corpus": m["corpus"], "pvc": "selrm-b", "pvc_path": f"selrm/adapters/{rid}"}
         added.append(rid)
+    for v in list(reg["systems"].values()):     # stage-2 names (STAGE2_SPEC section 6): <format>_<corpus>_s<seed>
+        parts = str(v.get("run_id")).split("-")
+        if parts[:2] == ["B", "F"] and len(parts) == 5 and "alias_of" not in v:
+            reg["systems"].setdefault(f"{parts[2]}_{parts[3]}_{parts[4]}", v | {"alias_of": v["run_id"]})
     open(p, "w", encoding="utf-8", newline="\n").write(json.dumps(reg, indent=1, ensure_ascii=False) + "\n")
     print(f"{len(added)} added: {', '.join(added)}")
 

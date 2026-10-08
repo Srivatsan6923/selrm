@@ -6,7 +6,7 @@ import collections, glob, json, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
-from selrm.metrics import _flags, bootstrap_ci, decisions, paired_cluster_bootstrap, paired_test, seed_table, summarise
+from selrm.metrics import _flags, bootstrap_ci, crossed_accuracy, decisions, paired_cluster_bootstrap, paired_test, seed_table, summarise
 from report_b import DATA, RG, records
 
 NL = "\n"
@@ -402,13 +402,20 @@ def xr_section():
     print("## 12. Rule-side items (xr_v1/test; A's set, 400 items = 2 rules x 3 cases; conclusion claims)" + NL)
     print("An item is solved iff all its cells are right (crossed accuracy XA, selrm.metrics.crossed_accuracy; "
           "B-NS runs score a kept adapter, other runs evaluated the set themselves)." + NL)
-    print("| run | XA | cell accuracy | XA currency | XA inclusivity | XA subject | XA window |")
-    print("|---|---|---|---|---|---|---|")
+    print("XA- leaves out the items of data/xr_v1/KNOWN_ISSUES.json (A's list, found after the freeze)." + NL)
+    excl = {i for iss in json.load(open(f"{ROOT}/data/xr_v1/KNOWN_ISSUES.json"))["issues"] for i in iss["items"]}
+    keep = ("iid", "tid", "case_kind", "claim_type", "claim_role", "label", "nm_kind", "meta")
+    R = [{k: r[k] for k in keep} for r in stream("xr_v1/test") if r["meta"]["xr"]["item"] not in excl]
+    print("| run | XA | XA- | items in XA- | cell accuracy | XA currency | XA inclusivity | XA subject | XA window |")
+    print("|---|---|---|---|---|---|---|---|---|")
     for sp in sorted(glob.glob(f"{RG}/*/summary_xr_v1~test.json")):
         x = json.load(open(sp)).get("xr", {}).get("conclusion")
         if x:
             g = lambda k: f"{x[k]:.1f}" if x.get(k) is not None else "-"
-            print(f"| {os.path.basename(os.path.dirname(sp))} | {g('XA')} | {g('CellAcc')} | {g('XA_currency')} | "
+            u = scores(os.path.basename(os.path.dirname(sp)), "xr_v1/test")
+            Rr = [r for r in R if r["iid"] in u]
+            m = crossed_accuracy(Rr, [u[r["iid"]]["u"] for r in Rr])
+            print(f"| {os.path.basename(os.path.dirname(sp))} | {g('XA')} | {m['XA']:.1f} | {m['n_items']} | {g('CellAcc')} | {g('XA_currency')} | "
                   f"{g('XA_inclusivity')} | {g('XA_subject')} | {g('XA_window')} |")
     print()
 
