@@ -1,0 +1,37 @@
+{
+ "run_id": "C-AUD-genprm--p2",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 11420.4,
+  "n_records": 1200,
+  "n_groups": 100,
+  "claim_types": [
+   "conclusion"
+  ]
+ },
+ "XA": 23.0,
+ "n_items": 100,
+ "n_incomplete": 0,
+ "n_excluded": 0,
+ "CellAcc": 77.83333333333333,
+ "n_cells": 600,
+ "cells_without_label": 0,
+ "XA_currency": 24.0,
+ "XA_inclusivity": 24.0,
+ "XA_subject": 16.0,
+ "XA_window": 28.0,
+ "without_known_issues": {
+  "XA": 23.404255319148938,
+  "n_items": 94,
+  "n_incomplete": 0,
+  "n_excluded": 38,
+  "CellAcc": 77.83687943262412,
+  "n_cells": 564,
+  "cells_without_label": 0,
+  "XA_currency": 23.80952380952381,
+  "XA_inclusivity": 26.08695652173913,
+  "XA_subject": 16.0,
+  "XA_window": 28.0
+ }
+}

@@ -1,0 +1,157 @@
+{
+ "run_id": "C-TG-ledger2-blocks-s2",
+ "set": "clin_v1/trialgpt_test",
+ "protocol": "docs/TRIALGPT_PROTOCOL.md",
+ "threshold": 9.635923385620117,
+ "n_items": 801,
+ "n_scored": 759,
+ "n_patients": 43,
+ "macroF1": 69.72846162970613,
+ "macroF1_CI95": [
+  65.22073388325441,
+  73.70561826477484
+ ],
+ "acc": 70.09222661396575,
+ "acc_CI95": [
+  65.51297898640297,
+  74.32432432432432
+ ],
+ "per_class": {
+  "met": {
+   "P": 88.42105263157895,
+   "R": 60.86956521739131,
+   "F1": 72.1030042918455,
+   "n": 138
+  },
+  "not_met": {
+   "P": 82.45614035087719,
+   "R": 72.49357326478149,
+   "F1": 77.15458276333788,
+   "n": 389
+  },
+  "nei": {
+   "P": 51.5527950310559,
+   "R": 71.55172413793103,
+   "F1": 59.92779783393502,
+   "n": 232
+  }
+ },
+ "confusion": {
+  "met": {
+   "met": 84,
+   "nei": 54
+  },
+  "not_met": {
+   "nei": 102,
+   "not_met": 282,
+   "met": 5
+  },
+  "nei": {
+   "nei": 166,
+   "not_met": 60,
+   "met": 6
+  }
+ },
+ "pred_distribution": {
+  "nei": 322,
+  "met": 95,
+  "not_met": 342
+ },
+ "macroF1_five_names": 57.87186916743559,
+ "per_class_five_names": {
+  "included": {
+   "P": 93.02325581395348,
+   "R": 61.06870229007634,
+   "F1": 73.73271889400921,
+   "n": 131
+  },
+  "not included": {
+   "P": 21.73913043478261,
+   "R": 31.25,
+   "F1": 25.64102564102564,
+   "n": 16
+  },
+  "excluded": {
+   "P": 44.44444444444444,
+   "R": 57.14285714285714,
+   "F1": 50.0,
+   "n": 7
+  },
+  "not excluded": {
+   "P": 86.83385579937304,
+   "R": 74.26273458445041,
+   "F1": 80.0578034682081,
+   "n": 373
+  },
+  "not enough information": {
+   "P": 51.5527950310559,
+   "R": 71.55172413793103,
+   "F1": 59.92779783393502,
+   "n": 232
+  }
+ },
+ "by_type": {
+  "inclusion": {
+   "macroF1": 57.028090283608115,
+   "acc": 69.28571428571429,
+   "n": 280
+  },
+  "exclusion": {
+   "macroF1": 58.552601156069365,
+   "acc": 70.56367432150313,
+   "n": 479
+  }
+ },
+ "not_applicable": {
+  "n": 42,
+  "pred": {
+   "nei": 21,
+   "not_met": 21
+  }
+ },
+ "forced_choice_acc": 89.37381404174573,
+ "n_forced": 527,
+ "evidence": {
+  "precision": 64.9402390438247,
+  "n_items_pred": 337,
+  "recall": 62.213740458015266,
+  "n_items_gold": 332,
+  "items_without_quote": 464
+ },
+ "evidence_malformed_without_quotes": {
+  "precision": 65.92427616926503,
+  "n_items_pred": 325,
+  "recall": 56.48854961832061,
+  "n_items_gold": 332,
+  "items_without_quote": 476
+ },
+ "per_trial_acc": {
+  "n_trials": 64,
+  "min_items": 5,
+  "min": 33.333333333333336,
+  "median": 71.71428571428572,
+  "max": 100.0
+ },
+ "bootstrap": {
+  "unit": "patient",
+  "B": 1000,
+  "seed": 0
+ },
+ "threshold_source": "results_git/C-TG-ledger2-blocks-s2/scores_rule_v1~dev_missing.jsonl",
+ "threshold_alt": {
+  "source": "origin/role-b:results_git/B-F-ledger2-blocks-s2/scores_rule_v1~dev_missing.jsonl",
+  "tau": 9.572273254394531,
+  "macroF1": 69.91919883598909,
+  "acc": 70.2239789196311
+ },
+ "eval": {
+  "reader_units": 801,
+  "malformed_units": 14,
+  "mode": null,
+  "malformed_rate": 0.0175,
+  "gen_not_stopped": 0,
+  "seconds": 376.8,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

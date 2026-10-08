@@ -1,0 +1,15 @@
+{
+ "run_id": "C-TG-ledger2-blocks-s3",
+ "set": "clin_v1/trialgpt_dev",
+ "claim_type": "conclusion",
+ "eval": {
+  "reader_units": 213,
+  "malformed_units": 3,
+  "mode": null,
+  "malformed_rate": 0.0141,
+  "gen_not_stopped": 0,
+  "seconds": 133.9,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

@@ -1,0 +1,152 @@
+{
+ "run_id": "C-TG-TR-clinonly-s0",
+ "set": "clin_v1/trialgpt_test",
+ "protocol": "docs/TRIALGPT_PROTOCOL.md",
+ "threshold": -0.43100935220718384,
+ "n_items": 801,
+ "n_scored": 759,
+ "n_patients": 43,
+ "macroF1": 50.43722925891601,
+ "macroF1_CI95": [
+  47.55398037994532,
+  53.01138109515073
+ ],
+ "acc": 62.84584980237154,
+ "acc_CI95": [
+  58.2010582010582,
+  67.22454672245468
+ ],
+ "per_class": {
+  "met": {
+   "P": 60.824742268041234,
+   "R": 85.5072463768116,
+   "F1": 71.0843373493976,
+   "n": 138
+  },
+  "not_met": {
+   "P": 64.53382084095064,
+   "R": 90.74550128534705,
+   "F1": 75.42735042735043,
+   "n": 389
+  },
+  "nei": {
+   "P": 33.33333333333333,
+   "R": 2.586206896551724,
+   "F1": 4.8,
+   "n": 232
+  }
+ },
+ "confusion": {
+  "met": {
+   "met": 118,
+   "not_met": 14,
+   "nei": 6
+  },
+  "not_met": {
+   "not_met": 353,
+   "met": 30,
+   "nei": 6
+  },
+  "nei": {
+   "not_met": 180,
+   "nei": 6,
+   "met": 46
+  }
+ },
+ "pred_distribution": {
+  "not_met": 547,
+  "met": 194,
+  "nei": 18
+ },
+ "macroF1_five_names": 41.57793964332315,
+ "per_class_five_names": {
+  "included": {
+   "P": 74.83443708609272,
+   "R": 86.25954198473282,
+   "F1": 80.1418439716312,
+   "n": 131
+  },
+  "not included": {
+   "P": 10.16949152542373,
+   "R": 75.0,
+   "F1": 17.910447761194032,
+   "n": 16
+  },
+  "excluded": {
+   "P": 11.627906976744185,
+   "R": 71.42857142857143,
+   "F1": 20.0,
+   "n": 7
+  },
+  "not excluded": {
+   "P": 79.48717948717949,
+   "R": 91.42091152815014,
+   "F1": 85.03740648379052,
+   "n": 373
+  },
+  "not enough information": {
+   "P": 33.33333333333333,
+   "R": 2.586206896551724,
+   "F1": 4.8,
+   "n": 232
+  }
+ },
+ "by_type": {
+  "inclusion": {
+   "macroF1": 35.46187502205286,
+   "acc": 46.785714285714285,
+   "n": 280
+  },
+  "exclusion": {
+   "macroF1": 35.01246882793017,
+   "acc": 72.23382045929019,
+   "n": 479
+  }
+ },
+ "not_applicable": {
+  "n": 42,
+  "pred": {
+   "not_met": 41,
+   "met": 1
+  }
+ },
+ "forced_choice_acc": 90.5123339658444,
+ "n_forced": 527,
+ "evidence": {
+  "precision": 52.5089605734767,
+  "n_items_pred": 546,
+  "recall": 55.916030534351144,
+  "n_items_gold": 332,
+  "items_without_quote": 255
+ },
+ "evidence_malformed_without_quotes": {
+  "precision": 52.252252252252255,
+  "n_items_pred": 545,
+  "recall": 55.343511450381676,
+  "n_items_gold": 332,
+  "items_without_quote": 256
+ },
+ "per_trial_acc": {
+  "n_trials": 64,
+  "min_items": 5,
+  "min": 20.0,
+  "median": 66.66666666666667,
+  "max": 100.0
+ },
+ "bootstrap": {
+  "unit": "patient",
+  "B": 1000,
+  "seed": 0
+ },
+ "threshold_source": "results_git/C-TG-TR-clinonly-s0/scores_rule_v1~dev_missing.jsonl",
+ "eval": {
+  "reader_units": 801,
+  "malformed_units": 1,
+  "mode": null,
+  "malformed_rate": 0.0012,
+  "gen_not_stopped": 1,
+  "seconds": 256.2,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

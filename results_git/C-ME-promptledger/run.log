@@ -1,0 +1,13 @@
+2026-10-03T22:07:44Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-03T22:07:45Z token budget per batch: 40000 (generation 120000)
+2026-10-03T22:07:45Z C-ME-promptledger clin_v1/medeinst_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test/reader_ledger.npz', 'exists')
+2026-10-03T22:07:47Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0466)
+2026-10-03T22:07:53Z padding self-check: max |u_batch - u_single| = 0.1490 (tol 0.617) -> left padding
+2026-10-03T22:22:58Z generate: batch 25/169, 472819 tokens, 522 tok/s
+2026-10-03T22:51:03Z generate: batch 50/169, 1141669 tokens, 441 tok/s
+2026-10-03T23:20:14Z generate: batch 75/169, 1873775 tokens, 432 tok/s
+2026-10-03T23:51:05Z generate: batch 100/169, 2671238 tokens, 431 tok/s
+2026-10-04T00:23:11Z generate: batch 125/169, 3556082 tokens, 438 tok/s
+2026-10-04T00:56:52Z generate: batch 150/169, 4646500 tokens, 458 tok/s
+2026-10-04T01:23:41Z C-ME-promptledger clin_v1/medeinst_test: TA nan Rev nan Hold nan n=None (11756.4 s)
+2026-10-04T01:23:42Z DONE C-ME-promptledger in 196.3 min, GPU util mean 97.7

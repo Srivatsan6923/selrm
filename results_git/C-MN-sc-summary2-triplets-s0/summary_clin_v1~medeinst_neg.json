@@ -1,0 +1,31 @@
+{
+ "run_id": "C-MN-sc-summary2-triplets-s0",
+ "set": "clin_v1/medeinst_neg",
+ "analysis": "secondary (docs/AUX_PROTOCOL.md S2/S3)",
+ "hold": 64.01730197350635,
+ "CI95": [
+  51.57073582121021,
+  77.19347581552306
+ ],
+ "n": 3699,
+ "hold_without_diagnosis_named": 63.86531617848344,
+ "n_without_diagnosis_named": 3653,
+ "all_three_right": 25.4933765882671,
+ "all_three_right_n": 3699,
+ "medeinst_run": "C-ME-sc-summary2-triplets-s0",
+ "bootstrap": {
+  "unit": "(y_gt, y_bias) label pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "reader_units": 3699,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 38,
+  "seconds": 4607.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

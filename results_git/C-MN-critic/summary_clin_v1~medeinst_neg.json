@@ -1,0 +1,26 @@
+{
+ "run_id": "C-MN-critic",
+ "set": "clin_v1/medeinst_neg",
+ "analysis": "secondary (docs/AUX_PROTOCOL.md S2/S3)",
+ "hold": 69.93782103271154,
+ "CI95": [
+  55.20912547528517,
+  84.01972157772622
+ ],
+ "n": 3699,
+ "hold_without_diagnosis_named": 69.64139063783192,
+ "n_without_diagnosis_named": 3653,
+ "all_three_right": 25.628548256285484,
+ "all_three_right_n": 3699,
+ "medeinst_run": "C-ME-critic",
+ "bootstrap": {
+  "unit": "(y_gt, y_bias) label pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "seconds": 633.2,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

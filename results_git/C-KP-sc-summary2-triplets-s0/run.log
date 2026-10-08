@@ -1,0 +1,10 @@
+2026-10-03T22:00:55Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-SC-summary2-triplets-s0
+2026-10-03T22:00:56Z token budget per batch: 8000 (generation 24000)
+2026-10-03T22:00:56Z C-KP-sc-summary2-triplets-s0 clin_v1/keypairs_medqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa_oneway/reader_prose.npz', 'exists')
+2026-10-03T22:00:58Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0038)
+2026-10-03T22:01:00Z padding self-check: max |u_batch - u_single| = 0.0781 (tol 0.616) -> left padding
+2026-10-03T22:06:26Z generate: batch 25/32, 34124 tokens, 105 tok/s
+2026-10-03T22:11:12Z C-KP-sc-summary2-triplets-s0 clin_v1/keypairs_medqa_oneway: TA nan Rev nan Hold nan n=None (616.0 s)
+2026-10-03T22:11:12Z C-KP-sc-summary2-triplets-s0 clin_v1/keypairs_careqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa_oneway/reader_prose.npz', 'exists')
+2026-10-03T22:16:15Z C-KP-sc-summary2-triplets-s0 clin_v1/keypairs_careqa_oneway: TA nan Rev nan Hold nan n=None (303.2 s)
+2026-10-03T22:16:16Z DONE C-KP-sc-summary2-triplets-s0 in 16.0 min, GPU util mean 90.2

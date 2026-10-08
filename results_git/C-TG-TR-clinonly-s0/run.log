@@ -1,0 +1,12 @@
+2026-10-03T22:06:02Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-TR-clinonly-s0
+2026-10-03T22:06:02Z token budget per batch: 8000 (generation 24000)
+2026-10-03T22:06:03Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0128)
+2026-10-03T22:06:04Z padding self-check: max |u_batch - u_single| = 0.1143 (tol 0.581) -> left padding
+2026-10-03T22:07:14Z generate: batch 25/27, 18473 tokens, 265 tok/s
+2026-10-03T22:08:16Z C-TG-TR-clinonly-s0 rule_v1/dev_missing: TA nan Rev nan Hold nan n=None (133.4 s)
+2026-10-03T22:08:16Z C-TG-TR-clinonly-s0 clin_v1/trialgpt_dev prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_dev/reader_ledger.npz', 'exists')
+2026-10-03T22:09:27Z C-TG-TR-clinonly-s0 clin_v1/trialgpt_dev: TA nan Rev nan Hold nan n=None (70.8 s)
+2026-10-03T22:09:27Z C-TG-TR-clinonly-s0 clin_v1/trialgpt_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_test/reader_ledger.npz', 'exists')
+2026-10-03T22:11:13Z generate: batch 25/37, 28713 tokens, 271 tok/s
+2026-10-03T22:13:43Z C-TG-TR-clinonly-s0 clin_v1/trialgpt_test: TA nan Rev nan Hold nan n=None (256.2 s)
+2026-10-03T22:13:43Z DONE C-TG-TR-clinonly-s0 in 8.0 min, GPU util mean 80.6

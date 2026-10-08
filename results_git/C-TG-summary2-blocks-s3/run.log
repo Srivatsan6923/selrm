@@ -1,0 +1,12 @@
+2026-10-03T23:26:07Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-summary2-blocks-s3
+2026-10-03T23:26:07Z token budget per batch: 8000 (generation 24000)
+2026-10-03T23:26:08Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0199)
+2026-10-03T23:26:09Z padding self-check: max |u_batch - u_single| = 0.1081 (tol 0.607) -> left padding
+2026-10-03T23:27:33Z generate: batch 25/26, 18448 tokens, 218 tok/s
+2026-10-03T23:28:33Z C-TG-summary2-blocks-s3 rule_v1/dev_missing: TA nan Rev nan Hold nan n=None (145.4 s)
+2026-10-03T23:28:33Z C-TG-summary2-blocks-s3 clin_v1/trialgpt_dev prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_dev/reader_prose.npz', 'exists')
+2026-10-03T23:29:41Z C-TG-summary2-blocks-s3 clin_v1/trialgpt_dev: TA nan Rev nan Hold nan n=None (68.5 s)
+2026-10-03T23:29:41Z C-TG-summary2-blocks-s3 clin_v1/trialgpt_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_test/reader_prose.npz', 'exists')
+2026-10-03T23:32:04Z generate: batch 25/35, 19904 tokens, 140 tok/s
+2026-10-03T23:34:09Z C-TG-summary2-blocks-s3 clin_v1/trialgpt_test: TA nan Rev nan Hold nan n=None (267.4 s)
+2026-10-03T23:34:09Z DONE C-TG-summary2-blocks-s3 in 8.4 min, GPU util mean 75.8

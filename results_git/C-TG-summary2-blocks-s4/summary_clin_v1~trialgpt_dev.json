@@ -1,0 +1,15 @@
+{
+ "run_id": "C-TG-summary2-blocks-s4",
+ "set": "clin_v1/trialgpt_dev",
+ "claim_type": "conclusion",
+ "eval": {
+  "reader_units": 213,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 96.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

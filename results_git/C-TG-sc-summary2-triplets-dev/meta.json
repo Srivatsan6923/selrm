@@ -1,0 +1,64 @@
+{
+ "run_id": "C-TG-sc-summary2-triplets-dev",
+ "role": "C",
+ "model": "unsloth/Qwen3.5-9B",
+ "model_revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+ "adapter": "/pvcb/selrm/adapters/B-SC-summary2-triplets-s0",
+ "adapter_run": "B-SC-summary2-triplets-s0",
+ "provider": "local (NRP Nautilus)",
+ "access_date": "2026-10-03",
+ "reasoning": "chat template with enable_thinking=False",
+ "format": "summary2_case",
+ "mode": null,
+ "rejudge_from": null,
+ "lenient_version": null,
+ "sets": [
+  "rule_v1/dev_missing",
+  "clin_v1/trialgpt_dev"
+ ],
+ "max_new": 384,
+ "eval_batch": {
+  "score": 16,
+  "generate": 48
+ },
+ "hp": {
+  "max_len": 4096
+ },
+ "eval_seconds_by_set": {
+  "rule_v1/dev_missing": 435.1,
+  "clin_v1/trialgpt_dev": 177.3
+ },
+ "eval_generated_tokens": 28717,
+ "pad_check_ok": true,
+ "eval_u_path": "fp32-hidden",
+ "eval_peak_mem_gb": 19.18,
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA A10, 595.91.07, 23028 MiB",
+ "node": "hcc-nrp-shor-c5909.unl.edu",
+ "pod": "selrm-c-run-c-s3-24gbf-63336-1-hjdh7",
+ "scoring_code": "role-b 10e1882945ce",
+ "git_commit": "43a1d401c62c",
+ "wall_seconds": 652.9,
+ "summaries": {
+  "rule_v1/dev_missing": null,
+  "clin_v1/trialgpt_dev": null
+ },
+ "gpu_util_mean": 77.0,
+ "gpu_util_p10": 0.0,
+ "gpu_windows_below40": 0.0,
+ "gpu_samples": 21,
+ "gpu_hours": 0.181
+}

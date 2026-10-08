@@ -1,0 +1,10 @@
+{
+ "run_id": "C-TG-verdict-triplets-s3",
+ "set": "clin_v1/trialgpt_dev",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 15.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
