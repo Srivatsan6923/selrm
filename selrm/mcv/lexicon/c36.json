@@ -24,13 +24,19 @@
         "\\bBNP\\b",
         "natriuretic",
         "orthopn",
-        "\\bS3\\b"
+        "\\bS3\\b",
+        "(cardiac|heart) (disease|dysfunction|limitation|enlargement|muscle)",
+        "weak heart",
+        "diure",
+        "furosemide",
+        "gallop",
+        "right or left-sided failure"
       ],
       "relative_ok": true,
       "past_ok": false
     },
     "Sepsis": {
-      "np": "sepsis",
+      "np": "sepsis diagnosed within the last month",
       "lexicon": [
         "seps",
         "septic",
@@ -44,23 +50,34 @@
         "(hypotensi|lactate)[^.;]{0,60}infection",
         "intravenous antibiotic",
         "\\bIV antibiotic",
-        "broad-spectrum"
+        "broad-spectrum",
+        "generali[sz]ed infection",
+        "febrile illness",
+        "infectious",
+        "(recent|new) (fevers?|infection)",
+        "antibiotic",
+        "antimicrobial"
       ],
       "relative_ok": true,
-      "past_ok": true
+      "past_ok": false
     },
     "Pneumonia": {
-      "np": "pneumonia",
+      "np": "pneumonia diagnosed within the last month",
       "lexicon": [
         "pneumon",
         "(lung|chest|lobe|lobar|respiratory|pulmonary)[- ]infection",
         "infiltrat",
         "consolidat",
         "bronchopneumon",
-        "empyema"
+        "empyema",
+        "respiratory (tract )?(infection|illness)",
+        "lung infections?",
+        "opacit",
+        "sputum",
+        "(lungs?|lung fields|radiographs?)[^.;]{0,40}\\bclear"
       ],
       "relative_ok": true,
-      "past_ok": true
+      "past_ok": false
     },
     "Immobilizing plaster cast": {
       "np": "an immobilizing plaster cast applied within the last month",
@@ -75,7 +92,11 @@
         "fib(er|re)glass",
         "orthosis",
         "\\bTLSO\\b",
-        "\\bsling\\b"
+        "\\bsling\\b",
+        "traction",
+        "external fixat",
+        "orthop(a)?edic device",
+        "uncasted"
       ],
       "relative_ok": true,
       "past_ok": false
@@ -86,6 +107,9 @@
         "fractur",
         "\\bbroken? (his|her|a|the)?\\s?(hip|leg|pelvis|femur|tibia|fibula|ankle|bone)",
         "\\bORIF\\b",
+        "(orthop(a)?edic|skeletal|musculoskeletal) injur",
+        "trauma to the (pelvis|hip|leg|lower)",
+        "bony architecture",
         "(hip|pelvic|pelvis|leg|femoral|tibial|long-bone|bony|skeletal) (injur|trauma|break)"
       ],
       "relative_ok": true,
@@ -98,7 +122,7 @@
         "cerebro-?vascular",
         "\\bCVA\\b",
         "\\bTIA\\b",
-        "isch(a)?emic attack",
+        "isch(a)?emic (attack|event|episode)",
         "(cerebral|cerebellar|brain|brainstem|lacunar|cortical|artery)[- ]infarct",
         "infarct[^.;]{0,60}(cerebr|cerebell|corona radiata|brain)",
         "hemipar",
@@ -109,7 +133,13 @@
         "thrombolysis",
         "thrombectomy",
         "intracranial h(a)?emorrhage",
-        "neurologic(al)? (deficit|event)"
+        "neurologic(al)? (deficit|event|insult)",
+        "focal (neurologic(al)? )?deficit",
+        "non-?focal",
+        "facial (droop|weakness)",
+        "dysarthri",
+        "speech difficult",
+        "paralytic"
       ],
       "relative_ok": false,
       "past_ok": false
@@ -126,8 +156,10 @@
         "\\bMVC\\b",
         "\\bMVA\\b",
         "(road|traffic|car|vehicle)[- ]accident",
-        "significant injur",
-        "major injur"
+        "injur",
+        "(?<!cerebrovascular )accident",
+        "crash",
+        "\\bfalls\\b"
       ],
       "relative_ok": true,
       "past_ok": false
@@ -146,7 +178,23 @@
         "\\bSCI\\b",
         "\\bASIA\\b",
         "sensory level",
-        "neurogenic (bladder|bowel|shock)"
+        "neurogenic",
+        "spin(e|al) (insult|trauma|injur|patholog|fractur|lesion)",
+        "burst fracture",
+        "vertebr",
+        "neurologic(al)? injur",
+        "pares[ie]s",
+        "flaccid",
+        "(motor|sensory)[^.;]{0,30}(loss|function|strength|testing)",
+        "loss of (motor|sensation)",
+        "cannot (voluntarily )?move",
+        "strength",
+        "\\b[0-5]/5\\b",
+        "moves? all",
+        "moving all",
+        "ambulat",
+        "\\bgait\\b",
+        "\\bwalk"
       ],
       "relative_ok": true,
       "past_ok": false
@@ -225,7 +273,14 @@
         "embol",
         "clot",
         "phlebitis",
-        "(vena cava|IVC) filter"
+        "(vena cava|IVC) filter",
+        "pulmonary obstruction",
+        "anticoagulation",
+        "calf (tenderness|pain)",
+        "unilateral (leg|calf|limb)",
+        "duplex",
+        "doppler",
+        "pleuritic"
       ],
       "relative_ok": false,
       "past_ok": true
@@ -242,11 +297,15 @@
         "position 506",
         "\\bmutations?\\b",
         "genotyp",
-        "genetic (test|screen)",
+        "genetic (test|screen|finding)",
+        "heterozyg",
+        "homozyg",
+        "\\bvariant\\b",
         "thrombophili",
         "hyper-?coagul",
         "pro-?coagul",
         "pro-?thrombotic",
+        "clotting",
         "(clotting|coagulation|blood)[- ](disorders?|problems?|abnormalit|tendenc|defect)",
         "(inherited|hereditary|genetic|congenital|familial)[^.;]{0,80}(mutation|variant|clot|coagul|thromb)"
       ],
@@ -261,11 +320,15 @@
         "factor[- ]ii\\b",
         "\\bmutations?\\b",
         "genotyp",
-        "genetic (test|screen)",
+        "genetic (test|screen|finding)",
+        "heterozyg",
+        "homozyg",
+        "\\bvariant\\b",
         "thrombophili",
         "hyper-?coagul",
         "pro-?coagul",
         "pro-?thrombotic",
+        "clotting",
         "(clotting|coagulation|blood)[- ](disorders?|problems?|abnormalit|tendenc|defect)",
         "(inherited|hereditary|genetic|congenital|familial)[^.;]{0,80}(mutation|variant|clot|coagul|thromb)"
       ],
@@ -280,6 +343,7 @@
         "hyper-?coagul",
         "pro-?coagul",
         "pro-?thrombotic",
+        "clotting",
         "(clotting|coagulation|blood)[- ](disorders?|problems?|abnormalit|tendenc|defect)",
         "(inherited|hereditary|genetic|congenital|familial)[^.;]{0,80}(mutation|variant|clot|coagul|thromb)"
       ],
@@ -298,10 +362,14 @@
         "phospholipid",
         "\\bAPS\\b",
         "\\baPLs?\\b",
+        "lupus",
+        "autoimmun",
+        "connective[- ]tissue",
         "thrombophili",
         "hyper-?coagul",
         "pro-?coagul",
         "pro-?thrombotic",
+        "clotting",
         "(clotting|coagulation|blood)[- ](disorders?|problems?|abnormalit|tendenc|defect)",
         "(inherited|hereditary|genetic|congenital|familial)[^.;]{0,80}(mutation|variant|clot|coagul|thromb)"
       ],
@@ -319,10 +387,14 @@
         "phospholipid",
         "\\bAPS\\b",
         "\\baPLs?\\b",
+        "lupus",
+        "autoimmun",
+        "connective[- ]tissue",
         "thrombophili",
         "hyper-?coagul",
         "pro-?coagul",
         "pro-?thrombotic",
+        "clotting",
         "(clotting|coagulation|blood)[- ](disorders?|problems?|abnormalit|tendenc|defect)",
         "(inherited|hereditary|genetic|congenital|familial)[^.;]{0,80}(mutation|variant|clot|coagul|thromb)"
       ],
@@ -343,7 +415,8 @@
         "platelet(s| count)? (drop|fall|fell|declin|decreas)",
         "argatroban",
         "bivalirudin",
-        "avoid[^.;]{0,30}heparin"
+        "heparin",
+        "platelet counts? (have|has|had) (always|never|remained)"
       ],
       "relative_ok": true,
       "past_ok": false
@@ -360,6 +433,8 @@
         "ileitis",
         "(bowel|intestin\\w*|colon\\w*|gut) (inflammat|disorder|disease)",
         "inflam\\w+ (bowel|intestin|colon)",
+        "bowel-inflammatory",
+        "inflammatory disease",
         "mesalamine",
         "mesalazine",
         "sulfasalazine",
@@ -390,7 +465,12 @@
         "\\bPCI\\b",
         "percutaneous coronary",
         "\\bCABG\\b",
-        "cardiac (event|ischemi|ischaemi)"
+        "cardiac (event|ischemi|ischaemi)",
+        "coronary",
+        "isch(a)?emi",
+        "angina",
+        "\\bST[- ]",
+        "Q waves?"
       ],
       "relative_ok": false,
       "past_ok": false
@@ -415,7 +495,9 @@
         "\\bGOLD\\b",
         "bronchodilator",
         "inhaler",
-        "barrel"
+        "barrel",
+        "wheez",
+        "chronic cough"
       ],
       "relative_ok": true,
       "past_ok": false
