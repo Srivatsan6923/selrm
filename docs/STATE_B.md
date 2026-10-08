@@ -31,6 +31,9 @@ Nothing is tuned on a test set: parser, linker, gate and prompts are developed o
 ## GPUs
 - `python scripts/submit_b.py runners all --n 2 --gpu h100-opp --max-runs 8 --hours 8 --models
   unsloth--Qwen3.5-9B,unsloth--Qwen3.5-4B` (opportunistic H100; code 506c27b, GEN 4).
+- 9 Oct 00:50 UTC: no H100 free and the namespace's A100 quota (4) is used by other roles; pending Jobs: two
+  h100-opp runners on all queues, one L40 runner on v2/b_l3inv.json. Queued: 5 L3-inv evals, 13 B-DIV seed-0 runs
+  (b_x_s0.json, prepped, priority 80), 3 Qwen3.5-4B cells, 6 B-NS-xr_v1-B-AUX evals.
 - Sync pod selrm-b-sync created 8 Oct ~23:10 UTC (6 h limit): recreate with `kubectl -n ecepxie delete pod
   selrm-b-sync`, then `python scripts/submit_b.py sync-up`.
 - Never run two data jobs at once. Laptop memory is tight: analysis and resummarize one at a time.
