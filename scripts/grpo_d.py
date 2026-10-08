@@ -344,6 +344,9 @@ def summarize(out_dir):
     cp = os.path.join(out_dir, "curve.jsonl")
     curve = [json.loads(x) for x in open(cp, encoding="utf-8")] if os.path.exists(cp) else []
     step = {"0": dict(start)} | {str(c["step"]): {k: v for k, v in c.items() if k != "step"} for c in curve}
+    # the final point is the per-example evaluation the table reports (runs re-evaluated after training differ
+    # from their in-training value by greedy-decoding numerics); the curve's reward at that step is kept
+    step[str(steps[-1])] = step.get(str(steps[-1]), {}) | final
     summ = {k: v for k, v in old.items() if not k.startswith("acc_")} | {
         "start": start, "final": final, "final_step": steps[-1], "n_triplets": len({r["tid"] for r in load_rows(0)}),
         "step": step,

@@ -573,11 +573,12 @@ def t_factorial():
 
 
 AUDIT = [("Trained PRMs", [("C-AUD-meds3", "MedS$^3$ PRM"), ("C-AUD-medprm", "Med-PRM"),
-                           ("C-AUD-fover", "FoVer PRM"), ("C-AUD-injerr", "Inj.-error PRM"),
+                           ("C-AUD-fover", "FoVer PRM"),      # no injected-error PRM: MedPRMBench unreleased
                            ("C-AUD-thinkprm", "ThinkPRM"), ("C-AUD-genprm", "GenPRM-7B")]),
          ("Open judges", [("C-AUD-qwen35-9b", r"\bb{}"), ("C-AUD-llama70b", "Llama-3.3-70B"),
                           ("C-AUD-qwen35-27b", "Qwen3.5-27B"), ("C-AUD-kimi-k3", "Kimi K3")]),
-         ("Closed judges", [("C-AUD-closed-1", "GPT-5.4"), ("C-AUD-closed-2", "Gemini 3.1 Pro"),
+         # fallback labels = the configured judges (configs/models.json); a run's own model ID replaces them
+         ("Closed judges", [("C-AUD-closed-1", "GPT-6 Astra"), ("C-AUD-closed-2", "Gemini 3.1 Pro"),
                             ("C-AUD-closed-3", "Claude Opus 5.5")])]
 AUDIT_SET = "L2"    # FINAL_TASKS_C P1: 13 signals, closed judges on L2 triplets (v13's caption says L0)
 
@@ -607,8 +608,7 @@ TRANSFER = [
         ("GenPRM-style verifier, rule triplets", "B-TR-genprm"),
         ("\\method{}, rule balanced", "B-F-ledger2-balanced"), ("\\method{}, rule blocks", "B-F-ledger2-blocks"),
         ("\\textbf{\\method}, rule triplets", "B-F-ledger2-triplets")]),
-    ("With medical data", [("\\method{}, rule triplets + step-error data", "B-TR-steperr"),
-                           ("\\method{}, clinical pairs only", "B-TR-clinonly"),
+    ("With medical data", [("\\method{}, clinical pairs only", "B-TR-clinonly"),   # no step-error data released
                            ("\\method{}, rule triplets + clinical pairs", "B-TR-tripclin")]),
     ("References", [("CLOSED, zero-shot", "C-REF-closed-zero"), ("CLOSED, prompted ledger", "C-REF-closed-ledger"),
                     ("Extraction + hand-written program", "C-REF-extract-program")]),
@@ -738,7 +738,7 @@ def t_policy():
 XR_ROWS = [("Untrained critic (\\bb{})", "C-TF-critic"), ("Verdict only, blocks", "B-F-verdict-blocks"),
            ("Verdict only, triplets", "B-F-verdict-triplets"), ("Rationale, triplets", "B-F-rationale-triplets"),
            ("Evidence summary, blocks", "B-F-summary2-blocks"), ("Evidence summary, triplets", "B-F-summary2-triplets"),
-           ("\\ \\ judge also sees the case", "B-SC-summary2-triplets"),
+           ("\\ \\ judge also sees the case (S3, secondary)", "B-SC-summary2-triplets"),
            ("\\method{}, blocks", "B-F-ledger2-blocks"), ("\\method{}, triplets", "B-F-ledger2-triplets")]
 XR_DIMS = ["window", "subject", "currency", "inclusivity"]
 
@@ -803,7 +803,7 @@ def t_kinds():
 
 
 SHORTCUTS = [("Always default", "A-D14-always_default"), ("Claim only", "A-D14-claim_only"),
-             ("Concept named ($h_k$)", "A-D14-concept_named"), ("Bag of words, case + claim", "A-D14-bag_of_words"),
+             ("Concept named ($h_k$)", "A-D14-concept_named"), ("Bag of words, case", "A-D14-bag_of_words"),
              ("Attribute-blind, logistic", "A-D14-attribute_blind"),
              ("Trigger lexicon + program, training cue phrases", "A-D14-trigger_train"),
              ("\\ \\ given the test cue phrases", "A-D14-trigger_all"),
@@ -819,7 +819,7 @@ def t_rules():
     def k(path, spec="int"):
         return f"a15/{path}@{spec}"
     rows = [("Published scores, our implementation", {"Rules": k("rules_by_kind.score"), "Classes": None}),
-            ("Constraint rules from public recommendations",
+            ("Hand-written constraint rules",
              {"Rules": "d/a15/rules_total|a15/rules_by_kind.score|a15/rules_by_source.grammar_sampled@int",
               "Classes": None}),
             ("Grammar-sampled rules", {"Rules": k("rules_by_source.grammar_sampled"), "Classes": None})]
@@ -908,7 +908,7 @@ def f_div():
     return body + tbd_node(anyd)
 
 
-SELN = [("combined", "blue!75!black", "mark=*", r"\method"), ("stepcheck", "black!60", "mark=square*", "step check"),
+SELN = [("combined", "blue!75!black", "mark=*", "combined"), ("stepcheck", "black!60", "mark=square*", "step check"),
         ("oracle", "black!45", "dashed", "oracle")]
 
 
@@ -941,7 +941,7 @@ def f_policy(metric):
 
 
 DIAG = [("Verdict (blocks)", "B-F-verdict-blocks"), ("27B judge", "C-AUD-qwen35-27b"),
-        ("9B judge", "C-AUD-qwen35-9b"), ("Inj.\\ PRM", "C-AUD-medprm")]
+        ("9B judge", "C-AUD-qwen35-9b"), ("Med-PRM", "C-AUD-medprm")]
 
 
 def f_diag_classes():
@@ -961,7 +961,8 @@ def f_diag_classes():
 def f_diag_kappa():
     """Fig. diagnosis right: shift ratio kappa per signal (C-DG-shift)."""
     coords = []
-    for sym, p in (("Inj", "C-AUD-medprm"), ("8B", "C-AUD-qwen35-9b"), ("32B", "C-AUD-qwen35-27b"),
+    # symbols = the x coords of the axis in main.tex (fig:diagnosis right); change both together
+    for sym, p in (("MedPRM", "C-AUD-medprm"), ("9B", "C-AUD-qwen35-9b"), ("27B", "C-AUD-qwen35-27b"),
                    ("Blk", "B-F-verdict-blocks")):
         n = cell("fig-diag-kappa", p, "kappa", f"run/C-DG-shift/L0/signal={p}/kappa", seeded=False)[1]
         if n is not None:

@@ -89,7 +89,8 @@ def m03(t):
     t = insert(t, "determine matter.", r" Appendix~\ref{app:diag} decomposes reversal into reading and application"
                r" pairs and analyses how far a decisive edit moves the preference.")
     return insert(t, "\\paragraph{Near-miss decisions.}",
-                  "\\paragraph{Parts and whole.}\n" + parts + " " + mv2 + "\n\n", where="before")
+                  "\\paragraph{Parts and whole.}\n\\label{sec:diagnostic}\n" + parts + " " + mv2 + "\n\n",
+                  where="before")
 
 
 def m04(t):
@@ -175,7 +176,8 @@ def m10(t):
 
 def m11(t):
     """Section 7.4: four analysis paragraphs -> App G after Figure 3."""
-    t, a = cut(t, "\\emph{Own against program-supplied ledgers.}", "reaches \\ph{tbd}\\% against 98.0\\% without it.")
+    t, a = cut(t, "\\emph{Own against program-supplied ledgers.}",
+               "against \\res{run/B-F-summary2-triplets/L2/all/TA}\\% without it.")
     t, b = cut(t, "\\emph{Near-miss kinds not seen in training.}", "evidence of abstention.",
                pointer=r"Program-supplied ledgers, the one-stage variant, near-miss kinds left out of training,"
                        r" rule diversity, model size and missing inputs are analysed in Appendix~\ref{app:more}"

@@ -59,14 +59,6 @@
   "number": 17.29,
   "value": "17.3"
  },
- "d/run/B-F-ledger2-blocks/clin_v1:medeinst_test/top/Reversal|run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "d/run/B-F-ledger2-blocks/clin_v1:nli4ct_test/top/faithfulness|run/B-F-ledger2-triplets/clin_v1:nli4ct_test/top/faithfulness": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
  "d/run/B-F-ledger2-triplets/L2/all/TA/s0|run/B-F-summary2-triplets/L2/all/TA/s0": {
   "number": 1.2000000000000028,
   "value": "1.2"
@@ -79,10 +71,6 @@
   "number": 7.409999999999997,
   "value": "7.4"
  },
- "d/run/B-F-ledger2-triplets/clin_v1:nli4ct_test/top/consistency|run/B-F-ledger2-blocks/clin_v1:nli4ct_test/top/consistency": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
  "d/run/B-F-rationale-triplets/clin_v1:medeinst_test/top/Reversal|run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal": {
   "number": null,
   "value": "\\ph{tbd}"
@@ -90,10 +78,6 @@
  "d/run/B-F-verdict-triplets/dev/all/TA|run/B-F-verdict-triplets/L2/all/TA@0": {
   "number": 7.493333333333339,
   "value": "7"
- },
- "d/run/B-TR-steperr/clin_v1:medeinst_test/top/Reversal|run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal": {
-  "number": null,
-  "value": "\\ph{tbd}"
  },
  "d/run/D-SEL-combined/sel:medqa/top/acc|run/D-SEL-no-nearmiss/sel:medqa/top/acc": {
   "number": 0.2356637863315001,
@@ -127,19 +111,11 @@
   "number": null,
   "value": "\\ph{tbd}"
  },
- "max/run/C-AUD-meds3/L2/all/Rev|run/C-AUD-medprm/L2/all/Rev|run/C-AUD-fover/L2/all/Rev|run/C-AUD-injerr/L2/all/Rev|run/C-AUD-thinkprm/L2/all/Rev|run/C-AUD-genprm/L2/all/Rev": {
+ "max/run/C-AUD-meds3/L2/all/Rev|run/C-AUD-medprm/L2/all/Rev|run/C-AUD-fover/L2/all/Rev|run/C-AUD-thinkprm/L2/all/Rev|run/C-AUD-genprm/L2/all/Rev": {
   "number": null,
   "value": "\\ph{tbd}"
  },
- "max/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "max/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA|run/C-AUD-qwen35-9b/L2/all/TA|run/C-AUD-llama70b/L2/all/TA|run/C-AUD-qwen35-27b/L2/all/TA|run/C-AUD-kimi-k3/L2/all/TA|run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "max/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA|run/C-AUD-qwen35-9b/L2/all/TA|run/C-AUD-llama70b/L2/all/TA|run/C-AUD-qwen35-27b/L2/all/TA|run/C-AUD-kimi-k3/L2/all/TA|run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA@0": {
+ "max/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA": {
   "number": null,
   "value": "\\ph{tbd}"
  },
@@ -167,19 +143,11 @@
   "number": null,
   "value": "\\ph{tbd}"
  },
- "min/run/C-AUD-meds3/L2/all/Rev|run/C-AUD-medprm/L2/all/Rev|run/C-AUD-fover/L2/all/Rev|run/C-AUD-injerr/L2/all/Rev|run/C-AUD-thinkprm/L2/all/Rev|run/C-AUD-genprm/L2/all/Rev": {
+ "min/run/C-AUD-meds3/L2/all/Rev|run/C-AUD-medprm/L2/all/Rev|run/C-AUD-fover/L2/all/Rev|run/C-AUD-thinkprm/L2/all/Rev|run/C-AUD-genprm/L2/all/Rev": {
   "number": null,
   "value": "\\ph{tbd}"
  },
- "min/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "min/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA|run/C-AUD-qwen35-9b/L2/all/TA|run/C-AUD-llama70b/L2/all/TA|run/C-AUD-qwen35-27b/L2/all/TA|run/C-AUD-kimi-k3/L2/all/TA|run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "min/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-injerr/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA|run/C-AUD-qwen35-9b/L2/all/TA|run/C-AUD-llama70b/L2/all/TA|run/C-AUD-qwen35-27b/L2/all/TA|run/C-AUD-kimi-k3/L2/all/TA|run/C-AUD-closed-1/L2/all/TA|run/C-AUD-closed-2/L2/all/TA|run/C-AUD-closed-3/L2/all/TA@0": {
+ "min/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA|run/C-AUD-fover/L2/all/TA|run/C-AUD-thinkprm/L2/all/TA|run/C-AUD-genprm/L2/all/TA": {
   "number": null,
   "value": "\\ph{tbd}"
  },
@@ -295,10 +263,6 @@
   "number": 99.2,
   "value": "99.2"
  },
- "run/B-F-ledger2-triplets/L2/all/TA@0": {
-  "number": 99.25,
-  "value": "99"
- },
  "run/B-F-ledger2-triplets/L3inv/all/TA": {
   "number": 98.64,
   "value": "98.6"
@@ -308,18 +272,6 @@
   "value": "\\ph{tbd}"
  },
  "run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal/hi": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal/lo": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/B-F-ledger2-triplets/clin_v1:medeinst_test/top/Reversal@0": {
   "number": null,
   "value": "\\ph{tbd}"
  },
@@ -335,9 +287,9 @@
   "number": null,
   "value": "\\ph{tbd}"
  },
- "run/B-F-ledger2-triplets/xr_v1:test/top/XA": {
-  "number": null,
-  "value": "\\ph{tbd}"
+ "run/B-F-ledger2-triplets/xr_v1:test/xa/XA": {
+  "number": 89.8,
+  "value": "89.8"
  },
  "run/B-F-rationale-blocks/L2/all/TA": {
   "number": 61.5,
@@ -355,10 +307,6 @@
   "number": 91.05,
   "value": "91.0"
  },
- "run/B-F-summary2-blocks/L2/all/TA": {
-  "number": 64.9125,
-  "value": "64.9"
- },
  "run/B-F-summary2-triplets/L2/all/TA": {
   "number": 98.47999999999999,
   "value": "98.5"
@@ -370,10 +318,6 @@
  "run/B-F-summary2-triplets/L2/all/TA/lo": {
   "number": 97.85381026438569,
   "value": "97.9"
- },
- "run/B-F-summary2-triplets/clin_v1:medeinst_test/top/Reversal": {
-  "number": null,
-  "value": "\\ph{tbd}"
  },
  "run/B-F-verdict-balanced/L2/all/Rev": {
   "number": 93.65,
@@ -483,9 +427,9 @@
   "number": 99.64,
   "value": "99.6"
  },
- "run/B-F-verdict-triplets/xr_v1:test/top/XA": {
-  "number": null,
-  "value": "\\ph{tbd}"
+ "run/B-F-verdict-triplets/xr_v1:test/xa/XA": {
+  "number": 88.85,
+  "value": "88.8"
  },
  "run/B-LOKO-boundary-ledger2/L2/nm_kind=boundary/TA": {
   "number": 87.0,
@@ -531,10 +475,6 @@
   "number": null,
   "value": "\\ph{tbd}"
  },
- "run/C-AUD-qwen35-27b/L2/all/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
  "run/C-DG-shift/L0/signal=C-AUD-medprm/crossed": {
   "number": null,
   "value": "\\ph{tbd}"
@@ -554,14 +494,6 @@
  "run/C-DG-shift/L0/signal=C-AUD-medprm/wrong": {
   "number": null,
   "value": "\\ph{tbd}"
- },
- "run/C-TF-critic/clin_v1:medeinst_test/top/Reversal": {
-  "number": 24.187256176853055,
-  "value": "24.2"
- },
- "run/C-TF-critic/clin_v1:medeinst_test/top/Reversal@0": {
-  "number": 24.187256176853055,
-  "value": "24"
  },
  "run/C-TF-critic/clin_v1:nli4ct_test/top/macroF1": {
   "number": null,
@@ -604,24 +536,24 @@
   "value": "70.5"
  },
  "run/D-RL-ledger2-triplets/L2/top/acc_pair": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 52.666666666666664,
+  "value": "52.7"
  },
  "run/D-RL-outcome/L2/top/acc_pair": {
-  "number": 96.66666666666667,
-  "value": "96.7"
+  "number": 97.33333333333334,
+  "value": "97.3"
  },
  "run/D-RL-outcome/L2/top/start_pair": {
-  "number": 88.66666666666667,
-  "value": "88.7"
+  "number": 89.0,
+  "value": "89.0"
  },
  "run/D-RL-refgraph/L2/top/acc_pair": {
   "number": 98.0,
   "value": "98.0"
  },
  "run/D-RL-stepcheck/L2/top/acc_pair": {
-  "number": 38.666666666666664,
-  "value": "38.7"
+  "number": 46.666666666666664,
+  "value": "46.7"
  },
  "run/D-SEL-combined-logistic/sel:keypairs/top/pair_acc": {
   "number": 77.87114845938375,
