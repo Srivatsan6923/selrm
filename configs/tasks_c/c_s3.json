@@ -72,6 +72,20 @@
     "clin_v1/medeinst_neg"
    ],
    "note": "S3 (secondary): hold on denied evidence, case-visible judge"
+  },
+  {
+   "run_id": "C-TG-sc-summary2-triplets-s0",
+   "priority": 1,
+   "format": "summary2_case",
+   "bs_score": 64,
+   "min_gen": 3,
+   "adapter": "/pvcb/selrm/adapters/B-SC-summary2-triplets-s0",
+   "adapter_run": "B-SC-summary2-triplets-s0",
+   "max_new": 768,
+   "sets": [
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "S3 test portion after the dev check (0 malformed, 1 of 213 at the cap)"
   }
  ]
 }
