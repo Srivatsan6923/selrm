@@ -1,0 +1,20 @@
+{
+ "name": "rule_v1/test_L2@wrong",
+ "parent": "rule_v1/test_L2",
+ "parent_sha256": "e0b81644a7278070de3ac253426acb1bfbe5da8958cf9e68c00fb5b85b8ddbdd",
+ "cond": "wrong",
+ "seed": 20261008,
+ "builder": "scripts/crit_views.py",
+ "n_records": 29248,
+ "n_groups": 2000,
+ "shortcut_validation": {
+  "one_text_per_group": true,
+  "records_whose_rule_text_mentions_their_claim": 0,
+  "text_equals_parent_text": 0,
+  "note": "labels, cases and claims are the parent's, so the parent's shortcut validation applies to the case side; the view's text is independent of case and label (one text per group)"
+ },
+ "git_commit": "74a0929f5f492c0cfb67bb32cc42f75df7568bff",
+ "sha256": "e0912ce7f4f71ccaeb905bcb59830425f8e44ced551df4acd44d582e83976ed4",
+ "created": "2026-10-08",
+ "frozen": true
+}

@@ -1,0 +1,41 @@
+{
+ "run_id": "C-KP-summary2-triplets-s0",
+ "set": "clin_v1/keypairs_medqa",
+ "Reversal": 46.15384615384615,
+ "CI95": [
+  23.076923076923077,
+  76.92307692307692
+ ],
+ "n_pairs": 13,
+ "q1_acc": 76.92307692307692,
+ "q2_acc": 69.23076923076923,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 25.0,
+  "2": 0.0,
+  "3": 100.0
+ },
+ "Reversal_by_category": {
+  "step1": 30.0,
+  "step2&3": 100.0
+ },
+ "n_by_category": {
+  "step1": 10,
+  "step2&3": 3
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "reader_units": 26,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 48.7,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

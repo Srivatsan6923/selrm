@@ -14,6 +14,7 @@ work = os.path.abspath(sys.argv[4] if len(sys.argv) > 4 else f"{REPO}/scratch/se
 shutil.rmtree(work, ignore_errors=True)
 broot, croot = f"{work}/broot", f"{work}/croot"
 sys.path[:0] = [bcode, f"{bcode}/scripts"]
+CASE = "summary2_case" in open(f"{bcode}/selrm/formats.py", encoding="utf-8").read()   # B code from 3 Oct
 
 from transformers import AutoTokenizer, Qwen3_5ForCausalLM, Qwen3_5TextConfig
 tok = AutoTokenizer.from_pretrained(tok_dir)
@@ -42,7 +43,7 @@ def head(src, dst, n_groups):
 head(f"{rv1}/rule_v1/dev_missing/records.jsonl", f"{broot}/data/rule_v1/dev_missing/records.jsonl", 20)
 json.dump({"rule_v1/dev_missing": {"path": "rule_v1/dev_missing/records.jsonl"}}, open(f"{broot}/data/REGISTRY.json", "w"))
 import pretok
-for fmt in ("verdict", "ledger2", "summary2"):
+for fmt in ("verdict", "ledger2", "summary2") + (("summary2_case",) if CASE else ()):
     print(*pretok.build_eval(broot, {"format": fmt, "base_model": "tiny/qwen35"}, "rule_v1/dev_missing", tok))
 # C root: TrialGPT dev (first 6 items), not pre-tokenised
 head(f"{REPO}/data/clin_v1/trialgpt_dev/records.jsonl", f"{croot}/data/clin_v1/trialgpt_dev/records.jsonl", 6)
@@ -62,6 +63,8 @@ runs = [{"run_id": "ST-verdict", "priority": 1, "format": "verdict", "adapter": 
          "hp": hp, "bs_score": 8, "nocase": True, "sets": sets},
         {"run_id": "ST-sub", "priority": 6, "format": "verdict", "adapter": None, "base_model": "tiny/qwen35",
          "hp": hp, "bs_score": 8, "n_groups": 10, "claim_types": ["conclusion"], "sets": ["rule_v1/dev_missing"]},
+        *([{"run_id": "ST-case", "priority": 8, "format": "summary2_case", "adapter": None, "base_model": "tiny/qwen35",
+            "hp": hp, "bs_score": 8, "bs_gen": 8, "max_new": 16, "sets": sets}] if CASE else []),
         {"run_id": "ST-hidden", "priority": 7, "format": "verdict", "adapter": None, "base_model": "tiny/qwen35",
          "hp": hp, "bs_score": 8, "hidden": {"case_kinds": ["base", "flip"]}, "sets": ["rule_v1/dev_missing"]},
         {"run_id": "ST-skipped", "priority": 0, "format": "rationale", "adapter": None, "base_model": "tiny/qwen35",
@@ -70,7 +73,7 @@ os.makedirs(f"{croot}/tasks", exist_ok=True)
 json.dump({"runs": runs}, open(f"{croot}/tasks/t.json", "w"), indent=1)
 env = os.environ | {"SELRM_BACKEND": "hf", "SELRM_MODELS": f"{work}/models", "HF_HUB_OFFLINE": "1"}
 r = subprocess.run([sys.executable, f"{REPO}/scripts/eval_c.py", "--root", croot, "--broot", broot, "--bcode", bcode,
-                    "--tasks", f"{croot}/tasks/t.json", "--formats", "verdict,ledger2,summary2"], env=env)
+                    "--tasks", f"{croot}/tasks/t.json", "--formats", "verdict,ledger2,summary2" + (",summary2_case" if CASE else "")], env=env)
 assert r.returncode == 0, r.returncode
 for run in ("ST-verdict", "ST-ledger", "ST-summary"):
     d = f"{croot}/results/{run}"
@@ -112,4 +115,8 @@ dm = [json.loads(l) for l in open(f"{broot}/data/rule_v1/dev_missing/records.jso
 want = [r["iid"] for r in dm if r["claim_type"] == "conclusion" and r["claim_role"] == "s" and r["case_kind"] in ("base", "flip")]
 print("ST-hidden", hz["h"].shape, list(hz["layers"]))
 assert list(hz["iid"]) == want and hz["h"].shape == (len(want), len(hz["layers"]), 64) and np.isfinite(hz["h"]).all()
+if CASE:
+    cf = sorted(os.listdir(f"{croot}/results/ST-case"))
+    print("ST-case", cf)
+    assert "DONE" in cf and "scores_clin_v1~trialgpt_dev.jsonl" in cf, cf
 print("selftest_eval_c OK")

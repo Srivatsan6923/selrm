@@ -1,0 +1,136 @@
+{
+ "run_id": "C-TF-promptsum",
+ "role": "C",
+ "model": "unsloth/Qwen3.5-9B",
+ "model_revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+ "adapter": null,
+ "adapter_run": null,
+ "provider": "local (NRP Nautilus)",
+ "access_date": "2026-10-03",
+ "reasoning": "chat template with enable_thinking=False",
+ "format": "summary2",
+ "mode": null,
+ "rejudge_from": null,
+ "lenient_version": null,
+ "sets": [
+  "rule_v1/dev_missing",
+  "rule_v1/dev",
+  "rule_v1/missing",
+  "rule_v1/test_L2",
+  "rule_v1/test_L3alt",
+  "xr_v1/test"
+ ],
+ "max_new": 768,
+ "eval_batch": {
+  "score": 16,
+  "generate": 16
+ },
+ "hp": {
+  "max_len": 4096
+ },
+ "eval_seconds_by_set": {
+  "rule_v1/dev_missing": 352.5,
+  "rule_v1/dev": 566.2,
+  "rule_v1/missing": 1011.3,
+  "rule_v1/test_L2": 4999.3,
+  "rule_v1/test_L3alt": 1978.7,
+  "xr_v1/test": 1037.1
+ },
+ "eval_generated_tokens": 159181,
+ "pad_check_ok": true,
+ "eval_u_path": "fp32-hidden",
+ "eval_peak_mem_gb": 17.55,
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA GeForce RTX 3090, 615.71.09, 24576 MiB",
+ "node": "uicnrp-fiona2.evl.uic.edu",
+ "pod": "selrm-c-run-c-tf-rule-24gb-9299-1-cp7jl",
+ "scoring_code": "role-b ac524e8062ef",
+ "git_commit": "cfe37bb5ec49",
+ "wall_seconds": 10007.3,
+ "summaries": {
+  "rule_v1/dev_missing": null,
+  "rule_v1/dev": {
+   "Rev": 89.66666666666667,
+   "Hold": 88.33333333333333,
+   "TA": 79.33333333333333,
+   "BaseAcc": 94.0,
+   "Tie": 0.0,
+   "PresHold": 92.33333333333333,
+   "n": 300
+  },
+  "rule_v1/missing": null,
+  "rule_v1/test_L2": {
+   "Rev": 74.65,
+   "Hold": 89.85,
+   "TA": 67.45,
+   "BaseAcc": 86.25,
+   "Tie": 0.0,
+   "PresHold": 87.4,
+   "n": 2000
+  },
+  "rule_v1/test_L3alt": {
+   "Rev": 99.9,
+   "Hold": 93.6,
+   "TA": 93.5,
+   "BaseAcc": 99.9,
+   "Tie": 0.0,
+   "PresHold": 100.0,
+   "n": 1000
+  },
+  "xr_v1/test": null
+ },
+ "gpu_util_mean": 84.0,
+ "gpu_util_p10": 76.0,
+ "gpu_windows_below40": 0.0,
+ "gpu_samples": 63,
+ "gpu_hours": 0.541,
+ "parts": [
+  {
+   "run_id": "C-TF-promptsum--p1",
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/dev",
+    "rule_v1/missing"
+   ],
+   "wall_seconds": 1948.3,
+   "gpu": "NVIDIA GeForce RTX 3090, 615.71.09, 24576 MiB",
+   "node": "uicnrp-fiona2.evl.uic.edu",
+   "git_commit": "cfe37bb5ec49"
+  },
+  {
+   "run_id": "C-TF-promptsum--p2",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "wall_seconds": 5022.0,
+   "gpu": "NVIDIA A10, 615.71.09, 23028 MiB",
+   "node": "hcc-nrp-shor-c6021.unl.edu",
+   "git_commit": "cfe37bb5ec49"
+  },
+  {
+   "run_id": "C-TF-promptsum--p3",
+   "sets": [
+    "rule_v1/test_L3alt",
+    "xr_v1/test"
+   ],
+   "wall_seconds": 3037.0,
+   "gpu": "NVIDIA GeForce RTX 3090, 615.71.09, 24576 MiB",
+   "node": "uicnrp-fiona2.evl.uic.edu",
+   "git_commit": "c1d62851844b"
+  }
+ ],
+ "merged": "2026-10-03T16:43:42Z"
+}

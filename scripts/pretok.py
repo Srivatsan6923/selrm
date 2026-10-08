@@ -24,7 +24,7 @@ MAX_LEN = 1024
 EVAL_KIND = {"verdict": "verdict", "verdict_bt": "verdict", "rationale": "rationale", "summary2": "reader_prose",
              "summary2_case": "reader_prose", "value2": "reader_ledger", "ledger2": "reader_ledger", "ledger2_dec": "reader_ledger",
              "dec_judge": "reader_ledger", "bit_reader": "reader_ledger", "ledger2_verify": "reader_ledger",
-             "genprm": "genprm", "conddrv": "reader_derive"}
+             "genprm": "genprm", "conddrv": "reader_derive", "ledger2_case": "reader_ledger"}
 PROMPT = {"verdict": verdict_prompt, "rationale": rationale_prompt, "genprm": genprm_prompt}   # one prompt per record
 
 
@@ -39,9 +39,13 @@ def max_len(spec):
 def train_key(spec):
     p = spec.get("resample_p", 0.3) if spec["format"] in TWO_STAGE else 0
     w = f"__w{os.path.basename(spec['pair_weights']).rsplit('.', 1)[0]}" if spec.get("pair_weights") else ""
-    m = f"__mix{spec['mix']['corpus'].replace('/', '~')}{spec['mix']['share']}" if spec.get("mix") else ""
-    return (f"{spec['format']}__{spec['corpus'].replace('/', '~')}__n{spec.get('n_examples') or 'all'}"
-            f"__p{p}__c{spec.get('construction_seed', 0)}__L{max_len(spec)}{w}{m}__v{VERSION}")
+    mix = spec.get("mix")
+    m = (f"__mix{mix['corpus'].replace('/', '~')}" + (f"{mix['share']}" if "share" in mix else f"n{mix.get('n_examples') or 'all'}")
+         if mix else "")
+    n = f"{spec['passes']}x+{spec.get('pad_examples', 0)}" if spec.get("passes") else spec.get("n_examples") or "all"
+    x = "".join(f"__x{k}{'-'.join(map(str, v))}" for k, v in sorted(spec.get("train_meta_exclude", {}).items()))
+    return (f"{spec['format']}__{spec['corpus'].replace('/', '~')}__n{n}"
+            f"__p{p}__c{spec.get('construction_seed', 0)}__L{max_len(spec)}{w}{m}{x}__v{VERSION}")
 
 
 def train_dir(root, spec):
@@ -133,6 +137,8 @@ def build_train(root, spec, tok, end):
     if os.path.exists(f"{d}/READY"):
         return d, "exists"
     recs = [r for r in load_jsonl(dataset_path(root, spec["corpus"])) if not r["meta"].get("probe")]   # probes: scoring only
+    excl = spec.get("train_meta_exclude", {})     # e.g. TrialGPT: the held-out fold and not-applicable items
+    recs = [r for r in recs if not any(r["meta"].get(k) in v for k, v in excl.items())]
     if spec["format"] not in ("verdict", "verdict_bt", "genprm", *PROSE):   # rationale targets carry ledger2 text
         check_gold(recs, ["ledger2" if spec["format"] == "rationale" else spec["format"]], spec["corpus"])
     if spec.get("pair_weights") and not os.path.exists(f"{root}/{spec['pair_weights']}"):   # probe re-weighting step 2
@@ -142,15 +148,19 @@ def build_train(root, spec, tok, end):
                        check=True)
     pw = json.load(open(f"{root}/{spec['pair_weights']}")) if spec.get("pair_weights") else None
     n = spec.get("n_examples")
-    n2 = round(n * spec["mix"]["share"]) if spec.get("mix") else 0      # corpus mixtures (B-TR-tripclin, 1:1)
-    ex, stats = build_examples(recs, spec["format"], n=n - n2 if n2 else n,
+    if spec.get("passes"):       # docs/AUX_PROTOCOL.md S1: every in-domain record `passes` times (+ pad_examples, recipe 1b)
+        n = spec["passes"] * len(recs) + spec.get("pad_examples", 0)
+    mix = spec.get("mix")        # corpus mixtures: B-TR-tripclin (share of n), S1 recipes (every auxiliary record once)
+    n2 = (round(n * mix["share"]) if "share" in mix else mix.get("n_examples")) if mix else 0
+    ex, stats = build_examples(recs, spec["format"], n=n - n2 if mix and "share" in mix else n,
                                resample_p=spec.get("resample_p", 0.3),
                                seed=spec.get("construction_seed", 0), pair_weights=pw,
                                codes=check_codes(root, spec) if spec["format"] == "genprm" else None)
-    if n2:
-        recs2 = load_jsonl(dataset_path(root, spec["mix"]["corpus"]))
-        check_gold(recs2, [spec["format"]], spec["mix"]["corpus"])
-        ex2, st2 = build_examples(recs2, spec["format"], n=n2, resample_p=spec.get("resample_p", 0.3),
+    if mix:
+        recs2 = load_jsonl(dataset_path(root, mix["corpus"]))
+        if spec["format"] not in ("verdict", "verdict_bt", "genprm", *PROSE):
+            check_gold(recs2, [spec["format"]], mix["corpus"])
+        ex2, st2 = build_examples(recs2, spec["format"], n=n2 or None, resample_p=spec.get("resample_p", 0.3),
                                   seed=spec.get("construction_seed", 0))
         ex, stats = ex + ex2, {"n": len(ex) + len(ex2), "corpus": stats, "mix": st2}
     if spec["format"] == "verdict_bt":            # prompt pairs (correct, wrong) stored as consecutive sequences

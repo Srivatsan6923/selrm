@@ -127,6 +127,8 @@ def build_eval_c(root, fmt, tag, set_name, tok):
     import numpy as np, pretok
     from selrm.formats import dataset_path, reader_units
     spec = {"format": fmt, "base_model": tag.replace("--", "/")}
+    if hasattr(pretok, "unit_key"):    # B's code from 3 Oct on: format-aware reader units, no gold check on our sets
+        return pretok.build_eval(root, spec, set_name, tok)
     path = pretok.eval_path(root, spec, set_name)
     if os.path.exists(path):
         return path, "exists"
@@ -191,7 +193,7 @@ def run_prm(spec, a, mon, log, owner):
         model, tok = mod.load(mdir, bdir)
         summ, secs = {}, {}
         for s in spec["sets"]:
-            root = a.broot if s.startswith("rule_v1") else a.root
+            root = a.broot if s.startswith("rule_v1") and "@" not in s else a.root   # criterion views live on C's volume
             recs = subset(load_jsonl(dataset_path(root, s)), spec.get("n_groups", 0), tuple(spec.get("claim_types", ["conclusion"])))
             ts = time.time()
             # length tiers keep long inputs (MedEinst, NLI4CT-P) in small batches; the wrapper batches within a tier
@@ -423,7 +425,7 @@ def run_one(spec, a, mon, log, owner):
         tag = spec.get("base_model", "unsloth/Qwen3.5-9B").replace("/", "--")
         summ, secs = {}, {}
         for s in spec["sets"]:
-            root = a.broot if s.startswith("rule_v1") else a.root
+            root = a.broot if s.startswith("rule_v1") and "@" not in s else a.root   # criterion views live on C's volume
             if spec.get("nocase"):                # default correction: u(s, no case); copies with case_text ""
                 src = load_jsonl(__import__("selrm.formats", fromlist=["dataset_path"]).dataset_path(root, s))
                 s, root = f"nocase/{s}", a.root

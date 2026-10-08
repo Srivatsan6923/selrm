@@ -1,0 +1,39 @@
+{
+ "run_id": "C-ME-ledger2-triplets-s0",
+ "set": "clin_v1/medeinst_test",
+ "Reversal": 15.734720416124837,
+ "CI95": [
+  14.71298532416868,
+  16.700724503065207
+ ],
+ "CI95_label_pairs": [
+  8.720238095238095,
+  25.153476024556163
+ ],
+ "n_pairs": 5383,
+ "control_acc": 44.41761099758499,
+ "trap_acc": 35.073379156604126,
+ "bias_trap_rate": 48.724383103304056,
+ "n_control_correct": 2391,
+ "tie_rate": 48.2444733420026,
+ "Reversal_excl_no_content_diff": 15.978117336351632,
+ "Reversal_excl_overlap_ref": 15.827067669172932,
+ "n_no_content_diff": 82,
+ "n_overlap_ref": 63,
+ "definitions": "control correct: d(control) > 0; trap correct: d(trap) < 0; Reversal = both (ties fail); bias_trap_rate = share of control-correct pairs with d(trap) > 0 (MedEinst's R_bias on two candidates)",
+ "bootstrap": {
+  "unit": "pair (CI95) and (y_gt, y_bias) label pair (CI95_label_pairs)",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "reader_units": 10766,
+  "malformed_units": 3866,
+  "mode": null,
+  "malformed_rate": 0.3591,
+  "gen_not_stopped": 940,
+  "seconds": 15383.9,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

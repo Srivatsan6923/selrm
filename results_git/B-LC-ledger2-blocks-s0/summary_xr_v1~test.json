@@ -1,0 +1,44 @@
+{
+ "run_id": "B-LC-ledger2-blocks-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 72.0,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 95.33333333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 98.0,
+   "XA_inclusivity": 87.0,
+   "XA_subject": 58.0,
+   "XA_window": 45.0
+  },
+  "criterion": {
+   "XA": 70.0,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 95.0,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 99.0,
+   "XA_inclusivity": 99.0,
+   "XA_subject": 41.0,
+   "XA_window": 41.0
+  }
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 148.8,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

@@ -124,7 +124,7 @@ _C1 = [
          "For treatment of acute deep vein thrombosis, prescribe enoxaparin 1 mg/kg twice daily. "
          "If the current eGFR is below {thr_egfr} mL/min/1.73 m2, prescribe enoxaparin 1 mg/kg "
          "once daily instead.",
-         # ponytail: eGFR, not serum creatinine: a creatinine cut-off maps to CrCl < 30 (the
+         # eGFR, not serum creatinine: a creatinine cut-off maps to CrCl < 30 (the
          # label's criterion) in older or lighter patients at near-miss values, so the rule
          # would contradict the label there; eGFR < 30 is the accepted surrogate.
          [N("egfr", "egfr", "eGFR", ["egfr"], "<", 30, (40, 95), (15, 29), 6)],

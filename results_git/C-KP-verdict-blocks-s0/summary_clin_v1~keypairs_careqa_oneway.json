@@ -1,0 +1,44 @@
+{
+ "run_id": "C-KP-verdict-blocks-s0",
+ "set": "clin_v1/keypairs_careqa_oneway",
+ "Reversal": 82.66666666666667,
+ "CI95": [
+  77.77777777777777,
+  87.55555555555556
+ ],
+ "n_pairs": 225,
+ "q1_acc": 91.55555555555556,
+ "q2_acc": 91.11111111111111,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 85.33333333333333,
+  "2": 82.66666666666667,
+  "3": 80.0
+ },
+ "Reversal_by_category": {
+  "Biology": 90.2439024390244,
+  "Chemistry": 87.5,
+  "Medicine": 81.3953488372093,
+  "Nursing": 72.72727272727273,
+  "Pharmacology": 80.35714285714286,
+  "Psychology": 85.71428571428571
+ },
+ "n_by_category": {
+  "Biology": 41,
+  "Chemistry": 24,
+  "Medicine": 43,
+  "Nursing": 33,
+  "Pharmacology": 56,
+  "Psychology": 28
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "seconds": 35.0,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

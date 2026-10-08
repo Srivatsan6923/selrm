@@ -1,0 +1,13 @@
+{
+ "run_id": "C-AUD-meds3--p2",
+ "set": "rule_v1/dev_missing",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 84.6,
+  "n_records": 1200,
+  "n_groups": "all",
+  "claim_types": [
+   "conclusion"
+  ]
+ }
+}

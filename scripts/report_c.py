@@ -19,7 +19,11 @@ ROWS = [("C-TF-critic", "Untrained backbone, verdict (critic)"),
         ("C-TF-promptledger-lenient", "Untrained backbone, prompted ledger (format-normalised readout)"),
         ("C-TF-defcorr", "Untrained backbone, default correction"),
         ("C-TF-genprog", "Untrained backbone, generated-program verifier"),
-        ("C-SC-gptrigger", "General-purpose trigger tagger + rule program")]
+        ("C-SC-gptrigger", "General-purpose trigger tagger + rule program"),
+        ("C-REF-extract-program", "Reference: extraction (untrained prompted ledger) + hand-written program"),
+        ("C-AUD-medprm", "Released PRM: Med-PRM"), ("C-AUD-meds3", "Released PRM: MedS3 PRM"),
+        ("C-AUD-fover", "Released PRM: FoVer PRM"), ("C-AUD-thinkprm", "Released PRM: ThinkPRM-14B (subset)"),
+        ("C-AUD-genprm", "Released PRM: GenPRM-7B (subset)")]
 
 
 def load_jsonl(p):

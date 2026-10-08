@@ -1,0 +1,38 @@
+{
+ "run_id": "C-REF-extract-program",
+ "kind": "eval (CPU)",
+ "source_run": "C-TF-promptledger-lenient",
+ "field": "ledger_lenient",
+ "program": "role A rule_v1 freeze e40789b; role B scripts/program_ledger.py d3c801a",
+ "git_commit": "bd66b54fd895",
+ "per_set": {
+  "rule_v1/dev_missing": {
+   "matched": 692,
+   "unmatched": 115,
+   "no_answer": 547,
+   "malformed": 29,
+   "records": 2280
+  },
+  "rule_v1/missing": {
+   "matched": 2382,
+   "unmatched": 811,
+   "no_answer": 1980,
+   "malformed": 86,
+   "records": 7344
+  },
+  "rule_v1/test_L2": {
+   "matched": 13477,
+   "unmatched": 3662,
+   "no_answer": 7630,
+   "malformed": 579,
+   "records": 29248
+  },
+  "rule_v1/test_L3alt": {
+   "matched": 8452,
+   "unmatched": 259,
+   "no_answer": 6451,
+   "malformed": 73,
+   "records": 13048
+  }
+ }
+}

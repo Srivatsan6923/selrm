@@ -1,0 +1,39 @@
+{
+ "run_id": "C-AUD-medprm",
+ "set": "clin_v1/keypairs_careqa",
+ "Reversal": 33.333333333333336,
+ "CI95": [
+  0.0,
+  100.0
+ ],
+ "n_pairs": 3,
+ "q1_acc": 100.0,
+ "q2_acc": 33.333333333333336,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 0.0,
+  "2": 100.0,
+  "3": 0.0
+ },
+ "Reversal_by_category": {
+  "Medicine": 0.0,
+  "Pharmacology": 100.0
+ },
+ "n_by_category": {
+  "Medicine": 2,
+  "Pharmacology": 1
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "seconds": 0.7,
+  "n_records": 12,
+  "n_groups": "all",
+  "claim_types": [
+   "conclusion"
+  ]
+ }
+}

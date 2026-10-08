@@ -1,0 +1,139 @@
+{
+ "cid": 25,
+ "items": {
+  "Hypertension": {
+   "np": "uncontrolled hypertension",
+   "relative_ok": true,
+   "past_ok": true,
+   "lexicon": [
+    "hypertensi",
+    "\\bHTN\\b",
+    "blood[ -]pressure",
+    "\\bBPs?\\b",
+    "mm ?Hg",
+    "normotensi",
+    "systolic",
+    "diastolic",
+    "\\b\\d{2,3} ?/ ?\\d{2,3}\\b",
+    "sphygmo",
+    "\\bcuff\\b",
+    "lisinopril|enalapril|ramipril|perindopril|captopril|benazepril|losartan|valsartan|candesartan|olmesartan|telmisartan|irbesartan",
+    "amlodipine|nifedipine|felodipine|hydrochlorothiazide|chlorthalidone|indapamide|\\bHCTZ\\b|hydralazine|clonidine|doxazosin|spironolactone"
+   ]
+  },
+  "Renal disease": {
+   "np": "dialysis-dependent kidney disease",
+   "relative_ok": true,
+   "past_ok": false,
+   "lexicon": [
+    "renal",
+    "kidney",
+    "dialy",
+    "\\bnephr|glomerulonephr|pyelonephr",
+    "creatinine",
+    "\\bs?Cr\\b",
+    "\\bCKD\\b",
+    "\\bESRD\\b",
+    "\\bESKD\\b",
+    "\\be?GFR\\b",
+    "glomerul",
+    "filtration rate",
+    "transplant",
+    "allograft",
+    "uremi|uraemi",
+    "azotemi",
+    "urea nitrogen",
+    "\\bBUN\\b",
+    "proteinuri|albuminuri",
+    "arteriovenous fistula|\\bAV fistula"
+   ]
+  },
+  "Liver disease": {
+   "np": "cirrhosis",
+   "relative_ok": true,
+   "past_ok": false,
+   "lexicon": [
+    "liver",
+    "hepat",
+    "cirrho",
+    "bilirubin",
+    "transaminase|aminotransferase",
+    "\\bAST\\b",
+    "\\bALT\\b",
+    "\\bALP\\b",
+    "\\bSGOT\\b",
+    "\\bSGPT\\b",
+    "alkaline phosphatase",
+    "\\bLFTs?\\b",
+    "jaundice|icter",
+    "ascites",
+    "varice|varix",
+    "portal (hypertension|vein)",
+    "steato",
+    "cholesta",
+    "spider (nevi|angioma)|asterixis|caput medusae|palmar erythema",
+    "encephalopathy",
+    "\\bNASH\\b|\\bNAFLD\\b|\\bMELD\\b|Child[- ]Pugh"
+   ]
+  },
+  "Stroke history": {
+   "np": "stroke",
+   "relative_ok": true,
+   "past_ok": false,
+   "lexicon": [
+    "\\bstrokes?\\b",
+    "\\bCVAs?\\b",
+    "cerebrovascular",
+    "cerebral (infarct|isch|embol)",
+    "\\bTIAs?\\b",
+    "transient isch",
+    "(brain|cerebral|cerebellar|lacunar|embolic|hemispheric) infarct|lacun",
+    "hemipare|hemiple|hemispher",
+    "thromboly|thrombectomy",
+    "intracranial|intracerebral|subarachnoid",
+    "aphasi|dysphasi|dysarthri|facial droop",
+    "focal (neurologic|deficit|weakness)|neurologic(al)? (deficit|event)|amaurosis",
+    "cerebral"
+   ]
+  },
+  "Prior major bleeding or predisposition to bleeding": {
+   "np": "major bleeding",
+   "relative_ok": true,
+   "past_ok": true,
+   "lexicon": [
+    "bleed|bled\\b",
+    "h(a?e)morrhag",
+    "h(a?e)matoma",
+    "h(a?e)matemesis|h(a?e)matochezia|h(a?e)maturia|h(a?e)moptysis|h(a?e)marthros",
+    "mel(a?e)na|epistaxis|nosebleed|menorrhagi|black (or red )?stools?|tarry",
+    "transfus|packed red|blood products?",
+    "an(a?e)mi",
+    "thrombocytopeni|coagulopath|h(a?e)mophili|von Willebrand|diathes|platelet (dys)?function",
+    "bruis|ecchymos|petechi|purpura|oozing",
+    "ulcer",
+    "h(a?e)mosta",
+    "angiodysplasia|arteriovenous malformation|\\bAVMs?\\b"
+   ]
+  },
+  "Labile INR": {
+   "np": "labile INR",
+   "relative_ok": true,
+   "past_ok": true,
+   "lexicon": [
+    "\\bINRs?\\b",
+    "international normali[sz]ed",
+    "therapeutic range|\\bTTR\\b",
+    "prothrombin|\\bPT\\b",
+    "labile",
+    "(supra|sub)[- ]?therapeutic",
+    "warfarin|coumadin|acenocoumarol|phenprocoumon|vitamin K antagonist|\\bVKA\\b",
+    "anticoagulation (clinic|control|log|monitoring)|coagulation (profile|panel|studies|parameters)"
+   ]
+  }
+ },
+ "ineligible": {
+  "Age": "numeric item (age threshold), not a finding",
+  "Medication usage predisposing to bleeding": "medication use is not a condition the patient 'has': no natural noun phrase fits 'has {np}' / 'is free of {np}' / 'had {np} some years ago, and it has since cleared'",
+  "Alcohol use": "numeric item (drinks per week threshold), not a finding"
+ }
+}

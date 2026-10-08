@@ -79,8 +79,14 @@ def main():
     docs = ctrs(fetch("training_data.zip", a.cache))
     commit = subprocess.run(["git", "-C", REPO, "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
     reg = {}
-    for name, split, f in (("nli4ct_test", "test", "gold_test.json"), ("nli4ct_dev", "dev", "gold_practice_test.json")):
-        stmts = json.load(open(fetch(f, a.cache), encoding="utf-8"))
+    zpath = fetch("training_data.zip", a.cache)
+    for name, split, f in (("nli4ct_test", "test", "gold_test.json"), ("nli4ct_dev", "dev", "gold_practice_test.json"),
+                           ("nli4ct_train", "train", "training_data.zip:train.json")):
+        if f.startswith("training_data.zip:"):     # the released training statements (in-domain training, AUX S1)
+            with zipfile.ZipFile(zpath) as z:
+                stmts = json.loads(z.read(f.split(":", 1)[1]).decode("utf-8"))
+        else:
+            stmts = json.load(open(fetch(f, a.cache), encoding="utf-8"))
         recs = records(stmts, docs, split)
         for r in recs:
             validate(r)
@@ -90,8 +96,16 @@ def main():
             for r in recs:
                 fh.write(json.dumps(r, ensure_ascii=False) + "\n")
         sha = hashlib.sha256(open(f"{d}/records.jsonl", "rb").read()).hexdigest()
+        old = json.load(open(f"{d}/MANIFEST.json", encoding="utf-8")) if os.path.exists(f"{d}/MANIFEST.json") else {}
+        if old.get("sha256") == sha:             # unchanged frozen set: its manifest stays as written
+            reg[f"clin_v1/{name}"] = {"path": f"clin_v1/{name}/records.jsonl", "split": split, "level": "external",
+                                      "tier": "external", "n_groups": len(recs), "n_records": len(recs),
+                                      "manifest": f"clin_v1/{name}/MANIFEST.json", "frozen": True,
+                                      "created": old["created"], "sha256": sha}
+            print(name, len(recs), "unchanged", sha[:12])
+            continue
         man = {"name": f"clin_v1/{name}", "source": "github.com/ai-systems/Task-2-SemEval-2024", "revision": "7f32fa6c",
-               "source_file": f, "source_sha256": SHA[f], "ctr_files": len(docs), "licence": "none stated by the organisers",
+               "source_file": f, "source_sha256": SHA[f.split(":")[0]], "ctr_files": len(docs), "licence": "none stated by the organisers",
                "n_records": len(recs), "split": split,
                "by_intervention": {k: sum(r["meta"]["intervention"] == k for r in recs)
                                    for k in sorted({r["meta"]["intervention"] for r in recs})},

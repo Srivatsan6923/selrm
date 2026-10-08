@@ -1,0 +1,193 @@
+{
+ "run_id": "B-F-summary2-blocks-s4",
+ "set": "rule_v1/test_hard",
+ "claim_type": "conclusion",
+ "all": {
+  "Rev": 98.7,
+  "Hold": 68.8,
+  "TA": 67.8,
+  "BaseAcc": 98.7,
+  "Tie": 0.0,
+  "PresHold": 98.6,
+  "n": 1000
+ },
+ "nm_kind=time": {
+  "Rev": 99.5,
+  "Hold": 28.0,
+  "TA": 27.5,
+  "BaseAcc": 99.5,
+  "Tie": 0.0,
+  "PresHold": 99.5,
+  "n": 200
+ },
+ "tier=superseded": {
+  "Rev": 100.0,
+  "Hold": 23.75,
+  "TA": 23.75,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 80
+ },
+ "level=L2": {
+  "Rev": 98.7,
+  "Hold": 68.8,
+  "TA": 67.8,
+  "BaseAcc": 98.7,
+  "Tie": 0.0,
+  "PresHold": 98.6,
+  "n": 1000
+ },
+ "family=g_two_of_three": {
+  "Rev": 98.69281045751634,
+  "Hold": 62.41830065359477,
+  "TA": 61.43790849673203,
+  "BaseAcc": 98.69281045751634,
+  "Tie": 0.0,
+  "PresHold": 98.69281045751634,
+  "n": 306
+ },
+ "nm_kind=subject": {
+  "Rev": 97.0,
+  "Hold": 77.5,
+  "TA": 76.0,
+  "BaseAcc": 97.0,
+  "Tie": 0.0,
+  "PresHold": 97.5,
+  "n": 200
+ },
+ "tier=long": {
+  "Rev": 98.58233369683751,
+  "Hold": 72.7371864776445,
+  "TA": 71.64667393675028,
+  "BaseAcc": 98.58233369683751,
+  "Tie": 0.0,
+  "PresHold": 98.47328244274809,
+  "n": 917
+ },
+ "family=g_all_of": {
+  "Rev": 98.71244635193133,
+  "Hold": 65.23605150214593,
+  "TA": 63.94849785407725,
+  "BaseAcc": 98.71244635193133,
+  "Tie": 0.0,
+  "PresHold": 98.28326180257511,
+  "n": 233
+ },
+ "nm_kind=numeric": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 200
+ },
+ "family=additive_score": {
+  "Rev": 98.37837837837837,
+  "Hold": 82.70270270270271,
+  "TA": 81.62162162162163,
+  "BaseAcc": 98.37837837837837,
+  "Tie": 0.0,
+  "PresHold": 98.37837837837837,
+  "n": 185
+ },
+ "nm_kind=negation": {
+  "Rev": 97.0,
+  "Hold": 100.0,
+  "TA": 97.0,
+  "BaseAcc": 97.0,
+  "Tie": 0.0,
+  "PresHold": 96.0,
+  "n": 200
+ },
+ "family=g_score_cutoff": {
+  "Rev": 98.42931937172774,
+  "Hold": 73.82198952879581,
+  "TA": 72.77486910994764,
+  "BaseAcc": 98.42931937172774,
+  "Tie": 0.0,
+  "PresHold": 98.42931937172774,
+  "n": 191
+ },
+ "nm_kind=boundary": {
+  "Rev": 100.0,
+  "Hold": 38.5,
+  "TA": 38.5,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 200
+ },
+ "family=g_any_of": {
+  "Rev": 100.0,
+  "Hold": 50.0,
+  "TA": 50.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 62
+ },
+ "family=any_of": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 2
+ },
+ "family=score_cutoff": {
+  "Rev": 100.0,
+  "Hold": 85.71428571428571,
+  "TA": 85.71428571428571,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 21
+ },
+ "tier=delabelled": {
+  "Rev": 100.0,
+  "Hold": 66.66666666666667,
+  "TA": 66.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 3
+ },
+ "CI95": {
+  "TA": [
+   63.77952755905512,
+   71.54811715481172
+  ],
+  "Rev": [
+   97.64344262295081,
+   99.51550387596899
+  ],
+  "Hold": [
+   64.7780925401322,
+   72.53306205493388
+  ]
+ },
+ "step": {
+  "criterion": {
+   "Rev": 98.77300613496932,
+   "Hold": 65.39877300613497,
+   "TA": 64.41717791411043,
+   "BaseAcc": 98.77300613496932,
+   "Tie": 0.0,
+   "PresHold": 98.65030674846626,
+   "n": 815
+  }
+ },
+ "eval": {
+  "reader_units": 4000,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 898.9,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "run_id": "B-TR-genprm-s0",
+ "set": "rule_v1/dev_missing",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "check_missing": 0,
+  "check_error": 0,
+  "gen_not_stopped": 0,
+  "gen_tokens": 187088,
+  "seconds": 321.9,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

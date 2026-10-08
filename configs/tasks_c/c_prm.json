@@ -266,6 +266,70 @@
     "clin_v1/medeinst_test"
    ],
    "merge_into": "C-AUD-genprm"
+  },
+  {
+   "run_id": "C-AUD-thinkprm-crit",
+   "prm": "thinkprm",
+   "format": "prm",
+   "priority": 40,
+   "bs": 8,
+   "min_gen": 5,
+   "claim_types": [
+    "criterion"
+   ],
+   "n_groups": 200,
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "min_gb": 40
+  },
+  {
+   "run_id": "C-AUD-genprm-crit",
+   "prm": "genprm",
+   "format": "prm",
+   "priority": 40,
+   "bs": 16,
+   "min_gen": 5,
+   "claim_types": [
+    "criterion"
+   ],
+   "n_groups": 200,
+   "sets": [
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "C-AUD-thinkprm-kp",
+   "prm": "thinkprm",
+   "format": "prm",
+   "priority": 41,
+   "bs": 8,
+   "min_gen": 5,
+   "claim_types": [
+    "conclusion"
+   ],
+   "n_groups": 200,
+   "sets": [
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "min_gb": 40
+  },
+  {
+   "run_id": "C-AUD-genprm-kp",
+   "prm": "genprm",
+   "format": "prm",
+   "priority": 41,
+   "bs": 16,
+   "min_gen": 5,
+   "claim_types": [
+    "conclusion"
+   ],
+   "n_groups": 200,
+   "sets": [
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ]
   }
  ],
  "note": "released PRMs as released (scripts/prms); runners with --online --models ''. Generative PRMs on fixed subsets (200 L2 triplets, 100 xr_v1 items, 200 MedEinst pairs; n/kinds per near-miss kind, random.Random(0)); 3-hour timebox each"

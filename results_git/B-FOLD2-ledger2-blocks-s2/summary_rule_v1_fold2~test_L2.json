@@ -1,0 +1,220 @@
+{
+ "run_id": "B-FOLD2-ledger2-blocks-s2",
+ "set": "rule_v1_fold2/test_L2",
+ "claim_type": "conclusion",
+ "all": {
+  "Rev": 99.5,
+  "Hold": 67.65,
+  "TA": 67.2,
+  "BaseAcc": 99.5,
+  "Tie": 0.05,
+  "PresHold": 99.35,
+  "n": 2000
+ },
+ "nm_kind=time": {
+  "Rev": 100.0,
+  "Hold": 20.75,
+  "TA": 20.75,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 400
+ },
+ "tier=superseded": {
+  "Rev": 100.0,
+  "Hold": 2.2988505747126435,
+  "TA": 2.2988505747126435,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 87
+ },
+ "level=L2": {
+  "Rev": 99.5,
+  "Hold": 67.65,
+  "TA": 67.2,
+  "BaseAcc": 99.5,
+  "Tie": 0.05,
+  "PresHold": 99.35,
+  "n": 2000
+ },
+ "family=additive_score": {
+  "Rev": 100.0,
+  "Hold": 56.94444444444444,
+  "TA": 56.94444444444444,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 144
+ },
+ "tier=long": {
+  "Rev": 100.0,
+  "Hold": 69.88727858293076,
+  "TA": 69.88727858293076,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 99.8389694041868,
+  "n": 621
+ },
+ "family=g_any_of": {
+  "Rev": 99.06191369606003,
+  "Hold": 66.79174484052533,
+  "TA": 65.94746716697937,
+  "BaseAcc": 99.06191369606003,
+  "Tie": 0.09380863039399624,
+  "PresHold": 99.06191369606003,
+  "n": 1066
+ },
+ "nm_kind=subject": {
+  "Rev": 99.0,
+  "Hold": 34.75,
+  "TA": 34.0,
+  "BaseAcc": 99.0,
+  "Tie": 0.25,
+  "PresHold": 98.25,
+  "n": 400
+ },
+ "nm_kind=boundary": {
+  "Rev": 100.0,
+  "Hold": 83.0,
+  "TA": 83.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 400
+ },
+ "tier=easy": {
+  "Rev": 99.2248062015504,
+  "Hold": 70.93023255813954,
+  "TA": 70.23255813953489,
+  "BaseAcc": 99.2248062015504,
+  "Tie": 0.07751937984496124,
+  "PresHold": 99.06976744186046,
+  "n": 1290
+ },
+ "family=any_of": {
+  "Rev": 100.0,
+  "Hold": 86.84210526315789,
+  "TA": 86.84210526315789,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 98.02631578947368,
+  "n": 152
+ },
+ "nm_kind=numeric": {
+  "Rev": 100.0,
+  "Hold": 99.75,
+  "TA": 99.75,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 400
+ },
+ "nm_kind=negation": {
+  "Rev": 98.5,
+  "Hold": 100.0,
+  "TA": 98.5,
+  "BaseAcc": 98.5,
+  "Tie": 0.0,
+  "PresHold": 98.5,
+  "n": 400
+ },
+ "family=g_single": {
+  "Rev": 100.0,
+  "Hold": 71.25,
+  "TA": 71.25,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 240
+ },
+ "family=lab_threshold": {
+  "Rev": 100.0,
+  "Hold": 65.46762589928058,
+  "TA": 65.46762589928058,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 278
+ },
+ "family=two_of_three": {
+  "Rev": 100.0,
+  "Hold": 44.44444444444444,
+  "TA": 44.44444444444444,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 9
+ },
+ "family=g_score_cutoff": {
+  "Rev": 100.0,
+  "Hold": 52.54237288135593,
+  "TA": 52.54237288135593,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 59
+ },
+ "family=age_limit": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 10
+ },
+ "family=g_two_of_three": {
+  "Rev": 100.0,
+  "Hold": 69.04761904761905,
+  "TA": 69.04761904761905,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 42
+ },
+ "tier=delabelled": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 2
+ },
+ "CI95": {
+  "TA": [
+   63.65149833518313,
+   71.16085372201978
+  ],
+  "Rev": [
+   98.88023369036027,
+   99.95291902071563
+  ],
+  "Hold": [
+   63.992359121298946,
+   71.74575533304309
+  ]
+ },
+ "step": {
+  "criterion": {
+   "Rev": 99.46120689655173,
+   "Hold": 66.10991379310344,
+   "TA": 65.57112068965517,
+   "BaseAcc": 99.46120689655173,
+   "Tie": 0.05387931034482758,
+   "PresHold": 99.46120689655173,
+   "n": 1856
+  }
+ },
+ "eval": {
+  "reader_units": 8000,
+  "malformed_units": 4,
+  "mode": null,
+  "malformed_rate": 0.0005,
+  "gen_not_stopped": 0,
+  "seconds": 397.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

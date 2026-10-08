@@ -3,7 +3,7 @@ the real tokenizer: pretok -> queue runner (train 2 steps, evaluate) for all fiv
 formats. Numbers are meaningless; this only checks that every path runs and
 writes meta/scores/summaries/DONE. Needs transformers with Qwen3.5 and peft.
   python scripts/cpu_selftest_b.py TOKENIZER_DIR [WORK_DIR]"""
-import json, os, shutil, subprocess, sys
+import glob, json, os, shutil, subprocess, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 from selrm.formats import FORMATS
@@ -63,6 +63,15 @@ runs.append({"run_id": "SELFTEST-mix", "format": "ledger2", "corpus": "mini/trai
              "mix": {"corpus": "mini/test_heldout_rules", "share": 0.5}, "seed": 0, "max_steps": 2,   # corpus mixture
              "base_model": "tiny/qwen35", "hp": hp, "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24},
              "eval_sets": ["mini/test_heldout_rules"]})
+# docs/AUX_PROTOCOL.md S1 paths: in-domain passes + pad, every auxiliary record once, a training filter, and an
+# epoch-selection run that saves an adapter after each epoch (no evaluation)
+runs.append({"run_id": "SELFTEST-aux-mix", "format": "verdict", "corpus": "mini/test_heldout_rules", "passes": 2,
+             "pad_examples": 3, "mix": {"corpus": "mini/train_triplets"}, "train_meta_exclude": {"none": [1]},
+             "seed": 0, "max_steps": 2, "base_model": "tiny/qwen35", "hp": hp,
+             "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24}, "eval_sets": ["mini/test_heldout_rules"]})
+runs.append({"run_id": "SELFTEST-aux-ep", "format": "verdict", "corpus": "mini/test_heldout_rules", "passes": 1,
+             "save_epochs": True, "keep_adapter": True, "seed": 0, "base_model": "tiny/qwen35",
+             "hp": hp | {"epochs": 2}, "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24}, "eval_sets": []})
 runs.append({"run_id": "SELFTEST-evalonly-ledger2", "format": "ledger2", "train": False, "seed": 0,
              "base_model": "tiny/qwen35", "adapter": "adapters/SELFTEST-ledger2", "hp": hp, "priority": 9,
              "eval": {"bs_score": 8, "bs_gen": 8, "max_new": 24}, "eval_sets": ["mini/test_heldout_rules"]})
@@ -98,6 +107,15 @@ for r in runs:
         assert summ["n"] > 0 and 0 <= summ["agreement"] <= 100
         print("ok", r["run_id"], "agreement", summ["agreement"], "n", summ["n"])
         continue
+    if r["run_id"] == "SELFTEST-aux-ep":            # one adapter per epoch, no evaluation
+        assert all(os.path.isfile(f"{root}/adapters/SELFTEST-aux-ep-e{k}/adapter_config.json") for k in (1, 2))
+        print("ok", r["run_id"], "epoch adapters e1, e2")
+        continue
+    if r["run_id"] == "SELFTEST-aux-mix":           # passes x in-domain + pad + every auxiliary record once
+        st = json.load(open(glob.glob(f"{root}/tok/*/train/verdict__mini~test_heldout_rules__n2x+3__*/stats.json")[0]))
+        n_in = sum(1 for _ in open(f"{root}/data/mini/test_heldout_rules.jsonl"))
+        n_aux = sum(1 for _ in open(f"{root}/data/mini/train_triplets.jsonl"))
+        assert st["corpus"]["n"] == 2 * n_in + 3 and st["mix"]["n"] == n_aux, (st["corpus"]["n"], st["mix"]["n"])
     summ = json.load(open(f"{d}/summary_mini~test_heldout_rules.json"))
     n = sum(1 for _ in open(f"{d}/scores_mini~test_heldout_rules.jsonl"))
     assert "all" in summ and n > 0 and (meta["train"].get("eval_only") or meta["train"]["steps"] == 2)

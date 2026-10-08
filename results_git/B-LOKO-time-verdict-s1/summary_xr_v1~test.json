@@ -1,0 +1,39 @@
+{
+ "run_id": "B-LOKO-time-verdict-s1",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 82.0,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 95.70833333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 99.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 94.0,
+   "XA_window": 35.0
+  },
+  "criterion": {
+   "XA": 91.0,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 98.25,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 100.0,
+   "XA_window": 64.0
+  }
+ },
+ "eval": {
+  "seconds": 61.0,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

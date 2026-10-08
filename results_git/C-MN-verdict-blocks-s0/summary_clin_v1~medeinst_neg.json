@@ -1,0 +1,26 @@
+{
+ "run_id": "C-MN-verdict-blocks-s0",
+ "set": "clin_v1/medeinst_neg",
+ "analysis": "secondary (docs/AUX_PROTOCOL.md S2/S3)",
+ "hold": 64.42281697756151,
+ "CI95": [
+  48.333333333333336,
+  79.85889849795176
+ ],
+ "n": 3699,
+ "hold_without_diagnosis_named": 64.0843142622502,
+ "n_without_diagnosis_named": 3653,
+ "all_three_right": 21.762638550959718,
+ "all_three_right_n": 3699,
+ "medeinst_run": "C-ME-verdict-blocks-s0",
+ "bootstrap": {
+  "unit": "(y_gt, y_bias) label pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "seconds": 997.4,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

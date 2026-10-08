@@ -1,0 +1,41 @@
+{
+ "run_id": "C-KP-ledger2-blocks-s0",
+ "set": "clin_v1/keypairs_medqa",
+ "Reversal": 23.076923076923077,
+ "CI95": [
+  0.0,
+  46.15384615384615
+ ],
+ "n_pairs": 13,
+ "q1_acc": 46.15384615384615,
+ "q2_acc": 46.15384615384615,
+ "tie_rate": 46.15384615384615,
+ "Reversal_by_tercile": {
+  "1": 50.0,
+  "2": 0.0,
+  "3": 20.0
+ },
+ "Reversal_by_category": {
+  "step1": 30.0,
+  "step2&3": 0.0
+ },
+ "n_by_category": {
+  "step1": 10,
+  "step2&3": 3
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "reader_units": 26,
+  "malformed_units": 8,
+  "mode": null,
+  "malformed_rate": 0.3077,
+  "gen_not_stopped": 0,
+  "seconds": 54.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

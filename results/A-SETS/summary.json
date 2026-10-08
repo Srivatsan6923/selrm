@@ -180,6 +180,7 @@
    "high": 71,
    "low": 29
   },
+  "known_issue_items": 38,
   "labels": {
    "0": 4800,
    "1": 4800
@@ -187,6 +188,7 @@
   "level": "xr",
   "n_groups": 800,
   "n_items": 400,
+  "n_items_without_known_issues": 362,
   "n_records": 9600,
   "name": "test",
   "seed": 2029,
@@ -256,6 +258,71 @@
     }
    },
    "result": "PASS"
+  },
+  "validation_without_known_issues": {
+   "always_counts_contested": {
+    "XA": 0.0,
+    "XA_currency": 0.0,
+    "XA_inclusivity": 0.0,
+    "XA_subject": 0.0,
+    "XA_window": 0.0,
+    "n_incomplete": 0,
+    "n_items": 362
+   },
+   "always_default": {
+    "XA": 0.0,
+    "XA_currency": 0.0,
+    "XA_inclusivity": 0.0,
+    "XA_subject": 0.0,
+    "XA_window": 0.0,
+    "n_incomplete": 0,
+    "n_items": 362
+   },
+   "concept_named": {
+    "XA": 0.0,
+    "XA_currency": 0.0,
+    "XA_inclusivity": 0.0,
+    "XA_subject": 0.0,
+    "XA_window": 0.0,
+    "n_incomplete": 0,
+    "n_items": 362
+   },
+   "ignores_rule_text_counting_rule": {
+    "XA": 0.0,
+    "XA_currency": 0.0,
+    "XA_inclusivity": 0.0,
+    "XA_subject": 0.0,
+    "XA_window": 0.0,
+    "n_incomplete": 0,
+    "n_items": 362
+   },
+   "ignores_rule_text_other_rule": {
+    "XA": 0.0,
+    "XA_currency": 0.0,
+    "XA_inclusivity": 0.0,
+    "XA_subject": 0.0,
+    "XA_window": 0.0,
+    "n_incomplete": 0,
+    "n_items": 362
+   },
+   "never_counts_contested": {
+    "XA": 0.0,
+    "XA_currency": 0.0,
+    "XA_inclusivity": 0.0,
+    "XA_subject": 0.0,
+    "XA_window": 0.0,
+    "n_incomplete": 0,
+    "n_items": 362
+   },
+   "program": {
+    "XA": 100.0,
+    "XA_currency": 100.0,
+    "XA_inclusivity": 100.0,
+    "XA_subject": 100.0,
+    "XA_window": 100.0,
+    "n_incomplete": 0,
+    "n_items": 362
+   }
   },
   "window_date_forms": {
    "dated": 33,

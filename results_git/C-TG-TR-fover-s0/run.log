@@ -1,0 +1,10 @@
+2026-10-03T22:02:43Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-TR-fover-s0
+2026-10-03T22:02:43Z token budget per batch: 8000 (generation 24000)
+2026-10-03T22:03:38Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0396)
+2026-10-03T22:03:41Z padding self-check: max |u_batch - u_single| = 0.1480 (tol 0.672) -> left padding
+2026-10-03T22:06:43Z C-TG-TR-fover-s0 rule_v1/dev_missing: TA nan Rev nan Hold nan n=None (239.9 s)
+2026-10-03T22:06:44Z C-TG-TR-fover-s0 clin_v1/trialgpt_dev prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_dev/verdict.npz', 'exists')
+2026-10-03T22:07:17Z C-TG-TR-fover-s0 clin_v1/trialgpt_dev: TA nan Rev nan Hold nan n=None (33.5 s)
+2026-10-03T22:07:18Z C-TG-TR-fover-s0 clin_v1/trialgpt_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_test/verdict.npz', 'exists')
+2026-10-03T22:09:29Z C-TG-TR-fover-s0 clin_v1/trialgpt_test: TA nan Rev nan Hold nan n=None (130.7 s)
+2026-10-03T22:09:29Z DONE C-TG-TR-fover-s0 in 7.5 min, GPU util mean 85.9

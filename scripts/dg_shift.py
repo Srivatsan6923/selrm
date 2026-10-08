@@ -28,7 +28,7 @@ def main():
         sh = res["shares_of_opposed"] or {}
         summ[f"signal={name}"] = {"crossed": sh.get("crossed"), "short": sh.get("short"), "unmoved": sh.get("unmoved"),
                                   "wrong": sh.get("wrong_direction"), "kappa": res["kappa"], "tau": res["tau"],
-                                  "counts": res["counts"], "n_opposed": res["n_opposed"],
+                                  "counts": res["counts"], "n_opposed": res["n_opposed"], "n_response_pairs": res["n_response_pairs"],
                                   "source_run": os.path.basename(os.path.normpath(run))}
         print(name, json.dumps(summ[f"signal={name}"]))
     json.dump(summ, open(p, "w", encoding="utf-8", newline="\n"), indent=1)

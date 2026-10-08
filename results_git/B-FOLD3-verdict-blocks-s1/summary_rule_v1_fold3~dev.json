@@ -1,0 +1,251 @@
+{
+ "run_id": "B-FOLD3-verdict-blocks-s1",
+ "set": "rule_v1_fold3/dev",
+ "claim_type": "conclusion",
+ "all": {
+  "Rev": 100.0,
+  "Hold": 57.0,
+  "TA": 57.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 99.66666666666667,
+  "n": 300
+ },
+ "nm_kind=negation": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 60
+ },
+ "tier=easy": {
+  "Rev": 100.0,
+  "Hold": 56.52173913043478,
+  "TA": 56.52173913043478,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 184
+ },
+ "level=L0": {
+  "Rev": 100.0,
+  "Hold": 57.0,
+  "TA": 57.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 99.66666666666667,
+  "n": 300
+ },
+ "family=g_two_of_three": {
+  "Rev": 100.0,
+  "Hold": 52.63157894736842,
+  "TA": 52.63157894736842,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 57
+ },
+ "nm_kind=time": {
+  "Rev": 100.0,
+  "Hold": 50.0,
+  "TA": 50.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 60
+ },
+ "family=lab_threshold": {
+  "Rev": 100.0,
+  "Hold": 85.71428571428571,
+  "TA": 85.71428571428571,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 14
+ },
+ "nm_kind=numeric": {
+  "Rev": 100.0,
+  "Hold": 96.66666666666667,
+  "TA": 96.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 98.33333333333333,
+  "n": 60
+ },
+ "family=g_score_cutoff": {
+  "Rev": 100.0,
+  "Hold": 35.294117647058826,
+  "TA": 35.294117647058826,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 34
+ },
+ "family=g_all_of": {
+  "Rev": 100.0,
+  "Hold": 60.46511627906977,
+  "TA": 60.46511627906977,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 43
+ },
+ "nm_kind=subject": {
+  "Rev": 100.0,
+  "Hold": 5.0,
+  "TA": 5.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 60
+ },
+ "nm_kind=boundary": {
+  "Rev": 100.0,
+  "Hold": 33.333333333333336,
+  "TA": 33.333333333333336,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 60
+ },
+ "family=two_of_three": {
+  "Rev": 100.0,
+  "Hold": 20.0,
+  "TA": 20.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 5
+ },
+ "tier=long": {
+  "Rev": 100.0,
+  "Hold": 55.96330275229358,
+  "TA": 55.96330275229358,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 99.08256880733946,
+  "n": 109
+ },
+ "family=g_any_of": {
+  "Rev": 100.0,
+  "Hold": 50.81967213114754,
+  "TA": 50.81967213114754,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 98.36065573770492,
+  "n": 61
+ },
+ "family=score_cutoff": {
+  "Rev": 100.0,
+  "Hold": 50.0,
+  "TA": 50.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 4
+ },
+ "tier=superseded": {
+  "Rev": 100.0,
+  "Hold": 85.71428571428571,
+  "TA": 85.71428571428571,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 7
+ },
+ "family=g_single": {
+  "Rev": 100.0,
+  "Hold": 73.52941176470588,
+  "TA": 73.52941176470588,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 34
+ },
+ "family=any_of": {
+  "Rev": 100.0,
+  "Hold": 50.0,
+  "TA": 50.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 2
+ },
+ "family=additive_score": {
+  "Rev": 100.0,
+  "Hold": 62.857142857142854,
+  "TA": 62.857142857142854,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 35
+ },
+ "family=drug_interaction": {
+  "Rev": 100.0,
+  "Hold": 71.42857142857143,
+  "TA": 71.42857142857143,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 7
+ },
+ "family=age_limit": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 1
+ },
+ "family=state_switch": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 2
+ },
+ "family=allergy_switch": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 1
+ },
+ "CI95": {
+  "TA": [
+   50.99337748344371,
+   63.60655737704918
+  ],
+  "Rev": [
+   100.0,
+   100.0
+  ],
+  "Hold": [
+   50.99337748344371,
+   63.60655737704918
+  ]
+ },
+ "step": {
+  "criterion": {
+   "Rev": 100.0,
+   "Hold": 61.132075471698116,
+   "TA": 61.132075471698116,
+   "BaseAcc": 100.0,
+   "Tie": 0.0,
+   "PresHold": 100.0,
+   "n": 265
+  }
+ },
+ "eval": {
+  "seconds": 60.3,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

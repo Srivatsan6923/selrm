@@ -1,9 +1,42 @@
 # STATE role A
-Updated: Sat 3 Oct 2026, evening. Working on FINAL_TASKS_A (P0 in order, then P1), plus the lead's
-addendum of 2 Oct: `docs/PAPER_VS_CODE.md`; the paper follows the code; windows only in the new sets.
-Three adversarial reviews ran on 3 Oct: one of every A deliverable (49 confirmed findings, 37 low) and
-two of the three author kits (21 confirmed and 17 low; then 22 medium or high and 20 low). All are
-addressed (`docs/DECISIONS_A.md`).
+Updated: Thu 8 Oct 2026. Plan of record: STAGE2_TASKS_A (8 Oct), with STAGE2_SPEC and STAGE2_ANALYSIS_PLAN
+(bundle selrm_stage2_tasks.zip from the lead). It replaces FINAL_TASKS_A and NEXT_TASKS_A; the run freeze of
+7 Oct is lifted. No stage-2 test set is frozen before docs/ANALYSIS_PLAN_STAGE2.md is on main (not there on 8 Oct).
+
+## Stage 2 (do in this order)
+| # | Item | Status |
+|---|---|---|
+| A1 | mcv_v1 (MedCalc-V) | steps 1-2 done: 19 of 19 scores accepted (380 test rows, 230 human-written; 2426 training rows), `python scripts/mcv_accept.py --write`. Next: items (criteria, natural band, value and sentence edits, rule-side), fidelity filter (needs the API key), dev and adaptation portions, validation, freeze |
+| A2 | kb_v1 (DDXPlus criterion) | steps 1-2 done: release downloaded and counted, selrm/kb_criterion.py committed and handed to C. Next: support check, triplets_dev/test, shortcut validation |
+| A3 | xp_v1 (program-preserving paraphrases) | not started |
+| A4 | onto_v1, cls_v1 | not started |
+| A5 | rule_v2 | not started |
+| A6 | reg_v1 | not started |
+| A7 | paper inputs from existing data | not started |
+| carry-over | rewrite_v1 and the _rw corpora (API key); challenge_v1 (H2); H1 aggregation | blocked as before |
+
+External data live under data/_ext/ (git-ignored): medcalc/{test,train}_data.csv, medcalc/medcalc_v1_corrected.csv,
+ddxplus/release_*.json and the patient zips. Pins and sha256 are in selrm/mcv/__init__.py and selrm/kb_criterion.py.
+
+## Stage 1 (measured; sets stay frozen)
+
+## Plan of record: NEXT_TASKS_A (3 Oct) and docs/AUX_PROTOCOL.md
+NEXT_TASKS_A reprioritises FINAL_TASKS_A. Everything for AUX_PROTOCOL is a secondary analysis, labelled as
+specified after the planned comparisons (4)-(6) failed. Run freeze: Wed 7 Oct 23:59 UTC. Not to start:
+MedCalc-Bench, new rule families, rule_v2.
+
+| # | Item | Status |
+|---|---|---|
+| 1 | rule_v1x/aux_blocks_20k, aux_triplets_20k | done, frozen (20,002 / 20,006 records, 1,881 shared groups; scripts/build_aux_corpora.py) |
+| 2 | Negation phrase bank for C's medeinst_neg | done (selrm/negation_bank.py; handed to C) |
+| 3 | rewrite_v1 (1,000 L2 groups) | ready, blocked on OPENROUTER_API_KEY (compute request #1) |
+| 4 | rule_v1x/train_triplets_rw, train_blocks_rw (25% rewritten) | ready (scripts/rewrite_train.py, dry run passes), blocked on the same key |
+| 5 | challenge_v1 (H2), ec_v1 (H3), H1 | waiting for the authors (package in Downloads/SelRM_author_tasks) |
+| 6 | xr_v1 in two versions (400; 362 without the 38 known issues) | done in results/A-SETS and the appendix draft |
+| 7 | Appendix B and C text from result keys | done: docs/drafts/appendix_BC_A.tex (82 keys, all resolve) |
+
+When the key arrives: `python scripts/rewrite_tier.py --n 1000 --freeze`, then
+`python scripts/rewrite_train.py --freeze`; report both acceptance rates and hand the sets to B and C.
 
 ## P0 status
 1. **Audit of rule_v1: done.**

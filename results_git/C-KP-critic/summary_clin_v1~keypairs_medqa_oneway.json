@@ -1,0 +1,36 @@
+{
+ "run_id": "C-KP-critic",
+ "set": "clin_v1/keypairs_medqa_oneway",
+ "Reversal": 79.83193277310924,
+ "CI95": [
+  75.63025210084034,
+  84.03361344537815
+ ],
+ "n_pairs": 357,
+ "q1_acc": 89.35574229691876,
+ "q2_acc": 89.91596638655462,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 80.67226890756302,
+  "2": 82.3529411764706,
+  "3": 76.47058823529412
+ },
+ "Reversal_by_category": {
+  "step1": 81.09756097560975,
+  "step2&3": 78.75647668393782
+ },
+ "n_by_category": {
+  "step1": 164,
+  "step2&3": 193
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "seconds": 96.2,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

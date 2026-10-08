@@ -1,0 +1,41 @@
+{
+ "run_id": "C-KP-promptledger",
+ "set": "clin_v1/keypairs_careqa",
+ "Reversal": 0.0,
+ "CI95": [
+  0.0,
+  0.0
+ ],
+ "n_pairs": 3,
+ "q1_acc": 0.0,
+ "q2_acc": 0.0,
+ "tie_rate": 100.0,
+ "Reversal_by_tercile": {
+  "1": 0.0,
+  "2": 0.0,
+  "3": 0.0
+ },
+ "Reversal_by_category": {
+  "Medicine": 0.0,
+  "Pharmacology": 0.0
+ },
+ "n_by_category": {
+  "Medicine": 2,
+  "Pharmacology": 1
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "reader_units": 6,
+  "malformed_units": 6,
+  "mode": null,
+  "malformed_rate": 1.0,
+  "gen_not_stopped": 0,
+  "seconds": 35.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

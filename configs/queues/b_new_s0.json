@@ -1,12 +1,12 @@
 {
  "runs": [
   {
-   "run_id": "B-DOSE-05-verdict-s0",
-   "format": "verdict",
-   "corpus": "rule_v1/train_dose_05",
+   "run_id": "B-LOKO-subject-bit_reader-s0",
+   "format": "bit_reader",
+   "corpus": "rule_v1/train_triplets_no_subject",
    "seed": 0,
    "n_examples": 60000,
-   "priority": 99,
+   "priority": 20,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -16,16 +16,17 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
+    "rule_v1/test_L0",
     "xr_v1/test"
    ]
   },
   {
-   "run_id": "B-DOSE-05-ledger2-s0",
-   "format": "ledger2",
-   "corpus": "rule_v1/train_dose_05",
+   "run_id": "B-LOKO-time-bit_reader-s0",
+   "format": "bit_reader",
+   "corpus": "rule_v1/train_triplets_no_time",
    "seed": 0,
    "n_examples": 60000,
-   "priority": 99,
+   "priority": 20,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -35,73 +36,17 @@
    "eval_sets": [
     "rule_v1/dev",
     "rule_v1/test_L2",
+    "rule_v1/test_L0",
     "xr_v1/test"
    ]
   },
   {
-   "run_id": "B-DOSE-12-verdict-s0",
-   "format": "verdict",
-   "corpus": "rule_v1/train_dose_12",
+   "run_id": "B-LOKO-boundary-bit_reader-s0",
+   "format": "bit_reader",
+   "corpus": "rule_v1/train_triplets_no_boundary",
    "seed": 0,
    "n_examples": 60000,
-   "priority": 99,
-   "keep_adapter": true,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "xr_v1/test"
-   ]
-  },
-  {
-   "run_id": "B-DOSE-12-ledger2-s0",
-   "format": "ledger2",
-   "corpus": "rule_v1/train_dose_12",
-   "seed": 0,
-   "n_examples": 60000,
-   "priority": 99,
-   "keep_adapter": true,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "xr_v1/test"
-   ]
-  },
-  {
-   "run_id": "B-DOSE-25-verdict-s0",
-   "format": "verdict",
-   "corpus": "rule_v1/train_dose_25",
-   "seed": 0,
-   "n_examples": 60000,
-   "priority": 99,
-   "keep_adapter": true,
-   "eval": {
-    "bs_score": 128,
-    "bs_gen": 256,
-    "max_new": 384
-   },
-   "eval_sets": [
-    "rule_v1/dev",
-    "rule_v1/test_L2",
-    "xr_v1/test"
-   ]
-  },
-  {
-   "run_id": "B-DOSE-25-ledger2-s0",
-   "format": "ledger2",
-   "corpus": "rule_v1/train_dose_25",
-   "seed": 0,
-   "n_examples": 60000,
-   "priority": 99,
+   "priority": 20,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,

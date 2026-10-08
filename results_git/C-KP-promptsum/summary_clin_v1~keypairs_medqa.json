@@ -1,0 +1,41 @@
+{
+ "run_id": "C-KP-promptsum",
+ "set": "clin_v1/keypairs_medqa",
+ "Reversal": 61.53846153846154,
+ "CI95": [
+  30.76923076923077,
+  84.61538461538461
+ ],
+ "n_pairs": 13,
+ "q1_acc": 69.23076923076923,
+ "q2_acc": 92.3076923076923,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 50.0,
+  "2": 75.0,
+  "3": 60.0
+ },
+ "Reversal_by_category": {
+  "step1": 70.0,
+  "step2&3": 33.333333333333336
+ },
+ "n_by_category": {
+  "step1": 10,
+  "step2&3": 3
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "reader_units": 26,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 39.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

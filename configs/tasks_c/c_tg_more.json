@@ -1,0 +1,405 @@
+{
+ "note": "TrialGPT: more systems and seeds; each run scores rule_v1/dev_missing (own tau), the dev portion and the test portion",
+ "runs": [
+  {
+   "run_id": "C-TG-ledger2-balanced-s0",
+   "priority": 1,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-balanced-s0",
+   "adapter_run": "B-F-ledger2-balanced-s0",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "Table 4 row: ledger x balanced"
+  },
+  {
+   "run_id": "C-TG-TR-fover-s0",
+   "priority": 1,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-TR-fover-s0",
+   "adapter_run": "B-TR-fover-s0",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "Table 4 row: verdict trained on FoVer data"
+  },
+  {
+   "run_id": "C-TG-TR-clinonly-s0",
+   "priority": 1,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-TR-clinonly-s0",
+   "adapter_run": "B-TR-clinonly-s0",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "Table 4 row: ledger on clinical pairs only"
+  },
+  {
+   "run_id": "C-TG-verdict-blocks-s1",
+   "priority": 2.1,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s1",
+   "adapter_run": "B-F-verdict-blocks-s1",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-verdict-triplets-s2",
+   "priority": 2.2,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s2",
+   "adapter_run": "B-F-verdict-triplets-s2",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-ledger2-blocks-s1",
+   "priority": 2.1,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-blocks-s1",
+   "adapter_run": "B-F-ledger2-blocks-s1",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-ledger2-blocks-s2",
+   "priority": 2.2,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-blocks-s2",
+   "adapter_run": "B-F-ledger2-blocks-s2",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-ledger2-triplets-s1",
+   "priority": 2.1,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s1",
+   "adapter_run": "B-F-ledger2-triplets-s1",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-ledger2-triplets-s2",
+   "priority": 2.2,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s2",
+   "adapter_run": "B-F-ledger2-triplets-s2",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-summary2-blocks-s1",
+   "priority": 3.1,
+   "format": "summary2",
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-blocks-s1",
+   "adapter_run": "B-F-summary2-blocks-s1",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-summary2-blocks-s2",
+   "priority": 3.2,
+   "format": "summary2",
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-blocks-s2",
+   "adapter_run": "B-F-summary2-blocks-s2",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-summary2-triplets-s1",
+   "priority": 3.1,
+   "format": "summary2",
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-triplets-s1",
+   "adapter_run": "B-F-summary2-triplets-s1",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-summary2-triplets-s2",
+   "priority": 3.2,
+   "format": "summary2",
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-triplets-s2",
+   "adapter_run": "B-F-summary2-triplets-s2",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-verdict-blocks-s3",
+   "priority": 4.3,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s3",
+   "adapter_run": "B-F-verdict-blocks-s3",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-verdict-blocks-s4",
+   "priority": 4.4,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s4",
+   "adapter_run": "B-F-verdict-blocks-s4",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-verdict-triplets-s3",
+   "priority": 4.3,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s3",
+   "adapter_run": "B-F-verdict-triplets-s3",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-verdict-triplets-s4",
+   "priority": 4.4,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s4",
+   "adapter_run": "B-F-verdict-triplets-s4",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-ledger2-blocks-s3",
+   "priority": 4.3,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-blocks-s3",
+   "adapter_run": "B-F-ledger2-blocks-s3",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-ledger2-blocks-s4",
+   "priority": 4.4,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-blocks-s4",
+   "adapter_run": "B-F-ledger2-blocks-s4",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-ledger2-triplets-s3",
+   "priority": 4.3,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s3",
+   "adapter_run": "B-F-ledger2-triplets-s3",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-ledger2-triplets-s4",
+   "priority": 4.4,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s4",
+   "adapter_run": "B-F-ledger2-triplets-s4",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-summary2-blocks-s3",
+   "priority": 4.3,
+   "format": "summary2",
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-blocks-s3",
+   "adapter_run": "B-F-summary2-blocks-s3",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-summary2-blocks-s4",
+   "priority": 4.4,
+   "format": "summary2",
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-blocks-s4",
+   "adapter_run": "B-F-summary2-blocks-s4",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-summary2-triplets-s3",
+   "priority": 4.3,
+   "format": "summary2",
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-triplets-s3",
+   "adapter_run": "B-F-summary2-triplets-s3",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  },
+  {
+   "run_id": "C-TG-summary2-triplets-s4",
+   "priority": 4.4,
+   "format": "summary2",
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-triplets-s4",
+   "adapter_run": "B-F-summary2-triplets-s4",
+   "bs_score": 64,
+   "max_new": 768,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "TrialGPT seed (protocol section 8)"
+  }
+ ]
+}

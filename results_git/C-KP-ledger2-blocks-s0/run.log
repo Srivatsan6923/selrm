@@ -1,0 +1,14 @@
+2026-10-03T13:38:15Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-ledger2-blocks-s0
+2026-10-03T13:38:16Z token budget per batch: 8000 (generation 24000)
+2026-10-03T13:38:16Z C-KP-ledger2-blocks-s0 clin_v1/keypairs_medqa prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa/reader_ledger.npz', 'exists')
+2026-10-03T13:38:17Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0000)
+2026-10-03T13:38:19Z padding self-check: max |u_batch - u_single| = 0.0907 (tol 0.633) -> left padding
+2026-10-03T13:39:10Z C-KP-ledger2-blocks-s0 clin_v1/keypairs_medqa: TA nan Rev nan Hold nan n=None (54.1 s)
+2026-10-03T13:39:10Z C-KP-ledger2-blocks-s0 clin_v1/keypairs_careqa prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa/reader_ledger.npz', 'exists')
+2026-10-03T13:39:20Z C-KP-ledger2-blocks-s0 clin_v1/keypairs_careqa: TA nan Rev nan Hold nan n=None (9.6 s)
+2026-10-03T13:39:20Z C-KP-ledger2-blocks-s0 clin_v1/keypairs_medqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa_oneway/reader_ledger.npz', 'exists')
+2026-10-03T13:45:23Z generate: batch 25/33, 41032 tokens, 113 tok/s
+2026-10-03T13:49:24Z C-KP-ledger2-blocks-s0 clin_v1/keypairs_medqa_oneway: TA nan Rev nan Hold nan n=None (604.2 s)
+2026-10-03T13:49:24Z C-KP-ledger2-blocks-s0 clin_v1/keypairs_careqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa_oneway/reader_ledger.npz', 'exists')
+2026-10-03T13:53:02Z C-KP-ledger2-blocks-s0 clin_v1/keypairs_careqa_oneway: TA nan Rev nan Hold nan n=None (217.9 s)
+2026-10-03T13:53:03Z DONE C-KP-ledger2-blocks-s0 in 15.9 min, GPU util mean 85.3

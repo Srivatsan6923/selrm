@@ -1,0 +1,136 @@
+{
+ "run_id": "C-TF-promptledger-lenient",
+ "role": "C",
+ "model": "unsloth/Qwen3.5-9B",
+ "model_revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+ "adapter": null,
+ "adapter_run": null,
+ "provider": "local (NRP Nautilus)",
+ "access_date": "2026-10-03",
+ "reasoning": "chat template with enable_thinking=False",
+ "format": "ledger2",
+ "mode": null,
+ "rejudge_from": "C-TF-promptledger--p1",
+ "lenient_version": 2,
+ "sets": [
+  "rule_v1/dev_missing",
+  "rule_v1/dev",
+  "rule_v1/missing",
+  "rule_v1/test_L2",
+  "rule_v1/test_L3alt",
+  "xr_v1/test"
+ ],
+ "max_new": 384,
+ "eval_batch": {
+  "score": 16,
+  "generate": 48
+ },
+ "hp": {
+  "max_len": 4096
+ },
+ "eval_seconds_by_set": {
+  "rule_v1/dev_missing": 160.6,
+  "rule_v1/dev": 212.9,
+  "rule_v1/missing": 363.6,
+  "rule_v1/test_L2": 1664.0,
+  "rule_v1/test_L3alt": 631.8,
+  "xr_v1/test": 436.6
+ },
+ "eval_generated_tokens": 0,
+ "pad_check_ok": null,
+ "eval_u_path": "fp32-hidden",
+ "eval_peak_mem_gb": 17.55,
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA A10, 595.91.07, 23028 MiB",
+ "node": "hcc-nrp-shor-c5925.unl.edu",
+ "pod": "selrm-c-run-c-tf-rule-24gb-19370-1-8scl4",
+ "scoring_code": "role-b ac524e8062ef",
+ "git_commit": "c1d62851844b",
+ "wall_seconds": 3528.6,
+ "summaries": {
+  "rule_v1/dev_missing": null,
+  "rule_v1/dev": {
+   "Rev": 84.33333333333333,
+   "Hold": 80.33333333333333,
+   "TA": 68.33333333333333,
+   "BaseAcc": 96.0,
+   "Tie": 11.666666666666666,
+   "PresHold": 96.33333333333333,
+   "n": 300
+  },
+  "rule_v1/missing": null,
+  "rule_v1/test_L2": {
+   "Rev": 67.95,
+   "Hold": 87.8,
+   "TA": 59.5,
+   "BaseAcc": 93.55,
+   "Tie": 11.55,
+   "PresHold": 94.0,
+   "n": 2000
+  },
+  "rule_v1/test_L3alt": {
+   "Rev": 96.4,
+   "Hold": 76.1,
+   "TA": 73.9,
+   "BaseAcc": 98.9,
+   "Tie": 2.4,
+   "PresHold": 99.1,
+   "n": 1000
+  },
+  "xr_v1/test": null
+ },
+ "gpu_util_mean": 90.9,
+ "gpu_util_p10": 94.0,
+ "gpu_windows_below40": 0.0,
+ "gpu_samples": 25,
+ "gpu_hours": 0.211,
+ "parts": [
+  {
+   "run_id": "C-TF-promptledger-lenient--p1",
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/dev",
+    "rule_v1/missing"
+   ],
+   "wall_seconds": 758.4,
+   "gpu": "NVIDIA A10, 595.91.07, 23028 MiB",
+   "node": "hcc-nrp-shor-c5925.unl.edu",
+   "git_commit": "c1d62851844b"
+  },
+  {
+   "run_id": "C-TF-promptledger-lenient--p2",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "wall_seconds": 1681.4,
+   "gpu": "NVIDIA GeForce RTX 3090, 615.71.09, 24576 MiB",
+   "node": "uicnrp-fiona2.evl.uic.edu",
+   "git_commit": "cfe37bb5ec49"
+  },
+  {
+   "run_id": "C-TF-promptledger-lenient--p3",
+   "sets": [
+    "rule_v1/test_L3alt",
+    "xr_v1/test"
+   ],
+   "wall_seconds": 1088.8,
+   "gpu": "NVIDIA A10, 595.91.07, 23028 MiB",
+   "node": "hcc-nrp-shor-c5925.unl.edu",
+   "git_commit": "c1d62851844b"
+  }
+ ],
+ "merged": "2026-10-03T16:43:51Z"
+}

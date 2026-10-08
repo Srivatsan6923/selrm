@@ -7,7 +7,7 @@
    "seed": 0,
    "n_examples": 60000,
    "base_model": "unsloth/Qwen3.5-4B",
-   "priority": 85,
+   "priority": 50,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -27,7 +27,7 @@
    "seed": 0,
    "n_examples": 60000,
    "base_model": "unsloth/Qwen3.5-4B",
-   "priority": 85,
+   "priority": 50,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,
@@ -47,7 +47,7 @@
    "seed": 0,
    "n_examples": 60000,
    "base_model": "unsloth/Qwen3.5-4B",
-   "priority": 85,
+   "priority": 50,
    "keep_adapter": true,
    "eval": {
     "bs_score": 128,

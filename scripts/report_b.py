@@ -407,7 +407,7 @@ def projection(freeze="2026-10-07T23:59:00Z"):
         rows.append((r["priority"], rid, state, est))
     extra = {}
     for gen in (lambda: Q.factorial({1, 2, 3, 4}, f"{ROOT}/scratch/registry_rule_v1.json", "rule_v1"),
-                lambda: Q.transfer({0, 1, 2, 3, 4}, None, "rule_v1"),
+                lambda: Q.transfer({0, 1, 2, 3, 4}, f"{ROOT}/scratch/registry_rule_v1.json", "rule_v1"),
                 lambda: Q.backbones({0, 1, 2}, None, "rule_v1"),
                 lambda: Q.extras({0, 1, 2}, f"{ROOT}/scratch/registry_rule_v1.json", "rule_v1")):
         for s in gen():

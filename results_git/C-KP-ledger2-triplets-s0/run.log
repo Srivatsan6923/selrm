@@ -1,0 +1,14 @@
+2026-10-03T13:22:46Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-ledger2-triplets-s0
+2026-10-03T13:22:47Z token budget per batch: 8000 (generation 24000)
+2026-10-03T13:22:48Z C-KP-ledger2-triplets-s0 clin_v1/keypairs_medqa prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa/reader_ledger.npz', 'built 26 prompts, max 494 tokens')
+2026-10-03T13:22:48Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0114)
+2026-10-03T13:22:51Z padding self-check: max |u_batch - u_single| = 0.0611 (tol 0.625) -> left padding
+2026-10-03T13:23:30Z C-KP-ledger2-triplets-s0 clin_v1/keypairs_medqa: TA nan Rev nan Hold nan n=None (42.3 s)
+2026-10-03T13:23:31Z C-KP-ledger2-triplets-s0 clin_v1/keypairs_careqa prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa/reader_ledger.npz', 'built 6 prompts, max 208 tokens')
+2026-10-03T13:23:41Z C-KP-ledger2-triplets-s0 clin_v1/keypairs_careqa: TA nan Rev nan Hold nan n=None (9.7 s)
+2026-10-03T13:23:42Z C-KP-ledger2-triplets-s0 clin_v1/keypairs_medqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa_oneway/reader_ledger.npz', 'built 714 prompts, max 618 tokens')
+2026-10-03T13:29:53Z generate: batch 25/33, 38165 tokens, 103 tok/s
+2026-10-03T13:33:54Z C-KP-ledger2-triplets-s0 clin_v1/keypairs_medqa_oneway: TA nan Rev nan Hold nan n=None (611.7 s)
+2026-10-03T13:33:55Z C-KP-ledger2-triplets-s0 clin_v1/keypairs_careqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa_oneway/reader_ledger.npz', 'built 450 prompts, max 376 tokens')
+2026-10-03T13:37:05Z C-KP-ledger2-triplets-s0 clin_v1/keypairs_careqa_oneway: TA nan Rev nan Hold nan n=None (189.6 s)
+2026-10-03T13:37:06Z DONE C-KP-ledger2-triplets-s0 in 15.1 min, GPU util mean 90.2

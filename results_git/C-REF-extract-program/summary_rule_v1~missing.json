@@ -1,0 +1,20 @@
+{
+ "run_id": "C-REF-extract-program",
+ "set": "rule_v1/missing",
+ "claim_type": "conclusion",
+ "eval": {
+  "mode": "program_on_extracted_ledger",
+  "source_run": "C-TF-promptledger-lenient",
+  "field": "ledger_lenient",
+  "matched": 2382,
+  "unmatched": 811,
+  "no_answer": 1980,
+  "malformed": 86,
+  "records": 7344
+ },
+ "MR": 0.0,
+ "n_missing": 1000,
+ "FR": 0.0,
+ "n_supported": 1000,
+ "threshold": -10.0
+}
