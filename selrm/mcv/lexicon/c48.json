@@ -1,0 +1,65 @@
+{
+  "cid": 48,
+  "items": {
+    "Unilateral leg swelling": {
+      "np": "swelling of one leg",
+      "lexicon": [
+        "swelling",
+        "swollen",
+        "swell(s|ed)?\\b",
+        "o?edema(tous)?\\b",
+        "pitting",
+        "\\b(leg|legs|calf|calves|thigh|thighs|ankle|ankles|lower limbs?|lower extremit(y|ies))\\b[^.]{0,80}\\b(enlarg|larger|bigger|circumference|girth|asymmetr|tender|pain|erythema|warm|red)",
+        "\\b(enlarg|larger|bigger|circumference|girth|asymmetr|tender|pain|erythema|warm|red)[^.]{0,80}\\b(leg|legs|calf|calves|thigh|thighs|ankle|ankles|lower limbs?|lower extremit(y|ies))\\b",
+        "homans",
+        "varicos",
+        "\\b(leg|legs|calf|calves)\\b[^.]{0,40}cramp"
+      ],
+      "relative_ok": true,
+      "past_ok": true
+    },
+    "Hemoptysis": {
+      "np": "hemoptysis",
+      "lexicon": [
+        "ha?emopt",
+        "blood[- ]?(streak|ting|stain)",
+        "bloody",
+        "(cough|spit|expectorat|bring|brought)\\w*( up| out)?( of)?( some| fresh| bright red| frank)* blood",
+        "blood\\W+(in|with)\\W+(the |his |her )?(sputum|phlegm|cough)",
+        "sputum",
+        "phlegm",
+        "expectorat",
+        "ha?eme?t[eo]mesis",
+        "vomit\\w*( of| up)? blood",
+        "(episodes?|cup ?full|mouthfuls?) of( fresh| bright red| frank)? blood"
+      ],
+      "relative_ok": true,
+      "past_ok": true
+    },
+    "Prior pulmonary embolism (PE) or deep vein thrombosis (DVT)": {
+      "np": "deep vein thrombosis",
+      "lexicon": [
+        "embol",
+        "thromb",
+        "\\bPEs?\\b",
+        "\\bDVTs?\\b",
+        "\\bVTE\\b",
+        "\\bCTEPH\\b",
+        "\\bclot(s|ted|ting)?\\b",
+        "anti-?coagul",
+        "warfarin|coumadin|acenocoumarol|heparin|enoxaparin|dalteparin|fondaparinux|rivaroxaban|apixaban|dabigatran|edoxaban|xarelto|eliquis",
+        "\\b(LMWH|DOACs?|NOACs?)\\b",
+        "(IVC|vena cava) filter"
+      ],
+      "relative_ok": true,
+      "past_ok": true
+    }
+  },
+  "ineligible": {
+    "Age": "kind is numeric, not a finding",
+    "Heart Rate (HR)": "kind is numeric, not a finding",
+    "O₂ saturation on room air": "kind is numeric, not a finding",
+    "Recent surgery or trauma": "score text requires 'within 4 weeks, requiring treatment with general anesthesia'; an event with a recency window is not a noun phrase that fits 'has {np}' / 'is free of {np}', and the past frame ('some years ago') contradicts the window",
+    "Hormone use": "an exposure, not a condition: no natural noun phrase fits 'is free of {np}' and 'had {np} some years ago, and it has since cleared'; the score text does not say whether past use counts"
+  }
+}

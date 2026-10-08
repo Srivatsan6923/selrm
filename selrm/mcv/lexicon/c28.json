@@ -1,0 +1,20 @@
+{
+ "cid": 28,
+ "items": {},
+ "ineligible": {
+  "Age": "numeric item, not a finding",
+  "Rectal temperature": "numeric item, not a finding",
+  "Mean arterial pressure": "numeric item, not a finding",
+  "Heart rate": "numeric item, not a finding",
+  "Respiratory rate": "numeric item, not a finding",
+  "Oxygenation": "numeric item, not a finding",
+  "Arterial pH": "numeric item, not a finding",
+  "Serum sodium": "numeric item, not a finding",
+  "Serum potassium": "numeric item, not a finding",
+  "Serum creatinine": "mixed item: points depend on the creatinine band together with acute/chronic renal failure flags, so affirming a finding alone does not add fixed points",
+  "Hematocrit": "numeric item, not a finding",
+  "White blood count": "numeric item, not a finding",
+  "Glasgow Coma Scale (GCS)": "numeric item, not a finding",
+  "History of severe organ insufficiency or immunocompromised": "levels (0, 2, 5) are not (0, k): points depend on the categorical 'Surgery Type' (nonoperative/emergency = 5, elective = 2, none released = 0), so the plain sentence 'the patient has a history of ...' does not settle the item; the concept is also an unspecific disjunction with no single clear noun phrase"
+ }
+}

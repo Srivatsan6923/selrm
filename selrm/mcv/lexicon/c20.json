@@ -1,0 +1,51 @@
+{
+ "cid": 20,
+ "items": {
+  "Exudate or swelling on tonsils": {
+   "np": "tonsillar exudate",
+   "lexicon": [
+    "tonsil",
+    "exudat",
+    "purulen",
+    "\\bpus\\b",
+    "suppurat",
+    "quinsy",
+    "pseudo-?membran",
+    "(membran|plaque|patch|coating)\\w*\\s+(\\w+\\s+){0,4}(pharyn|throat|oropharyn|uvula|palat)",
+    "(pharyn\\w*|oropharyn\\w*|throat|uvula|fauc\\w*)\\W+(\\w+\\W+){0,6}(swollen|swelling|swell|edema|oedema|edematous|oedematous|enlarg\\w*|bulg\\w*|hypertroph\\w*|membran\\w*|coated|patch\\w*|plaques?)",
+    "(swollen|swelling|edema|oedema|edematous|oedematous|enlarg\\w*|bulg\\w*|hypertroph\\w*)\\W+(\\w+\\W+){0,6}(pharyn\\w*|oropharyn\\w*|throat|uvula|fauc\\w*)",
+    "\\badenoid",
+    "\\bstrep\\w*\\s+(throat|pharyngitis|tonsil)",
+    "kissing\\s+tonsils"
+   ],
+   "relative_ok": true,
+   "past_ok": true
+  },
+  "Tender/swollen anterior cervical lymph nodes": {
+   "np": "tender anterior cervical lymphadenopathy",
+   "lexicon": [
+    "lymph\\s*-?\\s*aden",
+    "lymph\\s*-?\\s*nod",
+    "adenopath",
+    "\\badenitis",
+    "\\bnod(e|es|al)\\b",
+    "\\bLAD\\b",
+    "(swollen|enlarged|tender|palpable)\\s+(\\w+\\s+){0,3}glands?\\b",
+    "\\bglands?\\s+(\\w+\\s+){0,3}(swollen|enlarged|tender|palpable)",
+    "\\b(neck|cervical)\\s+(\\w+\\s+){0,2}(swelling|enlargement|mass|masses|lumps?|edema|oedema|tenderness)",
+    "(swelling|enlargement|mass|masses|lumps?|edema|oedema|tenderness)\\s+(of|in|on|over)\\s+(the\\s+|his\\s+|her\\s+)?(\\w+\\s+){0,2}neck",
+    "bull\\s+neck",
+    "\\bbubo",
+    "\\b(pain|painful|sore|soreness|tender)\\s+(\\w+\\s+){0,6}neck\\b",
+    "\\bneck\\s+(\\w+\\s+){0,2}(pain|painful|sore|soreness|tender)\\b"
+   ],
+   "relative_ok": true,
+   "past_ok": true
+  }
+ },
+ "ineligible": {
+  "Age": "numeric item",
+  "Temperature": "numeric item",
+  "Cough": "inverted entity key ('Cough Absent'); affirming a cough removes the point"
+ }
+}

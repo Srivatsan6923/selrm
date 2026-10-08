@@ -1,0 +1,68 @@
+{
+  "cid": 33,
+  "items": {
+    "Fever in past 24 hours": {
+      "np": "fever within the past 24 hours",
+      "lexicon": [
+        "fever",
+        "febrile",
+        "pyrexi",
+        "hyperpyrexi",
+        "hypertherm",
+        "temperature",
+        "\\btemp\\b",
+        "\\bT\\s*(max|:|=|\\d)",
+        "\\d\\s*°",
+        "°\\s*[CF]\\b",
+        "degrees?\\s*(celsius|fahrenheit|centigrade|[CF]\\b)",
+        "\\bchills?\\b",
+        "\\brigou?rs?\\b",
+        "antipyretic"
+      ],
+      "relative_ok": true,
+      "past_ok": false
+    },
+    "Purulent tonsils": {
+      "np": "purulent tonsillar exudate",
+      "lexicon": [
+        "tonsil",
+        "pharyn",
+        "throat",
+        "quinsy",
+        "adenoid",
+        "odynophagi",
+        "\\buvula",
+        "\\bfauc",
+        "exudat",
+        "purulen",
+        "\\bpus\\b",
+        "suppurat",
+        "\\bstrep\\b",
+        "streptococc"
+      ],
+      "relative_ok": true,
+      "past_ok": true
+    },
+    "Severe tonsil inflammation": {
+      "np": "severe tonsillar inflammation",
+      "lexicon": [
+        "tonsil",
+        "pharyn",
+        "throat",
+        "quinsy",
+        "adenoid",
+        "odynophagi",
+        "\\buvula",
+        "\\bfauc",
+        "exudat",
+        "\\bstrep\\b"
+      ],
+      "relative_ok": true,
+      "past_ok": true
+    }
+  },
+  "ineligible": {
+    "Absence of cough or coryza": "inverted key: True = cough and coryza absent, and an unmentioned key scores the point, so affirming a finding cannot add points",
+    "Symptom onset": "reads 'Symptom onset <=3 days', a duration threshold on the presenting illness released in every row, not a boolean finding; no noun phrase fits the relative/past/free-of frames"
+  }
+}
