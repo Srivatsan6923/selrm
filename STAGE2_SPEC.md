@@ -1,98 +1,10 @@
-# INTERFACES (frozen 2 Oct; changes only through docs/CHANGE_REQUESTS.md and the lead)
-
-Four sessions work in parallel. These contracts are what keeps their code
-compatible. If you need something different, file a change request and work
-around it; do not edit a contract locally.
-
-## 1. Canonical instance record (`selrm/schema.py`)
-One JSON object per (case, claim), one per line. See `docs/SAMPLE_RECORDS.md`.
-
-| Key | Meaning |
-|---|---|
-| `iid` | `<tid>/<case_kind>/<claim_type>/<claim_role>` |
-| `tid` | group id: base, flip, near, pres (and missing, read, apply) of one context |
-| `set`, `split` | dataset version (`rule_v1`), `train` / `dev` / `test` |
-| `level` | `L0` seen rules, `L1` unseen rules of seen class, `L2` held-out classes, `L3-inv` invented, `L3-alt` altered thresholds |
-| `tier` | `easy`, `long`, `superseded`, `delabelled`, `alt`, `rewritten` |
-| `rid`, `cid`, `family` | rule, target criterion, structural family (signature class) |
-| `nm_kind` | `numeric`, `boundary`, `subject`, `negation`, `time` |
-| `case_kind` | `base`, `flip`, `near`, `pres`, `missing`, `read`, `apply` |
-| `rule_text`, `case_text`, `condition` | what prompts are built from |
-| `claim_type` | `conclusion` (used for TA), `criterion`, `applicability` |
-| `claim_role` | `s` (correct on base/near/pres) or `s_prime` (correct on flip) |
-| `claim_text`, `label` | label 1 = claim correct for this case |
-| `state` | mentions as dicts (program input) |
-| `ledger` | program-generated entries: `need, found, subject, status, time` |
-| `prose` | the same evidence as plain sentences (matched two-stage baseline) |
-| `meta` | template ids, seeds, keywords for rules not in `rules.py` |
-
-Rules: every case carries both claims of every emitted claim type; `label`
-comes from the program; `ledger` and `prose` never contain a decision.
-Missing twins: `case_kind = missing`, both claims have `label = 0`.
-
-## 2. Prompts (`selrm/prompts.py`)
-`verdict_prompt`, `rationale_prompt` (one-stage), `reader_prompt(rec,
-prose=False|True)`, `judge_prompt(rec, record_text)`, `choice_prompt` (API),
-`ledger_to_text`, `answer`. Targets: verdict/judge -> `"+"` or `"-"`;
-reader -> `ledger_to_text(rec["ledger"])` or `rec["prose"]`; rationale ->
-ledger text, newline, answer. Chat template applied by the caller with
-thinking disabled.
-
-## 3. Scoring conventions
-- Local: one forward pass per record; `u = logit("+") - logit("-")` at the
-  answer position (assert both are single tokens). Two-stage: greedy-generate
-  the reader output once per (case, condition), reuse it for both claims.
-  Malformed ledger (unparsable, or a quoted `found` that is not a substring
-  of the case) -> `u = -20` for both claims (tie -> failure).
-- API: log-probabilities if available (same u); else `choice_prompt` in both
-  orders, d in {+1, 0, -1}. Missing-evidence rejection for choice-format
-  models: pointwise accept/reject calls on the missing twins.
-- Preference `d = u(s) - u(s_prime)` per (tid, case_kind, claim_type).
-- `selrm.metrics.decisions(records, scores)` then `summarise`, `bootstrap_ci`,
-  `paired_diff`. Add metrics there (owner C); never re-implement elsewhere.
-
-## 4. Results layout (see `docs/RESULTS_SCHEMA.md`)
-`results/<run_id>/{meta.json, scores_<set>.jsonl, summary_<set>.json, DONE}`.
-`scores_*.jsonl`: `{iid, u}` (plus `reader_output` for two-stage runs).
-`summary_*.json`: output of `summarise` plus CIs.
-
-## 5. Dataset registry (owner A)
-`data/REGISTRY.json`: `{name: {path, split, level, tier, n_groups,
-n_records, manifest, frozen: true|false, created}}`. Datasets are immutable
-once `frozen`. New content = new version name. Every dataset has
-`MANIFEST.json` (seed, git commit, counts by rule/kind/tier/level, template
-split hash, shortcut-validation result).
-Names A will publish: `rule_v1/test_L2`, `rule_v1/dev`,
-`rule_v1/train_{natural,balanced,blocks,triplets}`, `rule_v1/test_{L0,L1,
-L3inv,L3alt}`, `rule_v1/test_hard`, `rule_v1/missing`, `rule_v1/readapply`,
-`rule_v1_fold{2,3}/...`, `rule_v1/div_*`, `rule_v1/rewritten`,
-`rule_v1/abl_*`. Clinical sets by C: `clin_v1/{medeinst_test, keypairs_medqa,
-keypairs_careqa, nli4ct, clinpairs_train, condmedqa}` in the same record
-schema where it applies (`rule_text` = "" when no rule is stated).
-
-## 6. Adapter registry (owner B)
-`configs/keep_adapters.json` (which runs keep their adapter) and
-`configs/adapters.json`: `{system_name: {run_id, path, base_model, format}}`.
-Systems C and D rely on: `ledger2_triplets`, `ledger2_blocks`,
-`verdict_triplets`, `stepcheck`.
-
-## 7. Run claims and heartbeats
-Before starting a run: create `results/<run_id>/CLAIMED_<role>`; touch
-`results/<run_id>/HEARTBEAT` at least hourly; write `DONE` at the end.
-Update your `docs/RUN_MATRIX_<role>.csv` rows (`status`, `measured_hours`).
-
-## 8. Git
-One repo. Branch `role-<a|b|c|d>`. Commit small and often. The lead merges to
-`main` daily. Shared files you may edit on your branch: only those you own
-(table in CLAUDE.md). For anything else: `docs/CHANGE_REQUESTS.md`.
-
-## 9. Stage 2 (added 8 Oct by change request; identical to `STAGE2_SPEC.md`)
+# Stage-2 spec (shared contracts)
 
 Extends `docs/INTERFACES.md`. Role D files it as one change request and
 merges it first. If you need something different, file a change request and
 work around it; do not edit a contract locally.
 
-### 9.1 Pinned sources
+## 1. Pinned sources
 | Source | Pin | Licence | Check at download |
 |---|---|---|---|
 | MedCalc-Bench Verified | github.com/nikhilk7153/MedCalc-Bench-Verified, tag `v1.0.8`, commit `801592132bfd833f049b517a4e013e00a5fc40fa` | CC BY-SA 4.0 (data). Calculator code: no licence, not used | sha256 `test_data.csv` = `9d296b09668d945d7c4ad8136032e984a3a3b8b0a7b046eb0f9f787331d9d97d`; `train_data.csv` = `bd0292576be31e2fa8140c2e9eb456168335a85d1986155f010082d64f497845`; 1,100 test rows, 380 rule-based (230 Extracted, 150 Synthetic), 19 calculators |
@@ -106,7 +18,7 @@ work around it; do not edit a contract locally.
 The sha256 values above are from a clone made on 8 Oct 2026; a mismatch is
 reported, not worked around.
 
-### 9.2 Sets
+## 2. Sets
 | Set | Owner | Portions | Bootstrap cluster |
 |---|---|---|---|
 | `mcv_v1` | A | `criteria_test`, `natural_band_test`, `edits_test`, `ruleside_test`, `dev`, `adapt_blocks`, `adapt_triplets` | note |
@@ -118,13 +30,13 @@ reported, not worked around.
 | `xp_v1` | A | program-preserving paraphrases of the rule text for 300 `rule_v1/test_L2` groups | rule |
 | criterion views of `clin_v1/*` | C | `medeinst_test`, `keypairs_medqa`, TrialGPT test portion | as in stage 1 |
 
-### 9.3 Record fields added to the canonical record
+## 3. Record fields added to the canonical record
 | Key | Meaning |
 |---|---|
 | `crit` | `{source: none|stated|derived|self|wrong, provenance, text_sha}`; `rule_text` holds the text shown, `""` for none |
 | `cluster` | id used by the bootstrap (note, class, trial, label pair) |
 | `note_type` | `human` (Extracted) or `model` (Synthetic); `mcv_v1` only |
-| `stratum` | `stated`, `denied`, `default`; `mcv_v1` only (section 9.5) |
+| `stratum` | `stated`, `denied`, `default`; `mcv_v1` only (section 5) |
 | `edit_type` | `value` or `sentence`; `mcv_v1/edits_test` only |
 | `ref_date` | reference date of the case, ISO; window items only |
 | `nm_kind` | adds `window` and `class` to the five existing kinds |
@@ -134,7 +46,7 @@ reported, not worked around.
 Unchanged: every case carries both claims; `label` comes from code; ledger
 and prose never state a decision.
 
-### 9.4 Claims
+## 4. Claims
 | Set | `claim_type` | Wording |
 |---|---|---|
 | `mcv_v1` | `criterion` | "Under the <score name>, the item '<item name>' scores <k> point(s) for this patient." `s` has the points the rule code gives; `s_prime` the other value (binary items), the level the edit targets (edits), or the nearest other level (untouched notes). The item name is the item heading of the score text without comparators or numbers, so a claim never states a threshold |
@@ -142,7 +54,7 @@ and prose never state a decision.
 | `cls_v1`, `rule_v2` | `conclusion`, `criterion` | as `rule_v1` |
 | `reg_v1` | `criterion` | as the TrialGPT protocol: met / not met |
 
-### 9.5 Criterion conditions
+## 5. Criterion conditions
 `scripts/crit_views.py --set <name> --cond <c>` writes a view: identical
 records, `rule_text` replaced, iid suffix `@<c>`. Nobody edits prompts by
 hand.
@@ -164,7 +76,7 @@ with a number or True; `denied` = key present with False; `default` = key
 absent, settled by the benchmark's convention. Primary comparisons use
 `stated` and `denied`.
 
-### 9.6 Systems (`configs/adapters.json`)
+## 6. Systems (`configs/adapters.json`)
 | Name | What | Owner |
 |---|---|---|
 | `critic` | untrained backbone, verdict prompt | C |
@@ -172,10 +84,10 @@ absent, settled by the benchmark's convention. Primary comparisons use
 | `summary2_*`, `ledger2_*` | stage-1 two-stage adapters | B (exist) |
 | `v2_verdict_blocks_s*`, `v2_verdict_triplets_s*` | verdict-only on `rule_v2` | B |
 | `v2_reader_s*` | reader that writes the stage-2 record with the `applies` bit; one adapter with the judge prompts | B |
-| `ledger_rm_g_s*` | composite of section 9.7 | B |
+| `ledger_rm_g_s*` | composite of section 7 | B |
 | `mix_blocks_s*`, `mix_triplets_s*` | adaptation arms (plan, secondary 4) | B |
 
-### 9.7 Ledger-RM-G (composite) and the gate
+## 7. Ledger-RM-G (composite) and the gate
 ```
 if rule_text == "":                          # no criterion
     return v2_verdict_triplets(case, claim)  # abstain -> fallback
@@ -211,7 +123,7 @@ return judge_case(record, rule_text, claim, case)   # bit stands, judge sees the
 - The stage-1 behaviour (a malformed record rejects both claims) stays the
   behaviour of the stage-1 systems. The fallback is part of Ledger-RM-G only.
 
-### 9.8 Metrics (`selrm/metrics.py`, owner C)
+## 8. Metrics (`selrm/metrics.py`, owner C)
 Accuracy of the preferred claim, and for `mcv_v1/criteria_test` its balanced
 form (mean over items that score points and items that score none); TA,
 Rev, Hold; pair accuracy; XA; macro-F1
@@ -219,9 +131,9 @@ Rev, Hold; pair accuracy; XA; macro-F1
 Holm over the family. New diagnostics: parser coverage and precision against
 `struct`; gate coverage (share of items with `applies` computed); linking
 accuracy and abstention; fallback rate; malformed rate. All with the cluster
-of section 9.2.
+of section 2.
 
-### 9.9 Results
+## 9. Results
 Layout unchanged: `results/<run_id>/{meta.json, scores_<set>.jsonl,
 summary_<set>.json, DONE}`. Run ids: `<role>-S2-<set>-<system>-<cond>[-s<seed>]`.
 Scores of a composite run also store `route` (`fallback_none`,

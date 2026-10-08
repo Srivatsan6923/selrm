@@ -1,4 +1,4 @@
-\begin{thebibliography}{63}
+\begin{thebibliography}{94}
 \providecommand{\natexlab}[1]{#1}
 
 \bibitem[{Agand(2026)}]{agand2026venra}
@@ -21,6 +21,12 @@ Lang Cao, Yuhao Shen, Tianyang Luo, Simo Du, Hao Peng, and Yue Guo. 2026.
   guideline-grounded clinical reasoning.
 \newblock \emph{arXiv preprint arXiv:2607.26160}.
 
+\bibitem[{Cao and Chen(2026)}]{cao2026veridx}
+Zhong Cao and Shuying Chen. 2026.
+\newblock {V}eri{D}x: Earning the right to diagnose with disease-centric
+  verification.
+\newblock \emph{arXiv preprint arXiv:2609.14018}.
+
 \bibitem[{Chapman et~al.(2001)Chapman, Bridewell, Hanbury, Cooper, and
   Buchanan}]{chapman2001negex}
 Wendy~W. Chapman, Will Bridewell, Paul Hanbury, Gregory~F. Cooper, and Bruce~G.
@@ -29,17 +35,9 @@ Wendy~W. Chapman, Will Bridewell, Paul Hanbury, Gregory~F. Cooper, and Bruce~G.
   discharge summaries.
 \newblock \emph{Journal of Biomedical Informatics}, 34(5):301--310.
 
-\bibitem[{Chen et~al.(2026{\natexlab{a}})Chen, Long, Pu, Luo, Ju, Xiao, Zhou,
-  Zhao, and Wang}]{chen2026deepera}
-Haotian Chen, Qingqing Long, Siyu Pu, Xiao Luo, Wei Ju, Meng Xiao, Yuanchun
-  Zhou, Jianghua Zhao, and Xuezhi Wang. 2026{\natexlab{a}}.
-\newblock {D}eep{E}ra: A deep evidence reranking agent for scientific
-  retrieval-augmented generated question answering.
-\newblock \emph{arXiv preprint arXiv:2601.16478}.
-
-\bibitem[{Chen et~al.(2026{\natexlab{b}})Chen, Chen, Lin, and
+\bibitem[{Chen et~al.(2026{\natexlab{a}})Chen, Chen, Lin, and
   Vong}]{chen2026judge}
-Jianlin Chen, Wenhui Chen, Ziyao Lin, and Chi~Man Vong. 2026{\natexlab{b}}.
+Jianlin Chen, Wenhui Chen, Ziyao Lin, and Chi~Man Vong. 2026{\natexlab{a}}.
 \newblock A judge should know what changed: Construct validity for
   {LLM}-as-a-judge evaluation.
 \newblock \emph{arXiv preprint arXiv:2608.24419}.
@@ -51,9 +49,9 @@ Junying Chen, Zhenyang Cai, Ke~Ji, Xidong Wang, Wanlong Liu, Rongsheng Wang,
 \newblock {H}uatuo{GPT}-o1, towards medical complex reasoning with {LLM}s.
 \newblock \emph{arXiv preprint arXiv:2412.18925}.
 
-\bibitem[{Chen et~al.(2026{\natexlab{c}})Chen, Huang, Wang, and
+\bibitem[{Chen et~al.(2026{\natexlab{b}})Chen, Huang, Wang, and
   Zhu}]{chen2026medeinst}
-Wenting Chen, Guolin Huang, Wenxuan Wang, and Zhongrui Zhu. 2026{\natexlab{c}}.
+Wenting Chen, Guolin Huang, Wenxuan Wang, and Zhongrui Zhu. 2026{\natexlab{b}}.
 \newblock {M}ed{E}inst: Benchmarking the {E}instellung effect in medical {LLM}s
   through counterfactual differential diagnosis.
 \newblock In \emph{Proceedings of the 64th Annual Meeting of the Association
@@ -64,12 +62,27 @@ Yinghui Chi and Yuanhong Wang. 2026.
 \newblock Verifiable counterfactual supervision for process reward models.
 \newblock \emph{arXiv preprint arXiv:2605.02395}.
 
-\bibitem[{Cocchieri et~al.(2026)Cocchieri, Ragazzi, Tagliavini, and
-  Moro}]{cocchieri2026remedqa}
-Alessio Cocchieri, Luca Ragazzi, Giuseppe Tagliavini, and Gianluca Moro. 2026.
-\newblock {R}e{M}ed{QA}: Are we done with medical multiple-choice benchmarks?
-\newblock In \emph{Proceedings of the 19th Conference of the European Chapter
-  of the Association for Computational Linguistics (Volume 1: Long Papers)}.
+\bibitem[{Clark et~al.(2020)Clark, Tafjord, and
+  Richardson}]{clark2020ruletaker}
+Peter Clark, Oyvind Tafjord, and Kyle Richardson. 2020.
+\newblock Transformers as soft reasoners over language.
+\newblock In \emph{Proceedings of the Twenty-Ninth International Joint
+  Conference on Artificial Intelligence}.
+
+\bibitem[{Dhuliawala et~al.(2024)Dhuliawala, Komeili, Xu, Raileanu, Li,
+  Celikyilmaz, and Weston}]{dhuliawala2024cove}
+Shehzaad Dhuliawala, Mojtaba Komeili, Jing Xu, Roberta Raileanu, Xian Li, Asli
+  Celikyilmaz, and Jason Weston. 2024.
+\newblock Chain-of-verification reduces hallucination in large language models.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  ACL 2024}.
+
+\bibitem[{Dobbins et~al.(2022)Dobbins, Mullen, Uzuner, and
+  Yetisgen}]{dobbins2022lct}
+Nicholas~J. Dobbins, Tony Mullen, {\"O}zlem Uzuner, and Meliha Yetisgen. 2022.
+\newblock The {L}eaf {C}linical {T}rials corpus: A new resource for query
+  generation from clinical trial eligibility criteria.
+\newblock \emph{Scientific Data}, 9:490.
 
 \bibitem[{Elazar et~al.(2021)Elazar, Ravfogel, Jacovi, and
   Goldberg}]{elazar2021amnesic}
@@ -77,6 +90,20 @@ Yanai Elazar, Shauli Ravfogel, Alon Jacovi, and Yoav Goldberg. 2021.
 \newblock Amnesic probing: Behavioral explanation with amnesic counterfactuals.
 \newblock \emph{Transactions of the Association for Computational Linguistics},
   9:160--175.
+
+\bibitem[{Fansi~Tchango et~al.(2022)Fansi~Tchango, Goel, Wen, Martel, and
+  Ghosn}]{tchango2022ddxplus}
+Arsene Fansi~Tchango, Rishab Goel, Zhi Wen, Julien Martel, and Joumana Ghosn.
+  2022.
+\newblock {DDXP}lus: A new dataset for automatic medical diagnosis.
+\newblock In \emph{Advances in Neural Information Processing Systems, Datasets
+  and Benchmarks Track}.
+
+\bibitem[{Gao et~al.(2023)Gao, Schulman, and Hilton}]{gao2023scaling}
+Leo Gao, John Schulman, and Jacob Hilton. 2023.
+\newblock Scaling laws for reward model overoptimization.
+\newblock In \emph{Proceedings of the 40th International Conference on Machine
+  Learning}.
 
 \bibitem[{Gardner et~al.(2020)Gardner, Artzi, Basmov, Berant, Bogin, Chen,
   Dasigi, Dua, Elazar, Gottumukkala et~al.}]{gardner2020contrast}
@@ -86,6 +113,13 @@ Matt Gardner, Yoav Artzi, Victoria Basmov, Jonathan Berant, Ben Bogin, Sihao
 \newblock Evaluating models' local decision boundaries via contrast sets.
 \newblock In \emph{Findings of the Association for Computational Linguistics:
   EMNLP 2020}, pages 1307--1323.
+
+\bibitem[{Gargano et~al.(2024)Gargano, Matentzoglu, Coleman
+  et~al.}]{gargano2024hpo}
+Michael~A. Gargano, Nicolas Matentzoglu, Ben Coleman, et~al. 2024.
+\newblock The {H}uman {P}henotype {O}ntology in 2024: Phenotypes around the
+  world.
+\newblock \emph{Nucleic Acids Research}, 52(D1):D1333--D1346.
 
 \bibitem[{Guo et~al.(2025)Guo, Yang, Zhang, Song, Wang, Zhu, Xu, Zhang, Ma, Bi
   et~al.}]{guo2025deepseekr1}
@@ -102,6 +136,27 @@ Henk Harkema, John~N. Dowling, Tyler Thornblade, and Wendy~W. Chapman. 2009.
   temporal status from clinical reports.
 \newblock \emph{Journal of Biomedical Informatics}, 42(5):839--851.
 
+\bibitem[{He et~al.(2023)He, Chen, Jim{\'e}nez-Ruiz, Dong, and
+  Horrocks}]{he2023ontolama}
+Yuan He, Jiaoyan Chen, Ernesto Jim{\'e}nez-Ruiz, Hang Dong, and Ian Horrocks.
+  2023.
+\newblock Language model analysis for ontology subsumption inference.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  ACL 2023}.
+
+\bibitem[{He et~al.(2024)He, Yuan, Chen, and Horrocks}]{he2024hit}
+Yuan He, Zhangdie Yuan, Jiaoyan Chen, and Ian Horrocks. 2024.
+\newblock Language models as hierarchy encoders.
+\newblock In \emph{Advances in Neural Information Processing Systems}.
+
+\bibitem[{Helff et~al.(2026)Helff, Delfosse, Steinmann, H{\"a}rle, Shindo,
+  Schramowski, Stammer, Kersting, and Friedrich}]{helff2026gaming}
+Lukas Helff, Quentin Delfosse, David Steinmann, Ruben H{\"a}rle, Hikaru Shindo,
+  Patrick Schramowski, Wolfgang Stammer, Kristian Kersting, and Felix
+  Friedrich. 2026.
+\newblock {LLM}s gaming verifiers: {RLVR} can lead to reward hacking.
+\newblock \emph{arXiv preprint arXiv:2604.15149}.
+
 \bibitem[{Hewitt and Liang(2019)}]{hewitt2019control}
 John Hewitt and Percy Liang. 2019.
 \newblock Designing and interpreting probes with control tasks.
@@ -109,8 +164,23 @@ John Hewitt and Percy Liang. 2019.
   Natural Language Processing and the 9th International Joint Conference on
   Natural Language Processing (EMNLP-IJCNLP)}, pages 2733--2743.
 
-\bibitem[{Hou et~al.(2026)}]{hou2026medpic}
-Hou et~al. 2026.
+\bibitem[{Holzenberger et~al.(2020)Holzenberger, Blair-Stanek, and
+  Van~Durme}]{holzenberger2020sara}
+Nils Holzenberger, Andrew Blair-Stanek, and Benjamin Van~Durme. 2020.
+\newblock A dataset for statutory reasoning in tax law entailment and question
+  answering.
+\newblock In \emph{Proceedings of the Natural Legal Language Processing
+  Workshop 2020}.
+
+\bibitem[{Hoover et~al.(2025)}]{hoover2025dynaguard}
+Monte Hoover et~al. 2025.
+\newblock {D}yna{G}uard: A dynamic guardian model with user-defined policies.
+\newblock \emph{arXiv preprint arXiv:2509.02563}.
+
+\bibitem[{Hou et~al.(2026)Hou, Liu, Wang, Liu, Zhu, Liu, Cai, Xie, Sang, Zeng,
+  and Yang}]{hou2026medpic}
+Zhitian Hou, Yuhang Liu, Pengkai Wang, Zeyu Liu, Guanghao Zhu, Zheng Liu, Shuo
+  Cai, Congkai Xie, Zhijie Sang, Kun Zeng, and Hongxia Yang. 2026.
 \newblock Evaluating counterfactual sensitivity to patient information in
   medication-safety reasoning.
 \newblock \emph{arXiv preprint arXiv:2608.03028}.
@@ -121,6 +191,13 @@ Edward~J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean
   Wang, Lu~Wang, and Weizhu Chen. 2022.
 \newblock {LoRA}: Low-rank adaptation of large language models.
 \newblock In \emph{International Conference on Learning Representations}.
+
+\bibitem[{Ji et~al.(2026)Ji, Kwak, Zhang, Wu, Li, and Wang}]{ji2026checker}
+Yuelyu Ji, Min~Gu Kwak, Hang Zhang, Xizhi Wu, Chenyu Li, and Yanshan Wang.
+  2026.
+\newblock What makes a medical checker trainable? {D}iagnosing signal collapse
+  and reward hacking in checker-guided {RAG} for biomedical {QA}.
+\newblock \emph{arXiv preprint arXiv:2605.25988}.
 
 \bibitem[{Jiang et~al.(2025)}]{jiang2025meds3}
 Shuyang Jiang et~al. 2025.
@@ -222,6 +299,20 @@ Pang~Wei Koh, Thao Nguyen, Yew~Siang Tang, Stephen Mussmann, Emma Pierson, Been
 \newblock In \emph{Proceedings of the 37th International Conference on Machine
   Learning}.
 
+\bibitem[{Krohn-Grimberghe(2026)}]{krohn2026audit}
+Artus Krohn-Grimberghe. 2026.
+\newblock {M}ed{C}alc-{B}ench doesn't measure what you think: A benchmark audit
+  and the case for open-book evaluation.
+\newblock \emph{arXiv preprint arXiv:2603.02222}.
+
+\bibitem[{Kury et~al.(2020)Kury, Butler, Yuan, Fu, Sun, Liu, Sim, Carini, and
+  Weng}]{kury2020chia}
+Fabr{\'i}cio Kury, Alex Butler, Chi Yuan, Li-heng Fu, Yingcheng Sun, Hao Liu,
+  Ida Sim, Simona Carini, and Chunhua Weng. 2020.
+\newblock Chia, a large annotated corpus of clinical trial eligibility
+  criteria.
+\newblock \emph{Scientific Data}, 7:281.
+
 \bibitem[{Laguna et~al.(2025)Laguna, Kobalczyk, Vogt, and van~der
   Schaar}]{laguna2025cbrm}
 Sonia Laguna, Katarzyna Kobalczyk, Julia~E. Vogt, and Mihaela van~der Schaar.
@@ -236,25 +327,42 @@ Hunter Lightman, Vineet Kosaraju, Yuri Burda, Harrison Edwards, Bowen Baker,
 \newblock Let's verify step by step.
 \newblock In \emph{International Conference on Learning Representations}.
 
-\bibitem[{Liu et~al.(2026)Liu, Miao, He, Liu, Sun, and Du}]{liu2026dynacf}
+\bibitem[{Liu et~al.(2026{\natexlab{a}})Liu, Miao, He, Liu, Sun, and
+  Du}]{liu2026dynacf}
 Fengyuan Liu, Yongliang Miao, Zirui He, Yanguang Liu, Fei Sun, and Mengnan Du.
-  2026.
+  2026{\natexlab{a}}.
 \newblock {D}yna{CF}: Mitigating shortcut learning in reward models via dynamic
   counterfactual sensitivity.
 \newblock \emph{arXiv preprint arXiv:2606.09043}.
 
-\bibitem[{Liu et~al.(2025)Liu, Xiong, Ren, Chen et~al.}]{liu2025rrm}
-Tianqi Liu, Wei Xiong, Jie Ren, Lichang Chen, et~al. 2025.
+\bibitem[{Liu et~al.(2026{\natexlab{b}})Liu, Baldini, Rabinowitz, Rosenberg,
+  Gehrmann, and Dredze}]{liu2026apt}
+Minqian Liu, Ioana Baldini, David Rabinowitz, David~S. Rosenberg, Sebastian
+  Gehrmann, and Mark Dredze. 2026{\natexlab{b}}.
+\newblock Domain generalizable {AI} guardrails with augmented policy training.
+\newblock In \emph{Proceedings of the 64th Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 16452--16469.
+
+\bibitem[{Liu et~al.(2025{\natexlab{a}})Liu, Xiong, Ren, Chen
+  et~al.}]{liu2025rrm}
+Tianqi Liu, Wei Xiong, Jie Ren, Lichang Chen, et~al. 2025{\natexlab{a}}.
 \newblock {RRM}: Robust reward model training mitigates reward hacking.
 \newblock In \emph{International Conference on Learning Representations}.
 
-\bibitem[{Mao et~al.(2025)Mao, Ding, Chen, Bian, Chen, Peng, Ren, Li, and
-  Xu}]{mao2025medcalceval}
-Kangkun Mao, Jinru Ding, Jiayuan Chen, Mouxiao Bian, Ruiyao Chen, Xinwei Peng,
-  Sijie Ren, Linyang Li, and Jie Xu. 2025.
-\newblock {M}ed{C}alc-{E}val and {M}ed{C}alc-{E}nv: Advancing medical
-  calculation capabilities of large language models.
-\newblock \emph{arXiv preprint arXiv:2510.27267}.
+\bibitem[{Liu et~al.(2025{\natexlab{b}})Liu, Gan, Wang, Zhang, Bo, Sun, Chen,
+  and Zhang}]{liu2025ontotune}
+Zhiqiang Liu, Chengtao Gan, Junjie Wang, Yichi Zhang, Zhongpu Bo, Mengshu Sun,
+  Huajun Chen, and Wen Zhang. 2025{\natexlab{b}}.
+\newblock {O}nto{T}une: Ontology-driven self-training for aligning large
+  language models.
+\newblock In \emph{Proceedings of the ACM Web Conference 2025}.
+
+\bibitem[{Mahmoud et~al.(2026)Mahmoud, Rezaei, Wang, Gunjal, Liu, and
+  He}]{mahmoud2026hacking}
+Anas Mahmoud, MohammadHossein Rezaei, Zihao Wang, Anisha Gunjal, Bing Liu, and
+  Yunzhong He. 2026.
+\newblock Reward hacking in rubric-based reinforcement learning.
+\newblock \emph{arXiv preprint arXiv:2605.12474}.
 
 \bibitem[{Mu et~al.(2025)Mu, Gu, Huang, Zhu, Zhang, and Zhang}]{medceg2025}
 Linjie Mu, Yannian Gu, Zhongzhen Huang, Yakun Zhu, Shaoting Zhang, and Xiaofan
@@ -262,6 +370,14 @@ Linjie Mu, Yannian Gu, Zhongzhen Huang, Yakun Zhu, Shaoting Zhang, and Xiaofan
 \newblock {M}ed{CEG}: Reinforcing verifiable medical reasoning with critical
   evidence graph.
 \newblock \emph{arXiv preprint arXiv:2512.13510}.
+
+\bibitem[{Nelson et~al.(2011)Nelson, Zeng, Kilbourne, Powell, and
+  Moore}]{nelson2011rxnorm}
+Stuart~J. Nelson, Kelly Zeng, John Kilbourne, Tammy Powell, and Robin Moore.
+  2011.
+\newblock Normalized names for clinical drugs: {R}x{N}orm at 6 years.
+\newblock \emph{Journal of the American Medical Informatics Association},
+  18(4):441--448.
 
 \bibitem[{Ocampo~Osorio et~al.(2026)}]{ocampo2026solver}
 Felipe Ocampo~Osorio et~al. 2026.
@@ -305,6 +421,14 @@ Zhan Qu and Michael F{\"a}rber. 2026.
 \newblock In \emph{Proceedings of the 64th Annual Meeting of the Association
   for Computational Linguistics (Volume 1: Long Papers)}.
 
+\bibitem[{Ravichander et~al.(2022)Ravichander, Gardner, and
+  Marasovi{\'c}}]{ravichander2022condaqa}
+Abhilasha Ravichander, Matt Gardner, and Ana Marasovi{\'c}. 2022.
+\newblock {CONDAQA}: A contrastive reading comprehension dataset for reasoning
+  about negation.
+\newblock In \emph{Proceedings of the 2022 Conference on Empirical Methods in
+  Natural Language Processing}.
+
 \bibitem[{Ribeiro et~al.(2020)Ribeiro, Wu, Guestrin, and
   Singh}]{ribeiro2020checklist}
 Marco~Tulio Ribeiro, Tongshuang Wu, Carlos Guestrin, and Sameer Singh. 2020.
@@ -313,6 +437,29 @@ Marco~Tulio Ribeiro, Tongshuang Wu, Carlos Guestrin, and Sameer Singh. 2020.
 \newblock In \emph{Proceedings of the 58th Annual Meeting of the Association
   for Computational Linguistics}, pages 4902--4912.
 
+\bibitem[{Sadhu et~al.(2026)Sadhu, Sengupta, Sankarapu, and
+  Seth}]{sadhu2026compliance}
+Saisab Sadhu, Aadit Sengupta, Vinay~Kumar Sankarapu, and Pratinav Seth. 2026.
+\newblock What do compliance detectors read? {A}n audit of activation probes
+  and guard models.
+\newblock \emph{arXiv preprint arXiv:2608.16852}.
+
+\bibitem[{Saeidi et~al.(2018)Saeidi, Bartolo, Lewis, Singh, Rockt{\"a}schel,
+  Sheldon, Bouchard, and Riedel}]{saeidi2018sharc}
+Marzieh Saeidi, Max Bartolo, Patrick Lewis, Sameer Singh, Tim Rockt{\"a}schel,
+  Mike Sheldon, Guillaume Bouchard, and Sebastian Riedel. 2018.
+\newblock Interpretation of natural language rules in conversational machine
+  reading.
+\newblock In \emph{Proceedings of the 2018 Conference on Empirical Methods in
+  Natural Language Processing}.
+
+\bibitem[{Shan et~al.(2026)Shan, Peng, Dong, Hu, and Wang}]{shan2026ontgqa}
+Yongxue Shan, Jie Peng, Zixuan Dong, Fei Hu, and Xiaodong Wang. 2026.
+\newblock Reasoning with ontology graph: Toward type-constrained knowledge
+  graph question answering.
+\newblock In \emph{Proceedings of the 64th Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 10684--10697.
+
 \bibitem[{Shao et~al.(2024)Shao, Wang, Zhu, Xu, Song, Bi, Zhang, Zhang, Li, Wu,
   and Guo}]{shao2024deepseekmath}
 Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei
@@ -320,6 +467,13 @@ Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei
 \newblock {D}eep{S}eek{M}ath: Pushing the limits of mathematical reasoning in
   open language models.
 \newblock \emph{arXiv preprint arXiv:2402.03300}.
+
+\bibitem[{She et~al.(2023)She, Potts, Bowman, and Geiger}]{she2023scone}
+Jingyuan~S. She, Christopher Potts, Samuel~R. Bowman, and Atticus Geiger. 2023.
+\newblock {S}co{N}e: Benchmarking negation reasoning in language models with
+  fine-tuning and in-context learning.
+\newblock In \emph{Proceedings of the 61st Annual Meeting of the Association
+  for Computational Linguistics (Volume 2: Short Papers)}.
 
 \bibitem[{Shen et~al.(2026)Shen, Cao, Du, Wang, Zhou, Peng, and
   Guo}]{shen2026medguidex}
@@ -343,6 +497,13 @@ Ibne~Farabi Shihab, Sanjeda Akter, and Anuj Sharma. 2025.
 \newblock Counterfactual sensitivity for faithful reasoning in language models.
 \newblock \emph{arXiv preprint arXiv:2509.01544}.
 
+\bibitem[{Skalse et~al.(2022)Skalse, Howe, Krasheninnikov, and
+  Krueger}]{skalse2022hacking}
+Joar Skalse, Nikolaus H.~R. Howe, Dmitrii Krasheninnikov, and David Krueger.
+  2022.
+\newblock Defining and characterizing reward hacking.
+\newblock In \emph{Advances in Neural Information Processing Systems}.
+
 \bibitem[{Snell et~al.(2025)Snell, Lee, Xu, and Kumar}]{snell2025scaling}
 Charlie Snell, Jaehoon Lee, Kelvin Xu, and Aviral Kumar. 2025.
 \newblock Scaling {LLM} test-time compute optimally can be more effective than
@@ -354,6 +515,14 @@ Pragya Srivastava et~al. 2026.
 \newblock Robust reward modeling via causal rubrics.
 \newblock In \emph{International Conference on Learning Representations}.
 
+\bibitem[{Sun et~al.(2024)Sun, Zhang, Zhang, Yu, Huang, Chen, Xu, He, Zhao, and
+  Liu}]{sun2024rulebench}
+Wangtao Sun, Chenxiang Zhang, XueYou Zhang, Xuanqing Yu, Ziyang Huang, Pei
+  Chen, Haotian Xu, Shizhu He, Jun Zhao, and Kang Liu. 2024.
+\newblock Beyond instruction following: Evaluating inferential rule following
+  of large language models.
+\newblock \emph{arXiv preprint arXiv:2407.08440}.
+
 \bibitem[{Thrush et~al.(2022)Thrush, Jiang, Bartolo, Singh, Williams, Kiela,
   and Ross}]{thrush2022winoground}
 Tristan Thrush, Ryan Jiang, Max Bartolo, Amanpreet Singh, Adina Williams, Douwe
@@ -363,12 +532,33 @@ Tristan Thrush, Ryan Jiang, Max Bartolo, Amanpreet Singh, Adina Williams, Douwe
 \newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
   and Pattern Recognition}.
 
+\bibitem[{Tiwari et~al.(2026)Tiwari, Tomar, Bamba, Maheswaran, Yang, Mahoney,
+  Keutzer, and Gholami}]{tiwari2026reward}
+Rishabh Tiwari, Aditya Tomar, Udbhav Bamba, Monishwaran Maheswaran, Heng Yang,
+  Michael~W. Mahoney, Kurt Keutzer, and Amir Gholami. 2026.
+\newblock Reward under attack: Analyzing the robustness and hackability of
+  process reward models.
+\newblock \emph{arXiv preprint arXiv:2603.06621}.
+
 \bibitem[{Uzuner et~al.(2011)Uzuner, South, Shen, and DuVall}]{uzuner2011i2b2}
 {\"O}zlem Uzuner, Brett~R. South, Shuying Shen, and Scott~L. DuVall. 2011.
 \newblock 2010 i2b2/{VA} challenge on concepts, assertions, and relations in
   clinical text.
 \newblock \emph{Journal of the American Medical Informatics Association},
   18(5):552--556.
+
+\bibitem[{Vasilevsky et~al.(2022)Vasilevsky, Matentzoglu, Toro
+  et~al.}]{vasilevsky2022mondo}
+Nicole~A. Vasilevsky, Nicolas~A. Matentzoglu, Sabrina Toro, et~al. 2022.
+\newblock Mondo: Unifying diseases for the world, by the world.
+\newblock \emph{medRxiv preprint 2022.04.13.22273750}.
+
+\bibitem[{Vishwanath et~al.(2025)Vishwanath, Alyakin, Alber, Lee, Kondziolka,
+  and Oermann}]{vishwanath2025distracted}
+Krithik Vishwanath, Anton Alyakin, Daniel~Alexander Alber, Jin~Vivian Lee,
+  Douglas Kondziolka, and Eric~Karl Oermann. 2025.
+\newblock Medical large language models are easily distracted.
+\newblock \emph{arXiv preprint arXiv:2504.01201}.
 
 \bibitem[{Wang et~al.(2026)Wang, Guan, Qiu, Li, Gai, Yang, Zhou, Zhao, Jiang,
   and Jiang}]{evpv2026}
@@ -386,6 +576,24 @@ Peiyi Wang, Lei Li, Zhihong Shao, Runxin Xu, Damai Dai, Yifei Li, Deli Chen,
   annotations.
 \newblock In \emph{Proceedings of the 62nd Annual Meeting of the Association
   for Computational Linguistics (Volume 1: Long Papers)}.
+
+\bibitem[{Weng et~al.(2026)Weng, Feng, and Xie}]{weng2026policy}
+Shihao Weng, Yang Feng, and Xiaofei Xie. 2026.
+\newblock Beyond accuracy: Policy invariance as a reliability test for {LLM}
+  safety judges.
+\newblock \emph{arXiv preprint arXiv:2605.06161}.
+
+\bibitem[{Winston(1970)}]{winston1970}
+Patrick~H. Winston. 1970.
+\newblock Learning structural descriptions from examples.
+\newblock Technical Report AI-TR-231, Massachusetts Institute of Technology,
+  Project MAC.
+
+\bibitem[{Wong et~al.(2026)Wong, Ong, Shah, Klonoff, and Sheng}]{wong2026nesy}
+Matthew Yu~Heng Wong, Jasmine Chiat~Ling Ong, Nigam Shah, David~C. Klonoff, and
+  Bin Sheng. 2026.
+\newblock Neuro-symbolic artificial intelligence in medicine.
+\newblock \emph{Nature Biomedical Engineering}, 10(8):1507--1512.
 
 \bibitem[{Wu et~al.(2024)Wu, Wu, and Zou}]{wu2024clasheval}
 Kevin Wu, Eric Wu, and James Zou. 2024.
@@ -425,6 +633,14 @@ Zihao Yang, Mosh Levy, Yoav Goldberg, and Byron~C. Wallace. 2026.
   prompting.
 \newblock \emph{arXiv preprint arXiv:2605.01048}.
 
+\bibitem[{Ye et~al.(2025)Ye, Tawfik, Goodell, Kotha, Buyyounouski, and
+  Bayati}]{ye2025stewardship}
+Junze Ye, Daniel Tawfik, Alex~J. Goodell, Nikhil~V. Kotha, Mark~K.
+  Buyyounouski, and Mohsen Bayati. 2025.
+\newblock Scalable stewardship of an {LLM}-assisted clinical benchmark with
+  physician oversight.
+\newblock \emph{arXiv preprint arXiv:2512.19691}.
+
 \bibitem[{Yun et~al.(2025)Yun, Sohn, Park, Kim, Tang, Shao, Koo, Ko, Chen,
   Gerstein, Moor, and Kang}]{yun2025medprm}
 Jaehoon Yun, Jiwoong Sohn, Jungwoo Park, Hyunjae Kim, Xiangru Tang, Daniel
@@ -441,6 +657,14 @@ Zang et~al. 2025.
   real-world perturbed scenarios.
 \newblock \emph{arXiv preprint arXiv:2512.00920}.
 
+\bibitem[{Zhang et~al.(2026)Zhang, Wang, Ji, Kwak, Wu, Li, Zhang, Shi, Peng,
+  and Wang}]{zhang2026medtiv}
+Hang Zhang, Ruheng Wang, Yuelyu Ji, Mingu Kwak, Xizhi Wu, Chenyu Li, Li~Zhang,
+  Wenqi Shi, Yifan Peng, and Yanshan Wang. 2026.
+\newblock Scaling medical reasoning verification via tool-integrated
+  reinforcement learning.
+\newblock \emph{arXiv preprint arXiv:2601.20221}.
+
 \bibitem[{Zhao et~al.(2025)Zhao, Liu, Zhang, Zhou, Gao, Li, Lyu, Qian, Qi, Li,
   and Zhou}]{zhao2025genprm}
 Jian Zhao, Runze Liu, Kaiyan Zhang, Zhimu Zhou, Junqi Gao, Dong Li, Jiafei Lyu,
@@ -449,13 +673,13 @@ Jian Zhao, Runze Liu, Kaiyan Zhang, Zhimu Zhou, Junqi Gao, Dong Li, Jiafei Lyu,
   generative reasoning.
 \newblock \emph{arXiv preprint arXiv:2504.00891}.
 
-\bibitem[{Zhou et~al.(2026)Zhou, Zhang, Chen, Zhang, Nakov, and
-  Xie}]{zhou2026fincards}
-Yixi Zhou, Fan Zhang, Yu~Chen, Haipeng Zhang, Preslav Nakov, and Zhuohan Xie.
-  2026.
-\newblock {F}in{CARDS}: Card-based analyst reranking for financial document
-  question answering.
-\newblock \emph{arXiv preprint arXiv:2601.06992}.
+\bibitem[{Zhou et~al.(2026)Zhou, Jin, Xu, Wang, Chao, and
+  Lam}]{zhou2026verdict}
+Zikai Zhou, Yufei Jin, Yilin Xu, Yu-Chiang Wang, Chieh-Ju Chao, and Monica~S.
+  Lam. 2026.
+\newblock Accountable {AI} with grounded, faithful, consistent, actionable
+  rationales: A case study in clinical trial matching with {VERDICT}.
+\newblock \emph{arXiv preprint arXiv:2609.03366}.
 
 \bibitem[{Zi et~al.(2026)Zi, Xu, Bhattacharya, Foltin, and Sheth}]{zi2026nsprm}
 Yuxin Zi, Cong Xu, Suparna Bhattacharya, Martin Foltin, and Amit Sheth. 2026.
