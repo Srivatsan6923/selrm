@@ -1,0 +1,23 @@
+{
+ "runs": [
+  {
+   "run_id": "B-S2-rule_v1dev-decfield-gate-s0",
+   "seed": 0,
+   "priority": 12,
+   "format": "ledger2_dec",
+   "train": false,
+   "adapter": "adapters/B-AB-decfield-s0",
+   "eval_sets": [
+    "rule_v1/dev"
+   ],
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "gate"
+   },
+   "base_model": "unsloth/Qwen3.5-9B",
+   "min_gen": 5
+  }
+ ]
+}
