@@ -3,5 +3,9 @@
  "set": "sel/medqa",
  "acc": 85.62450903377848,
  "n": 1273,
- "N": 16
+ "N": 16,
+ "n_same_sample_as_stepcheck_swap": 1264,
+ "n_same_answer_as_stepcheck_swap": 1273,
+ "ledger_is_minimum_share": 52.336999214454046,
+ "ledger_is_minimum_share_swap": 0.324037706205813
 }

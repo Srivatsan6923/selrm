@@ -314,9 +314,26 @@ def main():
               ("medprm", "medprm-swap", "ledger2-triplets", "ledger2-triplets-swap", "ledger2-blocks",
                "ledger2-tripclin", "ledger2-tripclin-swap")}
         sel = selectors(cal, sc, MAIN[a.ledger])
-        for name, fn in sel.items():
-            rows = select(name, fn, qs, by_q, 16)
+        rows_by = {name: select(name, fn, qs, by_q, 16) for name, fn in sel.items()}
+        diag = {}
+        if "combined-swap" in rows_by and "stepcheck-swap" in rows_by:
+            # why the swapped rows coincide: the minimum of the two calibrated scores is the step check's
+            # wherever the ledger's calibrated probability is the larger one
+            A, m = cal["platt"], MAIN[a.ledger]
+
+            def led_min(led, step):
+                ks = [k for k in step if led.get(k) is not None and step[k] is not None]
+                return 100.0 * sum(sig(A[m][0] * led[k] + A[m][1]) < sig(A["medprm"][0] * step[k] + A["medprm"][1])
+                                   for k in ks) / len(ks)
+            pairs = list(zip(rows_by["combined-swap"], rows_by["stepcheck-swap"]))
+            diag = {"n_same_sample_as_stepcheck_swap": sum(x["sample"] == y["sample"] for x, y in pairs),
+                    "n_same_answer_as_stepcheck_swap": sum(x["answer"] == y["answer"] for x, y in pairs),
+                    "ledger_is_minimum_share": led_min(sc[m], sc["medprm"]),
+                    "ledger_is_minimum_share_swap": led_min(sc[m + "-swap"], sc["medprm-swap"])}
+        for name, rows in rows_by.items():
             extra = {"N": 16} | (pair_metrics(qs, rows) if pool == "medeinst_test" else {})
+            if name == "combined-swap":
+                extra |= diag
             if pool == "medqa_kp":
                 extra |= dict(zip(("pair_acc", "n_pairs"), keypair_acc(PAIRS, {r["qid"]: r["correct"] for r in rows})))
             by_sel[(pool, name)] = units(pool, qs, rows)

@@ -3,5 +3,9 @@
  "set": "sel/careqa",
  "acc": 88.1,
  "n": 1000,
- "N": 16
+ "N": 16,
+ "n_same_sample_as_stepcheck_swap": 570,
+ "n_same_answer_as_stepcheck_swap": 967,
+ "ledger_is_minimum_share": 81.8875,
+ "ledger_is_minimum_share_swap": 29.93125
 }
