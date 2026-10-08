@@ -4,3 +4,4 @@ __pycache__/
 data/**/records.jsonl
 data/smoke_v2/
 results/**/scores_*.jsonl
+data/_ext/
