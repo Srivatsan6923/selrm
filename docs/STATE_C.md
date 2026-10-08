@@ -1,82 +1,43 @@
 # STATE role C (maintained by Claude Code)
-Updated: 2026-10-03 ~22:00 UTC (Sat). Task lists: NEXT_TASKS_C.md (3 Oct, current; copy in scratch/next_tasks/)
-over FINAL_TASKS_C.md. Branch role-c, clone D:\NAACL27\selrm-role-c. Run freeze: Wed 7 Oct 23:59 UTC.
-
-## NEXT_TASKS_C progress (3 Oct)
-1. docs/AUX_PROTOCOL.md completed and committed (51aa523) before any training under it.
-2. In-domain sets frozen: clin_v1/nli4ct_train (1,700), clin_v1/trialgpt_cv (801 items, 5 patient folds),
-   clin_v1/medeinst_train (alias of clinpairs_medeinst); dev splits nli4ct_dev, medeinst_ref_dev, trialgpt_dev.
-3. clin_v1/medeinst_neg (3,699) / medeinst_neg_train (7,072) FROZEN with A's bank (e794752; copy in
-   scratch/anegbank), on the PVC, sha256 in docs/AUX_PROTOCOL.md S2. Zero-shot hold runs: c_mn.json (critic + six core
-   s0 cells, C-MN-<x>), C-MN-sc-summary2-triplets-s0 on c_s3; evaluate with eval_clinical.py medeinst_neg.
-4. S3 (c_s3.json, B code 10e1882945ce): B-SC-summary2-triplets-s0 on TrialGPT dev, NLI4CT-P, key pairs, MedEinst.
-   After C-TG-sc-summary2-triplets-dev: dev check, then add C-TG-sc-summary2-triplets-s0 (test, cap 768).
-   More case-visible systems as B registers them.
-5. S1 evaluator scripts/eval_aux.py ready (B's runs B-AUX-<ds>-<recipe>-s<k>[-f<fold>]).
-6. API audit: blocked on OPENROUTER_API_KEY (COMPUTE REQUEST #1).
-7. Finish: ThinkPRM p2 (A6000) and p3; GenPRM p1 (RTX 3090); C-ME-promptsum / -promptledger (32 GB);
-   TrialGPT rows + seeds (c_tg_more.json, 25 runs); 27B judge (API or 80 GB card).
-8. TREC/SIGIR trial-level eligibility: only if time remains.
+Updated: 2026-10-08 ~23:30 UTC. Task file: STAGE2_TASKS_C.md (8 Oct; copy with README, spec, analysis plan and
+red cells in scratch/stage2/selrm_stage2_tasks/). It replaces FINAL_TASKS_C / NEXT_TASKS_C. Dates are lifted; work
+is ordered by dependency. Branch role-c, clone D:\NAACL27\selrm-role-c.
 
 ## Compute and how runs work
 - NRP namespace ecepxie: own PVC selrm-c (/pvc/selrmc); B's PVC selrm-b read-only at /pvcb. Objects selrm-c-*.
-- Sync pod selrm-c-sync recreated 21:51 UTC (3 Oct); it expires after 6 h (~03:50 UTC): `python scripts/submit_c.py sync-down`,
-  wait until it is gone, then `sync-up`.
-- Launcher scripts/submit_c.py: sync-up/down, push-code (git archive HEAD), push FILE DEST, sh CMD,
-  runner TASKS --gpu {a100,l40,a40,a6000,32gb,24gb} --bcode ac524e8062ef [--code SHA] [--online for PRM runs]
-  [--models "" to skip base staging], pull. Runners only on us-west / us-central nodes.
-- GPU driver scripts/eval_c.py (B's scoring code ac524e8062ef on sys.path). GEN = 7 (runs with min_gen > GEN are
-  skipped by older runners): 3 topk/subsets/budgets, 4 ThinkPRM wrapper, 5 xr_v1 subsets keep whole items,
-  6 MedS3 loader fix, 7 hidden states.
-  Latest code snapshot 00d227d4a525 (GEN 7). Self-test: python tests/selftest_eval_c.py scratch/bcode scratch/qwen35_tok scratch/rv1
-- Task files (configs/tasks_c/ -> /pvc/selrmc/tasks/, re-read before every claim): c_tf_rule (main; also new
-  C-TG-summary2-blocks-dev, C-TG-verdict-blocks-s2, C-TG-verdict-triplets-s1), c_wave2 (nocase, rejudge), c_tg_test,
-  c_long / c_long2 (MedEinst, key pairs, NLI4CT-P, MedQA train reader; 24 GB token budgets), c_noise, c_prm.
-- Part runs <RUN>--p<k> are merged with python scripts/merge_parts.py RUN after pulling.
-- Results: python scripts/submit_c.py pull RUN... -> results_git/<run_id>/ (topk files are not pulled; fetch to
-  scratch/topk/<run>/ by kubectl exec tar).
+- Sync pod selrm-c-sync: 6 h lifetime; `python scripts/submit_c.py sync-up` (sync-down first if it still exists).
+- Launcher scripts/submit_c.py: runner TASKS --gpu {24gbf,24gb,32gb,l40,a6000,a40,a100} --hours H --bcode SHA
+  [--code SHA] [--online --models "" for PRM runs]; pull; push FILE DEST; push-code. --hours is a hard deadline.
+  B code: ac524e8062ef for stage-1 formats (comparable with earlier rows); 10e1882945ce for summary2_case.
+- Runner scripts/eval_c.py, GEN 7. Views (set names with '@') are read from C's volume.
+- Large files to the pod: gzip -c f | kubectl exec -i selrm-c-sync -- sh -c 'gunzip > dest' and check sha256; from
+  the pod: split -b 20000000 and copy chunks. The laptop is short of memory: no background watchers; poll by hand.
+- Task files in configs/tasks_c/ -> /pvc/selrmc/tasks/. Part runs merged with scripts/merge_parts.py.
 
-## Done
-- P0.1 TrialGPT: all required systems + summary x blocks, seeds verdict-blocks-s2 / verdict-triplets-s1;
-  docs/TRIALGPT_RESULTS.md (seed table, threshold sensitivity). Comparison (6) not supported.
-- P0.2 + P1 training-free rows (docs/RESULTS_C.md): critic 27.1, prompted summary 67.5, prompted ledger strict 0.1 /
-  format-normalised 59.5, default correction 26.4, generated-program verifier 89.8 (1,000-triplet subset); MR / XA
-  in summaries (score.py --write-summary). Reference C-REF-extract-program 2.1 (vocabulary, see handoff).
-- P0.3 metrics; P0.5 trigger tagger (77.7).
-- Audit PRMs merged: C-AUD-medprm 11.9, C-AUD-meds3 10.0, C-AUD-fover 31.8 (rule sets, xr_v1, MedEinst, key pairs).
-- Clinical: MedEinst (docs/MEDEINST_RESULTS.md; comparisons (4), (5) in results_git/C-ME-comparisons.json with
-  label-pair clusters: primary negative), key pairs (docs/KEYPAIRS_RESULTS.md), NLI4CT-P (docs/NLI4CT_RESULTS.md).
-- Diagnostics: C-DG-shift (9B judge, verdict x blocks, Med-PRM), C-DG-noise, C-TF-critic/diagnostics.json;
-  probe results_git/C-DG-probe/probe.json (activations in scratch/probe, sha256 checked).
-- Clinical training pairs for B; Med-PRM per-example scores for B's premise gate (handoff 3 Oct).
+## Stage 2 status
+- D0 (analysis plan on main): NOT yet on origin/main (8 Oct 23:00). No stage-2 test set of A exists yet.
+- C1 rule-tier controls: scripts/crit_views.py (rule_v1 handler); views rule_v1/test_L2@{none,wrong} and
+  rule_v1/test_L3inv@{none,wrong} frozen (L3inv carries the invented-name rules; L2 = 20 hand-written + 83 sampled
+  rules); runs C-S2-ctrl-<system> (17 systems, c_s2_ctrl.json) launched 8 Oct. Then: pull, report TA/Rev/Hold
+  with rule (stage-1 runs), without, wrong; by rule source; docs/STAGE2_RESULTS.md section 1. xp_v1 when A registers.
+- C2 executor audit: waits for A2's renderer; the DDXPlus linkage check on the MedEinst reference split can start.
+- C3-C7: wait for A1 (mcv_v1), A2 (kb_v1), A4-A6, B2-B3.
+- C9 carry-over, done 8 Oct: ThinkPRM (L2 87.5, XA 100 on its subsets) and GenPRM merged and pushed; TrialGPT
+  seeds 0-4 of the six core cells + ledger2-balanced, TR-fover, TR-clinonly; S3 case-visible summary system
+  (MedEinst 28.7, key pairs 66.9, NLI4CT-P; TrialGPT test queued); denial hold docs/MEDEINST_NEG_RESULTS.md;
+  prompted MedEinst rows. Open: criterion-claim TA columns, default-correction Rev/Hold, key pairs for prompted
+  ledger / default correction / summary x blocks, NLI4CT-P prompted rows and eligibility slice, shift classes for
+  other signals, Table 17 denominators, the four confirmations for D, clinical columns for rationale / natural /
+  tripclin rows, larger judges (API key or 80 GB GPU; else "not scored").
 
-## In progress (16:55 UTC)
-- C-AUD-genprm--p1 (re-queued; 24gbf runner, 12 h), C-AUD-thinkprm--p2 / --p3 (l40 / a6000 runners, 12 h).
-- C-ME-ledger2-blocks-s0, C-NL-ledger2-blocks-s0, C-NL-ledger2-triplets-s0 (c_long2 24 GB runners);
-  C-ME-promptsum, C-ME-promptledger (+ -lenient rejudge) on the >= 30 GB c_long2 runners (32gb, l40).
-- C-ME-ledger2-triplets-s0-lenient (POST HOC re-read) on the c_tf_rule 24gbf runner.
+## Reports and evaluators
+docs/RESULTS_C.md (report_c.py), TRIALGPT_RESULTS.md, MEDEINST_RESULTS.md, MEDEINST_NEG_RESULTS.md,
+KEYPAIRS_RESULTS.md, NLI4CT_RESULTS.md (eval_clinical.py <trialgpt|medeinst|medeinst_neg|keypairs|nli4ct>),
+AUX_PROTOCOL.md + scripts/eval_aux.py (S1/S2; B's B-AUX runs), scripts/score.py --write-summary (MR, XA).
 
-## Next
-1. As runs land: pull; merge C-AUD-genprm / C-AUD-thinkprm parts; score.py --write-summary; eval_clinical medeinst /
-   nli4ct; report_c.py; handoff the remaining rows.
-2. API audit when COMPUTE REQUEST #1 is granted (run ids C-AUD-closed-1/2/3, C-AUD-llama70b, C-AUD-kimi-k3;
-   references C-REF-closed-zero / -closed-ledger; closed extractor for C-REF-extract-program).
-3. More systems when B registers them (ledger2-balanced, B-TR-*): C-TG-<x>, C-ME-<x>, C-KP-<x>, C-NL-<x>.
-4. P0.4 ec_v1 / challenge_v1 / rewrite_v1 when A freezes them.
+## Open requests
+- COMPUTE REQUEST #1: OPENROUTER_API_KEY (large judges, closed rows, references).
 
-## Notes
-- Runner jobs die at their --hours deadline (activeDeadlineSeconds); generative PRM parts need 12 h.
-- Large files from the PVC: split -b 20000000 on the pod, copy chunks with kubectl exec sh -c cat, check sha256
-  (a single kubectl exec stream breaks above ~75 MB).
-- Old runners (code before generation 3) ignore min_gen: put generation-gated runs in task files only new runners read.
-
-## Local scratch (not in git; .git/info/exclude)
-scratch/rv1 (rule_v1 eval records), scratch/acode (A 59034a3), scratch/acode_xr (A 2df9308 + KNOWN_ISSUES.json from
-bf51d94), scratch/bcode (B ac524e8), scratch/bres (B's dev_missing scores), scratch/topk, scratch/venv_ctx,
-scratch/qwen35_tok, scratch/verify_ids.json, cache/api.
-
-## Open compute requests
-- #1 (3 Oct): OPENROUTER_API_KEY (API judges: three closed flagships, Kimi K3, Llama-3.3-70B; references).
-
-## Blockers
-- GPUs: the cluster is full (many pods pending); >= 40 GB cards scarce (ThinkPRM, prompted MedEinst).
+## Local scratch (not in git)
+scratch/rv1 (rule_v1 records), scratch/acode_xr (xr_v1 + KNOWN_ISSUES), scratch/afreeze (A's rule freeze),
+scratch/bcode (B ac524e8), scratch/bcode2 (B 10e1882), scratch/anegbank, scratch/probe, scratch/stage2.
