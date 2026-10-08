@@ -18,6 +18,7 @@
    "crossed": 214
   },
   "n_opposed": 496,
+  "n_response_pairs": 1000,
   "source_run": "C-TF-critic"
  },
  "signal=B-F-verdict-blocks": {
@@ -34,6 +35,7 @@
    "wrong_direction": 19
   },
   "n_opposed": 499,
+  "n_response_pairs": 1000,
   "source_run": "B-F-verdict-blocks-s0"
  },
  "signal=C-AUD-medprm": {
@@ -51,6 +53,180 @@
    "crossed": 112
   },
   "n_opposed": 513,
+  "n_response_pairs": 1000,
   "source_run": "C-AUD-medprm"
+ },
+ "signal=C-AUD-meds3": {
+  "crossed": 29.352226720647774,
+  "short": 21.65991902834008,
+  "unmoved": 40.89068825910931,
+  "wrong": 8.097165991902834,
+  "kappa": 0.46779876631821765,
+  "tau": 0.2693958282470703,
+  "counts": {
+   "baseline_agrees": 506,
+   "unmoved": 202,
+   "short": 107,
+   "crossed": 145,
+   "wrong_direction": 40
+  },
+  "n_opposed": 494,
+  "n_response_pairs": 1000,
+  "source_run": "C-AUD-meds3"
+ },
+ "signal=C-AUD-fover": {
+  "crossed": 54.52755905511811,
+  "short": 19.291338582677167,
+  "unmoved": 20.866141732283463,
+  "wrong": 5.31496062992126,
+  "kappa": 0.9088792543505667,
+  "tau": 0.8407125473022461,
+  "counts": {
+   "baseline_agrees": 492,
+   "short": 98,
+   "crossed": 277,
+   "unmoved": 106,
+   "wrong_direction": 27
+  },
+  "n_opposed": 508,
+  "n_response_pairs": 1000,
+  "source_run": "C-AUD-fover"
+ },
+ "signal=C-TF-promptsum": {
+  "crossed": 85.25252525252525,
+  "short": 6.262626262626263,
+  "unmoved": 5.858585858585859,
+  "wrong": 2.6262626262626263,
+  "kappa": 1.4893625724112027,
+  "tau": 0.2655678689479828,
+  "counts": {
+   "wrong_direction": 13,
+   "short": 31,
+   "baseline_agrees": 505,
+   "unmoved": 29,
+   "crossed": 422
+  },
+  "n_opposed": 495,
+  "n_response_pairs": 1000,
+  "source_run": "C-TF-promptsum"
+ },
+ "signal=C-TF-promptledger-lenient": {
+  "crossed": 72.30142566191446,
+  "short": 12.423625254582484,
+  "unmoved": 9.368635437881874,
+  "wrong": 5.906313645621181,
+  "kappa": 1.3732181057775628,
+  "tau": 0.24859559535980225,
+  "counts": {
+   "crossed": 355,
+   "wrong_direction": 29,
+   "baseline_agrees": 497,
+   "short": 61,
+   "unmoved": 46,
+   "d0_zero": 12
+  },
+  "n_opposed": 491,
+  "n_response_pairs": 1000,
+  "source_run": "C-TF-promptledger-lenient"
+ },
+ "signal=C-TF-defcorr": {
+  "crossed": 41.56378600823045,
+  "short": 18.930041152263374,
+  "unmoved": 26.54320987654321,
+  "wrong": 12.962962962962964,
+  "kappa": 0.5166004500694504,
+  "tau": 0.36697161942720413,
+  "counts": {
+   "wrong_direction": 63,
+   "baseline_agrees": 514,
+   "unmoved": 129,
+   "short": 92,
+   "crossed": 202
+  },
+  "n_opposed": 486,
+  "n_response_pairs": 1000,
+  "source_run": "C-TF-defcorr"
+ },
+ "signal=C-TF-genprog": {
+  "crossed": 98.13278008298755,
+  "short": 0.8298755186721992,
+  "unmoved": 0.8298755186721992,
+  "wrong": 0.2074688796680498,
+  "kappa": 2.0356514993674057,
+  "tau": 1.8360419571399689,
+  "counts": {
+   "crossed": 473,
+   "baseline_agrees": 495,
+   "unmoved": 4,
+   "wrong_direction": 1,
+   "short": 4
+  },
+  "n_opposed": 482,
+  "n_response_pairs": 977,
+  "source_run": "C-TF-genprog"
+ },
+ "signal=B-F-verdict-triplets": {
+  "crossed": 95.29411764705883,
+  "short": 0.19607843137254902,
+  "unmoved": 1.1764705882352942,
+  "wrong": 3.3333333333333335,
+  "kappa": 1.0493414451758012,
+  "tau": 1.0186259746551514,
+  "counts": {
+   "baseline_agrees": 490,
+   "crossed": 486,
+   "unmoved": 6,
+   "wrong_direction": 17,
+   "short": 1
+  },
+  "n_opposed": 510,
+  "n_response_pairs": 1000,
+  "source_run": "B-F-verdict-triplets-s0"
+ },
+ "signal=B-F-ledger2-blocks": {
+  "crossed": 100.0,
+  "short": 0.0,
+  "unmoved": 0.0,
+  "wrong": 0.0,
+  "kappa": 1.0994092787124412,
+  "tau": 0.0,
+  "counts": {
+   "baseline_agrees": 492,
+   "crossed": 508
+  },
+  "n_opposed": 508,
+  "n_response_pairs": 1000,
+  "source_run": "B-F-ledger2-blocks-s0"
+ },
+ "signal=B-F-ledger2-triplets": {
+  "crossed": 99.36708860759494,
+  "short": 0.0,
+  "unmoved": 0.0,
+  "wrong": 0.6329113924050633,
+  "kappa": 1.011966122763474,
+  "tau": 0.0,
+  "counts": {
+   "baseline_agrees": 526,
+   "crossed": 471,
+   "wrong_direction": 3
+  },
+  "n_opposed": 474,
+  "n_response_pairs": 1000,
+  "source_run": "B-F-ledger2-triplets-s0"
+ },
+ "signal=B-F-summary2-triplets": {
+  "crossed": 100.0,
+  "short": 0.0,
+  "unmoved": 0.0,
+  "wrong": 0.0,
+  "kappa": 1.0261962645793674,
+  "tau": 0.0,
+  "counts": {
+   "baseline_agrees": 508,
+   "crossed": 492
+  },
+  "n_opposed": 492,
+  "n_response_pairs": 1000,
+  "source_run": "B-F-summary2-triplets-s0"
  }
 }

@@ -20,6 +20,15 @@
  "acc_Paraphrase": 0.7626666666666667,
  "acc_Text_appended": 0.7113333333333334,
  "Average": 0.8088030118000121,
+ "section=Eligibility": {
+  "Control_F1": 0.7333333333333333,
+  "Faithfulness": 0.8423423423423423,
+  "Consistency": 0.8338028169014085,
+  "Average": 0.8031594975256947,
+  "n_control": 132,
+  "n_altering": 222,
+  "n_preserving": 1065
+ },
  "eval": {
   "seconds": 828.3,
   "pad_ok": true,

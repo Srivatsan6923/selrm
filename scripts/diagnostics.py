@@ -96,7 +96,7 @@ def shift(run, data):
         cls["crossed" if y * delta > abs(d0) else "unmoved" if abs(delta) <= tau else
             "wrong_direction" if y * delta < 0 else "short"] += 1
     n_opp = sum(cls[k] for k in ("crossed", "unmoved", "wrong_direction", "short"))
-    return {"tau": tau, "counts": dict(cls), "n_opposed": n_opp,
+    return {"tau": tau, "counts": dict(cls), "n_opposed": n_opp, "n_response_pairs": len(gaps),
             "shares_of_opposed": {k: 100.0 * cls[k] / n_opp for k in ("crossed", "unmoved", "wrong_direction", "short")} if n_opp else None,
             "kappa": statistics.median(opp) / statistics.median(gaps) if opp and gaps and statistics.median(gaps) else None}
 

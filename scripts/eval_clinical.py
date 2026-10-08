@@ -544,6 +544,9 @@ def nli4ct(a):
         if not os.path.exists(p):
             continue
         recs = load_jsonl(p)
+        elig = [r for r in recs if r["meta"]["section"] == "Eligibility"]
+        E = ["", f"### {set_name}: statements about the Eligibility section", "",
+             "| run | Control F1 | Faithfulness | Consistency | Average | n control / altering / preserving |", "|---|---|---|---|---|---|"]
         L += [f"## {set_name}", "", "| run | Control F1 | macro-F1 | Faithfulness | Consistency | Consistency (acc.) | Contrast F1 | Average |",
               "|---|---|---|---|---|---|---|---|"]
         for d in sorted(os.listdir(a.results)):
@@ -555,6 +558,11 @@ def nli4ct(a):
             m = nli_metrics(recs, pred)
             summ = {"run_id": d, "set": set_name, "prediction_rule": "Entailment iff u > 0", "macroF1": m["Control_macroF1"],
                     "faithfulness": m["Faithfulness"], "consistency": m["Consistency"]} | m
+            me = nli_metrics(elig, pred)          # eligibility-section slice (plan, secondary 12)
+            summ["section=Eligibility"] = {k: me[k] for k in ("Control_F1", "Faithfulness", "Consistency", "Average",
+                                                              "n_control", "n_altering", "n_preserving")}
+            E.append(f"| {d} | {me['Control_F1']:.3f} | {me['Faithfulness']:.3f} | {me['Consistency']:.3f} | {me['Average']:.3f} | "
+                     f"{me['n_control']} / {me['n_altering']} / {me['n_preserving']} |")
             out = f"{a.results}/{d}/summary_{set_name.replace('/', '~')}.json"
             old = json.load(open(out, encoding="utf-8")) if os.path.exists(out) else {}
             summ["eval"] = old.get("eval")
@@ -562,7 +570,7 @@ def nli4ct(a):
             L.append(f"| {d} | {m['Control_F1']:.3f} | {m['Control_macroF1']:.3f} | {m['Faithfulness']:.3f} | "
                      f"{m['Consistency']:.3f} | {m['Consistency_acc']:.3f} | {m['Contrast_F1']:.3f} | {m['Average']:.3f} |")
             print(set_name, d, {k: round(v, 3) for k, v in m.items() if isinstance(v, float)})
-        L.append("")
+        L += E + [""]
     open(f"{REPO}/docs/NLI4CT_RESULTS.md", "w", encoding="utf-8", newline="\n").write("\n".join(L) + "\n")
     print("wrote docs/NLI4CT_RESULTS.md")
 
