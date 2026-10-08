@@ -1,0 +1,44 @@
+{
+ "run_id": "B-F-summary2-blocks-s4",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 70.25,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 95.04166666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 69.0,
+   "XA_inclusivity": 51.0,
+   "XA_subject": 94.0,
+   "XA_window": 67.0
+  },
+  "criterion": {
+   "XA": 78.25,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 96.375,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 62.0,
+   "XA_subject": 93.0,
+   "XA_window": 58.0
+  }
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 527.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

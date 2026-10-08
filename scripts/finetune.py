@@ -225,6 +225,10 @@ def train(spec, paths, log=print, hp=HP):
             if time.time() - self.last > hp["save_every_s"]:
                 control.should_save, self.last = True, time.time()
 
+        def on_epoch_end(self, args, state, control, model=None, **kw):
+            if spec.get("save_epochs"):          # epoch selection (docs/AUX_PROTOCOL.md S1): one adapter per epoch
+                model.save_pretrained(f"{paths['adapter']}-e{round(state.epoch)}")
+
         def on_log(self, args, state, control, logs=None, **kw):
             if logs:
                 log(f"step {state.global_step}/{state.max_steps} " + " ".join(

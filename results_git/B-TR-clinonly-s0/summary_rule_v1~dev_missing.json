@@ -1,0 +1,18 @@
+{
+ "run_id": "B-TR-clinonly-s0",
+ "set": "rule_v1/dev_missing",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "reader_units": 600,
+  "malformed_units": 8,
+  "mode": null,
+  "malformed_rate": 0.0133,
+  "gen_not_stopped": 0,
+  "seconds": 38.2,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

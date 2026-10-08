@@ -1,70 +1,48 @@
-# STATE role B (maintained by Claude Code)
-Updated: 2026-10-03 ~12:40 UTC (Sat). Plan: docs/FINAL_TASKS_B.md (3 Oct; replaces every earlier directive).
-Run freeze: Wed 7 Oct 23:59 (UTC assumed). Decisions: docs/DECISIONS_B.md. Analyses: docs/ANALYSIS_B.md.
+# STATE role B
+Updated: 2026-10-09 ~00:30 UTC. Plan: docs/STAGE2_TASKS_B.md with docs/STAGE2_SPEC.md (replace FINAL_TASKS_B and
+NEXT_TASKS_B; the lead lifted the 7 Oct run freeze). Decisions: docs/DECISIONS_B.md. Analyses: docs/ANALYSIS_B.md.
+Nothing is tuned on a test set: parser, linker, gate and prompts are developed on dev portions only.
 
-## P0 status
-1. Analyses on existing predictions (docs/ANALYSIS_B.md, `python scripts/analysis_b.py > docs/ANALYSIS_B.md`): done
-   (sections 1-9; B-AE-oracle-ledger, B-AE-field-edit, B-AE-field-swap DONE 05:53-06:00 UTC on H100s). Field
-   edits that should change the verdict are followed in 47.8% (handoff 3 Oct). Left: the blocks half of the
-   paired ledger-summary comparison after summary2 x blocks.
-2. B-F-summary2-blocks-s0: DONE (L2 TA 67.3); paired ledger-summary on blocks in ANALYSIS_B section 1.
-3. Core seeds 1-2: DONE (12 runs; ANALYSIS_B section 13 mean +- s.d.; seed-pooled ledger-summary in section 1).
-   Blocks cells vary a lot across seeds (handoff 3 Oct).
-4. B-SC-summary2-triplets-s0: DONE (L2 TA 98.8 vs 98.0 blind; ANALYSIS_B section 11).
-5. LOKO: DONE (9 runs; ANALYSIS_B section 10; handoff 3 Oct).
-6. New sets: xr_v1/test registered by A (efe0128) and restored on the PVC (sha256 = A's). Every not-started training
-   run (except folds and diversity curves) now evaluates on it and keeps its adapter; kept adapters of finished runs
-   get eval-only runs B-NS-xr_v1-<run> (configs/queues/v2/b_ns.json, priority 45). Summaries carry crossed accuracy
-   (meta.xr.item). Runs claimed before 06:45 UTC (summary2 x blocks s0, verdict core seeds 1-2) need B-NS after
-   they finish: `python scripts/submit_b.py pull` first, then `python scratch/regen_revised.py` (ns_eval reads
-   results_git meta.json), push v2/b_ns.json, prep. challenge_v1, rewrite_v1, ec_v1: not registered yet.
-   configs/adapters.json lists 6 kept adapters for C and D.
+## Stage-2 tasks
+- B0 housekeeping: DONE except the L3-inv cells.
+  - Every finished run is pulled, registered and resummarised (16 new: B-LC ledger2 triplets s0-s2, LOKO seeds 1-2
+    of verdict and summary2, B-SC summary2 triplets s1, B-TR-tripclin-s0 valid rerun). Folds 2-3 are complete.
+  - configs/adapters.json has the stage-2 names (`<format>_<corpus>_s<seed>`, alias_of = the B-F run);
+    verdict_{blocks,triplets}_s0-4, summary2_triplets_s0, ledger2_blocks_s0, ledger2_triplets_s0-4 checked on the
+    PVC (adapter_config.json and weights present).
+  - Red cells: summary x blocks seed 4 (ANALYSIS_B 12, 13); premise gate (15); XA without the 38 known-issue items
+    (12, column XA-); budget (7); B-TR-tripclin-s0 (7, 12, summaries); learning rate 1e-4, no lambda in the code
+    (HANDOFFS 9 Oct). OPEN: L3-inv of FoVer data, ledger natural, ledger balanced, clinical pairs only and
+    triplets + clinical pairs: eval-only runs B-NS-L3inv-<run> (configs/queues/v2/b_l3inv.json, prepped), two
+    H100 runners started 00:20 UTC. After they finish: pull, resummarize_b.py, analysis, HANDOFFS line to D.
+- B1 gate library: DONE for rule_v1/dev. selrm/crit_parse.py, selrm/link.py, selrm/gate.py, tests/test_gate.py
+  (boundary day in both conventions), scripts/gate_dev.py (results_git/B-S2-gate-dev/summary_<set>.json; rule_v1/dev:
+  parser coverage and agreement with the program on every unit). TODO when A registers them: rule_v2/dev, reg_v1/dev,
+  mcv_v1/dev (parser; precision against `struct` needs A's struct format, asked in HANDOFFS), cls_v1/dev (linker
+  top-1, top-10 recall, abstention; choose and verify the encoder then), unit conversion in gate.value_check.
+- B2 training on rule_v2: blocked on A5 (rule_v2 not registered). Needs a stage-2 record format in selrm/formats.py
+  (date in `time`, `concept`, `applies`; judge prompts record-only and record+case, half each) and queue rows.
+- B3 Ledger-RM-G: after B1 and B2. Validation stop rule (0.5 TA on rule_v2/dev and rule_v1/dev).
+- B4 adaptation arms: blocked on A1 (mcv_v1/adapt_blocks, adapt_triplets).
+- B5 handoffs: adapters line sent 9 Oct; resources per configuration after B2.
+- Carry-over: Qwen3.5-4B cells (3, queued, the runners take them), 6 B-NS-xr_v1-B-AUX evals (queued); diversity
+  curves (39), seeds 1-2 of non-core ablations: not queued, to be run when GPUs are idle after B2-B4 or reported to D.
 
-## Queue (configs/queues, pushed to /pvc/selrm/queues; priority from make_queue_b.py)
-0 B-AE-* P0.1 -> 1 B-F-rationale-balanced-s0 (orphan claim, resumes) -> 10 summary2 x blocks -> 20 core seeds 1-2
--> 30 B-SC -> 40-42 LOKO -> 50 remaining seed 0 -> 55 core seeds 3-4 -> 60-70 ablations -> 72 FoVer -> 73 GenPRM
--> 76-77 folds -> 80-81 diversity -> 85 second backbone (Qwen3.5-4B; seeds 1-2 at 95) -> 92-99 unlisted rows.
-45: B-NS eval-only runs on A's new sets. B-AB-conddrv-s0 (63) has min_gen 3 (runner code >= f179ade).
+## GPUs
+- `python scripts/submit_b.py runners all --n 2 --gpu h100-opp --max-runs 8 --hours 8 --models
+  unsloth--Qwen3.5-9B,unsloth--Qwen3.5-4B` (opportunistic H100; code 506c27b, GEN 4).
+- Sync pod selrm-b-sync created 8 Oct ~23:10 UTC (6 h limit): recreate with `kubectl -n ecepxie delete pod
+  selrm-b-sync`, then `python scripts/submit_b.py sync-up`.
+- Never run two data jobs at once. Laptop memory is tight: analysis and resummarize one at a time.
 
-## GPUs held (07:05 UTC)
-- Running: 4 x H100 (opportunistic; runner Jobs from 05:40 and 06:15 UTC, max 3 / 6 runs), 1 x A100, 1 x L40.
-  Pending: 5 x A100, 2 x A40, 1 x A6000 (runner code 625e935), 3 x H100 (code 3b62811). A100 quota shared with C
-  (B at most 6). 24 GB cards are not used: training peaks at 21-27 GB. H100 runs resume from their last 20-min
-  checkpoint if preempted.
-- Sync pod selrm-b-sync started 13:18 UTC (6 h deadline): recreate before ~19:10 UTC (`kubectl -n ecepxie delete pod
-  selrm-b-sync`, then `python scripts/submit_b.py sync-up`).
-- Never run two data jobs (build-data, restore-data) at once: each rewrites the PVC registry.
-
-## Done (rule_v1 seed 0, provisional; docs/FACTORIAL_B_S0.md)
-verdict x {natural, balanced, blocks, triplets}; rationale x {natural, blocks, triplets}; summary2 x triplets;
-ledger2 x {blocks, triplets}; B-BB-qwen3.5-4b verdict x blocks; all B-C0 validation runs; B-T0 timing.
-
-## P1 status
-- B-DIS-s0..s2 queued (74): ledger2 on C's clin_v1/clinpairs_medeinst_dis (copied from PVC selrm-c, sha256 = C's),
-  eval clin_v1/medeinst_dis_test (pair reversal) + rule dev/L2 + xr_v1. B-TR-steperr dropped (MedPRMBench unreleased).
-- B-TR-clinonly-s0 and B-TR-tripclin-s0 queued (74) on C's final clin_v1/clinpairs_train (sha 548d26d0); seeds
-  1-2 at 94. Clinical train dirs rebuilt by one prep job after a two-pod temp-file collision (fixed: uuid names).
-- Premise gate: C publishes Med-PRM per-example scores (results_git/C-AUD-medprm on role-c, dev and test_L2).
-
-## P1 work without GPUs
-- B-AB-conddrv-s0 (condition derived by the reader): format conddrv implemented, CPU self-test passes, queued
-  (priority 63), prep OK.
-- New sets from A (P0.6): check that their records carry gold ledgers before the reader formats are run on them
-  (pretok check_gold requires one per (case, condition)); C's xr_v1 convention: selrm.metrics.crossed_accuracy.
-- Premise gate: needs the step check (C/D). Probe re-weighting step 2 after its scores run.
-- Medical-data rows, B-DIS: need C's clinical pairs.
-
-## Before the tables
-- Summaries written by runners on code before e86e9f7 carry CIs from the old bootstrap (process-dependent order;
-  ~0.1 point): recompute every summary from its scores file with the final selrm/metrics.py before make_tables:
-  `python scripts/resummarize_b.py --all` (also adds xr crossed accuracy / clinical pair reversal to summaries
-  written by older runner code; run it on every pulled run that evaluated xr_v1 or a clinical pair set).
-- Regenerate docs/PROJECTION_B.md once an H100 training run has finished (H100 speed is unmeasured until then).
+## Routine
+Pull (`submit_b.py pull`), `register_adapters.py`, `resummarize_b.py <runs>`, analysis (temp file, then move),
+commit and push; HANDOFFS lines for results C or D use. `python scratch/regen_revised.py` regenerates queue files.
 
 ## Open compute requests
-- #1 (2 Oct): read-only GitHub token secret `selrm-github-ro`; confirm `hf-token-srivatsan` is the user's (needed to
-  publish kept adapters to a private HF repo). Until then kept adapters stay on the PVC.
+- #1 (2 Oct, also H-S2-2): read-only GitHub token secret `selrm-github-ro`; confirm `hf-token-srivatsan` is the
+  user's. Until then kept adapters stay on the PVC (C mounts selrm-b read-only).
 
 ## Blockers
-- A: train_triplets_no_*, xr_v1, challenge_v1, rewrite_v1, ec_v1 (A's last commit 813e921: paused).
-- Cluster: no free GPUs of B's types.
+- A: rule_v2 (A5), mcv_v1 (A1), onto_v1 / cls_v1 (A4), reg_v1 (A6); the `struct` and onto_v1 file formats.
+- Stage-1 S1 aux grid (NLI4CT, MedEinst dev splits from C) is not part of the stage-2 plan and is not pursued.

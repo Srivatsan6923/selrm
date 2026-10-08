@@ -1,6 +1,109 @@
 {
  "runs": [
   {
+   "run_id": "B-NS-xr_v1-B-AUX-trialgpt-ep5-s0",
+   "seed": 0,
+   "priority": 45,
+   "format": "verdict",
+   "train": false,
+   "adapter": "adapters/B-AUX-trialgpt-ep5-s0",
+   "eval_sets": [
+    "xr_v1/test"
+   ],
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "base_model": "unsloth/Qwen3.5-9B",
+   "min_gen": 4
+  },
+  {
+   "run_id": "B-NS-xr_v1-B-AUX-trialgpt-ep5-s0-e1",
+   "seed": 0,
+   "priority": 45,
+   "format": "verdict",
+   "train": false,
+   "adapter": "adapters/B-AUX-trialgpt-ep5-s0-e1",
+   "eval_sets": [
+    "xr_v1/test"
+   ],
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "base_model": "unsloth/Qwen3.5-9B"
+  },
+  {
+   "run_id": "B-NS-xr_v1-B-AUX-trialgpt-ep5-s0-e2",
+   "seed": 0,
+   "priority": 45,
+   "format": "verdict",
+   "train": false,
+   "adapter": "adapters/B-AUX-trialgpt-ep5-s0-e2",
+   "eval_sets": [
+    "xr_v1/test"
+   ],
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "base_model": "unsloth/Qwen3.5-9B"
+  },
+  {
+   "run_id": "B-NS-xr_v1-B-AUX-trialgpt-ep5-s0-e3",
+   "seed": 0,
+   "priority": 45,
+   "format": "verdict",
+   "train": false,
+   "adapter": "adapters/B-AUX-trialgpt-ep5-s0-e3",
+   "eval_sets": [
+    "xr_v1/test"
+   ],
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "base_model": "unsloth/Qwen3.5-9B"
+  },
+  {
+   "run_id": "B-NS-xr_v1-B-AUX-trialgpt-ep5-s0-e4",
+   "seed": 0,
+   "priority": 45,
+   "format": "verdict",
+   "train": false,
+   "adapter": "adapters/B-AUX-trialgpt-ep5-s0-e4",
+   "eval_sets": [
+    "xr_v1/test"
+   ],
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "base_model": "unsloth/Qwen3.5-9B"
+  },
+  {
+   "run_id": "B-NS-xr_v1-B-AUX-trialgpt-ep5-s0-e5",
+   "seed": 0,
+   "priority": 45,
+   "format": "verdict",
+   "train": false,
+   "adapter": "adapters/B-AUX-trialgpt-ep5-s0-e5",
+   "eval_sets": [
+    "xr_v1/test"
+   ],
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "base_model": "unsloth/Qwen3.5-9B"
+  },
+  {
    "run_id": "B-NS-xr_v1-B-F-ledger2-blocks-s0",
    "seed": 0,
    "priority": 45,

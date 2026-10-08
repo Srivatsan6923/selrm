@@ -1,0 +1,92 @@
+{
+ "run_id": "B-AUX-trialgpt-ep5-s0-e1",
+ "model": "unsloth/Qwen3.5-9B",
+ "model_revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+ "provider": "local (NRP Nautilus)",
+ "access_date": "2026-10-04",
+ "reasoning": "chat template with enable_thinking=False",
+ "format": "verdict",
+ "corpus": null,
+ "seed": 0,
+ "provisional": false,
+ "timing_only": false,
+ "eval_sets": [
+  "clin_v1/trialgpt_dev"
+ ],
+ "train_key": null,
+ "pretok_stats": null,
+ "train": {
+  "hp": {
+   "lr": 0.0001,
+   "batch": 64,
+   "per_device": 8,
+   "epochs": 1,
+   "max_len": 1024,
+   "lora_r": 64,
+   "lora_alpha": 64,
+   "lora_dropout": 0.0,
+   "warmup_ratio": 0.03,
+   "weight_decay": 0.0,
+   "optim": "adamw_torch_fused",
+   "max_grad_norm": 1.0,
+   "save_every_s": 1200,
+   "target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj"
+   ]
+  },
+  "grad_accum": null,
+  "eval_only": true,
+  "adapter": "adapters/B-AUX-trialgpt-ep5-s0-e1"
+ },
+ "eval_seconds": 6.9,
+ "eval_seconds_by_set": {
+  "clin_v1/trialgpt_dev": 6.9
+ },
+ "eval_batch": {
+  "score": 128,
+  "generate": 256,
+  "max_new": 384
+ },
+ "eval_peak_mem_gb": 24.66,
+ "eval_generated_tokens": 0,
+ "pad_check_ok": true,
+ "per_device_batch": 8,
+ "grad_accum": null,
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA H100 80GB HBM3, 615.71.09, 81559 MiB",
+ "node": "exp-19-09.sdsc.optiputer.net",
+ "pod": "selrm-b-run-all-h100-opp-57974-1-4htbg",
+ "git_commit": "10e1882945ce",
+ "wall_seconds": 26.2,
+ "keep_adapter": false,
+ "max_rss_gb": 11.94,
+ "eval_u_path": "fp32-hidden",
+ "adapter_path": null,
+ "summaries": {
+  "clin_v1/trialgpt_dev": null
+ },
+ "gpu_util_mean": null,
+ "gpu_util_p10": null,
+ "gpu_windows_below40": null,
+ "gpu_samples": 0,
+ "gpu_hours": 0.007
+}

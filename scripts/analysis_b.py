@@ -6,8 +6,8 @@ import collections, glob, json, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
-from selrm.metrics import _flags, bootstrap_ci, decisions, paired_cluster_bootstrap, paired_test, seed_table, summarise
-from report_b import RG, records
+from selrm.metrics import _flags, bootstrap_ci, crossed_accuracy, decisions, paired_cluster_bootstrap, paired_test, seed_table, summarise
+from report_b import DATA, RG, records
 
 NL = "\n"
 KINDS = ("boundary", "negation", "numeric", "subject", "time")
@@ -15,20 +15,43 @@ CELLS = [(f, c) for f in ("verdict", "rationale", "summary2", "value2", "ledger2
          for c in ("natural", "balanced", "blocks", "triplets")]
 
 
-def scores(rid, set_name):
+def scores(rid, set_name, full=False):
+    """{iid: row}; only u unless full (reader outputs are large)."""
     p = f"{RG}/{rid}/scores_{set_name.replace('/', '~')}.jsonl"
     if not os.path.exists(p):
         return None
-    return {r["iid"]: r for r in map(json.loads, open(p, encoding="utf-8"))}
+    return {r["iid"]: (r if full else {"u": r["u"]}) for r in map(json.loads, open(p, encoding="utf-8"))}
 
 
+SLIM = ("iid", "tid", "case_kind", "claim_type", "claim_role", "label", "rid", "nm_kind", "tier", "level", "family",
+        "claim_text")
+REG = json.load(open(f"{DATA}/REGISTRY.json"))
 _rec_cache = {}
 
 
 def recs(set_name):
+    """Records without case texts, ledgers and prose (all the analyses need; cached per set)."""
     if set_name not in _rec_cache:
-        _rec_cache[set_name] = records(set_name)
+        _rec_cache[set_name] = [{k: r[k] for k in SLIM} for r in stream(set_name)]
     return _rec_cache[set_name]
+
+
+def stream(set_name):
+    """Records of a set, one line at a time (the full files hold case texts, ledgers and prose)."""
+    return map(json.loads, open(f"{DATA}/{REG[set_name]['path']}", encoding="utf-8"))
+
+
+_claims_cache = {}
+
+
+def claims_by_unit(set_name):
+    """{case unit: lower-cased claim texts}, the only record content the leakage check needs."""
+    if set_name not in _claims_cache:
+        c = collections.defaultdict(set)
+        for r in stream(set_name):
+            c["/".join(r["iid"].split("/")[:2])].add(r["claim_text"].strip().lower())
+        _claims_cache[set_name] = c
+    return _claims_cache[set_name]
 
 
 def triplets(rid, set_name="rule_v1/test_L2"):
@@ -46,7 +69,7 @@ def done(rid):
 def pdiff(Ta, Tb, m):
     """a - b [95% CI], two-sided bootstrap p (C's paired_test: rules as clusters, reproducible order)."""
     d, lo, hi, p = paired_test(Ta, Tb, m)
-    p = f"p {p:.3f}" if p > 0 else "p < 0.001"     # 1,000 resamples, none on the other side
+    p = f"p {p:.3f}" if p > 0 else "p < 0.002"     # two-sided, 1,000 resamples: the smallest non-zero p is 0.002
     return f"{d:+.1f} [{lo:+.1f}, {hi:+.1f}], {p}"
 
 
@@ -95,7 +118,7 @@ def paired_section():
             print("|---|---|---|---|")
             for m, xs in items.items():
                 r = paired_cluster_bootstrap(xs, "u", mean("a"), mean("b"))
-                p = f"p {r['p']:.3f}" if r["p"] > 0 else "p < 0.001"
+                p = f"p {r['p']:.3f}" if r["p"] > 0 else "p < 0.002"
                 print(f"| {m} | {mean('a')(xs):.1f} | {mean('b')(xs):.1f} | {r['diff']:+.1f} [{r['lo']:+.1f}, {r['hi']:+.1f}], {p} |")
             print()
 
@@ -128,12 +151,10 @@ def leakage_section():
             m = json.load(open(f"{RG}/{rid}/meta.json"))
             outs, hit_claim, hits = {}, 0, collections.Counter()
             for s in m["eval_sets"]:
-                S = scores(rid, s)
+                S = scores(rid, s, full=True)
                 if S is None:
                     continue
-                claims = collections.defaultdict(set)
-                for r in recs(s):
-                    claims["/".join(r["iid"].split("/")[:2])].add(r["claim_text"].strip().lower())
+                claims = claims_by_unit(s)
                 for iid, row in S.items():
                     unit = "/".join(iid.split("/")[:2])
                     if unit in outs or "reader_output" not in row:
@@ -260,10 +281,7 @@ def budget_section():
         if not ps or not str(m.get("corpus", "")).startswith("rule_v1") or m.get("provisional"):
             continue
         parts = ps.get("parts", {})
-        try:
-            n_corpus = len(records(m["corpus"]))
-        except Exception:
-            n_corpus = None
+        n_corpus = REG.get(m["corpus"], {}).get("n_records")
         print(f"| {d} | {m['gpu'].split(',')[0]} | {n_corpus} | {ps.get('examples')} | {parts.get('reader', '-')} | "
               f"{parts.get('judge', '-')} | {ps.get('tokens')} | {ps.get('completion_tokens')} | {tr.get('steps')} | "
               f"{tr.get('train_seconds', 0) / 3600:.2f} | {m.get('eval_seconds', 0) / 3600:.2f} |")
@@ -333,49 +351,71 @@ def field_section():
 
 def loko_section():
     print("## 10. Leave one near-miss kind out (test_L2, triplets of the held-out kind; FINAL_TASKS_B P0.5)" + NL)
-    print("| held-out kind | format | trained without the kind | trained on all kinds (B-F-<format>-triplets-s0) | "
-          "without - all [95% CI], p |")
-    print("|---|---|---|---|---|")
+    print("Seed 0 against the same format trained on all kinds (B-F-<format>-triplets-s0; for the decision-bit reader "
+          "the bit-only-reader ablation B-AB-bitonly-reader-s0); seeds 1-2 (NEXT_TASKS_B 4) listed with the mean." + NL)
+    print("| held-out kind | format | trained without the kind (s0) | trained on all kinds | without - all [95% CI], p "
+          "| s0 / s1 / s2 | mean |")
+    print("|---|---|---|---|---|---|---|")
+    ref = {"verdict": "B-F-verdict-triplets-s0", "summary2": "B-F-summary2-triplets-s0",
+           "ledger2": "B-F-ledger2-triplets-s0", "bit_reader": "B-AB-bitonly-reader-s0"}
     for kind in ("subject", "time", "boundary"):
-        for fmt in ("verdict", "summary2", "ledger2"):
-            a, b = f"B-LOKO-{kind}-{fmt}-s0", f"B-F-{fmt}-triplets-s0"
+        for fmt, b in ref.items():
+            a = f"B-LOKO-{kind}-{fmt}-s0"
             if not (done(a) and done(b)):
-                print(f"| {kind} | {fmt} | not run | | |")
+                print(f"| {kind} | {fmt} | not run | | | | |")
                 continue
+            kind_ta = lambda r: summarise({t: v for t, v in triplets(r).items() if v["nm_kind"] == kind})["all"]["TA"]
             Ta = {t: v for t, v in triplets(a).items() if v["nm_kind"] == kind}
             Tb = {t: v for t, v in triplets(b).items() if v["nm_kind"] == kind}
+            seeds = {sd: kind_ta(f"B-LOKO-{kind}-{fmt}-s{sd}") for sd in range(3) if done(f"B-LOKO-{kind}-{fmt}-s{sd}")}
             print(f"| {kind} | {fmt} | {summarise(Ta)['all']['TA']:.1f} | {summarise(Tb)['all']['TA']:.1f} | "
-                  f"{pdiff(Ta, Tb, 'TA')} |")
+                  f"{pdiff(Ta, Tb, 'TA')} | " + " / ".join(f"{seeds[sd]:.1f}" if sd in seeds else "-" for sd in range(3))
+                  + f" | {sum(seeds.values()) / len(seeds):.1f} |")
     print()
 
 
 def case_visible_section():
-    print("## 11. Summary pipeline whose judge also sees the case (test_L2, triplets corpus, seed 0; FINAL_TASKS_B P0.4)" + NL)
-    a, b, c = "B-SC-summary2-triplets-s0", "B-F-summary2-triplets-s0", "B-F-ledger2-triplets-s0"
-    if not all(map(done, (a, b, c))):
-        print("not run" + NL)
-        return
-    T = {r: triplets(r) for r in (a, b, c)}
-    print("| run | judge sees | TA | Rev | Hold |")
-    print("|---|---|---|---|---|")
-    for r, sees in ((a, "rule, case, prose record, claim"), (b, "rule, prose record, claim"), (c, "rule, ledger, claim")):
-        s = summarise(T[r])["all"]
-        print(f"| {r} | {sees} | {s['TA']:.1f} | {s['Rev']:.1f} | {s['Hold']:.1f} |")
-    print(NL + f"Case-visible minus blind summary judge, TA: {pdiff(T[a], T[b], 'TA')}; ledger minus case-visible summary "
-          f"judge, TA: {pdiff(T[c], T[a], 'TA')}." + NL)
+    print("## 11. Judges that also see the case (test_L2; FINAL_TASKS_B P0.4, NEXT_TASKS_B 2)" + NL)
+    print("Case-visible judge: rule, case, record, claim (B-SC summary2_case, B-LC ledger2_case); blind judge: rule, "
+          "record, claim (B-F). Seed 0 paired; seeds listed with the mean." + NL)
+    print("| corpus | record | case-visible TA / Rev / Hold (s0) | blind TA / Rev / Hold (s0) | case-visible - blind TA "
+          "[95% CI], p | case-visible TA s0 / s1 / s2 | mean |")
+    print("|---|---|---|---|---|---|---|")
+    for corpus in ("triplets", "blocks"):
+        for rec, cv, blind in (("prose", "B-SC-summary2", "B-F-summary2"), ("ledger", "B-LC-ledger2", "B-F-ledger2")):
+            a, b = f"{cv}-{corpus}-s0", f"{blind}-{corpus}-s0"
+            if not (done(a) and done(b)):
+                print(f"| {corpus} | {rec} | not run | | | | |")
+                continue
+            Ta, Tb = triplets(a), triplets(b)
+            sa, sb = summarise(Ta)["all"], summarise(Tb)["all"]
+            seeds = {sd: summarise(triplets(f"{cv}-{corpus}-s{sd}"))["all"]["TA"] for sd in range(3)
+                     if done(f"{cv}-{corpus}-s{sd}")}
+            f3 = lambda s: f"{s['TA']:.1f} / {s['Rev']:.1f} / {s['Hold']:.1f}"
+            print(f"| {corpus} | {rec} | {f3(sa)} | {f3(sb)} | {pdiff(Ta, Tb, 'TA')} | "
+                  + " / ".join(f"{seeds[sd]:.1f}" if sd in seeds else "-" for sd in range(3))
+                  + f" | {sum(seeds.values()) / len(seeds):.1f} |")
+    print()
 
 
 def xr_section():
     print("## 12. Rule-side items (xr_v1/test; A's set, 400 items = 2 rules x 3 cases; conclusion claims)" + NL)
     print("An item is solved iff all its cells are right (crossed accuracy XA, selrm.metrics.crossed_accuracy; "
           "B-NS runs score a kept adapter, other runs evaluated the set themselves)." + NL)
-    print("| run | XA | cell accuracy | XA currency | XA inclusivity | XA subject | XA window |")
-    print("|---|---|---|---|---|---|---|")
+    print("XA- leaves out the items of data/xr_v1/KNOWN_ISSUES.json (A's list, found after the freeze)." + NL)
+    excl = {i for iss in json.load(open(f"{ROOT}/data/xr_v1/KNOWN_ISSUES.json"))["issues"] for i in iss["items"]}
+    keep = ("iid", "tid", "case_kind", "claim_type", "claim_role", "label", "nm_kind", "meta")
+    R = [{k: r[k] for k in keep} for r in stream("xr_v1/test") if r["meta"]["xr"]["item"] not in excl]
+    print("| run | XA | XA- | items in XA- | cell accuracy | XA currency | XA inclusivity | XA subject | XA window |")
+    print("|---|---|---|---|---|---|---|---|---|")
     for sp in sorted(glob.glob(f"{RG}/*/summary_xr_v1~test.json")):
         x = json.load(open(sp)).get("xr", {}).get("conclusion")
         if x:
             g = lambda k: f"{x[k]:.1f}" if x.get(k) is not None else "-"
-            print(f"| {os.path.basename(os.path.dirname(sp))} | {g('XA')} | {g('CellAcc')} | {g('XA_currency')} | "
+            u = scores(os.path.basename(os.path.dirname(sp)), "xr_v1/test")
+            Rr = [r for r in R if r["iid"] in u]
+            m = crossed_accuracy(Rr, [u[r["iid"]]["u"] for r in Rr])
+            print(f"| {os.path.basename(os.path.dirname(sp))} | {g('XA')} | {m['XA']:.1f} | {m['n_items']} | {g('CellAcc')} | {g('XA_currency')} | "
                   f"{g('XA_inclusivity')} | {g('XA_subject')} | {g('XA_window')} |")
     print()
 
@@ -413,22 +453,27 @@ def fields_section():
 
 
 def ablation_section():
-    print("## 15. Ablations (Table 9; test_L2, seed 0; reference B-F-ledger2-triplets-s0)" + NL)
+    print("## 15. Ablations (Table 9; test_L2, seed 0; each row against its own reference: B-F-ledger2-triplets-s0 "
+          "unless named)" + NL)
     ref = "B-F-ledger2-triplets-s0"
+    own = {"B-AB-pairwise-s0": "B-F-verdict-triplets-s0",      # verdict format, Bradley-Terry instead of pointwise
+           "B-AB-probe-rw-s0": "B-F-ledger2-blocks-s0"}        # trained without near-misses (the '- near-misses' row)
     runs = sorted(os.path.basename(d) for d in glob.glob(f"{RG}/B-AB-*-s0") if done(os.path.basename(d)))
-    runs += [r for r in ("B-AE-pred-bit-program", "B-AE-program-ledger") if done(r)]   # eval-only Table 9 rows
+    runs += [r for r in ("B-AE-pred-bit-program", "B-AE-program-ledger", "B-AE-premise-gate") if done(r)]   # eval-only rows
     if not runs or not done(ref):
         print("not run" + NL)
         return
     Tr = triplets(ref)
-    print("| run | TA | Rev | Hold | TA minus reference [95% CI], p |")
-    print("|---|---|---|---|---|")
+    print("| run | TA | Rev | Hold | reference | TA minus reference [95% CI], p |")
+    print("|---|---|---|---|---|---|")
     for r in [ref] + runs:
         T = triplets(r)
         if not T:
             continue
         s = summarise(T)["all"]
-        print(f"| {r} | {s['TA']:.1f} | {s['Rev']:.1f} | {s['Hold']:.1f} | {'-' if r == ref else pdiff(T, Tr, 'TA')} |")
+        rr = own.get(r, ref)
+        cmp = "-" if r == ref else pdiff(T, Tr if rr == ref else triplets(rr), "TA") if done(rr) else "not run"
+        print(f"| {r} | {s['TA']:.1f} | {s['Rev']:.1f} | {s['Hold']:.1f} | {'-' if r == ref else rr} | {cmp} |")
     print()
 
 

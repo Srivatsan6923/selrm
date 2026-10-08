@@ -32,7 +32,7 @@ def test_budget_and_balance():
         if fmt == "ledger2_verify":
             st = dict(st, reader=st["reader"], judge=st["judge"])
         assert ans.count("+") == ans.count("-"), fmt
-        if fmt in ("summary2", "summary2_case", "value2", "ledger2", "ledger2_verify", "conddrv"):
+        if fmt in ("summary2", "summary2_case", "value2", "ledger2", "ledger2_verify", "conddrv", "ledger2_case"):
             assert st["reader"] + st["judge"] == len(recs) and abs(st["reader"] - st["judge"]) <= 1
 
 
@@ -52,6 +52,12 @@ def test_two_stage_isolation_and_targets():
     ex2, _ = build_examples(recs, "summary2")
     judge = [e for e in ex if e["part"] == "judge"]
     assert judge and all(any(c in e["prompt"] for c in cases) for e in judge)
+    assert [e["completion"] for e in ex if e["part"] == "reader"] == [e["completion"] for e in ex2 if e["part"] == "reader"]
+    # ledger2_case (NEXT_TASKS_B 2): ledger2's reader targets; the judge sees rule, case, ledger and claim
+    ex, _ = build_examples(recs, "ledger2_case")
+    ex2, _ = build_examples(recs, "ledger2")
+    judge = [e for e in ex if e["part"] == "judge"]
+    assert judge and all(any(c in e["prompt"] for c in cases) and "Evidence record:" in e["prompt"] for e in judge)
     assert [e["completion"] for e in ex if e["part"] == "reader"] == [e["completion"] for e in ex2 if e["part"] == "reader"]
     # conddrv: the reader gets its record's claim and no condition (one unit per record); ledger2 targets; judge blind
     ex, st = build_examples(recs, "conddrv")

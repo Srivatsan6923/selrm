@@ -1,0 +1,38 @@
+{
+ "set": "rule_v1/dev",
+ "units": 1200,
+ "parsed": 1200,
+ "computed": 1200,
+ "agree": 1200,
+ "parser_coverage": 100.0,
+ "gate_coverage": 100.0,
+ "agreement_on_parsed": 100.0,
+ "by_nm_kind": {
+  "boundary": {
+   "n": 240,
+   "agree": 240,
+   "agreement": 100.0
+  },
+  "negation": {
+   "n": 240,
+   "agree": 240,
+   "agreement": 100.0
+  },
+  "numeric": {
+   "n": 240,
+   "agree": 240,
+   "agreement": 100.0
+  },
+  "subject": {
+   "n": 240,
+   "agree": 240,
+   "agreement": 100.0
+  },
+  "time": {
+   "n": 240,
+   "agree": 240,
+   "agreement": 100.0
+  }
+ },
+ "unparsed": []
+}

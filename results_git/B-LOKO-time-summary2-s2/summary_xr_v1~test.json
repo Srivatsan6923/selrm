@@ -1,0 +1,44 @@
+{
+ "run_id": "B-LOKO-time-summary2-s2",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 83.0,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 97.16666666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 96.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 92.0,
+   "XA_window": 44.0
+  },
+  "criterion": {
+   "XA": 87.5,
+   "n_items": 400,
+   "items_incomplete": 0,
+   "CellAcc": 97.91666666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 100.0,
+   "XA_window": 50.0
+  }
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 105.5,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
