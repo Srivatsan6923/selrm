@@ -70,6 +70,24 @@ def test_concept_and_link():
     assert choose(L.candidates("Eliquis"), "D1") == "D1" and choose(L.candidates("Eliquis"), "D7") is None
 
 
+def test_routes():
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts"))
+    from eval_local import gate_units
+    from selrm.formats import reader_unit
+    rule = "If the current serum potassium is above 5.0 mmol/L, prescribe X instead."
+    U = lambda tid, rule_text=rule: {"tid": tid, "case_kind": "base", "condition": "potassium above 5.0",
+                                     "rule_text": rule_text, "case_text": "Potassium 5.6 today.", "iid": tid + "/base/x/s"}
+    led = lambda found, bit: (f"need: potassium above 5.0\nfound: {found}\nsubject: patient\nstatus: present\n"
+                              f"time: current\n\napplies: {bit}")
+    units = [U("a"), U("b"), U("c", ""), U("d")]
+    text = dict(zip(map(reader_unit, units), [(led("5.6", "no"), True), ("garbage", False), (led("5.6", "yes"), True),
+                                              (led("Potassium", "yes"), True)]))
+    a, b, c, d = (gate_units(units, text, "ledger2_dec", "gate")[reader_unit(u)] for u in units)
+    assert a["route"] == "gate" and (a["applies_reader"], a["applies_gate"]) == (0, 1) and a["record"].endswith("applies: yes")
+    assert b == {"route": "fallback_malformed"} and c == {"route": "fallback_none"}
+    assert d["route"] == "judge_case" and d["record"].endswith("applies: yes") and d["checks"]["value"] is None
+
+
 if __name__ == "__main__":
     for name, f in list(globals().items()):
         if name.startswith("test_"):
