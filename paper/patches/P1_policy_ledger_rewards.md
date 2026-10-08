@@ -48,7 +48,7 @@ exploited too, so the link as written is not supported by the finished runs. Pro
 
 and, replacing "as its reversal rate of 19.4\% would suggest":
 > The two ledger rewards, which score written steps and never the final answer, are exploited as well
-> (to es{run/D-RL-ledger2-blocks/L2/top/acc_pair} and es{run/D-RL-ledger2-triplets/L2/top/acc_pair}).
+> (to \res{run/D-RL-ledger2-blocks/L2/top/acc_pair} and \res{run/D-RL-ledger2-triplets/L2/top/acc_pair}).
 > The collapsed policies write a single short step that restates the case header and then answer; most of
 > their errors are failures to hold, not to reverse.
 
