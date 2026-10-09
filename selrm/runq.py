@@ -98,6 +98,25 @@ def release(rdir: str, ok: bool, reason: str = ""):
             os.remove(f"{rdir}/{f}")
 
 
+def gpu_name():
+    """Name and total memory (GiB) of GPU 0, ("", 0.0) if nvidia-smi fails."""
+    try:
+        out = subprocess.run(["nvidia-smi", "--query-gpu=name,memory.total", "--format=csv,noheader,nounits"],
+                             capture_output=True, text=True, timeout=20).stdout.strip().splitlines()[0]
+        name, mem = out.rsplit(",", 1)
+        return name.strip(), float(mem) / 1024
+    except Exception:
+        return "", 0.0
+
+
+def low_util_on(rdir: str, gpu: str) -> bool:
+    """True if a run was stopped for low utilisation on this GPU model (LOWUTIL lists the models)."""
+    try:
+        return gpu in open(f"{rdir}/LOWUTIL").read().splitlines()
+    except OSError:
+        return False
+
+
 def gpu_sample():
     """-> (util %, memory MiB) of GPU 0, or None if nvidia-smi fails."""
     try:
@@ -129,6 +148,11 @@ class GpuMonitor(threading.Thread):
     job-wide CSV, touches HEARTBEAT, and aborts the process (exit 3) when
     utilisation stays below `floor` % for `patience` s (a hung pod must not sit on
     a GPU). Grace: the first `grace` s after start (imports + weight loading)."""
+
+    RUN_FLOOR, WINDOW, WARMUP = 40.0, 20, 10     # NRP: a held GPU stays at or above 40%. A run whose mean over the
+    # last WINDOW samples (10 min) is below RUN_FLOOR, after its first WARMUP samples (model loading), is stopped:
+    # the GPU model goes into the run's LOWUTIL file (runners on that model skip the run), the claim is dropped
+    # and the process exits, so the GPU is released or the restarted pod takes another run.
 
     def __init__(self, job_csv: str, period=30, floor=5.0, patience=600, grace=900, log=print):
         super().__init__(daemon=True)
@@ -175,6 +199,20 @@ class GpuMonitor(threading.Thread):
                 beat(rdir)
             except OSError as e:
                 self.log(f"heartbeat failed: {e}")
+            with self.lock:
+                recent = self.utils[self.WARMUP:][-self.WINDOW:]
+            if len(recent) == self.WINDOW and sum(recent) / self.WINDOW < self.RUN_FLOOR:
+                gpu = gpu_name()[0]
+                self.log(f"LOW UTILISATION: mean {sum(recent) / self.WINDOW:.0f}% over the last {self.WINDOW * self.period} s "
+                         f"on {gpu}; stopping the run and exiting (exit 6)")
+                try:
+                    open(f"{rdir}/LOWUTIL", "a").write(gpu + "\n")
+                    for f in os.listdir(rdir):
+                        if f.startswith("CLAIMED_"):
+                            os.remove(f"{rdir}/{f}")
+                except OSError:
+                    pass
+                os._exit(6)
         if self.low_since is not None and now - self.low_since >= self.patience and now - self.t0 >= self.grace:
             reason = f"WATCHDOG: GPU utilisation below {self.floor}% for {int(now - self.low_since)} s; aborting (exit 3)"
             self.log(reason)

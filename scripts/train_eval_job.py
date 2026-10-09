@@ -20,7 +20,7 @@ PKGS = ("torch", "transformers", "unsloth", "unsloth_zoo", "trl", "peft", "accel
 # "min_gen"; bump GEN in every commit that adds such behaviour (2: genprm format, ledger_edit mode, this check;
 # 3: conddrv, one reader output per claim; 4: train_key with mix, passes, pad_examples, train_meta_exclude;
 # save_epochs; ledger2_case).
-GEN = 5       # 5: eval modes gate and gate_struct
+GEN = 6       # 5: eval modes gate and gate_struct; 6: low-utilisation stop, LOWUTIL skip, spec "big"
 
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -122,6 +122,10 @@ class Log:
 def run_one(root, spec, mon, log, owner):
     import torch
     import eval_local, finetune
+    big = spec.get("big") if runq.gpu_name()[1] >= 70 else None      # larger batches on 80 GB cards (40% rule)
+    if big:
+        spec = spec | {"hp": spec.get("hp", {}) | big.get("hp", {}), "eval": spec.get("eval", {}) | big.get("eval", {})}
+        log(f"GPU with 70 GB or more: {big}")
     rid, P = spec["run_id"], paths(root, spec)
     os.makedirs(P["results"], exist_ok=True)
     log.paths.append(f"{P['results']}/run.log")
@@ -219,6 +223,7 @@ def main():
     log = Log(f"{a.root}/logs/{owner}/runner.log")
     mon = runq.GpuMonitor(f"{a.root}/logs/{owner}/gpu_util.csv", log=log)
     mon.start()
+    gpu = runq.gpu_name()[0]
     done = 0
     while not a.max_runs or done < a.max_runs:
         if done:                          # the previous run's model must be gone before the next load
@@ -236,7 +241,7 @@ def main():
             try:                          # a spec this code cannot run (newer format, mode, kind, generation) is skipped
                 ok = (spec.get("min_gen", 0) <= GEN and eval_local.KIND.get(spec["format"])
                       and spec.get("eval", {}).get("mode") in eval_local.MODES and spec.get("kind") in (None, "concept")
-                      and runq.state(rdir) == "free" and ready(a.root, spec))
+                      and runq.state(rdir) == "free" and not runq.low_util_on(rdir, gpu) and ready(a.root, spec))
             except Exception as e:
                 log(f"skipping {spec.get('run_id')}: {type(e).__name__}: {e}")
                 continue

@@ -133,6 +133,35 @@ def test_claims_and_stats():
     assert st["gpu_windows_below40"] == 0.5 and st["gpu_util_p10"] == 10.0, st
 
 
+def test_low_util_stop():
+    """A run below 40% for the 10-minute window (after warm-up) is stopped and marked for that GPU model."""
+    import tempfile
+    from selrm import runq
+    saved = runq.gpu_sample, runq.gpu_name, runq.os._exit
+    d, exits = tempfile.mkdtemp(), []
+    try:
+        runq.gpu_name, runq.os._exit = (lambda: ("TESTGPU", 80.0)), exits.append
+        open(f"{d}/CLAIMED_B", "w").write("x")
+        runq.gpu_sample = lambda: (30.0, 1000.0)
+        m = runq.GpuMonitor(f"{d}/job.csv", log=lambda *_: None)
+        m.start_run(d)
+        for _ in range(29):
+            m.tick()
+        assert not exits
+        m.tick()
+        assert exits == [6] and runq.low_util_on(d, "TESTGPU") and not runq.low_util_on(d, "OTHER")
+        assert not os.path.exists(f"{d}/CLAIMED_B")
+        exits.clear()
+        runq.gpu_sample = lambda: (45.0, 1000.0)
+        m = runq.GpuMonitor(f"{d}/job2.csv", log=lambda *_: None)
+        m.start_run(d)
+        for _ in range(60):
+            m.tick()
+        assert not exits
+    finally:
+        runq.gpu_sample, runq.gpu_name, runq.os._exit = saved
+
+
 if __name__ == "__main__":
     for name, fn in list(globals().items()):
         if name.startswith("test_"):
