@@ -36,6 +36,10 @@ Nothing is tuned on a test set: parser, linker, gate and prompts are developed o
   curves (39), seeds 1-2 of non-core ablations: not queued, to be run when GPUs are idle after B2-B4 or reported to D.
 
 ## GPUs
+- **9 Oct 14:55 UTC: ALL B RUNNER JOBS DELETED on the user's instruction after a utilisation warning (DECISIONS_B,
+  incident). Do not start any runner until the user says so.** Before restarting: fix per_device for the
+  max_len 3072 runs (per-device 2 idled an H100 at ~33%) and add a low-utilisation stop to the runner.
+  B-MIX-blocks-s0 and B-MIX-triplets-s0 are trained (adapters on the PVC) and need only their mcv_v1/dev eval.
 - `python scripts/submit_b.py runners all --n 2 --gpu h100-opp --max-runs 8 --hours 8 --models
   unsloth--Qwen3.5-9B,unsloth--Qwen3.5-4B` (opportunistic H100; code 506c27b, GEN 4).
 - 9 Oct 00:50 UTC: no H100 free and the namespace's A100 quota (4) is used by other roles; pending Jobs: two
