@@ -2,21 +2,21 @@
 \multicolumn{9}{@{}l}{\emph{Training-free, \bb}}\\
 Critic & 27.1 & 83.9 & 39.0 & 32.2 & 7.7 & \ph{tbd} & 65.7 & 24.2\\
 \ \ + default correction & 26.4 & 87.3 & 58.5 & 32.4 & 3.6 & \ph{tbd} & \ph{tbd} & 24.7\\
-\ \ + prompted ledger & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & 15.8 & \ph{tbd}\\
-Generated-program verifier & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & -- & -- & --\\
+\ \ + prompted ledger & 0.1 & 0.0 & 0.0 & 0.7 & 0.0 & \ph{tbd} & 15.8 & 0.0\\
+Generated-program verifier & 89.8 & 96.3 & 82.8 & 94.7 & 6.2 & -- & -- & --\\
 \multicolumn{9}{@{}l}{\emph{Trained without medical QA data (clinical columns are zero-shot)}}\\
-Verdict only, rule blocks & 53.7\sd{5.4} & 89.8\sd{4.0} & \ph{tbd} & 57.9\sd{5.7} & 100.0\sd{0.0} & \ph{tbd} & 66.7\sd{2.7} & \ph{tbd}\\
-Verdict only, FoVer data & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd}\\
-Verdict only, rule triplets & 91.8\sd{0.4} & 99.9\sd{0.2} & \ph{tbd} & 97.6\sd{0.7} & 100.0\sd{0.0} & \ph{tbd} & 70.5\sd{0.5} & \ph{tbd}\\
-Evidence summary, rule triplets & 98.5\sd{0.7} & 99.9\sd{0.1} & \ph{tbd} & 99.9\sd{0.3} & 100.0\sd{0.0} & \ph{tbd} & 69.2 & \ph{tbd}\\
-GenPRM-style verifier, rule triplets & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd}\\
-\method{}, rule balanced & 49.4 & \ph{tbd} & \ph{tbd} & 51.6 & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd}\\
-\method{}, rule blocks & 71.0\sd{10.7} & 80.4\sd{11.1} & \ph{tbd} & 71.4\sd{10.9} & 100.0\sd{0.0} & \ph{tbd} & 70.9 & \ph{tbd}\\
-\textbf{\method}, rule triplets & 99.2\sd{0.3} & 100.0\sd{0.0} & \ph{tbd} & 99.9\sd{0.1} & 100.0\sd{0.0} & \ph{tbd} & 69.1 & \ph{tbd}\\
+Verdict only, rule blocks & 53.7\sd{5.4} & 89.8\sd{4.0} & \ph{tbd} & 57.9\sd{5.7} & 100.0\sd{0.0} & \ph{tbd} & 69.8\sd{3.5} & 19.3\sd{1.6}\\
+Verdict only, FoVer data & 38.5 & 89.1 & \ph{tbd} & 44.1 & 10.3 & \ph{tbd} & \ph{tbd} & \ph{tbd}\\
+Verdict only, rule triplets & 91.8\sd{0.4} & 99.9\sd{0.2} & \ph{tbd} & 97.6\sd{0.7} & 100.0\sd{0.0} & \ph{tbd} & 69.8\sd{1.3} & 20.8\sd{2.9}\\
+Evidence summary, rule triplets & 98.5\sd{0.7} & 99.9\sd{0.1} & \ph{tbd} & 99.9\sd{0.3} & 100.0\sd{0.0} & \ph{tbd} & 66.5\sd{1.6} & 25.1\\
+GenPRM-style verifier, rule triplets & 99.2 & 100.0 & \ph{tbd} & 100.0 & 100.0 & \ph{tbd} & \ph{tbd} & \ph{tbd}\\
+\method{}, rule balanced & 49.4 & \ph{tbd} & \ph{tbd} & 51.6 & \ph{tbd} & \ph{tbd} & 68.4 & \ph{tbd}\\
+\method{}, rule blocks & 71.0\sd{10.7} & 80.4\sd{11.1} & \ph{tbd} & 71.4\sd{10.9} & 100.0\sd{0.0} & \ph{tbd} & 68.2\sd{4.1} & 21.8\\
+\textbf{\method}, rule triplets & 99.2\sd{0.3} & 100.0\sd{0.0} & \ph{tbd} & 99.9\sd{0.1} & 100.0\sd{0.0} & \ph{tbd} & 64.3\sd{6.6} & 15.7\\
 \multicolumn{9}{@{}l}{\emph{With medical data}}\\
-\method{}, clinical pairs only & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd}\\
-\method{}, rule triplets + clinical pairs & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd}\\
+\method{}, clinical pairs only & 77.5 & 76.1 & \ph{tbd} & 85.0 & 20.9 & \ph{tbd} & \ph{tbd} & \ph{tbd}\\
+\method{}, rule triplets + clinical pairs & 97.2 & 100.0 & \ph{tbd} & 100.0 & 100.0 & \ph{tbd} & \ph{tbd} & \ph{tbd}\\
 \multicolumn{9}{@{}l}{\emph{References}}\\
 \ph{Claude Opus 5.5}, zero-shot & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd}\\
 \ph{Claude Opus 5.5}, prompted ledger & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd}\\
-Extraction + hand-written program & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & \ph{tbd} & -- & -- & --\\
+Extraction + hand-written program & 2.1 & 0.0 & \ph{tbd} & 42.8 & 0.0 & -- & -- & --\\
