@@ -20,21 +20,22 @@ done
 "$PY" "$@" --restore
 NAME="$NAME" "$PY" - <<'EOF'
 import hashlib, json, os, shutil
-name, root = os.environ["NAME"], "/pvc/selrm/data"
-e = json.load(open("data/REGISTRY.json"))[name]
-src = os.path.dirname(f"data/{e['path']}")
-h = hashlib.sha256(open(f"data/{e['path']}", "rb").read()).hexdigest()
-if h != e["sha256"]:
-    raise SystemExit(f"MISMATCH {name}: {h[:12]} vs {e['sha256'][:12]}")
-dst = f"{root}/{os.path.dirname(e['path'])}"
-if not os.path.exists(dst):            # frozen sets are immutable; an existing copy was verified before
-    os.makedirs(os.path.dirname(dst), exist_ok=True)
-    shutil.copytree(src, dst + ".tmp")
-    os.replace(dst + ".tmp", dst)
-reg = json.load(open(f"{root}/REGISTRY.json"))
-reg[name] = e
-json.dump(reg, open(f"{root}/REGISTRY.json.tmp", "w"), indent=1, sort_keys=True)
-os.replace(f"{root}/REGISTRY.json.tmp", f"{root}/REGISTRY.json")
-print("published", name, h[:12])
+root = "/pvc/selrm/data"
+for name in os.environ["NAME"].split(","):          # one set, or a comma list built by the same builder
+  e = json.load(open("data/REGISTRY.json"))[name]
+  src = os.path.dirname(f"data/{e['path']}")
+  h = hashlib.sha256(open(f"data/{e['path']}", "rb").read()).hexdigest()
+  if h != e["sha256"]:
+      raise SystemExit(f"MISMATCH {name}: {h[:12]} vs {e['sha256'][:12]}")
+  dst = f"{root}/{os.path.dirname(e['path'])}"
+  if not os.path.exists(dst):            # frozen sets are immutable; an existing copy was verified before
+      os.makedirs(os.path.dirname(dst), exist_ok=True)
+      shutil.copytree(src, dst + ".tmp")
+      os.replace(dst + ".tmp", dst)
+  reg = json.load(open(f"{root}/REGISTRY.json"))
+  reg[name] = e
+  json.dump(reg, open(f"{root}/REGISTRY.json.tmp", "w"), indent=1, sort_keys=True)
+  os.replace(f"{root}/REGISTRY.json.tmp", f"{root}/REGISTRY.json")
+  print("published", name, h[:12])
 EOF
 echo "RESTORE DATA OK"

@@ -279,6 +279,16 @@ def main():
         apply(cpu_job(f"selrm-b-restore-data-{code[:8]}-{int(time.time()) % 100000}",
                       ["bash", f"/pvc/selrm/code/{snapshot(a.code)}/k8s/restore_data.sh", a.env, code, *a.args[1:]],
                       cpu=2, mem="12Gi", eph="20Gi", hours=2))
+    elif a.cmd == "fetch-ref":       # fetch-ref <git ref> [path=url=sha256 ...]: snapshot fetched in the pod (read-only token)
+        full = subprocess.run(["git", "-C", REPO, "rev-parse", a.args[0]], capture_output=True, text=True, check=True).stdout.strip()
+        job = cpu_job(f"selrm-b-fetch-ref-{full[:8]}-{int(time.time()) % 100000}",
+                      ["bash", "-c", f"tar -xf /pvc/selrm/env/selrm-env-{a.env}.tar -C /opt && /opt/selrm-env/venv/bin/python "
+                                     f"/pvc/selrm/code/{snapshot(a.code)}/k8s/fetch_ref.py {full} " + " ".join(a.args[1:])],
+                      cpu=1, mem="4Gi", eph="20Gi", hours=1)
+        job["spec"]["template"]["spec"]["containers"][0]["env"].append(
+            {"name": "GH_TOKEN", "valueFrom": {"secretKeyRef": {"name": "selrm-github-ro", "key": "token"}}})
+        apply(job)
+        print("code", full[:12])
     elif a.cmd == "copy-c":          # copy-c <C code sha12> <set> [...]: C's frozen clin_v1 sets, PVC selrm-c read-only
         job = cpu_job(f"selrm-b-copy-c-{int(time.time()) % 100000}",
                       ["bash", f"/pvc/selrm/code/{snapshot(a.code)}/k8s/copy_c_data.sh", a.env, *a.args],
