@@ -22,11 +22,19 @@
     "per_device": 2,
     "max_len": 3072
    },
+   "big": {
+    "hp": {
+     "per_device": 4
+    },
+    "eval": {
+     "bs_score": 48
+    }
+   },
    "eval_sets": [
     "rule_v1/dev",
     "mcv_v1/dev"
    ],
-   "min_gen": 4
+   "min_gen": 6
   },
   {
    "run_id": "B-MIX-blocks-s1",
@@ -122,11 +130,19 @@
     "per_device": 2,
     "max_len": 3072
    },
+   "big": {
+    "hp": {
+     "per_device": 4
+    },
+    "eval": {
+     "bs_score": 48
+    }
+   },
    "eval_sets": [
     "rule_v1/dev",
     "mcv_v1/dev"
    ],
-   "min_gen": 4
+   "min_gen": 6
   },
   {
    "run_id": "B-MIX-triplets-s1",
