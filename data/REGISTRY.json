@@ -1,4 +1,28 @@
 {
+ "cls_v1/dev": {
+  "created": "2026-10-09",
+  "frozen": true,
+  "level": "L2",
+  "manifest": "cls_v1/MANIFEST.json",
+  "n_groups": 300,
+  "n_records": 3600,
+  "path": "cls_v1/dev/records.jsonl",
+  "sha256": "d267965eff8da8c10e2e2a92f454111a9ec497560cb70fa5a5ad67fd9b3c28d7",
+  "split": "dev",
+  "tier": "class"
+ },
+ "cls_v1/test": {
+  "created": "2026-10-09",
+  "frozen": true,
+  "level": "L2",
+  "manifest": "cls_v1/MANIFEST.json",
+  "n_groups": 1200,
+  "n_records": 14400,
+  "path": "cls_v1/test/records.jsonl",
+  "sha256": "69c43f6a93331b50865fbb4fe79a853b4fa12d48fa7b2fec9b87da583f84aa6e",
+  "split": "test",
+  "tier": "class"
+ },
  "kb_v1/triplets_dev": {
   "created": "2026-10-08",
   "frozen": true,

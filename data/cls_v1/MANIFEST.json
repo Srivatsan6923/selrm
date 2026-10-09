@@ -1,0 +1,159 @@
+{
+ "analysis_plan_sha256": "91c1f59a38ee82c3290a9f8709d44ed8a4bd7ea7e558a0b403f9dec906e5bb2b",
+ "change_request": "drug classes by FDA EPC classes with an ATC-agreement flag: docs/CHANGE_REQUESTS.md, approved 9 Oct 2026",
+ "created": "2026-10-09",
+ "engine": "selrm/engine2.py; one rule with a single class condition per group; test-split templates; tiers easy and long",
+ "note": "Membership is relative to the closure tables of onto_v1 (FDA EPC lists, HPO and Mondo releases of the snapshot). The base case does not mention the class or any member.",
+ "onto_v1_classes_sha256": "ffafdac6421df7618840fbaff68d1c98ff9f00ee8a3bab13ec4346e482d8233a",
+ "portions": {
+  "dev": {
+   "by_domain": {
+    "disease": {
+     "classes": 37,
+     "groups": 100
+    },
+    "drug": {
+     "classes": 12,
+     "groups": 100
+    },
+    "phenotype": {
+     "classes": 32,
+     "groups": 100
+    }
+   },
+   "by_tier": {
+    "easy": 199,
+    "long": 101
+   },
+   "classes": 81,
+   "drug_groups_with_atc_agreement": 41,
+   "flip_name_type": {
+    "brand": 55,
+    "label": 179,
+    "synonym": 66
+   },
+   "groups": 300,
+   "near_term_type": {
+    "general": 21,
+    "sibling": 279
+   },
+   "records": 3600,
+   "sha256": "d267965eff8da8c10e2e2a92f454111a9ec497560cb70fa5a5ad67fd9b3c28d7"
+  },
+  "test": {
+   "by_domain": {
+    "disease": {
+     "classes": 54,
+     "groups": 400
+    },
+    "drug": {
+     "classes": 21,
+     "groups": 400
+    },
+    "phenotype": {
+     "classes": 56,
+     "groups": 400
+    }
+   },
+   "by_tier": {
+    "easy": 778,
+    "long": 422
+   },
+   "classes": 131,
+   "drug_groups_with_atc_agreement": 134,
+   "flip_name_type": {
+    "brand": 180,
+    "label": 682,
+    "synonym": 338
+   },
+   "groups": 1200,
+   "near_term_type": {
+    "general": 60,
+    "sibling": 1140
+   },
+   "records": 14400,
+   "sha256": "69c43f6a93331b50865fbb4fe79a853b4fa12d48fa7b2fec9b87da583f84aa6e"
+  }
+ },
+ "purpose": "Class triplets on classes held out from training (stage 2, comparison 10 and secondary analysis 10)",
+ "rejects": {
+  "dev": {
+   "proposed": 300,
+   "rejected": 0
+  },
+  "test": {
+   "proposed": 1212,
+   "reject class class filler names the concept": 60,
+   "rejected": 12
+  }
+ },
+ "seed": 20261008,
+ "set": "cls_v1",
+ "shortcut_validation": {
+  "dev": {
+   "always_default": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 300
+   },
+   "claim_only": {
+    "Hold": 52.67,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 300
+   },
+   "class_word_in_case": {
+    "Hold": 84.67,
+    "Rev": 33.33,
+    "TA": 23.67,
+    "n": 300
+   },
+   "closure_on_text": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 300
+   },
+   "concept_named": {
+    "Hold": 0.0,
+    "Rev": 100.0,
+    "TA": 0.0,
+    "n": 300
+   }
+  },
+  "test": {
+   "always_default": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 1200
+   },
+   "claim_only": {
+    "Hold": 49.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 1200
+   },
+   "class_word_in_case": {
+    "Hold": 80.75,
+    "Rev": 34.33,
+    "TA": 21.33,
+    "n": 1200
+   },
+   "closure_on_text": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 1200
+   },
+   "concept_named": {
+    "Hold": 0.0,
+    "Rev": 100.0,
+    "TA": 0.0,
+    "n": 1200
+   }
+  }
+ },
+ "views": "rule_text is the closed-book rule (the class is named, no member list). meta.views.stated adds the member list (open book); meta.views.wrong names a sibling class."
+}
