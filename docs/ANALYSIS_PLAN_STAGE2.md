@@ -100,3 +100,21 @@ logged in the role's decision file. `rule_v1` is not modified.
 - A derived criterion does not help where it decides the label.
 If these fail, the paper is a controlled study of supervision for
 rule-conditioned verification on generated cases, and says so.
+
+---
+Appended 9 Oct 2026 (the text above is unchanged)
+
+Drug classes of `onto_v1` / `cls_v1` (comparison 10 and secondary analysis 10). Requested by role A
+(docs/CHANGE_REQUESTS.md, 8 Oct) and accepted by the lead on the human lead's word, before `cls_v1` exists and
+before any model has seen a class. The rule first written (a class is an ATC level-4 code and an FDA
+established pharmacologic class that agree) gives 28 usable drug classes, 7 of them held out for test,
+against 56 phenotype and 54 disease test classes. Amended rule: a drug class is an FDA established
+pharmacologic class by its direct ingredient members, with at least 4 single ingredients that belong to no
+other such class and at least 2 near-miss ingredients under role A's near-miss rule of 8 Oct
+(docs/DECISIONS_A.md); 80 classes, 47 / 12 / 21 train / dev / test. Every class carries
+`agreement = true|false` (its members also match one ATC level-4 code under the first rule).
+Consequences, fixed now: comparison (10) is computed on all held-out test classes under the amended rule;
+its metric, contrast, cluster and decision rule are unchanged. The same contrast on the classes with
+`agreement = true` (the definition first written) is reported next to it as a secondary analysis, and the
+paper states both definitions and that the amendment preceded the data. No new source or licence; ATC names
+are still not redistributed.
