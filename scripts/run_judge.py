@@ -25,7 +25,12 @@ def load_jsonl(path):
         return [json.loads(line) for line in f]
 
 
+XR = f"{REPO}/scratch/acode_xr/data/xr_v1"      # A's xr_v1 records and KNOWN_ISSUES.json
+
+
 def records(data, name):
+    if name == "xr_v1/test":
+        return load_jsonl(f"{XR}/test/records.jsonl")
     reg = json.load(open(f"{data}/REGISTRY.json", encoding="utf-8"))
     return load_jsonl(f"{data}/{reg[name]['path']}")
 
@@ -127,6 +132,11 @@ def main():
         summ = {"run_id": a.run_id, "set": s, "claim_type": "conclusion", "readout": cfg["readout"]} | M.summarise(T)
         if summ.get("all"):
             summ["CI95"] = {m: list(M.bootstrap_ci(T, m)) for m in ("TA", "Rev", "Hold")}
+        if s == "xr_v1/test":     # crossed accuracy, all items and without A's known-issue items
+            known = {i for x in json.load(open(f"{XR}/KNOWN_ISSUES.json", encoding="utf-8"))["issues"] for i in x["items"]}
+            us = [u[r["iid"]] for r in scored]
+            summ |= M.crossed_accuracy(scored, us, partial=bool(a.n)) | {
+                "without_known_issues": M.crossed_accuracy(scored, us, exclude=known, partial=bool(a.n))}
         if point:     # MR for choice / text readouts: both claims of a missing twin answered "-" (threshold 0)
             summ |= {k: v for k, v in M.missing_rejection(scored, [u[r["iid"]] for r in scored], 0.0).items()
                      if k in ("MR", "n_missing")} | {"MR_readout": "pointwise text answer, reject iff '-'"}
@@ -140,7 +150,10 @@ def main():
             "subset_rule": "n/5 groups per near-miss kind, random.Random(0) over sorted tids" if a.n else None,
             "usage": judge.usage, "cost_estimate": est, "cost_actual": judge.usage["cost"],
             "wall_seconds": round(time.time() - t0, 1), "git_commit": commit, "summaries": summ_all}
-    json.dump(meta, open(f"{out_dir}/meta.json", "w", encoding="utf-8", newline="\n"), indent=1)
+    mp = f"{out_dir}/meta.json"           # one run id may be filled by several invocations (one per set list)
+    earlier = json.load(open(mp, encoding="utf-8")) if os.path.exists(mp) else {}
+    meta["earlier_invocations"] = earlier.pop("earlier_invocations", []) + ([earlier] if earlier else [])
+    json.dump(meta, open(mp, "w", encoding="utf-8", newline="\n"), indent=1)
     os.makedirs(os.path.dirname(LEDGER), exist_ok=True)
     with open(LEDGER, "a", encoding="utf-8", newline="\n") as f:
         f.write(json.dumps({"run_id": a.run_id, "model": cfg["id"], "sets": a.set, "cost_estimate": est,
