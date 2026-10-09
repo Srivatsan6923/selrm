@@ -13,7 +13,7 @@ API: OPENROUTER key works only with a lower-case 'sk-'; new-account limit of 20 
 | A4 | onto_v1, cls_v1 | step 1 done (snapshot: scripts/onto_snapshot.py, data/onto_v1/SNAPSHOT.json). Next: brand names and MED-RT from RxNav, closure tables (drug class = ATC4 x EPC pair, Jaccard >= 0.5, >= 4 common members; HPO/Mondo terms with 8-200 descendants), disjointness, 60/15/25 split, cls_v1/dev and test |
 | A5 | rule_v2 | not started |
 | A6 | reg_v1 | not started |
-| A7 | paper inputs from existing data | not started |
+| A7 | paper inputs from existing data | done 8 Oct: keys handed to D in docs/HANDOFFS.md (Table 8, harder set, Table 16, lines 1206 and 1499, Appendix E rule code); line 1512 waits for A6 |
 | carry-over | rewrite_v1 and the _rw corpora (API key); challenge_v1 (H2); H1 aggregation | blocked as before |
 
 External data live under data/_ext/ (git-ignored): medcalc/{test,train}_data.csv, medcalc/medcalc_v1_corrected.csv,
