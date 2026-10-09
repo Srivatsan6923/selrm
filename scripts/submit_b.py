@@ -82,6 +82,8 @@ def cpu_job(name, command, cpu=8, mem="32Gi", eph="60Gi", hours=2):
 def runner_job(name, queue, code, env_tag, gpu, max_runs, hours, cpu=2, mem="12Gi", models=("unsloth--Qwen3.5-9B",)):
     resource, products, prio = GPU[gpu]
     terms = [DRIVER] + ([{"key": "nvidia.com/gpu.product", "operator": "In", "values": products}] if products else [])
+    # the PVC is in us-west: on a distant node the weights copy took over 30 min with the GPU already reserved
+    terms.append({"key": "topology.kubernetes.io/region", "operator": "In", "values": ["us-west"]})
     pod = {"restartPolicy": "Never", "affinity": affinity(terms),
            "initContainers": [{"name": "stage", "image": IMAGE,
                                # the GPU is already reserved while this runs: a staging step slower than 12 min fails the pod and frees it
