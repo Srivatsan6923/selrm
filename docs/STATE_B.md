@@ -12,9 +12,9 @@ Nothing is tuned on a test set: parser, linker, gate and prompts are developed o
     PVC (adapter_config.json and weights present).
   - Red cells: summary x blocks seed 4 (ANALYSIS_B 12, 13); premise gate (15); XA without the 38 known-issue items
     (12, column XA-); budget (7); B-TR-tripclin-s0 (7, 12, summaries); learning rate 1e-4, no lambda in the code
-    (HANDOFFS 9 Oct). OPEN: L3-inv of FoVer data, ledger natural, ledger balanced, clinical pairs only and
-    triplets + clinical pairs: eval-only runs B-NS-L3inv-<run> (configs/queues/v2/b_l3inv.json, prepped), two
-    H100 runners started 00:20 UTC. After they finish: pull, resummarize_b.py, analysis, HANDOFFS line to D.
+    (HANDOFFS 9 Oct). L3-inv cells of Table 20: DONE (B-NS-L3inv-*, HANDOFFS 9 Oct).
+  - Gate eval mode (eval_local modes gate / gate_struct, runner GEN 5) checked on rule_v1/dev with the stage-1
+    decision-field adapter: B-S2-rule_v1dev-decfield-gate-s0.
 - B1 gate library: DONE for rule_v1/dev. selrm/crit_parse.py, selrm/link.py, selrm/gate.py, tests/test_gate.py
   (boundary day in both conventions), scripts/gate_dev.py (results_git/B-S2-gate-dev/summary_<set>.json; rule_v1/dev:
   parser coverage and agreement with the program on every unit). TODO when A registers them: rule_v2/dev, reg_v1/dev,

@@ -1,0 +1,5 @@
+2026-10-08T23:35:16Z eval only: base /work/models/unsloth--Qwen3.5-9B, adapter /pvc/selrm/adapters/B-AB-decfield-s0
+2026-10-08T23:36:09Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0091)
+2026-10-08T23:36:13Z padding self-check: max |u_batch - u_single| = 0.2273 (tol 0.625) -> left padding
+2026-10-08T23:37:54Z B-S2-rule_v1dev-decfield-gate-s0 rule_v1/dev: TA 99.0 Rev 99.0 Hold 100.0 n=300 (157.1 s)
+2026-10-08T23:37:54Z DONE B-S2-rule_v1dev-decfield-gate-s0 in 3.0 min, GPU util mean 56.2
