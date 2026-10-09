@@ -26,6 +26,8 @@ GPU = {   # kind -> (resource, gpu.product values or None, priorityClassName or 
     "a6000": ("nvidia.com/rtxa6000", None, None),
     "a40": ("nvidia.com/a40", None, None),
     "h100-opp": ("nvidia.com/h100", None, "opportunistic"),
+    "h200-opp": ("nvidia.com/h200", None, "opportunistic"),
+    "rtx8000": ("nvidia.com/rtx8000", None, None),      # 48 GB
 }
 CPU_ONLY = {"key": "feature.node.kubernetes.io/pci-10de.present", "operator": "NotIn", "values": ["true"]}
 DRIVER = {"key": "nvidia.com/cuda.driver.major", "operator": "Gt", "values": ["579"]}   # cu130 needs >= 580
