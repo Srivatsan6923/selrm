@@ -1,13 +1,14 @@
 # STATE role A
 Updated: Thu 8 Oct 2026. Plan of record: STAGE2_TASKS_A (8 Oct), with STAGE2_SPEC and STAGE2_ANALYSIS_PLAN
 (bundle selrm_stage2_tasks.zip from the lead). It replaces FINAL_TASKS_A and NEXT_TASKS_A; the run freeze of
-7 Oct is lifted. No stage-2 test set is frozen before docs/ANALYSIS_PLAN_STAGE2.md is on main (not there on 8 Oct).
+7 Oct is lifted. docs/ANALYSIS_PLAN_STAGE2.md is on main since b438812 (8 Oct); role-a carries the file but has not merged main (the merge is slow on this disk; let the lead merge).
+API: OPENROUTER key works only with a lower-case 'sk-'; new-account limit of 20 requests a minute on DeepSeek V4 Pro (the rewrite jobs use it as an extractor).
 
 ## Stage 2 (do in this order)
 | # | Item | Status |
 |---|---|---|
-| A1 | mcv_v1 (MedCalc-V) | steps 1-2 done: 19 of 19 scores accepted (380 test rows, 230 human-written; 2426 training rows), `python scripts/mcv_accept.py --write`. Next: items (criteria, natural band, value and sentence edits, rule-side), fidelity filter (needs the API key), dev and adaptation portions, validation, freeze |
-| A2 | kb_v1 (DDXPlus criterion) | steps 1-2 done: release downloaded and counted, selrm/kb_criterion.py committed and handed to C. Next: support check, triplets_dev/test, shortcut validation |
+| A1 | mcv_v1 (MedCalc-V) | **frozen 8 Oct** (3c0abf2): 19 of 19 scores; criteria_test 3,440 pairs, natural_band_test 394, edits_test 1,636 triplets after the fidelity filter (1,787 before), ruleside_test 295 crossed items, dev, adapt_blocks/adapt_triplets 12,000 records each. `python scripts/build_mcv_v1.py --restore`. Still to write: docs/DATA_AUDIT_mcv_v1.md, the 100-item author sheet (H-S2-3), result keys for Appendix E |
+| A2 | kb_v1 (DDXPlus criterion) | **frozen 8 Oct** (9236dd7): renderer, support check (data/kb_v1/SUPPORT.json), triplets_dev 5,138 and triplets_test 5,143 groups. `python scripts/build_kb_v1.py --restore`. Still to write: the 20-criterion author sheet |
 | A3 | xp_v1 (program-preserving paraphrases) | not started |
 | A4 | onto_v1, cls_v1 | not started |
 | A5 | rule_v2 | not started |
