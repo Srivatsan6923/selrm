@@ -324,6 +324,119 @@
    "license": "open weights (see model card)",
    "gated": "no",
    "independent_check": "id, prices and logprobs support read from the live model list on 2026-10-08"
+  },
+  {
+   "name": "llama-3.3-70b-choice",
+   "table": "Llama-3.3-70B (two-order choice readout)",
+   "id": "meta-llama/llama-3.3-70b-instruct",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "extra_body": {},
+    "max_tokens": 600
+   },
+   "price_in": 0.22,
+   "price_out": 0.5,
+   "est_completion_tokens": 60,
+   "logprobs": false,
+   "reasoning_note": "second readout of the same model (8 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
+   "provider": "openrouter",
+   "base_url": "https://openrouter.ai/api/v1",
+   "key_env": "OPENROUTER_API_KEY",
+   "verified": "2026-10-03",
+   "source": "https://openrouter.ai/api/v1/models",
+   "revision": "meta-llama/llama-3.3-70b-instruct (OpenRouter canonical_slug); HF meta-llama/Llama-3.3-70B-Instruct@6f6073b423013f6a7d4d9f39144961bfbfbc386b",
+   "license": "llama3.3 (Llama 3.3 Community License, HF card)",
+   "gated": "no",
+   "independent_check": "confirmed",
+   "prices_checked": "2026-10-08"
+  },
+  {
+   "name": "gemma-4-31b-choice",
+   "table": "Gemma 4 31B (two-order choice readout)",
+   "id": "google/gemma-4-31b-it",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    },
+    "max_tokens": 600
+   },
+   "price_in": 0.09,
+   "price_out": 0.34,
+   "est_completion_tokens": 60,
+   "logprobs": false,
+   "reasoning_note": "second readout of the same model (8 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
+   "provider": "openrouter",
+   "base_url": "https://openrouter.ai/api/v1",
+   "key_env": "OPENROUTER_API_KEY",
+   "verified": "2026-10-08",
+   "source": "https://openrouter.ai/api/v1/models",
+   "revision": "google/gemma-4-31b-it (OpenRouter id, listed by /api/v1/models on 2026-10-08)",
+   "license": "open weights (see model card)",
+   "gated": "no",
+   "independent_check": "id, prices and logprobs support read from the live model list on 2026-10-08"
+  },
+  {
+   "name": "nemotron-3-super-choice",
+   "table": "Nemotron 3 Super (outside v13 Table 2) (two-order choice readout)",
+   "id": "nvidia/nemotron-3-super-120b-a12b",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    },
+    "max_tokens": 600
+   },
+   "price_in": 0.08,
+   "price_out": 0.45,
+   "est_completion_tokens": 60,
+   "logprobs": false,
+   "reasoning_note": "second readout of the same model (8 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
+   "provider": "openrouter",
+   "base_url": "https://openrouter.ai/api/v1",
+   "key_env": "OPENROUTER_API_KEY",
+   "verified": "2026-10-03",
+   "source": "https://openrouter.ai/api/v1/models",
+   "revision": "nvidia/nemotron-3-super-120b-a12b-20230311 (OpenRouter canonical_slug, year typo as published); HF nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8@744b1880a37996c5d56bf454ae164dfd74d77c4e (BF16 repo @2dc98e2afe4face0e4ce40972a915c45368bd34a)",
+   "license": "other (HF card license_name 'nvidia-nemotron-open-model-license'; open weights)",
+   "gated": "no",
+   "independent_check": "confirmed"
+  },
+  {
+   "name": "qwen35-397b-choice",
+   "table": "Qwen3.5-397B-A17B (two-order choice readout)",
+   "id": "qwen/qwen3.5-397b-a17b",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    },
+    "max_tokens": 600
+   },
+   "price_in": 0.55,
+   "price_out": 3.5,
+   "est_completion_tokens": 60,
+   "logprobs": false,
+   "reasoning_note": "second readout of the same model (8 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
+   "provider": "openrouter",
+   "base_url": "https://openrouter.ai/api/v1",
+   "key_env": "OPENROUTER_API_KEY",
+   "verified": "2026-10-08",
+   "source": "https://openrouter.ai/api/v1/models",
+   "revision": "qwen/qwen3.5-397b-a17b (OpenRouter id, listed by /api/v1/models on 2026-10-08)",
+   "license": "open weights (see model card)",
+   "gated": "no",
+   "independent_check": "id, prices and logprobs support read from the live model list on 2026-10-08"
   }
  ],
  "local": [
@@ -365,7 +478,7 @@
    "name": "med-prm",
    "table": "Med-PRM",
    "hf_id": "dmis-lab/llama-3.1-medprm-reward-v1.0",
-   "scoring": "steps end with ' \u043a\u0438'; step reward = softmax over the '+'/'-' logits at the marker (model card)",
+   "scoring": "steps end with ' ки'; step reward = softmax over the '+'/'-' logits at the marker (model card)",
    "verified": "2026-10-03",
    "source": "https://huggingface.co/dmis-lab/llama-3.1-medprm-reward-v1.0",
    "revision": "6948b9e942fa0275dff8ff902a1833f1298974d4",

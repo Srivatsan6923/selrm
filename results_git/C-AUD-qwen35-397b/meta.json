@@ -1,0 +1,268 @@
+{
+ "run_id": "C-AUD-qwen35-397b",
+ "role": "C",
+ "model": "qwen/qwen3.5-397b-a17b",
+ "name": "qwen35-397b",
+ "provider": "openrouter",
+ "access_date": "2026-10-08",
+ "readout": "logprob",
+ "params": {
+  "temperature": 0,
+  "extra_body": {
+   "reasoning": {
+    "enabled": false
+   },
+   "provider": {
+    "require_parameters": true
+   }
+  }
+ },
+ "reasoning": "reasoning disabled; logprob-capable providers only",
+ "sets": [
+  "rule_v1/dev_missing",
+  "rule_v1/missing"
+ ],
+ "n_groups": "all",
+ "subset_rule": null,
+ "usage": {
+  "calls": 0,
+  "cached": 5200,
+  "prompt_tokens": 0,
+  "completion_tokens": 0,
+  "cost": 0.0,
+  "errors": 0
+ },
+ "cost_estimate": 0.6809626500000001,
+ "cost_actual": 0.0,
+ "wall_seconds": 24.2,
+ "git_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2",
+ "summaries": {
+  "rule_v1/dev_missing": null,
+  "rule_v1/missing": null
+ },
+ "earlier_invocations": [
+  {
+   "run_id": "C-AUD-qwen35-397b",
+   "role": "C",
+   "model": "qwen/qwen3.5-397b-a17b",
+   "name": "qwen35-397b",
+   "provider": "openrouter",
+   "access_date": "2026-10-08",
+   "readout": "logprob",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     },
+     "provider": {
+      "require_parameters": true
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; logprob-capable providers only",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "n_groups": 1000,
+   "subset_rule": "n/5 groups per near-miss kind, random.Random(0) over sorted tids",
+   "usage": {
+    "calls": 7920,
+    "cached": 80,
+    "prompt_tokens": 1870748,
+    "completion_tokens": 172015,
+    "cost": 1.3728906199999984,
+    "errors": 0
+   },
+   "cost_estimate": 1.0726051,
+   "cost_actual": 1.3728906199999984,
+   "wall_seconds": 2011.0,
+   "git_commit": "",
+   "summaries": {
+    "rule_v1/test_L2": {
+     "Rev": 22.6,
+     "Hold": 42.7,
+     "TA": 13.7,
+     "BaseAcc": 40.6,
+     "Tie": 0.4,
+     "PresHold": 39.0,
+     "n": 1000
+    }
+   }
+  },
+  {
+   "run_id": "C-AUD-qwen35-397b",
+   "role": "C",
+   "model": "qwen/qwen3.5-397b-a17b",
+   "name": "qwen35-397b",
+   "provider": "openrouter",
+   "access_date": "2026-10-08",
+   "readout": "logprob",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     },
+     "provider": {
+      "require_parameters": true
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; logprob-capable providers only",
+   "sets": [
+    "xr_v1/test"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 4800,
+    "cached": 0,
+    "prompt_tokens": 710734,
+    "completion_tokens": 58555,
+    "cost": 0.49443413,
+    "errors": 0
+   },
+   "cost_estimate": 0.41523815000000003,
+   "cost_actual": 0.49443413,
+   "wall_seconds": 1260.3,
+   "git_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2",
+   "summaries": {
+    "xr_v1/test": null
+   }
+  },
+  {
+   "run_id": "C-AUD-qwen35-397b",
+   "role": "C",
+   "model": "qwen/qwen3.5-397b-a17b",
+   "name": "qwen35-397b",
+   "provider": "openrouter",
+   "access_date": "2026-10-08",
+   "readout": "logprob",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     },
+     "provider": {
+      "require_parameters": true
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; logprob-capable providers only",
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 4194,
+    "cached": 1006,
+    "prompt_tokens": 961879,
+    "completion_tokens": 26404,
+    "cost": 0.49578829999999996,
+    "errors": 0
+   },
+   "cost_estimate": 0.6809626500000001,
+   "cost_actual": 0.49578829999999996,
+   "wall_seconds": 1938.7,
+   "git_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2",
+   "summaries": {
+    "rule_v1/dev_missing": null,
+    "rule_v1/missing": null
+   }
+  },
+  {
+   "run_id": "C-AUD-qwen35-397b",
+   "role": "C",
+   "model": "qwen/qwen3.5-397b-a17b",
+   "name": "qwen35-397b",
+   "provider": "openrouter",
+   "access_date": "2026-10-08",
+   "readout": "logprob",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     },
+     "provider": {
+      "require_parameters": true
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; logprob-capable providers only",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "n_groups": 1000,
+   "subset_rule": "n/5 groups per near-miss kind, random.Random(0) over sorted tids",
+   "usage": {
+    "calls": 0,
+    "cached": 8000,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "cost": 0.0,
+    "errors": 0
+   },
+   "cost_estimate": 1.0726051,
+   "cost_actual": 0.0,
+   "wall_seconds": 55.7,
+   "git_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2",
+   "summaries": {
+    "rule_v1/test_L2": {
+     "Rev": 22.6,
+     "Hold": 42.7,
+     "TA": 13.7,
+     "BaseAcc": 40.6,
+     "Tie": 0.4,
+     "PresHold": 39.0,
+     "n": 1000
+    }
+   }
+  },
+  {
+   "run_id": "C-AUD-qwen35-397b",
+   "role": "C",
+   "model": "qwen/qwen3.5-397b-a17b",
+   "name": "qwen35-397b",
+   "provider": "openrouter",
+   "access_date": "2026-10-08",
+   "readout": "logprob",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     },
+     "provider": {
+      "require_parameters": true
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; logprob-capable providers only",
+   "sets": [
+    "xr_v1/test"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 0,
+    "cached": 4800,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "cost": 0.0,
+    "errors": 0
+   },
+   "cost_estimate": 0.41523815000000003,
+   "cost_actual": 0.0,
+   "wall_seconds": 14.8,
+   "git_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2",
+   "summaries": {
+    "xr_v1/test": null
+   }
+  }
+ ]
+}

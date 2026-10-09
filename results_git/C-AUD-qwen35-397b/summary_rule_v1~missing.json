@@ -1,0 +1,9 @@
+{
+ "run_id": "C-AUD-qwen35-397b",
+ "set": "rule_v1/missing",
+ "claim_type": "conclusion",
+ "readout": "logprob",
+ "MR": 67.3,
+ "n_missing": 1000,
+ "MR_readout": "pointwise text answer, reject iff '-'"
+}

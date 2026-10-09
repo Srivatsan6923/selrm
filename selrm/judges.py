@@ -68,7 +68,13 @@ class Cache:
         os.makedirs(os.path.dirname(p), exist_ok=True)
         tmp = f"{p}.{os.getpid()}.{threading.get_ident()}.tmp"
         json.dump(value, open(tmp, "w", encoding="utf-8"), ensure_ascii=False)
-        os.replace(tmp, p)
+        for attempt in range(5):                         # Windows: the target may be open in another thread or a scanner
+            try:
+                os.replace(tmp, p)
+                return
+            except PermissionError:
+                time.sleep(0.2 * (attempt + 1))
+        os.remove(tmp)                                   # not cached; the response is still returned to the caller
 
 
 class Judge:

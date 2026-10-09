@@ -16,32 +16,111 @@
  },
  "reasoning": "reasoning mandatory at this endpoint (cannot be disabled): effort low, two-order choice readout",
  "sets": [
-  "rule_v1/test_L2"
+  "rule_v1/dev_missing",
+  "rule_v1/missing"
  ],
- "n_groups": 1000,
- "subset_rule": "n/5 groups per near-miss kind, random.Random(0) over sorted tids",
+ "n_groups": "all",
+ "subset_rule": null,
  "usage": {
-  "calls": 7920,
-  "cached": 80,
-  "prompt_tokens": 2589194,
-  "completion_tokens": 1159303,
-  "cost": 0.44034050600000096,
+  "calls": 4194,
+  "cached": 1006,
+  "prompt_tokens": 1183584,
+  "completion_tokens": 492150,
+  "cost": 0.1840028970000004,
   "errors": 0
  },
- "cost_estimate": 0.5069403200000001,
- "cost_actual": 0.44034050600000096,
- "wall_seconds": 1006.3,
- "git_commit": "91bbf12bd33c371a1ac7579a575dd199fe839f2e",
+ "cost_estimate": 0.32083568000000007,
+ "cost_actual": 0.1840028970000004,
+ "wall_seconds": 416.4,
+ "git_commit": "706694cb71125643a6de0424c170e224a7199d78",
  "summaries": {
-  "rule_v1/test_L2": {
-   "Rev": 99.0,
-   "Hold": 99.4,
-   "TA": 98.5,
-   "BaseAcc": 99.6,
-   "Tie": 1.3,
-   "PresHold": 99.4,
-   "n": 1000
-  }
+  "rule_v1/dev_missing": null,
+  "rule_v1/missing": null
  },
- "earlier_invocations": []
+ "earlier_invocations": [
+  {
+   "run_id": "C-AUD-gpt-oss-120b",
+   "role": "C",
+   "model": "openai/gpt-oss-120b",
+   "name": "gpt-oss-120b",
+   "provider": "openrouter",
+   "access_date": "2026-10-08",
+   "readout": "choice",
+   "params": {
+    "max_tokens": 2000,
+    "extra_body": {
+     "reasoning": {
+      "effort": "low"
+     }
+    }
+   },
+   "reasoning": "reasoning mandatory at this endpoint (cannot be disabled): effort low, two-order choice readout",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "n_groups": 1000,
+   "subset_rule": "n/5 groups per near-miss kind, random.Random(0) over sorted tids",
+   "usage": {
+    "calls": 7920,
+    "cached": 80,
+    "prompt_tokens": 2589194,
+    "completion_tokens": 1159303,
+    "cost": 0.44034050600000096,
+    "errors": 0
+   },
+   "cost_estimate": 0.5069403200000001,
+   "cost_actual": 0.44034050600000096,
+   "wall_seconds": 1006.3,
+   "git_commit": "91bbf12bd33c371a1ac7579a575dd199fe839f2e",
+   "summaries": {
+    "rule_v1/test_L2": {
+     "Rev": 99.0,
+     "Hold": 99.4,
+     "TA": 98.5,
+     "BaseAcc": 99.6,
+     "Tie": 1.3,
+     "PresHold": 99.4,
+     "n": 1000
+    }
+   }
+  },
+  {
+   "run_id": "C-AUD-gpt-oss-120b",
+   "role": "C",
+   "model": "openai/gpt-oss-120b",
+   "name": "gpt-oss-120b",
+   "provider": "openrouter",
+   "access_date": "2026-10-08",
+   "readout": "choice",
+   "params": {
+    "max_tokens": 2000,
+    "extra_body": {
+     "reasoning": {
+      "effort": "low"
+     }
+    }
+   },
+   "reasoning": "reasoning mandatory at this endpoint (cannot be disabled): effort low, two-order choice readout",
+   "sets": [
+    "xr_v1/test"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 4800,
+    "cached": 0,
+    "prompt_tokens": 1181309,
+    "completion_tokens": 427962,
+    "cost": 0.17487599200000073,
+    "errors": 0
+   },
+   "cost_estimate": 0.28737128,
+   "cost_actual": 0.17487599200000073,
+   "wall_seconds": 414.6,
+   "git_commit": "706694cb71125643a6de0424c170e224a7199d78",
+   "summaries": {
+    "xr_v1/test": null
+   }
+  }
+ ]
 }

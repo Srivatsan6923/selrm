@@ -18,8 +18,8 @@ Triplet accuracy and its parts on `rule_v1/test_L2` with the stated rule, with t
 | Verdict only, triplets (5) | none | 13.0 | 17.9 | 60.1 | 49.1 | 4.1 | 3.6 |
 | Verdict only, triplets (5) | wrong | 2.9 | 4.5 | 67.4 | 4.8 | 2.4 | 2.9 |
 | Ledger, triplets (5) | stated | 99.2 | 99.3 | 99.9 | 99.4 | 99.2 | 98.6 |
-| Ledger, triplets (0) | none | not run | | | | | |
-| Ledger, triplets (0) | wrong | not run | | | | | |
+| Ledger, triplets (4) | none | 40.7 | 48.1 | 67.5 | 78.2 | 31.5 | 27.4 |
+| Ledger, triplets (4) | wrong | 22.9 | 25.4 | 63.0 | 62.1 | 13.3 | 10.2 |
 | Summary, triplets (1) | stated | 98.0 | 98.5 | 99.3 | 100.0 | 97.5 | - |
-| Summary, triplets (0) | none | not run | | | | | |
-| Summary, triplets (0) | wrong | not run | | | | | |
+| Summary, triplets (1) | none | 32.8 | 39.4 | 69.8 | 82.6 | 20.4 | 11.1 |
+| Summary, triplets (1) | wrong | 17.6 | 20.6 | 66.2 | 71.2 | 4.4 | 3.4 |

@@ -1,0 +1,30 @@
+{
+ "run_id": "C-AUD-gpt-oss-120b",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "readout": "choice",
+ "XA": 99.5,
+ "n_items": 400,
+ "n_incomplete": 0,
+ "n_excluded": 0,
+ "CellAcc": 99.91666666666667,
+ "n_cells": 2400,
+ "cells_without_label": 0,
+ "XA_currency": 100.0,
+ "XA_inclusivity": 99.0,
+ "XA_subject": 100.0,
+ "XA_window": 99.0,
+ "without_known_issues": {
+  "XA": 99.4475138121547,
+  "n_items": 362,
+  "n_incomplete": 0,
+  "n_excluded": 38,
+  "CellAcc": 99.90791896869244,
+  "n_cells": 2172,
+  "cells_without_label": 0,
+  "XA_currency": 100.0,
+  "XA_inclusivity": 98.7012987012987,
+  "XA_subject": 100.0,
+  "XA_window": 99.0
+ }
+}

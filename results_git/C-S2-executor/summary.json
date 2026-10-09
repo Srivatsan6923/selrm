@@ -1,0 +1,1247 @@
+{
+ "run_id": "C-S2-executor",
+ "set": "clin_v1/medeinst_test (all pairs)",
+ "no_model": true,
+ "kb": {
+  "source": "DDXPlus, English release, figshare record 22687585 (doi 10.6084/m9.figshare.22687585.v2)",
+  "licence": "CC BY 4.0",
+  "sha256": {
+   "release_conditions.json": "56edf4682d8e86a4209fc3a33932e50ce03d1cc1fecc326c26d5ef8fa5c24890",
+   "release_evidences.json": "281c78b044ae60514e28ecc9052d08a8225dd3e2db3f00f8788b99c47b05e0c0"
+  },
+  "release_train_patients.zip": "174ae1d56f36a15b7144838ecd214e1e1748a5369fc90c559529b6dc6ecfb218"
+ },
+ "reference": {
+  "control_cases": 10609,
+  "linked": 10609,
+  "linked_pct": 100.0,
+  "aligned_for_table": 6328,
+  "sentence_types_seen": 1611,
+  "table_entries": 1465,
+  "table_entries_with_question_texts": 1673,
+  "chosen": {
+   "min_votes": 1,
+   "min_share": 0.6,
+   "theta": 0.2,
+   "same_decision": 99.75618904726181,
+   "same_codes": 39.57239309827457,
+   "reference_pair_accuracy": 0.9614478273164294
+  },
+  "grid": [
+   {
+    "min_votes": 1,
+    "min_share": 0.6,
+    "theta": 1.01,
+    "same_decision": 99.75618904726181,
+    "same_codes": 39.57239309827457
+   },
+   {
+    "min_votes": 1,
+    "min_share": 0.8,
+    "theta": 1.01,
+    "same_decision": 99.73743435858965,
+    "same_codes": 36.49662415603901
+   },
+   {
+    "min_votes": 1,
+    "min_share": 0.9,
+    "theta": 1.01,
+    "same_decision": 99.73743435858965,
+    "same_codes": 36.49662415603901
+   },
+   {
+    "min_votes": 2,
+    "min_share": 0.6,
+    "theta": 1.01,
+    "same_decision": 99.69992498124532,
+    "same_codes": 38.80345086271568
+   },
+   {
+    "min_votes": 2,
+    "min_share": 0.8,
+    "theta": 1.01,
+    "same_decision": 99.68117029257314,
+    "same_codes": 35.80270067516879
+   },
+   {
+    "min_votes": 2,
+    "min_share": 0.9,
+    "theta": 1.01,
+    "same_decision": 99.68117029257314,
+    "same_codes": 35.80270067516879
+   },
+   {
+    "min_votes": 3,
+    "min_share": 0.6,
+    "theta": 1.01,
+    "same_decision": 99.62490622655663,
+    "same_codes": 38.10952738184546
+   },
+   {
+    "min_votes": 3,
+    "min_share": 0.8,
+    "theta": 1.01,
+    "same_decision": 99.60615153788447,
+    "same_codes": 35.22130532633158
+   },
+   {
+    "min_votes": 3,
+    "min_share": 0.9,
+    "theta": 1.01,
+    "same_decision": 99.60615153788447,
+    "same_codes": 35.22130532633158
+   }
+  ],
+  "theta_grid": [
+   {
+    "theta": 0.2,
+    "reference_pair_accuracy": 0.9614478273164294
+   },
+   {
+    "theta": 0.3,
+    "reference_pair_accuracy": 0.9331699500424168
+   },
+   {
+    "theta": 0.4,
+    "reference_pair_accuracy": 0.8483363182203789
+   },
+   {
+    "theta": 0.5,
+    "reference_pair_accuracy": 0.8294844000377039
+   },
+   {
+    "theta": 0.6,
+    "reference_pair_accuracy": 0.8200584409463663
+   },
+   {
+    "theta": 0.7,
+    "reference_pair_accuracy": 0.8106324818550288
+   },
+   {
+    "theta": 0.8,
+    "reference_pair_accuracy": 0.7540767273070035
+   },
+   {
+    "theta": 0.9,
+    "reference_pair_accuracy": 0.6315392591196154
+   },
+   {
+    "theta": 1.01,
+    "reference_pair_accuracy": 0.6503911773022905
+   }
+  ],
+  "tuning_cases": {
+   "table": 5277,
+   "scored": 5332
+  }
+ },
+ "test": {
+  "pairs": 5383,
+  "pairs_scored": 5383,
+  "pairs_skipped_label_not_in_kb": 0,
+  "control": 98.04941482444734,
+  "trap": 0.873119078580717,
+  "pair": 0.6873490618614155,
+  "control_decided": 98.04941482444734,
+  "trap_decided": 70.36968233327141,
+  "both_decided": 70.09102730819245,
+  "any_decided": 98.32806984952629,
+  "trap_follows_control": 69.4965632546907,
+  "sm_control": 98.49526286457366,
+  "sm_trap": 0.5758870518298347,
+  "sm_pair": 0.5387330484859744,
+  "sm_both_decided": 91.78896526100688,
+  "sentences": {
+   "control": {
+    "n": 87563,
+    "exact": 93.54293480122882,
+    "matcher": 6.45706519877117,
+    "unmatched": 0.0
+   },
+   "trap": {
+    "n": 82571,
+    "exact": 91.26569861089244,
+    "matcher": 8.542950914970147,
+    "unmatched": 0.19135047413740902
+   }
+  },
+  "reading_check_linked_test_controls": {
+   "n": 5383,
+   "same_codes": 59.24205833178525
+  }
+ },
+ "by_label_pair": {
+  "Acute COPD exacerbation / infection -> Acute pulmonary edema": {
+   "n": 14,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 57.142857142857146,
+   "any_decided": 100.0
+  },
+  "Acute COPD exacerbation / infection -> Bronchitis": {
+   "n": 48,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Acute dystonic reactions -> Anaphylaxis": {
+   "n": 4,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Acute dystonic reactions -> Anemia": {
+   "n": 4,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Acute dystonic reactions -> Atrial fibrillation": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Acute dystonic reactions -> Myasthenia gravis": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Acute laryngitis -> Bronchitis": {
+   "n": 157,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 53.503184713375795,
+   "any_decided": 100.0
+  },
+  "Acute otitis media -> Bronchitis": {
+   "n": 2,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Acute otitis media -> URTI": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Acute pulmonary edema -> Possible NSTEMI / STEMI": {
+   "n": 129,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Acute pulmonary edema -> Pulmonary embolism": {
+   "n": 6,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 66.66666666666667,
+   "any_decided": 100.0
+  },
+  "Acute pulmonary edema -> Unstable angina": {
+   "n": 92,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 39.130434782608695,
+   "any_decided": 100.0
+  },
+  "Acute rhinosinusitis -> Bronchitis": {
+   "n": 5,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Acute rhinosinusitis -> Chronic rhinosinusitis": {
+   "n": 4,
+   "control": 50.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 50.0,
+   "any_decided": 50.0
+  },
+  "Acute rhinosinusitis -> Viral pharyngitis": {
+   "n": 8,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Anaphylaxis -> Possible NSTEMI / STEMI": {
+   "n": 5,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 80.0,
+   "any_decided": 100.0
+  },
+  "Anemia -> Guillain-Barr\u00e9 syndrome": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Anemia -> Panic attack": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Atrial fibrillation -> Myocarditis": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Atrial fibrillation -> PSVT": {
+   "n": 10,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 90.0,
+   "any_decided": 100.0
+  },
+  "Atrial fibrillation -> Pulmonary embolism": {
+   "n": 30,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 90.0,
+   "any_decided": 100.0
+  },
+  "Boerhaave -> Possible NSTEMI / STEMI": {
+   "n": 168,
+   "control": 100.0,
+   "trap": 0.5952380952380952,
+   "pair": 0.5952380952380952,
+   "both_decided": 76.19047619047619,
+   "any_decided": 100.0
+  },
+  "Bronchiectasis -> Bronchitis": {
+   "n": 230,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Bronchiectasis -> Pneumonia": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Bronchiolitis -> Pneumonia": {
+   "n": 2,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Bronchitis -> Acute COPD exacerbation / infection": {
+   "n": 456,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 99.78070175438596,
+   "any_decided": 100.0
+  },
+  "Bronchitis -> Allergic sinusitis": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Bronchitis -> Bronchiectasis": {
+   "n": 19,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 47.36842105263158,
+   "any_decided": 100.0
+  },
+  "Bronchitis -> Bronchospasm / acute asthma exacerbation": {
+   "n": 22,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Bronchitis -> Croup": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Bronchitis -> GERD": {
+   "n": 2,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 50.0,
+   "any_decided": 100.0
+  },
+  "Bronchitis -> Influenza": {
+   "n": 7,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Bronchitis -> Pneumonia": {
+   "n": 242,
+   "control": 77.27272727272727,
+   "trap": 1.6528925619834711,
+   "pair": 0.4132231404958678,
+   "both_decided": 33.05785123966942,
+   "any_decided": 78.51239669421487
+  },
+  "Bronchitis -> Possible NSTEMI / STEMI": {
+   "n": 2,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 50.0,
+   "any_decided": 100.0
+  },
+  "Bronchitis -> Pulmonary neoplasm": {
+   "n": 2,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 50.0,
+   "any_decided": 100.0
+  },
+  "Bronchitis -> Spontaneous pneumothorax": {
+   "n": 2,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 50.0,
+   "any_decided": 100.0
+  },
+  "Bronchitis -> URTI": {
+   "n": 93,
+   "control": 98.9247311827957,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 95.6989247311828,
+   "any_decided": 98.9247311827957
+  },
+  "Bronchitis -> Viral pharyngitis": {
+   "n": 18,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 88.88888888888889,
+   "any_decided": 100.0
+  },
+  "Bronchospasm / acute asthma exacerbation -> Acute COPD exacerbation / infection": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Chagas -> Acute pulmonary edema": {
+   "n": 7,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 85.71428571428571,
+   "any_decided": 100.0
+  },
+  "Chagas -> Anemia": {
+   "n": 4,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Chagas -> Atrial fibrillation": {
+   "n": 3,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Chagas -> GERD": {
+   "n": 3,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Chagas -> Guillain-Barr\u00e9 syndrome": {
+   "n": 3,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Chagas -> Possible NSTEMI / STEMI": {
+   "n": 9,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Chronic rhinosinusitis -> Acute rhinosinusitis": {
+   "n": 4,
+   "control": 0.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 0.0
+  },
+  "Croup -> Acute dystonic reactions": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Croup -> Bronchitis": {
+   "n": 4,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Croup -> Pneumonia": {
+   "n": 9,
+   "control": 100.0,
+   "trap": 11.11111111111111,
+   "pair": 11.11111111111111,
+   "both_decided": 11.11111111111111,
+   "any_decided": 100.0
+  },
+  "Ebola -> Bronchitis": {
+   "n": 3,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Ebola -> Pneumonia": {
+   "n": 4,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Epiglottitis -> Acute laryngitis": {
+   "n": 5,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Epiglottitis -> Acute otitis media": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Epiglottitis -> Possible NSTEMI / STEMI": {
+   "n": 4,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 25.0,
+   "any_decided": 100.0
+  },
+  "GERD -> Bronchitis": {
+   "n": 36,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 2.7777777777777777,
+   "any_decided": 100.0
+  },
+  "Guillain-Barr\u00e9 syndrome -> Acute dystonic reactions": {
+   "n": 5,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 40.0,
+   "any_decided": 100.0
+  },
+  "Guillain-Barr\u00e9 syndrome -> Anemia": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "HIV (initial infection) -> Anemia": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "HIV (initial infection) -> Influenza": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Influenza -> Bronchitis": {
+   "n": 45,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 2.2222222222222223,
+   "any_decided": 100.0
+  },
+  "Influenza -> Chronic rhinosinusitis": {
+   "n": 3,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 66.66666666666667,
+   "any_decided": 100.0
+  },
+  "Influenza -> HIV (initial infection)": {
+   "n": 10,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 40.0,
+   "any_decided": 100.0
+  },
+  "Influenza -> Pneumonia": {
+   "n": 33,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 3.0303030303030303,
+   "any_decided": 100.0
+  },
+  "Influenza -> URTI": {
+   "n": 375,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 96.8,
+   "any_decided": 100.0
+  },
+  "Influenza -> Viral pharyngitis": {
+   "n": 23,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Inguinal hernia -> Bronchitis": {
+   "n": 7,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 14.285714285714286,
+   "any_decided": 100.0
+  },
+  "Myasthenia gravis -> Acute dystonic reactions": {
+   "n": 7,
+   "control": 100.0,
+   "trap": 14.285714285714286,
+   "pair": 14.285714285714286,
+   "both_decided": 28.571428571428573,
+   "any_decided": 100.0
+  },
+  "Myasthenia gravis -> Anemia": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Myasthenia gravis -> Atrial fibrillation": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Myasthenia gravis -> Guillain-Barr\u00e9 syndrome": {
+   "n": 13,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 61.53846153846154,
+   "any_decided": 100.0
+  },
+  "Myocarditis -> Acute pulmonary edema": {
+   "n": 148,
+   "control": 96.62162162162163,
+   "trap": 14.18918918918919,
+   "pair": 14.18918918918919,
+   "both_decided": 56.08108108108108,
+   "any_decided": 96.62162162162163
+  },
+  "Myocarditis -> PSVT": {
+   "n": 3,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Myocarditis -> Panic attack": {
+   "n": 3,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Myocarditis -> Pericarditis": {
+   "n": 39,
+   "control": 97.43589743589743,
+   "trap": 7.6923076923076925,
+   "pair": 7.6923076923076925,
+   "both_decided": 38.46153846153846,
+   "any_decided": 97.43589743589743
+  },
+  "Myocarditis -> Possible NSTEMI / STEMI": {
+   "n": 7,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 28.571428571428573,
+   "any_decided": 100.0
+  },
+  "Myocarditis -> Unstable angina": {
+   "n": 34,
+   "control": 100.0,
+   "trap": 5.882352941176471,
+   "pair": 5.882352941176471,
+   "both_decided": 14.705882352941176,
+   "any_decided": 100.0
+  },
+  "PSVT -> Anemia": {
+   "n": 77,
+   "control": 100.0,
+   "trap": 2.5974025974025974,
+   "pair": 2.5974025974025974,
+   "both_decided": 58.44155844155844,
+   "any_decided": 100.0
+  },
+  "PSVT -> Atrial fibrillation": {
+   "n": 26,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "PSVT -> Panic attack": {
+   "n": 29,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 10.344827586206897,
+   "any_decided": 100.0
+  },
+  "PSVT -> Pulmonary embolism": {
+   "n": 3,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Pancreatic neoplasm -> Bronchitis": {
+   "n": 2,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Pancreatic neoplasm -> GERD": {
+   "n": 2,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Pancreatic neoplasm -> Possible NSTEMI / STEMI": {
+   "n": 18,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 33.333333333333336,
+   "any_decided": 100.0
+  },
+  "Panic attack -> Guillain-Barr\u00e9 syndrome": {
+   "n": 8,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 12.5,
+   "any_decided": 100.0
+  },
+  "Panic attack -> PSVT": {
+   "n": 16,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Panic attack -> Possible NSTEMI / STEMI": {
+   "n": 20,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Panic attack -> Spontaneous pneumothorax": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Pericarditis -> GERD": {
+   "n": 16,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 81.25,
+   "any_decided": 100.0
+  },
+  "Pericarditis -> Myocarditis": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Pericarditis -> Pulmonary embolism": {
+   "n": 65,
+   "control": 93.84615384615384,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 92.3076923076923,
+   "any_decided": 93.84615384615384
+  },
+  "Pericarditis -> Spontaneous pneumothorax": {
+   "n": 97,
+   "control": 95.87628865979381,
+   "trap": 1.0309278350515463,
+   "pair": 1.0309278350515463,
+   "both_decided": 63.91752577319588,
+   "any_decided": 95.87628865979381
+  },
+  "Pneumonia -> Bronchiectasis": {
+   "n": 55,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Pneumonia -> Bronchitis": {
+   "n": 327,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Pneumonia -> Croup": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Pneumonia -> GERD": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Pneumonia -> Pericarditis": {
+   "n": 7,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Pneumonia -> Possible NSTEMI / STEMI": {
+   "n": 3,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 66.66666666666667,
+   "any_decided": 100.0
+  },
+  "Pneumonia -> Pulmonary embolism": {
+   "n": 21,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Pneumonia -> Pulmonary neoplasm": {
+   "n": 151,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 58.27814569536424,
+   "any_decided": 100.0
+  },
+  "Pneumonia -> Spontaneous pneumothorax": {
+   "n": 8,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Pneumonia -> Tuberculosis": {
+   "n": 25,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 56.0,
+   "any_decided": 100.0
+  },
+  "Pneumonia -> URTI": {
+   "n": 4,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 75.0,
+   "any_decided": 100.0
+  },
+  "Pulmonary embolism -> Possible NSTEMI / STEMI": {
+   "n": 9,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 88.88888888888889,
+   "any_decided": 100.0
+  },
+  "Pulmonary embolism -> Spontaneous pneumothorax": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 100.0,
+   "pair": 100.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Pulmonary neoplasm -> Bronchitis": {
+   "n": 17,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Pulmonary neoplasm -> Possible NSTEMI / STEMI": {
+   "n": 5,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Pulmonary neoplasm -> Pulmonary embolism": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "SLE -> Possible NSTEMI / STEMI": {
+   "n": 172,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 90.11627906976744,
+   "any_decided": 100.0
+  },
+  "SLE -> Pulmonary embolism": {
+   "n": 3,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "SLE -> Pulmonary neoplasm": {
+   "n": 4,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Sarcoidosis -> Acute dystonic reactions": {
+   "n": 40,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Sarcoidosis -> Anemia": {
+   "n": 8,
+   "control": 100.0,
+   "trap": 12.5,
+   "pair": 12.5,
+   "both_decided": 12.5,
+   "any_decided": 100.0
+  },
+  "Sarcoidosis -> Atrial fibrillation": {
+   "n": 3,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 33.333333333333336,
+   "any_decided": 100.0
+  },
+  "Sarcoidosis -> Myocarditis": {
+   "n": 20,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 20.0,
+   "any_decided": 100.0
+  },
+  "Sarcoidosis -> Possible NSTEMI / STEMI": {
+   "n": 3,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Scombroid food poisoning -> Anaphylaxis": {
+   "n": 3,
+   "control": 66.66666666666667,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 66.66666666666667,
+   "any_decided": 66.66666666666667
+  },
+  "Spontaneous pneumothorax -> Pulmonary embolism": {
+   "n": 205,
+   "control": 100.0,
+   "trap": 0.975609756097561,
+   "pair": 0.975609756097561,
+   "both_decided": 8.292682926829269,
+   "any_decided": 100.0
+  },
+  "Spontaneous pneumothorax -> Unstable angina": {
+   "n": 29,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 89.65517241379311,
+   "any_decided": 100.0
+  },
+  "Spontaneous rib fracture -> Pericarditis": {
+   "n": 3,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 66.66666666666667,
+   "any_decided": 100.0
+  },
+  "Spontaneous rib fracture -> Pulmonary embolism": {
+   "n": 146,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 46.57534246575342,
+   "any_decided": 100.0
+  },
+  "Spontaneous rib fracture -> Spontaneous pneumothorax": {
+   "n": 232,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Stable angina -> SLE": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Stable angina -> Unstable angina": {
+   "n": 7,
+   "control": 0.0,
+   "trap": 100.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Tuberculosis -> Bronchitis": {
+   "n": 207,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 2.4154589371980677,
+   "any_decided": 100.0
+  },
+  "Tuberculosis -> Pneumonia": {
+   "n": 45,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 2.2222222222222223,
+   "any_decided": 100.0
+  },
+  "Tuberculosis -> Pulmonary neoplasm": {
+   "n": 55,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "URTI -> Bronchitis": {
+   "n": 128,
+   "control": 99.21875,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 97.65625,
+   "any_decided": 99.21875
+  },
+  "URTI -> Cluster headache": {
+   "n": 3,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "URTI -> Influenza": {
+   "n": 37,
+   "control": 97.29729729729729,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 94.5945945945946,
+   "any_decided": 97.29729729729729
+  },
+  "URTI -> Pneumonia": {
+   "n": 137,
+   "control": 86.13138686131387,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 78.10218978102189,
+   "any_decided": 89.78102189781022
+  },
+  "Unstable angina -> GERD": {
+   "n": 2,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Unstable angina -> Possible NSTEMI / STEMI": {
+   "n": 197,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  },
+  "Unstable angina -> SLE": {
+   "n": 1,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 0.0,
+   "any_decided": 100.0
+  },
+  "Viral pharyngitis -> Tuberculosis": {
+   "n": 22,
+   "control": 100.0,
+   "trap": 0.0,
+   "pair": 0.0,
+   "both_decided": 100.0,
+   "any_decided": 100.0
+  }
+ }
+}

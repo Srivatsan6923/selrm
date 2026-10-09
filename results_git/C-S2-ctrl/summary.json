@@ -168,26 +168,36 @@
     ]
    },
    "none": {
-    "seeds": 0,
-    "TA": null,
-    "Rev": null,
-    "Hold": null,
-    "TA_hand": null,
-    "TA_sampled": null,
-    "TA_invented": null,
-    "seeds_invented": 0,
-    "by_seed_TA": []
+    "seeds": 4,
+    "TA": 40.7125,
+    "Rev": 48.15,
+    "Hold": 67.475,
+    "TA_hand": 78.21969696969697,
+    "TA_sampled": 31.452618453865338,
+    "TA_invented": 27.4,
+    "seeds_invented": 4,
+    "by_seed_TA": [
+     41.0,
+     47.4,
+     41.75,
+     32.7
+    ]
    },
    "wrong": {
-    "seeds": 0,
-    "TA": null,
-    "Rev": null,
-    "Hold": null,
-    "TA_hand": null,
-    "TA_sampled": null,
-    "TA_invented": null,
-    "seeds_invented": 0,
-    "by_seed_TA": []
+    "seeds": 4,
+    "TA": 22.9375,
+    "Rev": 25.3875,
+    "Hold": 63.0,
+    "TA_hand": 62.0580808080808,
+    "TA_sampled": 13.27930174563591,
+    "TA_invented": 10.25,
+    "seeds_invented": 4,
+    "by_seed_TA": [
+     21.2,
+     31.75,
+     17.25,
+     21.55
+    ]
    }
   },
   "summary2-triplets": {
@@ -205,26 +215,30 @@
     ]
    },
    "none": {
-    "seeds": 0,
-    "TA": null,
-    "Rev": null,
-    "Hold": null,
-    "TA_hand": null,
-    "TA_sampled": null,
-    "TA_invented": null,
-    "seeds_invented": 0,
-    "by_seed_TA": []
+    "seeds": 1,
+    "TA": 32.75,
+    "Rev": 39.35,
+    "Hold": 69.85,
+    "TA_hand": 82.57575757575758,
+    "TA_sampled": 20.448877805486283,
+    "TA_invented": 11.1,
+    "seeds_invented": 1,
+    "by_seed_TA": [
+     32.75
+    ]
    },
    "wrong": {
-    "seeds": 0,
-    "TA": null,
-    "Rev": null,
-    "Hold": null,
-    "TA_hand": null,
-    "TA_sampled": null,
-    "TA_invented": null,
-    "seeds_invented": 0,
-    "by_seed_TA": []
+    "seeds": 1,
+    "TA": 17.6,
+    "Rev": 20.6,
+    "Hold": 66.15,
+    "TA_hand": 71.21212121212122,
+    "TA_sampled": 4.364089775561097,
+    "TA_invented": 3.4,
+    "seeds_invented": 1,
+    "by_seed_TA": [
+     17.6
+    ]
    }
   }
  }
