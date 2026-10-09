@@ -1,7 +1,7 @@
 {
- "classes_sha256": "e2214b7457b34facb65aabafccf8e8ce72edd469d269ef4b672b7e9d8421ac07",
+ "classes_sha256": "b77403a3098a273e123483263d7e3be442dafb3b0287fe0bd742467097652a24",
  "rules": {
-  "drug_class": "an ATC level-4 code and an FDA EPC class with Jaccard >= 0.5 and >= 4 common ingredients; members = the intersection; ingredients in one set only, combinations and ingredients of several selected classes are excluded; names shown are EPC names; near-miss ingredients come from the other level-4 codes of the same ATC level-3 group and are members of no selected class",
+  "drug_class": "an FDA EPC class by its direct ingredient members (rxclass classMembers, trans=1) with >= 4 single ingredients that belong to no other EPC class; agreement = the members also match one ATC level-4 code (Jaccard >= 0.5, >= 4 common); names shown are EPC names; near-miss ingredients come from the members' ATC level-3 groups and belong to no selected class and not to the class or its sub-classes",
   "ontology_class": "a term with 8-200 descendants under the domain root; members = descendants with a usable label or exact synonym; siblings share a parent and are disjoint; selected classes are pairwise disjoint (no subsumption, no common descendant); the parent is the too-general term",
   "split": "60 / 15 / 25 of the sibling families per domain, seeded; a class and its siblings share a split",
   "usable_name": "^[A-Za-z][A-Za-z0-9 '\\-/]{2,58}$ and no 'abnormality of' / 'abnormal'"
@@ -55,7 +55,7 @@
   }
  },
  "stats": {
-  "ambiguous_names_dropped": 224,
+  "ambiguous_names_dropped": 274,
   "disease": {
    "candidates_8_200_descendants": 1903,
    "dev_classes": 37,
@@ -74,24 +74,22 @@
    "train_members": 2928
   },
   "drug": {
-   "atc4_with_ingredients": 666,
-   "classes_after_one_to_one_and_exclusions": 32,
-   "classes_with_two_sibling_ingredients": 28,
-   "dev_classes": 4,
-   "dev_families": 4,
-   "dev_members": 23,
-   "epc_with_ingredients": 653,
-   "families_after_dropping_ambiguous_names": 28,
-   "ingredients": 175,
-   "ingredients_with_brand_names": 159,
-   "medrt_relations": 1961,
-   "pairs_meeting_jaccard_and_common": 33,
-   "test_classes": 7,
-   "test_families": 7,
-   "test_members": 32,
-   "train_classes": 17,
-   "train_families": 17,
-   "train_members": 93
+   "classes_agreeing_with_an_atc_level4_code": 29,
+   "classes_with_4_exclusive_single_ingredients": 116,
+   "classes_with_two_near_miss_ingredients": 96,
+   "dev_classes": 14,
+   "dev_families": 14,
+   "dev_members": 114,
+   "epc_classes_with_direct_ingredients": 606,
+   "families_after_dropping_ambiguous_names": 96,
+   "ingredients": 1409,
+   "ingredients_with_brand_names": 663,
+   "test_classes": 24,
+   "test_families": 24,
+   "test_members": 206,
+   "train_classes": 58,
+   "train_families": 58,
+   "train_members": 431
   },
   "phenotype": {
    "candidates_8_200_descendants": 1602,

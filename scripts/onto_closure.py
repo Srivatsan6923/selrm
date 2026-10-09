@@ -133,31 +133,40 @@ def ontology_domain(domain):
 
 
 def drug_domain():
+    """Drug classes: FDA EPC classes by their direct ingredient members (amended rule of 8 Oct, see
+    docs/CHANGE_REQUESTS.md). A class whose members also agree with one ATC level-4 code (Jaccard and common
+    members as in the first rule) carries agreement = True, so results can be reported on that subset."""
     S = snap()
     raw = json.loads((OUT / "drug_classes_raw.json").read_text(encoding="utf-8"))
     atc = {k: {m[0]: m[1] for m in v} for k, v in raw["atc4"].items()}
-    epc = {k: {"name": v["name"], "m": {m[0]: m[1] for m in v["members"]}} for k, v in raw["epc"].items()}
-    pairs = []
-    for a, am in atc.items():
-        for e, ev in epc.items():
-            common = set(am) & set(ev["m"])
-            if len(common) >= COMMON and len(common) / len(set(am) | set(ev["m"])) >= JACCARD:
-                pairs.append((a, e, common))
-    best = {}
-    for a, e, common in sorted(pairs, key=lambda x: (-len(x[2]), x[0], x[1])):   # one pair per ATC code and per EPC class
-        if a not in {x[0] for x in best.values()} and e not in best:
-            best[e] = (a, common)
-    count = defaultdict(int)
-    for e, (a, common) in best.items():
-        for m in common:
-            count[m] += 1
+    trans = {k: {m[0] for m in v["members"]} for k, v in raw["epc"].items()}          # with members of sub-classes
+    epc_name = {c["classId"]: c["className"] for c in S.classes("EPC")}
+
+    def direct(cid):
+        d = S.rx("rxclass/classMembers.json", classId=cid, relaSource="DAILYMED", rela="has_EPC", ttys="IN", trans=1)
+        ms = (d.get("drugMemberGroup") or {}).get("drugMember") or []
+        return {m["minConcept"]["rxcui"]: m["minConcept"]["name"] for m in ms}
+    with ThreadPoolExecutor(8) as ex:
+        epc = {k: v for k, v in zip(sorted(epc_name), ex.map(direct, sorted(epc_name))) if v}
+    owner = defaultdict(int)
+    for ms in epc.values():
+        for m in ms:
+            owner[m] += 1
+    atc_of, group = defaultdict(set), defaultdict(dict)
+    for code, ms in atc.items():
+        for m, n in ms.items():
+            atc_of[m].add(code)
+            if "/" not in n:
+                group[code[:4]][m] = n
     classes = []
-    for e, (a, common) in sorted(best.items()):
-        ms = sorted(m for m in common if count[m] == 1 and "/" not in atc[a][m])     # one class only; no combinations
-        if len(ms) >= MIN_MEMBERS:
-            classes.append({"id": f"{a}|{e}", "atc4": a, "epc": e, "name": epc[e]["name"], "domain": "drug", "ingredients": ms,
-                            "excluded_one_set_only": sorted((set(atc[a]) ^ set(epc[e]["m"]))),
-                            "names_of": {m: atc[a][m] for m in ms}})
+    for e in sorted(epc):
+        ms = sorted(m for m, n in epc[e].items() if owner[m] == 1 and "/" not in n)   # one class only; no combinations
+        if len(ms) < MIN_MEMBERS:
+            continue
+        agree = sorted(a for a, am in atc.items() if len(set(am) & set(epc[e])) >= COMMON
+                       and len(set(am) & set(epc[e])) / len(set(am) | set(epc[e])) >= JACCARD)
+        classes.append({"id": f"EPC:{e}", "epc": e, "name": epc_name[e], "domain": "drug", "ingredients": ms,
+                        "agreement": bool(agree), "atc4": agree, "names_of": {m: epc[e][m] for m in ms}})
     ing = sorted({m for c in classes for m in c["ingredients"]})
 
     def brands(rxcui):
@@ -166,35 +175,29 @@ def drug_domain():
         for g in (d.get("relatedGroup") or {}).get("conceptGroup") or []:
             out += [p["name"] for p in g.get("conceptProperties") or []]
         return sorted(set(out))
-
-    def medrt(rxcui):
-        d = S.rx("rxclass/class/byRxcui.json", rxcui=rxcui, relaSource="MEDRT")
-        rel = (d.get("rxclassDrugInfoList") or {}).get("rxclassDrugInfo") or []
-        return sorted({(r["rela"], r["rxclassMinConceptItem"]["classId"]) for r in rel})
     with ThreadPoolExecutor(8) as ex:
         bn = dict(zip(ing, ex.map(brands, ing)))
-        mr = dict(zip(ing, ex.map(medrt, ing)))
     selected = set(ing)
     chosen = []
     for c in classes:
-        c["members"] = [{"id": f"RXCUI:{m}", "names": [c["names_of"][m]] + [b for b in bn[m] if NAME_OK.match(b)][:3],
-                         "medrt": len(mr[m])} for m in c["ingredients"]]
-        a, e = c["atc4"], c["epc"]
-        sib = {}                                # ingredients of the other level-4 codes under the same level-3 group
-        for code, ms in atc.items():
-            if code != a and code[:4] == a[:4]:
-                for m, name in ms.items():
-                    if m not in atc[a] and m not in epc[e]["m"] and m not in selected and "/" not in name and NAME_OK.match(name):
-                        sib[m] = name
+        e = c["epc"]
+        c["members"] = [{"id": f"RXCUI:{m}", "names": [c["names_of"][m]] + [b for b in bn[m] if NAME_OK.match(b)][:3]}
+                        for m in c["ingredients"]]
+        sib = {}                                # other ingredients of the members' ATC level-3 groups
+        for m in c["ingredients"]:
+            for code in atc_of[m]:
+                for x, name in group[code[:4]].items():
+                    if x not in epc[e] and x not in trans.get(e, ()) and x not in selected and NAME_OK.match(name):
+                        sib[x] = name
         c["siblings"] = [{"id": f"RXCUI:{m}", "names": [n]} for m, n in sorted(sib.items())]
         for k in ("ingredients", "names_of"):
             del c[k]
         if len(c["siblings"]) >= 2:
-            chosen.append({"family": f"ATC:{a}", "general": None, "classes": [c]})
-    stats = {"atc4_with_ingredients": len(atc), "epc_with_ingredients": len(epc), "pairs_meeting_jaccard_and_common": len(pairs),
-             "classes_after_one_to_one_and_exclusions": len(classes), "classes_with_two_sibling_ingredients": len(chosen),
-             "ingredients": len(ing), "ingredients_with_brand_names": sum(bool(v) for v in bn.values()),
-             "medrt_relations": sum(len(v) for v in mr.values())}
+            chosen.append({"family": c["id"], "general": None, "classes": [c]})
+    stats = {"epc_classes_with_direct_ingredients": len(epc), "classes_with_4_exclusive_single_ingredients": len(classes),
+             "classes_with_two_near_miss_ingredients": len(chosen),
+             "classes_agreeing_with_an_atc_level4_code": sum(f["classes"][0]["agreement"] for f in chosen),
+             "ingredients": len(ing), "ingredients_with_brand_names": sum(bool(v) for v in bn.values())}
     return chosen, stats
 
 
@@ -270,8 +273,9 @@ def main():
     (OUT / "classes.json").write_text(text, encoding="utf-8", newline="\n")
     snapshot = json.loads((OUT / "SNAPSHOT.json").read_text(encoding="utf-8"))
     man = {"set": "onto_v1", "seed": SEED, "snapshot": snapshot, "classes_sha256": hashlib.sha256(text.encode()).hexdigest(),
-           "rules": {"drug_class": f"an ATC level-4 code and an FDA EPC class with Jaccard >= {JACCARD} and >= {COMMON} common ingredients; members = the intersection; "
-                                   "ingredients in one set only, combinations and ingredients of several selected classes are excluded; names shown are EPC names; near-miss ingredients come from the other level-4 codes of the same ATC level-3 group and are members of no selected class",
+           "rules": {"drug_class": f"an FDA EPC class by its direct ingredient members (rxclass classMembers, trans=1) with >= {MIN_MEMBERS} single ingredients that belong to no other EPC class; "
+                                   f"agreement = the members also match one ATC level-4 code (Jaccard >= {JACCARD}, >= {COMMON} common); names shown are EPC names; near-miss ingredients come from the "
+                                   "members' ATC level-3 groups and belong to no selected class and not to the class or its sub-classes",
                      "ontology_class": f"a term with {MIN_DESC}-{MAX_DESC} descendants under the domain root; members = descendants with a usable label or exact synonym; "
                                        "siblings share a parent and are disjoint; selected classes are pairwise disjoint (no subsumption, no common descendant); the parent is the too-general term",
                      "usable_name": NAME_OK.pattern + " and no 'abnormality of' / 'abnormal'",
