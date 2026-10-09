@@ -1,0 +1,46 @@
+{
+ "run_id": "C-KP-rationale-triplets-s0",
+ "set": "clin_v1/keypairs_careqa_oneway",
+ "Reversal": 76.0,
+ "CI95": [
+  70.66666666666667,
+  81.33333333333333
+ ],
+ "n_pairs": 225,
+ "q1_acc": 85.77777777777777,
+ "q2_acc": 89.77777777777777,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 80.0,
+  "2": 74.66666666666667,
+  "3": 73.33333333333333
+ },
+ "Reversal_by_category": {
+  "Biology": 90.2439024390244,
+  "Chemistry": 58.333333333333336,
+  "Medicine": 74.4186046511628,
+  "Nursing": 72.72727272727273,
+  "Pharmacology": 80.35714285714286,
+  "Psychology": 67.85714285714286
+ },
+ "n_by_category": {
+  "Biology": 41,
+  "Chemistry": 24,
+  "Medicine": 43,
+  "Nursing": 33,
+  "Pharmacology": 56,
+  "Psychology": 28
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "rationale_no_answer": 0,
+  "gen_not_stopped": 0,
+  "seconds": 197.5,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

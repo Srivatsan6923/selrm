@@ -834,6 +834,278 @@
    }
   }
  },
+ "rule_v1/test_L3inv": {
+  "summary": {
+   "all": {
+    "Rev": 0.2,
+    "Hold": 0.9,
+    "TA": 0.0,
+    "BaseAcc": 2.0,
+    "Tie": 99.7,
+    "PresHold": 2.0,
+    "n": 1000
+   },
+   "nm_kind=negation": {
+    "Rev": 0.0,
+    "Hold": 0.5,
+    "TA": 0.0,
+    "BaseAcc": 1.5,
+    "Tie": 100.0,
+    "PresHold": 2.0,
+    "n": 200
+   },
+   "tier=easy": {
+    "Rev": 0.0,
+    "Hold": 0.0,
+    "TA": 0.0,
+    "BaseAcc": 0.4769475357710652,
+    "Tie": 100.0,
+    "PresHold": 0.9538950715421304,
+    "n": 629
+   },
+   "level=L3-inv": {
+    "Rev": 0.2,
+    "Hold": 0.9,
+    "TA": 0.0,
+    "BaseAcc": 2.0,
+    "Tie": 99.7,
+    "PresHold": 2.0,
+    "n": 1000
+   },
+   "family=g_score_cutoff": {
+    "Rev": 0.0,
+    "Hold": 4.49438202247191,
+    "TA": 0.0,
+    "BaseAcc": 7.865168539325842,
+    "Tie": 97.75280898876404,
+    "PresHold": 8.98876404494382,
+    "n": 89
+   },
+   "family=g_two_of_three": {
+    "Rev": 0.0,
+    "Hold": 1.1857707509881423,
+    "TA": 0.0,
+    "BaseAcc": 1.5810276679841897,
+    "Tie": 100.0,
+    "PresHold": 1.1857707509881423,
+    "n": 253
+   },
+   "family=g_any_of": {
+    "Rev": 0.0,
+    "Hold": 0.0,
+    "TA": 0.0,
+    "BaseAcc": 0.37037037037037035,
+    "Tie": 100.0,
+    "PresHold": 1.4814814814814814,
+    "n": 270
+   },
+   "nm_kind=time": {
+    "Rev": 0.0,
+    "Hold": 0.5,
+    "TA": 0.0,
+    "BaseAcc": 2.5,
+    "Tie": 99.5,
+    "PresHold": 2.5,
+    "n": 200
+   },
+   "tier=long": {
+    "Rev": 0.5970149253731343,
+    "Hold": 2.6865671641791047,
+    "TA": 0.0,
+    "BaseAcc": 5.074626865671642,
+    "Tie": 99.1044776119403,
+    "PresHold": 4.17910447761194,
+    "n": 335
+   },
+   "family=g_single": {
+    "Rev": 0.0,
+    "Hold": 1.075268817204301,
+    "TA": 0.0,
+    "BaseAcc": 2.6881720430107525,
+    "Tie": 100.0,
+    "PresHold": 1.6129032258064515,
+    "n": 186
+   },
+   "nm_kind=subject": {
+    "Rev": 0.0,
+    "Hold": 0.5,
+    "TA": 0.0,
+    "BaseAcc": 1.0,
+    "Tie": 100.0,
+    "PresHold": 1.5,
+    "n": 200
+   },
+   "nm_kind=boundary": {
+    "Rev": 1.0,
+    "Hold": 0.0,
+    "TA": 0.0,
+    "BaseAcc": 2.0,
+    "Tie": 99.5,
+    "PresHold": 2.0,
+    "n": 200
+   },
+   "nm_kind=numeric": {
+    "Rev": 0.0,
+    "Hold": 3.0,
+    "TA": 0.0,
+    "BaseAcc": 3.0,
+    "Tie": 99.5,
+    "PresHold": 2.0,
+    "n": 200
+   },
+   "family=g_all_of": {
+    "Rev": 0.9900990099009901,
+    "Hold": 0.0,
+    "TA": 0.0,
+    "BaseAcc": 1.4851485148514851,
+    "Tie": 99.5049504950495,
+    "PresHold": 0.9900990099009901,
+    "n": 202
+   },
+   "tier=superseded": {
+    "Rev": 0.0,
+    "Hold": 0.0,
+    "TA": 0.0,
+    "BaseAcc": 0.0,
+    "Tie": 100.0,
+    "PresHold": 0.0,
+    "n": 31
+   },
+   "tier=delabelled": {
+    "Rev": 0.0,
+    "Hold": 0.0,
+    "TA": 0.0,
+    "BaseAcc": 0.0,
+    "Tie": 100.0,
+    "PresHold": 0.0,
+    "n": 5
+   }
+  },
+  "CI95_rule": {
+   "TA": [
+    0.0,
+    0.0
+   ],
+   "Rev": [
+    0.0,
+    0.6302521008403361
+   ],
+   "Hold": [
+    0.27598896044158233,
+    1.6472868217054264
+   ]
+  },
+  "CI95_family": {
+   "TA": [
+    0.0,
+    0.0
+   ],
+   "Rev": [
+    0.0,
+    0.6329113924050633
+   ],
+   "Hold": [
+    0.18832391713747645,
+    2.1374045801526718
+   ]
+  },
+  "macro": {
+   "TA_rid": {
+    "macro": 0.0,
+    "n_groups": 60
+   },
+   "TA_family": {
+    "macro": 0.0,
+    "n_groups": 5
+   },
+   "Rev_rid": {
+    "macro": 0.19607843137254904,
+    "n_groups": 60
+   },
+   "Rev_family": {
+    "macro": 0.19801980198019803,
+    "n_groups": 5
+   },
+   "Hold_rid": {
+    "macro": 0.7917635433620089,
+    "n_groups": 60
+   },
+   "Hold_family": {
+    "macro": 1.3510843181328709,
+    "n_groups": 5
+   }
+  },
+  "nearmiss": {
+   "all": {
+    "n": 1000,
+    "SameDecision": 98.6,
+    "BothCorrect": 0.8,
+    "n_base_correct": 20,
+    "NearGivenBase": 40.0,
+    "UnnecessaryReversal": 5.0,
+    "TieGivenBase": 55.0
+   },
+   "nm_kind=negation": {
+    "n": 200,
+    "SameDecision": 98.5,
+    "BothCorrect": 0.5,
+    "n_base_correct": 3,
+    "NearGivenBase": 33.333333333333336,
+    "UnnecessaryReversal": 0.0,
+    "TieGivenBase": 66.66666666666667
+   },
+   "nm_kind=time": {
+    "n": 200,
+    "SameDecision": 98.0,
+    "BothCorrect": 0.5,
+    "n_base_correct": 5,
+    "NearGivenBase": 20.0,
+    "UnnecessaryReversal": 0.0,
+    "TieGivenBase": 80.0
+   },
+   "nm_kind=subject": {
+    "n": 200,
+    "SameDecision": 99.5,
+    "BothCorrect": 0.5,
+    "n_base_correct": 2,
+    "NearGivenBase": 50.0,
+    "UnnecessaryReversal": 0.0,
+    "TieGivenBase": 50.0
+   },
+   "nm_kind=boundary": {
+    "n": 200,
+    "SameDecision": 98.0,
+    "BothCorrect": 0.0,
+    "n_base_correct": 4,
+    "NearGivenBase": 0.0,
+    "UnnecessaryReversal": 25.0,
+    "TieGivenBase": 75.0
+   },
+   "nm_kind=numeric": {
+    "n": 200,
+    "SameDecision": 99.0,
+    "BothCorrect": 2.5,
+    "n_base_correct": 6,
+    "NearGivenBase": 83.33333333333333,
+    "UnnecessaryReversal": 0.0,
+    "TieGivenBase": 16.666666666666668
+   }
+  },
+  "step": {
+   "criterion": {
+    "CorrectRevision": 0.4,
+    "n_changed": 1000,
+    "UnnecessaryRevision": 2.0,
+    "n_unchanged": 2000
+   },
+   "conclusion": {
+    "CorrectRevision": 0.2,
+    "n_changed": 1000,
+    "UnnecessaryRevision": 2.1,
+    "n_unchanged": 2000
+   }
+  }
+ },
  "missing": {
   "MR": 0.0,
   "n_missing": 1000,

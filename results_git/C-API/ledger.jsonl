@@ -1,0 +1,15 @@
+{"run_id": "C-SMOKE-llama", "model": "meta-llama/llama-3.3-70b-instruct", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.0041223200000000005, "cost_actual": 0.003091443, "time": "2026-10-09T02:40:35Z"}
+{"run_id": "C-SMOKE-gemma-4-31b", "model": "google/gemma-4-31b-it", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.00169724, "cost_actual": 0.0018620199999999998, "time": "2026-10-09T02:42:02Z"}
+{"run_id": "C-SMOKE-gpt-oss-120b", "model": "openai/gpt-oss-120b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.00075584, "cost_actual": 0.0, "time": "2026-10-09T02:45:20Z"}
+{"run_id": "C-SMOKE-nemotron-3-super", "model": "nvidia/nemotron-3-super-120b-a12b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.00152048, "cost_actual": 0.0014142399999999993, "time": "2026-10-09T02:49:12Z"}
+{"run_id": "C-SMOKE-qwen35-27b", "model": "qwen/qwen3.5-27b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.00503256, "cost_actual": 0.0027472200000000007, "time": "2026-10-09T03:39:27Z"}
+{"run_id": "C-SMOKE-gpt-oss-120b", "model": "openai/gpt-oss-120b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.00505856, "cost_actual": 0.004356411000000001, "time": "2026-10-09T03:39:52Z"}
+{"run_id": "C-SMOKE-qwen35-27b", "model": "qwen/qwen3.5-27b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.00503256, "cost_actual": 0.004511264999999999, "time": "2026-10-09T03:40:53Z"}
+{"run_id": "C-SMOKE-qwen35-397b", "model": "qwen/qwen3.5-397b-a17b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.010485800000000002, "cost_actual": 0.018648889999999998, "time": "2026-10-09T03:41:18Z"}
+{"run_id": "C-SMOKE-kimi-k3", "model": "moonshotai/kimi-k3", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.012093600000000001, "cost_actual": 0.010458900000000002, "time": "2026-10-09T03:41:23Z"}
+{"run_id": "C-AUD-llama70b", "model": "meta-llama/llama-3.3-70b-instruct", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.42184204, "cost_actual": 0.4032389389999991, "time": "2026-10-09T03:47:47Z"}
+{"run_id": "C-AUD-gemma-4-31b", "model": "google/gemma-4-31b-it", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.17365538, "cost_actual": 0.19685704549999952, "time": "2026-10-09T03:48:16Z"}
+{"run_id": "C-AUD-llama70b", "model": "meta-llama/llama-3.3-70b-instruct", "sets": ["xr_v1/test"], "cost_estimate": 0.16177526000000003, "cost_actual": 0.17577416900000004, "time": "2026-10-09T03:51:01Z"}
+{"run_id": "C-AUD-gemma-4-31b", "model": "google/gemma-4-31b-it", "sets": ["xr_v1/test"], "cost_estimate": 0.06683096999999999, "cost_actual": 0.07548112550000018, "time": "2026-10-09T03:51:53Z"}
+{"run_id": "C-AUD-gemma-4-31b", "model": "google/gemma-4-31b-it", "sets": ["rule_v1/dev_missing", "rule_v1/missing"], "cost_estimate": 0.11022007, "cost_actual": 0.11734454850000002, "time": "2026-10-09T03:57:28Z"}
+{"run_id": "C-AUD-gpt-oss-120b", "model": "openai/gpt-oss-120b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.5069403200000001, "cost_actual": 0.44034050600000096, "time": "2026-10-09T03:58:44Z"}

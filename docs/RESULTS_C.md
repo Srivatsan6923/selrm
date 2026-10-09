@@ -23,10 +23,10 @@ Ladder (TA [95% CI over rules]; sets a run did not score are blank):
 | System | run | L0 | L1 | L2 | L3inv | L3alt | hard |
 |---|---|---|---|---|---|---|---|
 | Untrained backbone, verdict (critic) | C-TF-critic | 44.4 [38.8, 49.2] | 42.8 [28.9, 57.9] | 27.1 [21.5, 33.6] | 33.4 [26.6, 40.5] | 83.9 [75.3, 91.7] | 24.6 [18.6, 30.8] |
-| Untrained backbone, prompted summary | C-TF-promptsum |  |  | 67.5 [63.1, 71.7] |  | 93.5 [88.3, 97.8] |  |
-| Untrained backbone, prompted ledger (frozen malformed check) | C-TF-promptledger |  |  | 0.1 [0.0, 0.2] |  | 0.0 [0.0, 0.0] |  |
-| Untrained backbone, prompted ledger (format-normalised readout) | C-TF-promptledger-lenient |  |  | 59.5 [53.8, 64.9] |  | 73.9 [66.4, 82.4] |  |
-| Untrained backbone, default correction | C-TF-defcorr |  |  | 26.4 [20.3, 32.7] |  | 87.3 [79.4, 94.3] |  |
+| Untrained backbone, prompted summary | C-TF-promptsum |  |  | 67.5 [63.1, 71.7] | 68.6 [61.4, 75.5] | 93.5 [88.3, 97.8] |  |
+| Untrained backbone, prompted ledger (frozen malformed check) | C-TF-promptledger |  |  | 0.1 [0.0, 0.2] | 0.0 [0.0, 0.0] | 0.0 [0.0, 0.0] |  |
+| Untrained backbone, prompted ledger (format-normalised readout) | C-TF-promptledger-lenient |  |  | 59.5 [53.8, 64.9] | 53.0 [46.8, 58.5] | 73.9 [66.4, 82.4] |  |
+| Untrained backbone, default correction | C-TF-defcorr |  |  | 26.4 [20.3, 32.7] | 38.2 [29.0, 47.7] | 87.3 [79.4, 94.3] |  |
 | Untrained backbone, generated-program verifier | C-TF-genprog |  |  | 89.8 [86.4, 92.7] |  | 96.3 [93.9, 98.4] |  |
 | General-purpose trigger tagger + rule program | C-SC-gptrigger |  |  | 77.7 [75.4, 79.8] |  |  |  |
 | Reference: extraction (untrained prompted ledger) + hand-written program | C-REF-extract-program |  |  | 2.1 [1.4, 2.9] |  | 0.0 [0.0, 0.0] |  |

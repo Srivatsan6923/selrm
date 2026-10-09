@@ -1,0 +1,10 @@
+2026-10-09T01:34:32Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-summary2-blocks-s0
+2026-10-09T01:34:34Z token budget per batch: 8000 (generation 24000)
+2026-10-09T01:34:34Z C-KP-summary2-blocks-s0 clin_v1/keypairs_medqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa_oneway/reader_prose.npz', 'exists')
+2026-10-09T01:34:37Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0391)
+2026-10-09T01:34:40Z padding self-check: max |u_batch - u_single| = 0.0812 (tol 0.634) -> left padding
+2026-10-09T01:41:28Z generate: batch 25/32, 28571 tokens, 70 tok/s
+2026-10-09T01:45:02Z C-KP-summary2-blocks-s0 clin_v1/keypairs_medqa_oneway: TA nan Rev nan Hold nan n=None (627.2 s)
+2026-10-09T01:45:03Z C-KP-summary2-blocks-s0 clin_v1/keypairs_careqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa_oneway/reader_prose.npz', 'exists')
+2026-10-09T01:50:48Z C-KP-summary2-blocks-s0 clin_v1/keypairs_careqa_oneway: TA nan Rev nan Hold nan n=None (343.5 s)
+2026-10-09T01:50:50Z DONE C-KP-summary2-blocks-s0 in 17.0 min, GPU util mean 83.5

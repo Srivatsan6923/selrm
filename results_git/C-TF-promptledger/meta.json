@@ -18,7 +18,8 @@
   "rule_v1/missing",
   "rule_v1/test_L2",
   "rule_v1/test_L3alt",
-  "xr_v1/test"
+  "xr_v1/test",
+  "rule_v1/test_L3inv"
  ],
  "max_new": 768,
  "eval_batch": {
@@ -34,7 +35,8 @@
   "rule_v1/missing": 2523.1,
   "rule_v1/test_L2": 7836.5,
   "rule_v1/test_L3alt": 2321.6,
-  "xr_v1/test": 1170.7
+  "xr_v1/test": 1170.7,
+  "rule_v1/test_L3inv": 4033.1
  },
  "eval_generated_tokens": 365354,
  "pad_check_ok": true,
@@ -59,7 +61,7 @@
  "pod": "selrm-c-run-c-tf-rule-24gb-9296-0-wwbfg",
  "scoring_code": "role-b ac524e8062ef",
  "git_commit": "cfe37bb5ec49",
- "wall_seconds": 16347.3,
+ "wall_seconds": 20404.6,
  "summaries": {
   "rule_v1/dev_missing": null,
   "rule_v1/dev": {
@@ -90,7 +92,16 @@
    "PresHold": 0.7,
    "n": 1000
   },
-  "xr_v1/test": null
+  "xr_v1/test": null,
+  "rule_v1/test_L3inv": {
+   "Rev": 0.2,
+   "Hold": 0.9,
+   "TA": 0.0,
+   "BaseAcc": 2.0,
+   "Tie": 99.7,
+   "PresHold": 2.0,
+   "n": 1000
+  }
  },
  "gpu_util_mean": 93.1,
  "gpu_util_p10": 92.0,
@@ -130,7 +141,17 @@
    "gpu": "NVIDIA A10, 595.91.07, 23028 MiB",
    "node": "hcc-nrp-shor-c5925.unl.edu",
    "git_commit": "c1d62851844b"
+  },
+  {
+   "run_id": "C-TF-promptledger--p4",
+   "sets": [
+    "rule_v1/test_L3inv"
+   ],
+   "wall_seconds": 4057.3,
+   "gpu": "NVIDIA A10, 595.91.07, 23028 MiB",
+   "node": "hcc-nrp-shor-c5805.unl.edu",
+   "git_commit": "f0110636f2af"
   }
  ],
- "merged": "2026-10-03T16:43:46Z"
+ "merged": "2026-10-09T04:02:07Z"
 }

@@ -1,0 +1,48 @@
+{
+ "run_id": "C-KP-promptledger-lenient",
+ "set": "clin_v1/keypairs_careqa_oneway",
+ "Reversal": 2.2222222222222223,
+ "CI95": [
+  0.4444444444444444,
+  4.444444444444445
+ ],
+ "n_pairs": 225,
+ "q1_acc": 16.444444444444443,
+ "q2_acc": 14.222222222222221,
+ "tie_rate": 93.77777777777777,
+ "Reversal_by_tercile": {
+  "1": 1.3333333333333333,
+  "2": 2.6666666666666665,
+  "3": 2.6666666666666665
+ },
+ "Reversal_by_category": {
+  "Biology": 0.0,
+  "Chemistry": 0.0,
+  "Medicine": 4.651162790697675,
+  "Nursing": 0.0,
+  "Pharmacology": 1.7857142857142858,
+  "Psychology": 7.142857142857143
+ },
+ "n_by_category": {
+  "Biology": 41,
+  "Chemistry": 24,
+  "Medicine": 43,
+  "Nursing": 33,
+  "Pharmacology": 56,
+  "Psychology": 28
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "reader_units": 450,
+  "malformed_units": 355,
+  "malformed_rate": 0.7889,
+  "seconds": 14.8,
+  "mode": "rejudge",
+  "lenient_version": 2,
+  "source_run": "C-KP-promptledger"
+ }
+}
