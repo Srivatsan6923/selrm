@@ -37,6 +37,10 @@ Nothing is tuned on a test set: parser, linker, gate and prompts are developed o
 - 9 Oct 02:15 UTC: the H100 runner was preempted during B-BB-qwen3.5-4b-verdict-triplets-s0 (KILLED_1; it resumes
   from its checkpoint); B-BB-qwen3.5-4b-verdict-blocks-s0 is done. Pending Jobs on all queues: two h100-opp, one
   a6000, one a40 (A100 quota still full). Nothing from A, C or D for stage 2 on origin yet.
+- 9 Oct ~03:40 UTC: main (3a544a1) merged into role-b (6ef936d). Running on all queues: two h100-opp runners and
+  one l40 (the three Qwen3.5-4B cells first, then B-DIV seed 0 and the B-NS evals); pending: a6000, a40, h200-opp,
+  rtx8000. The namespace's A100 quota (4) is held by another group's jobs; add an a100 runner when a slot opens.
+  Drive D: dropped out for a while on 9 Oct (laptop); nothing lost.
 - Sync pod selrm-b-sync created 8 Oct ~23:10 UTC (6 h limit): recreate with `kubectl -n ecepxie delete pod
   selrm-b-sync`, then `python scripts/submit_b.py sync-up`.
 - Never run two data jobs at once. Laptop memory is tight: analysis and resummarize one at a time.
@@ -46,8 +50,10 @@ Pull (`submit_b.py pull`), `register_adapters.py`, `resummarize_b.py <runs>`, an
 commit and push; HANDOFFS lines for results C or D use. `python scratch/regen_revised.py` regenerates queue files.
 
 ## Open compute requests
-- #1 (2 Oct, also H-S2-2): read-only GitHub token secret `selrm-github-ro`; confirm `hf-token-srivatsan` is the
-  user's. Until then kept adapters stay on the PVC (C mounts selrm-b read-only).
+- #1 CLOSED 9 Oct (lead's handoff and the user): `selrm-github-ro` (key token) exists; `hf-token-srivatsan` (key
+  token) is the user's and B may use it. Publishing kept adapters to a private HF repo
+  (`submit_b.py publish <owner>/selrm-adapters --secret hf-token-srivatsan:token`) needs the HF account name;
+  asked 9 Oct. Not blocking: C mounts PVC selrm-b read-only.
 
 ## Blockers
 - A: rule_v2 (A5), mcv_v1 (A1), onto_v1 / cls_v1 (A4), reg_v1 (A6); the `struct` and onto_v1 file formats.
