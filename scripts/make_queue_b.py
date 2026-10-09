@@ -370,7 +370,7 @@ def adaptation(registry, seeds=(0, 1, 2)):
         runs += [{"run_id": f"B-MIX-{arm}-s{s}", "seed": s, "priority": 12 + s, "format": "verdict",
                   "corpus": "rule_v1/train_triplets", "n_examples": 60000, "mix": {"corpus": c, "share": 0.2},
                   "keep_adapter": True, "eval": dict(EVAL) | {"bs_score": 16}, "max_drop": 0.01,
-                  "hp": {"per_device": 4, "max_len": 3072},     # MedCalc notes: verdict prompts up to 2,717 tokens
+                  "hp": {"per_device": 2, "max_len": 3072},     # MedCalc verdict prompts reach 2,717 tokens; 2 x 3,072 fits 40 GB
                   "eval_sets": ["rule_v1/dev", "mcv_v1/dev"], "min_gen": 4} for s in seeds]
     return runs
 
