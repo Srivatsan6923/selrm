@@ -84,7 +84,8 @@ def runner_job(name, queue, code, env_tag, gpu, max_runs, hours, cpu=2, mem="12G
     terms = [DRIVER] + ([{"key": "nvidia.com/gpu.product", "operator": "In", "values": products}] if products else [])
     pod = {"restartPolicy": "Never", "affinity": affinity(terms),
            "initContainers": [{"name": "stage", "image": IMAGE,
-                               "command": ["sh", f"/pvc/selrm/code/{code}/k8s/stage.sh", env_tag, code, *models],
+                               # the GPU is already reserved while this runs: a staging step slower than 12 min fails the pod and frees it
+                               "command": ["timeout", "720", "sh", f"/pvc/selrm/code/{code}/k8s/stage.sh", env_tag, code, *models],
                                "resources": res(3, "8Gi", "64Gi"),
                                "volumeMounts": [MNT_PVC, {"name": "work", "mountPath": "/work"},
                                                 {"name": "env", "mountPath": "/opt/selrm-env"}]}],
