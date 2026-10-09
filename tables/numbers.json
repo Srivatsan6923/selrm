@@ -63,6 +63,10 @@
   "number": 0.004,
   "value": "0.004"
  },
+ "cmp/p3/padj": {
+  "number": 0.012,
+  "value": "0.012"
+ },
  "cmp/p4/diff": {
   "number": -8.452535760728217,
   "value": "-8.5"
@@ -86,6 +90,10 @@
  "cmp/p6a/p": {
   "number": 0.244,
   "value": "0.244"
+ },
+ "cmp/p6a/padj": {
+  "number": 0.428,
+  "value": "0.428"
  },
  "cmp/p6b/diff": {
   "number": -1.7831033132748786,
@@ -170,6 +178,10 @@
  "d/run/B-F-ledger2-triplets/L2/all/TA/s0|run/B-F-value2-triplets/L2/all/TA/s0": {
   "number": 13.5,
   "value": "13.5"
+ },
+ "d/run/D-SEL-combined-swap/sel:careqa/top/n|run/D-SEL-combined-swap/sel:careqa/top/n_same_answer_as_stepcheck_swap@int": {
+  "number": 33.0,
+  "value": "33"
  },
  "d/run/D-SEL-combined/sel:medqa/top/acc|run/D-SEL-stepcheck/sel:medqa/top/acc": {
   "number": -0.864100549882167,
@@ -723,6 +735,10 @@
   "number": 62.25,
   "value": "62.2"
  },
+ "run/B-F-summary2-blocks/L2/all/TA/s4": {
+  "number": 69.25,
+  "value": "69.2"
+ },
  "run/B-F-summary2-blocks/L2/all/TA/sd": {
   "number": 5.703573441273463,
   "value": "5.7"
@@ -730,6 +746,10 @@
  "run/B-F-summary2-blocks/L3inv/all/TA/s0": {
   "number": 73.6,
   "value": "73.6"
+ },
+ "run/B-F-summary2-blocks/xr_v1:test/xa/XA/s4": {
+  "number": 70.25,
+  "value": "70.2"
  },
  "run/B-F-summary2-natural/L2/all/TA/s0": {
   "number": 45.7,
@@ -1851,6 +1871,38 @@
   "number": 70.84664532321561,
   "value": "70.8"
  },
+ "run/D-RL-ledger2-blocks/L2/top/acc_pair/s0": {
+  "number": 36.0,
+  "value": "36.0"
+ },
+ "run/D-RL-ledger2-blocks/L2/top/acc_triplet/s0": {
+  "number": 26.0,
+  "value": "26.0"
+ },
+ "run/D-RL-ledger2-blocks/L2/top/start_pair/s0": {
+  "number": 89.33333333333333,
+  "value": "89.3"
+ },
+ "run/D-RL-ledger2-blocks/L2/top/start_triplet/s0": {
+  "number": 84.66666666666667,
+  "value": "84.7"
+ },
+ "run/D-RL-ledger2-triplets/L2/top/acc_pair/s0": {
+  "number": 52.666666666666664,
+  "value": "52.7"
+ },
+ "run/D-RL-ledger2-triplets/L2/top/acc_triplet/s0": {
+  "number": 37.333333333333336,
+  "value": "37.3"
+ },
+ "run/D-RL-ledger2-triplets/L2/top/start_pair/s0": {
+  "number": 89.33333333333333,
+  "value": "89.3"
+ },
+ "run/D-RL-ledger2-triplets/L2/top/start_triplet/s0": {
+  "number": 84.66666666666667,
+  "value": "84.7"
+ },
  "run/D-RL-outcome/L2/top/acc_pair/s0": {
   "number": 96.66666666666667,
   "value": "96.7"
@@ -1959,6 +2011,14 @@
   "number": 88.1,
   "value": "88.1"
  },
+ "run/D-SEL-combined-swap/sel:careqa/top/ledger_is_minimum_share_swap": {
+  "number": 29.93125,
+  "value": "29.9"
+ },
+ "run/D-SEL-combined-swap/sel:keypairs/top/ledger_is_minimum_share_swap@2": {
+  "number": 0.026260504201680673,
+  "value": "0.03"
+ },
  "run/D-SEL-combined-swap/sel:keypairs/top/pair_acc": {
   "number": 76.75070028011204,
   "value": "76.8"
@@ -1966,6 +2026,10 @@
  "run/D-SEL-combined-swap/sel:medeinst/top/control_acc": {
   "number": 71.8,
   "value": "71.8"
+ },
+ "run/D-SEL-combined-swap/sel:medeinst/top/ledger_is_minimum_share_swap": {
+  "number": 0.425,
+  "value": "0.4"
  },
  "run/D-SEL-combined-swap/sel:medeinst/top/pair_acc": {
   "number": 23.0,
@@ -1978,6 +2042,14 @@
  "run/D-SEL-combined-swap/sel:medqa/top/acc": {
   "number": 85.62450903377848,
   "value": "85.6"
+ },
+ "run/D-SEL-combined-swap/sel:medqa/top/ledger_is_minimum_share": {
+  "number": 52.336999214454046,
+  "value": "52.3"
+ },
+ "run/D-SEL-combined-swap/sel:medqa/top/ledger_is_minimum_share_swap": {
+  "number": 0.324037706205813,
+  "value": "0.3"
  },
  "run/D-SEL-combined/sel:careqa/top/acc": {
   "number": 88.9,
@@ -2210,5 +2282,25 @@
  "run/D-SELN/sel:keypairs/selector=stepcheck/N64": {
   "number": 78.0,
   "value": "78.0"
+ },
+ "sum/D-RL-analysis/runs.D-RL-stepcheck-s0.final.errors_fail_to_hold_share": {
+  "number": 92.26519337016575,
+  "value": "92.3"
+ },
+ "sum/D-RL-analysis/runs.D-RL-stepcheck-s0.final.median_chars@int": {
+  "number": 148.0,
+  "value": "148"
+ },
+ "sum/D-RL-analysis/runs.D-RL-stepcheck-s0.final.one_step_share@0": {
+  "number": 100.0,
+  "value": "100"
+ },
+ "sum/D-RL-analysis/runs.D-RL-stepcheck-s0.final.share_always_flip_claim": {
+  "number": 44.0,
+  "value": "44.0"
+ },
+ "sum/D-RL-analysis/runs.D-RL-stepcheck-s0.start.median_chars@int": {
+  "number": 834.5,
+  "value": "834"
  }
 }

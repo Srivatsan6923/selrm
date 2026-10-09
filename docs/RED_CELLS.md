@@ -86,3 +86,22 @@ summary 5, Ledger-RM 5); they are counted in both.
 | 2200 | swapped rows identical | D6 | D |
 | 2346 | development history from the authors' records | H6 | authors |
 | 2377 | coding of 200 failures | H4 | authors |
+
+## D. Closed (lead; each by a result file)
+
+| Date | Item | Closed by |
+|---|---|---|
+| 8 Oct | Section 5 and Appendix A: stage-2 plan registered, commit hash (2 notes) | docs/ANALYSIS_PLAN_STAGE2.md, commit 733ad25 |
+| 8 Oct | Section 6.6: ledger-reward policy runs (1 note) | results_git/D-RL-ledger2-{blocks,triplets}-s0 |
+| 8 Oct | Appendix H, policy: analysis of the collapsed policy; two ledger rewards (2 cells) | results_git/D-RL-analysis, results_git/D-RL-ledger2-* |
+| 8 Oct | Table 5 caption: Holm correction (1 note) | tables/PROVENANCE.json comparisons p1-p6b (padj) |
+| 8 Oct | Table 23: summary x blocks seed 4, TA and XA (2 cells) | results_git/B-F-summary2-blocks-s4 |
+| 8 Oct | Table 25 caption: policy model (1 note) | results_git/D-POOL-medqa_test/summary.json (policy.model) |
+| 8 Oct | Table 25 caption: swapped rows identical (1 note) | results_git/D-SEL-combined-swap/summary_sel~*.json |
+
+Result files that exist for cells still red (owners: add a HANDOFFS line with run id and cell, or the lead
+wires them at the next pass): Table 8 structure (tables/data_stats.json, `structure`); TrialGPT evidence
+precision and recall for ledger x triplets (55.6 / 67.9 in C's files); NLI4CT-P row of Ledger-RM on triplets
+(C-NL-*); Table 21 premise gate (B-AE-premise-gate); Table 19 XA without the 38 known-issue items (computed by
+make_tables, key `run/<prefix>/xr_v1:test/xa/XA362`); the share of long reader entries, now reproducible
+(C: malformed_reasons_clin_v1~medeinst_test.json).

@@ -643,7 +643,7 @@ Verdict only            & \res{run/B-F-verdict-natural/L2/all/TA/s0} & \res{run/
 Rationale, then verdict & \res{run/B-F-rationale-natural/L2/all/TA/s0} & \res{run/B-F-rationale-balanced/L2/all/TA/s0} & \res{run/B-F-rationale-blocks/L2/all/TA/s0} & \res{run/B-F-rationale-triplets/L2/all/TA/s0}\\
 \multicolumn{5}{@{}l}{\emph{Two-stage (case-blind judge)}}\\
 Evidence summary (prose) & \res{run/B-F-summary2-natural/L2/all/TA/s0} & \res{run/B-F-summary2-balanced/L2/all/TA/s0} & \res{run/B-F-summary2-blocks/L2/all/TA/s0} & \res{run/B-F-summary2-triplets/L2/all/TA/s0}\\
-\ \ four and five seeds &      &      & \res{run/B-F-summary2-blocks/L2/all/TA}\,$\pm$\,\res{run/B-F-summary2-blocks/L2/all/TA/sd} & \res{run/B-F-summary2-triplets/L2/all/TA}\,$\pm$\,\res{run/B-F-summary2-triplets/L2/all/TA/sd}\\
+\ \ five seeds &      &      & \res{run/B-F-summary2-blocks/L2/all/TA}\,$\pm$\,\res{run/B-F-summary2-blocks/L2/all/TA/sd} & \res{run/B-F-summary2-triplets/L2/all/TA}\,$\pm$\,\res{run/B-F-summary2-triplets/L2/all/TA/sd}\\
 Value ledger            & \res{run/B-F-value2-natural/L2/all/TA/s0} & \res{run/B-F-value2-balanced/L2/all/TA/s0} & \res{run/B-F-value2-blocks/L2/all/TA/s0} & \res{run/B-F-value2-triplets/L2/all/TA/s0}\\
 Applicability ledger    & \res{run/B-F-ledger2-natural/L2/all/TA/s0} & \res{run/B-F-ledger2-balanced/L2/all/TA/s0} & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & \textbf{99.2}\\
 \ \ five seeds          &      &      & \res{run/B-F-ledger2-blocks/L2/all/TA}\,$\pm$\,\res{run/B-F-ledger2-blocks/L2/all/TA/sd} & \textbf{99.2}\,$\pm$\,\res{run/B-F-ledger2-triplets/L2/all/TA/sd}\\
@@ -845,8 +845,8 @@ rises from 88.7\% to \res{run/D-RL-outcome/L2/top/acc_pair/s0}\%, and with a ref
 \citet{medceg2025} to \res{run/D-RL-refgraph/L2/top/acc_pair/s0}\%. With the released Med-PRM as the reward it
 falls from 88.0\% to \res{run/D-RL-stepcheck/L2/top/acc_pair/s0}\% while the mean reward reaches 0.9997; within a
 rollout group this reward is uncorrelated with correctness ($-0.05$), as its
-reversal rate of \res{run/C-AUD-medprm/L2/all/Rev}\% would suggest. Runs with the two ledger rewards are
-\ph{not finished}. Such exploitation is known
+reversal rate of \res{run/C-AUD-medprm/L2/all/Rev}\% would suggest. With the two ledger rewards it falls as well, to
+\res{run/D-RL-ledger2-blocks/L2/top/acc_pair/s0}\% and \res{run/D-RL-ledger2-triplets/L2/top/acc_pair/s0}\%. Such exploitation is known
 \citep{tiwari2026reward,mahmoud2026hacking}; we add an exactly labelled
 held-out evaluation and the exploited reward's triplet profile.
 
@@ -991,8 +991,9 @@ negative and the medical claim is withdrawn.
 \caption{Outcome of the seven primary comparisons of stage 1. Intervals for
 (4) and (5) resample the 134 label pairs; with pairs as units they are
 $[-9.8,-7.0]$ and $[-10.7,-8.1]$. $p$-values are unadjusted; with the Holm
-correction over the family \ph{(to be recomputed by the table script)} only
-(1), (2) and (3) remain below 0.05.}
+correction over the family, (1) to (5) remain below 0.05 ((3) at
+\res{cmp/p3/padj}; (1), (4) and (5) against the expectation) and (6a), (6b) are
+at \res{cmp/p6a/padj}.}
 \label{tab:primary}
 \end{table}
 
@@ -1841,11 +1842,11 @@ Critic & \res{run/C-TF-critic/xr_v1:test/xa/XA} & \res{run/C-TF-critic/xr_v1:tes
 Generated-program verifier & \res{run/C-TF-genprog/xr_v1:test/xa/XA} & \res{run/C-TF-genprog/xr_v1:test/xa/XA362} & \res{run/C-TF-genprog/xr_v1:test/xa/XA_window@0} & \res{run/C-TF-genprog/xr_v1:test/xa/XA_currency@0} & \res{run/C-TF-genprog/xr_v1:test/xa/XA_subject@0} & \res{run/C-TF-genprog/xr_v1:test/xa/XA_inclusivity@0}\\
 Verdict only, blocks & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA_inclusivity/s0@0}\\
 Verdict only, triplets & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\\
-Evidence summary, triplets & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_subject/s0@0}\\
+Evidence summary, triplets & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\\
 \ \ judge also sees the case & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\\
 \method{}, triplets & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\\
-\ \ + decision field & \res{run/B-AB-decfield/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-AB-decfield/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA_inclusivity/s0@0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA_subject/s0@0}\\
-\ \ reader writes bit only & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_inclusivity/s0@0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_subject/s0@0}\\
+\ \ + decision field & \res{run/B-AB-decfield/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-AB-decfield/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+\ \ reader writes bit only & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_inclusivity/s0@0}\\
 \ \ condition derived by the reader & \res{run/B-AB-conddrv/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-AB-conddrv/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-conddrv/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-conddrv/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-conddrv/xr_v1:test/xa/XA_inclusivity/s0@0}\\
 \ \ $-$ ledger resampling & \res{run/B-AB-noresamp/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_inclusivity/s0@0}\\
 \bottomrule
@@ -2033,7 +2034,7 @@ $-$ near-misses               & \res{run/B-F-ledger2-blocks/L2/all/Rev/s0} & \re
 $-$ other-person near-misses  & \res{run/B-LOKO-subject-ledger2/L2/all/Rev/s0} & \res{run/B-LOKO-subject-ledger2/L2/all/Hold/s0} & \res{run/B-LOKO-subject-ledger2/L2/all/TA/s0} & 90.8\\
 $-$ past near-misses          & \res{run/B-LOKO-time-ledger2/L2/all/Rev/s0} & \res{run/B-LOKO-time-ledger2/L2/all/Hold/s0} & \res{run/B-LOKO-time-ledger2/L2/all/TA/s0} & 84.2\\
 $-$ threshold near-misses     & \res{run/B-LOKO-boundary-ledger2/L2/all/Rev/s0} & \res{run/B-LOKO-boundary-ledger2/L2/all/Hold/s0} & \res{run/B-LOKO-boundary-ledger2/L2/all/TA/s0} & 85.8\\
-$-$ presentation edits        & \res{run/B-AB-nopres/L2/all/Hold/s0} & \res{run/B-AB-nopres/L2/all/Rev/s0} & \res{run/B-AB-nopres/L2/all/TA/s0} & 90.0\\
+$-$ presentation edits        & \res{run/B-AB-nopres/L2/all/Rev/s0} & \res{run/B-AB-nopres/L2/all/Hold/s0} & \res{run/B-AB-nopres/L2/all/TA/s0} & 90.0\\
 $-$ ledger resampling         & \res{run/B-AB-noresamp/L2/all/Rev/s0} & \res{run/B-AB-noresamp/L2/all/Hold/s0} & \res{run/B-AB-noresamp/L2/all/TA/s0} & 78.8\\
 Verdict only, pairwise loss   & \res{run/B-AB-pairwise/L2/all/Rev/s0} & \res{run/B-AB-pairwise/L2/all/Hold/s0} & \res{run/B-AB-pairwise/L2/all/TA/s0} & 92.5\\
 \bottomrule
@@ -2095,15 +2096,15 @@ Cell & 0 & 1 & 2 & 3 & 4 & Mean (s.d.)\\
 \midrule
 \multicolumn{7}{@{}l}{\emph{L2 triplet accuracy}}\\
 Verdict only, blocks & \res{run/B-F-verdict-blocks/L2/all/TA/s0} & \res{run/B-F-verdict-blocks/L2/all/TA/s1} & \res{run/B-F-verdict-blocks/L2/all/TA/s2} & \res{run/B-F-verdict-blocks/L2/all/TA/s3} & \res{run/B-F-verdict-blocks/L2/all/TA/s4} & \res{run/B-F-verdict-blocks/L2/all/TA} (\res{run/B-F-verdict-blocks/L2/all/TA/sd})\\
-Verdict only, triplets & \res{run/B-F-verdict-triplets/L2/all/TA/s0} & \res{run/B-F-verdict-triplets/L2/all/TA} & \res{run/B-F-verdict-triplets/L2/all/TA/s2} & \res{run/B-F-verdict-triplets/L2/all/TA/s3} & \res{run/B-F-verdict-triplets/L2/all/TA/s1} & \res{run/B-F-verdict-triplets/L2/all/TA/s4} (\res{run/B-F-verdict-triplets/L2/all/TA/sd})\\
-Evidence summary, blocks & \res{run/B-F-summary2-blocks/L2/all/TA/s0} & \res{run/B-F-summary2-blocks/L2/all/TA/s1} & \res{run/B-F-summary2-blocks/L2/all/TA/s2} & \res{run/B-F-summary2-blocks/L2/all/TA/s3} & \tbd & \res{run/B-F-summary2-blocks/L2/all/TA} (\res{run/B-F-summary2-blocks/L2/all/TA/sd})\\
+Verdict only, triplets & \res{run/B-F-verdict-triplets/L2/all/TA/s0} & \res{run/B-F-verdict-triplets/L2/all/TA/s1} & \res{run/B-F-verdict-triplets/L2/all/TA/s2} & \res{run/B-F-verdict-triplets/L2/all/TA/s3} & \res{run/B-F-verdict-triplets/L2/all/TA/s4} & \res{run/B-F-verdict-triplets/L2/all/TA} (\res{run/B-F-verdict-triplets/L2/all/TA/sd})\\
+Evidence summary, blocks & \res{run/B-F-summary2-blocks/L2/all/TA/s0} & \res{run/B-F-summary2-blocks/L2/all/TA/s1} & \res{run/B-F-summary2-blocks/L2/all/TA/s2} & \res{run/B-F-summary2-blocks/L2/all/TA/s3} & \res{run/B-F-summary2-blocks/L2/all/TA/s4} & \res{run/B-F-summary2-blocks/L2/all/TA} (\res{run/B-F-summary2-blocks/L2/all/TA/sd})\\
 Evidence summary, triplets & \res{run/B-F-summary2-triplets/L2/all/TA/s0} & \res{run/B-F-summary2-triplets/L2/all/TA/s1} & \res{run/B-F-summary2-triplets/L2/all/TA/s2} & \res{run/B-F-summary2-triplets/L2/all/TA/s3} & \res{run/B-F-summary2-triplets/L2/all/TA/s4} & \res{run/B-F-summary2-triplets/L2/all/TA} (\res{run/B-F-summary2-triplets/L2/all/TA/sd})\\
 \method{}, blocks & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & \res{run/B-F-ledger2-blocks/L2/all/TA/s1} & \res{run/B-F-ledger2-blocks/L2/all/TA/s2} & \res{run/B-F-ledger2-blocks/L2/all/TA/s3} & \res{run/B-F-ledger2-blocks/L2/all/TA/s4} & \res{run/B-F-ledger2-blocks/L2/all/TA} (\res{run/B-F-ledger2-blocks/L2/all/TA/sd})\\
-\method{}, triplets & \res{run/B-F-ledger2-triplets/L2/all/TA} & \res{run/B-F-ledger2-triplets/L2/all/TA/s1} & \res{run/B-F-ledger2-triplets/L2/all/TA/s0} & \res{run/B-F-ledger2-triplets/L2/all/TA/s2} & \res{run/B-F-ledger2-triplets/L2/all/TA/s4} & \res{run/B-F-ledger2-triplets/L2/all/TA/s3} (\res{run/B-F-ledger2-triplets/L2/all/TA/sd})\\
+\method{}, triplets & \res{run/B-F-ledger2-triplets/L2/all/TA/s0} & \res{run/B-F-ledger2-triplets/L2/all/TA/s1} & \res{run/B-F-ledger2-triplets/L2/all/TA/s2} & \res{run/B-F-ledger2-triplets/L2/all/TA/s3} & \res{run/B-F-ledger2-triplets/L2/all/TA/s4} & \res{run/B-F-ledger2-triplets/L2/all/TA} (\res{run/B-F-ledger2-triplets/L2/all/TA/sd})\\
 \multicolumn{7}{@{}l}{\emph{Crossed accuracy on rule-side items}}\\
 Verdict only, blocks & 60.8 & 47.2 & 66.2 & 40.2 & 37.8 & \\
 Verdict only, triplets & 90.2 & 91.2 & 90.0 & 87.2 & 85.5 & \\
-Evidence summary, blocks & 80.2 & 51.0 & 62.5 & 35.8 & \tbd & \\
+Evidence summary, blocks & 80.2 & 51.0 & 62.5 & 35.8 & \res{run/B-F-summary2-blocks/xr_v1:test/xa/XA/s4} & \\
 Evidence summary, triplets & 88.5 & 92.5 & 90.2 & 89.2 & 91.8 & \\
 \method{}, blocks & 76.0 & 37.8 & 71.0 & 44.5 & 82.2 & \\
 \method{}, triplets & 89.8 & 88.8 & 91.5 & 94.0 & 85.0 & \\
@@ -2175,8 +2176,13 @@ step 1{,}000 the mean reward is 0.9997 and pair accuracy measured during
 training 37.3\%. Under the outcome reward only 4.5\% of rollout groups have
 any reward variance, so most groups give no gradient; under Med-PRM 85.3\%
 do, and within groups the reward's correlation with the outcome is $-0.05$
-on average. What the collapsed policy writes, and whether its errors are
-failures to reverse, is \tbd. The two ledger rewards are \tbd.
+on average. The collapsed policy writes a single step in \res{sum/D-RL-analysis/runs.D-RL-stepcheck-s0.final.one_step_share@0}\% of its
+outputs (median length \res{sum/D-RL-analysis/runs.D-RL-stepcheck-s0.final.median_chars@int} characters, \res{sum/D-RL-analysis/runs.D-RL-stepcheck-s0.start.median_chars@int} before training);
+\res{sum/D-RL-analysis/runs.D-RL-stepcheck-s0.final.errors_fail_to_hold_share}\% of its errors are on base and near-miss cases, failures to hold
+and not to reverse, and on \res{sum/D-RL-analysis/runs.D-RL-stepcheck-s0.final.share_always_flip_claim}\% of triplets it gives the flip's claim
+for all three cases. Ledger reward trained on blocks: pair accuracy
+\res{run/D-RL-ledger2-blocks/L2/top/start_pair/s0}\% to \res{run/D-RL-ledger2-blocks/L2/top/acc_pair/s0}\%, triplet accuracy \res{run/D-RL-ledger2-blocks/L2/top/start_triplet/s0}\% to \res{run/D-RL-ledger2-blocks/L2/top/acc_triplet/s0}\%; trained on
+triplets: \res{run/D-RL-ledger2-triplets/L2/top/start_pair/s0}\% to \res{run/D-RL-ledger2-triplets/L2/top/acc_pair/s0}\% and \res{run/D-RL-ledger2-triplets/L2/top/start_triplet/s0}\% to \res{run/D-RL-ledger2-triplets/L2/top/acc_triplet/s0}\%.
 
 \begin{table}[!ht]
 \centering\small
@@ -2201,12 +2207,16 @@ Combined (minimum)     & \res{run/D-SEL-combined/sel:medqa/top/acc} & \res{run/D
 Oracle selection       & \res{run/D-SEL-oracle/sel:medqa/top/acc} & \res{run/D-SEL-oracle/sel:careqa/top/acc} & \res{run/D-SEL-oracle/sel:keypairs/top/pair_acc} & \res{run/D-SEL-oracle/sel:medeinst/top/pair_acc} & \res{run/D-SEL-oracle/sel:medeinst/top/control_acc} & \res{run/D-SEL-oracle/sel:medeinst/top/trap_acc}\\
 \bottomrule
 \end{tabular}
-\caption{Reranking 16 samples of a frozen policy (\ph{\bb; confirm}) on
+\caption{Reranking 16 samples of a frozen policy (\bb) on
 identical pools (\%): 1{,}273 MedQA and 1{,}000 CareQA questions, 357 key
 pairs, 500 MedEinst pairs. Step check: Med-PRM. Ledger score: \method{}
 trained on rule triplets. Bold: best selector per column. $^{a}$The two
-swapped rows are identical in every column, which a correct implementation
-does not guarantee; \ph{under check}.}
+swapped rows coincide because the minimum is then the step check's score: with
+a swapped vignette the calibrated ledger score is the smaller one in
+\res{run/D-SEL-combined-swap/sel:medqa/top/ledger_is_minimum_share_swap}\% of MedQA traces (\res{run/D-SEL-combined-swap/sel:medqa/top/ledger_is_minimum_share}\% unswapped), \res{run/D-SEL-combined-swap/sel:keypairs/top/ledger_is_minimum_share_swap@2}\% on key pairs and
+\res{run/D-SEL-combined-swap/sel:medeinst/top/ledger_is_minimum_share_swap}\% on MedEinst, and both selectors return the same answer to every
+question. On CareQA (\res{run/D-SEL-combined-swap/sel:careqa/top/ledger_is_minimum_share_swap}\%) they differ on \res{d/run/D-SEL-combined-swap/sel:careqa/top/n|run/D-SEL-combined-swap/sel:careqa/top/n_same_answer_as_stepcheck_swap@int} of 1{,}000
+questions and are right equally often.}
 \label{tab:downstream}
 \end{table}
 
