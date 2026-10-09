@@ -264,6 +264,32 @@
   "split": "test",
   "tier": "external"
  },
+ "kb_v1/triplets_test@none": {
+  "created": "2026-10-08",
+  "frozen": true,
+  "level": "external",
+  "manifest": "views/kb_v1/triplets_test@none/MANIFEST.json",
+  "n_groups": 5143,
+  "n_records": 30858,
+  "parent": "kb_v1/triplets_test",
+  "path": "views/kb_v1/triplets_test@none/records.jsonl",
+  "sha256": "a1843605356a7e8446127c59218d3441f2d8a48d8ec9295c7ad34a0db38a40ac",
+  "split": "test",
+  "tier": "view"
+ },
+ "kb_v1/triplets_test@wrong": {
+  "created": "2026-10-08",
+  "frozen": true,
+  "level": "external",
+  "manifest": "views/kb_v1/triplets_test@wrong/MANIFEST.json",
+  "n_groups": 5143,
+  "n_records": 30858,
+  "parent": "kb_v1/triplets_test",
+  "path": "views/kb_v1/triplets_test@wrong/records.jsonl",
+  "sha256": "34ca3c0aa67bd8535269e6eba6b6cd7bb8062bb85c1a292eb5b8d06a7783046f",
+  "split": "test",
+  "tier": "view"
+ },
  "mcv_v1/criteria_test@none": {
   "created": "2026-10-08",
   "frozen": true,

@@ -437,6 +437,36 @@
    "license": "open weights (see model card)",
    "gated": "no",
    "independent_check": "id, prices and logprobs support read from the live model list on 2026-10-08"
+  },
+  {
+   "name": "kimi-k3-choice",
+   "table": "Kimi K3 (two-order choice readout)",
+   "id": "moonshotai/kimi-k3",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    },
+    "max_tokens": 600
+   },
+   "price_in": 0.6,
+   "price_out": 12.0,
+   "est_completion_tokens": 60,
+   "logprobs": false,
+   "reasoning_note": "second readout of the same model (9 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
+   "provider": "openrouter",
+   "base_url": "https://openrouter.ai/api/v1",
+   "key_env": "OPENROUTER_API_KEY",
+   "verified": "2026-10-03",
+   "source": "https://openrouter.ai/api/v1/models",
+   "revision": "moonshotai/kimi-k3-20260715 (OpenRouter canonical_slug); HF moonshotai/Kimi-K3@f831ab66814297da540d832a5235f8e904f29d06",
+   "license": "other (HF card license_name 'kimi-k3'; open weights)",
+   "gated": "no",
+   "independent_check": "confirmed",
+   "prices_checked": "2026-10-08"
   }
  ],
  "local": [

@@ -110,7 +110,7 @@ def main():
     t0, summ_all = time.time(), {}
     for s, recs in sets.items():
         pairs, point = plan(recs, cfg["readout"])
-        rows = []
+        rows, err0 = [], judge.usage["errors"]
         if cfg["readout"] == "choice":
             for (rs, rsp), res in zip(pairs, judge.score_pairs(pairs)):
                 rows.append({"iid": rs["iid"], "u": res["d"] / 2, "raw": res["raw"], "parsed": res["parsed"],
@@ -123,6 +123,9 @@ def main():
         for r, res in zip(point, judge.score_pointwise(point)):
             rows.append({"iid": r["iid"], "u": res["u"], "raw": res["raw"], "parsed": res["parsed"], "readout": "pointwise"})
         name = s.replace("/", "~")
+        errs = judge.usage["errors"] - err0
+        if errs > 0.02 * len(rows):          # an outage (credits, provider down) is not a result: write nothing, rerun later
+            sys.exit(f"{s}: {errs} failed calls for {len(rows)} records; no files written (successful calls are cached)")
         with open(f"{out_dir}/scores_{name}.jsonl", "w", encoding="utf-8", newline="\n") as f:
             for row in rows:
                 f.write(json.dumps(row, ensure_ascii=False) + "\n")

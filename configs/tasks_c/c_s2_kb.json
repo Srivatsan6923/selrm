@@ -1,0 +1,397 @@
+{
+ "note": "Stage 2: C1 paraphrase tier (C-S2-xp-<system>) and C4 kb_v1 (C-S2-kb-<system>)",
+ "runs": [
+  {
+   "run_id": "C-S2-kb-critic",
+   "priority": 3.0,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "kb_v1/triplets_test",
+    "kb_v1/triplets_test@none",
+    "kb_v1/triplets_test@wrong"
+   ],
+   "adapter": null,
+   "adapter_run": null,
+   "note": "STAGE2 C4: kb_v1 triplets under the derived criterion, without it and with the lists exchanged"
+  },
+  {
+   "run_id": "C-S2-kb-verdict-triplets-s0",
+   "priority": 3.01,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "kb_v1/triplets_test",
+    "kb_v1/triplets_test@none",
+    "kb_v1/triplets_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s0",
+   "adapter_run": "B-F-verdict-triplets-s0",
+   "note": "STAGE2 C4: kb_v1 triplets under the derived criterion, without it and with the lists exchanged"
+  },
+  {
+   "run_id": "C-S2-kb-verdict-blocks-s0",
+   "priority": 3.02,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "kb_v1/triplets_test",
+    "kb_v1/triplets_test@none",
+    "kb_v1/triplets_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s0",
+   "adapter_run": "B-F-verdict-blocks-s0",
+   "note": "STAGE2 C4: kb_v1 triplets under the derived criterion, without it and with the lists exchanged"
+  },
+  {
+   "run_id": "C-S2-kb-verdict-triplets-s1",
+   "priority": 3.0300000000000002,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "kb_v1/triplets_test",
+    "kb_v1/triplets_test@none",
+    "kb_v1/triplets_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s1",
+   "adapter_run": "B-F-verdict-triplets-s1",
+   "note": "STAGE2 C4: kb_v1 triplets under the derived criterion, without it and with the lists exchanged"
+  },
+  {
+   "run_id": "C-S2-kb-verdict-blocks-s1",
+   "priority": 3.04,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "kb_v1/triplets_test",
+    "kb_v1/triplets_test@none",
+    "kb_v1/triplets_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s1",
+   "adapter_run": "B-F-verdict-blocks-s1",
+   "note": "STAGE2 C4: kb_v1 triplets under the derived criterion, without it and with the lists exchanged"
+  },
+  {
+   "run_id": "C-S2-kb-verdict-triplets-s2",
+   "priority": 3.05,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "kb_v1/triplets_test",
+    "kb_v1/triplets_test@none",
+    "kb_v1/triplets_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s2",
+   "adapter_run": "B-F-verdict-triplets-s2",
+   "note": "STAGE2 C4: kb_v1 triplets under the derived criterion, without it and with the lists exchanged"
+  },
+  {
+   "run_id": "C-S2-kb-verdict-blocks-s2",
+   "priority": 3.06,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "kb_v1/triplets_test",
+    "kb_v1/triplets_test@none",
+    "kb_v1/triplets_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s2",
+   "adapter_run": "B-F-verdict-blocks-s2",
+   "note": "STAGE2 C4: kb_v1 triplets under the derived criterion, without it and with the lists exchanged"
+  },
+  {
+   "run_id": "C-S2-kb-verdict-triplets-s3",
+   "priority": 3.0700000000000003,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "kb_v1/triplets_test",
+    "kb_v1/triplets_test@none",
+    "kb_v1/triplets_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s3",
+   "adapter_run": "B-F-verdict-triplets-s3",
+   "note": "STAGE2 C4: kb_v1 triplets under the derived criterion, without it and with the lists exchanged"
+  },
+  {
+   "run_id": "C-S2-kb-verdict-blocks-s3",
+   "priority": 3.08,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "kb_v1/triplets_test",
+    "kb_v1/triplets_test@none",
+    "kb_v1/triplets_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s3",
+   "adapter_run": "B-F-verdict-blocks-s3",
+   "note": "STAGE2 C4: kb_v1 triplets under the derived criterion, without it and with the lists exchanged"
+  },
+  {
+   "run_id": "C-S2-kb-verdict-triplets-s4",
+   "priority": 3.09,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "kb_v1/triplets_test",
+    "kb_v1/triplets_test@none",
+    "kb_v1/triplets_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s4",
+   "adapter_run": "B-F-verdict-triplets-s4",
+   "note": "STAGE2 C4: kb_v1 triplets under the derived criterion, without it and with the lists exchanged"
+  },
+  {
+   "run_id": "C-S2-kb-verdict-blocks-s4",
+   "priority": 3.1,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "kb_v1/triplets_test",
+    "kb_v1/triplets_test@none",
+    "kb_v1/triplets_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s4",
+   "adapter_run": "B-F-verdict-blocks-s4",
+   "note": "STAGE2 C4: kb_v1 triplets under the derived criterion, without it and with the lists exchanged"
+  },
+  {
+   "run_id": "C-S2-xp-critic",
+   "priority": 2.5,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": null,
+   "adapter_run": null,
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)"
+  },
+  {
+   "run_id": "C-S2-xp-verdict-triplets-s0",
+   "priority": 3.5,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s0",
+   "adapter_run": "B-F-verdict-triplets-s0",
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)"
+  },
+  {
+   "run_id": "C-S2-xp-verdict-blocks-s0",
+   "priority": 3.5,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s0",
+   "adapter_run": "B-F-verdict-blocks-s0",
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)"
+  },
+  {
+   "run_id": "C-S2-xp-ledger2-triplets-s0",
+   "priority": 5.5,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s0",
+   "adapter_run": "B-F-ledger2-triplets-s0",
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)",
+   "max_new": 384
+  },
+  {
+   "run_id": "C-S2-xp-verdict-triplets-s1",
+   "priority": 3.6,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s1",
+   "adapter_run": "B-F-verdict-triplets-s1",
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)"
+  },
+  {
+   "run_id": "C-S2-xp-verdict-blocks-s1",
+   "priority": 3.6,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s1",
+   "adapter_run": "B-F-verdict-blocks-s1",
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)"
+  },
+  {
+   "run_id": "C-S2-xp-ledger2-triplets-s1",
+   "priority": 5.6,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s1",
+   "adapter_run": "B-F-ledger2-triplets-s1",
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)",
+   "max_new": 384
+  },
+  {
+   "run_id": "C-S2-xp-verdict-triplets-s2",
+   "priority": 3.7,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s2",
+   "adapter_run": "B-F-verdict-triplets-s2",
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)"
+  },
+  {
+   "run_id": "C-S2-xp-verdict-blocks-s2",
+   "priority": 3.7,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s2",
+   "adapter_run": "B-F-verdict-blocks-s2",
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)"
+  },
+  {
+   "run_id": "C-S2-xp-ledger2-triplets-s2",
+   "priority": 5.7,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s2",
+   "adapter_run": "B-F-ledger2-triplets-s2",
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)",
+   "max_new": 384
+  },
+  {
+   "run_id": "C-S2-xp-verdict-triplets-s3",
+   "priority": 3.8,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s3",
+   "adapter_run": "B-F-verdict-triplets-s3",
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)"
+  },
+  {
+   "run_id": "C-S2-xp-verdict-blocks-s3",
+   "priority": 3.8,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s3",
+   "adapter_run": "B-F-verdict-blocks-s3",
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)"
+  },
+  {
+   "run_id": "C-S2-xp-ledger2-triplets-s3",
+   "priority": 5.8,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s3",
+   "adapter_run": "B-F-ledger2-triplets-s3",
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)",
+   "max_new": 384
+  },
+  {
+   "run_id": "C-S2-xp-verdict-triplets-s4",
+   "priority": 3.9,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s4",
+   "adapter_run": "B-F-verdict-triplets-s4",
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)"
+  },
+  {
+   "run_id": "C-S2-xp-verdict-blocks-s4",
+   "priority": 3.9,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s4",
+   "adapter_run": "B-F-verdict-blocks-s4",
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)"
+  },
+  {
+   "run_id": "C-S2-xp-ledger2-triplets-s4",
+   "priority": 5.9,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s4",
+   "adapter_run": "B-F-ledger2-triplets-s4",
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)",
+   "max_new": 384
+  },
+  {
+   "run_id": "C-S2-xp-summary2-triplets-s0",
+   "priority": 4.5,
+   "format": "summary2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "xp_v1/test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-triplets-s0",
+   "adapter_run": "B-F-summary2-triplets-s0",
+   "note": "STAGE2 C1: xp_v1 program-preserving paraphrases of the rule text (300 triplets of test_L2)",
+   "max_new": 384
+  }
+ ]
+}

@@ -41,3 +41,11 @@ AUX_PROTOCOL.md + scripts/eval_aux.py (S1/S2; B's B-AUX runs), scripts/score.py 
 ## Local scratch (not in git)
 scratch/rv1 (rule_v1 records), scratch/acode_xr (xr_v1 + KNOWN_ISSUES), scratch/afreeze (A's rule freeze),
 scratch/bcode (B ac524e8), scratch/bcode2 (B 10e1882), scratch/anegbank, scratch/probe, scratch/stage2.
+
+## Update 9 Oct (resume here)
+- Cluster: runners for c_s2_mcv.json (MedCalc-V, 22 runs; code 329a633d028a, B code ac524e8062ef) and c_s2_kb.json (kb_v1 x 11 verdict systems x {stated, none, wrong}; xp_v1 x 17 systems) launched 9 Oct ~06:00-06:50 UTC, 20 h deadline. Next: `submit_c.py pull`, `python scripts/s2_compare.py` -> comparisons (7),(8),(9) -> decision input to D; then secondary MedCalc-V cells (C-S2-mcv2-*), kb_v1 and xp_v1 tables (not written yet: extend scripts/stage2_report.py).
+- C2 done: scripts/medeinst_executor.py, results_git/C-S2-executor, docs/MEDEINST_EXECUTOR.md (handoff 8 Oct). C4 on MedEinst pairs (derived criterion) waits for D's gate record.
+- C1: two-stage controls in docs/STAGE2_RESULTS.md; ledger2-triplets-s4 still running; paraphrase tier queued (C-S2-xp-*).
+- API judges: see HANDOFFS 9 Oct. BLOCKED on OpenRouter credits (402). When credits are back: `sh scratch/api_logs/run_one.sh MODEL RUN_ID` for kimi-k3 / C-AUD-kimi-k3, kimi-k3-choice / C-AUD-kimi-k3-choice (smoke with --n 10 first), nemotron-3-super-choice, qwen35-397b-choice, gemma-4-31b-choice and qwen35-27b (missing twins only; cached otherwise). run_judge.py refuses to write a set with more than 2% failed calls.
+- Volume registry: scratch/pvc_registry.json is the source for /pvc/selrmc/data/REGISTRY.json (rebuilt 9 Oct; fetch it with `kubectl exec ... -- sh -c 'cat /pvc/...'`, never with a bare absolute path from Git Bash).
+- Not started: C5-C7 (need B's v2 / Ledger-RM-G systems), C8 family report, MedCalc-V `self` views.

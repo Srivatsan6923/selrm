@@ -1,0 +1,9 @@
+{
+ "run_id": "C-AUD-llama70b-choice",
+ "set": "rule_v1/dev_missing",
+ "claim_type": "conclusion",
+ "readout": "choice",
+ "MR": 51.666666666666664,
+ "n_missing": 300,
+ "MR_readout": "pointwise text answer, reject iff '-'"
+}

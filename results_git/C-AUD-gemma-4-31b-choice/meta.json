@@ -1,14 +1,18 @@
 {
- "run_id": "C-AUD-llama70b-choice",
+ "run_id": "C-AUD-gemma-4-31b-choice",
  "role": "C",
- "model": "meta-llama/llama-3.3-70b-instruct",
- "name": "llama-3.3-70b-choice",
+ "model": "google/gemma-4-31b-it",
+ "name": "gemma-4-31b-choice",
  "provider": "openrouter",
- "access_date": "2026-10-08",
+ "access_date": "2026-10-09",
  "readout": "choice",
  "params": {
   "temperature": 0,
-  "extra_body": {},
+  "extra_body": {
+   "reasoning": {
+    "enabled": false
+   }
+  },
   "max_tokens": 600
  },
  "reasoning": "second readout of the same model (8 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
@@ -19,16 +23,16 @@
  "n_groups": "all",
  "subset_rule": null,
  "usage": {
-  "calls": 4194,
+  "calls": 3725,
   "cached": 1006,
-  "prompt_tokens": 988995,
-  "completion_tokens": 755056,
-  "cost": 0.5508900350000017,
-  "errors": 0
+  "prompt_tokens": 933161,
+  "completion_tokens": 336214,
+  "cost": 0.21882553550000033,
+  "errors": 469
  },
- "cost_estimate": 0.46199623999999995,
- "cost_actual": 0.5508900350000017,
- "wall_seconds": 1236.6,
+ "cost_estimate": 0.23126027999999998,
+ "cost_actual": 0.21882553550000033,
+ "wall_seconds": 1144.9,
  "git_commit": "59725ae4dbcb3609081ec10ad2b0d93f0b49c220",
  "summaries": {
   "rule_v1/dev_missing": null,
@@ -36,16 +40,20 @@
  },
  "earlier_invocations": [
   {
-   "run_id": "C-AUD-llama70b-choice",
+   "run_id": "C-AUD-gemma-4-31b-choice",
    "role": "C",
-   "model": "meta-llama/llama-3.3-70b-instruct",
-   "name": "llama-3.3-70b-choice",
+   "model": "google/gemma-4-31b-it",
+   "name": "gemma-4-31b-choice",
    "provider": "openrouter",
-   "access_date": "2026-10-08",
+   "access_date": "2026-10-09",
    "readout": "choice",
    "params": {
     "temperature": 0,
-    "extra_body": {},
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    },
     "max_tokens": 600
    },
    "reasoning": "second readout of the same model (8 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
@@ -57,38 +65,42 @@
    "usage": {
     "calls": 8000,
     "cached": 0,
-    "prompt_tokens": 2251341,
-    "completion_tokens": 1535837,
-    "cost": 1.3982744880000044,
+    "prompt_tokens": 2344315,
+    "completion_tokens": 1674397,
+    "cost": 0.8436603219999994,
     "errors": 0
    },
-   "cost_estimate": 0.78417176,
-   "cost_actual": 1.3982744880000044,
-   "wall_seconds": 1894.4,
-   "git_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2",
+   "cost_estimate": 0.38581572,
+   "cost_actual": 0.8436603219999994,
+   "wall_seconds": 1169.6,
+   "git_commit": "59725ae4dbcb3609081ec10ad2b0d93f0b49c220",
    "summaries": {
     "rule_v1/test_L2": {
-     "Rev": 98.7,
-     "Hold": 95.5,
-     "TA": 94.6,
-     "BaseAcc": 98.8,
-     "Tie": 2.9,
-     "PresHold": 98.3,
+     "Rev": 100.0,
+     "Hold": 99.7,
+     "TA": 99.7,
+     "BaseAcc": 100.0,
+     "Tie": 0.0,
+     "PresHold": 100.0,
      "n": 1000
     }
    }
   },
   {
-   "run_id": "C-AUD-llama70b-choice",
+   "run_id": "C-AUD-gemma-4-31b-choice",
    "role": "C",
-   "model": "meta-llama/llama-3.3-70b-instruct",
-   "name": "llama-3.3-70b-choice",
+   "model": "google/gemma-4-31b-it",
+   "name": "gemma-4-31b-choice",
    "provider": "openrouter",
-   "access_date": "2026-10-08",
+   "access_date": "2026-10-09",
    "readout": "choice",
    "params": {
     "temperature": 0,
-    "extra_body": {},
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    },
     "max_tokens": 600
    },
    "reasoning": "second readout of the same model (8 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
@@ -100,14 +112,14 @@
    "usage": {
     "calls": 4800,
     "cached": 0,
-    "prompt_tokens": 953124,
-    "completion_tokens": 517385,
-    "cost": 0.43654566299999914,
+    "prompt_tokens": 989526,
+    "completion_tokens": 538459,
+    "cost": 0.2980435150000003,
     "errors": 0
    },
-   "cost_estimate": 0.37814203999999996,
-   "cost_actual": 0.43654566299999914,
-   "wall_seconds": 703.6,
+   "cost_estimate": 0.19370537999999998,
+   "cost_actual": 0.2980435150000003,
+   "wall_seconds": 637.0,
    "git_commit": "59725ae4dbcb3609081ec10ad2b0d93f0b49c220",
    "summaries": {
     "xr_v1/test": null
