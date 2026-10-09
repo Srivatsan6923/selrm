@@ -309,7 +309,7 @@ def main():
         "band": {"absolute": I.BAND_ABS, "relative": I.BAND_REL}, "templates": E.TEMPLATES, "relatives": E.RELATIVES,
         "plausible_ranges": "lowest and highest value released per score, input and unit in the training rows",
         "skips": {"test": T["skips"], "dev": D["skips"], "adapt": A["skips"]},
-        "fidelity": {"extractors": list(F._api().EXTRACTORS), "params": F.PARAMS, "test": fid["test"], "dev": fid["dev"],
+        "fidelity": {"extractors": list(F.EXTRACTORS), "params": F.PARAMS, "test": fid["test"], "dev": fid["dev"],
                      "verdicts": "data/mcv_v1/FIDELITY.jsonl", "adaptation": "not filtered (silver)"},
         "shortcut_validation": val, "portions": {},
         "note": "Labels are the rule code's points on the released (or edited) entity dictionary, relative to the score text shown. Edited notes are not real patients.",

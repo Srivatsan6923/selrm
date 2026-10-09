@@ -13,6 +13,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 CACHE = ROOT / "data" / "mcv_v1" / "cache"
 PARAMS = {"temperature": 0, "max_tokens": 400}
+# Google and OpenAI open-weight families; the backbone is Qwen. (DeepSeek V4 Pro, first tried on dev, is limited
+# to 20 requests a minute on a new OpenRouter account.)
+EXTRACTORS = ("google/gemma-4-31b-it", "openai/gpt-oss-120b")
 
 VALUE_PROMPT = """Read the patient note and report one value exactly as the note states it.
 
@@ -96,7 +99,7 @@ def checks(records, lexicon):
     return out
 
 
-def run(records, lexicon, workers=16):
+def run(records, lexicon, workers=32):
     """{tid: {"keep": bool, "reads": [...]}}; one API call per (model, prompt), cached."""
     api = _api()
     todo = checks(records, lexicon)
@@ -104,7 +107,7 @@ def run(records, lexicon, workers=16):
     def one(args):
         tid, ck, kind, prompt, expected = args
         row = {"tid": tid, "case_kind": ck, "kind": kind, "expected": expected, "answers": {}, "ok": True}
-        for model in api.EXTRACTORS:
+        for model in EXTRACTORS:
             try:
                 ans = parse(api.call(model, prompt, PARAMS, cache=CACHE))
             except Exception as e:                       # a failed call rejects the edit, it does not stop the run
