@@ -37,7 +37,23 @@ def rule_v1(recs, cond):
     return out
 
 
-HANDLERS = {"rule_v1": rule_v1}
+def mcv_v1(recs, cond):
+    """MedCalc-V: none = no score text (the claim still names the score); wrong = the definition of another score,
+    one per score: random.Random('<SEED>|<score id>') over the sorted definitions of the other scores."""
+    tids = {r["tid"]: r["rid"] for r in recs}
+    if cond == "none":
+        return {t: ("", "score text removed") for t in tids}
+    text = {}
+    for r in recs:
+        text.setdefault(r["rid"], r["rule_text"])
+    other = {}
+    for rid in sorted(text):
+        c = random.Random(f"{SEED}|{rid}").choice(sorted(k for k in text if k != rid and text[k] != text[rid]))
+        other[rid] = (text[c], f"score text of {c}")
+    return {t: other[rid] for t, rid in tids.items()}
+
+
+HANDLERS = {"rule_v1": rule_v1, "mcv_v1": mcv_v1}
 
 
 def main():
