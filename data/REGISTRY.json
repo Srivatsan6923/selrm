@@ -1,4 +1,88 @@
 {
+ "mcv_v1/adapt_blocks": {
+  "created": "2026-10-08",
+  "frozen": true,
+  "level": "external",
+  "manifest": "mcv_v1/MANIFEST.json",
+  "n_groups": 3000,
+  "n_records": 12000,
+  "path": "mcv_v1/adapt_blocks/records.jsonl",
+  "sha256": "339b3b303fae3fac194185631f5d1144c18b100b0e2a6e147e97f3f6d701c054",
+  "split": "train",
+  "tier": "external"
+ },
+ "mcv_v1/adapt_triplets": {
+  "created": "2026-10-08",
+  "frozen": true,
+  "level": "external",
+  "manifest": "mcv_v1/MANIFEST.json",
+  "n_groups": 3000,
+  "n_records": 12000,
+  "path": "mcv_v1/adapt_triplets/records.jsonl",
+  "sha256": "d1be93222612fef99db0423c6605d6a2ee5feac713fddcb0ff16c1c033e3d3ad",
+  "split": "train",
+  "tier": "external"
+ },
+ "mcv_v1/criteria_test": {
+  "created": "2026-10-08",
+  "frozen": true,
+  "level": "external",
+  "manifest": "mcv_v1/MANIFEST.json",
+  "n_groups": 3440,
+  "n_records": 6880,
+  "path": "mcv_v1/criteria_test/records.jsonl",
+  "sha256": "5225cb39e721c5df76458f2d73b4f66519d511a06d48059d0117434188c6f325",
+  "split": "test",
+  "tier": "external"
+ },
+ "mcv_v1/dev": {
+  "created": "2026-10-08",
+  "frozen": true,
+  "level": "external",
+  "manifest": "mcv_v1/MANIFEST.json",
+  "n_groups": 6181,
+  "n_records": 18730,
+  "path": "mcv_v1/dev/records.jsonl",
+  "sha256": "fe5290f155e2465bbdb61800a39b935eea4ff52ea20efca8d8e22a251f062f75",
+  "split": "dev",
+  "tier": "external"
+ },
+ "mcv_v1/edits_test": {
+  "created": "2026-10-08",
+  "frozen": true,
+  "level": "external",
+  "manifest": "mcv_v1/MANIFEST.json",
+  "n_groups": 1636,
+  "n_records": 9816,
+  "path": "mcv_v1/edits_test/records.jsonl",
+  "sha256": "c39f7d19faea0e7de786f047bd08c552a53edd780cd778f7fe6f46855aad1edf",
+  "split": "test",
+  "tier": "external"
+ },
+ "mcv_v1/natural_band_test": {
+  "created": "2026-10-08",
+  "frozen": true,
+  "level": "external",
+  "manifest": "mcv_v1/MANIFEST.json",
+  "n_groups": 394,
+  "n_records": 788,
+  "path": "mcv_v1/natural_band_test/records.jsonl",
+  "sha256": "8321144889bb6d629028df1a244bb683ccaad5558423bedace514eddbbc42808",
+  "split": "test",
+  "tier": "external"
+ },
+ "mcv_v1/ruleside_test": {
+  "created": "2026-10-08",
+  "frozen": true,
+  "level": "external",
+  "manifest": "mcv_v1/MANIFEST.json",
+  "n_groups": 590,
+  "n_records": 1180,
+  "path": "mcv_v1/ruleside_test/records.jsonl",
+  "sha256": "f0e99317b9f8cf7621c7d7ebbe200125c688481bd83bcf5f8a5ebbdaae2d0443",
+  "split": "test",
+  "tier": "external"
+ },
  "rule_v1/abl_conclusion_triplets": {
   "created": "2026-10-02",
   "frozen": true,
