@@ -105,3 +105,17 @@ precision and recall for ledger x triplets (55.6 / 67.9 in C's files); NLI4CT-P 
 (C-NL-*); Table 21 premise gate (B-AE-premise-gate); Table 19 XA without the 38 known-issue items (computed by
 make_tables, key `run/<prefix>/xr_v1:test/xa/XA362`); the share of long reader entries, now reproducible
 (C: malformed_reasons_clin_v1~medeinst_test.json).
+
+## E. Added by the lead (stage-2 table shells, STAGE2_TASKS_D D3)
+
+On 8 Oct the count rose from 211 to 298 values. Cause: three new tables in Appendix E whose cells are result
+keys without a value yet (87 cells), as section B announced ("Not yet in the paper"). No measured value was lost.
+
+| Where | Cells | Owner | Closed by |
+|---|---|---|---|
+| Table `tab:stage2`, comparisons (7)-(12): estimate, interval, p, Holm p | 30 | C | `results_git/C-S2-comparisons.json` |
+| Table `tab:stage2`, outcome column | 6 | D | gate G4, wording of the plan |
+| Table `tab:mcv`, MedCalc-V by condition, note type, stratum, edit type | 27 | C | runs `C-S2-mcv-{critic,verdict-blocks,verdict-triplets}` |
+| Table `tab:gate`, variants and gate diagnostics | 24 | B, C | runs `C-S2-<tier>-{reader-bit,gate,gate-struct}` |
+
+Table 14's 36 tbd cells are now result keys of the same form (run ids in docs/RESULT_KEYS.md, stage 2).

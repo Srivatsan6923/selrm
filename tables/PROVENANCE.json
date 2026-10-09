@@ -1,7 +1,7 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "c891a7a071e69a54a919b80f47a7c005828c1521",
- "uncommitted_changes": false,
+ "code_commit": "d04f2db14c8a295cb63869f49d8b2ae19fd03d81",
+ "uncommitted_changes": true,
  "records": {
   "rule_v1/dev_missing": {
    "file": "data/rule_v1/dev_missing/records.jsonl",
@@ -412,6 +412,81 @@
    "number": 0.0,
    "comparison": "p1"
   },
+  "cmp/p10/diff": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p10"
+  },
+  "cmp/p10/hi": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p10"
+  },
+  "cmp/p10/lo": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p10"
+  },
+  "cmp/p10/p": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p10"
+  },
+  "cmp/p10/padj": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p10"
+  },
+  "cmp/p11/diff": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p11"
+  },
+  "cmp/p11/hi": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p11"
+  },
+  "cmp/p11/lo": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p11"
+  },
+  "cmp/p11/p": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p11"
+  },
+  "cmp/p11/padj": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p11"
+  },
+  "cmp/p12/diff": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p12"
+  },
+  "cmp/p12/hi": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p12"
+  },
+  "cmp/p12/lo": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p12"
+  },
+  "cmp/p12/p": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p12"
+  },
+  "cmp/p12/padj": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p12"
+  },
   "cmp/p2/diff": {
    "value": "38.2",
    "number": 38.18,
@@ -561,6 +636,81 @@
    "value": "0.428",
    "number": 0.428,
    "comparison": "p6b"
+  },
+  "cmp/p7/diff": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p7"
+  },
+  "cmp/p7/hi": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p7"
+  },
+  "cmp/p7/lo": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p7"
+  },
+  "cmp/p7/p": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p7"
+  },
+  "cmp/p7/padj": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p7"
+  },
+  "cmp/p8/diff": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p8"
+  },
+  "cmp/p8/hi": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p8"
+  },
+  "cmp/p8/lo": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p8"
+  },
+  "cmp/p8/p": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p8"
+  },
+  "cmp/p8/padj": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p8"
+  },
+  "cmp/p9/diff": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p9"
+  },
+  "cmp/p9/hi": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p9"
+  },
+  "cmp/p9/lo": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p9"
+  },
+  "cmp/p9/p": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p9"
+  },
+  "cmp/p9/padj": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "comparison": "p9"
   },
   "cmp/sel-cqa-comb-step/diff": {
    "value": "-0.1",
@@ -41983,6 +42133,702 @@
    "number": null,
    "runs": [],
    "set": "xr_v1/test",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-cls-critic/cls_v1:test@none/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "cls_v1/test@none",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-cls-critic/cls_v1:test@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "cls_v1/test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-cls-gate-struct/cls_v1:test@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "cls_v1/test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-cls-gate/cls_v1:test@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "cls_v1/test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-cls-gate/cls_v1:test@stated/top/gate_coverage": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "cls_v1/test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-cls-gate/cls_v1:test@stated/top/linking_acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "cls_v1/test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-cls-gate/cls_v1:test@stated/top/parser_coverage": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "cls_v1/test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-cls-ledger-rm-g/cls_v1:test@none/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "cls_v1/test@none",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-cls-ledger-rm-g/cls_v1:test@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "cls_v1/test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-cls-ledger-rm-g/cls_v1:test@wrong/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "cls_v1/test@wrong",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-cls-reader-bit/cls_v1:test@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "cls_v1/test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-kb-critic/kb_v1:triplets_test@derived/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "kb_v1/triplets_test@derived",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-kb-critic/kb_v1:triplets_test@none/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "kb_v1/triplets_test@none",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@derived/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "kb_v1/triplets_test@derived",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@none/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "kb_v1/triplets_test@none",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@self/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "kb_v1/triplets_test@self",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@wrong/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "kb_v1/triplets_test@wrong",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@none/top/Reversal": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/keypairs_medqa_oneway@none",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@self/top/Reversal": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/keypairs_medqa_oneway@self",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@wrong/top/Reversal": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/keypairs_medqa_oneway@wrong",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-critic/mcv_v1:criteria_test@none/all/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@none",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-critic/mcv_v1:criteria_test@none/note_type=human/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@none",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/all/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/note_type=human/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/note_type=model/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=default/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=denied/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=stated/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-critic/mcv_v1:edits_test@none/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@none",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-critic/mcv_v1:edits_test@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-critic/mcv_v1:edits_test@stated/edit_type=sentence/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-critic/mcv_v1:edits_test@stated/edit_type=value/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-critic/mcv_v1:edits_test@stated/note_type=human/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-gate-struct/mcv_v1:edits_test@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-gate/mcv_v1:edits_test@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-gate/mcv_v1:edits_test@stated/top/gate_coverage": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-gate/mcv_v1:edits_test@stated/top/linking_acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-gate/mcv_v1:edits_test@stated/top/parser_coverage": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-ledger-rm-g/mcv_v1:criteria_test@none/all/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@none",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-ledger-rm-g/mcv_v1:criteria_test@self/all/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@self",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-ledger-rm-g/mcv_v1:criteria_test@stated/all/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-ledger-rm-g/mcv_v1:criteria_test@wrong/all/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@wrong",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-ledger-rm-g/mcv_v1:edits_test@none/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@none",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-ledger-rm-g/mcv_v1:edits_test@self/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@self",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-ledger-rm-g/mcv_v1:edits_test@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-ledger-rm-g/mcv_v1:edits_test@wrong/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@wrong",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-reader-bit/mcv_v1:edits_test@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@none/note_type=human/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@none",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/note_type=human/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/note_type=model/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=default/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=denied/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=stated/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/edit_type=sentence/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/edit_type=value/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/note_type=human/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@none/note_type=human/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@none",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/note_type=human/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/note_type=model/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=default/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=denied/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=stated/BalAcc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/criteria_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/edit_type=sentence/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/edit_type=value/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/note_type=human/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "mcv_v1/edits_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-me-critic/clin_v1:medeinst_test@derived/top/Reversal": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/medeinst_test@derived",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@derived/top/Reversal": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/medeinst_test@derived",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@none/top/Reversal": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/medeinst_test@none",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@self/top/Reversal": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/medeinst_test@self",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@wrong/top/Reversal": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/medeinst_test@wrong",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-reg-critic/reg_v1:test@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "reg_v1/test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-reg-gate-struct/reg_v1:test@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "reg_v1/test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-reg-gate/reg_v1:test@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "reg_v1/test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-reg-gate/reg_v1:test@stated/top/gate_coverage": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "reg_v1/test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-reg-gate/reg_v1:test@stated/top/linking_acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "reg_v1/test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-reg-gate/reg_v1:test@stated/top/parser_coverage": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "reg_v1/test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-reg-ledger-rm-g/reg_v1:test@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "reg_v1/test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-reg-ledger-rm-g/reg_v1:test@wrong/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "reg_v1/test@wrong",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-reg-reader-bit/reg_v1:test@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "reg_v1/test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-rule2-gate-struct/rule_v2:test_L2@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rule_v2/test_L2@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-rule2-gate/rule_v2:test_L2@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rule_v2/test_L2@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-rule2-gate/rule_v2:test_L2@stated/top/gate_coverage": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rule_v2/test_L2@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-rule2-gate/rule_v2:test_L2@stated/top/linking_acc": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rule_v2/test_L2@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-rule2-gate/rule_v2:test_L2@stated/top/parser_coverage": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rule_v2/test_L2@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-rule2-reader-bit/rule_v2:test_L2@stated/all/TA": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "rule_v2/test_L2@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-tg-ledger-rm-g/clin_v1:trialgpt_test@stated/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test@stated",
+   "stat": "mean",
+   "seeds_found": []
+  },
+  "run/C-S2-tg-ledger-rm-g/clin_v1:trialgpt_test@wrong/top/macroF1": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": [],
+   "set": "clin_v1/trialgpt_test@wrong",
    "stat": "mean",
    "seeds_found": []
   },

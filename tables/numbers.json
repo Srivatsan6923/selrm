@@ -35,6 +35,66 @@
   "number": -11.9140625,
   "value": "-11.9"
  },
+ "cmp/p10/diff": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p10/hi": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p10/lo": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p10/p": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p10/padj": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p11/diff": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p11/hi": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p11/lo": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p11/p": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p11/padj": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p12/diff": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p12/hi": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p12/lo": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p12/p": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p12/padj": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
  "cmp/p2/diff": {
   "number": 38.18,
   "value": "38.2"
@@ -110,6 +170,66 @@
  "cmp/p6b/p": {
   "number": 0.214,
   "value": "0.214"
+ },
+ "cmp/p7/diff": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p7/hi": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p7/lo": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p7/p": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p7/padj": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p8/diff": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p8/hi": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p8/lo": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p8/p": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p8/padj": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p9/diff": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p9/hi": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p9/lo": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p9/p": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "cmp/p9/padj": {
+  "number": null,
+  "value": "\\ph{tbd}"
  },
  "cmp/sel-cqa-comb-step/diff": {
   "number": -0.09999999999999432,
@@ -1550,6 +1670,354 @@
  "run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/trap_acc/s0": {
   "number": 52.94445476500093,
   "value": "52.9"
+ },
+ "run/C-S2-cls-critic/cls_v1:test@none/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-cls-critic/cls_v1:test@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-cls-gate-struct/cls_v1:test@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-cls-gate/cls_v1:test@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-cls-gate/cls_v1:test@stated/top/gate_coverage": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-cls-gate/cls_v1:test@stated/top/linking_acc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-cls-gate/cls_v1:test@stated/top/parser_coverage": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-cls-ledger-rm-g/cls_v1:test@none/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-cls-ledger-rm-g/cls_v1:test@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-cls-ledger-rm-g/cls_v1:test@wrong/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-cls-reader-bit/cls_v1:test@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-kb-critic/kb_v1:triplets_test@derived/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-kb-critic/kb_v1:triplets_test@none/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@derived/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@none/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@self/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@wrong/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@none/top/Reversal": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@self/top/Reversal": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@wrong/top/Reversal": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-critic/mcv_v1:criteria_test@none/all/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-critic/mcv_v1:criteria_test@none/note_type=human/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/all/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/note_type=human/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/note_type=model/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=default/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=denied/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=stated/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-critic/mcv_v1:edits_test@none/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-critic/mcv_v1:edits_test@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-critic/mcv_v1:edits_test@stated/edit_type=sentence/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-critic/mcv_v1:edits_test@stated/edit_type=value/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-critic/mcv_v1:edits_test@stated/note_type=human/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-gate-struct/mcv_v1:edits_test@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-gate/mcv_v1:edits_test@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-gate/mcv_v1:edits_test@stated/top/gate_coverage": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-gate/mcv_v1:edits_test@stated/top/linking_acc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-gate/mcv_v1:edits_test@stated/top/parser_coverage": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-ledger-rm-g/mcv_v1:criteria_test@none/all/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-ledger-rm-g/mcv_v1:criteria_test@self/all/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-ledger-rm-g/mcv_v1:criteria_test@stated/all/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-ledger-rm-g/mcv_v1:criteria_test@wrong/all/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-ledger-rm-g/mcv_v1:edits_test@none/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-ledger-rm-g/mcv_v1:edits_test@self/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-ledger-rm-g/mcv_v1:edits_test@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-ledger-rm-g/mcv_v1:edits_test@wrong/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-reader-bit/mcv_v1:edits_test@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@none/note_type=human/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/note_type=human/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/note_type=model/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=default/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=denied/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=stated/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/edit_type=sentence/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/edit_type=value/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/note_type=human/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@none/note_type=human/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/note_type=human/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/note_type=model/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=default/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=denied/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=stated/BalAcc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/edit_type=sentence/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/edit_type=value/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/note_type=human/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-me-critic/clin_v1:medeinst_test@derived/top/Reversal": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@derived/top/Reversal": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@none/top/Reversal": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@self/top/Reversal": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@wrong/top/Reversal": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-reg-critic/reg_v1:test@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-reg-gate-struct/reg_v1:test@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-reg-gate/reg_v1:test@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-reg-gate/reg_v1:test@stated/top/gate_coverage": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-reg-gate/reg_v1:test@stated/top/linking_acc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-reg-gate/reg_v1:test@stated/top/parser_coverage": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-reg-ledger-rm-g/reg_v1:test@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-reg-ledger-rm-g/reg_v1:test@wrong/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-reg-reader-bit/reg_v1:test@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-rule2-gate-struct/rule_v2:test_L2@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-rule2-gate/rule_v2:test_L2@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-rule2-gate/rule_v2:test_L2@stated/top/gate_coverage": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-rule2-gate/rule_v2:test_L2@stated/top/linking_acc": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-rule2-gate/rule_v2:test_L2@stated/top/parser_coverage": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-rule2-reader-bit/rule_v2:test_L2@stated/all/TA": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-tg-ledger-rm-g/clin_v1:trialgpt_test@stated/top/macroF1": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "run/C-S2-tg-ledger-rm-g/clin_v1:trialgpt_test@wrong/top/macroF1": {
+  "number": null,
+  "value": "\\ph{tbd}"
  },
  "run/C-SC-gptrigger/L2/all/Hold": {
   "number": 81.05,

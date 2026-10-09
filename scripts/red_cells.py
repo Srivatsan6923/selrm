@@ -2,12 +2,14 @@
 
   python scripts/red_cells.py
 
-Red items of paper/latex_v14/main.tex: every use of the tbd macro (an unmeasured value) and every red note
+Red items of paper/latex_v14/main.tex: every use of the tbd macro and every result key without a value in
+tables/numbers.json (an unmeasured value; run scripts/make_tables.py first), and every red note
 (ph{...} other than the macro's own definition). Writes the count between the RED markers of
 docs/STATUS_BOARD.md and appends one line to docs/RED_COUNT.csv (date, commit, tbd, notes), so a rise between
 two merges is visible.
 """
 import datetime
+import json
 import os
 import re
 import subprocess
@@ -32,7 +34,13 @@ def count(tex):
 
 
 def main():
-    tbd, notes = count(open(PAPER, encoding="utf-8").read())
+    tex = open(PAPER, encoding="utf-8").read()
+    tbd, notes = count(tex)
+    # a result key without a value prints the same red tbd
+    np_ = os.path.join(ROOT, "tables", "numbers.json")
+    numbers = json.load(open(np_, encoding="utf-8")) if os.path.exists(np_) else {}
+    body = "\n".join(re.sub(r"(?<!\\)%.*", "", ln) for ln in tex.splitlines() if "\\newcommand" not in ln)
+    tbd += sum((numbers.get(k) or {}).get("number") is None for k in re.findall(r"\\res\{([^{}]+)\}", body))
     head = subprocess.run(["git", "-C", ROOT, "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
     prev = open(LOG, encoding="utf-8").read().strip().splitlines()[-1].split(",") if os.path.exists(LOG) else None
     if not prev:

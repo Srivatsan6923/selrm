@@ -490,6 +490,20 @@ def comparisons():
         p = os.path.join(ROOT, top, "D-SEL-comparisons.json")
         for k, v in ((load_json(p) or {}) if os.path.exists(p) else {}).items():
             _CMP[k] = v | {"n": v.get("n_clusters"), "file": rel(p), "file_commit": file_commit(p)}
+    # Stage 2, comparisons (7)-(12): computed by C into C-S2-comparisons.json ({"p7": {diff, lo, hi, p,
+    # n_clusters}, ...}); one Holm family of its own, corrected only when every member is there. A member with
+    # "dropped": true (comparison (11) under gate G2) leaves the family, as the plan states.
+    s2 = ["p7", "p8", "p9", "p10", "p11", "p12"]
+    for top in TOPS:
+        p = os.path.join(ROOT, top, "C-S2-comparisons.json")
+        f = (load_json(p) or {}) if os.path.exists(p) else {}
+        fam = [k for k in s2 if isinstance(f.get(k), dict) and not f[k].get("dropped")]
+        for k in fam:
+            _CMP[k] = f[k] | {"n": f[k].get("n_clusters"), "file": rel(p), "file_commit": file_commit(p)}
+        ps = [f[k].get("p") for k in fam]
+        if holm and fam and all(isinstance(f.get(k), dict) for k in s2) and all(x is not None for x in ps):
+            for k, q in zip(fam, holm(ps)):
+                _CMP[k]["padj"] = q
     return _CMP
 
 

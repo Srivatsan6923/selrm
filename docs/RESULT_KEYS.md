@@ -46,3 +46,36 @@ eval-only run id `<adapter run id>-eval` that the lead maps; say which in HANDOF
 
 ## Run ids for rows the run matrices do not name
 `B-SC-summary2-triplets-s<k>` (summary pipeline, judge also sees the case), `B-LOKO-<subject|time|boundary>-<verdict|summary2|ledger2>-s0`, `B-AB-conddrv-s0` (condition derived by the reader), `B-AE-program-ledger` (rule program on the predicted ledger), `C-SC-gptrigger` (general-purpose trigger tagger + program), `C-TG-<x>` (TrialGPT scores of system `B-F-<x>` or `C-TF-<x>`, set clin_v1/trialgpt_test). Other ids: `docs/RUN_MATRIX_{A,B,C,D}.csv`.
+
+## Stage 2 (added 8 Oct): what C and B write so that the paper's stage-2 cells fill
+
+Run ids follow C's first stage-2 runs (`C-S2-ctrl-verdict-triplets-s0`): `C-S2-<tier>-<system>[-s<k>]`, one run
+holding every view it scores, one summary per view: `summary_<set>~<portion>@<cond>.json` (`"set":
+"<set>/<portion>@<cond>"`). Seeds `-s0..-s4` are pooled as in stage 1. The paper's key is
+`run/C-S2-<tier>-<system>/<set>:<portion>@<cond>/<slice>/<metric>`.
+
+| Tier | `<tier>` | Views (`<set>:<portion>@<cond>`) | Fields |
+|---|---|---|---|
+| Rule-tier controls | `ctrl` | `rule_v1:test_L2@{none,wrong}`, `rule_v1:test_L3inv@{none,wrong}` | `all` {TA, Rev, Hold} |
+| MedCalc-V criteria | `mcv` | `mcv_v1:criteria_test@{none,stated,self,wrong}` | `all`, `note_type={human,model}`, `stratum={stated,denied,default}`: {BalAcc, Acc, n} |
+| MedCalc-V edits | `mcv` | `mcv_v1:edits_test@{none,stated,self,wrong}` | `all`, `note_type=human`, `edit_type={value,sentence}`: {TA, Rev, Hold, n} |
+| Registered criteria | `reg` | `reg_v1:test@{stated,wrong}` | `all` {TA, Rev, Hold} |
+| TrialGPT | `tg` | `clin_v1:trialgpt_test@{stated,wrong}` | top-level `macroF1` |
+| Class triplets | `cls` | `cls_v1:test@{none,stated,wrong}` (none = closed book, stated = member list or gate) | `all` {TA, Rev, Hold} |
+| Knowledge-base triplets | `kb` | `kb_v1:triplets_test@{none,derived,self,wrong}` | `all` {TA} |
+| MedEinst | `me` | `clin_v1:medeinst_test@{none,derived,self,wrong}` | top-level `Reversal` (pair accuracy), `control_acc`, `trap_acc` |
+| Key pairs | `kp` | `clin_v1:keypairs_medqa_oneway@{none,self,wrong}` | top-level `Reversal` |
+| Stage-2 rule library | `rule2` | `rule_v2:test_L2@stated` | `all` {TA, Rev, Hold} |
+
+Systems (`<system>`): `critic`, `verdict-blocks`, `verdict-triplets` (stage-1 adapters, seeds 0-4),
+`v2-verdict-triplets`, `ledger-rm-g` (the composite as deployed), and its reference variants `reader-bit`,
+`gate`, `gate-struct`. A `gate` run's summary also carries the top-level fields `gate_coverage`,
+`parser_coverage`, `linking_acc`, `fallback_rate`, `malformed_rate` (percentages).
+
+Comparisons (7)-(12): `results_git/C-S2-comparisons.json` = `{"p7": {"diff", "lo", "hi", "p", "n_clusters"},
+..., "p12": {...}}`; a comparison dropped by its gate is written as `{"dropped": true, "reason": ...}`.
+make_tables.py applies Holm over the members that are not dropped, once all six entries exist; keys
+`cmp/p7/diff` ... `cmp/p12/padj`. The MedEinst executor audit: `results_git/C-S2-medeinst-executor/summary.json`
+with `pair_acc` and `share_decided` (key `sum/C-S2-medeinst-executor/<field>`).
+
+If your code already writes something else, say so in HANDOFFS and the lead changes the keys, not your files.

@@ -1611,16 +1611,16 @@ licence. \ph{Licence wording to be re-read at release time.}}
 Tier (metric) & none & st. & none & st. & self & wrong\\
 \midrule
 \multicolumn{7}{@{}l}{\emph{Criterion stated by the dataset}}\\
-\mcv{} criteria (acc.) & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
-\mcv{} edits (TA)      & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
-Registered criteria (TA) & -- & \tbd & -- & \tbd & -- & \tbd\\
-TrialGPT (F1)          & -- & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1} & -- & \tbd & -- & \tbd\\
+\mcv{} criteria (acc.) & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@none/all/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/all/BalAcc} & \res{run/C-S2-mcv-ledger-rm-g/mcv_v1:criteria_test@none/all/BalAcc} & \res{run/C-S2-mcv-ledger-rm-g/mcv_v1:criteria_test@stated/all/BalAcc} & \res{run/C-S2-mcv-ledger-rm-g/mcv_v1:criteria_test@self/all/BalAcc} & \res{run/C-S2-mcv-ledger-rm-g/mcv_v1:criteria_test@wrong/all/BalAcc}\\
+\mcv{} edits (TA)      & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@none/all/TA} & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@stated/all/TA} & \res{run/C-S2-mcv-ledger-rm-g/mcv_v1:edits_test@none/all/TA} & \res{run/C-S2-mcv-ledger-rm-g/mcv_v1:edits_test@stated/all/TA} & \res{run/C-S2-mcv-ledger-rm-g/mcv_v1:edits_test@self/all/TA} & \res{run/C-S2-mcv-ledger-rm-g/mcv_v1:edits_test@wrong/all/TA}\\
+Registered criteria (TA) & -- & \res{run/C-S2-reg-critic/reg_v1:test@stated/all/TA} & -- & \res{run/C-S2-reg-ledger-rm-g/reg_v1:test@stated/all/TA} & -- & \res{run/C-S2-reg-ledger-rm-g/reg_v1:test@wrong/all/TA}\\
+TrialGPT (F1)          & -- & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1} & -- & \res{run/C-S2-tg-ledger-rm-g/clin_v1:trialgpt_test@stated/top/macroF1} & -- & \res{run/C-S2-tg-ledger-rm-g/clin_v1:trialgpt_test@wrong/top/macroF1}\\
 \multicolumn{7}{@{}l}{\emph{Criterion derived}}\\
-Class triplets (TA)    & \tbd & \tbd & \tbd & \tbd & -- & \tbd\\
-KB triplets (TA)       & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
-MedEinst (pair)        & \res{run/C-ME-critic/clin_v1:medeinst_test/top/Reversal} & \tbd & \tbd & \tbd & \tbd & \tbd\\
+Class triplets (TA)    & \res{run/C-S2-cls-critic/cls_v1:test@none/all/TA} & \res{run/C-S2-cls-critic/cls_v1:test@stated/all/TA} & \res{run/C-S2-cls-ledger-rm-g/cls_v1:test@none/all/TA} & \res{run/C-S2-cls-ledger-rm-g/cls_v1:test@stated/all/TA} & -- & \res{run/C-S2-cls-ledger-rm-g/cls_v1:test@wrong/all/TA}\\
+KB triplets (TA)       & \res{run/C-S2-kb-critic/kb_v1:triplets_test@none/all/TA} & \res{run/C-S2-kb-critic/kb_v1:triplets_test@derived/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@none/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@derived/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@self/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@wrong/all/TA}\\
+MedEinst (pair)        & \res{run/C-ME-critic/clin_v1:medeinst_test/top/Reversal} & \res{run/C-S2-me-critic/clin_v1:medeinst_test@derived/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@none/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@derived/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@self/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@wrong/top/Reversal}\\
 \multicolumn{7}{@{}l}{\emph{No source}}\\
-Key pairs, MedQA (pair) & \res{run/C-KP-critic/clin_v1:keypairs_medqa_oneway/top/Reversal} & -- & \tbd & -- & \tbd & \tbd\\
+Key pairs, MedQA (pair) & \res{run/C-KP-critic/clin_v1:keypairs_medqa_oneway/top/Reversal} & -- & \res{run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@none/top/Reversal} & -- & \res{run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@self/top/Reversal} & \res{run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@wrong/top/Reversal}\\
 \bottomrule
 \end{tabular}
 \caption{Criterion ladder (\%): no criterion in the prompt, the stated or
@@ -1672,6 +1672,69 @@ its program (clause order, placement of the exception, synonyms), which
 executing both programs certifies, and the excess rate of changed verdicts
 over a rerun baseline is reported \citep{weng2026policy,yang2026compared}
 (\tbd).
+
+\begin{table*}[!ht]
+\centering\small
+\begin{tabular}{@{}llccccl@{}}
+\toprule
+\# & Comparison & Estimate & 95\% interval & $p$ & Holm $p$ & Outcome\\
+\midrule
+(7) & \mcv{} criteria: triplets $-$ blocks & \res{cmp/p7/diff} & [\res{cmp/p7/lo}, \res{cmp/p7/hi}] & \res{cmp/p7/p} & \res{cmp/p7/padj} & \tbd\\
+(8) & \mcv{} criteria: criterion $\times$ system & \res{cmp/p8/diff} & [\res{cmp/p8/lo}, \res{cmp/p8/hi}] & \res{cmp/p8/p} & \res{cmp/p8/padj} & \tbd\\
+(9) & \mcv{} edits: triplets $-$ blocks & \res{cmp/p9/diff} & [\res{cmp/p9/lo}, \res{cmp/p9/hi}] & \res{cmp/p9/p} & \res{cmp/p9/padj} & \tbd\\
+(10) & Class triplets: gate $-$ learned verdict & \res{cmp/p10/diff} & [\res{cmp/p10/lo}, \res{cmp/p10/hi}] & \res{cmp/p10/p} & \res{cmp/p10/padj} & \tbd\\
+(11) & MedEinst: criterion $\times$ system & \res{cmp/p11/diff} & [\res{cmp/p11/lo}, \res{cmp/p11/hi}] & \res{cmp/p11/p} & \res{cmp/p11/padj} & \tbd\\
+(12) & Key pairs: composite $-$ verdict only & \res{cmp/p12/diff} & [\res{cmp/p12/lo}, \res{cmp/p12/hi}] & \res{cmp/p12/p} & \res{cmp/p12/padj} & \tbd\\
+\bottomrule
+\end{tabular}
+\caption{Primary comparisons of stage 2 (Appendix~\ref{app:plan}), one Holm family; paired cluster
+bootstrap on identical items. (7), (8): balanced accuracy on human-written notes, criterion stated; (9), (10):
+triplet accuracy; (11), (12): pair accuracy, (12) as non-inferiority with a margin of two points. Not yet run.}
+\label{tab:stage2}
+\end{table*}
+
+\begin{table*}[!ht]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lccccccccc@{}}
+\toprule
+ & \multicolumn{6}{c}{Criterion claims (balanced acc.)} & \multicolumn{3}{c}{Edited notes (TA)}\\
+\cmidrule(lr){2-7}\cmidrule(l){8-10}
+ & \multicolumn{2}{c}{human notes} & model & \multicolumn{3}{c}{stratum (stated crit.)} & & \multicolumn{2}{c}{edit type}\\
+System & none & stated & notes & stated & denied & default & all & value & sentence\\
+\midrule
+Critic & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@none/note_type=human/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/note_type=human/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/note_type=model/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=stated/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=default/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@stated/note_type=human/TA} & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@stated/edit_type=value/TA} & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@stated/edit_type=sentence/TA}\\
+Verdict only, blocks & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@none/note_type=human/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/note_type=human/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/note_type=model/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=stated/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=default/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/note_type=human/TA} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/edit_type=value/TA} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/edit_type=sentence/TA}\\
+Verdict only, triplets & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@none/note_type=human/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/note_type=human/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/note_type=model/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=stated/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=default/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/note_type=human/TA} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/edit_type=value/TA} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/edit_type=sentence/TA}\\
+\bottomrule
+\end{tabular}
+\caption{\mcv{} (\%). Criterion claims on untouched notes without and with the score definition in the prompt, by
+note type and by stratum (value stated in the note, denied, or settled by the benchmark's default); triplet
+accuracy on edited human-written notes, by edit type. Verdict-only models are those trained on rule data in
+stage 1, five seeds. Not yet run.}
+\label{tab:mcv}
+\end{table*}
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{2.6pt}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & \multicolumn{3}{c}{TA} & \multicolumn{3}{c}{Gate}\\
+\cmidrule(lr){2-4}\cmidrule(l){5-7}
+Tier & bit & gate & struct. & cov. & parse & link\\
+\midrule
+Rule tier, stage 2 (L2) & \res{run/C-S2-rule2-reader-bit/rule_v2:test_L2@stated/all/TA} & \res{run/C-S2-rule2-gate/rule_v2:test_L2@stated/all/TA} & \res{run/C-S2-rule2-gate-struct/rule_v2:test_L2@stated/all/TA} & \res{run/C-S2-rule2-gate/rule_v2:test_L2@stated/top/gate_coverage} & \res{run/C-S2-rule2-gate/rule_v2:test_L2@stated/top/parser_coverage} & \res{run/C-S2-rule2-gate/rule_v2:test_L2@stated/top/linking_acc}\\
+Class triplets & \res{run/C-S2-cls-reader-bit/cls_v1:test@stated/all/TA} & \res{run/C-S2-cls-gate/cls_v1:test@stated/all/TA} & \res{run/C-S2-cls-gate-struct/cls_v1:test@stated/all/TA} & \res{run/C-S2-cls-gate/cls_v1:test@stated/top/gate_coverage} & \res{run/C-S2-cls-gate/cls_v1:test@stated/top/parser_coverage} & \res{run/C-S2-cls-gate/cls_v1:test@stated/top/linking_acc}\\
+Registered criteria & \res{run/C-S2-reg-reader-bit/reg_v1:test@stated/all/TA} & \res{run/C-S2-reg-gate/reg_v1:test@stated/all/TA} & \res{run/C-S2-reg-gate-struct/reg_v1:test@stated/all/TA} & \res{run/C-S2-reg-gate/reg_v1:test@stated/top/gate_coverage} & \res{run/C-S2-reg-gate/reg_v1:test@stated/top/parser_coverage} & \res{run/C-S2-reg-gate/reg_v1:test@stated/top/linking_acc}\\
+\mcv{} edits & \res{run/C-S2-mcv-reader-bit/mcv_v1:edits_test@stated/all/TA} & \res{run/C-S2-mcv-gate/mcv_v1:edits_test@stated/all/TA} & \res{run/C-S2-mcv-gate-struct/mcv_v1:edits_test@stated/all/TA} & \res{run/C-S2-mcv-gate/mcv_v1:edits_test@stated/top/gate_coverage} & \res{run/C-S2-mcv-gate/mcv_v1:edits_test@stated/top/parser_coverage} & \res{run/C-S2-mcv-gate/mcv_v1:edits_test@stated/top/linking_acc}\\
+\bottomrule
+\end{tabular}
+\caption{\methodg{} and its two reference variants (\%): the reader's bit without gate, the gate with the parsed
+criterion, and the gate with the criterion's structure taken from the program or the annotation. Coverage: share
+of items whose applicability the gate computes; parse: parser coverage; link: linking accuracy. Not yet run.}
+\label{tab:gate}
+\end{table}
 
 \section{Ledger Format, Reader Statistics and Gate}
 \label{app:ledger}
