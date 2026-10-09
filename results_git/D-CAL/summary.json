@@ -1,0 +1,59 @@
+{
+ "pool": "medqa_dev",
+ "platt": {
+  "medprm": [
+   0.6645159113862108,
+   2.378095938064718
+  ],
+  "ledger2-triplets": [
+   0.0057337402444845535,
+   2.03876251082906
+  ],
+  "ledger2-blocks": [
+   -0.007905333535807541,
+   1.870813616935998
+  ]
+ },
+ "nll": {
+  "medprm": 0.3562342147289927,
+  "ledger2-triplets": 0.37234682923621487,
+  "ledger2-blocks": 0.37224648486117046
+ },
+ "auc": {
+  "medprm": 0.6536655224728907,
+  "ledger2-triplets": 0.5097469795223625,
+  "ledger2-blocks": 0.47909914506199086
+ },
+ "logistic:ledger2-triplets": [
+  0.0010967385029984652,
+  0.6637842312350111,
+  2.3916077430813965
+ ],
+ "nll:logistic:ledger2-triplets": 0.3562299072846932,
+ "logistic:ledger2-blocks": [
+  -0.012993724102808713,
+  0.6739428699809735,
+  2.227585022510819
+ ],
+ "nll:logistic:ledger2-blocks": 0.35566254590258456,
+ "auc_alt": {
+  "ledger2-triplets": {
+   "mean": 0.537328016636309,
+   "last": 0.5389289928558748,
+   "min_well_formed": 0.5401048123268605
+  },
+  "ledger2-blocks": {
+   "mean": 0.5113424361630872,
+   "last": 0.5199622281793893,
+   "min_well_formed": 0.5278318050067056
+  }
+ },
+ "share_traces_with_malformed_step": {
+  "ledger2-triplets": 0.4254212979562567,
+  "ledger2-blocks": 0.4467551093581929
+ },
+ "n_traces": 5578,
+ "correct_share": 0.877196127644317,
+ "n_questions": 359,
+ "excluded_keypair_questions": 141
+}

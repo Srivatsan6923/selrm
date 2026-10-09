@@ -1,0 +1,37 @@
+{
+ "run_id": "C-AUD-thinkprm",
+ "set": "clin_v1/medeinst_test",
+ "Reversal": 22.5,
+ "CI95": [
+  17.0,
+  28.5
+ ],
+ "CI95_label_pairs": [
+  15.686274509803921,
+  30.729166666666668
+ ],
+ "n_pairs": 200,
+ "control_acc": 47.5,
+ "trap_acc": 55.5,
+ "bias_trap_rate": 52.63157894736842,
+ "n_control_correct": 95,
+ "tie_rate": 0.0,
+ "Reversal_excl_no_content_diff": 22.727272727272727,
+ "Reversal_excl_overlap_ref": 22.959183673469386,
+ "n_no_content_diff": 2,
+ "n_overlap_ref": 4,
+ "definitions": "control correct: d(control) > 0; trap correct: d(trap) < 0; Reversal = both (ties fail); bias_trap_rate = share of control-correct pairs with d(trap) > 0 (MedEinst's R_bias on two candidates)",
+ "bootstrap": {
+  "unit": "pair (CI95) and (y_gt, y_bias) label pair (CI95_label_pairs)",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "seconds": 10938.4,
+  "n_records": 800,
+  "n_groups": 200,
+  "claim_types": [
+   "conclusion"
+  ]
+ }
+}

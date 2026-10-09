@@ -1,0 +1,5 @@
+2026-10-03T17:08:07Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-ledger2-triplets-s0
+2026-10-03T17:08:08Z token budget per batch: 8000 (generation 24000)
+2026-10-03T17:09:20Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.1677)
+2026-10-03T17:18:38Z C-ME-ledger2-triplets-s0-lenient clin_v1/medeinst_test rejudge (lenient v2): TA nan malformed 1604/10766
+2026-10-03T17:18:39Z DONE C-ME-ledger2-triplets-s0-lenient in 11.1 min, GPU util mean 83.5

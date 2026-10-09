@@ -1,0 +1,7 @@
+{
+ "run_id": "D-SEL-selfcons",
+ "set": "sel/careqa",
+ "acc": 89.4,
+ "n": 1000,
+ "N": 16
+}

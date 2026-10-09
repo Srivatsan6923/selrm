@@ -1,0 +1,278 @@
+{
+ "confusion": {
+  "generic": [
+   "Alert and attentive.",
+   "Answers questions appropriately.",
+   "Oriented to person, place and time.",
+   "Memory and concentration normal on bedside testing.",
+   "Speech clear; follows commands.",
+   "Gives a clear account of the illness."
+  ],
+  "present": [
+   "New confusion since this morning.",
+   "Acutely confused, per family.",
+   "Confused this morning, a sudden change from baseline.",
+   "Acute confusional state at this assessment.",
+   "Disoriented to time and place, which is new for the patient.",
+   "Newly disoriented and unable to give a clear history."
+  ],
+  "past": [
+   "Brief confusion during a urinary infection in {year}, resolved.",
+   "Previously confused during a fever in {year}.",
+   "In {year}, became confused during a chest infection; the confusion resolved with antibiotics.",
+   "Disorientation in {year} from a sleeping pill, which cleared once the pill was stopped.",
+   "Was confused for a day after surgery years ago; recovered fully.",
+   "Formerly had an episode of confusion with dehydration in {year}."
+  ],
+  "absent": [
+   "No confusion.",
+   "Not confused or disoriented.",
+   "No sign of confusion at this assessment.",
+   "No confusion, according to the nursing staff.",
+   "Confusion absent; answers questions appropriately.",
+   "Without any confusion on assessment."
+  ],
+  "rel": [
+   "{Poss} {rel} has new confusion.",
+   "{Poss} {rel} is acutely confused.",
+   "{Poss} {rel} has been confused since this morning.",
+   "{Poss} {rel} has an acute confusional state.",
+   "{Poss} {rel} has become disoriented this week.",
+   "{Poss} {rel} is newly disoriented."
+  ]
+ },
+ "angioedema": {
+  "generic": [
+   "Lips and tongue normal in size at this assessment.",
+   "Mouth and throat look normal; airway clear.",
+   "No puffiness around the eyes or lips.",
+   "Speaks and swallows normally, with no hoarseness.",
+   "Face and neck without swelling on examination.",
+   "Free of facial or oropharyngeal edema."
+  ],
+  "present": [
+   "Has hereditary angioedema, with attacks every few months.",
+   "Idiopathic angioedema, treated with daily antihistamines.",
+   "Angioedema of the lips this morning, still swollen at this assessment.",
+   "Acquired angioedema, still causing attacks of swelling.",
+   "Recurrent angioedema, under allergy follow-up.",
+   "Lives with chronic angioedema that flares several times a year."
+  ],
+  "past": [
+   "Angioedema of the lips in {year}, resolved with treatment.",
+   "Previously had angioedema of the tongue in {year}, which settled within hours.",
+   "Angioedema after a wasp sting in {year}, which resolved within a day.",
+   "Angioedema of the face in {year} that cleared after an injection of epinephrine.",
+   "An episode of angioedema years ago, with full recovery.",
+   "Formerly had recurrent angioedema, in remission for many years now."
+  ],
+  "absent": [
+   "No history of angioedema.",
+   "Denies any episode of angioedema, past or present.",
+   "No angioedema at any time.",
+   "No angioedema in the past, and none at present.",
+   "Has never had angioedema.",
+   "Never diagnosed with angioedema."
+  ],
+  "rel": [
+   "{Poss} {rel} has recurrent angioedema.",
+   "{Poss} {rel} has angioedema of the lips this week.",
+   "{Poss} {rel} has swelling of the tongue from angioedema today.",
+   "{Poss} {rel} has angioedema with frequent attacks.",
+   "{Poss} {rel} is being treated for angioedema.",
+   "{Poss} {rel} has active angioedema of the face."
+  ],
+  "rel_past": [
+   "{Poss} {rel} had angioedema in {year}.",
+   "{Poss} {rel} was treated for angioedema in {year}; it resolved.",
+   "{Poss} {rel} needed emergency care for angioedema in {year}.",
+   "{Poss} {rel} previously had angioedema, which resolved.",
+   "{Poss} {rel} had an attack of angioedema years ago.",
+   "{Poss} {rel} recovered from an episode of angioedema in {year}."
+  ]
+ },
+ "asthma": {
+  "generic": [
+   "Chest clear on auscultation, with no wheeze.",
+   "Takes no inhaled medicines.",
+   "Good air entry on both sides of the chest.",
+   "No night cough or chest tightness.",
+   "Lungs clear, without wheeze or prolonged expiration.",
+   "Inhaler use: none."
+  ],
+  "present": [
+   "Has asthma and uses an albuterol inhaler for wheeze.",
+   "Asthmatic; wheezes on exertion and in cold air.",
+   "Has asthma and wakes at night with wheeze.",
+   "Asthma attack this month needing nebulizers; still wheezy at this assessment.",
+   "Asthma, on a daily inhaled steroid.",
+   "Persistent asthma, using a rescue inhaler most weeks."
+  ],
+  "past": [
+   "Childhood asthma, resolved by adolescence.",
+   "Previously had asthma in childhood; symptom-free and off inhalers for decades.",
+   "Occupational asthma in {year}, which resolved completely after a change of job.",
+   "Asthma that began after a chest infection in {year} and resolved within a year.",
+   "Asthma in the early school years, outgrown long ago.",
+   "Formerly had asthma in elementary school; well for many years without inhalers."
+  ],
+  "absent": [
+   "Denies asthma.",
+   "No diagnosis of asthma.",
+   "Not asthmatic.",
+   "No asthma or other airway disease.",
+   "Has never had asthma.",
+   "Asthma ruled out on lung function testing."
+  ],
+  "rel": [
+   "{Poss} {rel} has asthma.",
+   "{Poss} {rel} is being treated for asthma.",
+   "{Poss} {rel} has severe asthma.",
+   "{Poss} {rel} has an asthma attack today.",
+   "{Poss} {rel} uses an inhaler for asthma.",
+   "{Poss} {rel} is asthmatic."
+  ]
+ },
+ "mech_valve": {
+  "generic": [
+   "No valve clicks on auscultation.",
+   "Auscultation: no clicks or added sounds.",
+   "Not on anticoagulation at present.",
+   "No ticking sound audible from the chest.",
+   "Heart sounds without a metallic click.",
+   "Heart sounds free of clicks."
+  ],
+  "present": [
+   "Has a mechanical aortic valve.",
+   "Mechanical heart valve in the mitral position.",
+   "Mechanical aortic valve, functioning normally on echocardiography today.",
+   "Carries a mechanical mitral valve, fitted for rheumatic heart disease.",
+   "Mechanical mitral valve in place; metallic closing clicks audible.",
+   "Lives with a mechanical aortic valve prosthesis."
+  ],
+  "past": [
+   "Mechanical aortic valve removed in {year} and replaced with a tissue valve.",
+   "Previously had a mechanical mitral valve, replaced with a tissue valve after endocarditis in {year}.",
+   "A mechanical aortic valve fitted in childhood was removed in {year} and replaced with a donor valve.",
+   "In {year}, surgeons took out the patient's mechanical mitral valve and sewed in a pig-tissue valve.",
+   "Formerly had a mechanical mitral valve, exchanged for a bioprosthetic valve in {year}.",
+   "Mechanical aortic valve explanted years ago for valve thrombosis; a bioprosthesis now sits in its place."
+  ],
+  "absent": [
+   "No mechanical heart valve.",
+   "Does not have a mechanical valve.",
+   "No mechanical valve seen on echocardiography.",
+   "Denies any mechanical heart valve.",
+   "Has never had a mechanical heart valve.",
+   "Never received a mechanical heart valve."
+  ],
+  "rel": [
+   "{Poss} {rel} has a mechanical heart valve.",
+   "{Poss} {rel} has a mechanical mitral valve.",
+   "{Poss} {rel} has a mechanical valve in the aortic position.",
+   "{Poss} {rel} has a mechanical heart valve and needs regular clotting tests.",
+   "{Poss} {rel} has an implanted mechanical aortic valve.",
+   "{Poss} {rel} attends a valve clinic for a mechanical mitral valve."
+  ]
+ },
+ "hit": {
+  "generic": [
+   "No heparin given so far during this admission.",
+   "No heparin products on the medication chart today.",
+   "Not on any blood thinner at present.",
+   "Heparin has not been started.",
+   "Heparin exposure within the past 100 days: none.",
+   "Last received heparin more than a year ago."
+  ],
+  "present": [
+   "Has heparin-induced thrombocytopenia, confirmed by antibody testing.",
+   "Active heparin-induced thrombocytopenia with a positive functional assay.",
+   "Heparin-induced thrombocytopenia diagnosed this week; all heparin is being avoided.",
+   "On an argatroban infusion this morning for heparin-induced thrombocytopenia.",
+   "Heparin-induced thrombocytopenia, with heparin antibodies still positive.",
+   "Being treated for heparin-induced thrombocytopenia by the hematology team."
+  ],
+  "past": [
+   "Heparin-induced thrombocytopenia in {year}, resolved once heparin was stopped.",
+   "Previously had heparin-induced thrombocytopenia, in {year}; antibodies since cleared.",
+   "Heparin-induced thrombocytopenia in {year}, treated with argatroban and resolved within two weeks.",
+   "Heparin-induced thrombocytopenia in {year} that resolved, with heparin avoided ever since.",
+   "Heparin-induced thrombocytopenia after heart surgery years ago; recovered fully.",
+   "Formerly had heparin-induced thrombocytopenia during a hospital stay in {year}; blood counts recovered afterward."
+  ],
+  "absent": [
+   "No history of heparin-induced thrombocytopenia.",
+   "Denies ever having heparin-induced thrombocytopenia.",
+   "No heparin-induced thrombocytopenia at any time.",
+   "Heparin-induced thrombocytopenia: no episodes, past or present.",
+   "Has never had heparin-induced thrombocytopenia.",
+   "Never diagnosed with heparin-induced thrombocytopenia."
+  ],
+  "rel": [
+   "{Poss} {rel} has heparin-induced thrombocytopenia.",
+   "{Poss} {rel} is being treated for heparin-induced thrombocytopenia.",
+   "{Poss} {rel} has active heparin-induced thrombocytopenia.",
+   "{Poss} {rel} was diagnosed with heparin-induced thrombocytopenia this week.",
+   "{Poss} {rel} is in the hospital with heparin-induced thrombocytopenia.",
+   "{Poss} {rel} has developed heparin-induced thrombocytopenia after surgery."
+  ],
+  "rel_past": [
+   "{Poss} {rel} had heparin-induced thrombocytopenia in {year}.",
+   "{Poss} {rel} previously had heparin-induced thrombocytopenia after an operation.",
+   "{Poss} {rel} needed treatment for heparin-induced thrombocytopenia in {year}.",
+   "{Poss} {rel} had heparin-induced thrombocytopenia that resolved after heparin was stopped.",
+   "{Poss} {rel} developed heparin-induced thrombocytopenia years ago.",
+   "{Poss} {rel} recovered from heparin-induced thrombocytopenia in {year}."
+  ]
+ },
+ "crc": {
+  "generic": [
+   "No abdominal pain or blood in the stool.",
+   "Abdomen soft, with no masses on examination.",
+   "Weight stable and appetite good.",
+   "Bowel habit regular.",
+   "Rectal exam unremarkable.",
+   "Hemoglobin within the normal range on recent blood tests."
+  ],
+  "present": [
+   "Has colon cancer and is receiving treatment from an oncologist.",
+   "Bowel cancer, on treatment with an oncology team.",
+   "Colorectal cancer diagnosed this month, awaiting surgery.",
+   "Bowel cancer, midway through a course of chemotherapy.",
+   "Colorectal cancer under active treatment.",
+   "Lives with colon cancer and attends an oncology clinic."
+  ],
+  "past": [
+   "Colon cancer removed surgically in {year}; in remission since.",
+   "Previously had colorectal cancer, treated in {year} and in remission.",
+   "Colorectal cancer in {year}, treated with chemotherapy and radiation; scans clear since.",
+   "Bowel cancer in {year}; all treatment completed and the patient was declared cancer-free.",
+   "Bowel cancer cured by surgery years ago, without recurrence.",
+   "Formerly had colon cancer; recovered fully after an operation in {year}."
+  ],
+  "absent": [
+   "No personal history of colorectal cancer.",
+   "Denies ever having colon cancer.",
+   "No bowel cancer at any time.",
+   "No colon cancer, past or present.",
+   "Has never had bowel cancer.",
+   "Never diagnosed with colorectal cancer."
+  ],
+  "rel": [
+   "{Poss} {rel} has colon cancer.",
+   "{Poss} {rel} is being treated for colorectal cancer.",
+   "{Poss} {rel} was diagnosed with colon cancer this month.",
+   "{Poss} {rel} has bowel cancer and starts chemotherapy this week.",
+   "{Poss} {rel} is undergoing surgery for bowel cancer.",
+   "{Poss} {rel} has advanced colorectal cancer."
+  ],
+  "rel_past": [
+   "{Poss} {rel} had colon cancer in {year}.",
+   "{Poss} {rel} had surgery for colorectal cancer in {year}.",
+   "{Poss} {rel} had part of the colon removed for bowel cancer in {year}.",
+   "{Poss} {rel} completed radiation for colorectal cancer in {year}.",
+   "{Poss} {rel} was treated for bowel cancer years ago.",
+   "{Poss} {rel} recovered from colon cancer after an operation in {year}."
+  ]
+ }
+}

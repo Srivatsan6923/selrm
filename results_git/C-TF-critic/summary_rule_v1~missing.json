@@ -1,0 +1,18 @@
+{
+ "run_id": "C-TF-critic",
+ "set": "rule_v1/missing",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "seconds": 517.5,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ },
+ "MR": 7.7,
+ "FR": 11.0,
+ "threshold": -0.35245028138160706,
+ "n_missing": 1000,
+ "n_supported": 1000
+}

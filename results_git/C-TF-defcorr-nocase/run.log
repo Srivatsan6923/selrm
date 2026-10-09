@@ -1,0 +1,49 @@
+2026-10-03T07:00:33Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-03T07:00:36Z C-TF-defcorr-nocase nocase/rule_v1/dev_missing prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/nocase/rule_v1/dev_missing/verdict.npz', 'built 2280 prompts, max 169 tokens')
+2026-10-03T07:00:37Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0286)
+2026-10-03T07:00:38Z padding self-check: max |u_batch - u_single| = 0.1243 (tol 0.512) -> left padding
+2026-10-03T07:04:52Z C-TF-defcorr-nocase nocase/rule_v1/dev_missing: TA nan Rev nan Hold nan n=None (255.8 s)
+2026-10-03T07:04:56Z C-TF-defcorr-nocase nocase/rule_v1/dev prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/nocase/rule_v1/dev/verdict.npz', 'built 4560 prompts, max 169 tokens')
+2026-10-03T07:11:04Z FAILED C-TF-defcorr-nocase
+Traceback (most recent call last):
+  File "/work/code/scripts/eval_c.py", line 188, in run_one
+    summ[s] = eval_local.evaluate(sc, root, rid, spec["format"], s, rdir, log, tag, spec.get("mode"))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/bcode/scripts/eval_local.py", line 250, in evaluate
+    u = sc.score(seqs)
+        ^^^^^^^^^^^^^^
+  File "/work/bcode/scripts/eval_local.py", line 184, in score
+    u[b] = self._last([seqs[i] for i in b])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/bcode/scripts/eval_local.py", line 162, in _last
+    return u.cpu().numpy()
+           ^^^^^^^
+torch.AcceleratorError: CUDA error: unspecified launch failure
+Search for `cudaErrorLaunchFailure' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+
+2026-10-03T07:31:00Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-03T07:31:01Z token budget per batch: 40000
+2026-10-03T07:31:01Z C-TF-defcorr-nocase nocase/rule_v1/dev_missing prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/nocase/rule_v1/dev_missing/verdict.npz', 'exists')
+2026-10-03T07:31:43Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.1027)
+2026-10-03T07:31:43Z padding self-check: max |u_batch - u_single| = 0.0555 (tol 0.511) -> left padding
+2026-10-03T07:32:24Z C-TF-defcorr-nocase nocase/rule_v1/dev_missing: TA nan Rev nan Hold nan n=None (82.7 s)
+2026-10-03T07:32:25Z C-TF-defcorr-nocase nocase/rule_v1/dev prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/nocase/rule_v1/dev/verdict.npz', 'exists')
+2026-10-03T07:33:46Z C-TF-defcorr-nocase nocase/rule_v1/dev: TA 0.0 Rev 0.0 Hold 20.3 n=300 (81.6 s)
+2026-10-03T07:33:50Z C-TF-defcorr-nocase nocase/rule_v1/missing prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/nocase/rule_v1/missing/verdict.npz', 'built 7344 prompts, max 193 tokens')
+2026-10-03T07:36:19Z C-TF-defcorr-nocase nocase/rule_v1/missing: TA nan Rev nan Hold nan n=None (148.6 s)
+2026-10-03T07:36:31Z C-TF-defcorr-nocase nocase/rule_v1/test_L2 prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/nocase/rule_v1/test_L2/verdict.npz', 'built 29248 prompts, max 193 tokens')
+2026-10-03T07:46:20Z C-TF-defcorr-nocase nocase/rule_v1/test_L2: TA 0.0 Rev 0.0 Hold 50.2 n=2000 (589.6 s)
+2026-10-03T07:46:26Z C-TF-defcorr-nocase nocase/rule_v1/test_L3alt prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/nocase/rule_v1/test_L3alt/verdict.npz', 'built 13048 prompts, max 149 tokens')
+2026-10-03T07:50:07Z C-TF-defcorr-nocase nocase/rule_v1/test_L3alt: TA 0.0 Rev 0.0 Hold 0.0 n=1000 (220.9 s)
+2026-10-03T07:50:12Z C-TF-defcorr-nocase nocase/xr_v1/test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/nocase/xr_v1/test/verdict.npz', 'built 9600 prompts, max 164 tokens')
+2026-10-03T07:52:52Z C-TF-defcorr-nocase nocase/xr_v1/test: TA nan Rev nan Hold nan n=None (159.9 s)
+2026-10-03T07:52:57Z C-TF-defcorr-nocase nocase/clin_v1/medeinst_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/nocase/clin_v1/medeinst_test/verdict.npz', 'built 21532 prompts, max 52 tokens')
+2026-10-03T07:56:23Z C-TF-defcorr-nocase nocase/clin_v1/medeinst_test: TA nan Rev nan Hold nan n=None (205.5 s)
+2026-10-03T07:56:23Z DONE C-TF-defcorr-nocase in 25.7 min, GPU util mean 93.8

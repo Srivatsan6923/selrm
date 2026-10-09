@@ -1,0 +1,340 @@
+{
+ "challenge_v1_kit": {
+  "authors": 4,
+  "by_kind": {
+   "boundary": 32,
+   "negation": 32,
+   "numeric": 32,
+   "subject": 32,
+   "time": 32
+  },
+  "specs": 160
+ },
+ "ec_v1_prepare": {
+  "accepted_by_agents": 132,
+  "by_concept": {
+   "age": 3,
+   "angioedema": 1,
+   "asthma": 1,
+   "bmi": 7,
+   "bun": 2,
+   "cad": 2,
+   "cancer": 1,
+   "chf": 1,
+   "contrast_allergy": 1,
+   "creatinine": 4,
+   "diabetes": 2,
+   "egfr": 2,
+   "heart_rate": 3,
+   "hemoglobin": 5,
+   "hit": 6,
+   "inr": 4,
+   "lithium": 1,
+   "mech_valve": 4,
+   "methotrexate": 1,
+   "neutrophils": 5,
+   "peptic_ulcer": 5,
+   "platelets": 4,
+   "potassium": 6,
+   "pregnancy": 4,
+   "rr": 1,
+   "sbp": 4,
+   "stroke": 1,
+   "sulfa_allergy": 4,
+   "vascular": 3,
+   "vte": 4,
+   "warfarin": 1,
+   "weight": 2
+  },
+  "by_kind": {
+   "boundary": 39,
+   "negation": 43,
+   "numeric": 52,
+   "subject": 43,
+   "time": 58
+  },
+  "by_times": {
+   "current": 26,
+   "ever": 13,
+   "window": 4
+  },
+  "by_type": {
+   "exclusion": 78,
+   "inclusion": 17
+  },
+  "candidates": 294,
+  "confirmed_by_both_verifiers": 108,
+  "excluded": 199,
+  "groups": 235,
+  "kept": 95,
+  "kept_as_exclusion_subitems": [
+   "k053",
+   "k096",
+   "k134",
+   "k135",
+   "k165",
+   "k176",
+   "k179",
+   "k182",
+   "k199",
+   "k205",
+   "k213",
+   "k221",
+   "k230",
+   "k261",
+   "k269"
+  ],
+  "records": 1880,
+  "rescued": [
+   "k005",
+   "k216",
+   "k218",
+   "k219",
+   "k220",
+   "k221"
+  ],
+  "shortcut_validation": {
+   "result": "PASS",
+   "scorers": {
+    "always_default": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 235
+    },
+    "concept_named": {
+     "Hold": 0.0,
+     "Rev": 40.851063829787236,
+     "TA": 0.0,
+     "n": 235
+    },
+    "program": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 235
+    }
+   }
+  },
+  "trials": 85
+ },
+ "run_id": "A-SETS",
+ "xr_v1": {
+  "by_concept": {
+   "currency": {
+    "asthma": 10,
+    "bleeding": 19,
+    "cancer": 17,
+    "chf": 15,
+    "diabetes": 15,
+    "peptic_ulcer": 11,
+    "vte": 13
+   },
+   "inclusivity": {
+    "age": 23,
+    "alt_enzyme": 5,
+    "bun": 2,
+    "creatinine": 5,
+    "egfr": 11,
+    "heart_rate": 3,
+    "platelets": 5,
+    "potassium": 7,
+    "rr": 12,
+    "sbp": 13,
+    "spo2": 3,
+    "temperature": 9,
+    "wbc": 1,
+    "weight": 1
+   },
+   "subject": {
+    "asthma": 12,
+    "cad": 14,
+    "cancer": 26,
+    "diabetes": 15,
+    "stroke": 18,
+    "vte": 15
+   },
+   "window": {
+    "bleeding": 20,
+    "fall": 17,
+    "stroke": 22,
+    "vascular": 23,
+    "vte": 18
+   }
+  },
+  "by_dimension": {
+   "currency": 100,
+   "inclusivity": 100,
+   "subject": 100,
+   "window": 100
+  },
+  "by_phrasing": {
+   "0": 134,
+   "1": 133,
+   "2": 133
+  },
+  "created": "2026-10-02",
+  "frozen": 1,
+  "generator": "scripts/build_xr_v1.py (selrm/xr.py)",
+  "inclusivity_directions": {
+   "high": 71,
+   "low": 29
+  },
+  "known_issue_items": 38,
+  "labels": {
+   "0": 4800,
+   "1": 4800
+  },
+  "level": "xr",
+  "n_groups": 800,
+  "n_items": 400,
+  "n_items_without_known_issues": 362,
+  "n_records": 9600,
+  "name": "test",
+  "seed": 2029,
+  "semantics": "Every case states a visit date. 'Within the W months before the visit date' counts an event on or after the date exactly W calendar months before the visit; that boundary day counts, and the rule text says so. Rendered events keep at least two months from every window edge. All rules are synthetic (grammar scenarios); every item is a synthetic intervention on the applicability clause.",
+  "set": "xr_v1",
+  "sha256": "1392aeccc8e135dd18eb40b37c82dd255418d68aa7d85a3ff254d95f6ae689c9",
+  "split": "test",
+  "templates": "test",
+  "tier": "rule_side",
+  "validation": {
+   "crossed_accuracy": {
+    "always_counts_contested": {
+     "XA": 0.0,
+     "XA_currency": 0.0,
+     "XA_inclusivity": 0.0,
+     "XA_subject": 0.0,
+     "XA_window": 0.0,
+     "n_items": 400
+    },
+    "always_default": {
+     "XA": 0.0,
+     "XA_currency": 0.0,
+     "XA_inclusivity": 0.0,
+     "XA_subject": 0.0,
+     "XA_window": 0.0,
+     "n_items": 400
+    },
+    "concept_named": {
+     "XA": 0.0,
+     "XA_currency": 0.0,
+     "XA_inclusivity": 0.0,
+     "XA_subject": 0.0,
+     "XA_window": 0.0,
+     "n_items": 400
+    },
+    "ignores_rule_text_counting_rule": {
+     "XA": 0.0,
+     "XA_currency": 0.0,
+     "XA_inclusivity": 0.0,
+     "XA_subject": 0.0,
+     "XA_window": 0.0,
+     "n_items": 400
+    },
+    "ignores_rule_text_other_rule": {
+     "XA": 0.0,
+     "XA_currency": 0.0,
+     "XA_inclusivity": 0.0,
+     "XA_subject": 0.0,
+     "XA_window": 0.0,
+     "n_items": 400
+    },
+    "never_counts_contested": {
+     "XA": 0.0,
+     "XA_currency": 0.0,
+     "XA_inclusivity": 0.0,
+     "XA_subject": 0.0,
+     "XA_window": 0.0,
+     "n_items": 400
+    },
+    "program": {
+     "XA": 100.0,
+     "XA_currency": 100.0,
+     "XA_inclusivity": 100.0,
+     "XA_subject": 100.0,
+     "XA_window": 100.0,
+     "n_items": 400
+    }
+   },
+   "result": "PASS"
+  },
+  "validation_without_known_issues": {
+   "always_counts_contested": {
+    "XA": 0.0,
+    "XA_currency": 0.0,
+    "XA_inclusivity": 0.0,
+    "XA_subject": 0.0,
+    "XA_window": 0.0,
+    "n_incomplete": 0,
+    "n_items": 362
+   },
+   "always_default": {
+    "XA": 0.0,
+    "XA_currency": 0.0,
+    "XA_inclusivity": 0.0,
+    "XA_subject": 0.0,
+    "XA_window": 0.0,
+    "n_incomplete": 0,
+    "n_items": 362
+   },
+   "concept_named": {
+    "XA": 0.0,
+    "XA_currency": 0.0,
+    "XA_inclusivity": 0.0,
+    "XA_subject": 0.0,
+    "XA_window": 0.0,
+    "n_incomplete": 0,
+    "n_items": 362
+   },
+   "ignores_rule_text_counting_rule": {
+    "XA": 0.0,
+    "XA_currency": 0.0,
+    "XA_inclusivity": 0.0,
+    "XA_subject": 0.0,
+    "XA_window": 0.0,
+    "n_incomplete": 0,
+    "n_items": 362
+   },
+   "ignores_rule_text_other_rule": {
+    "XA": 0.0,
+    "XA_currency": 0.0,
+    "XA_inclusivity": 0.0,
+    "XA_subject": 0.0,
+    "XA_window": 0.0,
+    "n_incomplete": 0,
+    "n_items": 362
+   },
+   "never_counts_contested": {
+    "XA": 0.0,
+    "XA_currency": 0.0,
+    "XA_inclusivity": 0.0,
+    "XA_subject": 0.0,
+    "XA_window": 0.0,
+    "n_incomplete": 0,
+    "n_items": 362
+   },
+   "program": {
+    "XA": 100.0,
+    "XA_currency": 100.0,
+    "XA_inclusivity": 100.0,
+    "XA_subject": 100.0,
+    "XA_window": 100.0,
+    "n_incomplete": 0,
+    "n_items": 362
+   }
+  },
+  "window_date_forms": {
+   "dated": 33,
+   "relative": 67
+  },
+  "window_pairs": {
+   "12 vs 3 months": 12,
+   "24 vs 3 months": 16,
+   "24 vs 6 months": 16,
+   "ever vs 12 months": 19,
+   "ever vs 3 months": 18,
+   "ever vs 6 months": 19
+  }
+ }
+}

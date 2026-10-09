@@ -1,0 +1,133 @@
+"""docs/RESULTS_C.md: role C's rule-tier rows from results files only (no typed numbers). No GPU.
+  python scripts/report_c.py [--data DIR]
+Rows: untrained backbone (critic = verdict; prompted summary; prompted ledger with the frozen malformed check and
+with the format-normalised readout; default correction; generated-program verifier) and the general-purpose
+trigger tagger. Columns: L2 triplet accuracy [95% CI, rules as clusters], Rev, Hold, MR (5% false rejection on
+dev_missing), L3-alt TA, crossed accuracy on xr_v1, malformed reader outputs and decision language (two-stage)."""
+import argparse, json, os, sys
+
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, REPO)
+from selrm import metrics as M
+
+RES = f"{REPO}/results_git"
+LADDER = ("rule_v1/test_L0", "rule_v1/test_L1", "rule_v1/test_L2", "rule_v1/test_L3inv", "rule_v1/test_L3alt",
+          "rule_v1/test_hard")
+ROWS = [("C-TF-critic", "Untrained backbone, verdict (critic)"),
+        ("C-TF-promptsum", "Untrained backbone, prompted summary"),
+        ("C-TF-promptledger", "Untrained backbone, prompted ledger (frozen malformed check)"),
+        ("C-TF-promptledger-lenient", "Untrained backbone, prompted ledger (format-normalised readout)"),
+        ("C-TF-defcorr", "Untrained backbone, default correction"),
+        ("C-TF-genprog", "Untrained backbone, generated-program verifier"),
+        ("C-SC-gptrigger", "General-purpose trigger tagger + rule program"),
+        ("C-REF-extract-program", "Reference: extraction (untrained prompted ledger) + hand-written program"),
+        ("C-AUD-medprm", "Released PRM: Med-PRM"), ("C-AUD-meds3", "Released PRM: MedS3 PRM"),
+        ("C-AUD-fover", "Released PRM: FoVer PRM"), ("C-AUD-thinkprm", "Released PRM: ThinkPRM-14B (subset)"),
+        ("C-AUD-genprm", "Released PRM: GenPRM-7B (subset)")]
+
+
+def load_jsonl(p):
+    with open(p, encoding="utf-8") as f:
+        return [json.loads(l) for l in f]
+
+
+def records(data, name):
+    if name.startswith("xr_v1"):
+        path = f"{REPO}/scratch/acode_xr/data/{name}/records.jsonl"
+        return load_jsonl(path) if os.path.exists(path) else None
+    reg = json.load(open(f"{data}/REGISTRY.json", encoding="utf-8"))
+    return load_jsonl(f"{data}/{reg[name]['path']}")
+
+
+def scores(run, name):
+    p = f"{RES}/{run}/scores_{name.replace('/', '~')}.jsonl"
+    return {r["iid"]: r["u"] for r in load_jsonl(p)} if os.path.exists(p) else None
+
+
+def row(run, data, cache):
+    if not os.path.exists(f"{RES}/{run}/DONE"):
+        return None
+    out = {}
+    for s in LADDER:
+        sp = f"{RES}/{run}/summary_{s.replace('/', '~')}.json"
+        sm = json.load(open(sp, encoding="utf-8")) if os.path.exists(sp) else {}
+        if sm.get("all") and sm.get("CI95"):      # the run's summary file: the numbers the paper's tables read
+            out[s] = sm["all"] | {"CI": sm["CI95"]["TA"]}
+            continue
+        u = scores(run, s)
+        if u is None:
+            continue
+        recs = [r for r in cache.setdefault(s, records(data, s)) if r["iid"] in u]
+        T = M.decisions(recs, [u[r["iid"]] for r in recs])
+        a = M.summarise(T).get("all")
+        if a:
+            out[s] = a | {"CI": M.bootstrap_ci(T, "TA")}
+    ud, um = scores(run, "rule_v1/dev_missing"), scores(run, "rule_v1/missing")
+    if ud and um:
+        dm = [r for r in cache.setdefault("dm", records(data, "rule_v1/dev_missing")) if r["iid"] in ud]
+        mi = [r for r in cache.setdefault("mi", records(data, "rule_v1/missing")) if r["iid"] in um]
+        out["missing"] = M.missing_rejection(mi, [um[r["iid"]] for r in mi], M.mr_threshold(dm, [ud[r["iid"]] for r in dm]))
+    ux = scores(run, "xr_v1/test")
+    xr = cache.setdefault("xr", records(data, "xr_v1/test"))
+    if ux and xr:
+        recs = [r for r in xr if r["iid"] in ux]
+        out["xr"] = M.crossed_accuracy(recs, [ux[r["iid"]] for r in recs])
+        out["xr_clean"] = M.crossed_accuracy(recs, [ux[r["iid"]] for r in recs], exclude=known_issues())
+    sp = f"{RES}/{run}/summary_rule_v1~test_L2.json"
+    if os.path.exists(sp):
+        out["eval"] = json.load(open(sp, encoding="utf-8")).get("eval") or {}
+    ap_ = f"{RES}/{run}/reader_audit.json"
+    if os.path.exists(ap_):
+        out["audit"] = json.load(open(ap_, encoding="utf-8"))["sets"].get("rule_v1/test_L2")
+    return out
+
+
+def known_issues():
+    """xr_v1 items A lists as arguable (data/xr_v1/KNOWN_ISSUES.json): XA is reported with and without them."""
+    d = json.load(open(f"{REPO}/scratch/acode_xr/data/xr_v1/KNOWN_ISSUES.json", encoding="utf-8"))
+    return {i for x in d["issues"] for i in x["items"]}
+
+
+def f1(x, nd=1):
+    return "-" if x is None else f"{x:.{nd}f}"
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--data", default=os.environ.get("SELRM_DATA", f"{REPO}/scratch/rv1"))
+    a = ap.parse_args()
+    cache = {}
+    L = ["# Role C rule-tier rows (generated)", "",
+         "Generated by `scripts/report_c.py` from `results_git/` (no typed numbers). TA, Rev, Hold in %; CI: 95% "
+         "bootstrap over rules (1,000). MR at 5% false rejection on dev_missing. XA: crossed accuracy on xr_v1 "
+         "(A's rule-side items), all items / without A's known-issue items. n: L2 triplets scored (the generated-program verifier uses a fixed subset).", "",
+         "| System | run | L2 TA [95% CI] | Rev | Hold | n | MR | L3-alt TA | XA (n items) / without known issues (n) | malformed | decision language |",
+         "|---|---|---|---|---|---|---|---|---|---|---|"]
+    rows = {run: row(run, a.data, cache) for run, _ in ROWS}
+    for run, label in ROWS:
+        r = rows[run]
+        if r is None:
+            L.append(f"| {label} | {run} | not run | | | | | | | | |")
+            continue
+        l2, l3 = r.get("rule_v1/test_L2", {}), r.get("rule_v1/test_L3alt", {})
+        ci = l2.get("CI")
+        xr, xc = r.get("xr", {}), r.get("xr_clean", {})
+        au = r.get("audit") or {}
+        L.append(f"| {label} | {run} | {f1(l2.get('TA'))}" + (f" [{ci[0]:.1f}, {ci[1]:.1f}]" if ci else "") +
+                 f" | {f1(l2.get('Rev'))} | {f1(l2.get('Hold'))} | {l2.get('n', '-')} | {f1(r.get('missing', {}).get('MR'))} | "
+                 f"{f1(l3.get('TA'))} | {f1(xr.get('XA'))} ({xr.get('n_items', '-')}) / {f1(xc.get('XA'))} ({xc.get('n_items', '-')}) | "
+                 f"{f1(100 * r['eval']['malformed_rate'], 1) if r.get('eval', {}).get('malformed_rate') is not None else '-'} | "
+                 f"{f1(au.get('decision_language_any'))} |")
+    L += ["", "Ladder (TA [95% CI over rules]; sets a run did not score are blank):", "",
+          "| System | run | " + " | ".join(x.split("test_")[1] for x in LADDER) + " |", "|---|---|" + "---|" * len(LADDER)]
+    for run, label in ROWS:
+        cells = [(rows[run] or {}).get(x) for x in LADDER]
+        if any(cells):
+            L.append(f"| {label} | {run} | " + " | ".join(f"{c['TA']:.1f} [{c['CI'][0]:.1f}, {c['CI'][1]:.1f}]" if c else ""
+                                                       for c in cells) + " |")
+    open(f"{REPO}/docs/RESULTS_C.md", "w", encoding="utf-8", newline="\n").write("\n".join(L) + "\n")
+    print("\n".join(L))
+
+
+if __name__ == "__main__":
+    main()

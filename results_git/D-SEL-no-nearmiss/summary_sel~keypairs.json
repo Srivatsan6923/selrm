@@ -1,0 +1,9 @@
+{
+ "run_id": "D-SEL-no-nearmiss",
+ "set": "sel/keypairs",
+ "acc": 87.81512605042016,
+ "n": 714,
+ "N": 16,
+ "pair_acc": 76.47058823529412,
+ "n_pairs": 357
+}

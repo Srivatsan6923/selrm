@@ -1,0 +1,10 @@
+{
+ "run_id": "C-TF-defcorr-nocase",
+ "set": "nocase/clin_v1/medeinst_test",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 205.5,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

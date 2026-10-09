@@ -89,6 +89,9 @@ class Rule:
     sex: str | None = None
     age_range: tuple = (30, 64)
     family: str = ""               # structural family, used for held-out splits
+    logic: str = "any"             # constraint: "any" | "all" | "atleast" (points of met >= cutoff)
+    cutoff: int | None = None      # points needed when logic == "atleast"
+    verb: str = "Prescribe"        # constraint claims: "<verb> <option>."
 
     def crit(self, cid: str) -> Criterion:
         return next(c for c in self.criteria if c.cid == cid)
@@ -105,7 +108,7 @@ class Rule:
     def claims(self, cid: str) -> tuple[str, str]:
         """(s, s'): s is correct on the default side, s' on the flipped side."""
         if self.kind == "constraint":
-            return (f"Prescribe {self.default}.", f"Prescribe {self.alternative}.")
+            return (f"{self.verb} {self.default}.", f"{self.verb} {self.alternative}.")
         c = self.crit(cid)
         unit = "point" if c.points == 1 else "points"
         return (f"The {c.label} criterion contributes 0 points.",
@@ -115,8 +118,12 @@ class Rule:
         """0 if s is correct, 1 if s' is correct (executed, not annotated)."""
         overrides = overrides or {}
         if self.kind == "constraint":
-            hit = any(c.evaluate(mentions, overrides.get(c.cid)) for c in self.criteria)
-            return int(hit)
+            if self.logic == "any":
+                return int(any(c.evaluate(mentions, overrides.get(c.cid)) for c in self.criteria))
+            met = [c for c in self.criteria if c.evaluate(mentions, overrides.get(c.cid))]
+            if self.logic == "all":
+                return int(len(met) == len(self.criteria))
+            return int(sum(c.points for c in met) >= self.cutoff)
         c = self.crit(cid)
         return int(c.evaluate(mentions, overrides.get(cid)))
 
@@ -132,6 +139,39 @@ def N(cid, concept, label, keywords, op, thr, default_range, flip_range, near_de
                      default_range=default_range, flip_range=flip_range,
                      near_delta=near_delta, **kw)
 
+
+# Rule text from a structural family and (criterion, condition phrase) pairs;
+# Rule.label with Rule.logic is the program for every family.
+FAMILIES = ("any_of", "all_of", "two_of_three", "score_cutoff")
+
+
+def G(rid, family, title, intro, default, alternative, conds, setting, cutoff=None, **kw):
+    crits = [c for c, _ in conds]
+    head, switch = f"{intro}, prescribe {default}.", f"prescribe {alternative} instead"
+    phrases = [p for _, p in conds]
+    if family == "any_of":
+        text, logic = f"{head} If {' or '.join(phrases)}, {switch}.", "any"
+    elif family == "all_of":
+        text, logic = f"{head} If {' and '.join(phrases)}, {switch}.", "all"
+    elif family == "two_of_three":
+        text, logic, cutoff = (f"{head} If at least two of the following apply, {switch}: "
+                               f"{'; '.join(phrases)}."), "atleast", 2
+    elif family == "score_cutoff":
+        items = "; ".join(f"{c.points} point{'s' if c.points > 1 else ''} "
+                          f"{'if' if p.startswith('the ') else 'for'} {p}" for c, p in conds)
+        text, logic = f"{head} Score {items}. If the score is {cutoff} or more, {switch}.", "atleast"
+    else:
+        raise ValueError(family)
+    return Rule(rid, "constraint", title, text, crits, setting, default=default,
+                alternative=alternative, family=family, logic=logic, cutoff=cutoff, **kw)
+
+
+# Keyword sets shared by the extended library (selrm/rules_*.py).
+SBP_KW = ["systolic", "blood pressure", "bp "]
+VTE_KW = ["thrombo", "dvt", "pulmonary embol"]
+CONF_KW = ["confus", "disorient"]
+CANCER_KW = ["cancer", "lymphoma", "leukemia", "myeloma", "carcinoma"]
+AGE = dict(nm=("numeric",))
 
 # --------------------------------------------------------------------------
 # Pilot library. Every rule is a stated test specification, not clinical
@@ -150,22 +190,22 @@ RULES: list[Rule] = [
          [N("egfr", "egfr", "eGFR", ["egfr"], "<", 30, (45, 95), (12, 29), 6,
             alt_threshold=45)],
          "Newly diagnosed type 2 diabetes (HbA1c 7.9%).",
-         default="metformin", alternative="sitagliptin", family="lab_threshold"),
+         default="metformin", alternative="sitagliptin", family="lab_threshold", verb="Start"),
     Rule("htn_pregnancy", "constraint", "Hypertension in women",
          "For newly diagnosed hypertension, start lisinopril. If the patient is "
          "currently pregnant, start labetalol instead.",
          [F("pregnancy", "pregnancy", "pregnancy", ["pregnan"])],
          "Newly diagnosed stage 2 hypertension (BP 152/96 mmHg on two visits).",
          default="lisinopril", alternative="labetalol", sex="female", age_range=(24, 42),
-         family="state_switch"),
+         family="state_switch", verb="Start"),
     Rule("vte_platelets", "constraint", "VTE prophylaxis",
-         "For inpatient VTE prophylaxis, give enoxaparin. If the current platelet count "
+         "For inpatient VTE prophylaxis, use enoxaparin. If the current platelet count "
          "is below {thr_plt} x10^9/L, use intermittent pneumatic compression instead.",
          [N("plt", "platelets", "platelet count", ["platelet"], "<", 50, (150, 380),
             (12, 49), 8, alt_threshold=100)],
          "Admitted for community-acquired pneumonia; immobile.",
          default="enoxaparin", alternative="intermittent pneumatic compression",
-         family="lab_threshold"),
+         family="lab_threshold", verb="Use"),
     Rule("pain_ulcer", "constraint", "Analgesia",
          "For musculoskeletal pain, prescribe ibuprofen. If the patient has an active "
          "peptic ulcer, prescribe acetaminophen instead.",
@@ -178,7 +218,7 @@ RULES: list[Rule] = [
          [N("alt", "alt_enzyme", "ALT", ["alt "], ">", 120, (12, 60), (125, 400), 12,
             alt_threshold=80)],
          "Primary prevention; LDL cholesterol 182 mg/dL.",
-         default="atorvastatin", alternative="ezetimibe", family="lab_threshold"),
+         default="atorvastatin", alternative="ezetimibe", family="lab_threshold", verb="Start"),
     Rule("gout_clarith", "constraint", "Gout flare",
          "For an acute gout flare, prescribe colchicine. If the patient is currently "
          "taking clarithromycin, prescribe prednisone instead.",
@@ -195,11 +235,11 @@ RULES: list[Rule] = [
          "For contraception, offer a combined oral contraceptive. If the patient or a "
          "first-degree relative (parent, sibling or child) has had a venous "
          "thromboembolism at any time, offer a progestin-only pill instead.",
-         [F("vte", "vte", "venous thromboembolism", ["thrombo", "dvt", "pulmonary embol"],
+         [F("vte", "vte", "venous thromboembolism (patient or first-degree relative)", ["thrombo", "dvt", "pulmonary embol"],
             counts_past=True, counts_family=True)],
          "Requests contraception.",
          default="a combined oral contraceptive", alternative="a progestin-only pill",
-         sex="female", age_range=(19, 38), family="family_switch"),
+         sex="female", age_range=(19, 38), family="family_switch", verb="Offer"),
     Rule("curb65", "score", "CURB-65",
          "CURB-65 (as used here): 1 point each for new confusion; blood urea nitrogen "
          "above {thr_bun} mg/dL; respiratory rate of {thr_rr}/min or more; systolic "
@@ -210,7 +250,7 @@ RULES: list[Rule] = [
             alt_threshold=12),
           N("rr", "rr", "respiratory rate", ["respiratory rate"], ">=", 30, (14, 24),
             (30, 40), 4),
-          N("sbp", "sbp", "blood pressure", ["systolic", "blood pressure", "bp "], "<", 90,
+          N("sbp", "sbp", "systolic blood pressure", ["systolic", "blood pressure", "bp "], "<", 90,
             (104, 150), (70, 89), 8),
           N("age", "age", "age", ["age"], ">=", 65, (40, 60), (66, 88), 5,
             nm=("numeric",))],

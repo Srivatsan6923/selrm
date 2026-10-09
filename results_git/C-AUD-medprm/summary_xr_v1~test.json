@@ -1,0 +1,37 @@
+{
+ "run_id": "C-AUD-medprm--p2",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 291.7,
+  "n_records": 4800,
+  "n_groups": "all",
+  "claim_types": [
+   "conclusion"
+  ]
+ },
+ "XA": 13.5,
+ "n_items": 400,
+ "n_incomplete": 0,
+ "n_excluded": 0,
+ "CellAcc": 71.875,
+ "n_cells": 2400,
+ "cells_without_label": 0,
+ "XA_currency": 16.0,
+ "XA_inclusivity": 16.0,
+ "XA_subject": 10.0,
+ "XA_window": 12.0,
+ "without_known_issues": {
+  "XA": 14.640883977900552,
+  "n_items": 362,
+  "n_incomplete": 0,
+  "n_excluded": 38,
+  "CellAcc": 72.60589318600368,
+  "n_cells": 2172,
+  "cells_without_label": 0,
+  "XA_currency": 17.647058823529413,
+  "XA_inclusivity": 20.77922077922078,
+  "XA_subject": 10.0,
+  "XA_window": 12.0
+ }
+}

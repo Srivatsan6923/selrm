@@ -1,0 +1,67 @@
+{
+ "run_id": "C-TG-verdict-blocks-s3",
+ "role": "C",
+ "model": "unsloth/Qwen3.5-9B",
+ "model_revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+ "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s3",
+ "adapter_run": "B-F-verdict-blocks-s3",
+ "provider": "local (NRP Nautilus)",
+ "access_date": "2026-10-03",
+ "reasoning": "chat template with enable_thinking=False",
+ "format": "verdict",
+ "mode": null,
+ "rejudge_from": null,
+ "lenient_version": null,
+ "sets": [
+  "rule_v1/dev_missing",
+  "clin_v1/trialgpt_dev",
+  "clin_v1/trialgpt_test"
+ ],
+ "max_new": 768,
+ "eval_batch": {
+  "score": 16,
+  "generate": 48
+ },
+ "hp": {
+  "max_len": 4096
+ },
+ "eval_seconds_by_set": {
+  "rule_v1/dev_missing": 88.1,
+  "clin_v1/trialgpt_dev": 15.2,
+  "clin_v1/trialgpt_test": 61.6
+ },
+ "eval_generated_tokens": 0,
+ "pad_check_ok": true,
+ "eval_u_path": "fp32-hidden",
+ "eval_peak_mem_gb": 18.51,
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA GeForce RTX 4090, 595.71.05, 24564 MiB",
+ "node": "k8s-4090-01.calit2.optiputer.net",
+ "pod": "selrm-c-run-c-tg-more-24gbf-64152-0-q2kss",
+ "scoring_code": "role-b ac524e8062ef",
+ "git_commit": "9970e05e426d",
+ "wall_seconds": 186.8,
+ "summaries": {
+  "rule_v1/dev_missing": null,
+  "clin_v1/trialgpt_dev": null,
+  "clin_v1/trialgpt_test": null
+ },
+ "gpu_util_mean": 67.7,
+ "gpu_util_p10": 0.0,
+ "gpu_windows_below40": 0.0,
+ "gpu_samples": 6,
+ "gpu_hours": 0.052
+}

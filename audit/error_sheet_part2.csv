@@ -1,0 +1,2687 @@
+﻿sheet_id,part,system,run_id,tid,rid,family,nm_kind,tier,level,failed_conditions,d_base,d_flip,d_near,d_pres,rule_text,condition,claim_s,claim_s_prime,case_text_base,case_text_flip,case_text_near,gold_ledger_base,gold_ledger_flip,gold_ledger_near,reader_output_base,reader_output_flip,reader_output_near,near_meta,category,subcategory_or_note,coder,second_coder_category,agreed
+E051,2,ledger2 x blocks,B-F-ledger2-blocks-s0,rule_v1.test.gs002.c1.boundary.easy.1278,gs002,g_any_of,boundary,easy,L2,near,28.79356288909912,-33.884836196899414,-6.670490264892578,28.79356288909912,"For uncomplicated cystitis, prescribe trimethoprim-sulfamethoxazole. If the current heart rate is above 90/min or the current serum potassium is above 4.8 mmol/L, prescribe nitrofurantoin instead.",heart rate above 90,Prescribe trimethoprim-sulfamethoxazole.,Prescribe nitrofurantoin.,"Female patient of 54 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Latest potassium result: 4.3 mmol/L.
+Plays the piano.
+Teeth in good repair.
+Knits as a hobby.
+Heart rate now 74/min on a pulse check.","Female patient of 54 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Latest potassium result: 4.3 mmol/L.
+Plays the piano.
+Teeth in good repair.
+Knits as a hobby.
+Heart rate now 103/min on a pulse check.","Female patient of 54 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Latest potassium result: 4.3 mmol/L.
+Plays the piano.
+Teeth in good repair.
+Knits as a hobby.
+Heart rate now 90/min on a pulse check.","need: heart rate above 90
+found: 74
+subject: patient
+status: present
+time: current","need: heart rate above 90
+found: 103
+subject: patient
+status: present
+time: current","need: heart rate above 90
+found: 90
+subject: patient
+status: present
+time: current","need: heart rate above 90
+found: 74
+subject: patient
+status: present
+time: current","need: heart rate above 90
+found: 103
+subject: patient
+status: present
+time: current","need: heart rate above 90
+found: 90
+subject: patient
+status: present
+time: current","{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""heart rate""], ""overrides"": {}, ""seed"": 1278, ""tpl"": [""potassium/current/5"", ""filler/neutral/41"", ""filler/neutral/35"", ""filler/neutral/46"", ""heart_rate/current/5""], ""tpl_split"": ""test""}",,,,,
+E052,2,ledger2 x blocks,B-F-ledger2-blocks-s0,rule_v1.test.gs050.c2.boundary.easy.942,gs050,g_any_of,boundary,easy,L2,near,31.98148536682129,-34.425174713134766,-8.623950064182281,31.98148536682129,"For community-acquired pneumonia treated at home, prescribe amoxicillin. If the current eGFR is below 60 mL/min/1.73 m2 or the current ALT is above 120 U/L, prescribe doxycycline instead.",ALT above 120,Prescribe amoxicillin.,Prescribe doxycycline.,"Woman of 52 years.
+Productive cough and fever; consolidation on chest radiograph.
+ALT now 26 U/L.
+Lives in a second-floor apartment.
+Uses sunscreen in summer.
+eGFR now 70 mL/min/1.73 m2.","Woman of 52 years.
+Productive cough and fever; consolidation on chest radiograph.
+ALT now 148 U/L.
+Lives in a second-floor apartment.
+Uses sunscreen in summer.
+eGFR now 70 mL/min/1.73 m2.","Woman of 52 years.
+Productive cough and fever; consolidation on chest radiograph.
+ALT now 120 U/L.
+Lives in a second-floor apartment.
+Uses sunscreen in summer.
+eGFR now 70 mL/min/1.73 m2.","need: ALT above 120
+found: 26
+subject: patient
+status: present
+time: current","need: ALT above 120
+found: 148
+subject: patient
+status: present
+time: current","need: ALT above 120
+found: 120
+subject: patient
+status: present
+time: current","need: ALT above 120
+found: 26
+subject: patient
+status: present
+time: current","need: ALT above 120
+found: 148
+subject: patient
+status: present
+time: current","need: ALT above 120
+found: 120
+subject: patient
+status: present
+time: current","{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""alt ""], ""overrides"": {}, ""seed"": 942, ""tpl"": [""alt_enzyme/current/5"", ""filler/neutral/16"", ""filler/neutral/22"", ""egfr/current/5""], ""tpl_split"": ""test""}",,,,,
+E053,2,ledger2 x blocks,B-F-ledger2-blocks-s0,rule_v1.test.gs194.c1.boundary.easy.898,gs194,g_any_of,boundary,easy,L2,near,26.195781707763672,-34.78715133666992,-10.245194435119629,26.195781707763672,"For vaginal candidiasis, prescribe oral fluconazole. If the current heart rate is above 90/min or the current weight is 60 kg or less, prescribe clotrimazole pessaries instead.",heart rate above 90,Prescribe oral fluconazole.,Prescribe clotrimazole pessaries.,"Female patient of 44 years.
+Vaginal itching and discharge; candidiasis confirmed on microscopy.
+Heart rate now 62/min on a pulse check.
+Plays the piano.
+Current weight 82 kg.","Female patient of 44 years.
+Vaginal itching and discharge; candidiasis confirmed on microscopy.
+Heart rate now 96/min on a pulse check.
+Plays the piano.
+Current weight 82 kg.","Female patient of 44 years.
+Vaginal itching and discharge; candidiasis confirmed on microscopy.
+Heart rate now 90/min on a pulse check.
+Plays the piano.
+Current weight 82 kg.","need: heart rate above 90
+found: 62
+subject: patient
+status: present
+time: current","need: heart rate above 90
+found: 96
+subject: patient
+status: present
+time: current","need: heart rate above 90
+found: 90
+subject: patient
+status: present
+time: current","need: heart rate above 90
+found: 62
+subject: patient
+status: present
+time: current","need: heart rate above 90
+found: 96
+subject: patient
+status: present
+time: current","need: heart rate above 90
+found: 90
+subject: patient
+status: present
+time: current","{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""heart rate""], ""overrides"": {}, ""seed"": 898, ""tpl"": [""heart_rate/current/5"", ""filler/neutral/41"", ""weight/current/4""], ""tpl_split"": ""test""}",,,,,
+E054,2,ledger2 x blocks,B-F-ledger2-blocks-s0,rule_v1.test.gs009.c2.negation.long.1978,gs009,g_all_of,negation,long,L2,base,-32.93563938140869,-35.17546272277832,32.05178928375244,-32.93563938140869,"For acute streptococcal pharyngitis, prescribe amoxicillin. If the current white cell count is above 12.0 x10^9/L and the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time, prescribe azithromycin instead.",diabetes (patient or first-degree relative),Prescribe amoxicillin.,Prescribe azithromycin.,"Woman of 21 years.
+Presents with acute streptococcal pharyngitis (rapid antigen test positive).
+In 2024, folate was 12 ng/mL.
+Owns a bicycle.
+During a checkup in 2024, free T3 was 3.2 pg/mL.
+Her sister has recovered from a dislocated finger.
+Photographs local wildlife.
+Paints watercolors as a hobby.
+Zinc of 85 mcg/dL in 2024.
+Her sister has a lazy eye.
+Random glucose 92 mg/dL.
+Pupils equal and reactive to light.
+Current white cell count 13.4 x10^9/L.
+Her uncle burned a hand on a stove years ago.
+Enjoys board games.
+Prefers to be addressed by first name.
+During a checkup in 2024, total protein was 7.0 g/dL.
+Her roommate sprained a thumb last month.
+Drives a car.
+Knits as a hobby.","Woman of 21 years.
+Presents with acute streptococcal pharyngitis (rapid antigen test positive).
+In 2024, folate was 12 ng/mL.
+Owns a bicycle.
+During a checkup in 2024, free T3 was 3.2 pg/mL.
+Her sister has recovered from a dislocated finger.
+Photographs local wildlife.
+Paints watercolors as a hobby.
+Zinc of 85 mcg/dL in 2024.
+Her sister has a lazy eye.
+Has type 2 diabetes on metformin.
+Pupils equal and reactive to light.
+Current white cell count 13.4 x10^9/L.
+Her uncle burned a hand on a stove years ago.
+Enjoys board games.
+Prefers to be addressed by first name.
+During a checkup in 2024, total protein was 7.0 g/dL.
+Her roommate sprained a thumb last month.
+Drives a car.
+Knits as a hobby.","Woman of 21 years.
+Presents with acute streptococcal pharyngitis (rapid antigen test positive).
+In 2024, folate was 12 ng/mL.
+Owns a bicycle.
+During a checkup in 2024, free T3 was 3.2 pg/mL.
+Her sister has recovered from a dislocated finger.
+Photographs local wildlife.
+Paints watercolors as a hobby.
+Zinc of 85 mcg/dL in 2024.
+Her sister has a lazy eye.
+Has never had diabetes.
+Pupils equal and reactive to light.
+Current white cell count 13.4 x10^9/L.
+Her uncle burned a hand on a stove years ago.
+Enjoys board games.
+Prefers to be addressed by first name.
+During a checkup in 2024, total protein was 7.0 g/dL.
+Her roommate sprained a thumb last month.
+Drives a car.
+Knits as a hobby.","need: diabetes (patient or first-degree relative)
+found: Random glucose 92 mg/dL.
+subject: patient
+status: absent
+time: current","need: diabetes (patient or first-degree relative)
+found: Has type 2 diabetes on metformin.
+subject: patient
+status: present
+time: current","need: diabetes (patient or first-degree relative)
+found: Has never had diabetes.
+subject: patient
+status: absent
+time: current","need: diabetes (patient or first-degree relative)
+found: 92
+subject: patient
+status: present
+time: current","need: diabetes (patient or first-degree relative)
+found: Has type 2 diabetes on metformin.
+subject: patient
+status: present
+time: current","need: diabetes (patient or first-degree relative)
+found: Has never had diabetes.
+subject: patient
+status: absent
+time: current","{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""diabet""], ""overrides"": {}, ""seed"": 1978, ""tpl"": [""filler/lab/4"", ""filler/neutral/34"", ""filler/lab/17"", ""filler/other/17"", ""filler/neutral/10"", ""filler/neutral/28"", ""filler/lab/16"", ""filler/other/10"", ""diabetes/absent/4"", ""filler/neutral/11"", ""wbc/current/4"", ""filler/other/11"", ""filler/neutral/5"", ""filler/neutral/47"", ""filler/lab/10"", ""filler/other/5"", ""filler/neutral/17"", ""filler/neutral/46""], ""tpl_split"": ""test""}",,,,,
+E055,2,ledger2 x blocks,B-F-ledger2-blocks-s0,rule_v1.test.gs113.c2.negation.easy.1974,gs113,g_all_of,negation,easy,L2,base,-33.25201988220215,-33.921504974365234,31.981754302978516,-33.25201988220215,"For dual antiplatelet therapy after a myocardial infarction, prescribe aspirin plus ticagrelor. If the current serum creatinine is above 2.0 mg/dL and the patient has ever had heart failure (current or past), prescribe aspirin plus clopidogrel instead.",heart failure,Prescribe aspirin plus ticagrelor.,Prescribe aspirin plus clopidogrel.,"Man of 61 years.
+Recovering on the ward after a myocardial infarction treated with a stent.
+Paints watercolors as a hobby.
+Sleeps flat on one pillow.
+Enjoys board games.
+Plays the piano.
+Current serum creatinine 2.4 mg/dL.","Man of 61 years.
+Recovering on the ward after a myocardial infarction treated with a stent.
+Paints watercolors as a hobby.
+Current heart failure with ankle swelling.
+Enjoys board games.
+Plays the piano.
+Current serum creatinine 2.4 mg/dL.","Man of 61 years.
+Recovering on the ward after a myocardial infarction treated with a stent.
+Paints watercolors as a hobby.
+Heart failure: never diagnosed.
+Enjoys board games.
+Plays the piano.
+Current serum creatinine 2.4 mg/dL.","need: heart failure
+found: Sleeps flat on one pillow.
+subject: patient
+status: absent
+time: current","need: heart failure
+found: Current heart failure with ankle swelling.
+subject: patient
+status: present
+time: current","need: heart failure
+found: Heart failure: never diagnosed.
+subject: patient
+status: absent
+time: current","need: heart failure
+found: Sleeps flat on one pillow.
+subject: patient
+status: present
+time: current","need: heart failure
+found: Current heart failure with ankle swelling.
+subject: patient
+status: present
+time: current","need: heart failure
+found: Heart failure: never diagnosed.
+subject: patient
+status: absent
+time: current","{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""heart failure""], ""overrides"": {}, ""seed"": 1974, ""tpl"": [""filler/neutral/28"", ""chf/absent/5"", ""filler/neutral/5"", ""filler/neutral/41"", ""creatinine/current/4""], ""tpl_split"": ""test""}",,,,,
+E056,2,ledger2 x blocks,B-F-ledger2-blocks-s0,rule_v1.test.gs223.c1.negation.long.413,gs223,g_two_of_three,negation,long,L2,base,-24.960092544555664,-31.829011917114258,29.50207805633545,-24.960092544555664,"For contraception, prescribe a combined oral contraceptive. If at least two of the following apply, prescribe a progestin-only pill instead: the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time; the patient or a first-degree relative (parent, sibling or child) has had colorectal cancer at any time; the current blood urea nitrogen is above 19 mg/dL.",diabetes (patient or first-degree relative),Prescribe a combined oral contraceptive.,Prescribe a progestin-only pill.,"Female patient of 23 years.
+Requests contraception.
+Rectal exam unremarkable.
+Paints watercolors as a hobby.
+Owns a bicycle.
+In 2024, folate was 12 ng/mL.
+Uses sunscreen in summer.
+Lives in a second-floor apartment.
+Sleeps seven hours a night.
+Zinc of 85 mcg/dL in 2024.
+Knits as a hobby.
+HbA1c 5.3% at a routine check.
+Drives a car.
+Sees a dentist yearly.
+Her friend burned a hand on a stove years ago.
+Enjoys board games.
+Her friend wears contact lenses.
+Blood urea nitrogen 26 mg/dL on the current labs.
+Plays the piano.
+Pupils equal and reactive to light.
+During a checkup in 2021, total protein was 7.0 g/dL.
+Her father lives with psoriasis.
+Prefers to be addressed by first name.","Female patient of 23 years.
+Requests contraception.
+Rectal exam unremarkable.
+Paints watercolors as a hobby.
+Owns a bicycle.
+In 2024, folate was 12 ng/mL.
+Uses sunscreen in summer.
+Lives in a second-floor apartment.
+Sleeps seven hours a night.
+Zinc of 85 mcg/dL in 2024.
+Knits as a hobby.
+Insulin-treated diabetes.
+Drives a car.
+Sees a dentist yearly.
+Her friend burned a hand on a stove years ago.
+Enjoys board games.
+Her friend wears contact lenses.
+Blood urea nitrogen 26 mg/dL on the current labs.
+Plays the piano.
+Pupils equal and reactive to light.
+During a checkup in 2021, total protein was 7.0 g/dL.
+Her father lives with psoriasis.
+Prefers to be addressed by first name.","Female patient of 23 years.
+Requests contraception.
+Rectal exam unremarkable.
+Paints watercolors as a hobby.
+Owns a bicycle.
+In 2024, folate was 12 ng/mL.
+Uses sunscreen in summer.
+Lives in a second-floor apartment.
+Sleeps seven hours a night.
+Zinc of 85 mcg/dL in 2024.
+Knits as a hobby.
+Has never had diabetes.
+Drives a car.
+Sees a dentist yearly.
+Her friend burned a hand on a stove years ago.
+Enjoys board games.
+Her friend wears contact lenses.
+Blood urea nitrogen 26 mg/dL on the current labs.
+Plays the piano.
+Pupils equal and reactive to light.
+During a checkup in 2021, total protein was 7.0 g/dL.
+Her father lives with psoriasis.
+Prefers to be addressed by first name.","need: diabetes (patient or first-degree relative)
+found: HbA1c 5.3% at a routine check.
+subject: patient
+status: absent
+time: current","need: diabetes (patient or first-degree relative)
+found: Insulin-treated diabetes.
+subject: patient
+status: present
+time: current","need: diabetes (patient or first-degree relative)
+found: Has never had diabetes.
+subject: patient
+status: absent
+time: current","need: diabetes (patient or first-degree relative)
+found: 5.3
+subject: patient
+status: present
+time: current","need: diabetes (patient or first-degree relative)
+found: Insulin-treated diabetes.
+subject: patient
+status: present
+time: current","need: diabetes (patient or first-degree relative)
+found: Has never had diabetes.
+subject: patient
+status: absent
+time: current","{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""diabet""], ""overrides"": {}, ""seed"": 413, ""tpl"": [""crc/generic/4"", ""filler/neutral/28"", ""filler/neutral/34"", ""filler/lab/4"", ""filler/neutral/22"", ""filler/neutral/16"", ""filler/neutral/4"", ""filler/lab/16"", ""filler/neutral/46"", ""diabetes/absent/4"", ""filler/neutral/17"", ""filler/neutral/23"", ""filler/other/11"", ""filler/neutral/5"", ""filler/other/16"", ""bun/current/5"", ""filler/neutral/41"", ""filler/neutral/11"", ""filler/lab/10"", ""filler/other/4"", ""filler/neutral/47""], ""tpl_split"": ""test""}",,,,,
+E057,2,ledger2 x blocks,B-F-ledger2-blocks-s0,rule_v1.test.gs024.c4.subject.long.670,gs024,g_score_cutoff,subject,long,L2,near,23.135156631469727,-27.731911659240723,-7.023316383361816,23.135156631469727,"For uncomplicated cystitis, prescribe trimethoprim-sulfamethoxazole. Score 3 points if the current ALT is above 120 U/L; 1 point if the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time; 3 points if the current systolic blood pressure is above 160 mmHg; 2 points if the patient or a first-degree relative (parent, sibling or child) has had a venous thromboembolism at any time. If the score is 4 or more, prescribe nitrofurantoin instead.",venous thromboembolism (patient or first-degree relative),Prescribe trimethoprim-sulfamethoxazole.,Prescribe nitrofurantoin.,"Woman of 48 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Zinc of 85 mcg/dL in 2012.
+Free T4 of 1.2 ng/dL in 2012.
+Her sister lives with psoriasis.
+Teeth in good repair.
+Varicose veins: none seen.
+During a checkup in 2017, free T3 was 3.2 pg/mL.
+Lives in a second-floor apartment.
+Sees a dentist yearly.
+Observations now: blood pressure 150/98 mmHg.
+Prefers to be addressed by first name.
+Owns a bicycle.
+Prefers morning appointments.
+Plays the piano.
+Pupils equal and reactive to light.
+Her wife has recovered from a dislocated finger.
+Has two cats.
+Her sister sprained a thumb last month.
+Current ALT 138 U/L.
+Enjoys board games.
+Random glucose 92 mg/dL.","Woman of 48 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Zinc of 85 mcg/dL in 2012.
+Free T4 of 1.2 ng/dL in 2012.
+Her sister lives with psoriasis.
+Teeth in good repair.
+Her sister is on anticoagulation for venous thrombosis.
+During a checkup in 2017, free T3 was 3.2 pg/mL.
+Lives in a second-floor apartment.
+Sees a dentist yearly.
+Observations now: blood pressure 150/98 mmHg.
+Prefers to be addressed by first name.
+Owns a bicycle.
+Prefers morning appointments.
+Plays the piano.
+Pupils equal and reactive to light.
+Her wife has recovered from a dislocated finger.
+Has two cats.
+Her sister sprained a thumb last month.
+Current ALT 138 U/L.
+Enjoys board games.
+Random glucose 92 mg/dL.","Woman of 48 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Zinc of 85 mcg/dL in 2012.
+Free T4 of 1.2 ng/dL in 2012.
+Her sister lives with psoriasis.
+Teeth in good repair.
+Her uncle is on anticoagulation for venous thrombosis.
+During a checkup in 2017, free T3 was 3.2 pg/mL.
+Lives in a second-floor apartment.
+Sees a dentist yearly.
+Observations now: blood pressure 150/98 mmHg.
+Prefers to be addressed by first name.
+Owns a bicycle.
+Prefers morning appointments.
+Plays the piano.
+Pupils equal and reactive to light.
+Her wife has recovered from a dislocated finger.
+Has two cats.
+Her sister sprained a thumb last month.
+Current ALT 138 U/L.
+Enjoys board games.
+Random glucose 92 mg/dL.","need: venous thromboembolism (patient or first-degree relative)
+found: Varicose veins: none seen.
+subject: patient
+status: absent
+time: current","need: venous thromboembolism (patient or first-degree relative)
+found: Her sister is on anticoagulation for venous thrombosis.
+subject: other (sister)
+status: present
+time: current","need: venous thromboembolism (patient or first-degree relative)
+found: Her uncle is on anticoagulation for venous thrombosis.
+subject: other (uncle)
+status: present
+time: current","need: venous thromboembolism (patient or first-degree relative)
+found: Varicose veins: none seen.
+subject: patient
+status: absent
+time: current","need: venous thromboembolism (patient or first-degree relative)
+found: Her sister is on anticoagulation for venous thrombosis.
+subject: other (sister)
+status: present
+time: current","need: venous thromboembolism (patient or first-degree relative)
+found: Her uncle is on anticoagulation for venous thrombosis.
+subject: other (uncle)
+status: present
+time: current","{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""thrombo"", ""dvt"", ""pulmonary embol""], ""overrides"": {}, ""seed"": 670, ""tpl"": [""filler/lab/16"", ""filler/lab/5"", ""filler/other/4"", ""filler/neutral/35"", ""vte/rel/5"", ""filler/lab/17"", ""filler/neutral/16"", ""filler/neutral/23"", ""sbp/current/5"", ""filler/neutral/47"", ""filler/neutral/34"", ""filler/neutral/29"", ""filler/neutral/41"", ""filler/neutral/11"", ""filler/other/17"", ""filler/neutral/40"", ""filler/other/5"", ""alt_enzyme/current/4"", ""filler/neutral/5"", ""diabetes/generic/5""], ""tpl_split"": ""test""}",,,,,
+E058,2,ledger2 x blocks,B-F-ledger2-blocks-s0,rule_v1.test.gs094.c1.subject.easy.1674,gs094,g_all_of,subject,easy,L2,near,31.185025215148926,-31.6807918548584,-10.178260326385498,31.185025215148926,"For primary prevention, prescribe atorvastatin. If the patient has ever had heart failure (current or past) and the age of the patient is 75 years or more, prescribe ezetimibe instead.",heart failure,Prescribe atorvastatin.,Prescribe ezetimibe.,"An adult woman.
+Primary prevention; LDL cholesterol 182 mg/dL.
+Current age 83 years.
+Drives a car.
+Prefers morning appointments.","An adult woman.
+Primary prevention; LDL cholesterol 182 mg/dL.
+Current age 83 years.
+Drives a car.
+Prefers morning appointments.
+Current heart failure with ankle swelling.","An adult woman.
+Primary prevention; LDL cholesterol 182 mg/dL.
+Current age 83 years.
+Drives a car.
+Prefers morning appointments.
+Her roommate is treated for heart failure.","need: heart failure
+found: not mentioned
+subject: patient
+status: absent
+time: current","need: heart failure
+found: Current heart failure with ankle swelling.
+subject: patient
+status: present
+time: current","need: heart failure
+found: Her roommate is treated for heart failure.
+subject: other (roommate)
+status: present
+time: current","need: heart failure
+found: not mentioned
+subject: patient
+status: absent
+time: current","need: heart failure
+found: Current heart failure with ankle swelling.
+subject: patient
+status: present
+time: current","need: heart failure
+found: Her roommate is treated for heart failure.
+subject: other
+status: present
+time: current","{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""heart failure""], ""overrides"": {}, ""seed"": 1674, ""tpl"": [""age/current/5"", ""filler/neutral/17"", ""filler/neutral/29"", ""chf/rel/4""], ""tpl_split"": ""test""}",,,,,
+E059,2,ledger2 x blocks,B-F-ledger2-blocks-s0,rule_v1.test.gs192.c4.subject.long.553,gs192,g_score_cutoff,subject,long,L2,base; near,-28.100019454956055,-28.427626609802246,-2.0251294374465942,-28.100019454956055,"For uncomplicated cystitis, prescribe trimethoprim-sulfamethoxazole. Score 2 points if the patient has ever had asthma (current or past); 1 point if the current calf swelling compared with the other leg is 3.0 cm or more; 1 point if the patient has ever had a peptic ulcer (current or past); 2 points if the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time. If the score is 6 or more, prescribe nitrofurantoin instead.",diabetes (patient or first-degree relative),Prescribe trimethoprim-sulfamethoxazole.,Prescribe nitrofurantoin.,"Woman of 23 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Prefers to be addressed by first name.
+Sees a dentist yearly.
+Knits as a hobby.
+Difference in calf circumference now 3.9 cm.
+Her sister lives with psoriasis.
+Free T4 of 1.2 ng/dL in 2021.
+Enjoys board games.
+Asthma, on a daily inhaled steroid.
+Pupils equal and reactive to light.
+Formerly treated for a peptic ulcer; endoscopy in 2023 showed it had gone.
+HbA1c 5.3% at a routine check.
+During a checkup in 2022, total protein was 7.0 g/dL.
+Sleeps seven hours a night.
+Photographs local wildlife.
+Lives in a second-floor apartment.
+In 2022, folate was 12 ng/mL.
+Uses sunscreen in summer.
+Her wife wears contact lenses.
+Has two cats.
+Her uncle sprained a thumb last month.
+Her uncle has a lazy eye.
+Drives a car.","Woman of 23 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Prefers to be addressed by first name.
+Sees a dentist yearly.
+Knits as a hobby.
+Difference in calf circumference now 3.9 cm.
+Her sister lives with psoriasis.
+Free T4 of 1.2 ng/dL in 2021.
+Enjoys board games.
+Asthma, on a daily inhaled steroid.
+Pupils equal and reactive to light.
+Formerly treated for a peptic ulcer; endoscopy in 2023 showed it had gone.
+Had diabetes years ago that went into remission on a low-calorie diet.
+During a checkup in 2022, total protein was 7.0 g/dL.
+Sleeps seven hours a night.
+Photographs local wildlife.
+Lives in a second-floor apartment.
+In 2022, folate was 12 ng/mL.
+Uses sunscreen in summer.
+Her wife wears contact lenses.
+Has two cats.
+Her uncle sprained a thumb last month.
+Her uncle has a lazy eye.
+Drives a car.","Woman of 23 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Prefers to be addressed by first name.
+Sees a dentist yearly.
+Knits as a hobby.
+Difference in calf circumference now 3.9 cm.
+Her sister lives with psoriasis.
+Free T4 of 1.2 ng/dL in 2021.
+Enjoys board games.
+Asthma, on a daily inhaled steroid.
+Pupils equal and reactive to light.
+Formerly treated for a peptic ulcer; endoscopy in 2023 showed it had gone.
+Her wife was diabetic until bariatric surgery several years ago.
+During a checkup in 2022, total protein was 7.0 g/dL.
+Sleeps seven hours a night.
+Photographs local wildlife.
+Lives in a second-floor apartment.
+In 2022, folate was 12 ng/mL.
+Uses sunscreen in summer.
+Her wife wears contact lenses.
+Has two cats.
+Her uncle sprained a thumb last month.
+Her uncle has a lazy eye.
+Drives a car.","need: diabetes (patient or first-degree relative)
+found: HbA1c 5.3% at a routine check.
+subject: patient
+status: absent
+time: current","need: diabetes (patient or first-degree relative)
+found: Had diabetes years ago that went into remission on a low-calorie diet.
+subject: patient
+status: present
+time: past","need: diabetes (patient or first-degree relative)
+found: Her wife was diabetic until bariatric surgery several years ago.
+subject: other (wife)
+status: present
+time: past","need: diabetes (patient or first-degree relative)
+found: 5.3
+subject: patient
+status: present
+time: current","need: diabetes (patient or first-degree relative)
+found: Had diabetes years ago that went into remission on a low-calorie diet.
+subject: patient
+status: present
+time: past","need: diabetes (patient or first-degree relative)
+found: Her wife was diabetic until bariatric surgery several years ago.
+subject: other (spouse)
+status: present
+time: past","{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""diabet""], ""overrides"": {}, ""seed"": 553, ""tpl"": [""filler/neutral/47"", ""filler/neutral/23"", ""filler/neutral/46"", ""calf_swelling/current/5"", ""filler/other/4"", ""filler/lab/5"", ""filler/neutral/5"", ""asthma/present/4"", ""filler/neutral/11"", ""peptic_ulcer/past/5"", ""diabetes/rel_past/5"", ""filler/lab/10"", ""filler/neutral/4"", ""filler/neutral/10"", ""filler/neutral/16"", ""filler/lab/4"", ""filler/neutral/22"", ""filler/other/16"", ""filler/neutral/40"", ""filler/other/5"", ""filler/other/10"", ""filler/neutral/17""], ""tpl_split"": ""test""}",,,,,
+E060,2,ledger2 x blocks,B-F-ledger2-blocks-s0,rule_v1.test.gs050.c2.time.superseded.41,gs050,g_any_of,time,superseded,L2,near,27.857879638671875,-32.91929626464844,-1.9947017431259155,27.176671981811523,"For community-acquired pneumonia treated at home, prescribe amoxicillin. If the current eGFR is below 60 mL/min/1.73 m2 or the current ALT is above 120 U/L, prescribe doxycycline instead.",ALT above 120,Prescribe amoxicillin.,Prescribe doxycycline.,"Woman of 66 years.
+Productive cough and fever; consolidation on chest radiograph.
+Current ALT 26 U/L.
+Current eGFR 91 mL/min/1.73 m2.
+Enjoys board games.
+Photographs local wildlife.
+Last month, ALT was 59 U/L; the newest measurement replaces it.
+Teeth in good repair.
+Knits as a hobby.","Woman of 66 years.
+Productive cough and fever; consolidation on chest radiograph.
+Current ALT 130 U/L.
+Current eGFR 91 mL/min/1.73 m2.
+Enjoys board games.
+Photographs local wildlife.
+Last month, ALT was 59 U/L; the newest measurement replaces it.
+Teeth in good repair.
+Knits as a hobby.","Woman of 66 years.
+Productive cough and fever; consolidation on chest radiograph.
+Current ALT 26 U/L.
+Current eGFR 91 mL/min/1.73 m2.
+Enjoys board games.
+Photographs local wildlife.
+Last month, ALT was 138 U/L; the newest measurement replaces it.
+Teeth in good repair.
+Knits as a hobby.","need: ALT above 120
+found: 26
+subject: patient
+status: present
+time: current
+
+need: ALT above 120
+found: 59
+subject: patient
+status: present
+time: past","need: ALT above 120
+found: 130
+subject: patient
+status: present
+time: current
+
+need: ALT above 120
+found: 59
+subject: patient
+status: present
+time: past","need: ALT above 120
+found: 26
+subject: patient
+status: present
+time: current
+
+need: ALT above 120
+found: 138
+subject: patient
+status: present
+time: past","need: ALT above 120
+found: 26
+subject: patient
+status: present
+time: current
+
+need: ALT above 120
+found: 59
+subject: patient
+status: present
+time: past","need: ALT above 120
+found: 130
+subject: patient
+status: present
+time: current
+
+need: ALT above 120
+found: 59
+subject: patient
+status: present
+time: past","need: ALT above 120
+found: 26
+subject: patient
+status: present
+time: current
+
+need: ALT above 120
+found: 138
+subject: patient
+status: present
+time: past","{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""alt ""], ""overrides"": {}, ""seed"": 41, ""tpl"": [""alt_enzyme/current/4"", ""egfr/current/4"", ""filler/neutral/5"", ""filler/neutral/10"", ""alt_enzyme/superseded/5"", ""filler/neutral/35"", ""filler/neutral/46""], ""tpl_split"": ""test""}",,,,,
+E061,2,ledger2 x blocks,B-F-ledger2-blocks-s0,rule_v1.test.gs096.c2.time.easy.480,gs096,g_score_cutoff,time,easy,L2,near,24.378600120544434,-29.076663970947266,-2.4652695059776306,24.378600120544434,"For stroke prevention in atrial fibrillation, prescribe apixaban. Score 2 points if the patient has ever had coronary artery disease (current or past); 3 points if the patient currently has tonsillar exudate; 2 points if the current ALT is above 120 U/L; 2 points if the current weight is 60 kg or less. If the score is 6 or more, prescribe warfarin instead.",tonsillar exudate,Prescribe apixaban.,Prescribe warfarin.,"Female patient of 66 years.
+Atrial fibrillation; anticoagulation indicated.
+ALT now 132 U/L.
+Latest weight 52 kg.
+Plays the piano.
+Cardiac stress test unremarkable last year.
+Tonsils pink and clean on inspection.","Female patient of 66 years.
+Atrial fibrillation; anticoagulation indicated.
+ALT now 132 U/L.
+Latest weight 52 kg.
+Plays the piano.
+Cardiac stress test unremarkable last year.
+Tonsils swollen and coated with yellow exudate.","Female patient of 66 years.
+Atrial fibrillation; anticoagulation indicated.
+ALT now 132 U/L.
+Latest weight 52 kg.
+Plays the piano.
+Cardiac stress test unremarkable last year.
+Recovered fully from tonsillitis with exudate in 2014.","need: tonsillar exudate
+found: Tonsils pink and clean on inspection.
+subject: patient
+status: absent
+time: current","need: tonsillar exudate
+found: Tonsils swollen and coated with yellow exudate.
+subject: patient
+status: present
+time: current","need: tonsillar exudate
+found: Recovered fully from tonsillitis with exudate in 2014.
+subject: patient
+status: present
+time: past (2014)","need: tonsillar exudate
+found: Tonsils pink and clean on inspection.
+subject: patient
+status: absent
+time: current","need: tonsillar exudate
+found: Tonsils swollen and coated with yellow exudate.
+subject: patient
+status: present
+time: current","need: tonsillar exudate
+found: Recovered fully from tonsillitis with exudate in 2014.
+subject: patient
+status: present
+time: past (2014)","{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""exudate""], ""overrides"": {}, ""seed"": 480, ""tpl"": [""alt_enzyme/current/5"", ""weight/current/5"", ""filler/neutral/41"", ""cad/generic/5"", ""exudate/past/5""], ""tpl_split"": ""test""}",,,,,
+E062,2,ledger2 x blocks,B-F-ledger2-blocks-s0,rule_v1.test.gs192.c2.time.superseded.1705,gs192,g_score_cutoff,time,superseded,L2,near,16.202436447143555,-14.85619831085205,-1.540131688117981,16.202436447143555,"For uncomplicated cystitis, prescribe trimethoprim-sulfamethoxazole. Score 2 points if the patient has ever had asthma (current or past); 1 point if the current calf swelling compared with the other leg is 3.0 cm or more; 1 point if the patient has ever had a peptic ulcer (current or past); 2 points if the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time. If the score is 6 or more, prescribe nitrofurantoin instead.",calf swelling at least 3.0,Prescribe trimethoprim-sulfamethoxazole.,Prescribe nitrofurantoin.,"Female patient of 27 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Earlier this week, calf swelling was 0.7 cm; a newer reading supersedes it.
+Prefers to be addressed by first name.
+Persistent asthma, using a rescue inhaler most weeks.
+Prefers morning appointments.
+Plays the piano.
+Current calf swelling 0.4 cm compared with the other leg.
+Active peptic ulcer disease.
+Had diabetes years ago that went into remission on a low-calorie diet.","Female patient of 27 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Earlier this week, calf swelling was 0.7 cm; a newer reading supersedes it.
+Prefers to be addressed by first name.
+Persistent asthma, using a rescue inhaler most weeks.
+Prefers morning appointments.
+Plays the piano.
+Current calf swelling 3.0 cm compared with the other leg.
+Active peptic ulcer disease.
+Had diabetes years ago that went into remission on a low-calorie diet.","Female patient of 27 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Earlier this week, calf swelling was 4.2 cm; a newer reading supersedes it.
+Prefers to be addressed by first name.
+Persistent asthma, using a rescue inhaler most weeks.
+Prefers morning appointments.
+Plays the piano.
+Current calf swelling 0.4 cm compared with the other leg.
+Active peptic ulcer disease.
+Had diabetes years ago that went into remission on a low-calorie diet.","need: calf swelling at least 3.0
+found: 0.7
+subject: patient
+status: present
+time: past
+
+need: calf swelling at least 3.0
+found: 0.4
+subject: patient
+status: present
+time: current","need: calf swelling at least 3.0
+found: 0.7
+subject: patient
+status: present
+time: past
+
+need: calf swelling at least 3.0
+found: 3.0
+subject: patient
+status: present
+time: current","need: calf swelling at least 3.0
+found: 4.2
+subject: patient
+status: present
+time: past
+
+need: calf swelling at least 3.0
+found: 0.4
+subject: patient
+status: present
+time: current","need: calf swelling at least 3.0
+found: 0.7
+subject: patient
+status: present
+time: past
+
+need: calf swelling at least 3.0
+found: 0.4
+subject: patient
+status: present
+time: current","need: calf swelling at least 3.0
+found: 0.7
+subject: patient
+status: present
+time: past
+
+need: calf swelling at least 3.0
+found: 3.0
+subject: patient
+status: present
+time: current","need: calf swelling at least 3.0
+found: 4.2
+subject: patient
+status: present
+time: past
+
+need: calf swelling at least 3.0
+found: 0.4
+subject: patient
+status: present
+time: current","{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""calf circumference"", ""calf swelling""], ""overrides"": {}, ""seed"": 1705, ""tpl"": [""calf_swelling/superseded/4"", ""filler/neutral/47"", ""asthma/present/5"", ""filler/neutral/29"", ""filler/neutral/41"", ""calf_swelling/current/4"", ""peptic_ulcer/present/5"", ""diabetes/past/4""], ""tpl_split"": ""test""}",,,,,
+E063,2,ledger2 x triplets,B-F-ledger2-triplets-s0,rule_v1.test.cut_bleed.bleed.negation.easy.20,cut_bleed,score_cutoff,negation,easy,L2,flip,36.577781677246094,3.8795031309127808,34.49980354309082,36.577781677246094,"For dual antiplatelet therapy after a myocardial infarction, prescribe aspirin plus ticagrelor. Score 2 points for a major bleeding event at any time; 1 point for age 75 years or more; 1 point for a current eGFR below 30 mL/min/1.73 m2. If the score is 2 or more, prescribe aspirin plus clopidogrel instead.",bleeding history,Prescribe aspirin plus ticagrelor.,Prescribe aspirin plus clopidogrel.,"Woman, adult.
+Recovering on the ward after a myocardial infarction treated with a stent.
+Teeth in good repair.
+eGFR now 69 mL/min/1.73 m2.
+Currently aged 77 years.
+Examination shows no signs of blood loss.
+Paints watercolors as a hobby.
+Owns a bicycle.
+Drives a car.","Woman, adult.
+Recovering on the ward after a myocardial infarction treated with a stent.
+Teeth in good repair.
+eGFR now 69 mL/min/1.73 m2.
+Currently aged 77 years.
+Major intracranial bleed after a fall years ago, with full recovery.
+Paints watercolors as a hobby.
+Owns a bicycle.
+Drives a car.","Woman, adult.
+Recovering on the ward after a myocardial infarction treated with a stent.
+Teeth in good repair.
+eGFR now 69 mL/min/1.73 m2.
+Currently aged 77 years.
+Has never had a major bleed.
+Paints watercolors as a hobby.
+Owns a bicycle.
+Drives a car.","need: bleeding history
+found: Examination shows no signs of blood loss.
+subject: patient
+status: absent
+time: current","need: bleeding history
+found: Major intracranial bleed after a fall years ago, with full recovery.
+subject: patient
+status: present
+time: past","need: bleeding history
+found: Has never had a major bleed.
+subject: patient
+status: absent
+time: current","need: bleeding history
+found: Examination shows no signs of blood loss.
+subject: patient
+status: absent
+time: current","need: bleeding history
+found: Major intracranial bleed after a fall years ago, with full recovery.
+subject: patient
+status: present
+time: past","need: bleeding history
+found: Has never had a major bleed.
+subject: patient
+status: absent
+time: current","{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""bleed""], ""overrides"": {}, ""seed"": 20, ""tpl"": [""filler/neutral/35"", ""egfr/current/5"", ""age/current/4"", ""bleeding/absent/4"", ""filler/neutral/28"", ""filler/neutral/34"", ""filler/neutral/17""], ""tpl_split"": ""test""}",,,,,
+E064,2,ledger2 x triplets,B-F-ledger2-triplets-s0,rule_v1.test.gs124.c1.negation.easy.1050,gs124,g_two_of_three,negation,easy,L2,flip,30.852617263793945,7.864648342132568,36.36433029174805,30.852617263793945,"For community-acquired pneumonia, prescribe oral amoxicillin. If at least two of the following apply, prescribe intravenous co-amoxiclav instead: the patient or a first-degree relative (parent, sibling or child) has had colorectal cancer at any time; the current calf swelling compared with the other leg is 3.0 cm or more; the age of the patient is above 65 years.",colorectal cancer (patient or first-degree relative),Prescribe oral amoxicillin.,Prescribe intravenous co-amoxiclav.,"Woman, adult.
+Community-acquired pneumonia confirmed on chest radiograph.
+Current calf swelling 1.2 cm compared with the other leg.
+Current age 69 years.
+Hemoglobin within the normal range on recent blood tests.
+Sees a dentist yearly.","Woman, adult.
+Community-acquired pneumonia confirmed on chest radiograph.
+Current calf swelling 1.2 cm compared with the other leg.
+Current age 69 years.
+Lives with colon cancer and attends an oncology clinic.
+Sees a dentist yearly.","Woman, adult.
+Community-acquired pneumonia confirmed on chest radiograph.
+Current calf swelling 1.2 cm compared with the other leg.
+Current age 69 years.
+Has never had bowel cancer.
+Sees a dentist yearly.","need: colorectal cancer (patient or first-degree relative)
+found: Hemoglobin within the normal range on recent blood tests.
+subject: patient
+status: absent
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: Lives with colon cancer and attends an oncology clinic.
+subject: patient
+status: present
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: Has never had bowel cancer.
+subject: patient
+status: absent
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: Hemoglobin within the normal range on recent blood tests.
+subject: patient
+status: absent
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: Lives with colon cancer and attends an oncology clinic.
+subject: other (household member)
+status: present
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: Has never had bowel cancer.
+subject: patient
+status: absent
+time: current","{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""colorectal cancer"", ""colon cancer"", ""bowel cancer""], ""overrides"": {}, ""seed"": 1050, ""tpl"": [""calf_swelling/current/4"", ""age/current/5"", ""crc/absent/4"", ""filler/neutral/23""], ""tpl_split"": ""test""}",,,,,
+E065,2,ledger2 x triplets,B-F-ledger2-triplets-s0,rule_v1.test.gs064.c2.subject.easy.131,gs064,g_all_of,subject,easy,L2,flip,32.737884521484375,15.553511619567871,31.356067657470703,32.737884521484375,"For an acute gout flare, prescribe colchicine. If the patient has ever had angioedema (current or past) and the patient or a first-degree relative (parent, sibling or child) has had colorectal cancer at any time, prescribe prednisone instead.",colorectal cancer (patient or first-degree relative),Prescribe colchicine.,Prescribe prednisone.,"Male patient of 75 years.
+Acute gout flare of the right first metatarsophalangeal joint.
+Drives a car.
+Plays the piano.
+Uses sunscreen in summer.
+Formerly had recurrent angioedema, in remission for many years now.
+Hemoglobin within the normal range on recent blood tests.","Male patient of 75 years.
+Acute gout flare of the right first metatarsophalangeal joint.
+Drives a car.
+Plays the piano.
+Uses sunscreen in summer.
+Formerly had recurrent angioedema, in remission for many years now.
+Lives with colon cancer and attends an oncology clinic.","Male patient of 75 years.
+Acute gout flare of the right first metatarsophalangeal joint.
+Drives a car.
+Plays the piano.
+Uses sunscreen in summer.
+Formerly had recurrent angioedema, in remission for many years now.
+His roommate has advanced colorectal cancer.","need: colorectal cancer (patient or first-degree relative)
+found: Hemoglobin within the normal range on recent blood tests.
+subject: patient
+status: absent
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: Lives with colon cancer and attends an oncology clinic.
+subject: patient
+status: present
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: His roommate has advanced colorectal cancer.
+subject: other (roommate)
+status: present
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: Hemoglobin within the normal range on recent blood tests.
+subject: patient
+status: absent
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: Lives with colon cancer and attends an oncology clinic.
+subject: other (household member)
+status: present
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: His roommate has advanced colorectal cancer.
+subject: other (roommate)
+status: present
+time: current","{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""colorectal cancer"", ""colon cancer"", ""bowel cancer""], ""overrides"": {}, ""seed"": 131, ""tpl"": [""filler/neutral/17"", ""filler/neutral/41"", ""filler/neutral/22"", ""angioedema/past/5"", ""crc/rel/5""], ""tpl_split"": ""test""}",,,,,
+E066,2,ledger2 x triplets,B-F-ledger2-triplets-s0,rule_v1.test.gs124.c1.subject.easy.1840,gs124,g_two_of_three,subject,easy,L2,flip,35.79212760925293,7.901756763458252,20.727262496948242,35.79212760925293,"For community-acquired pneumonia, prescribe oral amoxicillin. If at least two of the following apply, prescribe intravenous co-amoxiclav instead: the patient or a first-degree relative (parent, sibling or child) has had colorectal cancer at any time; the current calf swelling compared with the other leg is 3.0 cm or more; the age of the patient is above 65 years.",colorectal cancer (patient or first-degree relative),Prescribe oral amoxicillin.,Prescribe intravenous co-amoxiclav.,"Woman, adult.
+Community-acquired pneumonia confirmed on chest radiograph.
+Current age 49 years.
+Current calf swelling 3.8 cm compared with the other leg.
+Sleeps seven hours a night.
+Drives a car.","Woman, adult.
+Community-acquired pneumonia confirmed on chest radiograph.
+Current age 49 years.
+Current calf swelling 3.8 cm compared with the other leg.
+Sleeps seven hours a night.
+Drives a car.
+Lives with colon cancer and attends an oncology clinic.","Woman, adult.
+Community-acquired pneumonia confirmed on chest radiograph.
+Current age 49 years.
+Current calf swelling 3.8 cm compared with the other leg.
+Sleeps seven hours a night.
+Drives a car.
+Her uncle is undergoing surgery for bowel cancer.","need: colorectal cancer (patient or first-degree relative)
+found: not mentioned
+subject: patient
+status: absent
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: Lives with colon cancer and attends an oncology clinic.
+subject: patient
+status: present
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: Her uncle is undergoing surgery for bowel cancer.
+subject: other (uncle)
+status: present
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: not mentioned
+subject: patient
+status: absent
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: Lives with colon cancer and attends an oncology clinic.
+subject: other (household member)
+status: present
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: Her uncle is undergoing surgery for bowel cancer.
+subject: other (uncle)
+status: present
+time: current","{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""colorectal cancer"", ""colon cancer"", ""bowel cancer""], ""overrides"": {}, ""seed"": 1840, ""tpl"": [""age/current/5"", ""calf_swelling/current/4"", ""filler/neutral/4"", ""filler/neutral/17"", ""crc/rel/4""], ""tpl_split"": ""test""}",,,,,
+E067,2,summary2 x triplets,B-F-summary2-triplets-s0,rule_v1.test.gs001.c3.negation.easy.849,gs001,g_score_cutoff,negation,easy,L2,base,-7.783903360366821,-20.95368003845215,21.86221218109131,-14.19484806060791,"For contraception, prescribe a combined oral contraceptive. Score 1 point if the current platelet count is below 50 x10^9/L; 1 point if the patient is currently taking warfarin; 1 point if the patient has ever had diabetes (current or past); 3 points if the patient currently has a mechanical heart valve. If the score is 5 or more, prescribe a progestin-only pill instead.",diabetes,Prescribe a combined oral contraceptive.,Prescribe a progestin-only pill.,"Woman of 39 years.
+Requests contraception.
+Uses sunscreen in summer.
+Teeth in good repair.
+Platelet count now 36 x10^9/L.
+Drives a car.
+Lives with a mechanical aortic valve prosthesis.
+Has two cats.
+HbA1c 5.3% at a routine check.","Woman of 39 years.
+Requests contraception.
+Uses sunscreen in summer.
+Teeth in good repair.
+Platelet count now 36 x10^9/L.
+Drives a car.
+Lives with a mechanical aortic valve prosthesis.
+Has two cats.
+Has type 2 diabetes on metformin.","Woman of 39 years.
+Requests contraception.
+Uses sunscreen in summer.
+Teeth in good repair.
+Platelet count now 36 x10^9/L.
+Drives a car.
+Lives with a mechanical aortic valve prosthesis.
+Has two cats.
+Never diagnosed with diabetes.","need: diabetes
+found: HbA1c 5.3% at a routine check.
+subject: patient
+status: absent
+time: current","need: diabetes
+found: Has type 2 diabetes on metformin.
+subject: patient
+status: present
+time: current","need: diabetes
+found: Never diagnosed with diabetes.
+subject: patient
+status: absent
+time: current","For diabetes, the note states ""HbA1c 5.3% at a routine check.""; this concerns the patient, is recorded as present, at present.","For diabetes, the note states ""Has type 2 diabetes on metformin.""; this concerns the patient, is recorded as present, at present.","For diabetes, the note states ""Never diagnosed with diabetes.""; this concerns the patient, is recorded as absent, at present.","{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""diabet""], ""overrides"": {}, ""seed"": 849, ""tpl"": [""filler/neutral/22"", ""filler/neutral/35"", ""platelets/current/5"", ""filler/neutral/17"", ""mech_valve/present/5"", ""filler/neutral/40"", ""diabetes/absent/5""], ""tpl_split"": ""test""}",,,,,
+E068,2,summary2 x triplets,B-F-summary2-triplets-s0,rule_v1.test.gs049.c2.negation.long.939,gs049,g_all_of,negation,long,L2,base,-28.53926658630371,-23.449320793151855,30.724477767944336,-28.53926658630371,"For uncomplicated cystitis, prescribe trimethoprim-sulfamethoxazole. If the patient or a first-degree relative (parent, sibling or child) has had a venous thromboembolism at any time and the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time, prescribe nitrofurantoin instead.",diabetes (patient or first-degree relative),Prescribe trimethoprim-sulfamethoxazole.,Prescribe nitrofurantoin.,"Woman of 19 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+During a checkup in 2024, free T3 was 3.2 pg/mL.
+Pupils equal and reactive to light.
+Random glucose 92 mg/dL.
+Zinc of 85 mcg/dL in 2024.
+In 2024, folate was 12 ng/mL.
+Prefers morning appointments.
+Drives a car.
+Her father sprained a thumb last month.
+Her friend lives with psoriasis.
+Uses sunscreen in summer.
+Pulmonary embolism years ago, treated for six months.
+Prefers to be addressed by first name.
+Teeth in good repair.
+Has two cats.
+Photographs local wildlife.
+Knits as a hobby.
+In 2024, lipase was 30 U/L.
+Sleeps seven hours a night.","Woman of 19 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+During a checkup in 2024, free T3 was 3.2 pg/mL.
+Pupils equal and reactive to light.
+Formerly diabetic; in remission since 2024.
+Zinc of 85 mcg/dL in 2024.
+In 2024, folate was 12 ng/mL.
+Prefers morning appointments.
+Drives a car.
+Her father sprained a thumb last month.
+Her friend lives with psoriasis.
+Uses sunscreen in summer.
+Pulmonary embolism years ago, treated for six months.
+Prefers to be addressed by first name.
+Teeth in good repair.
+Has two cats.
+Photographs local wildlife.
+Knits as a hobby.
+In 2024, lipase was 30 U/L.
+Sleeps seven hours a night.","Woman of 19 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+During a checkup in 2024, free T3 was 3.2 pg/mL.
+Pupils equal and reactive to light.
+Has never had diabetes.
+Zinc of 85 mcg/dL in 2024.
+In 2024, folate was 12 ng/mL.
+Prefers morning appointments.
+Drives a car.
+Her father sprained a thumb last month.
+Her friend lives with psoriasis.
+Uses sunscreen in summer.
+Pulmonary embolism years ago, treated for six months.
+Prefers to be addressed by first name.
+Teeth in good repair.
+Has two cats.
+Photographs local wildlife.
+Knits as a hobby.
+In 2024, lipase was 30 U/L.
+Sleeps seven hours a night.","need: diabetes (patient or first-degree relative)
+found: Random glucose 92 mg/dL.
+subject: patient
+status: absent
+time: current","need: diabetes (patient or first-degree relative)
+found: Formerly diabetic; in remission since 2024.
+subject: patient
+status: present
+time: past (2024)","need: diabetes (patient or first-degree relative)
+found: Has never had diabetes.
+subject: patient
+status: absent
+time: current","For diabetes (patient or first-degree relative), the note states ""92""; this concerns the patient, is recorded as present, at present.","For diabetes (patient or first-degree relative), the note states ""Formerly diabetic; in remission since 2024.""; this concerns the patient, is recorded as present, in the past (2024).","For diabetes (patient or first-degree relative), the note states ""Has never had diabetes.""; this concerns the patient, is recorded as absent, at present.","{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""diabet""], ""overrides"": {}, ""seed"": 939, ""tpl"": [""filler/lab/17"", ""filler/neutral/11"", ""diabetes/absent/4"", ""filler/lab/16"", ""filler/lab/4"", ""filler/neutral/29"", ""filler/neutral/17"", ""filler/other/5"", ""filler/other/4"", ""filler/neutral/22"", ""vte/past/4"", ""filler/neutral/47"", ""filler/neutral/35"", ""filler/neutral/40"", ""filler/neutral/10"", ""filler/neutral/46"", ""filler/lab/11"", ""filler/neutral/4""], ""tpl_split"": ""test""}",,,,,
+E069,2,summary2 x triplets,B-F-summary2-triplets-s0,rule_v1.test.gs220.c2.negation.easy.291,gs220,g_all_of,negation,easy,L2,base,-21.944804191589355,-29.431041717529297,30.46148681640625,-21.944804191589355,"For contraception, prescribe a combined oral contraceptive. If the current eGFR is below 30 mL/min/1.73 m2 and the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time, prescribe a progestin-only pill instead.",diabetes (patient or first-degree relative),Prescribe a combined oral contraceptive.,Prescribe a progestin-only pill.,"Female patient of 28 years.
+Requests contraception.
+Owns a bicycle.
+Random glucose 92 mg/dL.
+eGFR now 27 mL/min/1.73 m2.
+Prefers to be addressed by first name.
+Enjoys board games.","Female patient of 28 years.
+Requests contraception.
+Owns a bicycle.
+Had diabetes years ago that went into remission on a low-calorie diet.
+eGFR now 27 mL/min/1.73 m2.
+Prefers to be addressed by first name.
+Enjoys board games.","Female patient of 28 years.
+Requests contraception.
+Owns a bicycle.
+Never diagnosed with diabetes.
+eGFR now 27 mL/min/1.73 m2.
+Prefers to be addressed by first name.
+Enjoys board games.","need: diabetes (patient or first-degree relative)
+found: Random glucose 92 mg/dL.
+subject: patient
+status: absent
+time: current","need: diabetes (patient or first-degree relative)
+found: Had diabetes years ago that went into remission on a low-calorie diet.
+subject: patient
+status: present
+time: past","need: diabetes (patient or first-degree relative)
+found: Never diagnosed with diabetes.
+subject: patient
+status: absent
+time: current","For diabetes (patient or first-degree relative), the note states ""92""; this concerns the patient, is recorded as present, at present.","For diabetes (patient or first-degree relative), the note states ""Had diabetes years ago that went into remission on a low-calorie diet.""; this concerns the patient, is recorded as present, in the past.","For diabetes (patient or first-degree relative), the note states ""Never diagnosed with diabetes.""; this concerns the patient, is recorded as absent, at present.","{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""diabet""], ""overrides"": {}, ""seed"": 291, ""tpl"": [""filler/neutral/34"", ""diabetes/absent/5"", ""egfr/current/5"", ""filler/neutral/47"", ""filler/neutral/5""], ""tpl_split"": ""test""}",,,,,
+E070,2,summary2 x triplets,B-F-summary2-triplets-s0,rule_v1.test.gs010.c2.subject.easy.1863,gs010,g_score_cutoff,subject,easy,L2,near,19.06624126434326,-27.49638080596924,-6.7700324058532715,19.06624126434326,"For stroke prevention in atrial fibrillation, prescribe apixaban. Score 3 points if the patient has ever had coronary artery disease (current or past); 3 points if the patient or a first-degree relative (parent, sibling or child) has had colorectal cancer at any time; 2 points if the current white cell count is above 12.0 x10^9/L. If the score is 7 or more, prescribe warfarin instead.",colorectal cancer (patient or first-degree relative),Prescribe apixaban.,Prescribe warfarin.,"Male patient of 85 years.
+Atrial fibrillation; anticoagulation indicated.
+Sleeps seven hours a night.
+Prefers to be addressed by first name.
+Plays the piano.
+Latest WBC is 13.3 x10^9/L.
+Coronary artery disease years ago, with angina that went away after bypass surgery.","Male patient of 85 years.
+Atrial fibrillation; anticoagulation indicated.
+Sleeps seven hours a night.
+Prefers to be addressed by first name.
+Plays the piano.
+Latest WBC is 13.3 x10^9/L.
+Colorectal cancer under active treatment.
+Coronary artery disease years ago, with angina that went away after bypass surgery.","Male patient of 85 years.
+Atrial fibrillation; anticoagulation indicated.
+Sleeps seven hours a night.
+Prefers to be addressed by first name.
+Plays the piano.
+Latest WBC is 13.3 x10^9/L.
+His wife is undergoing surgery for bowel cancer.
+Coronary artery disease years ago, with angina that went away after bypass surgery.","need: colorectal cancer (patient or first-degree relative)
+found: not mentioned
+subject: patient
+status: absent
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: Colorectal cancer under active treatment.
+subject: patient
+status: present
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: His wife is undergoing surgery for bowel cancer.
+subject: other (wife)
+status: present
+time: current",The note does not mention colorectal cancer (patient or first-degree relative).,"For colorectal cancer (patient or first-degree relative), the note states ""Colorectal cancer under active treatment.""; this concerns the patient, is recorded as present, at present.","For colorectal cancer (patient or first-degree relative), the note states ""His wife is undergoing surgery for bowel cancer.""; this concerns the patient's wife, is recorded as present, at present.","{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""colorectal cancer"", ""colon cancer"", ""bowel cancer""], ""overrides"": {}, ""seed"": 1863, ""tpl"": [""filler/neutral/4"", ""filler/neutral/47"", ""filler/neutral/41"", ""wbc/current/5"", ""crc/rel/4"", ""cad/past/4""], ""tpl_split"": ""test""}",,,,,
+E071,2,summary2 x triplets,B-F-summary2-triplets-s0,rule_v1.test.gs056.c1.subject.long.1801,gs056,g_score_cutoff,subject,long,L2,base,-8.766235828399658,-23.041645050048828,20.092836380004883,-8.766235828399658,"For rate control in atrial fibrillation, prescribe metoprolol. Score 1 point if the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time; 2 points if the patient has ever had a venous thromboembolism (current or past); 3 points if the patient has ever had coronary artery disease (current or past); 1 point if the current white cell count is above 12.0 x10^9/L. If the score is 4 or more, prescribe diltiazem instead.",diabetes (patient or first-degree relative),Prescribe metoprolol.,Prescribe diltiazem.,"Female patient of 73 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Chest pain on exertion: none reported.
+Pulmonary embolism years ago, treated for six months.
+Her roommate lives with psoriasis.
+Her friend burned a hand on a stove years ago.
+Current white cell count 13.0 x10^9/L.
+In 2020, folate was 12 ng/mL.
+Zinc of 85 mcg/dL in 2017.
+Knits as a hobby.
+Her friend sprained a thumb last month.
+During a checkup in 2010, free T3 was 3.2 pg/mL.
+Prefers morning appointments.
+Sleeps seven hours a night.
+Her sister wears contact lenses.
+Pupils equal and reactive to light.
+Enjoys board games.
+HbA1c 5.3% at a routine check.
+Prefers to be addressed by first name.
+Has two cats.
+Owns a bicycle.","Female patient of 73 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Chest pain on exertion: none reported.
+Pulmonary embolism years ago, treated for six months.
+Her roommate lives with psoriasis.
+Her friend burned a hand on a stove years ago.
+Current white cell count 13.0 x10^9/L.
+In 2020, folate was 12 ng/mL.
+Zinc of 85 mcg/dL in 2017.
+Knits as a hobby.
+Her friend sprained a thumb last month.
+During a checkup in 2010, free T3 was 3.2 pg/mL.
+Prefers morning appointments.
+Sleeps seven hours a night.
+Her sister wears contact lenses.
+Pupils equal and reactive to light.
+Enjoys board games.
+Had diabetes years ago that went into remission on a low-calorie diet.
+Prefers to be addressed by first name.
+Has two cats.
+Owns a bicycle.","Female patient of 73 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Chest pain on exertion: none reported.
+Pulmonary embolism years ago, treated for six months.
+Her roommate lives with psoriasis.
+Her friend burned a hand on a stove years ago.
+Current white cell count 13.0 x10^9/L.
+In 2020, folate was 12 ng/mL.
+Zinc of 85 mcg/dL in 2017.
+Knits as a hobby.
+Her friend sprained a thumb last month.
+During a checkup in 2010, free T3 was 3.2 pg/mL.
+Prefers morning appointments.
+Sleeps seven hours a night.
+Her sister wears contact lenses.
+Pupils equal and reactive to light.
+Enjoys board games.
+Her friend had diabetes years ago that went away after a change in diet.
+Prefers to be addressed by first name.
+Has two cats.
+Owns a bicycle.","need: diabetes (patient or first-degree relative)
+found: HbA1c 5.3% at a routine check.
+subject: patient
+status: absent
+time: current","need: diabetes (patient or first-degree relative)
+found: Had diabetes years ago that went into remission on a low-calorie diet.
+subject: patient
+status: present
+time: past","need: diabetes (patient or first-degree relative)
+found: Her friend had diabetes years ago that went away after a change in diet.
+subject: other (friend)
+status: present
+time: past","For diabetes (patient or first-degree relative), the note states ""HbA1c 5.3% at a routine check.""; this concerns the patient, is recorded as present, at present.","For diabetes (patient or first-degree relative), the note states ""Had diabetes years ago that went into remission on a low-calorie diet.""; this concerns the patient, is recorded as present, in the past.","For diabetes (patient or first-degree relative), the note states ""Her friend had diabetes years ago that went away after a change in diet.""; this concerns the patient's friend, is recorded as present, in the past.","{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""diabet""], ""overrides"": {}, ""seed"": 1801, ""tpl"": [""cad/generic/4"", ""vte/past/4"", ""filler/other/4"", ""filler/other/11"", ""wbc/current/4"", ""filler/lab/4"", ""filler/lab/16"", ""filler/neutral/46"", ""filler/other/5"", ""filler/lab/17"", ""filler/neutral/29"", ""filler/neutral/4"", ""filler/other/16"", ""filler/neutral/11"", ""filler/neutral/5"", ""diabetes/rel_past/4"", ""filler/neutral/47"", ""filler/neutral/40"", ""filler/neutral/34""], ""tpl_split"": ""test""}",,,,,
+E072,2,summary2 x triplets,B-F-summary2-triplets-s0,rule_v1.test.gs075.c1.subject.long.952,gs075,g_two_of_three,subject,long,L2,near,27.402759552001953,-32.69282817840576,-5.166560411453247,27.402759552001953,"For newly diagnosed hypertension, prescribe lisinopril. If at least two of the following apply, prescribe amlodipine instead: the patient or a first-degree relative (parent, sibling or child) has had colorectal cancer at any time; the patient is currently taking warfarin; the current calf swelling compared with the other leg is 3.0 cm or more.",colorectal cancer (patient or first-degree relative),Prescribe lisinopril.,Prescribe amlodipine.,"Man of 36 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+In 2021, lipase was 30 U/L.
+Owns a bicycle.
+Lives in a second-floor apartment.
+Pupils equal and reactive to light.
+Drives a car.
+Sees a dentist yearly.
+Uses sunscreen in summer.
+Current calf swelling 3.4 cm compared with the other leg.
+During a checkup in 2009, total protein was 7.0 g/dL.
+Has two cats.
+Hemoglobin within the normal range on recent blood tests.
+His roommate has a lazy eye.
+His father has recovered from a dislocated finger.
+Photographs local wildlife.
+Current anticoagulants: none.
+Enjoys board games.
+Paints watercolors as a hobby.
+Teeth in good repair.
+During a checkup in 2013, free T3 was 3.2 pg/mL.
+Knits as a hobby.
+Sleeps seven hours a night.","Man of 36 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+In 2021, lipase was 30 U/L.
+Owns a bicycle.
+Lives in a second-floor apartment.
+Pupils equal and reactive to light.
+Drives a car.
+Sees a dentist yearly.
+Uses sunscreen in summer.
+Current calf swelling 3.4 cm compared with the other leg.
+During a checkup in 2009, total protein was 7.0 g/dL.
+Has two cats.
+Colorectal cancer under active treatment.
+His roommate has a lazy eye.
+His father has recovered from a dislocated finger.
+Photographs local wildlife.
+Current anticoagulants: none.
+Enjoys board games.
+Paints watercolors as a hobby.
+Teeth in good repair.
+During a checkup in 2013, free T3 was 3.2 pg/mL.
+Knits as a hobby.
+Sleeps seven hours a night.","Man of 36 years.
+Newly diagnosed hypertension (blood pressure 158/94 mmHg on repeated readings).
+In 2021, lipase was 30 U/L.
+Owns a bicycle.
+Lives in a second-floor apartment.
+Pupils equal and reactive to light.
+Drives a car.
+Sees a dentist yearly.
+Uses sunscreen in summer.
+Current calf swelling 3.4 cm compared with the other leg.
+During a checkup in 2009, total protein was 7.0 g/dL.
+Has two cats.
+His wife has advanced colorectal cancer.
+His roommate has a lazy eye.
+His father has recovered from a dislocated finger.
+Photographs local wildlife.
+Current anticoagulants: none.
+Enjoys board games.
+Paints watercolors as a hobby.
+Teeth in good repair.
+During a checkup in 2013, free T3 was 3.2 pg/mL.
+Knits as a hobby.
+Sleeps seven hours a night.","need: colorectal cancer (patient or first-degree relative)
+found: Hemoglobin within the normal range on recent blood tests.
+subject: patient
+status: absent
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: Colorectal cancer under active treatment.
+subject: patient
+status: present
+time: current","need: colorectal cancer (patient or first-degree relative)
+found: His wife has advanced colorectal cancer.
+subject: other (wife)
+status: present
+time: current",The note does not mention colorectal cancer (patient or first-degree relative).,"For colorectal cancer (patient or first-degree relative), the note states ""Colorectal cancer under active treatment.""; this concerns the patient, is recorded as present, at present.","For colorectal cancer (patient or first-degree relative), the note states ""His wife has advanced colorectal cancer.""; this concerns the patient's wife, is recorded as present, at present.","{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""colorectal cancer"", ""colon cancer"", ""bowel cancer""], ""overrides"": {}, ""seed"": 952, ""tpl"": [""filler/lab/11"", ""filler/neutral/34"", ""filler/neutral/16"", ""filler/neutral/11"", ""filler/neutral/17"", ""filler/neutral/23"", ""filler/neutral/22"", ""calf_swelling/current/4"", ""filler/lab/10"", ""filler/neutral/40"", ""crc/rel/5"", ""filler/other/10"", ""filler/other/17"", ""filler/neutral/10"", ""warfarin/generic/4"", ""filler/neutral/5"", ""filler/neutral/28"", ""filler/neutral/35"", ""filler/lab/17"", ""filler/neutral/46"", ""filler/neutral/4""], ""tpl_split"": ""test""}",,,,,
+E073,2,summary2 x triplets,B-F-summary2-triplets-s0,rule_v1.test.gs134.c1.subject.easy.617,gs134,g_score_cutoff,subject,easy,L2,near,23.66572856903076,-21.585067749023438,-4.155545115470886,23.67558193206787,"For contraception, prescribe a combined oral contraceptive. Score 2 points if the patient or a first-degree relative (parent, sibling or child) has had coronary artery disease at any time; 2 points if the current weight is 60 kg or less; 2 points if the current platelet count is below 50 x10^9/L; 1 point if the patient currently has tender anterior cervical lymph nodes. If the score is 7 or more, prescribe a progestin-only pill instead.",coronary artery disease (patient or first-degree relative),Prescribe a combined oral contraceptive.,Prescribe a progestin-only pill.,"Woman of 29 years.
+Requests contraception.
+Current platelet count 37 x10^9/L.
+Prefers morning appointments.
+Teeth in good repair.
+Current weight 55 kg.
+Lives in a second-floor apartment.
+Tender, swollen lymph nodes in the front of the neck.
+Chest pain on exertion: none reported.","Woman of 29 years.
+Requests contraception.
+Current platelet count 37 x10^9/L.
+Prefers morning appointments.
+Teeth in good repair.
+Current weight 55 kg.
+Lives in a second-floor apartment.
+Tender, swollen lymph nodes in the front of the neck.
+Her father has known coronary artery disease.","Woman of 29 years.
+Requests contraception.
+Current platelet count 37 x10^9/L.
+Prefers morning appointments.
+Teeth in good repair.
+Current weight 55 kg.
+Lives in a second-floor apartment.
+Tender, swollen lymph nodes in the front of the neck.
+Her wife has angina from coronary artery disease.","need: coronary artery disease (patient or first-degree relative)
+found: Chest pain on exertion: none reported.
+subject: patient
+status: absent
+time: current","need: coronary artery disease (patient or first-degree relative)
+found: Her father has known coronary artery disease.
+subject: other (father)
+status: present
+time: current","need: coronary artery disease (patient or first-degree relative)
+found: Her wife has angina from coronary artery disease.
+subject: other (wife)
+status: present
+time: current","For coronary artery disease (patient or first-degree relative), the note states ""Chest pain on exertion: none reported.""; this concerns the patient, is recorded as absent, at present.","For coronary artery disease (patient or first-degree relative), the note states ""Her father has known coronary artery disease.""; this concerns the patient's father, is recorded as present, at present.","For coronary artery disease (patient or first-degree relative), the note states ""Her wife has angina from coronary artery disease.""; this concerns the patient's wife, is recorded as present, at present.","{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""coronary""], ""overrides"": {}, ""seed"": 617, ""tpl"": [""platelets/current/4"", ""filler/neutral/29"", ""filler/neutral/35"", ""weight/current/4"", ""filler/neutral/16"", ""neck_nodes/present/5"", ""cad/rel/4""], ""tpl_split"": ""test""}",,,,,
+E074,2,summary2 x triplets,B-F-summary2-triplets-s0,rule_v1.test.gs179.c1.subject.easy.1827,gs179,g_all_of,subject,easy,L2,base,-28.723655700683594,-31.423998832702637,28.012351989746094,-28.723655700683594,"For rate control in atrial fibrillation, prescribe metoprolol. If the patient has ever had diabetes (current or past) and the current white cell count is above 12.0 x10^9/L, prescribe diltiazem instead.",diabetes,Prescribe metoprolol.,Prescribe diltiazem.,"Man of 68 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Random glucose 92 mg/dL.
+Sleeps seven hours a night.
+Latest WBC is 13.6 x10^9/L.
+Prefers to be addressed by first name.
+Owns a bicycle.","Man of 68 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+Has type 2 diabetes on metformin.
+Sleeps seven hours a night.
+Latest WBC is 13.6 x10^9/L.
+Prefers to be addressed by first name.
+Owns a bicycle.","Man of 68 years.
+Atrial fibrillation with a ventricular rate of 128/min.
+His friend is diabetic.
+Sleeps seven hours a night.
+Latest WBC is 13.6 x10^9/L.
+Prefers to be addressed by first name.
+Owns a bicycle.","need: diabetes
+found: Random glucose 92 mg/dL.
+subject: patient
+status: absent
+time: current","need: diabetes
+found: Has type 2 diabetes on metformin.
+subject: patient
+status: present
+time: current","need: diabetes
+found: His friend is diabetic.
+subject: other (friend)
+status: present
+time: current","For diabetes, the note states ""92""; this concerns the patient, is recorded as present, at present.","For diabetes, the note states ""Has type 2 diabetes on metformin.""; this concerns the patient, is recorded as present, at present.","For diabetes, the note states ""His friend is diabetic.""; this concerns the patient's friend, is recorded as present, at present.","{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""diabet""], ""overrides"": {}, ""seed"": 1827, ""tpl"": [""diabetes/rel/4"", ""filler/neutral/4"", ""wbc/current/5"", ""filler/neutral/47"", ""filler/neutral/34""], ""tpl_split"": ""test""}",,,,,
+E075,2,summary2 x triplets,B-F-summary2-triplets-s0,rule_v1.test.gs211.c2.subject.long.1905,gs211,g_two_of_three,subject,long,L2,base,-24.96732997894287,-30.24155616760254,26.082812309265137,27.36304759979248,"For stroke prevention in atrial fibrillation, prescribe apixaban. If at least two of the following apply, prescribe warfarin instead: the current blood urea nitrogen is above 19 mg/dL; the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time; the patient has an active peptic ulcer.",diabetes (patient or first-degree relative),Prescribe apixaban.,Prescribe warfarin.,"Male patient of 82 years.
+Atrial fibrillation; anticoagulation indicated.
+Sees a dentist yearly.
+Plays the piano.
+Blood urea nitrogen 16 mg/dL on the current labs.
+Enjoys board games.
+Active peptic ulcer disease.
+Photographs local wildlife.
+Uses sunscreen in summer.
+Lives in a second-floor apartment.
+Has two cats.
+Sleeps seven hours a night.
+Pupils equal and reactive to light.
+Zinc of 85 mcg/dL in 2010.
+Owns a bicycle.
+Free T4 of 1.2 ng/dL in 2014.
+Random glucose 92 mg/dL.
+Paints watercolors as a hobby.
+Teeth in good repair.
+Prefers morning appointments.
+During a checkup in 2009, total protein was 7.0 g/dL.
+His sister sprained a thumb last month.
+Prefers to be addressed by first name.
+His friend burned a hand on a stove years ago.
+His friend lives with psoriasis.","Male patient of 82 years.
+Atrial fibrillation; anticoagulation indicated.
+Sees a dentist yearly.
+Plays the piano.
+Blood urea nitrogen 16 mg/dL on the current labs.
+Enjoys board games.
+Active peptic ulcer disease.
+Photographs local wildlife.
+Uses sunscreen in summer.
+Lives in a second-floor apartment.
+Has two cats.
+Sleeps seven hours a night.
+Pupils equal and reactive to light.
+Zinc of 85 mcg/dL in 2010.
+Owns a bicycle.
+Free T4 of 1.2 ng/dL in 2014.
+Has type 2 diabetes on metformin.
+Paints watercolors as a hobby.
+Teeth in good repair.
+Prefers morning appointments.
+During a checkup in 2009, total protein was 7.0 g/dL.
+His sister sprained a thumb last month.
+Prefers to be addressed by first name.
+His friend burned a hand on a stove years ago.
+His friend lives with psoriasis.","Male patient of 82 years.
+Atrial fibrillation; anticoagulation indicated.
+Sees a dentist yearly.
+Plays the piano.
+Blood urea nitrogen 16 mg/dL on the current labs.
+Enjoys board games.
+Active peptic ulcer disease.
+Photographs local wildlife.
+Uses sunscreen in summer.
+Lives in a second-floor apartment.
+Has two cats.
+Sleeps seven hours a night.
+Pupils equal and reactive to light.
+Zinc of 85 mcg/dL in 2010.
+Owns a bicycle.
+Free T4 of 1.2 ng/dL in 2014.
+His roommate is diabetic.
+Paints watercolors as a hobby.
+Teeth in good repair.
+Prefers morning appointments.
+During a checkup in 2009, total protein was 7.0 g/dL.
+His sister sprained a thumb last month.
+Prefers to be addressed by first name.
+His friend burned a hand on a stove years ago.
+His friend lives with psoriasis.","need: diabetes (patient or first-degree relative)
+found: Random glucose 92 mg/dL.
+subject: patient
+status: absent
+time: current","need: diabetes (patient or first-degree relative)
+found: Has type 2 diabetes on metformin.
+subject: patient
+status: present
+time: current","need: diabetes (patient or first-degree relative)
+found: His roommate is diabetic.
+subject: other (roommate)
+status: present
+time: current","For diabetes (patient or first-degree relative), the note states ""92""; this concerns the patient, is recorded as present, at present.","For diabetes (patient or first-degree relative), the note states ""Has type 2 diabetes on metformin.""; this concerns the patient, is recorded as present, at present.","For diabetes (patient or first-degree relative), the note states ""His roommate is diabetic.""; this concerns the patient's roommate, is recorded as present, at present.","{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""diabet""], ""overrides"": {}, ""seed"": 1905, ""tpl"": [""filler/neutral/23"", ""filler/neutral/41"", ""bun/current/5"", ""filler/neutral/5"", ""peptic_ulcer/present/5"", ""filler/neutral/10"", ""filler/neutral/22"", ""filler/neutral/16"", ""filler/neutral/40"", ""filler/neutral/4"", ""filler/neutral/11"", ""filler/lab/16"", ""filler/neutral/34"", ""filler/lab/5"", ""diabetes/rel/4"", ""filler/neutral/28"", ""filler/neutral/35"", ""filler/neutral/29"", ""filler/lab/10"", ""filler/other/5"", ""filler/neutral/47"", ""filler/other/11"", ""filler/other/4""], ""tpl_split"": ""test""}",,,,,
+E076,2,summary2 x triplets,B-F-summary2-triplets-s0,rule_v1.test.gs223.c1.subject.long.541,gs223,g_two_of_three,subject,long,L2,base,-9.931800842285156,-31.19358539581299,27.420796394348145,-9.931800842285156,"For contraception, prescribe a combined oral contraceptive. If at least two of the following apply, prescribe a progestin-only pill instead: the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time; the patient or a first-degree relative (parent, sibling or child) has had colorectal cancer at any time; the current blood urea nitrogen is above 19 mg/dL.",diabetes (patient or first-degree relative),Prescribe a combined oral contraceptive.,Prescribe a progestin-only pill.,"Woman of 21 years.
+Requests contraception.
+Her sister wears contact lenses.
+Teeth in good repair.
+Pupils equal and reactive to light.
+Prefers morning appointments.
+Lives in a second-floor apartment.
+Prefers to be addressed by first name.
+Hemoglobin within the normal range on recent blood tests.
+Zinc of 85 mcg/dL in 2023.
+Photographs local wildlife.
+Her wife burned a hand on a stove years ago.
+Uses sunscreen in summer.
+Her uncle has a lazy eye.
+In 2024, folate was 12 ng/mL.
+Blood urea nitrogen now: 25 mg/dL.
+Has two cats.
+Sees a dentist yearly.
+Plays the piano.
+Drives a car.
+In 2023, lipase was 30 U/L.
+HbA1c 5.3% at a routine check.
+Knits as a hobby.
+Sleeps seven hours a night.
+Enjoys board games.","Woman of 21 years.
+Requests contraception.
+Her sister wears contact lenses.
+Teeth in good repair.
+Pupils equal and reactive to light.
+Prefers morning appointments.
+Lives in a second-floor apartment.
+Prefers to be addressed by first name.
+Hemoglobin within the normal range on recent blood tests.
+Zinc of 85 mcg/dL in 2023.
+Photographs local wildlife.
+Her wife burned a hand on a stove years ago.
+Uses sunscreen in summer.
+Her uncle has a lazy eye.
+In 2024, folate was 12 ng/mL.
+Blood urea nitrogen now: 25 mg/dL.
+Has two cats.
+Sees a dentist yearly.
+Plays the piano.
+Drives a car.
+In 2023, lipase was 30 U/L.
+Had diabetes years ago that went into remission on a low-calorie diet.
+Knits as a hobby.
+Sleeps seven hours a night.
+Enjoys board games.","Woman of 21 years.
+Requests contraception.
+Her sister wears contact lenses.
+Teeth in good repair.
+Pupils equal and reactive to light.
+Prefers morning appointments.
+Lives in a second-floor apartment.
+Prefers to be addressed by first name.
+Hemoglobin within the normal range on recent blood tests.
+Zinc of 85 mcg/dL in 2023.
+Photographs local wildlife.
+Her wife burned a hand on a stove years ago.
+Uses sunscreen in summer.
+Her uncle has a lazy eye.
+In 2024, folate was 12 ng/mL.
+Blood urea nitrogen now: 25 mg/dL.
+Has two cats.
+Sees a dentist yearly.
+Plays the piano.
+Drives a car.
+In 2023, lipase was 30 U/L.
+Her friend had diabetes years ago that went away after a change in diet.
+Knits as a hobby.
+Sleeps seven hours a night.
+Enjoys board games.","need: diabetes (patient or first-degree relative)
+found: HbA1c 5.3% at a routine check.
+subject: patient
+status: absent
+time: current","need: diabetes (patient or first-degree relative)
+found: Had diabetes years ago that went into remission on a low-calorie diet.
+subject: patient
+status: present
+time: past","need: diabetes (patient or first-degree relative)
+found: Her friend had diabetes years ago that went away after a change in diet.
+subject: other (friend)
+status: present
+time: past","For diabetes (patient or first-degree relative), the note states ""HbA1c 5.3% at a routine check.""; this concerns the patient, is recorded as present, at present.","For diabetes (patient or first-degree relative), the note states ""Had diabetes years ago that went into remission on a low-calorie diet.""; this concerns the patient, is recorded as present, in the past.","For diabetes (patient or first-degree relative), the note states ""Her friend had diabetes years ago that went away after a change in diet.""; this concerns the patient's friend, is recorded as present, in the past.","{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""diabet""], ""overrides"": {}, ""seed"": 541, ""tpl"": [""filler/other/16"", ""filler/neutral/35"", ""filler/neutral/11"", ""filler/neutral/29"", ""filler/neutral/16"", ""filler/neutral/47"", ""crc/generic/5"", ""filler/lab/16"", ""filler/neutral/10"", ""filler/other/11"", ""filler/neutral/22"", ""filler/other/10"", ""filler/lab/4"", ""bun/current/4"", ""filler/neutral/40"", ""filler/neutral/23"", ""filler/neutral/41"", ""filler/neutral/17"", ""filler/lab/11"", ""diabetes/rel_past/4"", ""filler/neutral/46"", ""filler/neutral/4"", ""filler/neutral/5""], ""tpl_split"": ""test""}",,,,,
+E077,2,verdict x blocks,B-F-verdict-blocks-s0,rule_v1.test.cut_bleed.egfr.boundary.easy.1485,cut_bleed,score_cutoff,boundary,easy,L2,near,20.89182949066162,-17.622790336608887,-3.105746626853943,19.082777976989746,"For dual antiplatelet therapy after a myocardial infarction, prescribe aspirin plus ticagrelor. Score 2 points for a major bleeding event at any time; 1 point for age 75 years or more; 1 point for a current eGFR below 30 mL/min/1.73 m2. If the score is 2 or more, prescribe aspirin plus clopidogrel instead.",eGFR below 30,Prescribe aspirin plus ticagrelor.,Prescribe aspirin plus clopidogrel.,"Man, adult.
+Recovering on the ward after a myocardial infarction treated with a stent.
+eGFR now 64 mL/min/1.73 m2.
+Has two cats.
+Current age 82 years.","Man, adult.
+Recovering on the ward after a myocardial infarction treated with a stent.
+eGFR now 28 mL/min/1.73 m2.
+Has two cats.
+Current age 82 years.","Man, adult.
+Recovering on the ward after a myocardial infarction treated with a stent.
+eGFR now 30 mL/min/1.73 m2.
+Has two cats.
+Current age 82 years.","need: eGFR below 30
+found: 64
+subject: patient
+status: present
+time: current","need: eGFR below 30
+found: 28
+subject: patient
+status: present
+time: current","need: eGFR below 30
+found: 30
+subject: patient
+status: present
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""egfr""], ""overrides"": {}, ""seed"": 1485, ""tpl"": [""egfr/current/5"", ""filler/neutral/40"", ""age/current/5""], ""tpl_split"": ""test""}",,,,,
+E078,2,verdict x blocks,B-F-verdict-blocks-s0,rule_v1.test.gs108.c2.boundary.easy.1021,gs108,g_any_of,boundary,easy,L2,near,30.381072998046875,-30.516955375671387,-12.44972276687622,30.57865333557129,"For heart failure with reduced ejection fraction, prescribe spironolactone. If the current white cell count is above 12.0 x10^9/L or the current temperature is above 38.0 C, prescribe dapagliflozin instead.",temperature above 38.0,Prescribe spironolactone.,Prescribe dapagliflozin.,"Male patient of 52 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Temperature now 36.9 C (tympanic).
+Prefers to be addressed by first name.
+Owns a bicycle.
+Current white cell count 10.4 x10^9/L.
+Uses sunscreen in summer.","Male patient of 52 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Temperature now 39.1 C (tympanic).
+Prefers to be addressed by first name.
+Owns a bicycle.
+Current white cell count 10.4 x10^9/L.
+Uses sunscreen in summer.","Male patient of 52 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Temperature now 38.0 C (tympanic).
+Prefers to be addressed by first name.
+Owns a bicycle.
+Current white cell count 10.4 x10^9/L.
+Uses sunscreen in summer.","need: temperature above 38.0
+found: 36.9
+subject: patient
+status: present
+time: current","need: temperature above 38.0
+found: 39.1
+subject: patient
+status: present
+time: current","need: temperature above 38.0
+found: 38.0
+subject: patient
+status: present
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""temperature""], ""overrides"": {}, ""seed"": 1021, ""tpl"": [""temperature/current/5"", ""filler/neutral/47"", ""filler/neutral/34"", ""wbc/current/4"", ""filler/neutral/22""], ""tpl_split"": ""test""}",,,,,
+E079,2,verdict x blocks,B-F-verdict-blocks-s0,rule_v1.test.gs223.c3.boundary.easy.1496,gs223,g_two_of_three,boundary,easy,L2,near,24.982837677001953,-25.052490234375,-9.733270406723022,23.247732162475586,"For contraception, prescribe a combined oral contraceptive. If at least two of the following apply, prescribe a progestin-only pill instead: the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time; the patient or a first-degree relative (parent, sibling or child) has had colorectal cancer at any time; the current blood urea nitrogen is above 19 mg/dL.",blood urea nitrogen above 19,Prescribe a combined oral contraceptive.,Prescribe a progestin-only pill.,"Female patient of 19 years.
+Requests contraception.
+Blood urea nitrogen 11 mg/dL on the current labs.
+Lives in a second-floor apartment.
+Lives with colon cancer and attends an oncology clinic.","Female patient of 19 years.
+Requests contraception.
+Blood urea nitrogen 26 mg/dL on the current labs.
+Lives in a second-floor apartment.
+Lives with colon cancer and attends an oncology clinic.","Female patient of 19 years.
+Requests contraception.
+Blood urea nitrogen 19 mg/dL on the current labs.
+Lives in a second-floor apartment.
+Lives with colon cancer and attends an oncology clinic.","need: blood urea nitrogen above 19
+found: 11
+subject: patient
+status: present
+time: current","need: blood urea nitrogen above 19
+found: 26
+subject: patient
+status: present
+time: current","need: blood urea nitrogen above 19
+found: 19
+subject: patient
+status: present
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""bun"", ""urea nitrogen""], ""overrides"": {}, ""seed"": 1496, ""tpl"": [""bun/current/5"", ""filler/neutral/16"", ""crc/present/5""], ""tpl_split"": ""test""}",,,,,
+E080,2,verdict x blocks,B-F-verdict-blocks-s0,rule_v1.test.gs134.c1.negation.easy.717,gs134,g_score_cutoff,negation,easy,L2,base; near,-0.4018898010253906,-16.128726482391357,-2.2808209657669067,-1.48861563205719,"For contraception, prescribe a combined oral contraceptive. Score 2 points if the patient or a first-degree relative (parent, sibling or child) has had coronary artery disease at any time; 2 points if the current weight is 60 kg or less; 2 points if the current platelet count is below 50 x10^9/L; 1 point if the patient currently has tender anterior cervical lymph nodes. If the score is 7 or more, prescribe a progestin-only pill instead.",coronary artery disease (patient or first-degree relative),Prescribe a combined oral contraceptive.,Prescribe a progestin-only pill.,"Woman of 20 years.
+Requests contraception.
+Drives a car.
+Current platelet count 40 x10^9/L.
+Anterior cervical lymph nodes enlarged and tender to touch.
+Chest pain on exertion: none reported.
+Latest weight 60 kg.","Woman of 20 years.
+Requests contraception.
+Drives a car.
+Current platelet count 40 x10^9/L.
+Anterior cervical lymph nodes enlarged and tender to touch.
+Known coronary artery disease (two-vessel disease on angiography).
+Latest weight 60 kg.","Woman of 20 years.
+Requests contraception.
+Drives a car.
+Current platelet count 40 x10^9/L.
+Anterior cervical lymph nodes enlarged and tender to touch.
+Has never had coronary artery disease.
+Latest weight 60 kg.","need: coronary artery disease (patient or first-degree relative)
+found: Chest pain on exertion: none reported.
+subject: patient
+status: absent
+time: current","need: coronary artery disease (patient or first-degree relative)
+found: Known coronary artery disease (two-vessel disease on angiography).
+subject: patient
+status: present
+time: current","need: coronary artery disease (patient or first-degree relative)
+found: Has never had coronary artery disease.
+subject: patient
+status: absent
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""coronary""], ""overrides"": {}, ""seed"": 717, ""tpl"": [""filler/neutral/17"", ""platelets/current/4"", ""neck_nodes/present/4"", ""cad/absent/4"", ""weight/current/5""], ""tpl_split"": ""test""}",,,,,
+E081,2,verdict x blocks,B-F-verdict-blocks-s0,rule_v1.test.gs230.c2.negation.easy.545,gs230,g_score_cutoff,negation,easy,L2,base; near,-10.817416191101074,-15.854730606079102,-5.398907661437988,-6.728880882263184,"For uncomplicated cystitis, prescribe trimethoprim-sulfamethoxazole. Score 2 points if the patient has ever had a myocardial infarction or peripheral artery disease (current or past); 2 points if the patient currently has tonsillar exudate; 3 points if the current calf swelling compared with the other leg is 3.0 cm or more; 1 point if the patient has ever had a peptic ulcer (current or past). If the score is 8 or more, prescribe nitrofurantoin instead.",tonsillar exudate,Prescribe trimethoprim-sulfamethoxazole.,Prescribe nitrofurantoin.,"Woman of 60 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Uses sunscreen in summer.
+Difference in calf circumference now 4.4 cm.
+Paints watercolors as a hobby.
+Has two cats.
+Active peptic ulcer disease.
+Lives with peripheral artery disease affecting the left leg.
+Prefers morning appointments.","Woman of 60 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Uses sunscreen in summer.
+Difference in calf circumference now 4.4 cm.
+Paints watercolors as a hobby.
+Has two cats.
+Tonsils swollen and coated with yellow exudate.
+Active peptic ulcer disease.
+Lives with peripheral artery disease affecting the left leg.
+Prefers morning appointments.","Woman of 60 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Uses sunscreen in summer.
+Difference in calf circumference now 4.4 cm.
+Paints watercolors as a hobby.
+Has two cats.
+Tonsillar exudate absent on examination.
+Active peptic ulcer disease.
+Lives with peripheral artery disease affecting the left leg.
+Prefers morning appointments.","need: tonsillar exudate
+found: not mentioned
+subject: patient
+status: absent
+time: current","need: tonsillar exudate
+found: Tonsils swollen and coated with yellow exudate.
+subject: patient
+status: present
+time: current","need: tonsillar exudate
+found: Tonsillar exudate absent on examination.
+subject: patient
+status: absent
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""exudate""], ""overrides"": {}, ""seed"": 545, ""tpl"": [""filler/neutral/22"", ""calf_swelling/current/5"", ""filler/neutral/28"", ""filler/neutral/40"", ""exudate/absent/5"", ""peptic_ulcer/present/5"", ""vascular/present/4"", ""filler/neutral/29""], ""tpl_split"": ""test""}",,,,,
+E082,2,verdict x blocks,B-F-verdict-blocks-s0,rule_v1.test.gs004.c4.numeric.easy.582,gs004,g_score_cutoff,numeric,easy,L2,base; near,-2.926286458969116,-19.488978385925293,-4.206038236618042,-2.149114489555359,"For community-acquired pneumonia, prescribe oral amoxicillin. Score 1 point if the patient is currently taking aspirin; 2 points if the patient has ever had heart failure (current or past); 1 point if the patient has had a major bleeding event at any time; 3 points if the current respiratory rate is 25/min or more. If the score is 4 or more, prescribe intravenous co-amoxiclav instead.",respiratory rate at least 25,Prescribe oral amoxicillin.,Prescribe intravenous co-amoxiclav.,"Female patient of 69 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Currently on low-dose aspirin each day.
+Observations now: respiratory rate 20/min.
+Pupils equal and reactive to light.
+Current heart failure with ankle swelling.","Female patient of 69 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Currently on low-dose aspirin each day.
+Observations now: respiratory rate 25/min.
+Pupils equal and reactive to light.
+Current heart failure with ankle swelling.","Female patient of 69 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Currently on low-dose aspirin each day.
+Observations now: respiratory rate 24/min.
+Pupils equal and reactive to light.
+Current heart failure with ankle swelling.","need: respiratory rate at least 25
+found: 20
+subject: patient
+status: present
+time: current","need: respiratory rate at least 25
+found: 25
+subject: patient
+status: present
+time: current","need: respiratory rate at least 25
+found: 24
+subject: patient
+status: present
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""respiratory rate""], ""overrides"": {}, ""seed"": 582, ""tpl"": [""aspirin/present/4"", ""rr/current/5"", ""filler/neutral/11"", ""chf/present/5""], ""tpl_split"": ""test""}",,,,,
+E083,2,verdict x blocks,B-F-verdict-blocks-s0,rule_v1.test.gs134.c2.numeric.easy.737,gs134,g_score_cutoff,numeric,easy,L2,base; near,-6.612780332565308,-16.603114128112793,-4.278290748596191,-2.2277392148971558,"For contraception, prescribe a combined oral contraceptive. Score 2 points if the patient or a first-degree relative (parent, sibling or child) has had coronary artery disease at any time; 2 points if the current weight is 60 kg or less; 2 points if the current platelet count is below 50 x10^9/L; 1 point if the patient currently has tender anterior cervical lymph nodes. If the score is 7 or more, prescribe a progestin-only pill instead.",weight at or below 60,Prescribe a combined oral contraceptive.,Prescribe a progestin-only pill.,"Woman of 33 years.
+Requests contraception.
+Current platelet count 46 x10^9/L.
+Prefers to be addressed by first name.
+Pupils equal and reactive to light.
+Coronary artery disease years ago, with angina that went away after bypass surgery.
+Current weight 93 kg.
+Tender, swollen lymph nodes in the front of the neck.","Woman of 33 years.
+Requests contraception.
+Current platelet count 46 x10^9/L.
+Prefers to be addressed by first name.
+Pupils equal and reactive to light.
+Coronary artery disease years ago, with angina that went away after bypass surgery.
+Current weight 50 kg.
+Tender, swollen lymph nodes in the front of the neck.","Woman of 33 years.
+Requests contraception.
+Current platelet count 46 x10^9/L.
+Prefers to be addressed by first name.
+Pupils equal and reactive to light.
+Coronary artery disease years ago, with angina that went away after bypass surgery.
+Current weight 63 kg.
+Tender, swollen lymph nodes in the front of the neck.","need: weight at or below 60
+found: 93
+subject: patient
+status: present
+time: current","need: weight at or below 60
+found: 50
+subject: patient
+status: present
+time: current","need: weight at or below 60
+found: 63
+subject: patient
+status: present
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""weight"", ""weighs""], ""overrides"": {}, ""seed"": 737, ""tpl"": [""platelets/current/4"", ""filler/neutral/47"", ""filler/neutral/11"", ""cad/past/4"", ""weight/current/4"", ""neck_nodes/present/5""], ""tpl_split"": ""test""}",,,,,
+E084,2,verdict x blocks,B-F-verdict-blocks-s0,rule_v1.test.gs230.c3.numeric.long.346,gs230,g_score_cutoff,numeric,long,L2,base; near,-2.641516089439392,-14.600765705108643,-2.6539130210876465,-1.072333812713623,"For uncomplicated cystitis, prescribe trimethoprim-sulfamethoxazole. Score 2 points if the patient has ever had a myocardial infarction or peripheral artery disease (current or past); 2 points if the patient currently has tonsillar exudate; 3 points if the current calf swelling compared with the other leg is 3.0 cm or more; 1 point if the patient has ever had a peptic ulcer (current or past). If the score is 8 or more, prescribe nitrofurantoin instead.",calf swelling at least 3.0,Prescribe trimethoprim-sulfamethoxazole.,Prescribe nitrofurantoin.,"Female patient of 45 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Has an active duodenal ulcer.
+Paints watercolors as a hobby.
+Knits as a hobby.
+In 2019, folate was 12 ng/mL.
+Plays the piano.
+Lives in a second-floor apartment.
+Drives a car.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+Her uncle wears contact lenses.
+During a checkup in 2017, total protein was 7.0 g/dL.
+Sleeps seven hours a night.
+Prefers to be addressed by first name.
+Enjoys board games.
+Difference in calf circumference now 0.1 cm.
+Zinc of 85 mcg/dL in 2024.
+Teeth in good repair.
+Her sister has recovered from a dislocated finger.
+In 2011, lipase was 30 U/L.
+Uses sunscreen in summer.
+Photographs local wildlife.
+Recovered from a heart attack in 2008.
+Has two cats.
+Tonsillar exudate visible on both sides.","Female patient of 45 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Has an active duodenal ulcer.
+Paints watercolors as a hobby.
+Knits as a hobby.
+In 2019, folate was 12 ng/mL.
+Plays the piano.
+Lives in a second-floor apartment.
+Drives a car.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+Her uncle wears contact lenses.
+During a checkup in 2017, total protein was 7.0 g/dL.
+Sleeps seven hours a night.
+Prefers to be addressed by first name.
+Enjoys board games.
+Difference in calf circumference now 3.2 cm.
+Zinc of 85 mcg/dL in 2024.
+Teeth in good repair.
+Her sister has recovered from a dislocated finger.
+In 2011, lipase was 30 U/L.
+Uses sunscreen in summer.
+Photographs local wildlife.
+Recovered from a heart attack in 2008.
+Has two cats.
+Tonsillar exudate visible on both sides.","Female patient of 45 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Has an active duodenal ulcer.
+Paints watercolors as a hobby.
+Knits as a hobby.
+In 2019, folate was 12 ng/mL.
+Plays the piano.
+Lives in a second-floor apartment.
+Drives a car.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+Her uncle wears contact lenses.
+During a checkup in 2017, total protein was 7.0 g/dL.
+Sleeps seven hours a night.
+Prefers to be addressed by first name.
+Enjoys board games.
+Difference in calf circumference now 2.7 cm.
+Zinc of 85 mcg/dL in 2024.
+Teeth in good repair.
+Her sister has recovered from a dislocated finger.
+In 2011, lipase was 30 U/L.
+Uses sunscreen in summer.
+Photographs local wildlife.
+Recovered from a heart attack in 2008.
+Has two cats.
+Tonsillar exudate visible on both sides.","need: calf swelling at least 3.0
+found: 0.1
+subject: patient
+status: present
+time: current","need: calf swelling at least 3.0
+found: 3.2
+subject: patient
+status: present
+time: current","need: calf swelling at least 3.0
+found: 2.7
+subject: patient
+status: present
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""calf circumference"", ""calf swelling""], ""overrides"": {}, ""seed"": 346, ""tpl"": [""peptic_ulcer/present/4"", ""filler/neutral/28"", ""filler/neutral/46"", ""filler/lab/4"", ""filler/neutral/41"", ""filler/neutral/16"", ""filler/neutral/17"", ""filler/neutral/23"", ""filler/neutral/11"", ""filler/other/16"", ""filler/lab/10"", ""filler/neutral/4"", ""filler/neutral/47"", ""filler/neutral/5"", ""calf_swelling/current/5"", ""filler/lab/16"", ""filler/neutral/35"", ""filler/other/17"", ""filler/lab/11"", ""filler/neutral/22"", ""filler/neutral/10"", ""vascular/past/5"", ""filler/neutral/40"", ""exudate/present/5""], ""tpl_split"": ""test""}",,,,,
+E085,2,verdict x blocks,B-F-verdict-blocks-s0,rule_v1.test.gs079.c2.subject.long.1593,gs079,g_two_of_three,subject,long,L2,near,22.340436935424805,-24.443532943725586,-22.124910354614258,21.99538516998291,"For suspected infection on the medical ward, prescribe oral amoxicillin. If at least two of the following apply, prescribe intravenous piperacillin-tazobactam instead: the current blood urea nitrogen is above 19 mg/dL; the patient has had a major bleeding event at any time; the patient currently has heart failure.",bleeding history,Prescribe oral amoxicillin.,Prescribe intravenous piperacillin-tazobactam.,"Female patient of 65 years.
+Suspected chest infection; assessed on the medical ward.
+Blood urea nitrogen 26 mg/dL on the current labs.
+Sleeps seven hours a night.
+During a checkup in 2011, free T3 was 3.2 pg/mL.
+Lives in a second-floor apartment.
+Prefers to be addressed by first name.
+Enjoys board games.
+In 2020, folate was 12 ng/mL.
+Plays the piano.
+Examination shows no signs of blood loss.
+Her roommate sprained a thumb last month.
+Her wife lives with psoriasis.
+Zinc of 85 mcg/dL in 2008.
+Pupils equal and reactive to light.
+Owns a bicycle.
+Her wife burned a hand on a stove years ago.
+Prefers morning appointments.
+During a checkup in 2015, total protein was 7.0 g/dL.
+Has two cats.
+Paints watercolors as a hobby.
+Her wife has recovered from a dislocated finger.","Female patient of 65 years.
+Suspected chest infection; assessed on the medical ward.
+Blood urea nitrogen 26 mg/dL on the current labs.
+Sleeps seven hours a night.
+During a checkup in 2011, free T3 was 3.2 pg/mL.
+Lives in a second-floor apartment.
+Prefers to be addressed by first name.
+Enjoys board games.
+In 2020, folate was 12 ng/mL.
+Plays the piano.
+Major intracranial bleed after a fall years ago, with full recovery.
+Her roommate sprained a thumb last month.
+Her wife lives with psoriasis.
+Zinc of 85 mcg/dL in 2008.
+Pupils equal and reactive to light.
+Owns a bicycle.
+Her wife burned a hand on a stove years ago.
+Prefers morning appointments.
+During a checkup in 2015, total protein was 7.0 g/dL.
+Has two cats.
+Paints watercolors as a hobby.
+Her wife has recovered from a dislocated finger.","Female patient of 65 years.
+Suspected chest infection; assessed on the medical ward.
+Blood urea nitrogen 26 mg/dL on the current labs.
+Sleeps seven hours a night.
+During a checkup in 2011, free T3 was 3.2 pg/mL.
+Lives in a second-floor apartment.
+Prefers to be addressed by first name.
+Enjoys board games.
+In 2020, folate was 12 ng/mL.
+Plays the piano.
+Her wife needed a blood transfusion for a major bleed years ago.
+Her roommate sprained a thumb last month.
+Her wife lives with psoriasis.
+Zinc of 85 mcg/dL in 2008.
+Pupils equal and reactive to light.
+Owns a bicycle.
+Her wife burned a hand on a stove years ago.
+Prefers morning appointments.
+During a checkup in 2015, total protein was 7.0 g/dL.
+Has two cats.
+Paints watercolors as a hobby.
+Her wife has recovered from a dislocated finger.","need: bleeding history
+found: Examination shows no signs of blood loss.
+subject: patient
+status: absent
+time: current","need: bleeding history
+found: Major intracranial bleed after a fall years ago, with full recovery.
+subject: patient
+status: present
+time: past","need: bleeding history
+found: Her wife needed a blood transfusion for a major bleed years ago.
+subject: other (wife)
+status: present
+time: past",,,,"{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""bleed""], ""overrides"": {}, ""seed"": 1593, ""tpl"": [""bun/current/5"", ""filler/neutral/4"", ""filler/lab/17"", ""filler/neutral/16"", ""filler/neutral/47"", ""filler/neutral/5"", ""filler/lab/4"", ""filler/neutral/41"", ""bleeding/rel_past/4"", ""filler/other/5"", ""filler/other/4"", ""filler/lab/16"", ""filler/neutral/11"", ""filler/neutral/34"", ""filler/other/11"", ""filler/neutral/29"", ""filler/lab/10"", ""filler/neutral/40"", ""filler/neutral/28"", ""filler/other/17""], ""tpl_split"": ""test""}",,,,,
+E086,2,verdict x blocks,B-F-verdict-blocks-s0,rule_v1.test.s1_meds.ams.subject.long.1436,s1_meds,additive_score,subject,long,L2,near,25.215893745422363,-25.14614963531494,-1.5460864305496216,25.224167823791504,"Mortality in Emergency Department Sepsis score (as used here, partial): 3 points for a current platelet count below 150 x10^9/L; 3 points for an age above 65 years; 2 points for current altered mental status (confusion or disorientation). Other items of the score are not part of this question.",altered mental status,The altered mental status criterion contributes 0 points.,The altered mental status criterion contributes 2 points.,"An adult man.
+Suspected sepsis; admitted from the emergency department.
+Has two cats.
+Uses sunscreen in summer.
+Gives a clear account of the illness.
+Platelet count now 160 x10^9/L.
+Prefers to be addressed by first name.
+Current age 55 years.
+Photographs local wildlife.
+Sleeps seven hours a night.
+Lives in a second-floor apartment.
+Knits as a hobby.
+Paints watercolors as a hobby.
+His father sprained a thumb last month.
+Plays the piano.
+Enjoys board games.
+His friend burned a hand on a stove years ago.
+Prefers morning appointments.
+Free T4 of 1.2 ng/dL in 2020.
+Sees a dentist yearly.
+Drives a car.
+Pupils equal and reactive to light.
+In 2009, lipase was 30 U/L.","An adult man.
+Suspected sepsis; admitted from the emergency department.
+Has two cats.
+Uses sunscreen in summer.
+Disoriented to time and place, which is new for the patient.
+Platelet count now 160 x10^9/L.
+Prefers to be addressed by first name.
+Current age 55 years.
+Photographs local wildlife.
+Sleeps seven hours a night.
+Lives in a second-floor apartment.
+Knits as a hobby.
+Paints watercolors as a hobby.
+His father sprained a thumb last month.
+Plays the piano.
+Enjoys board games.
+His friend burned a hand on a stove years ago.
+Prefers morning appointments.
+Free T4 of 1.2 ng/dL in 2020.
+Sees a dentist yearly.
+Drives a car.
+Pupils equal and reactive to light.
+In 2009, lipase was 30 U/L.","An adult man.
+Suspected sepsis; admitted from the emergency department.
+Has two cats.
+Uses sunscreen in summer.
+His father is newly disoriented.
+Platelet count now 160 x10^9/L.
+Prefers to be addressed by first name.
+Current age 55 years.
+Photographs local wildlife.
+Sleeps seven hours a night.
+Lives in a second-floor apartment.
+Knits as a hobby.
+Paints watercolors as a hobby.
+His father sprained a thumb last month.
+Plays the piano.
+Enjoys board games.
+His friend burned a hand on a stove years ago.
+Prefers morning appointments.
+Free T4 of 1.2 ng/dL in 2020.
+Sees a dentist yearly.
+Drives a car.
+Pupils equal and reactive to light.
+In 2009, lipase was 30 U/L.","need: altered mental status
+found: Gives a clear account of the illness.
+subject: patient
+status: absent
+time: current","need: altered mental status
+found: Disoriented to time and place, which is new for the patient.
+subject: patient
+status: present
+time: current","need: altered mental status
+found: His father is newly disoriented.
+subject: other (father)
+status: present
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""confus"", ""disorient""], ""overrides"": {}, ""seed"": 1436, ""tpl"": [""filler/neutral/40"", ""filler/neutral/22"", ""confusion/rel/5"", ""platelets/current/5"", ""filler/neutral/47"", ""age/current/5"", ""filler/neutral/10"", ""filler/neutral/4"", ""filler/neutral/16"", ""filler/neutral/46"", ""filler/neutral/28"", ""filler/other/5"", ""filler/neutral/41"", ""filler/neutral/5"", ""filler/other/11"", ""filler/neutral/29"", ""filler/lab/5"", ""filler/neutral/23"", ""filler/neutral/17"", ""filler/neutral/11"", ""filler/lab/11""], ""tpl_split"": ""test""}",,,,,
+E087,2,verdict x blocks,B-F-verdict-blocks-s0,rule_v1.test.gs035.c1.time.long.569,gs035,g_two_of_three,time,long,L2,near,25.367713928222656,-17.19547176361084,-15.184060096740723,24.95985698699951,"For contraception, prescribe a combined oral contraceptive. If at least two of the following apply, prescribe a progestin-only pill instead: the patient currently has heart failure; the age of the patient is 75 years or more; the patient has had cancer at any time (active or in remission).",current heart failure,Prescribe a combined oral contraceptive.,Prescribe a progestin-only pill.,"Woman, adult.
+Requests contraception.
+Plays the piano.
+Free T4 of 1.2 ng/dL in 2023.
+Sees a dentist yearly.
+Uses sunscreen in summer.
+Enjoys board games.
+During a checkup in 2023, free T3 was 3.2 pg/mL.
+Her father burned a hand on a stove years ago.
+Prefers to be addressed by first name.
+Sleeps seven hours a night.
+Knits as a hobby.
+Has two cats.
+Owns a bicycle.
+Teeth in good repair.
+Zinc of 85 mcg/dL in 2020.
+Paints watercolors as a hobby.
+Her father sprained a thumb last month.
+Photographs local wildlife.
+Currently aged 64 years.
+Drives a car.
+Pupils equal and reactive to light.
+Has metastatic lung cancer, receiving palliative treatment.
+In 2006, folate was 12 ng/mL.","Woman, adult.
+Requests contraception.
+Plays the piano.
+Free T4 of 1.2 ng/dL in 2023.
+Sees a dentist yearly.
+Uses sunscreen in summer.
+Enjoys board games.
+Has heart failure, treated with diuretics.
+During a checkup in 2023, free T3 was 3.2 pg/mL.
+Her father burned a hand on a stove years ago.
+Prefers to be addressed by first name.
+Sleeps seven hours a night.
+Knits as a hobby.
+Has two cats.
+Owns a bicycle.
+Teeth in good repair.
+Zinc of 85 mcg/dL in 2020.
+Paints watercolors as a hobby.
+Her father sprained a thumb last month.
+Photographs local wildlife.
+Currently aged 64 years.
+Drives a car.
+Pupils equal and reactive to light.
+Has metastatic lung cancer, receiving palliative treatment.
+In 2006, folate was 12 ng/mL.","Woman, adult.
+Requests contraception.
+Plays the piano.
+Free T4 of 1.2 ng/dL in 2023.
+Sees a dentist yearly.
+Uses sunscreen in summer.
+Enjoys board games.
+Had heart failure years ago from severe anemia; it recovered fully once the anemia was corrected.
+During a checkup in 2023, free T3 was 3.2 pg/mL.
+Her father burned a hand on a stove years ago.
+Prefers to be addressed by first name.
+Sleeps seven hours a night.
+Knits as a hobby.
+Has two cats.
+Owns a bicycle.
+Teeth in good repair.
+Zinc of 85 mcg/dL in 2020.
+Paints watercolors as a hobby.
+Her father sprained a thumb last month.
+Photographs local wildlife.
+Currently aged 64 years.
+Drives a car.
+Pupils equal and reactive to light.
+Has metastatic lung cancer, receiving palliative treatment.
+In 2006, folate was 12 ng/mL.","need: current heart failure
+found: not mentioned
+subject: patient
+status: absent
+time: current","need: current heart failure
+found: Has heart failure, treated with diuretics.
+subject: patient
+status: present
+time: current","need: current heart failure
+found: Had heart failure years ago from severe anemia; it recovered fully once the anemia was corrected.
+subject: patient
+status: present
+time: past",,,,"{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""heart failure""], ""overrides"": {}, ""seed"": 569, ""tpl"": [""filler/neutral/41"", ""filler/lab/5"", ""filler/neutral/23"", ""filler/neutral/22"", ""filler/neutral/5"", ""chf/past/4"", ""filler/lab/17"", ""filler/other/11"", ""filler/neutral/47"", ""filler/neutral/4"", ""filler/neutral/46"", ""filler/neutral/40"", ""filler/neutral/34"", ""filler/neutral/35"", ""filler/lab/16"", ""filler/neutral/28"", ""filler/other/5"", ""filler/neutral/10"", ""age/current/4"", ""filler/neutral/17"", ""filler/neutral/11"", ""cancer/present/4"", ""filler/lab/4""], ""tpl_split"": ""test""}",,,,,
+E088,2,verdict x blocks,B-F-verdict-blocks-s0,rule_v1.test.gs157.c2.time.easy.216,gs157,g_two_of_three,time,easy,L2,near,27.946953773498535,-24.54254722595215,-3.5950331687927246,28.303525924682617,"For community-acquired pneumonia, prescribe oral amoxicillin. If at least two of the following apply, prescribe intravenous co-amoxiclav instead: the patient has ever had heart failure (current or past); the current platelet count is below 50 x10^9/L; the current temperature is above 38.0 C.",platelet count below 50,Prescribe oral amoxicillin.,Prescribe intravenous co-amoxiclav.,"Man of 80 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Platelet count now 378 x10^9/L.
+Records from 2006 list platelet count at 187 x10^9/L.
+Teeth in good repair.
+Formerly had heart failure from stress cardiomyopathy; recovered fully in 2008 and off all heart medicines since.
+Sleeps seven hours a night.
+Knits as a hobby.
+Lives in a second-floor apartment.
+Temperature now 36.9 C (tympanic).","Man of 80 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Platelet count now 32 x10^9/L.
+Records from 2006 list platelet count at 187 x10^9/L.
+Teeth in good repair.
+Formerly had heart failure from stress cardiomyopathy; recovered fully in 2008 and off all heart medicines since.
+Sleeps seven hours a night.
+Knits as a hobby.
+Lives in a second-floor apartment.
+Temperature now 36.9 C (tympanic).","Man of 80 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Platelet count now 378 x10^9/L.
+Records from 2006 list platelet count at 27 x10^9/L.
+Teeth in good repair.
+Formerly had heart failure from stress cardiomyopathy; recovered fully in 2008 and off all heart medicines since.
+Sleeps seven hours a night.
+Knits as a hobby.
+Lives in a second-floor apartment.
+Temperature now 36.9 C (tympanic).","need: platelet count below 50
+found: 378
+subject: patient
+status: present
+time: current
+
+need: platelet count below 50
+found: 187
+subject: patient
+status: present
+time: past (2006)","need: platelet count below 50
+found: 32
+subject: patient
+status: present
+time: current
+
+need: platelet count below 50
+found: 187
+subject: patient
+status: present
+time: past (2006)","need: platelet count below 50
+found: 378
+subject: patient
+status: present
+time: current
+
+need: platelet count below 50
+found: 27
+subject: patient
+status: present
+time: past (2006)",,,,"{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""platelet""], ""overrides"": {}, ""seed"": 216, ""tpl"": [""platelets/current/5"", ""platelets/past/4"", ""filler/neutral/35"", ""chf/past/5"", ""filler/neutral/4"", ""filler/neutral/46"", ""filler/neutral/16"", ""temperature/current/5""], ""tpl_split"": ""test""}",,,,,
+E089,2,verdict x triplets,B-F-verdict-triplets-s0,rule_v1.test.gs024.c1.boundary.easy.904,gs024,g_score_cutoff,boundary,easy,L2,flip,19.104652404785156,4.193775653839111,20.12030029296875,19.19053077697754,"For uncomplicated cystitis, prescribe trimethoprim-sulfamethoxazole. Score 3 points if the current ALT is above 120 U/L; 1 point if the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time; 3 points if the current systolic blood pressure is above 160 mmHg; 2 points if the patient or a first-degree relative (parent, sibling or child) has had a venous thromboembolism at any time. If the score is 4 or more, prescribe nitrofurantoin instead.",ALT above 120,Prescribe trimethoprim-sulfamethoxazole.,Prescribe nitrofurantoin.,"Woman of 39 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Teeth in good repair.
+Recovered from a pulmonary embolism in 2023.
+Has two cats.
+Current ALT 27 U/L.
+Drives a car.
+Sees a dentist yearly.
+Current systolic blood pressure 127 mmHg.
+Random glucose 92 mg/dL.","Woman of 39 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Teeth in good repair.
+Recovered from a pulmonary embolism in 2023.
+Has two cats.
+Current ALT 147 U/L.
+Drives a car.
+Sees a dentist yearly.
+Current systolic blood pressure 127 mmHg.
+Random glucose 92 mg/dL.","Woman of 39 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Teeth in good repair.
+Recovered from a pulmonary embolism in 2023.
+Has two cats.
+Current ALT 120 U/L.
+Drives a car.
+Sees a dentist yearly.
+Current systolic blood pressure 127 mmHg.
+Random glucose 92 mg/dL.","need: ALT above 120
+found: 27
+subject: patient
+status: present
+time: current","need: ALT above 120
+found: 147
+subject: patient
+status: present
+time: current","need: ALT above 120
+found: 120
+subject: patient
+status: present
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""alt ""], ""overrides"": {}, ""seed"": 904, ""tpl"": [""filler/neutral/35"", ""vte/past/5"", ""filler/neutral/40"", ""alt_enzyme/current/4"", ""filler/neutral/17"", ""filler/neutral/23"", ""sbp/current/4"", ""diabetes/generic/5""], ""tpl_split"": ""test""}",,,,,
+E090,2,verdict x triplets,B-F-verdict-triplets-s0,rule_v1.test.gs118.c3.boundary.easy.136,gs118,g_score_cutoff,boundary,easy,L2,flip,15.967291831970215,5.96538519859314,19.237088203430176,17.87772846221924,"For heart failure with reduced ejection fraction, prescribe spironolactone. Score 2 points if the current white cell count is above 12.0 x10^9/L; 3 points if the patient has ever had angioedema (current or past); 2 points if the current eGFR is below 45 mL/min/1.73 m2; 1 point if the current heart rate is above 90/min. If the score is 4 or more, prescribe dapagliflozin instead.",eGFR below 45,Prescribe spironolactone.,Prescribe dapagliflozin.,"Male patient of 76 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Drives a car.
+Latest WBC is 13.1 x10^9/L.
+Heart rate now 58/min on a pulse check.
+Current eGFR 88 mL/min/1.73 m2.","Male patient of 76 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Drives a car.
+Latest WBC is 13.1 x10^9/L.
+Heart rate now 58/min on a pulse check.
+Current eGFR 40 mL/min/1.73 m2.","Male patient of 76 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Drives a car.
+Latest WBC is 13.1 x10^9/L.
+Heart rate now 58/min on a pulse check.
+Current eGFR 45 mL/min/1.73 m2.","need: eGFR below 45
+found: 88
+subject: patient
+status: present
+time: current","need: eGFR below 45
+found: 40
+subject: patient
+status: present
+time: current","need: eGFR below 45
+found: 45
+subject: patient
+status: present
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""egfr""], ""overrides"": {}, ""seed"": 136, ""tpl"": [""filler/neutral/17"", ""wbc/current/5"", ""heart_rate/current/5"", ""egfr/current/4""], ""tpl_split"": ""test""}",,,,,
+E091,2,verdict x triplets,B-F-verdict-triplets-s0,rule_v1.test.gs223.c3.boundary.easy.1496,gs223,g_two_of_three,boundary,easy,L2,flip,12.41820478439331,2.348343014717102,12.613265037536621,10.368152141571045,"For contraception, prescribe a combined oral contraceptive. If at least two of the following apply, prescribe a progestin-only pill instead: the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time; the patient or a first-degree relative (parent, sibling or child) has had colorectal cancer at any time; the current blood urea nitrogen is above 19 mg/dL.",blood urea nitrogen above 19,Prescribe a combined oral contraceptive.,Prescribe a progestin-only pill.,"Female patient of 19 years.
+Requests contraception.
+Blood urea nitrogen 11 mg/dL on the current labs.
+Lives in a second-floor apartment.
+Lives with colon cancer and attends an oncology clinic.","Female patient of 19 years.
+Requests contraception.
+Blood urea nitrogen 26 mg/dL on the current labs.
+Lives in a second-floor apartment.
+Lives with colon cancer and attends an oncology clinic.","Female patient of 19 years.
+Requests contraception.
+Blood urea nitrogen 19 mg/dL on the current labs.
+Lives in a second-floor apartment.
+Lives with colon cancer and attends an oncology clinic.","need: blood urea nitrogen above 19
+found: 11
+subject: patient
+status: present
+time: current","need: blood urea nitrogen above 19
+found: 26
+subject: patient
+status: present
+time: current","need: blood urea nitrogen above 19
+found: 19
+subject: patient
+status: present
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""bun"", ""urea nitrogen""], ""overrides"": {}, ""seed"": 1496, ""tpl"": [""bun/current/5"", ""filler/neutral/16"", ""crc/present/5""], ""tpl_split"": ""test""}",,,,,
+E092,2,verdict x triplets,B-F-verdict-triplets-s0,rule_v1.test.gs004.c3.negation.easy.566,gs004,g_score_cutoff,negation,easy,L2,base,-0.3580418825149536,-5.66366183757782,3.9640281200408936,2.404698133468628,"For community-acquired pneumonia, prescribe oral amoxicillin. Score 1 point if the patient is currently taking aspirin; 2 points if the patient has ever had heart failure (current or past); 1 point if the patient has had a major bleeding event at any time; 3 points if the current respiratory rate is 25/min or more. If the score is 4 or more, prescribe intravenous co-amoxiclav instead.",bleeding history,Prescribe oral amoxicillin.,Prescribe intravenous co-amoxiclav.,"Woman of 77 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Swallows one low-dose aspirin each night.
+Current heart failure with ankle swelling.
+Owns a bicycle.
+Bowel habit normal, without any blood in the stool.
+Observations now: respiratory rate 17/min.","Woman of 77 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Swallows one low-dose aspirin each night.
+Current heart failure with ankle swelling.
+Owns a bicycle.
+Major bleed from the stomach at present, with hemoglobin falling.
+Observations now: respiratory rate 17/min.","Woman of 77 years.
+Community-acquired pneumonia confirmed on chest radiograph.
+Swallows one low-dose aspirin each night.
+Current heart failure with ankle swelling.
+Owns a bicycle.
+Medical records negative for major bleeding at any time.
+Observations now: respiratory rate 17/min.","need: bleeding history
+found: Bowel habit normal, without any blood in the stool.
+subject: patient
+status: absent
+time: current","need: bleeding history
+found: Major bleed from the stomach at present, with hemoglobin falling.
+subject: patient
+status: present
+time: current","need: bleeding history
+found: Medical records negative for major bleeding at any time.
+subject: patient
+status: absent
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""bleed""], ""overrides"": {}, ""seed"": 566, ""tpl"": [""aspirin/present/5"", ""chf/present/5"", ""filler/neutral/34"", ""bleeding/absent/5"", ""rr/current/5""], ""tpl_split"": ""test""}",,,,,
+E093,2,verdict x triplets,B-F-verdict-triplets-s0,rule_v1.test.gs147.c3.negation.easy.1300,gs147,g_score_cutoff,negation,easy,L2,flip,14.765667915344238,3.997858166694641,15.536030769348145,14.827190399169922,"For uncomplicated cystitis, prescribe trimethoprim-sulfamethoxazole. Score 1 point if the current systolic blood pressure is above 160 mmHg; 2 points if the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time; 1 point if the patient has had cancer at any time (active or in remission); 2 points if the patient has ever had heart failure (current or past). If the score is 3 or more, prescribe nitrofurantoin instead.",cancer at any time,Prescribe trimethoprim-sulfamethoxazole.,Prescribe nitrofurantoin.,"Female patient of 22 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Had diabetes years ago that went into remission on a low-calorie diet.
+Uses sunscreen in summer.
+Observations now: blood pressure 127/85 mmHg.","Female patient of 22 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Had diabetes years ago that went into remission on a low-calorie diet.
+Uses sunscreen in summer.
+Has metastatic lung cancer, receiving palliative treatment.
+Observations now: blood pressure 127/85 mmHg.","Female patient of 22 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Had diabetes years ago that went into remission on a low-calorie diet.
+Uses sunscreen in summer.
+Free of cancer throughout life.
+Observations now: blood pressure 127/85 mmHg.","need: cancer at any time
+found: not mentioned
+subject: patient
+status: absent
+time: current","need: cancer at any time
+found: Has metastatic lung cancer, receiving palliative treatment.
+subject: patient
+status: present
+time: current","need: cancer at any time
+found: Free of cancer throughout life.
+subject: patient
+status: absent
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""cancer"", ""lymphoma"", ""leukemia"", ""myeloma"", ""carcinoma""], ""overrides"": {}, ""seed"": 1300, ""tpl"": [""diabetes/past/4"", ""filler/neutral/22"", ""cancer/absent/5"", ""sbp/current/5""], ""tpl_split"": ""test""}",,,,,
+E094,2,verdict x triplets,B-F-verdict-triplets-s0,rule_v1.test.gs024.c3.numeric.easy.1096,gs024,g_score_cutoff,numeric,easy,L2,flip,20.597564697265625,2.2071549892425537,18.285527229309082,20.39806842803955,"For uncomplicated cystitis, prescribe trimethoprim-sulfamethoxazole. Score 3 points if the current ALT is above 120 U/L; 1 point if the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time; 3 points if the current systolic blood pressure is above 160 mmHg; 2 points if the patient or a first-degree relative (parent, sibling or child) has had a venous thromboembolism at any time. If the score is 4 or more, prescribe nitrofurantoin instead.",systolic blood pressure above 160,Prescribe trimethoprim-sulfamethoxazole.,Prescribe nitrofurantoin.,"Woman of 19 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Knits as a hobby.
+Had diabetes years ago that went into remission on a low-calorie diet.
+Current systolic blood pressure 122 mmHg.
+Current ALT 32 U/L.","Woman of 19 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Knits as a hobby.
+Had diabetes years ago that went into remission on a low-calorie diet.
+Current systolic blood pressure 182 mmHg.
+Current ALT 32 U/L.","Woman of 19 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Knits as a hobby.
+Had diabetes years ago that went into remission on a low-calorie diet.
+Current systolic blood pressure 159 mmHg.
+Current ALT 32 U/L.","need: systolic blood pressure above 160
+found: 122
+subject: patient
+status: present
+time: current","need: systolic blood pressure above 160
+found: 182
+subject: patient
+status: present
+time: current","need: systolic blood pressure above 160
+found: 159
+subject: patient
+status: present
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""systolic"", ""blood pressure"", ""bp ""], ""overrides"": {}, ""seed"": 1096, ""tpl"": [""filler/neutral/46"", ""diabetes/past/4"", ""sbp/current/4"", ""alt_enzyme/current/4""], ""tpl_split"": ""test""}",,,,,
+E095,2,verdict x triplets,B-F-verdict-triplets-s0,rule_v1.test.gs037.c4.numeric.long.370,gs037,g_score_cutoff,numeric,long,L2,base; near,-9.3050217628479,-14.395174026489258,-6.580790281295776,-5.0815675258636475,"For inpatient VTE prophylaxis, prescribe enoxaparin. Score 1 point if the patient has ever had angioedema (current or past); 1 point if the patient has new confusion; 2 points if the current temperature is above 38.0 C; 2 points if the age of the patient is 65 years or more. If the score is 5 or more, prescribe intermittent pneumatic compression instead.",age at least 65,Prescribe enoxaparin.,Prescribe intermittent pneumatic compression.,"An adult woman.
+Admitted for community-acquired pneumonia; immobile.
+Her friend has recovered from a dislocated finger.
+Her sister has a lazy eye.
+Uses sunscreen in summer.
+Lives in a second-floor apartment.
+Plays the piano.
+Currently aged 40 years.
+Teeth in good repair.
+During a checkup in 2012, total protein was 7.0 g/dL.
+Prefers morning appointments.
+Zinc of 85 mcg/dL in 2023.
+Her sister sprained a thumb last month.
+Disoriented to time and place, which is new for the patient.
+Sees a dentist yearly.
+Lives with chronic angioedema that flares several times a year.
+In 2022, lipase was 30 U/L.
+Temperature now 38.4 C (tympanic).
+In 2009, folate was 12 ng/mL.
+Photographs local wildlife.
+Drives a car.","An adult woman.
+Admitted for community-acquired pneumonia; immobile.
+Her friend has recovered from a dislocated finger.
+Her sister has a lazy eye.
+Uses sunscreen in summer.
+Lives in a second-floor apartment.
+Plays the piano.
+Currently aged 65 years.
+Teeth in good repair.
+During a checkup in 2012, total protein was 7.0 g/dL.
+Prefers morning appointments.
+Zinc of 85 mcg/dL in 2023.
+Her sister sprained a thumb last month.
+Disoriented to time and place, which is new for the patient.
+Sees a dentist yearly.
+Lives with chronic angioedema that flares several times a year.
+In 2022, lipase was 30 U/L.
+Temperature now 38.4 C (tympanic).
+In 2009, folate was 12 ng/mL.
+Photographs local wildlife.
+Drives a car.","An adult woman.
+Admitted for community-acquired pneumonia; immobile.
+Her friend has recovered from a dislocated finger.
+Her sister has a lazy eye.
+Uses sunscreen in summer.
+Lives in a second-floor apartment.
+Plays the piano.
+Currently aged 64 years.
+Teeth in good repair.
+During a checkup in 2012, total protein was 7.0 g/dL.
+Prefers morning appointments.
+Zinc of 85 mcg/dL in 2023.
+Her sister sprained a thumb last month.
+Disoriented to time and place, which is new for the patient.
+Sees a dentist yearly.
+Lives with chronic angioedema that flares several times a year.
+In 2022, lipase was 30 U/L.
+Temperature now 38.4 C (tympanic).
+In 2009, folate was 12 ng/mL.
+Photographs local wildlife.
+Drives a car.","need: age at least 65
+found: 40
+subject: patient
+status: present
+time: current","need: age at least 65
+found: 65
+subject: patient
+status: present
+time: current","need: age at least 65
+found: 64
+subject: patient
+status: present
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""age""], ""overrides"": {}, ""seed"": 370, ""tpl"": [""filler/other/17"", ""filler/other/10"", ""filler/neutral/22"", ""filler/neutral/16"", ""filler/neutral/41"", ""age/current/4"", ""filler/neutral/35"", ""filler/lab/10"", ""filler/neutral/29"", ""filler/lab/16"", ""filler/other/5"", ""confusion/present/4"", ""filler/neutral/23"", ""angioedema/present/5"", ""filler/lab/11"", ""temperature/current/5"", ""filler/lab/4"", ""filler/neutral/10"", ""filler/neutral/17""], ""tpl_split"": ""test""}",,,,,
+E096,2,verdict x triplets,B-F-verdict-triplets-s0,rule_v1.test.gs246.c1.numeric.long.715,gs246,g_two_of_three,numeric,long,L2,flip,15.607566833496094,6.152012348175049,12.712160587310791,21.801413536071777,"For musculoskeletal pain, prescribe ibuprofen. If at least two of the following apply, prescribe acetaminophen instead: the current white cell count is above 12.0 x10^9/L; the patient has ever had angioedema (current or past); the patient has active cancer.",white cell count above 12.0,Prescribe ibuprofen.,Prescribe acetaminophen.,"Male patient of 48 years.
+Acute low back pain after lifting.
+His wife has a lazy eye.
+Oncology follow-up: none.
+Has two cats.
+Lives in a second-floor apartment.
+Free T4 of 1.2 ng/dL in 2018.
+Paints watercolors as a hobby.
+Current white cell count 6.1 x10^9/L.
+Owns a bicycle.
+His sister burned a hand on a stove years ago.
+His wife sprained a thumb last month.
+Knits as a hobby.
+Prefers to be addressed by first name.
+His sister lives with psoriasis.
+Uses sunscreen in summer.
+Prefers morning appointments.
+Lives with chronic angioedema that flares several times a year.
+Plays the piano.
+Photographs local wildlife.
+In 2014, folate was 12 ng/mL.
+Sleeps seven hours a night.","Male patient of 48 years.
+Acute low back pain after lifting.
+His wife has a lazy eye.
+Oncology follow-up: none.
+Has two cats.
+Lives in a second-floor apartment.
+Free T4 of 1.2 ng/dL in 2018.
+Paints watercolors as a hobby.
+Current white cell count 13.3 x10^9/L.
+Owns a bicycle.
+His sister burned a hand on a stove years ago.
+His wife sprained a thumb last month.
+Knits as a hobby.
+Prefers to be addressed by first name.
+His sister lives with psoriasis.
+Uses sunscreen in summer.
+Prefers morning appointments.
+Lives with chronic angioedema that flares several times a year.
+Plays the piano.
+Photographs local wildlife.
+In 2014, folate was 12 ng/mL.
+Sleeps seven hours a night.","Male patient of 48 years.
+Acute low back pain after lifting.
+His wife has a lazy eye.
+Oncology follow-up: none.
+Has two cats.
+Lives in a second-floor apartment.
+Free T4 of 1.2 ng/dL in 2018.
+Paints watercolors as a hobby.
+Current white cell count 11.5 x10^9/L.
+Owns a bicycle.
+His sister burned a hand on a stove years ago.
+His wife sprained a thumb last month.
+Knits as a hobby.
+Prefers to be addressed by first name.
+His sister lives with psoriasis.
+Uses sunscreen in summer.
+Prefers morning appointments.
+Lives with chronic angioedema that flares several times a year.
+Plays the piano.
+Photographs local wildlife.
+In 2014, folate was 12 ng/mL.
+Sleeps seven hours a night.","need: white cell count above 12.0
+found: 6.1
+subject: patient
+status: present
+time: current","need: white cell count above 12.0
+found: 13.3
+subject: patient
+status: present
+time: current","need: white cell count above 12.0
+found: 11.5
+subject: patient
+status: present
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""white cell"", ""wbc""], ""overrides"": {}, ""seed"": 715, ""tpl"": [""filler/other/10"", ""cancer/generic/4"", ""filler/neutral/40"", ""filler/neutral/16"", ""filler/lab/5"", ""filler/neutral/28"", ""wbc/current/4"", ""filler/neutral/34"", ""filler/other/11"", ""filler/other/5"", ""filler/neutral/46"", ""filler/neutral/47"", ""filler/other/4"", ""filler/neutral/22"", ""filler/neutral/29"", ""angioedema/present/5"", ""filler/neutral/41"", ""filler/neutral/10"", ""filler/lab/4"", ""filler/neutral/4""], ""tpl_split"": ""test""}",,,,,
+E097,2,verdict x triplets,B-F-verdict-triplets-s0,rule_v1.test.gs118.c2.subject.easy.913,gs118,g_score_cutoff,subject,easy,L2,flip,21.682299613952637,8.700234413146973,21.31591033935547,22.697237014770508,"For heart failure with reduced ejection fraction, prescribe spironolactone. Score 2 points if the current white cell count is above 12.0 x10^9/L; 3 points if the patient has ever had angioedema (current or past); 2 points if the current eGFR is below 45 mL/min/1.73 m2; 1 point if the current heart rate is above 90/min. If the score is 4 or more, prescribe dapagliflozin instead.",angioedema,Prescribe spironolactone.,Prescribe dapagliflozin.,"Female patient of 53 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Has two cats.
+Latest WBC is 9.0 x10^9/L.
+Drives a car.
+Face and neck without swelling on examination.
+Prefers morning appointments.
+Teeth in good repair.
+Heart rate now 79/min on a pulse check.
+Current eGFR 44 mL/min/1.73 m2.","Female patient of 53 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Has two cats.
+Latest WBC is 9.0 x10^9/L.
+Drives a car.
+An episode of angioedema years ago, with full recovery.
+Prefers morning appointments.
+Teeth in good repair.
+Heart rate now 79/min on a pulse check.
+Current eGFR 44 mL/min/1.73 m2.","Female patient of 53 years.
+Heart failure with reduced ejection fraction (ejection fraction 30%), still symptomatic.
+Has two cats.
+Latest WBC is 9.0 x10^9/L.
+Drives a car.
+Her father recovered from an episode of angioedema in 2016.
+Prefers morning appointments.
+Teeth in good repair.
+Heart rate now 79/min on a pulse check.
+Current eGFR 44 mL/min/1.73 m2.","need: angioedema
+found: Face and neck without swelling on examination.
+subject: patient
+status: absent
+time: current","need: angioedema
+found: An episode of angioedema years ago, with full recovery.
+subject: patient
+status: present
+time: past","need: angioedema
+found: Her father recovered from an episode of angioedema in 2016.
+subject: other (father)
+status: present
+time: past (2016)",,,,"{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""angioedema""], ""overrides"": {}, ""seed"": 913, ""tpl"": [""filler/neutral/40"", ""wbc/current/5"", ""filler/neutral/17"", ""angioedema/rel_past/5"", ""filler/neutral/29"", ""filler/neutral/35"", ""heart_rate/current/5"", ""egfr/current/4""], ""tpl_split"": ""test""}",,,,,
+E098,2,verdict x triplets,B-F-verdict-triplets-s0,rule_v1.test.gs192.c4.subject.easy.551,gs192,g_score_cutoff,subject,easy,L2,base,-0.4197375774383545,-12.05988883972168,3.480271816253662,-2.2993671894073486,"For uncomplicated cystitis, prescribe trimethoprim-sulfamethoxazole. Score 2 points if the patient has ever had asthma (current or past); 1 point if the current calf swelling compared with the other leg is 3.0 cm or more; 1 point if the patient has ever had a peptic ulcer (current or past); 2 points if the patient or a first-degree relative (parent, sibling or child) has had diabetes at any time. If the score is 6 or more, prescribe nitrofurantoin instead.",diabetes (patient or first-degree relative),Prescribe trimethoprim-sulfamethoxazole.,Prescribe nitrofurantoin.,"Woman of 62 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Lives in a second-floor apartment.
+Pupils equal and reactive to light.
+Enjoys board games.
+Asthma in the early school years, outgrown long ago.
+Photographs local wildlife.
+Difference in calf circumference now 3.1 cm.
+Active peptic ulcer disease.","Woman of 62 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Lives in a second-floor apartment.
+Pupils equal and reactive to light.
+Enjoys board games.
+Asthma in the early school years, outgrown long ago.
+Photographs local wildlife.
+Difference in calf circumference now 3.1 cm.
+Had diabetes years ago that went into remission on a low-calorie diet.
+Active peptic ulcer disease.","Woman of 62 years.
+Dysuria and urinary frequency for two days; urine dipstick positive for nitrites.
+Lives in a second-floor apartment.
+Pupils equal and reactive to light.
+Enjoys board games.
+Asthma in the early school years, outgrown long ago.
+Photographs local wildlife.
+Difference in calf circumference now 3.1 cm.
+Her friend had diabetes years ago that went away after a change in diet.
+Active peptic ulcer disease.","need: diabetes (patient or first-degree relative)
+found: not mentioned
+subject: patient
+status: absent
+time: current","need: diabetes (patient or first-degree relative)
+found: Had diabetes years ago that went into remission on a low-calorie diet.
+subject: patient
+status: present
+time: past","need: diabetes (patient or first-degree relative)
+found: Her friend had diabetes years ago that went away after a change in diet.
+subject: other (friend)
+status: present
+time: past",,,,"{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""diabet""], ""overrides"": {}, ""seed"": 551, ""tpl"": [""filler/neutral/16"", ""filler/neutral/11"", ""filler/neutral/5"", ""asthma/past/4"", ""filler/neutral/10"", ""calf_swelling/current/5"", ""diabetes/rel_past/4"", ""peptic_ulcer/present/5""], ""tpl_split"": ""test""}",,,,,
+E099,2,verdict x triplets,B-F-verdict-triplets-s0,rule_v1.test.gs074.c2.time.long.410,gs074,g_score_cutoff,time,long,L2,flip,12.05876636505127,1.0850626230239868,7.431018114089966,9.378279685974121,"For suspected infection on the medical ward, prescribe oral amoxicillin. Score 3 points if the age of the patient is 65 years or more; 2 points if the current systolic blood pressure is below 90 mmHg; 1 point if the current blood urea nitrogen is above 19 mg/dL; 3 points if the patient has ever had diabetes (current or past). If the score is 6 or more, prescribe intravenous piperacillin-tazobactam instead.",systolic blood pressure below 90,Prescribe oral amoxicillin.,Prescribe intravenous piperacillin-tazobactam.,"Man, adult.
+Suspected chest infection; assessed on the medical ward.
+Photographs local wildlife.
+Has two cats.
+His wife burned a hand on a stove years ago.
+Records from 2008 list systolic blood pressure at 145 mmHg.
+Currently aged 69 years.
+In 2022, lipase was 30 U/L.
+Paints watercolors as a hobby.
+Enjoys board games.
+Blood urea nitrogen now: 25 mg/dL.
+His roommate has a lazy eye.
+Free T4 of 1.2 ng/dL in 2017.
+Zinc of 85 mcg/dL in 2020.
+Teeth in good repair.
+Drives a car.
+In 2016, folate was 12 ng/mL.
+Current systolic blood pressure 119 mmHg.
+Plays the piano.
+Prefers to be addressed by first name.
+Owns a bicycle.","Man, adult.
+Suspected chest infection; assessed on the medical ward.
+Photographs local wildlife.
+Has two cats.
+His wife burned a hand on a stove years ago.
+Records from 2008 list systolic blood pressure at 145 mmHg.
+Currently aged 69 years.
+In 2022, lipase was 30 U/L.
+Paints watercolors as a hobby.
+Enjoys board games.
+Blood urea nitrogen now: 25 mg/dL.
+His roommate has a lazy eye.
+Free T4 of 1.2 ng/dL in 2017.
+Zinc of 85 mcg/dL in 2020.
+Teeth in good repair.
+Drives a car.
+In 2016, folate was 12 ng/mL.
+Current systolic blood pressure 70 mmHg.
+Plays the piano.
+Prefers to be addressed by first name.
+Owns a bicycle.","Man, adult.
+Suspected chest infection; assessed on the medical ward.
+Photographs local wildlife.
+Has two cats.
+His wife burned a hand on a stove years ago.
+Records from 2008 list systolic blood pressure at 86 mmHg.
+Currently aged 69 years.
+In 2022, lipase was 30 U/L.
+Paints watercolors as a hobby.
+Enjoys board games.
+Blood urea nitrogen now: 25 mg/dL.
+His roommate has a lazy eye.
+Free T4 of 1.2 ng/dL in 2017.
+Zinc of 85 mcg/dL in 2020.
+Teeth in good repair.
+Drives a car.
+In 2016, folate was 12 ng/mL.
+Current systolic blood pressure 119 mmHg.
+Plays the piano.
+Prefers to be addressed by first name.
+Owns a bicycle.","need: systolic blood pressure below 90
+found: 145
+subject: patient
+status: present
+time: past (2008)
+
+need: systolic blood pressure below 90
+found: 119
+subject: patient
+status: present
+time: current","need: systolic blood pressure below 90
+found: 145
+subject: patient
+status: present
+time: past (2008)
+
+need: systolic blood pressure below 90
+found: 70
+subject: patient
+status: present
+time: current","need: systolic blood pressure below 90
+found: 86
+subject: patient
+status: present
+time: past (2008)
+
+need: systolic blood pressure below 90
+found: 119
+subject: patient
+status: present
+time: current",,,,"{""criterion_holds"": 0, ""hdr"": 5, ""keywords"": [""systolic"", ""blood pressure"", ""bp ""], ""overrides"": {}, ""seed"": 410, ""tpl"": [""filler/neutral/10"", ""filler/neutral/40"", ""filler/other/11"", ""sbp/past/4"", ""age/current/4"", ""filler/lab/11"", ""filler/neutral/28"", ""filler/neutral/5"", ""bun/current/4"", ""filler/other/10"", ""filler/lab/5"", ""filler/lab/16"", ""filler/neutral/35"", ""filler/neutral/17"", ""filler/lab/4"", ""sbp/current/4"", ""filler/neutral/41"", ""filler/neutral/47"", ""filler/neutral/34""], ""tpl_split"": ""test""}",,,,,
+E100,2,verdict x triplets,B-F-verdict-triplets-s0,rule_v1.test.gs134.c4.time.long.769,gs134,g_score_cutoff,time,long,L2,base,-3.492968797683716,-11.623950481414795,1.093409538269043,3.4832515716552734,"For contraception, prescribe a combined oral contraceptive. Score 2 points if the patient or a first-degree relative (parent, sibling or child) has had coronary artery disease at any time; 2 points if the current weight is 60 kg or less; 2 points if the current platelet count is below 50 x10^9/L; 1 point if the patient currently has tender anterior cervical lymph nodes. If the score is 7 or more, prescribe a progestin-only pill instead.",tender cervical lymph nodes,Prescribe a combined oral contraceptive.,Prescribe a progestin-only pill.,"Woman of 26 years.
+Requests contraception.
+Her father has recovered from a dislocated finger.
+Platelet count now 36 x10^9/L.
+Enjoys board games.
+Neck palpation unremarkable.
+Knits as a hobby.
+Drives a car.
+Owns a bicycle.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+In 2018, folate was 12 ng/mL.
+Latest weight 52 kg.
+Uses sunscreen in summer.
+Zinc of 85 mcg/dL in 2019.
+Paints watercolors as a hobby.
+Has coronary artery disease, managed medically.
+Her uncle sprained a thumb last month.
+Photographs local wildlife.
+Has two cats.
+Plays the piano.
+Teeth in good repair.
+Sleeps seven hours a night.
+Lives in a second-floor apartment.","Woman of 26 years.
+Requests contraception.
+Her father has recovered from a dislocated finger.
+Platelet count now 36 x10^9/L.
+Enjoys board games.
+Anterior cervical lymph nodes enlarged and tender to touch.
+Knits as a hobby.
+Drives a car.
+Owns a bicycle.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+In 2018, folate was 12 ng/mL.
+Latest weight 52 kg.
+Uses sunscreen in summer.
+Zinc of 85 mcg/dL in 2019.
+Paints watercolors as a hobby.
+Has coronary artery disease, managed medically.
+Her uncle sprained a thumb last month.
+Photographs local wildlife.
+Has two cats.
+Plays the piano.
+Teeth in good repair.
+Sleeps seven hours a night.
+Lives in a second-floor apartment.","Woman of 26 years.
+Requests contraception.
+Her father has recovered from a dislocated finger.
+Platelet count now 36 x10^9/L.
+Enjoys board games.
+Formerly had tender anterior cervical lymphadenopathy in 2019, with full recovery.
+Knits as a hobby.
+Drives a car.
+Owns a bicycle.
+Sees a dentist yearly.
+Pupils equal and reactive to light.
+In 2018, folate was 12 ng/mL.
+Latest weight 52 kg.
+Uses sunscreen in summer.
+Zinc of 85 mcg/dL in 2019.
+Paints watercolors as a hobby.
+Has coronary artery disease, managed medically.
+Her uncle sprained a thumb last month.
+Photographs local wildlife.
+Has two cats.
+Plays the piano.
+Teeth in good repair.
+Sleeps seven hours a night.
+Lives in a second-floor apartment.","need: tender cervical lymph nodes
+found: Neck palpation unremarkable.
+subject: patient
+status: absent
+time: current","need: tender cervical lymph nodes
+found: Anterior cervical lymph nodes enlarged and tender to touch.
+subject: patient
+status: present
+time: current","need: tender cervical lymph nodes
+found: Formerly had tender anterior cervical lymphadenopathy in 2019, with full recovery.
+subject: patient
+status: present
+time: past (2019)",,,,"{""criterion_holds"": 0, ""hdr"": 4, ""keywords"": [""lymph node"", ""lymphaden""], ""overrides"": {}, ""seed"": 769, ""tpl"": [""filler/other/17"", ""platelets/current/5"", ""filler/neutral/5"", ""neck_nodes/past/5"", ""filler/neutral/46"", ""filler/neutral/17"", ""filler/neutral/34"", ""filler/neutral/23"", ""filler/neutral/11"", ""filler/lab/4"", ""weight/current/5"", ""filler/neutral/22"", ""filler/lab/16"", ""filler/neutral/28"", ""cad/present/4"", ""filler/other/5"", ""filler/neutral/10"", ""filler/neutral/40"", ""filler/neutral/41"", ""filler/neutral/35"", ""filler/neutral/4"", ""filler/neutral/16""], ""tpl_split"": ""test""}",,,,,

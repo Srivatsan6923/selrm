@@ -1,0 +1,8 @@
+2026-10-03T07:03:49Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-summary2-triplets-s0
+2026-10-03T07:03:50Z C-TG-summary2-triplets-s0 clin_v1/trialgpt_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_test/reader_prose.npz', 'exists')
+2026-10-03T07:03:52Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0221)
+2026-10-03T07:03:54Z padding self-check: max |u_batch - u_single| = 0.1047 (tol 0.626) -> left padding
+2026-10-03T07:06:59Z generate: batch 25/51, 14944 tokens, 81 tok/s
+2026-10-03T07:12:53Z generate: batch 50/51, 37967 tokens, 71 tok/s
+2026-10-03T07:14:45Z C-TG-summary2-triplets-s0 clin_v1/trialgpt_test: TA nan Rev nan Hold nan n=None (655.7 s)
+2026-10-03T07:14:46Z DONE C-TG-summary2-triplets-s0 in 11.6 min, GPU util mean 69.6

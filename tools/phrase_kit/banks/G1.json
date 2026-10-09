@@ -1,0 +1,278 @@
+{
+ "pen_allergy": {
+  "generic": [
+   "No known drug allergies.",
+   "Has taken several antibiotic courses with no reaction.",
+   "Not allergic to any antibiotics.",
+   "Denies any drug allergies.",
+   "Drug allergies: none known.",
+   "Reports no allergies to medicines."
+  ],
+  "present": [
+   "Allergic to penicillin (urticaria).",
+   "Allergies: penicillin (rash).",
+   "Reports an allergy to penicillin that causes hives.",
+   "Penicillin triggers an allergic reaction with wheezing in this patient.",
+   "Penicillin allergy: anaphylaxis.",
+   "Known penicillin allergy with angioedema."
+  ],
+  "past": [
+   "Penicillin allergy in childhood, resolved; tolerated amoxicillin in {year}.",
+   "Previously allergic to penicillin; tolerated a full amoxicillin course in {year}.",
+   "An old penicillin allergy has resolved; penicillin given for a dental abscess in {year} was well tolerated.",
+   "Penicillin used to cause hives, but the allergy has resolved.",
+   "Outgrew a penicillin allergy by {year}.",
+   "Had a penicillin allergy as a child that was outgrown years ago."
+  ],
+  "absent": [
+   "Denies penicillin allergy.",
+   "No penicillin allergy.",
+   "Does not have a penicillin allergy.",
+   "When asked about penicillin, reports no allergy to it.",
+   "Tolerates penicillin without any reaction.",
+   "Has never been allergic to penicillin."
+  ],
+  "rel": [
+   "{Poss} {rel} is allergic to penicillin.",
+   "{Poss} {rel} reacts to penicillin with hives.",
+   "{Poss} {rel} gets an itchy rash from penicillin.",
+   "{Poss} {rel} carries an allergy alert card for penicillin.",
+   "{Poss} {rel} has a penicillin allergy.",
+   "{Poss} {rel} cannot take penicillin because of an allergy."
+  ],
+  "delabelled": [
+   "Penicillin allergy label removed in {year} after an uneventful oral challenge.",
+   "Previously labeled allergic to penicillin; label removed in {year} after testing.",
+   "Penicillin allergy alert taken off the chart in {year} after an amoxicillin challenge was tolerated.",
+   "A graded challenge in {year} showed the penicillin allergy label was wrong, so it was removed.",
+   "Penicillin allergy was de-labeled in {year} following a skin test.",
+   "Formerly recorded as penicillin-allergic; de-labeled in {year} by an allergy clinic."
+  ]
+ },
+ "sulfa_allergy": {
+  "generic": [
+   "No known medication allergies.",
+   "Not allergic to any medicines.",
+   "No known antibiotic allergies.",
+   "Denies allergies to any drug or food.",
+   "Current drug allergies: none.",
+   "Medication allergies: none at present."
+  ],
+  "present": [
+   "Allergic to sulfa antibiotics (hives).",
+   "Allergies: sulfa drugs (rash).",
+   "Has a sulfa allergy that causes skin blistering.",
+   "Sulfa antibiotics cause an itchy allergic rash in this patient.",
+   "Sulfonamide antibiotic allergy: generalized rash.",
+   "Develops hives whenever given sulfonamide antibiotics."
+  ],
+  "past": [
+   "Sulfa antibiotic allergy in childhood, resolved; tolerated trimethoprim-sulfamethoxazole in {year}.",
+   "Previously allergic to sulfonamide antibiotics, since resolved; completed an uneventful trimethoprim-sulfamethoxazole course in {year}.",
+   "Was allergic to sulfa drugs in the past; that allergy has resolved.",
+   "Sulfa allergy resolved, as shown by a well-tolerated trimethoprim-sulfamethoxazole course in {year}.",
+   "Outgrew a sulfonamide antibiotic allergy by {year}.",
+   "Had a sulfa antibiotic allergy as an infant that was outgrown long ago."
+  ],
+  "absent": [
+   "Denies any allergy to sulfa antibiotics.",
+   "No sulfonamide antibiotic allergy.",
+   "Does not have a sulfa allergy.",
+   "No allergy to trimethoprim-sulfamethoxazole or other sulfa drugs.",
+   "Has never been allergic to sulfonamide antibiotics.",
+   "Allergy history negative for sulfa drugs."
+  ],
+  "rel": [
+   "{Poss} {rel} is allergic to sulfa antibiotics.",
+   "{Poss} {rel} gets hives from trimethoprim-sulfamethoxazole.",
+   "{Poss} {rel} reacts to sulfa antibiotics with a rash.",
+   "{Poss} {rel} wears a medical alert bracelet for a sulfa allergy.",
+   "{Poss} {rel} has a sulfonamide antibiotic allergy.",
+   "{Poss} {rel} has a documented sulfa allergy."
+  ],
+  "delabelled": [
+   "Sulfa allergy label removed in {year} after an uneventful oral challenge.",
+   "Previously labeled allergic to sulfa drugs; the label was removed in {year} when a challenge dose was tolerated.",
+   "Sulfa drugs were cleared from the allergy list in {year} after a graded trimethoprim-sulfamethoxazole challenge.",
+   "An oral challenge in {year} disproved the sulfa allergy, and the label was removed.",
+   "Sulfonamide antibiotic allergy delabeled in {year} after allergy clinic testing.",
+   "Formerly listed as allergic to trimethoprim-sulfamethoxazole; delabeled in {year} after a supervised test dose proved safe."
+  ]
+ },
+ "pregnancy": {
+  "generic": [
+   "Regular menstrual cycles.",
+   "Uses condoms for contraception.",
+   "Had a normal period last week.",
+   "Menstruating normally this week.",
+   "Last menstrual period began eight days before this visit.",
+   "Menstrual cycles every 28 days."
+  ],
+  "present": [
+   "Pregnant, 12 weeks by dates.",
+   "Positive pregnancy test today; about 7 weeks pregnant.",
+   "Is 31 weeks pregnant, with normal fetal movements.",
+   "In the second trimester of a planned pregnancy.",
+   "Pregnant, confirmed by ultrasound at 9 weeks.",
+   "She is pregnant (18 weeks)."
+  ],
+  "past": [
+   "Pregnancy in {year}, completed with a term delivery.",
+   "Previously pregnant, delivering at term in {year}.",
+   "Cesarean delivery in {year} at the end of a healthy pregnancy.",
+   "Early pregnancy loss in {year}.",
+   "Her only pregnancy ended in a live birth two years ago.",
+   "Last pregnancy was in {year}; recovered well after the birth."
+  ],
+  "absent": [
+   "Not pregnant (urine test today).",
+   "No pregnancy on today's urine test.",
+   "Denies any possibility of pregnancy.",
+   "Not pregnant; menstruating at this assessment.",
+   "Pregnancy test negative at this visit.",
+   "Pregnancy ruled out by a blood test at this visit."
+  ],
+  "rel": [
+   "{Poss} {rel} is pregnant.",
+   "{Poss} {rel} is 30 weeks pregnant.",
+   "{Poss} {rel} is in early pregnancy.",
+   "{Poss} {rel} has an ongoing pregnancy at 20 weeks.",
+   "{Poss} {rel} is currently pregnant with twins.",
+   "{Poss} {rel} is pregnant and due next month."
+  ]
+ },
+ "peptic_ulcer": {
+  "generic": [
+   "No dyspepsia or melena.",
+   "Bowel habit normal; no abdominal pain.",
+   "No epigastric pain or heartburn.",
+   "No black or bloody stools.",
+   "Abdomen soft and non-tender.",
+   "Appetite good; no indigestion."
+  ],
+  "present": [
+   "Active peptic ulcer seen on endoscopy, on treatment.",
+   "Bleeding gastric ulcer under active treatment.",
+   "Taking omeprazole for a gastric ulcer diagnosed at endoscopy this week.",
+   "A stomach ulcer is causing burning pain after meals.",
+   "Has an active duodenal ulcer.",
+   "Active peptic ulcer disease."
+  ],
+  "past": [
+   "Peptic ulcer in {year}, healed on repeat endoscopy.",
+   "Previously had a gastric ulcer, healed in {year}.",
+   "Gastric ulcer healed after eight weeks of omeprazole.",
+   "Treatment for Helicobacter pylori in {year} resolved a stomach ulcer.",
+   "Duodenal ulcer years ago; recovered fully with treatment.",
+   "Formerly treated for a peptic ulcer; endoscopy in {year} showed it had gone."
+  ],
+  "absent": [
+   "No peptic ulcer disease.",
+   "Denies any history of peptic ulcer.",
+   "No peptic ulcer, either active or healed.",
+   "No ulcer of the stomach or duodenum at any time.",
+   "Has never had a peptic ulcer.",
+   "Medical record negative for peptic ulcer, current or past."
+  ],
+  "rel": [
+   "{Poss} {rel} has an active peptic ulcer.",
+   "{Poss} {rel} has a bleeding stomach ulcer.",
+   "{Poss} {rel} takes omeprazole for an active gastric ulcer.",
+   "{Poss} {rel} was found to have a stomach ulcer this week.",
+   "{Poss} {rel} is being treated for a duodenal ulcer.",
+   "{Poss} {rel} has peptic ulcer disease."
+  ],
+  "rel_past": [
+   "{Poss} {rel} had a peptic ulcer that healed in {year}.",
+   "{Poss} {rel} was treated for a stomach ulcer in {year}.",
+   "{Poss} {rel} previously took omeprazole for a gastric ulcer.",
+   "{Poss} {rel} had a duodenal ulcer, which resolved with treatment.",
+   "{Poss} {rel} recovered from a stomach ulcer years ago.",
+   "{Poss} {rel} formerly had peptic ulcer disease."
+  ]
+ },
+ "clarithromycin": {
+  "generic": [
+   "No macrolide antibiotics on the medication list.",
+   "Antibiotics: none.",
+   "Not taking any antibiotics.",
+   "No antibiotics or antifungals in use.",
+   "Current antibiotic therapy: none.",
+   "Has no antibiotic course under way."
+  ],
+  "present": [
+   "Takes clarithromycin 500 mg twice daily.",
+   "Takes clarithromycin as part of Helicobacter pylori treatment.",
+   "Started clarithromycin this morning for sinusitis.",
+   "Clarithromycin, prescribed last week for whooping cough, is being taken as directed.",
+   "On clarithromycin for a chest infection, day 3 of 7.",
+   "Currently taking clarithromycin for an ear infection."
+  ],
+  "past": [
+   "Completed a course of clarithromycin in {year}.",
+   "Clarithromycin course in {year}, stopped after 7 days.",
+   "Clarithromycin was stopped when a sinus infection cleared.",
+   "Had a 14-day clarithromycin course for Helicobacter pylori in {year}, completed as planned.",
+   "Took clarithromycin for pneumonia years ago.",
+   "Formerly took clarithromycin for a chest infection in {year}."
+  ],
+  "absent": [
+   "Not taking clarithromycin.",
+   "No clarithromycin on the medication list.",
+   "Denies taking clarithromycin.",
+   "No antibiotics are being taken, including clarithromycin.",
+   "Has never taken clarithromycin.",
+   "Clarithromycin absent from the pharmacy dispensing record."
+  ],
+  "rel": [
+   "{Poss} {rel} is taking clarithromycin.",
+   "{Poss} {rel} takes clarithromycin twice daily.",
+   "{Poss} {rel} has a sinus infection being treated with clarithromycin.",
+   "{Poss} {rel} is prescribed clarithromycin for Helicobacter pylori.",
+   "{Poss} {rel} is on a course of clarithromycin.",
+   "{Poss} {rel} currently uses clarithromycin."
+  ]
+ },
+ "warfarin": {
+  "generic": [
+   "Not taking any anticoagulants.",
+   "No blood thinners on the medication list.",
+   "Takes no tablets to thin the blood.",
+   "Not on any treatment to prevent clots.",
+   "Current anticoagulants: none.",
+   "Anticoagulant therapy: none at present."
+  ],
+  "present": [
+   "Takes warfarin daily, with the dose adjusted to the INR.",
+   "Medications: warfarin 5 mg once daily.",
+   "Takes warfarin for atrial fibrillation.",
+   "On long-term warfarin, with an INR of 2.6 this morning.",
+   "Currently on warfarin, prescribed by the cardiology clinic.",
+   "Anticoagulated with warfarin; INR checked monthly at the clinic."
+  ],
+  "past": [
+   "Took warfarin for six months in {year}; stopped when treatment was completed.",
+   "Previously on warfarin; it was stopped in {year} and not restarted.",
+   "Warfarin was stopped in {year}, four weeks after a successful cardioversion.",
+   "Warfarin, taken for six weeks after leg fracture surgery, has been stopped.",
+   "Came off warfarin years ago after a heart rhythm problem settled.",
+   "Finished a warfarin course in {year} and is now off warfarin."
+  ],
+  "absent": [
+   "Denies taking warfarin.",
+   "Not on warfarin.",
+   "Does not take warfarin or any other vitamin K antagonist.",
+   "Not taking warfarin, according to the patient.",
+   "Has never been prescribed warfarin.",
+   "Warfarin is absent from the current medication list."
+  ],
+  "rel": [
+   "{Poss} {rel} takes warfarin.",
+   "{Poss} {rel} takes warfarin every evening for an irregular heartbeat.",
+   "{Poss} {rel} relies on daily warfarin tablets.",
+   "{Poss} {rel} is prescribed warfarin after a heart valve replacement.",
+   "{Poss} {rel} is on warfarin with monthly INR checks.",
+   "{Poss} {rel} is anticoagulated with warfarin."
+  ]
+ }
+}

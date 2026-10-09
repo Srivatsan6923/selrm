@@ -1,0 +1,15 @@
+{
+ "run_id": "C-CP-medqa-train-reader",
+ "set": "clin_v1/keypairs_medqa_train",
+ "claim_type": "conclusion",
+ "eval": {
+  "reader_units": 720,
+  "malformed_units": 120,
+  "mode": null,
+  "malformed_rate": 0.1667,
+  "gen_not_stopped": 1,
+  "seconds": 2234.5,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

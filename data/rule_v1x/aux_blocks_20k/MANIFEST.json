@@ -1,0 +1,61 @@
+{
+ "build_command": "python scripts/build_aux_corpora.py",
+ "by_nm_kind": {
+  "boundary": 368,
+  "negation": 372,
+  "numeric": 386,
+  "subject": 378,
+  "time": 377
+ },
+ "cases_by_kind": {
+  "base": 1881,
+  "flip": 1881,
+  "missing": 805,
+  "pres": 807
+ },
+ "corpus": "blocks",
+ "created": "2026-10-03",
+ "derived_from": {
+  "groups_shared_with_sibling": 1881,
+  "groups_taken": 1881,
+  "name": "rule_v1/train_blocks",
+  "rule": "whole groups of the 401 complete 14-group blocks shared by both parents, blocks in the order random.Random('rule_v1x.aux_20k').shuffle(range(401)), until 20,000 records at a group boundary; lines copied verbatim, in parent order",
+  "sha256": "e07e99627f8d6df88a10288985e795379176b3b9ebe87e9f147754a4bd6a1f1d",
+  "template_split_hash": "1020bdc7bdae5d60515ad2344eacd0527a297730bb5a9648e09da1291e101ad5"
+ },
+ "frozen": true,
+ "generator": "scripts/build_aux_corpora.py",
+ "git_commit": "237a1028bbe2b60c223523990cf210f8caef680a",
+ "labels": {
+  "0": 11500,
+  "1": 8502
+ },
+ "labels_without_missing_input": {
+  "0": 8502,
+  "1": 8502
+ },
+ "level": "L0",
+ "n_groups": 1881,
+ "n_records": 20002,
+ "name": "aux_blocks_20k",
+ "purpose": "Auxiliary supervision for the secondary analysis S1 of docs/AUX_PROTOCOL.md (near-miss rule data next to in-domain medical training), specified on 3 Oct 2026 after the planned comparisons (4)-(6) failed.",
+ "records_by_case_kind": {
+  "base": 6998,
+  "flip": 6998,
+  "missing": 2998,
+  "pres": 3008
+ },
+ "records_by_claim_type": {
+  "conclusion": 10748,
+  "criterion": 9254
+ },
+ "rules": 223,
+ "set": "rule_v1x",
+ "sha256": "444484217e37ccca64676fb585cfd1abac98e9ba380dac984e5ff4b371db28df",
+ "shortcut_validation": {
+  "output": "training corpus without complete triplets; the parent's validation applies (validation runs on triplet sets)",
+  "result": "n/a"
+ },
+ "split": "train",
+ "templates": "train"
+}

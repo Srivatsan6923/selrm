@@ -1,0 +1,402 @@
+{
+ "note": "stage-1 red cells (RED_CELLS.md A): L3-inv, key pairs, NLI4CT-P, TrialGPT, MedEinst for rows that lack them",
+ "runs": [
+  {
+   "run_id": "C-TF-defcorr-nocase2",
+   "priority": 1,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L3inv",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway",
+    "clin_v1/nli4ct_test",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "adapter": null,
+   "nocase": true
+  },
+  {
+   "run_id": "C-TF-promptsum--p4",
+   "priority": 2,
+   "format": "summary2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L3inv"
+   ],
+   "adapter": null,
+   "max_new": 768,
+   "merge_into": "C-TF-promptsum"
+  },
+  {
+   "run_id": "C-TF-promptledger--p4",
+   "priority": 2,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L3inv"
+   ],
+   "adapter": null,
+   "max_new": 768,
+   "merge_into": "C-TF-promptledger"
+  },
+  {
+   "run_id": "C-TF-promptledger-lenient--p4",
+   "priority": 2.1,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L3inv"
+   ],
+   "adapter": null,
+   "max_new": 768,
+   "rejudge_from": "C-TF-promptledger--p4"
+  },
+  {
+   "run_id": "C-NL-promptsum",
+   "priority": 3,
+   "format": "summary2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/nli4ct_test"
+   ],
+   "adapter": null,
+   "max_new": 768
+  },
+  {
+   "run_id": "C-NL-promptledger",
+   "priority": 3,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/nli4ct_test"
+   ],
+   "adapter": null,
+   "max_new": 768
+  },
+  {
+   "run_id": "C-NL-promptledger-lenient",
+   "priority": 3.1,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/nli4ct_test"
+   ],
+   "adapter": null,
+   "max_new": 768,
+   "rejudge_from": "C-NL-promptledger"
+  },
+  {
+   "run_id": "C-KP-promptledger-lenient",
+   "priority": 3.1,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "adapter": null,
+   "max_new": 768,
+   "rejudge_from": "C-KP-promptledger"
+  },
+  {
+   "run_id": "C-KP-summary2-blocks-s0",
+   "priority": 3,
+   "format": "summary2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-blocks-s0",
+   "adapter_run": "B-F-summary2-blocks-s0",
+   "max_new": 768
+  },
+  {
+   "run_id": "C-NL-summary2-blocks-s0",
+   "priority": 3,
+   "format": "summary2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/nli4ct_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-blocks-s0",
+   "adapter_run": "B-F-summary2-blocks-s0",
+   "max_new": 768
+  },
+  {
+   "run_id": "C-TF-genprog-crit",
+   "priority": 5,
+   "format": "genprm",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "adapter": null,
+   "max_new": 768,
+   "n_groups": 1000,
+   "claim_types": [
+    "criterion"
+   ],
+   "min_gb": 30
+  },
+  {
+   "run_id": "C-TF-genprog--L3inv",
+   "priority": 5,
+   "format": "genprm",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/test_L3inv"
+   ],
+   "adapter": null,
+   "max_new": 768,
+   "n_groups": 1000,
+   "claim_types": [
+    "conclusion"
+   ],
+   "min_gb": 30
+  },
+  {
+   "run_id": "C-TG-rationale-triplets-s0",
+   "priority": 4,
+   "format": "rationale",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-rationale-triplets-s0",
+   "adapter_run": "B-F-rationale-triplets-s0",
+   "max_new": 768
+  },
+  {
+   "run_id": "C-KP-rationale-triplets-s0",
+   "priority": 6,
+   "format": "rationale",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-rationale-triplets-s0",
+   "adapter_run": "B-F-rationale-triplets-s0",
+   "max_new": 768
+  },
+  {
+   "run_id": "C-NL-rationale-triplets-s0",
+   "priority": 6,
+   "format": "rationale",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/nli4ct_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-rationale-triplets-s0",
+   "adapter_run": "B-F-rationale-triplets-s0",
+   "max_new": 768
+  },
+  {
+   "run_id": "C-ME-rationale-triplets-s0",
+   "priority": 7,
+   "format": "rationale",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-rationale-triplets-s0",
+   "adapter_run": "B-F-rationale-triplets-s0",
+   "max_new": 384
+  },
+  {
+   "run_id": "C-TG-ledger2-natural-s0",
+   "priority": 4,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev",
+    "clin_v1/trialgpt_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-natural-s0",
+   "adapter_run": "B-F-ledger2-natural-s0",
+   "max_new": 768
+  },
+  {
+   "run_id": "C-KP-ledger2-natural-s0",
+   "priority": 6,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-natural-s0",
+   "adapter_run": "B-F-ledger2-natural-s0",
+   "max_new": 768
+  },
+  {
+   "run_id": "C-NL-ledger2-natural-s0",
+   "priority": 6,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/nli4ct_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-natural-s0",
+   "adapter_run": "B-F-ledger2-natural-s0",
+   "max_new": 768
+  },
+  {
+   "run_id": "C-ME-ledger2-natural-s0",
+   "priority": 7,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-natural-s0",
+   "adapter_run": "B-F-ledger2-natural-s0",
+   "max_new": 384
+  },
+  {
+   "run_id": "C-KP-ledger2-balanced-s0",
+   "priority": 6,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-balanced-s0",
+   "adapter_run": "B-F-ledger2-balanced-s0",
+   "max_new": 768
+  },
+  {
+   "run_id": "C-NL-ledger2-balanced-s0",
+   "priority": 6,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/nli4ct_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-balanced-s0",
+   "adapter_run": "B-F-ledger2-balanced-s0",
+   "max_new": 768
+  },
+  {
+   "run_id": "C-ME-ledger2-balanced-s0",
+   "priority": 7,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-balanced-s0",
+   "adapter_run": "B-F-ledger2-balanced-s0",
+   "max_new": 384
+  },
+  {
+   "run_id": "C-KP-TR-fover-s0",
+   "priority": 6,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-TR-fover-s0",
+   "adapter_run": "B-TR-fover-s0",
+   "max_new": 768
+  },
+  {
+   "run_id": "C-NL-TR-fover-s0",
+   "priority": 6,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/nli4ct_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-TR-fover-s0",
+   "adapter_run": "B-TR-fover-s0",
+   "max_new": 768
+  },
+  {
+   "run_id": "C-ME-TR-fover-s0",
+   "priority": 7,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-TR-fover-s0",
+   "adapter_run": "B-TR-fover-s0"
+  },
+  {
+   "run_id": "C-KP-TR-clinonly-s0",
+   "priority": 6,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-TR-clinonly-s0",
+   "adapter_run": "B-TR-clinonly-s0",
+   "max_new": 768
+  },
+  {
+   "run_id": "C-NL-TR-clinonly-s0",
+   "priority": 6,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/nli4ct_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-TR-clinonly-s0",
+   "adapter_run": "B-TR-clinonly-s0",
+   "max_new": 768
+  },
+  {
+   "run_id": "C-ME-TR-clinonly-s0",
+   "priority": 7,
+   "format": "ledger2",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-TR-clinonly-s0",
+   "adapter_run": "B-TR-clinonly-s0",
+   "max_new": 384
+  }
+ ]
+}

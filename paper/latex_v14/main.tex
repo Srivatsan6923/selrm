@@ -1,0 +1,2470 @@
+\documentclass[11pt]{article}
+
+% "review" produces the anonymous, line-numbered version required by ARR.
+\usepackage[review]{acl}
+
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{pifont}
+\usepackage{enumitem}
+\usepackage{eso-pic}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+% ======================================================================
+% PLACEHOLDER MACHINERY
+% Every value that must come from an experiment that has not been run, and
+% every fact that the authors still have to confirm against the repository,
+% is written as \ph{...}. While \placeholderstrue is set, such text prints
+% in red, each page carries a red draft banner, and Appendix A states the
+% draft status. Switching to \placeholdersfalse makes any remaining
+% \ph{...} a compile ERROR, so the paper cannot be built for submission
+% until every placeholder has been replaced by a measured value (typed
+% without \ph). Version 14 contains no invented target values: a red cell
+% reads "tbd" or names what is missing.
+% ======================================================================
+\newif\ifplaceholders
+\placeholderstrue
+\newcommand{\ph}[1]{%
+  \ifplaceholders\textcolor{red}{#1}%
+  \else\PackageError{draft}{Placeholder `#1' has not been replaced}%
+       {Replace every \string\ph{...} by a measured value before submission.}%
+  \fi}
+\newcommand{\tbd}{\ph{tbd}}
+% \res{key} prints a value that scripts/make_tables.py computed from the
+% result files and wrote to numbers.tex (keys: docs/RESULT_KEYS.md). A key
+% without a measured value prints a red tbd. Do not type a number over a key.
+\makeatletter
+\newcommand{\resdef}[2]{\@namedef{res@#1}{#2}}
+\newcommand{\res}[1]{\@ifundefined{res@#1}{\tbd}{\@nameuse{res@#1}}}
+\makeatother
+\InputIfFileExists{numbers.tex}{}{}
+\ifplaceholders
+\AddToShipoutPictureBG{\AtPageUpperLeft{\raisebox{-0.9cm}{\hspace{2.2cm}%
+  \textcolor{red}{\footnotesize\sffamily DRAFT v14. Black numbers are
+  measured (results of 3 Oct 2026). Red marks an experiment not yet run or a
+  fact to confirm. Not for submission in this state.}}}}
+\fi
+
+% ---------- shorthands ----------
+\newcommand{\method}{Ledger-RM}
+\newcommand{\methodg}{Ledger-RM-G}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\newcommand{\up}{$\uparrow$}
+\newcommand{\dn}{$\downarrow$}
+\newcommand{\xf}{x^{\mathrm{f}}}
+\newcommand{\xn}{x^{\mathrm{n}}}
+\newcommand{\xm}{x^{\mathrm{m}}}
+\newcommand{\xp}{x^{\mathrm{p}}}
+\newcommand{\bb}{Qwen3.5-9B}
+\newcommand{\mcv}{MedCalc-V}
+\newcommand{\ns}{$^{\dagger}$}
+\newtheorem{proposition}{Proposition}
+\setlist{nosep,leftmargin=*}
+
+\title{Learning When to Change: Symbolic Supervision for\\
+Selective Evidence Sensitivity in Medical Reward Models}
+
+\author{Anonymous ACL submission}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Reward models decide which medical reasoning traces are kept, reranked and
+reinforced. A useful reward reverses its preference when decisive patient
+evidence changes and holds it when similar-looking evidence does not apply: a
+penicillin allergy in the patient is a reason to change an order, the same
+allergy in the patient's mother is not. We test this \emph{selective
+sensitivity} with symbolic triplets from executable, stated clinical rules: a
+base case, a flip of one decisive input, and a near-miss that mentions the
+same concept without making it applicable. On rules of held-out structure,
+released medical PRMs solve \res{min/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA@0}--\res{max/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA@0}\% of triplets. Trained on decisive
+edits alone, a verifier reverses (\res{run/B-F-verdict-blocks/L2/all/Rev/min@0}--\res{run/B-F-verdict-blocks/L2/all/Rev/max@0}\%) and does not hold (\res{run/B-F-verdict-blocks/L2/all/Hold/min@0}--\res{run/B-F-verdict-blocks/L2/all/Hold/max@0}\%);
+near-misses in the same budget raise its triplet accuracy from \res{run/B-F-verdict-blocks/L2/all/TA}\% to
+\res{run/B-F-verdict-triplets/L2/all/TA}\%, and a separately written evidence record to \res{run/B-F-summary2-triplets/L2/all/TA}--\res{run/B-F-ledger2-triplets/L2/all/TA}\%, a gain
+that a single applicability bit carries. The trained verifiers follow edits
+to the rule itself, but where no rule is stated they do not transfer: on
+MedEinst and on exam-question pairs they are level with or below the
+untrained backbone. Selectivity is relative to a criterion. We therefore
+make the criterion a sourced input, taken from published score definitions,
+registered eligibility criteria, a diagnostic knowledge base and open
+ontologies, execute the parts of applicability that are executable, and
+report transfer over absent, stated, derived and wrong criteria
+(\ph{not yet run}). A policy optimised against a released medical PRM that
+fails the test drives its reward to 1.00 while its accuracy falls from
+88.0\% to 38.7\%.
+\end{abstract}
+
+\section{Introduction}
+
+A reward model for medical reasoning is asked whether a step or an answer is
+right for the patient at hand. Often the answer turns on one line of the case.
+Under a rule that orders amoxicillin for streptococcal pharyngitis unless the
+patient is allergic to penicillin, the order is right for a patient with no
+drug allergy and wrong for one with a documented penicillin allergy
+(Figure~\ref{fig:example}). It is right again for a patient whose mother has
+that allergy. A reward that prefers the same order in all three cases fails to
+reverse when required; one that changes its preference in the second and the
+third reverses under an edit that leaves the decision unchanged. Whether
+evidence applies also depends on the rule: a stroke ten years ago counts
+under a score that asks for any prior stroke and not under a criterion that
+asks about the last six months.
+
+\begin{figure}[t]
+\centering\footnotesize
+\parbox{0.97\linewidth}{%
+\textbf{Stated rule.} Strep.\ pharyngitis: order amoxicillin; if the patient is
+allergic to a penicillin, order azithromycin.\\
+\textbf{Claims.} $s$: ``Order amoxicillin.'' \ \ $s'$: ``Order azithromycin.''}
+\\[3pt]
+\setlength{\tabcolsep}{3pt}
+\resizebox{0.97\linewidth}{!}{%
+\begin{tabular}{@{}llcc@{}}
+\toprule
+Case & Reports & Rule & Required $d$\\
+\midrule
+base $x$      & allergies: none          & $s$  & $>0$\\
+decisive edit $\xf$ & allergy: penicillin & $s'$ & $<0$\\
+near-miss $\xn$ & mother: penicillin all. & $s$  & $>0$\\
+missing $\xm$ & allergy status unknown   & --   & reject both\\
+\midrule
+class member\ns & allergy: ampicillin & $s'$ & $<0$\\
+class near-miss\ns & allergy: sulfamethoxazole & $s$ & $>0$\\
+\bottomrule
+\end{tabular}}
+\caption{One rule, generated cases (schematic). $d=u(s)-u(s')$ is the
+preference a verifier should show. A verifier that prefers $s$ throughout
+fails to reverse; one that prefers $s'$ whenever the allergy is named
+reverses on the near-miss. \ns Class-level rows need a membership source
+(\S\ref{sec:sources}) and are not part of the frozen library.}
+\label{fig:example}
+\end{figure}
+
+
+Both failures matter because reward models filter training traces
+\citep{chen2024huatuo}, rerank candidates \citep{snell2025scaling,yun2025medprm}
+and supply the reward in reinforcement learning
+\citep{shao2024deepseekmath,guo2025deepseekr1}, where a learned reward that
+can be satisfied without solving the task is exploited
+\citep{gao2023scaling,tiwari2026reward}. The first failure is documented:
+the mean accuracy of 28 LLMs on guideline-derived medication questions falls
+from 63.6\% to 45.1\% when a patient fact changes the answer
+\citep{hou2026medpic}. The second is easy to overlook: a change after a
+targeted edit means little unless it exceeds the change after an edit that
+should not matter \citep{yang2026compared,chen2026judge}. Medical reward
+models are evaluated on answer selection and injected step errors
+\citep{yun2025medprm,wu2026medprmbench}, neither of which changes the case.
+What is not established is what a reward learns when the ``irrelevant''
+evidence concerns the very concept the rule tests, which supervision teaches
+it when that evidence applies, and what it needs where no rule is written
+down.
+
+We build the test from executable rules (\S\ref{sec:twins}). Each rule yields
+\emph{triplets}: a base case, a \emph{decisive edit} (flip) of one input, and
+a \emph{near-miss} in which the decisive concept appears without counting
+under the rule: in a relative, negated, at the wrong time, or as a value
+that approaches a threshold without crossing it. The rule program
+labels every case against the two claims the rule can support. Labels state
+what a stated rule implies, not what is clinically best. A \emph{claim
+verifier} scores a claim against a case, a \emph{process reward model} ranks
+traces with such scores, and a \emph{training reward} is optimised against by
+a policy; a result at one level is not evidence for the next. Our
+contributions:
+
+\noindent\textbf{(1) A test.} Triplets separate two failures that pair tests
+conflate, and rule-side edits change whether the same evidence counts while
+the case stays fixed. On rules of held-out structure, two released medical
+PRMs solve \res{run/C-AUD-meds3/L2/all/TA}\% and \res{run/C-AUD-medprm/L2/all/TA}\% of triplets and the untrained backbone \res{run/C-TF-critic/L2/all/TA}\%
+(\S\ref{sec:results-audit}).
+
+\noindent\textbf{(2) A controlled comparison} of training distributions and
+representations under one budget (\S\ref{sec:results-factorial}). Every
+corpus without near-misses yields reversal without holding. Near-misses raise
+the triplet accuracy of a verdict-only verifier from \res{run/B-F-verdict-blocks/L2/all/TA}\% to \res{run/B-F-verdict-triplets/L2/all/TA}\%, and a
+record written in a separate pass to \res{run/B-F-summary2-triplets/L2/all/TA}--\res{run/B-F-ledger2-triplets/L2/all/TA}\%. A reader that writes one
+applicability bit matches the full record: what is learned is the
+applicability decision, not a schema.
+
+\noindent\textbf{(3) A boundary, and a design that follows from it.} The
+trained verifiers follow edits to the applicability clause of the rule
+(\res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/min@0}--\res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/max@0}\% crossed accuracy, against \res{run/C-TF-critic/xr_v1:test/top/XA@0}\% untrained) and do not transfer where
+the criterion is implicit (\S\ref{sec:results-shift}): selectivity is
+relative to a criterion. We treat applicability as a conjunction of five
+typed conditions, each checked by an open symbolic source where one exists,
+and make the criterion a sourced input (\emph{criterion grounding},
+\S\ref{sec:ledger}), to be evaluated on real clinical text with stated
+rules and released labels (\S\ref{sec:results-ground}; \ph{not yet run}).
+
+\noindent\textbf{(4) Reward use.} On exam questions, which state no
+criterion, the verifier's score carries almost no signal. As a training
+reward, a released medical PRM that fails the triplet test is exploited: its
+reward reaches 1.00 while accuracy on held-out rules falls from 88.0\% to
+38.7\% (\S\ref{sec:results-downstream}).
+
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[font=\scriptsize, >={Stealth[length=1.5mm]},
+  box/.style={draw=black!55, rounded corners=1.5pt, align=center,
+              inner sep=2.5pt, minimum height=4.6mm},
+  sym/.style={box, fill=blue!9},
+  neu/.style={box, fill=orange!16},
+  hd/.style={font=\scriptsize\bfseries, anchor=west}]
+% (a) data
+\node[hd] at (-0.05,3.3) {(a) Symbolic sources (data)};
+\node[sym, minimum width=36mm] (rule) at (1.8,2.7) {stated rule and its program $f_\rho$};
+\node[sym, minimum width=36mm] (edit) at (1.8,1.95) {applicability: concept, subject,\\ status, time, value};
+\node[box, fill=black!5, minimum width=36mm] (cases) at (1.8,1.05) {base, decisive edit,\\ near-miss (one condition false)};
+\node[sym, minimum width=36mm] (lab) at (1.8,0.2) {labels and gold records from $f_\rho$};
+\draw[->] (rule) -- (edit); \draw[->] (edit) -- (cases); \draw[->] (cases) -- (lab);
+% (b) training
+\node[hd] at (4.15,3.3) {(b) Training (two supervised tasks)};
+\node[neu, minimum width=36mm, align=left] (rt) at (6.0,2.5) {reader: rule, case, condition\\ $\rightarrow$ gold record};
+\node[neu, minimum width=36mm, align=left] (jt) at (6.0,1.3) {judge: rule, record, claim\\ $\rightarrow$ label};
+\node[text=black!70, align=left, anchor=west] at (4.2,0.35) {record given to the judge: gold,\\ or that of a neighbouring case};
+\draw[->] (lab.east) -- ++(0.25,0) |- (rt.west);
+\draw[->] (lab.east) -- ++(0.25,0) |- (jt.west);
+% (c) inference
+\node[hd] at (8.35,3.3) {(c) Inference};
+\node[box, fill=black!4, minimum width=30mm] (inp) at (9.95,2.75) {criterion: stated, derived\\ or self-written; case};
+\node[neu, minimum width=30mm] (reader) at (9.95,1.95) {reader};
+\node[box, fill=yellow!22, minimum width=30mm] (rec) at (9.95,1.3) {record with applicability bit};
+\node[sym, minimum width=30mm] (gate) at (9.95,0.65) {gate: quotation, class, number, date};
+\node[neu, minimum width=30mm] (judge) at (9.95,0.0) {judge: + rule, claim};
+\node[box, fill=white, minimum width=12mm] (score) at (12.3,0.0) {$u(s,x)$\\ or abstain};
+\draw[->] (inp) -- (reader); \draw[->] (reader) -- (rec); \draw[->] (rec) -- (gate); \draw[->] (gate) -- (judge); \draw[->] (judge) -- (score);
+\node[text=black!70, align=left, anchor=west] at (11.55,1.6) {gate overrides the\\ bit where a part\\ is executable};
+% (d) evaluation
+\node[hd] at (13.45,3.3) {(d) Evaluation};
+\node[box, anchor=west, fill=blue!4,  minimum width=31mm] at (13.55,2.75) {rules of held-out structure};
+\node[box, anchor=west, fill=blue!4,  minimum width=31mm] at (13.55,2.2) {rule-side edits};
+\node[box, anchor=west, fill=blue!4,  minimum width=31mm] at (13.55,1.65) {class and knowledge-base triplets\ns};
+\node[box, anchor=west, fill=black!6, minimum width=31mm] at (13.55,1.1) {stated rule, real text: \mcv\ns};
+\node[box, anchor=west, fill=black!6, minimum width=31mm] at (13.55,0.55) {stated rule: trial criteria, TrialGPT};
+\node[box, anchor=west, fill=black!6, minimum width=31mm] at (13.55,0.0) {no rule: MedEinst, key pairs};
+\end{tikzpicture}}
+\caption{Overview. (a) A rule program, and for class terms an ontology,
+decide which mentions count; a near-miss falsifies exactly one applicability
+condition. (b) The program supervises two tasks. (c) At inference the
+criterion is an input with a source, and a symbolic gate recomputes the
+executable parts of applicability. (d) Controlled tests (blue) and external
+labels (grey). \ns Not yet run; the measured system is the reader and judge
+of (b) without gate.}
+\label{fig:overview}
+\end{figure*}
+
+
+\section{Related Work}
+
+\paragraph{Evaluator validity and contrastive supervision.}
+A valid judge is invariant to construct-preserving edits and sensitive to
+construct-changing ones \citep{chen2026judge,weng2026policy,yang2026compared}.
+Clinical tests change a patient fact that decides the answer
+\citep{hou2026medpic,chen2026medeinst,kim2025marc} or add clinically
+irrelevant distractors \citep{vishwanath2025distracted}; none pairs a
+decisive edit with an inapplicable mention of the same concept, edits the
+applicability clause of a rule, or is applied to medical PRMs.
+Label-flipping minimal edits \citep{kaushik2020cad,gardner2020contrast} teach
+which feature matters and not when it does not \citep{joshi2022cad}; adding
+label-preserving edits removes over-triggering for negation scope
+\citep{she2023scone} and safety policies \citep{liu2026apt}, and reward
+models are trained with causal and neutral augmentations
+\citep{srivastava2026crome,liu2026dynacf}, whereas clinical post-training on
+guideline functions keeps only outcome-changing interventions
+\citep{shen2026medguidex}. Our negatives keep the decisive concept and
+remove one condition of its applicability, a near miss in the sense of
+\citet{winston1970}.
+
+\paragraph{Symbolic verification, stated rules and sources of criteria.}
+PRMs are trained on step labels, rollouts or generated verification
+\citep{lightman2024verify,wang2024mathshepherd,khalifa2025thinkprm,zhao2025genprm},
+or on labels from formal tools \citep{kamoi2026fover}. NS-PRM lets a
+deterministic verifier decide what is executable and trains the PRM on
+negatives that pass it \citep{zi2026nsprm}; all its perturbations change the
+label, and we add the label-preserving side. Medical verifiers condition
+on retrieved passages \citep{yun2025medprm,zhang2026medtiv}; scoring from a
+record written in a separate pass follows \citet{dhuliawala2024cove} and
+\citet{evpv2026}, with the assertion attributes of clinical NLP as fields
+\citep{chapman2001negex,harkema2009context}. Rule-conditioned reasoning has
+many benchmarks \citep{saeidi2018sharc,holzenberger2020sara,clark2020ruletaker,sun2024rulebench},
+yet deleting or replacing the rule left every compliance detector audited by
+\citet{sadhu2026compliance} unchanged. Clinical criteria are executed as guideline functions
+\citep{cao2026guideskill}, checked as disease profiles \citep{cao2026veridx}
+or compiled for a solver \citep{zhou2026verdict}, with prompted readers.
+Ontologies supply exactly labelled subsumption data with sibling negatives
+\citep{he2023ontolama,he2024hit,qu2026medieval}; injected into weights they
+changed medical QA little \citep{liu2025ontotune}, while a type vocabulary
+used as a gate before a learned judge helped \citep{shan2026ontgqa}. Learned
+rewards are exploited under optimisation
+\citep{skalse2022hacking,mahmoud2026hacking,pronesti2026vprm}
+(Appendix~\ref{app:related}).
+
+\section{Rule Triplets, Criterion Sources and External Tiers}
+\label{sec:twins}
+
+\subsection{Rule tier}
+
+\paragraph{Rules and applicability.}
+A rule $\rho$ has criteria $c_1,\dots,c_m$ over typed inputs. A case is
+rendered from a state, a set of \emph{mentions}, each with a concept, a
+value, a subject (patient or other), a status (present, absent, unknown) and
+a time (current or past). Every criterion $c_j$ comes with an
+\emph{applicability predicate} that says which mentions it counts, a
+conjunction over the five attributes $\mathcal{K}=\{$concept, subject,
+status, time, value$\}$:
+\begin{equation}
+A_j(m)=\bigwedge_{k\in\mathcal{K}}\bigl[m_k\in D_j^{k}\bigr],
+\label{eq:applic}
+\end{equation}
+where $D_j^{k}$ is the set of values of attribute $k$ that $c_j$ accepts. The
+predicate is part of the rule: a creatinine threshold counts the patient's
+current value, a stroke-risk score a stroke at any time. In 30.5\% of
+criteria a past or family finding counts, so no global heuristic about time
+or subject is correct. In the frozen library the concept condition is an
+identity test. Rules are clinical scores or \emph{constraint rules} (choose
+$a$ unless $c$ holds, then $b$). Each group is scored on \emph{conclusion
+claims}, the two outcomes the rule can support in neutral wording, and on
+\emph{criterion claims} (``criterion $j$ is met''). The prompt states the
+rule.
+
+\paragraph{Edits.}
+The engine edits one input of a criterion and keeps an edit only if
+executing the program confirms its invariant on the target claim. A
+\emph{flip} changes a counted mention so that the claim changes. A
+\emph{near-miss} reports the concept and value of the flip in a mention for
+which exactly one condition of Eq.~\ref{eq:applic} is false, and leaves the
+claim unchanged: another \emph{subject}, an absent \emph{status}, a
+\emph{time} the predicate does not count, or a \emph{value} that moves
+toward the threshold without crossing it (exactly at the threshold:
+\emph{boundary}). Presentation edits re-render the same state, and
+missing twins replace a decisive input by an explicit unknown
+(Appendix~\ref{app:twins}). \emph{Rule-side items} keep the case and change
+one applicability clause of the rule (``ever'' against ``within the last six
+months''; the patient against the patient or a first-degree relative). An
+item crosses two rules with three cases and is solved only if all six
+judgments are right (crossed accuracy, XA); the 400 items were built after
+the library was frozen, and no system is trained on them.
+
+\paragraph{Triplets and metrics.}
+A triplet crosses a base case $x$, its flip $\xf$ and a near-miss $\xn$ with
+the claims $s$ (correct for $x$ and $\xn$) and $s'$ (correct for $\xf$). For a
+reward with score $u(s,x)$ let $d(x)=u(s,x)-u(s',x)$. The triplet is
+\emph{solved} if $d(x)>0$, $d(\xf)<0$ and $d(\xn)>0$; ties are failures.
+\emph{Reversal} (Rev) is the share of base--flip pairs with $d(x)>0$ and
+$d(\xf)<0$, \emph{Hold} the share of near-misses with $d(\xn)>0$, and
+\emph{triplet accuracy} (TA) the share of solved triplets, the primary
+summary; TA$_{c}$ is TA on criterion claims. Three fair preference signs
+solve a triplet with probability $1/8$, so TA is read with base accuracy. A
+deterministic scorer that sees only the claim, only the case, or only
+whether the decisive concept is named solves none
+(Appendix~\ref{app:twins}).
+
+\subsection{Criterion sources and external tiers}
+\label{sec:sources}
+
+Program-derived labels establish compliance with the stated rule, not that
+the behaviour matters outside the generator (Appendix~\ref{app:rules}).
+Every external tier uses released labels or labels computed from released
+annotations, and every criterion has a source that we did not write
+(Table~\ref{tab:sources}); we commission no clinical annotation.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.05cm}>{\raggedright\arraybackslash}p{2.95cm}>{\raggedright\arraybackslash}p{2.2cm}@{}}
+\toprule
+Tier & Criterion source & Label basis\\
+\midrule
+\multicolumn{3}{@{}l}{\emph{Controlled edits, labels by execution}}\\
+Rule triplets, rule-side items & our \res{a15/rules_total@int} stated rules & rule program\\
+Class triplets\ns & RxClass, HPO, Mondo & class closure\\
+KB triplets\ns & DDXPlus finding lists & exclusion procedure\\
+\mcv{} edits\ns & published score text & released values, rule code\\
+\multicolumn{3}{@{}l}{\emph{Released labels, criterion stated}}\\
+\mcv{} criteria\ns & published score text & released values, rule code\\
+Registered criteria\ns & registry text; Chia, LCT annotation & compiled annotation\\
+TrialGPT & trial criterion text & physician labels\\
+\multicolumn{3}{@{}l}{\emph{Released labels, no criterion stated}}\\
+MedEinst & none (DDXPlus lists\ns) & benchmark labels\\
+Key pairs & none (self-written\ns) & answer keys\\
+NLI4CT-P & trial report section & expert labels\\
+\bottomrule
+\end{tabular}
+\caption{Tiers, with the source of each criterion and the basis of its
+labels (case text: Table~\ref{tab:sources-full}). \ns Not yet built or
+scored. \mcv: the rule-based subset of MedCalc-Bench Verified; KB:
+knowledge base.}
+\label{tab:sources}
+\end{table}
+
+
+\paragraph{Criterion stated by the dataset.}
+\emph{\mcv} is the rule-based subset of MedCalc-Bench
+\citep{khandekar2024medcalc} in its maintained release, at a tag that
+postdates two independent audits \citep{ye2025stewardship,krohn2026audit}:
+19 clinical scores and 380 test notes, 230 of them human-written case
+reports and vignettes. Each instance ships the text of the score and the
+value of every criterion input, so criterion-level labels follow from
+released values by rule code. In the second audit, appending the calculator
+specification to the prompt raised one model's answer accuracy from 51.9\%
+to 81.5\%, the effect our premise predicts for a verifier. \emph{Registered criteria}
+are single-condition eligibility criteria quoted from the registry, whose
+operator, value, unit, time window and negation come from published
+annotated corpora \citep{kury2020chia,dobbins2022lct}. The \emph{TrialGPT
+annotations} \citep{jin2024trialgpt} give physician judgments for 1{,}015
+patient--criterion pairs; in only 33 does the label make the patient
+ineligible.
+
+\paragraph{Criterion derived from an open source.}
+The cases of \emph{MedEinst} \citep{chen2026medeinst} are narrated from
+DDXPlus patients \citep{tchango2022ddxplus}, whose released knowledge base
+lists which of 223 findings are associated with each of 49 conditions. For a
+pair of diagnoses a frozen script renders the findings listed for one only,
+the other only and both, with the one procedure the lists support (exclusion
+by a finding listed for the other diagnosis only), identically for both
+members of a pair. Class-level terms (``an ACE inhibitor'') take their
+membership from open ontologies: drug classes from RxNorm ingredients and
+RxClass \citep{nelson2011rxnorm}, phenotypes from HPO \citep{gargano2024hpo},
+diseases from Mondo \citep{vasilevsky2022mondo}; none requires a SNOMED CT or
+UMLS licence. There the flip names a member and the near-miss a relative
+outside the closure of the class (Figure~\ref{fig:example}): the concept
+condition of Eq.~\ref{eq:applic}, which the frozen library never varies.
+
+\paragraph{No criterion.}
+\emph{Key pairs} are two exam questions that share answer options and differ
+in the keyed answer, from MedQA \citep{jin2021medqa} and CareQA
+\citep{ariasduart2025careqa}; what decides between the answers is knowledge
+that no input states. \emph{NLI4CT-P} \citep{jullien2024semeval} edits
+statements about trial reports (Appendix~\ref{app:qa}). These tiers are the
+boundary of the method, not its target.
+
+\section{\method}
+\label{sec:ledger}
+
+\paragraph{Reader.}
+The reader $R_\phi$ receives the case $x$, the criterion text $\rho$, and the
+\emph{condition under test} $\omega$: the criterion, or the set of candidate
+answers, on which the claims disagree. It does not receive a candidate's
+asserted outcome, so the claims of a triplet are judged from one ledger
+$e=R_\phi(x,\rho,\omega)$. An entry records facts and no decision: the
+condition the claim depends on (\texttt{need}), what the case says about it
+(\texttt{found}: a value, a verbatim quotation, or \texttt{missing}), and
+the \texttt{subject}, \texttt{status} and \texttt{time} of the finding. A
+quotation that does not occur in the case makes the ledger malformed. On the
+rule tier $\omega$ is supplied; an ablation has the reader find it.
+
+\paragraph{Judge.}
+The judge $J_\phi$ receives the ledger, the criterion text and the claim:
+\begin{equation}
+u(s,x)=J_\phi\bigl(R_\phi(x,\rho,\omega),\rho,s\bigr),
+\end{equation}
+with $J_\phi(e,\rho,s)=\log p_\phi(+\mid e,\rho,s)-\log p_\phi(-\mid
+e,\rho,s)$. The case reaches the verdict only through the ledger. A malformed
+ledger rejects both claims, and the tie counts as a failure. Reader and
+judge are two prompts of one adapter. Variants
+replace the ledger by prose that carries the same facts, drop the
+applicability fields, add or isolate a one-bit \texttt{applies} field
+written by the reader, or let the judge also see the case.
+
+\paragraph{Training.}
+On rules the program supplies the target ledger $e^\ast(x,\rho,\omega)$ and,
+for any ledger $e$, the verdict $y_\rho(e,s)$ obtained by executing the rule
+on the state that $e$ describes. The reader is trained to write $e^\ast$.
+The judge is trained on a ledger that is $e^\ast$ with probability $1-p$ and
+otherwise the target ledger of another case of the same rule and condition,
+always with the verdict that the ledger shown implies, so no instance
+rewards a verdict that contradicts the evidence given to the judge
+(objective in Appendix~\ref{app:more}).
+
+\paragraph{Symbolic gate.}
+Three measurements (\S\ref{sec:results-ablation}) motivate a composite
+system, \methodg: the applicability decision is what the pipeline learns,
+the learned judge follows whole ledgers and not edits to single fields, and
+a rule program applied to the predicted ledger matches the judge. \methodg{}
+therefore computes whatever part of Eq.~\ref{eq:applic} is computable. Each
+condition $k$ has a check $g_k(e,c)\in\{1,0,\bot\}$, with $\bot$ for not
+formalised or not normalised: a string match for the quotation, a comparison
+after unit conversion for a threshold, date arithmetic against a stated
+reference date for a window, membership in the closure of a class once the
+mention is linked to an ontology term by retrieval, and set membership for
+subject and status. If no check returns $\bot$, the conjunction replaces the
+reader's \texttt{applies} bit; otherwise the bit stands and the judge also
+receives the case. With no criterion, or nothing to record, the system
+abstains and falls back to a verdict-only score. A criterion never has to be
+compiled in full: the gate acts on the parts that carry a number, a date or
+a class (Appendix~\ref{app:ledger}).
+
+\paragraph{Criterion grounding.}
+Where the task states no rule, a \emph{grounding} function maps the task
+identity $\tau$ (the name of a score, a registered criterion, a pair of
+diagnoses, an option set) to a criterion text with a provenance tag,
+$g(\tau)=(\rho,\pi)$, $\pi\in\{\text{stated},\text{derived},\text{self-written}\}$.
+It never sees the case or its label, the members of a pair receive
+identical text, and its source is frozen before any system is scored
+(Appendix~\ref{app:ground}). Results are reported as a ladder over criterion
+conditions: \emph{none}, \emph{stated} or \emph{derived},
+\emph{self-written} by the frozen backbone from $\tau$ alone, and
+\emph{wrong} (another item's criterion, or the pair's own with the two roles
+exchanged), which tests that the verifier reads the rule.
+
+For candidate selection, errors internal to a step are scored by a separate
+step check, the released Med-PRM, and combined with the ledger score by the
+minimum of the calibrated scores (Appendix~\ref{app:more}).
+
+\section{Experimental Setup}
+\label{sec:setup}
+
+\paragraph{Rules and shifts.}
+The frozen library (\texttt{rule\_v1}) has \res{a15/rules_total@int} rules: \res{a15/rules_by_kind.score@int} scoring rules
+implemented from published definitions, \res{d/a15/rules_total|a15/rules_by_kind.score|a15/rules_by_source.grammar_sampled@int} constraint rules compiled from
+public recommendations by the tree-then-program procedure of
+\citet{shen2026medguidex}, and \res{a15/rules_by_source.grammar_sampled@int} rules sampled from a typed grammar
+(Appendix~\ref{app:rules}). Each rule has a structural signature (rule kind,
+operators, dependency depth, input types, applicability predicate), in \res{a15/folds.1.n_classes@int}
+classes. The main test, \textbf{L2}, has 2{,}000 triplets from 103 rules of
+held-out signature classes; L3-inv uses rules with invented names. Rendering
+templates and cue phrases for relatives, negation and time are disjoint
+between training and every test.
+
+\paragraph{Training.}
+All trained models use \bb{} with LoRA \citep{hu2022lora} of rank 64 for one
+epoch on 60{,}000 records. Four corpora differ only in the cases they
+contain. \emph{Natural}: one case per group, the decisive condition rare.
+\emph{Balanced}: one case per group, outcomes equally frequent.
+\emph{Blocks}: the base case and the decisive edit of every group.
+\emph{Triplets}: blocks in which a near-miss replaces the base case in half
+of the groups. Representations: two one-stage formats (verdict only; the
+ledger as a rationale followed by the verdict) and three two-stage formats
+with a case-blind judge (a prose summary rendered from the same facts as the
+ledger, a value ledger with \texttt{need} and \texttt{found} only, and the
+applicability ledger).
+
+\paragraph{Systems and protocol.}
+We audit the released Med-PRM \citep{yun2025medprm}, MedS$^3$ PRM
+\citep{jiang2025meds3} and FoVer PRM \citep{kamoi2026fover}, and on subsets
+ThinkPRM-14B and GenPRM-7B. Training-free baselines on \bb{} are the
+zero-shot critic, default correction \citep{shi2024cad}, a prompted summary,
+a prompted ledger, and a verifier that writes and executes a program for the
+rule \citep{ocampo2026solver}; larger judges are \ph{not yet scored}
+(Appendix~\ref{app:more}). Scores are verdict log-odds. Key cells have five
+seeds; other values are from seed 0. Paired differences use a cluster
+bootstrap over rules (patients for TrialGPT, label pairs for MedEinst). The
+analysis plan was fixed before the test sets were scored, and a second
+stage was registered after its outcome and before any of its data were built
+(Appendix~\ref{app:plan}).
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Audit of existing reward signals}
+\label{sec:results-audit}
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{2.6pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+ & \multicolumn{5}{c}{Rule tier (L2)} & ME & Key\\
+\cmidrule(lr){2-6}
+Reward signal & Rev & Hold & TA & TA$_c$ & XA & pair & pair\\
+\midrule
+\multicolumn{8}{@{}l}{\emph{Released PRMs}}\\
+MedS$^3$ PRM        & \res{run/C-AUD-meds3/L2/all/Rev} & \res{run/C-AUD-meds3/L2/all/Hold} & \res{run/C-AUD-meds3/L2/all/TA} & \res{run/C-AUD-meds3/L2/step=criterion/TA} & \res{run/C-AUD-meds3/xr_v1:test/top/XA} & \res{run/C-AUD-meds3/clin_v1:medeinst_test/top/Reversal} & \res{run/C-AUD-meds3/clin_v1:keypairs_medqa_oneway/top/Reversal}\\
+Med-PRM             & \res{run/C-AUD-medprm/L2/all/Rev} & \res{run/C-AUD-medprm/L2/all/Hold} & \res{run/C-AUD-medprm/L2/all/TA} & \res{run/C-AUD-medprm/L2/step=criterion/TA} & \res{run/C-AUD-medprm/xr_v1:test/top/XA} & \res{run/C-AUD-medprm/clin_v1:medeinst_test/top/Reversal} & \res{run/C-AUD-medprm/clin_v1:keypairs_medqa_oneway/top/Reversal}\\
+FoVer PRM           & \res{run/C-AUD-fover/L2/all/Rev} & \res{run/C-AUD-fover/L2/all/Hold} & \res{run/C-AUD-fover/L2/all/TA} & \res{run/C-AUD-fover/L2/step=criterion/TA} & \res{run/C-AUD-fover/xr_v1:test/top/XA} & \res{run/C-AUD-fover/clin_v1:medeinst_test/top/Reversal} & \res{run/C-AUD-fover/clin_v1:keypairs_medqa_oneway/top/Reversal}\\
+ThinkPRM-14B$^{a}$  & \res{run/C-AUD-thinkprm/L2/all/Rev} & \res{run/C-AUD-thinkprm/L2/all/Hold} & \res{run/C-AUD-thinkprm/L2/all/TA} & \tbd & \tbd & \tbd & \tbd\\
+GenPRM-7B$^{b}$     & \tbd & \tbd & \tbd & \tbd & \tbd & \res{run/C-AUD-genprm/clin_v1:medeinst_test/top/Reversal} & \tbd\\
+\multicolumn{8}{@{}l}{\emph{\bb, no training}}\\
+Critic              & \res{run/C-TF-critic/L2/all/Rev} & \res{run/C-TF-critic/L2/all/Hold} & \res{run/C-TF-critic/L2/all/TA} & \res{run/C-TF-critic/L2/step=criterion/TA} & \res{run/C-TF-critic/xr_v1:test/top/XA} & \res{run/C-ME-critic/clin_v1:medeinst_test/top/Reversal} & \res{run/C-KP-critic/clin_v1:keypairs_medqa_oneway/top/Reversal}\\
+\ + default corr.   & \tbd & \tbd & \res{run/C-TF-defcorr/L2/all/TA} & \tbd & \res{run/C-TF-defcorr/xr_v1:test/top/XA} & \res{run/C-ME-defcorr/clin_v1:medeinst_test/top/Reversal} & \tbd\\
+\ + prompted summary& \res{run/C-TF-promptsum/L2/all/Rev} & \res{run/C-TF-promptsum/L2/all/Hold} & \res{run/C-TF-promptsum/L2/all/TA} & \res{run/C-TF-promptsum/L2/step=criterion/TA} & \res{run/C-TF-promptsum/xr_v1:test/top/XA} & \tbd & \res{run/C-KP-promptsum/clin_v1:keypairs_medqa_oneway/top/Reversal}\\
+\ + prompted ledger$^{c}$ & \res{run/C-TF-promptledger-lenient/L2/all/Rev} & \res{run/C-TF-promptledger-lenient/L2/all/Hold} & \res{run/C-TF-promptledger-lenient/L2/all/TA} & \res{run/C-TF-promptledger-lenient/L2/step=criterion/TA} & \res{run/C-TF-promptledger-lenient/xr_v1:test/top/XA} & \tbd & \tbd\\
+Generated program$^{d}$ & \res{run/C-TF-genprog/L2/all/Rev} & \res{run/C-TF-genprog/L2/all/Hold} & \res{run/C-TF-genprog/L2/all/TA} & \tbd & \res{run/C-TF-genprog/xr_v1:test/top/XA} & -- & --\\
+\bottomrule
+\end{tabular}}
+\caption{Audit (\%), each signal with its native readout. Rev, Hold, TA:
+conclusion claims on L2; TA$_c$: criterion claims; XA: rule-side items; ME,
+Key: both members right on MedEinst and MedQA key pairs. $^{a}$200
+triplets. $^{b}$200 pairs. $^{c}$Lenient parsing (strict: 98.8\% of ledgers
+malformed, TA 0.05). $^{d}$1{,}000 triplets; executes code it writes.
+Larger open and closed judges: \ph{not yet scored}.}
+\label{tab:audit}
+\end{table}
+
+
+No released medical reward model comes close to solving the triplets, and
+they fail differently (Table~\ref{tab:audit}). Med-PRM is right on \res{run/C-AUD-medprm/L2/all/BaseAcc}\% of
+base cases and \res{run/C-AUD-medprm/L2/all/Hold}\% of near-misses and reverses on \res{run/C-AUD-medprm/L2/all/Rev}\% of flips: it
+holds because it does not respond. The MedS$^3$ PRM prefers the wrong claim
+on 74.6\% of base cases; three fair coins would solve 12.5\%, which is why
+TA is read with base accuracy. The untrained backbone separates the two kinds of claim: asked
+whether a criterion is met it solves \res{run/C-TF-critic/L2/step=criterion/TA}\% of triplets, and asked which
+outcome the rule supports \res{run/C-TF-critic/L2/all/TA}\%, with base accuracy below one half: its
+errors lie in applying unseen rule structures more than in reading the
+evidence. A prompted summary before the verdict raises its
+accuracy to \res{run/C-TF-promptsum/L2/all/TA}\%, a verifier that writes and runs a program for the
+rule reaches \res{run/C-TF-genprog/L2/all/TA}\%, and ThinkPRM-14B, a general verifier that reasons
+before it scores, \res{run/C-AUD-thinkprm/L2/all/TA}\% on a subset of 200 triplets: the test is solvable
+without training on our rules, and the released medical PRMs do not solve
+it. Among shortcut scorers (Appendix~\ref{app:diag}), a
+claim-only scorer and one that sees whether the decisive concept is named
+solve no triplet, and a trigger lexicon solves \res{run/A-D14-trigger_train/L2/all/TA}\% with training cue
+phrases and \res{run/A-D14-trigger_all/L2/all/TA}\% with the test cue phrases: the difficulty of the
+generated test lies in unseen wording and rule structure, which is why the
+rule-side items and the external tiers matter.
+
+\subsection{Training distribution and representation}
+\label{sec:results-factorial}
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{2.8pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Representation & Nat. & Bal. & Blocks & Triplets\\
+\midrule
+\multicolumn{5}{@{}l}{\emph{One-stage (verdict produced with the case in context)}}\\
+Verdict only            & \res{run/B-F-verdict-natural/L2/all/TA/s0} & \res{run/B-F-verdict-balanced/L2/all/TA/s0} & \res{run/B-F-verdict-blocks/L2/all/TA/s0} & \res{run/B-F-verdict-triplets/L2/all/TA/s0}\\
+\ \ five seeds          &      &      & \res{run/B-F-verdict-blocks/L2/all/TA}\,$\pm$\,\res{run/B-F-verdict-blocks/L2/all/TA/sd} & \res{run/B-F-verdict-triplets/L2/all/TA}\,$\pm$\,\res{run/B-F-verdict-triplets/L2/all/TA/sd}\\
+Rationale, then verdict & \res{run/B-F-rationale-natural/L2/all/TA/s0} & \res{run/B-F-rationale-balanced/L2/all/TA/s0} & \res{run/B-F-rationale-blocks/L2/all/TA/s0} & \res{run/B-F-rationale-triplets/L2/all/TA/s0}\\
+\multicolumn{5}{@{}l}{\emph{Two-stage (case-blind judge)}}\\
+Evidence summary (prose) & \res{run/B-F-summary2-natural/L2/all/TA/s0} & \res{run/B-F-summary2-balanced/L2/all/TA/s0} & \res{run/B-F-summary2-blocks/L2/all/TA/s0} & \res{run/B-F-summary2-triplets/L2/all/TA/s0}\\
+\ \ five seeds &      &      & \res{run/B-F-summary2-blocks/L2/all/TA}\,$\pm$\,\res{run/B-F-summary2-blocks/L2/all/TA/sd} & \res{run/B-F-summary2-triplets/L2/all/TA}\,$\pm$\,\res{run/B-F-summary2-triplets/L2/all/TA/sd}\\
+Value ledger            & \res{run/B-F-value2-natural/L2/all/TA/s0} & \res{run/B-F-value2-balanced/L2/all/TA/s0} & \res{run/B-F-value2-blocks/L2/all/TA/s0} & \res{run/B-F-value2-triplets/L2/all/TA/s0}\\
+Applicability ledger    & \res{run/B-F-ledger2-natural/L2/all/TA/s0} & \res{run/B-F-ledger2-balanced/L2/all/TA/s0} & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & \textbf{99.2}\\
+\ \ five seeds          &      &      & \res{run/B-F-ledger2-blocks/L2/all/TA}\,$\pm$\,\res{run/B-F-ledger2-blocks/L2/all/TA/sd} & \textbf{99.2}\,$\pm$\,\res{run/B-F-ledger2-triplets/L2/all/TA/sd}\\
+\bottomrule
+\end{tabular}}
+\caption{Triplet accuracy on L2 (\%) by training corpus and
+representation; \bb, rule data only, 60k records. First line of each row:
+seed 0; seed rows: mean and s.d. A prose judge that also sees the case:
+\res{run/B-SC-summary2-triplets/L2/all/TA/s0} on triplets. Intervals over rules at seed 0 are at most $\pm$4.9
+points (Appendix~\ref{app:more}).}
+\label{tab:factorial}
+\end{table}
+
+
+\emph{Supervision without near-misses yields reversal without holding.}
+In the fifteen cells of Table~\ref{tab:factorial} trained without
+near-misses, reversal at seed 0 is between 83.2\% and 99.6\% and near-miss
+correctness between 43.9\% and 77.8\%. Over five seeds the verdict-only
+model trained on blocks reverses on \res{run/B-F-verdict-blocks/L2/all/Rev/min}--\res{run/B-F-verdict-blocks/L2/all/Rev/max}\% of flips, is right on
+\res{run/B-F-verdict-blocks/L2/all/Hold/min}--\res{run/B-F-verdict-blocks/L2/all/Hold/max}\% of near-misses, and solves \res{run/B-F-verdict-blocks/L2/all/TA}\% of triplets. On criterion claims it ends below where the backbone
+started (\res{run/B-F-verdict-blocks/L2/step=criterion/TA/min}--\res{run/B-F-verdict-blocks/L2/step=criterion/TA/max}\% against \res{run/C-TF-critic/L2/step=criterion/TA}\%): a verifier that has only seen
+evidence that counts learns that a mention is a reason to change. Replacing
+the base case by a near-miss in half of the groups raises triplet accuracy
+to \res{run/B-F-verdict-triplets/L2/all/TA}\% ($+\res{cmp/p2/diff}$ points $[\res{cmp/p2/lo},\res{cmp/p2/hi}]$), with near-miss correctness of
+\res{run/B-F-verdict-triplets/L2/all/Hold/min}--\res{run/B-F-verdict-triplets/L2/all/Hold/max}\% at unchanged reversal, and the standard deviation over seeds
+falls from \res{run/B-F-verdict-blocks/L2/all/TA/sd} to \res{run/B-F-verdict-triplets/L2/all/TA/sd} points. The prose record moves from \res{run/B-F-summary2-blocks/L2/all/TA}\% to \res{run/B-F-summary2-triplets/L2/all/TA}\%
+and the ledger from \res{run/B-F-ledger2-blocks/L2/all/TA}\% to \res{run/B-F-ledger2-triplets/L2/all/TA}\%. Without near-misses the failures are
+concentrated where the finding belongs to another person (\res{run/B-F-verdict-blocks/L2/nm_kind=subject/TA/s0}\% solved) or
+the value sits on the threshold (\res{run/B-F-verdict-blocks/L2/nm_kind=boundary/TA/s0}\%). Using near-misses only as probes
+for re-weighting \citep{liu2026dynacf} gives \res{run/B-AB-probe-rw/L2/all/TA/s0}\%, and outcome balance is
+not the remedy: on balanced corpora near-miss correctness stays at
+51.6--72.8\%.
+
+\emph{What the second stage adds.} With near-misses, every format except the
+value ledger solves at least 97.7\% of triplets on criterion claims. They
+differ on conclusion claims under held-out rule structure: the one-stage
+formats reach \res{run/B-F-verdict-triplets/L2/all/TA/s0}\% and \res{run/B-F-rationale-triplets/L2/all/TA/s0}\%, the two-stage formats \res{run/B-F-summary2-triplets/L2/all/TA/s0}\% and \res{run/B-F-ledger2-triplets/L2/all/TA/s0}\%. The
+rationale writes the same ledger in the same pass as the verdict and gains
+nothing over the verdict alone. What helps is a separately supervised
+reading pass and a second pass that applies the rule to a short record, not
+writing evidence first and not hiding the case. Typed fields add \res{cmp/p3/diff} points over prose with the same
+facts ($[\res{cmp/p3/lo},\res{cmp/p3/hi}]$); a ledger without subject, status and time is \res{d/run/B-F-ledger2-triplets/L2/all/TA/s0|run/B-F-value2-triplets/L2/all/TA/s0}
+points lower.
+
+\subsection{What the judge uses}
+\label{sec:results-ablation}
+
+\emph{One applicability bit carries the result.} If the reader also writes
+whether the condition applies, a judge that sees only that bit and the
+claim solves \res{run/B-AB-bitonly-judge/L2/all/TA/s0}\% of L2 triplets, and a reader trained to write the bit
+and nothing else 99.95\% (Table~\ref{tab:ablation}). Both reach \res{run/B-AB-bitonly-judge/xr_v1:test/xa/XA/s0}\%
+crossed accuracy on rule-side items, against \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/min}--\res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/max}\% for the ledger:
+what is learned is the reader's decision that a finding counts under the
+rule in view. On rule-side items that differ in a time window the bit
+reader solves \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_window/s0@0}\% and the ledger \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_window/s0@0}\%, because a field that says
+``current'' or ``past'' cannot carry a date.
+
+\emph{The learned judge follows whole ledgers, not fields.} Given the ledger
+of another case of the same rule and condition, the judge returns the
+verdict that ledger implies in 99.9\% of instances. When one of
+\texttt{subject}, \texttt{status} or \texttt{time} is edited in a correct
+ledger, it follows 47.8\% of the edits that should change the verdict and
+keeps 99.7\% of the verdicts that should stay: it is not a faithful function
+of the fields. A rule program applied to the predicted
+ledger gives \res{run/B-AE-program-ledger/L2/all/TA}\%, against \res{run/B-F-ledger2-triplets/L2/all/TA/s0}\% for the learned judge ($+0.2$
+$[0.0,0.6]$). Where a rule is executable, what the pipeline contributes is
+the reading; hence the gate of \S\ref{sec:ledger}.
+
+\emph{Conditions not seen in training.} Trained on triplets without one kind
+of near-miss, the verdict-only model solves 7.0\% of L2 triplets of the kind
+``another person'' (\res{run/B-F-verdict-triplets/L2/nm_kind=subject/TA/s0}\% when trained with it), 60.2\% for ``past''
+(\res{run/B-F-verdict-triplets/L2/nm_kind=time/TA/s0}\%) and 49.8\% for ``threshold'' (\res{run/B-F-verdict-triplets/L2/nm_kind=boundary/TA/s0}\%); the ledger \res{run/B-LOKO-subject-ledger2/L2/nm_kind=subject/TA}\%, \res{run/B-LOKO-time-ledger2/L2/nm_kind=time/TA}\%
+and \res{run/B-LOKO-boundary-ledger2/L2/nm_kind=boundary/TA}\%
+(Table~\ref{tab:loko}). Near-miss supervision has to cover each condition
+of Eq.~\ref{eq:applic}, which is the reason to hand a condition to a
+symbolic check where one exists (further ablations:
+Appendix~\ref{app:more}).
+
+\subsection{Transfer within and beyond rules}
+\label{sec:results-shift}
+
+\begin{table*}[t]
+\centering\small
+\setlength{\tabcolsep}{4.2pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lcccccccccccc@{}}
+\toprule
+ & \multicolumn{4}{c}{Rule tier} & \multicolumn{2}{c}{Criterion stated} & \multicolumn{6}{c}{No criterion stated}\\
+\cmidrule(lr){2-5}\cmidrule(lr){6-7}\cmidrule(l){8-13}
+ & & & & & \multicolumn{2}{c}{TrialGPT} & \multicolumn{3}{c}{MedEinst} & \multicolumn{2}{c}{Key pairs} & NLI4CT-P\\
+\cmidrule(lr){6-7}\cmidrule(lr){8-10}\cmidrule(lr){11-12}
+System & L2 & L3-inv & XA & Hold & F1 & choice & pair & control & trap & MedQA & CareQA & avg.\\
+\midrule
+\multicolumn{13}{@{}l}{\emph{Training-free, \bb}}\\
+Critic & \res{run/C-TF-critic/L2/all/TA} & \res{run/C-TF-critic/L3inv/all/TA} & \res{run/C-TF-critic/xr_v1:test/top/XA} & \res{run/C-TF-critic/L2/all/Hold} & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/forced_choice_acc} & \res{run/C-ME-critic/clin_v1:medeinst_test/top/Reversal} & \res{run/C-ME-critic/clin_v1:medeinst_test/top/control_acc} & \res{run/C-ME-critic/clin_v1:medeinst_test/top/trap_acc} & \res{run/C-KP-critic/clin_v1:keypairs_medqa_oneway/top/Reversal} & \res{run/C-KP-critic/clin_v1:keypairs_careqa_oneway/top/Reversal} & 80.9\\
+\ \ + prompted summary & \res{run/C-TF-promptsum/L2/all/TA} & \tbd & \res{run/C-TF-promptsum/xr_v1:test/top/XA} & \res{run/C-TF-promptsum/L2/all/Hold} & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/forced_choice_acc} & \tbd & \tbd & \tbd & \res{run/C-KP-promptsum/clin_v1:keypairs_medqa_oneway/top/Reversal} & \res{run/C-KP-promptsum/clin_v1:keypairs_careqa_oneway/top/Reversal} & \tbd\\
+\multicolumn{13}{@{}l}{\emph{Trained on rule data only (all clinical columns are zero-shot)}}\\
+Verdict only, rule blocks & \res{run/B-F-verdict-blocks/L2/all/TA/s0} & \res{run/B-F-verdict-blocks/L3inv/all/TA/s0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA/s0} & \res{run/B-F-verdict-blocks/L2/all/Hold/s0} & \res{run/C-TG-verdict-blocks/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-verdict-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \res{run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/trap_acc/s0} & \res{run/C-KP-verdict-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} & \res{run/C-KP-verdict-blocks/clin_v1:keypairs_careqa_oneway/top/Reversal/s0} & 85.6\\
+Verdict only, rule triplets & \res{run/B-F-verdict-triplets/L2/all/TA/s0} & \res{run/B-F-verdict-triplets/L3inv/all/TA/s0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA/s0} & \res{run/B-F-verdict-triplets/L2/all/Hold/s0} & \res{run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \res{run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/trap_acc/s0} & \res{run/C-KP-verdict-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} & \res{run/C-KP-verdict-triplets/clin_v1:keypairs_careqa_oneway/top/Reversal/s0} & 85.4\\
+Evidence summary, rule triplets & \res{run/B-F-summary2-triplets/L2/all/TA/s0} & \res{run/B-F-summary2-triplets/L3inv/all/TA/s1}$^{a}$ & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA/s0} & \res{run/B-F-summary2-triplets/L2/all/Hold/s0} & \res{run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \res{run/C-ME-summary2-triplets/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-summary2-triplets/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-summary2-triplets/clin_v1:medeinst_test/top/trap_acc/s0} & \res{run/C-KP-summary2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} & \res{run/C-KP-summary2-triplets/clin_v1:keypairs_careqa_oneway/top/Reversal/s0} & 73.2\\
+\method{}, rule blocks & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & \res{run/B-F-ledger2-blocks/L3inv/all/TA/s0} & \res{run/B-F-ledger2-blocks/xr_v1:test/xa/XA/s0} & \res{run/B-F-ledger2-blocks/L2/all/Hold/s0} & \res{run/C-TG-ledger2-blocks/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-ledger2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \tbd & \tbd & \tbd & \res{run/C-KP-ledger2-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} & \res{run/C-KP-ledger2-blocks/clin_v1:keypairs_careqa_oneway/top/Reversal/s0} & \tbd\\
+\textbf{\method}, rule triplets & \textbf{99.2} & \res{run/B-F-ledger2-triplets/L3inv/all/TA/s0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s0} & 99.95 & \res{run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/trap_acc/s0} & \res{run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} & \res{run/C-KP-ledger2-triplets/clin_v1:keypairs_careqa_oneway/top/Reversal/s0} & \tbd\\
+\multicolumn{13}{@{}l}{\emph{Reference that uses the rule program at test time}}\\
+Program on the trained reader's ledger & \res{run/B-AE-program-ledger/L2/all/TA} & -- & -- & \res{run/B-AE-program-ledger/L2/all/Hold} & -- & -- & -- & -- & -- & -- & -- & --\\
+\bottomrule
+\end{tabular}}
+\caption{Transfer (\%), seed 0, ledger score alone. L2, L3-inv: triplet
+accuracy on rules of held-out structure and on invented rules; XA: crossed
+accuracy on rule-side items; Hold: on L2. TrialGPT: macro-F1 over met, not
+met and not enough information against physician labels, and accuracy of
+the preferred claim on items with a decided label. MedEinst: both members
+right, and accuracy on control and on trap cases. Key pairs: both members
+right. NLI4CT-P: mean of control F1, faithfulness and consistency.
+$^{a}$Seed 1. All rows: Table~\ref{tab:main-full}.}
+\label{tab:main}
+\end{table*}
+
+
+\paragraph{Within rules, and when the rule changes.}
+Trained on rule triplets only, \method{} solves \res{run/B-F-ledger2-triplets/L2/all/TA/s0}\% of triplets on rules
+of held-out structure and \res{run/B-F-ledger2-triplets/L3inv/all/TA/s0}\% on invented rules; the verdict-only model
+\res{run/B-F-verdict-triplets/L2/all/TA/s0}\% and \res{run/B-F-verdict-triplets/L3inv/all/TA/s0}\% (Table~\ref{tab:main}, Table~\ref{tab:ladder}). On
+rule-side items, where the case is fixed and one clause of the rule changes,
+the triplet-trained verifiers solve \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/min}--\res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/max}\% (\method) and \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA/min}--\res{run/B-F-verdict-triplets/xr_v1:test/xa/XA/max}\%
+(verdict only) over five seeds, the untrained backbone \res{run/C-TF-critic/xr_v1:test/top/XA}\% and Med-PRM
+\res{run/C-AUD-medprm/xr_v1:test/top/XA}\%. Unlike the compliance detectors of \citet{sadhu2026compliance},
+these verifiers read the rule. Time windows are the weakest clause (\res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_window/s0@0}\%
+for \method{} at seed 0, against 93--100\% for the others): the frozen
+library contains none.
+
+\paragraph{Stated criterion, expert labels.}
+On the TrialGPT annotations the systems trained on triplets have a higher
+macro-F1 than the backbone (69.1--70.8 against \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1}), and no difference is
+established: $+\res{cmp/p6a/diff}$ points $[\res{cmp/p6a/lo},\res{cmp/p6a/hi}]$ for \method, and
+$\res{cmp/p6b/diff}$ $[\res{cmp/p6b/lo},\res{cmp/p6b/hi}]$ against the same format trained on blocks. The gain
+comes from answering ``not enough information'' more often; on items with a
+decided label the two-stage systems are below the backbone (84.4--87.7\%
+against \res{run/C-TG-critic/clin_v1:trialgpt_test/top/forced_choice_acc}\%).
+
+\paragraph{No criterion stated.}
+Where the criterion is implicit, training on rules changes nothing or does
+harm. On MedEinst the untrained backbone is right on both members of \res{run/C-ME-critic/clin_v1:medeinst_test/top/Reversal}\%
+of pairs; with control accuracy of \res{run/C-ME-critic/clin_v1:medeinst_test/top/control_acc}\% and trap accuracy of \res{run/C-ME-critic/clin_v1:medeinst_test/top/trap_acc}\%, it
+gives the same diagnosis to both members of 75.0\% of pairs and is wrong on
+both in 0.8\%. When it responds to the edited sentence it responds
+correctly, and it seldom responds. The verdict-only model trained on
+triplets behaves the same (76.8\%; pair accuracy \res{run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/Reversal/s0}\%), and \method{} falls
+to \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/Reversal/s0}\%, with 35.9\% of its reader outputs malformed on these long
+narratives. On key pairs the verdict-only models are level with the backbone
+(78.2--78.7\% against \res{run/C-KP-critic/clin_v1:keypairs_medqa_oneway/top/Reversal}\%) and the two-stage systems collapse to
+30.5--35.9\%: a reader with no criterion has nothing to read against, and a
+judge with no case cannot supply the knowledge.
+
+By the decision rule fixed in advance (Appendix~\ref{app:plan}), the
+zero-shot medical claim of the first plan is withdrawn. The pattern is
+nonetheless specific: the trained verifiers are selective where a criterion
+says which evidence counts, and unchanged where none does.
+
+\subsection{Criterion grounding}
+\label{sec:results-ground}
+
+\ph{These experiments are specified and not yet run.} If selectivity is
+relative to a criterion, three things should hold, and each can fail. (i) On
+real clinical text with a stated rule and released labels, the ordering of
+the rule tier on criterion claims should reappear: triplets above the
+backbone, blocks below it. On \mcv{} the verifier judges such claims on
+untouched notes; triplets change one number across or toward a threshold, or insert a
+sentence that gives the finding to a relative, negates it or places it in
+the past. (ii) Removing or exchanging the criterion should
+lower the score of the trained verifier by more than that of the backbone
+(Table~\ref{tab:ground}). (iii) Where no criterion is stated, a derived one
+should help only as far as it decides the released labels. Before any model is scored on MedEinst with the derived criterion,
+a symbolic executor applies the stated procedure to every pair; its accuracy
+is what the criterion entails, and we expect it to be well below 100\%,
+since trap labels were accepted as plausible, not as entailed. Triplets
+generated by script from DDXPlus test patients test the same source without
+that gap, and class triplets compare the learned verdict with the gate
+(Appendix~\ref{app:ground}).
+
+\subsection{Reward use: selection and policy training}
+\label{sec:results-downstream}
+
+\paragraph{Selection.}
+Reranking 16 samples of a frozen policy on exam questions tests the verifier
+as a process reward where no criterion is stated
+(Table~\ref{tab:downstream}). The expectation of the first plan, that
+adding the ledger score to a step check improves on the step check, is not
+supported ($\res{d/run/D-SEL-combined/sel:medqa/top/acc|run/D-SEL-stepcheck/sel:medqa/top/acc}$ points on MedQA $[\res{cmp/sel-mqa-comb-step/lo},\res{cmp/sel-mqa-comb-step/hi}]$), and self-consistency is the
+best selector. As a trace score for answer correctness the ledger score has
+an AUC of 0.51 (Med-PRM: 0.65): with no criterion in the input it has
+nothing to verify.
+
+\paragraph{Policy training.}
+A reward that fails the triplet test can be optimised without solving the
+task. We train a Qwen3.5-4B policy with GRPO for 1{,}000 steps on rule tasks
+and evaluate it with the rule program on 150 held-out L2 pairs (one seed;
+descriptive). With an outcome reward, accuracy on both members of a pair
+rises from 88.7\% to \res{run/D-RL-outcome/L2/top/acc_pair/s0}\%, and with a reference-graph reward after
+\citet{medceg2025} to \res{run/D-RL-refgraph/L2/top/acc_pair/s0}\%. With the released Med-PRM as the reward it
+falls from 88.0\% to \res{run/D-RL-stepcheck/L2/top/acc_pair/s0}\% while the mean reward reaches 0.9997; within a
+rollout group this reward is uncorrelated with correctness ($-0.05$), as its
+reversal rate of \res{run/C-AUD-medprm/L2/all/Rev}\% would suggest. With the two ledger rewards it falls as well, to
+\res{run/D-RL-ledger2-blocks/L2/top/acc_pair/s0}\% and \res{run/D-RL-ledger2-triplets/L2/top/acc_pair/s0}\%. Such exploitation is known
+\citep{tiwari2026reward,mahmoud2026hacking}; we add an exactly labelled
+held-out evaluation and the exploited reward's triplet profile.
+
+\section{Conclusion}
+
+On executable rules, medical reward models fail in two directions, and
+supervision on decisive evidence alone cures the first failure and produces
+the second. Near-misses in the same budget remove it; one learned bit,
+whether the finding counts under the rule in view, accounts for the gain.
+Such a verifier follows edits to the rule and is unchanged on benchmarks
+that state none: selectivity is relative to a criterion, which has to be an
+input with a source. Whether this carries onto clinical text is the
+experiment of \S\ref{sec:results-ground} (\ph{not yet run}).
+
+\section*{Limitations}
+
+\textbf{What the labels are.} Rule-tier labels establish compliance with a
+stated rule, its applicability predicates and a rendering grammar. They say
+what the rule implies, not what is clinically optimal, and that a program
+produced a label does not show that the text expresses the state, that the
+test is free of generator artefacts, or that the behaviour matters outside
+the generator (Appendix~\ref{app:rules}). We commissioned no clinical
+annotation, no clinician reviewed the rules, and the reading of rendered
+groups before the freeze was done by model sessions, not by people; reused
+benchmarks carry the review their authors report. The TrialGPT annotations
+are physician judgments on synthetic patient summaries, made with a
+model's explanation in view; MedEinst cases derive from a
+simulator and were edited and filtered by models, with a physician review of
+a sample reported by its authors; key pairs inherit the errors of exam keys
+and are not counterfactuals. Nothing here supports clinical use.
+
+\textbf{Transfer.} The verifiers trained on rules do not improve agreement
+with any clinical benchmark that leaves its criterion implicit, and the
+improvement where a criterion is stated is not statistically established.
+The experiments that would show selectivity on real clinical text are
+specified and not run. If they fail, what remains is a controlled study of
+supervision for rule-conditioned verification.
+
+\textbf{Sources of criteria.} A criterion derived from a knowledge base or
+an ontology is exact only relative to that source and its release. Open
+knowledge bases mostly list associations, not decisions; class membership
+differs between drug classifications, so we keep a membership only where two
+sources agree, and a missing contraindication assertion is not evidence of
+safety. Giving a model the lists from which a benchmark was generated
+changes what the benchmark measures, which is why the ladder always includes
+the condition without a criterion and the untrained backbone under the same
+text. Self-written criteria can be wrong, and a rule-follower follows wrong
+rules.
+
+\textbf{The rule language.} The test is generated from a finite language of
+applicability conditions. Held-out signature classes reuse primitives and
+operators seen in training, \res{a15/folds.1.overlap_train_vs_L2.criterion_subexpressions}\% of criterion subexpressions of the main
+test also occur in training rules, there are few such classes, and most
+judgments concern one condition of one rule. A trigger lexicon that is given
+the test cue phrases solves the generated test, and near-miss supervision
+does not extend to a condition it has not covered
+(\S\ref{sec:results-ablation}). The frozen library has no time windows and
+no class-level concepts.
+
+\textbf{The reader.} The record assumes that a claim depends on a few
+identifiable findings. Claims that weigh many soft findings fit it poorly:
+on long diagnostic narratives over a third of the reader's outputs are
+malformed.
+A quotation can exist in the case and still be the wrong evidence, the
+judge is not a faithful function of the fields, and on the rule tier the
+condition under test is supplied.
+
+\textbf{Verifier, process reward, training reward.} The triplet results
+concern a claim verifier. As a selector on exam questions the ledger score
+is uninformative. The policy experiment has one seed and one policy, and its
+runs with our own rewards are unfinished; we make no claim that a policy
+trained against our verifier is safer.
+
+\textbf{Scope.} One backbone family; five seeds for the key cells and one
+elsewhere; no larger or closed judge has been scored; English only.
+
+\section*{Ethical Considerations}
+
+The work uses public benchmarks and generated cases; no patient data were
+collected. Stated rules in our data are test specifications and must not be
+read as prescribing guidance, and criteria derived from knowledge bases or
+written by a model are not clinical recommendations. A reward model that
+appears to check patient evidence could be trusted more than it should be;
+accuracy on these triplets does not establish safety in care, and the models
+are released for research on post-training only. Because the engine
+generates cases on which a given reward fails, it could be used to construct
+inputs that mislead a deployed evaluator; we see this as an argument for
+auditing rewards before they are used. Redistributed items derived from
+MedCalc-Bench carry its share-alike licence, and ontology content is used
+under the terms of each source (Appendix~\ref{app:ground}).
+
+\bibliography{custom}
+
+\appendix
+
+\section{Analysis Plan and Its Outcome}
+\label{app:plan}
+
+\ifplaceholders
+\noindent\textcolor{red}{\textbf{Draft status.} Values printed in black are
+measured on frozen sets (results of 3 October 2026); seed-0 values are marked
+as such. Everything printed in red is missing: ``tbd'' marks a value from an
+experiment that has not been run or whose result we have not received, and
+red text names a fact to be confirmed against the repository. This draft
+contains no target or example values. The red banner and this paragraph
+disappear, and the build fails on any remaining placeholder, once measured
+values are entered.}\smallskip
+\fi
+
+\noindent\textbf{Stage 1 (fixed before any test set was scored).}
+\emph{Primary endpoints:} triplet accuracy on L2 and pair accuracy on MedEinst
+test pairs for the model trained on rule triplets only. \emph{Primary
+comparisons}, paired on identical items with a cluster bootstrap:
+(1) balanced against natural, verdict only, L2; (2) triplets against blocks,
+verdict only, L2; (3) applicability ledger against prose summary, triplets,
+L2; (4) rule-only \method{} against the untrained critic, MedEinst;
+(5) rule-only \method{} against the rule-only prose pipeline, MedEinst;
+(6a) rule-only \method{} against the untrained critic and (6b) against the
+same format trained on blocks, TrialGPT test portion (added before any
+external result was seen). \emph{Decision rules:} if (2) fails, near-misses
+are reported as an evaluation device only; if (3) fails, the typed ledger is
+reported as equal to prose; if (4) and (6) fail, the answer outside rules is
+negative and the medical claim is withdrawn.
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}llcl@{}}
+\toprule
+ & Difference (points) & $p$ & Outcome\\
+\midrule
+(1) & $\res{cmp/p1/diff}$ $[\res{cmp/p1/lo},\res{cmp/p1/hi}]$ & $<$0.001 & expectation not supported\\
+(2) & $+\res{cmp/p2/diff}$ $[\res{cmp/p2/lo},\res{cmp/p2/hi}]$ & $<$0.001 & holds (five seeds)\\
+(3) & $+\res{cmp/p3/diff}$ $[\res{cmp/p3/lo},\res{cmp/p3/hi}]$ & \res{cmp/p3/p} & holds, at \res{cmp/p3/diff} points\\
+(4) & $\res{cmp/p4/diff}$ $[-20.1,1.7]$ & 0.104 & fails\\
+(5) & $\res{cmp/p5/diff}$ $[-19.5,-0.8]$ & 0.026 & fails (negative)\\
+(6a) & $+\res{cmp/p6a/diff}$ $[\res{cmp/p6a/lo},\res{cmp/p6a/hi}]$ & \res{cmp/p6a/p} & not established\\
+(6b) & $\res{cmp/p6b/diff}$ $[\res{cmp/p6b/lo},\res{cmp/p6b/hi}]$ & \res{cmp/p6b/p} & not established\\
+\bottomrule
+\end{tabular}}
+\caption{Outcome of the seven primary comparisons of stage 1. Intervals for
+(4) and (5) resample the 134 label pairs; with pairs as units they are
+$[-9.8,-7.0]$ and $[-10.7,-8.1]$. $p$-values are unadjusted; with the Holm
+correction over the family, (1) to (5) remain below 0.05 ((3) at
+\res{cmp/p3/padj}; (1), (4) and (5) against the expectation) and (6a), (6b) are
+at \res{cmp/p6a/padj}.}
+\label{tab:primary}
+\end{table}
+
+\noindent\textbf{Application of the decision rules.} (2) holds by a wide
+margin: near-miss supervision is reported as a training result. (3) holds at
+a size that does not carry a paper: the typed ledger is reported as \res{cmp/p3/diff}
+points above matched prose. (4) and (6) fail: the zero-shot medical claim is
+withdrawn, and the abstract and \S\ref{sec:results-shift} say so. The
+expectation that combined selection improves on a step check, which was not
+a primary comparison, is not supported either
+(\S\ref{sec:results-downstream}).
+
+\noindent\textbf{Stage 2 (written on 8 October 2026, after the outcome of
+stage 1 and before any stage-2 set was built; committed to the
+repository as \texttt{docs/ANALYSIS\_PLAN\_STAGE2.md}, commit
+\texttt{733ad25}, before the first stage-2 set was built).} The question is whether the
+boundary found in stage 1 is the absence of a criterion. \emph{Primary
+comparisons}, Holm-corrected as one family:
+(7) \mcv{} criteria on human-written notes, criterion stated: verdict-only
+verifier trained on triplets against the one trained on blocks (balanced
+accuracy over items that score points and items that score none, notes as
+clusters);
+(8) on the same items, the interaction of criterion (stated against none)
+with system (triplet-trained verifier against untrained critic);
+(9) \mcv{} edits: triplet accuracy, triplets against blocks;
+(10) class triplets on held-out classes: gate against learned verdict;
+(11) MedEinst, all pairs: derived criterion against none, for the
+triplet-trained verdict-only verifier, against the same difference for the
+critic;
+(12) key pairs: case-visible composite against the verdict-only verifier,
+non-inferiority at a margin of two points. Comparisons (7), (8), (9) and
+(11) use the adapters of stage 1 without further training.
+\emph{Decision rules:} if (7) and (9) fail, near-miss supervision is a
+result about generated text and the abstract and conclusion say so. If
+(8) shows no interaction, the trained verifier's advantage does not come from
+reading the criterion. If the symbolic executor decides fewer than half of
+the MedEinst pairs, (11) is dropped and MedEinst is reported only as the
+contrast without a criterion. If (10) fails, class conditions are left to
+the learned judge. If (12) fails, the composite is reported as harmful where
+no criterion is stated. \emph{Selection and freezing:} prompts, thresholds and the
+linking pipeline are chosen on development portions (training notes of
+\mcv, DDXPlus validation patients, MedEinst reference pairs, classes
+disjoint from the test classes); each stage-2 set is frozen with a hash
+before any system is scored on it, and \texttt{rule\_v1} is not modified.
+
+\section{Rule Library and Splits}
+\label{app:rules}
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lr@{}}
+\toprule
+Source & Rules\\
+\midrule
+Published scores, our implementation & \res{a15/rules_by_kind.score@int}\\
+Constraint rules from public recommendations & \res{d/a15/rules_total|a15/rules_by_kind.score|a15/rules_by_source.grammar_sampled@int}\\
+Grammar-sampled rules                & \res{a15/rules_by_source.grammar_sampled@int}\\
+\midrule
+Total (\texttt{rule\_v1}; \res{a15/folds.1.n_classes@int} signature classes) & \res{a15/rules_total@int}\\
+Invented rules, test only (L3-inv) & 60\\
+MedCalc-Bench calculators            & not included\\
+\bottomrule
+\end{tabular}}
+\caption{Rule population of the frozen library. Of the 103 rules written from
+sources, 97 are simplified source rules and 6 are synthetic; 53 deviate from
+their source in a recorded way.}
+\label{tab:rules}
+\end{table}
+
+\paragraph{What the labels establish.}
+A program-derived label answers one of four questions
+(Table~\ref{tab:validity}); the paper treats them separately.
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.45\columnwidth}p{0.49\columnwidth}@{}}
+\toprule
+Question & Evidence\\
+\midrule
+Does the program implement the stated rule? & boundary, unit and dependency tests; target-claim check re-executed on every group (0 violations in 203{,}014 records)\\
+Does the text express the intended state? & model reading sessions before the freeze (below); reading by the authors \ph{pending}\\
+Does the test measure applicability and not artefacts? & shortcut scorers; rule-side items; leave-one-kind-out\\
+Does the behaviour carry beyond the generator? & stage 1: TrialGPT, MedEinst, key pairs (negative or not established); stage 2: \mcv, registered criteria (\ph{pending})\\
+\bottomrule
+\end{tabular}
+\caption{Four validity questions and the evidence for each.}
+\label{tab:validity}
+\end{table}
+
+\paragraph{Manifest and provenance.}
+The released manifest gives, for every rule, its source or specification, the
+text shown in prompts, the program, its applicability semantics, its tests and
+its version. Requirements that are ambiguous (for example ``adequate organ
+function'') are excluded and not given an invented interpretation. Because
+every prompt states the rule, correctness is relative to the stated text for
+all sources. Two limits of the frozen library are recorded with the affected
+items: for 146 criteria (26 of them in invented rules) the wording of the
+criterion claim omits the time or person scope that the rule states, and 7
+cases contain a general line that contradicts a met condition.
+
+\paragraph{Rendering audit.}
+Before the freeze, 450 rendered groups were read in six model sessions; no
+person took part. In the first round (300 groups, four sessions) the sessions
+disputed 11, 9, 10 and 12 labels; after the generator was changed, the
+second round (150 groups, two sessions) disputed none. Missing-input lines
+that could be read as ``absent'' were reworded to ``unknown'', and
+presentation edits that changed a fact, sampled alternatives ruled out by
+the condition, and near-misses that differed from the flip in more than one
+attribute were removed. A model reading its own generator's output can
+repeat the generator's error, so this is not a human check of text fidelity.
+The authors' reading of \ph{300} groups is \ph{pending}.
+
+\paragraph{Constraint rules and claims.}
+Each rule states a default option, a condition and an alternative. It is
+derived from a public drug-label or guideline recommendation in three steps
+taken from \citet{shen2026medguidex}, whose own functions are not released: a
+model extracts the recommendation, writes it as a decision tree, and compiles
+the tree to a program. We keep a rule if the tree is complete, the program
+passes the boundary tests and agrees with the tree on sampled inputs, and
+show the verbalised tree in the prompt. No clinician checks the tree against
+the source, which is why labels are relative to the stated rule. Every case
+reports the same fields with raw values, so the presence of a field carries
+no label information.
+
+\paragraph{Structure and complexity.}
+Rule counts overstate variety, so Table~\ref{tab:structure} reports structure.
+Most judgments concern one condition of one rule; where that is so we call
+the task local applicability verification.
+
+\begin{table}[!ht]
+\centering\small
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lrr@{}}
+\toprule
+ & Train & L2\\
+\midrule
+Rules (fold 1) & 223 & 103\\
+Distinct program structures (names, constants removed) & \tbd & \tbd\\
+Conditions needed per judgment (mean; max) & \tbd & \tbd\\
+Dependency depth (mean; max) & \tbd & \tbd\\
+Cases with competing mentions of the concept (\%) & \tbd & \tbd\\
+Judgments with a numeric comparison (\%) & \tbd & \tbd\\
+Judgments with an exception (\%) & \tbd & \tbd\\
+Criteria under which a past or family finding counts (\%) & \multicolumn{2}{c}{30.5 (library)}\\
+\bottomrule
+\end{tabular}}
+\caption{Structural statistics of \texttt{rule\_v1}.}
+\label{tab:structure}
+\end{table}
+
+\paragraph{Splits and overlap.}
+There are three folds; in fold 1, 223 rules are used for training, 27 for
+L1 and 103 for L2. The levels change different things: L0 the generated
+cases only; L1 rule identities and constants; L2 logical compositions; all
+test sets the wording. Between training and L2 no canonical program and no
+rule text is shared, and \res{a15/folds.1.overlap_train_vs_L2.criterion_subexpressions}\% of the criterion subexpressions of L2 rules
+also occur in training rules (72.1\% and 85.3\% in folds 2 and 3): held-out
+structure means unseen compositions of seen parts. Rendering templates
+(1{,}032 for training, 516 for test) and cue words for relatives, negation
+and time are disjoint. All cases derived from one base state are in one
+split. On fold 2 the verdict-only model trained on blocks reaches 63.1\% on
+L2 (fold 1: \res{run/B-F-verdict-blocks/L2/all/TA/s0}\%); the other fold-2 and fold-3 runs are \ph{finished and
+not yet collected}. The set with altered thresholds (L3-alt) does not test
+what we intended: the untrained backbone solves \res{run/C-TF-critic/L3alt/all/TA}\% of it and the
+verdict-only model trained on blocks \res{run/B-F-verdict-blocks/L3alt/all/TA/s0}\%, far above their L2 scores, so
+it is listed in Table~\ref{tab:ladder} and not used as evidence.
+
+\paragraph{Versions.}
+\texttt{rule\_v1} was frozen, with hashes of every set, before the runs
+reported here; an independent rebuild reproduced every set byte for byte.
+Sets built later (rule-side items, corpora for the ablations) are separate
+named versions, each frozen before any system was scored on it. Of the 400
+rule-side items, 38 were found after the freeze to have a known issue (23
+on age inclusivity, 15 on the currency of a diabetes diagnosis); results are
+given with them, and without them in Table~\ref{tab:xr}.
+
+\section{Triplet Construction}
+\label{app:twins}
+
+\paragraph{Invariants.}
+Every edit is checked on the target claim by executing the program: a flip
+must change the claim, a near-miss and a presentation edit must not, also
+for rules that combine criteria. A re-execution of this check over all
+frozen sets found no violation in 16{,}200 groups (203{,}014 records). Of
+the proposed groups of the triplet corpus, 1.1\% (65 of 5{,}688) were
+rejected, all for a presentation edit; none of the 2{,}000 proposed L2
+groups was. Each training corpus has 60{,}000 records; L2 has 2{,}000
+triplets and the development set 300. No evaluation input contains the edit
+type, the role of the case, or the state.
+
+\begin{proposition}
+\label{prop:blind}
+Let $u$ be deterministic. (i) If $u(s,x)=g(s)$, then $d(x)=d(\xf)$. (ii) If
+$u(s,x)=g(x)$, then $d\equiv 0$. (iii) If $u(s,x)=g(s,h(x))$ for a feature map
+$h$ with $h(\xf)=h(\xn)$, then $d(\xf)=d(\xn)$. In each case the triplet is
+not solved; under (iii) a correct reversal on the flip implies failure on the
+near-miss.
+\end{proposition}
+\noindent\emph{Proof.} (i) and (ii) are immediate from the definition of $d$.
+(iii) $d(\xf)=g(s,h(\xf))-g(s',h(\xf))=g(s,h(\xn))-g(s',h(\xn))=d(\xn)$, while
+a solved triplet needs $d(\xf)<0<d(\xn)$. \hfill$\square$
+
+\smallskip
+Let $h_k(x)\in\{0,1\}$ indicate whether the decisive concept $k$ is named
+anywhere in the case, whatever its value, subject, status or time. For a
+finding that the flip introduces, the base case is rendered without naming
+$k$ and an applicability near-miss names it, so $h_k(x)=0$ and
+$h_k(\xf)=h_k(\xn)=1$: (iii) applies. For a measured input $k$ is named in
+all three cases, so $d(x)=d(\xf)$ as in (i). A scorer that uses the case only
+through $h_k$ thus solves no triplet, although it can reverse on every flip
+of the first kind (47\% of L2 flips). The proposition is a check on the
+construction and does not exclude other shortcuts, and it does not extend to
+sampled decisions.
+
+\paragraph{Semantics.}
+\emph{Several mentions.} A criterion uses the mentions its predicate counts;
+for a measurement \ph{the current value}, for a finding any counted mention
+with status present. \emph{Numbers.} Thresholds are inclusive or exclusive
+as the rule text says, and values exactly at a threshold form their own
+near-miss kind. \emph{Time.} In \texttt{rule\_v1} a mention is current or
+past, and a past mention carries a year; there is no reference date and no
+rule with a time window. Windows occur only in the rule-side items and, with
+a stated reference date and a stated treatment of the boundary day, in the
+stage-2 sets. \emph{Omission.} Measurements that are not given are unknown;
+history items that are not mentioned are absent, unless the case says they
+are unknown. This is a stipulation of the generator, not a general reading
+of clinical notes. External datasets keep their own conventions; \mcv, for
+example, scores an unmentioned finding as absent, with documented
+exceptions.
+
+\paragraph{Missing twins.}
+We distinguish explicit absence, which determines a criterion, from an
+unknown input. With $C_\rho(z')$ the non-empty set of admissible completions
+of a partial state $z'$, a claim $s$ is \emph{supported} if every completion
+supports it, \emph{refuted} if every completion refutes it, and
+\emph{undetermined} otherwise; inconsistent states are excluded. A missing
+twin is kept only if the target claim is undetermined, which an unknown
+criterion does not by itself guarantee. A verdict ``$+$'' means supported;
+``$-$'' covers refuted and undetermined claims, which verifiers for retrieval
+keep apart \citep{qiu2026surerag,kamelhar2026gsar}. MR is the rate at which
+both claims of a missing twin are rejected at the threshold that gives 5\%
+false rejection of supported claims on development data. It is \res{run/C-AUD-medprm/missing/top/MR}\% for
+Med-PRM, \res{run/C-AUD-meds3/missing/top/MR}\% for the MedS$^3$ PRM, \res{run/C-AUD-fover/missing/top/MR}\% for the FoVer PRM, \res{run/C-TF-critic/missing/top/MR}\% for the
+untrained critic and \res{run/C-TF-promptsum/missing/top/MR}\% for the prompted summary, and between 99.2\% and
+\res{run/B-F-verdict-blocks/missing/top/MR/max}\% for every trained model: the marker of a missing input is learnable
+from the 15\% of such records in each corpus, so we report this as a limit of
+the test and not as evidence of abstention.
+
+\paragraph{Harder set.}
+The harder set is built on the L2 rules and adds long notes with unrelated
+lines, superseded values (an older value crosses the threshold, the latest
+does not) and relabelled lines; counts per requirement are \tbd.
+
+\paragraph{Rule-side items.}
+For a fixed case, two rules differ only in the applicability clause: time
+window, currency, subject, or boundary inclusivity (100 items each; 9{,}600
+records). Each item has three cases (the contested form, an uncontested
+positive, an absent finding) and is solved only if all six judgments are
+right. Scorers that ignore the rule text, never count the contested form or
+always count it solve no item; the rule program solves all, and uniformly
+random preferences 1.5\%.
+
+\paragraph{Text written without the renderer.}
+A kit of 160 case specifications for cases written by the authors, each to
+be checked by a second author, is prepared; the cases are \ph{not yet
+written}, and model-rewritten cases are \ph{not built}. Neither is used in
+this draft. The tests that the renderer does not determine are therefore the
+rule-side items and, in stage 2, real notes.
+
+\section{External Tiers of Stage 1}
+\label{app:qa}
+
+\paragraph{TrialGPT annotations.}
+The released file has 1{,}015 patient--criterion annotations over 53 patient
+summaries and 103 trials (356 inclusion and 659 exclusion criteria), with
+expert fields (eligibility label, relevant sentences, a rating of a model's
+explanation) and, separately, GPT-4 outputs. The expert labels are: included
+150, not included 23, excluded 10, not excluded 484, not enough information
+293, not applicable 55. Protocol, fixed before any system was scored: inputs
+are the patient summary as released and the criterion with its type; no
+GPT-4 field is ever an input; targets are the expert labels, read as
+\emph{met}, \emph{not met} or \emph{not enough information} for the
+criterion as written \ph{(confirm the mapping against the evaluation
+script)}; ``not applicable'' items are left out; ``not enough information''
+is predicted when neither claim clears an acceptance threshold; adapter,
+prompts and threshold are chosen on the rule tier and on a patient-disjoint
+development portion (200 items, 10 patients), and the test portion (759
+items, 43 patients) is scored once. Intervals resample patients. The patient
+summaries are synthetic, so this is an external expert-annotated
+evaluation, not validation on clinical records.
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+System & Macro-F1 & Acc. & Choice\\
+\midrule
+Always ``met'' & 10.3 & 18.2 & --\\
+Always ``not met'' & 22.6 & 51.2 & --\\
+Always ``not enough inf.'' & 15.6 & 30.6 & --\\
+Criterion-type prior & 46.0 & 66.7 & --\\
+\midrule
+Critic & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/acc} & 92.8\\
+\ \ + prompted summary & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/acc} & 91.3\\
+\ \ + prompted ledger$^{a}$ & \res{run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/acc} & 86.0\\
+Verdict only, blocks & 64.8 & 65.7 & 92.8\\
+\ \ seed 2 & 68.6 & 69.2 & 92.0\\
+Verdict only, triplets & 70.8 & 71.1 & 92.8\\
+\ \ seed 1 & 70.1 & \res{run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/acc} & 91.1\\
+Evidence summary, blocks & 68.2 & 69.2 & 84.4\\
+Evidence summary, triplets & 69.2 & 69.0 & 87.5\\
+\method{}, blocks & 70.9 & 71.8 & 85.8\\
+\method{}, triplets & 69.1 & 70.6 & 87.7\\
+\bottomrule
+\end{tabular}
+\caption{TrialGPT test portion (759 items, 43 patients; \%, seed 0 unless
+marked). Choice: accuracy of the preferred claim without the option ``not
+enough information'' \ph{(confirm the item set)}. $^{a}$Lenient parsing.
+Intervals over patients for macro-F1: critic $[61.8,69.7]$, prompted summary
+$[64.8,70.8]$, verdict only $[60.3,69.2]$ and $[66.3,75.3]$, evidence
+summary $[63.9,71.7]$ and $[65.1,72.9]$, \method{} $[66.7,74.6]$ and
+$[64.3,73.5]$. Malformed reader outputs: 1.9\% (\method, blocks) and 4.0\%
+(triplets).}
+\label{tab:trialgpt}
+\end{table}
+
+On the development portion the difference between \method{} trained on
+triplets and the critic was $+13.7$ points of macro-F1 $[5.0,20.6]$ with 10
+patients; the test portion, with 43, gives $+\res{cmp/p6a/diff}$ $[\res{cmp/p6a/lo},\res{cmp/p6a/hi}]$. The reader's
+quoted sentences match the sentences the physicians marked with precision
+57.8\% and recall 61.8\% for \method{} trained on blocks (\tbd{} for
+triplets); the expert sentences evaluate evidence selection and do not
+validate the subject, status or time fields.
+
+\paragraph{MedEinst.}
+We use the released test split (5{,}383 pairs; the served reference split
+has 10{,}609 pairs, the paper states 10{,}689). Claims are the two
+diagnoses of a pair, so the task is a two-way choice and not the benchmark's
+own evaluation over all diagnoses; our pair accuracy is not comparable with
+its published robust accuracy. With two options, uniformly random
+preferences are right on both members of 25\% of pairs and a scorer that
+always prefers the control diagnosis on 0\%.
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+System & Pair & Control & Trap & Same\\
+\midrule
+Med-PRM & 16.2 & 67.5 & 45.4 & 80.5\\
+MedS$^3$ PRM & 25.1 & 79.1 & 44.2 & 73.1\\
+FoVer PRM & 21.0 & 71.8 & 48.1 & 77.9\\
+GenPRM-7B$^{a}$ & 22.0 & 58.0 & 46.5 & --\\
+Critic & 24.2 & 71.8 & 51.6 & 75.0\\
+\ \ + default correction & 24.7 & 70.4 & 53.3 & 74.3\\
+Verdict only, blocks & 20.5 & 68.3 & 51.8 & 79.1\\
+\ \ seed 2 & 18.2 & 65.2 & 52.3 & 81.1\\
+Verdict only, triplets & 22.8 & 69.5 & 52.9 & 76.8\\
+\ \ seed 1 & 18.7 & 67.6 & 50.8 & 81.0\\
+Evidence summary, blocks & 22.8 & 61.6 & 56.1 & 72.1\\
+Evidence summary, triplets & 25.1 & 73.2 & 47.3 & 70.3\\
+\method{}, triplets$^{b}$ & 15.7 & 44.4 & 35.1 & --\\
+\bottomrule
+\end{tabular}
+\caption{MedEinst test pairs, two-way choice (\%, seed 0 unless marked).
+Same: share of pairs whose members receive the same diagnosis, computed from
+the three preceding columns for systems without ties. $^{a}$200 pairs, 5.5\%
+ties. $^{b}$48.2\% ties. Intervals over pairs are about $\pm$1.2 points
+(critic $[23.0,25.4]$, \method{} $[14.7,16.7]$); resampling the 134 label
+pairs widens them to about $\pm$10 points.}
+\label{tab:medeinst}
+\end{table}
+
+Every system without ties gives the same diagnosis to both members of
+70--81\% of pairs and is wrong on both in at most 5.1\%. The failure of
+\method{} on this set is one of format: 35.9\% of its reader outputs are
+malformed (3{,}866 of 10{,}766), and in an inspection recorded by the
+evaluating author \ph{(not reproducible from a result file)} 30.2\% of
+reader outputs contained an entry longer than five lines. A model trained on
+clinical pairs (7{,}807 MedEinst reference pairs and 122 key pairs from
+MedQA training questions) and tested on pairs whose diseases were held out
+(115 pairs) is right on both members of 7.8\% and 43.5\% of pairs at two
+seeds, with trap accuracy above 95\% and control accuracy of 9.6\% and
+47.0\%: it has learned to prefer the trap label, and we do not use it.
+
+\paragraph{Key pairs.}
+Pairs are mined within a split and reduced to a one-to-one matching, so that
+no question occurs in two pairs. Excluded: negatively phrased lead-ins,
+options that refer to other options, and questions without a case
+description. Requiring that each question's keyed answer occurs among the
+other's options leaves 13 MedQA and 3 CareQA pairs, too few to score, so the
+reported sets use \ph{the one-directional rule (state it)}: 357 and 225
+pairs. Pair accuracy on MedQA and CareQA: critic 79.8 $[75.6,84.0]$ and 84.4
+$[79.6,88.9]$; prompted summary 79.6 and 80.9; verdict only on blocks 78.7
+and 82.7, on triplets 78.2 and 83.1; prose pipeline on triplets 33.3 and
+55.6; \method{} on blocks 35.9 and 44.0, on triplets 30.5 and 38.2 (ties
+25.8\% and 38.2\%, malformed reader outputs 14.8\% and 25.1\%); Med-PRM 57.7
+and 56.0; MedS$^3$ PRM 39.5 and 49.8; FoVer PRM 67.2 and 69.3. By normalised
+question text, CareQA shares no question with MedQA.
+
+\paragraph{NLI4CT-P.}
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+System & Mean & Control F1 & Faithf. & Consist.\\
+\midrule
+Critic & 80.9 & 78.3 & 84.8 & 79.5\\
+Verdict only, blocks & 85.6 & 79.2 & 93.8 & 83.9\\
+Verdict only, triplets & 85.4 & 81.0 & 90.6 & 84.5\\
+Evidence summary, triplets & 73.2 & 65.8 & 86.0 & 68.0\\
+\method{}, triplets & \tbd & \tbd & \tbd & \tbd\\
+\bottomrule
+\end{tabular}}
+\caption{NLI4CT-P (\%, seed 0; 500 control statements). Faithfulness and
+consistency follow the task definitions.}
+\label{tab:nli}
+\end{table}
+Both verdict-only models are above the backbone, with and without
+near-misses, so this gain is not evidence for near-miss supervision; no
+paired test was planned. The slice whose premise is the eligibility section
+of a trial, where the premise is a stated rule, is a stage-2 analysis
+(\tbd).
+
+\paragraph{Not run.}
+CondMedQA \citep{parekh2026cgr} is released without the general answers that
+our readout needs, EHRNote-ChatQA \citep{kim2026ehrnotechatqa} was not
+available to us, and MedPRMBench \citep{wu2026medprmbench} has no public
+data release; statements about them in earlier drafts are removed.
+
+\section{Criterion Grounding: Sources and Protocols}
+\label{app:ground}
+
+\begin{table*}[!ht]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{2.9cm}p{5.0cm}p{3.5cm}p{3.6cm}@{}}
+\toprule
+Tier & Criterion and its source & Case text & Label basis\\
+\midrule
+\multicolumn{4}{@{}l}{\emph{Controlled edits, labels by execution}}\\
+Rule triplets & stated rule from our library (\res{a15/rules_total} rules) & generated & rule program\\
+Rule-side items & two rules that differ in one applicability clause & generated & rule program\\
+Class triplets\ns & class-level criterion; membership from RxClass, HPO, Mondo & generated & closure of the class\\
+Knowledge-base triplets\ns & pairwise criterion from the DDXPlus condition--evidence lists & DDXPlus test patients, edited by script & exclusion procedure on the lists\\
+\mcv{} edits\ns & published score definition shipped with the data & case reports and vignettes; one value or sentence edited & released entity values and rule code\\
+\midrule
+\multicolumn{4}{@{}l}{\emph{Released labels, criterion stated}}\\
+\mcv{} criteria\ns & published score definition shipped with the data & 380 notes, 230 human-written & released entity values and rule code\\
+Registered criteria\ns & trial registry text; structure from Chia and LCT annotation & generated & program compiled from the annotation\\
+TrialGPT & trial criterion text & 53 patient summaries & physician criterion-level labels\\
+\midrule
+\multicolumn{4}{@{}l}{\emph{Released labels, no criterion stated}}\\
+MedEinst & none; derived from the DDXPlus lists as an intervention\ns & narrated DDXPlus cases, one sentence edited & benchmark labels\\
+Key pairs & none; self-written as an intervention\ns & exam vignettes & answer keys\\
+NLI4CT-P & trial report section & statements & expert labels, edited statements\\
+\bottomrule
+\end{tabular}
+\caption{Tiers, with the source of the criterion and the basis of the label.
+\ns Not yet built or scored (\S\ref{sec:results-ground}). \mcv: the
+rule-based subset of MedCalc-Bench Verified.}
+\label{tab:sources-full}
+\end{table*}
+
+
+\ifplaceholders\noindent\textcolor{red}{Everything in this appendix is a
+protocol for stage 2. Dataset facts printed in black were verified on the
+released files; no stage-2 set has been built and no system scored.}\smallskip\fi
+
+\paragraph{\mcv.}
+MedCalc-Bench Verified, tag v1.0.8, CC BY-SA 4.0. The test file has 1{,}100
+rows for 55 calculators; the 19 rule-based ones (categories risk, severity
+and diagnosis) have 380 rows, of which 230 have notes extracted from
+published text (186 PMC case reports, 42 USMLE vignettes, 2 TREC topics) and
+150 have notes written by a model and edited or approved by a clinician.
+The training file has 2{,}426 rule-based rows (1{,}669 extracted); the
+original benchmark paper states that the extractions of its training set
+were not verified by hand, and we treat them as silver. Eight scores have only extracted test notes
+(CHA$_2$DS$_2$-VASc, CURB-65, Centor, Charlson, FeverPAIN,
+Glasgow-Blatchford, SIRS, Wells for pulmonary embolism). Each row gives the
+text of the score, a dictionary of entity values, and the answer.
+\emph{Rule code:} we implement each score from its stated text; a score
+enters the tier only if our code reproduces the released answer on every
+row from the released entities (\tbd{} of 19 scores, \tbd{} rows).
+\emph{Items.} (A) Criterion claims on untouched notes, in three strata:
+value stated in the note, finding explicitly denied, entity absent and
+settled by the benchmark's default. (B) The numeric values that lie within a
+narrow band of a threshold without any edit. (C) Single-value edits: for a
+numeric criterion whose value string occurs exactly once in the note and
+feeds no other criterion, the value is replaced by one across the threshold
+(flip) or by one on the same side and nearer to it (near-miss); labels are
+recomputed by rule code. (D) One-sentence insertions for a criterion that is
+not met: the qualifying finding attributed to a relative, negated, or, only
+for criteria that require a current state, placed in the past (near-misses),
+and the same finding affirmed for the patient (flip). \emph{What is and is
+not exact.} Labels are exact given the entity dictionary; the dictionary is
+released annotation and can be wrong. Of the 62 rule-based test rows whose
+note also occurs, unchanged, in the independently corrected labels of
+\citet{ye2025stewardship}, that set leaves 10 without an answer and gives a
+different answer for 9 of the other 52. Edits of types C and D compare cases within one note, so an error
+in an unrelated entity cancels for criterion claims. Inserted sentences are
+written by us, as in the rule tier, now inside real notes. History-type
+criteria (a prior stroke in CHA$_2$DS$_2$-VASc) count past findings, so a
+past mention there is a flip, not a near-miss. \emph{Adaptation.} Verifiers
+are also fine-tuned on items built from the training notes, with and without
+near-miss edits at equal budget, with \ph{a fixed set of scores} held out
+entirely for test.
+
+\paragraph{Registered criteria.}
+Chia \citep{kury2020chia} annotates 12{,}409 criteria of 1{,}000 trials with
+entities, values, temporal constraints, negation and Boolean scope
+(inter-annotator $\kappa$ of 0.80 at phrase level), and its authors state
+that an annotation graph is meant to be read as a Boolean expression over
+patient data; the Leaf Clinical Trials corpus \citep{dobbins2022lct}
+annotates 1{,}006 trial descriptions with comparison operators, values,
+units, temporal periods, negation and family members. Both are CC BY 4.0. We
+keep single-condition criteria that carry a numeric threshold or a time
+window and none of the corpora's flags for criteria that cannot be
+represented or need subjective judgment (\ph{about 450 in the Leaf corpus by
+a first count; to be recomputed}), and compile the annotation to a program
+by script. The annotation fixes structure, not execution semantics: whether
+``within six months'' includes the boundary day, and what the reference date
+is, remain our stated conventions and are printed in the prompt. Cases are
+generated as on the rule tier, with dates. Trials and criterion texts that
+occur in the TrialGPT annotations are excluded. An earlier set of 95
+criteria from 85 trials that we formalised ourselves is not scored: its
+programs were never signed off by two authors.
+
+\paragraph{Knowledge-base criteria.}
+The public part of the DDXPlus knowledge base is two files: for each of 49
+conditions the set of associated symptoms and antecedents (888 links, 605 to
+symptoms and 283 to antecedents), and for each of 223 findings (110
+symptoms, 113 antecedents; 208 binary, 10 categorical, 5 multiple-choice)
+its question text in English. No probabilities are released. For a pair of
+diagnoses $(A,B)$ a script renders, from the question texts and in a
+canonical order of the two names, the findings listed for $A$ only, for $B$
+only and for both, followed by the procedure: \emph{a finding listed for
+one diagnosis only excludes the other; if findings of both exclusive lists
+are present, or of neither, the criterion does not decide}. The script and
+the hashes of the two files are committed before any model is run. Because,
+by its authors' description, the same knowledge base guided the construction
+of MedEinst's trap cases, handing the lists to a model changes what that
+benchmark measures; the claim we test is the
+contrast between trained and untrained verifiers under identical text.
+\emph{Controls:} a symbolic executor that maps narratives to findings and
+applies the procedure, run first; a string-match baseline that counts hits
+in the two exclusive lists; every system with and without the criterion;
+the criterion of an unrelated pair; the pair's own criterion with the two
+lists exchanged; the two diagnosis names replaced by neutral labels; lists
+without the procedure. \emph{Knowledge-base triplets:} for a DDXPlus test
+patient with diagnosis $A$ and a second diagnosis $B$, a script removes the
+findings listed for $A$ only and adds findings listed for $B$ only (flip),
+or adds a $B$-only finding in a form the stated criterion does not count
+(near-miss); labels follow from the procedure. The lists themselves contain
+findings about relatives and about the past, which count where listed, so a
+verifier that has learned ``family means ignore'' fails here by design.
+
+\paragraph{Class membership from open ontologies.}
+Table~\ref{tab:onto} lists the sources. A class-level criterion is grounded
+to a class identifier and a release. \emph{Membership} is the is-a closure
+in HPO and Mondo; for drugs it is defined at the level of ingredients: a
+mention is normalised to an RxNorm ingredient, and it belongs to a class if
+the ATC fourth-level class and the FDA established pharmacologic class
+served by RxClass both contain it. \emph{Negatives} for the near-miss must
+pass an assumed-disjointness test in the sense of \citet{he2023ontolama}:
+no subsumption in either direction and no common descendant; combination
+products and ingredients with several class memberships are excluded.
+\emph{Class triplets:} base, no member mentioned; flip, a member, under its
+ingredient, brand or synonym name; near-miss, a relative outside the
+closure, or a term too general to establish membership. Crossing with the
+other conditions (a relative's lisinopril, lisinopril stopped last year) is
+free. \emph{Linking} at inference is retrieval over labels and synonyms of
+the release followed by a choice among the retrieved candidates by the
+reader, never free generation of identifiers; its accuracy is reported
+separately from the verifier's. Two regimes are kept apart: \emph{open
+book}, in which the member list or the gate is available, and \emph{closed
+book}, in which the model must know the class. Labels are exact relative to
+the release and the membership rule above, both stated with every item.
+Contraindication assertions (MED-RT, via RxClass) are used only in the
+positive direction: a missing assertion is not evidence of safety.
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.2\columnwidth}p{0.42\columnwidth}p{0.28\columnwidth}@{}}
+\toprule
+Domain & Source & Terms of use\\
+\midrule
+Findings & Human Phenotype Ontology & free use with attribution; no alteration\\
+Diseases & Mondo; Disease Ontology as fallback & CC BY 4.0; CC0\\
+Drugs & RxNorm ingredients (prescribable subset, RxNav) & no licence required\\
+Drug classes & ATC level 4 and FDA class through RxClass; MED-RT relations & public API; ATC names are not redistributed\\
+Labels & openFDA and DailyMed label sections & public domain / CC0\\
+\bottomrule
+\end{tabular}
+\caption{Open sources for class membership; none needs a SNOMED CT or UMLS
+licence. \ph{Licence wording to be re-read at release time.}}
+\label{tab:onto}
+\end{table}
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{2.2pt}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & \multicolumn{2}{c}{Critic} & \multicolumn{4}{c}{\methodg}\\
+\cmidrule(lr){2-3}\cmidrule(l){4-7}
+Tier (metric) & none & st. & none & st. & self & wrong\\
+\midrule
+\multicolumn{7}{@{}l}{\emph{Criterion stated by the dataset}}\\
+\mcv{} criteria (acc.) & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@none/all/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/all/BalAcc} & \res{run/C-S2-mcv-ledger-rm-g/mcv_v1:criteria_test@none/all/BalAcc} & \res{run/C-S2-mcv-ledger-rm-g/mcv_v1:criteria_test@stated/all/BalAcc} & \res{run/C-S2-mcv-ledger-rm-g/mcv_v1:criteria_test@self/all/BalAcc} & \res{run/C-S2-mcv-ledger-rm-g/mcv_v1:criteria_test@wrong/all/BalAcc}\\
+\mcv{} edits (TA)      & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@none/all/TA} & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@stated/all/TA} & \res{run/C-S2-mcv-ledger-rm-g/mcv_v1:edits_test@none/all/TA} & \res{run/C-S2-mcv-ledger-rm-g/mcv_v1:edits_test@stated/all/TA} & \res{run/C-S2-mcv-ledger-rm-g/mcv_v1:edits_test@self/all/TA} & \res{run/C-S2-mcv-ledger-rm-g/mcv_v1:edits_test@wrong/all/TA}\\
+Registered criteria (TA) & -- & \res{run/C-S2-reg-critic/reg_v1:test@stated/all/TA} & -- & \res{run/C-S2-reg-ledger-rm-g/reg_v1:test@stated/all/TA} & -- & \res{run/C-S2-reg-ledger-rm-g/reg_v1:test@wrong/all/TA}\\
+TrialGPT (F1)          & -- & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1} & -- & \res{run/C-S2-tg-ledger-rm-g/clin_v1:trialgpt_test@stated/top/macroF1} & -- & \res{run/C-S2-tg-ledger-rm-g/clin_v1:trialgpt_test@wrong/top/macroF1}\\
+\multicolumn{7}{@{}l}{\emph{Criterion derived}}\\
+Class triplets (TA)    & \res{run/C-S2-cls-critic/cls_v1:test@none/all/TA} & \res{run/C-S2-cls-critic/cls_v1:test@stated/all/TA} & \res{run/C-S2-cls-ledger-rm-g/cls_v1:test@none/all/TA} & \res{run/C-S2-cls-ledger-rm-g/cls_v1:test@stated/all/TA} & -- & \res{run/C-S2-cls-ledger-rm-g/cls_v1:test@wrong/all/TA}\\
+KB triplets (TA)       & \res{run/C-S2-kb-critic/kb_v1:triplets_test@none/all/TA} & \res{run/C-S2-kb-critic/kb_v1:triplets_test@derived/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@none/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@derived/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@self/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@wrong/all/TA}\\
+MedEinst (pair)        & \res{run/C-ME-critic/clin_v1:medeinst_test/top/Reversal} & \res{run/C-S2-me-critic/clin_v1:medeinst_test@derived/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@none/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@derived/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@self/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@wrong/top/Reversal}\\
+\multicolumn{7}{@{}l}{\emph{No source}}\\
+Key pairs, MedQA (pair) & \res{run/C-KP-critic/clin_v1:keypairs_medqa_oneway/top/Reversal} & -- & \res{run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@none/top/Reversal} & -- & \res{run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@self/top/Reversal} & \res{run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@wrong/top/Reversal}\\
+\bottomrule
+\end{tabular}
+\caption{Criterion ladder (\%): no criterion in the prompt, the stated or
+derived one (st.), one written by the frozen backbone from the task identity
+(self), and a wrong one (roles exchanged or taken from another item). Under
+a wrong criterion a rule-follower should score low. Black: measured. Class
+triplets: classes held out from training; ``none'' is the closed-book
+condition, ``st.'' gives the member list or the gate. Accuracy on \mcv{} criteria is balanced over items that score
+points and items that score none. A dash marks a
+condition that is not defined: for registered criteria and TrialGPT the
+claim is the criterion itself.}
+\label{tab:ground}
+\end{table}
+
+\paragraph{What is compared, and what would count against us.}
+On \mcv{} results are reported for the 230 human-written notes and the 150
+model-written ones separately, for criteria whose value the note states and
+for those settled by the benchmark's default, and for values that lie
+naturally near a threshold. The comparison of interest is that of
+\S\ref{sec:results-factorial} on clinical prose: backbone \tbd, blocks
+\tbd, triplets \tbd{} (triplet accuracy on edited notes), and the same after
+adaptation on the training notes with and without edited near-misses at
+equal budget (\tbd, \tbd). Registered criteria extend the rule language to
+time windows with a reference date, the clause on which every current
+system is weakest: \tbd{} without and \tbd{} with the date check of the
+gate. On the rule tier, removing the rule text from the prompt gives \tbd{}
+and exchanging it for the rule of another group \tbd. For class-level
+criteria on held-out classes we compare the learned verdict (\tbd), the
+learned verdict given the member list (\tbd) and the gate (\tbd), by depth
+and frequency of the class, and report linking accuracy separately (\tbd).
+On MedEinst the symbolic executor's pair accuracy (\tbd) and the share of
+pairs it decides (\tbd) bound what any rule-follower can gain. For key pairs
+the case-visible composite is compared with the verdict-only verifier
+(\tbd{} against \res{run/C-KP-verdict-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal}\%). If the ordering of the rule tier does not reappear
+on \mcv, or the trained verifier is as indifferent to the criterion as the
+backbone, the claim that near-miss supervision teaches rule-relative
+selectivity on clinical text fails.
+
+\paragraph{Self-written criteria and controls.}
+For key pairs the frozen backbone writes, from the option set and without
+the vignette, what would have to hold for each of the two answers; the text
+is given identically to every system, a mismatched text from another pair
+is the control, and both rows are reported with the row without a
+criterion. For every tier the ladder is reported per system with the
+untrained backbone alongside, so that an effect of the added text on any
+model is not mistaken for an effect of training. A rule-side invariance arm
+complements the rule-side items: the rule text is rewritten without changing
+its program (clause order, placement of the exception, synonyms), which
+executing both programs certifies, and the excess rate of changed verdicts
+over a rerun baseline is reported \citep{weng2026policy,yang2026compared}
+(\tbd).
+
+\begin{table*}[!ht]
+\centering\small
+\begin{tabular}{@{}llccccl@{}}
+\toprule
+\# & Comparison & Estimate & 95\% interval & $p$ & Holm $p$ & Outcome\\
+\midrule
+(7) & \mcv{} criteria: triplets $-$ blocks & \res{cmp/p7/diff} & [\res{cmp/p7/lo}, \res{cmp/p7/hi}] & \res{cmp/p7/p} & \res{cmp/p7/padj} & \tbd\\
+(8) & \mcv{} criteria: criterion $\times$ system & \res{cmp/p8/diff} & [\res{cmp/p8/lo}, \res{cmp/p8/hi}] & \res{cmp/p8/p} & \res{cmp/p8/padj} & \tbd\\
+(9) & \mcv{} edits: triplets $-$ blocks & \res{cmp/p9/diff} & [\res{cmp/p9/lo}, \res{cmp/p9/hi}] & \res{cmp/p9/p} & \res{cmp/p9/padj} & \tbd\\
+(10) & Class triplets: gate $-$ learned verdict & \res{cmp/p10/diff} & [\res{cmp/p10/lo}, \res{cmp/p10/hi}] & \res{cmp/p10/p} & \res{cmp/p10/padj} & \tbd\\
+(11) & MedEinst: criterion $\times$ system & \res{cmp/p11/diff} & [\res{cmp/p11/lo}, \res{cmp/p11/hi}] & \res{cmp/p11/p} & \res{cmp/p11/padj} & \tbd\\
+(12) & Key pairs: composite $-$ verdict only & \res{cmp/p12/diff} & [\res{cmp/p12/lo}, \res{cmp/p12/hi}] & \res{cmp/p12/p} & \res{cmp/p12/padj} & \tbd\\
+\bottomrule
+\end{tabular}
+\caption{Primary comparisons of stage 2 (Appendix~\ref{app:plan}), one Holm family; paired cluster
+bootstrap on identical items. (7), (8): balanced accuracy on human-written notes, criterion stated; (9), (10):
+triplet accuracy; (11), (12): pair accuracy, (12) as non-inferiority with a margin of two points. Not yet run.}
+\label{tab:stage2}
+\end{table*}
+
+\begin{table*}[!ht]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lccccccccc@{}}
+\toprule
+ & \multicolumn{6}{c}{Criterion claims (balanced acc.)} & \multicolumn{3}{c}{Edited notes (TA)}\\
+\cmidrule(lr){2-7}\cmidrule(l){8-10}
+ & \multicolumn{2}{c}{human notes} & model & \multicolumn{3}{c}{stratum (stated crit.)} & & \multicolumn{2}{c}{edit type}\\
+System & none & stated & notes & stated & denied & default & all & value & sentence\\
+\midrule
+Critic & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@none/note_type=human/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/note_type=human/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/note_type=model/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=stated/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=default/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@stated/note_type=human/TA} & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@stated/edit_type=value/TA} & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@stated/edit_type=sentence/TA}\\
+Verdict only, blocks & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@none/note_type=human/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/note_type=human/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/note_type=model/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=stated/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=default/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/note_type=human/TA} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/edit_type=value/TA} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/edit_type=sentence/TA}\\
+Verdict only, triplets & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@none/note_type=human/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/note_type=human/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/note_type=model/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=stated/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=default/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/note_type=human/TA} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/edit_type=value/TA} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/edit_type=sentence/TA}\\
+\bottomrule
+\end{tabular}
+\caption{\mcv{} (\%). Criterion claims on untouched notes without and with the score definition in the prompt, by
+note type and by stratum (value stated in the note, denied, or settled by the benchmark's default); triplet
+accuracy on edited human-written notes, by edit type. Verdict-only models are those trained on rule data in
+stage 1, five seeds. Not yet run.}
+\label{tab:mcv}
+\end{table*}
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{2.6pt}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & \multicolumn{3}{c}{TA} & \multicolumn{3}{c}{Gate}\\
+\cmidrule(lr){2-4}\cmidrule(l){5-7}
+Tier & bit & gate & struct. & cov. & parse & link\\
+\midrule
+Rule tier, stage 2 (L2) & \res{run/C-S2-rule2-reader-bit/rule_v2:test_L2@stated/all/TA} & \res{run/C-S2-rule2-gate/rule_v2:test_L2@stated/all/TA} & \res{run/C-S2-rule2-gate-struct/rule_v2:test_L2@stated/all/TA} & \res{run/C-S2-rule2-gate/rule_v2:test_L2@stated/top/gate_coverage} & \res{run/C-S2-rule2-gate/rule_v2:test_L2@stated/top/parser_coverage} & \res{run/C-S2-rule2-gate/rule_v2:test_L2@stated/top/linking_acc}\\
+Class triplets & \res{run/C-S2-cls-reader-bit/cls_v1:test@stated/all/TA} & \res{run/C-S2-cls-gate/cls_v1:test@stated/all/TA} & \res{run/C-S2-cls-gate-struct/cls_v1:test@stated/all/TA} & \res{run/C-S2-cls-gate/cls_v1:test@stated/top/gate_coverage} & \res{run/C-S2-cls-gate/cls_v1:test@stated/top/parser_coverage} & \res{run/C-S2-cls-gate/cls_v1:test@stated/top/linking_acc}\\
+Registered criteria & \res{run/C-S2-reg-reader-bit/reg_v1:test@stated/all/TA} & \res{run/C-S2-reg-gate/reg_v1:test@stated/all/TA} & \res{run/C-S2-reg-gate-struct/reg_v1:test@stated/all/TA} & \res{run/C-S2-reg-gate/reg_v1:test@stated/top/gate_coverage} & \res{run/C-S2-reg-gate/reg_v1:test@stated/top/parser_coverage} & \res{run/C-S2-reg-gate/reg_v1:test@stated/top/linking_acc}\\
+\mcv{} edits & \res{run/C-S2-mcv-reader-bit/mcv_v1:edits_test@stated/all/TA} & \res{run/C-S2-mcv-gate/mcv_v1:edits_test@stated/all/TA} & \res{run/C-S2-mcv-gate-struct/mcv_v1:edits_test@stated/all/TA} & \res{run/C-S2-mcv-gate/mcv_v1:edits_test@stated/top/gate_coverage} & \res{run/C-S2-mcv-gate/mcv_v1:edits_test@stated/top/parser_coverage} & \res{run/C-S2-mcv-gate/mcv_v1:edits_test@stated/top/linking_acc}\\
+\bottomrule
+\end{tabular}
+\caption{\methodg{} and its two reference variants (\%): the reader's bit without gate, the gate with the parsed
+criterion, and the gate with the criterion's structure taken from the program or the annotation. Coverage: share
+of items whose applicability the gate computes; parse: parser coverage; link: linking accuracy. Not yet run.}
+\label{tab:gate}
+\end{table}
+
+\section{Ledger Format, Reader Statistics and Gate}
+\label{app:ledger}
+
+{\scriptsize
+\begin{verbatim}
+need: penicillin allergy in the patient
+found: "penicillin allergy (anaphylaxis)"
+subject: other (mother)
+status: present
+time: current
+\end{verbatim}}
+
+\noindent Given this ledger, the rule and the claim ``Order amoxicillin'', the
+judge returns \texttt{+}. For the main model, malformed ledgers occur in at most 0.2\% of
+rule-tier reader outputs, in 1.9--4.0\% on TrialGPT, 14.8--25.1\% on key
+pairs and 35.9\% on MedEinst: the format degrades as the input moves away
+from a stated rule and a short case. A malformed ledger is recorded as an
+invalid outcome and both claims are rejected. Neither record format may
+state a verdict: no claim sentence and no decision phrase occurs in the
+reader outputs of any of the 27 two-stage runs (for example, in none of
+37{,}497 summaries of one run). In 30.2\% of judge training examples the
+ledger shown is a donor's. A verification pass that re-reads every entry
+against the case and regenerates rejected ones once adds 0.6 points
+($[0.1,1.2]$, $p=0.012$). In triplet and pair evaluations one ledger serves
+both claims.
+
+\paragraph{Record for stage 2.}
+The stage-2 record adds what the stage-1 results showed to be missing: the
+date expression, so that a window can be computed, an optional normalised
+concept, and the \texttt{applies} bit.
+
+{\scriptsize
+\begin{verbatim}
+need: stroke within 6 months before 2025-03-01
+found: "ischaemic stroke in June 2024"
+subject: patient
+status: present
+time: past (2024-06)
+applies: no
+\end{verbatim}}
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.17\columnwidth}p{0.41\columnwidth}p{0.32\columnwidth}@{}}
+\toprule
+Condition & Check & Not computable when\\
+\midrule
+quotation & string occurs in the case & never\\
+value & comparison after unit conversion & no threshold in the criterion; no number in \texttt{found}\\
+time & date arithmetic against the reference date & no window; no date expression; no reference date\\
+concept & mention linked to an ontology term; term in the closure of the class & criterion names no class; linker abstains\\
+subject, status & set membership on typed fields & scope not stated in the criterion\\
+\bottomrule
+\end{tabular}
+\caption{Checks of the symbolic gate. If every applicable check is
+computable, their conjunction replaces the reader's bit; otherwise the bit
+stands and the judge also sees the case.}
+\label{tab:gate}
+\end{table}
+
+\section{Diagnostics}
+\label{app:diag}
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Scorer (L2) & Rev & Hold & TA\\
+\midrule
+Always default                 & \res{run/A-D14-always_default/L2/all/Rev@0} & \res{run/A-D14-always_default/L2/all/Hold@0} & \res{run/A-D14-always_default/L2/all/TA@0}\\
+Claim only                     & \res{run/A-D14-claim_only/L2/all/Rev@0} & --  & \res{run/A-D14-claim_only/L2/all/TA@0}\\
+Concept named ($h_k$)          & \res{run/A-D14-concept_named/L2/all/Rev@0} & \res{run/A-D14-concept_named/L2/all/Hold@0} & \res{run/A-D14-concept_named/L2/all/TA@0}\\
+Bag of words, case             & \tbd & \tbd & \res{run/A-D14-bag_of_words/L2/all/TA}\\
+Attribute-blind, logistic      & \tbd & \tbd & \res{run/A-D14-attribute_blind/L2/all/TA}\\
+Trigger lexicon, training cues & \tbd & \tbd & \res{run/A-D14-trigger_train/L2/all/TA}\\
+Trigger lexicon, test cues     & \tbd & \tbd & \res{run/A-D14-trigger_all/L2/all/TA}\\
+Clinical trigger tagger        & \res{run/C-SC-gptrigger/L2/all/Rev} & \res{run/C-SC-gptrigger/L2/all/Hold} & \res{run/C-SC-gptrigger/L2/all/TA}\\
+\bottomrule
+\end{tabular}
+\caption{Shortcut scorers on L2 (\%). Attribute-blind: a logistic model on
+the decisive concept's mentions without subject, status and time; it solves
+numeric triplets only. Trigger lexicon: a rule-based reader with negation,
+experiencer and temporality triggers in the style of ConText
+\citep{harkema2009context}, followed by the rule program; given the test cue
+phrases it is a reference and not a baseline. Clinical trigger tagger: the
+default rules of a frozen clinical toolkit, followed by the rule program.
+Trained models that exceed these scorers outperform the shortcuts tested
+here; this does not show that they use no shortcut.}
+\label{tab:shortcuts}
+\end{table}
+
+\paragraph{Parts and whole.}
+For each base--flip pair we build a \emph{reading} pair, whose claims quote
+the decisive finding, and an \emph{application} pair, which scores the
+original claims against a one-line case with only that finding. With $P$,
+$K$, $U$ the events of a correct reversal on the reading pair, the
+application pair and the full pair, the composition gap is
+$G=1-\Pr[U\mid P\wedge K]$; it is descriptive, since the tasks differ in
+length and in what must be selected. For the untrained backbone on 1{,}000
+pairs, $P=97.7\%$, $K=96.0\%$, $U=88.9\%$, and $G=7.9\%$ among the 944 pairs
+with $P$ and $K$. On L0 its base accuracy is 68.6\% and, among triplets with
+a correct base preference, it reverses on the near-miss in 34.0\% ($n=686$).
+Other signals are \tbd.
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+System & thr. & neg. & num. & subj. & time\\
+\midrule
+Verdict only, blocks & \res{run/B-F-verdict-blocks/L2/nm_kind=boundary/TA/s0} & \res{run/B-F-verdict-blocks/L2/nm_kind=negation/TA/s0} & \res{run/B-F-verdict-blocks/L2/nm_kind=numeric/TA/s0} & \res{run/B-F-verdict-blocks/L2/nm_kind=subject/TA/s0} & \res{run/B-F-verdict-blocks/L2/nm_kind=time/TA/s0}\\
+\method{}, blocks    & \res{run/B-F-ledger2-blocks/L2/nm_kind=boundary/TA/s0} & \res{run/B-F-ledger2-blocks/L2/nm_kind=negation/TA/s0} & \res{run/B-F-ledger2-blocks/L2/nm_kind=numeric/TA/s0} & \res{run/B-F-ledger2-blocks/L2/nm_kind=subject/TA/s0} & \res{run/B-F-ledger2-blocks/L2/nm_kind=time/TA/s0}\\
+Verdict only, triplets & \res{run/B-F-verdict-triplets/L2/nm_kind=boundary/TA/s0} & \res{run/B-F-verdict-triplets/L2/nm_kind=negation/TA/s0} & \res{run/B-F-verdict-triplets/L2/nm_kind=numeric/TA/s0} & \res{run/B-F-verdict-triplets/L2/nm_kind=subject/TA/s0} & \res{run/B-F-verdict-triplets/L2/nm_kind=time/TA/s0}\\
+\method{}, triplets  & \multicolumn{5}{c}{97.8 or above for every kind}\\
+\bottomrule
+\end{tabular}}
+\caption{Triplet accuracy on L2 by near-miss kind (\%, seed 0): value at the
+threshold, negated finding, value near the threshold, other person, past
+finding. Denominators per kind, and near-miss correctness given a correct
+base judgment, are \tbd.}
+\label{tab:kinds}
+\end{table}
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & \multicolumn{2}{c}{Verdict} & \multicolumn{2}{c}{Prose} & \multicolumn{2}{c}{\method}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(l){6-7}
+Removed kind & out & in & out & in & out & in\\
+\midrule
+Other person & 7.0 & \res{run/B-F-verdict-triplets/L2/nm_kind=subject/TA/s0} & 89.2 & \res{run/B-F-summary2-triplets/L2/nm_kind=subject/TA/s0} & \res{run/B-LOKO-subject-ledger2/L2/nm_kind=subject/TA} & \res{run/B-F-ledger2-triplets/L2/nm_kind=subject/TA/s0}\\
+Past         & 60.2 & \res{run/B-F-verdict-triplets/L2/nm_kind=time/TA/s0} & 61.5 & \res{run/B-F-summary2-triplets/L2/nm_kind=time/TA/s0} & \res{run/B-LOKO-time-ledger2/L2/nm_kind=time/TA} & \res{run/B-F-ledger2-triplets/L2/nm_kind=time/TA/s0}\\
+Threshold    & 49.8 & \res{run/B-F-verdict-triplets/L2/nm_kind=boundary/TA/s0} & 99.0 & \res{run/B-F-summary2-triplets/L2/nm_kind=boundary/TA/s0} & \res{run/B-LOKO-boundary-ledger2/L2/nm_kind=boundary/TA} & \res{run/B-F-ledger2-triplets/L2/nm_kind=boundary/TA/s0}\\
+\bottomrule
+\end{tabular}}
+\caption{Leave one near-miss kind out (\%, seed 0). Out: triplet accuracy on
+L2 triplets of the kind that was removed from training; in: the same
+triplets for the model trained on all kinds. Paired differences range from
+$-84.0$ $[-89.2,-78.2]$ (other person, verdict) to $-1.0$ $[-3.2,0.0]$
+(threshold, prose). Triplet accuracy on all L2 triplets with the kind
+removed (other person, past, threshold): verdict 76.2, 86.1, 82.8; prose
+97.2, 91.5, 99.3; \method{} \res{run/B-LOKO-subject-ledger2/L2/all/TA}, \res{run/B-LOKO-time-ledger2/L2/all/TA}, \res{run/B-LOKO-boundary-ledger2/L2/all/TA}.}
+\label{tab:loko}
+\end{table}
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+System & XA & XA$^{-}$ & window & curr. & subj. & incl.\\
+\midrule
+Med-PRM & \res{run/C-AUD-medprm/xr_v1:test/xa/XA} & \res{run/C-AUD-medprm/xr_v1:test/xa/XA362} & \res{run/C-AUD-medprm/xr_v1:test/xa/XA_window@0} & \res{run/C-AUD-medprm/xr_v1:test/xa/XA_currency@0} & \res{run/C-AUD-medprm/xr_v1:test/xa/XA_subject@0} & \res{run/C-AUD-medprm/xr_v1:test/xa/XA_inclusivity@0}\\
+MedS$^3$ PRM & \res{run/C-AUD-meds3/xr_v1:test/xa/XA} & \res{run/C-AUD-meds3/xr_v1:test/xa/XA362} & \res{run/C-AUD-meds3/xr_v1:test/xa/XA_window@0} & \res{run/C-AUD-meds3/xr_v1:test/xa/XA_currency@0} & \res{run/C-AUD-meds3/xr_v1:test/xa/XA_subject@0} & \res{run/C-AUD-meds3/xr_v1:test/xa/XA_inclusivity@0}\\
+FoVer PRM & \res{run/C-AUD-fover/xr_v1:test/xa/XA} & \res{run/C-AUD-fover/xr_v1:test/xa/XA362} & \res{run/C-AUD-fover/xr_v1:test/xa/XA_window@0} & \res{run/C-AUD-fover/xr_v1:test/xa/XA_currency@0} & \res{run/C-AUD-fover/xr_v1:test/xa/XA_subject@0} & \res{run/C-AUD-fover/xr_v1:test/xa/XA_inclusivity@0}\\
+Critic & \res{run/C-TF-critic/xr_v1:test/xa/XA} & \res{run/C-TF-critic/xr_v1:test/xa/XA362} & \res{run/C-TF-critic/xr_v1:test/xa/XA_window@0} & \res{run/C-TF-critic/xr_v1:test/xa/XA_currency@0} & \res{run/C-TF-critic/xr_v1:test/xa/XA_subject@0} & \res{run/C-TF-critic/xr_v1:test/xa/XA_inclusivity@0}\\
+\ \ + default correction & \res{run/C-TF-defcorr/xr_v1:test/xa/XA} & \res{run/C-TF-defcorr/xr_v1:test/xa/XA362} & \res{run/C-TF-defcorr/xr_v1:test/xa/XA_window@0} & \res{run/C-TF-defcorr/xr_v1:test/xa/XA_currency@0} & \res{run/C-TF-defcorr/xr_v1:test/xa/XA_subject@0} & \res{run/C-TF-defcorr/xr_v1:test/xa/XA_inclusivity@0}\\
+\ \ + prompted summary & \res{run/C-TF-promptsum/xr_v1:test/xa/XA} & \res{run/C-TF-promptsum/xr_v1:test/xa/XA362} & \res{run/C-TF-promptsum/xr_v1:test/xa/XA_window@0} & \res{run/C-TF-promptsum/xr_v1:test/xa/XA_currency@0} & \res{run/C-TF-promptsum/xr_v1:test/xa/XA_subject@0} & \res{run/C-TF-promptsum/xr_v1:test/xa/XA_inclusivity@0}\\
+Generated-program verifier & \res{run/C-TF-genprog/xr_v1:test/xa/XA} & \res{run/C-TF-genprog/xr_v1:test/xa/XA362} & \res{run/C-TF-genprog/xr_v1:test/xa/XA_window@0} & \res{run/C-TF-genprog/xr_v1:test/xa/XA_currency@0} & \res{run/C-TF-genprog/xr_v1:test/xa/XA_subject@0} & \res{run/C-TF-genprog/xr_v1:test/xa/XA_inclusivity@0}\\
+Verdict only, blocks & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+Verdict only, triplets & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+Evidence summary, triplets & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+\ \ judge also sees the case & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+\method{}, triplets & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+\ \ + decision field & \res{run/B-AB-decfield/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-AB-decfield/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+\ \ reader writes bit only & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+\ \ condition derived by the reader & \res{run/B-AB-conddrv/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-AB-conddrv/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-conddrv/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-conddrv/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-conddrv/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+\ \ $-$ ledger resampling & \res{run/B-AB-noresamp/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+\bottomrule
+\end{tabular}}
+\caption{Rule-side items (\%, seed 0): crossed accuracy on all 400 items,
+without the 38 items with a known issue (XA$^{-}$), and by the clause that
+differs between the two rules (100 items each). Over five seeds the window
+column ranges from \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_window/min@0} to \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_window/max@0} for the verdict-only model and from \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_window/min@0} to \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_window/max@0}
+for \method{}, both trained on triplets.}
+\label{tab:xr}
+\end{table}
+
+\paragraph{Shift relative to a missing-input baseline.}
+Let $d_0=d(\xm)$, $\delta(x)=d(x)-d_0$, and $y\in\{+1,-1\}$ the correct sign
+of $d(x)$. For cases with $y\,d_0<0$, where the baseline preference opposes
+the label, the preference is right if and only if $y\,\delta(x)>|d_0|$. We
+sort these cases into four disjoint classes, in this order: \emph{crossed}
+(the inequality holds); \emph{unmoved} ($|\delta|\le\tau$, the model's median
+$|d(x^{\mathrm{p}})-d(x)|$ over presentation edits); \emph{wrong direction}
+($y\delta<0$); \emph{short}. The shift ratio $\kappa$ divides the median of
+$y\,\delta(x)$ over these cases by the model's median response to an error
+inside a step \ph{(state the pairs used for the denominator; the planned
+source, MedPRMBench, is not released)}. Untrained backbone: \res{run/C-DG-shift/L0/signal=C-AUD-qwen35-9b/crossed}\% crossed,
+\res{run/C-DG-shift/L0/signal=C-AUD-qwen35-9b/short}\% short, \res{run/C-DG-shift/L0/signal=C-AUD-qwen35-9b/unmoved}\% unmoved, \res{run/C-DG-shift/L0/signal=C-AUD-qwen35-9b/wrong}\% wrong direction, $\kappa=\res{run/C-DG-shift/L0/signal=C-AUD-qwen35-9b/kappa@2}$.
+Med-PRM: \res{run/C-DG-shift/L0/signal=C-AUD-medprm/crossed}\% crossed, \res{run/C-DG-shift/L0/signal=C-AUD-medprm/short}\% short, \res{run/C-DG-shift/L0/signal=C-AUD-medprm/unmoved}\% unmoved, $\kappa=\res{run/C-DG-shift/L0/signal=C-AUD-medprm/kappa@2}$.
+Verdict only trained on blocks: \res{run/C-DG-shift/L0/signal=B-F-verdict-blocks/crossed}\% crossed, $\kappa=\res{run/C-DG-shift/L0/signal=B-F-verdict-blocks/kappa@2}$. Med-PRM's
+preference moves in the right direction and stops short in two of five
+conflicting cases.
+
+\paragraph{Readouts and sampling noise.}
+Dedicated PRMs use their released scoring head and local models the
+log-odds of the verdict token. For the untrained backbone the triplet
+accuracy on L2 is \res{run/C-TF-critic/L2/all/TA}\% in the full-precision scoring run and 25.4\% from
+the log-odds of a second pass that returns the top tokens; sampling the
+verdict ten times gives 24.8\% (s.d.\ 0.4) at temperature 0.7 and 24.0\%
+(s.d.\ 0.7) at temperature 1.0. Readout and precision thus move this number
+by up to three points, which is small against the differences in
+Table~\ref{tab:audit}.
+
+\paragraph{Default correction.}
+The weight $\alpha$ was chosen on development triplets, where triplet
+accuracy is 39.7\% at $\alpha=0$, 47.3\% at 1, 50.7\% at 4, 52.0\% at 16 and
+53.0\% in the limit, which uses only the difference from the score without
+the case; the limit was selected after the grid had been extended on
+development data. On L2 this gives \res{run/C-TF-defcorr/L2/all/TA}\% $[\res{run/C-TF-defcorr/L2/all/TA/lo},\res{run/C-TF-defcorr/L2/all/TA/hi}]$,
+against \res{run/C-TF-critic/L2/all/TA}\% without correction.
+
+\paragraph{Exploratory.}
+A linear probe on the residual stream of the untrained backbone, trained on
+L0 and tested on L2, predicts the criterion outcome with 86.9\% accuracy
+(control task \citep{hewitt2019control}: 69.8\%), and with 94.5\% against
+41.3\% on conditions not seen by the probe; decodability does not show use
+\citep{elazar2021amnesic}.
+
+\section{Additional Results}
+\label{app:more}
+
+\paragraph{Systems.}
+\emph{Released reward models}: Med-PRM \citep{yun2025medprm}, the MedS$^3$
+PRM \citep{jiang2025meds3}, the FoVer PRM \citep{kamoi2026fover},
+ThinkPRM-14B \citep{khalifa2025thinkprm} and GenPRM-7B
+\citep{zhao2025genprm}; the last two are scored on fixed subsets so far.
+MedPRMBench has no public data or model release, so we could not train a
+step-error PRM on it, and the step check throughout is the released Med-PRM.
+\emph{Training-free} on \bb: the zero-shot critic; default correction,
+$u(s,x)+\alpha\,[u(s,x)-u(s,\varnothing)]$ \citep{shi2024cad}; a prompted
+two-stage summary and a prompted ledger; and a verifier that writes and
+executes a program for the stated rule \citep{ocampo2026solver}.
+\emph{Trained comparisons} on \bb: the five representations on the four
+corpora; verdict only on FoVer's formal data; a pairwise loss; a linear
+concept scorer; and probe re-weighting, our adaptation of
+\citet{liu2026dynacf} to case edits. \emph{References} that use a rule
+program at test time: a general-purpose trigger tagger
+\citep{harkema2009context} followed by the program, and the program applied
+to the trained reader's ledger. Larger open and closed judges
+(\ph{Qwen3.5-27B, Llama-3.3-70B, Kimi K3, GPT-5.4, Gemini 3.1 Pro, Claude
+Opus 5.5}) are \ph{not yet scored}. All four training corpora contain 15\%
+missing-input and 15\% presentation records; the loss is computed per
+example, so the corpora differ in their cases and not in the objective or
+the batching. In the natural corpus the rate of the decisive condition is a
+parameter of the generator, not an empirical prevalence. Neither record
+format of the two-stage systems contains a verdict
+(Appendix~\ref{app:ledger}).
+
+\begin{table*}[!ht]
+\centering\small
+\setlength{\tabcolsep}{4.2pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lcccccccccccc@{}}
+\toprule
+ & \multicolumn{4}{c}{Rule tier} & \multicolumn{2}{c}{Criterion stated} & \multicolumn{6}{c}{No criterion stated}\\
+\cmidrule(lr){2-5}\cmidrule(lr){6-7}\cmidrule(l){8-13}
+ & & & & & \multicolumn{2}{c}{TrialGPT} & \multicolumn{3}{c}{MedEinst} & \multicolumn{2}{c}{Key pairs} & NLI4CT-P\\
+\cmidrule(lr){6-7}\cmidrule(lr){8-10}\cmidrule(lr){11-12}
+System & L2 & L3-inv & XA & Hold & F1 & choice & pair & control & trap & MedQA & CareQA & avg.\\
+\midrule
+\multicolumn{13}{@{}l}{\emph{Training-free, \bb}}\\
+Critic & \res{run/C-TF-critic/L2/all/TA} & \res{run/C-TF-critic/L3inv/all/TA} & 39.0 & \res{run/C-TF-critic/L2/all/Hold} & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1} & 92.8 & 24.2 & 71.8 & 51.6 & 79.8 & 84.4 & 80.9\\
+\ \ + default correction & \res{run/C-TF-defcorr/L2/all/TA} & \tbd & 58.5 & \tbd & \tbd & \tbd & 24.7 & 70.4 & 53.3 & \tbd & \tbd & \tbd\\
+\ \ + prompted summary & \res{run/C-TF-promptsum/L2/all/TA} & \tbd & 80.5 & \res{run/C-TF-promptsum/L2/all/Hold} & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/macroF1} & 91.3 & \tbd & \tbd & \tbd & 79.6 & 80.9 & \tbd\\
+\ \ + prompted ledger (lenient parse) & \res{run/C-TF-promptledger-lenient/L2/all/TA} & \tbd & 52.5 & \res{run/C-TF-promptledger-lenient/L2/all/Hold} & \res{run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/macroF1} & 86.0 & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+Generated-program verifier & \res{run/C-TF-genprog/L2/all/TA} & \tbd & 82.8 & \res{run/C-TF-genprog/L2/all/Hold} & -- & -- & -- & -- & -- & -- & -- & --\\
+\multicolumn{13}{@{}l}{\emph{Trained on rule data only (all clinical columns are zero-shot)}}\\
+Verdict only, FoVer data & \res{run/B-TR-fover/L2/all/TA/s0} & \tbd & 67.0 & \res{run/B-TR-fover/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+Verdict only, rule blocks & \res{run/B-F-verdict-blocks/L2/all/TA/s0} & \res{run/B-F-verdict-blocks/L3inv/all/TA/s0} & 60.8 & \res{run/B-F-verdict-blocks/L2/all/Hold/s0} & \res{run/C-TG-verdict-blocks-s0/clin_v1:trialgpt_test/top/macroF1} & 92.8 & 20.5 & 68.3 & 51.8 & 78.7 & 82.7 & 85.6\\
+Verdict only, rule triplets & \res{run/B-F-verdict-triplets/L2/all/TA/s0} & \res{run/B-F-verdict-triplets/L3inv/all/TA/s0} & 90.2 & \res{run/B-F-verdict-triplets/L2/all/Hold/s0} & \res{run/C-TG-verdict-triplets-s0/clin_v1:trialgpt_test/top/macroF1} & 92.8 & 22.8 & 69.5 & 52.9 & 78.2 & 83.1 & 85.4\\
+Rationale, rule triplets & \res{run/B-F-rationale-triplets/L2/all/TA/s0} & \res{run/B-F-rationale-triplets/L3inv/all/TA/s0} & 92.8 & \res{run/B-F-rationale-triplets/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+Evidence summary, rule blocks & \res{run/B-F-summary2-blocks/L2/all/TA/s0} & \res{run/B-F-summary2-blocks/L3inv/all/TA/s0} & 80.2 & \res{run/B-F-summary2-blocks/L2/all/Hold/s0} & \res{run/C-TG-summary2-blocks-s0/clin_v1:trialgpt_test/top/macroF1} & 84.4 & 22.8 & 61.6 & 56.1 & \tbd & \tbd & \tbd\\
+Evidence summary, rule triplets & \res{run/B-F-summary2-triplets/L2/all/TA/s0} & 97.6$^{a}$ & 88.5 & \res{run/B-F-summary2-triplets/L2/all/Hold/s0} & \res{run/C-TG-summary2-triplets-s0/clin_v1:trialgpt_test/top/macroF1} & 87.5 & 25.1 & 73.2 & 47.3 & 33.3 & 55.6 & 73.2\\
+\method{}, rule natural & \res{run/B-F-ledger2-natural/L2/all/TA/s0} & \tbd & 86.0 & \res{run/B-F-ledger2-natural/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+\method{}, rule balanced & \res{run/B-F-ledger2-balanced/L2/all/TA/s0} & \tbd & 54.5 & \res{run/B-F-ledger2-balanced/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+\method{}, rule blocks & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & \res{run/B-F-ledger2-blocks/L3inv/all/TA/s0} & 76.0 & \res{run/B-F-ledger2-blocks/L2/all/Hold/s0} & \res{run/C-TG-ledger2-blocks-s0/clin_v1:trialgpt_test/top/macroF1} & 85.8 & \tbd & \tbd & \tbd & 35.9 & 44.0 & \tbd\\
+\textbf{\method}, rule triplets & \textbf{99.2} & \res{run/B-F-ledger2-triplets/L3inv/all/TA/s0} & 89.8 & 99.95 & \res{run/C-TG-ledger2-triplets-s0/clin_v1:trialgpt_test/top/macroF1} & 87.7 & 15.7 & 44.4 & 35.1 & 30.5 & 38.2 & \tbd\\
+\multicolumn{13}{@{}l}{\emph{Trained with clinical pairs (MedEinst reference pairs and MedQA-train key pairs)}}\\
+\method{}, clinical pairs only & \res{run/B-TR-clinonly/L2/all/TA/s0} & \tbd & 35.5 & \res{run/B-TR-clinonly/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+\method{}, rule triplets + clinical pairs & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+\multicolumn{13}{@{}l}{\emph{References that use the rule program at test time}}\\
+Trigger tagger + program & \res{run/C-SC-gptrigger/L2/all/TA} & -- & -- & \res{run/C-SC-gptrigger/L2/all/Hold} & -- & -- & -- & -- & -- & -- & -- & --\\
+Program on the trained reader's ledger & \res{run/B-AE-program-ledger/L2/all/TA} & -- & -- & \res{run/B-AE-program-ledger/L2/all/Hold} & -- & -- & -- & -- & -- & -- & -- & --\\
+\bottomrule
+\end{tabular}}
+\caption{All rows of Table~\ref{tab:main} (\%, seed 0; $^{a}$seed 1).
+Columns as there. The run that adds clinical pairs to rule triplets was
+queued and is not finished.}
+\label{tab:main-full}
+\end{table*}
+
+\paragraph{Further ablations.}
+\emph{Finding the condition.} When the reader must derive the condition
+under test from the rule and the claim, triplet accuracy falls to \res{run/B-AB-conddrv/L2/all/TA}\%
+($-12.7$ $[-16.8,-8.9]$): near-miss correctness stays at 98.6\% and reversal
+falls to 87.0\%. \emph{Rule-side items.} Blocks-trained models solve
+35.8--82.2\% over formats and seeds. Windows are the weakest clause for
+every trained system that does not write a decision bit (43--76\% over
+formats and seeds). Training without donor ledgers lowers crossed accuracy
+from \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA}\% to 78.8\% while the L2 score stays at 98.8\%. \emph{One stage
+against two.} The rationale's deficit against the two-stage ledger lies in
+reversal (\res{run/B-F-rationale-triplets/L2/all/Rev}\%), not in holding (\res{run/B-F-rationale-triplets/L2/all/Hold}\%); the case-visible prose judge is
+0.8 points above the case-blind one ($[0.1,1.5]$) and statistically level
+with the ledger ($-0.4$ $[-1.1,0.3]$); on blocks the ledger is 2.7 points
+above prose over four seeds ($[-0.1,5.6]$); the ledger is 13.5 points above
+the value ledger on triplets ($[11.3,15.9]$) and 4.6 on blocks
+($[1.3,7.6]$). With program-supplied ledgers the judge solves \res{run/B-AE-oracle-ledger/L2/all/TA}\% of L2
+triplets: 12 errors of the full model are rescued, none is introduced and 4
+remain. \emph{Corpora without near-misses.} Among the natural, balanced and
+block corpora the differences between cells at seed 0 (43.0--77.2\%) are of
+the size of the seed-to-seed variation of the block cells (s.d.\ \res{run/B-F-verdict-blocks/L2/all/TA/sd}--\res{run/B-F-ledger2-blocks/L2/all/TA/sd}),
+so we do not interpret them. \emph{Scale.} With the 4B model of the same
+family the verdict-only model trained on blocks reaches \res{run/B-BB-qwen3.5-4b-verdict-blocks/L2/all/TA}\%, against
+\res{run/B-F-verdict-blocks/L2/all/TA/s0}\% for the 9B model at the same seed; the other cells are not run, so we
+draw no conclusion about scale. \emph{Formal data.} Verdict only trained on
+FoVer's formal data solves \res{run/B-TR-fover/L2/all/TA}\% of L2 triplets, with base accuracy at
+chance (49.3\%). \emph{Other signals.} ThinkPRM-14B, a general verifier that
+reasons before it scores, solves \res{run/C-AUD-thinkprm/L2/all/TA}\% of 200 L2 triplets; a logistic model
+on attribute-blind concept--value features solves \res{run/A-D14-attribute_blind/L2/all/TA}\%, and a frozen
+general-purpose clinical trigger tagger followed by the rule program
+77.7\%.
+
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Variant (rule triplets only, seed 0) & Rev & Hold & TA & XA\\
+\midrule
+\method{} (facts only)        & \res{run/B-F-ledger2-triplets/L2/all/Rev/s0} & 99.95 & \res{run/B-F-ledger2-triplets/L2/all/TA/s0} & 89.8\\
+\ \ + decision field          & \res{run/B-AB-decfield/L2/all/Rev/s0} & \res{run/B-AB-decfield/L2/all/Hold/s0} & \res{run/B-AB-decfield/L2/all/TA/s0} & 98.8\\
+\ \ decision field only       & \res{run/B-AB-bitonly-judge/L2/all/Rev/s0} & \res{run/B-AB-bitonly-judge/L2/all/Hold/s0} & \res{run/B-AB-bitonly-judge/L2/all/TA/s0} & 97.8\\
+\ \ program on predicted bit  & \res{run/B-AE-pred-bit-program/L2/all/Rev} & \res{run/B-AE-pred-bit-program/L2/all/Hold} & \res{run/B-AE-pred-bit-program/L2/all/TA} & --\\
+\ \ reader writes bit only    & 99.95 & \res{run/B-AB-bitonly-reader/L2/all/Hold/s0} & 99.95 & 97.8\\
+\ \ condition derived by the reader & \res{run/B-AB-conddrv/L2/all/Rev/s0} & \res{run/B-AB-conddrv/L2/all/Hold/s0} & \res{run/B-AB-conddrv/L2/all/TA/s0} & 86.5\\
+\ \ + verification pass       & \res{run/B-AB-verify/L2/all/Rev/s0} & \res{run/B-AB-verify/L2/all/Hold/s0} & \res{run/B-AB-verify/L2/all/TA/s0} & 91.5\\
+\ \ program-supplied ledger   & \res{run/B-AE-oracle-ledger/L2/all/Rev} & 99.95 & \res{run/B-AE-oracle-ledger/L2/all/TA} & --\\
+\ \ program on predicted ledger & \res{run/B-AE-program-ledger/L2/all/Rev} & \res{run/B-AE-program-ledger/L2/all/Hold} & \res{run/B-AE-program-ledger/L2/all/TA} & --\\
+One-stage ledger (rationale)  & \res{run/B-F-rationale-triplets/L2/all/Rev/s0} & \res{run/B-F-rationale-triplets/L2/all/Hold/s0} & \res{run/B-F-rationale-triplets/L2/all/TA/s0} & 92.8\\
+Value ledger                  & \res{run/B-F-value2-triplets/L2/all/Rev/s0} & \res{run/B-F-value2-triplets/L2/all/Hold/s0} & \res{run/B-F-value2-triplets/L2/all/TA/s0} & 70.5\\
+Evidence summary (matched prose) & \res{run/B-F-summary2-triplets/L2/all/Rev/s0} & \res{run/B-F-summary2-triplets/L2/all/Hold/s0} & \res{run/B-F-summary2-triplets/L2/all/TA/s0} & 88.5\\
+\ \ judge also sees the case  & \res{run/B-SC-summary2-triplets/L2/all/Rev/s0} & \res{run/B-SC-summary2-triplets/L2/all/Hold/s0} & \res{run/B-SC-summary2-triplets/L2/all/TA/s0} & 91.5\\
+Concept scorer                & \res{run/B-AB-concept/L2/all/Rev/s0} & \res{run/B-AB-concept/L2/all/Hold/s0} & \res{run/B-AB-concept/L2/all/TA/s0} & 12.0\\
+Premise gate                  & \tbd & \tbd & \tbd & \tbd\\
+$-$ near-misses               & \res{run/B-F-ledger2-blocks/L2/all/Rev/s0} & \res{run/B-F-ledger2-blocks/L2/all/Hold/s0} & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & 76.0\\
+\ \ + probe re-weighting      & \res{run/B-AB-probe-rw/L2/all/Rev/s0} & \res{run/B-AB-probe-rw/L2/all/Hold/s0} & \res{run/B-AB-probe-rw/L2/all/TA/s0} & 25.8\\
+$-$ other-person near-misses  & \res{run/B-LOKO-subject-ledger2/L2/all/Rev/s0} & \res{run/B-LOKO-subject-ledger2/L2/all/Hold/s0} & \res{run/B-LOKO-subject-ledger2/L2/all/TA/s0} & 90.8\\
+$-$ past near-misses          & \res{run/B-LOKO-time-ledger2/L2/all/Rev/s0} & \res{run/B-LOKO-time-ledger2/L2/all/Hold/s0} & \res{run/B-LOKO-time-ledger2/L2/all/TA/s0} & 84.2\\
+$-$ threshold near-misses     & \res{run/B-LOKO-boundary-ledger2/L2/all/Rev/s0} & \res{run/B-LOKO-boundary-ledger2/L2/all/Hold/s0} & \res{run/B-LOKO-boundary-ledger2/L2/all/TA/s0} & 85.8\\
+$-$ presentation edits        & \res{run/B-AB-nopres/L2/all/Rev/s0} & \res{run/B-AB-nopres/L2/all/Hold/s0} & \res{run/B-AB-nopres/L2/all/TA/s0} & 90.0\\
+$-$ ledger resampling         & \res{run/B-AB-noresamp/L2/all/Rev/s0} & \res{run/B-AB-noresamp/L2/all/Hold/s0} & \res{run/B-AB-noresamp/L2/all/TA/s0} & 78.8\\
+Verdict only, pairwise loss   & \res{run/B-AB-pairwise/L2/all/Rev/s0} & \res{run/B-AB-pairwise/L2/all/Hold/s0} & \res{run/B-AB-pairwise/L2/all/TA/s0} & 92.5\\
+\bottomrule
+\end{tabular}}
+\caption{Ablations on L2 and on rule-side items (\%). Decision field: the
+reader also writes whether the condition applies; decision field only: the
+judge sees that bit and the claim. Condition derived: the reader is given
+the rule and the claim and must find the condition under test. Verification
+pass: every entry is re-read against the case and regenerated once if
+rejected, after \citet{agand2026venra}. Program-supplied ledger: the judge
+receives the target ledger. Program on predicted ledger or bit: the rule
+program replaces the judge and is used at test time. Concept scorer: fields
+predicted by linear heads and a linear verdict. Premise gate, after
+\citet{evpv2026}: not run. Probe re-weighting: near-misses are not trained
+on; base--flip pairs whose preference shifts under near-miss and
+presentation edits are down-weighted, our adaptation of
+\citet{liu2026dynacf}. Rows that remove one near-miss kind show all L2
+triplets; Table~\ref{tab:loko} shows the removed kind. Paired differences
+to the first row: verification pass $+0.6$ $[0.1,1.2]$; bit-only reader
+$+0.8$ $[0.3,1.4]$; condition derived $-12.7$ $[-16.8,-8.9]$; pairwise loss
+$-7.8$ $[-12.3,-4.0]$; concept scorer $-72.5$ $[-76.0,-68.4]$.}
+\label{tab:ablation}
+\end{table}
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lcccccccc@{}}
+\toprule
+System & Dev & L0 & L1 & L2 & L3-inv & Hard & Re-apply & L3-alt\\
+\midrule
+Critic                    & 39.7 & 44.4 & 42.8 & 27.1 & 33.4 & 24.6 & 61.1 & 83.9\\
+Verdict only, blocks      & 67.3 & 68.8 & 73.8 & 58.2 & 62.9 & 59.1 & 77.7 & 94.6\\
+\method{}, blocks         & 70.3 & 73.5 & 78.2 & 75.3 & 70.1 & 76.4 & 76.0 & 85.3\\
+Verdict only, triplets    & 99.7 & 99.0 & 97.6 & 91.3 & 96.9 & 90.5 & 99.4 & 100.0\\
+Rationale, triplets       & 98.0 & 98.1 & 97.7 & 91.0 & 96.5 & 90.4 & 99.3 & 100.0\\
+Evidence summary, triplets$^{a}$ & 98.7 & 98.4 & 97.4 & 98.1 & 97.6 & 98.1 & 98.8 & 100.0\\
+\method{}, triplets       & 99.7 & 99.7 & 99.1 & 99.2 & 97.9 & 98.3 & 99.7 & 100.0\\
+\bottomrule
+\end{tabular}}
+\caption{Rule ladder (triplet accuracy, \%, seed 0; $^{a}$seed 1). Dev:
+trained rules, test wording; L3-inv: invented rules; Hard: L2 rules with long
+notes and superseded values; Re-apply: reading and application pairs;
+L3-alt: altered thresholds, which the untrained backbone already solves in
+83.9\% of cases (Appendix~\ref{app:rules}).}
+\label{tab:ladder}
+\end{table}
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & \multicolumn{5}{c}{Seed} & \\
+\cmidrule(lr){2-6}
+Cell & 0 & 1 & 2 & 3 & 4 & Mean (s.d.)\\
+\midrule
+\multicolumn{7}{@{}l}{\emph{L2 triplet accuracy}}\\
+Verdict only, blocks & \res{run/B-F-verdict-blocks/L2/all/TA/s0} & \res{run/B-F-verdict-blocks/L2/all/TA/s1} & \res{run/B-F-verdict-blocks/L2/all/TA/s2} & \res{run/B-F-verdict-blocks/L2/all/TA/s3} & \res{run/B-F-verdict-blocks/L2/all/TA/s4} & \res{run/B-F-verdict-blocks/L2/all/TA} (\res{run/B-F-verdict-blocks/L2/all/TA/sd})\\
+Verdict only, triplets & \res{run/B-F-verdict-triplets/L2/all/TA/s0} & \res{run/B-F-verdict-triplets/L2/all/TA/s1} & \res{run/B-F-verdict-triplets/L2/all/TA/s2} & \res{run/B-F-verdict-triplets/L2/all/TA/s3} & \res{run/B-F-verdict-triplets/L2/all/TA/s4} & \res{run/B-F-verdict-triplets/L2/all/TA} (\res{run/B-F-verdict-triplets/L2/all/TA/sd})\\
+Evidence summary, blocks & \res{run/B-F-summary2-blocks/L2/all/TA/s0} & \res{run/B-F-summary2-blocks/L2/all/TA/s1} & \res{run/B-F-summary2-blocks/L2/all/TA/s2} & \res{run/B-F-summary2-blocks/L2/all/TA/s3} & \res{run/B-F-summary2-blocks/L2/all/TA/s4} & \res{run/B-F-summary2-blocks/L2/all/TA} (\res{run/B-F-summary2-blocks/L2/all/TA/sd})\\
+Evidence summary, triplets & \res{run/B-F-summary2-triplets/L2/all/TA/s0} & \res{run/B-F-summary2-triplets/L2/all/TA/s1} & \res{run/B-F-summary2-triplets/L2/all/TA/s2} & \res{run/B-F-summary2-triplets/L2/all/TA/s3} & \res{run/B-F-summary2-triplets/L2/all/TA/s4} & \res{run/B-F-summary2-triplets/L2/all/TA} (\res{run/B-F-summary2-triplets/L2/all/TA/sd})\\
+\method{}, blocks & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & \res{run/B-F-ledger2-blocks/L2/all/TA/s1} & \res{run/B-F-ledger2-blocks/L2/all/TA/s2} & \res{run/B-F-ledger2-blocks/L2/all/TA/s3} & \res{run/B-F-ledger2-blocks/L2/all/TA/s4} & \res{run/B-F-ledger2-blocks/L2/all/TA} (\res{run/B-F-ledger2-blocks/L2/all/TA/sd})\\
+\method{}, triplets & \res{run/B-F-ledger2-triplets/L2/all/TA/s0} & \res{run/B-F-ledger2-triplets/L2/all/TA/s1} & \res{run/B-F-ledger2-triplets/L2/all/TA/s2} & \res{run/B-F-ledger2-triplets/L2/all/TA/s3} & \res{run/B-F-ledger2-triplets/L2/all/TA/s4} & \res{run/B-F-ledger2-triplets/L2/all/TA} (\res{run/B-F-ledger2-triplets/L2/all/TA/sd})\\
+\multicolumn{7}{@{}l}{\emph{Crossed accuracy on rule-side items}}\\
+Verdict only, blocks & 60.8 & 47.2 & 66.2 & 40.2 & 37.8 & \\
+Verdict only, triplets & 90.2 & 91.2 & 90.0 & 87.2 & 85.5 & \\
+Evidence summary, blocks & 80.2 & 51.0 & 62.5 & 35.8 & \res{run/B-F-summary2-blocks/xr_v1:test/xa/XA/s4} & \\
+Evidence summary, triplets & 88.5 & 92.5 & 90.2 & 89.2 & 91.8 & \\
+\method{}, blocks & 76.0 & 37.8 & 71.0 & 44.5 & 82.2 & \\
+\method{}, triplets & 89.8 & 88.8 & 91.5 & 94.0 & 85.0 & \\
+\bottomrule
+\end{tabular}}
+\caption{Seeds (\%). The pooled 95\% interval of \method{} trained on
+triplets is $[\res{run/B-F-ledger2-triplets/L2/all/TA/lo},\res{run/B-F-ledger2-triplets/L2/all/TA/hi}]$. Without near-misses the outcome of a run depends
+strongly on its seed; with them it does not.}
+\label{tab:seeds}
+\end{table}
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.56\columnwidth}p{0.38\columnwidth}@{}}
+\toprule
+Comparison & Isolates\\
+\midrule
+Verdict vs.\ one-stage ledger & intermediate supervision\\
+One-stage vs.\ two-stage ledger & separating reading from judgment\\
+Two-stage ledger vs.\ matched prose & typed structure\\
+Applicability ledger vs.\ value ledger & subject, status and time\\
+Case-blind vs.\ case-visible judge & restricting access to the case\\
+Full record vs.\ one bit & what the judge needs\\
+Own vs.\ program-supplied ledger & what better extraction could recover\\
+Learned judge vs.\ rule program on the same ledger & what the neural judge adds\\
+\bottomrule
+\end{tabular}
+\caption{Comparisons among interfaces and what each isolates.}
+\label{tab:isolate}
+\end{table}
+
+\paragraph{Objective.}
+Let $N(x)$ be the other training cases of the same rule and condition as
+$x$, including its twins, and let $q(\cdot\mid x,\rho,\omega)$ put mass
+$1-p$ on $e^\ast(x,\rho,\omega)$ and spread $p$ uniformly over
+$\{e^\ast(x',\rho,\omega): x'\in N(x)\}$. Then
+\begin{align}
+\mathcal{L}=\mathbb{E}_{(x,\rho,s)}\Bigl[&-\tfrac{1}{|e^\ast|}\log
+p_\phi(e^\ast\mid x,\rho,\omega)\nonumber\\[-2pt]
+&-\lambda\,\mathbb{E}_{e\sim q}\log p_\phi\bigl(y_\rho(e,s)\mid e,\rho,s\bigr)\Bigr],
+\end{align}
+with $|e^\ast|$ the number of target tokens. Donor ledgers are gold ledgers,
+whereas at test time the judge reads generated ones; the program-supplied
+ledger analysis measures that gap.
+
+\paragraph{Training.}
+LoRA rank \res{meta/B-F-ledger2-triplets/train.hp.lora_r@0}, batch size 64, one epoch over 60{,}000 records, learning rate
+\ph{1e-4}, $\lambda=\ph{1.0}$, donor probability $p=0.3$ (a donor's ledger
+in 30.2\% of judge examples). The two loss terms are separate supervised
+examples in one corpus: one reader example per case and condition, shared by
+both claims, and one judge example per claim. A deterministic parser maps
+ledger text to a state for $y_\rho$; incomplete or inconsistent ledgers have
+no state and yield no judge example. A verdict-only run takes about 2.2
+GPU-hours and a two-stage run about 2.8, including evaluation. Unique cases,
+reader and judge targets, tokens and optimiser steps per configuration are
+\tbd; equal record counts do not by themselves mean equal supervision.
+Scores from the served model used for selection agree in sign with those of
+the training framework on 99.96\% of 8{,}000 preferences.
+
+\paragraph{Policy training.}
+GRPO from a Qwen3.5-4B policy on rule tasks from training rules, \res{meta/D-RL-outcome/steps@int}
+steps, one seed, evaluated every 200 steps and at the end on 150 held-out
+L2 pairs with the rule program. Outcome reward: pair accuracy \res{run/D-RL-outcome/L2/top/start_pair/s0}\% to
+\res{run/D-RL-outcome/L2/top/acc_pair/s0}\%, triplet accuracy \res{run/D-RL-outcome/L2/top/start_triplet/s0}\% to \res{run/D-RL-outcome/L2/top/acc_triplet/s0}\%. Reference-graph reward: \res{run/D-RL-refgraph/L2/top/start_pair/s0}\% to
+\res{run/D-RL-refgraph/L2/top/acc_pair/s0}\% and \res{run/D-RL-refgraph/L2/top/start_triplet/s0}\% to \res{run/D-RL-refgraph/L2/top/acc_triplet/s0}\%. Med-PRM as reward: \res{run/D-RL-stepcheck/L2/top/start_pair/s0}\% to \res{run/D-RL-stepcheck/L2/top/acc_pair/s0}\% and \res{run/D-RL-stepcheck/L2/top/start_triplet/s0}\%
+to \res{run/D-RL-stepcheck/L2/top/acc_triplet/s0}\%, with accuracy over all cases falling from \res{run/D-RL-stepcheck/L2/top/start_all/s0}\% to \res{run/D-RL-stepcheck/L2/top/acc_all/s0}\%; at
+step 1{,}000 the mean reward is 0.9997 and pair accuracy measured during
+training 37.3\%. Under the outcome reward only 4.5\% of rollout groups have
+any reward variance, so most groups give no gradient; under Med-PRM 85.3\%
+do, and within groups the reward's correlation with the outcome is $-0.05$
+on average. The collapsed policy writes a single step in \res{sum/D-RL-analysis/runs.D-RL-stepcheck-s0.final.one_step_share@0}\% of its
+outputs (median length \res{sum/D-RL-analysis/runs.D-RL-stepcheck-s0.final.median_chars@int} characters, \res{sum/D-RL-analysis/runs.D-RL-stepcheck-s0.start.median_chars@int} before training);
+\res{sum/D-RL-analysis/runs.D-RL-stepcheck-s0.final.errors_fail_to_hold_share}\% of its errors are on base and near-miss cases, failures to hold
+and not to reverse, and on \res{sum/D-RL-analysis/runs.D-RL-stepcheck-s0.final.share_always_flip_claim}\% of triplets it gives the flip's claim
+for all three cases. Ledger reward trained on blocks: pair accuracy
+\res{run/D-RL-ledger2-blocks/L2/top/start_pair/s0}\% to \res{run/D-RL-ledger2-blocks/L2/top/acc_pair/s0}\%, triplet accuracy \res{run/D-RL-ledger2-blocks/L2/top/start_triplet/s0}\% to \res{run/D-RL-ledger2-blocks/L2/top/acc_triplet/s0}\%; trained on
+triplets: \res{run/D-RL-ledger2-triplets/L2/top/start_pair/s0}\% to \res{run/D-RL-ledger2-triplets/L2/top/acc_pair/s0}\% and \res{run/D-RL-ledger2-triplets/L2/top/start_triplet/s0}\% to \res{run/D-RL-ledger2-triplets/L2/top/acc_triplet/s0}\%.
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{2.4pt}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & \multicolumn{2}{c}{Accuracy} & Key & \multicolumn{3}{c}{MedEinst}\\
+\cmidrule(lr){2-3}\cmidrule(lr){5-7}
+Selection & MQA & CQA & pair & pair & ctrl & trap\\
+\midrule
+Single sample          & \res{run/D-SEL-single/sel:medqa/top/acc} & \res{run/D-SEL-single/sel:careqa/top/acc} & \res{run/D-SEL-single/sel:keypairs/top/pair_acc} & \res{run/D-SEL-single/sel:medeinst/top/pair_acc} & \res{run/D-SEL-single/sel:medeinst/top/control_acc} & \res{run/D-SEL-single/sel:medeinst/top/trap_acc}\\
+Self-consistency       & \textbf{87.8} & \textbf{89.4} & \textbf{78.7} & \res{run/D-SEL-selfcons/sel:medeinst/top/pair_acc} & \res{run/D-SEL-selfcons/sel:medeinst/top/control_acc} & \res{run/D-SEL-selfcons/sel:medeinst/top/trap_acc}\\
+Step check             & \res{run/D-SEL-stepcheck/sel:medqa/top/acc} & \res{run/D-SEL-stepcheck/sel:careqa/top/acc} & \res{run/D-SEL-stepcheck/sel:keypairs/top/pair_acc} & \res{run/D-SEL-stepcheck/sel:medeinst/top/pair_acc} & \res{run/D-SEL-stepcheck/sel:medeinst/top/control_acc} & \res{run/D-SEL-stepcheck/sel:medeinst/top/trap_acc}\\
+\ \ \ vignette swapped$^{a}$ & \res{run/D-SEL-stepcheck-swap/sel:medqa/top/acc} & \res{run/D-SEL-stepcheck-swap/sel:careqa/top/acc} & \res{run/D-SEL-stepcheck-swap/sel:keypairs/top/pair_acc} & \res{run/D-SEL-stepcheck-swap/sel:medeinst/top/pair_acc} & \res{run/D-SEL-stepcheck-swap/sel:medeinst/top/control_acc} & \res{run/D-SEL-stepcheck-swap/sel:medeinst/top/trap_acc}\\
+Ledger score           & \res{run/D-SEL-ledger/sel:medqa/top/acc} & \res{run/D-SEL-ledger/sel:careqa/top/acc} & \res{run/D-SEL-ledger/sel:keypairs/top/pair_acc} & \textbf{26.2} & \res{run/D-SEL-ledger/sel:medeinst/top/control_acc} & \textbf{49.8}\\
+Combined (minimum)     & \res{run/D-SEL-combined/sel:medqa/top/acc} & \res{run/D-SEL-combined/sel:careqa/top/acc} & \res{run/D-SEL-combined/sel:keypairs/top/pair_acc} & \res{run/D-SEL-combined/sel:medeinst/top/pair_acc} & \res{run/D-SEL-combined/sel:medeinst/top/control_acc} & \res{run/D-SEL-combined/sel:medeinst/top/trap_acc}\\
+\ \ \ vignette swapped$^{a}$ & \res{run/D-SEL-combined-swap/sel:medqa/top/acc} & \res{run/D-SEL-combined-swap/sel:careqa/top/acc} & \res{run/D-SEL-combined-swap/sel:keypairs/top/pair_acc} & \res{run/D-SEL-combined-swap/sel:medeinst/top/pair_acc} & \res{run/D-SEL-combined-swap/sel:medeinst/top/control_acc} & \res{run/D-SEL-combined-swap/sel:medeinst/top/trap_acc}\\
+\ \ \ no near-misses   & \res{run/D-SEL-no-nearmiss/sel:medqa/top/acc} & \res{run/D-SEL-no-nearmiss/sel:careqa/top/acc} & \res{run/D-SEL-no-nearmiss/sel:keypairs/top/pair_acc} & \res{run/D-SEL-no-nearmiss/sel:medeinst/top/pair_acc} & \res{run/D-SEL-no-nearmiss/sel:medeinst/top/control_acc} & \res{run/D-SEL-no-nearmiss/sel:medeinst/top/trap_acc}\\
+\ \ \ product          & \res{run/D-SEL-combined-product/sel:medqa/top/acc} & \res{run/D-SEL-combined-product/sel:careqa/top/acc} & \res{run/D-SEL-combined-product/sel:keypairs/top/pair_acc} & \res{run/D-SEL-combined-product/sel:medeinst/top/pair_acc} & \res{run/D-SEL-combined-product/sel:medeinst/top/control_acc} & \res{run/D-SEL-combined-product/sel:medeinst/top/trap_acc}\\
+\ \ \ fitted logistic  & \res{run/D-SEL-combined-logistic/sel:medqa/top/acc} & \res{run/D-SEL-combined-logistic/sel:careqa/top/acc} & \res{run/D-SEL-combined-logistic/sel:keypairs/top/pair_acc} & \res{run/D-SEL-combined-logistic/sel:medeinst/top/pair_acc} & \res{run/D-SEL-combined-logistic/sel:medeinst/top/control_acc} & \res{run/D-SEL-combined-logistic/sel:medeinst/top/trap_acc}\\
+\midrule
+Oracle selection       & \res{run/D-SEL-oracle/sel:medqa/top/acc} & \res{run/D-SEL-oracle/sel:careqa/top/acc} & \res{run/D-SEL-oracle/sel:keypairs/top/pair_acc} & \res{run/D-SEL-oracle/sel:medeinst/top/pair_acc} & \res{run/D-SEL-oracle/sel:medeinst/top/control_acc} & \res{run/D-SEL-oracle/sel:medeinst/top/trap_acc}\\
+\bottomrule
+\end{tabular}
+\caption{Reranking 16 samples of a frozen policy (\bb) on
+identical pools (\%): 1{,}273 MedQA and 1{,}000 CareQA questions, 357 key
+pairs, 500 MedEinst pairs. Step check: Med-PRM. Ledger score: \method{}
+trained on rule triplets. Bold: best selector per column. $^{a}$The two
+swapped rows coincide because the minimum is then the step check's score: with
+a swapped vignette the calibrated ledger score is the smaller one in
+\res{run/D-SEL-combined-swap/sel:medqa/top/ledger_is_minimum_share_swap}\% of MedQA traces (\res{run/D-SEL-combined-swap/sel:medqa/top/ledger_is_minimum_share}\% unswapped), \res{run/D-SEL-combined-swap/sel:keypairs/top/ledger_is_minimum_share_swap@2}\% on key pairs and
+\res{run/D-SEL-combined-swap/sel:medeinst/top/ledger_is_minimum_share_swap}\% on MedEinst, and both selectors return the same answer to every
+question. On CareQA (\res{run/D-SEL-combined-swap/sel:careqa/top/ledger_is_minimum_share_swap}\%) they differ on \res{d/run/D-SEL-combined-swap/sel:careqa/top/n|run/D-SEL-combined-swap/sel:careqa/top/n_same_answer_as_stepcheck_swap@int} of 1{,}000
+questions and are right equally often.}
+\label{tab:downstream}
+\end{table}
+
+\paragraph{Selection protocol.}
+Table~\ref{tab:downstream} gives every selector. Combined minus step check
+is $\res{cmp/sel-mqa-comb-step/diff}$ points on MedQA $[\res{cmp/sel-mqa-comb-step/lo},\res{cmp/sel-mqa-comb-step/hi}]$, $\res{cmp/sel-cqa-comb-step/diff}$ on CareQA $[\res{cmp/sel-cqa-comb-step/lo},\res{cmp/sel-cqa-comb-step/hi}]$,
+$\res{cmp/sel-key-comb-step/diff}$ on key pairs $[\res{cmp/sel-key-comb-step/lo},\res{cmp/sel-key-comb-step/hi}]$ and $\res{cmp/sel-me-comb-step/diff}$ on MedEinst pairs $[\res{cmp/sel-me-comb-step/lo},\res{cmp/sel-me-comb-step/hi}]$.
+Training the ledger with or without near-misses makes no difference here
+($+\res{cmp/sel-mqa-comb-nonear/diff}$ $[\res{cmp/sel-mqa-comb-nonear/lo},\res{cmp/sel-mqa-comb-nonear/hi}]$ on MedQA). The ledger score alone gives the highest
+pair accuracy on MedEinst (26.2\% against 22.0\% for a single sample); no
+paired test of that difference was planned, and we do not interpret it. The
+minimum of two calibrated scores is a heuristic: it is an upper bound on the
+joint probability, not that probability, and scaling each score separately
+does not account for dependence between the two checks.
+Pools hold 16 samples per question from the frozen policy; a trace is
+eligible if it contains a final answer (96.6\% of MedQA samples). Platt
+scaling and the logistic combination are fitted on a MedQA development pool
+of 359 questions from which key-pair questions are removed. There the AUC of
+the trace score for answer correctness is 0.654 for Med-PRM, 0.510 for
+\method{} trained on triplets and 0.479 trained on blocks, and the
+calibration slope of the ledger score is 0.006 against 0.66 for Med-PRM. On
+150 key pairs with nested pools of 1, 16 and 64 samples, pair accuracy is
+\res{run/D-SELN/sel:keypairs/selector=combined/N1}, \res{run/D-SELN/sel:keypairs/selector=combined/N16} and \res{run/D-SELN/sel:keypairs/selector=combined/N64} for the combined score; \res{run/D-SELN/sel:keypairs/selector=stepcheck/N1}, \res{run/D-SELN/sel:keypairs/selector=stepcheck/N16} and \res{run/D-SELN/sel:keypairs/selector=stepcheck/N64} for the
+step check; \res{run/D-SELN/sel:keypairs/selector=ledger/N1}, \res{run/D-SELN/sel:keypairs/selector=ledger/N16} and \res{run/D-SELN/sel:keypairs/selector=ledger/N64} for the ledger score; \res{run/D-SELN/sel:keypairs/selector=selfcons/N1}, \res{run/D-SELN/sel:keypairs/selector=selfcons/N16} and \res{run/D-SELN/sel:keypairs/selector=selfcons/N64}
+for self-consistency; and \res{run/D-SELN/sel:keypairs/selector=oracle/N1}, \res{run/D-SELN/sel:keypairs/selector=oracle/N16} and \res{run/D-SELN/sel:keypairs/selector=oracle/N64} for the oracle. The curve
+over the number of training rules of new and of seen structures is \tbd.
+
+\section{Extended Related Work}
+\label{app:related}
+
+\paragraph{Validity of evaluators.}
+\citet{chen2026judge} define a judge's validity as invariance to
+construct-preserving edits together with sensitivity to construct-changing
+ones, and \citet{weng2026policy} hold the judged trajectory fixed and
+rewrite the policy given to the judge. \citet{yang2026compared} show that
+the effect of a targeted counterfactual edit must be compared with that of
+meaning-preserving edits of the same size; our near-miss and presentation
+edits are such baselines with known labels. Robustness work on reward models
+targets response-side artifacts
+\citep{liu2025rrm,zang2025auditor,xu2025contextualjudge}. In medicine,
+answer-changing patient facts \citep{hou2026medpic,chen2026medeinst,kim2025marc}
+and clinically irrelevant distractor statements
+\citep{vishwanath2025distracted} have each been tested on answering models; none of these puts a decisive edit and
+an inapplicable mention of the same concept in one item, varies the
+applicability clause of a rule with the case fixed, or applies patient-side
+edits to released medical PRMs.
+
+\paragraph{Supervision with and without label-preserving edits.}
+Minimal label-flipping edits serve training \citep{kaushik2020cad} and
+evaluation
+\citep{gardner2020contrast,ribeiro2020checklist,thrush2022winoground}, with
+the caveat that they teach which feature matters and not when it does not
+\citep{joshi2022cad}. Adding label-preserving edits of the same feature
+removes over-triggering for negation scope \citep{she2023scone} and for
+safety policies: a guard model trained on label-changing policy edits alone
+reaches precision .50 at recall 1.00, and .90 and .78 with both kinds
+\citep{liu2026apt}. Natural text remains hard after such training
+\citep{ravichander2022condaqa}. CROME trains reward models with
+augmentations that change causal attributes of a response and with neutral
+ones \citep{srivastava2026crome}; DynaCF down-weights pairs whose margin
+shifts under content-preserving rewrites \citep{liu2026dynacf}, which we
+adapt to case edits as an alternative to training on near-misses; CSR
+regularises a solver to change its answer when an operator in its own trace
+is swapped \citep{shihab2025csr}. MedGuideX post-trains a clinical policy on
+factual and counterfactual questions from executable guideline functions
+and keeps only interventions that change the outcome \citep{shen2026medguidex}.
+Sensitivity together with invariance is therefore established as a principle.
+Our negatives differ in kind: they keep the decisive concept in the text and
+remove one condition of its applicability, a case that \citet{winston1970}
+called a near miss, and we measure what a verifier learns without them.
+
+\paragraph{Process rewards and symbolic verification.}
+PRMs are trained on human step labels \citep{lightman2024verify}, rollout
+estimates \citep{wang2024mathshepherd} or generated verification reasoning
+\citep{khalifa2025thinkprm}, which GenPRM extends with executed code
+\citep{zhao2025genprm}. FoVer trains step verifiers on labels from formal
+tools and shows transfer to informal tasks \citep{kamoi2026fover};
+generating supervision by formal verification is established and is not our
+claim. NS-PRM separates what a deterministic verifier can decide
+(schema, arithmetic, units) from what a PRM must learn, trains the PRM on
+negatives that pass the verifier, and searches verifier-first
+\citep{zi2026nsprm}; its perturbations all change the label. We adopt the
+division of labour and add the label-preserving side. Other work injects
+errors into verified chains \citep{chi2026vcs} or uses a deterministic
+verifier as the reward \citep{pronesti2026vprm}. In medicine, Med-PRM and
+Med-TIV condition a verifier on retrieved passages
+\citep{yun2025medprm,zhang2026medtiv}, MedCEG rewards coverage of a
+reference evidence graph \citep{medceg2025}, and MedPRMBench injects 14
+error types into chains \citep{wu2026medprmbench}. Scoring from a record
+written in a separate pass follows Chain-of-Verification
+\citep{dhuliawala2024cove} and EVPV, which extracts premises once per
+problem and attenuates the reward of steps they do not support
+\citep{evpv2026}; mediating a reward through explicit concepts precedes our
+record \citep{koh2020cbm,laguna2025cbrm}. Its fields are the attributes that
+clinical NLP assigns to mentions: negation, experiencer and temporality
+\citep{chapman2001negex,harkema2009context,uzuner2011i2b2}. For composite
+neuro-symbolic systems in medicine, \citet{wong2026nesy} name the failure we
+measure at the reader: an extraction error never activates the rule layer.
+
+\paragraph{Stated rules and where criteria come from.}
+Reasoning from a stated rule and a described case has a long line of
+benchmarks \citep{saeidi2018sharc,holzenberger2020sara,clark2020ruletaker,sun2024rulebench},
+and policy-conditioned guard models are trained to follow rules given at
+inference \citep{hoover2025dynaguard,liu2026apt}. Whether a verdict depends
+on the rule has to be tested: deleting, shuffling or replacing the rule left
+the accuracy of every compliance detector audited by
+\citet{sadhu2026compliance} unchanged. For clinical criteria, executable
+guideline functions are called at inference \citep{cao2026guideskill},
+diagnostic hypotheses are checked against guideline-derived disease profiles
+\citep{cao2026veridx}, conditional QA gates answers on a stated patient
+condition \citep{parekh2026cgr}, and trial eligibility is decided criterion
+by criterion by prompted models \citep{jin2024trialgpt} or by an SMT solver
+over compiled criteria and typed patient facts, with an audit of whether
+changing pivotal facts changes the decision \citep{zhou2026verdict}. As far as
+we could determine, these systems prompt their reader, and none trains it on
+inapplicable evidence.
+Ontologies have supplied exactly labelled subsumption data with sibling
+negatives \citep{he2023ontolama,he2024hit} and sibling substitutions that a
+clinical verifier must not accept \citep{qu2026medieval}; injecting an
+ontology into weights changed medical QA little \citep{liu2025ontotune},
+whereas a fixed type vocabulary used as a gate before a learned judge helped
+knowledge-graph QA \citep{shan2026ontgqa}. We use ontologies in the second
+way, and pair a class member that must flip a verdict with a non-member
+that must not.
+
+\paragraph{Context against prior, and reward exploitation.}
+How language models arbitrate between memory and conflicting context is well
+studied \citep{xu2024conflicts,wu2024clasheval,shi2024cad}, and
+clinical-trial NLI has been probed with label-preserving and label-inverting
+interventions \citep{jullien2024semeval}; claim-only scorers are
+partial-input baselines \citep{poliak2018hypothesis}. Policies trained
+against learned rewards exploit them
+\citep{skalse2022hacking,gao2023scaling,helff2026gaming}: against math PRMs
+the reward approaches its maximum while accuracy stays below 4\%
+\citep{tiwari2026reward}, rubric and claim-checker rewards in medicine are
+exploited as training proceeds \citep{mahmoud2026hacking,ji2026checker}, and Med-PRM as a process reward
+gave lower accuracy than an outcome reward in risk-of-bias assessment
+\citep{pronesti2026vprm}. Our policy experiment adds a held-out, exactly
+labelled evaluation and connects the exploited reward to its triplet
+profile.
+
+
+\section{Development History and Error Analysis}
+\label{app:history}
+
+\ph{[Authors: this section has to be written from your own records. The
+project log supports the statements below and no others; an earlier draft
+cited a pilot result for which no record exists, and it is removed.]}
+
+\paragraph{What the frozen generator changed.}
+\texttt{rule\_v1} holds out signature classes, templates and cue phrases;
+contains rules under which past or family findings count (30.5\% of
+criteria), so that ``past or family means ignore'' is not a sufficient
+strategy; adds presentation edits and missing inputs to every corpus; and
+was frozen before the runs reported here. Before the freeze, a dry run of
+the attribute-blind logistic scorer solved 69\% of triplets, because
+near-misses then differed from flips in more than one attribute; after
+near-misses were made to mirror the flip it solves \res{run/A-D14-attribute_blind/L2/all/TA}\% on the frozen
+test (decision log of 2 October; the dry-run number is not a result on the
+frozen data). Rule-side items test dependence on the rule directly and were
+built after the freeze as a separate set.
+
+\paragraph{What the results changed.}
+Three expectations of the first plan were wrong and are reported as such:
+that balanced outcomes would teach reversal (\S\ref{sec:results-factorial}),
+that the ledger and the step check would combine into a better selector
+(\S\ref{sec:results-downstream}), and that training on rules would transfer
+without a stated criterion (\S\ref{sec:results-shift}). The typed ledger,
+which the first plan treated as the method, turned out to matter less than
+the supervision and to be replaceable by one bit. Stage 2 is the plan that
+follows from these outcomes.
+
+\paragraph{Errors of the trained systems.}
+Sheets with 200 failures of five trained systems on L2 (175 distinct
+triplets), to be coded by the authors as extraction error, applicability
+error, unseen wording, rule misread or other, are prepared; the coding is
+\ph{pending}.
+
+\ifplaceholders\else
+\section{Reproducibility}
+\label{app:repro}
+Every number in this paper is produced by a script that writes the
+corresponding table or figure. The rule manifest, the grammar, the triplet
+engine, the key-pair miner, prompts, splits, model revisions and trained
+adapters are released with the paper.
+\fi
+
+\end{document}

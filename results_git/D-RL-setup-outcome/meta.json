@@ -1,0 +1,14 @@
+{
+ "run_id": "D-RL-setup-outcome",
+ "reward": "outcome",
+ "policy": "/pvcb/selrm/models/unsloth--Qwen3.5-4B",
+ "seed": 0,
+ "steps": 60,
+ "train_tasks": 64,
+ "eval_tasks": 450,
+ "group_size": 8,
+ "lora_r": 16,
+ "lr": 1e-05,
+ "wall_seconds": 2111.1,
+ "gpu": "NVIDIA H100 80GB HBM3"
+}

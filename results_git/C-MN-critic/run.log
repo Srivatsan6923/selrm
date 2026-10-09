@@ -1,0 +1,7 @@
+2026-10-03T22:01:33Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-03T22:01:34Z token budget per batch: 8000 (generation 24000)
+2026-10-03T22:01:38Z C-MN-critic clin_v1/medeinst_neg prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_neg/verdict.npz', 'built 7398 prompts, max 631 tokens')
+2026-10-03T22:02:16Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0216)
+2026-10-03T22:02:19Z padding self-check: max |u_batch - u_single| = 0.0762 (tol 0.537) -> left padding
+2026-10-03T22:12:12Z C-MN-critic clin_v1/medeinst_neg: TA nan Rev nan Hold nan n=None (633.2 s)
+2026-10-03T22:12:12Z DONE C-MN-critic in 10.9 min, GPU util mean 92.2

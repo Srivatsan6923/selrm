@@ -1,0 +1,41 @@
+{
+ "run_id": "C-KP-promptsum",
+ "set": "clin_v1/keypairs_careqa",
+ "Reversal": 100.0,
+ "CI95": [
+  100.0,
+  100.0
+ ],
+ "n_pairs": 3,
+ "q1_acc": 100.0,
+ "q2_acc": 100.0,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 100.0,
+  "2": 100.0,
+  "3": 100.0
+ },
+ "Reversal_by_category": {
+  "Medicine": 100.0,
+  "Pharmacology": 100.0
+ },
+ "n_by_category": {
+  "Medicine": 2,
+  "Pharmacology": 1
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "reader_units": 6,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 7.9,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

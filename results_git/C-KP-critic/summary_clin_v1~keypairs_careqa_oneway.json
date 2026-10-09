@@ -1,0 +1,44 @@
+{
+ "run_id": "C-KP-critic",
+ "set": "clin_v1/keypairs_careqa_oneway",
+ "Reversal": 84.44444444444444,
+ "CI95": [
+  79.55555555555556,
+  88.88888888888889
+ ],
+ "n_pairs": 225,
+ "q1_acc": 92.44444444444444,
+ "q2_acc": 91.55555555555556,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 89.33333333333333,
+  "2": 82.66666666666667,
+  "3": 81.33333333333333
+ },
+ "Reversal_by_category": {
+  "Biology": 92.6829268292683,
+  "Chemistry": 83.33333333333333,
+  "Medicine": 76.74418604651163,
+  "Nursing": 81.81818181818181,
+  "Pharmacology": 83.92857142857143,
+  "Psychology": 89.28571428571429
+ },
+ "n_by_category": {
+  "Biology": 41,
+  "Chemistry": 24,
+  "Medicine": 43,
+  "Nursing": 33,
+  "Pharmacology": 56,
+  "Psychology": 28
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "seconds": 27.2,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

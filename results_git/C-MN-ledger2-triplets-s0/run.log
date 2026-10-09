@@ -1,0 +1,11 @@
+2026-10-03T22:25:02Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-ledger2-triplets-s0
+2026-10-03T22:25:02Z token budget per batch: 8000 (generation 24000)
+2026-10-03T22:25:05Z C-MN-ledger2-triplets-s0 clin_v1/medeinst_neg prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_neg/reader_ledger.npz', 'built 3699 prompts, max 685 tokens')
+2026-10-03T22:25:05Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0090)
+2026-10-03T22:25:08Z padding self-check: max |u_batch - u_single| = 0.1104 (tol 0.628) -> left padding
+2026-10-03T22:33:59Z generate: batch 25/122, 160059 tokens, 302 tok/s
+2026-10-03T22:43:24Z generate: batch 50/122, 314302 tokens, 287 tok/s
+2026-10-03T22:52:48Z generate: batch 75/122, 470680 tokens, 284 tok/s
+2026-10-03T23:02:23Z generate: batch 100/122, 641521 tokens, 287 tok/s
+2026-10-03T23:16:28Z C-MN-ledger2-triplets-s0 clin_v1/medeinst_neg: TA nan Rev nan Hold nan n=None (3082.5 s)
+2026-10-03T23:16:28Z DONE C-MN-ledger2-triplets-s0 in 51.8 min, GPU util mean 91.5

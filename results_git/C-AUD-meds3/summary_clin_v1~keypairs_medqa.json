@@ -1,0 +1,39 @@
+{
+ "run_id": "C-AUD-meds3",
+ "set": "clin_v1/keypairs_medqa",
+ "Reversal": 46.15384615384615,
+ "CI95": [
+  23.076923076923077,
+  76.92307692307692
+ ],
+ "n_pairs": 13,
+ "q1_acc": 61.53846153846154,
+ "q2_acc": 69.23076923076923,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 25.0,
+  "2": 75.0,
+  "3": 40.0
+ },
+ "Reversal_by_category": {
+  "step1": 50.0,
+  "step2&3": 33.333333333333336
+ },
+ "n_by_category": {
+  "step1": 10,
+  "step2&3": 3
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "seconds": 4.4,
+  "n_records": 52,
+  "n_groups": "all",
+  "claim_types": [
+   "conclusion"
+  ]
+ }
+}

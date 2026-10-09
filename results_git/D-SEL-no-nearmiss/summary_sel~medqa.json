@@ -1,0 +1,7 @@
+{
+ "run_id": "D-SEL-no-nearmiss",
+ "set": "sel/medqa",
+ "acc": 85.07462686567165,
+ "n": 1273,
+ "N": 16
+}

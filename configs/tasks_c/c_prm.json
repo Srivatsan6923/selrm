@@ -1,0 +1,336 @@
+{
+ "runs": [
+  {
+   "run_id": "C-AUD-medprm--p1",
+   "prm": "medprm",
+   "format": "prm",
+   "priority": 10,
+   "bs": 8,
+   "min_gen": 3,
+   "claim_types": [
+    "conclusion",
+    "criterion",
+    "applicability"
+   ],
+   "sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ],
+   "merge_into": "C-AUD-medprm"
+  },
+  {
+   "run_id": "C-AUD-medprm--p2",
+   "prm": "medprm",
+   "format": "prm",
+   "priority": 20,
+   "bs": 32,
+   "min_gen": 3,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "xr_v1/test"
+   ],
+   "merge_into": "C-AUD-medprm"
+  },
+  {
+   "run_id": "C-AUD-medprm--p3",
+   "prm": "medprm",
+   "format": "prm",
+   "priority": 30,
+   "bs": 32,
+   "min_gen": 3,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "clin_v1/medeinst_test",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway",
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa"
+   ],
+   "merge_into": "C-AUD-medprm"
+  },
+  {
+   "run_id": "C-AUD-meds3--p1",
+   "prm": "meds3prm",
+   "format": "prm",
+   "priority": 11,
+   "bs": 32,
+   "min_gen": 6,
+   "claim_types": [
+    "conclusion",
+    "criterion",
+    "applicability"
+   ],
+   "sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ],
+   "merge_into": "C-AUD-meds3"
+  },
+  {
+   "run_id": "C-AUD-meds3--p2",
+   "prm": "meds3prm",
+   "format": "prm",
+   "priority": 21,
+   "bs": 32,
+   "min_gen": 6,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "xr_v1/test"
+   ],
+   "merge_into": "C-AUD-meds3"
+  },
+  {
+   "run_id": "C-AUD-meds3--p3",
+   "prm": "meds3prm",
+   "format": "prm",
+   "priority": 31,
+   "bs": 32,
+   "min_gen": 6,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "clin_v1/medeinst_test",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway",
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa"
+   ],
+   "merge_into": "C-AUD-meds3"
+  },
+  {
+   "run_id": "C-AUD-fover--p1",
+   "prm": "foverprm",
+   "format": "prm",
+   "priority": 12,
+   "bs": 8,
+   "min_gen": 3,
+   "claim_types": [
+    "conclusion",
+    "criterion",
+    "applicability"
+   ],
+   "sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ],
+   "merge_into": "C-AUD-fover"
+  },
+  {
+   "run_id": "C-AUD-fover--p2",
+   "prm": "foverprm",
+   "format": "prm",
+   "priority": 22,
+   "bs": 32,
+   "min_gen": 3,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/missing",
+    "xr_v1/test"
+   ],
+   "merge_into": "C-AUD-fover"
+  },
+  {
+   "run_id": "C-AUD-fover--p3",
+   "prm": "foverprm",
+   "format": "prm",
+   "priority": 32,
+   "bs": 32,
+   "min_gen": 3,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "clin_v1/medeinst_test",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway",
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa"
+   ],
+   "merge_into": "C-AUD-fover"
+  },
+  {
+   "run_id": "C-AUD-thinkprm--p1",
+   "prm": "thinkprm",
+   "format": "prm",
+   "priority": 40,
+   "bs": 8,
+   "min_gen": 4,
+   "min_gb": 40,
+   "max_new": 2048,
+   "n_groups": 200,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "merge_into": "C-AUD-thinkprm"
+  },
+  {
+   "run_id": "C-AUD-thinkprm--p2",
+   "prm": "thinkprm",
+   "format": "prm",
+   "priority": 41,
+   "bs": 8,
+   "min_gen": 5,
+   "min_gb": 40,
+   "max_new": 2048,
+   "n_groups": 100,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "xr_v1/test"
+   ],
+   "merge_into": "C-AUD-thinkprm"
+  },
+  {
+   "run_id": "C-AUD-thinkprm--p3",
+   "prm": "thinkprm",
+   "format": "prm",
+   "priority": 42,
+   "bs": 8,
+   "min_gen": 4,
+   "min_gb": 40,
+   "max_new": 2048,
+   "n_groups": 200,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "merge_into": "C-AUD-thinkprm"
+  },
+  {
+   "run_id": "C-AUD-genprm--p1",
+   "prm": "genprm",
+   "format": "prm",
+   "priority": 43,
+   "bs": 16,
+   "min_gen": 3,
+   "max_new": 2048,
+   "n_groups": 200,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "merge_into": "C-AUD-genprm"
+  },
+  {
+   "run_id": "C-AUD-genprm--p2",
+   "prm": "genprm",
+   "format": "prm",
+   "priority": 44,
+   "bs": 16,
+   "min_gen": 5,
+   "max_new": 2048,
+   "n_groups": 100,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "xr_v1/test"
+   ],
+   "merge_into": "C-AUD-genprm"
+  },
+  {
+   "run_id": "C-AUD-genprm--p3",
+   "prm": "genprm",
+   "format": "prm",
+   "priority": 45,
+   "bs": 16,
+   "min_gen": 3,
+   "max_new": 2048,
+   "n_groups": 200,
+   "claim_types": [
+    "conclusion"
+   ],
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "merge_into": "C-AUD-genprm"
+  },
+  {
+   "run_id": "C-AUD-thinkprm-crit",
+   "prm": "thinkprm",
+   "format": "prm",
+   "priority": 40,
+   "bs": 8,
+   "min_gen": 5,
+   "claim_types": [
+    "criterion"
+   ],
+   "n_groups": 200,
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "min_gb": 40
+  },
+  {
+   "run_id": "C-AUD-genprm-crit",
+   "prm": "genprm",
+   "format": "prm",
+   "priority": 40,
+   "bs": 16,
+   "min_gen": 5,
+   "claim_types": [
+    "criterion"
+   ],
+   "n_groups": 200,
+   "sets": [
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "C-AUD-thinkprm-kp",
+   "prm": "thinkprm",
+   "format": "prm",
+   "priority": 41,
+   "bs": 8,
+   "min_gen": 5,
+   "claim_types": [
+    "conclusion"
+   ],
+   "n_groups": 200,
+   "sets": [
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "min_gb": 40
+  },
+  {
+   "run_id": "C-AUD-genprm-kp",
+   "prm": "genprm",
+   "format": "prm",
+   "priority": 41,
+   "bs": 16,
+   "min_gen": 5,
+   "claim_types": [
+    "conclusion"
+   ],
+   "n_groups": 200,
+   "sets": [
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ]
+  }
+ ],
+ "note": "released PRMs as released (scripts/prms); runners with --online --models ''. Generative PRMs on fixed subsets (200 L2 triplets, 100 xr_v1 items, 200 MedEinst pairs; n/kinds per near-miss kind, random.Random(0)); 3-hour timebox each"
+}

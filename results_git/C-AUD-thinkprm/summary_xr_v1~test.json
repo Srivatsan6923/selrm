@@ -1,0 +1,37 @@
+{
+ "run_id": "C-AUD-thinkprm--p2",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 8698.6,
+  "n_records": 1200,
+  "n_groups": 100,
+  "claim_types": [
+   "conclusion"
+  ]
+ },
+ "XA": 100.0,
+ "n_items": 100,
+ "n_incomplete": 0,
+ "n_excluded": 0,
+ "CellAcc": 100.0,
+ "n_cells": 600,
+ "cells_without_label": 0,
+ "XA_currency": 100.0,
+ "XA_inclusivity": 100.0,
+ "XA_subject": 100.0,
+ "XA_window": 100.0,
+ "without_known_issues": {
+  "XA": 100.0,
+  "n_items": 94,
+  "n_incomplete": 0,
+  "n_excluded": 38,
+  "CellAcc": 100.0,
+  "n_cells": 564,
+  "cells_without_label": 0,
+  "XA_currency": 100.0,
+  "XA_inclusivity": 100.0,
+  "XA_subject": 100.0,
+  "XA_window": 100.0
+ }
+}

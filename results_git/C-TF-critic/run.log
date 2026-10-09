@@ -1,0 +1,16 @@
+2026-10-03T06:01:06Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-03T06:01:10Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0459)
+2026-10-03T06:01:11Z padding self-check: max |u_batch - u_single| = 0.0664 (tol 0.544) -> left padding
+2026-10-03T06:03:41Z C-TF-critic rule_v1/dev_missing: TA nan Rev nan Hold nan n=None (153.3 s)
+2026-10-03T06:08:46Z C-TF-critic rule_v1/dev: TA 39.7 Rev 65.3 Hold 44.0 n=300 (305.0 s)
+2026-10-03T06:17:24Z C-TF-critic rule_v1/missing: TA nan Rev nan Hold nan n=None (517.5 s)
+2026-10-03T06:51:53Z C-TF-critic rule_v1/test_L2: TA 27.1 Rev 38.5 Hold 32.2 n=2000 (2069.3 s)
+2026-10-03T07:03:16Z C-TF-critic rule_v1/test_L3alt: TA 83.9 Rev 97.7 Hold 85.2 n=1000 (682.3 s)
+2026-10-03T07:19:32Z C-TF-critic rule_v1/test_L0: TA 44.4 Rev 67.7 Hold 50.3 n=1000 (975.4 s)
+2026-10-03T07:35:36Z C-TF-critic rule_v1/test_L1: TA 42.8 Rev 59.5 Hold 50.1 n=1000 (963.6 s)
+2026-10-03T07:52:54Z C-TF-critic rule_v1/test_L3inv: TA 33.4 Rev 54.7 Hold 37.1 n=1000 (1037.2 s)
+2026-10-03T08:15:35Z C-TF-critic rule_v1/test_hard: TA 24.6 Rev 36.7 Hold 28.9 n=1000 (1360.5 s)
+2026-10-03T08:33:33Z C-TF-critic rule_v1/readapply: TA 61.1 Rev 88.9 Hold 65.8 n=1000 (1077.1 s)
+2026-10-03T08:33:42Z C-TF-critic xr_v1/test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/xr_v1/test/verdict.npz', 'built 9600 prompts, max 235 tokens')
+2026-10-03T08:41:33Z C-TF-critic xr_v1/test: TA nan Rev nan Hold nan n=None (470.7 s)
+2026-10-03T08:41:34Z DONE C-TF-critic in 160.8 min, GPU util mean 98.0

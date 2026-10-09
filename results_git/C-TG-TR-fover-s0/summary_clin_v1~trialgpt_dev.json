@@ -1,0 +1,10 @@
+{
+ "run_id": "C-TG-TR-fover-s0",
+ "set": "clin_v1/trialgpt_dev",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 33.5,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

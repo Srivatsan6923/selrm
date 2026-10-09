@@ -1,0 +1,9 @@
+{
+ "run_id": "D-SEL-single",
+ "set": "sel/keypairs",
+ "acc": 83.75350140056022,
+ "n": 714,
+ "N": 16,
+ "pair_acc": 70.30812324929973,
+ "n_pairs": 357
+}

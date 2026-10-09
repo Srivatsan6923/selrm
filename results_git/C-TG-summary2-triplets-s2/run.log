@@ -1,0 +1,12 @@
+2026-10-03T22:58:32Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-summary2-triplets-s2
+2026-10-03T22:58:32Z token budget per batch: 8000 (generation 24000)
+2026-10-03T22:58:33Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0264)
+2026-10-03T22:58:34Z padding self-check: max |u_batch - u_single| = 0.0690 (tol 0.623) -> left padding
+2026-10-03T22:59:51Z generate: batch 25/26, 18432 tokens, 238 tok/s
+2026-10-03T23:00:50Z C-TG-summary2-triplets-s2 rule_v1/dev_missing: TA nan Rev nan Hold nan n=None (137.5 s)
+2026-10-03T23:00:50Z C-TG-summary2-triplets-s2 clin_v1/trialgpt_dev prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_dev/reader_prose.npz', 'exists')
+2026-10-03T23:02:10Z C-TG-summary2-triplets-s2 clin_v1/trialgpt_dev: TA nan Rev nan Hold nan n=None (80.5 s)
+2026-10-03T23:02:10Z C-TG-summary2-triplets-s2 clin_v1/trialgpt_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_test/reader_prose.npz', 'exists')
+2026-10-03T23:05:32Z generate: batch 25/35, 25784 tokens, 128 tok/s
+2026-10-03T23:08:23Z C-TG-summary2-triplets-s2 clin_v1/trialgpt_test: TA nan Rev nan Hold nan n=None (372.9 s)
+2026-10-03T23:08:23Z DONE C-TG-summary2-triplets-s2 in 10.2 min, GPU util mean 82.3

@@ -1,0 +1,7 @@
+{
+ "run_id": "D-RL-untrained",
+ "policy": "/pvcb/selrm/models/unsloth--Qwen3.5-4B",
+ "steps": 0,
+ "what": "untrained policy, greedy evaluation",
+ "gpu": "NVIDIA GeForce RTX 3090"
+}

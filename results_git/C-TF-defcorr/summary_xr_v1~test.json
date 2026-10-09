@@ -1,0 +1,30 @@
+{
+ "run_id": "C-TF-defcorr",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "alpha": "inf",
+ "XA": 58.5,
+ "n_items": 400,
+ "n_incomplete": 0,
+ "n_excluded": 0,
+ "CellAcc": 93.08333333333333,
+ "n_cells": 2400,
+ "cells_without_label": 0,
+ "XA_currency": 74.0,
+ "XA_inclusivity": 29.0,
+ "XA_subject": 93.0,
+ "XA_window": 38.0,
+ "without_known_issues": {
+  "XA": 59.94475138121547,
+  "n_items": 362,
+  "n_incomplete": 0,
+  "n_excluded": 38,
+  "CellAcc": 93.32412523020258,
+  "n_cells": 2172,
+  "cells_without_label": 0,
+  "XA_currency": 69.41176470588235,
+  "XA_inclusivity": 35.064935064935064,
+  "XA_subject": 93.0,
+  "XA_window": 38.0
+ }
+}

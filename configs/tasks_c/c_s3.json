@@ -1,0 +1,91 @@
+{
+ "note": "S3 case-visible systems (docs/AUX_PROTOCOL.md): B's code >= 10e1882945ce (format summary2_case); runner generation >= 7",
+ "runs": [
+  {
+   "format": "summary2_case",
+   "adapter": "/pvcb/selrm/adapters/B-SC-summary2-triplets-s0",
+   "adapter_run": "B-SC-summary2-triplets-s0",
+   "bs_score": 64,
+   "min_gen": 3,
+   "run_id": "C-TG-sc-summary2-triplets-dev",
+   "priority": 1,
+   "sets": [
+    "rule_v1/dev_missing",
+    "clin_v1/trialgpt_dev"
+   ],
+   "max_new": 384,
+   "note": "S3 (secondary): TrialGPT development portion, protocol section 7"
+  },
+  {
+   "format": "summary2_case",
+   "adapter": "/pvcb/selrm/adapters/B-SC-summary2-triplets-s0",
+   "adapter_run": "B-SC-summary2-triplets-s0",
+   "bs_score": 64,
+   "min_gen": 3,
+   "run_id": "C-NL-sc-summary2-triplets-s0",
+   "priority": 3,
+   "sets": [
+    "clin_v1/nli4ct_test"
+   ],
+   "max_new": 768,
+   "note": "S3 (secondary): NLI4CT-P, case-visible judge"
+  },
+  {
+   "format": "summary2_case",
+   "adapter": "/pvcb/selrm/adapters/B-SC-summary2-triplets-s0",
+   "adapter_run": "B-SC-summary2-triplets-s0",
+   "bs_score": 64,
+   "min_gen": 3,
+   "run_id": "C-KP-sc-summary2-triplets-s0",
+   "priority": 4,
+   "max_new": 768,
+   "sets": [
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "note": "S3 (secondary): key pairs, case-visible judge"
+  },
+  {
+   "format": "summary2_case",
+   "adapter": "/pvcb/selrm/adapters/B-SC-summary2-triplets-s0",
+   "adapter_run": "B-SC-summary2-triplets-s0",
+   "bs_score": 64,
+   "min_gen": 3,
+   "run_id": "C-ME-sc-summary2-triplets-s0",
+   "priority": 5,
+   "sets": [
+    "clin_v1/medeinst_test"
+   ],
+   "max_new": 384,
+   "note": "S3 (secondary): MedEinst, case-visible judge (reader cap 384 as for the other trained readers)"
+  },
+  {
+   "run_id": "C-MN-sc-summary2-triplets-s0",
+   "priority": 6,
+   "format": "summary2_case",
+   "adapter": "/pvcb/selrm/adapters/B-SC-summary2-triplets-s0",
+   "adapter_run": "B-SC-summary2-triplets-s0",
+   "bs_score": 64,
+   "min_gen": 3,
+   "max_new": 384,
+   "sets": [
+    "clin_v1/medeinst_neg"
+   ],
+   "note": "S3 (secondary): hold on denied evidence, case-visible judge"
+  },
+  {
+   "run_id": "C-TG-sc-summary2-triplets-s0",
+   "priority": 1,
+   "format": "summary2_case",
+   "bs_score": 64,
+   "min_gen": 3,
+   "adapter": "/pvcb/selrm/adapters/B-SC-summary2-triplets-s0",
+   "adapter_run": "B-SC-summary2-triplets-s0",
+   "max_new": 768,
+   "sets": [
+    "clin_v1/trialgpt_test"
+   ],
+   "note": "S3 test portion after the dev check (0 malformed, 1 of 213 at the cap)"
+  }
+ ]
+}

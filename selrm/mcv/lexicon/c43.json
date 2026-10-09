@@ -1,0 +1,7 @@
+{"cid": 43, "items": {}, "ineligible": {
+"PaO2/FiO2 ratio": "kind mixed, levels (0,1,2,3,4): numeric ratio banded with ventilation/CPAP as a modifier, not a finding that adds points on its own",
+"Platelets": "kind numeric",
+"Glasgow Coma Scale (GCS)": "kind numeric",
+"Bilirubin": "kind numeric",
+"Mean arterial pressure (MAP) or administration of vasopressors": "kind mixed, levels (0,1,2,3,4): points depend on blood pressure values and vasopressor doses; hypotension alone does not settle the item",
+"Creatinine or urine output": "kind mixed, levels (0,1,2,3,4): numeric creatinine and urine output"}}

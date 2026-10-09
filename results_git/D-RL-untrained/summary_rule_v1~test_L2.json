@@ -1,0 +1,36 @@
+{
+ "start": {
+  "base": 90.66666666666667,
+  "flip": 98.0,
+  "near": 92.0,
+  "all": 93.55555555555556,
+  "pair": 88.66666666666667,
+  "triplet": 86.0
+ },
+ "final": {
+  "base": 90.66666666666667,
+  "flip": 98.0,
+  "near": 92.0,
+  "all": 93.55555555555556,
+  "pair": 88.66666666666667,
+  "triplet": 86.0
+ },
+ "final_step": 0,
+ "n_triplets": 150,
+ "from_files": [
+  "eval_step0.jsonl",
+  "eval_step0.jsonl"
+ ],
+ "acc_base": 90.66666666666667,
+ "acc_flip": 98.0,
+ "acc_near": 92.0,
+ "acc_all": 93.55555555555556,
+ "acc_pair": 88.66666666666667,
+ "acc_triplet": 86.0,
+ "start_base": 90.66666666666667,
+ "start_flip": 98.0,
+ "start_near": 92.0,
+ "start_all": 93.55555555555556,
+ "start_pair": 88.66666666666667,
+ "start_triplet": 86.0
+}

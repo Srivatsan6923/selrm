@@ -1,0 +1,6 @@
+2026-10-03T06:59:33Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-verdict-blocks-s0
+2026-10-03T06:59:34Z C-TG-verdict-blocks-s0 clin_v1/trialgpt_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_test/verdict.npz', 'exists')
+2026-10-03T07:00:25Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0004)
+2026-10-03T07:00:28Z padding self-check: max |u_batch - u_single| = 0.1342 (tol 0.731) -> left padding
+2026-10-03T07:02:17Z C-TG-verdict-blocks-s0 clin_v1/trialgpt_test: TA nan Rev nan Hold nan n=None (162.9 s)
+2026-10-03T07:02:18Z DONE C-TG-verdict-blocks-s0 in 3.7 min, GPU util mean 56.6

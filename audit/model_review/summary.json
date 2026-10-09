@@ -1,0 +1,24 @@
+{
+ "note": "Counts as each session reported them, with the sentence quoted verbatim from its report in reviews.json. 'label_disputed' = groups whose stated answer the session judged wrong or open to dispute under a literal reading of the rule; 'outside_missing' = those whose disputed case is not a missing-input twin.",
+ "sessions": [
+  {"round": 1, "reader": "Audit rendered triplets part 1", "label_disputed": 11, "outside_missing": ["1.17 criterion claim on flip: condition labelled 'in the family' although the criterion also counts the patient", "1.59 same as 1.17", "1.67 flip: 'Confused on arrival' read as not current", "1.41 age 'on arrival' (weaker)", "1.65 flip: one node against the rule's plural (weaker)"],
+   "consistency": "2 hard, 7 soft", "rendering": 1,
+   "quote": "| Label problem | 11 (8 clear, 3 weaker) | clear: 1.7, 1.17, 1.29, 1.37, 1.47, 1.49, 1.59, 1.67; weaker: 1.41, 1.43, 1.65 |",
+   "quote_labels_program": "No case is plainly mislabelled under the program's semantics, and thresholds, operators and the alt-tier flips are correct."},
+  {"round": 1, "reader": "Audit rendered triplets part 2", "label_disputed": 9, "outside_missing": [],
+   "consistency": "25", "rendering": 4,
+   "quote": "Label problems: 9, all MISSING cases built from train-split templates."},
+  {"round": 1, "reader": "Audit rendered triplets part 3", "label_disputed": 10, "outside_missing": [],
+   "consistency": "18", "rendering": 7,
+   "quote": "| Label problem | 10 (3.5, 3.7, 3.19, 3.27, 3.29, 3.37, 3.57, 3.59, 3.67, 3.69) |"},
+  {"round": 1, "reader": "Audit rendered triplets part 4", "label_disputed": 12, "outside_missing": ["4.12 near: 'absent from the pharmacy dispensing record' (denial in test wording, 'unknown' in train wording)", "4.23 pres: age 'on arrival'"],
+   "consistency": "13", "rendering": 3,
+   "quote": "| Label problems | 0 clearly wrong; 12 ambiguous (the 10 MISSING groups, 4.12 NEAR, 4.23 PRES) |"},
+  {"round": 2, "reader": "Second-round audit part A", "label_disputed": 0, "outside_missing": [],
+   "consistency": "15", "rendering": 9,
+   "quote": "Groups with a label problem: 0."},
+  {"round": 2, "reader": "Second-round audit part B", "label_disputed": 0, "outside_missing": [],
+   "consistency": "6", "rendering": 8,
+   "quote": "Groups with a label problem: 0"}
+ ]
+}

@@ -1,0 +1,8 @@
+2026-10-03T05:26:09Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-03T05:26:10Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0442)
+2026-10-03T05:26:12Z padding self-check: max |u_batch - u_single| = 0.1868 (tol 0.699) -> left padding
+2026-10-03T05:30:13Z generate: batch 25/38, 18132 tokens, 75 tok/s
+2026-10-03T05:35:08Z C-TG-promptsum-dev rule_v1/dev_missing: TA nan Rev nan Hold nan n=None (538.3 s)
+2026-10-03T05:35:08Z C-TG-promptsum-dev clin_v1/trialgpt_dev prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_dev/reader_prose.npz', 'built 213 prompts, max 610 tokens')
+2026-10-03T05:39:17Z C-TG-promptsum-dev clin_v1/trialgpt_dev: TA nan Rev nan Hold nan n=None (248.6 s)
+2026-10-03T05:39:17Z DONE C-TG-promptsum-dev in 13.4 min, GPU util mean 95.1

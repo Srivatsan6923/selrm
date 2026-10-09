@@ -1,0 +1,116 @@
+{
+ "cases_by_kind": {
+  "base": 657,
+  "flip": 1313,
+  "missing": 563,
+  "near": 656,
+  "pres": 562
+ },
+ "corpus": "triplets",
+ "created": "2026-10-02",
+ "diversity": {
+  "curve": "patients",
+  "rules": [
+   "c2_pcp_sulfa",
+   "gs016",
+   "strep_amox",
+   "c2_dvt_pregnancy",
+   "c2_abscess_mtx",
+   "c2_ctpa_contrast",
+   "c2_sinus_pen",
+   "gs090",
+   "vte_platelets",
+   "gs227",
+   "gs058",
+   "c1_neutropenia",
+   "gs167",
+   "gs092",
+   "c3_cervical_hpv",
+   "gs029"
+  ],
+  "start_classes": [
+   "single|finding|cur",
+   "single|numeric|-"
+  ],
+  "x": 64
+ },
+ "fold": 1,
+ "fold_seed": 27,
+ "frozen": true,
+ "generator": "scripts/build_rule_v1.py",
+ "git_commit": "59034a3dc24319fe2f1c596f7ad89336617da76f",
+ "groups_by": {
+  "class": {
+   "single|finding|cur": 673,
+   "single|numeric|-": 640
+  },
+  "family": {
+   "age_limit": 31,
+   "allergy_switch": 343,
+   "drug_interaction": 85,
+   "g_single": 618,
+   "lab_threshold": 164,
+   "state_switch": 72
+  },
+  "level": {
+   "L0": 1313
+  },
+  "nm_kind": {
+   "boundary": 267,
+   "negation": 255,
+   "numeric": 266,
+   "subject": 280,
+   "time": 245
+  },
+  "rid": {
+   "c1_neutropenia": 45,
+   "c2_abscess_mtx": 85,
+   "c2_ctpa_contrast": 72,
+   "c2_dvt_pregnancy": 72,
+   "c2_pcp_sulfa": 96,
+   "c2_sinus_pen": 80,
+   "c3_cervical_hpv": 31,
+   "gs016": 91,
+   "gs029": 124,
+   "gs058": 54,
+   "gs090": 82,
+   "gs092": 112,
+   "gs167": 49,
+   "gs227": 106,
+   "strep_amox": 95,
+   "vte_platelets": 119
+  },
+  "tier": {
+   "delabelled": 22,
+   "easy": 853,
+   "long": 406,
+   "superseded": 32
+  }
+ },
+ "labels": {
+  "0": 8628,
+  "1": 6376
+ },
+ "level": "L0",
+ "n_cases": 3751,
+ "n_groups": 1313,
+ "n_records": 15004,
+ "name": "div_patients_64",
+ "python": "3.12.7",
+ "record_share": {
+  "base": 0.1752,
+  "flip": 0.35,
+  "missing": 0.1501,
+  "near": 0.1749,
+  "pres": 0.1498
+ },
+ "set": "rule_v1",
+ "sha256": "5e6f4c974e5c0bf0397e0745a5dec376c316503f328c06ac61002e088c75433f",
+ "shortcut_validation": {
+  "output": "no complete triplets (validation runs on triplet sets)",
+  "result": "n/a"
+ },
+ "split": "train",
+ "template_split_hash": "1020bdc7bdae5d60515ad2344eacd0527a297730bb5a9648e09da1291e101ad5",
+ "templates": "train"
+}

@@ -93,8 +93,18 @@ def test_crossed_accuracy():
     R, S = xr_records()
     out = M.crossed_accuracy(R, S)
     assert out["n_items"] == 3 and abs(out["XA"] - 200 / 3) < 1e-9 and out["n_cells"] == 18
-    assert out["XA_window"] == 50.0 and out["XA_subject"] == 100.0 and out["items_incomplete"] == 0
+    assert out["XA_window"] == 50.0 and out["XA_subject"] == 100.0 and out["n_incomplete"] == 0
     assert abs(out["CellAcc"] - 100 * 17 / 18) < 1e-9
+    ex = M.crossed_accuracy(R, S, exclude={"x2"})                       # A's KNOWN_ISSUES exclusions
+    assert ex["n_items"] == 2 and ex["XA"] == 100.0 and ex["n_cells"] == 12
+    cut = [(r, u) for r, u in zip(R, S) if r["tid"] != "x3.b"]           # item x3 loses one rule
+    try:
+        M.crossed_accuracy([r for r, _ in cut], [u for _, u in cut])
+        raise AssertionError("an incomplete item must raise")
+    except ValueError:
+        pass
+    part = M.crossed_accuracy([r for r, _ in cut], [u for _, u in cut], partial=True)
+    assert part["n_items"] == 2 and part["n_incomplete"] == 1 and part["XA"] == 50.0
 
 
 def test_step_revisions():

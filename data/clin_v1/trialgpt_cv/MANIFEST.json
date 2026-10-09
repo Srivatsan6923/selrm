@@ -1,0 +1,117 @@
+{
+ "name": "clin_v1/trialgpt_cv",
+ "source": "clin_v1/trialgpt_test (frozen; same items, new ids)",
+ "source_sha256": "351d15ab9b5c1a73ad7b30063e741c273c5775866c867351b7fd70ea014f4f99",
+ "folds": 5,
+ "fold_rule": "patients sorted, random.Random(20261004).shuffle, fold = position mod 5",
+ "development_split": "clin_v1/trialgpt_dev (10 patients, never in a fold)",
+ "by_fold": {
+  "0": {
+   "patients": 9,
+   "items": 166,
+   "categories": {
+    "nei": 55,
+    "not_met": 79,
+    "met": 26,
+    "na": 6
+   }
+  },
+  "1": {
+   "patients": 9,
+   "items": 174,
+   "categories": {
+    "nei": 56,
+    "met": 31,
+    "not_met": 80,
+    "na": 7
+   }
+  },
+  "2": {
+   "patients": 9,
+   "items": 125,
+   "categories": {
+    "not_met": 61,
+    "met": 26,
+    "na": 8,
+    "nei": 30
+   }
+  },
+  "3": {
+   "patients": 8,
+   "items": 185,
+   "categories": {
+    "met": 32,
+    "nei": 50,
+    "na": 9,
+    "not_met": 94
+   }
+  },
+  "4": {
+   "patients": 8,
+   "items": 151,
+   "categories": {
+    "nei": 41,
+    "met": 23,
+    "not_met": 75,
+    "na": 12
+   }
+  }
+ },
+ "shortcut_validation": {
+  "case_blind_type_prior_on_held_out_fold": {
+   "fold 0": {
+    "type_prior": {
+     "inclusion": "met",
+     "exclusion": "not_met"
+    },
+    "macroF1": 47.52298263534218,
+    "acc": 63.75,
+    "n": 160
+   },
+   "fold 1": {
+    "type_prior": {
+     "inclusion": "nei",
+     "exclusion": "not_met"
+    },
+    "macroF1": 42.9682217714672,
+    "acc": 62.275449101796404,
+    "n": 167
+   },
+   "fold 2": {
+    "type_prior": {
+     "inclusion": "nei",
+     "exclusion": "not_met"
+    },
+    "macroF1": 43.68253968253968,
+    "acc": 63.24786324786325,
+    "n": 117
+   },
+   "fold 3": {
+    "type_prior": {
+     "inclusion": "nei",
+     "exclusion": "not_met"
+    },
+    "macroF1": 39.300255022146665,
+    "acc": 61.36363636363637,
+    "n": 176
+   },
+   "fold 4": {
+    "type_prior": {
+     "inclusion": "met",
+     "exclusion": "not_met"
+    },
+    "macroF1": 48.42381327039076,
+    "acc": 66.90647482014388,
+    "n": 139
+   }
+  }
+ },
+ "labels": "met (s 1, s_prime 0); not met (0, 1); NEI and N/A (0, 0)",
+ "n_records": 1602,
+ "n_groups": 801,
+ "sha256": "89f2229e731f5be56fe7e91554566f63f4777cb081dbc26ab4d6fb731b194c81",
+ "git_commit": "b0149b987200036cb01b49ee7cb93fb105c81cde",
+ "python": "3.12.7",
+ "created": "2026-10-03",
+ "frozen": true
+}

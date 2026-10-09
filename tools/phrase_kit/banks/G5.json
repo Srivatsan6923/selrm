@@ -1,0 +1,168 @@
+{
+ "egfr": {
+  "current": [
+   "eGFR today: {v} mL/min/1.73 m2.",
+   "Renal function today: eGFR {v} mL/min/1.73 m2.",
+   "eGFR {v} mL/min/1.73 m2 on today's labs.",
+   "This morning's blood test shows an eGFR of {v} mL/min/1.73 m2.",
+   "Current eGFR {v} mL/min/1.73 m2.",
+   "eGFR now {v} mL/min/1.73 m2."
+  ],
+  "past": [
+   "eGFR {v} mL/min/1.73 m2 in {year} during acute kidney injury, resolved.",
+   "eGFR {v} mL/min/1.73 m2 in {year} (dehydration).",
+   "An eGFR of {v} mL/min/1.73 m2 was recorded in {year} with a severe kidney infection; kidney function returned to baseline after antibiotics.",
+   "eGFR {v} mL/min/1.73 m2 in {year} after contrast dye for a CT scan; the kidney injury resolved within weeks.",
+   "In {year}, eGFR fell to {v} mL/min/1.73 m2 during sepsis and later recovered.",
+   "During an admission in {year}, eGFR was {v} mL/min/1.73 m2."
+  ],
+  "superseded": [
+   "eGFR was {v} mL/min/1.73 m2 yesterday, before rehydration.",
+   "eGFR {v} mL/min/1.73 m2 yesterday during vomiting; repeated today.",
+   "Yesterday's eGFR of {v} mL/min/1.73 m2 has been superseded by today's repeat.",
+   "eGFR {v} mL/min/1.73 m2 on a sample drawn yesterday; today's result replaces it.",
+   "Earlier this week eGFR was {v} mL/min/1.73 m2, while the patient was dehydrated.",
+   "eGFR was {v} mL/min/1.73 m2 last month during a diarrheal illness."
+  ]
+ },
+ "platelets": {
+  "current": [
+   "Platelet count today: {v} x10^9/L.",
+   "Platelets {v} x10^9/L on this morning's blood count.",
+   "Complete blood count today: platelets {v} x10^9/L.",
+   "Platelet count at this assessment: {v} x10^9/L.",
+   "Current platelet count {v} x10^9/L.",
+   "Platelet count now {v} x10^9/L."
+  ],
+  "past": [
+   "Platelet count {v} x10^9/L in {year} with severe sepsis, resolved after treatment.",
+   "Platelet count {v} x10^9/L in {year} (dengue fever).",
+   "A platelet count of {v} x10^9/L was recorded in {year} with malaria; the count returned to normal after treatment.",
+   "Platelet count {v} x10^9/L in {year} from a tick-borne infection, back to normal once the infection resolved.",
+   "In {year}, platelets fell to {v} x10^9/L during a viral illness and later recovered.",
+   "During an illness in {year}, platelets were {v} x10^9/L."
+  ],
+  "superseded": [
+   "Platelet count was {v} x10^9/L yesterday (clumped sample).",
+   "Platelets {v} x10^9/L yesterday, in a sample since repeated.",
+   "A platelet count of {v} x10^9/L reported yesterday was superseded by today's repeat count.",
+   "Platelets measured {v} x10^9/L on a sample drawn yesterday; today's recount replaced that result.",
+   "Earlier this week, platelets were {v} x10^9/L in a tube that had clotted.",
+   "Platelet count was {v} x10^9/L last month during an infection."
+  ]
+ },
+ "alt_enzyme": {
+  "current": [
+   "ALT today: {v} U/L.",
+   "Liver tests today: ALT {v} U/L.",
+   "ALT {v} U/L on today's labs.",
+   "ALT on blood drawn this morning: {v} U/L.",
+   "Current ALT {v} U/L.",
+   "ALT now {v} U/L."
+  ],
+  "past": [
+   "ALT {v} U/L in {year} during hepatitis A, resolved.",
+   "ALT {v} U/L in {year} (drug reaction).",
+   "An ALT of {v} U/L was recorded in {year} with a liver abscess; liver tests returned to normal after treatment.",
+   "ALT {v} U/L in {year} while a gallstone blocked the bile duct; it normalized after the stone was removed.",
+   "In {year}, ALT rose to {v} U/L during a viral illness and later recovered.",
+   "During an illness in {year}, ALT was {v} U/L."
+  ],
+  "superseded": [
+   "ALT was {v} U/L yesterday, before a repeat test.",
+   "ALT {v} U/L yesterday, an unexpected result that was repeated today.",
+   "Yesterday's ALT of {v} U/L was rechecked, and today's result replaces it.",
+   "ALT {v} U/L on yesterday's screening labs, replaced by today's repeat result.",
+   "Earlier this week ALT was {v} U/L while the patient had a fever.",
+   "ALT was {v} U/L last month during a viral illness."
+  ]
+ },
+ "bun": {
+  "current": [
+   "BUN {v} mg/dL this morning.",
+   "BUN at this assessment: {v} mg/dL.",
+   "Today's BUN is {v} mg/dL.",
+   "BUN on today's chemistry panel: {v} mg/dL.",
+   "Blood urea nitrogen now: {v} mg/dL.",
+   "Blood urea nitrogen {v} mg/dL on the current labs."
+  ],
+  "past": [
+   "BUN {v} mg/dL in {year} during gastroenteritis, resolved.",
+   "BUN {v} mg/dL in {year} (vomiting illness).",
+   "BUN {v} mg/dL in {year} after a marathon in hot weather, back to normal within days.",
+   "BUN measured {v} mg/dL in {year} on a high-dose prednisone course; it normalized once the course was completed.",
+   "In {year}, blood urea nitrogen rose to {v} mg/dL with dehydration and later recovered.",
+   "During an admission in {year}, blood urea nitrogen was {v} mg/dL."
+  ],
+  "superseded": [
+   "BUN was {v} mg/dL yesterday, before intravenous fluids.",
+   "BUN {v} mg/dL yesterday, since repeated.",
+   "BUN {v} mg/dL on yesterday's sample; today's chemistry panel supersedes it.",
+   "A BUN of {v} mg/dL on blood work drawn yesterday was superseded by today's repeat.",
+   "Earlier this week blood urea nitrogen was {v} mg/dL.",
+   "Blood urea nitrogen was {v} mg/dL last month."
+  ]
+ },
+ "rr": {
+  "current": [
+   "Respiratory rate {v}/min this morning.",
+   "Respiratory rate today: {v}/min.",
+   "Respiratory rate {v}/min at this assessment.",
+   "Respiratory rate, counted over a full minute today, is {v}/min.",
+   "Current respiratory rate {v}/min.",
+   "Observations now: respiratory rate {v}/min."
+  ],
+  "past": [
+   "Respiratory rate {v}/min during an asthma attack in {year}, resolved.",
+   "Respiratory rate {v}/min in {year} (asthma exacerbation).",
+   "Respiratory rate {v}/min in {year} with painful rib fractures, settling once the ribs had healed.",
+   "A respiratory rate of {v}/min was recorded in {year} on a high-altitude trek; breathing returned to normal after descent.",
+   "In {year}, respiratory rate reached {v}/min during a panic attack and later recovered.",
+   "During an admission in {year}, respiratory rate was {v}/min."
+  ],
+  "superseded": [
+   "Respiratory rate was {v}/min yesterday evening, settled overnight.",
+   "Respiratory rate {v}/min yesterday, rechecked this morning.",
+   "Yesterday's respiratory rate of {v}/min has been superseded by today's count.",
+   "Respiratory rate {v}/min when counted yesterday; today's count replaces it.",
+   "Earlier this week respiratory rate was {v}/min during a coughing fit.",
+   "Respiratory rate was {v}/min last month during an asthma flare."
+  ]
+ },
+ "sbp": {
+  "current": [
+   "Blood pressure {v}/{dia} mmHg this morning.",
+   "Blood pressure today: {v}/{dia} mmHg.",
+   "Systolic blood pressure {v} mmHg at this assessment.",
+   "Manual cuff blood pressure today: {v}/{dia} mmHg.",
+   "Current systolic blood pressure {v} mmHg.",
+   "Observations now: blood pressure {v}/{dia} mmHg."
+  ],
+  "past": [
+   "Systolic blood pressure {v} mmHg in {year} during an acute illness, resolved.",
+   "Systolic blood pressure {v} mmHg in {year} (emergency department visit).",
+   "BP {v}/{dia} mmHg in {year} after knee surgery, back to normal before discharge.",
+   "Systolic pressure {v} mmHg in {year} after a car accident, normal again within days.",
+   "In {year}, systolic blood pressure measured {v} mmHg at an urgent-care visit and later recovered.",
+   "During an admission in {year}, systolic blood pressure was {v} mmHg."
+  ],
+  "superseded": [
+   "Systolic blood pressure was {v} mmHg yesterday, before a repeat measurement.",
+   "Blood pressure {v}/{dia} mmHg yesterday, rechecked this morning.",
+   "Yesterday's BP of {v}/{dia} mmHg came from a faulty automated cuff; today's manual reading supersedes it.",
+   "Systolic pressure {v} mmHg when measured yesterday; today's reading replaces it.",
+   "Earlier this week systolic blood pressure was {v} mmHg.",
+   "Systolic blood pressure was {v} mmHg last month at a pharmacy check."
+  ]
+ },
+ "age": {
+  "current": [
+   "Age today: {v} years.",
+   "Age as of today: {v} years.",
+   "Age at this assessment: {v} years.",
+   "Age {v} years, calculated today from the date of birth.",
+   "Currently aged {v} years.",
+   "Current age {v} years."
+  ]
+ }
+}

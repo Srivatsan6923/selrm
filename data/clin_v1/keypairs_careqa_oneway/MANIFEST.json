@@ -1,0 +1,38 @@
+{
+ "name": "clin_v1/keypairs_careqa_oneway",
+ "source": "HPAI-BSC/CareQA",
+ "revision": "1d976cc544ccb9dfc96e14439e6840e8a810cec5",
+ "source_file": "CareQA_en.json",
+ "source_sha256": "1d694124ee73130d0fcff7bafa9f61d0de26d0f2f9398a24559e53bb9aea3c40",
+ "split": "test",
+ "mode": "oneway",
+ "case_description_required": false,
+ "questions": 5621,
+ "exclusions": {
+  "kept": 4016,
+  "negative lead-in": 914,
+  "short stem": 661,
+  "option refers to other options": 30
+ },
+ "questions_kept": 4016,
+ "n_pairs": 225,
+ "yield_questions_in_pairs": 0.1121,
+ "categories_in_pairs": {
+  "Chemistry": 74,
+  "Biology": 104,
+  "Pharmacology": 92,
+  "Psychology": 67,
+  "Nursing": 51,
+  "Medicine": 62
+ },
+ "git_commit": "07326b6da73a764f5cabe9144f128314048b894e",
+ "python": "3.12.7",
+ "rule": "a case description (a patient vignette: an age or patient noun and at least one sentence\nbefore the final question), a lead-in that is not negatively phrased (except, not, least, false, incorrect,\nuntrue, cannot, never, contraindicated as the asked property), no option that refers to other options\n(all/none/both/neither of the above/following, 'A and B'), stem of at least 8 tokens. Candidate pairs within\none split: keys differ and each key occurs (normalised text) among the other's options. One-to-one matching:\ngreedy by TF-IDF cosine of the stems, highest first, each question in at most one pair (ties: smaller ids).\nRecords: block per pair, base = question 1, flip = question 2; case_text = the complete question stem; claims\ns = 'The answer is <key 1>.' and s_prime = 'The answer is <key 2>.'; rule_text ''; reader condition = the two\ncandidate answers. meta: ids, stem similarity and its tercile, category / exam step.\nVariant 'oneway' (proposed to the lead, 3 Oct: the v13 definition yields 13 MedQA-test and 3 CareQA pairs): at\nleast one key is among the other's options; MedQA test and validation pooled (validation is used by no role);\nCareQA without the case-description requirement (most CareQA items are knowledge questions).",
+ "sha256": "267db9dac71fc03a45608ca148ac6bc7e9876fd7b26f4f7a29f3f4fee1a3dab1",
+ "created": "2026-10-02",
+ "frozen": true,
+ "shortcut_validation": {
+  "claim_only_reversal": 0.0,
+  "note": "Proposition 1 (i): a claim-only scorer gives d(q1) = d(q2), so no pair reverses"
+ }
+}

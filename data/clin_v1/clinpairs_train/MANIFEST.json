@@ -1,0 +1,26 @@
+{
+ "git_commit": "fc67926ee0c7dfbce2bdee63d54987b18d86368d",
+ "python": "3.12.7",
+ "builder": "scripts/clinpairs_prep.py",
+ "parts": [
+  "clinpairs_medeinst",
+  "clinpairs_medqa"
+ ],
+ "name": "clin_v1/clinpairs_train",
+ "n_records": 31716,
+ "n_groups": 7929,
+ "sha256": "548d26d0b6e4c191b7bd083f6ce1ad7a5def54a2de46d25934e12051b009d362",
+ "created": "2026-10-03",
+ "frozen": true,
+ "shortcut_validation": {
+  "claims_swapping_label_within_pair": 15858,
+  "claims": 15858,
+  "claim_only_solvable_pairs": 0,
+  "label1_share": 50.0,
+  "trailing_double_space_after_normalisation": {
+   "base": 0,
+   "flip": 0
+  },
+  "share_trap_longer_than_control": 55.16
+ }
+}

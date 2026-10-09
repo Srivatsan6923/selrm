@@ -1,0 +1,17 @@
+{
+ "run_id": "C-TF-promptledger-lenient--p1",
+ "set": "rule_v1/dev_missing",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "reader_units": 600,
+  "malformed_units": 15,
+  "malformed_rate": 0.025,
+  "seconds": 160.6,
+  "mode": "rejudge",
+  "lenient_version": 2,
+  "source_run": "C-TF-promptledger--p1"
+ }
+}

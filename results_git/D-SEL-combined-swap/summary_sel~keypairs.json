@@ -1,0 +1,13 @@
+{
+ "run_id": "D-SEL-combined-swap",
+ "set": "sel/keypairs",
+ "acc": 87.6750700280112,
+ "n": 714,
+ "N": 16,
+ "n_same_sample_as_stepcheck_swap": 714,
+ "n_same_answer_as_stepcheck_swap": 714,
+ "ledger_is_minimum_share": 55.94021065675341,
+ "ledger_is_minimum_share_swap": 0.026260504201680673,
+ "pair_acc": 76.75070028011204,
+ "n_pairs": 357
+}

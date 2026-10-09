@@ -1,0 +1,10 @@
+2026-10-03T05:27:49Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-03T05:28:43Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0259)
+2026-10-03T05:28:46Z padding self-check: max |u_batch - u_single| = 0.3627 (tol 0.659) -> left padding
+2026-10-03T05:34:08Z generate: batch 25/38, 29795 tokens, 92 tok/s
+2026-10-03T05:42:46Z C-TG-promptledger-dev rule_v1/dev_missing: TA nan Rev nan Hold nan n=None (895.6 s)
+2026-10-03T05:42:54Z C-TG-promptledger-dev rule_v1/dev_missing lenient: TA nan malformed 586/600
+2026-10-03T05:42:56Z C-TG-promptledger-dev clin_v1/trialgpt_dev prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_dev/reader_ledger.npz', 'built 213 prompts, max 650 tokens')
+2026-10-03T05:48:57Z C-TG-promptledger-dev clin_v1/trialgpt_dev: TA nan Rev nan Hold nan n=None (360.8 s)
+2026-10-03T05:48:58Z C-TG-promptledger-dev clin_v1/trialgpt_dev lenient: TA nan malformed 212/213
+2026-10-03T05:48:59Z DONE C-TG-promptledger-dev in 21.5 min, GPU util mean 90.5

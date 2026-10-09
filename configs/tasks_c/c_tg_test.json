@@ -1,0 +1,106 @@
+{
+ "runs": [
+  {
+   "run_id": "C-TG-critic",
+   "priority": 40,
+   "format": "verdict",
+   "adapter": null,
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_test"
+   ]
+  },
+  {
+   "run_id": "C-TG-promptsum",
+   "priority": 41,
+   "format": "summary2",
+   "adapter": null,
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_test"
+   ],
+   "max_new": 768
+  },
+  {
+   "run_id": "C-TG-promptledger",
+   "priority": 42,
+   "format": "ledger2",
+   "adapter": null,
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_test"
+   ],
+   "max_new": 768
+  },
+  {
+   "run_id": "C-TG-promptledger-lenient",
+   "priority": 44,
+   "format": "ledger2",
+   "adapter": null,
+   "bs_score": 64,
+   "rejudge_from": "C-TG-promptledger",
+   "sets": [
+    "clin_v1/trialgpt_test"
+   ]
+  },
+  {
+   "run_id": "C-TG-verdict-blocks-s0",
+   "priority": 45,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s0",
+   "adapter_run": "B-F-verdict-blocks-s0",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_test"
+   ]
+  },
+  {
+   "run_id": "C-TG-verdict-triplets-s0",
+   "priority": 46,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s0",
+   "adapter_run": "B-F-verdict-triplets-s0",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_test"
+   ]
+  },
+  {
+   "run_id": "C-TG-ledger2-blocks-s0",
+   "priority": 47,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-blocks-s0",
+   "adapter_run": "B-F-ledger2-blocks-s0",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_test"
+   ],
+   "max_new": 768
+  },
+  {
+   "run_id": "C-TG-ledger2-triplets-s0",
+   "priority": 48,
+   "format": "ledger2",
+   "adapter": "/pvcb/selrm/adapters/B-F-ledger2-triplets-s0",
+   "adapter_run": "B-F-ledger2-triplets-s0",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_test"
+   ],
+   "max_new": 768
+  },
+  {
+   "run_id": "C-TG-summary2-triplets-s0",
+   "priority": 49,
+   "format": "summary2",
+   "adapter": "/pvcb/selrm/adapters/B-F-summary2-triplets-s0",
+   "adapter_run": "B-F-summary2-triplets-s0",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/trialgpt_test"
+   ],
+   "max_new": 768
+  }
+ ],
+ "note": "TrialGPT test portion: scored once per system after the dev check (protocol section 7); tau from the system's dev run (C-TG-<x>-dev scores_rule_v1~dev_missing)"
+}

@@ -1,80 +1,75 @@
-# ROLE B: all training
+# ROLE D: downstream experiments, tables, paper, and team lead
 
-You own every trained model in the paper and the largest GPU queue
-(docs/RUN_MATRIX_B.csv, 225 rows; `pool=yes` rows are shared with idle GPUs).
+## Lead duties (every day)
+- Merge `role-a|b|c|d` into `main`; resolve conflicts in favour of the owner
+  of the file (table in CLAUDE.md).
+- Answer `docs/CHANGE_REQUESTS.md` within the same working block.
+- Apply the schedule ladder on Mon 5 and Wed 7 Oct; record it in
+  `docs/DECISIONS_D.md` and tell the other roles through `docs/HANDOFFS.md`.
+- Keep `docs/STATUS_BOARD.md`: per paper item (docs/PAPER_CONTEXT.md
+  section 4) -> not started / running / done / dropped, with run counts.
+- Run freeze: Wed 7 Oct 23:59. After that only reruns of failed P0 items.
 
-## Deliverables, in order
-1. **B-C0** `scripts/finetune.py`, `scripts/eval_local.py`,
-   `scripts/train_eval_job.py` (train -> evaluate on every registered test
-   set -> write results -> delete adapter unless kept), all resumable, with
-   claims and heartbeats. Works on `data/smoke_v2` today.
-2. **Today, on smoke data:** verdict x blocks vs verdict x triplets, tested on
-   `smoke_v2/test_heldout_rules` (held-out rules and templates). Report
-   Rev/Hold/TA by near-miss kind to the lead. Provisional, not for the paper.
-3. **B-T0** timing test per format; update `est_hours`.
-4. **B-F-*** factorial (Table 3): seed 0 of all 20 cells first; then seeds
-   1-2 of the four key cells {verdict, ledger2} x {blocks, triplets}; then
-   everything else by priority.
-5. **B-PRM** step check; **B-REG** `configs/adapters.json` for kept adapters.
-6. **B-TR-*** transfer rows; **B-AB-*, B-AE-*** ablations; **B-FOLD***,
-   **B-DIV-***, **B-BB-***, **B-DIS-***.
+## Deliverables (docs/RUN_MATRIX_D.csv)
+1. **D-L0** repo, shared Drive tree, registry files.
+2. **D-POOL-*** candidate pools: frozen policy = Qwen3.5-9B, sampled chain of
+   thought with numbered steps and a final line "Final answer: <option>";
+   16 samples per question (MedQA test, CareQA, MedEinst questions), 64 for a
+   fixed 300-question MedQA subset. A trace is eligible if it has a final
+   answer; report the share that is not.
+3. **D-CAL, D-SEL-***, **D-SELN** (Table 5, Figure 3 right).
+4. **D-RL-*** policy training (appendix G).
+5. **D-TAB** `scripts/make_tables.py`, `scripts/update_paper.py`;
+   **D-SUM** `docs/RESULTS_SUMMARY.md`; **D-PAPER**; **D-AUDIT**.
 
-## Formats (build examples from canonical records with `selrm/prompts.py`)
-| Format | Training examples | Scoring |
-|---|---|---|
-| verdict | `verdict_prompt` -> answer | one pass |
-| rationale (one-stage) | `rationale_prompt` -> ledger text, newline, answer | generate the ledger, then read the answer logits |
-| summary2 | reader `reader_prompt(prose=True)` -> `prose`; judge `judge_prompt(rec, prose)` -> answer | reader generates, judge scores |
-| value2 | as ledger2 with ledger entries cut to need and found | same |
-| ledger2 | reader `reader_prompt` -> `ledger_to_text(ledger)`; judge `judge_prompt(rec, ledger text)` -> answer | same |
+## Answer selection
+- Step scores: the step check scores each step with the vignette. The ledger
+  score: the reader receives the vignette and the step and writes a ledger;
+  the judge scores the step from the ledger alone. A trace's score is the
+  minimum over its steps. Combined = minimum of the two after temperature
+  scaling fitted on development data; also report the product and a logistic
+  combination fitted on development data.
+- Rows: single sample, self-consistency, step check, step check with the
+  vignette of another question (swapped), ledger score, combined, combined
+  swapped, combined with the ledger model trained on blocks (no near-misses),
+  closed judge as selector (C's client), oracle selection.
+- Columns: MedQA accuracy, CareQA accuracy, key-pair accuracy (both members
+  right), MedEinst pair / control / trap accuracy. Paired bootstrap over
+  questions; the 1-point non-inferiority margin is fixed in advance.
+- Selection pressure: N in {1, 2, 4, 8, 16, 32, 64} on the 300-question
+  subset.
+- Adapters come from `configs/adapters.json` (B). Until then use provisional
+  adapters trained on smoke data to build and test the pipeline.
 
-- **Equal budget:** every run trains on 60k examples for 1 epoch. Two-stage
-  formats: 30k reader examples (one per case and condition) and 30k judge
-  examples. Same optimiser, batch 64, lr 1e-4 cosine, max length 1024 (2048
-  for long-tier evaluation), LoRA r=64, loss on the response only.
-- **Ledger resampling** (judge examples): with p = 0.3 use another case of
-  the same group (same rule and condition) with its own ledger and label, so
-  the judge sees one claim under different ledgers. Ablation: p = 0.
-- **Seeds** set data order and LoRA initialisation.
-- **Evaluation of every adapter:** `rule_v1/dev`, `test_L2`, ladder sets,
-  `test_hard`, `missing` (MR at 5% FR, threshold from dev), and the clinical
-  sets through C's `scripts/eval_clinical.py` (fallback until it exists:
-  rule-tier sets only; re-evaluate kept adapters later). INTERFACES section 3
-  defines scoring and the malformed-ledger rule.
+## Policy training (GRPO)
+Policy: Qwen3.5-4B with LoRA on rule-application prompts from train-level
+rules ("decide and justify in numbered steps"). Rewards: outcome (rule
+program), step check, ledger model trained on blocks, ledger model trained on
+triplets, reference-graph coverage (A's `reference_graph`). 2 seeds, about
+1-2k steps, group size 8 (verify the GRPO implementation you use). Before
+each run check that reward terms are not collinear within groups and that a
+64-prompt subset can be overfit. Evaluate the policy with the rule program on
+held-out signature classes: accuracy on base, flip and near cases; log reward
+against program accuracy over training (reward exploitation).
 
-## Transfer rows (Table 4)
-- fover: verdict only on FoVer formal-verification data (verify the dataset
-  ID; convert to the verdict format; same example budget).
-- genprm: target = short analysis + Python check (from A's
-  `render_check_code`) + its output + answer. At test time generate, execute
-  in a subprocess with a timeout and no network, feed the output back, read
-  the answer. Record generated tokens.
-- steperr: ledger2 on triplets + step-error data (only if C confirms
-  MedPRMBench is released). clinonly / tripclin: need C's
-  `clin_v1/clinpairs_train`.
-
-## Ablations (Table 9, Section 7.4)
-decision field; judge sees bit only; reader writes bit only; verification
-pass; concept scorer (linear heads on frozen features for the ledger fields
-and a linear verdict); no near-misses + probe re-weighting (down-weight
-base-flip pairs whose preference shifts under near-miss and presentation
-probes); no presentation edits; no resampling; verdict with a pairwise
-Bradley-Terry loss; (optional P2) change loss, conclusion-only labels.
-Evaluation-only items on the headline adapter: program-supplied ledger
-(reader error share), program on the predicted bit, field interventions
-(edit subject / status / time in a correct ledger; swap in another case's
-ledger), premise gate on the step check.
-
-## Step check (B-PRM)
-If MedPRMBench is available: verdict-format PRM trained on its injected-error
-steps, with the case. Otherwise register the released Med-PRM as `stepcheck`
-(C provides the scoring wrapper) and log the substitution.
+## Tables and paper
+- `make_tables.py` reads only `results/*/summary_*.json` and
+  `scores_*.jsonl`; writes `tables/*.tex`, `figures/*.pdf` and
+  `tables/numbers.tex` (one macro per number used in running text).
+  Missing input -> "not run". Seeds: mean and s.d.; CIs and paired tests from
+  `selrm.metrics`; Holm over the four primary comparisons.
+- `update_paper.py` replaces table bodies in `paper/latex/main.tex` and
+  checks that no `\ph{` remains before switching to `\placeholdersfalse`.
+- `docs/RESULTS_SUMMARY.md` (Thu 8 Oct): for each claim in the abstract and
+  contribution list: estimate, CI, test, supported / not supported / not run,
+  and the sentence the paper may state.
+- Paper rewrite: docs/PAPER_CONTEXT.md section 8. A, B and C deliver appendix
+  text for their parts on Thu 8 Oct.
+- Final audit on Sat 10 Oct (Prompt 4 in PROMPTS.md). Submission is done by
+  the human.
 
 ## Decision rules
-- No hyperparameter search beyond: resampling p in {0, 0.3}, change-loss
-  lambda in {0.3, 1, 3}, all on dev with seed 0.
-- A run that fails twice is marked `failed` with the log path; move on.
-- If `rule_v1` is late, run seed 0 of the key cells on `smoke_v2` as
-  `provisional` to validate the pipeline, then re-run.
-- Install flash-linear-attention and causal-conv1d before loading the model;
-  record tokens/s in every `meta.json`.
+- If B's step check is the released Med-PRM, say so in Table 5's caption.
+- If selection gains are within the non-inferiority margin, report that; do
+  not search aggregation rules on test data.
+- Policy training is dropped first if the ladder is applied.

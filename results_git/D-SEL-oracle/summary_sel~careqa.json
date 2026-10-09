@@ -1,0 +1,7 @@
+{
+ "run_id": "D-SEL-oracle",
+ "set": "sel/careqa",
+ "acc": 97.1,
+ "n": 1000,
+ "N": 16
+}

@@ -1,0 +1,18 @@
+{
+ "run_id": "C-TG-promptledger-dev",
+ "set": "rule_v1/dev_missing",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "reader_units": 600,
+  "malformed_units": 586,
+  "mode": null,
+  "malformed_rate": 0.9767,
+  "gen_not_stopped": 4,
+  "seconds": 895.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

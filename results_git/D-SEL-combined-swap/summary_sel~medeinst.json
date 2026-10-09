@@ -1,0 +1,15 @@
+{
+ "run_id": "D-SEL-combined-swap",
+ "set": "sel/medeinst",
+ "acc": 60.4,
+ "n": 1000,
+ "N": 16,
+ "control_acc": 71.8,
+ "trap_acc": 49.0,
+ "pair_acc": 23.0,
+ "n_pairs": 500,
+ "n_same_sample_as_stepcheck_swap": 991,
+ "n_same_answer_as_stepcheck_swap": 1000,
+ "ledger_is_minimum_share": 33.84375,
+ "ledger_is_minimum_share_swap": 0.425
+}

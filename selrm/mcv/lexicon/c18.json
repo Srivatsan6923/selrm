@@ -1,0 +1,11 @@
+{
+  "cid": 18,
+  "items": {},
+  "ineligible": {
+    "History": "levels (0, 1, 2), not (0, k); reads the categorical string 'Suspicion History' (slightly/moderately/highly suspicious), not a boolean finding",
+    "EKG": "levels (0, 1, 2), not (0, k); reads the categorical string 'Electrocardiogram Test' (normal / non-specific repolarization disturbance / significant ST deviation)",
+    "Age": "kind is numeric, not a finding",
+    "Risk factors": "levels (0, 1, 2), not (0, k); points come from a count over seven boolean keys (0 / 1-2 / >=3 or atherosclerotic disease), so affirming one risk factor adds points only when the count crosses a band and no single noun phrase settles the item under the score text",
+    "Initial troponin level": "levels (0, 1, 2), not (0, k); reads the categorical string 'Initial troponin' (<= normal limit / 1-3x / >3x), not a boolean finding"
+  }
+}

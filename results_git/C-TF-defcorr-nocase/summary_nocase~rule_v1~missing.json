@@ -1,0 +1,13 @@
+{
+ "run_id": "C-TF-defcorr-nocase",
+ "set": "nocase/rule_v1/missing",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "seconds": 148.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

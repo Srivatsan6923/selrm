@@ -1,0 +1,71 @@
+{
+ "run_id": "C-DG-pk",
+ "set": "rule_v1/readapply",
+ "definition": "scripts/diagnostics.py pk",
+ "signal=C-TF-critic": {
+  "n": 1000,
+  "P": 97.7,
+  "K": 96.0,
+  "U": 88.9,
+  "n_P_and_K": 944,
+  "G": 7.944915254237284,
+  "L0_BaseAcc": 68.6,
+  "L0_Tie": 0.0,
+  "L0_UR": 33.965014577259474,
+  "L0_UR_n": 686,
+  "source_run": "C-TF-critic"
+ },
+ "signal=B-F-verdict-blocks": {
+  "n": 1000,
+  "P": 100.0,
+  "K": 100.0,
+  "U": 99.9,
+  "n_P_and_K": 1000,
+  "G": 0.10000000000000009,
+  "L0_BaseAcc": 99.7,
+  "L0_Tie": 0.0,
+  "L0_UR": 30.892678034102307,
+  "L0_UR_n": 997,
+  "source_run": "B-F-verdict-blocks-s0"
+ },
+ "signal=B-F-verdict-triplets": {
+  "n": 1000,
+  "P": 100.0,
+  "K": 99.7,
+  "U": 99.5,
+  "n_P_and_K": 997,
+  "G": 0.30090270812437314,
+  "L0_BaseAcc": 99.9,
+  "L0_Tie": 0.0,
+  "L0_UR": 0.4004004004004004,
+  "L0_UR_n": 999,
+  "source_run": "B-F-verdict-triplets-s0"
+ },
+ "signal=B-F-ledger2-blocks": {
+  "n": 1000,
+  "P": 99.4,
+  "K": 99.2,
+  "U": 99.2,
+  "n_P_and_K": 986,
+  "G": 0.0,
+  "L0_BaseAcc": 99.5,
+  "L0_Tie": 0.0,
+  "L0_UR": 26.13065326633166,
+  "L0_UR_n": 995,
+  "source_run": "B-F-ledger2-blocks-s0"
+ },
+ "signal=B-F-ledger2-triplets": {
+  "n": 1000,
+  "P": 97.4,
+  "K": 99.5,
+  "U": 99.8,
+  "n_P_and_K": 971,
+  "G": 0.0,
+  "L0_BaseAcc": 99.8,
+  "L0_Tie": 0.0,
+  "L0_UR": 0.0,
+  "L0_UR_n": 998,
+  "source_run": "B-F-ledger2-triplets-s0"
+ },
+ "signal=B-F-summary2-triplets": null
+}

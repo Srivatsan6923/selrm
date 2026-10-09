@@ -1,0 +1,210 @@
+{
+ "potassium": {
+  "current": [
+   "Serum potassium today: {v} mmol/L.",
+   "Potassium {v} mmol/L on today's blood work.",
+   "Labs this morning: potassium {v} mmol/L.",
+   "Potassium measured at this assessment is {v} mmol/L.",
+   "Current serum potassium {v} mmol/L.",
+   "Latest potassium result: {v} mmol/L."
+  ],
+  "past": [
+   "Serum potassium {v} mmol/L in {year} during acute kidney injury, resolved.",
+   "Potassium {v} mmol/L in {year} while taking potassium supplements, since stopped.",
+   "Potassium {v} mmol/L in {year} during a trimethoprim course; it came back down when the course was completed.",
+   "Serum potassium {v} mmol/L in {year} from a crush injury of the leg, resolved before hospital discharge.",
+   "In {year}, potassium reached {v} mmol/L with sepsis; the patient recovered fully.",
+   "Serum potassium of {v} mmol/L in {year} with severe dehydration; recovered after rehydration."
+  ],
+  "superseded": [
+   "Potassium was {v} mmol/L yesterday in a hemolyzed sample; repeated today.",
+   "Serum potassium {v} mmol/L yesterday on a delayed sample, before today's fresh draw.",
+   "Potassium {v} mmol/L yesterday on a sample taken after prolonged fist clenching; today's repeat sample replaces it.",
+   "Potassium was {v} mmol/L two days before this assessment while on potassium supplements, which have been stopped; today's value supersedes it.",
+   "Earlier this week, serum potassium measured {v} mmol/L, since rechecked.",
+   "Potassium was {v} mmol/L last month during a kidney injury that has since settled."
+  ]
+ },
+ "creatinine": {
+  "current": [
+   "Serum creatinine today: {v} mg/dL.",
+   "Creatinine {v} mg/dL on this morning's labs.",
+   "Kidney function today: creatinine {v} mg/dL.",
+   "Blood panel at this assessment: creatinine {v} mg/dL.",
+   "Current serum creatinine {v} mg/dL.",
+   "Latest creatinine result: {v} mg/dL."
+  ],
+  "past": [
+   "Creatinine {v} mg/dL in {year} during acute kidney injury, resolved.",
+   "Serum creatinine {v} mg/dL in {year} from muscle breakdown during a severe viral illness, since resolved.",
+   "Serum creatinine {v} mg/dL in {year} during a kidney infection, normal again once the infection resolved.",
+   "Creatinine {v} mg/dL in {year} on a gentamicin course, which was stopped; kidney tests normalized within weeks.",
+   "In {year}, serum creatinine rose to {v} mg/dL with sepsis; renal function later recovered.",
+   "Creatinine peaked at {v} mg/dL in {year} in the setting of severe vomiting, returning to baseline afterward."
+  ],
+  "superseded": [
+   "Creatinine was {v} mg/dL yesterday in a result later withdrawn by the laboratory; today's value replaces it.",
+   "Serum creatinine {v} mg/dL yesterday, an unexpected result that was repeated today.",
+   "Creatinine was {v} mg/dL two days before this assessment on an analyzer that was stopped for a calibration fault; today's value replaces it.",
+   "Creatinine of {v} mg/dL yesterday was distorted by assay interference; today's laboratory level supersedes it.",
+   "Earlier this week, serum creatinine was {v} mg/dL during a vomiting illness; it has improved since.",
+   "Creatinine was {v} mg/dL last month after a contrast CT scan and has come down since."
+  ]
+ },
+ "wbc": {
+  "current": [
+   "White cell count today: {v} x10^9/L.",
+   "WBC {v} x10^9/L on today's sample.",
+   "Complete blood count this morning: white cell count {v} x10^9/L.",
+   "WBC on the blood count drawn at this assessment: {v} x10^9/L.",
+   "Current white cell count {v} x10^9/L.",
+   "Latest WBC is {v} x10^9/L."
+  ],
+  "past": [
+   "White cell count {v} x10^9/L in {year} during a kidney infection, resolved on antibiotics.",
+   "WBC {v} x10^9/L in {year} while on a course of prednisone, since completed.",
+   "WBC {v} x10^9/L in {year} with a dental abscess; resolved once the abscess was drained.",
+   "White cell count {v} x10^9/L in {year} during a bout of food poisoning that resolved within days.",
+   "In {year}, WBC reached {v} x10^9/L with appendicitis; recovered after surgery.",
+   "White cell count of {v} x10^9/L with cellulitis in {year}, later back to normal."
+  ],
+  "superseded": [
+   "White cell count {v} x10^9/L yesterday, an outlying result; repeated today.",
+   "WBC was {v} x10^9/L yesterday, before today's repeat blood count.",
+   "WBC of {v} x10^9/L was reported yesterday on a sample the laboratory flagged as unreliable; today's count replaces it.",
+   "White cell count previously {v} x10^9/L on a blood test two days before this assessment; today's count supersedes it.",
+   "Earlier this week, WBC was {v} x10^9/L; it has since been rechecked.",
+   "White cell count was {v} x10^9/L last month during a urinary infection, since treated."
+  ]
+ },
+ "spo2": {
+  "current": [
+   "Oxygen saturation at this assessment is {v}%.",
+   "Oxygen saturation {v}% at rest today.",
+   "Pulse oximetry this morning: oxygen saturation {v}%.",
+   "Oxygen saturation by finger probe today: {v}%.",
+   "Current oxygen saturation {v}%.",
+   "Latest oxygen saturation reading: {v}%."
+  ],
+  "past": [
+   "Oxygen saturation {v}% in {year} during pneumonia, resolved on treatment.",
+   "Oxygen saturation {v}% in {year} while trekking at high altitude, resolved on descent.",
+   "Oxygen saturation {v}% in {year} from a collapsed lung, which healed with chest drain treatment.",
+   "Oxygen saturation {v}% in {year} during an allergic reaction to a bee sting, resolved within hours of treatment.",
+   "In {year}, oxygen saturation fell to {v}% with a severe asthma attack; recovered fully.",
+   "Oxygen saturation of {v}% in {year} with influenza, later back to normal."
+  ],
+  "superseded": [
+   "Oxygen saturation was {v}% yesterday during a brief choking episode on food; today's reading replaces it.",
+   "Oxygen saturation {v}% yesterday evening after a coughing fit, before today's readings.",
+   "Oxygen saturation read {v}% yesterday while the probe was slipping off a moving hand; today's steady reading replaces it.",
+   "Oxygen saturation of {v}% yesterday came from a cold finger with a weak signal; today's measurement on a warmed hand replaces it.",
+   "Earlier this week, oxygen saturation was {v}%; it has improved since.",
+   "Oxygen saturation was {v}% last month during a chest infection that has since cleared."
+  ]
+ },
+ "temperature": {
+  "current": [
+   "Temperature today: {v} C.",
+   "Oral temperature this morning: {v} C.",
+   "Temperature {v} C at this assessment.",
+   "Temperature checked with a digital thermometer today: {v} C.",
+   "Current temperature {v} C.",
+   "Temperature now {v} C (tympanic)."
+  ],
+  "past": [
+   "Temperature {v} C in {year} during influenza, resolved within days.",
+   "Temperature {v} C in {year} during tonsillitis, which resolved with antibiotics.",
+   "Temperature {v} C in {year} during a bout of gastroenteritis that resolved within a week.",
+   "Temperature {v} C in {year} during a middle ear infection, resolved once a course of antibiotics was completed.",
+   "In {year}, temperature reached {v} C with a kidney infection that later cleared.",
+   "Temperature peaked at {v} C with pneumonia in {year}; recovered fully."
+  ],
+  "superseded": [
+   "Temperature was {v} C yesterday evening and settled overnight.",
+   "Temperature measured yesterday with a faulty thermometer: {v} C; repeated today.",
+   "Temperature was {v} C yesterday afternoon during a short-lived fever that resolved with rest; today's reading replaces it.",
+   "Temperature {v} C yesterday on a forehead strip thermometer; today's oral reading supersedes it.",
+   "Earlier this week temperature reached {v} C at home; it has come down since.",
+   "Temperature was {v} C last month with a urinary infection, since treated."
+  ]
+ },
+ "heart_rate": {
+  "current": [
+   "Heart rate today: {v}/min.",
+   "Heart rate {v}/min at rest this morning.",
+   "Pulse taken this morning: heart rate {v}/min.",
+   "Heart rate counted over a full minute at this assessment: {v}/min.",
+   "Current heart rate {v}/min.",
+   "Heart rate now {v}/min on a pulse check."
+  ],
+  "past": [
+   "Heart rate {v}/min in {year} during gastroenteritis with dehydration, resolved with fluids.",
+   "Heart rate {v}/min in {year} during a panic attack, which resolved within the hour.",
+   "Heart rate {v}/min in {year} from kidney stone pain, resolved once the stone passed.",
+   "Heart rate {v}/min in {year} after several energy drinks, resolved within hours.",
+   "In {year}, heart rate rose to {v}/min with an overactive thyroid; recovered fully on treatment.",
+   "Heart rate reached {v}/min with appendicitis in {year}, later cured by surgery."
+  ],
+  "superseded": [
+   "Heart rate was {v}/min yesterday on a pulse reading distorted by movement; repeated today.",
+   "Heart rate {v}/min yesterday evening during a bout of anxiety, settling overnight.",
+   "Heart rate was {v}/min during a coughing fit yesterday; counted again at rest today.",
+   "Heart rate previously {v}/min yesterday on an ECG trace spoiled by electrical interference; today's count supersedes it.",
+   "Earlier this week heart rate was {v}/min on a fitness watch; a newer reading has replaced it.",
+   "Heart rate was {v}/min last month with a stomach bug, and has slowed since."
+  ]
+ },
+ "weight": {
+  "current": [
+   "Weight today: {v} kg.",
+   "Weighs {v} kg on the scale this morning.",
+   "Weight {v} kg at this assessment.",
+   "Weight checked today on a calibrated scale: {v} kg.",
+   "Current weight {v} kg.",
+   "Latest weight {v} kg."
+  ],
+  "past": [
+   "Weight {v} kg in {year} during a bout of severe depression; regained once the depression resolved.",
+   "Weight {v} kg in {year} during a long hospital stay, regained within months.",
+   "Weight {v} kg in {year} from tuberculosis, regained once treatment was completed.",
+   "Weight {v} kg in {year} during a Crohn's disease flare; the weight was regained once the flare resolved.",
+   "In {year}, weight fell to {v} kg after major bowel surgery and later recovered.",
+   "While unwell with an overactive thyroid in {year}, weight was {v} kg; it later returned to normal."
+  ],
+  "superseded": [
+   "Weight was wrongly charted as {v} kg yesterday; measured on a scale today.",
+   "Weight {v} kg yesterday on a chair scale that proved faulty; reweighed today.",
+   "A placeholder weight of {v} kg was charted yesterday before the patient could be weighed; today's scale reading replaces it.",
+   "Weight of {v} kg yesterday came from a scale with a failing battery; today's reading after a battery change replaces it.",
+   "Earlier this week, weight read {v} kg because the scale had been zeroed with a load on it; the latest weighing corrects it.",
+   "Weight on last month's referral letter was {v} kg, later found to be a typing error."
+  ]
+ },
+ "calf_swelling": {
+  "current": [
+   "Difference in calf circumference today, side to side: {v} cm.",
+   "Calf circumference measured this morning is {v} cm greater on one side.",
+   "Calf swelling at this assessment: {v} cm more than the opposite calf.",
+   "Tape measurement today shows a calf circumference gap of {v} cm.",
+   "Current calf swelling {v} cm compared with the other leg.",
+   "Difference in calf circumference now {v} cm."
+  ],
+  "past": [
+   "Calf swelling of {v} cm in {year} during cellulitis of the leg, resolved with antibiotics.",
+   "Calf swelling {v} cm in {year} from a torn calf muscle, which healed within weeks.",
+   "Calf swelling {v} cm in {year} from an ankle fracture, resolved as the fracture healed.",
+   "A large insect-bite reaction in {year} caused calf swelling of {v} cm, which resolved within days.",
+   "In {year}, calf circumference differed by {v} cm between the legs from a ruptured knee cyst; it later returned to normal.",
+   "After a sports injury in {year}, calf circumference was {v} cm larger on the injured leg; recovered fully."
+  ],
+  "superseded": [
+   "Calf swelling of {v} cm was measured yesterday at a nonstandard level; remeasured today.",
+   "Calf circumference was wrongly transcribed as {v} cm greater on one side yesterday; amended today.",
+   "Calf swelling of {v} cm was recorded yesterday with a stretched cloth tape; today's measurement with a new tape replaces it.",
+   "Calf swelling previously recorded as {v} cm by a different examiner the evening before this assessment; today's measurement supersedes it.",
+   "Earlier this week a rough bedside check put calf swelling at {v} cm; rechecked since.",
+   "Calf swelling of {v} cm last month from a calf strain has gone down since."
+  ]
+ }
+}

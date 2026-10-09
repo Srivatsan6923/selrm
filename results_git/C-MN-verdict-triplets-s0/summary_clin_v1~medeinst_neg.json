@@ -1,0 +1,26 @@
+{
+ "run_id": "C-MN-verdict-triplets-s0",
+ "set": "clin_v1/medeinst_neg",
+ "analysis": "secondary (docs/AUX_PROTOCOL.md S2/S3)",
+ "hold": 67.12625033792916,
+ "CI95": [
+  50.92454835281615,
+  82.63645068624322
+ ],
+ "n": 3699,
+ "hold_without_diagnosis_named": 66.7122912674514,
+ "n_without_diagnosis_named": 3653,
+ "all_three_right": 24.60124357934577,
+ "all_three_right_n": 3699,
+ "medeinst_run": "C-ME-verdict-triplets-s0",
+ "bootstrap": {
+  "unit": "(y_gt, y_bias) label pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "seconds": 720.3,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

@@ -1,0 +1,132 @@
+{
+ "run_id": "C-TG-verdict-blocks-dev",
+ "set": "clin_v1/trialgpt_dev",
+ "protocol": "docs/TRIALGPT_PROTOCOL.md",
+ "threshold": 7.872409820556641,
+ "n_items": 213,
+ "n_scored": 200,
+ "n_patients": 10,
+ "macroF1": 62.02001666897303,
+ "macroF1_CI95": [
+  49.629390912020625,
+  70.59138041181384
+ ],
+ "acc": 63.5,
+ "acc_CI95": [
+  53.06122448979592,
+  71.66666666666667
+ ],
+ "per_class": {
+  "met": {
+   "P": 100.0,
+   "R": 40.909090909090914,
+   "F1": 58.06451612903226,
+   "n": 22
+  },
+  "not_met": {
+   "P": 93.84615384615384,
+   "R": 52.13675213675214,
+   "F1": 67.03296703296702,
+   "n": 117
+  },
+  "nei": {
+   "P": 45.23809523809524,
+   "R": 93.44262295081968,
+   "F1": 60.962566844919785,
+   "n": 61
+  }
+ },
+ "confusion": {
+  "met": {
+   "nei": 13,
+   "met": 9
+  },
+  "not_met": {
+   "nei": 56,
+   "not_met": 61
+  },
+  "nei": {
+   "nei": 57,
+   "not_met": 4
+  }
+ },
+ "pred_distribution": {
+  "nei": 126,
+  "met": 9,
+  "not_met": 65
+ },
+ "macroF1_five_names": 39.07264473187394,
+ "per_class_five_names": {
+  "included": {
+   "P": 100.0,
+   "R": 47.368421052631575,
+   "F1": 64.28571428571429,
+   "n": 19
+  },
+  "not included": {
+   "P": 0.0,
+   "R": 0.0,
+   "F1": 0.0,
+   "n": 7
+  },
+  "excluded": {
+   "P": 0.0,
+   "R": 0.0,
+   "F1": 0.0,
+   "n": 3
+  },
+  "not excluded": {
+   "P": 95.3125,
+   "R": 55.45454545454545,
+   "F1": 70.11494252873563,
+   "n": 110
+  },
+  "not enough information": {
+   "P": 45.23809523809524,
+   "R": 93.44262295081968,
+   "F1": 60.962566844919785,
+   "n": 61
+  }
+ },
+ "by_type": {
+  "inclusion": {
+   "macroF1": 48.63945578231292,
+   "acc": 73.13432835820896,
+   "n": 67
+  },
+  "exclusion": {
+   "macroF1": 36.10572990658229,
+   "acc": 58.64661654135338,
+   "n": 133
+  }
+ },
+ "not_applicable": {
+  "n": 13,
+  "pred": {
+   "not_met": 9,
+   "nei": 4
+  }
+ },
+ "forced_choice_acc": 93.5251798561151,
+ "n_forced": 139,
+ "evidence": null,
+ "evidence_malformed_without_quotes": null,
+ "per_trial_acc": {
+  "n_trials": 16,
+  "min_items": 5,
+  "min": 12.5,
+  "median": 65.15151515151516,
+  "max": 85.71428571428571
+ },
+ "bootstrap": {
+  "unit": "patient",
+  "B": 1000,
+  "seed": 0
+ },
+ "threshold_source": "results_git/C-TG-verdict-blocks-dev/scores_rule_v1~dev_missing.jsonl",
+ "eval": {
+  "seconds": 48.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

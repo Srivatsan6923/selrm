@@ -1,0 +1,18 @@
+{
+ "runs": [
+  {
+   "run_id": "C-DG-noise",
+   "priority": 50,
+   "format": "verdict",
+   "adapter": null,
+   "bs_score": 64,
+   "topk": 50,
+   "min_gen": 3,
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "note": "sampling-noise check: top-50 next-token logits of the untrained backbone's verdict prompts (scripts/noise_check.py)"
+  }
+ ],
+ "note": "needs runner GEN >= 3"
+}

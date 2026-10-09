@@ -1,0 +1,10 @@
+2026-10-03T23:08:48Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-verdict-blocks-s3
+2026-10-03T23:08:48Z token budget per batch: 8000 (generation 24000)
+2026-10-03T23:08:49Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0111)
+2026-10-03T23:08:50Z padding self-check: max |u_batch - u_single| = 0.1831 (tol 0.957) -> left padding
+2026-10-03T23:10:16Z C-TG-verdict-blocks-s3 rule_v1/dev_missing: TA nan Rev nan Hold nan n=None (88.1 s)
+2026-10-03T23:10:16Z C-TG-verdict-blocks-s3 clin_v1/trialgpt_dev prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_dev/verdict.npz', 'exists')
+2026-10-03T23:10:31Z C-TG-verdict-blocks-s3 clin_v1/trialgpt_dev: TA nan Rev nan Hold nan n=None (15.2 s)
+2026-10-03T23:10:32Z C-TG-verdict-blocks-s3 clin_v1/trialgpt_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/trialgpt_test/verdict.npz', 'exists')
+2026-10-03T23:11:33Z C-TG-verdict-blocks-s3 clin_v1/trialgpt_test: TA nan Rev nan Hold nan n=None (61.6 s)
+2026-10-03T23:11:34Z DONE C-TG-verdict-blocks-s3 in 3.1 min, GPU util mean 67.7
