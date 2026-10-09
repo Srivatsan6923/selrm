@@ -17,6 +17,8 @@ cd /tmp/code
 ( cd "$ROOT/data" && find . -name records.jsonl ) | while read -r f; do
   [ -e "data/$f" ] || { mkdir -p "data/$(dirname "$f")"; cp "$ROOT/data/$f" "data/$f"; }
 done
+# builders' validation may need scikit-learn (A's shortcut scorers), which the training env lacks: CPU-only install
+"$PY" -c "import sklearn" 2>/dev/null || { "$PY" -m pip install -q --target /tmp/extra "scikit-learn==1.9.0"; export PYTHONPATH=/tmp/extra; }
 "$PY" "$@" --restore
 NAME="$NAME" "$PY" - <<'EOF'
 import hashlib, json, os, shutil
