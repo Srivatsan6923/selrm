@@ -1,0 +1,287 @@
+{
+ "analysis_plan_sha256": "91c1f59a38ee82c3290a9f8709d44ed8a4bd7ea7e558a0b403f9dec906e5bb2b",
+ "by_family": {
+  "additive_score": 27,
+  "all_of": 6,
+  "allergy_switch": 3,
+  "any_of": 7,
+  "drug_interaction": 6,
+  "family_switch": 1,
+  "g_all_of": 27,
+  "g_any_of": 46,
+  "g_score_cutoff": 21,
+  "g_single": 31,
+  "g_two_of_three": 16,
+  "history_switch": 2,
+  "lab_threshold": 8,
+  "score_cutoff": 1,
+  "state_switch": 7,
+  "two_of_three": 1,
+  "v2_all|class+class": 21,
+  "v2_all|class+window": 22,
+  "v2_all|window+window": 17,
+  "v2_any|window+window": 13,
+  "v2_single|class": 12,
+  "v2_single|window": 5
+ },
+ "by_nm_kind": {
+  "boundary": 42,
+  "class": 34,
+  "negation": 55,
+  "numeric": 42,
+  "subject": 48,
+  "time": 45,
+  "window": 34
+ },
+ "by_part": {
+  "v1": 210,
+  "v2": 90
+ },
+ "by_tier": {
+  "easy": 200,
+  "long": 92,
+  "superseded": 8
+ },
+ "case_share": {
+  "base": 0.25,
+  "flip": 0.25,
+  "near": 0.25,
+  "pres": 0.25
+ },
+ "cases_by_kind": {
+  "base": 300,
+  "flip": 300,
+  "near": 300,
+  "pres": 300
+ },
+ "created": "2026-10-09",
+ "format": "stage 2: ledger entries (need, found, subject, status, time, concept, applies); struct; crit; cluster = rule id; ref_date on v2 records",
+ "groups": 300,
+ "labels": {
+  "0": 2292,
+  "1": 2292
+ },
+ "name": "dev",
+ "records": 4584,
+ "rejects": {
+  "v1": {
+   "proposed": 211,
+   "rejected": 1
+  },
+  "v2": {
+   "proposed": 90,
+   "rejected": 0
+  }
+ },
+ "rules": 200,
+ "seed": 20261009,
+ "set": "rule_v2",
+ "sha256": "248cd85b4270466fc7c65d47b4b37c87cc0538b1d6df5ec58a8ff6282489d8b5",
+ "shortcut_validation": {
+  "always_default": {
+   "all": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 300
+   },
+   "nm_kind=boundary": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 42
+   },
+   "nm_kind=class": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 34
+   },
+   "nm_kind=negation": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 55
+   },
+   "nm_kind=numeric": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 42
+   },
+   "nm_kind=subject": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 48
+   },
+   "nm_kind=time": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 45
+   },
+   "nm_kind=window": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 34
+   }
+  },
+  "concept_named": {
+   "all": {
+    "Hold": 0.0,
+    "Rev": 66.0,
+    "TA": 0.0,
+    "n": 300
+   },
+   "nm_kind=boundary": {
+    "Hold": 0.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 42
+   },
+   "nm_kind=class": {
+    "Hold": 0.0,
+    "Rev": 100.0,
+    "TA": 0.0,
+    "n": 34
+   },
+   "nm_kind=negation": {
+    "Hold": 0.0,
+    "Rev": 100.0,
+    "TA": 0.0,
+    "n": 55
+   },
+   "nm_kind=numeric": {
+    "Hold": 0.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 42
+   },
+   "nm_kind=subject": {
+    "Hold": 0.0,
+    "Rev": 100.0,
+    "TA": 0.0,
+    "n": 48
+   },
+   "nm_kind=time": {
+    "Hold": 0.0,
+    "Rev": 60.0,
+    "TA": 0.0,
+    "n": 45
+   },
+   "nm_kind=window": {
+    "Hold": 0.0,
+    "Rev": 100.0,
+    "TA": 0.0,
+    "n": 34
+   }
+  },
+  "program": {
+   "all": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 300
+   },
+   "nm_kind=boundary": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 42
+   },
+   "nm_kind=class": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 34
+   },
+   "nm_kind=negation": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 55
+   },
+   "nm_kind=numeric": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 42
+   },
+   "nm_kind=subject": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 48
+   },
+   "nm_kind=time": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 45
+   },
+   "nm_kind=window": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 34
+   }
+  }
+ },
+ "split": "dev",
+ "target_claim_violations": 0,
+ "templates": "test",
+ "v1_part": "rule_v1 library, fold 1 (data/rule_v1/FOLDS.json): training rules for train and dev, L2 rules for test_L2; cases from selrm.engine with new seeds",
+ "v2_part": {
+  "classes": "training classes of onto_v1",
+  "engine": "selrm/engine2.py",
+  "held_out_for_test_L2": [
+   "any|class+class",
+   "any|class+window"
+  ],
+  "onto_v1_classes_sha256": "ffafdac6421df7618840fbaff68d1c98ff9f00ee8a3bab13ec4346e482d8233a",
+  "rules_per_class": 30,
+  "signature_classes": [
+   "single|window",
+   "single|class",
+   "any|class+window",
+   "any|class+class",
+   "any|window+window",
+   "all|class+window",
+   "all|class+class",
+   "all|window+window"
+  ],
+  "windows": {
+   "days": [
+    7,
+    10,
+    14,
+    21,
+    28,
+    30,
+    45,
+    60,
+    90
+   ],
+   "months": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    9,
+    12,
+    18,
+    24
+   ],
+   "years": [
+    1,
+    2,
+    3,
+    5,
+    10
+   ]
+  }
+ }
+}

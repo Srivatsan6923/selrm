@@ -773,6 +773,78 @@
   "sha256": "98b413be3efaac807da51d5df1f1a10bf111202c43f6ffd8c96e83c9aae77215",
   "split": "train"
  },
+ "rule_v2/dev": {
+  "created": "2026-10-09",
+  "frozen": true,
+  "level": "L0",
+  "manifest": "rule_v2/dev/MANIFEST.json",
+  "n_groups": 300,
+  "n_records": 4584,
+  "path": "rule_v2/dev/records.jsonl",
+  "sha256": "248cd85b4270466fc7c65d47b4b37c87cc0538b1d6df5ec58a8ff6282489d8b5",
+  "split": "dev",
+  "tier": "mixed"
+ },
+ "rule_v2/test_L2": {
+  "created": "2026-10-09",
+  "frozen": true,
+  "level": "L2",
+  "manifest": "rule_v2/test_L2/MANIFEST.json",
+  "n_groups": 2000,
+  "n_records": 30224,
+  "path": "rule_v2/test_L2/records.jsonl",
+  "sha256": "b56208497494a814475e72da357c5dc4a4b14cdac14477bd2776fb3e9e75d8c0",
+  "split": "test",
+  "tier": "mixed"
+ },
+ "rule_v2/train_blocks": {
+  "created": "2026-10-09",
+  "frozen": true,
+  "level": "L0",
+  "manifest": "rule_v2/train_blocks/MANIFEST.json",
+  "n_groups": 5474,
+  "n_records": 60096,
+  "path": "rule_v2/train_blocks/records.jsonl",
+  "sha256": "87613d0ada7596acfe6072436259e475ec4393da0a89d9bd0828fc10596d6a40",
+  "split": "train",
+  "tier": "mixed"
+ },
+ "rule_v2/train_triplets": {
+  "created": "2026-10-09",
+  "frozen": true,
+  "level": "L0",
+  "manifest": "rule_v2/train_triplets/MANIFEST.json",
+  "n_groups": 5474,
+  "n_records": 60104,
+  "path": "rule_v2/train_triplets/records.jsonl",
+  "sha256": "d4391ab3dcf9abaf3b275250ffee15262945cd9c7b8d0acc6132a078bf7c0b80",
+  "split": "train",
+  "tier": "mixed"
+ },
+ "rule_v2/train_triplets_lo_class": {
+  "created": "2026-10-09",
+  "frozen": true,
+  "level": "L0",
+  "manifest": "rule_v2/train_triplets_lo_class/MANIFEST.json",
+  "n_groups": 5474,
+  "n_records": 60104,
+  "path": "rule_v2/train_triplets_lo_class/records.jsonl",
+  "sha256": "3fdb1aee41f8ecad38f6394bc8dd358a426f80cbc658eb405c13f73f890cf15a",
+  "split": "train",
+  "tier": "mixed"
+ },
+ "rule_v2/train_triplets_lo_window": {
+  "created": "2026-10-09",
+  "frozen": true,
+  "level": "L0",
+  "manifest": "rule_v2/train_triplets_lo_window/MANIFEST.json",
+  "n_groups": 5474,
+  "n_records": 60104,
+  "path": "rule_v2/train_triplets_lo_window/records.jsonl",
+  "sha256": "ac69e1f81e3b97655f5691d0476c502b6407d145654543f114df73120d9e00fe",
+  "split": "train",
+  "tier": "mixed"
+ },
  "xp_v1/test": {
   "created": "2026-10-08",
   "frozen": true,

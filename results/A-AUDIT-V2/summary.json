@@ -1,0 +1,571 @@
+{
+ "cue_violations": [],
+ "held_out_v2_classes": [
+  "any|class+class",
+  "any|class+window"
+ ],
+ "line_overlap_train_vs_frozen_tests": {
+  "cls_v1/dev": {
+   "examples": [],
+   "of_which_with_a_date_or_year": 0,
+   "shared_lines_outside_settings": 0
+  },
+  "cls_v1/test": {
+   "examples": [],
+   "of_which_with_a_date_or_year": 0,
+   "shared_lines_outside_settings": 0
+  },
+  "rule_v1/test_L2": {
+   "examples": [],
+   "of_which_with_a_date_or_year": 0,
+   "shared_lines_outside_settings": 0
+  },
+  "rule_v2/dev": {
+   "examples": [],
+   "of_which_with_a_date_or_year": 0,
+   "shared_lines_outside_settings": 0
+  },
+  "rule_v2/test_L2": {
+   "examples": [],
+   "of_which_with_a_date_or_year": 0,
+   "shared_lines_outside_settings": 0
+  },
+  "xp_v1/test": {
+   "examples": [],
+   "of_which_with_a_date_or_year": 0,
+   "shared_lines_outside_settings": 0
+  },
+  "xr_v1/test": {
+   "examples": [],
+   "of_which_with_a_date_or_year": 0,
+   "shared_lines_outside_settings": 0
+  }
+ },
+ "run_id": "A-AUDIT-V2",
+ "sets": {
+  "dev": {
+   "by_nm_kind": {
+    "boundary": 42,
+    "class": 34,
+    "negation": 55,
+    "numeric": 42,
+    "subject": 48,
+    "time": 45,
+    "window": 34
+   },
+   "by_part": {
+    "v1": 210,
+    "v2": 90
+   },
+   "case_share": {
+    "base": 0.25,
+    "flip": 0.25,
+    "near": 0.25,
+    "pres": 0.25
+   },
+   "groups": 300,
+   "records": 4584,
+   "rejects": {
+    "v1": {
+     "proposed": 211,
+     "rejected": 1
+    },
+    "v2": {
+     "proposed": 90,
+     "rejected": 0
+    }
+   },
+   "rules": 200,
+   "sha256": "248cd85b4270466fc7c65d47b4b37c87cc0538b1d6df5ec58a8ff6282489d8b5",
+   "target_claim_violations": 0
+  },
+  "test_L2": {
+   "by_nm_kind": {
+    "boundary": 240,
+    "class": 288,
+    "negation": 332,
+    "numeric": 240,
+    "subject": 326,
+    "time": 286,
+    "window": 288
+   },
+   "by_part": {
+    "v1": 1200,
+    "v2": 800
+   },
+   "case_share": {
+    "base": 0.25,
+    "flip": 0.25,
+    "near": 0.25,
+    "pres": 0.25
+   },
+   "groups": 2000,
+   "records": 30224,
+   "rejects": {
+    "v1": {
+     "proposed": 1200,
+     "rejected": 0
+    },
+    "v2": {
+     "proposed": 800,
+     "rejected": 0
+    }
+   },
+   "rules": 163,
+   "sha256": "b56208497494a814475e72da357c5dc4a4b14cdac14477bd2776fb3e9e75d8c0",
+   "target_claim_violations": 0
+  },
+  "train_blocks": {
+   "by_nm_kind": {
+    "boundary": 621,
+    "class": 829,
+    "negation": 905,
+    "numeric": 630,
+    "subject": 911,
+    "time": 754,
+    "window": 824
+   },
+   "by_part": {
+    "v1": 3103,
+    "v2": 2371
+   },
+   "case_share": {
+    "base": 0.35,
+    "flip": 0.35,
+    "missing": 0.15,
+    "pres": 0.15
+   },
+   "groups": 5474,
+   "records": 60096,
+   "rejects": {
+    "v1": {
+     "proposed": 3150,
+     "rejected": 28
+    },
+    "v2": {
+     "proposed": 2397,
+     "rejected": 45
+    }
+   },
+   "rules": 403,
+   "sha256": "87613d0ada7596acfe6072436259e475ec4393da0a89d9bd0828fc10596d6a40",
+   "target_claim_violations": 0
+  },
+  "train_triplets": {
+   "by_nm_kind": {
+    "boundary": 621,
+    "class": 829,
+    "negation": 905,
+    "numeric": 630,
+    "subject": 911,
+    "time": 754,
+    "window": 824
+   },
+   "by_part": {
+    "v1": 3103,
+    "v2": 2371
+   },
+   "case_share": {
+    "base": 0.175,
+    "flip": 0.35,
+    "missing": 0.15,
+    "near": 0.175,
+    "pres": 0.15
+   },
+   "groups": 5474,
+   "records": 60104,
+   "rejects": {
+    "v1": {
+     "proposed": 3150,
+     "rejected": 28
+    },
+    "v2": {
+     "proposed": 2397,
+     "rejected": 45
+    }
+   },
+   "rules": 403,
+   "sha256": "d4391ab3dcf9abaf3b275250ffee15262945cd9c7b8d0acc6132a078bf7c0b80",
+   "target_claim_violations": 0
+  },
+  "train_triplets_lo_class": {
+   "by_nm_kind": {
+    "boundary": 621,
+    "negation": 1195,
+    "numeric": 630,
+    "subject": 1183,
+    "time": 1021,
+    "window": 824
+   },
+   "by_part": {
+    "v1": 3103,
+    "v2": 2371
+   },
+   "case_share": {
+    "base": 0.175,
+    "flip": 0.35,
+    "missing": 0.15,
+    "near": 0.175,
+    "pres": 0.15
+   },
+   "groups": 5474,
+   "records": 60104,
+   "rejects": {
+    "v1": {
+     "proposed": 3150,
+     "rejected": 28
+    },
+    "v2": {
+     "proposed": 2405,
+     "rejected": 53
+    }
+   },
+   "rules": 403,
+   "sha256": "3fdb1aee41f8ecad38f6394bc8dd358a426f80cbc658eb405c13f73f890cf15a",
+   "target_claim_violations": 0
+  },
+  "train_triplets_lo_window": {
+   "by_nm_kind": {
+    "boundary": 621,
+    "class": 829,
+    "negation": 1305,
+    "numeric": 630,
+    "subject": 1335,
+    "time": 754
+   },
+   "by_part": {
+    "v1": 3103,
+    "v2": 2371
+   },
+   "case_share": {
+    "base": 0.175,
+    "flip": 0.35,
+    "missing": 0.15,
+    "near": 0.175,
+    "pres": 0.15
+   },
+   "groups": 5474,
+   "records": 60104,
+   "rejects": {
+    "v1": {
+     "proposed": 3150,
+     "rejected": 28
+    },
+    "v2": {
+     "proposed": 2419,
+     "rejected": 67
+    }
+   },
+   "rules": 403,
+   "sha256": "ac69e1f81e3b97655f5691d0476c502b6407d145654543f114df73120d9e00fe",
+   "target_claim_violations": 0
+  }
+ },
+ "shortcut_validation": {
+  "dev": {
+   "always_default": {
+    "all": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 300
+    },
+    "nm_kind=boundary": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 42
+    },
+    "nm_kind=class": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 34
+    },
+    "nm_kind=negation": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 55
+    },
+    "nm_kind=numeric": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 42
+    },
+    "nm_kind=subject": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 48
+    },
+    "nm_kind=time": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 45
+    },
+    "nm_kind=window": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 34
+    }
+   },
+   "concept_named": {
+    "all": {
+     "Hold": 0.0,
+     "Rev": 66.0,
+     "TA": 0.0,
+     "n": 300
+    },
+    "nm_kind=boundary": {
+     "Hold": 0.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 42
+    },
+    "nm_kind=class": {
+     "Hold": 0.0,
+     "Rev": 100.0,
+     "TA": 0.0,
+     "n": 34
+    },
+    "nm_kind=negation": {
+     "Hold": 0.0,
+     "Rev": 100.0,
+     "TA": 0.0,
+     "n": 55
+    },
+    "nm_kind=numeric": {
+     "Hold": 0.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 42
+    },
+    "nm_kind=subject": {
+     "Hold": 0.0,
+     "Rev": 100.0,
+     "TA": 0.0,
+     "n": 48
+    },
+    "nm_kind=time": {
+     "Hold": 0.0,
+     "Rev": 60.0,
+     "TA": 0.0,
+     "n": 45
+    },
+    "nm_kind=window": {
+     "Hold": 0.0,
+     "Rev": 100.0,
+     "TA": 0.0,
+     "n": 34
+    }
+   },
+   "program": {
+    "all": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 300
+    },
+    "nm_kind=boundary": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 42
+    },
+    "nm_kind=class": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 34
+    },
+    "nm_kind=negation": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 55
+    },
+    "nm_kind=numeric": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 42
+    },
+    "nm_kind=subject": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 48
+    },
+    "nm_kind=time": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 45
+    },
+    "nm_kind=window": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 34
+    }
+   }
+  },
+  "test_L2": {
+   "always_default": {
+    "all": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 2000
+    },
+    "nm_kind=boundary": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 240
+    },
+    "nm_kind=class": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 288
+    },
+    "nm_kind=negation": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 332
+    },
+    "nm_kind=numeric": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 240
+    },
+    "nm_kind=subject": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 326
+    },
+    "nm_kind=time": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 286
+    },
+    "nm_kind=window": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 288
+    }
+   },
+   "concept_named": {
+    "all": {
+     "Hold": 0.0,
+     "Rev": 68.1,
+     "TA": 0.0,
+     "n": 2000
+    },
+    "nm_kind=boundary": {
+     "Hold": 0.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 240
+    },
+    "nm_kind=class": {
+     "Hold": 0.0,
+     "Rev": 100.0,
+     "TA": 0.0,
+     "n": 288
+    },
+    "nm_kind=negation": {
+     "Hold": 0.0,
+     "Rev": 100.0,
+     "TA": 0.0,
+     "n": 332
+    },
+    "nm_kind=numeric": {
+     "Hold": 0.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 240
+    },
+    "nm_kind=subject": {
+     "Hold": 0.0,
+     "Rev": 100.0,
+     "TA": 0.0,
+     "n": 326
+    },
+    "nm_kind=time": {
+     "Hold": 0.0,
+     "Rev": 44.76,
+     "TA": 0.0,
+     "n": 286
+    },
+    "nm_kind=window": {
+     "Hold": 0.0,
+     "Rev": 100.0,
+     "TA": 0.0,
+     "n": 288
+    }
+   },
+   "program": {
+    "all": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 2000
+    },
+    "nm_kind=boundary": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 240
+    },
+    "nm_kind=class": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 288
+    },
+    "nm_kind=negation": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 332
+    },
+    "nm_kind=numeric": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 240
+    },
+    "nm_kind=subject": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 326
+    },
+    "nm_kind=time": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 286
+    },
+    "nm_kind=window": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 288
+    }
+   }
+  }
+ },
+ "templates_shared_with_mcv_v1": []
+}
