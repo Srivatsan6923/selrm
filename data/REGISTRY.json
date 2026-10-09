@@ -749,6 +749,18 @@
   "sha256": "98b413be3efaac807da51d5df1f1a10bf111202c43f6ffd8c96e83c9aae77215",
   "split": "train"
  },
+ "xp_v1/test": {
+  "created": "2026-10-08",
+  "frozen": true,
+  "level": "L2",
+  "manifest": "xp_v1/MANIFEST.json",
+  "n_groups": 300,
+  "n_records": 4800,
+  "path": "xp_v1/test/records.jsonl",
+  "sha256": "46d6b08ff4ebb44aa26e927a9081c236ec94a4d534c8b3bbc66e6343a0e27004",
+  "split": "test",
+  "tier": "paraphrase"
+ },
  "xr_v1/test": {
   "created": "2026-10-02",
   "frozen": true,

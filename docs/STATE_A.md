@@ -7,9 +7,9 @@ API: OPENROUTER key works only with a lower-case 'sk-'; new-account limit of 20 
 ## Stage 2 (do in this order)
 | # | Item | Status |
 |---|---|---|
-| A1 | mcv_v1 (MedCalc-V) | **frozen 8 Oct** (3c0abf2): 19 of 19 scores; criteria_test 3,440 pairs, natural_band_test 394, edits_test 1,636 triplets after the fidelity filter (1,787 before), ruleside_test 295 crossed items, dev, adapt_blocks/adapt_triplets 12,000 records each. `python scripts/build_mcv_v1.py --restore`. Still to write: docs/DATA_AUDIT_mcv_v1.md, the 100-item author sheet (H-S2-3), result keys for Appendix E |
-| A2 | kb_v1 (DDXPlus criterion) | **frozen 8 Oct** (9236dd7): renderer, support check (data/kb_v1/SUPPORT.json), triplets_dev 5,138 and triplets_test 5,143 groups. `python scripts/build_kb_v1.py --restore`. Still to write: the 20-criterion author sheet |
-| A3 | xp_v1 (program-preserving paraphrases) | not started |
+| A1 | mcv_v1 (MedCalc-V) | **frozen 8 Oct** (3c0abf2): 19 of 19 scores; criteria_test 3,440 pairs, natural_band_test 394, edits_test 1,636 triplets after the fidelity filter (1,787 before), ruleside_test 295 crossed items, dev, adapt_blocks/adapt_triplets 12,000 records each. `python scripts/build_mcv_v1.py --restore`. Audit: docs/DATA_AUDIT_mcv_v1.md; author sheet audit/s2/mcv_edits_sheet.csv; keys in results/A-SETS |
+| A2 | kb_v1 (DDXPlus criterion) | **frozen 8 Oct** (9236dd7): renderer, support check (data/kb_v1/SUPPORT.json), triplets_dev 5,138 and triplets_test 5,143 groups. `python scripts/build_kb_v1.py --restore`. Audit: docs/DATA_AUDIT_kb_v1.md; author sheet audit/s2/kb_criteria_sheet.csv |
+| A3 | xp_v1 (program-preserving paraphrases) | **frozen 8 Oct**: 300 groups of test_L2, 0 program violations. `python scripts/build_xp_v1.py --restore` |
 | A4 | onto_v1, cls_v1 | not started |
 | A5 | rule_v2 | not started |
 | A6 | reg_v1 | not started |
