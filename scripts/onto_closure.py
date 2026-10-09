@@ -177,19 +177,24 @@ def drug_domain():
         return sorted(set(out))
     with ThreadPoolExecutor(8) as ex:
         bn = dict(zip(ing, ex.map(brands, ing)))
-    selected = set(ing)
+    member_of = {m: c["id"] for c in classes for m in c["ingredients"]}       # selected class of an ingredient
     chosen = []
     for c in classes:
         e = c["epc"]
         c["members"] = [{"id": f"RXCUI:{m}", "names": [c["names_of"][m]] + [b for b in bn[m] if NAME_OK.match(b)][:3]}
                         for m in c["ingredients"]]
-        sib = {}                                # other ingredients of the members' ATC level-3 groups
+        # Near-miss ingredients: from the members' ATC level-3 groups, with an FDA class of their own (so the
+        # label does not rest on a drug the FDA lists leave unclassified), sharing no ATC level-4 code with a
+        # member, and outside the class and its sub-classes.
+        own4 = {code for m in epc[e] for code in atc_of[m]}
+        sib = {}
         for m in c["ingredients"]:
             for code in atc_of[m]:
                 for x, name in group[code[:4]].items():
-                    if x not in epc[e] and x not in trans.get(e, ()) and x not in selected and NAME_OK.match(name):
+                    if (x in owner and x not in epc[e] and x not in trans.get(e, ()) and not (atc_of[x] & own4)
+                            and NAME_OK.match(name)):
                         sib[x] = name
-        c["siblings"] = [{"id": f"RXCUI:{m}", "names": [n]} for m, n in sorted(sib.items())]
+        c["siblings"] = [{"id": f"RXCUI:{m}", "names": [n], "member_of": member_of.get(m)} for m, n in sorted(sib.items())]
         for k in ("ingredients", "names_of"):
             del c[k]
         if len(c["siblings"]) >= 2:
@@ -257,6 +262,12 @@ def main():
         both = member_names[s] & member_names["train"]
         if both:
             errs.append(f"{len(both)} {s} member names also occur as training members, e.g. {sorted(both)[:5]}")
+    split_of = {c["id"]: f["split"] for f in out["drug"] for c in f["classes"]}
+    for f in out["drug"]:                                # a near-miss from a selected class stays inside its split
+        for c in f["classes"]:
+            c["siblings"] = [m for m in c["siblings"] if m["member_of"] is None or split_of.get(m["member_of"]) == f["split"]]
+    out["drug"] = [f for f in out["drug"] if len(f["classes"][0]["siblings"]) >= 2]
+    stats["drug"]["classes_with_two_near_miss_ingredients_in_split"] = len(out["drug"])
     for s_ in ("dev", "test"):                           # near-miss ingredients of dev and test are no training members
         for f in out["drug"]:
             if f["split"] == s_:
@@ -275,7 +286,7 @@ def main():
     man = {"set": "onto_v1", "seed": SEED, "snapshot": snapshot, "classes_sha256": hashlib.sha256(text.encode()).hexdigest(),
            "rules": {"drug_class": f"an FDA EPC class by its direct ingredient members (rxclass classMembers, trans=1) with >= {MIN_MEMBERS} single ingredients that belong to no other EPC class; "
                                    f"agreement = the members also match one ATC level-4 code (Jaccard >= {JACCARD}, >= {COMMON} common); names shown are EPC names; near-miss ingredients come from the "
-                                   "members' ATC level-3 groups and belong to no selected class and not to the class or its sub-classes",
+                                   "members' ATC level-3 groups, have an FDA class of their own, share no ATC level-4 code with a member, lie outside the class and its sub-classes, and, if they are members of a selected class, that class is in the same split",
                      "ontology_class": f"a term with {MIN_DESC}-{MAX_DESC} descendants under the domain root; members = descendants with a usable label or exact synonym; "
                                        "siblings share a parent and are disjoint; selected classes are pairwise disjoint (no subsumption, no common descendant); the parent is the too-general term",
                      "usable_name": NAME_OK.pattern + " and no 'abnormality of' / 'abnormal'",
