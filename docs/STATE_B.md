@@ -23,7 +23,14 @@ Nothing is tuned on a test set: parser, linker, gate and prompts are developed o
 - B2 training on rule_v2: blocked on A5 (rule_v2 not registered). Needs a stage-2 record format in selrm/formats.py
   (date in `time`, `concept`, `applies`; judge prompts record-only and record+case, half each) and queue rows.
 - B3 Ledger-RM-G: after B1 and B2. Validation stop rule (0.5 TA on rule_v2/dev and rule_v1/dev).
-- B4 adaptation arms: blocked on A1 (mcv_v1/adapt_blocks, adapt_triplets).
+- B4 adaptation arms: QUEUED 9 Oct (configs/queues/v2/b_mix.json, prepped; B-MIX-{blocks,triplets}-s0..2, priority
+  12-14, max_len 3072). mcv_v1/adapt_blocks, adapt_triplets and dev are on the PVC (registry copy:
+  scratch/registry_rule_v1.json; local records under scratch/role_a_s2/data/mcv_v1). When done: pull,
+  register as mix_blocks_s*/mix_triplets_s* (add the alias rule to register_adapters.py), HANDOFFS to C.
+  New data from A: `submit_b.py fetch-ref origin/role-a [path=url=sha256 ...]`, then `restore-data <sha12>
+  <set,set,...> <builder>`.
+- Next unblocked step: parser on mcv_v1/dev (gate_dev.py reads meta.criterion_holds; mcv records have struct
+  and meta.points instead, so it needs a small adapter), precision against struct.
 - B5 handoffs: adapters line sent 9 Oct; resources per configuration after B2.
 - Carry-over: Qwen3.5-4B cells (3, queued, the runners take them), 6 B-NS-xr_v1-B-AUX evals (queued); diversity
   curves (39), seeds 1-2 of non-core ablations: not queued, to be run when GPUs are idle after B2-B4 or reported to D.
