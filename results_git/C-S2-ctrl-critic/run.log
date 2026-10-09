@@ -1,0 +1,13 @@
+2026-10-08T23:08:11Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-08T23:08:12Z token budget per batch: 8000 (generation 24000)
+2026-10-08T23:08:27Z C-S2-ctrl-critic rule_v1/test_L2@none prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/rule_v1/test_L2@none/verdict.npz', 'built 29248 prompts, max 355 tokens')
+2026-10-08T23:09:05Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0160)
+2026-10-08T23:09:06Z padding self-check: max |u_batch - u_single| = 0.0819 (tol 0.540) -> left padding
+2026-10-08T23:19:25Z C-S2-ctrl-critic rule_v1/test_L2@none: TA 8.8 Rev 16.0 Hold 47.2 n=2000 (657.6 s)
+2026-10-08T23:19:42Z C-S2-ctrl-critic rule_v1/test_L2@wrong prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/rule_v1/test_L2@wrong/verdict.npz', 'built 29248 prompts, max 462 tokens')
+2026-10-08T23:34:04Z C-S2-ctrl-critic rule_v1/test_L2@wrong: TA 4.1 Rev 7.5 Hold 63.8 n=2000 (861.8 s)
+2026-10-08T23:34:13Z C-S2-ctrl-critic rule_v1/test_L3inv@none prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/rule_v1/test_L3inv@none/verdict.npz', 'built 16000 prompts, max 333 tokens')
+2026-10-08T23:39:36Z C-S2-ctrl-critic rule_v1/test_L3inv@none: TA 1.7 Rev 3.6 Hold 40.4 n=1000 (323.1 s)
+2026-10-08T23:39:46Z C-S2-ctrl-critic rule_v1/test_L3inv@wrong prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/rule_v1/test_L3inv@wrong/verdict.npz', 'built 16000 prompts, max 407 tokens')
+2026-10-08T23:46:42Z C-S2-ctrl-critic rule_v1/test_L3inv@wrong: TA 3.8 Rev 8.2 Hold 44.9 n=1000 (415.5 s)
+2026-10-08T23:46:43Z DONE C-S2-ctrl-critic in 38.7 min, GPU util mean 95.4
