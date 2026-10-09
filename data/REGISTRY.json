@@ -1,4 +1,28 @@
 {
+ "kb_v1/triplets_dev": {
+  "created": "2026-10-08",
+  "frozen": true,
+  "level": "external",
+  "manifest": "kb_v1/MANIFEST.json",
+  "n_groups": 5138,
+  "n_records": 30828,
+  "path": "kb_v1/triplets_dev/records.jsonl",
+  "sha256": "ed62751c0d9c9fe2f31deea38a9b761a6140838ee7de41445e38c5313ee9b309",
+  "split": "dev",
+  "tier": "external"
+ },
+ "kb_v1/triplets_test": {
+  "created": "2026-10-08",
+  "frozen": true,
+  "level": "external",
+  "manifest": "kb_v1/MANIFEST.json",
+  "n_groups": 5143,
+  "n_records": 30858,
+  "path": "kb_v1/triplets_test/records.jsonl",
+  "sha256": "5278179da304086a8824d4c054ec6a9593c671b32acae824c9eec92d7089f18b",
+  "split": "test",
+  "tier": "external"
+ },
  "mcv_v1/adapt_blocks": {
   "created": "2026-10-08",
   "frozen": true,

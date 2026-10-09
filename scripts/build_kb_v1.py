@@ -24,6 +24,7 @@ from selrm.metrics import decisions, summarise  # noqa: E402
 
 SEED = 20261008
 PER_PAIR = 20
+POOL = 300                   # patients tried per pair, in the seeded order, to find PER_PAIR that qualify
 OUT = ROOT / "data" / T.SET
 PAIRS = OUT / "medeinst_pairs.json"
 
@@ -80,12 +81,16 @@ def build(split_file, split, pairs):
     for a, b, _ in pairs:
         by_a[a].append(b)
     cand = collections.defaultdict(list)
-    for p in T.patients(split_file):
+    for p in T.patients(split_file):                     # keep only the POOL first patients of the seeded order
         for b in by_a.get(p["pathology"], ()):
-            cand[(p["pathology"], b)].append(p)
+            c = cand[(p["pathology"], b)]
+            c.append((T._h(SEED, split, p["pathology"], b, p["pid"]), p))
+            if len(c) > 2 * POOL:
+                c.sort(key=lambda x: x[0])
+                del c[POOL:]
     recs, per_pair = [], {}
     for a, b, _ in pairs:
-        ps = sorted(cand[(a, b)], key=lambda p: T._h(SEED, split, a, b, p["pid"]))
+        ps = [p for _, p in sorted(cand[(a, b)], key=lambda x: x[0])[:POOL]]
         n = 0
         for p in ps:
             r = T.records(p, a, b, split, SEED)

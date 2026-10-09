@@ -10,6 +10,7 @@ import hashlib
 import io
 import re
 import zipfile
+from functools import lru_cache
 
 from selrm import kb_criterion as K
 
@@ -90,18 +91,24 @@ def case_text(p, ans, extra=()):
     return "\n".join([head] + [line(c, v) for c, v in ans.items()] + [line(c, v, rel) for c, v, rel in extra])
 
 
+@lru_cache(maxsize=None)
+def _questions():
+    by_q = {}
+    for code, e in K.kb()[1].items():
+        by_q.setdefault(e["question_en"], []).append(code)
+    return by_q, sorted(by_q, key=len, reverse=True)
+
+
 def read_case(text):
     """Present codes of the patient from a case text (the executor's reading): the inverse of case_text.
     A line about a relative and a line answered No do not count."""
     ev = K.kb()[1]
-    by_q = {}
-    for code, e in ev.items():
-        by_q.setdefault(e["question_en"], []).append(code)
+    by_q, order = _questions()
     ans = {}
     for ln in text.split("\n")[1:]:
         if ln.startswith("About the patient's"):
             continue
-        q = next((q for q in sorted(by_q, key=len, reverse=True) if ln.startswith(q + " ")), None)
+        q = next((q for q in order if ln.startswith(q + " ")), None)
         if q is None:
             raise ValueError(f"unreadable line: {ln}")
         a = ln[len(q) + 1:]

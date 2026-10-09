@@ -1,0 +1,1353 @@
+{
+ "validation_patients": 132448,
+ "share_with_a_finding_outside_the_pathology_list": 0.0,
+ "pairs": 134,
+ "patient_pair_judgments": 379516,
+ "share_decided_for_gold": 0.9781,
+ "share_decided_for_trap": 0.0,
+ "share_undecided": 0.0219,
+ "pairs_with_no_exclusive_finding_for_gold": 2,
+ "pairs_with_no_exclusive_finding_for_trap": 1,
+ "by_pair": [
+  {
+   "gold": "Acute COPD exacerbation / infection",
+   "trap": "Acute pulmonary edema",
+   "medeinst_pairs": 14,
+   "patients": 2076,
+   "own": 2076,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Acute COPD exacerbation / infection",
+   "trap": "Bronchitis",
+   "medeinst_pairs": 48,
+   "patients": 2076,
+   "own": 2073,
+   "other": 0,
+   "undecided": 3,
+   "share_decided_for_gold": 0.9986
+  },
+  {
+   "gold": "Acute dystonic reactions",
+   "trap": "Anaphylaxis",
+   "medeinst_pairs": 4,
+   "patients": 3281,
+   "own": 3281,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Acute dystonic reactions",
+   "trap": "Anemia",
+   "medeinst_pairs": 4,
+   "patients": 3281,
+   "own": 3281,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Acute dystonic reactions",
+   "trap": "Atrial fibrillation",
+   "medeinst_pairs": 1,
+   "patients": 3281,
+   "own": 3281,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Acute dystonic reactions",
+   "trap": "Myasthenia gravis",
+   "medeinst_pairs": 1,
+   "patients": 3281,
+   "own": 3281,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Acute laryngitis",
+   "trap": "Bronchitis",
+   "medeinst_pairs": 157,
+   "patients": 3407,
+   "own": 3383,
+   "other": 0,
+   "undecided": 24,
+   "share_decided_for_gold": 0.993
+  },
+  {
+   "gold": "Acute otitis media",
+   "trap": "Bronchitis",
+   "medeinst_pairs": 2,
+   "patients": 3474,
+   "own": 2746,
+   "other": 0,
+   "undecided": 728,
+   "share_decided_for_gold": 0.7904
+  },
+  {
+   "gold": "Acute otitis media",
+   "trap": "URTI",
+   "medeinst_pairs": 1,
+   "patients": 3474,
+   "own": 3115,
+   "other": 0,
+   "undecided": 359,
+   "share_decided_for_gold": 0.8967
+  },
+  {
+   "gold": "Acute pulmonary edema",
+   "trap": "Possible NSTEMI / STEMI",
+   "medeinst_pairs": 129,
+   "patients": 2500,
+   "own": 2500,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Acute pulmonary edema",
+   "trap": "Pulmonary embolism",
+   "medeinst_pairs": 6,
+   "patients": 2500,
+   "own": 2500,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Acute pulmonary edema",
+   "trap": "Unstable angina",
+   "medeinst_pairs": 92,
+   "patients": 2500,
+   "own": 2500,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Acute rhinosinusitis",
+   "trap": "Bronchitis",
+   "medeinst_pairs": 5,
+   "patients": 1866,
+   "own": 1866,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Acute rhinosinusitis",
+   "trap": "Chronic rhinosinusitis",
+   "medeinst_pairs": 4,
+   "patients": 1866,
+   "own": 1244,
+   "other": 0,
+   "undecided": 622,
+   "share_decided_for_gold": 0.6667
+  },
+  {
+   "gold": "Acute rhinosinusitis",
+   "trap": "Viral pharyngitis",
+   "medeinst_pairs": 8,
+   "patients": 1866,
+   "own": 1866,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Anaphylaxis",
+   "trap": "Possible NSTEMI / STEMI",
+   "medeinst_pairs": 5,
+   "patients": 3754,
+   "own": 3754,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Anemia",
+   "trap": "Guillain-Barr\u00e9 syndrome",
+   "medeinst_pairs": 1,
+   "patients": 6903,
+   "own": 6903,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Anemia",
+   "trap": "Panic attack",
+   "medeinst_pairs": 1,
+   "patients": 6903,
+   "own": 6903,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Atrial fibrillation",
+   "trap": "Myocarditis",
+   "medeinst_pairs": 1,
+   "patients": 2609,
+   "own": 2609,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Atrial fibrillation",
+   "trap": "PSVT",
+   "medeinst_pairs": 10,
+   "patients": 2609,
+   "own": 2609,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Atrial fibrillation",
+   "trap": "Pulmonary embolism",
+   "medeinst_pairs": 30,
+   "patients": 2609,
+   "own": 2609,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Boerhaave",
+   "trap": "Possible NSTEMI / STEMI",
+   "medeinst_pairs": 168,
+   "patients": 2075,
+   "own": 2060,
+   "other": 0,
+   "undecided": 15,
+   "share_decided_for_gold": 0.9928
+  },
+  {
+   "gold": "Bronchiectasis",
+   "trap": "Bronchitis",
+   "medeinst_pairs": 230,
+   "patients": 2319,
+   "own": 2317,
+   "other": 0,
+   "undecided": 2,
+   "share_decided_for_gold": 0.9991
+  },
+  {
+   "gold": "Bronchiectasis",
+   "trap": "Pneumonia",
+   "medeinst_pairs": 1,
+   "patients": 2319,
+   "own": 2304,
+   "other": 0,
+   "undecided": 15,
+   "share_decided_for_gold": 0.9935
+  },
+  {
+   "gold": "Bronchiolitis",
+   "trap": "Pneumonia",
+   "medeinst_pairs": 2,
+   "patients": 28,
+   "own": 28,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Bronchitis",
+   "trap": "Acute COPD exacerbation / infection",
+   "medeinst_pairs": 456,
+   "patients": 3543,
+   "own": 3542,
+   "other": 0,
+   "undecided": 1,
+   "share_decided_for_gold": 0.9997
+  },
+  {
+   "gold": "Bronchitis",
+   "trap": "Allergic sinusitis",
+   "medeinst_pairs": 1,
+   "patients": 3543,
+   "own": 3543,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Bronchitis",
+   "trap": "Bronchiectasis",
+   "medeinst_pairs": 19,
+   "patients": 3543,
+   "own": 3543,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Bronchitis",
+   "trap": "Bronchospasm / acute asthma exacerbation",
+   "medeinst_pairs": 22,
+   "patients": 3543,
+   "own": 3543,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Bronchitis",
+   "trap": "Croup",
+   "medeinst_pairs": 1,
+   "patients": 3543,
+   "own": 3543,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Bronchitis",
+   "trap": "GERD",
+   "medeinst_pairs": 2,
+   "patients": 3543,
+   "own": 3543,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Bronchitis",
+   "trap": "Influenza",
+   "medeinst_pairs": 7,
+   "patients": 3543,
+   "own": 3529,
+   "other": 0,
+   "undecided": 14,
+   "share_decided_for_gold": 0.996
+  },
+  {
+   "gold": "Bronchitis",
+   "trap": "Pneumonia",
+   "medeinst_pairs": 242,
+   "patients": 3543,
+   "own": 2707,
+   "other": 0,
+   "undecided": 836,
+   "share_decided_for_gold": 0.764
+  },
+  {
+   "gold": "Bronchitis",
+   "trap": "Possible NSTEMI / STEMI",
+   "medeinst_pairs": 2,
+   "patients": 3543,
+   "own": 3543,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Bronchitis",
+   "trap": "Pulmonary neoplasm",
+   "medeinst_pairs": 2,
+   "patients": 3543,
+   "own": 3541,
+   "other": 0,
+   "undecided": 2,
+   "share_decided_for_gold": 0.9994
+  },
+  {
+   "gold": "Bronchitis",
+   "trap": "Spontaneous pneumothorax",
+   "medeinst_pairs": 2,
+   "patients": 3543,
+   "own": 3543,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Bronchitis",
+   "trap": "URTI",
+   "medeinst_pairs": 93,
+   "patients": 3543,
+   "own": 3503,
+   "other": 0,
+   "undecided": 40,
+   "share_decided_for_gold": 0.9887
+  },
+  {
+   "gold": "Bronchitis",
+   "trap": "Viral pharyngitis",
+   "medeinst_pairs": 18,
+   "patients": 3543,
+   "own": 3533,
+   "other": 0,
+   "undecided": 10,
+   "share_decided_for_gold": 0.9972
+  },
+  {
+   "gold": "Bronchospasm / acute asthma exacerbation",
+   "trap": "Acute COPD exacerbation / infection",
+   "medeinst_pairs": 1,
+   "patients": 2209,
+   "own": 2209,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Chagas",
+   "trap": "Acute pulmonary edema",
+   "medeinst_pairs": 7,
+   "patients": 1124,
+   "own": 1124,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Chagas",
+   "trap": "Anemia",
+   "medeinst_pairs": 4,
+   "patients": 1124,
+   "own": 1124,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Chagas",
+   "trap": "Atrial fibrillation",
+   "medeinst_pairs": 3,
+   "patients": 1124,
+   "own": 1124,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Chagas",
+   "trap": "GERD",
+   "medeinst_pairs": 3,
+   "patients": 1124,
+   "own": 1124,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Chagas",
+   "trap": "Guillain-Barr\u00e9 syndrome",
+   "medeinst_pairs": 3,
+   "patients": 1124,
+   "own": 1124,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Chagas",
+   "trap": "Possible NSTEMI / STEMI",
+   "medeinst_pairs": 9,
+   "patients": 1124,
+   "own": 1124,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Chronic rhinosinusitis",
+   "trap": "Acute rhinosinusitis",
+   "medeinst_pairs": 4,
+   "patients": 2717,
+   "own": 0,
+   "other": 0,
+   "undecided": 2717,
+   "share_decided_for_gold": 0.0
+  },
+  {
+   "gold": "Croup",
+   "trap": "Acute dystonic reactions",
+   "medeinst_pairs": 1,
+   "patients": 267,
+   "own": 267,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Croup",
+   "trap": "Bronchitis",
+   "medeinst_pairs": 4,
+   "patients": 267,
+   "own": 267,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Croup",
+   "trap": "Pneumonia",
+   "medeinst_pairs": 9,
+   "patients": 267,
+   "own": 267,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Ebola",
+   "trap": "Bronchitis",
+   "medeinst_pairs": 3,
+   "patients": 90,
+   "own": 90,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Ebola",
+   "trap": "Pneumonia",
+   "medeinst_pairs": 4,
+   "patients": 90,
+   "own": 90,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Epiglottitis",
+   "trap": "Acute laryngitis",
+   "medeinst_pairs": 5,
+   "patients": 2248,
+   "own": 2248,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Epiglottitis",
+   "trap": "Acute otitis media",
+   "medeinst_pairs": 1,
+   "patients": 2248,
+   "own": 2248,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Epiglottitis",
+   "trap": "Possible NSTEMI / STEMI",
+   "medeinst_pairs": 4,
+   "patients": 2248,
+   "own": 2248,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "GERD",
+   "trap": "Bronchitis",
+   "medeinst_pairs": 36,
+   "patients": 3426,
+   "own": 3425,
+   "other": 0,
+   "undecided": 1,
+   "share_decided_for_gold": 0.9997
+  },
+  {
+   "gold": "Guillain-Barr\u00e9 syndrome",
+   "trap": "Acute dystonic reactions",
+   "medeinst_pairs": 5,
+   "patients": 2557,
+   "own": 2557,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Guillain-Barr\u00e9 syndrome",
+   "trap": "Anemia",
+   "medeinst_pairs": 1,
+   "patients": 2557,
+   "own": 2557,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "HIV (initial infection)",
+   "trap": "Anemia",
+   "medeinst_pairs": 1,
+   "patients": 3852,
+   "own": 3852,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "HIV (initial infection)",
+   "trap": "Influenza",
+   "medeinst_pairs": 1,
+   "patients": 3852,
+   "own": 3852,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Influenza",
+   "trap": "Bronchitis",
+   "medeinst_pairs": 45,
+   "patients": 3590,
+   "own": 3590,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Influenza",
+   "trap": "Chronic rhinosinusitis",
+   "medeinst_pairs": 3,
+   "patients": 3590,
+   "own": 3590,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Influenza",
+   "trap": "HIV (initial infection)",
+   "medeinst_pairs": 10,
+   "patients": 3590,
+   "own": 3586,
+   "other": 0,
+   "undecided": 4,
+   "share_decided_for_gold": 0.9989
+  },
+  {
+   "gold": "Influenza",
+   "trap": "Pneumonia",
+   "medeinst_pairs": 33,
+   "patients": 3590,
+   "own": 3539,
+   "other": 0,
+   "undecided": 51,
+   "share_decided_for_gold": 0.9858
+  },
+  {
+   "gold": "Influenza",
+   "trap": "URTI",
+   "medeinst_pairs": 375,
+   "patients": 3590,
+   "own": 3587,
+   "other": 0,
+   "undecided": 3,
+   "share_decided_for_gold": 0.9992
+  },
+  {
+   "gold": "Influenza",
+   "trap": "Viral pharyngitis",
+   "medeinst_pairs": 23,
+   "patients": 3590,
+   "own": 3589,
+   "other": 0,
+   "undecided": 1,
+   "share_decided_for_gold": 0.9997
+  },
+  {
+   "gold": "Inguinal hernia",
+   "trap": "Bronchitis",
+   "medeinst_pairs": 7,
+   "patients": 2632,
+   "own": 2632,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Myasthenia gravis",
+   "trap": "Acute dystonic reactions",
+   "medeinst_pairs": 7,
+   "patients": 2159,
+   "own": 2159,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Myasthenia gravis",
+   "trap": "Anemia",
+   "medeinst_pairs": 1,
+   "patients": 2159,
+   "own": 2159,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Myasthenia gravis",
+   "trap": "Atrial fibrillation",
+   "medeinst_pairs": 1,
+   "patients": 2159,
+   "own": 2159,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Myasthenia gravis",
+   "trap": "Guillain-Barr\u00e9 syndrome",
+   "medeinst_pairs": 13,
+   "patients": 2159,
+   "own": 2159,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Myocarditis",
+   "trap": "Acute pulmonary edema",
+   "medeinst_pairs": 148,
+   "patients": 1547,
+   "own": 1483,
+   "other": 0,
+   "undecided": 64,
+   "share_decided_for_gold": 0.9586
+  },
+  {
+   "gold": "Myocarditis",
+   "trap": "PSVT",
+   "medeinst_pairs": 3,
+   "patients": 1547,
+   "own": 1533,
+   "other": 0,
+   "undecided": 14,
+   "share_decided_for_gold": 0.991
+  },
+  {
+   "gold": "Myocarditis",
+   "trap": "Panic attack",
+   "medeinst_pairs": 3,
+   "patients": 1547,
+   "own": 1533,
+   "other": 0,
+   "undecided": 14,
+   "share_decided_for_gold": 0.991
+  },
+  {
+   "gold": "Myocarditis",
+   "trap": "Pericarditis",
+   "medeinst_pairs": 39,
+   "patients": 1547,
+   "own": 1455,
+   "other": 0,
+   "undecided": 92,
+   "share_decided_for_gold": 0.9405
+  },
+  {
+   "gold": "Myocarditis",
+   "trap": "Possible NSTEMI / STEMI",
+   "medeinst_pairs": 7,
+   "patients": 1547,
+   "own": 1544,
+   "other": 0,
+   "undecided": 3,
+   "share_decided_for_gold": 0.9981
+  },
+  {
+   "gold": "Myocarditis",
+   "trap": "Unstable angina",
+   "medeinst_pairs": 34,
+   "patients": 1547,
+   "own": 1538,
+   "other": 0,
+   "undecided": 9,
+   "share_decided_for_gold": 0.9942
+  },
+  {
+   "gold": "PSVT",
+   "trap": "Anemia",
+   "medeinst_pairs": 77,
+   "patients": 2376,
+   "own": 2376,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "PSVT",
+   "trap": "Atrial fibrillation",
+   "medeinst_pairs": 26,
+   "patients": 2376,
+   "own": 2375,
+   "other": 0,
+   "undecided": 1,
+   "share_decided_for_gold": 0.9996
+  },
+  {
+   "gold": "PSVT",
+   "trap": "Panic attack",
+   "medeinst_pairs": 29,
+   "patients": 2376,
+   "own": 2362,
+   "other": 0,
+   "undecided": 14,
+   "share_decided_for_gold": 0.9941
+  },
+  {
+   "gold": "PSVT",
+   "trap": "Pulmonary embolism",
+   "medeinst_pairs": 3,
+   "patients": 2376,
+   "own": 2376,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pancreatic neoplasm",
+   "trap": "Bronchitis",
+   "medeinst_pairs": 2,
+   "patients": 2582,
+   "own": 2582,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pancreatic neoplasm",
+   "trap": "GERD",
+   "medeinst_pairs": 2,
+   "patients": 2582,
+   "own": 2582,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pancreatic neoplasm",
+   "trap": "Possible NSTEMI / STEMI",
+   "medeinst_pairs": 18,
+   "patients": 2582,
+   "own": 2582,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Panic attack",
+   "trap": "Guillain-Barr\u00e9 syndrome",
+   "medeinst_pairs": 8,
+   "patients": 3237,
+   "own": 3237,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Panic attack",
+   "trap": "PSVT",
+   "medeinst_pairs": 16,
+   "patients": 3237,
+   "own": 3237,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Panic attack",
+   "trap": "Possible NSTEMI / STEMI",
+   "medeinst_pairs": 20,
+   "patients": 3237,
+   "own": 3237,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Panic attack",
+   "trap": "Spontaneous pneumothorax",
+   "medeinst_pairs": 1,
+   "patients": 3237,
+   "own": 3237,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pericarditis",
+   "trap": "GERD",
+   "medeinst_pairs": 16,
+   "patients": 3032,
+   "own": 3028,
+   "other": 0,
+   "undecided": 4,
+   "share_decided_for_gold": 0.9987
+  },
+  {
+   "gold": "Pericarditis",
+   "trap": "Myocarditis",
+   "medeinst_pairs": 1,
+   "patients": 3032,
+   "own": 2892,
+   "other": 0,
+   "undecided": 140,
+   "share_decided_for_gold": 0.9538
+  },
+  {
+   "gold": "Pericarditis",
+   "trap": "Pulmonary embolism",
+   "medeinst_pairs": 65,
+   "patients": 3032,
+   "own": 3017,
+   "other": 0,
+   "undecided": 15,
+   "share_decided_for_gold": 0.9951
+  },
+  {
+   "gold": "Pericarditis",
+   "trap": "Spontaneous pneumothorax",
+   "medeinst_pairs": 97,
+   "patients": 3032,
+   "own": 3017,
+   "other": 0,
+   "undecided": 15,
+   "share_decided_for_gold": 0.9951
+  },
+  {
+   "gold": "Pneumonia",
+   "trap": "Bronchiectasis",
+   "medeinst_pairs": 55,
+   "patients": 3484,
+   "own": 3484,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pneumonia",
+   "trap": "Bronchitis",
+   "medeinst_pairs": 327,
+   "patients": 3484,
+   "own": 3484,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pneumonia",
+   "trap": "Croup",
+   "medeinst_pairs": 1,
+   "patients": 3484,
+   "own": 3484,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pneumonia",
+   "trap": "GERD",
+   "medeinst_pairs": 1,
+   "patients": 3484,
+   "own": 3484,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pneumonia",
+   "trap": "Pericarditis",
+   "medeinst_pairs": 7,
+   "patients": 3484,
+   "own": 3484,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pneumonia",
+   "trap": "Possible NSTEMI / STEMI",
+   "medeinst_pairs": 3,
+   "patients": 3484,
+   "own": 3484,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pneumonia",
+   "trap": "Pulmonary embolism",
+   "medeinst_pairs": 21,
+   "patients": 3484,
+   "own": 3484,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pneumonia",
+   "trap": "Pulmonary neoplasm",
+   "medeinst_pairs": 151,
+   "patients": 3484,
+   "own": 3484,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pneumonia",
+   "trap": "Spontaneous pneumothorax",
+   "medeinst_pairs": 8,
+   "patients": 3484,
+   "own": 3484,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pneumonia",
+   "trap": "Tuberculosis",
+   "medeinst_pairs": 25,
+   "patients": 3484,
+   "own": 3484,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pneumonia",
+   "trap": "URTI",
+   "medeinst_pairs": 4,
+   "patients": 3484,
+   "own": 3484,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pulmonary embolism",
+   "trap": "Possible NSTEMI / STEMI",
+   "medeinst_pairs": 9,
+   "patients": 3725,
+   "own": 3725,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pulmonary embolism",
+   "trap": "Spontaneous pneumothorax",
+   "medeinst_pairs": 1,
+   "patients": 3725,
+   "own": 3725,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pulmonary neoplasm",
+   "trap": "Bronchitis",
+   "medeinst_pairs": 17,
+   "patients": 1891,
+   "own": 1891,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Pulmonary neoplasm",
+   "trap": "Possible NSTEMI / STEMI",
+   "medeinst_pairs": 5,
+   "patients": 1891,
+   "own": 1890,
+   "other": 0,
+   "undecided": 1,
+   "share_decided_for_gold": 0.9995
+  },
+  {
+   "gold": "Pulmonary neoplasm",
+   "trap": "Pulmonary embolism",
+   "medeinst_pairs": 1,
+   "patients": 1891,
+   "own": 1891,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "SLE",
+   "trap": "Possible NSTEMI / STEMI",
+   "medeinst_pairs": 172,
+   "patients": 1579,
+   "own": 1576,
+   "other": 0,
+   "undecided": 3,
+   "share_decided_for_gold": 0.9981
+  },
+  {
+   "gold": "SLE",
+   "trap": "Pulmonary embolism",
+   "medeinst_pairs": 3,
+   "patients": 1579,
+   "own": 1579,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "SLE",
+   "trap": "Pulmonary neoplasm",
+   "medeinst_pairs": 4,
+   "patients": 1579,
+   "own": 1576,
+   "other": 0,
+   "undecided": 3,
+   "share_decided_for_gold": 0.9981
+  },
+  {
+   "gold": "Sarcoidosis",
+   "trap": "Acute dystonic reactions",
+   "medeinst_pairs": 40,
+   "patients": 3028,
+   "own": 3028,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Sarcoidosis",
+   "trap": "Anemia",
+   "medeinst_pairs": 8,
+   "patients": 3028,
+   "own": 3028,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Sarcoidosis",
+   "trap": "Atrial fibrillation",
+   "medeinst_pairs": 3,
+   "patients": 3028,
+   "own": 3028,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Sarcoidosis",
+   "trap": "Myocarditis",
+   "medeinst_pairs": 20,
+   "patients": 3028,
+   "own": 3028,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Sarcoidosis",
+   "trap": "Possible NSTEMI / STEMI",
+   "medeinst_pairs": 3,
+   "patients": 3028,
+   "own": 3028,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Scombroid food poisoning",
+   "trap": "Anaphylaxis",
+   "medeinst_pairs": 3,
+   "patients": 2250,
+   "own": 2248,
+   "other": 0,
+   "undecided": 2,
+   "share_decided_for_gold": 0.9991
+  },
+  {
+   "gold": "Spontaneous pneumothorax",
+   "trap": "Pulmonary embolism",
+   "medeinst_pairs": 205,
+   "patients": 1405,
+   "own": 1405,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Spontaneous pneumothorax",
+   "trap": "Unstable angina",
+   "medeinst_pairs": 29,
+   "patients": 1405,
+   "own": 1401,
+   "other": 0,
+   "undecided": 4,
+   "share_decided_for_gold": 0.9972
+  },
+  {
+   "gold": "Spontaneous rib fracture",
+   "trap": "Pericarditis",
+   "medeinst_pairs": 3,
+   "patients": 782,
+   "own": 782,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Spontaneous rib fracture",
+   "trap": "Pulmonary embolism",
+   "medeinst_pairs": 146,
+   "patients": 782,
+   "own": 782,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Spontaneous rib fracture",
+   "trap": "Spontaneous pneumothorax",
+   "medeinst_pairs": 232,
+   "patients": 782,
+   "own": 782,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Stable angina",
+   "trap": "SLE",
+   "medeinst_pairs": 1,
+   "patients": 2340,
+   "own": 2340,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Stable angina",
+   "trap": "Unstable angina",
+   "medeinst_pairs": 7,
+   "patients": 2340,
+   "own": 0,
+   "other": 0,
+   "undecided": 2340,
+   "share_decided_for_gold": 0.0
+  },
+  {
+   "gold": "Tuberculosis",
+   "trap": "Bronchitis",
+   "medeinst_pairs": 207,
+   "patients": 2007,
+   "own": 2007,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Tuberculosis",
+   "trap": "Pneumonia",
+   "medeinst_pairs": 45,
+   "patients": 2007,
+   "own": 1985,
+   "other": 0,
+   "undecided": 22,
+   "share_decided_for_gold": 0.989
+  },
+  {
+   "gold": "Tuberculosis",
+   "trap": "Pulmonary neoplasm",
+   "medeinst_pairs": 55,
+   "patients": 2007,
+   "own": 2007,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "URTI",
+   "trap": "Bronchitis",
+   "medeinst_pairs": 128,
+   "patients": 8656,
+   "own": 8633,
+   "other": 0,
+   "undecided": 23,
+   "share_decided_for_gold": 0.9973
+  },
+  {
+   "gold": "URTI",
+   "trap": "Cluster headache",
+   "medeinst_pairs": 3,
+   "patients": 8656,
+   "own": 8656,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "URTI",
+   "trap": "Influenza",
+   "medeinst_pairs": 37,
+   "patients": 8656,
+   "own": 8602,
+   "other": 0,
+   "undecided": 54,
+   "share_decided_for_gold": 0.9938
+  },
+  {
+   "gold": "URTI",
+   "trap": "Pneumonia",
+   "medeinst_pairs": 137,
+   "patients": 8656,
+   "own": 8650,
+   "other": 0,
+   "undecided": 6,
+   "share_decided_for_gold": 0.9993
+  },
+  {
+   "gold": "Unstable angina",
+   "trap": "GERD",
+   "medeinst_pairs": 2,
+   "patients": 2748,
+   "own": 2748,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Unstable angina",
+   "trap": "Possible NSTEMI / STEMI",
+   "medeinst_pairs": 197,
+   "patients": 2748,
+   "own": 2739,
+   "other": 0,
+   "undecided": 9,
+   "share_decided_for_gold": 0.9967
+  },
+  {
+   "gold": "Unstable angina",
+   "trap": "SLE",
+   "medeinst_pairs": 1,
+   "patients": 2748,
+   "own": 2748,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  },
+  {
+   "gold": "Viral pharyngitis",
+   "trap": "Tuberculosis",
+   "medeinst_pairs": 22,
+   "patients": 8246,
+   "own": 8246,
+   "other": 0,
+   "undecided": 0,
+   "share_decided_for_gold": 1.0
+  }
+ ]
+}
