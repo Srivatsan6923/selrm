@@ -18,7 +18,12 @@ cd /tmp/code
   [ -e "data/$f" ] || { mkdir -p "data/$(dirname "$f")"; cp "$ROOT/data/$f" "data/$f"; }
 done
 # builders' validation may need scikit-learn (A's shortcut scorers), which the training env lacks: CPU-only install
-"$PY" -c "import sklearn" 2>/dev/null || { "$PY" -m pip install -q --target /tmp/extra "scikit-learn==1.9.0"; export PYTHONPATH=/tmp/extra; }
+if ! "$PY" -c "import sklearn" 2>/dev/null; then      # local disk only (/tmp), with uv as in build_env.sh
+  apt-get update -qq && apt-get install -y -qq --no-install-recommends curl ca-certificates > /dev/null
+  curl -LsSf https://github.com/astral-sh/uv/releases/download/0.12.22/uv-x86_64-unknown-linux-gnu.tar.gz     | tar -xz -C /usr/local/bin --strip-components=1
+  UV_CACHE_DIR=/tmp/uv-cache uv pip install -q --python "$PY" --target /tmp/extra "scikit-learn==1.9.0"
+  export PYTHONPATH=/tmp/extra
+fi
 "$PY" "$@" --restore
 NAME="$NAME" "$PY" - <<'EOF'
 import hashlib, json, os, shutil
