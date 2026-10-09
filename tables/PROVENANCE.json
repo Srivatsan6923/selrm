@@ -1,6 +1,6 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "d04f2db14c8a295cb63869f49d8b2ae19fd03d81",
+ "code_commit": "2bbf2d4a9d729882f8650afbd65eaa98e5ecf76d",
  "uncommitted_changes": true,
  "records": {
   "rule_v1/dev_missing": {
@@ -133,6 +133,24 @@
    "file_commit": "2e6c33dc45956106da9b86609b45bec9a8a0b7df",
    "computed_by": "C: selrm.metrics.paired_cluster_bootstrap (scripts/eval_clinical.py)",
    "padj": 0.428
+  },
+  "x-blocks-ledger-prose": {
+   "a": "B-F-ledger2-blocks",
+   "b": "B-F-summary2-blocks",
+   "set": "rule_v1/test_L2",
+   "metric": "TA",
+   "diff": 5.17,
+   "lo": 2.5844346549192365,
+   "hi": 7.865707434052758,
+   "n": 10000,
+   "seeds": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "p": 0.0
   },
   "holm": {
    "n": 7
@@ -786,6 +804,21 @@
    "value": "-2.1",
    "number": -2.120974076983501,
    "comparison": "sel-mqa-comb-step"
+  },
+  "cmp/x-blocks-ledger-prose/diff": {
+   "value": "5.2",
+   "number": 5.17,
+   "comparison": "x-blocks-ledger-prose"
+  },
+  "cmp/x-blocks-ledger-prose/hi": {
+   "value": "7.9",
+   "number": 7.865707434052758,
+   "comparison": "x-blocks-ledger-prose"
+  },
+  "cmp/x-blocks-ledger-prose/lo": {
+   "value": "2.6",
+   "number": 2.5844346549192365,
+   "comparison": "x-blocks-ledger-prose"
   },
   "d/a15/rules_total|a15/rules_by_kind.score|a15/rules_by_source.grammar_sampled@int": {
    "value": "60",
@@ -17983,6 +18016,25 @@
    ],
    "set": "rule_v1/test_L2",
    "stat": "s0",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-rationale-natural/missing/top/MR": {
+   "value": "98.7",
+   "number": 98.7,
+   "runs": [
+    {
+     "run_id": "B-F-rationale-natural-s0",
+     "seed": 0,
+     "file": "results_git/B-F-rationale-natural-s0/scores_rule_v1~missing.jsonl",
+     "field": "top.MR",
+     "file_commit": "f16af67a5677cdc127d8a5978103d14541989d7f",
+     "code_commit": "f51d45a755e4"
+    }
+   ],
+   "set": "rule_v1/missing",
+   "stat": "mean",
    "seeds_found": [
     0
    ]
@@ -47648,6 +47700,34 @@
     1
    ]
   },
+  "run/D-RL-ledger2-blocks/L2/top/acc_pair/s1": {
+   "value": "34.0",
+   "number": 34.0,
+   "runs": [
+    {
+     "run_id": "D-RL-ledger2-blocks-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-ledger2-blocks-s0/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "10b80d3dd9328b56b4cbe04c32e727a66e3b868a",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-ledger2-blocks-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "s1",
+   "seeds_found": [
+    0,
+    1
+   ]
+  },
   "run/D-RL-ledger2-blocks/L2/top/acc_pair/sd": {
    "value": "1.4",
    "number": 1.4142135623730951,
@@ -48664,6 +48744,34 @@
     1
    ]
   },
+  "run/D-RL-ledger2-triplets/L2/top/acc_pair/s1": {
+   "value": "43.3",
+   "number": 43.333333333333336,
+   "runs": [
+    {
+     "run_id": "D-RL-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-ledger2-triplets-s0/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "10b80d3dd9328b56b4cbe04c32e727a66e3b868a",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-triplets-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-ledger2-triplets-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "b76f2cc1f0f57935f4ae986d05e126bf07232f71",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "s1",
+   "seeds_found": [
+    0,
+    1
+   ]
+  },
   "run/D-RL-ledger2-triplets/L2/top/acc_pair/sd": {
    "value": "6.6",
    "number": 6.599663291074441,
@@ -49484,6 +49592,34 @@
    ],
    "set": "rule_v1/test_L2",
    "stat": "s0",
+   "seeds_found": [
+    0,
+    1
+   ]
+  },
+  "run/D-RL-outcome/L2/top/acc_pair/s1": {
+   "value": "98.0",
+   "number": 98.0,
+   "runs": [
+    {
+     "run_id": "D-RL-outcome-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-outcome-s0/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-outcome-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-outcome-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "b76f2cc1f0f57935f4ae986d05e126bf07232f71",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "s1",
    "seeds_found": [
     0,
     1
@@ -51087,6 +51223,34 @@
    ],
    "set": "rule_v1/test_L2",
    "stat": "s0",
+   "seeds_found": [
+    0,
+    1
+   ]
+  },
+  "run/D-RL-stepcheck/L2/top/acc_pair/s1": {
+   "value": "54.7",
+   "number": 54.666666666666664,
+   "runs": [
+    {
+     "run_id": "D-RL-stepcheck-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-stepcheck-s0/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-stepcheck-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-stepcheck-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "b76f2cc1f0f57935f4ae986d05e126bf07232f71",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "s1",
    "seeds_found": [
     0,
     1
@@ -55145,6 +55309,20 @@
    "stat": "mean",
    "seeds_found": [
     null
+   ]
+  },
+  "sum/D-RL-analysis/runs.D-RL-ledger2-blocks-s1.final.share_always_base_claim": {
+   "value": "56.0",
+   "number": 56.0,
+   "runs": [
+    {
+     "run_id": "D-RL-analysis",
+     "seed": null,
+     "file": "results_git/D-RL-analysis/summary.json",
+     "field": "runs.D-RL-ledger2-blocks-s1.final.share_always_base_claim",
+     "file_commit": "dfd05b8f81adf4e76ffff54bc7959b9b0cf1286d",
+     "code_commit": null
+    }
    ]
   },
   "sum/D-RL-analysis/runs.D-RL-stepcheck-s0.final.errors_fail_to_hold_share": {

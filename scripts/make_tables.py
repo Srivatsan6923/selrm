@@ -441,6 +441,10 @@ COMPARISONS = [
     ("p6a", "C-TG-ledger2-triplets", "C-TG-critic", TRIALGPT, "macroF1"),
     ("p6b", "C-TG-ledger2-triplets", "C-TG-ledger2-blocks", TRIALGPT, "macroF1"),
 ]
+# Paired differences quoted in the text that are not primary comparisons (no Holm): same computation.
+EXTRA_COMPARISONS = [
+    ("x-blocks-ledger-prose", "B-F-ledger2-blocks", "B-F-summary2-blocks", "L2", "TA"),
+]
 # Clinical comparisons are computed by C with selrm.metrics.paired_cluster_bootstrap (pairs for MedEinst,
 # patients for TrialGPT) and written to these files; make_tables reads them (scripts/eval_clinical.py).
 CLINICAL_COMPARISONS = {
@@ -458,7 +462,7 @@ def comparisons():
     if _CMP:
         return _CMP
     test, holm = getattr(M, "paired_test", None), getattr(M, "holm", None)
-    for name, a, b, sab, metric in COMPARISONS:
+    for name, a, b, sab, metric in COMPARISONS + EXTRA_COMPARISONS:
         set_, out = set_name(sab), {"a": a, "b": b, "set": set_name(sab), "metric": metric}
         ra, rb = dict(seeds(a)), dict(seeds(b))
         common = sorted(set(ra) & set(rb), key=str)
@@ -481,9 +485,10 @@ def comparisons():
                         "computed_by": "C: selrm.metrics.paired_cluster_bootstrap (scripts/eval_clinical.py)"}
                     break
         _CMP[name] = out
-    ps = [c.get("p") for c in _CMP.values()]
+    family = [_CMP[c[0]] for c in COMPARISONS]
+    ps = [c.get("p") for c in family]
     if holm and all(p is not None for p in ps):
-        for c, q in zip(_CMP.values(), holm(ps)):
+        for c, q in zip(family, holm(ps)):
             c["padj"] = q
     _CMP["holm"] = {"n": len(COMPARISONS)}
     for top in TOPS:   # answer-selection comparisons (scripts/select_eval.py); not in the Holm family

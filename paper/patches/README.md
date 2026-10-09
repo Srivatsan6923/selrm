@@ -6,9 +6,9 @@ after the approval is recorded in `docs/DECISIONS_D.md` (H-S2-5).
 
 | File | Passage | Trigger | Status |
 |---|---|---|---|
-| `P1_policy_ledger_rewards.md` | Limitations, "Verifier, process reward, training reward"; scope sentence of Section 6.6 | the two ledger-reward runs finished (seeds 0 and 1) | waits for approval; final numbers after seed 2 |
-| `P2_five_seed_values.md` | ten sentences typed at four seeds or seed 0 whose wording depends on the value | merge of 8 Oct (five-seed files) | waits for approval |
-| `P3_drug_classes.md` | Appendix E class membership, Limitations (sources of criteria), Appendix A, table of sources | plan amendment of 9 Oct (drug classes from one source) | decision taken; wording waits for approval |
+| `P1_policy_ledger_rewards.md` | Limitations, "Verifier, process reward, training reward"; scope sentence of Section 6.6 | the two ledger-reward runs finished (seeds 0 and 1) | applied 9 Oct (approved); numbers update by key when seed 2 ends |
+| `P2_five_seed_values.md` | ten sentences typed at four seeds or seed 0 whose wording depends on the value | merge of 8 Oct (five-seed files) | applied 9 Oct (approved), except items 6 and 7, which wait for a keyed field from C and B |
+| `P3_drug_classes.md` | Appendix E class membership, Limitations (sources of criteria), Appendix A, table of sources | plan amendment of 9 Oct (drug classes from one source) | applied 9 Oct (approved) |
 | `G4_holds.md` | abstract, contribution 3, Section 6.5, conclusion, limitations ("Transfer") | gate G4, comparisons (7)-(12) meet their expectations | prepared; values are result keys |
 | `G4_fails.md` | same passages | gate G4, one or more decision rules of the plan fire | prepared; one block per decision rule, wording of the plan |
 

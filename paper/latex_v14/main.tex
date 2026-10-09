@@ -671,8 +671,8 @@ to \res{run/B-F-verdict-triplets/L2/all/TA}\% ($+\res{cmp/p2/diff}$ points $[\re
 \res{run/B-F-verdict-triplets/L2/all/Hold/min}--\res{run/B-F-verdict-triplets/L2/all/Hold/max}\% at unchanged reversal, and the standard deviation over seeds
 falls from \res{run/B-F-verdict-blocks/L2/all/TA/sd} to \res{run/B-F-verdict-triplets/L2/all/TA/sd} points. The prose record moves from \res{run/B-F-summary2-blocks/L2/all/TA}\% to \res{run/B-F-summary2-triplets/L2/all/TA}\%
 and the ledger from \res{run/B-F-ledger2-blocks/L2/all/TA}\% to \res{run/B-F-ledger2-triplets/L2/all/TA}\%. Without near-misses the failures are
-concentrated where the finding belongs to another person (\res{run/B-F-verdict-blocks/L2/nm_kind=subject/TA/s0}\% solved) or
-the value sits on the threshold (\res{run/B-F-verdict-blocks/L2/nm_kind=boundary/TA/s0}\%). Using near-misses only as probes
+concentrated where the finding belongs to another person (\res{run/B-F-verdict-blocks/L2/nm_kind=subject/TA}\% solved) or
+the value sits on the threshold (\res{run/B-F-verdict-blocks/L2/nm_kind=boundary/TA}\%). Using near-misses only as probes
 for re-weighting \citep{liu2026dynacf} gives \res{run/B-AB-probe-rw/L2/all/TA/s0}\%, and outcome balance is
 not the remedy: on balanced corpora near-miss correctness stays at
 51.6--72.8\%.
@@ -714,8 +714,8 @@ the reading; hence the gate of \S\ref{sec:ledger}.
 
 \emph{Conditions not seen in training.} Trained on triplets without one kind
 of near-miss, the verdict-only model solves 7.0\% of L2 triplets of the kind
-``another person'' (\res{run/B-F-verdict-triplets/L2/nm_kind=subject/TA/s0}\% when trained with it), 60.2\% for ``past''
-(\res{run/B-F-verdict-triplets/L2/nm_kind=time/TA/s0}\%) and 49.8\% for ``threshold'' (\res{run/B-F-verdict-triplets/L2/nm_kind=boundary/TA/s0}\%); the ledger \res{run/B-LOKO-subject-ledger2/L2/nm_kind=subject/TA}\%, \res{run/B-LOKO-time-ledger2/L2/nm_kind=time/TA}\%
+``another person'' (\res{run/B-F-verdict-triplets/L2/nm_kind=subject/TA}\% when trained with it), 60.2\% for ``past''
+(\res{run/B-F-verdict-triplets/L2/nm_kind=time/TA}\%) and 49.8\% for ``threshold'' (\res{run/B-F-verdict-triplets/L2/nm_kind=boundary/TA}\%); the ledger \res{run/B-LOKO-subject-ledger2/L2/nm_kind=subject/TA}\%, \res{run/B-LOKO-time-ledger2/L2/nm_kind=time/TA}\%
 and \res{run/B-LOKO-boundary-ledger2/L2/nm_kind=boundary/TA}\%
 (Table~\ref{tab:loko}). Near-miss supervision has to cover each condition
 of Eq.~\ref{eq:applic}, which is the reason to hand a condition to a
@@ -837,18 +837,18 @@ an AUC of 0.51 (Med-PRM: 0.65): with no criterion in the input it has
 nothing to verify.
 
 \paragraph{Policy training.}
-A reward that fails the triplet test can be optimised without solving the
-task. We train a Qwen3.5-4B policy with GRPO for 1{,}000 steps on rule tasks
-and evaluate it with the rule program on 150 held-out L2 pairs (one seed;
+A process reward can be optimised without solving the task, whether or not
+it passes the triplet test. We train a Qwen3.5-4B policy with GRPO for 1{,}000 steps on rule tasks
+and evaluate it with the rule program on 150 held-out L2 pairs (seed 0;
 descriptive). With an outcome reward, accuracy on both members of a pair
 rises from 88.7\% to \res{run/D-RL-outcome/L2/top/acc_pair/s0}\%, and with a reference-graph reward after
 \citet{medceg2025} to \res{run/D-RL-refgraph/L2/top/acc_pair/s0}\%. With the released Med-PRM as the reward it
 falls from 88.0\% to \res{run/D-RL-stepcheck/L2/top/acc_pair/s0}\% while the mean reward reaches 0.9997; within a
-rollout group this reward is uncorrelated with correctness ($-0.05$), as its
-reversal rate of \res{run/C-AUD-medprm/L2/all/Rev}\% would suggest. With the two ledger rewards it falls as well, to
-\res{run/D-RL-ledger2-blocks/L2/top/acc_pair/s0}\% and \res{run/D-RL-ledger2-triplets/L2/top/acc_pair/s0}\%. Such exploitation is known
-\citep{tiwari2026reward,mahmoud2026hacking}; we add an exactly labelled
-held-out evaluation and the exploited reward's triplet profile.
+rollout group this reward is uncorrelated with correctness ($-0.05$). The two
+ledger rewards, which never score the final answer, are exploited as well
+(to \res{run/D-RL-ledger2-blocks/L2/top/acc_pair/s0}\% and \res{run/D-RL-ledger2-triplets/L2/top/acc_pair/s0}\%). The
+collapsed policies write one short step and answer; most errors are
+failures to hold (five of six runs; Appendix~\ref{app:more}).
 
 \section{Conclusion}
 
@@ -888,8 +888,9 @@ supervision for rule-conditioned verification.
 \textbf{Sources of criteria.} A criterion derived from a knowledge base or
 an ontology is exact only relative to that source and its release. Open
 knowledge bases mostly list associations, not decisions; class membership
-differs between drug classifications, so we keep a membership only where two
-sources agree, and a missing contraindication assertion is not evidence of
+differs between drug classifications; we take one source, the FDA
+established pharmacologic classes, and report separately the classes on
+which a second source agrees, and a missing contraindication assertion is not evidence of
 safety. Giving a model the lists from which a benchmark was generated
 changes what the benchmark measures, which is why the ladder always includes
 the condition without a criterion and the untrained backbone under the same
@@ -916,9 +917,12 @@ condition under test is supplied.
 
 \textbf{Verifier, process reward, training reward.} The triplet results
 concern a claim verifier. As a selector on exam questions the ledger score
-is uninformative. The policy experiment has one seed and one policy, and its
-runs with our own rewards are unfinished; we make no claim that a policy
-trained against our verifier is safer.
+is uninformative. The policy experiment has one policy and at most three seeds
+per reward. Our own process rewards are exploited as well: with the ledger
+score as the only reward, pair accuracy falls from \res{run/D-RL-ledger2-triplets/L2/top/start_pair/s0}\% to
+\res{run/D-RL-ledger2-triplets/L2/top/acc_pair/s0}\% (trained on triplets) and to \res{run/D-RL-ledger2-blocks/L2/top/acc_pair/s0}\% (trained on
+blocks). A verifier that passes the triplet test is therefore not a safe
+training reward by itself.
 
 \textbf{Scope.} One backbone family; five seeds for the key cells and one
 elsewhere; no larger or closed judge has been scored; English only.
@@ -1033,7 +1037,11 @@ reading the criterion. If the symbolic executor decides fewer than half of
 the MedEinst pairs, (11) is dropped and MedEinst is reported only as the
 contrast without a criterion. If (10) fails, class conditions are left to
 the learned judge. If (12) fails, the composite is reported as harmful where
-no criterion is stated. \emph{Selection and freezing:} prompts, thresholds and the
+no criterion is stated. \emph{Amendment:} the plan was amended once, on 9
+October 2026 and before the class set existed: drug classes are taken from
+one source instead of the agreement of two, because the agreement rule left
+7 drug classes for test; comparison (10) is otherwise unchanged and is also
+reported on the classes where both sources agree. \emph{Selection and freezing:} prompts, thresholds and the
 linking pipeline are chosen on development portions (training notes of
 \mcv, DDXPlus validation patients, MedEinst reference pairs, classes
 disjoint from the test classes); each stage-2 set is frozen with a hash
@@ -1158,10 +1166,10 @@ structure means unseen compositions of seen parts. Rendering templates
 (1{,}032 for training, 516 for test) and cue words for relatives, negation
 and time are disjoint. All cases derived from one base state are in one
 split. On fold 2 the verdict-only model trained on blocks reaches 63.1\% on
-L2 (fold 1: \res{run/B-F-verdict-blocks/L2/all/TA/s0}\%); the other fold-2 and fold-3 runs are \ph{finished and
+L2 at seed 0 (fold 1, same seed: \res{run/B-F-verdict-blocks/L2/all/TA/s0}\%); the other fold-2 and fold-3 runs are \ph{finished and
 not yet collected}. The set with altered thresholds (L3-alt) does not test
 what we intended: the untrained backbone solves \res{run/C-TF-critic/L3alt/all/TA}\% of it and the
-verdict-only model trained on blocks \res{run/B-F-verdict-blocks/L3alt/all/TA/s0}\%, far above their L2 scores, so
+verdict-only model trained on blocks \res{run/B-F-verdict-blocks/L3alt/all/TA/s0}\% (seed 0), far above their L2 scores, so
 it is listed in Table~\ref{tab:ladder} and not used as evidence.
 
 \paragraph{Versions.}
@@ -1183,7 +1191,7 @@ for rules that combine criteria. A re-execution of this check over all
 frozen sets found no violation in 16{,}200 groups (203{,}014 records). Of
 the proposed groups of the triplet corpus, 1.1\% (65 of 5{,}688) were
 rejected, all for a presentation edit; none of the 2{,}000 proposed L2
-groups was. Each training corpus has 60{,}000 records; L2 has 2{,}000
+groups was. Each run trains on 60{,}000 examples; L2 has 2{,}000
 triplets and the development set 300. No evaluation input contains the edit
 type, the role of the case, or the state.
 
@@ -1240,7 +1248,7 @@ keep apart \citep{qiu2026surerag,kamelhar2026gsar}. MR is the rate at which
 both claims of a missing twin are rejected at the threshold that gives 5\%
 false rejection of supported claims on development data. It is \res{run/C-AUD-medprm/missing/top/MR}\% for
 Med-PRM, \res{run/C-AUD-meds3/missing/top/MR}\% for the MedS$^3$ PRM, \res{run/C-AUD-fover/missing/top/MR}\% for the FoVer PRM, \res{run/C-TF-critic/missing/top/MR}\% for the
-untrained critic and \res{run/C-TF-promptsum/missing/top/MR}\% for the prompted summary, and between 99.2\% and
+untrained critic and \res{run/C-TF-promptsum/missing/top/MR}\% for the prompted summary, and between \res{run/B-F-rationale-natural/missing/top/MR}\% and
 \res{run/B-F-verdict-blocks/missing/top/MR/max}\% for every trained model: the marker of a missing input is learnable
 from the 15\% of such records in each corpus, so we report this as a limit of
 the test and not as evidence of abstention.
@@ -1257,7 +1265,7 @@ records). Each item has three cases (the contested form, an uncontested
 positive, an absent finding) and is solved only if all six judgments are
 right. Scorers that ignore the rule text, never count the contested form or
 always count it solve no item; the rule program solves all, and uniformly
-random preferences 1.5\%.
+random preferences 1.6\% ($1/64$).
 
 \paragraph{Text written without the renderer.}
 A kit of 160 case specifications for cases written by the authors, each to
@@ -1563,8 +1571,11 @@ Table~\ref{tab:onto} lists the sources. A class-level criterion is grounded
 to a class identifier and a release. \emph{Membership} is the is-a closure
 in HPO and Mondo; for drugs it is defined at the level of ingredients: a
 mention is normalised to an RxNorm ingredient, and it belongs to a class if
-the ATC fourth-level class and the FDA established pharmacologic class
-served by RxClass both contain it. \emph{Negatives} for the near-miss must
+it is a direct ingredient member of an FDA established pharmacologic class
+served by RxClass. We first required agreement with an ATC fourth-level
+class; that rule left 28 drug classes, 7 of them for test, and was replaced
+before the class set was built (Appendix~\ref{app:plan}). Classes on which
+both sources agree are marked, and results are also reported on them. \emph{Negatives} for the near-miss must
 pass an assumed-disjointness test in the sense of \citet{he2023ontolama}:
 no subsumption in either direction and no common descendant; combination
 products and ingredients with several class memberships are excluded.
@@ -1592,7 +1603,7 @@ Domain & Source & Terms of use\\
 Findings & Human Phenotype Ontology & free use with attribution; no alteration\\
 Diseases & Mondo; Disease Ontology as fallback & CC BY 4.0; CC0\\
 Drugs & RxNorm ingredients (prescribable subset, RxNav) & no licence required\\
-Drug classes & ATC level 4 and FDA class through RxClass; MED-RT relations & public API; ATC names are not redistributed\\
+Drug classes & FDA class through RxClass (direct ingredient members); ATC level 4 for the agreement flag and for near-misses & public API; ATC names are not redistributed\\
 Labels & openFDA and DailyMed label sections & public domain / CC0\\
 \bottomrule
 \end{tabular}
@@ -2049,8 +2060,8 @@ from \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA}\% to 78.8\% while the L2 sc
 against two.} The rationale's deficit against the two-stage ledger lies in
 reversal (\res{run/B-F-rationale-triplets/L2/all/Rev}\%), not in holding (\res{run/B-F-rationale-triplets/L2/all/Hold}\%); the case-visible prose judge is
 0.8 points above the case-blind one ($[0.1,1.5]$) and statistically level
-with the ledger ($-0.4$ $[-1.1,0.3]$); on blocks the ledger is 2.7 points
-above prose over four seeds ($[-0.1,5.6]$); the ledger is 13.5 points above
+with the ledger ($-0.4$ $[-1.1,0.3]$); on blocks the ledger is \res{cmp/x-blocks-ledger-prose/diff} points
+above prose over five seeds ($[\res{cmp/x-blocks-ledger-prose/lo},\res{cmp/x-blocks-ledger-prose/hi}]$); the ledger is 13.5 points above
 the value ledger on triplets ($[11.3,15.9]$) and 4.6 on blocks
 ($[1.3,7.6]$). With program-supplied ledgers the judge solves \res{run/B-AE-oracle-ledger/L2/all/TA}\% of L2
 triplets: 12 errors of the full model are rescued, none is introduced and 4
@@ -2230,7 +2241,7 @@ the training framework on 99.96\% of 8{,}000 preferences.
 
 \paragraph{Policy training.}
 GRPO from a Qwen3.5-4B policy on rule tasks from training rules, \res{meta/D-RL-outcome/steps@int}
-steps, one seed, evaluated every 200 steps and at the end on 150 held-out
+steps, evaluated every 200 steps and at the end on 150 held-out
 L2 pairs with the rule program. Outcome reward: pair accuracy \res{run/D-RL-outcome/L2/top/start_pair/s0}\% to
 \res{run/D-RL-outcome/L2/top/acc_pair/s0}\%, triplet accuracy \res{run/D-RL-outcome/L2/top/start_triplet/s0}\% to \res{run/D-RL-outcome/L2/top/acc_triplet/s0}\%. Reference-graph reward: \res{run/D-RL-refgraph/L2/top/start_pair/s0}\% to
 \res{run/D-RL-refgraph/L2/top/acc_pair/s0}\% and \res{run/D-RL-refgraph/L2/top/start_triplet/s0}\% to \res{run/D-RL-refgraph/L2/top/acc_triplet/s0}\%. Med-PRM as reward: \res{run/D-RL-stepcheck/L2/top/start_pair/s0}\% to \res{run/D-RL-stepcheck/L2/top/acc_pair/s0}\% and \res{run/D-RL-stepcheck/L2/top/start_triplet/s0}\%
@@ -2243,7 +2254,11 @@ on average. The collapsed policy writes a single step in \res{sum/D-RL-analysis/
 outputs (median length \res{sum/D-RL-analysis/runs.D-RL-stepcheck-s0.final.median_chars@int} characters, \res{sum/D-RL-analysis/runs.D-RL-stepcheck-s0.start.median_chars@int} before training);
 \res{sum/D-RL-analysis/runs.D-RL-stepcheck-s0.final.errors_fail_to_hold_share}\% of its errors are on base and near-miss cases, failures to hold
 and not to reverse, and on \res{sum/D-RL-analysis/runs.D-RL-stepcheck-s0.final.share_always_flip_claim}\% of triplets it gives the flip's claim
-for all three cases. Ledger reward trained on blocks: pair accuracy
+for all three cases. These are the values of seed 0; at seed 1 the outcome reward ends at
+\res{run/D-RL-outcome/L2/top/acc_pair/s1}\%, Med-PRM at \res{run/D-RL-stepcheck/L2/top/acc_pair/s1}\%, the ledger trained on blocks at
+\res{run/D-RL-ledger2-blocks/L2/top/acc_pair/s1}\% and on triplets at \res{run/D-RL-ledger2-triplets/L2/top/acc_pair/s1}\%; the ledger trained on blocks
+collapses the other way at seed 1 (\res{sum/D-RL-analysis/runs.D-RL-ledger2-blocks-s1.final.share_always_base_claim}\% of triplets answered with the base
+claim throughout). Ledger reward trained on blocks: pair accuracy
 \res{run/D-RL-ledger2-blocks/L2/top/start_pair/s0}\% to \res{run/D-RL-ledger2-blocks/L2/top/acc_pair/s0}\%, triplet accuracy \res{run/D-RL-ledger2-blocks/L2/top/start_triplet/s0}\% to \res{run/D-RL-ledger2-blocks/L2/top/acc_triplet/s0}\%; trained on
 triplets: \res{run/D-RL-ledger2-triplets/L2/top/start_pair/s0}\% to \res{run/D-RL-ledger2-triplets/L2/top/acc_pair/s0}\% and \res{run/D-RL-ledger2-triplets/L2/top/start_triplet/s0}\% to \res{run/D-RL-ledger2-triplets/L2/top/acc_triplet/s0}\%.
 
