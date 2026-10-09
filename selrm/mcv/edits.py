@@ -137,6 +137,9 @@ def ruleside(rows, specs, defs, ranges, split="test"):
             v = _raw(r["ent"], key)
             if v is None:
                 continue
+            if (r["cid"], key, _unit(r["ent"], key)) not in ranges:
+                skip("input and unit not seen in the training rows")
+                continue
             lo, hi = ranges[(r["cid"], key, _unit(r["ent"], key))]
             cands = [c + (d,) for d in (1, -1) if (c := change_point(it, r["ent"], key, d, lo - abs(lo), hi + abs(hi)))]
             if not cands:
