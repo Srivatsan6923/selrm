@@ -1,0 +1,13 @@
+2026-10-09T07:00:40Z step 10/59 loss=0.7467 grad_norm=0.825 learning_rate=9.632e-05 epoch=0.1702
+2026-10-09T07:01:09Z step 20/59 loss=0.02465 grad_norm=0.1721 learning_rate=7.961e-05 epoch=0.3404
+2026-10-09T07:01:36Z step 30/59 loss=0.002969 grad_norm=0.01151 learning_rate=5.413e-05 epoch=0.5106
+2026-10-09T07:02:04Z step 40/59 loss=0.007196 grad_norm=0.03556 learning_rate=2.742e-05 epoch=0.6809
+2026-10-09T07:02:32Z step 50/59 loss=0.0002951 grad_norm=0.06495 learning_rate=7.404e-06 epoch=0.8511
+2026-10-09T07:02:58Z step 59/59 train_runtime=167.2 train_samples_per_second=22.46 train_steps_per_second=0.353 total_flos=7.143e+16 train_loss=0.1327 epoch=1
+2026-10-09T07:03:43Z trained 59 steps in 2.8 min, 4351.8 tok/s, peak 33.29 GB
+2026-10-09T07:03:44Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0080)
+2026-10-09T07:03:45Z padding self-check: max |u_batch - u_single| = 0.0591 (tol 0.635) -> left padding
+2026-10-09T07:04:54Z B-DIV-base-16-s0 rule_v1/dev: TA 97.3 Rev 99.0 Hold 98.3 n=300 (70.3 s)
+2026-10-09T07:07:29Z generate: batch 25/32, 224402 tokens, 1515 tok/s
+2026-10-09T07:12:16Z B-DIV-base-16-s0 rule_v1/test_L2: TA 94.5 Rev 95.6 Hold 98.8 n=2000 (441.3 s)
+2026-10-09T07:12:16Z DONE B-DIV-base-16-s0 in 12.5 min, GPU util mean 76.2

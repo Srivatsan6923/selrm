@@ -27,7 +27,7 @@
      "per_device": 4
     },
     "eval": {
-     "bs_score": 48
+     "bs_score": 32
     }
    },
    "eval_sets": [
@@ -63,7 +63,7 @@
      "per_device": 4
     },
     "eval": {
-     "bs_score": 48
+     "bs_score": 32
     }
    },
    "eval_sets": [
@@ -99,7 +99,7 @@
      "per_device": 4
     },
     "eval": {
-     "bs_score": 48
+     "bs_score": 32
     }
    },
    "eval_sets": [
@@ -135,7 +135,7 @@
      "per_device": 4
     },
     "eval": {
-     "bs_score": 48
+     "bs_score": 32
     }
    },
    "eval_sets": [
@@ -171,7 +171,7 @@
      "per_device": 4
     },
     "eval": {
-     "bs_score": 48
+     "bs_score": 32
     }
    },
    "eval_sets": [
@@ -207,7 +207,7 @@
      "per_device": 4
     },
     "eval": {
-     "bs_score": 48
+     "bs_score": 32
     }
    },
    "eval_sets": [

@@ -29,6 +29,8 @@ def main():
         parts = str(v.get("run_id")).split("-")
         if parts[:2] == ["B", "F"] and len(parts) == 5 and "alias_of" not in v:
             reg["systems"].setdefault(f"{parts[2]}_{parts[3]}_{parts[4]}", v | {"alias_of": v["run_id"]})
+        if parts[:2] == ["B", "MIX"] and len(parts) == 4 and "alias_of" not in v:     # mix_blocks_s0
+            reg["systems"].setdefault(f"mix_{parts[2]}_{parts[3]}", v | {"alias_of": v["run_id"]})
     open(p, "w", encoding="utf-8", newline="\n").write(json.dumps(reg, indent=1, ensure_ascii=False) + "\n")
     print(f"{len(added)} added: {', '.join(added)}")
 
