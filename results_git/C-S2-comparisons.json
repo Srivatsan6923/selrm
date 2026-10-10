@@ -48,6 +48,24 @@
     5,
     5
    ]
+  },
+  "11": {
+   "diff": -5.8851941296674735,
+   "lo": -12.84707425012293,
+   "hi": 0.42525208241998413,
+   "p": 0.0664,
+   "B": 10000,
+   "n_items": 5383,
+   "n_clusters": 134,
+   "contrast": "[triplets: derived - none] minus [critic: derived - none]",
+   "metric": "pair accuracy",
+   "expectation": "> 0",
+   "seeds": {
+    "triplets_derived": 5,
+    "triplets_none": 5,
+    "critic_derived": 1,
+    "critic_none": 1
+   }
   }
  },
  "mcv_criteria_cells": {
@@ -99,16 +117,64 @@
  "medeinst_cells": {
   "verdict-triplets|none": {
    "pair_accuracy": 22.036039383243544,
+   "control_acc": 69.12502322125209,
+   "trap_acc": 52.52832992754969,
+   "seeds": 5,
+   "n": 5383
+  },
+  "verdict-triplets|derived": {
+   "pair_accuracy": 10.354820731933865,
+   "control_acc": 91.80382686234442,
+   "trap_acc": 18.235184841166635,
+   "seeds": 5,
+   "n": 5383
+  },
+  "verdict-triplets|wrong": {
+   "pair_accuracy": 1.6310607467954672,
+   "control_acc": 5.101244659112019,
+   "trap_acc": 90.32881292959317,
    "seeds": 5,
    "n": 5383
   },
   "verdict-blocks|none": {
    "pair_accuracy": 21.010588890953,
+   "control_acc": 68.6160133754412,
+   "trap_acc": 51.80011146201004,
    "seeds": 5,
+   "n": 5383
+  },
+  "verdict-blocks|derived": {
+   "pair_accuracy": 11.01616199145458,
+   "control_acc": 92.62028608582574,
+   "trap_acc": 18.112576630131898,
+   "seeds": 4,
+   "n": 5383
+  },
+  "verdict-blocks|wrong": {
+   "pair_accuracy": 2.1270666914360024,
+   "control_acc": 5.967861787107561,
+   "trap_acc": 87.3955043655954,
+   "seeds": 4,
    "n": 5383
   },
   "critic|none": {
    "pair_accuracy": 24.187256176853055,
+   "control_acc": 71.8372654653539,
+   "trap_acc": 51.5697566412781,
+   "seeds": 1,
+   "n": 5383
+  },
+  "critic|derived": {
+   "pair_accuracy": 18.39123165521085,
+   "control_acc": 86.64313579788222,
+   "trap_acc": 31.41370982723388,
+   "seeds": 1,
+   "n": 5383
+  },
+  "critic|wrong": {
+   "pair_accuracy": 15.307449377670443,
+   "control_acc": 30.614898755340885,
+   "trap_acc": 73.04477057402934,
    "seeds": 1,
    "n": 5383
   }

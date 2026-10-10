@@ -179,8 +179,10 @@ def main():
     me = load(f"{REPO}/data/clin_v1/medeinst_test/records.jsonl")
     rid = {r["tid"]: r["rid"] for r in me}
 
+    ACC = {}
+
     def pair_items(kind, cond):
-        vals = collections.defaultdict(list)
+        vals, parts2 = collections.defaultdict(list), {"control_acc": [], "trap_acc": []}
         runs = ["critic"] if kind == "critic" else [f"verdict-{kind}-s{s}" for s in range(5)]
         for run in runs:
             u = scores(f"C-ME-{run}", "clin_v1/medeinst_test") if cond == "none" else scores(f"C-S2-me-{run}", f"clin_v1/medeinst_test@{cond}")
@@ -188,10 +190,13 @@ def main():
                 d = d_by(me, u, "" if cond == "none" else f"@{cond}")
                 for t in rid:
                     vals[t].append(d[(t, "base")] > 0 and d[(t, "flip")] < 0)
+                parts2["control_acc"].append(100.0 * statistics.mean(d[(t, "base")] > 0 for t in rid))
+                parts2["trap_acc"].append(100.0 * statistics.mean(d[(t, "flip")] < 0 for t in rid))
+        ACC[(kind, cond)] = {k: statistics.mean(v) for k, v in parts2.items() if v}
         return {t: statistics.mean(v) for t, v in vals.items()}, max((len(v) for v in vals.values()), default=0)
 
     mc = {(k, c): pair_items(k, c) for k in ("triplets", "blocks", "critic") for c in ("none", "derived", "wrong")}
-    out["medeinst_cells"] = {f"{'critic' if k == 'critic' else 'verdict-' + k}|{c}": {"pair_accuracy": 100.0 * statistics.mean(v.values()), "seeds": n, "n": len(v)}
+    out["medeinst_cells"] = {f"{'critic' if k == 'critic' else 'verdict-' + k}|{c}": {"pair_accuracy": 100.0 * statistics.mean(v.values()), **ACC[(k, c)], "seeds": n, "n": len(v)}
                              for (k, c), (v, n) in mc.items() if v}
     need11 = [("triplets", "derived"), ("triplets", "none"), ("critic", "derived"), ("critic", "none")]
     if all(mc[k][0] for k in need11):
