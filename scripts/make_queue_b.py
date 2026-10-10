@@ -397,6 +397,33 @@ def stage2(registry):
     return runs
 
 
+DEV_S2 = ["rule_v2/dev", "rule_v1/dev", "cls_v1/dev"]
+TEST_S2 = ["rule_v2/test_L2", "rule_v1/test_L2", "xr_v1/test", "cls_v1/test"]
+
+
+def composite(adapters, tests=False):
+    """STAGE2_TASKS_B B3: eval-only runs behind Ledger-RM-G for every trained B-V2-reader-triplets-s<k>.
+    B-S2G-{gate,struct}-s<k>-{dev,test}: the reader's record through the gate (parsed criterion / struct), judged
+    blind or with the case (eval_local.gate_units); B-S2G-{bit,verdict}-s<k>-dev: the reader's own bit and the
+    verdict-only fallback on the development sets their training runs did not score. Tests only after the
+    validation on the development sets passed (scripts/assemble_rmg.py --validate)."""
+    runs, part = [], "test" if tests else "dev"
+    for k in range(5):
+        rd, vd = f"B-V2-reader-triplets-s{k}", f"B-V2-verdict-triplets-s{k}"
+        if rd not in adapters or vd not in adapters:
+            continue
+        base = {"seed": k, "priority": 4 + k, "train": False, "eval_sets": TEST_S2 if tests else DEV_S2, "min_gen": 7}
+        for name, mode in (("gate", "gate"), ("struct", "gate_struct")):
+            runs.append(base | {"run_id": f"B-S2G-{name}-s{k}-{part}", "format": "ledger_g", "adapter": f"adapters/{rd}",
+                                "eval": dict(EVAL) | {"mode": mode}})
+        if not tests:
+            runs.append(base | {"run_id": f"B-S2G-bit-s{k}-dev", "format": "ledger_g", "adapter": f"adapters/{rd}",
+                                "eval": dict(EVAL), "eval_sets": ["rule_v1/dev"]})
+            runs.append(base | {"run_id": f"B-S2G-verdict-s{k}-dev", "format": "verdict", "adapter": f"adapters/{vd}",
+                                "eval": dict(EVAL), "eval_sets": ["rule_v1/dev"]})
+    return runs
+
+
 FORMAT_MIN_GEN = {"genprm": 2, "conddrv": 3, "ledger2_case": 4, "ledger_g": 7}     # runner generations that run a format correctly
 NEW_FIELDS = ("mix", "passes", "pad_examples", "train_meta_exclude", "save_epochs")
 
