@@ -16,9 +16,10 @@ import argparse, collections, json, os, sys, time
 import numpy as np
 import torch
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from selrm.crit_parse import parse_criterion
+from selrm.crit_parse import from_struct, parse_criterion
+from selrm.link import load_onto
 from selrm.gate import gate
-from selrm.formats import (BITS, MALFORMED_U, PROSE, TWO_STAGE, parse_entries, judge_for, dataset_path, gold_record, judge_view, read_bit,
+from selrm.formats import (BITS, MALFORMED_U, entry_g, PROSE, TWO_STAGE, parse_entries, judge_for, dataset_path, gold_record, judge_view, read_bit,
                            reader_unit, reader_units, unit_key, well_formed)
 from selrm.metrics import bootstrap_ci, cluster_bootstrap, crossed_accuracy, decisions, summarise
 from selrm.prompts import judge_prompt, ledger_to_text
@@ -26,7 +27,7 @@ from selrm.prompts import judge_prompt, ledger_to_text
 KIND = {"verdict": "verdict", "verdict_bt": "verdict", "rationale": "rationale", "summary2": "reader_prose",
         "summary2_case": "reader_prose", "value2": "reader_ledger", "ledger2": "reader_ledger", "ledger2_dec": "reader_ledger",
         "dec_judge": "reader_ledger", "bit_reader": "reader_ledger", "ledger2_verify": "reader_ledger",
-        "genprm": "genprm", "conddrv": "reader_derive", "ledger2_case": "reader_ledger"}
+        "genprm": "genprm", "conddrv": "reader_derive", "ledger2_case": "reader_ledger", "ledger_g": "reader_ledger"}
 PROGRAM_U = 10.0            # |u| when the rule program decides from the predicted bit
 MODES = (None, "oracle_ledger", "program_bit", "ledger_swap", "verify", "ledger_edit", "gate", "gate_struct")
 # Executes generated checks one per stdin line (JSON string) in a separate interpreter: no imports
@@ -338,20 +339,30 @@ def gate_units(units, text, fmt, mode):
     score); gate = the gate's bit replaces the reader's and the judge reads the record only; judge_case = some check
     is not computable, the reader's bit stands and the judge also sees the case. gate_struct takes the constraints
     from the record's `struct` instead of the parser."""
-    assert fmt in ("ledger2_dec",), fmt
+    assert fmt in ("ledger2_dec", "ledger_g"), fmt
+    g_fmt = fmt == "ledger_g"            # stage-2 record: the bit is a line of every entry
+    opath = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "onto_v1", "classes.json")
+    onto = load_onto(opath) if os.path.exists(opath) else None
     out = {}
     for r in units:
         rec_text, ok = text[reader_unit(r, fmt)]
         if not r["rule_text"] or not ok:
             out[reader_unit(r, fmt)] = {"route": "fallback_malformed" if r["rule_text"] else "fallback_none"}
             continue
-        head, _, last = rec_text.strip().rpartition("\n\n")
-        cons = r.get("struct") if mode == "gate_struct" else parse_criterion(r["rule_text"], r["condition"])
-        g = gate(parse_entries(head), cons, r["case_text"], r.get("ref_date"))   # ponytail: no onto yet (onto_v1 from A)
+        head = rec_text.strip() if g_fmt else rec_text.strip().rpartition("\n\n")[0]
+        entries = parse_entries(head)
+        cons = (from_struct(r.get("struct")) if mode == "gate_struct"
+                else parse_criterion(r["rule_text"], r["condition"], onto and onto["classes"]))
+        g = gate(entries, cons, r["case_text"], r.get("ref_date"), onto)
         done = g["applies"] is not None
+        if not done:
+            record = rec_text.strip()                    # the reader's bit stands; the judge also sees the case
+        elif g_fmt:                                      # each entry's bit is replaced by the gate's value for it
+            record = "\n\n".join(entry_g(e | {"applies": "yes" if v == 1 else "no"}) for e, v in zip(entries, g["entries"]))
+        else:
+            record = head + "\n\n" + BITS[g["applies"]]
         out[reader_unit(r, fmt)] = {"route": "gate" if done else "judge_case", "checks": g["checks"],
-                                    "applies_reader": read_bit(rec_text), "applies_gate": g["applies"],
-                                    "record": head + "\n\n" + BITS[g["applies"]] if done else rec_text.strip()}
+                                    "applies_reader": read_bit(rec_text), "applies_gate": g["applies"], "record": record}
     return out
 
 

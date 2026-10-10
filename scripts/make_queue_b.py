@@ -318,7 +318,7 @@ def with_new_sets(runs, registry):
     adapter, so that sets A registers later are scored by B-NS eval-only runs (FINAL_TASKS_B P0.6)."""
     ns = new_sets(registry)
     for r in runs:
-        if r.get("train", True) and not r["run_id"].startswith(("B-FOLD", "B-DIV", "B-C0", "B-T0", "B-AUX", "B-MIX")):
+        if r.get("train", True) and not r["run_id"].startswith(("B-FOLD", "B-DIV", "B-C0", "B-T0", "B-AUX", "B-MIX", "B-V2")):
             r["eval_sets"] = r["eval_sets"] + [s for s in ns if s not in r["eval_sets"]]
             r["keep_adapter"] = True
     return runs
@@ -376,7 +376,28 @@ def adaptation(registry, seeds=(0, 1, 2)):
     return runs
 
 
-FORMAT_MIN_GEN = {"genprm": 2, "conddrv": 3, "ledger2_case": 4}     # runner generations that run a format correctly
+def stage2(registry):
+    """STAGE2_TASKS_B B2: training on rule_v2, stage-1 budget and schedule. B-V2-verdict-{blocks,triplets}-s0..4,
+    B-V2-reader-triplets-s0..4 and B-V2-reader-blocks-s0 (format ledger_g: stage-2 record, judge record-only and
+    record plus case), and leave-one-kind-out B-V2-{verdict,reader}-lo_{window,class}-s0."""
+    reg = json.load(open(registry))
+    ok = lambda name: reg.get(name, {}).get("frozen")
+    evals = [s for s in ("rule_v2/dev", "rule_v2/test_L2", "rule_v1/test_L2", "xr_v1/test", "cls_v1/dev", "cls_v1/test",
+                         "reg_v1/dev", "reg_v1/test") if ok(s)]
+    cells = ([("verdict", "blocks", s) for s in range(5)] + [("verdict", "triplets", s) for s in range(5)]
+             + [("reader", "triplets", s) for s in range(5)] + [("reader", "blocks", 0)]
+             + [(f, f"triplets_lo_{k}", 0) for k in ("window", "class") for f in ("verdict", "reader")])
+    runs = []
+    for f, c, s in cells:
+        if ok(f"rule_v2/train_{c}"):
+            runs.append({"run_id": f"B-V2-{f}-{c.replace('triplets_', '')}-s{s}", "seed": s,
+                         "priority": 6 + s + (3 if "lo_" in c else 0), "format": "ledger_g" if f == "reader" else "verdict",
+                         "corpus": f"rule_v2/train_{c}", "n_examples": 60000, "keep_adapter": True, "eval": dict(EVAL),
+                         "max_drop": 0.01, "eval_sets": evals, "min_gen": 7})
+    return runs
+
+
+FORMAT_MIN_GEN = {"genprm": 2, "conddrv": 3, "ledger2_case": 4, "ledger_g": 7}     # runner generations that run a format correctly
 NEW_FIELDS = ("mix", "passes", "pad_examples", "train_meta_exclude", "save_epochs")
 
 
