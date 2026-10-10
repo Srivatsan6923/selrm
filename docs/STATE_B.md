@@ -34,6 +34,13 @@ Nothing is tuned on a test set: parser, linker, gate and prompts are developed o
   curves (39), seeds 1-2 of non-core ablations: not queued, to be run when GPUs are idle after B2-B4 or reported to D.
 
 ## GPUs
+- 10 Oct 05:15 UTC: done and registered: v2_verdict_blocks_s0, v2_verdict_triplets_s0, mix_blocks_s0-1,
+  mix_triplets_s0-1. Running: A100 (B-MIX-blocks-s2), A100 (B-V2-verdict-blocks-s1), H100 (B-V2-reader-triplets-s0),
+  H100 (B-V2-reader-blocks-s0); means 65-94% over the last 10 minutes, no LOWUTIL file. B3 is prepared:
+  when B-V2-reader-triplets-s<k> is DONE, write configs/queues/v2/b_s2g.json from make_queue_b.composite(adapters)
+  (add it to scratch/regen_revised.py), push, prep, run; pull; `python scripts/assemble_rmg.py --validate <k>`;
+  only if it passes, composite(adapters, tests=True) and `assemble_rmg.py <k>` (test record files must then be in
+  the local data copy for the summaries).
 - 10 Oct 02:00 UTC: runners on code 45c7476 (GEN 7): two h100-opp, one each l40, a40, a6000, a100; the A100 runner
   of 9 Oct (GEN 6, MIX and DIV runs only) is still running. role A data on the PVC through `submit_b.py fetch-ref`
   and `restore-data` (code 8043eadcc3ad).
