@@ -38,6 +38,7 @@ FILES = {  # queue file -> generator (FINAL_TASKS_B, 3 Oct)
     "b_aux.json": lambda: Q.aux(REG),                       # NEXT_TASKS_B 3 (docs/AUX_PROTOCOL.md S1)
     "v2/b_ns.json": lambda: Q.ns_eval(REG, adapters),      # P0.6: kept adapters on A's new sets
     "v2/b_v2.json": lambda: Q.stage2(REG),                 # stage 2 B2
+    "v2/b_s2g.json": lambda: Q.composite(adapters),          # stage 2 B3: development sets (validation)
     "v2/b_mix.json": lambda: Q.adaptation(REG),            # stage 2 B4, once mcv_v1 is in the PVC registry
     "v2/b_l3inv.json": lambda: Q.ns_eval(REG, [a for a in L3INV if a in adapters],      # stage 2 B0: red cells of Table 20
                                          fams={"L3inv": ["rule_v1/test_L3inv"]}),
