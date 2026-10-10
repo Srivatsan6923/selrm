@@ -310,6 +310,23 @@
    "min_gen": 6
   },
   {
+   "run_id": "B-NS-xr_v1-B-MIX-blocks-s2",
+   "seed": 2,
+   "priority": 45,
+   "format": "verdict",
+   "train": false,
+   "adapter": "adapters/B-MIX-blocks-s2",
+   "eval_sets": [
+    "xr_v1/test"
+   ],
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "min_gen": 6
+  },
+  {
    "run_id": "B-NS-xr_v1-B-MIX-triplets-s0",
    "seed": 0,
    "priority": 45,

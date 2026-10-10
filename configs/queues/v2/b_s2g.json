@@ -9,7 +9,7 @@
     "rule_v1/dev",
     "cls_v1/dev"
    ],
-   "min_gen": 7,
+   "min_gen": 8,
    "run_id": "B-S2G-gate-s0-dev",
    "format": "ledger_g",
    "adapter": "adapters/B-V2-reader-triplets-s0",
@@ -29,7 +29,7 @@
     "rule_v1/dev",
     "cls_v1/dev"
    ],
-   "min_gen": 7,
+   "min_gen": 8,
    "run_id": "B-S2G-struct-s0-dev",
    "format": "ledger_g",
    "adapter": "adapters/B-V2-reader-triplets-s0",

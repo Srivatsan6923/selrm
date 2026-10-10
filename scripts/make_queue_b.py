@@ -412,7 +412,7 @@ def composite(adapters, tests=False):
         rd, vd = f"B-V2-reader-triplets-s{k}", f"B-V2-verdict-triplets-s{k}"
         if rd not in adapters or vd not in adapters:
             continue
-        base = {"seed": k, "priority": 4 + k, "train": False, "eval_sets": TEST_S2 if tests else DEV_S2, "min_gen": 7}
+        base = {"seed": k, "priority": 4 + k, "train": False, "eval_sets": TEST_S2 if tests else DEV_S2, "min_gen": 8}
         for name, mode in (("gate", "gate"), ("struct", "gate_struct")):
             runs.append(base | {"run_id": f"B-S2G-{name}-s{k}-{part}", "format": "ledger_g", "adapter": f"adapters/{rd}",
                                 "eval": dict(EVAL) | {"mode": mode}})
