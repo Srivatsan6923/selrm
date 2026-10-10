@@ -1308,6 +1308,57 @@
    "pvc": "selrm-b",
    "pvc_path": "selrm/adapters/B-F-summary2-blocks-s4",
    "alias_of": "B-F-summary2-blocks-s4"
+  },
+  "B-BB-qwen3.5-4b-ledger2-blocks-s0": {
+   "run_id": "B-BB-qwen3.5-4b-ledger2-blocks-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-4B@3764fa359b9082ea5a1e4a5e3ac3aaf6e9671636",
+   "format": "ledger2",
+   "corpus": "rule_v1/train_blocks",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-BB-qwen3.5-4b-ledger2-blocks-s0"
+  },
+  "B-BB-qwen3.5-4b-ledger2-triplets-s0": {
+   "run_id": "B-BB-qwen3.5-4b-ledger2-triplets-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-4B@3764fa359b9082ea5a1e4a5e3ac3aaf6e9671636",
+   "format": "ledger2",
+   "corpus": "rule_v1/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-BB-qwen3.5-4b-ledger2-triplets-s0"
+  },
+  "B-BB-qwen3.5-4b-verdict-triplets-s0": {
+   "run_id": "B-BB-qwen3.5-4b-verdict-triplets-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-4B@3764fa359b9082ea5a1e4a5e3ac3aaf6e9671636",
+   "format": "verdict",
+   "corpus": "rule_v1/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-BB-qwen3.5-4b-verdict-triplets-s0"
+  },
+  "B-MIX-blocks-s0": {
+   "run_id": "B-MIX-blocks-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v1/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-MIX-blocks-s0"
+  },
+  "mix_blocks_s0": {
+   "run_id": "B-MIX-blocks-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v1/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-MIX-blocks-s0",
+   "alias_of": "B-MIX-blocks-s0"
   }
  }
 }

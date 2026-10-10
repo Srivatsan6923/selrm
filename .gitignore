@@ -7,3 +7,4 @@ results/**/scores_*.jsonl
 paper/build/
 data/_ext/
 data/mcv_v1/cache/
+data/reg_v1/cache/

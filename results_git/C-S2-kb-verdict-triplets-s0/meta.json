@@ -1,0 +1,88 @@
+{
+ "run_id": "C-S2-kb-verdict-triplets-s0",
+ "role": "C",
+ "model": "unsloth/Qwen3.5-9B",
+ "model_revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+ "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s0",
+ "adapter_run": "B-F-verdict-triplets-s0",
+ "provider": "local (NRP Nautilus)",
+ "access_date": "2026-10-09",
+ "reasoning": "chat template with enable_thinking=False",
+ "format": "verdict",
+ "mode": null,
+ "rejudge_from": null,
+ "lenient_version": null,
+ "sets": [
+  "kb_v1/triplets_test",
+  "kb_v1/triplets_test@none",
+  "kb_v1/triplets_test@wrong"
+ ],
+ "max_new": 384,
+ "eval_batch": {
+  "score": 16,
+  "generate": 48
+ },
+ "hp": {
+  "max_len": 4096
+ },
+ "eval_seconds_by_set": {
+  "kb_v1/triplets_test": 7937.0,
+  "kb_v1/triplets_test@none": 2845.2,
+  "kb_v1/triplets_test@wrong": 7937.5
+ },
+ "eval_generated_tokens": 0,
+ "pad_check_ok": true,
+ "eval_u_path": "fp32-hidden",
+ "eval_peak_mem_gb": 17.71,
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA A10, 595.91.07, 23028 MiB",
+ "node": "hcc-nrp-shor-c5905.unl.edu",
+ "pod": "selrm-c-run-c-s2-kb-24gbf-28349-1-5jn62",
+ "scoring_code": "role-b ac524e8062ef",
+ "git_commit": "329a633d028a",
+ "wall_seconds": 18844.8,
+ "summaries": {
+  "kb_v1/triplets_test": {
+   "Rev": 88.72253548512542,
+   "Hold": 97.53062414932919,
+   "TA": 87.55590122496598,
+   "BaseAcc": 98.60003888780867,
+   "Tie": 0.0,
+   "n": 5143
+  },
+  "kb_v1/triplets_test@none": {
+   "Rev": 55.8428932529652,
+   "Hold": 85.2031888003111,
+   "TA": 53.3346295936224,
+   "BaseAcc": 87.2836865642621,
+   "Tie": 0.0,
+   "n": 5143
+  },
+  "kb_v1/triplets_test@wrong": {
+   "Rev": 3.1110246937585067,
+   "Hold": 19.677231188022557,
+   "TA": 2.9165856503986,
+   "BaseAcc": 17.830060276103442,
+   "Tie": 0.0,
+   "n": 5143
+  }
+ },
+ "gpu_util_mean": 97.3,
+ "gpu_util_p10": 100.0,
+ "gpu_windows_below40": 0.0,
+ "gpu_samples": 616,
+ "gpu_hours": 5.235
+}

@@ -1,0 +1,20 @@
+{
+ "run_id": "C-S2-mcv2-verdict-blocks-s2",
+ "set": "mcv_v1/edits_test@none",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {
+   "Rev": 74.75550122249389,
+   "Hold": 67.23716381418093,
+   "TA": 54.21760391198044,
+   "BaseAcc": 86.61369193154034,
+   "Tie": 0.0,
+   "n": 1636
+  }
+ },
+ "eval": {
+  "seconds": 2788.5,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

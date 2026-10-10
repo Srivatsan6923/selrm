@@ -1,0 +1,18 @@
+2026-10-09T05:58:34Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-09T05:58:35Z token budget per batch: 8000 (generation 24000)
+2026-10-09T05:58:56Z C-S2-mcv-critic mcv_v1/criteria_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/mcv_v1/criteria_test/verdict.npz', 'built 6880 prompts, max 2493 tokens')
+2026-10-09T05:59:43Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0069)
+2026-10-09T05:59:47Z padding self-check: max |u_batch - u_single| = 0.1030 (tol 0.580) -> left padding
+2026-10-09T07:06:51Z C-S2-mcv-critic mcv_v1/criteria_test: TA nan Rev nan Hold nan n=None (4074.0 s)
+2026-10-09T07:06:51Z C-S2-mcv-critic mcv_v1/criteria_test@none prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/mcv_v1/criteria_test@none/verdict.npz', 'exists')
+2026-10-09T07:45:45Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-09T07:45:47Z token budget per batch: 8000 (generation 24000)
+2026-10-09T07:45:47Z C-S2-mcv-critic mcv_v1/criteria_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/mcv_v1/criteria_test/verdict.npz', 'exists')
+2026-10-09T07:46:48Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0365)
+2026-10-09T07:46:53Z padding self-check: max |u_batch - u_single| = 0.0790 (tol 0.581) -> left padding
+2026-10-09T08:25:36Z C-S2-mcv-critic mcv_v1/criteria_test: TA nan Rev nan Hold nan n=None (2388.4 s)
+2026-10-09T08:25:37Z C-S2-mcv-critic mcv_v1/criteria_test@none prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/mcv_v1/criteria_test@none/verdict.npz', 'exists')
+2026-10-09T08:51:17Z C-S2-mcv-critic mcv_v1/criteria_test@none: TA nan Rev nan Hold nan n=None (1540.1 s)
+2026-10-09T08:51:19Z C-S2-mcv-critic mcv_v1/edits_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/mcv_v1/edits_test/verdict.npz', 'exists')
+2026-10-09T09:45:04Z C-S2-mcv-critic mcv_v1/edits_test: TA nan Rev nan Hold nan n=None (3224.7 s)
+2026-10-09T09:45:06Z DONE C-S2-mcv-critic in 119.7 min, GPU util mean 96.1

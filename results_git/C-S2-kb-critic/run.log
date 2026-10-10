@@ -1,0 +1,11 @@
+2026-10-09T06:58:52Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-09T06:58:53Z token budget per batch: 8000 (generation 24000)
+2026-10-09T07:00:05Z C-S2-kb-critic kb_v1/triplets_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/kb_v1/triplets_test/verdict.npz', 'built 30858 prompts, max 1304 tokens')
+2026-10-09T07:01:09Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0122)
+2026-10-09T07:01:13Z padding self-check: max |u_batch - u_single| = 0.0773 (tol 0.515) -> left padding
+2026-10-09T08:38:37Z C-S2-kb-critic kb_v1/triplets_test: TA 75.4 Rev 76.5 Hold 96.4 n=5143 (5908.2 s)
+2026-10-09T08:39:14Z C-S2-kb-critic kb_v1/triplets_test@none prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/kb_v1/triplets_test@none/verdict.npz', 'built 30858 prompts, max 602 tokens')
+2026-10-09T09:14:28Z C-S2-kb-critic kb_v1/triplets_test@none: TA 53.6 Rev 57.6 Hold 83.9 n=5143 (2113.4 s)
+2026-10-09T09:15:39Z C-S2-kb-critic kb_v1/triplets_test@wrong prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/kb_v1/triplets_test@wrong/verdict.npz', 'built 30858 prompts, max 1304 tokens')
+2026-10-09T10:52:16Z C-S2-kb-critic kb_v1/triplets_test@wrong: TA 18.7 Rev 19.9 Hold 53.0 n=5143 (5796.6 s)
+2026-10-09T10:52:19Z DONE C-S2-kb-critic in 233.8 min, GPU util mean 96.7

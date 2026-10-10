@@ -1,0 +1,13 @@
+{
+ "run_id": "C-S2-mcv-verdict-triplets-s4",
+ "set": "mcv_v1/criteria_test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "seconds": 3065.4,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

@@ -1,0 +1,99 @@
+{
+ "plan": "docs/ANALYSIS_PLAN_STAGE2.md",
+ "bootstrap": {
+  "B": 10000,
+  "seed": 0,
+  "unit": "note"
+ },
+ "comparisons": {
+  "7": {
+   "diff": 1.2447089947089864,
+   "lo": 0.4496681396937987,
+   "hi": 2.049756178196546,
+   "p": 0.0028,
+   "B": 10000,
+   "n_items": 1100,
+   "n_clusters": 226,
+   "contrast": "verdict x triplets minus verdict x blocks, criterion stated",
+   "metric": "balanced accuracy",
+   "expectation": "> 0"
+  },
+  "8": {
+   "diff": 1.7936507936507837,
+   "lo": -0.907663833287657,
+   "hi": 4.463226292494596,
+   "p": 0.1926,
+   "B": 10000,
+   "n_items": 1100,
+   "n_clusters": 226,
+   "contrast": "[triplets: stated - none] minus [critic: stated - none]",
+   "metric": "balanced accuracy",
+   "expectation": "> 0"
+  },
+  "9": {
+   "diff": 31.37809187279153,
+   "lo": 29.39647168059426,
+   "hi": 33.12811980033278,
+   "p": 0.0,
+   "B": 10000,
+   "n_items": 1132,
+   "n_clusters": 191,
+   "contrast": "verdict x triplets minus verdict x blocks, criterion stated",
+   "metric": "triplet accuracy",
+   "expectation": "> 0",
+   "TA_triplets": 96.02473498233216,
+   "TA_blocks": 64.64664310954063,
+   "TA_critic": 88.86925795053003,
+   "seeds": [
+    5,
+    5
+   ]
+  }
+ },
+ "mcv_criteria_cells": {
+  "triplets_stated": {
+   "balanced_accuracy": 91.13227513227513,
+   "acc_items_scoring_points": 91.4074074074074,
+   "n_points": 540,
+   "acc_items_scoring_none": 90.85714285714286,
+   "n_none": 560,
+   "seeds": 5
+  },
+  "blocks_stated": {
+   "balanced_accuracy": 89.88756613756614,
+   "acc_items_scoring_points": 91.7037037037037,
+   "n_points": 540,
+   "acc_items_scoring_none": 88.07142857142857,
+   "n_none": 560,
+   "seeds": 5
+  },
+  "triplets_none": {
+   "balanced_accuracy": 76.76587301587301,
+   "acc_items_scoring_points": 82.88888888888889,
+   "n_points": 540,
+   "acc_items_scoring_none": 70.64285714285714,
+   "n_none": 560,
+   "seeds": 5
+  },
+  "critic_stated": {
+   "balanced_accuracy": 86.66666666666667,
+   "acc_items_scoring_points": 88.33333333333333,
+   "n_points": 540,
+   "acc_items_scoring_none": 85.0,
+   "n_none": 560,
+   "seeds": 1
+  },
+  "critic_none": {
+   "balanced_accuracy": 74.09391534391534,
+   "acc_items_scoring_points": 79.25925925925927,
+   "n_points": 540,
+   "acc_items_scoring_none": 68.92857142857143,
+   "n_none": 560,
+   "seeds": 1
+  }
+ },
+ "mcv_criteria_n": {
+  "items": 1100,
+  "notes": 226
+ }
+}

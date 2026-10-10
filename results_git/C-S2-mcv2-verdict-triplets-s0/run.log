@@ -1,0 +1,15 @@
+2026-10-09T09:52:36Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-verdict-triplets-s0
+2026-10-09T09:52:37Z token budget per batch: 8000 (generation 24000)
+2026-10-09T09:52:38Z C-S2-mcv2-verdict-triplets-s0 mcv_v1/edits_test@none prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/mcv_v1/edits_test@none/verdict.npz', 'exists')
+2026-10-09T09:52:48Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0029)
+2026-10-09T09:52:50Z padding self-check: max |u_batch - u_single| = 0.1414 (tol 0.764) -> left padding
+2026-10-09T10:14:57Z C-S2-mcv2-verdict-triplets-s0 mcv_v1/edits_test@none: TA nan Rev nan Hold nan n=None (1337.9 s)
+2026-10-09T10:15:27Z C-S2-mcv2-verdict-triplets-s0 mcv_v1/criteria_test@wrong prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/mcv_v1/criteria_test@wrong/verdict.npz', 'built 6880 prompts, max 2499 tokens')
+2026-10-09T10:38:52Z C-S2-mcv2-verdict-triplets-s0 mcv_v1/criteria_test@wrong: TA nan Rev nan Hold nan n=None (1404.4 s)
+2026-10-09T10:39:28Z C-S2-mcv2-verdict-triplets-s0 mcv_v1/edits_test@wrong prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/mcv_v1/edits_test@wrong/verdict.npz', 'built 9816 prompts, max 2602 tokens')
+2026-10-09T11:08:45Z C-S2-mcv2-verdict-triplets-s0 mcv_v1/edits_test@wrong: TA nan Rev nan Hold nan n=None (1756.0 s)
+2026-10-09T11:08:54Z C-S2-mcv2-verdict-triplets-s0 mcv_v1/ruleside_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/mcv_v1/ruleside_test/verdict.npz', 'built 1180 prompts, max 2016 tokens')
+2026-10-09T11:12:54Z C-S2-mcv2-verdict-triplets-s0 mcv_v1/ruleside_test: TA nan Rev nan Hold nan n=None (239.1 s)
+2026-10-09T11:13:02Z C-S2-mcv2-verdict-triplets-s0 mcv_v1/natural_band_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/mcv_v1/natural_band_test/verdict.npz', 'built 788 prompts, max 2486 tokens')
+2026-10-09T11:16:16Z C-S2-mcv2-verdict-triplets-s0 mcv_v1/natural_band_test: TA nan Rev nan Hold nan n=None (193.0 s)
+2026-10-09T11:16:18Z DONE C-S2-mcv2-verdict-triplets-s0 in 84.3 min, GPU util mean 94.0

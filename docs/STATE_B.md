@@ -36,6 +36,11 @@ Nothing is tuned on a test set: parser, linker, gate and prompts are developed o
   curves (39), seeds 1-2 of non-core ablations: not queued, to be run when GPUs are idle after B2-B4 or reported to D.
 
 ## GPUs
+- 10 Oct 00:30 UTC: utilisation since the restart: A100 runner mean 87%, H100 pods 75-93%; no LOWUTIL file.
+  H100 pods failed four times with CUDA out of memory in the mcv_v1/dev scoring at batch 48; "big" scoring batch is
+  now 32, the failure marks of B-MIX-triplets-s0 and B-MIX-blocks-s1 were renamed old_FAILED_*, two h100-opp
+  runners restarted. Done: B-MIX-blocks-s0 (registered as mix_blocks_s0), the four Qwen3.5-4B cells,
+  B-DIV-base-16-s0. Running: B-MIX-triplets-s1 on the A100.
 - 9 Oct 17:30 UTC: runners restarted with the user's approval and the 40% guard (DECISIONS_B 9 Oct: runner GEN 6
   stops a run below 40% over 10 min and marks LOWUTIL for that GPU model; "big" spec for 80 GB cards; staging
   limited to 12 min; us-west nodes only). Jobs: two h100-opp (max-runs 8, hours 10) and one each of l40, a40,
