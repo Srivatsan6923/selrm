@@ -8,6 +8,11 @@
  "parser_coverage": 100.0,
  "gate_coverage": 100.0,
  "agreement_on_parsed": 100.0,
+ "gate_struct_agreement": null,
+ "parser_precision_vs_struct": null,
+ "link_top1": null,
+ "link_top10": null,
+ "link_abstain": null,
  "by_nm_kind": {
   "boundary": {
    "n": 240,
