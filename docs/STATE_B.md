@@ -23,10 +23,10 @@ Nothing is tuned on a test set: parser, linker, gate and prompts are developed o
   Format ledger_g (selrm/formats.py). When runs finish: pull, register (add aliases v2_verdict_*, v2_reader_* to
   register_adapters.py), resummarize is not needed (runner summaries; no local copies of the test sets),
   report by near-miss kind in docs/ANALYSIS_B_S2.md.
-- B3 Ledger-RM-G: after B2. Eval-only runs of each B-V2-reader-triplets-s<k> with eval mode gate and gate_struct
-  (eval_local.gate_units; scores carry route and checks), then merge with the B-V2-verdict-triplets-s<k> scores for
-  the routes fallback_none and fallback_malformed. Validation stop rule first (rule_v2/dev within 0.5 TA of
-  v2_reader; rule_v1/dev within 0.5 of ledger2_triplets). Register ledger_rm_g_s{0..4}; write ANALYSIS_B_S2.md.
+- B3 Ledger-RM-G: **STOPPED by the B3.2 stop rule (10 Oct)**: seed 0 passes on rule_v2/dev and fails on rule_v1/dev
+  by 0.67 TA (DECISIONS_B, HANDOFFS 10 Oct). No test set scored; ledger_rm_g_s* not registered. Do not queue
+  composite test runs (make_queue_b.composite(tests=True)) unless the lead decides for a second development round
+  and a second validation passes. Development-set results: results_git/B-S2-*-ledger_rm_g-*-s0.
 - B4 adaptation arms: running (v2/b_mix.json). Done: B-MIX-blocks-s0 (mix_blocks_s0). The long-prompt runs use
   "big" settings on 80 GB cards (per-device 4, scoring batch 32).
 - B5 handoffs: adapters line sent 9 Oct; resources per configuration after B2.
