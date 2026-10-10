@@ -1,0 +1,15 @@
+{
+ "run_id": "C-NL-promptledger",
+ "set": "clin_v1/nli4ct_test",
+ "claim_type": "conclusion",
+ "eval": {
+  "reader_units": 5500,
+  "malformed_units": 5417,
+  "mode": null,
+  "malformed_rate": 0.9849,
+  "gen_not_stopped": 625,
+  "seconds": 16222.3,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

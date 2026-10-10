@@ -1,0 +1,15 @@
+{
+ "run_id": "C-KP-TR-clinonly-s0",
+ "set": "clin_v1/keypairs_careqa_oneway",
+ "claim_type": "conclusion",
+ "eval": {
+  "reader_units": 450,
+  "malformed_units": 63,
+  "mode": null,
+  "malformed_rate": 0.14,
+  "gen_not_stopped": 0,
+  "seconds": 163.0,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

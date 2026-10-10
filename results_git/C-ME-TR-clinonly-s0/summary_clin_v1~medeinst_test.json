@@ -1,0 +1,15 @@
+{
+ "run_id": "C-ME-TR-clinonly-s0",
+ "set": "clin_v1/medeinst_test",
+ "claim_type": "conclusion",
+ "eval": {
+  "reader_units": 10766,
+  "malformed_units": 181,
+  "mode": null,
+  "malformed_rate": 0.0168,
+  "gen_not_stopped": 180,
+  "seconds": 5601.8,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

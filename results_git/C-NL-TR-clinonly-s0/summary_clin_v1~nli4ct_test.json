@@ -1,0 +1,15 @@
+{
+ "run_id": "C-NL-TR-clinonly-s0",
+ "set": "clin_v1/nli4ct_test",
+ "claim_type": "conclusion",
+ "eval": {
+  "reader_units": 5500,
+  "malformed_units": 1273,
+  "mode": null,
+  "malformed_rate": 0.2315,
+  "gen_not_stopped": 331,
+  "seconds": 14984.7,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

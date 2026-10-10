@@ -1,0 +1,15 @@
+{
+ "run_id": "C-ME-ledger2-balanced-s0",
+ "set": "clin_v1/medeinst_test",
+ "claim_type": "conclusion",
+ "eval": {
+  "reader_units": 10766,
+  "malformed_units": 2415,
+  "mode": null,
+  "malformed_rate": 0.2243,
+  "gen_not_stopped": 1432,
+  "seconds": 12879.9,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

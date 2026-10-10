@@ -1,0 +1,31 @@
+{
+ "run_id": "C-TF-genprog-crit",
+ "set": "rule_v1/test_L2",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {
+   "Rev": 99.0,
+   "Hold": 99.2,
+   "TA": 98.2,
+   "BaseAcc": 99.9,
+   "Tie": 0.0,
+   "PresHold": 99.6,
+   "n": 1000
+  }
+ },
+ "eval": {
+  "check_missing": 56,
+  "check_error": 200,
+  "gen_not_stopped": 57,
+  "gen_tokens": 2871987,
+  "seconds": 8693.7,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ },
+ "subset": {
+  "n_groups": 1000,
+  "claim_types": [
+   "criterion"
+  ]
+ }
+}

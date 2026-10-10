@@ -1,0 +1,9 @@
+2026-10-10T02:51:27Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-10T02:51:28Z token budget per batch: 8000 (generation 24000)
+2026-10-10T02:52:20Z C-S2-me-critic clin_v1/medeinst_test@derived prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test@derived/verdict.npz', 'built 21532 prompts, max 5031 tokens')
+2026-10-10T02:53:19Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0967)
+2026-10-10T02:53:24Z padding self-check: max |u_batch - u_single| = 0.0633 (tol 0.515) -> left padding
+2026-10-10T04:07:12Z C-S2-me-critic clin_v1/medeinst_test@derived: TA nan Rev nan Hold nan n=None (4490.9 s)
+2026-10-10T04:08:05Z C-S2-me-critic clin_v1/medeinst_test@wrong prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test@wrong/verdict.npz', 'built 21532 prompts, max 5031 tokens')
+2026-10-10T05:22:12Z C-S2-me-critic clin_v1/medeinst_test@wrong: TA nan Rev nan Hold nan n=None (4445.2 s)
+2026-10-10T05:22:15Z DONE C-S2-me-critic in 151.1 min, GPU util mean 96.5

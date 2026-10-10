@@ -1,0 +1,15 @@
+{
+ "run_id": "C-NL-ledger2-natural-s0",
+ "set": "clin_v1/nli4ct_test",
+ "claim_type": "conclusion",
+ "eval": {
+  "reader_units": 5500,
+  "malformed_units": 887,
+  "mode": null,
+  "malformed_rate": 0.1613,
+  "gen_not_stopped": 24,
+  "seconds": 8116.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

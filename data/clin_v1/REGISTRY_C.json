@@ -419,5 +419,18 @@
   "sha256": "f6ff606edb8ca2792c75684a69a919fa63c8a8b27b8beb9c6ce27803fa50bdef",
   "split": "test",
   "tier": "view"
+ },
+ "xp_v1/orig_rerun": {
+  "created": "2026-10-10",
+  "frozen": true,
+  "level": "L2",
+  "n_groups": 300,
+  "n_records": 4800,
+  "note": "the 300 triplets of xp_v1/test with their original rule text, records unchanged; rescored for the rerun baseline of the paraphrase tier",
+  "parent": "rule_v1/test_L2",
+  "path": "views/xp_v1/orig_rerun/records.jsonl",
+  "sha256": "01c9a82a3c4f20a93830d2d0699d36e2dcf67ee71b572220b1bf5ee4c6b4c074",
+  "split": "test",
+  "tier": "view"
  }
 }

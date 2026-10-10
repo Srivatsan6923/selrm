@@ -1,0 +1,10 @@
+{
+ "run_id": "C-KP-TR-fover-s0",
+ "set": "clin_v1/keypairs_careqa_oneway",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 35.0,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

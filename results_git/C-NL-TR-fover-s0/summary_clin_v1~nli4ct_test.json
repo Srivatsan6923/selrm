@@ -1,0 +1,10 @@
+{
+ "run_id": "C-NL-TR-fover-s0",
+ "set": "clin_v1/nli4ct_test",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 1065.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

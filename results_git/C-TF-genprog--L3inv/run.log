@@ -1,0 +1,11 @@
+2026-10-09T06:49:37Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-09T06:49:37Z token budget per batch: 40000 (generation 120000)
+2026-10-09T06:49:45Z C-TF-genprog--L3inv sub/1000_conclusion/rule_v1/test_L3inv prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/sub/1000_conclusion/rule_v1/test_L3inv/genprm.npz', 'built 8000 prompts, max 458 tokens')
+2026-10-09T06:49:46Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0171)
+2026-10-09T06:49:47Z padding self-check: max |u_batch - u_single| = 0.1325 (tol 0.545) -> left padding
+2026-10-09T07:03:33Z generate: batch 25/125, 343455 tokens, 415 tok/s
+2026-10-09T07:20:34Z generate: batch 50/125, 744815 tokens, 403 tok/s
+2026-10-09T07:38:21Z generate: batch 75/125, 1192763 tokens, 409 tok/s
+2026-10-09T07:55:57Z generate: batch 100/125, 1575290 tokens, 397 tok/s
+2026-10-09T08:26:46Z C-TF-genprog--L3inv sub/1000_conclusion/rule_v1/test_L3inv: TA 95.1 Rev 98.3 Hold 96.8 n=1000 (5821.8 s)
+2026-10-09T08:26:48Z DONE C-TF-genprog--L3inv in 97.5 min, GPU util mean 97.0

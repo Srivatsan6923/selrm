@@ -1,0 +1,13 @@
+2026-10-09T08:54:38Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-TR-clinonly-s0
+2026-10-09T08:54:38Z token budget per batch: 40000 (generation 120000)
+2026-10-09T08:54:39Z C-ME-TR-clinonly-s0 clin_v1/medeinst_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test/reader_ledger.npz', 'exists')
+2026-10-09T08:54:41Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0035)
+2026-10-09T08:54:50Z padding self-check: max |u_batch - u_single| = 0.0916 (tol 0.650) -> left padding
+2026-10-09T09:00:25Z generate: batch 25/169, 86442 tokens, 258 tok/s
+2026-10-09T09:11:40Z generate: batch 50/169, 177263 tokens, 176 tok/s
+2026-10-09T09:23:00Z generate: batch 75/169, 270054 tokens, 160 tok/s
+2026-10-09T09:33:36Z generate: batch 100/169, 367052 tokens, 158 tok/s
+2026-10-09T09:46:07Z generate: batch 125/169, 480900 tokens, 156 tok/s
+2026-10-09T10:02:56Z generate: batch 150/169, 708813 tokens, 173 tok/s
+2026-10-09T10:28:01Z C-ME-TR-clinonly-s0 clin_v1/medeinst_test: TA nan Rev nan Hold nan n=None (5601.8 s)
+2026-10-09T10:28:01Z DONE C-ME-TR-clinonly-s0 in 93.9 min, GPU util mean 97.6

@@ -1,0 +1,10 @@
+2026-10-09T04:51:29Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-ledger2-balanced-s0
+2026-10-09T04:51:30Z token budget per batch: 8000 (generation 24000)
+2026-10-09T04:51:30Z C-KP-ledger2-balanced-s0 clin_v1/keypairs_medqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa_oneway/reader_ledger.npz', 'exists')
+2026-10-09T04:51:32Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0165)
+2026-10-09T04:51:34Z padding self-check: max |u_batch - u_single| = 0.0656 (tol 0.626) -> left padding
+2026-10-09T04:57:51Z generate: batch 25/33, 38844 tokens, 103 tok/s
+2026-10-09T05:01:07Z C-KP-ledger2-balanced-s0 clin_v1/keypairs_medqa_oneway: TA nan Rev nan Hold nan n=None (576.5 s)
+2026-10-09T05:01:08Z C-KP-ledger2-balanced-s0 clin_v1/keypairs_careqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa_oneway/reader_ledger.npz', 'exists')
+2026-10-09T05:03:25Z C-KP-ledger2-balanced-s0 clin_v1/keypairs_careqa_oneway: TA nan Rev nan Hold nan n=None (136.6 s)
+2026-10-09T05:03:27Z DONE C-KP-ledger2-balanced-s0 in 12.6 min, GPU util mean 51.5

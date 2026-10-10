@@ -1,0 +1,14 @@
+2026-10-10T05:12:45Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-verdict-triplets-s1
+2026-10-10T05:12:47Z token budget per batch: 8000 (generation 24000)
+2026-10-10T05:12:47Z C-S2-me-verdict-triplets-s1 clin_v1/medeinst_test@derived prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test@derived/verdict.npz', 'exists')
+2026-10-10T05:14:25Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0345)
+2026-10-10T05:14:31Z padding self-check: max |u_batch - u_single| = 0.1470 (tol 0.635) -> left padding
+2026-10-10T06:00:21Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-verdict-triplets-s1
+2026-10-10T06:00:23Z token budget per batch: 8000 (generation 24000)
+2026-10-10T06:00:23Z C-S2-me-verdict-triplets-s1 clin_v1/medeinst_test@derived prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test@derived/verdict.npz', 'exists')
+2026-10-10T06:01:33Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0084)
+2026-10-10T06:01:36Z padding self-check: max |u_batch - u_single| = 0.1301 (tol 0.634) -> left padding
+2026-10-10T06:47:46Z C-S2-me-verdict-triplets-s1 clin_v1/medeinst_test@derived: TA nan Rev nan Hold nan n=None (2841.5 s)
+2026-10-10T06:47:48Z C-S2-me-verdict-triplets-s1 clin_v1/medeinst_test@wrong prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test@wrong/verdict.npz', 'exists')
+2026-10-10T07:34:03Z C-S2-me-verdict-triplets-s1 clin_v1/medeinst_test@wrong: TA nan Rev nan Hold nan n=None (2773.5 s)
+2026-10-10T07:34:05Z DONE C-S2-me-verdict-triplets-s1 in 94.4 min, GPU util mean 93.8

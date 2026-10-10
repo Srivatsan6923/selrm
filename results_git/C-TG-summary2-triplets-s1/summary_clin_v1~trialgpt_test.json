@@ -120,6 +120,8 @@
   "items_without_quote": 443
  },
  "evidence_malformed_without_quotes": null,
+ "malformed_rate": 0.0,
+ "n_malformed": 0,
  "per_trial_acc": {
   "n_trials": 64,
   "min_items": 5,

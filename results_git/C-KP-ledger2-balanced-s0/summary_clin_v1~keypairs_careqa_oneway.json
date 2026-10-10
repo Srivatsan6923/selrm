@@ -1,0 +1,15 @@
+{
+ "run_id": "C-KP-ledger2-balanced-s0",
+ "set": "clin_v1/keypairs_careqa_oneway",
+ "claim_type": "conclusion",
+ "eval": {
+  "reader_units": 450,
+  "malformed_units": 200,
+  "mode": null,
+  "malformed_rate": 0.4444,
+  "gen_not_stopped": 0,
+  "seconds": 136.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

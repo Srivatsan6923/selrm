@@ -126,6 +126,8 @@
   "n_items_gold": 332,
   "items_without_quote": 582
  },
+ "malformed_rate": 6.616729088639201,
+ "n_malformed": 53,
  "per_trial_acc": {
   "n_trials": 64,
   "min_items": 5,

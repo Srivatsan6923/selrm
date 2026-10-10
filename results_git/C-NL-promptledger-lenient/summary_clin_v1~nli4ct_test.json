@@ -1,0 +1,14 @@
+{
+ "run_id": "C-NL-promptledger-lenient",
+ "set": "clin_v1/nli4ct_test",
+ "claim_type": "conclusion",
+ "eval": {
+  "reader_units": 5500,
+  "malformed_units": 3007,
+  "malformed_rate": 0.5467,
+  "seconds": 208.0,
+  "mode": "rejudge",
+  "lenient_version": 2,
+  "source_run": "C-NL-promptledger"
+ }
+}
