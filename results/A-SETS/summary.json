@@ -10,6 +10,166 @@
   },
   "specs": 160
  },
+ "cls_v1": {
+  "analysis_plan_sha256": "91c1f59a38ee82c3290a9f8709d44ed8a4bd7ea7e558a0b403f9dec906e5bb2b",
+  "change_request": "drug classes by FDA EPC classes with an ATC-agreement flag: docs/CHANGE_REQUESTS.md, approved 9 Oct 2026",
+  "created": "2026-10-09",
+  "engine": "selrm/engine2.py; one rule with a single class condition per group; test-split templates; tiers easy and long",
+  "frozen": 1,
+  "note": "Membership is relative to the closure tables of onto_v1 (FDA EPC lists, HPO and Mondo releases of the snapshot). The base case does not mention the class or any member.",
+  "onto_v1_classes_sha256": "ffafdac6421df7618840fbaff68d1c98ff9f00ee8a3bab13ec4346e482d8233a",
+  "portions": {
+   "dev": {
+    "by_domain": {
+     "disease": {
+      "classes": 37,
+      "groups": 100
+     },
+     "drug": {
+      "classes": 12,
+      "groups": 100
+     },
+     "phenotype": {
+      "classes": 32,
+      "groups": 100
+     }
+    },
+    "by_tier": {
+     "easy": 199,
+     "long": 101
+    },
+    "classes": 81,
+    "drug_groups_with_atc_agreement": 41,
+    "flip_name_type": {
+     "brand": 55,
+     "label": 179,
+     "synonym": 66
+    },
+    "groups": 300,
+    "near_term_type": {
+     "general": 21,
+     "sibling": 279
+    },
+    "records": 3600,
+    "sha256": "d267965eff8da8c10e2e2a92f454111a9ec497560cb70fa5a5ad67fd9b3c28d7"
+   },
+   "test": {
+    "by_domain": {
+     "disease": {
+      "classes": 54,
+      "groups": 400
+     },
+     "drug": {
+      "classes": 21,
+      "groups": 400
+     },
+     "phenotype": {
+      "classes": 56,
+      "groups": 400
+     }
+    },
+    "by_tier": {
+     "easy": 778,
+     "long": 422
+    },
+    "classes": 131,
+    "drug_groups_with_atc_agreement": 134,
+    "flip_name_type": {
+     "brand": 180,
+     "label": 682,
+     "synonym": 338
+    },
+    "groups": 1200,
+    "near_term_type": {
+     "general": 60,
+     "sibling": 1140
+    },
+    "records": 14400,
+    "sha256": "69c43f6a93331b50865fbb4fe79a853b4fa12d48fa7b2fec9b87da583f84aa6e"
+   }
+  },
+  "purpose": "Class triplets on classes held out from training (stage 2, comparison 10 and secondary analysis 10)",
+  "rejects": {
+   "dev": {
+    "proposed": 300,
+    "rejected": 0
+   },
+   "test": {
+    "proposed": 1212,
+    "reject class class filler names the concept": 60,
+    "rejected": 12
+   }
+  },
+  "seed": 20261008,
+  "set": "cls_v1",
+  "shortcut_validation": {
+   "dev": {
+    "always_default": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 300
+    },
+    "claim_only": {
+     "Hold": 52.67,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 300
+    },
+    "class_word_in_case": {
+     "Hold": 84.67,
+     "Rev": 33.33,
+     "TA": 23.67,
+     "n": 300
+    },
+    "closure_on_text": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 300
+    },
+    "concept_named": {
+     "Hold": 0.0,
+     "Rev": 100.0,
+     "TA": 0.0,
+     "n": 300
+    }
+   },
+   "test": {
+    "always_default": {
+     "Hold": 100.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 1200
+    },
+    "claim_only": {
+     "Hold": 49.0,
+     "Rev": 0.0,
+     "TA": 0.0,
+     "n": 1200
+    },
+    "class_word_in_case": {
+     "Hold": 80.75,
+     "Rev": 34.33,
+     "TA": 21.33,
+     "n": 1200
+    },
+    "closure_on_text": {
+     "Hold": 100.0,
+     "Rev": 100.0,
+     "TA": 100.0,
+     "n": 1200
+    },
+    "concept_named": {
+     "Hold": 0.0,
+     "Rev": 100.0,
+     "TA": 0.0,
+     "n": 1200
+    }
+   }
+  },
+  "views": "rule_text is the closed-book rule (the class is named, no member list). meta.views.stated adds the member list (open book); meta.views.wrong names a sibling class."
+ },
  "ec_v1_prepare": {
   "accepted_by_agents": 132,
   "by_concept": {
@@ -1851,7 +2011,513 @@
   "test_rows_covered": 380,
   "train_rows_covered": 2426
  },
+ "reg_v1": {
+  "analysis_plan_sha256": "91c1f59a38ee82c3290a9f8709d44ed8a4bd7ea7e558a0b403f9dec906e5bb2b",
+  "candidates_before_model_check": 521,
+  "cases": "selrm/engine2.py, test-split templates; three groups per criterion; numeric: value toward the threshold (and exactly at a strict threshold); window: event before the window, event in a relative, event denied",
+  "conventions": {
+   "numeric": "Conventions: the value meant is the patient's current value as stated in the case.",
+   "window": "Conventions: time is counted back from the visit date stated in the case; an event on the day exactly {n} {unit} before the visit still counts; only events of the patient count."
+  },
+  "created": "2026-10-09",
+  "criteria_kept": 404,
+  "dev": "10% of the trials by a seeded hash of the trial id (for the criterion parser)",
+  "excluded": "trials and criterion texts of the TrialGPT annotations (data/reg_v1/trialgpt_exclusions.json)",
+  "frozen": 1,
+  "model_check": {
+   "file": "data/reg_v1/MODEL_CHECK.jsonl",
+   "kept": 404,
+   "models": [
+    "google/gemma-4-31b-it",
+    "openai/gpt-oss-120b"
+   ],
+   "note": "these are model checks, not human checks; the authors' sheet is audit/s2/reg_criteria_sheet.csv",
+   "read": 521
+  },
+  "note": "The rule text is the registered criterion followed by the stated conventions. Case values are drawn around the threshold (within half the threshold on each side, at least five steps; age within 12 years) and are not checked for clinical plausibility. No clinician read the criteria.",
+  "portions": {
+   "dev": {
+    "by_corpus": {
+     "Chia": 66,
+     "LCT": 15
+    },
+    "by_kind": {
+     "numeric": 66,
+     "window": 15
+    },
+    "by_nm_kind": {
+     "boundary": 15,
+     "negation": 5,
+     "numeric": 51,
+     "subject": 5,
+     "window": 5
+    },
+    "by_section": {
+     "exclusion": 36,
+     "inclusion": 45
+    },
+    "criteria": 27,
+    "criteria_without_a_valid_case": [],
+    "groups": 81,
+    "records": 486,
+    "sha256": "3a57292501576867f7792ee437e126010e584743ba4a464cc694f08f62a24988",
+    "trials": 23
+   },
+   "test": {
+    "by_corpus": {
+     "Chia": 816,
+     "LCT": 306
+    },
+    "by_kind": {
+     "numeric": 978,
+     "window": 144
+    },
+    "by_nm_kind": {
+     "boundary": 224,
+     "negation": 48,
+     "numeric": 754,
+     "subject": 48,
+     "window": 48
+    },
+    "by_section": {
+     "exclusion": 585,
+     "inclusion": 537
+    },
+    "criteria": 374,
+    "criteria_without_a_valid_case": [
+     [
+      "lct_NCT03930121_inc005",
+      "reg_v1.test.lct_NCT03930121_inc005.c1.numeric.easy.0: no valid group in 40 tries"
+     ],
+     [
+      "lct_NCT03930121_inc006",
+      "reg_v1.test.lct_NCT03930121_inc006.c1.numeric.easy.0: no valid group in 40 tries"
+     ],
+     [
+      "chia_NCT01064752_exc004",
+      "reg_v1.test.chia_NCT01064752_exc004.c1.numeric.easy.0: no valid group in 40 trie"
+     ]
+    ],
+    "groups": 1122,
+    "records": 6732,
+    "sha256": "6396ce64dbb4159ed51e7667c0ce1254e4011729a847199a6875932517812ea0",
+    "trials": 283
+   }
+  },
+  "purpose": "Registered eligibility criteria with structure from published annotation (stage 2, secondary analysis 9); evaluation only",
+  "seed": 20261009,
+  "selection": {
+   "Chia": {
+    "annotated_lines": 12350,
+    "candidates": 331,
+    "candidates_by_kind": {
+     "numeric": 288,
+     "window": 43
+    },
+    "dropped_after_compilation": {
+     "a number, unit or operator of the structure is not in the criterion text": 3,
+     "duplicate criterion text": 34,
+     "threshold not positive, text over 200 characters or name under 2 characters": 1,
+     "trial or criterion text of the TrialGPT annotations": 43,
+     "unit or name carries a second number, comparator or conjunction (a range or a second condition)": 57
+    },
+    "dropped_by_reason": {
+     "entity and value not linked by exactly one relation": 618,
+     "flagged by the annotators (Competing_trial)": 94,
+     "flagged by the annotators (Competing_trial, Non-query-able)": 1,
+     "flagged by the annotators (Context_Error)": 46,
+     "flagged by the annotators (Context_Error, Grammar_Error)": 3,
+     "flagged by the annotators (Context_Error, Grammar_Error, Parsing_Error)": 2,
+     "flagged by the annotators (Context_Error, Grammar_Error, Undefined_semantics)": 1,
+     "flagged by the annotators (Context_Error, Non-query-able)": 23,
+     "flagged by the annotators (Context_Error, Non-query-able, Parsing_Error)": 9,
+     "flagged by the annotators (Context_Error, Non-query-able, Parsing_Error, Post-eligibility)": 1,
+     "flagged by the annotators (Context_Error, Non-query-able, Post-eligibility)": 4,
+     "flagged by the annotators (Context_Error, Non-query-able, Post-eligibility, Undefined_semantics)": 1,
+     "flagged by the annotators (Context_Error, Non-query-able, Undefined_semantics)": 2,
+     "flagged by the annotators (Context_Error, Non-representable)": 2,
+     "flagged by the annotators (Context_Error, Parsing_Error)": 11,
+     "flagged by the annotators (Context_Error, Parsing_Error, Post-eligibility)": 1,
+     "flagged by the annotators (Context_Error, Parsing_Error, Undefined_semantics)": 4,
+     "flagged by the annotators (Context_Error, Post-eligibility)": 10,
+     "flagged by the annotators (Context_Error, Post-eligibility, Undefined_semantics)": 1,
+     "flagged by the annotators (Context_Error, Undefined_semantics)": 12,
+     "flagged by the annotators (Grammar_Error)": 44,
+     "flagged by the annotators (Grammar_Error, Non-query-able)": 1,
+     "flagged by the annotators (Grammar_Error, Non-query-able, Not_a_criteria)": 1,
+     "flagged by the annotators (Grammar_Error, Non-query-able, Post-eligibility)": 1,
+     "flagged by the annotators (Grammar_Error, Not_a_criteria)": 2,
+     "flagged by the annotators (Grammar_Error, Not_a_criteria, Parsing_Error)": 1,
+     "flagged by the annotators (Grammar_Error, Not_a_criteria, Undefined_semantics)": 3,
+     "flagged by the annotators (Grammar_Error, Parsing_Error)": 7,
+     "flagged by the annotators (Grammar_Error, Parsing_Error, Undefined_semantics)": 1,
+     "flagged by the annotators (Grammar_Error, Post-eligibility, Undefined_semantics)": 1,
+     "flagged by the annotators (Grammar_Error, Undefined_semantics)": 8,
+     "flagged by the annotators (Informed_consent)": 249,
+     "flagged by the annotators (Informed_consent, Non-query-able)": 1,
+     "flagged by the annotators (Informed_consent, Non-representable)": 2,
+     "flagged by the annotators (Informed_consent, Post-eligibility)": 1,
+     "flagged by the annotators (Intoxication_considerations)": 5,
+     "flagged by the annotators (Non-query-able)": 575,
+     "flagged by the annotators (Non-query-able, Non-representable)": 2,
+     "flagged by the annotators (Non-query-able, Non-representable, Pregnancy_considerations)": 1,
+     "flagged by the annotators (Non-query-able, Not_a_criteria)": 2,
+     "flagged by the annotators (Non-query-able, Not_a_criteria, Parsing_Error, Post-eligibility)": 2,
+     "flagged by the annotators (Non-query-able, Not_a_criteria, Post-eligibility)": 1,
+     "flagged by the annotators (Non-query-able, Parsing_Error)": 31,
+     "flagged by the annotators (Non-query-able, Parsing_Error, Post-eligibility)": 24,
+     "flagged by the annotators (Non-query-able, Parsing_Error, Post-eligibility, Undefined_semantics)": 1,
+     "flagged by the annotators (Non-query-able, Parsing_Error, Undefined_semantics)": 5,
+     "flagged by the annotators (Non-query-able, Post-eligibility)": 64,
+     "flagged by the annotators (Non-query-able, Post-eligibility, Undefined_semantics)": 2,
+     "flagged by the annotators (Non-query-able, Pregnancy_considerations)": 1,
+     "flagged by the annotators (Non-query-able, Undefined_semantics)": 14,
+     "flagged by the annotators (Non-representable)": 278,
+     "flagged by the annotators (Non-representable, Not_a_criteria, Parsing_Error)": 1,
+     "flagged by the annotators (Non-representable, Parsing_Error)": 6,
+     "flagged by the annotators (Non-representable, Post-eligibility)": 1,
+     "flagged by the annotators (Not_a_criteria)": 18,
+     "flagged by the annotators (Not_a_criteria, Parsing_Error)": 27,
+     "flagged by the annotators (Not_a_criteria, Parsing_Error, Post-eligibility)": 1,
+     "flagged by the annotators (Not_a_criteria, Parsing_Error, Undefined_semantics)": 2,
+     "flagged by the annotators (Not_a_criteria, Undefined_semantics)": 1,
+     "flagged by the annotators (Parsing_Error)": 373,
+     "flagged by the annotators (Parsing_Error, Post-eligibility)": 5,
+     "flagged by the annotators (Parsing_Error, Post-eligibility, Undefined_semantics)": 2,
+     "flagged by the annotators (Parsing_Error, Pregnancy_considerations)": 1,
+     "flagged by the annotators (Parsing_Error, Undefined_semantics)": 41,
+     "flagged by the annotators (Post-eligibility)": 350,
+     "flagged by the annotators (Post-eligibility, Undefined_semantics)": 3,
+     "flagged by the annotators (Pregnancy_considerations)": 187,
+     "flagged by the annotators (Undefined_semantics)": 126,
+     "not a measurement or age with a value, nor a condition, procedure or drug with a time window": 874,
+     "not one entity with one value or one temporal expression": 7030,
+     "person entity that is not the age": 32,
+     "temporal expression not of the form 'within N days, weeks, months or years'": 200,
+     "value not of the form 'operator number unit'": 423
+    },
+    "single_condition_compiled": 469
+   },
+   "LCT": {
+    "annotated_lines": 7872,
+    "candidates": 190,
+    "candidates_by_kind": {
+     "numeric": 170,
+     "window": 20
+    },
+    "dropped_after_compilation": {
+     "a number, unit or operator of the structure is not in the criterion text": 37,
+     "duplicate criterion text": 15,
+     "threshold not positive, text over 200 characters or name under 2 characters": 2,
+     "trial or criterion text of the TrialGPT annotations": 2,
+     "unit or name carries a second number, comparator or conjunction (a range or a second condition)": 4
+    },
+    "dropped_by_reason": {
+     "comparison without one operator and one value, or with a second value, a recency or a period other than the past": 538,
+     "entity with further arguments (severity, stability, location, ...)": 67,
+     "linked by a relation (or, and, example, cause, ...)": 4208,
+     "not an observation or age with a value, nor a condition, procedure or drug with a time window": 318,
+     "not one entity with one comparison": 2413,
+     "operator not one of >, >=, <, <=, or value not a number": 74,
+     "temporal comparison that is not 'within N days, weeks, months or years'": 4
+    },
+    "single_condition_compiled": 250
+   }
+  },
+  "set": "reg_v1",
+  "shortcut_validation": {
+   "dev": {
+    "always_default": {
+     "all": {
+      "Hold": 100.0,
+      "Rev": 0.0,
+      "TA": 0.0,
+      "n": 81
+     },
+     "nm_kind=boundary": {
+      "Hold": 100.0,
+      "Rev": 0.0,
+      "TA": 0.0,
+      "n": 15
+     },
+     "nm_kind=negation": {
+      "Hold": 100.0,
+      "Rev": 0.0,
+      "TA": 0.0,
+      "n": 5
+     },
+     "nm_kind=numeric": {
+      "Hold": 100.0,
+      "Rev": 0.0,
+      "TA": 0.0,
+      "n": 51
+     },
+     "nm_kind=subject": {
+      "Hold": 100.0,
+      "Rev": 0.0,
+      "TA": 0.0,
+      "n": 5
+     },
+     "nm_kind=window": {
+      "Hold": 100.0,
+      "Rev": 0.0,
+      "TA": 0.0,
+      "n": 5
+     }
+    },
+    "concept_named": {
+     "all": {
+      "Hold": 0.0,
+      "Rev": 18.52,
+      "TA": 0.0,
+      "n": 81
+     },
+     "nm_kind=boundary": {
+      "Hold": 0.0,
+      "Rev": 0.0,
+      "TA": 0.0,
+      "n": 15
+     },
+     "nm_kind=negation": {
+      "Hold": 0.0,
+      "Rev": 100.0,
+      "TA": 0.0,
+      "n": 5
+     },
+     "nm_kind=numeric": {
+      "Hold": 0.0,
+      "Rev": 0.0,
+      "TA": 0.0,
+      "n": 51
+     },
+     "nm_kind=subject": {
+      "Hold": 0.0,
+      "Rev": 100.0,
+      "TA": 0.0,
+      "n": 5
+     },
+     "nm_kind=window": {
+      "Hold": 0.0,
+      "Rev": 100.0,
+      "TA": 0.0,
+      "n": 5
+     }
+    },
+    "program": {
+     "all": {
+      "Hold": 100.0,
+      "Rev": 100.0,
+      "TA": 100.0,
+      "n": 81
+     },
+     "nm_kind=boundary": {
+      "Hold": 100.0,
+      "Rev": 100.0,
+      "TA": 100.0,
+      "n": 15
+     },
+     "nm_kind=negation": {
+      "Hold": 100.0,
+      "Rev": 100.0,
+      "TA": 100.0,
+      "n": 5
+     },
+     "nm_kind=numeric": {
+      "Hold": 100.0,
+      "Rev": 100.0,
+      "TA": 100.0,
+      "n": 51
+     },
+     "nm_kind=subject": {
+      "Hold": 100.0,
+      "Rev": 100.0,
+      "TA": 100.0,
+      "n": 5
+     },
+     "nm_kind=window": {
+      "Hold": 100.0,
+      "Rev": 100.0,
+      "TA": 100.0,
+      "n": 5
+     }
+    }
+   },
+   "test": {
+    "always_default": {
+     "all": {
+      "Hold": 100.0,
+      "Rev": 0.0,
+      "TA": 0.0,
+      "n": 1122
+     },
+     "nm_kind=boundary": {
+      "Hold": 100.0,
+      "Rev": 0.0,
+      "TA": 0.0,
+      "n": 224
+     },
+     "nm_kind=negation": {
+      "Hold": 100.0,
+      "Rev": 0.0,
+      "TA": 0.0,
+      "n": 48
+     },
+     "nm_kind=numeric": {
+      "Hold": 100.0,
+      "Rev": 0.0,
+      "TA": 0.0,
+      "n": 754
+     },
+     "nm_kind=subject": {
+      "Hold": 100.0,
+      "Rev": 0.0,
+      "TA": 0.0,
+      "n": 48
+     },
+     "nm_kind=window": {
+      "Hold": 100.0,
+      "Rev": 0.0,
+      "TA": 0.0,
+      "n": 48
+     }
+    },
+    "concept_named": {
+     "all": {
+      "Hold": 0.0,
+      "Rev": 12.83,
+      "TA": 0.0,
+      "n": 1122
+     },
+     "nm_kind=boundary": {
+      "Hold": 0.0,
+      "Rev": 0.0,
+      "TA": 0.0,
+      "n": 224
+     },
+     "nm_kind=negation": {
+      "Hold": 0.0,
+      "Rev": 100.0,
+      "TA": 0.0,
+      "n": 48
+     },
+     "nm_kind=numeric": {
+      "Hold": 0.0,
+      "Rev": 0.0,
+      "TA": 0.0,
+      "n": 754
+     },
+     "nm_kind=subject": {
+      "Hold": 0.0,
+      "Rev": 100.0,
+      "TA": 0.0,
+      "n": 48
+     },
+     "nm_kind=window": {
+      "Hold": 0.0,
+      "Rev": 100.0,
+      "TA": 0.0,
+      "n": 48
+     }
+    },
+    "program": {
+     "all": {
+      "Hold": 100.0,
+      "Rev": 100.0,
+      "TA": 100.0,
+      "n": 1122
+     },
+     "nm_kind=boundary": {
+      "Hold": 100.0,
+      "Rev": 100.0,
+      "TA": 100.0,
+      "n": 224
+     },
+     "nm_kind=negation": {
+      "Hold": 100.0,
+      "Rev": 100.0,
+      "TA": 100.0,
+      "n": 48
+     },
+     "nm_kind=numeric": {
+      "Hold": 100.0,
+      "Rev": 100.0,
+      "TA": 100.0,
+      "n": 754
+     },
+     "nm_kind=subject": {
+      "Hold": 100.0,
+      "Rev": 100.0,
+      "TA": 100.0,
+      "n": 48
+     },
+     "nm_kind=window": {
+      "Hold": 100.0,
+      "Rev": 100.0,
+      "TA": 100.0,
+      "n": 48
+     }
+    }
+   }
+  },
+  "sources": {
+   "chia_with_scope.zip": {
+    "sha256": "b51ec05ba42a3805daf9581dd22a305986f7c5ae3ca4dad36b70d37970fb69b2",
+    "source": "Chia, figshare doi 10.6084/m9.figshare.11855817.v2, CC BY 4.0"
+   },
+   "lct_corpus.tar.gz": {
+    "sha256": "fa875243c14295adf6b5c431e1998c1b074ee010c9787a3bf2e30cd0fe075211",
+    "source": "Leaf Clinical Trials corpus, figshare doi 10.6084/m9.figshare.17209610.v2, CC BY 4.0"
+   }
+  }
+ },
  "run_id": "A-SETS",
+ "xp_v1": {
+  "analysis_plan_sha256": "91c1f59a38ee82c3290a9f8709d44ed8a4bd7ea7e558a0b403f9dec906e5bb2b",
+  "by_family": {
+   "g_all_of": 75,
+   "g_any_of": 75,
+   "g_score_cutoff": 75,
+   "g_two_of_three": 75
+  },
+  "check": "reordered program equals the original program on every state of every group, and equals the record labels: 0 violations",
+  "created": "2026-10-08",
+  "derived_from": "rule_v1/test_L2",
+  "eligible_groups": 1604,
+  "frozen": 1,
+  "n_groups": 300,
+  "n_records": 4800,
+  "n_rules": 79,
+  "note": "Restricted to grammar-sampled rules with two or more conditions; hand-written rules keep their text. The claims still say 'Prescribe ...' while the paraphrase says 'give'.",
+  "parent_sha256": "e0b81644a7278070de3ac253426acb1bfbe5da8958cf9e68c00fb5b85b8ddbdd",
+  "purpose": "Program-preserving paraphrases of the rule text (stage 2, secondary analysis 6: rate of changed verdicts against rule_v1/test_L2, paired by iid)",
+  "seed": 20261008,
+  "set": "xp_v1",
+  "sha256": "46d6b08ff4ebb44aa26e927a9081c236ec94a4d534c8b3bbc66e6343a0e27004",
+  "shortcut_validation": "not applicable: cases, claims and labels are those of rule_v1/test_L2 (validated there)",
+  "synonyms": [
+   [
+    "prescribe",
+    "give"
+   ],
+   [
+    "at least two of the following apply",
+    "two or more of the following hold"
+   ],
+   [
+    "the score is",
+    "the total is"
+   ],
+   [
+    "Score",
+    "Count"
+   ]
+  ],
+  "transforms": [
+   "reorder",
+   "move",
+   "synonyms"
+  ]
+ },
  "xr_v1": {
   "by_concept": {
    "currency": {

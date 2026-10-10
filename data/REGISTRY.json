@@ -131,6 +131,30 @@
   "split": "test",
   "tier": "external"
  },
+ "reg_v1/dev": {
+  "created": "2026-10-09",
+  "frozen": true,
+  "level": "external",
+  "manifest": "reg_v1/MANIFEST.json",
+  "n_groups": 81,
+  "n_records": 486,
+  "path": "reg_v1/dev/records.jsonl",
+  "sha256": "3a57292501576867f7792ee437e126010e584743ba4a464cc694f08f62a24988",
+  "split": "dev",
+  "tier": "external"
+ },
+ "reg_v1/test": {
+  "created": "2026-10-09",
+  "frozen": true,
+  "level": "external",
+  "manifest": "reg_v1/MANIFEST.json",
+  "n_groups": 1122,
+  "n_records": 6732,
+  "path": "reg_v1/test/records.jsonl",
+  "sha256": "6396ce64dbb4159ed51e7667c0ce1254e4011729a847199a6875932517812ea0",
+  "split": "test",
+  "tier": "external"
+ },
  "rule_v1/abl_conclusion_triplets": {
   "created": "2026-10-02",
   "frozen": true,

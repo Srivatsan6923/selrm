@@ -8,7 +8,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SETS = {"xr_v1": "xr_v1/test", "challenge_v1": "challenge_v1/test", "ec_v1": "ec_v1/test", "rewrite_v1": "rewrite_v1/test",
-        "mcv_v1": "mcv_v1/criteria_test", "kb_v1": "kb_v1/triplets_test"}   # stage 2: one manifest per set
+        "mcv_v1": "mcv_v1/criteria_test", "kb_v1": "kb_v1/triplets_test", "cls_v1": "cls_v1/test", "reg_v1": "reg_v1/test",
+        "xp_v1": "xp_v1/test"}   # stage 2: one manifest per set
 
 
 def main():
