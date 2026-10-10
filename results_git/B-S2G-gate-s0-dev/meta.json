@@ -46,19 +46,19 @@
   "eval_only": true,
   "adapter": "adapters/B-V2-reader-triplets-s0"
  },
- "eval_seconds": 316.5,
+ "eval_seconds": 618.1,
  "eval_seconds_by_set": {
-  "rule_v2/dev": 164.5,
-  "rule_v1/dev": 74.1,
-  "cls_v1/dev": 75.8
+  "rule_v2/dev": 262.4,
+  "rule_v1/dev": 161.9,
+  "cls_v1/dev": 192.4
  },
  "eval_batch": {
   "score": 128,
   "generate": 256,
   "max_new": 384
  },
- "eval_peak_mem_gb": 41.99,
- "eval_generated_tokens": 143360,
+ "eval_peak_mem_gb": 41.93,
+ "eval_generated_tokens": 143367,
  "pad_check_ok": true,
  "per_device_batch": 16,
  "grad_accum": null,
@@ -76,46 +76,46 @@
   "triton": "3.6.0",
   "numpy": "2.5.3"
  },
- "gpu": "NVIDIA H100 80GB HBM3, 615.71.09, 81559 MiB",
- "node": "exp-19-09.sdsc.optiputer.net",
- "pod": "selrm-b-run-all-h100-opp-15239-0-bqfzk",
- "git_commit": "9cf63f33dd58",
- "wall_seconds": 335.8,
+ "gpu": "NVIDIA A100 80GB PCIe, 615.71.09, 81920 MiB",
+ "node": "rci-nrp-gpu-05.sdsu.edu",
+ "pod": "selrm-b-run-all-a100-22533-0-zq4s8",
+ "git_commit": "080901358eaa",
+ "wall_seconds": 643.5,
  "keep_adapter": false,
- "max_rss_gb": 11.96,
+ "max_rss_gb": 11.95,
  "eval_u_path": "fp32-hidden",
  "adapter_path": null,
  "summaries": {
   "rule_v2/dev": {
-   "Rev": 98.66666666666667,
-   "Hold": 97.66666666666667,
-   "TA": 96.33333333333333,
+   "Rev": 99.33333333333333,
+   "Hold": 100.0,
+   "TA": 99.33333333333333,
+   "BaseAcc": 100.0,
+   "Tie": 0.3333333333333333,
+   "PresHold": 100.0,
+   "n": 300
+  },
+  "rule_v1/dev": {
+   "Rev": 99.66666666666667,
+   "Hold": 99.66666666666667,
+   "TA": 99.33333333333333,
    "BaseAcc": 99.66666666666667,
    "Tie": 0.0,
    "PresHold": 99.66666666666667,
    "n": 300
   },
-  "rule_v1/dev": {
-   "Rev": 99.0,
-   "Hold": 100.0,
-   "TA": 99.0,
-   "BaseAcc": 99.0,
-   "Tie": 0.0,
-   "PresHold": 99.0,
-   "n": 300
-  },
   "cls_v1/dev": {
-   "Rev": 90.66666666666667,
-   "Hold": 81.66666666666667,
-   "TA": 74.0,
+   "Rev": 99.33333333333333,
+   "Hold": 100.0,
+   "TA": 99.33333333333333,
    "BaseAcc": 100.0,
    "Tie": 0.0,
    "n": 300
   }
  },
- "gpu_util_mean": 66.2,
+ "gpu_util_mean": 73.4,
  "gpu_util_p10": 0.0,
  "gpu_windows_below40": 0.0,
- "gpu_samples": 11,
- "gpu_hours": 0.093
+ "gpu_samples": 21,
+ "gpu_hours": 0.179
 }

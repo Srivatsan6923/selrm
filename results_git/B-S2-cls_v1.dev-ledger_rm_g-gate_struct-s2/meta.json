@@ -1,0 +1,9 @@
+{
+ "run_id": "B-S2-cls_v1.dev-ledger_rm_g-gate_struct-s2",
+ "system": "ledger_rm_g_s2",
+ "variant": "gate_struct",
+ "seed": 2,
+ "reader": "B-V2-reader-triplets-s2",
+ "fallback": "B-V2-verdict-triplets-s2",
+ "set": "cls_v1/dev"
+}

@@ -1,0 +1,5 @@
+2026-10-10T09:49:35Z eval only: base /work/models/unsloth--Qwen3.5-9B, adapter /pvc/selrm/adapters/B-V2-reader-triplets-s1
+2026-10-10T09:49:36Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0300)
+2026-10-10T09:49:37Z padding self-check: max |u_batch - u_single| = 0.0828 (tol 0.657) -> left padding
+2026-10-10T09:52:16Z B-S2G-bit-s1-dev rule_v1/dev: TA 99.0 Rev 99.0 Hold 100.0 n=300 (160.4 s)
+2026-10-10T09:52:16Z DONE B-S2G-bit-s1-dev in 3.1 min, GPU util mean 84.0

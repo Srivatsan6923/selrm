@@ -46,19 +46,19 @@
   "eval_only": true,
   "adapter": "adapters/B-V2-reader-triplets-s0"
  },
- "eval_seconds": 257.9,
+ "eval_seconds": 601.5,
  "eval_seconds_by_set": {
-  "rule_v2/dev": 78.6,
-  "rule_v1/dev": 105.2,
-  "cls_v1/dev": 72.8
+  "rule_v2/dev": 182.7,
+  "rule_v1/dev": 229.9,
+  "cls_v1/dev": 187.2
  },
  "eval_batch": {
   "score": 128,
   "generate": 256,
   "max_new": 384
  },
- "eval_peak_mem_gb": 41.99,
- "eval_generated_tokens": 143360,
+ "eval_peak_mem_gb": 41.93,
+ "eval_generated_tokens": 143367,
  "pad_check_ok": true,
  "per_device_batch": 16,
  "grad_accum": null,
@@ -76,23 +76,23 @@
   "triton": "3.6.0",
   "numpy": "2.5.3"
  },
- "gpu": "NVIDIA H100 80GB HBM3, 615.71.09, 81559 MiB",
- "node": "exp-19-09.sdsc.optiputer.net",
- "pod": "selrm-b-run-all-h100-opp-15239-0-bqfzk",
- "git_commit": "9cf63f33dd58",
- "wall_seconds": 277.7,
+ "gpu": "NVIDIA A100 80GB PCIe, 615.71.09, 81920 MiB",
+ "node": "rci-nrp-gpu-05.sdsu.edu",
+ "pod": "selrm-b-run-all-a100-22533-0-zq4s8",
+ "git_commit": "080901358eaa",
+ "wall_seconds": 623.1,
  "keep_adapter": false,
- "max_rss_gb": 11.96,
+ "max_rss_gb": 11.95,
  "eval_u_path": "fp32-hidden",
  "adapter_path": null,
  "summaries": {
   "rule_v2/dev": {
-   "Rev": 99.0,
-   "Hold": 97.66666666666667,
-   "TA": 96.66666666666667,
-   "BaseAcc": 99.66666666666667,
-   "Tie": 0.0,
-   "PresHold": 99.66666666666667,
+   "Rev": 99.66666666666667,
+   "Hold": 100.0,
+   "TA": 99.66666666666667,
+   "BaseAcc": 100.0,
+   "Tie": 0.3333333333333333,
+   "PresHold": 100.0,
    "n": 300
   },
   "rule_v1/dev": {
@@ -105,17 +105,17 @@
    "n": 300
   },
   "cls_v1/dev": {
-   "Rev": 90.66666666666667,
-   "Hold": 81.66666666666667,
-   "TA": 74.0,
+   "Rev": 99.66666666666667,
+   "Hold": 100.0,
+   "TA": 99.66666666666667,
    "BaseAcc": 100.0,
    "Tie": 0.0,
    "n": 300
   }
  },
- "gpu_util_mean": 85.8,
+ "gpu_util_mean": 82.8,
  "gpu_util_p10": 0.0,
  "gpu_windows_below40": 0.0,
- "gpu_samples": 9,
- "gpu_hours": 0.077
+ "gpu_samples": 20,
+ "gpu_hours": 0.173
 }

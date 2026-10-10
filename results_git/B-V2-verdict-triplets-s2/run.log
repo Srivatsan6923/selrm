@@ -1,0 +1,104 @@
+2026-10-10T07:01:02Z step 10/938 loss=0.2643 grad_norm=2.833 learning_rate=3.214e-05 epoch=0.01067
+2026-10-10T07:02:00Z step 20/938 loss=0.1869 grad_norm=0.9794 learning_rate=6.786e-05 epoch=0.02133
+2026-10-10T07:02:59Z step 30/938 loss=0.1552 grad_norm=1.084 learning_rate=0.0001 epoch=0.032
+2026-10-10T07:03:57Z step 40/938 loss=0.1104 grad_norm=0.5697 learning_rate=9.996e-05 epoch=0.04267
+2026-10-10T07:04:54Z step 50/938 loss=0.09568 grad_norm=0.7775 learning_rate=9.987e-05 epoch=0.05333
+2026-10-10T07:05:52Z step 60/938 loss=0.06607 grad_norm=1.559 learning_rate=9.971e-05 epoch=0.064
+2026-10-10T07:06:49Z step 70/938 loss=0.08105 grad_norm=0.2167 learning_rate=9.95e-05 epoch=0.07467
+2026-10-10T07:07:47Z step 80/938 loss=0.07088 grad_norm=0.298 learning_rate=9.923e-05 epoch=0.08533
+2026-10-10T07:08:44Z step 90/938 loss=0.07825 grad_norm=0.7793 learning_rate=9.89e-05 epoch=0.096
+2026-10-10T07:09:42Z step 100/938 loss=0.06741 grad_norm=0.3818 learning_rate=9.851e-05 epoch=0.1067
+2026-10-10T07:10:40Z step 110/938 loss=0.07702 grad_norm=0.8739 learning_rate=9.806e-05 epoch=0.1173
+2026-10-10T07:11:37Z step 120/938 loss=0.06137 grad_norm=0.4244 learning_rate=9.755e-05 epoch=0.128
+2026-10-10T07:12:34Z step 130/938 loss=0.06762 grad_norm=0.9448 learning_rate=9.699e-05 epoch=0.1387
+2026-10-10T07:13:30Z step 140/938 loss=0.05511 grad_norm=0.5243 learning_rate=9.637e-05 epoch=0.1493
+2026-10-10T07:14:28Z step 150/938 loss=0.04403 grad_norm=0.3731 learning_rate=9.57e-05 epoch=0.16
+2026-10-10T07:15:26Z step 160/938 loss=0.05546 grad_norm=0.3258 learning_rate=9.497e-05 epoch=0.1707
+2026-10-10T07:16:21Z step 170/938 loss=0.03706 grad_norm=0.4211 learning_rate=9.419e-05 epoch=0.1813
+2026-10-10T07:17:17Z step 180/938 loss=0.04641 grad_norm=0.5778 learning_rate=9.336e-05 epoch=0.192
+2026-10-10T07:18:14Z step 190/938 loss=0.03681 grad_norm=0.3007 learning_rate=9.247e-05 epoch=0.2027
+2026-10-10T07:19:11Z step 200/938 loss=0.0491 grad_norm=0.2082 learning_rate=9.154e-05 epoch=0.2133
+2026-10-10T07:22:10Z step 210/938 loss=0.04171 grad_norm=0.3586 learning_rate=9.055e-05 epoch=0.224
+2026-10-10T07:23:08Z step 220/938 loss=0.03168 grad_norm=0.5555 learning_rate=8.952e-05 epoch=0.2347
+2026-10-10T07:24:06Z step 230/938 loss=0.03093 grad_norm=0.3214 learning_rate=8.844e-05 epoch=0.2453
+2026-10-10T07:25:02Z step 240/938 loss=0.04359 grad_norm=0.114 learning_rate=8.731e-05 epoch=0.256
+2026-10-10T07:25:59Z step 250/938 loss=0.03605 grad_norm=0.1361 learning_rate=8.614e-05 epoch=0.2667
+2026-10-10T07:26:56Z step 260/938 loss=0.04533 grad_norm=0.2717 learning_rate=8.493e-05 epoch=0.2773
+2026-10-10T07:27:54Z step 270/938 loss=0.05617 grad_norm=0.3786 learning_rate=8.367e-05 epoch=0.288
+2026-10-10T07:28:52Z step 280/938 loss=0.02811 grad_norm=0.2757 learning_rate=8.237e-05 epoch=0.2987
+2026-10-10T07:29:48Z step 290/938 loss=0.03826 grad_norm=0.4042 learning_rate=8.104e-05 epoch=0.3093
+2026-10-10T07:30:45Z step 300/938 loss=0.02994 grad_norm=0.7098 learning_rate=7.967e-05 epoch=0.32
+2026-10-10T07:31:43Z step 310/938 loss=0.03093 grad_norm=0.2995 learning_rate=7.826e-05 epoch=0.3307
+2026-10-10T07:32:40Z step 320/938 loss=0.02731 grad_norm=0.6344 learning_rate=7.682e-05 epoch=0.3413
+2026-10-10T07:33:37Z step 330/938 loss=0.03646 grad_norm=0.3013 learning_rate=7.535e-05 epoch=0.352
+2026-10-10T07:34:35Z step 340/938 loss=0.03141 grad_norm=0.8586 learning_rate=7.385e-05 epoch=0.3627
+2026-10-10T07:35:33Z step 350/938 loss=0.0461 grad_norm=1.169 learning_rate=7.231e-05 epoch=0.3733
+2026-10-10T07:36:29Z step 360/938 loss=0.03581 grad_norm=0.3943 learning_rate=7.076e-05 epoch=0.384
+2026-10-10T07:37:26Z step 370/938 loss=0.02954 grad_norm=0.3512 learning_rate=6.917e-05 epoch=0.3947
+2026-10-10T07:38:23Z step 380/938 loss=0.02804 grad_norm=0.384 learning_rate=6.757e-05 epoch=0.4053
+2026-10-10T07:39:21Z step 390/938 loss=0.03513 grad_norm=0.3027 learning_rate=6.594e-05 epoch=0.416
+2026-10-10T07:42:28Z step 400/938 loss=0.0226 grad_norm=0.3351 learning_rate=6.43e-05 epoch=0.4267
+2026-10-10T07:43:27Z step 410/938 loss=0.02157 grad_norm=0.669 learning_rate=6.264e-05 epoch=0.4373
+2026-10-10T07:44:25Z step 420/938 loss=0.03853 grad_norm=0.09046 learning_rate=6.096e-05 epoch=0.448
+2026-10-10T07:45:21Z step 430/938 loss=0.0315 grad_norm=0.3195 learning_rate=5.927e-05 epoch=0.4587
+2026-10-10T07:46:18Z step 440/938 loss=0.02528 grad_norm=0.4512 learning_rate=5.757e-05 epoch=0.4693
+2026-10-10T07:47:16Z step 450/938 loss=0.01791 grad_norm=0.2352 learning_rate=5.586e-05 epoch=0.48
+2026-10-10T07:48:13Z step 460/938 loss=0.02152 grad_norm=0.1895 learning_rate=5.414e-05 epoch=0.4907
+2026-10-10T07:49:10Z step 470/938 loss=0.0345 grad_norm=0.08522 learning_rate=5.242e-05 epoch=0.5013
+2026-10-10T07:50:08Z step 480/938 loss=0.0284 grad_norm=0.4609 learning_rate=5.069e-05 epoch=0.512
+2026-10-10T07:51:06Z step 490/938 loss=0.02808 grad_norm=0.06966 learning_rate=4.896e-05 epoch=0.5227
+2026-10-10T07:52:03Z step 500/938 loss=0.02274 grad_norm=0.2713 learning_rate=4.724e-05 epoch=0.5333
+2026-10-10T07:52:59Z step 510/938 loss=0.01819 grad_norm=0.009462 learning_rate=4.552e-05 epoch=0.544
+2026-10-10T07:53:56Z step 520/938 loss=0.02025 grad_norm=0.2703 learning_rate=4.38e-05 epoch=0.5547
+2026-10-10T07:54:52Z step 530/938 loss=0.01859 grad_norm=0.2277 learning_rate=4.209e-05 epoch=0.5653
+2026-10-10T07:55:50Z step 540/938 loss=0.01409 grad_norm=0.4589 learning_rate=4.039e-05 epoch=0.576
+2026-10-10T07:56:45Z step 550/938 loss=0.01581 grad_norm=1.152 learning_rate=3.871e-05 epoch=0.5867
+2026-10-10T07:57:44Z step 560/938 loss=0.01531 grad_norm=0.04365 learning_rate=3.703e-05 epoch=0.5973
+2026-10-10T07:58:41Z step 570/938 loss=0.01181 grad_norm=0.1682 learning_rate=3.537e-05 epoch=0.608
+2026-10-10T07:59:36Z step 580/938 loss=0.01728 grad_norm=0.5474 learning_rate=3.373e-05 epoch=0.6187
+2026-10-10T08:03:41Z step 590/938 loss=0.01334 grad_norm=1.186 learning_rate=3.211e-05 epoch=0.6293
+2026-10-10T08:04:37Z step 600/938 loss=0.02891 grad_norm=0.271 learning_rate=3.051e-05 epoch=0.64
+2026-10-10T08:05:33Z step 610/938 loss=0.01651 grad_norm=0.2533 learning_rate=2.893e-05 epoch=0.6507
+2026-10-10T08:06:30Z step 620/938 loss=0.02315 grad_norm=0.3004 learning_rate=2.738e-05 epoch=0.6613
+2026-10-10T08:07:28Z step 630/938 loss=0.01537 grad_norm=0.24 learning_rate=2.585e-05 epoch=0.672
+2026-10-10T08:08:26Z step 640/938 loss=0.01102 grad_norm=0.3219 learning_rate=2.436e-05 epoch=0.6827
+2026-10-10T08:09:23Z step 650/938 loss=0.01256 grad_norm=0.823 learning_rate=2.289e-05 epoch=0.6933
+2026-10-10T08:10:21Z step 660/938 loss=0.0193 grad_norm=0.3064 learning_rate=2.145e-05 epoch=0.704
+2026-10-10T08:11:16Z step 670/938 loss=0.01536 grad_norm=0.3346 learning_rate=2.005e-05 epoch=0.7147
+2026-10-10T08:12:15Z step 680/938 loss=0.01224 grad_norm=0.03434 learning_rate=1.869e-05 epoch=0.7253
+2026-10-10T08:13:13Z step 690/938 loss=0.002349 grad_norm=0.01767 learning_rate=1.736e-05 epoch=0.736
+2026-10-10T08:14:10Z step 700/938 loss=0.004721 grad_norm=0.00713 learning_rate=1.608e-05 epoch=0.7467
+2026-10-10T08:15:09Z step 710/938 loss=0.008357 grad_norm=0.03407 learning_rate=1.483e-05 epoch=0.7573
+2026-10-10T08:16:08Z step 720/938 loss=0.01271 grad_norm=0.2306 learning_rate=1.362e-05 epoch=0.768
+2026-10-10T08:17:05Z step 730/938 loss=0.0104 grad_norm=0.002614 learning_rate=1.246e-05 epoch=0.7787
+2026-10-10T08:18:02Z step 740/938 loss=0.01062 grad_norm=0.05067 learning_rate=1.134e-05 epoch=0.7893
+2026-10-10T08:18:59Z step 750/938 loss=0.008636 grad_norm=0.3236 learning_rate=1.027e-05 epoch=0.8
+2026-10-10T08:19:57Z step 760/938 loss=0.01546 grad_norm=0.4896 learning_rate=9.247e-06 epoch=0.8107
+2026-10-10T08:23:27Z step 770/938 loss=0.00613 grad_norm=0.0453 learning_rate=8.271e-06 epoch=0.8213
+2026-10-10T08:24:24Z step 780/938 loss=0.01231 grad_norm=0.5933 learning_rate=7.345e-06 epoch=0.832
+2026-10-10T08:25:23Z step 790/938 loss=0.00571 grad_norm=0.04291 learning_rate=6.47e-06 epoch=0.8427
+2026-10-10T08:26:20Z step 800/938 loss=0.01114 grad_norm=0.2451 learning_rate=5.647e-06 epoch=0.8533
+2026-10-10T08:27:18Z step 810/938 loss=0.005062 grad_norm=0.2362 learning_rate=4.877e-06 epoch=0.864
+2026-10-10T08:28:16Z step 820/938 loss=0.008606 grad_norm=0.05909 learning_rate=4.16e-06 epoch=0.8747
+2026-10-10T08:29:13Z step 830/938 loss=0.005111 grad_norm=0.1535 learning_rate=3.498e-06 epoch=0.8853
+2026-10-10T08:30:11Z step 840/938 loss=0.006004 grad_norm=0.1484 learning_rate=2.892e-06 epoch=0.896
+2026-10-10T08:31:08Z step 850/938 loss=0.01156 grad_norm=0.4968 learning_rate=2.342e-06 epoch=0.9067
+2026-10-10T08:32:24Z step 860/938 loss=0.006136 grad_norm=0.2943 learning_rate=1.848e-06 epoch=0.9173
+2026-10-10T08:33:21Z step 870/938 loss=0.007525 grad_norm=0.4488 learning_rate=1.412e-06 epoch=0.928
+2026-10-10T08:34:17Z step 880/938 loss=0.008898 grad_norm=0.01799 learning_rate=1.034e-06 epoch=0.9387
+2026-10-10T08:35:15Z step 890/938 loss=0.002673 grad_norm=0.02418 learning_rate=7.137e-07 epoch=0.9493
+2026-10-10T08:36:13Z step 900/938 loss=0.01193 grad_norm=0.6791 learning_rate=4.525e-07 epoch=0.96
+2026-10-10T08:37:10Z step 910/938 loss=0.005352 grad_norm=0.3027 learning_rate=2.504e-07 epoch=0.9707
+2026-10-10T08:38:07Z step 920/938 loss=0.01117 grad_norm=0.2654 learning_rate=1.075e-07 epoch=0.9813
+2026-10-10T08:39:04Z step 930/938 loss=0.004442 grad_norm=0.1033 learning_rate=2.413e-08 epoch=0.992
+2026-10-10T08:39:48Z step 938/938 train_runtime=5983 train_samples_per_second=10.03 train_steps_per_second=0.157 total_flos=1.058e+18 train_loss=0.03403 epoch=1
+2026-10-10T08:40:36Z trained 938 steps in 99.8 min, 2226.6 tok/s, peak 23.05 GB
+2026-10-10T08:40:39Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.1244)
+2026-10-10T08:40:40Z padding self-check: max |u_batch - u_single| = 0.0754 (tol 0.840) -> left padding
+2026-10-10T08:41:58Z B-V2-verdict-triplets-s2 rule_v2/dev: TA 92.7 Rev 98.3 Hold 94.0 n=300 (80.8 s)
+2026-10-10T08:51:15Z B-V2-verdict-triplets-s2 rule_v2/test_L2: TA 88.7 Rev 94.3 Hold 93.6 n=2000 (556.4 s)
+2026-10-10T09:00:32Z B-V2-verdict-triplets-s2 rule_v1/test_L2: TA 92.1 Rev 92.3 Hold 98.7 n=2000 (556.3 s)
+2026-10-10T09:02:37Z B-V2-verdict-triplets-s2 xr_v1/test: TA nan Rev nan Hold nan n=None (124.1 s)
+2026-10-10T09:03:36Z B-V2-verdict-triplets-s2 cls_v1/dev: TA 79.7 Rev 93.3 Hold 86.0 n=300 (58.0 s)
+2026-10-10T09:07:24Z B-V2-verdict-triplets-s2 cls_v1/test: TA 75.0 Rev 93.0 Hold 80.7 n=1200 (227.3 s)
+2026-10-10T09:07:25Z DONE B-V2-verdict-triplets-s2 in 127.7 min, GPU util mean 88.2

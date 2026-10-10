@@ -1,0 +1,93 @@
+{
+ "run_id": "B-S2G-gate-s1-dev",
+ "set": "cls_v1/dev",
+ "claim_type": "conclusion",
+ "all": {
+  "Rev": 99.66666666666667,
+  "Hold": 100.0,
+  "TA": 99.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 300
+ },
+ "nm_kind=class": {
+  "Rev": 99.66666666666667,
+  "Hold": 100.0,
+  "TA": 99.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 300
+ },
+ "tier=easy": {
+  "Rev": 99.49748743718592,
+  "Hold": 100.0,
+  "TA": 99.49748743718592,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 199
+ },
+ "level=L2": {
+  "Rev": 99.66666666666667,
+  "Hold": 100.0,
+  "TA": 99.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 300
+ },
+ "family=single|class": {
+  "Rev": 99.66666666666667,
+  "Hold": 100.0,
+  "TA": 99.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 300
+ },
+ "tier=long": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 101
+ },
+ "CI95": {
+  "TA": [
+   98.8970588235294,
+   100.0
+  ],
+  "Rev": [
+   98.8970588235294,
+   100.0
+  ],
+  "Hold": [
+   100.0,
+   100.0
+  ]
+ },
+ "step": {
+  "criterion": {
+   "Rev": 99.66666666666667,
+   "Hold": 100.0,
+   "TA": 99.66666666666667,
+   "BaseAcc": 100.0,
+   "Tie": 0.0,
+   "n": 300
+  }
+ },
+ "eval": {
+  "reader_units": 900,
+  "malformed_units": 0,
+  "mode": "gate",
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "routes": {
+   "gate": 892,
+   "judge_case": 8
+  },
+  "gate_coverage": 0.9911,
+  "bit_changed": 69,
+  "seconds": 197.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

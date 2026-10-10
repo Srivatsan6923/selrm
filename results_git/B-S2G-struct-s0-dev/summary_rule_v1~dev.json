@@ -272,7 +272,7 @@
   },
   "gate_coverage": 0.0,
   "bit_changed": 0,
-  "seconds": 105.2,
+  "seconds": 229.9,
   "pad_ok": true,
   "u_path": "fp32-hidden"
  }
