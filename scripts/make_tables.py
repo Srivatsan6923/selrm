@@ -508,7 +508,13 @@ def comparisons():
     s2 = ["p7", "p8", "p9", "p10", "p11", "p12"]
     for top in TOPS:
         p = os.path.join(ROOT, top, "C-S2-comparisons.json")
-        f = (load_json(p) or {}) if os.path.exists(p) else {}
+        raw = (load_json(p) or {}) if os.path.exists(p) else {}
+        # C's file: {"comparisons": {"7": {...}, ...}, "mcv_criteria_cells": {<system>_<cond>: {...}}}
+        f = {("p" + k if k.isdigit() else k): v for k, v in (raw.get("comparisons") or raw).items()}
+        cells = raw.get("mcv_criteria_cells") or {}
+        if cells:       # key cmp/mcv/<system>_<cond>.<field>
+            _CMP["mcv"] = {f"{c}.{k}": v for c, d in cells.items() for k, v in d.items()} | {
+                "file": rel(p), "file_commit": file_commit(p)}
         fam = [k for k in s2 if isinstance(f.get(k), dict) and not f[k].get("dropped")]
         for k in fam:
             _CMP[k] = f[k] | {"n": f[k].get("n_clusters"), "file": rel(p), "file_commit": file_commit(p)}

@@ -1492,7 +1492,7 @@ Glasgow-Blatchford, SIRS, Wells for pulmonary embolism). Each row gives the
 text of the score, a dictionary of entity values, and the answer.
 \emph{Rule code:} we implement each score from its stated text; a score
 enters the tier only if our code reproduces the released answer on every
-row from the released entities (\tbd{} of 19 scores, \tbd{} rows).
+row from the released entities (\res{sum/A-SETS/mcv_v1_accept.n_accepted@int} of 19 scores, \res{sum/A-SETS/mcv_v1_accept.test_rows_covered@int} rows).
 \emph{Items.} (A) Criterion claims on untouched notes, in three strata:
 value stated in the note, finding explicitly denied, entity absent and
 settled by the benchmark's default. (B) The numeric values that lie within a
@@ -1514,8 +1514,8 @@ written by us, as in the rule tier, now inside real notes. History-type
 criteria (a prior stroke in CHA$_2$DS$_2$-VASc) count past findings, so a
 past mention there is a flip, not a near-miss. \emph{Adaptation.} Verifiers
 are also fine-tuned on items built from the training notes, with and without
-near-miss edits at equal budget, with \ph{a fixed set of scores} held out
-entirely for test.
+near-miss edits at equal budget, with the scores chosen by the seeded rule of the plan
+(Appendix~\ref{app:plan}) held out entirely for test.
 
 \paragraph{Registered criteria.}
 Chia \citep{kury2020chia} annotates 12{,}409 criteria of 1{,}000 trials with
@@ -1527,8 +1527,8 @@ annotates 1{,}006 trial descriptions with comparison operators, values,
 units, temporal periods, negation and family members. Both are CC BY 4.0. We
 keep single-condition criteria that carry a numeric threshold or a time
 window and none of the corpora's flags for criteria that cannot be
-represented or need subjective judgment (\ph{about 450 in the Leaf corpus by
-a first count; to be recomputed}), and compile the annotation to a program
+represented or need subjective judgment (\res{sum/A-SETS/reg_v1.selection.LCT.candidates@int} in the Leaf corpus and
+\res{sum/A-SETS/reg_v1.selection.Chia.candidates@int} in Chia), and compile the annotation to a program
 by script. The annotation fixes structure, not execution semantics: whether
 ``within six months'' includes the boundary day, and what the reference date
 is, remain our stated conventions and are printed in the prompt. Cases are
@@ -1651,8 +1651,8 @@ On \mcv{} results are reported for the 230 human-written notes and the 150
 model-written ones separately, for criteria whose value the note states and
 for those settled by the benchmark's default, and for values that lie
 naturally near a threshold. The comparison of interest is that of
-\S\ref{sec:results-factorial} on clinical prose: backbone \tbd, blocks
-\tbd, triplets \tbd{} (triplet accuracy on edited notes), and the same after
+\S\ref{sec:results-factorial} on clinical prose: backbone \res{cmp/p9/TA_critic}, blocks
+\res{cmp/p9/TA_blocks}, triplets \res{cmp/p9/TA_triplets} (triplet accuracy on edited notes), and the same after
 adaptation on the training notes with and without edited near-misses at
 equal budget (\tbd, \tbd). Registered criteria extend the rule language to
 time windows with a reference date, the clause on which every current
@@ -1716,9 +1716,9 @@ triplet accuracy; (11), (12): pair accuracy, (12) as non-inferiority with a marg
  & \multicolumn{2}{c}{human notes} & model & \multicolumn{3}{c}{stratum (stated crit.)} & & \multicolumn{2}{c}{edit type}\\
 System & none & stated & notes & stated & denied & default & all & value & sentence\\
 \midrule
-Critic & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@none/note_type=human/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/note_type=human/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/note_type=model/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=stated/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=default/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@stated/note_type=human/TA} & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@stated/edit_type=value/TA} & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@stated/edit_type=sentence/TA}\\
-Verdict only, blocks & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@none/note_type=human/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/note_type=human/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/note_type=model/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=stated/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=default/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/note_type=human/TA} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/edit_type=value/TA} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/edit_type=sentence/TA}\\
-Verdict only, triplets & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@none/note_type=human/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/note_type=human/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/note_type=model/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=stated/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=default/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/note_type=human/TA} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/edit_type=value/TA} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/edit_type=sentence/TA}\\
+Critic & \res{cmp/mcv/critic_none.balanced_accuracy} & \res{cmp/mcv/critic_stated.balanced_accuracy} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/note_type=model/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=stated/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=default/BalAcc} & \res{cmp/p9/TA_critic} & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@stated/edit_type=value/TA} & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@stated/edit_type=sentence/TA}\\
+Verdict only, blocks & \res{cmp/mcv/blocks_none.balanced_accuracy} & \res{cmp/mcv/blocks_stated.balanced_accuracy} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/note_type=model/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=stated/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=default/BalAcc} & \res{cmp/p9/TA_blocks} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/edit_type=value/TA} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/edit_type=sentence/TA}\\
+Verdict only, triplets & \res{cmp/mcv/triplets_none.balanced_accuracy} & \res{cmp/mcv/triplets_stated.balanced_accuracy} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/note_type=model/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=stated/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=default/BalAcc} & \res{cmp/p9/TA_triplets} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/edit_type=value/TA} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/edit_type=sentence/TA}\\
 \bottomrule
 \end{tabular}
 \caption{\mcv{} (\%). Criterion claims on untouched notes without and with the score definition in the prompt, by
