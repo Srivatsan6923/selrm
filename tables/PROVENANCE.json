@@ -1,7 +1,7 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "ee380460f0869e1b247a959698f94793718b5260",
- "uncommitted_changes": true,
+ "code_commit": "398d1a39738506eae6d1111a15525abb59a1e222",
+ "uncommitted_changes": false,
  "records": {
   "rule_v1/dev_missing": {
    "file": "data/rule_v1/dev_missing/records.jsonl",
@@ -56947,6 +56947,16 @@
      "code_commit": null
     }
    ]
+  },
+  "sum/C-S2-executor/test.both_decided": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": []
+  },
+  "sum/C-S2-executor/test.pair": {
+   "value": "\\ph{tbd}",
+   "number": null,
+   "runs": []
   },
   "sum/D-RL-analysis/runs.D-RL-ledger2-blocks-s1.final.share_always_base_claim": {
    "value": "56.0",

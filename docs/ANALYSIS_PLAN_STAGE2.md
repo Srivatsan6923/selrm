@@ -118,3 +118,16 @@ its metric, contrast, cluster and decision rule are unchanged. The same contrast
 `agreement = true` (the definition first written) is reported next to it as a secondary analysis, and the
 paper states both definitions and that the amendment preceded the data. No new source or licence; ATC names
 are still not redistributed.
+
+---
+Appended 10 Oct 2026 (the text above is unchanged)
+
+Note on comparison (11), recorded before any model has been scored on MedEinst with the derived criterion.
+The symbolic executor decides both cases of 70.1% of the 5,383 test pairs, so by the rule above (11) stays in
+the family. Its pair accuracy is 0.7% (control 98.0%, trap 0.9%): on 69.5% of pairs it gives the trap case the
+control diagnosis, because the trap edit removes one finding listed for the control diagnosis only and the
+others stay in the case. The derived criterion therefore does not entail the benchmark's trap labels, and a
+system that follows it is expected to lose on trap cases. The expectation (11) > 0 is left as written; this
+note states that its failure was foreseeable from the executor alone (results_git/C-S2-executor/summary.json).
+No rule, metric or set is changed.
+

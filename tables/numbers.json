@@ -2923,6 +2923,14 @@
   "number": 190,
   "value": "190"
  },
+ "sum/C-S2-executor/test.both_decided": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
+ "sum/C-S2-executor/test.pair": {
+  "number": null,
+  "value": "\\ph{tbd}"
+ },
  "sum/D-RL-analysis/runs.D-RL-ledger2-blocks-s1.final.share_always_base_claim": {
   "number": 56.0,
   "value": "56.0"
