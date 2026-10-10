@@ -69,10 +69,10 @@ Pull (`submit_b.py pull`), `register_adapters.py`, `resummarize_b.py <runs>`, an
 commit and push; HANDOFFS lines for results C or D use. `python scratch/regen_revised.py` regenerates queue files.
 
 ## Open compute requests
-- #1 CLOSED 9 Oct (lead's handoff and the user): `selrm-github-ro` (key token) exists; `hf-token-srivatsan` (key
-  token) is the user's and B may use it. Publishing kept adapters to a private HF repo
-  (`submit_b.py publish <owner>/selrm-adapters --secret hf-token-srivatsan:token`) needs the HF account name;
-  asked 9 Oct. Not blocking: C mounts PVC selrm-b read-only.
+- #2 (10 Oct): `submit_b.py publish srivatsan6923/selrm-adapters --secret hf-token-srivatsan:token` failed with
+  403 "You don't have the rights to create a model under the namespace srivatsan6923" (job selrm-b-publish-99423).
+  The token in the secret cannot create repositories there: it needs write permission (or the user creates the
+  private repo srivatsan6923/selrm-adapters and gives the token write access to it). Not blocking: C mounts the PVC.
 
 ## Blockers
 - A: rule_v2 (A5), mcv_v1 (A1), onto_v1 / cls_v1 (A4), reg_v1 (A6); the `struct` and onto_v1 file formats.

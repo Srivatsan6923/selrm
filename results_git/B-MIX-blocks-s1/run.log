@@ -1,0 +1,505 @@
+2026-10-09T18:23:12Z step 10/938 loss=0.1958 grad_norm=1.673 learning_rate=3.214e-05 epoch=0.01067
+2026-10-09T18:24:19Z step 20/938 loss=0.1203 grad_norm=0.6186 learning_rate=6.786e-05 epoch=0.02133
+2026-10-09T18:25:20Z step 30/938 loss=0.06679 grad_norm=0.87 learning_rate=0.0001 epoch=0.032
+2026-10-09T18:26:32Z step 40/938 loss=0.0557 grad_norm=2.057 learning_rate=9.996e-05 epoch=0.04267
+2026-10-09T18:27:39Z step 50/938 loss=0.03571 grad_norm=0.8589 learning_rate=9.987e-05 epoch=0.05333
+2026-10-09T18:28:49Z step 60/938 loss=0.05239 grad_norm=1.391 learning_rate=9.971e-05 epoch=0.064
+2026-10-09T18:29:58Z step 70/938 loss=0.04495 grad_norm=0.2462 learning_rate=9.95e-05 epoch=0.07467
+2026-10-09T18:31:05Z step 80/938 loss=0.02608 grad_norm=0.1662 learning_rate=9.923e-05 epoch=0.08533
+2026-10-09T18:32:10Z step 90/938 loss=0.01775 grad_norm=0.5743 learning_rate=9.89e-05 epoch=0.096
+2026-10-09T18:33:20Z step 100/938 loss=0.01853 grad_norm=0.08211 learning_rate=9.851e-05 epoch=0.1067
+2026-10-09T18:34:27Z step 110/938 loss=0.01503 grad_norm=0.7253 learning_rate=9.806e-05 epoch=0.1173
+2026-10-09T18:35:35Z step 120/938 loss=0.03069 grad_norm=0.2318 learning_rate=9.755e-05 epoch=0.128
+2026-10-09T18:36:40Z step 130/938 loss=0.01809 grad_norm=0.4525 learning_rate=9.699e-05 epoch=0.1387
+2026-10-09T18:37:46Z step 140/938 loss=0.01333 grad_norm=0.03594 learning_rate=9.637e-05 epoch=0.1493
+2026-10-09T18:38:49Z step 150/938 loss=0.01408 grad_norm=0.3111 learning_rate=9.57e-05 epoch=0.16
+2026-10-09T18:42:28Z step 160/938 loss=0.01028 grad_norm=0.1154 learning_rate=9.497e-05 epoch=0.1707
+2026-10-09T18:43:36Z step 170/938 loss=0.01416 grad_norm=0.4046 learning_rate=9.419e-05 epoch=0.1813
+2026-10-09T18:44:41Z step 180/938 loss=0.01067 grad_norm=0.09777 learning_rate=9.336e-05 epoch=0.192
+2026-10-09T18:45:44Z step 190/938 loss=0.01401 grad_norm=0.6316 learning_rate=9.247e-05 epoch=0.2027
+2026-10-09T18:46:52Z step 200/938 loss=0.01905 grad_norm=0.5861 learning_rate=9.154e-05 epoch=0.2133
+2026-10-09T18:47:58Z step 210/938 loss=0.02776 grad_norm=0.08483 learning_rate=9.055e-05 epoch=0.224
+2026-10-09T18:49:05Z step 220/938 loss=0.008167 grad_norm=0.2488 learning_rate=8.952e-05 epoch=0.2347
+2026-10-09T18:50:08Z step 230/938 loss=0.008108 grad_norm=0.7489 learning_rate=8.844e-05 epoch=0.2453
+2026-10-09T18:51:20Z step 240/938 loss=0.03345 grad_norm=0.8289 learning_rate=8.731e-05 epoch=0.256
+2026-10-09T18:52:25Z step 250/938 loss=0.01355 grad_norm=0.4532 learning_rate=8.614e-05 epoch=0.2667
+2026-10-09T18:53:33Z step 260/938 loss=0.01162 grad_norm=0.0003218 learning_rate=8.493e-05 epoch=0.2773
+2026-10-09T18:54:39Z step 270/938 loss=0.01237 grad_norm=0.1266 learning_rate=8.367e-05 epoch=0.288
+2026-10-09T18:55:46Z step 280/938 loss=0.008834 grad_norm=0.1384 learning_rate=8.237e-05 epoch=0.2987
+2026-10-09T18:56:50Z step 290/938 loss=0.01734 grad_norm=0.2439 learning_rate=8.104e-05 epoch=0.3093
+2026-10-09T18:57:54Z step 300/938 loss=0.01881 grad_norm=0.3364 learning_rate=7.967e-05 epoch=0.32
+2026-10-09T18:58:57Z step 310/938 loss=0.01138 grad_norm=0.2451 learning_rate=7.826e-05 epoch=0.3307
+2026-10-09T19:02:41Z step 320/938 loss=0.007462 grad_norm=0.1083 learning_rate=7.682e-05 epoch=0.3413
+2026-10-09T19:03:46Z step 330/938 loss=0.0108 grad_norm=0.6605 learning_rate=7.535e-05 epoch=0.352
+2026-10-09T19:04:56Z step 340/938 loss=0.009434 grad_norm=0.2433 learning_rate=7.385e-05 epoch=0.3627
+2026-10-09T19:06:06Z step 350/938 loss=0.008735 grad_norm=1.665 learning_rate=7.231e-05 epoch=0.3733
+2026-10-09T19:07:15Z step 360/938 loss=0.006816 grad_norm=0.1652 learning_rate=7.076e-05 epoch=0.384
+2026-10-09T19:08:24Z step 370/938 loss=0.007539 grad_norm=0.2836 learning_rate=6.917e-05 epoch=0.3947
+2026-10-09T19:09:29Z step 380/938 loss=0.004498 grad_norm=0.1455 learning_rate=6.757e-05 epoch=0.4053
+2026-10-09T19:10:36Z step 390/938 loss=0.006956 grad_norm=0.01332 learning_rate=6.594e-05 epoch=0.416
+2026-10-09T19:11:39Z step 400/938 loss=0.01005 grad_norm=0.04046 learning_rate=6.43e-05 epoch=0.4267
+2026-10-09T19:12:44Z step 410/938 loss=0.0038 grad_norm=0.08677 learning_rate=6.264e-05 epoch=0.4373
+2026-10-09T19:13:52Z step 420/938 loss=0.004356 grad_norm=0.003788 learning_rate=6.096e-05 epoch=0.448
+2026-10-09T19:15:01Z step 430/938 loss=0.01121 grad_norm=0.07506 learning_rate=5.927e-05 epoch=0.4587
+2026-10-09T19:16:06Z step 440/938 loss=0.01456 grad_norm=0.08854 learning_rate=5.757e-05 epoch=0.4693
+2026-10-09T19:17:10Z step 450/938 loss=0.007845 grad_norm=0.08285 learning_rate=5.586e-05 epoch=0.48
+2026-10-09T19:18:14Z step 460/938 loss=0.007308 grad_norm=0.166 learning_rate=5.414e-05 epoch=0.4907
+2026-10-09T19:19:17Z step 470/938 loss=0.002941 grad_norm=0.05936 learning_rate=5.242e-05 epoch=0.5013
+2026-10-09T19:22:39Z step 480/938 loss=0.005971 grad_norm=0.4225 learning_rate=5.069e-05 epoch=0.512
+2026-10-09T19:23:49Z step 490/938 loss=0.004388 grad_norm=0.1315 learning_rate=4.896e-05 epoch=0.5227
+2026-10-09T19:24:57Z step 500/938 loss=0.007564 grad_norm=0.01329 learning_rate=4.724e-05 epoch=0.5333
+2026-10-09T19:26:06Z step 510/938 loss=0.004243 grad_norm=0.0853 learning_rate=4.552e-05 epoch=0.544
+2026-10-09T19:27:14Z step 520/938 loss=0.006438 grad_norm=0.06549 learning_rate=4.38e-05 epoch=0.5547
+2026-10-09T19:28:18Z step 530/938 loss=0.004889 grad_norm=0.02252 learning_rate=4.209e-05 epoch=0.5653
+2026-10-09T19:29:25Z step 540/938 loss=0.004708 grad_norm=0.003154 learning_rate=4.039e-05 epoch=0.576
+2026-10-09T19:30:32Z step 550/938 loss=0.004118 grad_norm=0.04104 learning_rate=3.871e-05 epoch=0.5867
+2026-10-09T19:31:41Z step 560/938 loss=0.001777 grad_norm=0.02982 learning_rate=3.703e-05 epoch=0.5973
+2026-10-09T19:32:47Z step 570/938 loss=0.006511 grad_norm=0.02638 learning_rate=3.537e-05 epoch=0.608
+2026-10-09T19:33:53Z step 580/938 loss=0.00225 grad_norm=0.0002443 learning_rate=3.373e-05 epoch=0.6187
+2026-10-09T19:35:01Z step 590/938 loss=0.006061 grad_norm=0.3911 learning_rate=3.211e-05 epoch=0.6293
+2026-10-09T19:36:07Z step 600/938 loss=0.000883 grad_norm=0.00163 learning_rate=3.051e-05 epoch=0.64
+2026-10-09T19:37:16Z step 610/938 loss=0.005032 grad_norm=0.04 learning_rate=2.893e-05 epoch=0.6507
+2026-10-09T19:38:25Z step 620/938 loss=0.001111 grad_norm=0.001882 learning_rate=2.738e-05 epoch=0.6613
+2026-10-09T19:39:33Z step 630/938 loss=0.005666 grad_norm=0.03481 learning_rate=2.585e-05 epoch=0.672
+2026-10-09T19:43:16Z step 640/938 loss=0.001756 grad_norm=0.07775 learning_rate=2.436e-05 epoch=0.6827
+2026-10-09T19:44:22Z step 650/938 loss=0.0009175 grad_norm=0.02346 learning_rate=2.289e-05 epoch=0.6933
+2026-10-09T19:45:26Z step 660/938 loss=0.0006243 grad_norm=0.00871 learning_rate=2.145e-05 epoch=0.704
+2026-10-09T19:46:33Z step 670/938 loss=0.003032 grad_norm=2.927e-05 learning_rate=2.005e-05 epoch=0.7147
+2026-10-09T19:47:39Z step 680/938 loss=0.004676 grad_norm=0.4597 learning_rate=1.869e-05 epoch=0.7253
+2026-10-09T19:48:40Z step 690/938 loss=0.001418 grad_norm=0.2572 learning_rate=1.736e-05 epoch=0.736
+2026-10-09T19:49:49Z step 700/938 loss=0.004745 grad_norm=4.164e-05 learning_rate=1.608e-05 epoch=0.7467
+2026-10-09T19:50:52Z step 710/938 loss=0.00117 grad_norm=0.1446 learning_rate=1.483e-05 epoch=0.7573
+2026-10-09T19:51:56Z step 720/938 loss=0.001699 grad_norm=0.2205 learning_rate=1.362e-05 epoch=0.768
+2026-10-09T19:53:06Z step 730/938 loss=0.001729 grad_norm=0.005834 learning_rate=1.246e-05 epoch=0.7787
+2026-10-09T19:54:14Z step 740/938 loss=0.00087 grad_norm=0.04046 learning_rate=1.134e-05 epoch=0.7893
+2026-10-09T19:55:22Z step 750/938 loss=0.001024 grad_norm=0.0009866 learning_rate=1.027e-05 epoch=0.8
+2026-10-09T19:56:27Z step 760/938 loss=0.001674 grad_norm=0.003357 learning_rate=9.247e-06 epoch=0.8107
+2026-10-09T19:57:34Z step 770/938 loss=0.001761 grad_norm=0.005009 learning_rate=8.271e-06 epoch=0.8213
+2026-10-09T19:58:39Z step 780/938 loss=0.000255 grad_norm=0.0002646 learning_rate=7.345e-06 epoch=0.832
+2026-10-09T19:59:44Z step 790/938 loss=0.000777 grad_norm=0.0149 learning_rate=6.47e-06 epoch=0.8427
+2026-10-09T20:02:53Z step 800/938 loss=0.0007488 grad_norm=0.07581 learning_rate=5.647e-06 epoch=0.8533
+2026-10-09T20:04:03Z step 810/938 loss=0.002553 grad_norm=0.1099 learning_rate=4.877e-06 epoch=0.864
+2026-10-09T20:05:10Z step 820/938 loss=0.0005235 grad_norm=0.04772 learning_rate=4.16e-06 epoch=0.8747
+2026-10-09T20:06:12Z step 830/938 loss=0.00187 grad_norm=0.002345 learning_rate=3.498e-06 epoch=0.8853
+2026-10-09T20:07:19Z step 840/938 loss=0.001426 grad_norm=0.001782 learning_rate=2.892e-06 epoch=0.896
+2026-10-09T20:08:27Z step 850/938 loss=0.01186 grad_norm=0.009009 learning_rate=2.342e-06 epoch=0.9067
+2026-10-09T20:09:31Z step 860/938 loss=0.000382 grad_norm=0.03523 learning_rate=1.848e-06 epoch=0.9173
+2026-10-09T20:10:40Z step 870/938 loss=0.001768 grad_norm=7.043e-05 learning_rate=1.412e-06 epoch=0.928
+2026-10-09T20:11:44Z step 880/938 loss=0.0007646 grad_norm=0.3153 learning_rate=1.034e-06 epoch=0.9387
+2026-10-09T20:12:50Z step 890/938 loss=0.0001338 grad_norm=0.00238 learning_rate=7.137e-07 epoch=0.9493
+2026-10-09T20:14:03Z step 900/938 loss=0.001104 grad_norm=0.001147 learning_rate=4.525e-07 epoch=0.96
+2026-10-09T20:15:14Z step 910/938 loss=0.001157 grad_norm=4.977e-05 learning_rate=2.504e-07 epoch=0.9707
+2026-10-09T20:16:20Z step 920/938 loss=0.0006617 grad_norm=0.01577 learning_rate=1.075e-07 epoch=0.9813
+2026-10-09T20:17:25Z step 930/938 loss=0.001265 grad_norm=0.0001595 learning_rate=2.413e-08 epoch=0.992
+2026-10-09T20:18:12Z step 938/938 train_runtime=7120 train_samples_per_second=8.427 train_steps_per_second=0.132 total_flos=2.734e+18 train_loss=0.01298 epoch=1
+2026-10-09T20:19:00Z trained 938 steps in 118.7 min, 3496.0 tok/s, peak 24.99 GB
+2026-10-09T20:19:14Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0309)
+2026-10-09T20:19:20Z padding self-check: max |u_batch - u_single| = 0.1472 (tol 0.857) -> left padding
+2026-10-09T20:19:58Z B-MIX-blocks-s1 rule_v1/dev: TA 99.7 Rev 100.0 Hold 99.7 n=300 (56.8 s)
+2026-10-09T20:34:12Z FAILED B-MIX-blocks-s1
+Traceback (most recent call last):
+  File "/work/code/scripts/train_eval_job.py", line 158, in run_one
+    summ = {s: eval_local.evaluate(sc, root, rid, spec["format"], s, P["results"], log, tok_tag(spec),
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/code/scripts/eval_local.py", line 252, in evaluate
+    u = sc.score(seqs)
+        ^^^^^^^^^^^^^^
+  File "/work/code/scripts/eval_local.py", line 186, in score
+    u[b] = self._last([seqs[i] for i in b])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/code/scripts/eval_local.py", line 154, in _last
+    out = self.model(input_ids=ids, attention_mask=att, logits_to_keep=1, use_cache=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1885, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1833, in inner
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/accelerate/utils/operations.py", line 943, in forward
+    return model_forward(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/accelerate/utils/operations.py", line 931, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/peft/peft_model.py", line 2120, in forward
+    return self.base_model(
+           ^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/peft/tuners/tuners_utils.py", line 359, in forward
+    return self.model(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py", line 1385, in forward
+    return Qwen3_5ForConditionalGeneration_forward(self, input_ids=input_ids, attention_mask=attention_mask, position_ids=position_ids, past_key_values=past_key_values, inputs_embeds=inputs_embeds, labels=labels, pixel_values=pixel_values, pixel_values_videos=pixel_values_videos, image_grid_thw=image_grid_thw, video_grid_thw=video_grid_thw, mm_token_type_ids=mm_token_type_ids, logits_to_keep=logits_to_keep, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/unsloth_zoo/temporary_patches/utils.py", line 2187, in forward
+    return disabled(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/external_utils.py", line 227, in nonrecursive_disable_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 876, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py", line 1150, in Qwen3_5ForConditionalGeneration_forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 876, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py", line 1672, in forward
+    outputs = self.language_model(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 952, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/utils/output_capturing.py", line 248, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py", line 1275, in forward
+    hidden_states = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/unsloth_zoo/temporary_patches/misc.py", line 1987, in __call__
+    return original(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/modeling_layers.py", line 93, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py", line 766, in forward
+    hidden_states, _ = self.self_attn(
+                       ^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py", line 868, in forward
+    return Qwen3_5Attention_forward(self, hidden_states=hidden_states, position_embeddings=position_embeddings, attention_mask=attention_mask, past_key_values=past_key_values, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/unsloth_zoo/temporary_patches/utils.py", line 2187, in forward
+    return disabled(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/external_utils.py", line 227, in nonrecursive_disable_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/work/unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py", line 816, in Qwen3_5Attention_forward
+    attn_output, attn_weights = attention_interface(
+                                ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/unsloth/models/_utils.py", line 643, in unsloth_flex_attention_forward
+    return flex_attention_forward(module, query, key, value, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/integrations/flex_attention.py", line 317, in flex_attention_forward
+    flex_attention_output = compile_friendly_flex_attention(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/integrations/flex_attention.py", line 124, in compile_friendly_flex_attention
+    return flex_attention_compiled(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1024, in compile_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/attention/flex_attention.py", line 1731, in flex_attention
+    out, lse, max_scores = flex_fn(
+                           ^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1024, in compile_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/attention/flex_attention.py", line 1721, in _flex_attention_hop_wrapper
+    return flex_attention_hop(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 112, in __call__
+    return super().__call__(
+           ^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_ops.py", line 533, in __call__
+    return self.dispatch(dispatch_key_set.highestPriorityTypeId(), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_ops.py", line 380, in dispatch
+    return kernel(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 341, in flex_attention_autocast_cuda
+    return _flex_attention_autocast_impl(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 316, in _flex_attention_autocast_impl
+    return flex_attention(
+           ^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 112, in __call__
+    return super().__call__(
+           ^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_ops.py", line 533, in __call__
+    return self.dispatch(dispatch_key_set.highestPriorityTypeId(), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_ops.py", line 380, in dispatch
+    return kernel(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 928, in flex_attention_autograd
+    out, logsumexp, max_scores = FlexAttentionAutogradOp.apply(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/autograd/function.py", line 596, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 780, in forward
+    out, logsumexp, max_scores = flex_attention(
+                                 ^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 112, in __call__
+    return super().__call__(
+           ^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_ops.py", line 528, in __call__
+    return torch.overrides.handle_torch_function(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/overrides.py", line 1741, in handle_torch_function
+    result = mode.__torch_function__(public_api, types, args, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/_trace_wrapped_higher_order_op.py", line 158, in __torch_function__
+    return func(*args, **(kwargs or {}))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 112, in __call__
+    return super().__call__(
+           ^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_ops.py", line 533, in __call__
+    return self.dispatch(dispatch_key_set.highestPriorityTypeId(), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_ops.py", line 380, in dispatch
+    return kernel(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 391, in sdpa_dense
+    out, lse, max_scores = math_attention(
+                           ^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 278, in math_attention
+    post_mod_scores = torch._safe_softmax(post_mod_scores, dim=-1)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 3.88 GiB. GPU 0 has a total capacity of 79.22 GiB of which 943.50 MiB is free. Including non-PyTorch memory, this process has 78.29 GiB memory in use. Of the allocated memory 71.06 GiB is allocated by PyTorch, and 68.54 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+
+2026-10-09T20:34:12Z CUDA error: exiting so the pod restarts with a clean process
+2026-10-09T20:58:20Z adapter already trained for this spec (/pvc/selrm/adapters/B-MIX-blocks-s1/TRAINED.json); skipping training
+2026-10-09T20:59:18Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0393)
+2026-10-09T20:59:24Z padding self-check: max |u_batch - u_single| = 0.0861 (tol 0.859) -> left padding
+2026-10-09T21:00:22Z B-MIX-blocks-s1 rule_v1/dev: TA 99.7 Rev 100.0 Hold 99.7 n=300 (115.3 s)
+2026-10-09T21:22:08Z FAILED B-MIX-blocks-s1
+Traceback (most recent call last):
+  File "/work/code/scripts/train_eval_job.py", line 158, in run_one
+    summ = {s: eval_local.evaluate(sc, root, rid, spec["format"], s, P["results"], log, tok_tag(spec),
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/code/scripts/eval_local.py", line 252, in evaluate
+    u = sc.score(seqs)
+        ^^^^^^^^^^^^^^
+  File "/work/code/scripts/eval_local.py", line 186, in score
+    u[b] = self._last([seqs[i] for i in b])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/code/scripts/eval_local.py", line 154, in _last
+    out = self.model(input_ids=ids, attention_mask=att, logits_to_keep=1, use_cache=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/peft/peft_model.py", line 2120, in forward
+    return self.base_model(
+           ^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/peft/tuners/tuners_utils.py", line 359, in forward
+    return self.model(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py", line 1385, in forward
+    return Qwen3_5ForConditionalGeneration_forward(self, input_ids=input_ids, attention_mask=attention_mask, position_ids=position_ids, past_key_values=past_key_values, inputs_embeds=inputs_embeds, labels=labels, pixel_values=pixel_values, pixel_values_videos=pixel_values_videos, image_grid_thw=image_grid_thw, video_grid_thw=video_grid_thw, mm_token_type_ids=mm_token_type_ids, logits_to_keep=logits_to_keep, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/unsloth_zoo/temporary_patches/utils.py", line 2187, in forward
+    return disabled(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/external_utils.py", line 227, in nonrecursive_disable_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 876, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py", line 1150, in Qwen3_5ForConditionalGeneration_forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 876, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py", line 1672, in forward
+    outputs = self.language_model(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 952, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/utils/output_capturing.py", line 248, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py", line 1275, in forward
+    hidden_states = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/unsloth_zoo/temporary_patches/misc.py", line 1987, in __call__
+    return original(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/modeling_layers.py", line 93, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py", line 766, in forward
+    hidden_states, _ = self.self_attn(
+                       ^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py", line 868, in forward
+    return Qwen3_5Attention_forward(self, hidden_states=hidden_states, position_embeddings=position_embeddings, attention_mask=attention_mask, past_key_values=past_key_values, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/unsloth_zoo/temporary_patches/utils.py", line 2187, in forward
+    return disabled(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/external_utils.py", line 227, in nonrecursive_disable_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/work/unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py", line 816, in Qwen3_5Attention_forward
+    attn_output, attn_weights = attention_interface(
+                                ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/unsloth/models/_utils.py", line 643, in unsloth_flex_attention_forward
+    return flex_attention_forward(module, query, key, value, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/integrations/flex_attention.py", line 317, in flex_attention_forward
+    flex_attention_output = compile_friendly_flex_attention(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/integrations/flex_attention.py", line 124, in compile_friendly_flex_attention
+    return flex_attention_compiled(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1024, in compile_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/attention/flex_attention.py", line 1731, in flex_attention
+    out, lse, max_scores = flex_fn(
+                           ^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1024, in compile_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/attention/flex_attention.py", line 1721, in _flex_attention_hop_wrapper
+    return flex_attention_hop(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 112, in __call__
+    return super().__call__(
+           ^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_ops.py", line 533, in __call__
+    return self.dispatch(dispatch_key_set.highestPriorityTypeId(), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_ops.py", line 380, in dispatch
+    return kernel(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 928, in flex_attention_autograd
+    out, logsumexp, max_scores = FlexAttentionAutogradOp.apply(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/autograd/function.py", line 596, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 780, in forward
+    out, logsumexp, max_scores = flex_attention(
+                                 ^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 112, in __call__
+    return super().__call__(
+           ^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_ops.py", line 528, in __call__
+    return torch.overrides.handle_torch_function(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/overrides.py", line 1741, in handle_torch_function
+    result = mode.__torch_function__(public_api, types, args, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/_trace_wrapped_higher_order_op.py", line 158, in __torch_function__
+    return func(*args, **(kwargs or {}))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 112, in __call__
+    return super().__call__(
+           ^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_ops.py", line 533, in __call__
+    return self.dispatch(dispatch_key_set.highestPriorityTypeId(), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_ops.py", line 380, in dispatch
+    return kernel(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 391, in sdpa_dense
+    out, lse, max_scores = math_attention(
+                           ^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_higher_order_ops/flex_attention.py", line 278, in math_attention
+    post_mod_scores = torch._safe_softmax(post_mod_scores, dim=-1)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 4.21 GiB. GPU 0 has a total capacity of 79.22 GiB of which 3.11 GiB is free. Including non-PyTorch memory, this process has 76.11 GiB memory in use. Of the allocated memory 75.27 GiB is allocated by PyTorch, and 106.34 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+
+2026-10-09T21:22:08Z CUDA error: exiting so the pod restarts with a clean process
+2026-10-10T00:24:32Z adapter already trained for this spec (/pvc/selrm/adapters/B-MIX-blocks-s1/TRAINED.json); skipping training
+2026-10-10T00:24:43Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0348)
+2026-10-10T00:24:44Z padding self-check: max |u_batch - u_single| = 0.1361 (tol 0.860) -> left padding
+2026-10-10T00:26:44Z B-MIX-blocks-s1 rule_v1/dev: TA 99.7 Rev 100.0 Hold 99.7 n=300 (120.9 s)
+2026-10-10T01:12:00Z B-MIX-blocks-s1 mcv_v1/dev: TA nan Rev nan Hold nan n=None (2715.8 s)
+2026-10-10T01:12:02Z DONE B-MIX-blocks-s1 in 47.8 min, GPU util mean 98.5

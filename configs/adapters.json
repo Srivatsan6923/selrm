@@ -1359,6 +1359,69 @@
    "pvc": "selrm-b",
    "pvc_path": "selrm/adapters/B-MIX-blocks-s0",
    "alias_of": "B-MIX-blocks-s0"
+  },
+  "B-MIX-blocks-s1": {
+   "run_id": "B-MIX-blocks-s1",
+   "path": null,
+   "status": "DONE (seed 1); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v1/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-MIX-blocks-s1"
+  },
+  "B-MIX-triplets-s0": {
+   "run_id": "B-MIX-triplets-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v1/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-MIX-triplets-s0"
+  },
+  "B-MIX-triplets-s1": {
+   "run_id": "B-MIX-triplets-s1",
+   "path": null,
+   "status": "DONE (seed 1); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v1/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-MIX-triplets-s1"
+  },
+  "mix_blocks_s1": {
+   "run_id": "B-MIX-blocks-s1",
+   "path": null,
+   "status": "DONE (seed 1); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v1/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-MIX-blocks-s1",
+   "alias_of": "B-MIX-blocks-s1"
+  },
+  "mix_triplets_s0": {
+   "run_id": "B-MIX-triplets-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v1/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-MIX-triplets-s0",
+   "alias_of": "B-MIX-triplets-s0"
+  },
+  "mix_triplets_s1": {
+   "run_id": "B-MIX-triplets-s1",
+   "path": null,
+   "status": "DONE (seed 1); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v1/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-MIX-triplets-s1",
+   "alias_of": "B-MIX-triplets-s1"
   }
  }
 }
