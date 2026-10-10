@@ -401,14 +401,14 @@ DEV_S2 = ["rule_v2/dev", "rule_v1/dev", "cls_v1/dev"]
 TEST_S2 = ["rule_v2/test_L2", "rule_v1/test_L2", "xr_v1/test", "cls_v1/test"]
 
 
-def composite(adapters, tests=False):
+def composite(adapters, tests=False, seeds=range(5)):
     """STAGE2_TASKS_B B3: eval-only runs behind Ledger-RM-G for every trained B-V2-reader-triplets-s<k>.
     B-S2G-{gate,struct}-s<k>-{dev,test}: the reader's record through the gate (parsed criterion / struct), judged
     blind or with the case (eval_local.gate_units); B-S2G-{bit,verdict}-s<k>-dev: the reader's own bit and the
     verdict-only fallback on the development sets their training runs did not score. Tests only after the
     validation on the development sets passed (scripts/assemble_rmg.py --validate)."""
     runs, part = [], "test" if tests else "dev"
-    for k in range(5):
+    for k in seeds:
         rd, vd = f"B-V2-reader-triplets-s{k}", f"B-V2-verdict-triplets-s{k}"
         if rd not in adapters or vd not in adapters:
             continue

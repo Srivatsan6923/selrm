@@ -221,6 +221,80 @@
     "bs_gen": 256,
     "max_new": 384
    }
+  },
+  {
+   "seed": 3,
+   "priority": 7,
+   "train": false,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v1/dev",
+    "cls_v1/dev"
+   ],
+   "min_gen": 9,
+   "run_id": "B-S2G-gate-s3-dev",
+   "format": "ledger_g",
+   "adapter": "adapters/B-V2-reader-triplets-s3",
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "gate"
+   }
+  },
+  {
+   "seed": 3,
+   "priority": 7,
+   "train": false,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v1/dev",
+    "cls_v1/dev"
+   ],
+   "min_gen": 9,
+   "run_id": "B-S2G-struct-s3-dev",
+   "format": "ledger_g",
+   "adapter": "adapters/B-V2-reader-triplets-s3",
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "gate_struct"
+   }
+  },
+  {
+   "seed": 3,
+   "priority": 7,
+   "train": false,
+   "eval_sets": [
+    "rule_v1/dev"
+   ],
+   "min_gen": 9,
+   "run_id": "B-S2G-bit-s3-dev",
+   "format": "ledger_g",
+   "adapter": "adapters/B-V2-reader-triplets-s3",
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   }
+  },
+  {
+   "seed": 3,
+   "priority": 7,
+   "train": false,
+   "eval_sets": [
+    "rule_v1/dev"
+   ],
+   "min_gen": 9,
+   "run_id": "B-S2G-verdict-s3-dev",
+   "format": "verdict",
+   "adapter": "adapters/B-V2-verdict-triplets-s3",
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   }
   }
  ]
 }

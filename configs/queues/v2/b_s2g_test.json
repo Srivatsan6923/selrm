@@ -1,0 +1,88 @@
+{
+ "runs": [
+  {
+   "seed": 0,
+   "priority": 4,
+   "train": false,
+   "eval_sets": [
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/test"
+   ],
+   "min_gen": 9,
+   "run_id": "B-S2G-gate-s0-test",
+   "format": "ledger_g",
+   "adapter": "adapters/B-V2-reader-triplets-s0",
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "gate"
+   }
+  },
+  {
+   "seed": 0,
+   "priority": 4,
+   "train": false,
+   "eval_sets": [
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/test"
+   ],
+   "min_gen": 9,
+   "run_id": "B-S2G-struct-s0-test",
+   "format": "ledger_g",
+   "adapter": "adapters/B-V2-reader-triplets-s0",
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "gate_struct"
+   }
+  },
+  {
+   "seed": 1,
+   "priority": 5,
+   "train": false,
+   "eval_sets": [
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/test"
+   ],
+   "min_gen": 9,
+   "run_id": "B-S2G-gate-s1-test",
+   "format": "ledger_g",
+   "adapter": "adapters/B-V2-reader-triplets-s1",
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "gate"
+   }
+  },
+  {
+   "seed": 1,
+   "priority": 5,
+   "train": false,
+   "eval_sets": [
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/test"
+   ],
+   "min_gen": 9,
+   "run_id": "B-S2G-struct-s1-test",
+   "format": "ledger_g",
+   "adapter": "adapters/B-V2-reader-triplets-s1",
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "gate_struct"
+   }
+  }
+ ]
+}

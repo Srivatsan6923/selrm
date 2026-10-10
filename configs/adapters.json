@@ -1611,6 +1611,132 @@
    "pvc": "selrm-b",
    "pvc_path": "selrm/adapters/B-V2-verdict-blocks-s2",
    "alias_of": "B-V2-verdict-blocks-s2"
+  },
+  "B-V2-reader-triplets-s2": {
+   "run_id": "B-V2-reader-triplets-s2",
+   "path": null,
+   "status": "DONE (seed 2); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "ledger_g",
+   "corpus": "rule_v2/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-V2-reader-triplets-s2"
+  },
+  "B-V2-reader-triplets-s3": {
+   "run_id": "B-V2-reader-triplets-s3",
+   "path": null,
+   "status": "DONE (seed 3); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "ledger_g",
+   "corpus": "rule_v2/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-V2-reader-triplets-s3"
+  },
+  "B-V2-verdict-blocks-s3": {
+   "run_id": "B-V2-verdict-blocks-s3",
+   "path": null,
+   "status": "DONE (seed 3); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v2/train_blocks",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-V2-verdict-blocks-s3"
+  },
+  "B-V2-verdict-lo_window-s0": {
+   "run_id": "B-V2-verdict-lo_window-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v2/train_triplets_lo_window",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-V2-verdict-lo_window-s0"
+  },
+  "B-V2-verdict-triplets-s2": {
+   "run_id": "B-V2-verdict-triplets-s2",
+   "path": null,
+   "status": "DONE (seed 2); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v2/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-V2-verdict-triplets-s2"
+  },
+  "B-V2-verdict-triplets-s3": {
+   "run_id": "B-V2-verdict-triplets-s3",
+   "path": null,
+   "status": "DONE (seed 3); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v2/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-V2-verdict-triplets-s3"
+  },
+  "v2_reader_s2": {
+   "run_id": "B-V2-reader-triplets-s2",
+   "path": null,
+   "status": "DONE (seed 2); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "ledger_g",
+   "corpus": "rule_v2/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-V2-reader-triplets-s2",
+   "alias_of": "B-V2-reader-triplets-s2"
+  },
+  "v2_reader_s3": {
+   "run_id": "B-V2-reader-triplets-s3",
+   "path": null,
+   "status": "DONE (seed 3); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "ledger_g",
+   "corpus": "rule_v2/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-V2-reader-triplets-s3",
+   "alias_of": "B-V2-reader-triplets-s3"
+  },
+  "v2_verdict_blocks_s3": {
+   "run_id": "B-V2-verdict-blocks-s3",
+   "path": null,
+   "status": "DONE (seed 3); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v2/train_blocks",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-V2-verdict-blocks-s3",
+   "alias_of": "B-V2-verdict-blocks-s3"
+  },
+  "v2_verdict_lo_window_s0": {
+   "run_id": "B-V2-verdict-lo_window-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v2/train_triplets_lo_window",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-V2-verdict-lo_window-s0",
+   "alias_of": "B-V2-verdict-lo_window-s0"
+  },
+  "v2_verdict_triplets_s2": {
+   "run_id": "B-V2-verdict-triplets-s2",
+   "path": null,
+   "status": "DONE (seed 2); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v2/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-V2-verdict-triplets-s2",
+   "alias_of": "B-V2-verdict-triplets-s2"
+  },
+  "v2_verdict_triplets_s3": {
+   "run_id": "B-V2-verdict-triplets-s3",
+   "path": null,
+   "status": "DONE (seed 3); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v2/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-V2-verdict-triplets-s3",
+   "alias_of": "B-V2-verdict-triplets-s3"
   }
  }
 }
