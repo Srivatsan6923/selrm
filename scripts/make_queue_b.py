@@ -85,8 +85,8 @@ def priority(rid, seed, mprio="P1"):
         return 74 + (seed > 0) * 20
     if rid.startswith("B-FOLD"):
         return 76 + (seed > 0)
-    if rid.startswith("B-DIV-"):
-        return 80 + (seed > 0)
+    if rid.startswith("B-DIV-"):          # seed 0 right after the stage-2 core runs: the curve is an open cell of the paper
+        return 13 if seed == 0 else 81
     if rid.startswith("B-BB-"):
         return 85 + (seed > 0) * 10
     return 99
