@@ -103,3 +103,16 @@ def test_update_paper_keeps_prose():
     t2 = "a\n% <tables:x>\nnew\nrows\n% </tables:x>\nb\n\\placeholdersfalse"
     assert up.outside(t) == up.outside(t2)
     assert up.outside(t) != up.outside(t.replace("b", "c"))
+
+
+def test_validate_accepts_stage2_ledger():
+    from selrm import schema
+    rec = {k: (0 if t is int else t()) for k, t in schema.REQUIRED.items()}
+    rec |= {"case_kind": "base", "claim_type": "criterion", "claim_role": "s", "label": 1}
+    e1 = dict.fromkeys(schema.LEDGER_KEYS, "")
+    for entry in (e1, dict(reversed(list(e1.items()))), e1 | {"concept": "", "applies": "yes"}):
+        schema.validate(rec | {"ledger": [entry]})
+    import pytest
+    with pytest.raises(ValueError):
+        schema.validate(rec | {"ledger": [e1 | {"applies": "yes"}]})
+

@@ -25,6 +25,8 @@ CASE_KINDS = {"base", "flip", "near", "pres", "missing", "read", "apply",
               "contested", "positive", "negative"}      # the last three: rule-side items (xr_v1)
 CLAIM_TYPES = {"conclusion", "criterion", "applicability"}
 LEDGER_KEYS = ("need", "found", "subject", "status", "time")
+# stage 2 (docs/INTERFACES.md 9.3): the linked concept and the applicability bit
+LEDGER2_KEYS = LEDGER_KEYS + ("concept", "applies")
 
 
 def validate(rec: dict) -> None:
@@ -40,5 +42,5 @@ def validate(rec: dict) -> None:
     if rec["claim_role"] not in ("s", "s_prime") or rec["label"] not in (0, 1):
         raise ValueError(f"bad claim_role/label in {rec['iid']}")
     for e in rec["ledger"]:
-        if tuple(e.keys()) != LEDGER_KEYS:
+        if set(e) not in (set(LEDGER_KEYS), set(LEDGER2_KEYS)):     # key order is not part of the contract
             raise ValueError(f"bad ledger entry in {rec['iid']}: {e}")
