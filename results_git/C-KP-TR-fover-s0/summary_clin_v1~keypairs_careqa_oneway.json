@@ -1,7 +1,41 @@
 {
  "run_id": "C-KP-TR-fover-s0",
  "set": "clin_v1/keypairs_careqa_oneway",
- "claim_type": "conclusion",
+ "Reversal": 85.77777777777777,
+ "CI95": [
+  81.33333333333333,
+  90.22222222222223
+ ],
+ "n_pairs": 225,
+ "q1_acc": 92.44444444444444,
+ "q2_acc": 92.88888888888889,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 92.0,
+  "2": 81.33333333333333,
+  "3": 84.0
+ },
+ "Reversal_by_category": {
+  "Biology": 95.1219512195122,
+  "Chemistry": 79.16666666666667,
+  "Medicine": 79.06976744186046,
+  "Nursing": 81.81818181818181,
+  "Pharmacology": 87.5,
+  "Psychology": 89.28571428571429
+ },
+ "n_by_category": {
+  "Biology": 41,
+  "Chemistry": 24,
+  "Medicine": 43,
+  "Nursing": 33,
+  "Pharmacology": 56,
+  "Psychology": 28
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
  "eval": {
   "seconds": 35.0,
   "pad_ok": true,

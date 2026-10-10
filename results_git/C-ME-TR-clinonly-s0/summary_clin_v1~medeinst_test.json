@@ -1,7 +1,31 @@
 {
  "run_id": "C-ME-TR-clinonly-s0",
  "set": "clin_v1/medeinst_test",
- "claim_type": "conclusion",
+ "Reversal": 84.06093256548392,
+ "CI95": [
+  83.05777447519971,
+  85.00835965075237
+ ],
+ "CI95_label_pairs": [
+  77.98353909465021,
+  89.79418268412995
+ ],
+ "n_pairs": 5383,
+ "control_acc": 90.2656511239086,
+ "trap_acc": 93.40516440646479,
+ "bias_trap_rate": 6.668038691088701,
+ "n_control_correct": 4859,
+ "tie_rate": 3.306706297603567,
+ "Reversal_excl_no_content_diff": 85.36125259385021,
+ "Reversal_excl_overlap_ref": 83.90977443609023,
+ "n_no_content_diff": 82,
+ "n_overlap_ref": 63,
+ "definitions": "control correct: d(control) > 0; trap correct: d(trap) < 0; Reversal = both (ties fail); bias_trap_rate = share of control-correct pairs with d(trap) > 0 (MedEinst's R_bias on two candidates)",
+ "bootstrap": {
+  "unit": "pair (CI95) and (y_gt, y_bias) label pair (CI95_label_pairs)",
+  "B": 1000,
+  "seed": 0
+ },
  "eval": {
   "reader_units": 10766,
   "malformed_units": 181,

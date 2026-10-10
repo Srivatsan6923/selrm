@@ -1,7 +1,31 @@
 {
  "run_id": "C-ME-TR-fover-s0",
  "set": "clin_v1/medeinst_test",
- "claim_type": "conclusion",
+ "Reversal": 22.496749024707412,
+ "CI95": [
+  21.363551922719672,
+  23.61136912502322
+ ],
+ "CI95_label_pairs": [
+  14.383444501453736,
+  32.70122208175305
+ ],
+ "n_pairs": 5383,
+ "control_acc": 67.37878506409065,
+ "trap_acc": 54.50492290544306,
+ "bias_trap_rate": 66.6115246760408,
+ "n_control_correct": 3627,
+ "tie_rate": 0.0,
+ "Reversal_excl_no_content_diff": 22.84474627428787,
+ "Reversal_excl_overlap_ref": 22.518796992481203,
+ "n_no_content_diff": 82,
+ "n_overlap_ref": 63,
+ "definitions": "control correct: d(control) > 0; trap correct: d(trap) < 0; Reversal = both (ties fail); bias_trap_rate = share of control-correct pairs with d(trap) > 0 (MedEinst's R_bias on two candidates)",
+ "bootstrap": {
+  "unit": "pair (CI95) and (y_gt, y_bias) label pair (CI95_label_pairs)",
+  "B": 1000,
+  "seed": 0
+ },
  "eval": {
   "seconds": 1599.0,
   "pad_ok": true,

@@ -1,7 +1,31 @@
 {
  "run_id": "C-ME-verdict-blocks-s3",
  "set": "clin_v1/medeinst_test",
- "claim_type": "conclusion",
+ "Reversal": 24.317295188556567,
+ "CI95": [
+  23.091213078209176,
+  25.524800297232026
+ ],
+ "CI95_label_pairs": [
+  16.02169090460932,
+  35.39434393114351
+ ],
+ "n_pairs": 5383,
+ "control_acc": 68.90209920118893,
+ "trap_acc": 54.74642392717816,
+ "bias_trap_rate": 64.70746832030197,
+ "n_control_correct": 3709,
+ "tie_rate": 0.0,
+ "Reversal_excl_no_content_diff": 24.693454065270704,
+ "Reversal_excl_overlap_ref": 24.473684210526315,
+ "n_no_content_diff": 82,
+ "n_overlap_ref": 63,
+ "definitions": "control correct: d(control) > 0; trap correct: d(trap) < 0; Reversal = both (ties fail); bias_trap_rate = share of control-correct pairs with d(trap) > 0 (MedEinst's R_bias on two candidates)",
+ "bootstrap": {
+  "unit": "pair (CI95) and (y_gt, y_bias) label pair (CI95_label_pairs)",
+  "B": 1000,
+  "seed": 0
+ },
  "eval": {
   "seconds": 2074.0,
   "pad_ok": true,

@@ -1,7 +1,31 @@
 {
  "run_id": "C-ME-ledger2-balanced-s0",
  "set": "clin_v1/medeinst_test",
- "claim_type": "conclusion",
+ "Reversal": 22.849712056474086,
+ "CI95": [
+  21.605052944454766,
+  23.871447148430242
+ ],
+ "CI95_label_pairs": [
+  13.357324301439458,
+  34.0552016985138
+ ],
+ "n_pairs": 5383,
+ "control_acc": 52.29425970648337,
+ "trap_acc": 47.65000928850083,
+ "bias_trap_rate": 48.241563055062166,
+ "n_control_correct": 2815,
+ "tie_rate": 31.116477800483,
+ "Reversal_excl_no_content_diff": 23.20316921335597,
+ "Reversal_excl_overlap_ref": 23.026315789473685,
+ "n_no_content_diff": 82,
+ "n_overlap_ref": 63,
+ "definitions": "control correct: d(control) > 0; trap correct: d(trap) < 0; Reversal = both (ties fail); bias_trap_rate = share of control-correct pairs with d(trap) > 0 (MedEinst's R_bias on two candidates)",
+ "bootstrap": {
+  "unit": "pair (CI95) and (y_gt, y_bias) label pair (CI95_label_pairs)",
+  "B": 1000,
+  "seed": 0
+ },
  "eval": {
   "reader_units": 10766,
   "malformed_units": 2415,
