@@ -76,6 +76,49 @@ def parts(items, key):
             "acc_items_scoring_none": 100.0 * statistics.mean(zero), "n_none": len(zero)}
 
 
+def descriptive(crit, edits):
+    """Descriptive cells for the MedCalc-V table, means over the seeds scored (no test):
+    '<system>|<portion>@<cond>|<slice>' -> criteria: {BalAcc, Acc, acc_items_scoring_points, acc_items_scoring_none,
+    n, seeds}; edits: {TA, Rev, Hold, n, seeds}. Slices: all, note_type=, stratum= (criteria); all, note_type=human,
+    edit_type= (edits)."""
+    cells = {}
+    slices_c = [("all", lambda r: True)] + [(f"note_type={v}", lambda r, v=v: r["note_type"] == v) for v in ("human", "model")] + [
+        (f"stratum={v}", lambda r, v=v: r["stratum"] == v) for v in ("stated", "denied", "default")]
+    slices_e = [("all", lambda r: True), ("note_type=human", lambda r: r["note_type"] == "human")] + [
+        (f"edit_type={v}", lambda r, v=v: r.get("edit_type") == v) for v in ("value", "sentence")]
+    for kind in ("critic", "blocks", "triplets"):
+        for cond in ("stated", "none", "wrong"):
+            suffix = "" if cond == "stated" else f"@{cond}"
+            for portion, recs, slices in (("criteria_test", crit, slices_c), ("edits_test", edits, slices_e)):
+                per = collections.defaultdict(list)
+                for run in system_runs(kind):
+                    u = scores(run, f"mcv_v1/{portion}{suffix}") or scores(run.replace("C-S2-mcv-", "C-S2-mcv2-"), f"mcv_v1/{portion}{suffix}")
+                    if not u:
+                        continue
+                    for name, keep in slices:
+                        sub = [r for r in recs if keep(r)]
+                        if not sub:
+                            continue
+                        if portion == "criteria_test":
+                            d = d_by(sub, u, suffix)
+                            pts = {r["tid"]: bool(r["meta"]["points"]) for r in sub}
+                            items = [{"points": pts[t], "ok": float(v > 0)} for (t, _), v in d.items()]
+                            if all(any(x["points"] == b for x in items) for b in (True, False)):
+                                p = parts(items, "ok")
+                                per[name].append({"BalAcc": p["balanced_accuracy"], "Acc": 100.0 * statistics.mean(x["ok"] for x in items),
+                                                  "acc_items_scoring_points": p["acc_items_scoring_points"],
+                                                  "acc_items_scoring_none": p["acc_items_scoring_none"], "n": len(items)})
+                        else:
+                            d = d_by(sub, u, suffix)        # criterion claims: triplet parts computed here
+                            T = [(d[(t, "base")] > 0, d[(t, "flip")] < 0, d[(t, "near")] > 0) for t in sorted({t for t, _ in d})]
+                            pc = lambda f: 100.0 * statistics.mean(f(x) for x in T)
+                            per[name].append({"TA": pc(all), "Rev": pc(lambda x: x[0] and x[1]), "Hold": pc(lambda x: x[0] and x[2]), "n": len(T)})
+                for name, v in per.items():
+                    cells[f"{'critic' if kind == 'critic' else 'verdict-' + kind}|{portion}@{cond}|{name}"] = {
+                        k: statistics.mean(x[k] for x in v) for k in v[0]} | {"seeds": len(v)}
+    return cells
+
+
 def main():
     out = {"plan": "docs/ANALYSIS_PLAN_STAGE2.md", "bootstrap": {"B": B, "seed": 0, "unit": "note"}, "comparisons": {}}
     crit = [r for r in load(f"{MCV}/criteria_test/records.jsonl") if r["note_type"] == "human" and r["stratum"] in ("stated", "denied")]
@@ -110,6 +153,7 @@ def main():
                                         "expectation": "> 0", "TA_triplets": ta("a")(items), "TA_blocks": ta("b")(items),
                                         "TA_critic": 100.0 * statistics.mean(ec[t] for t in tids if t in ec) if ec else None,
                                         "seeds": [ns_t, ns_b]}
+    out["mcv_cells"] = descriptive(load(f"{MCV}/criteria_test/records.jsonl"), load(f"{MCV}/edits_test/records.jsonl"))
     json.dump(out, open(f"{RES}/C-S2-comparisons.json", "w", encoding="utf-8", newline="\n"), indent=1)
     print(json.dumps({k: {x: (round(v[x], 2) if isinstance(v[x], float) else v[x]) for x in ("diff", "lo", "hi", "p", "n_items", "n_clusters")}
                       for k, v in out["comparisons"].items()}, indent=1))

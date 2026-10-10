@@ -95,5 +95,619 @@
  "mcv_criteria_n": {
   "items": 1100,
   "notes": 226
+ },
+ "mcv_cells": {
+  "critic|criteria_test@stated|all": {
+   "BalAcc": 88.38238361677587,
+   "Acc": 88.80813953488372,
+   "acc_items_scoring_points": 87.14539007092199,
+   "acc_items_scoring_none": 89.61937716262976,
+   "n": 3440,
+   "seeds": 1
+  },
+  "critic|criteria_test@stated|note_type=human": {
+   "BalAcc": 89.45955409288639,
+   "Acc": 89.79336255479024,
+   "acc_items_scoring_points": 88.35125448028674,
+   "acc_items_scoring_none": 90.56785370548604,
+   "n": 1597,
+   "seeds": 1
+  },
+  "critic|criteria_test@stated|note_type=model": {
+   "BalAcc": 87.4050798638387,
+   "Acc": 87.95442213781878,
+   "acc_items_scoring_points": 85.96491228070175,
+   "acc_items_scoring_none": 88.84524744697565,
+   "n": 1843,
+   "seeds": 1
+  },
+  "critic|criteria_test@stated|stratum=stated": {
+   "BalAcc": 82.50364526376087,
+   "Acc": 83.57380688124306,
+   "acc_items_scoring_points": 87.11711711711712,
+   "acc_items_scoring_none": 77.89017341040463,
+   "n": 1802,
+   "seeds": 1
+  },
+  "critic|criteria_test@stated|stratum=default": {
+   "BalAcc": 92.77246992215144,
+   "Acc": 96.43962848297214,
+   "acc_items_scoring_points": 88.88888888888889,
+   "acc_items_scoring_none": 96.656050955414,
+   "n": 646,
+   "seeds": 1
+  },
+  "critic|edits_test@stated|all": {
+   "TA": 82.15158924205379,
+   "Rev": 85.81907090464547,
+   "Hold": 89.05867970660147,
+   "n": 1636,
+   "seeds": 1
+  },
+  "critic|edits_test@stated|note_type=human": {
+   "TA": 88.86925795053003,
+   "Rev": 91.34275618374559,
+   "Hold": 94.25795053003534,
+   "n": 1132,
+   "seeds": 1
+  },
+  "critic|edits_test@stated|edit_type=value": {
+   "TA": 60.877513711151735,
+   "Rev": 66.54478976234005,
+   "Hold": 76.96526508226691,
+   "n": 547,
+   "seeds": 1
+  },
+  "critic|edits_test@stated|edit_type=sentence": {
+   "TA": 92.8374655647383,
+   "Rev": 95.50045913682277,
+   "Hold": 95.13314967860423,
+   "n": 1089,
+   "seeds": 1
+  },
+  "critic|criteria_test@none|all": {
+   "BalAcc": 78.92540307737613,
+   "Acc": 81.19186046511628,
+   "acc_items_scoring_points": 72.3404255319149,
+   "acc_items_scoring_none": 85.51038062283737,
+   "n": 3440,
+   "seeds": 1
+  },
+  "critic|criteria_test@none|note_type=human": {
+   "BalAcc": 79.9794570875635,
+   "Acc": 80.58860363180965,
+   "acc_items_scoring_points": 77.95698924731182,
+   "acc_items_scoring_none": 82.00192492781521,
+   "n": 1597,
+   "seeds": 1
+  },
+  "critic|criteria_test@none|note_type=model": {
+   "BalAcc": 77.60801256873526,
+   "Acc": 81.71459576776994,
+   "acc_items_scoring_points": 66.84210526315789,
+   "acc_items_scoring_none": 88.37391987431265,
+   "n": 1843,
+   "seeds": 1
+  },
+  "critic|criteria_test@none|stratum=stated": {
+   "BalAcc": 68.88363797323335,
+   "Acc": 69.81132075471697,
+   "acc_items_scoring_points": 72.88288288288288,
+   "acc_items_scoring_none": 64.88439306358381,
+   "n": 1802,
+   "seeds": 1
+  },
+  "critic|criteria_test@none|stratum=default": {
+   "BalAcc": 68.09094125973107,
+   "Acc": 95.6656346749226,
+   "acc_items_scoring_points": 38.88888888888889,
+   "acc_items_scoring_none": 97.29299363057325,
+   "n": 646,
+   "seeds": 1
+  },
+  "critic|edits_test@none|all": {
+   "TA": 48.044009779951104,
+   "Rev": 68.58190709046454,
+   "Hold": 66.38141809290954,
+   "n": 1636,
+   "seeds": 1
+  },
+  "critic|edits_test@none|note_type=human": {
+   "TA": 53.4452296819788,
+   "Rev": 79.9469964664311,
+   "Hold": 63.69257950530035,
+   "n": 1132,
+   "seeds": 1
+  },
+  "critic|edits_test@none|edit_type=value": {
+   "TA": 10.420475319926874,
+   "Rev": 16.63619744058501,
+   "Hold": 57.586837294332724,
+   "n": 547,
+   "seeds": 1
+  },
+  "critic|edits_test@none|edit_type=sentence": {
+   "TA": 66.94214876033058,
+   "Rev": 94.67401285583104,
+   "Hold": 70.79889807162535,
+   "n": 1089,
+   "seeds": 1
+  },
+  "critic|criteria_test@wrong|all": {
+   "BalAcc": 71.9664899752141,
+   "Acc": 77.84883720930232,
+   "acc_items_scoring_points": 54.87588652482269,
+   "acc_items_scoring_none": 89.05709342560554,
+   "n": 3440,
+   "seeds": 1
+  },
+  "critic|criteria_test@wrong|note_type=human": {
+   "BalAcc": 72.22524070221918,
+   "Acc": 75.14088916718848,
+   "acc_items_scoring_points": 62.54480286738351,
+   "acc_items_scoring_none": 81.90567853705485,
+   "n": 1597,
+   "seeds": 1
+  },
+  "critic|criteria_test@wrong|note_type=model": {
+   "BalAcc": 71.1311861743912,
+   "Acc": 80.1953336950624,
+   "acc_items_scoring_points": 47.368421052631575,
+   "acc_items_scoring_none": 94.89395129615083,
+   "n": 1843,
+   "seeds": 1
+  },
+  "critic|criteria_test@wrong|stratum=stated": {
+   "BalAcc": 67.0906889548508,
+   "Acc": 64.31742508324085,
+   "acc_items_scoring_points": 55.13513513513514,
+   "acc_items_scoring_none": 79.04624277456648,
+   "n": 1802,
+   "seeds": 1
+  },
+  "critic|criteria_test@wrong|stratum=default": {
+   "BalAcc": 66.33934890304317,
+   "Acc": 92.26006191950464,
+   "acc_items_scoring_points": 38.88888888888889,
+   "acc_items_scoring_none": 93.78980891719745,
+   "n": 646,
+   "seeds": 1
+  },
+  "critic|edits_test@wrong|all": {
+   "TA": 35.2078239608802,
+   "Rev": 43.88753056234719,
+   "Hold": 74.32762836185819,
+   "n": 1636,
+   "seeds": 1
+  },
+  "critic|edits_test@wrong|note_type=human": {
+   "TA": 44.081272084805654,
+   "Rev": 53.88692579505301,
+   "Hold": 75.0,
+   "n": 1132,
+   "seeds": 1
+  },
+  "critic|edits_test@wrong|edit_type=value": {
+   "TA": 9.323583180987203,
+   "Rev": 17.73308957952468,
+   "Hold": 57.038391224862885,
+   "n": 547,
+   "seeds": 1
+  },
+  "critic|edits_test@wrong|edit_type=sentence": {
+   "TA": 48.209366391184574,
+   "Rev": 57.02479338842975,
+   "Hold": 83.0119375573921,
+   "n": 1089,
+   "seeds": 1
+  },
+  "verdict-blocks|criteria_test@stated|all": {
+   "BalAcc": 91.42666077695158,
+   "Acc": 91.81395348837209,
+   "acc_items_scoring_points": 90.30141843971631,
+   "acc_items_scoring_none": 92.55190311418684,
+   "n": 3440,
+   "seeds": 5
+  },
+  "verdict-blocks|criteria_test@stated|note_type=human": {
+   "BalAcc": 91.46310037567139,
+   "Acc": 91.70945522855354,
+   "acc_items_scoring_points": 90.64516129032258,
+   "acc_items_scoring_none": 92.28103946102021,
+   "n": 1597,
+   "seeds": 5
+  },
+  "verdict-blocks|criteria_test@stated|note_type=model": {
+   "BalAcc": 91.36894474993454,
+   "Acc": 91.90450352685838,
+   "acc_items_scoring_points": 89.96491228070175,
+   "acc_items_scoring_none": 92.77297721916732,
+   "n": 1843,
+   "seeds": 5
+  },
+  "verdict-blocks|criteria_test@stated|stratum=stated": {
+   "BalAcc": 89.07592563661927,
+   "Acc": 89.47835738068812,
+   "acc_items_scoring_points": 90.8108108108108,
+   "acc_items_scoring_none": 87.34104046242774,
+   "n": 1802,
+   "seeds": 5
+  },
+  "verdict-blocks|criteria_test@stated|stratum=default": {
+   "BalAcc": 77.7406227883935,
+   "Acc": 95.54179566563468,
+   "acc_items_scoring_points": 58.888888888888886,
+   "acc_items_scoring_none": 96.59235668789809,
+   "n": 646,
+   "seeds": 5
+  },
+  "verdict-blocks|edits_test@stated|all": {
+   "TA": 65.30562347188264,
+   "Rev": 92.22493887530563,
+   "Hold": 69.32762836185819,
+   "n": 1636,
+   "seeds": 5
+  },
+  "verdict-blocks|edits_test@stated|note_type=human": {
+   "TA": 64.64664310954063,
+   "Rev": 95.74204946996467,
+   "Hold": 66.60777385159011,
+   "n": 1132,
+   "seeds": 5
+  },
+  "verdict-blocks|edits_test@stated|edit_type=value": {
+   "TA": 76.3071297989031,
+   "Rev": 79.6343692870201,
+   "Hold": 88.26325411334552,
+   "n": 547,
+   "seeds": 5
+  },
+  "verdict-blocks|edits_test@stated|edit_type=sentence": {
+   "TA": 59.77961432506888,
+   "Rev": 98.54912764003674,
+   "Hold": 59.81634527089073,
+   "n": 1089,
+   "seeds": 5
+  },
+  "verdict-blocks|criteria_test@none|all": {
+   "BalAcc": 80.91867285086751,
+   "Acc": 81.18604651162791,
+   "acc_items_scoring_points": 80.1418439716312,
+   "acc_items_scoring_none": 81.6955017301038,
+   "n": 3440,
+   "seeds": 5
+  },
+  "verdict-blocks|criteria_test@none|note_type=human": {
+   "BalAcc": 81.67332457111712,
+   "Acc": 81.54038822792737,
+   "acc_items_scoring_points": 82.1146953405018,
+   "acc_items_scoring_none": 81.23195380173243,
+   "n": 1597,
+   "seeds": 5
+  },
+  "verdict-blocks|criteria_test@none|note_type=model": {
+   "BalAcc": 80.14218381775333,
+   "Acc": 80.8790016277808,
+   "acc_items_scoring_points": 78.21052631578948,
+   "acc_items_scoring_none": 82.0738413197172,
+   "n": 1843,
+   "seeds": 5
+  },
+  "verdict-blocks|criteria_test@none|stratum=stated": {
+   "BalAcc": 68.67130135916263,
+   "Acc": 71.48723640399555,
+   "acc_items_scoring_points": 80.81081081081082,
+   "acc_items_scoring_none": 56.53179190751445,
+   "n": 1802,
+   "seeds": 5
+  },
+  "verdict-blocks|criteria_test@none|stratum=default": {
+   "BalAcc": 66.68966737438075,
+   "Acc": 92.94117647058823,
+   "acc_items_scoring_points": 38.88888888888889,
+   "acc_items_scoring_none": 94.49044585987261,
+   "n": 646,
+   "seeds": 5
+  },
+  "verdict-blocks|edits_test@none|all": {
+   "TA": 46.344743276283616,
+   "Rev": 75.36674816625917,
+   "Hold": 58.32518337408313,
+   "n": 1636,
+   "seeds": 5
+  },
+  "verdict-blocks|edits_test@none|note_type=human": {
+   "TA": 51.09540636042403,
+   "Rev": 84.78798586572438,
+   "Hold": 58.56890459363957,
+   "n": 1132,
+   "seeds": 5
+  },
+  "verdict-blocks|edits_test@none|edit_type=value": {
+   "TA": 19.305301645338208,
+   "Rev": 30.310786106032907,
+   "Hold": 54.14990859232175,
+   "n": 547,
+   "seeds": 5
+  },
+  "verdict-blocks|edits_test@none|edit_type=sentence": {
+   "TA": 59.92653810835629,
+   "Rev": 97.99816345270891,
+   "Hold": 60.42240587695133,
+   "n": 1089,
+   "seeds": 5
+  },
+  "verdict-blocks|criteria_test@wrong|all": {
+   "BalAcc": 74.47891359297161,
+   "Acc": 80.75,
+   "acc_items_scoring_points": 56.258865248226954,
+   "acc_items_scoring_none": 92.69896193771626,
+   "n": 3440,
+   "seeds": 5
+  },
+  "verdict-blocks|criteria_test@wrong|note_type=human": {
+   "BalAcc": 76.74845885035583,
+   "Acc": 80.47589229805885,
+   "acc_items_scoring_points": 64.37275985663082,
+   "acc_items_scoring_none": 89.12415784408086,
+   "n": 1597,
+   "seeds": 5
+  },
+  "verdict-blocks|criteria_test@wrong|note_type=model": {
+   "BalAcc": 71.96622152395915,
+   "Acc": 80.9875203472599,
+   "acc_items_scoring_points": 48.31578947368421,
+   "acc_items_scoring_none": 95.61665357423409,
+   "n": 1843,
+   "seeds": 5
+  },
+  "verdict-blocks|criteria_test@wrong|stratum=stated": {
+   "BalAcc": 73.1798156538041,
+   "Acc": 69.34517203107659,
+   "acc_items_scoring_points": 56.648648648648646,
+   "acc_items_scoring_none": 89.71098265895954,
+   "n": 1802,
+   "seeds": 5
+  },
+  "verdict-blocks|criteria_test@wrong|stratum=default": {
+   "BalAcc": 63.43595187544232,
+   "Acc": 92.91021671826626,
+   "acc_items_scoring_points": 32.22222222222222,
+   "acc_items_scoring_none": 94.64968152866241,
+   "n": 646,
+   "seeds": 5
+  },
+  "verdict-blocks|edits_test@wrong|all": {
+   "TA": 26.931540342298288,
+   "Rev": 37.70171149144254,
+   "Hold": 79.31540342298288,
+   "n": 1636,
+   "seeds": 5
+  },
+  "verdict-blocks|edits_test@wrong|note_type=human": {
+   "TA": 31.342756183745585,
+   "Rev": 44.36395759717315,
+   "Hold": 79.73498233215548,
+   "n": 1132,
+   "seeds": 5
+  },
+  "verdict-blocks|edits_test@wrong|edit_type=value": {
+   "TA": 12.687385740402194,
+   "Rev": 20.329067641681903,
+   "Hold": 65.59414990859233,
+   "n": 547,
+   "seeds": 5
+  },
+  "verdict-blocks|edits_test@wrong|edit_type=sentence": {
+   "TA": 34.08631772268136,
+   "Rev": 46.42791551882461,
+   "Hold": 86.20752984389348,
+   "n": 1089,
+   "seeds": 5
+  },
+  "verdict-triplets|criteria_test@stated|all": {
+   "BalAcc": 92.14057400181599,
+   "Acc": 92.88953488372093,
+   "acc_items_scoring_points": 89.9645390070922,
+   "acc_items_scoring_none": 94.31660899653978,
+   "n": 3440,
+   "seeds": 5
+  },
+  "verdict-triplets|criteria_test@stated|note_type=human": {
+   "BalAcc": 92.1955733559633,
+   "Acc": 92.74890419536631,
+   "acc_items_scoring_points": 90.35842293906809,
+   "acc_items_scoring_none": 94.03272377285852,
+   "n": 1597,
+   "seeds": 5
+  },
+  "verdict-triplets|criteria_test@stated|note_type=model": {
+   "BalAcc": 92.0636292223095,
+   "Acc": 93.01139446554531,
+   "acc_items_scoring_points": 89.57894736842105,
+   "acc_items_scoring_none": 94.54831107619796,
+   "n": 1843,
+   "seeds": 5
+  },
+  "verdict-triplets|criteria_test@stated|stratum=stated": {
+   "BalAcc": 90.36429203770244,
+   "Acc": 90.38845726970033,
+   "acc_items_scoring_points": 90.46846846846847,
+   "acc_items_scoring_none": 90.26011560693642,
+   "n": 1802,
+   "seeds": 5
+  },
+  "verdict-triplets|criteria_test@stated|stratum=default": {
+   "BalAcc": 78.10686482661005,
+   "Acc": 96.25386996904024,
+   "acc_items_scoring_points": 58.88888888888889,
+   "acc_items_scoring_none": 97.32484076433121,
+   "n": 646,
+   "seeds": 5
+  },
+  "verdict-triplets|edits_test@stated|all": {
+   "TA": 92.10268948655256,
+   "Rev": 92.64058679706602,
+   "Hold": 96.18581907090464,
+   "n": 1636,
+   "seeds": 5
+  },
+  "verdict-triplets|edits_test@stated|note_type=human": {
+   "TA": 96.02473498233216,
+   "Rev": 96.23674911660777,
+   "Hold": 97.96819787985865,
+   "n": 1132,
+   "seeds": 5
+  },
+  "verdict-triplets|edits_test@stated|edit_type=value": {
+   "TA": 79.19561243144425,
+   "Rev": 80.76782449725776,
+   "Hold": 90.93235831809872,
+   "n": 547,
+   "seeds": 5
+  },
+  "verdict-triplets|edits_test@stated|edit_type=sentence": {
+   "TA": 98.58585858585859,
+   "Rev": 98.60422405876952,
+   "Hold": 98.82460973370064,
+   "n": 1089,
+   "seeds": 5
+  },
+  "verdict-triplets|criteria_test@none|all": {
+   "BalAcc": 80.94870426268129,
+   "Acc": 81.97093023255815,
+   "acc_items_scoring_points": 77.97872340425532,
+   "acc_items_scoring_none": 83.91868512110727,
+   "n": 3440,
+   "seeds": 5
+  },
+  "verdict-triplets|criteria_test@none|note_type=human": {
+   "BalAcc": 82.1495889692667,
+   "Acc": 82.35441452723857,
+   "acc_items_scoring_points": 81.4695340501792,
+   "acc_items_scoring_none": 82.82964388835418,
+   "n": 1597,
+   "seeds": 5
+  },
+  "verdict-triplets|criteria_test@none|note_type=model": {
+   "BalAcc": 79.68447237496727,
+   "Acc": 81.63863266413456,
+   "acc_items_scoring_points": 74.56140350877193,
+   "acc_items_scoring_none": 84.80754124116261,
+   "n": 1843,
+   "seeds": 5
+  },
+  "verdict-triplets|criteria_test@none|stratum=stated": {
+   "BalAcc": 69.34965890746238,
+   "Acc": 71.49833518312985,
+   "acc_items_scoring_points": 78.61261261261261,
+   "acc_items_scoring_none": 60.08670520231214,
+   "n": 1802,
+   "seeds": 5
+  },
+  "verdict-triplets|criteria_test@none|stratum=default": {
+   "BalAcc": 67.72469922151451,
+   "Acc": 94.95356037151703,
+   "acc_items_scoring_points": 38.88888888888889,
+   "acc_items_scoring_none": 96.56050955414013,
+   "n": 646,
+   "seeds": 5
+  },
+  "verdict-triplets|edits_test@none|all": {
+   "TA": 68.76528117359413,
+   "Rev": 74.10757946210269,
+   "Hold": 82.55501222493888,
+   "n": 1636,
+   "seeds": 5
+  },
+  "verdict-triplets|edits_test@none|note_type=human": {
+   "TA": 79.43462897526501,
+   "Rev": 83.76325088339223,
+   "Hold": 87.84452296819788,
+   "n": 1132,
+   "seeds": 5
+  },
+  "verdict-triplets|edits_test@none|edit_type=value": {
+   "TA": 18.939670932358318,
+   "Rev": 30.53016453382084,
+   "Hold": 55.13711151736746,
+   "n": 547,
+   "seeds": 5
+  },
+  "verdict-triplets|edits_test@none|edit_type=sentence": {
+   "TA": 93.79247015610652,
+   "Rev": 95.99632690541782,
+   "Hold": 96.3269054178145,
+   "n": 1089,
+   "seeds": 5
+  },
+  "verdict-triplets|criteria_test@wrong|all": {
+   "BalAcc": 69.81039412010111,
+   "Acc": 78.57558139534883,
+   "acc_items_scoring_points": 44.343971631205676,
+   "acc_items_scoring_none": 95.27681660899654,
+   "n": 3440,
+   "seeds": 5
+  },
+  "verdict-triplets|criteria_test@wrong|note_type=human": {
+   "BalAcc": 72.08171629047781,
+   "Acc": 78.24671258609894,
+   "acc_items_scoring_points": 51.612903225806456,
+   "acc_items_scoring_none": 92.55052935514918,
+   "n": 1597,
+   "seeds": 5
+  },
+  "verdict-triplets|criteria_test@wrong|note_type=model": {
+   "BalAcc": 67.36501702016234,
+   "Acc": 78.86055344546935,
+   "acc_items_scoring_points": 37.228070175438596,
+   "acc_items_scoring_none": 97.5019638648861,
+   "n": 1843,
+   "seeds": 5
+  },
+  "verdict-triplets|criteria_test@wrong|stratum=stated": {
+   "BalAcc": 68.74032703223455,
+   "Acc": 63.18534961154273,
+   "acc_items_scoring_points": 44.792792792792795,
+   "acc_items_scoring_none": 92.6878612716763,
+   "n": 1802,
+   "seeds": 5
+  },
+  "verdict-triplets|criteria_test@wrong|stratum=default": {
+   "BalAcc": 56.91613588110403,
+   "Acc": 94.92260061919505,
+   "acc_items_scoring_points": 16.666666666666668,
+   "acc_items_scoring_none": 97.1656050955414,
+   "n": 646,
+   "seeds": 5
+  },
+  "verdict-triplets|edits_test@wrong|all": {
+   "TA": 27.897310513447433,
+   "Rev": 30.024449877750612,
+   "Hold": 89.07090464547677,
+   "n": 1636,
+   "seeds": 5
+  },
+  "verdict-triplets|edits_test@wrong|note_type=human": {
+   "TA": 34.45229681978799,
+   "Rev": 36.00706713780919,
+   "Hold": 92.08480565371025,
+   "n": 1132,
+   "seeds": 5
+  },
+  "verdict-triplets|edits_test@wrong|edit_type=value": {
+   "TA": 11.407678244972578,
+   "Rev": 17.44058500914077,
+   "Hold": 68.51919561243145,
+   "n": 547,
+   "seeds": 5
+  },
+  "verdict-triplets|edits_test@wrong|edit_type=sentence": {
+   "TA": 36.17998163452709,
+   "Rev": 36.34527089072544,
+   "Hold": 99.39393939393939,
+   "n": 1089,
+   "seeds": 5
+  }
  }
 }

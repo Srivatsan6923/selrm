@@ -12,6 +12,7 @@ import argparse, collections, hashlib, json, os, random, subprocess, sys, time
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SEED = 20261008
+NL = chr(10)
 
 
 def sha(text):
@@ -71,17 +72,40 @@ def kb_v1(recs, cond):
     return out
 
 
-HANDLERS = {"rule_v1": rule_v1, "mcv_v1": mcv_v1, "kb_v1": kb_v1}
+def _swap(text):
+    L = text.split(NL)
+    h = [i for i, x in enumerate(L) if x.startswith("Findings listed for ") and x.endswith(" only:")]
+    assert len(h) == 2
+    L[h[0]], L[h[1]] = L[h[1]], L[h[0]]
+    return NL.join(L)
+
+
+def clin_v1(recs, cond):
+    """MedEinst test pairs (C4): derived = the criterion of the pair's two diagnoses rendered from the DDXPlus lists
+    (role A's selrm/kb_criterion.render; the same text for both cases of a pair and for every pair with these two
+    diagnoses); wrong = the same text with the two exclusive lists exchanged."""
+    sys.path.insert(0, f"{REPO}/scratch/acode_s2")
+    from selrm import kb_criterion as K
+    out = {}
+    for r in recs:
+        if r["tid"] not in out:
+            t = K.render(r["meta"]["y_gt"], r["meta"]["y_bias"])
+            out[r["tid"]] = (t, "selrm.kb_criterion.render") if cond == "derived" else (_swap(t), "exclusive lists exchanged")
+    return out
+
+
+HANDLERS = {"rule_v1": rule_v1, "mcv_v1": mcv_v1, "kb_v1": kb_v1, "clin_v1": clin_v1}
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--set", required=True)
-    ap.add_argument("--cond", required=True, choices=["none", "wrong"])
+    ap.add_argument("--cond", required=True, choices=["none", "wrong", "derived"])
     ap.add_argument("--data", default=os.environ.get("SELRM_DATA", f"{REPO}/scratch/rv1"))
     ap.add_argument("--out", default=f"{REPO}/data")
     a = ap.parse_args()
-    reg_src = json.load(open(f"{a.data}/REGISTRY.json", encoding="utf-8"))
+    ap_reg = "clin_v1/REGISTRY_C.json" if a.set.startswith("clin_v1") else "REGISTRY.json"
+    reg_src = json.load(open(f"{a.data}/{ap_reg}", encoding="utf-8"))
     recs = [json.loads(l) for l in open(f"{a.data}/{reg_src[a.set]['path']}", encoding="utf-8")]
     new = HANDLERS[a.set.split("/")[0]](recs, a.cond)
     name = f"{a.set}@{a.cond}"

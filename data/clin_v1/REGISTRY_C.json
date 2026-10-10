@@ -179,6 +179,32 @@
   "split": "test",
   "tier": "external"
  },
+ "clin_v1/medeinst_test@derived": {
+  "created": "2026-10-09",
+  "frozen": true,
+  "level": "external",
+  "manifest": "views/clin_v1/medeinst_test@derived/MANIFEST.json",
+  "n_groups": 5383,
+  "n_records": 21532,
+  "parent": "clin_v1/medeinst_test",
+  "path": "views/clin_v1/medeinst_test@derived/records.jsonl",
+  "sha256": "fe20654b5554e677e84e400dfff06fa0ad4aa595431cee3a4bf0824dbeb0c8a6",
+  "split": "test",
+  "tier": "view"
+ },
+ "clin_v1/medeinst_test@wrong": {
+  "created": "2026-10-09",
+  "frozen": true,
+  "level": "external",
+  "manifest": "views/clin_v1/medeinst_test@wrong/MANIFEST.json",
+  "n_groups": 5383,
+  "n_records": 21532,
+  "parent": "clin_v1/medeinst_test",
+  "path": "views/clin_v1/medeinst_test@wrong/records.jsonl",
+  "sha256": "b1d9638dba703d8fcc156a36959239154f72d3987d2debd41f5baa5a516db783",
+  "split": "test",
+  "tier": "view"
+ },
  "clin_v1/medeinst_train": {
   "alias_of": "clin_v1/clinpairs_medeinst",
   "created": "2026-10-02",
