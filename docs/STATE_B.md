@@ -34,6 +34,9 @@ Nothing is tuned on a test set: parser, linker, gate and prompts are developed o
   curves (39), seeds 1-2 of non-core ablations: not queued, to be run when GPUs are idle after B2-B4 or reported to D.
 
 ## GPUs
+- 10 Oct 06:30 UTC: v2_reader_s0 done and registered; composite validation runs queued and prepped
+  (configs/queues/v2/b_s2g.json: B-S2G-{gate,struct,bit,verdict}-s0-dev, priority 4). reg_v1/dev and reg_v1/test are
+  on the PVC (not yet in the B-V2 runs' eval sets: score them by eval-only runs).
 - 10 Oct 05:15 UTC: done and registered: v2_verdict_blocks_s0, v2_verdict_triplets_s0, mix_blocks_s0-1,
   mix_triplets_s0-1. Running: A100 (B-MIX-blocks-s2), A100 (B-V2-verdict-blocks-s1), H100 (B-V2-reader-triplets-s0),
   H100 (B-V2-reader-blocks-s0); means 65-94% over the last 10 minutes, no LOWUTIL file. B3 is prepared:
@@ -76,10 +79,11 @@ Pull (`submit_b.py pull`), `register_adapters.py`, `resummarize_b.py <runs>`, an
 commit and push; HANDOFFS lines for results C or D use. `python scratch/regen_revised.py` regenerates queue files.
 
 ## Open compute requests
-- #2 (10 Oct): `submit_b.py publish srivatsan6923/selrm-adapters --secret hf-token-srivatsan:token` failed with
-  403 "You don't have the rights to create a model under the namespace srivatsan6923" (job selrm-b-publish-99423).
-  The token in the secret cannot create repositories there: it needs write permission (or the user creates the
-  private repo srivatsan6923/selrm-adapters and gives the token write access to it). Not blocking: C mounts the PVC.
+- None. #2 closed 10 Oct: the user supplied a write token; it is the cluster secret `selrm-b-hf-write` (key token;
+  never in the repo). Published to the private repo srivatsan6923/selrm-adapters: the four stage-1 headline
+  adapters of configs/keep_adapters.json (job selrm-b-publish-11942; README.md of PEFT left out). To publish
+  more: add run ids to configs/keep_adapters.json, then
+  `submit_b.py publish srivatsan6923/selrm-adapters --secret selrm-b-hf-write:token`.
 
 ## Blockers
 - A: rule_v2 (A5), mcv_v1 (A1), onto_v1 / cls_v1 (A4), reg_v1 (A6); the `struct` and onto_v1 file formats.
