@@ -1422,6 +1422,48 @@
    "pvc": "selrm-b",
    "pvc_path": "selrm/adapters/B-MIX-triplets-s1",
    "alias_of": "B-MIX-triplets-s1"
+  },
+  "B-V2-verdict-blocks-s0": {
+   "run_id": "B-V2-verdict-blocks-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v2/train_blocks",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-V2-verdict-blocks-s0"
+  },
+  "B-V2-verdict-triplets-s0": {
+   "run_id": "B-V2-verdict-triplets-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v2/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-V2-verdict-triplets-s0"
+  },
+  "v2_verdict_blocks_s0": {
+   "run_id": "B-V2-verdict-blocks-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v2/train_blocks",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-V2-verdict-blocks-s0",
+   "alias_of": "B-V2-verdict-blocks-s0"
+  },
+  "v2_verdict_triplets_s0": {
+   "run_id": "B-V2-verdict-triplets-s0",
+   "path": null,
+   "status": "DONE (seed 0); on the PVC",
+   "base_model": "unsloth/Qwen3.5-9B@005429cee5cb648998cf2b70eebdd83175989c9a",
+   "format": "verdict",
+   "corpus": "rule_v2/train_triplets",
+   "pvc": "selrm-b",
+   "pvc_path": "selrm/adapters/B-V2-verdict-triplets-s0",
+   "alias_of": "B-V2-verdict-triplets-s0"
   }
  }
 }
