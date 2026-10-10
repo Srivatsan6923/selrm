@@ -496,8 +496,8 @@ the learned judge follows whole ledgers and not edits to single fields, and
 a rule program applied to the predicted ledger matches the judge. \methodg{}
 therefore computes whatever part of Eq.~\ref{eq:applic} is computable. Each
 condition $k$ has a check $g_k(e,c)\in\{1,0,\bot\}$, with $\bot$ for not
-formalised or not normalised: a string match for the quotation, a comparison
-after unit conversion for a threshold, date arithmetic against a stated
+formalised or not normalised: a string match for the quotation, a numeric comparison
+for a threshold, date arithmetic against a stated
 reference date for a window, membership in the closure of a class once the
 mention is linked to an ontology term by retrieval, and set membership for
 subject and status. If no check returns $\bot$, the conjunction replaces the
@@ -968,7 +968,9 @@ disappear, and the build fails on any remaining placeholder, once measured
 values are entered.}\smallskip
 \fi
 
-\noindent\textbf{Stage 1 (fixed before any test set was scored).}
+\noindent\textbf{Stage 1 (comparisons (1)--(5) fixed before any test set was
+scored; (6) added after the first seed-0 scores on L2 and before any
+external result).}
 \emph{Primary endpoints:} triplet accuracy on L2 and pair accuracy on MedEinst
 test pairs for the model trained on rule triplets only. \emph{Primary
 comparisons}, paired on identical items with a cluster bootstrap:
@@ -1119,26 +1121,24 @@ disputed \res{json/audit/model_review/summary.json::sessions.0.label_disputed}, 
 second round (\res{stats/reviewers.groups_round2} groups, two sessions) disputed none. Missing-input lines
 that could be read as ``absent'' were reworded to ``unknown'', and
 presentation edits that changed a fact, sampled alternatives ruled out by
-the condition, and near-misses that differed from the flip in more than one
+the condition, and subject near-misses that differed from the flip in more than one
 attribute were removed. A model reading its own generator's output can
 repeat the generator's error, so this is not a human check of text fidelity.
 The authors' reading of \ph{300} groups is \ph{pending}.
 
 \paragraph{Constraint rules and claims.}
-Each rule states a default option, a condition and an alternative. It is
-derived from a public drug-label or guideline recommendation in three steps
-taken from \citet{shen2026medguidex}, whose own functions are not released: a
-model extracts the recommendation, writes it as a decision tree, and compiles
-the tree to a program. We keep a rule if the tree is complete, the program
-passes the boundary tests and agrees with the tree on sampled inputs, and
-show the verbalised tree in the prompt. No clinician checks the tree against
-the source, which is why labels are relative to the stated rule. Every case
-reports the same fields with raw values, so the presence of a field carries
-no label information.
+Each rule states a default option, a condition and an alternative. The \res{stats/rules.hand_written_by_kind.constraint@int} hand-written constraint rules were written directly as programs, \res{stats/rules.hand_written_provenance_by_kind.constraint.simplified_source@int} of them
+simplified from a public drug-label or guideline recommendation and \res{stats/rules.hand_written_provenance_by_kind.constraint.synthetic@int} synthetic; each passes
+boundary tests, and the prompt shows the rule text. No clinician checks a
+rule against its source, which is why labels are relative to the stated rule.
+Every case reports the same measured fields with raw values, so for
+measurements the presence of a field carries no label information; a
+decisive finding is named in the flip and in the near-miss and not in the
+base case, by design.
 
 \paragraph{Structure and complexity.}
 Rule counts overstate variety, so Table~\ref{tab:structure} reports structure.
-Most judgments concern one condition of one rule; where that is so we call
+Each group edits one condition of one rule; where that is so we call
 the task local applicability verification.
 
 \begin{table}[!ht]
@@ -1232,7 +1232,7 @@ for a measurement \ph{the current value}, for a finding any counted mention
 with status present. \emph{Numbers.} Thresholds are inclusive or exclusive
 as the rule text says, and values exactly at a threshold form their own
 near-miss kind. \emph{Time.} In \texttt{rule\_v1} a mention is current or
-past, and a past mention carries a year; there is no reference date and no
+past, and a past mention may carry a year; there is no reference date and no
 rule with a time window. Windows occur only in the rule-side items and, with
 a stated reference date and a stated treatment of the boundary day, in the
 stage-2 sets. \emph{Omission.} Measurements that are not given are unknown;
@@ -1391,13 +1391,12 @@ Every system without ties gives the same diagnosis to both members of
 70--81\% of pairs and is wrong on both in at most 5.1\%. The failure of
 \method{} on this set is one of format: \res{pct/run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/malformed_units/s0|run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/reader_units/s0}\% of its reader outputs are
 malformed (\res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/malformed_units/s0@int} of \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/reader_units/s0@int}), and in an inspection recorded by the
-evaluating author \ph{(not reproducible from a result file)} \res{json/results_git/C-ME-ledger2-triplets-s0/malformed_reasons_clin_v1~medeinst_test.json::shares.entry not five lines}\% of
-reader outputs contained an entry longer than five lines. A model trained on
-clinical pairs (\res{json/data/clin_v1/clinpairs_medeinst/MANIFEST.json::n_groups@int} MedEinst reference pairs and \res{json/data/clin_v1/clinpairs_medqa/MANIFEST.json::pairs_kept@int} key pairs from
-MedQA training questions) and tested on pairs whose diseases were held out
-(\res{json/data/clin_v1/medeinst_dis_test/MANIFEST.json::n_groups@int} pairs) is right on both members of \res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/Reversal/s0}\% and \res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/Reversal/s1}\% of pairs at two
-seeds, with trap accuracy above 95\% and control accuracy of \res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/control_correct/s0}\% and
-\res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/control_correct/s1}\%: it has learned to prefer the trap label, and we do not use it.
+evaluating author \res{json/results_git/C-ME-ledger2-triplets-s0/malformed_reasons_clin_v1~medeinst_test.json::shares.entry not five lines}\% of
+reader outputs contained an entry that did not have five lines. A model trained on
+MedEinst reference pairs of other diseases (\res{json/data/clin_v1/clinpairs_medeinst_dis/MANIFEST.json::n_groups@int} pairs) and tested on pairs whose diseases were held out
+(\res{json/data/clin_v1/medeinst_dis_test/MANIFEST.json::n_groups@int} pairs) is right on both members of \res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/Reversal/s0}\%, \res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/Reversal/s1}\% and \res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/Reversal/s2}\% of pairs at three
+seeds, with trap accuracy of \res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/trap_correct/s0}\%, \res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/trap_correct/s1}\% and \res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/trap_correct/s2}\% and control accuracy of \res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/control_correct/s0}\%,
+\res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/control_correct/s1}\% and \res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/control_correct/s2}\%: it has learned to prefer the trap label, and we do not use it.
 
 \paragraph{Key pairs.}
 Pairs are mined within a split and reduced to a one-to-one matching, so that
@@ -1437,8 +1436,8 @@ consistency follow the task definitions.}
 Both verdict-only models are above the backbone, with and without
 near-misses, so this gain is not evidence for near-miss supervision; no
 paired test was planned. The slice whose premise is the eligibility section
-of a trial, where the premise is a stated rule, is a stage-2 analysis
-(\tbd).
+of a trial, where the premise is a stated rule, gives \res{run/C-NL-critic/clin_v1:nli4ct_test/section=Eligibility/Average@pct1}\% for the backbone,
+\res{run/C-NL-verdict-blocks/clin_v1:nli4ct_test/section=Eligibility/Average/s0@pct1}\% and \res{run/C-NL-verdict-triplets/clin_v1:nli4ct_test/section=Eligibility/Average/s0@pct1}\% for the verdict-only models trained on blocks and on triplets, and \res{run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/section=Eligibility/Average/s0@pct1}\% for \method{} (seed 0).
 
 \paragraph{Not run.}
 CondMedQA \citep{parekh2026cgr} is released without the general answers that
@@ -1508,7 +1507,9 @@ narrow band of a threshold without any edit. (C) Single-value edits: for a
 numeric criterion whose value string occurs exactly once in the note and
 feeds no other criterion, the value is replaced by one across the threshold
 (flip) or by one on the same side and nearer to it (near-miss); labels are
-recomputed by rule code. (D) One-sentence insertions for a criterion that is
+recomputed by rule code. Edited notes pass a fidelity filter in which two models of
+different families must recover the edited fact (\res{sum/A-SETS/mcv_v1.fidelity.test.kept@int} of \res{sum/A-SETS/mcv_v1.fidelity.test.triplets@int}
+test triplets kept); strata are assigned from the released entity dictionary. (D) One-sentence insertions for a criterion that is
 not met: the qualifying finding attributed to a relative, negated, or, only
 for criteria that require a current state, placed in the past (near-misses),
 and the same finding affirmed for the patient (flip). \emph{What is and is
@@ -1598,8 +1599,6 @@ separately from the verifier's. Two regimes are kept apart: \emph{open
 book}, in which the member list or the gate is available, and \emph{closed
 book}, in which the model must know the class. Labels are exact relative to
 the release and the membership rule above, both stated with every item.
-Contraindication assertions (MED-RT, via RxClass) are used only in the
-positive direction: a missing assertion is not evidence of safety.
 
 \begin{table}[!ht]
 \centering\small
@@ -1609,10 +1608,9 @@ positive direction: a missing assertion is not evidence of safety.
 Domain & Source & Terms of use\\
 \midrule
 Findings & Human Phenotype Ontology & free use with attribution; no alteration\\
-Diseases & Mondo; Disease Ontology as fallback & CC BY 4.0; CC0\\
-Drugs & RxNorm ingredients (prescribable subset, RxNav) & no licence required\\
+Diseases & Mondo & CC BY 4.0\\
+Drugs & RxNorm ingredients (RxNav) & no licence required\\
 Drug classes & FDA class through RxClass (direct ingredient members); ATC level 4 for the agreement flag and for near-misses & public API; ATC names are not redistributed\\
-Labels & openFDA and DailyMed label sections & public domain / CC0\\
 \bottomrule
 \end{tabular}
 \caption{Open sources for class membership; none needs a SNOMED CT or UMLS
@@ -1663,8 +1661,8 @@ naturally near a threshold. The comparison of interest is that of
 \res{cmp/p9/TA_blocks}, triplets \res{cmp/p9/TA_triplets} (triplet accuracy on edited notes), and the same after
 adaptation on the training notes with and without edited near-misses at
 equal budget (\tbd, \tbd). Registered criteria extend the rule language to
-time windows with a reference date, the clause on which every current
-system is weakest: \tbd{} without and \tbd{} with the date check of the
+time windows with a reference date, the clause on which the systems trained on
+triplets are weakest: \tbd{} without and \tbd{} with the date check of the
 gate. On the rule tier, removing the rule text from the prompt gives \res{run/C-S2-ctrl-verdict-triplets/rule_v1:test_L2@none/all/TA}\%
 and exchanging it for the rule of another group \res{run/C-S2-ctrl-verdict-triplets/rule_v1:test_L2@wrong/all/TA}\% for the verdict-only
 model trained on triplets (\res{run/B-F-verdict-triplets/L2/all/TA}\% with the rule), against \res{run/C-S2-ctrl-critic/rule_v1:test_L2@none/all/TA}\% and \res{run/C-S2-ctrl-critic/rule_v1:test_L2@wrong/all/TA}\%
@@ -1811,10 +1809,10 @@ applies: no
 Condition & Check & Not computable when\\
 \midrule
 quotation & string occurs in the case & never\\
-value & comparison after unit conversion & no threshold in the criterion; no number in \texttt{found}\\
+value & numeric comparison (no unit conversion) & no threshold in the criterion; no number in \texttt{found}\\
 time & date arithmetic against the reference date & no window; no date expression; no reference date\\
 concept & mention linked to an ontology term; term in the closure of the class & criterion names no class; linker abstains\\
-subject, status & set membership on typed fields & scope not stated in the criterion\\
+subject, status & set membership on typed fields & never: when the criterion states no scope, the defaults are the patient and present\\
 \bottomrule
 \end{tabular}
 \caption{Checks of the symbolic gate. If every applicable check is
@@ -2093,7 +2091,7 @@ under test from the rule and the claim, triplet accuracy falls to \res{run/B-AB-
 ($\res{d/run/B-AB-conddrv/L2/all/TA/s0|run/B-F-ledger2-triplets/L2/all/TA/s0}$ $[-16.8,-8.9]$): near-miss correctness stays at \res{run/B-AB-conddrv/L2/all/Hold/s0}\% and reversal
 falls to \res{run/B-AB-conddrv/L2/all/Rev/s0}\%. \emph{Rule-side items.} Blocks-trained models solve
 \res{min/run/B-F-verdict-blocks/xr_v1:test/xa/XA/min|run/B-F-summary2-blocks/xr_v1:test/xa/XA/min|run/B-F-ledger2-blocks/xr_v1:test/xa/XA/min|run/B-F-value2-blocks/xr_v1:test/xa/XA/min}--\res{max/run/B-F-verdict-blocks/xr_v1:test/xa/XA/max|run/B-F-summary2-blocks/xr_v1:test/xa/XA/max|run/B-F-ledger2-blocks/xr_v1:test/xa/XA/max|run/B-F-value2-blocks/xr_v1:test/xa/XA/max}\% over formats and seeds. Windows are the weakest clause for
-every trained system that does not write a decision bit (43--76\% over
+every system trained on triplets that does not write a decision bit (43--76\% over
 formats and seeds). Training without donor ledgers lowers crossed accuracy
 from \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA}\% to \res{run/B-AB-noresamp/xr_v1:test/xa/XA/s0}\% while the L2 score stays at \res{run/B-AB-noresamp/L2/all/TA/s0}\%. \emph{One stage
 against two.} The rationale's deficit against the two-stage ledger lies in
@@ -2109,8 +2107,9 @@ block corpora the differences between cells at seed 0 (\res{min/run/B-F-verdict-
 the size of the seed-to-seed variation of the block cells (s.d.\ \res{run/B-F-verdict-blocks/L2/all/TA/sd}--\res{run/B-F-ledger2-blocks/L2/all/TA/sd}),
 so we do not interpret them. \emph{Scale.} With the 4B model of the same
 family the verdict-only model trained on blocks reaches \res{run/B-BB-qwen3.5-4b-verdict-blocks/L2/all/TA}\%, against
-\res{run/B-F-verdict-blocks/L2/all/TA/s0}\% for the 9B model at the same seed; the other cells are not run, so we
-draw no conclusion about scale. \emph{Formal data.} Verdict only trained on
+\res{run/B-F-verdict-blocks/L2/all/TA/s0}\% for the 9B model at the same seed; the ledger trained on blocks reaches \res{run/B-BB-qwen3.5-4b-ledger2-blocks/L2/all/TA}\%
+(9B: \res{run/B-F-ledger2-blocks/L2/all/TA/s0}\%), and the two cells trained on triplets are level with the 9B model
+(\res{run/B-BB-qwen3.5-4b-ledger2-triplets/L2/all/TA}\% and \res{run/B-BB-qwen3.5-4b-verdict-triplets/L2/all/TA}\%). With one seed we draw no conclusion about scale. \emph{Formal data.} Verdict only trained on
 FoVer's formal data solves \res{run/B-TR-fover/L2/all/TA}\% of L2 triplets, with base accuracy at
 chance (\res{run/B-TR-fover/L2/all/BaseAcc/s0}\%). \emph{Other signals.} ThinkPRM-14B, a general verifier that
 reasons before it scores, solves \res{run/C-AUD-thinkprm/L2/all/TA}\% of \res{run/C-AUD-thinkprm/L2/all/n@int} L2 triplets; a logistic model
@@ -2517,8 +2516,10 @@ error, unseen wording, rule misread or other, are prepared; the coding is
 \ifplaceholders\else
 \section{Reproducibility}
 \label{app:repro}
-Every number in this paper is produced by a script that writes the
-corresponding table or figure. The rule manifest, the grammar, the triplet
+Tables and most numbers in the text are printed from result files by key
+(\texttt{scripts/make\_tables.py}); the other numbers are listed with their
+source file in \texttt{docs/PAPER\_NUMBERS\_V14.csv}. Values are rounded as
+Python's \texttt{round} does on the stored value. The rule manifest, the grammar, the triplet
 engine, the key-pair miner, prompts, splits, model revisions and trained
 adapters are released with the paper.
 \fi

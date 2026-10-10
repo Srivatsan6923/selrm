@@ -499,13 +499,9 @@
   "number": 12,
   "value": "12"
  },
- "json/data/clin_v1/clinpairs_medeinst/MANIFEST.json::n_groups@int": {
-  "number": 7807,
-  "value": "7{,}807"
- },
- "json/data/clin_v1/clinpairs_medqa/MANIFEST.json::pairs_kept@int": {
-  "number": 122,
-  "value": "122"
+ "json/data/clin_v1/clinpairs_medeinst_dis/MANIFEST.json::n_groups@int": {
+  "number": 3145,
+  "value": "3{,}145"
  },
  "json/data/clin_v1/keypairs_careqa/MANIFEST.json::n_pairs@int": {
   "number": 3,
@@ -1307,9 +1303,21 @@
   "number": 99.4,
   "value": "99.4"
  },
+ "run/B-BB-qwen3.5-4b-ledger2-blocks/L2/all/TA": {
+  "number": 50.3,
+  "value": "50.3"
+ },
+ "run/B-BB-qwen3.5-4b-ledger2-triplets/L2/all/TA": {
+  "number": 99.15,
+  "value": "99.2"
+ },
  "run/B-BB-qwen3.5-4b-verdict-blocks/L2/all/TA": {
   "number": 49.85,
   "value": "49.9"
+ },
+ "run/B-BB-qwen3.5-4b-verdict-triplets/L2/all/TA": {
+  "number": 91.25,
+  "value": "91.2"
  },
  "run/B-DIS/clin_v1:medeinst_dis_test/pairs/Reversal/s0": {
   "number": 7.826086956521739,
@@ -1319,6 +1327,10 @@
   "number": 43.47826086956522,
   "value": "43.5"
  },
+ "run/B-DIS/clin_v1:medeinst_dis_test/pairs/Reversal/s2": {
+  "number": 48.69565217391305,
+  "value": "48.7"
+ },
  "run/B-DIS/clin_v1:medeinst_dis_test/pairs/control_correct/s0": {
   "number": 9.565217391304348,
   "value": "9.6"
@@ -1326,6 +1338,22 @@
  "run/B-DIS/clin_v1:medeinst_dis_test/pairs/control_correct/s1": {
   "number": 46.95652173913044,
   "value": "47.0"
+ },
+ "run/B-DIS/clin_v1:medeinst_dis_test/pairs/control_correct/s2": {
+  "number": 53.91304347826087,
+  "value": "53.9"
+ },
+ "run/B-DIS/clin_v1:medeinst_dis_test/pairs/trap_correct/s0": {
+  "number": 97.3913043478261,
+  "value": "97.4"
+ },
+ "run/B-DIS/clin_v1:medeinst_dis_test/pairs/trap_correct/s1": {
+  "number": 95.65217391304348,
+  "value": "95.7"
+ },
+ "run/B-DIS/clin_v1:medeinst_dis_test/pairs/trap_correct/s2": {
+  "number": 94.78260869565217,
+  "value": "94.8"
  },
  "run/B-F-ledger2-balanced/L2/all/Hold/s0": {
   "number": 51.6,
@@ -3131,6 +3159,10 @@
   "number": 50.82667657440089,
   "value": "50.8"
  },
+ "run/C-NL-critic/clin_v1:nli4ct_test/section=Eligibility/Average@pct1": {
+  "number": 0.8031594975256947,
+  "value": "80.3"
+ },
  "run/C-NL-critic/clin_v1:nli4ct_test/top/Average@pct1": {
   "number": 0.8088030118000121,
   "value": "80.9"
@@ -3158,6 +3190,10 @@
  "run/C-NL-ledger2-blocks/clin_v1:nli4ct_test/top/Average/s0@pct1": {
   "number": 0.7193357324119735,
   "value": "71.9"
+ },
+ "run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/section=Eligibility/Average/s0@pct1": {
+  "number": 0.7147563813376875,
+  "value": "71.5"
  },
  "run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Average/s0@pct1": {
   "number": 0.7210933828674362,
@@ -3199,6 +3235,10 @@
   "number": 0.8599537037037037,
   "value": "86.0"
  },
+ "run/C-NL-verdict-blocks/clin_v1:nli4ct_test/section=Eligibility/Average/s0@pct1": {
+  "number": 0.8345256301520201,
+  "value": "83.5"
+ },
  "run/C-NL-verdict-blocks/clin_v1:nli4ct_test/top/Average/s0@pct1": {
   "number": 0.8561747653306494,
   "value": "85.6"
@@ -3214,6 +3254,10 @@
  "run/C-NL-verdict-blocks/clin_v1:nli4ct_test/top/Faithfulness/s0@pct1": {
   "number": 0.9375,
   "value": "93.8"
+ },
+ "run/C-NL-verdict-triplets/clin_v1:nli4ct_test/section=Eligibility/Average/s0@pct1": {
+  "number": 0.8170532768684177,
+  "value": "81.7"
  },
  "run/C-NL-verdict-triplets/clin_v1:nli4ct_test/top/Average/s0@pct1": {
   "number": 0.8537216749608456,
@@ -4559,11 +4603,23 @@
   "number": 103,
   "value": "103"
  },
+ "stats/rules.hand_written_by_kind.constraint@int": {
+  "number": 60,
+  "value": "60"
+ },
  "stats/rules.hand_written_provenance.simplified_source": {
   "number": 97,
   "value": "97"
  },
  "stats/rules.hand_written_provenance.synthetic": {
+  "number": 6,
+  "value": "6"
+ },
+ "stats/rules.hand_written_provenance_by_kind.constraint.simplified_source@int": {
+  "number": 54,
+  "value": "54"
+ },
+ "stats/rules.hand_written_provenance_by_kind.constraint.synthetic@int": {
   "number": 6,
   "value": "6"
  },
@@ -4654,6 +4710,14 @@
  "sum/A-SETS/ec_v1_prepare.trials": {
   "number": 85,
   "value": "85"
+ },
+ "sum/A-SETS/mcv_v1.fidelity.test.kept@int": {
+  "number": 1636,
+  "value": "1{,}636"
+ },
+ "sum/A-SETS/mcv_v1.fidelity.test.triplets@int": {
+  "number": 1787,
+  "value": "1{,}787"
  },
  "sum/A-SETS/mcv_v1_accept.n_accepted@int": {
   "number": 19,
