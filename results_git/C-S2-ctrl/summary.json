@@ -168,35 +168,37 @@
     ]
    },
    "none": {
-    "seeds": 4,
-    "TA": 40.7125,
-    "Rev": 48.15,
-    "Hold": 67.475,
-    "TA_hand": 78.21969696969697,
-    "TA_sampled": 31.452618453865338,
-    "TA_invented": 27.4,
-    "seeds_invented": 4,
+    "seeds": 5,
+    "TA": 39.07,
+    "Rev": 46.38,
+    "Hold": 68.17,
+    "TA_hand": 77.72727272727273,
+    "TA_sampled": 29.526184538653368,
+    "TA_invented": 25.96,
+    "seeds_invented": 5,
     "by_seed_TA": [
      41.0,
      47.4,
      41.75,
-     32.7
+     32.7,
+     32.5
     ]
    },
    "wrong": {
-    "seeds": 4,
-    "TA": 22.9375,
-    "Rev": 25.3875,
-    "Hold": 63.0,
-    "TA_hand": 62.0580808080808,
-    "TA_sampled": 13.27930174563591,
-    "TA_invented": 10.25,
-    "seeds_invented": 4,
+    "seeds": 5,
+    "TA": 22.68,
+    "Rev": 24.95,
+    "Hold": 63.11,
+    "TA_hand": 65.35353535353535,
+    "TA_sampled": 12.144638403990024,
+    "TA_invented": 9.32,
+    "seeds_invented": 5,
     "by_seed_TA": [
      21.2,
      31.75,
      17.25,
-     21.55
+     21.55,
+     21.65
     ]
    }
   },

@@ -38,3 +38,22 @@
 {"run_id": "C-AUD-kimi-k3", "model": "moonshotai/kimi-k3", "sets": ["rule_v1/test_L2"], "cost_estimate": 1.2355692, "cost_actual": 0.5177726250000001, "time": "2026-10-09T07:53:54Z"}
 {"run_id": "C-AUD-kimi-k3", "model": "moonshotai/kimi-k3", "sets": ["xr_v1/test"], "cost_estimate": 0.49225979999999997, "cost_actual": 0.02317029999999999, "time": "2026-10-09T08:54:17Z"}
 {"run_id": "C-SMOKE-kimi-choice", "model": "moonshotai/kimi-k3", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.07227839999999999, "cost_actual": 0.0, "time": "2026-10-09T09:10:54Z"}
+{"run_id": "C-AUD-nemotron-3-super", "model": "nvidia/nemotron-3-super-120b-a12b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.15554256, "cost_actual": 0.0, "time": "2026-10-09T09:32:18Z"}
+{"run_id": "C-AUD-nemotron-3-super", "model": "nvidia/nemotron-3-super-120b-a12b", "sets": ["xr_v1/test"], "cost_estimate": 0.060114640000000004, "cost_actual": 0.0, "time": "2026-10-09T09:33:04Z"}
+{"run_id": "C-AUD-nemotron-3-super", "model": "nvidia/nemotron-3-super-120b-a12b", "sets": ["rule_v1/dev_missing", "rule_v1/missing"], "cost_estimate": 0.09874184, "cost_actual": 0.0, "time": "2026-10-09T09:33:14Z"}
+{"run_id": "C-AUD-qwen35-27b", "model": "qwen/qwen3.5-27b", "sets": ["rule_v1/test_L2"], "cost_estimate": 1.89111208, "cost_actual": 0.0, "time": "2026-10-09T14:50:57Z"}
+{"run_id": "C-AUD-qwen35-27b", "model": "qwen/qwen3.5-27b", "sets": ["xr_v1/test"], "cost_estimate": 1.02551332, "cost_actual": 0.0, "time": "2026-10-09T14:52:04Z"}
+{"run_id": "C-AUD-gemma-4-31b-choice", "model": "google/gemma-4-31b-it", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.38581572, "cost_actual": 0.0, "time": "2026-10-10T00:11:28Z"}
+{"run_id": "C-AUD-gemma-4-31b-choice", "model": "google/gemma-4-31b-it", "sets": ["xr_v1/test"], "cost_estimate": 0.19370537999999998, "cost_actual": 0.0, "time": "2026-10-10T00:12:17Z"}
+{"run_id": "C-AUD-gemma-4-31b-choice", "model": "google/gemma-4-31b-it", "sets": ["rule_v1/dev_missing", "rule_v1/missing"], "cost_estimate": 0.23126027999999998, "cost_actual": 0.014767029000000006, "time": "2026-10-10T00:13:37Z"}
+{"run_id": "C-AUD-nemotron-3-super-choice", "model": "nvidia/nemotron-3-super-120b-a12b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.41388064, "cost_actual": 0.9590901050000018, "time": "2026-10-10T01:11:44Z"}
+{"run_id": "C-AUD-nemotron-3-super-choice", "model": "nvidia/nemotron-3-super-120b-a12b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.41388064, "cost_actual": 1.1830056600000016, "time": "2026-10-10T01:11:55Z"}
+{"run_id": "C-AUD-nemotron-3-super-choice", "model": "nvidia/nemotron-3-super-120b-a12b", "sets": ["xr_v1/test"], "cost_estimate": 0.21474255999999997, "cost_actual": 0.2673944599999999, "time": "2026-10-10T01:28:07Z"}
+{"run_id": "C-AUD-nemotron-3-super-choice", "model": "nvidia/nemotron-3-super-120b-a12b", "sets": ["xr_v1/test"], "cost_estimate": 0.21474255999999997, "cost_actual": 0.26656132500000057, "time": "2026-10-10T01:28:11Z"}
+{"run_id": "C-AUD-nemotron-3-super-choice", "model": "nvidia/nemotron-3-super-120b-a12b", "sets": ["rule_v1/dev_missing", "rule_v1/missing"], "cost_estimate": 0.25167136, "cost_actual": 0.26424301999999944, "time": "2026-10-10T01:43:15Z"}
+{"run_id": "C-AUD-nemotron-3-super-choice", "model": "nvidia/nemotron-3-super-120b-a12b", "sets": ["rule_v1/dev_missing", "rule_v1/missing"], "cost_estimate": 0.25167136, "cost_actual": 0.25123141, "time": "2026-10-10T01:43:18Z"}
+{"run_id": "C-AUD-qwen35-27b", "model": "qwen/qwen3.5-27b", "sets": ["rule_v1/test_L2"], "cost_estimate": 1.89111208, "cost_actual": 0.0, "time": "2026-10-10T01:44:42Z"}
+{"run_id": "C-AUD-qwen35-27b", "model": "qwen/qwen3.5-27b", "sets": ["xr_v1/test"], "cost_estimate": 1.02551332, "cost_actual": 0.0, "time": "2026-10-10T01:45:19Z"}
+{"run_id": "C-AUD-qwen35-27b", "model": "qwen/qwen3.5-27b", "sets": ["xr_v1/test"], "cost_estimate": 1.02551332, "cost_actual": 0.0, "time": "2026-10-10T01:45:20Z"}
+{"run_id": "C-AUD-qwen35-27b", "model": "qwen/qwen3.5-27b", "sets": ["rule_v1/dev_missing", "rule_v1/missing"], "cost_estimate": 1.1728319200000001, "cost_actual": 0.19116383999999992, "time": "2026-10-10T01:48:50Z"}
+{"run_id": "C-AUD-qwen35-27b", "model": "qwen/qwen3.5-27b", "sets": ["rule_v1/dev_missing", "rule_v1/missing"], "cost_estimate": 1.1728319200000001, "cost_actual": 0.19194506500000016, "time": "2026-10-10T01:48:52Z"}

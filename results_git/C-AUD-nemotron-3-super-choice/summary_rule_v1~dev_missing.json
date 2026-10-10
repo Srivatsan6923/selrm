@@ -1,0 +1,9 @@
+{
+ "run_id": "C-AUD-nemotron-3-super-choice",
+ "set": "rule_v1/dev_missing",
+ "claim_type": "conclusion",
+ "readout": "choice",
+ "MR": 44.0,
+ "n_missing": 300,
+ "MR_readout": "pointwise text answer, reject iff '-'"
+}

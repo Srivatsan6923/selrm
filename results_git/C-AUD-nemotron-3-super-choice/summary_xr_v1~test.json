@@ -1,0 +1,30 @@
+{
+ "run_id": "C-AUD-nemotron-3-super-choice",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "readout": "choice",
+ "XA": 97.25,
+ "n_items": 400,
+ "n_incomplete": 0,
+ "n_excluded": 0,
+ "CellAcc": 99.5,
+ "n_cells": 2400,
+ "cells_without_label": 0,
+ "XA_currency": 98.0,
+ "XA_inclusivity": 100.0,
+ "XA_subject": 100.0,
+ "XA_window": 91.0,
+ "without_known_issues": {
+  "XA": 96.96132596685082,
+  "n_items": 362,
+  "n_incomplete": 0,
+  "n_excluded": 38,
+  "CellAcc": 99.4475138121547,
+  "n_cells": 2172,
+  "cells_without_label": 0,
+  "XA_currency": 97.6470588235294,
+  "XA_inclusivity": 100.0,
+  "XA_subject": 100.0,
+  "XA_window": 91.0
+ }
+}

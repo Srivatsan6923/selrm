@@ -4,7 +4,7 @@
  "model": "nvidia/nemotron-3-super-120b-a12b",
  "name": "nemotron-3-super",
  "provider": "openrouter",
- "access_date": "2026-10-08",
+ "access_date": "2026-10-09",
  "readout": "logprob",
  "params": {
   "temperature": 0,
@@ -25,17 +25,17 @@
  "n_groups": "all",
  "subset_rule": null,
  "usage": {
-  "calls": 4194,
-  "cached": 1006,
-  "prompt_tokens": 922092,
-  "completion_tokens": 22151,
-  "cost": 0.08386540999999989,
+  "calls": 0,
+  "cached": 5200,
+  "prompt_tokens": 0,
+  "completion_tokens": 0,
+  "cost": 0.0,
   "errors": 0
  },
  "cost_estimate": 0.09874184,
- "cost_actual": 0.08386540999999989,
- "wall_seconds": 1337.3,
- "git_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2",
+ "cost_actual": 0.0,
+ "wall_seconds": 7.6,
+ "git_commit": "ac6e98f488b222ee4baabf6ec00f2f0d22635487",
  "summaries": {
   "rule_v1/dev_missing": null,
   "rule_v1/missing": null
@@ -127,6 +127,139 @@
    "cost_actual": 0.0569425600000002,
    "wall_seconds": 1101.4,
    "git_commit": "",
+   "summaries": {
+    "xr_v1/test": null
+   }
+  },
+  {
+   "run_id": "C-AUD-nemotron-3-super",
+   "role": "C",
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "name": "nemotron-3-super",
+   "provider": "openrouter",
+   "access_date": "2026-10-08",
+   "readout": "logprob",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     },
+     "provider": {
+      "require_parameters": true
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; logprob-capable providers only",
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 4194,
+    "cached": 1006,
+    "prompt_tokens": 922092,
+    "completion_tokens": 22151,
+    "cost": 0.08386540999999989,
+    "errors": 0
+   },
+   "cost_estimate": 0.09874184,
+   "cost_actual": 0.08386540999999989,
+   "wall_seconds": 1337.3,
+   "git_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2",
+   "summaries": {
+    "rule_v1/dev_missing": null,
+    "rule_v1/missing": null
+   }
+  },
+  {
+   "run_id": "C-AUD-nemotron-3-super",
+   "role": "C",
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "name": "nemotron-3-super",
+   "provider": "openrouter",
+   "access_date": "2026-10-09",
+   "readout": "logprob",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     },
+     "provider": {
+      "require_parameters": true
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; logprob-capable providers only",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "n_groups": 1000,
+   "subset_rule": "n/5 groups per near-miss kind, random.Random(0) over sorted tids",
+   "usage": {
+    "calls": 0,
+    "cached": 8000,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "cost": 0.0,
+    "errors": 0
+   },
+   "cost_estimate": 0.15554256,
+   "cost_actual": 0.0,
+   "wall_seconds": 24.9,
+   "git_commit": "ac6e98f488b222ee4baabf6ec00f2f0d22635487",
+   "summaries": {
+    "rule_v1/test_L2": {
+     "Rev": 36.5,
+     "Hold": 40.1,
+     "TA": 24.6,
+     "BaseAcc": 44.3,
+     "Tie": 18.7,
+     "PresHold": 43.5,
+     "n": 1000
+    }
+   }
+  },
+  {
+   "run_id": "C-AUD-nemotron-3-super",
+   "role": "C",
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "name": "nemotron-3-super",
+   "provider": "openrouter",
+   "access_date": "2026-10-09",
+   "readout": "logprob",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     },
+     "provider": {
+      "require_parameters": true
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; logprob-capable providers only",
+   "sets": [
+    "xr_v1/test"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 0,
+    "cached": 4800,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "cost": 0.0,
+    "errors": 0
+   },
+   "cost_estimate": 0.060114640000000004,
+   "cost_actual": 0.0,
+   "wall_seconds": 44.0,
+   "git_commit": "ac6e98f488b222ee4baabf6ec00f2f0d22635487",
    "summaries": {
     "xr_v1/test": null
    }

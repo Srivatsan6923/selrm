@@ -1,0 +1,9 @@
+{
+ "run_id": "C-AUD-gemma-4-31b-choice",
+ "set": "rule_v1/dev_missing",
+ "claim_type": "conclusion",
+ "readout": "choice",
+ "MR": 47.0,
+ "n_missing": 300,
+ "MR_readout": "pointwise text answer, reject iff '-'"
+}

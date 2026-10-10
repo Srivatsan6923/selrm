@@ -10,6 +10,7 @@ sys.path.insert(0, REPO)
 from selrm import metrics as M
 
 RES, BRES, DATA = f"{REPO}/results_git", f"{REPO}/scratch/bres", f"{REPO}/scratch/rv1"
+ACODE = f"{REPO}/scratch/acode_s2/data"
 SYSTEMS = [("critic", "Critic (untrained backbone)", ["critic"], [f"{RES}/C-TF-critic"]),
            *[(x, lab, [f"{x}-s{s}" for s in range(5)], [f"{BRES}/B-F-{x}-s{s}" for s in range(5)])
              for x, lab in (("verdict-blocks", "Verdict only, blocks"), ("verdict-triplets", "Verdict only, triplets"),
@@ -75,6 +76,45 @@ def main():
             o = out[name][cond]
             L.append(f"| {label} ({o['seeds']}) | {cond} | " + (" | ".join(fmt(o[k]) for k in ("TA", "Rev", "Hold", "TA_hand", "TA_sampled", "TA_invented"))
                                                                   if o["seeds"] else "not run | | | | |") + " |")
+    # ---- 1b. paraphrase tier (xp_v1: program-preserving paraphrases of the rule text, 300 triplets of test_L2)
+    xp = load(f"{ACODE}/xp_v1/test/records.jsonl")
+    tids = {r["tid"] for r in xp}
+    orig = [r for r in sets["test_L2"] if r["tid"] in tids]
+    L += ["", "### Paraphrased rule text (`xp_v1/test`)", "",
+          f"The same {len(tids)} triplets of L2 with the original rule text and with a program-preserving paraphrase of it.", "",
+          "| System (seeds) | TA original | TA paraphrase | Rev paraphrase | Hold paraphrase |", "|---|---|---|---|---|"]
+    out_xp = {}
+    for name, label, runs, base_dirs in SYSTEMS:
+        a, b = [], []
+        for run, bdir in zip(runs, base_dirs):
+            u0, u1 = scores(f"{bdir}/scores_rule_v1~test_L2.jsonl"), scores(f"{RES}/C-S2-xp-{run}/scores_xp_v1~test.jsonl")
+            if u0 and u1:
+                a.append(cell(orig, u0)); b.append(cell(xp, u1))
+        out_xp[name] = {"seeds": len(b), "TA_original": mean(a, "TA"), **{f"{k}_paraphrase": mean(b, k) for k in ("TA", "Rev", "Hold")}}
+        o = out_xp[name]
+        L.append(f"| {label} ({o['seeds']}) | " + " | ".join(fmt(o[k]) for k in ("TA_original", "TA_paraphrase", "Rev_paraphrase", "Hold_paraphrase")) + " |")
+    # ---- 2. kb_v1 triplets (C4): derived criterion stated, removed, exclusive lists exchanged
+    kb = load(f"{ACODE}/kb_v1/triplets_test/records.jsonl")
+    L += ["", "## 2. Criterion derived from a knowledge base (`kb_v1/triplets_test`; C4)", "",
+          "Triplets built from DDXPlus patients; the criterion is the pair of exclusive finding lists and their procedure. "
+          "Conditions: criterion stated, removed, and with the two exclusive lists exchanged (labels stay those of the stated criterion).", "",
+          "| System (seeds) | criterion | TA | Rev | Hold |", "|---|---|---|---|---|"]
+    out_kb = {}
+    for name, label, runs, _ in SYSTEMS[:3]:
+        out_kb[name] = {}
+        for cond, suffix in (("stated", ""), ("none", "@none"), ("wrong", "@wrong")):
+            cells = []
+            for run in runs:
+                u = scores(f"{RES}/C-S2-kb-{run}/scores_kb_v1~triplets_test{suffix}.jsonl")
+                if u:
+                    T = M.decisions(kb, [u[r["iid"] + suffix] for r in kb])
+                    cells.append({k: M.summarise(T)["all"][k] for k in ("TA", "Rev", "Hold")})
+            out_kb[name][cond] = {"seeds": len(cells), **{k: mean(cells, k) for k in ("TA", "Rev", "Hold")}}
+            o = out_kb[name][cond]
+            L.append(f"| {label} ({o['seeds']}) | {cond} | " + " | ".join(fmt(o[k]) for k in ("TA", "Rev", "Hold")) + " |")
+    os.makedirs(f"{RES}/C-S2-kb", exist_ok=True)
+    json.dump({"run_id": "C-S2-kb", "set": "kb_v1/triplets_test and views", "systems": out_kb, "paraphrase_xp_v1": out_xp},
+              open(f"{RES}/C-S2-kb/summary.json", "w", encoding="utf-8", newline="\n"), indent=1)
     os.makedirs(f"{RES}/C-S2-ctrl", exist_ok=True)
     json.dump({"run_id": "C-S2-ctrl", "set": "rule_v1/test_L2 and views", "systems": out},
               open(f"{RES}/C-S2-ctrl/summary.json", "w", encoding="utf-8", newline="\n"), indent=1)

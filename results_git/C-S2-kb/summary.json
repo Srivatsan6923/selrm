@@ -1,0 +1,103 @@
+{
+ "run_id": "C-S2-kb",
+ "set": "kb_v1/triplets_test and views",
+ "systems": {
+  "critic": {
+   "stated": {
+    "seeds": 1,
+    "TA": 75.36457320629982,
+    "Rev": 76.4534318491153,
+    "Hold": 96.40287769784173
+   },
+   "none": {
+    "seeds": 1,
+    "TA": 53.587400349990276,
+    "Rev": 57.573400738868365,
+    "Hold": 83.90044720979972
+   },
+   "wrong": {
+    "seeds": 1,
+    "TA": 18.685592066887033,
+    "Rev": 19.930001944390433,
+    "Hold": 52.965195411238575
+   }
+  },
+  "verdict-blocks": {
+   "stated": {
+    "seeds": 5,
+    "TA": 85.38596150106942,
+    "Rev": 91.14135718452265,
+    "Hold": 93.43184911530236
+   },
+   "none": {
+    "seeds": 5,
+    "TA": 52.40521096636205,
+    "Rev": 55.66400933307408,
+    "Hold": 84.60820532762979
+   },
+   "wrong": {
+    "seeds": 5,
+    "TA": 2.823254909585845,
+    "Rev": 3.0449154190161387,
+    "Hold": 21.987167023138248
+   }
+  },
+  "verdict-triplets": {
+   "stated": {
+    "seeds": 5,
+    "TA": 90.60470542484931,
+    "Rev": 92.72409099747229,
+    "Hold": 96.98230604705425
+   },
+   "none": {
+    "seeds": 5,
+    "TA": 53.175189578067275,
+    "Rev": 56.457320629982505,
+    "Hold": 84.02488819755007
+   },
+   "wrong": {
+    "seeds": 5,
+    "TA": 1.0305269298075053,
+    "Rev": 1.1316352323546568,
+    "Hold": 12.68909196966751
+   }
+  }
+ },
+ "paraphrase_xp_v1": {
+  "critic": {
+   "seeds": 1,
+   "TA_original": 22.333333333333332,
+   "TA_paraphrase": 35.333333333333336,
+   "Rev_paraphrase": 49.666666666666664,
+   "Hold_paraphrase": 47.333333333333336
+  },
+  "verdict-blocks": {
+   "seeds": 5,
+   "TA_original": 52.0,
+   "TA_paraphrase": 50.2,
+   "Rev_paraphrase": 89.86666666666667,
+   "Hold_paraphrase": 53.0
+  },
+  "verdict-triplets": {
+   "seeds": 5,
+   "TA_original": 91.26666666666667,
+   "TA_paraphrase": 89.66666666666667,
+   "Rev_paraphrase": 91.26666666666667,
+   "Hold_paraphrase": 95.06666666666666
+  },
+  "ledger2-triplets": {
+   "seeds": 5,
+   "TA_original": 99.6,
+   "TA_paraphrase": 97.2,
+   "Rev_paraphrase": 98.0,
+   "Hold_paraphrase": 97.86666666666667
+  },
+  "summary2-triplets": {
+   "seeds": 1,
+   "TA_original": 97.0,
+   "TA_paraphrase": 98.33333333333333,
+   "Rev_paraphrase": 99.0,
+   "Hold_paraphrase": 99.33333333333333
+  }
+ }
+}
