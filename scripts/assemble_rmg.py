@@ -80,6 +80,7 @@ def main():
                 s = assemble(k, set_name, variant, recs)
                 if s is None:
                     print(f"s{k} {set_name} {variant}: source scores missing")
+                    ok &= not (variant == "gate" and set_name in ("rule_v2/dev", "rule_v1/dev"))   # nothing validated
                     continue
                 t = s["all"]["TA"]
                 print(f"s{k} {set_name} {variant}: TA {t:.2f} {s['eval']}")
