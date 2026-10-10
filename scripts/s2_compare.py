@@ -153,6 +153,32 @@ def main():
                                         "expectation": "> 0", "TA_triplets": ta("a")(items), "TA_blocks": ta("b")(items),
                                         "TA_critic": 100.0 * statistics.mean(ec[t] for t in tids if t in ec) if ec else None,
                                         "seeds": [ns_t, ns_b]}
+    # (11) MedEinst pairs: [triplets: derived - none] - [critic: derived - none], pair accuracy, clusters = label pairs
+    me = load(f"{REPO}/data/clin_v1/medeinst_test/records.jsonl")
+    rid = {r["tid"]: r["rid"] for r in me}
+
+    def pair_items(kind, cond):
+        vals = collections.defaultdict(list)
+        runs = ["critic"] if kind == "critic" else [f"verdict-{kind}-s{s}" for s in range(5)]
+        for run in runs:
+            u = scores(f"C-ME-{run}", "clin_v1/medeinst_test") if cond == "none" else scores(f"C-S2-me-{run}", f"clin_v1/medeinst_test@{cond}")
+            if u:
+                d = d_by(me, u, "" if cond == "none" else f"@{cond}")
+                for t in rid:
+                    vals[t].append(d[(t, "base")] > 0 and d[(t, "flip")] < 0)
+        return {t: statistics.mean(v) for t, v in vals.items()}, max((len(v) for v in vals.values()), default=0)
+
+    mc = {(k, c): pair_items(k, c) for k in ("triplets", "blocks", "critic") for c in ("none", "derived", "wrong")}
+    out["medeinst_cells"] = {f"{'critic' if k == 'critic' else 'verdict-' + k}|{c}": {"pair_accuracy": 100.0 * statistics.mean(v.values()), "seeds": n, "n": len(v)}
+                             for (k, c), (v, n) in mc.items() if v}
+    need11 = [("triplets", "derived"), ("triplets", "none"), ("critic", "derived"), ("critic", "none")]
+    if all(mc[k][0] for k in need11):
+        items = [{"cl": rid[t], **{f"{k}_{c}": mc[(k, c)][0][t] for k, c in need11}} for t in sorted(rid)]
+        pa = lambda key: (lambda xs: 100.0 * statistics.mean(x[key] for x in xs))
+        r11 = M.paired_cluster_bootstrap(items, "cl", lambda xs: pa("triplets_derived")(xs) - pa("triplets_none")(xs),
+                                         lambda xs: pa("critic_derived")(xs) - pa("critic_none")(xs), B=B)
+        out["comparisons"]["11"] = r11 | {"contrast": "[triplets: derived - none] minus [critic: derived - none]", "metric": "pair accuracy",
+                                          "expectation": "> 0", "seeds": {f"{k}_{c}": mc[(k, c)][1] for k, c in need11}}
     out["mcv_cells"] = descriptive(load(f"{MCV}/criteria_test/records.jsonl"), load(f"{MCV}/edits_test/records.jsonl"))
     json.dump(out, open(f"{RES}/C-S2-comparisons.json", "w", encoding="utf-8", newline="\n"), indent=1)
     print(json.dumps({k: {x: (round(v[x], 2) if isinstance(v[x], float) else v[x]) for x in ("diff", "lo", "hi", "p", "n_items", "n_clusters")}
