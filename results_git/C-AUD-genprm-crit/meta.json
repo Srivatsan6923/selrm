@@ -1,0 +1,46 @@
+{
+ "run_id": "C-AUD-genprm-crit",
+ "role": "C",
+ "model": "GenPRM/GenPRM-7B",
+ "model_revision": "0ea3fa755896b5448a33458fd0b010501dbea21e",
+ "base": null,
+ "base_revision": null,
+ "prm_module": "genprm",
+ "prompt_note": "Input is the official process-supervision call for paragraph 1, GenPRM.inference(messages, cur_step=1, code_executor=CodeExecutor()) with its defaults (github.com/RyanLiu112/GenPRM @ a08da3f, src/prm_evaluation/genprm_inference.py, as in the README quick start and src/example/demo.ipynb): messages [system 'You are a math teacher. Your task is to review and critique the paragraphs in solution step by step.', user 'Question: {problem}\\n\\n{step}'], the format of the model card (huggingface.co/GenPRM/GenPRM-7B @ 0ea3fa7) and of the demo, with problem = 'Rule: {rule_text}\\n\\nCase:\\n{case_text}' ('{case_text}' when rule_text is empty) and step = claim_text. The prompt is the official build_prompt (released chat template with add_generation_prompt=False: the text ends with the user turn and has no Assistant tag, as the demo's printed requests show; the card's own snippet uses add_generation_prompt=True but reads no verdict), tokenized as the pinned vLLM 0.7.1 does it (tokenizer.encode puts a BOS before the template's BOS: two BOS tokens). The model then continues the official stage templates: '<analyze>\\nLet's analyze the Paragraph 1 step by step: ' until '</analyze>\\n'; then '<verify>\\nLet's use python code to find any potential error:\\n```python\\n' until '\\n```\\n' or '</output>\\n'; when such a call ends any other way than '</output>\\n', the last ```python block of the critique is executed and '[Code Output]\\n\\n```\\n{output}\\n```\\n' appended, for up to 3 rounds; when the rounds or the budget run out, the analysis is kept and '<output>\\n**Judgement**: $\\\\boxed' is continued for 20 tokens. Budget: max_new_tokens defaults to 2048, the official max_tokens (GenPRM.inference default and the value prm_evaluate.py passes); it caps the analysis call and all assistant-side text including code outputs, so a record generates at most about 2,048 + 20 tokens (the card's 8,192 belongs to its single free-running call). Decoding is greedy (deviation from the card's and the repo's temperature 0.6, top_p 0.95, top_k 20 sampling, for determinism). Code runs in a fresh subprocess of the same Python (any installed import, as the official in-process exec allows), with the record's earlier blocks replayed first to rebuild the namespace the official executor shares between blocks, under one limit of 5 s x blocks (CodeExecutor: 5 s per block), at most 2 subprocesses at a time.",
+ "provider": "local (NRP Nautilus), as released",
+ "access_date": "2026-10-09",
+ "sets": [
+  "rule_v1/test_L2"
+ ],
+ "n_groups": 200,
+ "max_new": null,
+ "eval_seconds_by_set": {
+  "rule_v1/test_L2": 13035.7
+ },
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA A10, 615.71.09, 23028 MiB",
+ "node": "hcc-nrp-shor-c5817.unl.edu",
+ "pod": "selrm-c-run-c-prm-24gbf-734-0-d7gf8",
+ "wall_seconds": 13181.8,
+ "eval_peak_mem_gb": 19.92,
+ "summaries": {
+  "rule_v1/test_L2": null
+ },
+ "gpu_util_mean": 95.7,
+ "gpu_util_p10": 96.0,
+ "gpu_windows_below40": 0.0,
+ "gpu_samples": 428
+}

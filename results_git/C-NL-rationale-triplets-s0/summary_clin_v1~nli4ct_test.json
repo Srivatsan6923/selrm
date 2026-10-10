@@ -1,0 +1,39 @@
+{
+ "run_id": "C-NL-rationale-triplets-s0",
+ "set": "clin_v1/nli4ct_test",
+ "prediction_rule": "Entailment iff u > 0",
+ "macroF1": 0.7679851510496671,
+ "faithfulness": 0.8854166666666666,
+ "consistency": 0.7599129593810445,
+ "Control_F1": 0.7698412698412698,
+ "Control_macroF1": 0.7679851510496671,
+ "Contrast_F1": 0.625589437283873,
+ "Faithfulness": 0.8854166666666666,
+ "Consistency": 0.7599129593810445,
+ "Consistency_acc": 0.7359767891682786,
+ "n_control": 500,
+ "n_altering": 864,
+ "n_preserving": 4136,
+ "acc_Contradiction": 0.8346666666666667,
+ "acc_Numerical_contradiction": 0.8985507246376812,
+ "acc_Numerical_paraphrase": 0.6830357142857143,
+ "acc_Paraphrase": 0.782,
+ "acc_Text_appended": 0.6553333333333333,
+ "Average": 0.8050569652963269,
+ "section=Eligibility": {
+  "Control_F1": 0.6666666666666666,
+  "Faithfulness": 0.8828828828828829,
+  "Consistency": 0.7849765258215963,
+  "Average": 0.7781753584570485,
+  "n_control": 132,
+  "n_altering": 222,
+  "n_preserving": 1065
+ },
+ "eval": {
+  "rationale_no_answer": 4,
+  "gen_not_stopped": 1,
+  "seconds": 4426.2,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

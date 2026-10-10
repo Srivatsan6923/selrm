@@ -1,0 +1,161 @@
+2026-10-08T23:25:43Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-08T23:25:44Z token budget per batch: 8000 (generation 24000)
+2026-10-08T23:25:56Z C-TF-defcorr-nocase2 nocase/rule_v1/test_L3inv prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/nocase/rule_v1/test_L3inv/verdict.npz', 'built 16000 prompts, max 163 tokens')
+2026-10-08T23:26:40Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0456)
+2026-10-08T23:26:41Z padding self-check: max |u_batch - u_single| = 0.0851 (tol 0.513) -> left padding
+2026-10-08T23:36:58Z FAILED C-TF-defcorr-nocase2
+Traceback (most recent call last):
+  File "/work/code/scripts/eval_c.py", line 470, in run_one
+    summ[s] = eval_local.evaluate(sc, root, rid, spec["format"], s, rdir, log, tag, spec.get("mode"))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/bcode/scripts/eval_local.py", line 250, in evaluate
+    u = sc.score(seqs)
+        ^^^^^^^^^^^^^^
+  File "/work/bcode/scripts/eval_local.py", line 184, in score
+    u[b] = self._last([seqs[i] for i in b])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/bcode/scripts/eval_local.py", line 152, in _last
+    out = self.model(input_ids=ids, attention_mask=att, logits_to_keep=1, use_cache=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/code/scripts/eval_c.py", line 385, in __call__
+    return self.m(*args, **kw)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py", line 1385, in forward
+    return Qwen3_5ForConditionalGeneration_forward(self, input_ids=input_ids, attention_mask=attention_mask, position_ids=position_ids, past_key_values=past_key_values, inputs_embeds=inputs_embeds, labels=labels, pixel_values=pixel_values, pixel_values_videos=pixel_values_videos, image_grid_thw=image_grid_thw, video_grid_thw=video_grid_thw, mm_token_type_ids=mm_token_type_ids, logits_to_keep=logits_to_keep, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/unsloth_zoo/temporary_patches/utils.py", line 2187, in forward
+    return disabled(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/external_utils.py", line 227, in nonrecursive_disable_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 876, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py", line 1150, in Qwen3_5ForConditionalGeneration_forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 876, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py", line 1672, in forward
+    outputs = self.language_model(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 952, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/utils/output_capturing.py", line 248, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py", line 1275, in forward
+    hidden_states = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/unsloth_zoo/temporary_patches/misc.py", line 1987, in __call__
+    return original(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/modeling_layers.py", line 93, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py", line 759, in forward
+    hidden_states = self.linear_attn(
+                    ^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py", line 686, in forward
+    return Qwen3_5GatedDeltaNet_forward(self, hidden_states=hidden_states, cache_params=cache_params, attention_mask=attention_mask)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/unsloth_zoo/temporary_patches/utils.py", line 2187, in forward
+    return disabled(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/external_utils.py", line 227, in nonrecursive_disable_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/work/unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py", line 578, in Qwen3_5GatedDeltaNet_forward
+    core_attn_out, last_recurrent_state = self.chunk_gated_delta_rule(
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1263, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/fla/ops/backends/__init__.py", line 214, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1263, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/fla/ops/gated_delta_rule/chunk.py", line 567, in chunk_gated_delta_rule
+    o, final_state = ChunkGatedDeltaRuleFunction.apply(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/autograd/function.py", line 596, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/fla/utils/_decorators.py", line 152, in wrapper
+    return fn(*processed_args, **processed_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/amp/autocast_mode.py", line 481, in decorate_fwd
+    return fwd(*args, **kwargs)  # pyrefly: ignore [not-callable]
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/fla/ops/gated_delta_rule/chunk.py", line 292, in forward
+    g, o, A, final_state, initial_state, g_input = chunk_gated_delta_rule_fwd(
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/fla/ops/gated_delta_rule/chunk.py", line 111, in chunk_gated_delta_rule_fwd
+    o = chunk_fwd_o(
+        ^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1263, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/fla/ops/backends/__init__.py", line 214, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/fla/ops/common/chunk_o.py", line 552, in chunk_fwd_o
+    o = torch.empty_like(v)
+        ^^^^^^^^^^^^^^^^^^^
+RuntimeError: CUDA driver error: unknown error
+
+2026-10-08T23:50:43Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-08T23:50:45Z token budget per batch: 8000 (generation 24000)
+2026-10-08T23:50:48Z C-TF-defcorr-nocase2 nocase/rule_v1/test_L3inv prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/nocase/rule_v1/test_L3inv/verdict.npz', 'exists')
+2026-10-08T23:51:46Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0054)
+2026-10-08T23:51:48Z padding self-check: max |u_batch - u_single| = 0.0799 (tol 0.516) -> left padding
+2026-10-08T23:55:36Z C-TF-defcorr-nocase2 nocase/rule_v1/test_L3inv: TA 0.0 Rev 0.0 Hold 31.8 n=1000 (286.8 s)
+2026-10-08T23:55:40Z C-TF-defcorr-nocase2 nocase/clin_v1/keypairs_medqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/nocase/clin_v1/keypairs_medqa_oneway/verdict.npz', 'built 1428 prompts, max 60 tokens')
+2026-10-08T23:55:53Z C-TF-defcorr-nocase2 nocase/clin_v1/keypairs_medqa_oneway: TA nan Rev nan Hold nan n=None (11.8 s)
+2026-10-08T23:55:57Z C-TF-defcorr-nocase2 nocase/clin_v1/keypairs_careqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/nocase/clin_v1/keypairs_careqa_oneway/verdict.npz', 'built 900 prompts, max 57 tokens')
+2026-10-08T23:56:05Z C-TF-defcorr-nocase2 nocase/clin_v1/keypairs_careqa_oneway: TA nan Rev nan Hold nan n=None (7.6 s)
+2026-10-08T23:56:13Z C-TF-defcorr-nocase2 nocase/clin_v1/nli4ct_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/nocase/clin_v1/nli4ct_test/verdict.npz', 'built 5500 prompts, max 160 tokens')
+2026-10-08T23:57:13Z C-TF-defcorr-nocase2 nocase/clin_v1/nli4ct_test: TA nan Rev nan Hold nan n=None (60.0 s)
+2026-10-08T23:57:17Z C-TF-defcorr-nocase2 nocase/clin_v1/trialgpt_dev prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/nocase/clin_v1/trialgpt_dev/verdict.npz', 'built 426 prompts, max 282 tokens')
+2026-10-08T23:57:23Z C-TF-defcorr-nocase2 nocase/clin_v1/trialgpt_dev: TA nan Rev nan Hold nan n=None (4.8 s)
+2026-10-08T23:57:28Z C-TF-defcorr-nocase2 nocase/clin_v1/trialgpt_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/nocase/clin_v1/trialgpt_test/verdict.npz', 'built 1602 prompts, max 277 tokens')
+2026-10-08T23:57:45Z C-TF-defcorr-nocase2 nocase/clin_v1/trialgpt_test: TA nan Rev nan Hold nan n=None (17.1 s)
+2026-10-08T23:57:46Z DONE C-TF-defcorr-nocase2 in 7.3 min, GPU util mean 83.5

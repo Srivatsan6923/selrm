@@ -35,7 +35,12 @@
  "selection": "rule_v1/dev TA, ties -> smaller alpha",
  "date": "2026-10-08",
  "summaries": {
-  "clin_v1/medeinst_test": "C-ME-defcorr (python scripts/eval_clinical.py medeinst)",
+  "clin_v1/keypairs_careqa_oneway": "C-KP-defcorr (summary by scripts/eval_clinical.py)",
+  "clin_v1/keypairs_medqa_oneway": "C-KP-defcorr (summary by scripts/eval_clinical.py)",
+  "clin_v1/medeinst_test": "C-ME-defcorr (summary by scripts/eval_clinical.py)",
+  "clin_v1/nli4ct_test": "C-NL-defcorr (summary by scripts/eval_clinical.py)",
+  "clin_v1/trialgpt_dev": "C-TG-defcorr-dev (summary by scripts/eval_clinical.py)",
+  "clin_v1/trialgpt_test": "C-TG-defcorr (summary by scripts/eval_clinical.py)",
   "rule_v1/dev": {
    "Rev": 71.66666666666667,
    "Hold": 55.0,
@@ -69,6 +74,15 @@
    "BaseAcc": 98.6,
    "Tie": 0.0,
    "PresHold": 98.5,
+   "n": 1000
+  },
+  "rule_v1/test_L3inv": {
+   "Rev": 55.3,
+   "Hold": 41.1,
+   "TA": 38.2,
+   "BaseAcc": 55.5,
+   "Tie": 0.0,
+   "PresHold": 56.2,
    "n": 1000
   },
   "xr_v1/test": {

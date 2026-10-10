@@ -1,0 +1,49 @@
+{
+ "run_id": "C-KP-summary2-blocks-s0",
+ "set": "clin_v1/keypairs_careqa_oneway",
+ "Reversal": 44.0,
+ "CI95": [
+  37.333333333333336,
+  50.666666666666664
+ ],
+ "n_pairs": 225,
+ "q1_acc": 76.88888888888889,
+ "q2_acc": 59.55555555555556,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 49.333333333333336,
+  "2": 44.0,
+  "3": 38.666666666666664
+ },
+ "Reversal_by_category": {
+  "Biology": 51.21951219512195,
+  "Chemistry": 41.666666666666664,
+  "Medicine": 39.53488372093023,
+  "Nursing": 39.39393939393939,
+  "Pharmacology": 44.642857142857146,
+  "Psychology": 46.42857142857143
+ },
+ "n_by_category": {
+  "Biology": 41,
+  "Chemistry": 24,
+  "Medicine": 43,
+  "Nursing": 33,
+  "Pharmacology": 56,
+  "Psychology": 28
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "reader_units": 450,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 4,
+  "seconds": 343.5,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

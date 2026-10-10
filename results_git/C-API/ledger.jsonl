@@ -1,0 +1,40 @@
+{"run_id": "C-SMOKE-llama", "model": "meta-llama/llama-3.3-70b-instruct", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.0041223200000000005, "cost_actual": 0.003091443, "time": "2026-10-09T02:40:35Z"}
+{"run_id": "C-SMOKE-gemma-4-31b", "model": "google/gemma-4-31b-it", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.00169724, "cost_actual": 0.0018620199999999998, "time": "2026-10-09T02:42:02Z"}
+{"run_id": "C-SMOKE-gpt-oss-120b", "model": "openai/gpt-oss-120b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.00075584, "cost_actual": 0.0, "time": "2026-10-09T02:45:20Z"}
+{"run_id": "C-SMOKE-nemotron-3-super", "model": "nvidia/nemotron-3-super-120b-a12b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.00152048, "cost_actual": 0.0014142399999999993, "time": "2026-10-09T02:49:12Z"}
+{"run_id": "C-SMOKE-qwen35-27b", "model": "qwen/qwen3.5-27b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.00503256, "cost_actual": 0.0027472200000000007, "time": "2026-10-09T03:39:27Z"}
+{"run_id": "C-SMOKE-gpt-oss-120b", "model": "openai/gpt-oss-120b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.00505856, "cost_actual": 0.004356411000000001, "time": "2026-10-09T03:39:52Z"}
+{"run_id": "C-SMOKE-qwen35-27b", "model": "qwen/qwen3.5-27b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.00503256, "cost_actual": 0.004511264999999999, "time": "2026-10-09T03:40:53Z"}
+{"run_id": "C-SMOKE-qwen35-397b", "model": "qwen/qwen3.5-397b-a17b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.010485800000000002, "cost_actual": 0.018648889999999998, "time": "2026-10-09T03:41:18Z"}
+{"run_id": "C-SMOKE-kimi-k3", "model": "moonshotai/kimi-k3", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.012093600000000001, "cost_actual": 0.010458900000000002, "time": "2026-10-09T03:41:23Z"}
+{"run_id": "C-AUD-llama70b", "model": "meta-llama/llama-3.3-70b-instruct", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.42184204, "cost_actual": 0.4032389389999991, "time": "2026-10-09T03:47:47Z"}
+{"run_id": "C-AUD-gemma-4-31b", "model": "google/gemma-4-31b-it", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.17365538, "cost_actual": 0.19685704549999952, "time": "2026-10-09T03:48:16Z"}
+{"run_id": "C-AUD-llama70b", "model": "meta-llama/llama-3.3-70b-instruct", "sets": ["xr_v1/test"], "cost_estimate": 0.16177526000000003, "cost_actual": 0.17577416900000004, "time": "2026-10-09T03:51:01Z"}
+{"run_id": "C-AUD-gemma-4-31b", "model": "google/gemma-4-31b-it", "sets": ["xr_v1/test"], "cost_estimate": 0.06683096999999999, "cost_actual": 0.07548112550000018, "time": "2026-10-09T03:51:53Z"}
+{"run_id": "C-AUD-gemma-4-31b", "model": "google/gemma-4-31b-it", "sets": ["rule_v1/dev_missing", "rule_v1/missing"], "cost_estimate": 0.11022007, "cost_actual": 0.11734454850000002, "time": "2026-10-09T03:57:28Z"}
+{"run_id": "C-AUD-gpt-oss-120b", "model": "openai/gpt-oss-120b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.5069403200000001, "cost_actual": 0.44034050600000096, "time": "2026-10-09T03:58:44Z"}
+{"run_id": "C-AUD-gpt-oss-120b", "model": "openai/gpt-oss-120b", "sets": ["xr_v1/test"], "cost_estimate": 0.28737128, "cost_actual": 0.17487599200000073, "time": "2026-10-09T04:05:41Z"}
+{"run_id": "C-AUD-llama70b", "model": "meta-llama/llama-3.3-70b-instruct", "sets": ["rule_v1/dev_missing", "rule_v1/missing"], "cost_estimate": 0.26770506, "cost_actual": 0.4263583469999998, "time": "2026-10-09T04:10:05Z"}
+{"run_id": "C-AUD-gpt-oss-120b", "model": "openai/gpt-oss-120b", "sets": ["rule_v1/dev_missing", "rule_v1/missing"], "cost_estimate": 0.32083568000000007, "cost_actual": 0.1840028970000004, "time": "2026-10-09T04:12:40Z"}
+{"run_id": "C-AUD-nemotron-3-super", "model": "nvidia/nemotron-3-super-120b-a12b", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.15554256, "cost_actual": 0.14689344000000118, "time": "2026-10-09T04:30:26Z"}
+{"run_id": "C-AUD-qwen35-397b", "model": "qwen/qwen3.5-397b-a17b", "sets": ["rule_v1/test_L2"], "cost_estimate": 1.0726051, "cost_actual": 1.3728906199999984, "time": "2026-10-09T04:46:16Z"}
+{"run_id": "C-AUD-qwen35-27b", "model": "qwen/qwen3.5-27b", "sets": ["rule_v1/test_L2"], "cost_estimate": 1.89111208, "cost_actual": 5.456123249999998, "time": "2026-10-09T04:48:35Z"}
+{"run_id": "C-AUD-nemotron-3-super", "model": "nvidia/nemotron-3-super-120b-a12b", "sets": ["xr_v1/test"], "cost_estimate": 0.060114640000000004, "cost_actual": 0.0569425600000002, "time": "2026-10-09T04:50:36Z"}
+{"run_id": "C-AUD-qwen35-397b", "model": "qwen/qwen3.5-397b-a17b", "sets": ["xr_v1/test"], "cost_estimate": 0.41523815000000003, "cost_actual": 0.49443413, "time": "2026-10-09T05:07:40Z"}
+{"run_id": "C-AUD-nemotron-3-super", "model": "nvidia/nemotron-3-super-120b-a12b", "sets": ["rule_v1/dev_missing", "rule_v1/missing"], "cost_estimate": 0.09874184, "cost_actual": 0.08386540999999989, "time": "2026-10-09T05:14:13Z"}
+{"run_id": "C-AUD-qwen35-27b", "model": "qwen/qwen3.5-27b", "sets": ["xr_v1/test"], "cost_estimate": 1.02551332, "cost_actual": 1.903592850000001, "time": "2026-10-09T05:15:36Z"}
+{"run_id": "C-AUD-qwen35-397b", "model": "qwen/qwen3.5-397b-a17b", "sets": ["rule_v1/dev_missing", "rule_v1/missing"], "cost_estimate": 0.6809626500000001, "cost_actual": 0.49578829999999996, "time": "2026-10-09T05:41:37Z"}
+{"run_id": "C-AUD-qwen35-27b", "model": "qwen/qwen3.5-27b", "sets": ["rule_v1/test_L2"], "cost_estimate": 1.89111208, "cost_actual": 0.0, "time": "2026-10-09T05:43:32Z"}
+{"run_id": "C-AUD-qwen35-27b", "model": "qwen/qwen3.5-27b", "sets": ["xr_v1/test"], "cost_estimate": 1.02551332, "cost_actual": 0.0, "time": "2026-10-09T05:46:12Z"}
+{"run_id": "C-AUD-qwen35-397b", "model": "qwen/qwen3.5-397b-a17b", "sets": ["rule_v1/test_L2"], "cost_estimate": 1.0726051, "cost_actual": 0.0, "time": "2026-10-09T05:52:08Z"}
+{"run_id": "C-AUD-qwen35-397b", "model": "qwen/qwen3.5-397b-a17b", "sets": ["xr_v1/test"], "cost_estimate": 0.41523815000000003, "cost_actual": 0.0, "time": "2026-10-09T05:52:29Z"}
+{"run_id": "C-AUD-qwen35-397b", "model": "qwen/qwen3.5-397b-a17b", "sets": ["rule_v1/dev_missing", "rule_v1/missing"], "cost_estimate": 0.6809626500000001, "cost_actual": 0.0, "time": "2026-10-09T05:52:59Z"}
+{"run_id": "C-AUD-llama70b-choice", "model": "meta-llama/llama-3.3-70b-instruct", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.78417176, "cost_actual": 1.3982744880000044, "time": "2026-10-09T06:25:02Z"}
+{"run_id": "C-AUD-llama70b-choice", "model": "meta-llama/llama-3.3-70b-instruct", "sets": ["xr_v1/test"], "cost_estimate": 0.37814203999999996, "cost_actual": 0.43654566299999914, "time": "2026-10-09T06:36:50Z"}
+{"run_id": "C-AUD-llama70b-choice", "model": "meta-llama/llama-3.3-70b-instruct", "sets": ["rule_v1/dev_missing", "rule_v1/missing"], "cost_estimate": 0.46199623999999995, "cost_actual": 0.5508900350000017, "time": "2026-10-09T06:57:30Z"}
+{"run_id": "C-AUD-gemma-4-31b-choice", "model": "google/gemma-4-31b-it", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.38581572, "cost_actual": 0.8436603219999994, "time": "2026-10-09T07:17:03Z"}
+{"run_id": "C-AUD-gemma-4-31b-choice", "model": "google/gemma-4-31b-it", "sets": ["xr_v1/test"], "cost_estimate": 0.19370537999999998, "cost_actual": 0.2980435150000003, "time": "2026-10-09T07:27:47Z"}
+{"run_id": "C-AUD-gemma-4-31b-choice", "model": "google/gemma-4-31b-it", "sets": ["rule_v1/dev_missing", "rule_v1/missing"], "cost_estimate": 0.23126027999999998, "cost_actual": 0.21882553550000033, "time": "2026-10-09T07:46:59Z"}
+{"run_id": "C-AUD-kimi-k3", "model": "moonshotai/kimi-k3", "sets": ["rule_v1/test_L2"], "cost_estimate": 1.2355692, "cost_actual": 0.5177726250000001, "time": "2026-10-09T07:53:54Z"}
+{"run_id": "C-AUD-kimi-k3", "model": "moonshotai/kimi-k3", "sets": ["xr_v1/test"], "cost_estimate": 0.49225979999999997, "cost_actual": 0.02317029999999999, "time": "2026-10-09T08:54:17Z"}
+{"run_id": "C-SMOKE-kimi-choice", "model": "moonshotai/kimi-k3", "sets": ["rule_v1/test_L2"], "cost_estimate": 0.07227839999999999, "cost_actual": 0.0, "time": "2026-10-09T09:10:54Z"}

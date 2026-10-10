@@ -1,0 +1,1200 @@
+{"iid": "rule_v1.dev.gs027.c3.negation.easy.0/base/conclusion/s", "u": 0.0, "top": {"+": -3.8058688640594482, "-": -3.8058688640594482}, "raw": "-"}
+{"iid": "rule_v1.dev.gs027.c3.negation.easy.0/base/conclusion/s_prime", "u": 0.9999997615814209, "top": {"+": -3.812889337539673, "-": -4.812889099121094}, "raw": "+"}
+{"iid": "rule_v1.dev.any_htn.k.time.easy.1/flip/conclusion/s", "u": -3.0, "top": {"+": -6.960104465484619, "-": -3.960104465484619}, "raw": "-"}
+{"iid": "rule_v1.dev.any_htn.k.time.easy.1/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -2.7584657669067383, "-": -5.258465766906738}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_neutropenia.anc.numeric.easy.2/base/conclusion/s", "u": -2.500000476837158, "top": {"+": -9.723724365234375, "-": -7.223723888397217}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_neutropenia.anc.numeric.easy.2/base/conclusion/s_prime", "u": -1.0, "top": {"+": -4.4832868576049805, "-": -3.4832868576049805}, "raw": "-"}
+{"iid": "rule_v1.dev.gs237.c2.negation.easy.3/flip/conclusion/s", "u": -2.499999761581421, "top": {"+": -5.85033655166626, "-": -3.350336790084839}, "raw": "-"}
+{"iid": "rule_v1.dev.gs237.c2.negation.easy.3/flip/conclusion/s_prime", "u": 2.999999761581421, "top": {"+": -2.8906633853912354, "-": -5.890663146972656}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.easy.4/base/conclusion/s", "u": 1.999999761581421, "top": {"+": -3.119948625564575, "-": -5.119948387145996}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.easy.4/base/conclusion/s_prime", "u": 0.5, "top": {"+": -3.758416175842285, "-": -4.258416175842285}, "raw": "-"}
+{"iid": "rule_v1.dev.gs205.c1.subject.easy.5/flip/conclusion/s", "u": -2.5, "top": {"+": -6.003149032592773, "-": -3.5031490325927734}, "raw": "-"}
+{"iid": "rule_v1.dev.gs205.c1.subject.easy.5/flip/conclusion/s_prime", "u": -2.500000476837158, "top": {"+": -8.87844181060791, "-": -6.378441333770752}, "raw": "+"}
+{"iid": "rule_v1.dev.gs232.c2.negation.easy.6/base/conclusion/s", "u": -0.5, "top": {"+": -4.576059341430664, "-": -4.076059341430664}, "raw": "-"}
+{"iid": "rule_v1.dev.gs232.c2.negation.easy.6/base/conclusion/s_prime", "u": -0.9999997615814209, "top": {"+": -4.953700065612793, "-": -3.953700304031372}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_nice_step1.age.boundary.easy.7/flip/conclusion/s", "u": 0.0, "top": {"+": -4.088510036468506, "-": -4.088510036468506}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_nice_step1.age.boundary.easy.7/flip/conclusion/s_prime", "u": 1.5, "top": {"+": -3.1951751708984375, "-": -4.6951751708984375}, "raw": "+"}
+{"iid": "rule_v1.dev.gs128.c4.negation.long.8/base/conclusion/s", "u": 0.5, "top": {"+": -4.1703901290893555, "-": -4.6703901290893555}, "raw": "-"}
+{"iid": "rule_v1.dev.gs128.c4.negation.long.8/base/conclusion/s_prime", "u": 0.5, "top": {"+": -4.0078325271606445, "-": -4.5078325271606445}, "raw": "+"}
+{"iid": "rule_v1.dev.postop_hit.hit.subject.long.9/flip/conclusion/s", "u": -2.000000238418579, "top": {"+": -5.393589019775391, "-": -3.3935887813568115}, "raw": "-"}
+{"iid": "rule_v1.dev.postop_hit.hit.subject.long.9/flip/conclusion/s_prime", "u": 4.0, "top": {"+": -2.8474626541137695, "-": -6.8474626541137695}, "raw": "+"}
+{"iid": "rule_v1.dev.gs008.c1.numeric.easy.10/base/conclusion/s", "u": -4.500000476837158, "top": {"+": -9.015600204467773, "-": -4.515599727630615}, "raw": "+"}
+{"iid": "rule_v1.dev.gs008.c1.numeric.easy.10/base/conclusion/s_prime", "u": -2.5, "top": {"+": -6.370232105255127, "-": -3.870232105255127}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.negation.long.11/flip/conclusion/s", "u": -1.999999761581421, "top": {"+": -5.4524946212768555, "-": -3.4524948596954346}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.negation.long.11/flip/conclusion/s_prime", "u": 1.0, "top": {"+": -3.3697900772094727, "-": -4.369790077209473}, "raw": "+"}
+{"iid": "rule_v1.dev.gs103.c2.time.superseded.12/base/conclusion/s", "u": 1.500000238418579, "top": {"+": -3.2789156436920166, "-": -4.778915882110596}, "raw": "+"}
+{"iid": "rule_v1.dev.gs103.c2.time.superseded.12/base/conclusion/s_prime", "u": 0.0, "top": {"+": -4.089367389678955, "-": -4.089367389678955}, "raw": "-"}
+{"iid": "rule_v1.dev.gs206.c2.numeric.long.13/flip/conclusion/s", "u": -1.0, "top": {"+": -6.74956750869751, "-": -5.74956750869751}, "raw": "-"}
+{"iid": "rule_v1.dev.gs206.c2.numeric.long.13/flip/conclusion/s_prime", "u": -2.5, "top": {"+": -9.719415664672852, "-": -7.219415664672852}, "raw": "+"}
+{"iid": "rule_v1.dev.gs215.c1.boundary.long.14/base/conclusion/s", "u": 3.000000238418579, "top": {"+": -3.6784536838531494, "-": -6.6784539222717285}, "raw": "+"}
+{"iid": "rule_v1.dev.gs215.c1.boundary.long.14/base/conclusion/s_prime", "u": -0.5, "top": {"+": -5.798414707183838, "-": -5.298414707183838}, "raw": "-"}
+{"iid": "rule_v1.dev.gs046.c2.numeric.easy.15/flip/conclusion/s", "u": -2.0, "top": {"+": -5.138453483581543, "-": -3.138453483581543}, "raw": "-"}
+{"iid": "rule_v1.dev.gs046.c2.numeric.easy.15/flip/conclusion/s_prime", "u": 3.5, "top": {"+": -2.6054701805114746, "-": -6.105470180511475}, "raw": "+"}
+{"iid": "rule_v1.dev.gs218.c2.numeric.long.16/base/conclusion/s", "u": 0.0, "top": {"+": -4.606386661529541, "-": -4.606386661529541}, "raw": "-"}
+{"iid": "rule_v1.dev.gs218.c2.numeric.long.16/base/conclusion/s_prime", "u": -1.0, "top": {"+": -5.343727111816406, "-": -4.343727111816406}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_perc.vte.negation.long.17/flip/conclusion/s", "u": -0.5, "top": {"+": -5.1845173835754395, "-": -4.6845173835754395}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_perc.vte.negation.long.17/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -4.330387592315674, "-": -6.830387592315674}, "raw": "+"}
+{"iid": "rule_v1.dev.gs168.c3.subject.easy.18/base/conclusion/s", "u": 0.5, "top": {"+": -3.8716859817504883, "-": -4.371685981750488}, "raw": "-"}
+{"iid": "rule_v1.dev.gs168.c3.subject.easy.18/base/conclusion/s_prime", "u": 1.0, "top": {"+": -3.829983711242676, "-": -4.829983711242676}, "raw": "+"}
+{"iid": "rule_v1.dev.gs166.c2.numeric.long.19/flip/conclusion/s", "u": -0.5, "top": {"+": -6.016519546508789, "-": -5.516519546508789}, "raw": "-"}
+{"iid": "rule_v1.dev.gs166.c2.numeric.long.19/flip/conclusion/s_prime", "u": 0.5, "top": {"+": -5.1161065101623535, "-": -5.6161065101623535}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_prasugrel_stroke.stroke.negation.easy.20/base/conclusion/s", "u": 1.5, "top": {"+": -3.3428783416748047, "-": -4.842878341674805}, "raw": "+"}
+{"iid": "rule_v1.dev.c3_prasugrel_stroke.stroke.negation.easy.20/base/conclusion/s_prime", "u": 0.0, "top": {"+": -3.810617208480835, "-": -3.810617208480835}, "raw": "-"}
+{"iid": "rule_v1.dev.gout_clarith.clarith.subject.long.21/flip/conclusion/s", "u": -2.5, "top": {"+": -5.794341087341309, "-": -3.2943410873413086}, "raw": "-"}
+{"iid": "rule_v1.dev.gout_clarith.clarith.subject.long.21/flip/conclusion/s_prime", "u": -3.5, "top": {"+": -9.704630851745605, "-": -6.2046308517456055}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_khorana.hgb.boundary.long.22/base/conclusion/s", "u": 1.5, "top": {"+": -5.416379928588867, "-": -6.916379928588867}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_khorana.hgb.boundary.long.22/base/conclusion/s_prime", "u": -1.9999995231628418, "top": {"+": -8.159828186035156, "-": -6.1598286628723145}, "raw": "-"}
+{"iid": "rule_v1.dev.gs145.c3.numeric.easy.23/flip/conclusion/s", "u": 0.0, "top": {"+": -4.504021167755127, "-": -4.504021167755127}, "raw": "-"}
+{"iid": "rule_v1.dev.gs145.c3.numeric.easy.23/flip/conclusion/s_prime", "u": 0.4999997615814209, "top": {"+": -3.8577754497528076, "-": -4.3577752113342285}, "raw": "+"}
+{"iid": "rule_v1.dev.gs062.c1.boundary.easy.24/base/conclusion/s", "u": 2.000000238418579, "top": {"+": -3.0660340785980225, "-": -5.066034317016602}, "raw": "+"}
+{"iid": "rule_v1.dev.gs062.c1.boundary.easy.24/base/conclusion/s_prime", "u": -1.5, "top": {"+": -5.0611653327941895, "-": -3.5611653327941895}, "raw": "-"}
+{"iid": "rule_v1.dev.gs041.c3.boundary.long.25/flip/conclusion/s", "u": -0.5, "top": {"+": -5.38611364364624, "-": -4.88611364364624}, "raw": "-"}
+{"iid": "rule_v1.dev.gs041.c3.boundary.long.25/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -3.5789027214050293, "-": -6.078902721405029}, "raw": "+"}
+{"iid": "rule_v1.dev.gs154.c2.boundary.long.26/base/conclusion/s", "u": 1.500000238418579, "top": {"+": -3.2491867542266846, "-": -4.749186992645264}, "raw": "+"}
+{"iid": "rule_v1.dev.gs154.c2.boundary.long.26/base/conclusion/s_prime", "u": 0.0, "top": {"+": -4.553408622741699, "-": -4.553408622741699}, "raw": "-"}
+{"iid": "rule_v1.dev.gs061.c2.time.easy.27/flip/conclusion/s", "u": -2.0, "top": {"+": -5.4020609855651855, "-": -3.4020609855651855}, "raw": "-"}
+{"iid": "rule_v1.dev.gs061.c2.time.easy.27/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -3.1676721572875977, "-": -5.667672157287598}, "raw": "+"}
+{"iid": "rule_v1.dev.gs214.c1.time.long.28/base/conclusion/s", "u": -4.000000476837158, "top": {"+": -9.422621726989746, "-": -5.422621250152588}, "raw": "-"}
+{"iid": "rule_v1.dev.gs214.c1.time.long.28/base/conclusion/s_prime", "u": 0.0, "top": {"+": -6.41458797454834, "-": -6.41458797454834}, "raw": "-"}
+{"iid": "rule_v1.dev.htn_pregnancy.pregnancy.time.easy.29/flip/conclusion/s", "u": -3.0, "top": {"+": -5.999999523162842, "-": -2.999999523162842}, "raw": "-"}
+{"iid": "rule_v1.dev.htn_pregnancy.pregnancy.time.easy.29/flip/conclusion/s_prime", "u": 4.000000238418579, "top": {"+": -3.231659173965454, "-": -7.231659412384033}, "raw": "+"}
+{"iid": "rule_v1.dev.wells_dvt.calf.numeric.easy.30/base/conclusion/s", "u": 1.000000238418579, "top": {"+": -3.523958921432495, "-": -4.523959159851074}, "raw": "+"}
+{"iid": "rule_v1.dev.wells_dvt.calf.numeric.easy.30/base/conclusion/s_prime", "u": -2.0, "top": {"+": -5.901941776275635, "-": -3.9019417762756348}, "raw": "-"}
+{"iid": "rule_v1.dev.gs243.c4.boundary.easy.31/flip/conclusion/s", "u": 0.5, "top": {"+": -4.2625203132629395, "-": -4.7625203132629395}, "raw": "-"}
+{"iid": "rule_v1.dev.gs243.c4.boundary.easy.31/flip/conclusion/s_prime", "u": 1.999999761581421, "top": {"+": -3.6817409992218018, "-": -5.681740760803223}, "raw": "+"}
+{"iid": "rule_v1.dev.gs000.c3.time.easy.32/base/conclusion/s", "u": 0.5, "top": {"+": -3.2092976570129395, "-": -3.7092976570129395}, "raw": "+"}
+{"iid": "rule_v1.dev.gs000.c3.time.easy.32/base/conclusion/s_prime", "u": 0.0, "top": {"+": -4.448174476623535, "-": -4.448174476623535}, "raw": "-"}
+{"iid": "rule_v1.dev.gs013.c1.numeric.easy.33/flip/conclusion/s", "u": -2.999999761581421, "top": {"+": -6.699765682220459, "-": -3.699765920639038}, "raw": "-"}
+{"iid": "rule_v1.dev.gs013.c1.numeric.easy.33/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -3.346557140350342, "-": -5.846557140350342}, "raw": "+"}
+{"iid": "rule_v1.dev.gs226.c1.negation.long.34/base/conclusion/s", "u": 1.500000238418579, "top": {"+": -3.6434428691864014, "-": -5.1434431076049805}, "raw": "+"}
+{"iid": "rule_v1.dev.gs226.c1.negation.long.34/base/conclusion/s_prime", "u": -0.9999997615814209, "top": {"+": -4.605835914611816, "-": -3.6058361530303955}, "raw": "-"}
+{"iid": "rule_v1.dev.gs043.c1.time.easy.35/flip/conclusion/s", "u": -2.5, "top": {"+": -5.81679630279541, "-": -3.31679630279541}, "raw": "-"}
+{"iid": "rule_v1.dev.gs043.c1.time.easy.35/flip/conclusion/s_prime", "u": 2.999999761581421, "top": {"+": -3.7553303241729736, "-": -6.7553300857543945}, "raw": "+"}
+{"iid": "rule_v1.dev.gs177.c3.boundary.long.36/base/conclusion/s", "u": 0.5, "top": {"+": -4.28421688079834, "-": -4.78421688079834}, "raw": "-"}
+{"iid": "rule_v1.dev.gs177.c3.boundary.long.36/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.572659492492676, "-": -4.072659492492676}, "raw": "-"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.long.37/flip/conclusion/s", "u": -1.0, "top": {"+": -4.541813850402832, "-": -3.541813850402832}, "raw": "-"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.long.37/flip/conclusion/s_prime", "u": 1.5, "top": {"+": -3.620144844055176, "-": -5.120144844055176}, "raw": "+"}
+{"iid": "rule_v1.dev.gs073.c1.time.easy.38/base/conclusion/s", "u": 5.0, "top": {"+": -3.183055877685547, "-": -8.183055877685547}, "raw": "+"}
+{"iid": "rule_v1.dev.gs073.c1.time.easy.38/base/conclusion/s_prime", "u": 0.0, "top": {"+": -3.9283721446990967, "-": -3.9283721446990967}, "raw": "-"}
+{"iid": "rule_v1.dev.gs116.c2.negation.easy.39/flip/conclusion/s", "u": 0.5, "top": {"+": -4.455672740936279, "-": -4.955672740936279}, "raw": "-"}
+{"iid": "rule_v1.dev.gs116.c2.negation.easy.39/flip/conclusion/s_prime", "u": 1.5, "top": {"+": -3.9827280044555664, "-": -5.482728004455566}, "raw": "+"}
+{"iid": "rule_v1.dev.gs145.c3.boundary.easy.40/base/conclusion/s", "u": 0.4999997615814209, "top": {"+": -3.9327433109283447, "-": -4.432743072509766}, "raw": "+"}
+{"iid": "rule_v1.dev.gs145.c3.boundary.easy.40/base/conclusion/s_prime", "u": -1.0, "top": {"+": -5.422077178955078, "-": -4.422077178955078}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.negation.easy.41/flip/conclusion/s", "u": -1.5, "top": {"+": -4.588785648345947, "-": -3.0887856483459473}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.negation.easy.41/flip/conclusion/s_prime", "u": 1.999999761581421, "top": {"+": -3.5513193607330322, "-": -5.551319122314453}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_abscess_mtx.mtx.subject.easy.42/base/conclusion/s", "u": -4.0, "top": {"+": -9.455574989318848, "-": -5.455574989318848}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_abscess_mtx.mtx.subject.easy.42/base/conclusion/s_prime", "u": -1.0, "top": {"+": -4.589544773101807, "-": -3.5895447731018066}, "raw": "-"}
+{"iid": "rule_v1.dev.gs153.c1.subject.easy.43/flip/conclusion/s", "u": -0.5, "top": {"+": -4.636602401733398, "-": -4.136602401733398}, "raw": "-"}
+{"iid": "rule_v1.dev.gs153.c1.subject.easy.43/flip/conclusion/s_prime", "u": -4.0, "top": {"+": -9.271039962768555, "-": -5.271039962768555}, "raw": "+"}
+{"iid": "rule_v1.dev.gs063.c1.time.easy.44/base/conclusion/s", "u": 0.9999997615814209, "top": {"+": -3.481023073196411, "-": -4.481022834777832}, "raw": "+"}
+{"iid": "rule_v1.dev.gs063.c1.time.easy.44/base/conclusion/s_prime", "u": -1.0, "top": {"+": -4.697780609130859, "-": -3.6977806091308594}, "raw": "-"}
+{"iid": "rule_v1.dev.gs182.c2.boundary.easy.45/flip/conclusion/s", "u": -4.000000238418579, "top": {"+": -7.320130825042725, "-": -3.3201305866241455}, "raw": "-"}
+{"iid": "rule_v1.dev.gs182.c2.boundary.easy.45/flip/conclusion/s_prime", "u": 2.0, "top": {"+": -3.5045852661132812, "-": -5.504585266113281}, "raw": "+"}
+{"iid": "rule_v1.dev.pain_ulcer.ulcer.subject.long.46/base/conclusion/s", "u": -4.0, "top": {"+": -8.57292366027832, "-": -4.57292366027832}, "raw": "+"}
+{"iid": "rule_v1.dev.pain_ulcer.ulcer.subject.long.46/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.229287624359131, "-": -3.729287624359131}, "raw": "-"}
+{"iid": "rule_v1.dev.gs046.c2.boundary.easy.47/flip/conclusion/s", "u": -1.5, "top": {"+": -5.11871337890625, "-": -3.61871337890625}, "raw": "-"}
+{"iid": "rule_v1.dev.gs046.c2.boundary.easy.47/flip/conclusion/s_prime", "u": 3.000000238418579, "top": {"+": -2.771028757095337, "-": -5.771028995513916}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_hemorr2hages.aspirin.time.easy.48/base/conclusion/s", "u": 1.5, "top": {"+": -3.920689582824707, "-": -5.420689582824707}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_hemorr2hages.aspirin.time.easy.48/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.888614654541016, "-": -4.388614654541016}, "raw": "-"}
+{"iid": "rule_v1.dev.gs045.c1.subject.long.49/flip/conclusion/s", "u": -2.500000238418579, "top": {"+": -5.512566566467285, "-": -3.012566328048706}, "raw": "-"}
+{"iid": "rule_v1.dev.gs045.c1.subject.long.49/flip/conclusion/s_prime", "u": -3.5, "top": {"+": -8.993056297302246, "-": -5.493056297302246}, "raw": "+"}
+{"iid": "rule_v1.dev.gs130.c3.negation.easy.50/base/conclusion/s", "u": 0.0, "top": {"+": -4.1008381843566895, "-": -4.1008381843566895}, "raw": "-"}
+{"iid": "rule_v1.dev.gs130.c3.negation.easy.50/base/conclusion/s_prime", "u": 1.5, "top": {"+": -3.4109697341918945, "-": -4.9109697341918945}, "raw": "+"}
+{"iid": "rule_v1.dev.gs238.c2.time.easy.51/flip/conclusion/s", "u": -1.5, "top": {"+": -5.440982341766357, "-": -3.9409823417663574}, "raw": "-"}
+{"iid": "rule_v1.dev.gs238.c2.time.easy.51/flip/conclusion/s_prime", "u": 2.499999761581421, "top": {"+": -2.795222520828247, "-": -5.295222282409668}, "raw": "+"}
+{"iid": "rule_v1.dev.gs135.c1.subject.easy.52/base/conclusion/s", "u": 0.0, "top": {"+": -3.759084939956665, "-": -3.759084939956665}, "raw": "-"}
+{"iid": "rule_v1.dev.gs135.c1.subject.easy.52/base/conclusion/s_prime", "u": 1.5, "top": {"+": -3.7163877487182617, "-": -5.216387748718262}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_pcp_sulfa.sulfa.time.long.53/flip/conclusion/s", "u": -2.999999761581421, "top": {"+": -6.2776312828063965, "-": -3.2776315212249756}, "raw": "-"}
+{"iid": "rule_v1.dev.c2_pcp_sulfa.sulfa.time.long.53/flip/conclusion/s_prime", "u": 2.500000238418579, "top": {"+": -3.721303701400757, "-": -6.221303939819336}, "raw": "+"}
+{"iid": "rule_v1.dev.gs070.c1.numeric.long.54/base/conclusion/s", "u": -2.999999523162842, "top": {"+": -9.71279525756836, "-": -6.712795734405518}, "raw": "+"}
+{"iid": "rule_v1.dev.gs070.c1.numeric.long.54/base/conclusion/s_prime", "u": -1.5, "top": {"+": -6.256219387054443, "-": -4.756219387054443}, "raw": "-"}
+{"iid": "rule_v1.dev.gs181.c1.subject.long.55/flip/conclusion/s", "u": -0.5, "top": {"+": -5.909409999847412, "-": -5.409409999847412}, "raw": "-"}
+{"iid": "rule_v1.dev.gs181.c1.subject.long.55/flip/conclusion/s_prime", "u": 2.0, "top": {"+": -4.477259635925293, "-": -6.477259635925293}, "raw": "+"}
+{"iid": "rule_v1.dev.t2d_metformin.egfr.time.long.56/base/conclusion/s", "u": 2.5, "top": {"+": -3.321104049682617, "-": -5.821104049682617}, "raw": "+"}
+{"iid": "rule_v1.dev.t2d_metformin.egfr.time.long.56/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.815179824829102, "-": -4.315179824829102}, "raw": "-"}
+{"iid": "rule_v1.dev.gs240.c1.subject.easy.57/flip/conclusion/s", "u": -1.999999761581421, "top": {"+": -4.9256157875061035, "-": -2.9256160259246826}, "raw": "-"}
+{"iid": "rule_v1.dev.gs240.c1.subject.easy.57/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -2.9070558547973633, "-": -5.407055854797363}, "raw": "+"}
+{"iid": "rule_v1.dev.gs042.c2.negation.easy.58/base/conclusion/s", "u": 0.9999997615814209, "top": {"+": -3.7224395275115967, "-": -4.722439289093018}, "raw": "+"}
+{"iid": "rule_v1.dev.gs042.c2.negation.easy.58/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.281785488128662, "-": -3.781785488128662}, "raw": "-"}
+{"iid": "rule_v1.dev.gs098.c1.subject.easy.59/flip/conclusion/s", "u": -1.0, "top": {"+": -5.131425857543945, "-": -4.131425857543945}, "raw": "-"}
+{"iid": "rule_v1.dev.gs098.c1.subject.easy.59/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -3.4058756828308105, "-": -5.9058756828308105}, "raw": "+"}
+{"iid": "rule_v1.dev.gs162.c1.boundary.easy.60/base/conclusion/s", "u": 0.0, "top": {"+": -4.177393913269043, "-": -4.177393913269043}, "raw": "-"}
+{"iid": "rule_v1.dev.gs162.c1.boundary.easy.60/base/conclusion/s_prime", "u": -0.9999997615814209, "top": {"+": -4.471315383911133, "-": -3.471315622329712}, "raw": "-"}
+{"iid": "rule_v1.dev.gs098.c2.subject.easy.61/flip/conclusion/s", "u": -1.500000238418579, "top": {"+": -5.11237907409668, "-": -3.6123788356781006}, "raw": "-"}
+{"iid": "rule_v1.dev.gs098.c2.subject.easy.61/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -3.2264280319213867, "-": -5.726428031921387}, "raw": "+"}
+{"iid": "rule_v1.dev.gs089.c1.negation.easy.62/base/conclusion/s", "u": 2.999999761581421, "top": {"+": -3.404717206954956, "-": -6.404716968536377}, "raw": "+"}
+{"iid": "rule_v1.dev.gs089.c1.negation.easy.62/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.664272785186768, "-": -4.164272785186768}, "raw": "-"}
+{"iid": "rule_v1.dev.gs152.c1.negation.long.63/flip/conclusion/s", "u": -1.5, "top": {"+": -5.739378929138184, "-": -4.239378929138184}, "raw": "-"}
+{"iid": "rule_v1.dev.gs152.c1.negation.long.63/flip/conclusion/s_prime", "u": -3.0, "top": {"+": -9.308354377746582, "-": -6.308354377746582}, "raw": "+"}
+{"iid": "rule_v1.dev.gs133.c1.time.superseded.64/base/conclusion/s", "u": 0.0, "top": {"+": -3.8257503509521484, "-": -3.8257503509521484}, "raw": "-"}
+{"iid": "rule_v1.dev.gs133.c1.time.superseded.64/base/conclusion/s_prime", "u": 0.5, "top": {"+": -3.2981529235839844, "-": -3.7981529235839844}, "raw": "-"}
+{"iid": "rule_v1.dev.gs174.c1.numeric.easy.65/flip/conclusion/s", "u": -1.999999761581421, "top": {"+": -5.898753643035889, "-": -3.8987538814544678}, "raw": "-"}
+{"iid": "rule_v1.dev.gs174.c1.numeric.easy.65/flip/conclusion/s_prime", "u": 3.5, "top": {"+": -3.0438694953918457, "-": -6.543869495391846}, "raw": "+"}
+{"iid": "rule_v1.dev.gs229.c2.boundary.long.66/base/conclusion/s", "u": -2.0, "top": {"+": -6.718019485473633, "-": -4.718019485473633}, "raw": "-"}
+{"iid": "rule_v1.dev.gs229.c2.boundary.long.66/base/conclusion/s_prime", "u": -4.0, "top": {"+": -9.600859642028809, "-": -5.600859642028809}, "raw": "-"}
+{"iid": "rule_v1.dev.gs028.c1.time.easy.67/flip/conclusion/s", "u": -0.5, "top": {"+": -4.306676387786865, "-": -3.8066763877868652}, "raw": "-"}
+{"iid": "rule_v1.dev.gs028.c1.time.easy.67/flip/conclusion/s_prime", "u": 3.0, "top": {"+": -3.053511142730713, "-": -6.053511142730713}, "raw": "+"}
+{"iid": "rule_v1.dev.gs040.c2.boundary.long.68/base/conclusion/s", "u": -1.5, "top": {"+": -9.688530921936035, "-": -8.188530921936035}, "raw": "+"}
+{"iid": "rule_v1.dev.gs040.c2.boundary.long.68/base/conclusion/s_prime", "u": 0.0, "top": {"+": -6.41569709777832, "-": -6.41569709777832}, "raw": "-"}
+{"iid": "rule_v1.dev.gs205.c1.subject.easy.69/flip/conclusion/s", "u": -3.5, "top": {"+": -6.889866828918457, "-": -3.389866828918457}, "raw": "-"}
+{"iid": "rule_v1.dev.gs205.c1.subject.easy.69/flip/conclusion/s_prime", "u": -3.499999523162842, "top": {"+": -9.087982177734375, "-": -5.587982654571533}, "raw": "+"}
+{"iid": "rule_v1.dev.s4_improve_vte.age.boundary.easy.70/base/conclusion/s", "u": 1.5, "top": {"+": -2.9704599380493164, "-": -4.470459938049316}, "raw": "+"}
+{"iid": "rule_v1.dev.s4_improve_vte.age.boundary.easy.70/base/conclusion/s_prime", "u": -1.5, "top": {"+": -4.8309326171875, "-": -3.3309326171875}, "raw": "-"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.negation.long.71/flip/conclusion/s", "u": -2.0, "top": {"+": -7.130762577056885, "-": -5.130762577056885}, "raw": "-"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.negation.long.71/flip/conclusion/s_prime", "u": -1.9999995231628418, "top": {"+": -9.752012252807617, "-": -7.752012729644775}, "raw": "+"}
+{"iid": "rule_v1.dev.gs152.c1.negation.long.72/base/conclusion/s", "u": -4.000000476837158, "top": {"+": -9.861245155334473, "-": -5.8612446784973145}, "raw": "+"}
+{"iid": "rule_v1.dev.gs152.c1.negation.long.72/base/conclusion/s_prime", "u": 0.0, "top": {"+": -4.486608982086182, "-": -4.486608982086182}, "raw": "-"}
+{"iid": "rule_v1.dev.gs129.c2.numeric.long.73/flip/conclusion/s", "u": -1.999999761581421, "top": {"+": -5.922509670257568, "-": -3.9225099086761475}, "raw": "-"}
+{"iid": "rule_v1.dev.gs129.c2.numeric.long.73/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -2.9503378868103027, "-": -5.450337886810303}, "raw": "+"}
+{"iid": "rule_v1.dev.gs043.c1.subject.long.74/base/conclusion/s", "u": 0.5, "top": {"+": -5.3595075607299805, "-": -5.8595075607299805}, "raw": "+"}
+{"iid": "rule_v1.dev.gs043.c1.subject.long.74/base/conclusion/s_prime", "u": 0.0, "top": {"+": -7.405019760131836, "-": -7.405019760131836}, "raw": "-"}
+{"iid": "rule_v1.dev.gs133.c1.boundary.easy.75/flip/conclusion/s", "u": -2.0, "top": {"+": -5.8637590408325195, "-": -3.8637590408325195}, "raw": "-"}
+{"iid": "rule_v1.dev.gs133.c1.boundary.easy.75/flip/conclusion/s_prime", "u": 3.999999761581421, "top": {"+": -3.662992238998413, "-": -7.662992000579834}, "raw": "+"}
+{"iid": "rule_v1.dev.gs175.c1.negation.easy.76/base/conclusion/s", "u": 1.499999761581421, "top": {"+": -3.8093206882476807, "-": -5.309320449829102}, "raw": "+"}
+{"iid": "rule_v1.dev.gs175.c1.negation.easy.76/base/conclusion/s_prime", "u": -0.5000002384185791, "top": {"+": -4.131787300109863, "-": -3.631787061691284}, "raw": "-"}
+{"iid": "rule_v1.dev.any_gout.egfr.numeric.easy.77/flip/conclusion/s", "u": -3.0, "top": {"+": -6.288089275360107, "-": -3.2880892753601074}, "raw": "-"}
+{"iid": "rule_v1.dev.any_gout.egfr.numeric.easy.77/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -3.0826568603515625, "-": -5.5826568603515625}, "raw": "+"}
+{"iid": "rule_v1.dev.gs231.c1.negation.long.78/base/conclusion/s", "u": -1.0, "top": {"+": -4.6736578941345215, "-": -3.6736578941345215}, "raw": "-"}
+{"iid": "rule_v1.dev.gs231.c1.negation.long.78/base/conclusion/s_prime", "u": 0.0, "top": {"+": -4.790265083312988, "-": -4.790265083312988}, "raw": "-"}
+{"iid": "rule_v1.dev.gs232.c1.boundary.long.79/flip/conclusion/s", "u": -2.0, "top": {"+": -5.868415832519531, "-": -3.8684158325195312}, "raw": "-"}
+{"iid": "rule_v1.dev.gs232.c1.boundary.long.79/flip/conclusion/s_prime", "u": -3.499999523162842, "top": {"+": -9.341182708740234, "-": -5.841183185577393}, "raw": "+"}
+{"iid": "rule_v1.dev.gs095.c2.numeric.easy.80/base/conclusion/s", "u": 0.5000002384185791, "top": {"+": -3.6966607570648193, "-": -4.196660995483398}, "raw": "-"}
+{"iid": "rule_v1.dev.gs095.c2.numeric.easy.80/base/conclusion/s_prime", "u": 0.5000002384185791, "top": {"+": -3.831796884536743, "-": -4.331797122955322}, "raw": "-"}
+{"iid": "rule_v1.dev.gs042.c1.negation.easy.81/flip/conclusion/s", "u": -3.0, "top": {"+": -6.082374095916748, "-": -3.082374095916748}, "raw": "-"}
+{"iid": "rule_v1.dev.gs042.c1.negation.easy.81/flip/conclusion/s_prime", "u": 3.0, "top": {"+": -3.337484836578369, "-": -6.337484836578369}, "raw": "+"}
+{"iid": "rule_v1.dev.gs175.c2.time.superseded.82/base/conclusion/s", "u": -4.000000476837158, "top": {"+": -9.562626838684082, "-": -5.562626361846924}, "raw": "+"}
+{"iid": "rule_v1.dev.gs175.c2.time.superseded.82/base/conclusion/s_prime", "u": 0.0, "top": {"+": -4.2076873779296875, "-": -4.2076873779296875}, "raw": "-"}
+{"iid": "rule_v1.dev.gs070.c1.time.long.83/flip/conclusion/s", "u": -2.0, "top": {"+": -5.390230655670166, "-": -3.390230655670166}, "raw": "-"}
+{"iid": "rule_v1.dev.gs070.c1.time.long.83/flip/conclusion/s_prime", "u": 3.0, "top": {"+": -3.3379664421081543, "-": -6.337966442108154}, "raw": "+"}
+{"iid": "rule_v1.dev.gs243.c4.numeric.easy.84/base/conclusion/s", "u": 1.0, "top": {"+": -4.1327996253967285, "-": -5.1327996253967285}, "raw": "+"}
+{"iid": "rule_v1.dev.gs243.c4.numeric.easy.84/base/conclusion/s_prime", "u": 1.0, "top": {"+": -4.043392658233643, "-": -5.043392658233643}, "raw": "+"}
+{"iid": "rule_v1.dev.gs172.c2.numeric.long.85/flip/conclusion/s", "u": -1.5, "top": {"+": -6.205733299255371, "-": -4.705733299255371}, "raw": "-"}
+{"iid": "rule_v1.dev.gs172.c2.numeric.long.85/flip/conclusion/s_prime", "u": 3.0, "top": {"+": -4.208987712860107, "-": -7.208987712860107}, "raw": "+"}
+{"iid": "rule_v1.dev.gs007.c1.subject.easy.86/base/conclusion/s", "u": -2.5, "top": {"+": -5.443561553955078, "-": -2.943561553955078}, "raw": "-"}
+{"iid": "rule_v1.dev.gs007.c1.subject.easy.86/base/conclusion/s_prime", "u": 2.000000238418579, "top": {"+": -2.803215742111206, "-": -4.803215980529785}, "raw": "+"}
+{"iid": "rule_v1.dev.gs191.c4.negation.long.87/flip/conclusion/s", "u": -1.5, "top": {"+": -5.540218353271484, "-": -4.040218353271484}, "raw": "-"}
+{"iid": "rule_v1.dev.gs191.c4.negation.long.87/flip/conclusion/s_prime", "u": 1.0, "top": {"+": -3.859954833984375, "-": -4.859954833984375}, "raw": "+"}
+{"iid": "rule_v1.dev.gs129.c2.boundary.easy.88/base/conclusion/s", "u": 2.0, "top": {"+": -3.060655117034912, "-": -5.060655117034912}, "raw": "+"}
+{"iid": "rule_v1.dev.gs129.c2.boundary.easy.88/base/conclusion/s_prime", "u": 0.0, "top": {"+": -3.735142946243286, "-": -3.735142946243286}, "raw": "-"}
+{"iid": "rule_v1.dev.gs162.c1.numeric.easy.89/flip/conclusion/s", "u": -2.5, "top": {"+": -5.78813362121582, "-": -3.2881336212158203}, "raw": "-"}
+{"iid": "rule_v1.dev.gs162.c1.numeric.easy.89/flip/conclusion/s_prime", "u": 3.0, "top": {"+": -3.283236026763916, "-": -6.283236026763916}, "raw": "+"}
+{"iid": "rule_v1.dev.gs181.c1.negation.easy.90/base/conclusion/s", "u": -0.5, "top": {"+": -4.662695407867432, "-": -4.162695407867432}, "raw": "-"}
+{"iid": "rule_v1.dev.gs181.c1.negation.easy.90/base/conclusion/s_prime", "u": -1.5, "top": {"+": -5.888067245483398, "-": -4.388067245483398}, "raw": "-"}
+{"iid": "rule_v1.dev.gs109.c1.time.easy.91/flip/conclusion/s", "u": -1.5, "top": {"+": -4.91552209854126, "-": -3.4155220985412598}, "raw": "-"}
+{"iid": "rule_v1.dev.gs109.c1.time.easy.91/flip/conclusion/s_prime", "u": 3.000000238418579, "top": {"+": -3.3265678882598877, "-": -6.326568126678467}, "raw": "+"}
+{"iid": "rule_v1.dev.gs135.c2.boundary.easy.92/base/conclusion/s", "u": 0.0, "top": {"+": -3.9795141220092773, "-": -3.9795141220092773}, "raw": "-"}
+{"iid": "rule_v1.dev.gs135.c2.boundary.easy.92/base/conclusion/s_prime", "u": -1.0, "top": {"+": -5.162132263183594, "-": -4.162132263183594}, "raw": "-"}
+{"iid": "rule_v1.dev.gs198.c1.negation.easy.93/flip/conclusion/s", "u": -1.000000238418579, "top": {"+": -4.534889221191406, "-": -3.534888982772827}, "raw": "-"}
+{"iid": "rule_v1.dev.gs198.c1.negation.easy.93/flip/conclusion/s_prime", "u": 2.0, "top": {"+": -3.2314085960388184, "-": -5.231408596038818}, "raw": "+"}
+{"iid": "rule_v1.dev.gs062.c1.numeric.easy.94/base/conclusion/s", "u": 2.5, "top": {"+": -2.9360694885253906, "-": -5.436069488525391}, "raw": "+"}
+{"iid": "rule_v1.dev.gs062.c1.numeric.easy.94/base/conclusion/s_prime", "u": -2.0, "top": {"+": -5.373912334442139, "-": -3.3739123344421387}, "raw": "-"}
+{"iid": "rule_v1.dev.uti_sulfa.sulfa.time.long.95/flip/conclusion/s", "u": -1.5, "top": {"+": -4.870920181274414, "-": -3.370920181274414}, "raw": "-"}
+{"iid": "rule_v1.dev.uti_sulfa.sulfa.time.long.95/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -2.9772911071777344, "-": -5.477291107177734}, "raw": "+"}
+{"iid": "rule_v1.dev.gs081.c2.numeric.long.96/base/conclusion/s", "u": 0.5, "top": {"+": -4.327514171600342, "-": -4.827514171600342}, "raw": "+"}
+{"iid": "rule_v1.dev.gs081.c2.numeric.long.96/base/conclusion/s_prime", "u": 0.5, "top": {"+": -4.151820659637451, "-": -4.651820659637451}, "raw": "-"}
+{"iid": "rule_v1.dev.gs143.c2.numeric.easy.97/flip/conclusion/s", "u": -0.5000002384185791, "top": {"+": -4.166080474853516, "-": -3.6660802364349365}, "raw": "-"}
+{"iid": "rule_v1.dev.gs143.c2.numeric.easy.97/flip/conclusion/s_prime", "u": 2.0, "top": {"+": -3.536958694458008, "-": -5.536958694458008}, "raw": "+"}
+{"iid": "rule_v1.dev.any_gout.ulcer.negation.easy.98/base/conclusion/s", "u": 4.5, "top": {"+": -3.650223731994629, "-": -8.150223731994629}, "raw": "+"}
+{"iid": "rule_v1.dev.any_gout.ulcer.negation.easy.98/base/conclusion/s_prime", "u": -1.0, "top": {"+": -4.90717077255249, "-": -3.9071707725524902}, "raw": "-"}
+{"iid": "rule_v1.dev.gs170.c1.subject.long.99/flip/conclusion/s", "u": -3.000000238418579, "top": {"+": -6.739565849304199, "-": -3.73956561088562}, "raw": "-"}
+{"iid": "rule_v1.dev.gs170.c1.subject.long.99/flip/conclusion/s_prime", "u": 2.499999761581421, "top": {"+": -3.7906863689422607, "-": -6.290686130523682}, "raw": "+"}
+{"iid": "rule_v1.dev.wells_dvt.calf.time.easy.100/base/conclusion/s", "u": 1.0, "top": {"+": -3.9611144065856934, "-": -4.961114406585693}, "raw": "+"}
+{"iid": "rule_v1.dev.wells_dvt.calf.time.easy.100/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.92124605178833, "-": -4.42124605178833}, "raw": "-"}
+{"iid": "rule_v1.dev.gs167.c1.time.easy.101/flip/conclusion/s", "u": -2.5, "top": {"+": -6.15250825881958, "-": -3.65250825881958}, "raw": "-"}
+{"iid": "rule_v1.dev.gs167.c1.time.easy.101/flip/conclusion/s_prime", "u": -3.0, "top": {"+": -8.978086471557617, "-": -5.978086471557617}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.time.superseded.102/base/conclusion/s", "u": 2.0, "top": {"+": -3.9727582931518555, "-": -5.9727582931518555}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.time.superseded.102/base/conclusion/s_prime", "u": -1.999999761581421, "top": {"+": -5.865269184112549, "-": -3.865269422531128}, "raw": "-"}
+{"iid": "rule_v1.dev.gs000.c2.subject.easy.103/flip/conclusion/s", "u": 0.0, "top": {"+": -3.697258949279785, "-": -3.697258949279785}, "raw": "-"}
+{"iid": "rule_v1.dev.gs000.c2.subject.easy.103/flip/conclusion/s_prime", "u": 1.5, "top": {"+": -3.187565326690674, "-": -4.687565326690674}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_sinus_pen.pen.time.delabelled.104/base/conclusion/s", "u": -0.5, "top": {"+": -9.601987838745117, "-": -9.101987838745117}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_sinus_pen.pen.time.delabelled.104/base/conclusion/s_prime", "u": 0.0, "top": {"+": -3.9842681884765625, "-": -3.9842681884765625}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_perc.spo2.numeric.easy.105/flip/conclusion/s", "u": 0.5, "top": {"+": -4.316492557525635, "-": -4.816492557525635}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_perc.spo2.numeric.easy.105/flip/conclusion/s_prime", "u": 1.999999761581421, "top": {"+": -3.590470552444458, "-": -5.590470314025879}, "raw": "+"}
+{"iid": "rule_v1.dev.gs129.c1.subject.easy.106/base/conclusion/s", "u": 2.5, "top": {"+": -3.3515987396240234, "-": -5.851598739624023}, "raw": "+"}
+{"iid": "rule_v1.dev.gs129.c1.subject.easy.106/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.468477249145508, "-": -3.968477249145508}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_perc.spo2.boundary.long.107/flip/conclusion/s", "u": 0.5, "top": {"+": -5.952835559844971, "-": -6.452835559844971}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_perc.spo2.boundary.long.107/flip/conclusion/s_prime", "u": 1.0, "top": {"+": -4.395939826965332, "-": -5.395939826965332}, "raw": "+"}
+{"iid": "rule_v1.dev.s4_improve_vte.vte.negation.easy.108/base/conclusion/s", "u": 0.5, "top": {"+": -4.401299476623535, "-": -4.901299476623535}, "raw": "+"}
+{"iid": "rule_v1.dev.s4_improve_vte.vte.negation.easy.108/base/conclusion/s_prime", "u": -1.5, "top": {"+": -5.203640460968018, "-": -3.7036404609680176}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_charlson.cr.time.easy.109/flip/conclusion/s", "u": -0.5, "top": {"+": -4.6997175216674805, "-": -4.1997175216674805}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_charlson.cr.time.easy.109/flip/conclusion/s_prime", "u": -2.5, "top": {"+": -9.682138442993164, "-": -7.182138442993164}, "raw": "+"}
+{"iid": "rule_v1.dev.gs159.c2.boundary.long.110/base/conclusion/s", "u": -3.000000476837158, "top": {"+": -9.31969928741455, "-": -6.319698810577393}, "raw": "+"}
+{"iid": "rule_v1.dev.gs159.c2.boundary.long.110/base/conclusion/s_prime", "u": -1.000000238418579, "top": {"+": -4.922491073608398, "-": -3.9224908351898193}, "raw": "-"}
+{"iid": "rule_v1.dev.gs175.c2.boundary.long.111/flip/conclusion/s", "u": -2.999999761581421, "top": {"+": -6.344784259796143, "-": -3.3447844982147217}, "raw": "-"}
+{"iid": "rule_v1.dev.gs175.c2.boundary.long.111/flip/conclusion/s_prime", "u": 3.000000238418579, "top": {"+": -3.7251217365264893, "-": -6.725121974945068}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_methimazole.alt.time.easy.112/base/conclusion/s", "u": 1.999999761581421, "top": {"+": -3.074631929397583, "-": -5.074631690979004}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_methimazole.alt.time.easy.112/base/conclusion/s_prime", "u": -1.0, "top": {"+": -4.511795520782471, "-": -3.5117955207824707}, "raw": "-"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.numeric.easy.113/flip/conclusion/s", "u": 1.0, "top": {"+": -3.479433059692383, "-": -4.479433059692383}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.numeric.easy.113/flip/conclusion/s_prime", "u": 4.499999761581421, "top": {"+": -3.6504251956939697, "-": -8.15042495727539}, "raw": "+"}
+{"iid": "rule_v1.dev.gs181.c3.time.easy.114/base/conclusion/s", "u": -0.5, "top": {"+": -5.363123416900635, "-": -4.863123416900635}, "raw": "-"}
+{"iid": "rule_v1.dev.gs181.c3.time.easy.114/base/conclusion/s_prime", "u": -1.0, "top": {"+": -6.241442680358887, "-": -5.241442680358887}, "raw": "-"}
+{"iid": "rule_v1.dev.all_spiro.egfr.boundary.easy.115/flip/conclusion/s", "u": -2.0, "top": {"+": -5.799643516540527, "-": -3.7996435165405273}, "raw": "-"}
+{"iid": "rule_v1.dev.all_spiro.egfr.boundary.easy.115/flip/conclusion/s_prime", "u": 3.0, "top": {"+": -3.2831692695617676, "-": -6.283169269561768}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_hemorr2hages.aspirin.time.long.116/base/conclusion/s", "u": -1.0, "top": {"+": -9.05928897857666, "-": -8.05928897857666}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_hemorr2hages.aspirin.time.long.116/base/conclusion/s_prime", "u": -1.0000004768371582, "top": {"+": -8.177599906921387, "-": -7.1775994300842285}, "raw": "-"}
+{"iid": "rule_v1.dev.gs076.c3.time.easy.117/flip/conclusion/s", "u": 0.5, "top": {"+": -3.820342540740967, "-": -4.320342540740967}, "raw": "-"}
+{"iid": "rule_v1.dev.gs076.c3.time.easy.117/flip/conclusion/s_prime", "u": 1.0, "top": {"+": -3.089512348175049, "-": -4.089512348175049}, "raw": "+"}
+{"iid": "rule_v1.dev.all_gastro.aspirin.time.easy.118/base/conclusion/s", "u": -0.5, "top": {"+": -4.408721446990967, "-": -3.908721446990967}, "raw": "-"}
+{"iid": "rule_v1.dev.all_gastro.aspirin.time.easy.118/base/conclusion/s_prime", "u": 1.999999761581421, "top": {"+": -3.43046498298645, "-": -5.430464744567871}, "raw": "+"}
+{"iid": "rule_v1.dev.s3_charlson.asthma.negation.long.119/flip/conclusion/s", "u": -0.5, "top": {"+": -4.962311744689941, "-": -4.462311744689941}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_charlson.asthma.negation.long.119/flip/conclusion/s_prime", "u": -1.5, "top": {"+": -9.179312705993652, "-": -7.679312705993652}, "raw": "+"}
+{"iid": "rule_v1.dev.gs208.c1.numeric.easy.120/base/conclusion/s", "u": 1.500000238418579, "top": {"+": -3.538295030593872, "-": -5.038295269012451}, "raw": "+"}
+{"iid": "rule_v1.dev.gs208.c1.numeric.easy.120/base/conclusion/s_prime", "u": -1.500000238418579, "top": {"+": -5.483700275421143, "-": -3.9837000370025635}, "raw": "-"}
+{"iid": "rule_v1.dev.gs107.c2.boundary.long.121/flip/conclusion/s", "u": -2.000000238418579, "top": {"+": -5.774935722351074, "-": -3.774935483932495}, "raw": "-"}
+{"iid": "rule_v1.dev.gs107.c2.boundary.long.121/flip/conclusion/s_prime", "u": -2.0, "top": {"+": -9.64562702178955, "-": -7.645627021789551}, "raw": "+"}
+{"iid": "rule_v1.dev.gs166.c2.boundary.easy.122/base/conclusion/s", "u": 0.0, "top": {"+": -4.194889068603516, "-": -4.194889068603516}, "raw": "-"}
+{"iid": "rule_v1.dev.gs166.c2.boundary.easy.122/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.597487449645996, "-": -4.097487449645996}, "raw": "-"}
+{"iid": "rule_v1.dev.gs098.c1.subject.easy.123/flip/conclusion/s", "u": -3.0, "top": {"+": -6.469078063964844, "-": -3.4690780639648438}, "raw": "-"}
+{"iid": "rule_v1.dev.gs098.c1.subject.easy.123/flip/conclusion/s_prime", "u": 3.5, "top": {"+": -3.489206314086914, "-": -6.989206314086914}, "raw": "+"}
+{"iid": "rule_v1.dev.gs226.c1.negation.long.124/base/conclusion/s", "u": -3.5, "top": {"+": -9.399181365966797, "-": -5.899181365966797}, "raw": "+"}
+{"iid": "rule_v1.dev.gs226.c1.negation.long.124/base/conclusion/s_prime", "u": 0.0, "top": {"+": -4.915572166442871, "-": -4.915572166442871}, "raw": "-"}
+{"iid": "rule_v1.dev.gs121.c2.subject.long.125/flip/conclusion/s", "u": -1.500000238418579, "top": {"+": -5.44284725189209, "-": -3.9428470134735107}, "raw": "-"}
+{"iid": "rule_v1.dev.gs121.c2.subject.long.125/flip/conclusion/s_prime", "u": -3.000000476837158, "top": {"+": -9.308984756469727, "-": -6.308984279632568}, "raw": "+"}
+{"iid": "rule_v1.dev.ckd_nsaid.egfr.boundary.easy.126/base/conclusion/s", "u": 5.999999761581421, "top": {"+": -3.159106492996216, "-": -9.159106254577637}, "raw": "+"}
+{"iid": "rule_v1.dev.ckd_nsaid.egfr.boundary.easy.126/base/conclusion/s_prime", "u": 0.0, "top": {"+": -3.7917089462280273, "-": -3.7917089462280273}, "raw": "-"}
+{"iid": "rule_v1.dev.gs152.c2.time.easy.127/flip/conclusion/s", "u": -2.5, "top": {"+": -6.444237232208252, "-": -3.944237232208252}, "raw": "-"}
+{"iid": "rule_v1.dev.gs152.c2.time.easy.127/flip/conclusion/s_prime", "u": -3.0, "top": {"+": -9.382837295532227, "-": -6.382837295532227}, "raw": "+"}
+{"iid": "rule_v1.dev.gs107.c1.subject.long.128/base/conclusion/s", "u": 1.0, "top": {"+": -3.909395694732666, "-": -4.909395694732666}, "raw": "+"}
+{"iid": "rule_v1.dev.gs107.c1.subject.long.128/base/conclusion/s_prime", "u": -0.5, "top": {"+": -5.91691780090332, "-": -5.41691780090332}, "raw": "-"}
+{"iid": "rule_v1.dev.gs133.c1.numeric.easy.129/flip/conclusion/s", "u": -1.999999761581421, "top": {"+": -5.766403675079346, "-": -3.766403913497925}, "raw": "-"}
+{"iid": "rule_v1.dev.gs133.c1.numeric.easy.129/flip/conclusion/s_prime", "u": -2.5, "top": {"+": -9.775477409362793, "-": -7.275477409362793}, "raw": "+"}
+{"iid": "rule_v1.dev.gs093.c2.time.easy.130/base/conclusion/s", "u": 1.0, "top": {"+": -3.3696751594543457, "-": -4.369675159454346}, "raw": "+"}
+{"iid": "rule_v1.dev.gs093.c2.time.easy.130/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.17344856262207, "-": -3.6734485626220703}, "raw": "-"}
+{"iid": "rule_v1.dev.gs232.c2.time.easy.131/flip/conclusion/s", "u": -2.0, "top": {"+": -5.594775199890137, "-": -3.5947751998901367}, "raw": "-"}
+{"iid": "rule_v1.dev.gs232.c2.time.easy.131/flip/conclusion/s_prime", "u": 3.0, "top": {"+": -3.212655544281006, "-": -6.212655544281006}, "raw": "+"}
+{"iid": "rule_v1.dev.gs026.c1.negation.easy.132/base/conclusion/s", "u": 2.499999761581421, "top": {"+": -3.3212497234344482, "-": -5.821249485015869}, "raw": "+"}
+{"iid": "rule_v1.dev.gs026.c1.negation.easy.132/base/conclusion/s_prime", "u": -0.5, "top": {"+": -3.9727423191070557, "-": -3.4727423191070557}, "raw": "-"}
+{"iid": "rule_v1.dev.gs189.c1.subject.long.133/flip/conclusion/s", "u": -1.0, "top": {"+": -5.33765172958374, "-": -4.33765172958374}, "raw": "-"}
+{"iid": "rule_v1.dev.gs189.c1.subject.long.133/flip/conclusion/s_prime", "u": -3.0, "top": {"+": -9.338125228881836, "-": -6.338125228881836}, "raw": "+"}
+{"iid": "rule_v1.dev.gs228.c1.subject.easy.134/base/conclusion/s", "u": -1.0, "top": {"+": -4.592702388763428, "-": -3.5927023887634277}, "raw": "-"}
+{"iid": "rule_v1.dev.gs228.c1.subject.easy.134/base/conclusion/s_prime", "u": -4.5, "top": {"+": -9.278769493103027, "-": -4.778769493103027}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.numeric.easy.135/flip/conclusion/s", "u": 0.5, "top": {"+": -3.3986411094665527, "-": -3.8986411094665527}, "raw": "-"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.numeric.easy.135/flip/conclusion/s_prime", "u": 4.000000238418579, "top": {"+": -3.6541731357574463, "-": -7.654173374176025}, "raw": "+"}
+{"iid": "rule_v1.dev.gs229.c2.numeric.easy.136/base/conclusion/s", "u": -2.0, "top": {"+": -5.907071590423584, "-": -3.907071590423584}, "raw": "-"}
+{"iid": "rule_v1.dev.gs229.c2.numeric.easy.136/base/conclusion/s_prime", "u": 0.4999997615814209, "top": {"+": -3.9508183002471924, "-": -4.450818061828613}, "raw": "+"}
+{"iid": "rule_v1.dev.af_asthma.asthma.subject.easy.137/flip/conclusion/s", "u": -2.5, "top": {"+": -5.410110950469971, "-": -2.9101109504699707}, "raw": "-"}
+{"iid": "rule_v1.dev.af_asthma.asthma.subject.easy.137/flip/conclusion/s_prime", "u": 2.500000238418579, "top": {"+": -2.9754903316497803, "-": -5.475490570068359}, "raw": "+"}
+{"iid": "rule_v1.dev.gs117.c2.boundary.long.138/base/conclusion/s", "u": -4.499999523162842, "top": {"+": -9.100475311279297, "-": -4.600475788116455}, "raw": "+"}
+{"iid": "rule_v1.dev.gs117.c2.boundary.long.138/base/conclusion/s_prime", "u": 0.0, "top": {"+": -4.621969699859619, "-": -4.621969699859619}, "raw": "-"}
+{"iid": "rule_v1.dev.gs111.c1.time.long.139/flip/conclusion/s", "u": -3.0, "top": {"+": -6.335426330566406, "-": -3.3354263305664062}, "raw": "-"}
+{"iid": "rule_v1.dev.gs111.c1.time.long.139/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -3.018721103668213, "-": -5.518721103668213}, "raw": "+"}
+{"iid": "rule_v1.dev.gs146.c2.boundary.long.140/base/conclusion/s", "u": 0.0, "top": {"+": -4.133655071258545, "-": -4.133655071258545}, "raw": "-"}
+{"iid": "rule_v1.dev.gs146.c2.boundary.long.140/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.591059684753418, "-": -4.091059684753418}, "raw": "-"}
+{"iid": "rule_v1.dev.gs237.c1.time.easy.141/flip/conclusion/s", "u": -3.0, "top": {"+": -5.838386058807373, "-": -2.838386058807373}, "raw": "-"}
+{"iid": "rule_v1.dev.gs237.c1.time.easy.141/flip/conclusion/s_prime", "u": 3.0, "top": {"+": -2.9639816284179688, "-": -5.963981628417969}, "raw": "+"}
+{"iid": "rule_v1.dev.gs022.c1.time.easy.142/base/conclusion/s", "u": 1.499999761581421, "top": {"+": -3.1924569606781006, "-": -4.6924567222595215}, "raw": "+"}
+{"iid": "rule_v1.dev.gs022.c1.time.easy.142/base/conclusion/s_prime", "u": 0.0, "top": {"+": -3.726297616958618, "-": -3.726297616958618}, "raw": "-"}
+{"iid": "rule_v1.dev.gs026.c1.subject.easy.143/flip/conclusion/s", "u": -2.5, "top": {"+": -5.912432670593262, "-": -3.4124326705932617}, "raw": "-"}
+{"iid": "rule_v1.dev.gs026.c1.subject.easy.143/flip/conclusion/s_prime", "u": -4.0, "top": {"+": -8.916295051574707, "-": -4.916295051574707}, "raw": "+"}
+{"iid": "rule_v1.dev.gs198.c2.boundary.easy.144/base/conclusion/s", "u": -2.999999523162842, "top": {"+": -9.373884201049805, "-": -6.373884677886963}, "raw": "+"}
+{"iid": "rule_v1.dev.gs198.c2.boundary.easy.144/base/conclusion/s_prime", "u": -1.0, "top": {"+": -4.135278701782227, "-": -3.1352787017822266}, "raw": "-"}
+{"iid": "rule_v1.dev.gs142.c1.numeric.easy.145/flip/conclusion/s", "u": -1.5, "top": {"+": -4.908992290496826, "-": -3.408992290496826}, "raw": "-"}
+{"iid": "rule_v1.dev.gs142.c1.numeric.easy.145/flip/conclusion/s_prime", "u": 3.0, "top": {"+": -3.3899965286254883, "-": -6.389996528625488}, "raw": "+"}
+{"iid": "rule_v1.dev.s1_psi.stroke.negation.long.146/base/conclusion/s", "u": 1.5, "top": {"+": -4.698816776275635, "-": -6.198816776275635}, "raw": "+"}
+{"iid": "rule_v1.dev.s1_psi.stroke.negation.long.146/base/conclusion/s_prime", "u": -0.5, "top": {"+": -5.964885234832764, "-": -5.464885234832764}, "raw": "-"}
+{"iid": "rule_v1.dev.gs222.c2.subject.long.147/flip/conclusion/s", "u": -2.5, "top": {"+": -6.316855430603027, "-": -3.8168554306030273}, "raw": "-"}
+{"iid": "rule_v1.dev.gs222.c2.subject.long.147/flip/conclusion/s_prime", "u": -2.500000476837158, "top": {"+": -9.69100284576416, "-": -7.191002368927002}, "raw": "+"}
+{"iid": "rule_v1.dev.gs017.c1.numeric.long.148/base/conclusion/s", "u": -2.500000476837158, "top": {"+": -9.280261039733887, "-": -6.7802605628967285}, "raw": "+"}
+{"iid": "rule_v1.dev.gs017.c1.numeric.long.148/base/conclusion/s_prime", "u": -1.0, "top": {"+": -6.243063926696777, "-": -5.243063926696777}, "raw": "-"}
+{"iid": "rule_v1.dev.gs117.c2.boundary.easy.149/flip/conclusion/s", "u": -3.000000238418579, "top": {"+": -6.75032901763916, "-": -3.750328779220581}, "raw": "-"}
+{"iid": "rule_v1.dev.gs117.c2.boundary.easy.149/flip/conclusion/s_prime", "u": -2.999999523162842, "top": {"+": -8.927044868469238, "-": -5.9270453453063965}, "raw": "+"}
+{"iid": "rule_v1.dev.c3_nice_step1.age.boundary.long.150/base/conclusion/s", "u": 0.0, "top": {"+": -4.760115146636963, "-": -4.760115146636963}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_nice_step1.age.boundary.long.150/base/conclusion/s_prime", "u": 0.5, "top": {"+": -5.28321647644043, "-": -5.78321647644043}, "raw": "+"}
+{"iid": "rule_v1.dev.s3_charlson.cr.boundary.easy.151/flip/conclusion/s", "u": -1.000000238418579, "top": {"+": -4.993144989013672, "-": -3.9931447505950928}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_charlson.cr.boundary.easy.151/flip/conclusion/s_prime", "u": 4.0, "top": {"+": -3.243745803833008, "-": -7.243745803833008}, "raw": "+"}
+{"iid": "rule_v1.dev.c3_cellulitis_sirs.wbc.boundary.long.152/base/conclusion/s", "u": -4.499999523162842, "top": {"+": -9.143576622009277, "-": -4.6435770988464355}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_cellulitis_sirs.wbc.boundary.long.152/base/conclusion/s_prime", "u": -1.0, "top": {"+": -5.875403881072998, "-": -4.875403881072998}, "raw": "-"}
+{"iid": "rule_v1.dev.gs226.c1.subject.easy.153/flip/conclusion/s", "u": -2.500000238418579, "top": {"+": -5.808523178100586, "-": -3.308522939682007}, "raw": "-"}
+{"iid": "rule_v1.dev.gs226.c1.subject.easy.153/flip/conclusion/s_prime", "u": 3.000000238418579, "top": {"+": -2.8974568843841553, "-": -5.897457122802734}, "raw": "+"}
+{"iid": "rule_v1.dev.s3_charlson.hf.subject.easy.154/base/conclusion/s", "u": 1.5, "top": {"+": -3.32969331741333, "-": -4.82969331741333}, "raw": "+"}
+{"iid": "rule_v1.dev.s3_charlson.hf.subject.easy.154/base/conclusion/s_prime", "u": -1.5, "top": {"+": -5.095865249633789, "-": -3.595865249633789}, "raw": "-"}
+{"iid": "rule_v1.dev.rcri.cr.time.easy.155/flip/conclusion/s", "u": 0.0, "top": {"+": -4.625875473022461, "-": -4.625875473022461}, "raw": "-"}
+{"iid": "rule_v1.dev.rcri.cr.time.easy.155/flip/conclusion/s_prime", "u": -2.5, "top": {"+": -9.291646003723145, "-": -6.7916460037231445}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.subject.easy.156/base/conclusion/s", "u": 2.0, "top": {"+": -2.6970791816711426, "-": -4.697079181671143}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.subject.easy.156/base/conclusion/s_prime", "u": 0.5, "top": {"+": -3.345792770385742, "-": -3.845792770385742}, "raw": "-"}
+{"iid": "rule_v1.dev.gs030.c2.negation.long.157/flip/conclusion/s", "u": -2.0, "top": {"+": -5.750010967254639, "-": -3.7500109672546387}, "raw": "-"}
+{"iid": "rule_v1.dev.gs030.c2.negation.long.157/flip/conclusion/s_prime", "u": -3.000000476837158, "top": {"+": -9.241789817810059, "-": -6.2417893409729}, "raw": "+"}
+{"iid": "rule_v1.dev.gs218.c2.numeric.long.158/base/conclusion/s", "u": 0.0, "top": {"+": -5.085179805755615, "-": -5.085179805755615}, "raw": "-"}
+{"iid": "rule_v1.dev.gs218.c2.numeric.long.158/base/conclusion/s_prime", "u": -1.0, "top": {"+": -5.862926006317139, "-": -4.862926006317139}, "raw": "-"}
+{"iid": "rule_v1.dev.gs104.c3.negation.long.159/flip/conclusion/s", "u": 0.0, "top": {"+": -4.130033016204834, "-": -4.130033016204834}, "raw": "-"}
+{"iid": "rule_v1.dev.gs104.c3.negation.long.159/flip/conclusion/s_prime", "u": 2.0, "top": {"+": -3.926914691925049, "-": -5.926914691925049}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_methimazole.alt.boundary.easy.160/base/conclusion/s", "u": 2.500000238418579, "top": {"+": -2.9877192974090576, "-": -5.487719535827637}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_methimazole.alt.boundary.easy.160/base/conclusion/s_prime", "u": -1.0, "top": {"+": -4.529994010925293, "-": -3.529994010925293}, "raw": "-"}
+{"iid": "rule_v1.dev.gs085.c1.negation.long.161/flip/conclusion/s", "u": -2.0, "top": {"+": -6.234708786010742, "-": -4.234708786010742}, "raw": "-"}
+{"iid": "rule_v1.dev.gs085.c1.negation.long.161/flip/conclusion/s_prime", "u": -2.999999523162842, "top": {"+": -9.714529991149902, "-": -6.7145304679870605}, "raw": "+"}
+{"iid": "rule_v1.dev.s4_apache.hr.numeric.easy.162/base/conclusion/s", "u": 2.5, "top": {"+": -3.2235631942749023, "-": -5.723563194274902}, "raw": "+"}
+{"iid": "rule_v1.dev.s4_apache.hr.numeric.easy.162/base/conclusion/s_prime", "u": -2.5, "top": {"+": -6.321102142333984, "-": -3.8211021423339844}, "raw": "-"}
+{"iid": "rule_v1.dev.gs204.c1.numeric.long.163/flip/conclusion/s", "u": -3.000000238418579, "top": {"+": -6.723071098327637, "-": -3.7230708599090576}, "raw": "-"}
+{"iid": "rule_v1.dev.gs204.c1.numeric.long.163/flip/conclusion/s_prime", "u": -2.5, "top": {"+": -9.237757682800293, "-": -6.737757682800293}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_atria_bleed.egfr.boundary.easy.164/base/conclusion/s", "u": 2.5, "top": {"+": -3.374331474304199, "-": -5.874331474304199}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_atria_bleed.egfr.boundary.easy.164/base/conclusion/s_prime", "u": -1.5, "top": {"+": -5.833951950073242, "-": -4.333951950073242}, "raw": "-"}
+{"iid": "rule_v1.dev.gs222.c2.negation.easy.165/flip/conclusion/s", "u": -2.5, "top": {"+": -6.386903285980225, "-": -3.8869032859802246}, "raw": "-"}
+{"iid": "rule_v1.dev.gs222.c2.negation.easy.165/flip/conclusion/s_prime", "u": 3.5, "top": {"+": -3.714320182800293, "-": -7.214320182800293}, "raw": "+"}
+{"iid": "rule_v1.dev.gs128.c1.subject.long.166/base/conclusion/s", "u": 0.5, "top": {"+": -3.896070957183838, "-": -4.396070957183838}, "raw": "-"}
+{"iid": "rule_v1.dev.gs128.c1.subject.long.166/base/conclusion/s_prime", "u": 0.5, "top": {"+": -4.3893280029296875, "-": -4.8893280029296875}, "raw": "+"}
+{"iid": "rule_v1.dev.gs008.c2.negation.long.167/flip/conclusion/s", "u": 3.000000476837158, "top": {"+": -6.225133419036865, "-": -9.225133895874023}, "raw": "-"}
+{"iid": "rule_v1.dev.gs008.c2.negation.long.167/flip/conclusion/s_prime", "u": 3.999999523162842, "top": {"+": -4.104614734649658, "-": -8.1046142578125}, "raw": "+"}
+{"iid": "rule_v1.dev.gs027.c2.subject.long.168/base/conclusion/s", "u": -1.5, "top": {"+": -6.243412494659424, "-": -4.743412494659424}, "raw": "-"}
+{"iid": "rule_v1.dev.gs027.c2.subject.long.168/base/conclusion/s_prime", "u": -3.0, "top": {"+": -9.297404289245605, "-": -6.2974042892456055}, "raw": "+"}
+{"iid": "rule_v1.dev.two_apixaban.cr.numeric.long.169/flip/conclusion/s", "u": -2.0, "top": {"+": -6.7184224128723145, "-": -4.7184224128723145}, "raw": "-"}
+{"iid": "rule_v1.dev.two_apixaban.cr.numeric.long.169/flip/conclusion/s_prime", "u": 2.499999761581421, "top": {"+": -3.823889970779419, "-": -6.32388973236084}, "raw": "+"}
+{"iid": "rule_v1.dev.gs210.c1.negation.easy.170/base/conclusion/s", "u": 1.5, "top": {"+": -3.5223512649536133, "-": -5.022351264953613}, "raw": "+"}
+{"iid": "rule_v1.dev.gs210.c1.negation.easy.170/base/conclusion/s_prime", "u": 0.5, "top": {"+": -3.5377297401428223, "-": -4.037729740142822}, "raw": "+"}
+{"iid": "rule_v1.dev.gs143.c1.subject.easy.171/flip/conclusion/s", "u": 0.0, "top": {"+": -3.7130677700042725, "-": -3.7130677700042725}, "raw": "-"}
+{"iid": "rule_v1.dev.gs143.c1.subject.easy.171/flip/conclusion/s_prime", "u": 1.5, "top": {"+": -2.938721179962158, "-": -4.438721179962158}, "raw": "+"}
+{"iid": "rule_v1.dev.gs172.c1.boundary.long.172/base/conclusion/s", "u": 1.0, "top": {"+": -4.385543346405029, "-": -5.385543346405029}, "raw": "+"}
+{"iid": "rule_v1.dev.gs172.c1.boundary.long.172/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.992547988891602, "-": -4.492547988891602}, "raw": "-"}
+{"iid": "rule_v1.dev.gs030.c2.subject.long.173/flip/conclusion/s", "u": -2.000000238418579, "top": {"+": -5.752381801605225, "-": -3.7523815631866455}, "raw": "-"}
+{"iid": "rule_v1.dev.gs030.c2.subject.long.173/flip/conclusion/s_prime", "u": -3.499999523162842, "top": {"+": -9.719616889953613, "-": -6.2196173667907715}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.easy.174/base/conclusion/s", "u": 2.5, "top": {"+": -3.4140162467956543, "-": -5.914016246795654}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.easy.174/base/conclusion/s_prime", "u": 0.0, "top": {"+": -3.725806713104248, "-": -3.725806713104248}, "raw": "-"}
+{"iid": "rule_v1.dev.gs109.c2.boundary.easy.175/flip/conclusion/s", "u": -2.0, "top": {"+": -5.382730484008789, "-": -3.382730484008789}, "raw": "-"}
+{"iid": "rule_v1.dev.gs109.c2.boundary.easy.175/flip/conclusion/s_prime", "u": 3.0, "top": {"+": -3.255673885345459, "-": -6.255673885345459}, "raw": "+"}
+{"iid": "rule_v1.dev.gs076.c2.time.superseded.176/base/conclusion/s", "u": 1.5, "top": {"+": -3.6212515830993652, "-": -5.121251583099365}, "raw": "+"}
+{"iid": "rule_v1.dev.gs076.c2.time.superseded.176/base/conclusion/s_prime", "u": 0.5, "top": {"+": -4.627575397491455, "-": -5.127575397491455}, "raw": "-"}
+{"iid": "rule_v1.dev.gs168.c2.negation.long.177/flip/conclusion/s", "u": 0.0, "top": {"+": -4.572443008422852, "-": -4.572443008422852}, "raw": "-"}
+{"iid": "rule_v1.dev.gs168.c2.negation.long.177/flip/conclusion/s_prime", "u": 2.0, "top": {"+": -3.9823412895202637, "-": -5.982341289520264}, "raw": "+"}
+{"iid": "rule_v1.dev.gout_clarith.clarith.negation.easy.178/base/conclusion/s", "u": 1.999999761581421, "top": {"+": -3.3908092975616455, "-": -5.390809059143066}, "raw": "+"}
+{"iid": "rule_v1.dev.gout_clarith.clarith.negation.easy.178/base/conclusion/s_prime", "u": -0.9999997615814209, "top": {"+": -4.93467378616333, "-": -3.934674024581909}, "raw": "-"}
+{"iid": "rule_v1.dev.c1_transfusion.hgb.boundary.long.179/flip/conclusion/s", "u": -1.0, "top": {"+": -4.7691969871521, "-": -3.7691969871520996}, "raw": "-"}
+{"iid": "rule_v1.dev.c1_transfusion.hgb.boundary.long.179/flip/conclusion/s_prime", "u": -2.999999523162842, "top": {"+": -9.395309448242188, "-": -6.395309925079346}, "raw": "+"}
+{"iid": "rule_v1.dev.gs199.c2.negation.easy.180/base/conclusion/s", "u": 0.0, "top": {"+": -4.37156867980957, "-": -4.37156867980957}, "raw": "-"}
+{"iid": "rule_v1.dev.gs199.c2.negation.easy.180/base/conclusion/s_prime", "u": 0.5, "top": {"+": -4.37907600402832, "-": -4.87907600402832}, "raw": "-"}
+{"iid": "rule_v1.dev.gs182.c2.numeric.easy.181/flip/conclusion/s", "u": -3.999999761581421, "top": {"+": -7.346819877624512, "-": -3.346820116043091}, "raw": "-"}
+{"iid": "rule_v1.dev.gs182.c2.numeric.easy.181/flip/conclusion/s_prime", "u": 1.499999761581421, "top": {"+": -3.7172305583953857, "-": -5.217230319976807}, "raw": "+"}
+{"iid": "rule_v1.dev.gs012.c1.subject.easy.182/base/conclusion/s", "u": -3.499999523162842, "top": {"+": -9.403848648071289, "-": -5.903849124908447}, "raw": "+"}
+{"iid": "rule_v1.dev.gs012.c1.subject.easy.182/base/conclusion/s_prime", "u": -1.0, "top": {"+": -4.51019811630249, "-": -3.5101981163024902}, "raw": "-"}
+{"iid": "rule_v1.dev.gs226.c1.time.easy.183/flip/conclusion/s", "u": -1.5, "top": {"+": -4.894695281982422, "-": -3.394695281982422}, "raw": "-"}
+{"iid": "rule_v1.dev.gs226.c1.time.easy.183/flip/conclusion/s_prime", "u": 2.0, "top": {"+": -3.0889220237731934, "-": -5.088922023773193}, "raw": "+"}
+{"iid": "rule_v1.dev.s1_sofa.plt.numeric.easy.184/base/conclusion/s", "u": -3.0, "top": {"+": -9.275426864624023, "-": -6.275426864624023}, "raw": "+"}
+{"iid": "rule_v1.dev.s1_sofa.plt.numeric.easy.184/base/conclusion/s_prime", "u": -1.0, "top": {"+": -5.764980316162109, "-": -4.764980316162109}, "raw": "-"}
+{"iid": "rule_v1.dev.gs102.c2.boundary.easy.185/flip/conclusion/s", "u": 0.0, "top": {"+": -4.03959846496582, "-": -4.03959846496582}, "raw": "-"}
+{"iid": "rule_v1.dev.gs102.c2.boundary.easy.185/flip/conclusion/s_prime", "u": 3.0, "top": {"+": -2.810659408569336, "-": -5.810659408569336}, "raw": "+"}
+{"iid": "rule_v1.dev.gs092.c1.numeric.long.186/base/conclusion/s", "u": -1.5, "top": {"+": -10.118864059448242, "-": -8.618864059448242}, "raw": "+"}
+{"iid": "rule_v1.dev.gs092.c1.numeric.long.186/base/conclusion/s_prime", "u": -4.500000476837158, "top": {"+": -9.438234329223633, "-": -4.938233852386475}, "raw": "-"}
+{"iid": "rule_v1.dev.gs149.c1.numeric.long.187/flip/conclusion/s", "u": -2.0, "top": {"+": -5.9927849769592285, "-": -3.9927849769592285}, "raw": "-"}
+{"iid": "rule_v1.dev.gs149.c1.numeric.long.187/flip/conclusion/s_prime", "u": -3.499999523162842, "top": {"+": -8.99570083618164, "-": -5.495701313018799}, "raw": "+"}
+{"iid": "rule_v1.dev.gs091.c1.numeric.easy.188/base/conclusion/s", "u": 3.999999761581421, "top": {"+": -3.6556508541107178, "-": -7.655650615692139}, "raw": "+"}
+{"iid": "rule_v1.dev.gs091.c1.numeric.easy.188/base/conclusion/s_prime", "u": -1.5, "top": {"+": -5.348066806793213, "-": -3.848066806793213}, "raw": "-"}
+{"iid": "rule_v1.dev.gs101.c1.numeric.easy.189/flip/conclusion/s", "u": -2.0, "top": {"+": -4.976979732513428, "-": -2.9769797325134277}, "raw": "-"}
+{"iid": "rule_v1.dev.gs101.c1.numeric.easy.189/flip/conclusion/s_prime", "u": 2.0, "top": {"+": -3.0868663787841797, "-": -5.08686637878418}, "raw": "+"}
+{"iid": "rule_v1.dev.gs102.c2.numeric.long.190/base/conclusion/s", "u": -0.5, "top": {"+": -5.045787811279297, "-": -4.545787811279297}, "raw": "-"}
+{"iid": "rule_v1.dev.gs102.c2.numeric.long.190/base/conclusion/s_prime", "u": 1.0, "top": {"+": -3.4645419120788574, "-": -4.464541912078857}, "raw": "+"}
+{"iid": "rule_v1.dev.gs143.c1.time.easy.191/flip/conclusion/s", "u": -0.5, "top": {"+": -4.456231117248535, "-": -3.956231117248535}, "raw": "-"}
+{"iid": "rule_v1.dev.gs143.c1.time.easy.191/flip/conclusion/s_prime", "u": 2.0, "top": {"+": -3.8986849784851074, "-": -5.898684978485107}, "raw": "+"}
+{"iid": "rule_v1.dev.gs130.c1.subject.easy.192/base/conclusion/s", "u": -0.5, "top": {"+": -4.579352378845215, "-": -4.079352378845215}, "raw": "-"}
+{"iid": "rule_v1.dev.gs130.c1.subject.easy.192/base/conclusion/s_prime", "u": 2.0, "top": {"+": -3.220466136932373, "-": -5.220466136932373}, "raw": "+"}
+{"iid": "rule_v1.dev.gs041.c3.numeric.long.193/flip/conclusion/s", "u": 0.0, "top": {"+": -4.883952617645264, "-": -4.883952617645264}, "raw": "-"}
+{"iid": "rule_v1.dev.gs041.c3.numeric.long.193/flip/conclusion/s_prime", "u": 2.0, "top": {"+": -3.641143798828125, "-": -5.641143798828125}, "raw": "+"}
+{"iid": "rule_v1.dev.gs210.c1.subject.long.194/base/conclusion/s", "u": -3.5, "top": {"+": -8.661540985107422, "-": -5.161540985107422}, "raw": "+"}
+{"iid": "rule_v1.dev.gs210.c1.subject.long.194/base/conclusion/s_prime", "u": -5.0, "top": {"+": -9.188515663146973, "-": -4.188515663146973}, "raw": "-"}
+{"iid": "rule_v1.dev.gs060.c1.time.easy.195/flip/conclusion/s", "u": -2.5, "top": {"+": -5.7402472496032715, "-": -3.2402472496032715}, "raw": "-"}
+{"iid": "rule_v1.dev.gs060.c1.time.easy.195/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -2.9734139442443848, "-": -5.473413944244385}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_dvt_pregnancy.pregnancy.time.easy.196/base/conclusion/s", "u": 1.0, "top": {"+": -2.9733963012695312, "-": -3.9733963012695312}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_dvt_pregnancy.pregnancy.time.easy.196/base/conclusion/s_prime", "u": -0.5, "top": {"+": -3.6232481002807617, "-": -3.1232481002807617}, "raw": "-"}
+{"iid": "rule_v1.dev.gs141.c1.subject.long.197/flip/conclusion/s", "u": -2.0, "top": {"+": -6.3059210777282715, "-": -4.3059210777282715}, "raw": "-"}
+{"iid": "rule_v1.dev.gs141.c1.subject.long.197/flip/conclusion/s_prime", "u": 2.0, "top": {"+": -3.933403491973877, "-": -5.933403491973877}, "raw": "+"}
+{"iid": "rule_v1.dev.gs007.c1.subject.long.198/base/conclusion/s", "u": -2.000000238418579, "top": {"+": -5.501289367675781, "-": -3.501289129257202}, "raw": "-"}
+{"iid": "rule_v1.dev.gs007.c1.subject.long.198/base/conclusion/s_prime", "u": -3.5, "top": {"+": -8.993345260620117, "-": -5.493345260620117}, "raw": "+"}
+{"iid": "rule_v1.dev.gs013.c1.boundary.easy.199/flip/conclusion/s", "u": -2.5, "top": {"+": -5.847167015075684, "-": -3.3471670150756836}, "raw": "-"}
+{"iid": "rule_v1.dev.gs013.c1.boundary.easy.199/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -3.0103440284729004, "-": -5.5103440284729}, "raw": "+"}
+{"iid": "rule_v1.dev.pain_ulcer.ulcer.subject.easy.200/base/conclusion/s", "u": -3.000000476837158, "top": {"+": -8.966018676757812, "-": -5.966018199920654}, "raw": "+"}
+{"iid": "rule_v1.dev.pain_ulcer.ulcer.subject.easy.200/base/conclusion/s_prime", "u": -0.9999997615814209, "top": {"+": -4.293329238891602, "-": -3.2933294773101807}, "raw": "-"}
+{"iid": "rule_v1.dev.hasbled.sbp.time.easy.201/flip/conclusion/s", "u": 0.5, "top": {"+": -5.1648359298706055, "-": -5.6648359298706055}, "raw": "-"}
+{"iid": "rule_v1.dev.hasbled.sbp.time.easy.201/flip/conclusion/s_prime", "u": 4.000000476837158, "top": {"+": -4.645455837249756, "-": -8.645456314086914}, "raw": "+"}
+{"iid": "rule_v1.dev.gs172.c2.numeric.easy.202/base/conclusion/s", "u": -1.0, "top": {"+": -4.856101989746094, "-": -3.8561019897460938}, "raw": "-"}
+{"iid": "rule_v1.dev.gs172.c2.numeric.easy.202/base/conclusion/s_prime", "u": -0.9999997615814209, "top": {"+": -4.949129104614258, "-": -3.949129343032837}, "raw": "-"}
+{"iid": "rule_v1.dev.gs058.c1.numeric.easy.203/flip/conclusion/s", "u": -1.000000238418579, "top": {"+": -4.180525779724121, "-": -3.180525541305542}, "raw": "-"}
+{"iid": "rule_v1.dev.gs058.c1.numeric.easy.203/flip/conclusion/s_prime", "u": 2.500000238418579, "top": {"+": -3.086883306503296, "-": -5.586883544921875}, "raw": "+"}
+{"iid": "rule_v1.dev.gs240.c1.subject.easy.204/base/conclusion/s", "u": 1.5, "top": {"+": -3.13134765625, "-": -4.63134765625}, "raw": "+"}
+{"iid": "rule_v1.dev.gs240.c1.subject.easy.204/base/conclusion/s_prime", "u": -0.5, "top": {"+": -3.796552896499634, "-": -3.296552896499634}, "raw": "-"}
+{"iid": "rule_v1.dev.gs119.c2.time.easy.205/flip/conclusion/s", "u": -0.9999997615814209, "top": {"+": -4.990462303161621, "-": -3.9904625415802}, "raw": "-"}
+{"iid": "rule_v1.dev.gs119.c2.time.easy.205/flip/conclusion/s_prime", "u": 1.500000238418579, "top": {"+": -3.522725820541382, "-": -5.022726058959961}, "raw": "+"}
+{"iid": "rule_v1.dev.gs173.c1.negation.easy.206/base/conclusion/s", "u": -3.5, "top": {"+": -8.909296035766602, "-": -5.409296035766602}, "raw": "+"}
+{"iid": "rule_v1.dev.gs173.c1.negation.easy.206/base/conclusion/s_prime", "u": -2.500000238418579, "top": {"+": -5.909244537353516, "-": -3.4092442989349365}, "raw": "-"}
+{"iid": "rule_v1.dev.gs076.c3.boundary.easy.207/flip/conclusion/s", "u": 0.5000002384185791, "top": {"+": -3.7165544033050537, "-": -4.216554641723633}, "raw": "-"}
+{"iid": "rule_v1.dev.gs076.c3.boundary.easy.207/flip/conclusion/s_prime", "u": 1.499999761581421, "top": {"+": -3.6511991024017334, "-": -5.151198863983154}, "raw": "+"}
+{"iid": "rule_v1.dev.gs222.c2.time.long.208/base/conclusion/s", "u": -3.5, "top": {"+": -9.580304145812988, "-": -6.080304145812988}, "raw": "+"}
+{"iid": "rule_v1.dev.gs222.c2.time.long.208/base/conclusion/s_prime", "u": -1.0, "top": {"+": -6.2461957931518555, "-": -5.2461957931518555}, "raw": "-"}
+{"iid": "rule_v1.dev.c1_transfusion.hgb.numeric.easy.209/flip/conclusion/s", "u": -2.0, "top": {"+": -5.744012355804443, "-": -3.7440123558044434}, "raw": "-"}
+{"iid": "rule_v1.dev.c1_transfusion.hgb.numeric.easy.209/flip/conclusion/s_prime", "u": 2.000000238418579, "top": {"+": -3.079937696456909, "-": -5.079937934875488}, "raw": "+"}
+{"iid": "rule_v1.dev.gs200.c1.negation.easy.210/base/conclusion/s", "u": 1.000000238418579, "top": {"+": -3.8277204036712646, "-": -4.827720642089844}, "raw": "+"}
+{"iid": "rule_v1.dev.gs200.c1.negation.easy.210/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.371289253234863, "-": -3.8712892532348633}, "raw": "-"}
+{"iid": "rule_v1.dev.uti_sulfa.sulfa.negation.long.211/flip/conclusion/s", "u": -1.5, "top": {"+": -5.0372700691223145, "-": -3.5372700691223145}, "raw": "-"}
+{"iid": "rule_v1.dev.uti_sulfa.sulfa.negation.long.211/flip/conclusion/s_prime", "u": -3.500000476837158, "top": {"+": -9.50660228729248, "-": -6.006601810455322}, "raw": "+"}
+{"iid": "rule_v1.dev.gs169.c2.time.easy.212/base/conclusion/s", "u": 1.500000238418579, "top": {"+": -3.5338761806488037, "-": -5.033876419067383}, "raw": "+"}
+{"iid": "rule_v1.dev.gs169.c2.time.easy.212/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.960350513458252, "-": -4.460350513458252}, "raw": "-"}
+{"iid": "rule_v1.dev.gs169.c2.time.long.213/flip/conclusion/s", "u": -1.5, "top": {"+": -5.363374710083008, "-": -3.863374710083008}, "raw": "-"}
+{"iid": "rule_v1.dev.gs169.c2.time.long.213/flip/conclusion/s_prime", "u": -2.999999523162842, "top": {"+": -9.283390998840332, "-": -6.28339147567749}, "raw": "+"}
+{"iid": "rule_v1.dev.gs212.c1.subject.long.214/base/conclusion/s", "u": -3.5, "top": {"+": -9.789031982421875, "-": -6.289031982421875}, "raw": "+"}
+{"iid": "rule_v1.dev.gs212.c1.subject.long.214/base/conclusion/s_prime", "u": -1.5, "top": {"+": -5.8202056884765625, "-": -4.3202056884765625}, "raw": "-"}
+{"iid": "rule_v1.dev.gs218.c1.subject.long.215/flip/conclusion/s", "u": -1.5, "top": {"+": -5.284244537353516, "-": -3.7842445373535156}, "raw": "-"}
+{"iid": "rule_v1.dev.gs218.c1.subject.long.215/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -3.3690261840820312, "-": -5.869026184082031}, "raw": "+"}
+{"iid": "rule_v1.dev.gs171.c1.negation.easy.216/base/conclusion/s", "u": 0.5, "top": {"+": -3.5140304565429688, "-": -4.014030456542969}, "raw": "+"}
+{"iid": "rule_v1.dev.gs171.c1.negation.easy.216/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.175344944000244, "-": -3.675344944000244}, "raw": "-"}
+{"iid": "rule_v1.dev.postop_hit.hit.negation.long.217/flip/conclusion/s", "u": 1.5, "top": {"+": -7.294344902038574, "-": -8.794344902038574}, "raw": "-"}
+{"iid": "rule_v1.dev.postop_hit.hit.negation.long.217/flip/conclusion/s_prime", "u": -2.5, "top": {"+": -9.203107833862305, "-": -6.703107833862305}, "raw": "+"}
+{"iid": "rule_v1.dev.gs232.c2.subject.long.218/base/conclusion/s", "u": -0.9999997615814209, "top": {"+": -4.9306230545043945, "-": -3.9306232929229736}, "raw": "-"}
+{"iid": "rule_v1.dev.gs232.c2.subject.long.218/base/conclusion/s_prime", "u": 0.0, "top": {"+": -9.577795028686523, "-": -9.577795028686523}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_cellulitis_sirs.wbc.boundary.long.219/flip/conclusion/s", "u": -1.0, "top": {"+": -5.765141010284424, "-": -4.765141010284424}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_cellulitis_sirs.wbc.boundary.long.219/flip/conclusion/s_prime", "u": 4.499999523162842, "top": {"+": -3.614035129547119, "-": -8.114034652709961}, "raw": "+"}
+{"iid": "rule_v1.dev.gs237.c2.subject.easy.220/base/conclusion/s", "u": 1.5, "top": {"+": -3.201366424560547, "-": -4.701366424560547}, "raw": "+"}
+{"iid": "rule_v1.dev.gs237.c2.subject.easy.220/base/conclusion/s_prime", "u": 0.0, "top": {"+": -3.7216603755950928, "-": -3.7216603755950928}, "raw": "-"}
+{"iid": "rule_v1.dev.gs198.c1.negation.easy.221/flip/conclusion/s", "u": -0.9999997615814209, "top": {"+": -4.524631023406982, "-": -3.5246312618255615}, "raw": "-"}
+{"iid": "rule_v1.dev.gs198.c1.negation.easy.221/flip/conclusion/s_prime", "u": 1.999999761581421, "top": {"+": -2.881866693496704, "-": -4.881866455078125}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_allopurinol.egfr.boundary.easy.222/base/conclusion/s", "u": 5.5, "top": {"+": -3.2101402282714844, "-": -8.710140228271484}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_allopurinol.egfr.boundary.easy.222/base/conclusion/s_prime", "u": 0.0, "top": {"+": -4.113749980926514, "-": -4.113749980926514}, "raw": "-"}
+{"iid": "rule_v1.dev.gs193.c2.negation.easy.223/flip/conclusion/s", "u": -3.000000238418579, "top": {"+": -6.33078670501709, "-": -3.3307864665985107}, "raw": "-"}
+{"iid": "rule_v1.dev.gs193.c2.negation.easy.223/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -3.326956272125244, "-": -5.826956272125244}, "raw": "+"}
+{"iid": "rule_v1.dev.gs084.c2.time.easy.224/base/conclusion/s", "u": -1.0, "top": {"+": -4.58297061920166, "-": -3.58297061920166}, "raw": "-"}
+{"iid": "rule_v1.dev.gs084.c2.time.easy.224/base/conclusion/s_prime", "u": 0.4999997615814209, "top": {"+": -3.7447149753570557, "-": -4.244714736938477}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.subject.easy.225/flip/conclusion/s", "u": -3.0, "top": {"+": -6.342165946960449, "-": -3.342165946960449}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.subject.easy.225/flip/conclusion/s_prime", "u": 1.999999761581421, "top": {"+": -3.167734384536743, "-": -5.167734146118164}, "raw": "+"}
+{"iid": "rule_v1.dev.gs121.c1.negation.easy.226/base/conclusion/s", "u": 0.5, "top": {"+": -3.5470709800720215, "-": -4.0470709800720215}, "raw": "+"}
+{"iid": "rule_v1.dev.gs121.c1.negation.easy.226/base/conclusion/s_prime", "u": 0.0, "top": {"+": -4.52998161315918, "-": -4.52998161315918}, "raw": "-"}
+{"iid": "rule_v1.dev.migraine_cad.cad.subject.easy.227/flip/conclusion/s", "u": -3.000000238418579, "top": {"+": -6.28580379486084, "-": -3.2858035564422607}, "raw": "-"}
+{"iid": "rule_v1.dev.migraine_cad.cad.subject.easy.227/flip/conclusion/s_prime", "u": 2.0, "top": {"+": -3.376129627227783, "-": -5.376129627227783}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.negation.long.228/base/conclusion/s", "u": 1.5, "top": {"+": -4.416299819946289, "-": -5.916299819946289}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.negation.long.228/base/conclusion/s_prime", "u": 0.5, "top": {"+": -5.089697360992432, "-": -5.589697360992432}, "raw": "-"}
+{"iid": "rule_v1.dev.gs133.c1.numeric.easy.229/flip/conclusion/s", "u": -2.0, "top": {"+": -5.860604763031006, "-": -3.860604763031006}, "raw": "-"}
+{"iid": "rule_v1.dev.gs133.c1.numeric.easy.229/flip/conclusion/s_prime", "u": 3.000000238418579, "top": {"+": -3.694661855697632, "-": -6.694662094116211}, "raw": "+"}
+{"iid": "rule_v1.dev.sirs.temp.numeric.easy.230/base/conclusion/s", "u": -3.0, "top": {"+": -8.888381958007812, "-": -5.8883819580078125}, "raw": "+"}
+{"iid": "rule_v1.dev.sirs.temp.numeric.easy.230/base/conclusion/s_prime", "u": -3.0, "top": {"+": -7.220794677734375, "-": -4.220794677734375}, "raw": "-"}
+{"iid": "rule_v1.dev.gs013.c1.boundary.easy.231/flip/conclusion/s", "u": -3.000000238418579, "top": {"+": -6.35265588760376, "-": -3.3526556491851807}, "raw": "-"}
+{"iid": "rule_v1.dev.gs013.c1.boundary.easy.231/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -3.3482394218444824, "-": -5.848239421844482}, "raw": "+"}
+{"iid": "rule_v1.dev.gs237.c1.negation.easy.232/base/conclusion/s", "u": 2.0, "top": {"+": -3.1247334480285645, "-": -5.1247334480285645}, "raw": "+"}
+{"iid": "rule_v1.dev.gs237.c1.negation.easy.232/base/conclusion/s_prime", "u": -1.0, "top": {"+": -4.294776916503906, "-": -3.2947769165039062}, "raw": "-"}
+{"iid": "rule_v1.dev.gs166.c3.boundary.easy.233/flip/conclusion/s", "u": 0.0, "top": {"+": -4.203166484832764, "-": -4.203166484832764}, "raw": "-"}
+{"iid": "rule_v1.dev.gs166.c3.boundary.easy.233/flip/conclusion/s_prime", "u": 0.5, "top": {"+": -3.4904227256774902, "-": -3.9904227256774902}, "raw": "+"}
+{"iid": "rule_v1.dev.gs171.c1.subject.long.234/base/conclusion/s", "u": 0.9999997615814209, "top": {"+": -3.469693899154663, "-": -4.469693660736084}, "raw": "+"}
+{"iid": "rule_v1.dev.gs171.c1.subject.long.234/base/conclusion/s_prime", "u": -1.0, "top": {"+": -5.061850070953369, "-": -4.061850070953369}, "raw": "-"}
+{"iid": "rule_v1.dev.gs145.c1.subject.long.235/flip/conclusion/s", "u": -0.5, "top": {"+": -5.031262397766113, "-": -4.531262397766113}, "raw": "-"}
+{"iid": "rule_v1.dev.gs145.c1.subject.long.235/flip/conclusion/s_prime", "u": -0.5, "top": {"+": -5.3626389503479, "-": -4.8626389503479}, "raw": "-"}
+{"iid": "rule_v1.dev.gs093.c2.boundary.easy.236/base/conclusion/s", "u": -3.5, "top": {"+": -9.462504386901855, "-": -5.9625043869018555}, "raw": "+"}
+{"iid": "rule_v1.dev.gs093.c2.boundary.easy.236/base/conclusion/s_prime", "u": -1.0, "top": {"+": -5.443979263305664, "-": -4.443979263305664}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_dronedarone_hf.hf.negation.easy.237/flip/conclusion/s", "u": -3.5, "top": {"+": -6.437305450439453, "-": -2.937305450439453}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_dronedarone_hf.hf.negation.easy.237/flip/conclusion/s_prime", "u": 3.499999761581421, "top": {"+": -2.9002745151519775, "-": -6.400274276733398}, "raw": "+"}
+{"iid": "rule_v1.dev.vte_platelets.plt.boundary.easy.238/base/conclusion/s", "u": 5.5, "top": {"+": -2.736845016479492, "-": -8.236845016479492}, "raw": "+"}
+{"iid": "rule_v1.dev.vte_platelets.plt.boundary.easy.238/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.1262664794921875, "-": -3.6262664794921875}, "raw": "-"}
+{"iid": "rule_v1.dev.gs095.c2.numeric.long.239/flip/conclusion/s", "u": 0.0, "top": {"+": -5.422311782836914, "-": -5.422311782836914}, "raw": "-"}
+{"iid": "rule_v1.dev.gs095.c2.numeric.long.239/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -3.950389862060547, "-": -6.450389862060547}, "raw": "+"}
+{"iid": "rule_v1.dev.gs107.c2.boundary.long.240/base/conclusion/s", "u": 1.0, "top": {"+": -4.161159515380859, "-": -5.161159515380859}, "raw": "+"}
+{"iid": "rule_v1.dev.gs107.c2.boundary.long.240/base/conclusion/s_prime", "u": 0.5, "top": {"+": -4.962901592254639, "-": -5.462901592254639}, "raw": "-"}
+{"iid": "rule_v1.dev.gs175.c2.numeric.long.241/flip/conclusion/s", "u": -2.5, "top": {"+": -6.420121192932129, "-": -3.920121192932129}, "raw": "-"}
+{"iid": "rule_v1.dev.gs175.c2.numeric.long.241/flip/conclusion/s_prime", "u": -3.0, "top": {"+": -9.281153678894043, "-": -6.281153678894043}, "raw": "+"}
+{"iid": "rule_v1.dev.gs081.c1.subject.long.242/base/conclusion/s", "u": -1.499999761581421, "top": {"+": -5.3731279373168945, "-": -3.8731281757354736}, "raw": "-"}
+{"iid": "rule_v1.dev.gs081.c1.subject.long.242/base/conclusion/s_prime", "u": 1.500000238418579, "top": {"+": -3.6096303462982178, "-": -5.109630584716797}, "raw": "+"}
+{"iid": "rule_v1.dev.gs177.c2.numeric.easy.243/flip/conclusion/s", "u": 1.5, "top": {"+": -2.9807424545288086, "-": -4.480742454528809}, "raw": "+"}
+{"iid": "rule_v1.dev.gs177.c2.numeric.easy.243/flip/conclusion/s_prime", "u": 2.000000238418579, "top": {"+": -2.9106991291046143, "-": -4.910699367523193}, "raw": "+"}
+{"iid": "rule_v1.dev.two_apixaban.cr.time.easy.244/base/conclusion/s", "u": 1.499999761581421, "top": {"+": -3.6446244716644287, "-": -5.14462423324585}, "raw": "+"}
+{"iid": "rule_v1.dev.two_apixaban.cr.time.easy.244/base/conclusion/s_prime", "u": -1.5, "top": {"+": -5.5445966720581055, "-": -4.0445966720581055}, "raw": "-"}
+{"iid": "rule_v1.dev.s4_apache.age.numeric.long.245/flip/conclusion/s", "u": -0.5, "top": {"+": -4.322068214416504, "-": -3.822068214416504}, "raw": "-"}
+{"iid": "rule_v1.dev.s4_apache.age.numeric.long.245/flip/conclusion/s_prime", "u": -1.0, "top": {"+": -9.197324752807617, "-": -8.197324752807617}, "raw": "+"}
+{"iid": "rule_v1.dev.gs160.c1.boundary.easy.246/base/conclusion/s", "u": -4.5, "top": {"+": -9.222761154174805, "-": -4.722761154174805}, "raw": "+"}
+{"iid": "rule_v1.dev.gs160.c1.boundary.easy.246/base/conclusion/s_prime", "u": -2.0, "top": {"+": -5.426794052124023, "-": -3.4267940521240234}, "raw": "-"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.boundary.easy.247/flip/conclusion/s", "u": 0.4999997615814209, "top": {"+": -3.582921266555786, "-": -4.082921028137207}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.boundary.easy.247/flip/conclusion/s_prime", "u": -2.5, "top": {"+": -9.262606620788574, "-": -6.762606620788574}, "raw": "+"}
+{"iid": "rule_v1.dev.gs133.c1.time.long.248/base/conclusion/s", "u": -4.000000476837158, "top": {"+": -9.333982467651367, "-": -5.333981990814209}, "raw": "+"}
+{"iid": "rule_v1.dev.gs133.c1.time.long.248/base/conclusion/s_prime", "u": -0.5, "top": {"+": -5.426324844360352, "-": -4.926324844360352}, "raw": "-"}
+{"iid": "rule_v1.dev.wells_dvt.calf.numeric.long.249/flip/conclusion/s", "u": 0.0, "top": {"+": -4.689211845397949, "-": -4.689211845397949}, "raw": "-"}
+{"iid": "rule_v1.dev.wells_dvt.calf.numeric.long.249/flip/conclusion/s_prime", "u": -1.0, "top": {"+": -9.15078353881836, "-": -8.15078353881836}, "raw": "+"}
+{"iid": "rule_v1.dev.gs101.c1.boundary.easy.250/base/conclusion/s", "u": 3.0, "top": {"+": -3.3239426612854004, "-": -6.3239426612854}, "raw": "+"}
+{"iid": "rule_v1.dev.gs101.c1.boundary.easy.250/base/conclusion/s_prime", "u": -0.5000002384185791, "top": {"+": -4.458935737609863, "-": -3.958935499191284}, "raw": "-"}
+{"iid": "rule_v1.dev.gs076.c2.time.superseded.251/flip/conclusion/s", "u": 1.0, "top": {"+": -4.386355876922607, "-": -5.386355876922607}, "raw": "+"}
+{"iid": "rule_v1.dev.gs076.c2.time.superseded.251/flip/conclusion/s_prime", "u": 1.0, "top": {"+": -5.292975902557373, "-": -6.292975902557373}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_dvt_pregnancy.pregnancy.subject.easy.252/base/conclusion/s", "u": 1.0, "top": {"+": -2.973515033721924, "-": -3.973515033721924}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_dvt_pregnancy.pregnancy.subject.easy.252/base/conclusion/s_prime", "u": 0.0, "top": {"+": -3.3007335662841797, "-": -3.3007335662841797}, "raw": "-"}
+{"iid": "rule_v1.dev.gs022.c1.boundary.easy.253/flip/conclusion/s", "u": -3.000000238418579, "top": {"+": -6.171474933624268, "-": -3.1714746952056885}, "raw": "-"}
+{"iid": "rule_v1.dev.gs022.c1.boundary.easy.253/flip/conclusion/s_prime", "u": 2.0, "top": {"+": -3.0036654472351074, "-": -5.003665447235107}, "raw": "+"}
+{"iid": "rule_v1.dev.gs174.c1.time.long.254/base/conclusion/s", "u": 1.999999761581421, "top": {"+": -3.532771348953247, "-": -5.532771110534668}, "raw": "+"}
+{"iid": "rule_v1.dev.gs174.c1.time.long.254/base/conclusion/s_prime", "u": -0.5, "top": {"+": -5.041845321655273, "-": -4.541845321655273}, "raw": "-"}
+{"iid": "rule_v1.dev.c2_statin_clarith.clarith.subject.long.255/flip/conclusion/s", "u": -2.499999761581421, "top": {"+": -5.8189215660095215, "-": -3.3189218044281006}, "raw": "-"}
+{"iid": "rule_v1.dev.c2_statin_clarith.clarith.subject.long.255/flip/conclusion/s_prime", "u": -4.0, "top": {"+": -9.392117500305176, "-": -5.392117500305176}, "raw": "+"}
+{"iid": "rule_v1.dev.gs248.c2.numeric.long.256/base/conclusion/s", "u": -3.5, "top": {"+": -9.084545135498047, "-": -5.584545135498047}, "raw": "+"}
+{"iid": "rule_v1.dev.gs248.c2.numeric.long.256/base/conclusion/s_prime", "u": -1.5, "top": {"+": -6.287477970123291, "-": -4.787477970123291}, "raw": "-"}
+{"iid": "rule_v1.dev.gs026.c1.negation.long.257/flip/conclusion/s", "u": -1.999999761581421, "top": {"+": -5.283133506774902, "-": -3.2831337451934814}, "raw": "-"}
+{"iid": "rule_v1.dev.gs026.c1.negation.long.257/flip/conclusion/s_prime", "u": -3.500000476837158, "top": {"+": -9.419587135314941, "-": -5.919586658477783}, "raw": "+"}
+{"iid": "rule_v1.dev.gs248.c2.numeric.long.258/base/conclusion/s", "u": -2.500000476837158, "top": {"+": -9.694844245910645, "-": -7.194843769073486}, "raw": "+"}
+{"iid": "rule_v1.dev.gs248.c2.numeric.long.258/base/conclusion/s_prime", "u": -1.5, "top": {"+": -7.144455909729004, "-": -5.644455909729004}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_lipid_lpa.cad.negation.long.259/flip/conclusion/s", "u": -1.0, "top": {"+": -4.8620076179504395, "-": -3.8620076179504395}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_lipid_lpa.cad.negation.long.259/flip/conclusion/s_prime", "u": -2.999999523162842, "top": {"+": -9.726184844970703, "-": -6.726185321807861}, "raw": "+"}
+{"iid": "rule_v1.dev.gs119.c2.negation.easy.260/base/conclusion/s", "u": 0.9999997615814209, "top": {"+": -3.7264978885650635, "-": -4.726497650146484}, "raw": "+"}
+{"iid": "rule_v1.dev.gs119.c2.negation.easy.260/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.691920280456543, "-": -4.191920280456543}, "raw": "-"}
+{"iid": "rule_v1.dev.gs163.c3.numeric.easy.261/flip/conclusion/s", "u": 1.0, "top": {"+": -3.6411638259887695, "-": -4.6411638259887695}, "raw": "-"}
+{"iid": "rule_v1.dev.gs163.c3.numeric.easy.261/flip/conclusion/s_prime", "u": 3.499999761581421, "top": {"+": -3.148071527481079, "-": -6.6480712890625}, "raw": "+"}
+{"iid": "rule_v1.dev.gs191.c1.time.easy.262/base/conclusion/s", "u": -0.5, "top": {"+": -4.544477462768555, "-": -4.044477462768555}, "raw": "-"}
+{"iid": "rule_v1.dev.gs191.c1.time.easy.262/base/conclusion/s_prime", "u": 1.0, "top": {"+": -4.001154899597168, "-": -5.001154899597168}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.boundary.easy.263/flip/conclusion/s", "u": 1.0, "top": {"+": -3.441906452178955, "-": -4.441906452178955}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.boundary.easy.263/flip/conclusion/s_prime", "u": 4.0, "top": {"+": -3.1915102005004883, "-": -7.191510200500488}, "raw": "+"}
+{"iid": "rule_v1.dev.gs109.c2.boundary.easy.264/base/conclusion/s", "u": 1.5, "top": {"+": -3.144580364227295, "-": -4.644580364227295}, "raw": "+"}
+{"iid": "rule_v1.dev.gs109.c2.boundary.easy.264/base/conclusion/s_prime", "u": -1.0, "top": {"+": -4.547263145446777, "-": -3.5472631454467773}, "raw": "-"}
+{"iid": "rule_v1.dev.gs233.c2.subject.long.265/flip/conclusion/s", "u": 0.0, "top": {"+": -5.018962860107422, "-": -5.018962860107422}, "raw": "-"}
+{"iid": "rule_v1.dev.gs233.c2.subject.long.265/flip/conclusion/s_prime", "u": 1.5, "top": {"+": -4.198011875152588, "-": -5.698011875152588}, "raw": "+"}
+{"iid": "rule_v1.dev.gs129.c2.boundary.long.266/base/conclusion/s", "u": -3.000000476837158, "top": {"+": -9.720616340637207, "-": -6.720615863800049}, "raw": "+"}
+{"iid": "rule_v1.dev.gs129.c2.boundary.long.266/base/conclusion/s_prime", "u": 0.0, "top": {"+": -5.354774475097656, "-": -5.354774475097656}, "raw": "-"}
+{"iid": "rule_v1.dev.gs175.c2.time.easy.267/flip/conclusion/s", "u": -1.5, "top": {"+": -5.542383193969727, "-": -4.042383193969727}, "raw": "-"}
+{"iid": "rule_v1.dev.gs175.c2.time.easy.267/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -3.530365467071533, "-": -6.030365467071533}, "raw": "+"}
+{"iid": "rule_v1.dev.gs095.c3.subject.easy.268/base/conclusion/s", "u": 1.0, "top": {"+": -3.413412570953369, "-": -4.413412570953369}, "raw": "+"}
+{"iid": "rule_v1.dev.gs095.c3.subject.easy.268/base/conclusion/s_prime", "u": 0.0, "top": {"+": -4.025562286376953, "-": -4.025562286376953}, "raw": "-"}
+{"iid": "rule_v1.dev.gs040.c2.time.easy.269/flip/conclusion/s", "u": -1.5, "top": {"+": -4.675559043884277, "-": -3.1755590438842773}, "raw": "-"}
+{"iid": "rule_v1.dev.gs040.c2.time.easy.269/flip/conclusion/s_prime", "u": 2.000000238418579, "top": {"+": -3.1846587657928467, "-": -5.184659004211426}, "raw": "+"}
+{"iid": "rule_v1.dev.gs093.c2.numeric.long.270/base/conclusion/s", "u": -4.500000476837158, "top": {"+": -9.60892391204834, "-": -5.108923435211182}, "raw": "+"}
+{"iid": "rule_v1.dev.gs093.c2.numeric.long.270/base/conclusion/s_prime", "u": -0.5, "top": {"+": -5.429678916931152, "-": -4.929678916931152}, "raw": "-"}
+{"iid": "rule_v1.dev.gs207.c1.boundary.long.271/flip/conclusion/s", "u": -1.5, "top": {"+": -5.775614261627197, "-": -4.275614261627197}, "raw": "-"}
+{"iid": "rule_v1.dev.gs207.c1.boundary.long.271/flip/conclusion/s_prime", "u": 3.0, "top": {"+": -2.8907880783081055, "-": -5.8907880783081055}, "raw": "+"}
+{"iid": "rule_v1.dev.all_spiro.k.time.long.272/base/conclusion/s", "u": -4.500000476837158, "top": {"+": -8.886055946350098, "-": -4.3860554695129395}, "raw": "+"}
+{"iid": "rule_v1.dev.all_spiro.k.time.long.272/base/conclusion/s_prime", "u": 0.5, "top": {"+": -4.295960426330566, "-": -4.795960426330566}, "raw": "+"}
+{"iid": "rule_v1.dev.gs102.c2.numeric.easy.273/flip/conclusion/s", "u": 0.5, "top": {"+": -3.7179503440856934, "-": -4.217950344085693}, "raw": "-"}
+{"iid": "rule_v1.dev.gs102.c2.numeric.easy.273/flip/conclusion/s_prime", "u": 2.0, "top": {"+": -3.634521007537842, "-": -5.634521007537842}, "raw": "+"}
+{"iid": "rule_v1.dev.gs102.c1.negation.easy.274/base/conclusion/s", "u": 1.0, "top": {"+": -3.1480555534362793, "-": -4.148055553436279}, "raw": "-"}
+{"iid": "rule_v1.dev.gs102.c1.negation.easy.274/base/conclusion/s_prime", "u": 1.500000238418579, "top": {"+": -3.4055516719818115, "-": -4.905551910400391}, "raw": "+"}
+{"iid": "rule_v1.dev.any_gout.egfr.numeric.easy.275/flip/conclusion/s", "u": -3.5, "top": {"+": -7.264365196228027, "-": -3.7643651962280273}, "raw": "-"}
+{"iid": "rule_v1.dev.any_gout.egfr.numeric.easy.275/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -2.970791816711426, "-": -5.470791816711426}, "raw": "+"}
+{"iid": "rule_v1.dev.gs107.c1.negation.long.276/base/conclusion/s", "u": 0.5, "top": {"+": -3.8746209144592285, "-": -4.3746209144592285}, "raw": "+"}
+{"iid": "rule_v1.dev.gs107.c1.negation.long.276/base/conclusion/s_prime", "u": 0.0, "top": {"+": -5.326037406921387, "-": -5.326037406921387}, "raw": "-"}
+{"iid": "rule_v1.dev.gs214.c2.subject.easy.277/flip/conclusion/s", "u": -0.9999997615814209, "top": {"+": -4.470223903656006, "-": -3.470224142074585}, "raw": "-"}
+{"iid": "rule_v1.dev.gs214.c2.subject.easy.277/flip/conclusion/s_prime", "u": 2.0, "top": {"+": -3.0881247520446777, "-": -5.088124752044678}, "raw": "+"}
+{"iid": "rule_v1.dev.gs215.c1.boundary.easy.278/base/conclusion/s", "u": -3.0, "top": {"+": -9.6785306930542, "-": -6.678530693054199}, "raw": "+"}
+{"iid": "rule_v1.dev.gs215.c1.boundary.easy.278/base/conclusion/s_prime", "u": -2.0, "top": {"+": -5.328119277954102, "-": -3.3281192779541016}, "raw": "-"}
+{"iid": "rule_v1.dev.gs121.c2.negation.long.279/flip/conclusion/s", "u": -2.0, "top": {"+": -6.299419403076172, "-": -4.299419403076172}, "raw": "-"}
+{"iid": "rule_v1.dev.gs121.c2.negation.long.279/flip/conclusion/s_prime", "u": -2.5, "top": {"+": -9.667513847351074, "-": -7.167513847351074}, "raw": "+"}
+{"iid": "rule_v1.dev.gs237.c1.time.long.280/base/conclusion/s", "u": -4.0, "top": {"+": -9.032612800598145, "-": -5.0326128005981445}, "raw": "+"}
+{"iid": "rule_v1.dev.gs237.c1.time.long.280/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.656423091888428, "-": -4.156423091888428}, "raw": "-"}
+{"iid": "rule_v1.dev.sirs.hr.time.superseded.281/flip/conclusion/s", "u": 1.500000238418579, "top": {"+": -3.4352262020111084, "-": -4.9352264404296875}, "raw": "+"}
+{"iid": "rule_v1.dev.sirs.hr.time.superseded.281/flip/conclusion/s_prime", "u": 2.5, "top": {"+": -3.0729150772094727, "-": -5.572915077209473}, "raw": "+"}
+{"iid": "rule_v1.dev.gs043.c1.subject.easy.282/base/conclusion/s", "u": 1.499999761581421, "top": {"+": -3.949387788772583, "-": -5.449387550354004}, "raw": "+"}
+{"iid": "rule_v1.dev.gs043.c1.subject.easy.282/base/conclusion/s_prime", "u": -1.0, "top": {"+": -5.326557159423828, "-": -4.326557159423828}, "raw": "-"}
+{"iid": "rule_v1.dev.gs008.c2.subject.long.283/flip/conclusion/s", "u": -2.0, "top": {"+": -6.236194610595703, "-": -4.236194610595703}, "raw": "-"}
+{"iid": "rule_v1.dev.gs008.c2.subject.long.283/flip/conclusion/s_prime", "u": 4.0, "top": {"+": -3.2242093086242676, "-": -7.224209308624268}, "raw": "+"}
+{"iid": "rule_v1.dev.gs015.c1.subject.long.284/base/conclusion/s", "u": -3.5, "top": {"+": -9.445880889892578, "-": -5.945880889892578}, "raw": "+"}
+{"iid": "rule_v1.dev.gs015.c1.subject.long.284/base/conclusion/s_prime", "u": -1.5, "top": {"+": -5.764009475708008, "-": -4.264009475708008}, "raw": "-"}
+{"iid": "rule_v1.dev.gs146.c1.boundary.easy.285/flip/conclusion/s", "u": -1.0, "top": {"+": -4.531145095825195, "-": -3.5311450958251953}, "raw": "-"}
+{"iid": "rule_v1.dev.gs146.c1.boundary.easy.285/flip/conclusion/s_prime", "u": 2.500000238418579, "top": {"+": -2.9279744625091553, "-": -5.427974700927734}, "raw": "+"}
+{"iid": "rule_v1.dev.gs019.c1.negation.easy.286/base/conclusion/s", "u": 2.0, "top": {"+": -3.053508758544922, "-": -5.053508758544922}, "raw": "+"}
+{"iid": "rule_v1.dev.gs019.c1.negation.easy.286/base/conclusion/s_prime", "u": -1.5, "top": {"+": -5.502933502197266, "-": -4.002933502197266}, "raw": "-"}
+{"iid": "rule_v1.dev.two_apixaban.age.numeric.easy.287/flip/conclusion/s", "u": -2.0, "top": {"+": -6.3416056632995605, "-": -4.3416056632995605}, "raw": "-"}
+{"iid": "rule_v1.dev.two_apixaban.age.numeric.easy.287/flip/conclusion/s_prime", "u": 2.499999761581421, "top": {"+": -3.362421751022339, "-": -5.86242151260376}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_timi_stemi.hr.boundary.long.288/base/conclusion/s", "u": 2.5, "top": {"+": -4.504583358764648, "-": -7.004583358764648}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_timi_stemi.hr.boundary.long.288/base/conclusion/s_prime", "u": 0.0, "top": {"+": -6.049750328063965, "-": -6.049750328063965}, "raw": "-"}
+{"iid": "rule_v1.dev.gs172.c1.time.superseded.289/flip/conclusion/s", "u": -2.000000238418579, "top": {"+": -5.775527000427246, "-": -3.775526762008667}, "raw": "-"}
+{"iid": "rule_v1.dev.gs172.c1.time.superseded.289/flip/conclusion/s_prime", "u": 3.0, "top": {"+": -3.242845058441162, "-": -6.242845058441162}, "raw": "+"}
+{"iid": "rule_v1.dev.gs242.c1.negation.easy.290/base/conclusion/s", "u": -3.5, "top": {"+": -9.33169937133789, "-": -5.831699371337891}, "raw": "+"}
+{"iid": "rule_v1.dev.gs242.c1.negation.easy.290/base/conclusion/s_prime", "u": -1.499999761581421, "top": {"+": -5.3377556800842285, "-": -3.8377559185028076}, "raw": "-"}
+{"iid": "rule_v1.dev.gs128.c4.subject.easy.291/flip/conclusion/s", "u": 0.5, "top": {"+": -3.6573877334594727, "-": -4.157387733459473}, "raw": "-"}
+{"iid": "rule_v1.dev.gs128.c4.subject.easy.291/flip/conclusion/s_prime", "u": 1.499999761581421, "top": {"+": -3.4935600757598877, "-": -4.993559837341309}, "raw": "+"}
+{"iid": "rule_v1.dev.gs040.c1.subject.long.292/base/conclusion/s", "u": 2.0, "top": {"+": -4.331734657287598, "-": -6.331734657287598}, "raw": "+"}
+{"iid": "rule_v1.dev.gs040.c1.subject.long.292/base/conclusion/s_prime", "u": -0.5, "top": {"+": -6.283755779266357, "-": -5.783755779266357}, "raw": "-"}
+{"iid": "rule_v1.dev.gs154.c1.negation.long.293/flip/conclusion/s", "u": -1.999999761581421, "top": {"+": -5.768238067626953, "-": -3.7682383060455322}, "raw": "-"}
+{"iid": "rule_v1.dev.gs154.c1.negation.long.293/flip/conclusion/s_prime", "u": 2.0, "top": {"+": -3.344522476196289, "-": -5.344522476196289}, "raw": "+"}
+{"iid": "rule_v1.dev.statin_alt.alt.time.easy.294/base/conclusion/s", "u": 2.5, "top": {"+": -3.1069817543029785, "-": -5.6069817543029785}, "raw": "+"}
+{"iid": "rule_v1.dev.statin_alt.alt.time.easy.294/base/conclusion/s_prime", "u": -0.5, "top": {"+": -4.67113733291626, "-": -4.17113733291626}, "raw": "-"}
+{"iid": "rule_v1.dev.gs022.c1.time.long.295/flip/conclusion/s", "u": -2.5, "top": {"+": -6.25161075592041, "-": -3.75161075592041}, "raw": "-"}
+{"iid": "rule_v1.dev.gs022.c1.time.long.295/flip/conclusion/s_prime", "u": 3.0, "top": {"+": -3.316530704498291, "-": -6.316530704498291}, "raw": "+"}
+{"iid": "rule_v1.dev.gs006.c1.negation.easy.296/base/conclusion/s", "u": 1.5, "top": {"+": -3.2123517990112305, "-": -4.7123517990112305}, "raw": "+"}
+{"iid": "rule_v1.dev.gs006.c1.negation.easy.296/base/conclusion/s_prime", "u": -0.4999997615814209, "top": {"+": -4.334740161895752, "-": -3.834740400314331}, "raw": "-"}
+{"iid": "rule_v1.dev.gs101.c1.boundary.long.297/flip/conclusion/s", "u": -2.000000238418579, "top": {"+": -5.305306434631348, "-": -3.3053061962127686}, "raw": "-"}
+{"iid": "rule_v1.dev.gs101.c1.boundary.long.297/flip/conclusion/s_prime", "u": 3.000000238418579, "top": {"+": -3.3414762020111084, "-": -6.3414764404296875}, "raw": "+"}
+{"iid": "rule_v1.dev.gs199.c2.negation.easy.298/base/conclusion/s", "u": -0.5, "top": {"+": -4.272624969482422, "-": -3.772624969482422}, "raw": "-"}
+{"iid": "rule_v1.dev.gs199.c2.negation.easy.298/base/conclusion/s_prime", "u": 2.5, "top": {"+": -3.198178291320801, "-": -5.698178291320801}, "raw": "+"}
+{"iid": "rule_v1.dev.gs106.c1.negation.easy.299/flip/conclusion/s", "u": -4.5, "top": {"+": -7.820886135101318, "-": -3.3208861351013184}, "raw": "-"}
+{"iid": "rule_v1.dev.gs106.c1.negation.easy.299/flip/conclusion/s_prime", "u": -3.0, "top": {"+": -9.368841171264648, "-": -6.368841171264648}, "raw": "+"}
+{"iid": "rule_v1.dev.gs027.c3.negation.easy.0/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs027.c3.negation.easy.0/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.any_htn.k.time.easy.1/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.any_htn.k.time.easy.1/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_neutropenia.anc.numeric.easy.2/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_neutropenia.anc.numeric.easy.2/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c2.negation.easy.3/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c2.negation.easy.3/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.easy.4/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.easy.4/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs205.c1.subject.easy.5/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs205.c1.subject.easy.5/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs232.c2.negation.easy.6/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs232.c2.negation.easy.6/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_nice_step1.age.boundary.easy.7/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_nice_step1.age.boundary.easy.7/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs128.c4.negation.long.8/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs128.c4.negation.long.8/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.postop_hit.hit.subject.long.9/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.postop_hit.hit.subject.long.9/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs008.c1.numeric.easy.10/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs008.c1.numeric.easy.10/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.negation.long.11/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.negation.long.11/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs103.c2.time.superseded.12/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs103.c2.time.superseded.12/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs206.c2.numeric.long.13/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs206.c2.numeric.long.13/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs215.c1.boundary.long.14/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs215.c1.boundary.long.14/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs046.c2.numeric.easy.15/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs046.c2.numeric.easy.15/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs218.c2.numeric.long.16/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs218.c2.numeric.long.16/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_perc.vte.negation.long.17/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_perc.vte.negation.long.17/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs168.c3.subject.easy.18/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs168.c3.subject.easy.18/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs166.c2.numeric.long.19/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs166.c2.numeric.long.19/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_prasugrel_stroke.stroke.negation.easy.20/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_prasugrel_stroke.stroke.negation.easy.20/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gout_clarith.clarith.subject.long.21/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gout_clarith.clarith.subject.long.21/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_khorana.hgb.boundary.long.22/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_khorana.hgb.boundary.long.22/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs145.c3.numeric.easy.23/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs145.c3.numeric.easy.23/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs062.c1.boundary.easy.24/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs062.c1.boundary.easy.24/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs041.c3.boundary.long.25/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs041.c3.boundary.long.25/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs154.c2.boundary.long.26/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs154.c2.boundary.long.26/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs061.c2.time.easy.27/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs061.c2.time.easy.27/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs214.c1.time.long.28/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs214.c1.time.long.28/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.htn_pregnancy.pregnancy.time.easy.29/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.htn_pregnancy.pregnancy.time.easy.29/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.wells_dvt.calf.numeric.easy.30/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.wells_dvt.calf.numeric.easy.30/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs243.c4.boundary.easy.31/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs243.c4.boundary.easy.31/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs000.c3.time.easy.32/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs000.c3.time.easy.32/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs013.c1.numeric.easy.33/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs013.c1.numeric.easy.33/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs226.c1.negation.long.34/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs226.c1.negation.long.34/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs043.c1.time.easy.35/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs043.c1.time.easy.35/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs177.c3.boundary.long.36/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs177.c3.boundary.long.36/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.long.37/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.long.37/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs073.c1.time.easy.38/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs073.c1.time.easy.38/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs116.c2.negation.easy.39/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs116.c2.negation.easy.39/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs145.c3.boundary.easy.40/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs145.c3.boundary.easy.40/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.negation.easy.41/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.negation.easy.41/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_abscess_mtx.mtx.subject.easy.42/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_abscess_mtx.mtx.subject.easy.42/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs153.c1.subject.easy.43/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs153.c1.subject.easy.43/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs063.c1.time.easy.44/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs063.c1.time.easy.44/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs182.c2.boundary.easy.45/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs182.c2.boundary.easy.45/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.pain_ulcer.ulcer.subject.long.46/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.pain_ulcer.ulcer.subject.long.46/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs046.c2.boundary.easy.47/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs046.c2.boundary.easy.47/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_hemorr2hages.aspirin.time.easy.48/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_hemorr2hages.aspirin.time.easy.48/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs045.c1.subject.long.49/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs045.c1.subject.long.49/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs130.c3.negation.easy.50/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs130.c3.negation.easy.50/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs238.c2.time.easy.51/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs238.c2.time.easy.51/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs135.c1.subject.easy.52/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs135.c1.subject.easy.52/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_pcp_sulfa.sulfa.time.long.53/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_pcp_sulfa.sulfa.time.long.53/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs070.c1.numeric.long.54/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs070.c1.numeric.long.54/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs181.c1.subject.long.55/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs181.c1.subject.long.55/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.t2d_metformin.egfr.time.long.56/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.t2d_metformin.egfr.time.long.56/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs240.c1.subject.easy.57/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs240.c1.subject.easy.57/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs042.c2.negation.easy.58/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs042.c2.negation.easy.58/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs098.c1.subject.easy.59/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs098.c1.subject.easy.59/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs162.c1.boundary.easy.60/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs162.c1.boundary.easy.60/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs098.c2.subject.easy.61/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs098.c2.subject.easy.61/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs089.c1.negation.easy.62/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs089.c1.negation.easy.62/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs152.c1.negation.long.63/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs152.c1.negation.long.63/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.time.superseded.64/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.time.superseded.64/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs174.c1.numeric.easy.65/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs174.c1.numeric.easy.65/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs229.c2.boundary.long.66/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs229.c2.boundary.long.66/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs028.c1.time.easy.67/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs028.c1.time.easy.67/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs040.c2.boundary.long.68/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs040.c2.boundary.long.68/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs205.c1.subject.easy.69/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs205.c1.subject.easy.69/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s4_improve_vte.age.boundary.easy.70/missing/conclusion/s", "u": 0.0, "raw": "We are given a specific version of the IMPROVE VTE risk score with only three criteria:\n\n- 3 points for a venous thromboembolism (VTE) of the patient at any time (current or previous)\n- 2 points for active cancer\n- 1 point for age above 60 years\n\nOther IMPROVE items are not considered.\n\nWe are told about a case:\n\n- Woman, adult.\n- Admitted to the medical ward with cellulitis of the left leg; mostly in bed.\n- Knits as a hobby.\n- Weight steady over the past year.\n\nWe are asked to evaluate the claim: \"The age criterion contributes 0 points.\"\n\nWe must determine if this claim is correct under the stated rule.\n\n### Step 1: Identify what determines the age criterion\nThe age criterion gives **1 point if age is above 60 years**. Otherwise, it gives **0 points**.\n\nSo, to assign 0 points for age, the patient must be **60 years old or younger**.\n\n### Step 2: Extract age information from the case\nThe case states: \"Woman, adult.\"\n\n- \"Adult\" typically means 18 years or older, but it does not specify an exact age.\n- There is **no mention of her age being above 60**.\n- No other clues (like menopause, retirement, etc.) are given that would imply age >60.\n- She knits as a hobby and has steady weight — these are neutral and do not indicate age.\n\nSince no age is provided, and we are only told she is an adult, we **cannot assume she is over 60**.\n\nIn clinical risk scoring, if a criterion’s condition is not met (or not known to be met), we assign the default (usually 0 points) unless instructed otherwise.\n\nHere, the rule is clear: **1 point only if age > 60**. Since we have no evidence that her age is above 60, we must assume the condition is **not satisfied**.\n\nTherefore, the age criterion contributes **0 points**.\n\n### Step 3: Evaluate the claim\nThe claim is: \"The age criterion contributes 0 points.\"\n\nBased on the information given, this is **correct**.\n\n### Final Answer:\n+ (meaning the claim is correct)", "parsed": null, "readout": "pointwise"}
+{"iid": "rule_v1.dev.s4_improve_vte.age.boundary.easy.70/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.negation.long.71/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.negation.long.71/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs152.c1.negation.long.72/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs152.c1.negation.long.72/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs129.c2.numeric.long.73/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs129.c2.numeric.long.73/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs043.c1.subject.long.74/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs043.c1.subject.long.74/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.boundary.easy.75/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.boundary.easy.75/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c1.negation.easy.76/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c1.negation.easy.76/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.any_gout.egfr.numeric.easy.77/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.any_gout.egfr.numeric.easy.77/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs231.c1.negation.long.78/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs231.c1.negation.long.78/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs232.c1.boundary.long.79/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs232.c1.boundary.long.79/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs095.c2.numeric.easy.80/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs095.c2.numeric.easy.80/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs042.c1.negation.easy.81/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs042.c1.negation.easy.81/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c2.time.superseded.82/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c2.time.superseded.82/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs070.c1.time.long.83/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs070.c1.time.long.83/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs243.c4.numeric.easy.84/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs243.c4.numeric.easy.84/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs172.c2.numeric.long.85/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs172.c2.numeric.long.85/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs007.c1.subject.easy.86/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs007.c1.subject.easy.86/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs191.c4.negation.long.87/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs191.c4.negation.long.87/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs129.c2.boundary.easy.88/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs129.c2.boundary.easy.88/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs162.c1.numeric.easy.89/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs162.c1.numeric.easy.89/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs181.c1.negation.easy.90/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs181.c1.negation.easy.90/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs109.c1.time.easy.91/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs109.c1.time.easy.91/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs135.c2.boundary.easy.92/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs135.c2.boundary.easy.92/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs198.c1.negation.easy.93/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs198.c1.negation.easy.93/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs062.c1.numeric.easy.94/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs062.c1.numeric.easy.94/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.uti_sulfa.sulfa.time.long.95/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.uti_sulfa.sulfa.time.long.95/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs081.c2.numeric.long.96/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs081.c2.numeric.long.96/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs143.c2.numeric.easy.97/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs143.c2.numeric.easy.97/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.any_gout.ulcer.negation.easy.98/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.any_gout.ulcer.negation.easy.98/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs170.c1.subject.long.99/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs170.c1.subject.long.99/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.wells_dvt.calf.time.easy.100/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.wells_dvt.calf.time.easy.100/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs167.c1.time.easy.101/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs167.c1.time.easy.101/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.time.superseded.102/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.time.superseded.102/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs000.c2.subject.easy.103/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs000.c2.subject.easy.103/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_sinus_pen.pen.time.delabelled.104/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_sinus_pen.pen.time.delabelled.104/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_perc.spo2.numeric.easy.105/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_perc.spo2.numeric.easy.105/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs129.c1.subject.easy.106/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs129.c1.subject.easy.106/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_perc.spo2.boundary.long.107/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_perc.spo2.boundary.long.107/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s4_improve_vte.vte.negation.easy.108/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s4_improve_vte.vte.negation.easy.108/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_charlson.cr.time.easy.109/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_charlson.cr.time.easy.109/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs159.c2.boundary.long.110/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs159.c2.boundary.long.110/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c2.boundary.long.111/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c2.boundary.long.111/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_methimazole.alt.time.easy.112/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_methimazole.alt.time.easy.112/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.numeric.easy.113/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.numeric.easy.113/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs181.c3.time.easy.114/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs181.c3.time.easy.114/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.all_spiro.egfr.boundary.easy.115/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.all_spiro.egfr.boundary.easy.115/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_hemorr2hages.aspirin.time.long.116/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_hemorr2hages.aspirin.time.long.116/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs076.c3.time.easy.117/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs076.c3.time.easy.117/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.all_gastro.aspirin.time.easy.118/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.all_gastro.aspirin.time.easy.118/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_charlson.asthma.negation.long.119/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_charlson.asthma.negation.long.119/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs208.c1.numeric.easy.120/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs208.c1.numeric.easy.120/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs107.c2.boundary.long.121/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs107.c2.boundary.long.121/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs166.c2.boundary.easy.122/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs166.c2.boundary.easy.122/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs098.c1.subject.easy.123/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs098.c1.subject.easy.123/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs226.c1.negation.long.124/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs226.c1.negation.long.124/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs121.c2.subject.long.125/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs121.c2.subject.long.125/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.ckd_nsaid.egfr.boundary.easy.126/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.ckd_nsaid.egfr.boundary.easy.126/missing/conclusion/s_prime", "u": -1.0, "raw": "We are given a rule:\n\n> For knee osteoarthritis pain, prescribe naproxen. If the patient's current eGFR is below 60 mL/min/1.73 m2, prescribe acetaminophen instead.\n\nWe are also given a case:\n\n- Male patient, 56 years old.\n- Knee osteoarthritis with pain on walking.\n- Teeth in good repair.\n- Lives in a second-floor apartment.\n\nClaim: Prescribe acetaminophen.\n\nWe are to determine if the claim is correct under the stated rule, and answer with + (correct) or - (incorrect).\n\n---\n\n### Step 1: Understand the rule\n\nThe rule has two parts:\n\n1. **Default**: For knee osteoarthritis pain → prescribe **naproxen**.\n2. **Exception**: If the patient's **current eGFR is below 60 mL/min/1.73 m²** → prescribe **acetaminophen instead**.\n\nSo, acetaminophen is only prescribed **if** eGFR < 60. Otherwise, naproxen is prescribed.\n\n---\n\n### Step 2: Analyze the case for relevant information\n\nWe are told:\n\n- Age: 56 years\n- Condition: Knee osteoarthritis with pain on walking → this triggers the rule (since it's knee OA pain)\n- Teeth in good repair → irrelevant to kidney function or NSAID/acetaminophen choice\n- Lives in a second-floor apartment → irrelevant to kidney function\n\n**Critical missing information**: The patient's **current eGFR** is **not provided**.\n\nThe rule depends entirely on whether eGFR < 60. Since we are not given the eGFR value, we **cannot determine** whether the exception applies.\n\n---\n\n### Step 3: Evaluate the claim\n\nThe claim is: **Prescribe acetaminophen.**\n\nFor this to be correct under the rule, we must have eGFR < 60.\n\nBut we are **not told** the eGFR. It could be:\n\n- Above 60 → then naproxen should be prescribed → claim is **incorrect**\n- Below 60 → then acetaminophen should be prescribed → claim is **correct**\n\nSince we lack the eGFR value, we **cannot confirm** that the claim is correct.\n\nIn medical decision-making, if a rule depends on a lab value that is not provided, we cannot assume it is abnormal. The default assumption in the absence of data is that the condition for the exception is **not met**, unless stated otherwise.\n\nMoreover, the rule says: “If the patient's current eGFR is below 60…” — implying we need to know it. Since it's not given, we must assume it is **not below 60** (i.e., normal or ≥60) for the purpose of applying the rule, unless there is evidence to the contrary.\n\nIn a 56-year-old male with no mentioned comorbidities (like diabetes, hypertension, or known kidney disease), and no symptoms suggesting renal impairment, it is reasonable to assume eGFR is likely ≥60 unless tested and found low.\n\nBut strictly speaking: **the rule requires knowledge of eGFR to apply the exception. Without it, we default to the first part: prescribe naproxen.**\n\nTherefore, prescribing acetaminophen **without knowing eGFR < 60** is **not justified** by the rule.\n\n---\n\n### Step 4: Conclusion\n\nThe claim to prescribe acetaminophen is **not correct** under the stated rule because the necessary condition (eGFR < 60) is **not confirmed** in the case.\n\nWe must answer: **-**\n\n---\n\n**Answer: -**", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs152.c2.time.easy.127/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs152.c2.time.easy.127/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs107.c1.subject.long.128/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs107.c1.subject.long.128/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.numeric.easy.129/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.numeric.easy.129/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs093.c2.time.easy.130/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs093.c2.time.easy.130/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs232.c2.time.easy.131/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs232.c2.time.easy.131/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs026.c1.negation.easy.132/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs026.c1.negation.easy.132/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs189.c1.subject.long.133/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs189.c1.subject.long.133/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs228.c1.subject.easy.134/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs228.c1.subject.easy.134/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.numeric.easy.135/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.numeric.easy.135/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs229.c2.numeric.easy.136/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs229.c2.numeric.easy.136/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.af_asthma.asthma.subject.easy.137/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.af_asthma.asthma.subject.easy.137/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs117.c2.boundary.long.138/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs117.c2.boundary.long.138/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs111.c1.time.long.139/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs111.c1.time.long.139/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs146.c2.boundary.long.140/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs146.c2.boundary.long.140/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c1.time.easy.141/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c1.time.easy.141/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs022.c1.time.easy.142/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs022.c1.time.easy.142/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs026.c1.subject.easy.143/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs026.c1.subject.easy.143/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs198.c2.boundary.easy.144/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs198.c2.boundary.easy.144/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs142.c1.numeric.easy.145/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs142.c1.numeric.easy.145/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s1_psi.stroke.negation.long.146/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s1_psi.stroke.negation.long.146/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs222.c2.subject.long.147/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs222.c2.subject.long.147/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs017.c1.numeric.long.148/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs017.c1.numeric.long.148/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs117.c2.boundary.easy.149/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs117.c2.boundary.easy.149/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_nice_step1.age.boundary.long.150/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_nice_step1.age.boundary.long.150/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_charlson.cr.boundary.easy.151/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_charlson.cr.boundary.easy.151/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_cellulitis_sirs.wbc.boundary.long.152/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_cellulitis_sirs.wbc.boundary.long.152/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs226.c1.subject.easy.153/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs226.c1.subject.easy.153/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_charlson.hf.subject.easy.154/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_charlson.hf.subject.easy.154/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.rcri.cr.time.easy.155/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.rcri.cr.time.easy.155/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.subject.easy.156/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.subject.easy.156/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs030.c2.negation.long.157/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs030.c2.negation.long.157/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs218.c2.numeric.long.158/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs218.c2.numeric.long.158/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs104.c3.negation.long.159/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs104.c3.negation.long.159/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_methimazole.alt.boundary.easy.160/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_methimazole.alt.boundary.easy.160/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs085.c1.negation.long.161/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs085.c1.negation.long.161/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s4_apache.hr.numeric.easy.162/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s4_apache.hr.numeric.easy.162/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs204.c1.numeric.long.163/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs204.c1.numeric.long.163/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_atria_bleed.egfr.boundary.easy.164/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_atria_bleed.egfr.boundary.easy.164/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs222.c2.negation.easy.165/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs222.c2.negation.easy.165/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs128.c1.subject.long.166/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs128.c1.subject.long.166/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs008.c2.negation.long.167/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs008.c2.negation.long.167/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs027.c2.subject.long.168/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs027.c2.subject.long.168/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.two_apixaban.cr.numeric.long.169/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.two_apixaban.cr.numeric.long.169/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs210.c1.negation.easy.170/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs210.c1.negation.easy.170/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs143.c1.subject.easy.171/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs143.c1.subject.easy.171/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs172.c1.boundary.long.172/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs172.c1.boundary.long.172/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs030.c2.subject.long.173/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs030.c2.subject.long.173/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.easy.174/missing/conclusion/s", "u": -1.0, "raw": "We are given a rule:\n\n> For hypertension uncontrolled on amlodipine, ramipril and indapamide, prescribe spironolactone.  \n> If the current serum potassium is above 4.5 mmol/L, prescribe doxazosin instead.\n\nWe are given a case:\n\n- Woman, 53 years old.\n- Clinic blood pressure: 158/96 mmHg on three visits despite full doses of amlodipine, ramipril and indapamide.\n- Hobbies: paints watercolors, has two cats, plays the piano.\n- Claim: Prescribe spironolactone.\n\nWe are to determine if the claim is correct under the stated rule.\n\n### Step-by-step analysis:\n\n1. **Is hypertension uncontrolled on amlodipine, ramipril and indapamide?**\n   - Yes: BP is 158/96 mmHg on three visits despite full doses of these three drugs.\n   - So the first condition is met: \"hypertension uncontrolled on amlodipine, ramipril and indapamide\" → therefore, according to the rule, we should prescribe spironolactone **unless** the exception applies.\n\n2. **Exception: If the current serum potassium is above 4.5 mmol/L, prescribe doxazosin instead.**\n   - The rule says: *if* serum potassium > 4.5 mmol/L, then prescribe doxazosin instead of spironolactone.\n   - However, the case does **not** provide any information about the patient’s serum potassium level.\n   - We are not told what the potassium is. It could be below, equal to, or above 4.5 mmol/L.\n\n3. **Logical implication:**\n   - The rule is conditional: spironolactone is the default prescription **only if** potassium is **not** above 4.5 mmol/L (i.e., ≤ 4.5 mmol/L).\n   - Since we do not know the potassium level, we cannot confirm whether the exception applies.\n   - Therefore, we cannot definitively say that spironolactone should be prescribed — because if potassium were > 4.5, we should prescribe doxazosin instead.\n\n4. **The claim: \"Prescribe spironolactone.\"**\n   - This claim assumes that spironolactone is the correct choice.\n   - But the rule requires knowledge of potassium to decide between spironolactone and doxazosin.\n   - Without potassium data, we cannot validate the claim as correct under the rule.\n\n### Conclusion:\nThe claim cannot be confirmed as correct because the rule depends on serum potassium, which is not provided. Therefore, the claim is **not necessarily correct** under the stated rule — it might be wrong if potassium > 4.5.\n\nSince we are to answer **+** if the claim is correct, and **-** if it is not correct (or not verifiably correct), and we lack critical information, the claim is **not correct** under the rule as stated.\n\n> **Answer: -**\n\n-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.easy.174/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs109.c2.boundary.easy.175/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs109.c2.boundary.easy.175/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs076.c2.time.superseded.176/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs076.c2.time.superseded.176/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs168.c2.negation.long.177/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs168.c2.negation.long.177/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gout_clarith.clarith.negation.easy.178/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gout_clarith.clarith.negation.easy.178/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_transfusion.hgb.boundary.long.179/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_transfusion.hgb.boundary.long.179/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs199.c2.negation.easy.180/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs199.c2.negation.easy.180/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs182.c2.numeric.easy.181/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs182.c2.numeric.easy.181/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs012.c1.subject.easy.182/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs012.c1.subject.easy.182/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs226.c1.time.easy.183/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs226.c1.time.easy.183/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s1_sofa.plt.numeric.easy.184/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s1_sofa.plt.numeric.easy.184/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs102.c2.boundary.easy.185/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs102.c2.boundary.easy.185/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs092.c1.numeric.long.186/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs092.c1.numeric.long.186/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs149.c1.numeric.long.187/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs149.c1.numeric.long.187/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs091.c1.numeric.easy.188/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs091.c1.numeric.easy.188/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs101.c1.numeric.easy.189/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs101.c1.numeric.easy.189/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs102.c2.numeric.long.190/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs102.c2.numeric.long.190/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs143.c1.time.easy.191/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs143.c1.time.easy.191/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs130.c1.subject.easy.192/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs130.c1.subject.easy.192/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs041.c3.numeric.long.193/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs041.c3.numeric.long.193/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs210.c1.subject.long.194/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs210.c1.subject.long.194/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs060.c1.time.easy.195/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs060.c1.time.easy.195/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_dvt_pregnancy.pregnancy.time.easy.196/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_dvt_pregnancy.pregnancy.time.easy.196/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs141.c1.subject.long.197/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs141.c1.subject.long.197/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs007.c1.subject.long.198/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs007.c1.subject.long.198/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs013.c1.boundary.easy.199/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs013.c1.boundary.easy.199/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.pain_ulcer.ulcer.subject.easy.200/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.pain_ulcer.ulcer.subject.easy.200/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.hasbled.sbp.time.easy.201/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.hasbled.sbp.time.easy.201/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs172.c2.numeric.easy.202/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs172.c2.numeric.easy.202/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs058.c1.numeric.easy.203/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs058.c1.numeric.easy.203/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs240.c1.subject.easy.204/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs240.c1.subject.easy.204/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs119.c2.time.easy.205/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs119.c2.time.easy.205/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs173.c1.negation.easy.206/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs173.c1.negation.easy.206/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs076.c3.boundary.easy.207/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs076.c3.boundary.easy.207/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs222.c2.time.long.208/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs222.c2.time.long.208/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_transfusion.hgb.numeric.easy.209/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_transfusion.hgb.numeric.easy.209/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs200.c1.negation.easy.210/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs200.c1.negation.easy.210/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.uti_sulfa.sulfa.negation.long.211/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.uti_sulfa.sulfa.negation.long.211/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs169.c2.time.easy.212/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs169.c2.time.easy.212/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs169.c2.time.long.213/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs169.c2.time.long.213/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs212.c1.subject.long.214/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs212.c1.subject.long.214/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs218.c1.subject.long.215/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs218.c1.subject.long.215/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs171.c1.negation.easy.216/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs171.c1.negation.easy.216/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.postop_hit.hit.negation.long.217/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.postop_hit.hit.negation.long.217/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs232.c2.subject.long.218/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs232.c2.subject.long.218/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_cellulitis_sirs.wbc.boundary.long.219/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_cellulitis_sirs.wbc.boundary.long.219/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c2.subject.easy.220/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c2.subject.easy.220/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs198.c1.negation.easy.221/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs198.c1.negation.easy.221/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_allopurinol.egfr.boundary.easy.222/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_allopurinol.egfr.boundary.easy.222/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs193.c2.negation.easy.223/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs193.c2.negation.easy.223/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs084.c2.time.easy.224/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs084.c2.time.easy.224/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.subject.easy.225/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.subject.easy.225/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs121.c1.negation.easy.226/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs121.c1.negation.easy.226/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.migraine_cad.cad.subject.easy.227/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.migraine_cad.cad.subject.easy.227/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.negation.long.228/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.negation.long.228/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.numeric.easy.229/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.numeric.easy.229/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.sirs.temp.numeric.easy.230/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.sirs.temp.numeric.easy.230/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs013.c1.boundary.easy.231/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs013.c1.boundary.easy.231/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c1.negation.easy.232/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c1.negation.easy.232/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs166.c3.boundary.easy.233/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs166.c3.boundary.easy.233/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs171.c1.subject.long.234/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs171.c1.subject.long.234/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs145.c1.subject.long.235/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs145.c1.subject.long.235/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs093.c2.boundary.easy.236/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs093.c2.boundary.easy.236/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_dronedarone_hf.hf.negation.easy.237/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_dronedarone_hf.hf.negation.easy.237/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.vte_platelets.plt.boundary.easy.238/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.vte_platelets.plt.boundary.easy.238/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs095.c2.numeric.long.239/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs095.c2.numeric.long.239/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs107.c2.boundary.long.240/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs107.c2.boundary.long.240/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c2.numeric.long.241/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c2.numeric.long.241/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs081.c1.subject.long.242/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs081.c1.subject.long.242/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs177.c2.numeric.easy.243/missing/conclusion/s", "u": 1.0, "raw": "We need to compute score: heart rate >90? HR=99 => yes => 2 points. Temperature >38.0? Not given. Assume not above? No temperature provided, so we assume not >38.0 => 0 points. WBC >12.0? WBC=13.5 => yes => 3 points. Total = 2+0+3 =5. Score 5 <6, so rule says prescribe amoxicillin. Claim: Prescribe amoxicillin. That matches rule. So answer + (correct).\n+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs177.c2.numeric.easy.243/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.two_apixaban.cr.time.easy.244/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.two_apixaban.cr.time.easy.244/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s4_apache.age.numeric.long.245/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s4_apache.age.numeric.long.245/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs160.c1.boundary.easy.246/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs160.c1.boundary.easy.246/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.boundary.easy.247/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.boundary.easy.247/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.time.long.248/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.time.long.248/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.wells_dvt.calf.numeric.long.249/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.wells_dvt.calf.numeric.long.249/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs101.c1.boundary.easy.250/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs101.c1.boundary.easy.250/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs076.c2.time.superseded.251/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs076.c2.time.superseded.251/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_dvt_pregnancy.pregnancy.subject.easy.252/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_dvt_pregnancy.pregnancy.subject.easy.252/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs022.c1.boundary.easy.253/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs022.c1.boundary.easy.253/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs174.c1.time.long.254/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs174.c1.time.long.254/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_statin_clarith.clarith.subject.long.255/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_statin_clarith.clarith.subject.long.255/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs248.c2.numeric.long.256/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs248.c2.numeric.long.256/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs026.c1.negation.long.257/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs026.c1.negation.long.257/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs248.c2.numeric.long.258/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs248.c2.numeric.long.258/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_lipid_lpa.cad.negation.long.259/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_lipid_lpa.cad.negation.long.259/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs119.c2.negation.easy.260/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs119.c2.negation.easy.260/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs163.c3.numeric.easy.261/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs163.c3.numeric.easy.261/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs191.c1.time.easy.262/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs191.c1.time.easy.262/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.boundary.easy.263/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.boundary.easy.263/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs109.c2.boundary.easy.264/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs109.c2.boundary.easy.264/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs233.c2.subject.long.265/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs233.c2.subject.long.265/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs129.c2.boundary.long.266/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs129.c2.boundary.long.266/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c2.time.easy.267/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c2.time.easy.267/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs095.c3.subject.easy.268/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs095.c3.subject.easy.268/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs040.c2.time.easy.269/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs040.c2.time.easy.269/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs093.c2.numeric.long.270/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs093.c2.numeric.long.270/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs207.c1.boundary.long.271/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs207.c1.boundary.long.271/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.all_spiro.k.time.long.272/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.all_spiro.k.time.long.272/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs102.c2.numeric.easy.273/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs102.c2.numeric.easy.273/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs102.c1.negation.easy.274/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs102.c1.negation.easy.274/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.any_gout.egfr.numeric.easy.275/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.any_gout.egfr.numeric.easy.275/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs107.c1.negation.long.276/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs107.c1.negation.long.276/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs214.c2.subject.easy.277/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs214.c2.subject.easy.277/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs215.c1.boundary.easy.278/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs215.c1.boundary.easy.278/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs121.c2.negation.long.279/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs121.c2.negation.long.279/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c1.time.long.280/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c1.time.long.280/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.sirs.hr.time.superseded.281/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.sirs.hr.time.superseded.281/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs043.c1.subject.easy.282/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs043.c1.subject.easy.282/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs008.c2.subject.long.283/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs008.c2.subject.long.283/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs015.c1.subject.long.284/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs015.c1.subject.long.284/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs146.c1.boundary.easy.285/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs146.c1.boundary.easy.285/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs019.c1.negation.easy.286/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs019.c1.negation.easy.286/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.two_apixaban.age.numeric.easy.287/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.two_apixaban.age.numeric.easy.287/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_timi_stemi.hr.boundary.long.288/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_timi_stemi.hr.boundary.long.288/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs172.c1.time.superseded.289/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs172.c1.time.superseded.289/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs242.c1.negation.easy.290/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs242.c1.negation.easy.290/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs128.c4.subject.easy.291/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs128.c4.subject.easy.291/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs040.c1.subject.long.292/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs040.c1.subject.long.292/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs154.c1.negation.long.293/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs154.c1.negation.long.293/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.statin_alt.alt.time.easy.294/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.statin_alt.alt.time.easy.294/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs022.c1.time.long.295/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs022.c1.time.long.295/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs006.c1.negation.easy.296/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs006.c1.negation.easy.296/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs101.c1.boundary.long.297/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs101.c1.boundary.long.297/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs199.c2.negation.easy.298/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs199.c2.negation.easy.298/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs106.c1.negation.easy.299/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs106.c1.negation.easy.299/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}

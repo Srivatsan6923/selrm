@@ -22,6 +22,7 @@ SYSTEMS = [  # (name in run ids, row label, format). Test runs: C-TG-<name> for 
     ("promptsum", "Untrained backbone, prompted summary", "summary2"),
     ("promptledger", "Untrained backbone, prompted ledger (frozen malformed check)", "ledger2"),
     ("promptledger-lenient", "Untrained backbone, prompted ledger (format-normalised readout)", "ledger2"),
+    ("defcorr", "Untrained backbone, default correction", "verdict"),
     ("verdict-blocks", "Verdict only x blocks", "verdict"),
     ("verdict-triplets", "Verdict only x triplets", "verdict"),
     ("summary2-blocks", "Prose summary x blocks", "summary2"),
@@ -31,9 +32,11 @@ SYSTEMS = [  # (name in run ids, row label, format). Test runs: C-TG-<name> for 
     ("ledger2-balanced", "Ledger x balanced", "ledger2"),
     ("TR-fover", "Verdict only, FoVer data (B-TR-fover)", "verdict"),
     ("TR-clinonly", "Ledger, clinical pairs only (B-TR-clinonly)", "ledger2"),
+    ("rationale-triplets", "One-stage rationale x triplets", "rationale"),
+    ("ledger2-natural", "Ledger x natural", "ledger2"),
     ("sc-summary2-triplets", "Summary x triplets, judge sees the case (secondary analysis S3)", "summary2"),
 ]
-UNTRAINED = ("critic", "promptsum", "promptledger", "promptledger-lenient")
+UNTRAINED = ("critic", "promptsum", "promptledger", "promptledger-lenient", "defcorr")
 MALFORMED_U = -20.0     # INTERFACES 3: a malformed ledger scores -20 on both claims
 # threshold-source sensitivity: rule_v1/dev_missing scores of the same model from an independent run
 ALT_TAU = {"critic": "C-TF-critic", "promptsum": "C-TF-promptsum--p1", "promptledger": "C-TF-promptledger--p1",

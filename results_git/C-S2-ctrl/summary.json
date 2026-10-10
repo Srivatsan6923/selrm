@@ -1,0 +1,245 @@
+{
+ "run_id": "C-S2-ctrl",
+ "set": "rule_v1/test_L2 and views",
+ "systems": {
+  "critic": {
+   "stated": {
+    "seeds": 1,
+    "TA": 27.15,
+    "Rev": 38.55,
+    "Hold": 32.2,
+    "TA_hand": 77.02020202020202,
+    "TA_sampled": 14.83790523690773,
+    "TA_invented": 33.4,
+    "seeds_invented": 1,
+    "by_seed_TA": [
+     27.15
+    ]
+   },
+   "none": {
+    "seeds": 1,
+    "TA": 8.75,
+    "Rev": 16.0,
+    "Hold": 47.2,
+    "TA_hand": 26.767676767676768,
+    "TA_sampled": 4.301745635910224,
+    "TA_invented": 1.7,
+    "seeds_invented": 1,
+    "by_seed_TA": [
+     8.75
+    ]
+   },
+   "wrong": {
+    "seeds": 1,
+    "TA": 4.1,
+    "Rev": 7.45,
+    "Hold": 63.8,
+    "TA_hand": 6.818181818181818,
+    "TA_sampled": 3.428927680798005,
+    "TA_invented": 3.8,
+    "seeds_invented": 1,
+    "by_seed_TA": [
+     4.1
+    ]
+   }
+  },
+  "verdict-blocks": {
+   "stated": {
+    "seeds": 5,
+    "TA": 53.660000000000004,
+    "Rev": 92.56,
+    "Hold": 57.93,
+    "TA_hand": 66.76767676767676,
+    "TA_sampled": 50.423940149625935,
+    "TA_invented": 57.78,
+    "seeds_invented": 5,
+    "by_seed_TA": [
+     58.2,
+     53.45,
+     60.0,
+     47.65,
+     49.0
+    ]
+   },
+   "none": {
+    "seeds": 5,
+    "TA": 10.3,
+    "Rev": 18.84,
+    "Hold": 55.54,
+    "TA_hand": 36.161616161616166,
+    "TA_sampled": 3.915211970074813,
+    "TA_invented": 3.32,
+    "seeds_invented": 5,
+    "by_seed_TA": [
+     9.65,
+     10.35,
+     11.65,
+     9.95,
+     9.9
+    ]
+   },
+   "wrong": {
+    "seeds": 5,
+    "TA": 2.91,
+    "Rev": 5.45,
+    "Hold": 63.96,
+    "TA_hand": 5.353535353535354,
+    "TA_sampled": 2.306733167082294,
+    "TA_invented": 2.62,
+    "seeds_invented": 5,
+    "by_seed_TA": [
+     2.6,
+     2.25,
+     3.6,
+     2.75,
+     3.35
+    ]
+   }
+  },
+  "verdict-triplets": {
+   "stated": {
+    "seeds": 5,
+    "TA": 91.84,
+    "Rev": 92.61,
+    "Hold": 97.57000000000001,
+    "TA_hand": 97.12121212121212,
+    "TA_sampled": 90.53615960099751,
+    "TA_invented": 96.4,
+    "seeds_invented": 5,
+    "by_seed_TA": [
+     91.3,
+     91.75,
+     92.2,
+     92.2,
+     91.75
+    ]
+   },
+   "none": {
+    "seeds": 5,
+    "TA": 12.99,
+    "Rev": 17.85,
+    "Hold": 60.11,
+    "TA_hand": 49.09090909090909,
+    "TA_sampled": 4.077306733167083,
+    "TA_invented": 3.62,
+    "seeds_invented": 5,
+    "by_seed_TA": [
+     12.95,
+     13.65,
+     14.25,
+     10.2,
+     13.9
+    ]
+   },
+   "wrong": {
+    "seeds": 5,
+    "TA": 2.85,
+    "Rev": 4.52,
+    "Hold": 67.36,
+    "TA_hand": 4.797979797979798,
+    "TA_sampled": 2.369077306733167,
+    "TA_invented": 2.9,
+    "seeds_invented": 5,
+    "by_seed_TA": [
+     3.6,
+     2.85,
+     3.05,
+     2.55,
+     2.2
+    ]
+   }
+  },
+  "ledger2-triplets": {
+   "stated": {
+    "seeds": 5,
+    "TA": 99.25,
+    "Rev": 99.35,
+    "Hold": 99.9,
+    "TA_hand": 99.39393939393939,
+    "TA_sampled": 99.214463840399,
+    "TA_invented": 98.64,
+    "seeds_invented": 5,
+    "by_seed_TA": [
+     99.2,
+     99.05,
+     99.15,
+     99.15,
+     99.7
+    ]
+   },
+   "none": {
+    "seeds": 4,
+    "TA": 40.7125,
+    "Rev": 48.15,
+    "Hold": 67.475,
+    "TA_hand": 78.21969696969697,
+    "TA_sampled": 31.452618453865338,
+    "TA_invented": 27.4,
+    "seeds_invented": 4,
+    "by_seed_TA": [
+     41.0,
+     47.4,
+     41.75,
+     32.7
+    ]
+   },
+   "wrong": {
+    "seeds": 4,
+    "TA": 22.9375,
+    "Rev": 25.3875,
+    "Hold": 63.0,
+    "TA_hand": 62.0580808080808,
+    "TA_sampled": 13.27930174563591,
+    "TA_invented": 10.25,
+    "seeds_invented": 4,
+    "by_seed_TA": [
+     21.2,
+     31.75,
+     17.25,
+     21.55
+    ]
+   }
+  },
+  "summary2-triplets": {
+   "stated": {
+    "seeds": 1,
+    "TA": 98.0,
+    "Rev": 98.55,
+    "Hold": 99.35,
+    "TA_hand": 100.0,
+    "TA_sampled": 97.50623441396509,
+    "TA_invented": null,
+    "seeds_invented": 0,
+    "by_seed_TA": [
+     98.0
+    ]
+   },
+   "none": {
+    "seeds": 1,
+    "TA": 32.75,
+    "Rev": 39.35,
+    "Hold": 69.85,
+    "TA_hand": 82.57575757575758,
+    "TA_sampled": 20.448877805486283,
+    "TA_invented": 11.1,
+    "seeds_invented": 1,
+    "by_seed_TA": [
+     32.75
+    ]
+   },
+   "wrong": {
+    "seeds": 1,
+    "TA": 17.6,
+    "Rev": 20.6,
+    "Hold": 66.15,
+    "TA_hand": 71.21212121212122,
+    "TA_sampled": 4.364089775561097,
+    "TA_invented": 3.4,
+    "seeds_invented": 1,
+    "by_seed_TA": [
+     17.6
+    ]
+   }
+  }
+ }
+}

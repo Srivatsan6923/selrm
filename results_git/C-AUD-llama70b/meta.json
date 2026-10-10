@@ -1,0 +1,126 @@
+{
+ "run_id": "C-AUD-llama70b",
+ "role": "C",
+ "model": "meta-llama/llama-3.3-70b-instruct",
+ "name": "llama-3.3-70b",
+ "provider": "openrouter",
+ "access_date": "2026-10-08",
+ "readout": "logprob",
+ "params": {
+  "temperature": 0,
+  "extra_body": {
+   "provider": {
+    "require_parameters": true
+   }
+  }
+ },
+ "reasoning": "not a reasoning model; logprob-capable providers only (fp8/fp16 serving, see run meta)",
+ "sets": [
+  "rule_v1/dev_missing",
+  "rule_v1/missing"
+ ],
+ "n_groups": "all",
+ "subset_rule": null,
+ "usage": {
+  "calls": 4066,
+  "cached": 1134,
+  "prompt_tokens": 891169,
+  "completion_tokens": 516130,
+  "cost": 0.4263583469999998,
+  "errors": 0
+ },
+ "cost_estimate": 0.26770506,
+ "cost_actual": 0.4263583469999998,
+ "wall_seconds": 1138.1,
+ "git_commit": "706694cb71125643a6de0424c170e224a7199d78",
+ "summaries": {
+  "rule_v1/dev_missing": null,
+  "rule_v1/missing": null
+ },
+ "earlier_invocations": [
+  {
+   "run_id": "C-AUD-llama70b",
+   "role": "C",
+   "model": "meta-llama/llama-3.3-70b-instruct",
+   "name": "llama-3.3-70b",
+   "provider": "openrouter",
+   "access_date": "2026-10-08",
+   "readout": "logprob",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "provider": {
+      "require_parameters": true
+     }
+    }
+   },
+   "reasoning": "not a reasoning model; logprob-capable providers only (fp8/fp16 serving, see run meta)",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "n_groups": 1000,
+   "subset_rule": "n/5 groups per near-miss kind, random.Random(0) over sorted tids",
+   "usage": {
+    "calls": 7566,
+    "cached": 434,
+    "prompt_tokens": 1799662,
+    "completion_tokens": 7566,
+    "cost": 0.4032389389999991,
+    "errors": 0
+   },
+   "cost_estimate": 0.42184204,
+   "cost_actual": 0.4032389389999991,
+   "wall_seconds": 348.6,
+   "git_commit": "6472bdd6e469ad23f06432aadce771bfd119811d",
+   "summaries": {
+    "rule_v1/test_L2": {
+     "Rev": 48.2,
+     "Hold": 52.3,
+     "TA": 31.2,
+     "BaseAcc": 56.1,
+     "Tie": 5.2,
+     "PresHold": 56.4,
+     "n": 1000
+    }
+   }
+  },
+  {
+   "run_id": "C-AUD-llama70b",
+   "role": "C",
+   "model": "meta-llama/llama-3.3-70b-instruct",
+   "name": "llama-3.3-70b",
+   "provider": "openrouter",
+   "access_date": "2026-10-08",
+   "readout": "logprob",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "provider": {
+      "require_parameters": true
+     }
+    }
+   },
+   "reasoning": "not a reasoning model; logprob-capable providers only (fp8/fp16 serving, see run meta)",
+   "sets": [
+    "xr_v1/test"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 4800,
+    "cached": 0,
+    "prompt_tokens": 758386,
+    "completion_tokens": 4800,
+    "cost": 0.17577416900000004,
+    "errors": 0
+   },
+   "cost_estimate": 0.16177526000000003,
+   "cost_actual": 0.17577416900000004,
+   "wall_seconds": 187.8,
+   "git_commit": "6472bdd6e469ad23f06432aadce771bfd119811d",
+   "summaries": {
+    "xr_v1/test": null
+   }
+  }
+ ]
+}

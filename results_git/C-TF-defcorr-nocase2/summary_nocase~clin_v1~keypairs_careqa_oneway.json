@@ -1,0 +1,10 @@
+{
+ "run_id": "C-TF-defcorr-nocase2",
+ "set": "nocase/clin_v1/keypairs_careqa_oneway",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 7.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

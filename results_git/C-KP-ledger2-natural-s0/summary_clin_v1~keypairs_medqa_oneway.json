@@ -1,0 +1,41 @@
+{
+ "run_id": "C-KP-ledger2-natural-s0",
+ "set": "clin_v1/keypairs_medqa_oneway",
+ "Reversal": 27.45098039215686,
+ "CI95": [
+  22.689075630252102,
+  31.932773109243698
+ ],
+ "n_pairs": 357,
+ "q1_acc": 49.57983193277311,
+ "q2_acc": 55.74229691876751,
+ "tie_rate": 34.73389355742297,
+ "Reversal_by_tercile": {
+  "1": 26.89075630252101,
+  "2": 22.689075630252102,
+  "3": 32.773109243697476
+ },
+ "Reversal_by_category": {
+  "step1": 26.21951219512195,
+  "step2&3": 28.497409326424872
+ },
+ "n_by_category": {
+  "step1": 164,
+  "step2&3": 193
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "reader_units": 714,
+  "malformed_units": 152,
+  "mode": null,
+  "malformed_rate": 0.2129,
+  "gen_not_stopped": 3,
+  "seconds": 593.5,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

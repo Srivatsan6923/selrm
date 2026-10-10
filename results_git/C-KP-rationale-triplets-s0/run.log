@@ -1,0 +1,12 @@
+2026-10-09T02:09:20Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-rationale-triplets-s0
+2026-10-09T02:09:21Z token budget per batch: 8000 (generation 24000)
+2026-10-09T02:09:25Z C-KP-rationale-triplets-s0 clin_v1/keypairs_medqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa_oneway/rationale.npz', 'built 1428 prompts, max 576 tokens')
+2026-10-09T02:09:26Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0039)
+2026-10-09T02:09:27Z padding self-check: max |u_batch - u_single| = 0.3166 (tol 0.577) -> left padding
+2026-10-09T02:12:00Z generate: batch 25/62, 23921 tokens, 157 tok/s
+2026-10-09T02:15:14Z generate: batch 50/62, 47560 tokens, 137 tok/s
+2026-10-09T02:18:07Z C-KP-rationale-triplets-s0 clin_v1/keypairs_medqa_oneway: TA nan Rev nan Hold nan n=None (521.8 s)
+2026-10-09T02:18:11Z C-KP-rationale-triplets-s0 clin_v1/keypairs_careqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa_oneway/rationale.npz', 'built 900 prompts, max 331 tokens')
+2026-10-09T02:20:01Z generate: batch 25/34, 23922 tokens, 220 tok/s
+2026-10-09T02:21:29Z C-KP-rationale-triplets-s0 clin_v1/keypairs_careqa_oneway: TA nan Rev nan Hold nan n=None (197.5 s)
+2026-10-09T02:21:31Z DONE C-KP-rationale-triplets-s0 in 12.9 min, GPU util mean 56.4

@@ -1,0 +1,102 @@
+{
+ "run_id": "C-S2-ctrl-verdict-triplets-s2",
+ "role": "C",
+ "model": "unsloth/Qwen3.5-9B",
+ "model_revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+ "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s2",
+ "adapter_run": "B-F-verdict-triplets-s2",
+ "provider": "local (NRP Nautilus)",
+ "access_date": "2026-10-09",
+ "reasoning": "chat template with enable_thinking=False",
+ "format": "verdict",
+ "mode": null,
+ "rejudge_from": null,
+ "lenient_version": null,
+ "sets": [
+  "rule_v1/test_L2@none",
+  "rule_v1/test_L2@wrong",
+  "rule_v1/test_L3inv@none",
+  "rule_v1/test_L3inv@wrong"
+ ],
+ "max_new": 384,
+ "eval_batch": {
+  "score": 16,
+  "generate": 48
+ },
+ "hp": {
+  "max_len": 4096
+ },
+ "eval_seconds_by_set": {
+  "rule_v1/test_L2@none": 807.5,
+  "rule_v1/test_L2@wrong": 1134.4,
+  "rule_v1/test_L3inv@none": 422.8,
+  "rule_v1/test_L3inv@wrong": 549.0
+ },
+ "eval_generated_tokens": 0,
+ "pad_check_ok": true,
+ "eval_u_path": "fp32-hidden",
+ "eval_peak_mem_gb": 17.59,
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA GeForce RTX 4090, 615.71.09, 24564 MiB",
+ "node": "k8s-4090-01.calit2.optiputer.net",
+ "pod": "selrm-c-run-c-s2-ctrl-24gbf-574-0-g5xln",
+ "scoring_code": "role-b ac524e8062ef",
+ "git_commit": "f0110636f2af",
+ "wall_seconds": 2938.6,
+ "summaries": {
+  "rule_v1/test_L2@none": {
+   "Rev": 18.65,
+   "Hold": 64.8,
+   "TA": 14.25,
+   "BaseAcc": 67.4,
+   "Tie": 0.0,
+   "PresHold": 66.9,
+   "n": 2000
+  },
+  "rule_v1/test_L2@wrong": {
+   "Rev": 5.0,
+   "Hold": 69.6,
+   "TA": 3.05,
+   "BaseAcc": 69.8,
+   "Tie": 0.0,
+   "PresHold": 69.95,
+   "n": 2000
+  },
+  "rule_v1/test_L3inv@none": {
+   "Rev": 3.7,
+   "Hold": 42.2,
+   "TA": 1.9,
+   "BaseAcc": 41.7,
+   "Tie": 0.0,
+   "PresHold": 41.3,
+   "n": 1000
+  },
+  "rule_v1/test_L3inv@wrong": {
+   "Rev": 5.5,
+   "Hold": 38.7,
+   "TA": 3.2,
+   "BaseAcc": 39.0,
+   "Tie": 0.0,
+   "PresHold": 38.1,
+   "n": 1000
+  }
+ },
+ "gpu_util_mean": 98.5,
+ "gpu_util_p10": 97.0,
+ "gpu_windows_below40": 0.0,
+ "gpu_samples": 96,
+ "gpu_hours": 0.816
+}

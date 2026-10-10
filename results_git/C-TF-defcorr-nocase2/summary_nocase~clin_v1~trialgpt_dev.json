@@ -1,0 +1,10 @@
+{
+ "run_id": "C-TF-defcorr-nocase2",
+ "set": "nocase/clin_v1/trialgpt_dev",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 4.8,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

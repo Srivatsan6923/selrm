@@ -1,0 +1,9 @@
+{
+ "run_id": "C-AUD-gpt-oss-120b",
+ "set": "rule_v1/missing",
+ "claim_type": "conclusion",
+ "readout": "choice",
+ "MR": 5.5,
+ "n_missing": 1000,
+ "MR_readout": "pointwise text answer, reject iff '-'"
+}

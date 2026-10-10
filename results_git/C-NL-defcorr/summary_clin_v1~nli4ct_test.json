@@ -1,0 +1,33 @@
+{
+ "run_id": "C-NL-defcorr",
+ "set": "clin_v1/nli4ct_test",
+ "prediction_rule": "Entailment iff u > 0",
+ "macroF1": 0.7128438236983271,
+ "faithfulness": 0.6759259259259259,
+ "consistency": 0.7703094777562862,
+ "Control_F1": 0.7513227513227513,
+ "Control_macroF1": 0.7128438236983271,
+ "Contrast_F1": 0.6015473887814314,
+ "Faithfulness": 0.6759259259259259,
+ "Consistency": 0.7703094777562862,
+ "Consistency_acc": 0.6692456479690522,
+ "n_control": 500,
+ "n_altering": 864,
+ "n_preserving": 4136,
+ "acc_Contradiction": 0.6466666666666666,
+ "acc_Numerical_contradiction": 0.7065217391304348,
+ "acc_Numerical_paraphrase": 0.6160714285714286,
+ "acc_Paraphrase": 0.7006666666666667,
+ "acc_Text_appended": 0.6653333333333333,
+ "Average": 0.7325193850016545,
+ "section=Eligibility": {
+  "Control_F1": 0.7000000000000001,
+  "Faithfulness": 0.7612612612612613,
+  "Consistency": 0.7755868544600939,
+  "Average": 0.7456160385737851,
+  "n_control": 132,
+  "n_altering": 222,
+  "n_preserving": 1065
+ },
+ "eval": null
+}

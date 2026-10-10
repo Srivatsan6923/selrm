@@ -1,0 +1,20 @@
+{
+ "name": "kb_v1/triplets_test@none",
+ "parent": "kb_v1/triplets_test",
+ "parent_sha256": "5278179da304086a8824d4c054ec6a9593c671b32acae824c9eec92d7089f18b",
+ "cond": "none",
+ "seed": 20261008,
+ "builder": "scripts/crit_views.py",
+ "n_records": 30858,
+ "n_groups": 5143,
+ "shortcut_validation": {
+  "one_text_per_group": true,
+  "records_whose_rule_text_mentions_their_claim": 0,
+  "text_equals_parent_text": 0,
+  "note": "labels, cases and claims are the parent's, so the parent's shortcut validation applies to the case side; the view's text is independent of case and label (one text per group)"
+ },
+ "git_commit": "59725ae4dbcb3609081ec10ad2b0d93f0b49c220",
+ "sha256": "a1843605356a7e8446127c59218d3441f2d8a48d8ec9295c7ad34a0db38a40ac",
+ "created": "2026-10-08",
+ "frozen": true
+}

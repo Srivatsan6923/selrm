@@ -1,0 +1,357 @@
+{
+ "note": "Stage 2, C3: MedCalc-V (mcv_v1, role A, frozen 8 Oct). C-S2-mcv-<system>: stated and none on criteria_test, stated on edits_test; C-S2-mcv2-<system>: secondary cells",
+ "runs": [
+  {
+   "run_id": "C-S2-mcv-critic",
+   "priority": 1.0,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/criteria_test",
+    "mcv_v1/criteria_test@none",
+    "mcv_v1/edits_test"
+   ],
+   "adapter": null,
+   "adapter_run": null,
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv-verdict-triplets-s0",
+   "priority": 1.01,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/criteria_test",
+    "mcv_v1/criteria_test@none",
+    "mcv_v1/edits_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s0",
+   "adapter_run": "B-F-verdict-triplets-s0",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv-verdict-blocks-s0",
+   "priority": 1.02,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/criteria_test",
+    "mcv_v1/criteria_test@none",
+    "mcv_v1/edits_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s0",
+   "adapter_run": "B-F-verdict-blocks-s0",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv-verdict-triplets-s1",
+   "priority": 1.03,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/criteria_test",
+    "mcv_v1/criteria_test@none",
+    "mcv_v1/edits_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s1",
+   "adapter_run": "B-F-verdict-triplets-s1",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv-verdict-blocks-s1",
+   "priority": 1.04,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/criteria_test",
+    "mcv_v1/criteria_test@none",
+    "mcv_v1/edits_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s1",
+   "adapter_run": "B-F-verdict-blocks-s1",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv-verdict-triplets-s2",
+   "priority": 1.05,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/criteria_test",
+    "mcv_v1/criteria_test@none",
+    "mcv_v1/edits_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s2",
+   "adapter_run": "B-F-verdict-triplets-s2",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv-verdict-blocks-s2",
+   "priority": 1.06,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/criteria_test",
+    "mcv_v1/criteria_test@none",
+    "mcv_v1/edits_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s2",
+   "adapter_run": "B-F-verdict-blocks-s2",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv-verdict-triplets-s3",
+   "priority": 1.07,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/criteria_test",
+    "mcv_v1/criteria_test@none",
+    "mcv_v1/edits_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s3",
+   "adapter_run": "B-F-verdict-triplets-s3",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv-verdict-blocks-s3",
+   "priority": 1.08,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/criteria_test",
+    "mcv_v1/criteria_test@none",
+    "mcv_v1/edits_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s3",
+   "adapter_run": "B-F-verdict-blocks-s3",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv-verdict-triplets-s4",
+   "priority": 1.09,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/criteria_test",
+    "mcv_v1/criteria_test@none",
+    "mcv_v1/edits_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s4",
+   "adapter_run": "B-F-verdict-triplets-s4",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv-verdict-blocks-s4",
+   "priority": 1.1,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/criteria_test",
+    "mcv_v1/criteria_test@none",
+    "mcv_v1/edits_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s4",
+   "adapter_run": "B-F-verdict-blocks-s4",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv2-critic",
+   "priority": 5.0,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/edits_test@none",
+    "mcv_v1/criteria_test@wrong",
+    "mcv_v1/edits_test@wrong",
+    "mcv_v1/ruleside_test",
+    "mcv_v1/natural_band_test"
+   ],
+   "adapter": null,
+   "adapter_run": null,
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv2-verdict-triplets-s0",
+   "priority": 5.01,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/edits_test@none",
+    "mcv_v1/criteria_test@wrong",
+    "mcv_v1/edits_test@wrong",
+    "mcv_v1/ruleside_test",
+    "mcv_v1/natural_band_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s0",
+   "adapter_run": "B-F-verdict-triplets-s0",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv2-verdict-blocks-s0",
+   "priority": 5.02,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/edits_test@none",
+    "mcv_v1/criteria_test@wrong",
+    "mcv_v1/edits_test@wrong",
+    "mcv_v1/ruleside_test",
+    "mcv_v1/natural_band_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s0",
+   "adapter_run": "B-F-verdict-blocks-s0",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv2-verdict-triplets-s1",
+   "priority": 5.03,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/edits_test@none",
+    "mcv_v1/criteria_test@wrong",
+    "mcv_v1/edits_test@wrong",
+    "mcv_v1/ruleside_test",
+    "mcv_v1/natural_band_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s1",
+   "adapter_run": "B-F-verdict-triplets-s1",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv2-verdict-blocks-s1",
+   "priority": 5.04,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/edits_test@none",
+    "mcv_v1/criteria_test@wrong",
+    "mcv_v1/edits_test@wrong",
+    "mcv_v1/ruleside_test",
+    "mcv_v1/natural_band_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s1",
+   "adapter_run": "B-F-verdict-blocks-s1",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv2-verdict-triplets-s2",
+   "priority": 5.05,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/edits_test@none",
+    "mcv_v1/criteria_test@wrong",
+    "mcv_v1/edits_test@wrong",
+    "mcv_v1/ruleside_test",
+    "mcv_v1/natural_band_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s2",
+   "adapter_run": "B-F-verdict-triplets-s2",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv2-verdict-blocks-s2",
+   "priority": 5.06,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/edits_test@none",
+    "mcv_v1/criteria_test@wrong",
+    "mcv_v1/edits_test@wrong",
+    "mcv_v1/ruleside_test",
+    "mcv_v1/natural_band_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s2",
+   "adapter_run": "B-F-verdict-blocks-s2",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv2-verdict-triplets-s3",
+   "priority": 5.07,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/edits_test@none",
+    "mcv_v1/criteria_test@wrong",
+    "mcv_v1/edits_test@wrong",
+    "mcv_v1/ruleside_test",
+    "mcv_v1/natural_band_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s3",
+   "adapter_run": "B-F-verdict-triplets-s3",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv2-verdict-blocks-s3",
+   "priority": 5.08,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/edits_test@none",
+    "mcv_v1/criteria_test@wrong",
+    "mcv_v1/edits_test@wrong",
+    "mcv_v1/ruleside_test",
+    "mcv_v1/natural_band_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s3",
+   "adapter_run": "B-F-verdict-blocks-s3",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv2-verdict-triplets-s4",
+   "priority": 5.09,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/edits_test@none",
+    "mcv_v1/criteria_test@wrong",
+    "mcv_v1/edits_test@wrong",
+    "mcv_v1/ruleside_test",
+    "mcv_v1/natural_band_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s4",
+   "adapter_run": "B-F-verdict-triplets-s4",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  },
+  {
+   "run_id": "C-S2-mcv2-verdict-blocks-s4",
+   "priority": 5.1,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/edits_test@none",
+    "mcv_v1/criteria_test@wrong",
+    "mcv_v1/edits_test@wrong",
+    "mcv_v1/ruleside_test",
+    "mcv_v1/natural_band_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s4",
+   "adapter_run": "B-F-verdict-blocks-s4",
+   "note": "STAGE2 C3 MedCalc-V: criterion claims; primary sets first (comparisons 7, 8, 9)"
+  }
+ ]
+}

@@ -9,6 +9,7 @@ Protocol: `docs/TRIALGPT_PROTOCOL.md`. Test portion: 43 patients; N/A items repo
 | Untrained backbone, prompted summary | C-TG-promptsum | 68.0 [64.8, 70.8] | 71.4 [67.8, 75.0] | 73.5 | 80.1 | 50.4 | 145 of 759 | 91.3 | 20.8 / 1.0 | -0.19 |
 | Untrained backbone, prompted ledger (frozen malformed check) | C-TG-promptledger | 15.8 [13.8, 17.7] | 30.7 [25.9, 35.7] | 0.0 | 0.5 | 46.9 | 758 of 759 | 0.2 | - / 0.0 | -20.00 |
 | Untrained backbone, prompted ledger (format-normalised readout) | C-TG-promptledger-lenient | 54.0 [51.3, 56.5] | 62.3 [58.0, 66.4] | 72.0 | 73.9 | 16.2 | 65 of 759 | 86.0 | 61.1 / 43.5 | -0.57 |
+| Untrained backbone, default correction | C-TG-defcorr | 37.0 [33.5, 41.0] | 44.3 [40.3, 49.0] | 43.7 | 57.0 | 10.4 | 17 of 759 | 62.0 | - | -0.35 |
 | Verdict only x blocks, seed 0 | C-TG-verdict-blocks-s0 | 64.8 [60.3, 69.2] | 65.7 [60.7, 70.7] | 61.6 | 72.0 | 60.9 | 425 of 759 | 92.8 | - | 7.87 |
 | Verdict only x blocks, seed 1 | C-TG-verdict-blocks-s1 | 69.8 [65.1, 74.7] | 70.0 [64.8, 75.1] | 70.6 | 76.0 | 62.8 | 364 of 759 | 92.0 | - | 7.27 |
 | Verdict only x blocks, seed 2 | C-TG-verdict-blocks-s2 | 68.6 [64.2, 72.9] | 69.2 [63.9, 74.0] | 68.6 | 76.0 | 61.3 | 352 of 759 | 92.0 | - | 6.56 |
@@ -42,7 +43,9 @@ Protocol: `docs/TRIALGPT_PROTOCOL.md`. Test portion: 43 patients; N/A items repo
 | Ledger x balanced, seed 0 | C-TG-ledger2-balanced-s0 | 68.4 [64.6, 72.1] | 69.7 [65.4, 73.8] | 67.4 | 77.9 | 59.8 | 300 of 759 | 86.0 | 59.3 / 65.1 | 11.35 |
 | Verdict only, FoVer data (B-TR-fover), seed 0 | C-TG-TR-fover-s0 | 65.8 [61.5, 70.3] | 68.5 [64.0, 73.2] | 71.6 | 76.2 | 49.5 | 148 of 759 | 89.4 | - | -2.57 |
 | Ledger, clinical pairs only (B-TR-clinonly), seed 0 | C-TG-TR-clinonly-s0 | 50.4 [47.6, 53.0] | 62.8 [58.2, 67.2] | 71.1 | 75.4 | 4.8 | 18 of 759 | 90.5 | 52.5 / 55.9 | -0.43 |
-| Summary x triplets, judge sees the case (secondary analysis S3), seed 0 | C-TG-sc-summary2-triplets-s0 | not run | | | | | | | | |
+| One-stage rationale x triplets, seed 0 | C-TG-rationale-triplets-s0 | 67.5 [63.0, 71.8] | 69.6 [64.4, 74.5] | 63.1 | 78.6 | 60.9 | 346 of 759 | 86.9 | - / 0.0 | 12.30 |
+| Ledger x natural, seed 0 | C-TG-ledger2-natural-s0 | 67.4 [63.4, 71.3] | 68.0 [63.4, 72.2] | 67.6 | 75.4 | 59.4 | 361 of 759 | 90.1 | 62.4 / 61.6 | 12.26 |
+| Summary x triplets, judge sees the case (secondary analysis S3), seed 0 | C-TG-sc-summary2-triplets-s0 | 69.1 [64.7, 73.3] | 69.4 [64.9, 74.0] | 73.3 | 76.8 | 57.3 | 292 of 759 | 88.4 | 57.9 / 66.0 | 10.81 |
 
 Paired differences in macro-F1 (same items, patient bootstrap, 1,000 resamples; comparison (6) of the analysis plan; Holm across the primary comparisons is applied by the lead):
 
@@ -68,6 +71,7 @@ Threshold-source sensitivity: tau and macro-F1 with tau computed from the same m
 | Untrained backbone, prompted summary | C-TG-promptsum | -0.195 | -0.147 | 68.0 | 68.6 | 71.5 | results_git/C-TF-promptsum--p1 | - |
 | Untrained backbone, prompted ledger (frozen malformed check) | C-TG-promptledger | -20.000 | -20.000 | 15.8 | 15.8 | 30.7 | results_git/C-TF-promptledger--p1 | - / 0.0 |
 | Untrained backbone, prompted ledger (format-normalised readout) | C-TG-promptledger-lenient | -0.573 | -0.614 | 54.0 | 53.9 | 62.5 | results_git/C-TF-promptledger-lenient--p1 | 61.1 / 43.5 |
+| Untrained backbone, default correction | C-TG-defcorr | -0.353 | - | 37.0 | - | - | not available | - |
 | Verdict only x blocks, seed 0 | C-TG-verdict-blocks-s0 | 7.872 | 7.878 | 64.8 | 64.8 | 65.7 | origin/role-b:results_git/B-F-verdict-blocks-s0 | - |
 | Verdict only x blocks, seed 1 | C-TG-verdict-blocks-s1 | 7.273 | 7.311 | 69.8 | 69.7 | 69.8 | origin/role-b:results_git/B-F-verdict-blocks-s1 | - |
 | Verdict only x blocks, seed 2 | C-TG-verdict-blocks-s2 | 6.557 | 6.570 | 68.6 | 68.6 | 69.2 | origin/role-b:results_git/B-F-verdict-blocks-s2 | - |
@@ -101,6 +105,9 @@ Threshold-source sensitivity: tau and macro-F1 with tau computed from the same m
 | Ledger x balanced, seed 0 | C-TG-ledger2-balanced-s0 | 11.355 | - | 68.4 | - | - | not available | 59.1 / 63.2 |
 | Verdict only, FoVer data (B-TR-fover), seed 0 | C-TG-TR-fover-s0 | -2.572 | - | 65.8 | - | - | not available | - |
 | Ledger, clinical pairs only (B-TR-clinonly), seed 0 | C-TG-TR-clinonly-s0 | -0.431 | - | 50.4 | - | - | not available | 52.3 / 55.3 |
+| One-stage rationale x triplets, seed 0 | C-TG-rationale-triplets-s0 | 12.300 | 12.142 | 67.5 | 67.5 | 69.3 | origin/role-b:results_git/B-F-rationale-triplets-s0 | - |
+| Ledger x natural, seed 0 | C-TG-ledger2-natural-s0 | 12.256 | - | 67.4 | - | - | not available | 61.0 / 53.4 |
+| Summary x triplets, judge sees the case (secondary analysis S3), seed 0 | C-TG-sc-summary2-triplets-s0 | 10.811 | - | 69.1 | - | - | not available | - |
 
 By criterion type, the dataset's five category names, predictions on not-applicable items, per-trial accuracy (trials with at least 5 non-N/A items) and decision language in reader outputs (scripts/reader_audit.py):
 
@@ -110,6 +117,7 @@ By criterion type, the dataset's five category names, predictions on not-applica
 | Untrained backbone, prompted summary | 55.4 (280) | 49.0 (479) | 53.5 | met 4, nei 4, not_met 34 | 37.5 / 75.0 / 100.0 | 14.9 |
 | Untrained backbone, prompted ledger (frozen malformed check) | 21.5 (280) | 11.6 (479) | 9.5 | nei 41, not_met 1 | 0.0 / 29.3 / 80.0 | 12.6 |
 | Untrained backbone, prompted ledger (format-normalised readout) | 37.9 (280) | 39.9 (479) | 43.9 | nei 4, not_met 38 | 20.0 / 66.7 / 100.0 | 12.6 |
+| Untrained backbone, default correction | 36.4 (280) | 24.1 (479) | 34.6 | met 18, nei 2, not_met 22 | 0.0 / 44.4 / 85.7 | - |
 | Verdict only x blocks, seed 0 | 51.8 (280) | 47.1 (479) | 47.3 | nei 17, not_met 25 | 22.2 / 65.9 / 100.0 | - |
 | Verdict only x blocks, seed 1 | 57.3 (280) | 61.6 (479) | 59.2 | nei 15, not_met 27 | 27.3 / 72.7 / 100.0 | - |
 | Verdict only x blocks, seed 2 | 56.2 (280) | 53.5 (479) | 53.9 | met 1, nei 13, not_met 28 | 30.0 / 69.2 / 100.0 | - |
@@ -143,6 +151,9 @@ By criterion type, the dataset's five category names, predictions on not-applica
 | Ledger x balanced, seed 0 | 58.7 (280) | 50.3 (479) | 54.0 | met 1, nei 13, not_met 28 | 33.3 / 71.4 / 100.0 | 0.0 |
 | Verdict only, FoVer data (B-TR-fover), seed 0 | 55.2 (280) | 48.4 (479) | 52.4 | met 2, nei 4, not_met 36 | 33.3 / 71.4 / 100.0 | - |
 | Ledger, clinical pairs only (B-TR-clinonly), seed 0 | 35.5 (280) | 35.0 (479) | 41.6 | met 1, not_met 41 | 20.0 / 66.7 / 100.0 | 0.0 |
+| One-stage rationale x triplets, seed 0 | 55.1 (280) | 46.8 (479) | 49.7 | nei 13, not_met 29 | 22.2 / 71.8 / 100.0 | 100.0 |
+| Ledger x natural, seed 0 | 49.7 (280) | 59.4 (479) | 54.2 | nei 21, not_met 21 | 33.3 / 70.0 / 100.0 | 0.0 |
+| Summary x triplets, judge sees the case (secondary analysis S3), seed 0 | 60.6 (280) | 50.3 (479) | 55.5 | nei 9, not_met 33 | 16.7 / 73.3 / 100.0 | 1.1 |
 
 Case-blind predictors on the same items (shortcut validation in the set's MANIFEST): always met: macro-F1 10.3, accuracy 18.2; always not_met: macro-F1 22.6, accuracy 51.3; always nei: macro-F1 15.6, accuracy 30.6; type prior from dev {'inclusion': 'nei', 'exclusion': 'not_met'}: macro-F1 46.0, accuracy 66.7.
 

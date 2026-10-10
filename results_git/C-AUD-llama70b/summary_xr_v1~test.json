@@ -1,0 +1,30 @@
+{
+ "run_id": "C-AUD-llama70b",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "readout": "logprob",
+ "XA": 50.25,
+ "n_items": 400,
+ "n_incomplete": 0,
+ "n_excluded": 0,
+ "CellAcc": 89.54166666666667,
+ "n_cells": 2400,
+ "cells_without_label": 0,
+ "XA_currency": 43.0,
+ "XA_inclusivity": 40.0,
+ "XA_subject": 77.0,
+ "XA_window": 41.0,
+ "without_known_issues": {
+  "XA": 52.209944751381215,
+  "n_items": 362,
+  "n_incomplete": 0,
+  "n_excluded": 38,
+  "CellAcc": 89.68692449355433,
+  "n_cells": 2172,
+  "cells_without_label": 0,
+  "XA_currency": 42.35294117647059,
+  "XA_inclusivity": 45.45454545454545,
+  "XA_subject": 77.0,
+  "XA_window": 41.0
+ }
+}
