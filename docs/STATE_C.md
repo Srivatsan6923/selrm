@@ -54,3 +54,13 @@ scratch/bcode (B ac524e8), scratch/bcode2 (B 10e1882), scratch/anegbank, scratch
 - Done and posted to D: comparisons (7)-(9); mcv_cells for tab:mcv; kb_v1 and xp_v1 tables (docs/STAGE2_RESULTS.md, results_git/C-S2-kb/summary.json); open judges (HANDOFFS 9 Oct).
 - Running on the cluster: c_s2_me.json (C-S2-me-<system>: clin_v1/medeinst_test@derived, @wrong; 11 runs) and c_me_seeds.json (C-ME-verdict-{triplets-s2..4, blocks-s1,s3,s4}: no criterion). When DONE: `submit_c.py pull`, `python scripts/s2_compare.py` -> comparison (11) and medeinst_cells; post to D.
 - Then: MedCalc-V ruleside_test (crossed accuracy, altered-threshold rate) and natural_band_test cells from C-S2-mcv2-*; `self` views; C5-C7 when B registers v2-verdict-triplets / ledger-rm-g (not on B's volume on 9 Oct); C8 Holm family once (10)-(12) exist.
+
+## Update 10 Oct, ~19:45 UTC
+- Done and posted: paraphrase excess rate (C-S2-kb/summary.json, paraphrase_xp_v1), MedEinst blocks 5 seeds, ThinkPRM criterion claims
+  (C-AUD-thinkprm-crit), comparison (10) from B's scores (scratch/bres; cls_v1/test records in scratch/cls_v1/test, sha256 = A's registry).
+- Running on the cluster: C-AUD-thinkprm-kp (l40); configs/tasks_c/c_s2_kp.json (C-S2-kp-v2-verdict-triplets-s0..4, C-KP-verdict-triplets-s1..4;
+  5 runners) for comparison (12); configs/tasks_c/c_s2_mix.json (C-S2-mcv-mix-{blocks-s0..2,triplets-s0..1}; 5 runners; secondary 4).
+- Next: sync-up (pod lives 6 h), `submit_c.py pull`, `python scripts/s2_compare.py` -> (12) and p_holm appear once the key-pair scores exist
+  (definition logged in DECISIONS_C 10 Oct); post (12) + Holm family to D (C8). Then mix arms: add cells to s2_compare descriptive().
+  `eval_clinical.py keypairs` for the ThinkPRM key-pair row.
+- Not done: reg_v1/test and TrialGPT with the composite (C6), self-written criteria (C7 `self`), member-list condition of cls_v1 (C5).
