@@ -1,0 +1,5 @@
+2026-10-10T06:21:11Z eval only: base /work/models/unsloth--Qwen3.5-9B, adapter /pvc/selrm/adapters/B-V2-verdict-triplets-s0
+2026-10-10T06:21:13Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0525)
+2026-10-10T06:21:14Z padding self-check: max |u_batch - u_single| = 0.1612 (tol 0.858) -> left padding
+2026-10-10T06:22:13Z B-S2G-verdict-s0-dev rule_v1/dev: TA 99.7 Rev 100.0 Hold 99.7 n=300 (61.2 s)
+2026-10-10T06:22:13Z DONE B-S2G-verdict-s0-dev in 1.4 min, GPU util mean 61.7

@@ -1,0 +1,20 @@
+{
+ "run_id": "B-MIX-blocks-s2",
+ "set": "mcv_v1/dev",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {
+   "Rev": 98.49246231155779,
+   "Hold": 98.99497487437186,
+   "TA": 97.8643216080402,
+   "BaseAcc": 99.56030150753769,
+   "Tie": 0.0,
+   "n": 1592
+  }
+ },
+ "eval": {
+  "seconds": 2091.0,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

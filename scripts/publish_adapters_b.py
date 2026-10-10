@@ -28,7 +28,8 @@ def main():
             print(f"skip {rid}: not finished", file=sys.stderr)
             continue
         meta = json.load(open(f"{res}/meta.json"))
-        info = api.upload_folder(repo_id=a.repo, folder_path=ad, path_in_repo=rid,
+        # PEFT's generated README.md names the pod-local base path as base_model, which the Hub rejects as metadata
+        info = api.upload_folder(repo_id=a.repo, folder_path=ad, path_in_repo=rid, ignore_patterns=["README.md"],
                                  commit_message=f"{rid} ({meta['format']}, {meta.get('corpus')}, seed {meta.get('seed')})")
         out[SYSTEMS.get(rid, rid)] = {"run_id": rid, "path": f"hf://{a.repo}/{rid}", "repo": a.repo,
                                       "revision": info.oid, "base_model": meta["model"],

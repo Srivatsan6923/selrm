@@ -23,10 +23,14 @@ Nothing is tuned on a test set: parser, linker, gate and prompts are developed o
   Format ledger_g (selrm/formats.py). When runs finish: pull, register (add aliases v2_verdict_*, v2_reader_* to
   register_adapters.py), resummarize is not needed (runner summaries; no local copies of the test sets),
   report by near-miss kind in docs/ANALYSIS_B_S2.md.
-- B3 Ledger-RM-G: after B2. Eval-only runs of each B-V2-reader-triplets-s<k> with eval mode gate and gate_struct
-  (eval_local.gate_units; scores carry route and checks), then merge with the B-V2-verdict-triplets-s<k> scores for
-  the routes fallback_none and fallback_malformed. Validation stop rule first (rule_v2/dev within 0.5 TA of
-  v2_reader; rule_v1/dev within 0.5 of ledger2_triplets). Register ledger_rm_g_s{0..4}; write ANALYSIS_B_S2.md.
+- B3 Ledger-RM-G: round 1 failed the stop rule (rule_v1/dev, 0.67 below); the lead (user, 10 Oct) chose a second
+  development round. Gate changed (DECISIONS_B 10 Oct: computes(), route reader_bit, classes linked by name).
+  Requeued: configs/queues/v2/b_s2g.json (B-S2G-{gate,struct,bit,verdict}-s<k>-dev for every seed whose reader and
+  verdict adapters exist; min_gen 9). When B-S2G-gate-s<k>-dev and -struct- are DONE: pull,
+  `python scripts/assemble_rmg.py --validate <k>`. If seed 0 passes: queue the tests
+  (make_queue_b.composite(adapters, tests=True) -> a queue file, push, prep), bring the test record files into the
+  local data copy for the summaries, assemble, register ledger_rm_g_s<k> with variants, write docs/ANALYSIS_B_S2.md.
+  If it fails again: stop for good and report.
 - B4 adaptation arms: running (v2/b_mix.json). Done: B-MIX-blocks-s0 (mix_blocks_s0). The long-prompt runs use
   "big" settings on 80 GB cards (per-device 4, scoring batch 32).
 - B5 handoffs: adapters line sent 9 Oct; resources per configuration after B2.
@@ -34,6 +38,21 @@ Nothing is tuned on a test set: parser, linker, gate and prompts are developed o
   curves (39), seeds 1-2 of non-core ablations: not queued, to be run when GPUs are idle after B2-B4 or reported to D.
 
 ## GPUs
+- 10 Oct 07:15 UTC: composite validation, seed 0: B-S2G-bit-s0-dev and B-S2G-verdict-s0-dev are done and pulled;
+  B-S2G-gate-s0-dev and B-S2G-struct-s0-dev are requeued on code 9cf63f3 (GEN 8, min_gen 8) after the linker fix
+  (DECISIONS_B 10 Oct). Runners on the new code: one each h100-opp, l40, a40, a6000 (pending); the four running
+  pods (two A100, two H100) are on older code and take only training runs. Then: pull, `python
+  scripts/assemble_rmg.py --validate 0`. Also done and registered: v2_reader_blocks_s0, v2_verdict_triplets_s1.
+- 10 Oct 06:30 UTC: v2_reader_s0 done and registered; composite validation runs queued and prepped
+  (configs/queues/v2/b_s2g.json: B-S2G-{gate,struct,bit,verdict}-s0-dev, priority 4). reg_v1/dev and reg_v1/test are
+  on the PVC (not yet in the B-V2 runs' eval sets: score them by eval-only runs).
+- 10 Oct 05:15 UTC: done and registered: v2_verdict_blocks_s0, v2_verdict_triplets_s0, mix_blocks_s0-1,
+  mix_triplets_s0-1. Running: A100 (B-MIX-blocks-s2), A100 (B-V2-verdict-blocks-s1), H100 (B-V2-reader-triplets-s0),
+  H100 (B-V2-reader-blocks-s0); means 65-94% over the last 10 minutes, no LOWUTIL file. B3 is prepared:
+  when B-V2-reader-triplets-s<k> is DONE, write configs/queues/v2/b_s2g.json from make_queue_b.composite(adapters)
+  (add it to scratch/regen_revised.py), push, prep, run; pull; `python scripts/assemble_rmg.py --validate <k>`;
+  only if it passes, composite(adapters, tests=True) and `assemble_rmg.py <k>` (test record files must then be in
+  the local data copy for the summaries).
 - 10 Oct 02:00 UTC: runners on code 45c7476 (GEN 7): two h100-opp, one each l40, a40, a6000, a100; the A100 runner
   of 9 Oct (GEN 6, MIX and DIV runs only) is still running. role A data on the PVC through `submit_b.py fetch-ref`
   and `restore-data` (code 8043eadcc3ad).
@@ -69,10 +88,11 @@ Pull (`submit_b.py pull`), `register_adapters.py`, `resummarize_b.py <runs>`, an
 commit and push; HANDOFFS lines for results C or D use. `python scratch/regen_revised.py` regenerates queue files.
 
 ## Open compute requests
-- #1 CLOSED 9 Oct (lead's handoff and the user): `selrm-github-ro` (key token) exists; `hf-token-srivatsan` (key
-  token) is the user's and B may use it. Publishing kept adapters to a private HF repo
-  (`submit_b.py publish <owner>/selrm-adapters --secret hf-token-srivatsan:token`) needs the HF account name;
-  asked 9 Oct. Not blocking: C mounts PVC selrm-b read-only.
+- None. #2 closed 10 Oct: the user supplied a write token; it is the cluster secret `selrm-b-hf-write` (key token;
+  never in the repo). Published to the private repo srivatsan6923/selrm-adapters: the four stage-1 headline
+  adapters of configs/keep_adapters.json (job selrm-b-publish-11942; README.md of PEFT left out). To publish
+  more: add run ids to configs/keep_adapters.json, then
+  `submit_b.py publish srivatsan6923/selrm-adapters --secret selrm-b-hf-write:token`.
 
 ## Blockers
 - A: rule_v2 (A5), mcv_v1 (A1), onto_v1 / cls_v1 (A4), reg_v1 (A6); the `struct` and onto_v1 file formats.

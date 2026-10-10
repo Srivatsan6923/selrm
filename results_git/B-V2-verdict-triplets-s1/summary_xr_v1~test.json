@@ -1,0 +1,41 @@
+{
+ "run_id": "B-V2-verdict-triplets-s1",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 97.5,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 99.58333333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 99.0,
+   "XA_subject": 100.0,
+   "XA_window": 91.0
+  },
+  "criterion": {
+   "XA": 99.0,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 99.83333333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 100.0,
+   "XA_window": 96.0
+  }
+ },
+ "eval": {
+  "seconds": 62.7,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

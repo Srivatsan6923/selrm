@@ -45,14 +45,14 @@ class Linker:
 
     def in_text(self, text, k=10):
         """Terms named inside a quotation: every word n-gram (longest first) looked up by normalised name, then
-        candidates(text) to fill up to k."""
+        candidates(text) when none is found."""
         out, words = {}, norm(text).split()
         for n in range(min(len(words), 12), 0, -1):
             for i in range(len(words) - n + 1):
                 for t in self.normed.get(" ".join(words[i:i + n]), []):
                     out.setdefault(t, "normalised")
-        res = [(i, self.label[i], s) for i, s in out.items()][:k]
-        return res + [c for c in self.candidates(text, k) if c[0] not in out][:k - len(res)]
+        # string similarity over every name is slow (seconds per thousand quotations): only when no name is found
+        return [(i, self.label[i], s) for i, s in out.items()][:k] or self.candidates(text, k)
 
 
 def load_onto(path, embed=None):

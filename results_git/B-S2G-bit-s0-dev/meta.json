@@ -1,0 +1,100 @@
+{
+ "run_id": "B-S2G-bit-s0-dev",
+ "model": "unsloth/Qwen3.5-9B",
+ "model_revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+ "provider": "local (NRP Nautilus)",
+ "access_date": "2026-10-10",
+ "reasoning": "chat template with enable_thinking=False",
+ "format": "ledger_g",
+ "corpus": null,
+ "seed": 0,
+ "provisional": false,
+ "timing_only": false,
+ "eval_sets": [
+  "rule_v1/dev"
+ ],
+ "train_key": null,
+ "pretok_stats": null,
+ "train": {
+  "hp": {
+   "lr": 0.0001,
+   "batch": 64,
+   "per_device": 16,
+   "epochs": 1,
+   "max_len": 1024,
+   "lora_r": 64,
+   "lora_alpha": 64,
+   "lora_dropout": 0.0,
+   "warmup_ratio": 0.03,
+   "weight_decay": 0.0,
+   "optim": "adamw_torch_fused",
+   "max_grad_norm": 1.0,
+   "save_every_s": 1200,
+   "target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj"
+   ]
+  },
+  "grad_accum": null,
+  "eval_only": true,
+  "adapter": "adapters/B-V2-reader-triplets-s0"
+ },
+ "eval_seconds": 78.5,
+ "eval_seconds_by_set": {
+  "rule_v1/dev": 77.5
+ },
+ "eval_batch": {
+  "score": 128,
+  "generate": 256,
+  "max_new": 384
+ },
+ "eval_peak_mem_gb": 41.42,
+ "eval_generated_tokens": 47619,
+ "pad_check_ok": true,
+ "per_device_batch": 16,
+ "grad_accum": null,
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA H100 80GB HBM3, 615.71.09, 81559 MiB",
+ "node": "exp-19-10.sdsc.optiputer.net",
+ "pod": "selrm-b-run-all-h100-opp-94454-1-4zhhj",
+ "git_commit": "45c7476f46c6",
+ "wall_seconds": 103.1,
+ "keep_adapter": false,
+ "max_rss_gb": 11.87,
+ "eval_u_path": "fp32-hidden",
+ "adapter_path": null,
+ "summaries": {
+  "rule_v1/dev": {
+   "Rev": 99.66666666666667,
+   "Hold": 99.66666666666667,
+   "TA": 99.33333333333333,
+   "BaseAcc": 99.66666666666667,
+   "Tie": 0.0,
+   "PresHold": 99.66666666666667,
+   "n": 300
+  }
+ },
+ "gpu_util_mean": 69.0,
+ "gpu_util_p10": 3.0,
+ "gpu_windows_below40": 0.0,
+ "gpu_samples": 4,
+ "gpu_hours": 0.029
+}

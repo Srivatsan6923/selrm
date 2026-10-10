@@ -85,8 +85,8 @@ def priority(rid, seed, mprio="P1"):
         return 74 + (seed > 0) * 20
     if rid.startswith("B-FOLD"):
         return 76 + (seed > 0)
-    if rid.startswith("B-DIV-"):
-        return 80 + (seed > 0)
+    if rid.startswith("B-DIV-"):          # seed 0 right after the stage-2 core runs: the curve is an open cell of the paper
+        return 13 if seed == 0 else 81
     if rid.startswith("B-BB-"):
         return 85 + (seed > 0) * 10
     return 99
@@ -394,6 +394,33 @@ def stage2(registry):
                          "priority": 6 + s + (3 if "lo_" in c else 0), "format": "ledger_g" if f == "reader" else "verdict",
                          "corpus": f"rule_v2/train_{c}", "n_examples": 60000, "keep_adapter": True, "eval": dict(EVAL),
                          "max_drop": 0.01, "eval_sets": evals, "min_gen": 7})
+    return runs
+
+
+DEV_S2 = ["rule_v2/dev", "rule_v1/dev", "cls_v1/dev"]
+TEST_S2 = ["rule_v2/test_L2", "rule_v1/test_L2", "xr_v1/test", "cls_v1/test"]
+
+
+def composite(adapters, tests=False, seeds=range(5)):
+    """STAGE2_TASKS_B B3: eval-only runs behind Ledger-RM-G for every trained B-V2-reader-triplets-s<k>.
+    B-S2G-{gate,struct}-s<k>-{dev,test}: the reader's record through the gate (parsed criterion / struct), judged
+    blind or with the case (eval_local.gate_units); B-S2G-{bit,verdict}-s<k>-dev: the reader's own bit and the
+    verdict-only fallback on the development sets their training runs did not score. Tests only after the
+    validation on the development sets passed (scripts/assemble_rmg.py --validate)."""
+    runs, part = [], "test" if tests else "dev"
+    for k in seeds:
+        rd, vd = f"B-V2-reader-triplets-s{k}", f"B-V2-verdict-triplets-s{k}"
+        if rd not in adapters or vd not in adapters:
+            continue
+        base = {"seed": k, "priority": 4 + k, "train": False, "eval_sets": TEST_S2 if tests else DEV_S2, "min_gen": 9}
+        for name, mode in (("gate", "gate"), ("struct", "gate_struct")):
+            runs.append(base | {"run_id": f"B-S2G-{name}-s{k}-{part}", "format": "ledger_g", "adapter": f"adapters/{rd}",
+                                "eval": dict(EVAL) | {"mode": mode}})
+        if not tests:
+            runs.append(base | {"run_id": f"B-S2G-bit-s{k}-dev", "format": "ledger_g", "adapter": f"adapters/{rd}",
+                                "eval": dict(EVAL), "eval_sets": ["rule_v1/dev"]})
+            runs.append(base | {"run_id": f"B-S2G-verdict-s{k}-dev", "format": "verdict", "adapter": f"adapters/{vd}",
+                                "eval": dict(EVAL), "eval_sets": ["rule_v1/dev"]})
     return runs
 
 

@@ -77,10 +77,19 @@ def entry_checks(e, constraints, case, ref_date, onto):
             ch[k] = int(e["status"] in c["allowed"])
         elif k == "concept":
             members = ((onto or {}).get("closure") or {}).get(c["class"])
-            linker = (onto or {}).get("linker")      # an id is accepted only among the terms retrieved for the quotation
-            known = e.get("concept") and (linker is None or e["concept"] in {x[0] for x in linker.in_text(e["found"])})
-            ch[k] = None if members is None or not known else int(e["concept"] in members)
+            linker = (onto or {}).get("linker")
+            term = e.get("concept")
+            if linker is not None:          # the term comes from the quotation: the reader's id only chooses among the
+                found = [x[0] for x in linker.in_text(e["found"]) if x[2] != "nearest"]     # terms named in it
+                term = term if term in found else found[0] if found else None
+            ch[k] = None if members is None or not term else int(term in members)
     return ch
+
+
+def computes(constraints):
+    """True if the criterion has a part the gate computes on its own: a threshold, a window or a class. Subject,
+    status and time scope alone are read off the reader's typed fields, so there the reader's bit stands."""
+    return any(c["kind"] in ("value", "concept") or (c["kind"] == "time" and c["scope"] == "window") for c in constraints or [])
 
 
 def gate(record, constraints, case, ref_date=None, onto=None):
