@@ -63,10 +63,6 @@
   "number": 1032,
   "value": "1{,}032"
  },
- "cmp/mcv/blocks_none.balanced_accuracy": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
  "cmp/mcv/blocks_stated.balanced_accuracy": {
   "number": 89.88756613756614,
   "value": "89.9"
@@ -86,6 +82,86 @@
  "cmp/mcv/triplets_stated.balanced_accuracy": {
   "number": 91.13227513227513,
   "value": "91.1"
+ },
+ "cmp/mcvc/critic|criteria_test@stated|note_type=model.BalAcc": {
+  "number": 87.4050798638387,
+  "value": "87.4"
+ },
+ "cmp/mcvc/critic|criteria_test@stated|stratum=default.BalAcc": {
+  "number": 92.77246992215144,
+  "value": "92.8"
+ },
+ "cmp/mcvc/critic|criteria_test@stated|stratum=stated.BalAcc": {
+  "number": 82.50364526376087,
+  "value": "82.5"
+ },
+ "cmp/mcvc/critic|edits_test@stated|edit_type=sentence.TA": {
+  "number": 92.8374655647383,
+  "value": "92.8"
+ },
+ "cmp/mcvc/critic|edits_test@stated|edit_type=value.TA": {
+  "number": 60.877513711151735,
+  "value": "60.9"
+ },
+ "cmp/mcvc/verdict-blocks|criteria_test@none|note_type=human.BalAcc": {
+  "number": 81.67332457111712,
+  "value": "81.7"
+ },
+ "cmp/mcvc/verdict-blocks|criteria_test@stated|note_type=model.BalAcc": {
+  "number": 91.36894474993454,
+  "value": "91.4"
+ },
+ "cmp/mcvc/verdict-blocks|criteria_test@stated|stratum=default.BalAcc": {
+  "number": 77.7406227883935,
+  "value": "77.7"
+ },
+ "cmp/mcvc/verdict-blocks|criteria_test@stated|stratum=stated.BalAcc": {
+  "number": 89.07592563661927,
+  "value": "89.1"
+ },
+ "cmp/mcvc/verdict-blocks|edits_test@stated|edit_type=sentence.TA": {
+  "number": 59.77961432506888,
+  "value": "59.8"
+ },
+ "cmp/mcvc/verdict-blocks|edits_test@stated|edit_type=value.TA": {
+  "number": 76.3071297989031,
+  "value": "76.3"
+ },
+ "cmp/mcvc/verdict-triplets|criteria_test@stated|note_type=model.BalAcc": {
+  "number": 92.0636292223095,
+  "value": "92.1"
+ },
+ "cmp/mcvc/verdict-triplets|criteria_test@stated|stratum=default.BalAcc": {
+  "number": 78.10686482661005,
+  "value": "78.1"
+ },
+ "cmp/mcvc/verdict-triplets|criteria_test@stated|stratum=stated.BalAcc": {
+  "number": 90.36429203770244,
+  "value": "90.4"
+ },
+ "cmp/mcvc/verdict-triplets|edits_test@stated|edit_type=sentence.TA": {
+  "number": 98.58585858585859,
+  "value": "98.6"
+ },
+ "cmp/mcvc/verdict-triplets|edits_test@stated|edit_type=value.TA": {
+  "number": 79.19561243144425,
+  "value": "79.2"
+ },
+ "cmp/mec/critic|derived.pair_accuracy": {
+  "number": 18.39123165521085,
+  "value": "18.4"
+ },
+ "cmp/mec/critic|none.pair_accuracy": {
+  "number": 24.187256176853055,
+  "value": "24.2"
+ },
+ "cmp/mec/verdict-triplets|derived.pair_accuracy": {
+  "number": 10.354820731933865,
+  "value": "10.4"
+ },
+ "cmp/mec/verdict-triplets|none.pair_accuracy": {
+  "number": 22.036039383243544,
+  "value": "22.0"
  },
  "cmp/p1/diff": {
   "number": -8.85,
@@ -120,20 +196,20 @@
   "value": "\\ph{tbd}"
  },
  "cmp/p11/diff": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": -5.8851941296674735,
+  "value": "-5.9"
  },
  "cmp/p11/hi": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 0.42525208241998413,
+  "value": "0.4"
  },
  "cmp/p11/lo": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": -12.84707425012293,
+  "value": "-12.8"
  },
  "cmp/p11/p": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 0.0664,
+  "value": "0.066"
  },
  "cmp/p11/padj": {
   "number": null,
@@ -987,9 +1063,25 @@
   "number": 0.0,
   "value": "0"
  },
+ "run/A-D14-attribute_blind/L2/all/Hold": {
+  "number": 40.0,
+  "value": "40.0"
+ },
+ "run/A-D14-attribute_blind/L2/all/Rev": {
+  "number": 100.0,
+  "value": "100.0"
+ },
  "run/A-D14-attribute_blind/L2/all/TA": {
   "number": 40.0,
   "value": "40.0"
+ },
+ "run/A-D14-bag_of_words/L2/all/Hold": {
+  "number": 61.7,
+  "value": "61.7"
+ },
+ "run/A-D14-bag_of_words/L2/all/Rev": {
+  "number": 13.25,
+  "value": "13.2"
  },
  "run/A-D14-bag_of_words/L2/all/TA": {
   "number": 7.05,
@@ -1015,9 +1107,25 @@
   "number": 0.0,
   "value": "0"
  },
+ "run/A-D14-trigger_all/L2/all/Hold": {
+  "number": 100.0,
+  "value": "100.0"
+ },
+ "run/A-D14-trigger_all/L2/all/Rev": {
+  "number": 99.5,
+  "value": "99.5"
+ },
  "run/A-D14-trigger_all/L2/all/TA": {
   "number": 99.5,
   "value": "99.5"
+ },
+ "run/A-D14-trigger_train/L2/all/Hold": {
+  "number": 57.3,
+  "value": "57.3"
+ },
+ "run/A-D14-trigger_train/L2/all/Rev": {
+  "number": 96.65,
+  "value": "96.7"
  },
  "run/A-D14-trigger_train/L2/all/TA": {
   "number": 53.95,
@@ -3371,19 +3479,7 @@
   "number": null,
   "value": "\\ph{tbd}"
  },
- "run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/note_type=model/BalAcc": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=default/BalAcc": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
  "run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=denied/BalAcc": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=stated/BalAcc": {
   "number": null,
   "value": "\\ph{tbd}"
  },
@@ -3392,14 +3488,6 @@
   "value": "\\ph{tbd}"
  },
  "run/C-S2-mcv-critic/mcv_v1:edits_test@stated/all/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/C-S2-mcv-critic/mcv_v1:edits_test@stated/edit_type=sentence/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/C-S2-mcv-critic/mcv_v1:edits_test@stated/edit_type=value/TA": {
   "number": null,
   "value": "\\ph{tbd}"
  },
@@ -3459,55 +3547,11 @@
   "number": null,
   "value": "\\ph{tbd}"
  },
- "run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/note_type=model/BalAcc": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=default/BalAcc": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
  "run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=denied/BalAcc": {
   "number": null,
   "value": "\\ph{tbd}"
  },
- "run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=stated/BalAcc": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/edit_type=sentence/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/edit_type=value/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/note_type=model/BalAcc": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=default/BalAcc": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
  "run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=denied/BalAcc": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=stated/BalAcc": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/edit_type=sentence/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/edit_type=value/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/C-S2-me-critic/clin_v1:medeinst_test@derived/top/Reversal": {
   "number": null,
   "value": "\\ph{tbd}"
  },
@@ -4703,6 +4747,14 @@
   "number": 0,
   "value": "0"
  },
+ "sum/A-D11-v2/groups_accepted@int": {
+  "number": 460,
+  "value": "460"
+ },
+ "sum/A-D11-v2/groups_tried@int": {
+  "number": 1000,
+  "value": "1{,}000"
+ },
  "sum/A-SETS/ec_v1_prepare.kept": {
   "number": 95,
   "value": "95"
@@ -4710,6 +4762,22 @@
  "sum/A-SETS/ec_v1_prepare.trials": {
   "number": 85,
   "value": "85"
+ },
+ "sum/A-SETS/harder_set.delabelled@int": {
+  "number": 3,
+  "value": "3"
+ },
+ "sum/A-SETS/harder_set.groups@int": {
+  "number": 1000,
+  "value": "1{,}000"
+ },
+ "sum/A-SETS/harder_set.long_note@int": {
+  "number": 917,
+  "value": "917"
+ },
+ "sum/A-SETS/harder_set.superseded_value@int": {
+  "number": 80,
+  "value": "80"
  },
  "sum/A-SETS/mcv_v1.fidelity.test.kept@int": {
   "number": 1636,

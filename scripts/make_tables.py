@@ -548,6 +548,11 @@ def comparisons():
         if cells:       # key cmp/mcv/<system>_<cond>.<field>
             _CMP["mcv"] = {f"{c}.{k}": v for c, d in cells.items() for k, v in d.items()} | {
                 "file": rel(p), "file_commit": file_commit(p)}
+        # cmp/mcvc/<system>|<portion>@<cond>|<slice>.<field> and cmp/mec/<system>|<cond>.<field> (C's cell blocks)
+        for name, block in (("mcvc", raw.get("mcv_cells")), ("mec", raw.get("medeinst_cells"))):
+            if isinstance(block, dict) and block:
+                _CMP[name] = {f"{c}.{k}": v for c, d in block.items() if isinstance(d, dict) for k, v in d.items()} | {
+                    "file": rel(p), "file_commit": file_commit(p)}
         fam = [k for k in s2 if isinstance(f.get(k), dict) and not f[k].get("dropped")]
         for k in fam:
             _CMP[k] = f[k] | {"n": f[k].get("n_clusters"), "file": rel(p), "file_commit": file_commit(p)}

@@ -820,11 +820,13 @@ verifier from \res{cmp/mcv/triplets_none.balanced_accuracy}\% to \res{cmp/mcv/tr
 $[\res{cmp/p8/lo},\res{cmp/p8/hi}]$. The trained verifier's advantage on clinical notes does not come
 from reading the criterion.
 
-\emph{Open.} Class conditions, a derived criterion on MedEinst and the
-composite are \ph{not yet run}; $p$-values are unadjusted until then
-(Table~\ref{tab:stage2}). The symbolic executor of the derived criterion
-decides both cases of \res{sum/C-S2-executor/test.both_decided}\% of MedEinst pairs and is right on \res{sum/C-S2-executor/test.pair}\%:
-the criterion does not entail the trap labels.
+\emph{Derived criterion.} The symbolic executor of the criterion derived
+for MedEinst decides both cases of \res{sum/C-S2-executor/test.both_decided}\% of pairs and is right on
+\res{sum/C-S2-executor/test.pair}\%: the criterion does not entail the trap labels. Given it, the
+trained verifier falls from \res{cmp/mec/verdict-triplets|none.pair_accuracy}\% to \res{cmp/mec/verdict-triplets|derived.pair_accuracy}\% of pairs and the backbone
+from \res{cmp/mec/critic|none.pair_accuracy}\% to \res{cmp/mec/critic|derived.pair_accuracy}\% ($\res{cmp/p11/diff}$ $[\res{cmp/p11/lo},\res{cmp/p11/hi}]$): the expectation of (11)
+is not met. Class conditions and the composite are \ph{not yet run};
+$p$-values are unadjusted until then (Table~\ref{tab:stage2}).
 
 \subsection{Reward use: selection and policy training}
 \label{sec:results-downstream}
@@ -1263,7 +1265,8 @@ the test and not as evidence of abstention.
 \paragraph{Harder set.}
 The harder set is built on the L2 rules and adds long notes with unrelated
 lines, superseded values (an older value crosses the threshold, the latest
-does not) and relabelled lines; counts per requirement are \tbd.
+does not) and relabelled lines: of \res{sum/A-SETS/harder_set.groups@int} groups, \res{sum/A-SETS/harder_set.long_note@int} have a long note, \res{sum/A-SETS/harder_set.superseded_value@int} a superseded value and \res{sum/A-SETS/harder_set.delabelled@int} a
+relabelled line.
 
 \paragraph{Rule-side items.}
 For a fixed case, two rules differ only in the applicability clause: time
@@ -1277,7 +1280,8 @@ random preferences 1.6\% ($1/64$).
 \paragraph{Text written without the renderer.}
 A kit of 160 case specifications for cases written by the authors, each to
 be checked by a second author, is prepared; the cases are \ph{not yet
-written}, and model-rewritten cases are \ph{not built}. Neither is used in
+written}, and model-rewritten cases are built and frozen but not scored
+(\res{sum/A-D11-v2/groups_accepted@int} of \res{sum/A-D11-v2/groups_tried@int} groups passed the two-extractor check). Neither is used in
 this draft. The tests that the renderer does not determine are therefore the
 rule-side items and, in stage 2, real notes.
 
@@ -1635,7 +1639,7 @@ TrialGPT (F1)          & -- & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/mac
 \multicolumn{7}{@{}l}{\emph{Criterion derived}}\\
 Class triplets (TA)    & \res{run/C-S2-cls-critic/cls_v1:test@none/all/TA} & \res{run/C-S2-cls-critic/cls_v1:test@stated/all/TA} & \res{run/C-S2-cls-ledger-rm-g/cls_v1:test@none/all/TA} & \res{run/C-S2-cls-ledger-rm-g/cls_v1:test@stated/all/TA} & -- & \res{run/C-S2-cls-ledger-rm-g/cls_v1:test@wrong/all/TA}\\
 KB triplets (TA)       & \res{sum/C-S2-kb/systems.critic.none.TA} & \res{sum/C-S2-kb/systems.critic.stated.TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@none/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@derived/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@self/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@wrong/all/TA}\\
-MedEinst (pair)        & \res{run/C-ME-critic/clin_v1:medeinst_test/top/Reversal} & \res{run/C-S2-me-critic/clin_v1:medeinst_test@derived/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@none/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@derived/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@self/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@wrong/top/Reversal}\\
+MedEinst (pair)        & \res{run/C-ME-critic/clin_v1:medeinst_test/top/Reversal} & \res{cmp/mec/critic|derived.pair_accuracy} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@none/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@derived/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@self/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@wrong/top/Reversal}\\
 \multicolumn{7}{@{}l}{\emph{No source}}\\
 Key pairs, MedQA (pair) & \res{run/C-KP-critic/clin_v1:keypairs_medqa_oneway/top/Reversal} & -- & \res{run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@none/top/Reversal} & -- & \res{run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@self/top/Reversal} & \res{run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@wrong/top/Reversal}\\
 \bottomrule
@@ -1727,9 +1731,9 @@ triplet accuracy; (11), (12): pair accuracy, (12) as non-inferiority with a marg
  & \multicolumn{2}{c}{human notes} & model & \multicolumn{3}{c}{stratum (stated crit.)} & & \multicolumn{2}{c}{edit type}\\
 System & none & stated & notes & stated & denied & default & all & value & sentence\\
 \midrule
-Critic & \res{cmp/mcv/critic_none.balanced_accuracy} & \res{cmp/mcv/critic_stated.balanced_accuracy} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/note_type=model/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=stated/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=default/BalAcc} & \res{cmp/p9/TA_critic} & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@stated/edit_type=value/TA} & \res{run/C-S2-mcv-critic/mcv_v1:edits_test@stated/edit_type=sentence/TA}\\
-Verdict only, blocks & \res{cmp/mcv/blocks_none.balanced_accuracy} & \res{cmp/mcv/blocks_stated.balanced_accuracy} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/note_type=model/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=stated/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=default/BalAcc} & \res{cmp/p9/TA_blocks} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/edit_type=value/TA} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:edits_test@stated/edit_type=sentence/TA}\\
-Verdict only, triplets & \res{cmp/mcv/triplets_none.balanced_accuracy} & \res{cmp/mcv/triplets_stated.balanced_accuracy} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/note_type=model/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=stated/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=default/BalAcc} & \res{cmp/p9/TA_triplets} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/edit_type=value/TA} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:edits_test@stated/edit_type=sentence/TA}\\
+Critic & \res{cmp/mcv/critic_none.balanced_accuracy} & \res{cmp/mcv/critic_stated.balanced_accuracy} & \res{cmp/mcvc/critic|criteria_test@stated|note_type=model.BalAcc} & \res{cmp/mcvc/critic|criteria_test@stated|stratum=stated.BalAcc} & \res{run/C-S2-mcv-critic/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{cmp/mcvc/critic|criteria_test@stated|stratum=default.BalAcc} & \res{cmp/p9/TA_critic} & \res{cmp/mcvc/critic|edits_test@stated|edit_type=value.TA} & \res{cmp/mcvc/critic|edits_test@stated|edit_type=sentence.TA}\\
+Verdict only, blocks & \res{cmp/mcvc/verdict-blocks|criteria_test@none|note_type=human.BalAcc} & \res{cmp/mcv/blocks_stated.balanced_accuracy} & \res{cmp/mcvc/verdict-blocks|criteria_test@stated|note_type=model.BalAcc} & \res{cmp/mcvc/verdict-blocks|criteria_test@stated|stratum=stated.BalAcc} & \res{run/C-S2-mcv-verdict-blocks/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{cmp/mcvc/verdict-blocks|criteria_test@stated|stratum=default.BalAcc} & \res{cmp/p9/TA_blocks} & \res{cmp/mcvc/verdict-blocks|edits_test@stated|edit_type=value.TA} & \res{cmp/mcvc/verdict-blocks|edits_test@stated|edit_type=sentence.TA}\\
+Verdict only, triplets & \res{cmp/mcv/triplets_none.balanced_accuracy} & \res{cmp/mcv/triplets_stated.balanced_accuracy} & \res{cmp/mcvc/verdict-triplets|criteria_test@stated|note_type=model.BalAcc} & \res{cmp/mcvc/verdict-triplets|criteria_test@stated|stratum=stated.BalAcc} & \res{run/C-S2-mcv-verdict-triplets/mcv_v1:criteria_test@stated/stratum=denied/BalAcc} & \res{cmp/mcvc/verdict-triplets|criteria_test@stated|stratum=default.BalAcc} & \res{cmp/p9/TA_triplets} & \res{cmp/mcvc/verdict-triplets|edits_test@stated|edit_type=value.TA} & \res{cmp/mcvc/verdict-triplets|edits_test@stated|edit_type=sentence.TA}\\
 \bottomrule
 \end{tabular}
 \caption{\mcv{} (\%). Criterion claims on untouched notes without and with the score definition in the prompt, by
@@ -1834,10 +1838,10 @@ Scorer (L2) & Rev & Hold & TA\\
 Always default                 & \res{run/A-D14-always_default/L2/all/Rev@0} & \res{run/A-D14-always_default/L2/all/Hold@0} & \res{run/A-D14-always_default/L2/all/TA@0}\\
 Claim only                     & \res{run/A-D14-claim_only/L2/all/Rev@0} & --  & \res{run/A-D14-claim_only/L2/all/TA@0}\\
 Concept named ($h_k$)          & \res{run/A-D14-concept_named/L2/all/Rev@0} & \res{run/A-D14-concept_named/L2/all/Hold@0} & \res{run/A-D14-concept_named/L2/all/TA@0}\\
-Bag of words, case             & \tbd & \tbd & \res{run/A-D14-bag_of_words/L2/all/TA}\\
-Attribute-blind, logistic      & \tbd & \tbd & \res{run/A-D14-attribute_blind/L2/all/TA}\\
-Trigger lexicon, training cues & \tbd & \tbd & \res{run/A-D14-trigger_train/L2/all/TA}\\
-Trigger lexicon, test cues     & \tbd & \tbd & \res{run/A-D14-trigger_all/L2/all/TA}\\
+Bag of words, case             & \res{run/A-D14-bag_of_words/L2/all/Rev} & \res{run/A-D14-bag_of_words/L2/all/Hold} & \res{run/A-D14-bag_of_words/L2/all/TA}\\
+Attribute-blind, logistic      & \res{run/A-D14-attribute_blind/L2/all/Rev} & \res{run/A-D14-attribute_blind/L2/all/Hold} & \res{run/A-D14-attribute_blind/L2/all/TA}\\
+Trigger lexicon, training cues & \res{run/A-D14-trigger_train/L2/all/Rev} & \res{run/A-D14-trigger_train/L2/all/Hold} & \res{run/A-D14-trigger_train/L2/all/TA}\\
+Trigger lexicon, test cues     & \res{run/A-D14-trigger_all/L2/all/Rev} & \res{run/A-D14-trigger_all/L2/all/Hold} & \res{run/A-D14-trigger_all/L2/all/TA}\\
 Clinical trigger tagger        & \res{run/C-SC-gptrigger/L2/all/Rev} & \res{run/C-SC-gptrigger/L2/all/Hold} & \res{run/C-SC-gptrigger/L2/all/TA}\\
 \bottomrule
 \end{tabular}
