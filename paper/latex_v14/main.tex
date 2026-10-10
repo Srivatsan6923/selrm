@@ -1341,7 +1341,7 @@ On the development portion the difference between \method{} trained on
 triplets and the critic was $+13.7$ points of macro-F1 $[5.0,20.6]$ with 10
 patients; the test portion, with 43, gives $+\res{cmp/p6a/diff}$ $[\res{cmp/p6a/lo},\res{cmp/p6a/hi}]$. The reader's
 quoted sentences match the sentences the physicians marked with precision
-57.8\% and recall 61.8\% for \method{} trained on blocks (\tbd{} for
+57.8\% and recall 61.8\% for \method{} trained on blocks (\res{json/results_git/C-TG-ledger2-triplets-s0/summary_clin_v1~trialgpt_test.json::evidence.precision}\% and \res{json/results_git/C-TG-ledger2-triplets-s0/summary_clin_v1~trialgpt_test.json::evidence.recall}\% for
 triplets); the expert sentences evaluate evidence selection and do not
 validate the subject, status or time fields.
 
@@ -1425,7 +1425,7 @@ Critic & 80.9 & 78.3 & 84.8 & 79.5\\
 Verdict only, blocks & 85.6 & 79.2 & 93.8 & 83.9\\
 Verdict only, triplets & 85.4 & 81.0 & 90.6 & 84.5\\
 Evidence summary, triplets & 73.2 & 65.8 & 86.0 & 68.0\\
-\method{}, triplets & \tbd & \tbd & \tbd & \tbd\\
+\method{}, triplets & \res{run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Average/s0@pct1} & \res{run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Control_F1/s0@pct1} & \res{run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Faithfulness/s0@pct1} & \res{run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Consistency/s0@pct1}\\
 \bottomrule
 \end{tabular}}
 \caption{NLI4CT-P (\%, seed 0; 500 control statements). Faithfulness and
@@ -1926,15 +1926,15 @@ Critic & \res{run/C-TF-critic/xr_v1:test/xa/XA} & \res{run/C-TF-critic/xr_v1:tes
 \ \ + default correction & \res{run/C-TF-defcorr/xr_v1:test/xa/XA} & \res{run/C-TF-defcorr/xr_v1:test/xa/XA362} & \res{run/C-TF-defcorr/xr_v1:test/xa/XA_window@0} & \res{run/C-TF-defcorr/xr_v1:test/xa/XA_currency@0} & \res{run/C-TF-defcorr/xr_v1:test/xa/XA_subject@0} & \res{run/C-TF-defcorr/xr_v1:test/xa/XA_inclusivity@0}\\
 \ \ + prompted summary & \res{run/C-TF-promptsum/xr_v1:test/xa/XA} & \res{run/C-TF-promptsum/xr_v1:test/xa/XA362} & \res{run/C-TF-promptsum/xr_v1:test/xa/XA_window@0} & \res{run/C-TF-promptsum/xr_v1:test/xa/XA_currency@0} & \res{run/C-TF-promptsum/xr_v1:test/xa/XA_subject@0} & \res{run/C-TF-promptsum/xr_v1:test/xa/XA_inclusivity@0}\\
 Generated-program verifier & \res{run/C-TF-genprog/xr_v1:test/xa/XA} & \res{run/C-TF-genprog/xr_v1:test/xa/XA362} & \res{run/C-TF-genprog/xr_v1:test/xa/XA_window@0} & \res{run/C-TF-genprog/xr_v1:test/xa/XA_currency@0} & \res{run/C-TF-genprog/xr_v1:test/xa/XA_subject@0} & \res{run/C-TF-genprog/xr_v1:test/xa/XA_inclusivity@0}\\
-Verdict only, blocks & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA_inclusivity/s0@0}\\
-Verdict only, triplets & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\\
-Evidence summary, triplets & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\\
-\ \ judge also sees the case & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\\
-\method{}, triplets & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\\
-\ \ + decision field & \res{run/B-AB-decfield/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-AB-decfield/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA_inclusivity/s0@0}\\
-\ \ reader writes bit only & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_inclusivity/s0@0}\\
-\ \ condition derived by the reader & \res{run/B-AB-conddrv/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-AB-conddrv/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-conddrv/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-conddrv/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-conddrv/xr_v1:test/xa/XA_inclusivity/s0@0}\\
-\ \ $-$ ledger resampling & \res{run/B-AB-noresamp/xr_v1:test/xa/XA/s0} & \tbd & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+Verdict only, blocks & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA/s0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA362/s0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+Verdict only, triplets & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA/s0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA362/s0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+Evidence summary, triplets & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA/s0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA362/s0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+\ \ judge also sees the case & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA/s0} & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA362/s0} & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+\method{}, triplets & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA362/s0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+\ \ + decision field & \res{run/B-AB-decfield/xr_v1:test/xa/XA/s0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA362/s0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+\ \ reader writes bit only & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA/s0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA362/s0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+\ \ condition derived by the reader & \res{run/B-AB-conddrv/xr_v1:test/xa/XA/s0} & \res{run/B-AB-conddrv/xr_v1:test/xa/XA362/s0} & \res{run/B-AB-conddrv/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-conddrv/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-conddrv/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-conddrv/xr_v1:test/xa/XA_inclusivity/s0@0}\\
+\ \ $-$ ledger resampling & \res{run/B-AB-noresamp/xr_v1:test/xa/XA/s0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA362/s0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_inclusivity/s0@0}\\
 \bottomrule
 \end{tabular}}
 \caption{Rule-side items (\%, seed 0): crossed accuracy on all 400 items,
@@ -2138,7 +2138,7 @@ Value ledger                  & \res{run/B-F-value2-triplets/L2/all/Rev/s0} & \r
 Evidence summary (matched prose) & \res{run/B-F-summary2-triplets/L2/all/Rev/s0} & \res{run/B-F-summary2-triplets/L2/all/Hold/s0} & \res{run/B-F-summary2-triplets/L2/all/TA/s0} & 88.5\\
 \ \ judge also sees the case  & \res{run/B-SC-summary2-triplets/L2/all/Rev/s0} & \res{run/B-SC-summary2-triplets/L2/all/Hold/s0} & \res{run/B-SC-summary2-triplets/L2/all/TA/s0} & 91.5\\
 Concept scorer                & \res{run/B-AB-concept/L2/all/Rev/s0} & \res{run/B-AB-concept/L2/all/Hold/s0} & \res{run/B-AB-concept/L2/all/TA/s0} & 12.0\\
-Premise gate                  & \tbd & \tbd & \tbd & \tbd\\
+Premise gate                  & \res{run/B-AE-premise-gate/L2/all/Rev} & \res{run/B-AE-premise-gate/L2/all/Hold} & \res{run/B-AE-premise-gate/L2/all/TA} & --\\
 $-$ near-misses               & \res{run/B-F-ledger2-blocks/L2/all/Rev/s0} & \res{run/B-F-ledger2-blocks/L2/all/Hold/s0} & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & 76.0\\
 \ \ + probe re-weighting      & \res{run/B-AB-probe-rw/L2/all/Rev/s0} & \res{run/B-AB-probe-rw/L2/all/Hold/s0} & \res{run/B-AB-probe-rw/L2/all/TA/s0} & 25.8\\
 $-$ other-person near-misses  & \res{run/B-LOKO-subject-ledger2/L2/all/Rev/s0} & \res{run/B-LOKO-subject-ledger2/L2/all/Hold/s0} & \res{run/B-LOKO-subject-ledger2/L2/all/TA/s0} & 90.8\\
@@ -2158,7 +2158,9 @@ rejected, after \citet{agand2026venra}. Program-supplied ledger: the judge
 receives the target ledger. Program on predicted ledger or bit: the rule
 program replaces the judge and is used at test time. Concept scorer: fields
 predicted by linear heads and a linear verdict. Premise gate, after
-\citet{evpv2026}: not run. Probe re-weighting: near-misses are not trained
+\citet{evpv2026}: the Med-PRM score of a claim is attenuated when the rule
+program applied to the reader's ledger does not support it (weight chosen on
+the development set); not scored on rule-side items. Probe re-weighting: near-misses are not trained
 on; base--flip pairs whose preference shifts under near-miss and
 presentation edits are down-weighted, our adaptation of
 \citet{liu2026dynacf}. Rows that remove one near-miss kind show all L2

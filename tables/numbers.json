@@ -355,6 +355,14 @@
   "number": -0.864100549882167,
   "value": "-0.9"
  },
+ "json/results_git/C-TG-ledger2-triplets-s0/summary_clin_v1~trialgpt_test.json::evidence.precision": {
+  "number": 55.625,
+  "value": "55.6"
+ },
+ "json/results_git/C-TG-ledger2-triplets-s0/summary_clin_v1~trialgpt_test.json::evidence.recall": {
+  "number": 67.93893129770993,
+  "value": "67.9"
+ },
  "max/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA@0": {
   "number": 11.95,
   "value": "12"
@@ -443,6 +451,10 @@
   "number": 97.75,
   "value": "97.8"
  },
+ "run/B-AB-bitonly-reader/xr_v1:test/xa/XA362/s0": {
+  "number": 97.51381215469613,
+  "value": "97.5"
+ },
  "run/B-AB-bitonly-reader/xr_v1:test/xa/XA_currency/s0@0": {
   "number": 100.0,
   "value": "100"
@@ -491,6 +503,10 @@
   "number": 86.5,
   "value": "86.5"
  },
+ "run/B-AB-conddrv/xr_v1:test/xa/XA362/s0": {
+  "number": 85.0828729281768,
+  "value": "85.1"
+ },
  "run/B-AB-conddrv/xr_v1:test/xa/XA_currency/s0@0": {
   "number": 99.0,
   "value": "99"
@@ -522,6 +538,10 @@
  "run/B-AB-decfield/xr_v1:test/xa/XA/s0": {
   "number": 98.75,
   "value": "98.8"
+ },
+ "run/B-AB-decfield/xr_v1:test/xa/XA362/s0": {
+  "number": 98.61878453038673,
+  "value": "98.6"
  },
  "run/B-AB-decfield/xr_v1:test/xa/XA_currency/s0@0": {
   "number": 100.0,
@@ -566,6 +586,10 @@
  "run/B-AB-noresamp/xr_v1:test/xa/XA/s0": {
   "number": 78.75,
   "value": "78.8"
+ },
+ "run/B-AB-noresamp/xr_v1:test/xa/XA362/s0": {
+  "number": 76.51933701657458,
+  "value": "76.5"
  },
  "run/B-AB-noresamp/xr_v1:test/xa/XA_currency/s0@0": {
   "number": 96.0,
@@ -638,6 +662,18 @@
  "run/B-AE-pred-bit-program/L2/all/TA": {
   "number": 99.5,
   "value": "99.5"
+ },
+ "run/B-AE-premise-gate/L2/all/Hold": {
+  "number": 91.55,
+  "value": "91.5"
+ },
+ "run/B-AE-premise-gate/L2/all/Rev": {
+  "number": 49.25,
+  "value": "49.2"
+ },
+ "run/B-AE-premise-gate/L2/all/TA": {
+  "number": 44.55,
+  "value": "44.5"
  },
  "run/B-AE-program-ledger/L2/all/Hold": {
   "number": 100.0,
@@ -823,6 +859,10 @@
   "number": 89.75,
   "value": "89.8"
  },
+ "run/B-F-ledger2-triplets/xr_v1:test/xa/XA362/s0": {
+  "number": 88.67403314917127,
+  "value": "88.7"
+ },
  "run/B-F-ledger2-triplets/xr_v1:test/xa/XA_currency/s0@0": {
   "number": 93.0,
   "value": "93"
@@ -991,6 +1031,10 @@
   "number": 88.5,
   "value": "88.5"
  },
+ "run/B-F-summary2-triplets/xr_v1:test/xa/XA362/s0": {
+  "number": 87.29281767955801,
+  "value": "87.3"
+ },
  "run/B-F-summary2-triplets/xr_v1:test/xa/XA_currency/s0@0": {
   "number": 100.0,
   "value": "100"
@@ -1151,6 +1195,10 @@
   "number": 60.75,
   "value": "60.8"
  },
+ "run/B-F-verdict-blocks/xr_v1:test/xa/XA362/s0": {
+  "number": 59.94475138121547,
+  "value": "59.9"
+ },
  "run/B-F-verdict-blocks/xr_v1:test/xa/XA_currency/s0@0": {
   "number": 75.0,
   "value": "75"
@@ -1259,6 +1307,10 @@
   "number": 90.25,
   "value": "90.2"
  },
+ "run/B-F-verdict-triplets/xr_v1:test/xa/XA362/s0": {
+  "number": 89.22651933701657,
+  "value": "89.2"
+ },
  "run/B-F-verdict-triplets/xr_v1:test/xa/XA_currency/s0@0": {
   "number": 100.0,
   "value": "100"
@@ -1358,6 +1410,10 @@
  "run/B-SC-summary2-triplets/xr_v1:test/xa/XA/s0": {
   "number": 91.5,
   "value": "91.5"
+ },
+ "run/B-SC-summary2-triplets/xr_v1:test/xa/XA362/s0": {
+  "number": 90.60773480662984,
+  "value": "90.6"
  },
  "run/B-SC-summary2-triplets/xr_v1:test/xa/XA_currency/s0@0": {
   "number": 96.0,
@@ -1910,6 +1966,22 @@
  "run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/trap_acc/s0": {
   "number": 52.94445476500093,
   "value": "52.9"
+ },
+ "run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Average/s0@pct1": {
+  "number": 0.7210933828674362,
+  "value": "72.1"
+ },
+ "run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Consistency/s0@pct1": {
+  "number": 0.7429883945841392,
+  "value": "74.3"
+ },
+ "run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Control_F1/s0@pct1": {
+  "number": 0.5707547169811321,
+  "value": "57.1"
+ },
+ "run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Faithfulness/s0@pct1": {
+  "number": 0.8495370370370371,
+  "value": "85.0"
  },
  "run/C-S2-cls-critic/cls_v1:test@none/all/TA": {
   "number": null,
