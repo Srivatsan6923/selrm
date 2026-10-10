@@ -1,0 +1,73 @@
+{
+ "run_id": "C-S2-mcv2-verdict-blocks-s2",
+ "role": "C",
+ "model": "unsloth/Qwen3.5-9B",
+ "model_revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+ "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s2",
+ "adapter_run": "B-F-verdict-blocks-s2",
+ "provider": "local (NRP Nautilus)",
+ "access_date": "2026-10-09",
+ "reasoning": "chat template with enable_thinking=False",
+ "format": "verdict",
+ "mode": null,
+ "rejudge_from": null,
+ "lenient_version": null,
+ "sets": [
+  "mcv_v1/edits_test@none",
+  "mcv_v1/criteria_test@wrong",
+  "mcv_v1/edits_test@wrong",
+  "mcv_v1/ruleside_test",
+  "mcv_v1/natural_band_test"
+ ],
+ "max_new": 384,
+ "eval_batch": {
+  "score": 16,
+  "generate": 48
+ },
+ "hp": {
+  "max_len": 4096
+ },
+ "eval_seconds_by_set": {
+  "mcv_v1/edits_test@none": 2788.5,
+  "mcv_v1/criteria_test@wrong": 2944.6,
+  "mcv_v1/edits_test@wrong": 3672.9,
+  "mcv_v1/ruleside_test": 504.0,
+  "mcv_v1/natural_band_test": 407.7
+ },
+ "eval_generated_tokens": 0,
+ "pad_check_ok": true,
+ "eval_u_path": "fp32-hidden",
+ "eval_peak_mem_gb": 18.16,
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA A10, 595.91.07, 23028 MiB",
+ "node": "hcc-nrp-shor-c6029.unl.edu",
+ "pod": "selrm-c-run-c-s2-mcv-24gbf-25164-1-mncgp",
+ "scoring_code": "role-b ac524e8062ef",
+ "git_commit": "329a633d028a",
+ "wall_seconds": 10371.4,
+ "summaries": {
+  "mcv_v1/edits_test@none": null,
+  "mcv_v1/criteria_test@wrong": null,
+  "mcv_v1/edits_test@wrong": null,
+  "mcv_v1/ruleside_test": null,
+  "mcv_v1/natural_band_test": null
+ },
+ "gpu_util_mean": 97.7,
+ "gpu_util_p10": 100.0,
+ "gpu_windows_below40": 0.0,
+ "gpu_samples": 335,
+ "gpu_hours": 2.881
+}

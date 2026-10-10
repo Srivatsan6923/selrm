@@ -1,0 +1,7 @@
+2026-10-09T16:32:10Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-verdict-triplets-s4
+2026-10-09T16:32:11Z token budget per batch: None (generation None)
+2026-10-09T16:32:11Z C-S2-xp-verdict-triplets-s4 xp_v1/test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/xp_v1/test/verdict.npz', 'exists')
+2026-10-09T16:32:17Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0409)
+2026-10-09T16:32:18Z padding self-check: max |u_batch - u_single| = 0.0947 (tol 0.862) -> left padding
+2026-10-09T16:34:19Z C-S2-xp-verdict-triplets-s4 xp_v1/test: TA 91.3 Rev 92.0 Hold 98.0 n=300 (127.3 s)
+2026-10-09T16:34:22Z DONE C-S2-xp-verdict-triplets-s4 in 2.8 min, GPU util mean 80.0

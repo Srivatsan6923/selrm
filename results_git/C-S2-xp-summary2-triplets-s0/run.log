@@ -1,0 +1,8 @@
+2026-10-09T16:37:37Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-summary2-triplets-s0
+2026-10-09T16:37:39Z token budget per batch: 8000 (generation 24000)
+2026-10-09T16:37:47Z C-S2-xp-summary2-triplets-s0 xp_v1/test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/xp_v1/test/reader_prose.npz', 'built 1200 prompts, max 458 tokens')
+2026-10-09T16:37:48Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0161)
+2026-10-09T16:37:51Z padding self-check: max |u_batch - u_single| = 0.0702 (tol 0.601) -> left padding
+2026-10-09T16:43:17Z generate: batch 25/32, 37130 tokens, 114 tok/s
+2026-10-09T16:49:31Z C-S2-xp-summary2-triplets-s0 xp_v1/test: TA 98.3 Rev 99.0 Hold 99.3 n=300 (703.2 s)
+2026-10-09T16:49:33Z DONE C-S2-xp-summary2-triplets-s0 in 12.9 min, GPU util mean 70.2

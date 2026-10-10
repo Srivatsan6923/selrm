@@ -1,0 +1,11 @@
+2026-10-09T07:04:52Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-verdict-blocks-s0
+2026-10-09T07:04:53Z token budget per batch: 8000 (generation 24000)
+2026-10-09T07:04:54Z C-S2-kb-verdict-blocks-s0 kb_v1/triplets_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/kb_v1/triplets_test/verdict.npz', 'exists')
+2026-10-09T07:05:14Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0438)
+2026-10-09T07:05:18Z padding self-check: max |u_batch - u_single| = 0.1350 (tol 0.624) -> left padding
+2026-10-09T08:55:24Z C-S2-kb-verdict-blocks-s0 kb_v1/triplets_test: TA 84.3 Rev 90.0 Hold 93.6 n=5143 (6629.5 s)
+2026-10-09T08:55:25Z C-S2-kb-verdict-blocks-s0 kb_v1/triplets_test@none prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/kb_v1/triplets_test@none/verdict.npz', 'exists')
+2026-10-09T09:34:53Z C-S2-kb-verdict-blocks-s0 kb_v1/triplets_test@none: TA 51.6 Rev 54.3 Hold 85.2 n=5143 (2367.5 s)
+2026-10-09T09:34:54Z C-S2-kb-verdict-blocks-s0 kb_v1/triplets_test@wrong prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/kb_v1/triplets_test@wrong/verdict.npz', 'exists')
+2026-10-09T11:25:19Z C-S2-kb-verdict-blocks-s0 kb_v1/triplets_test@wrong: TA 2.8 Rev 2.9 Hold 20.0 n=5143 (6624.0 s)
+2026-10-09T11:25:21Z DONE C-S2-kb-verdict-blocks-s0 in 261.1 min, GPU util mean 98.3

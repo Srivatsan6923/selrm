@@ -1,0 +1,400 @@
+{
+ "run_id": "C-S2-kb-verdict-triplets-s2",
+ "set": "kb_v1/triplets_test@none",
+ "claim_type": "conclusion",
+ "all": {
+  "Rev": 56.912307991444685,
+  "Hold": 84.44487653120747,
+  "TA": 53.45129301963834,
+  "BaseAcc": 87.2836865642621,
+  "Tie": 0.0,
+  "n": 5143
+ },
+ "nm_kind=negation": {
+  "Rev": 57.48091603053435,
+  "Hold": 87.29007633587786,
+  "TA": 56.14503816793893,
+  "BaseAcc": 87.36641221374046,
+  "Tie": 0.0,
+  "n": 2620
+ },
+ "tier=external": {
+  "Rev": 56.912307991444685,
+  "Hold": 84.44487653120747,
+  "TA": 53.45129301963834,
+  "BaseAcc": 87.2836865642621,
+  "Tie": 0.0,
+  "n": 5143
+ },
+ "level=external": {
+  "Rev": 56.912307991444685,
+  "Hold": 84.44487653120747,
+  "TA": 53.45129301963834,
+  "BaseAcc": 87.2836865642621,
+  "Tie": 0.0,
+  "n": 5143
+ },
+ "family=Acute COPD exacerbation / infection": {
+  "Rev": 32.5,
+  "Hold": 100.0,
+  "TA": 32.5,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 80
+ },
+ "nm_kind=subject": {
+  "Rev": 56.32183908045977,
+  "Hold": 81.49028933808958,
+  "TA": 50.65398335315101,
+  "BaseAcc": 87.19778042013476,
+  "Tie": 0.0,
+  "n": 2523
+ },
+ "family=Acute dystonic reactions": {
+  "Rev": 85.98726114649682,
+  "Hold": 99.36305732484077,
+  "TA": 85.35031847133757,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 157
+ },
+ "family=Acute laryngitis": {
+  "Rev": 15.0,
+  "Hold": 100.0,
+  "TA": 15.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 40
+ },
+ "family=Acute otitis media": {
+  "Rev": 40.0,
+  "Hold": 83.75,
+  "TA": 36.25,
+  "BaseAcc": 87.5,
+  "Tie": 0.0,
+  "n": 80
+ },
+ "family=Acute pulmonary edema": {
+  "Rev": 94.78260869565217,
+  "Hold": 96.52173913043478,
+  "TA": 94.78260869565217,
+  "BaseAcc": 94.78260869565217,
+  "Tie": 0.0,
+  "n": 115
+ },
+ "family=Acute rhinosinusitis": {
+  "Rev": 5.0,
+  "Hold": 100.0,
+  "TA": 5.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 80
+ },
+ "family=Anaphylaxis": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 39
+ },
+ "family=Anemia": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 77
+ },
+ "family=Atrial fibrillation": {
+  "Rev": 91.66666666666667,
+  "Hold": 95.83333333333333,
+  "TA": 87.5,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 120
+ },
+ "family=Boerhaave": {
+  "Rev": 0.0,
+  "Hold": 5.0,
+  "TA": 0.0,
+  "BaseAcc": 0.0,
+  "Tie": 0.0,
+  "n": 40
+ },
+ "family=Bronchiectasis": {
+  "Rev": 65.0,
+  "Hold": 100.0,
+  "TA": 65.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 80
+ },
+ "family=Bronchiolitis": {
+  "Rev": 55.0,
+  "Hold": 85.0,
+  "TA": 45.0,
+  "BaseAcc": 95.0,
+  "Tie": 0.0,
+  "n": 40
+ },
+ "family=Bronchitis": {
+  "Rev": 58.517034068136276,
+  "Hold": 82.56513026052104,
+  "TA": 56.1122244488978,
+  "BaseAcc": 82.76553106212425,
+  "Tie": 0.0,
+  "n": 499
+ },
+ "family=Bronchospasm / acute asthma exacerbation": {
+  "Rev": 60.0,
+  "Hold": 100.0,
+  "TA": 60.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 40
+ },
+ "family=Chagas": {
+  "Rev": 50.0,
+  "Hold": 54.23728813559322,
+  "TA": 35.16949152542373,
+  "BaseAcc": 67.79661016949153,
+  "Tie": 0.0,
+  "n": 236
+ },
+ "family=Croup": {
+  "Rev": 60.0,
+  "Hold": 100.0,
+  "TA": 60.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 120
+ },
+ "family=Ebola": {
+  "Rev": 22.5,
+  "Hold": 100.0,
+  "TA": 22.5,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 80
+ },
+ "family=Epiglottitis": {
+  "Rev": 5.042016806722689,
+  "Hold": 100.0,
+  "TA": 5.042016806722689,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 119
+ },
+ "family=GERD": {
+  "Rev": 65.0,
+  "Hold": 97.5,
+  "TA": 62.5,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 40
+ },
+ "family=Guillain-Barr\u00e9 syndrome": {
+  "Rev": 92.20779220779221,
+  "Hold": 100.0,
+  "TA": 92.20779220779221,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 77
+ },
+ "family=HIV (initial infection)": {
+  "Rev": 47.5,
+  "Hold": 100.0,
+  "TA": 47.5,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 80
+ },
+ "family=Influenza": {
+  "Rev": 23.333333333333332,
+  "Hold": 86.25,
+  "TA": 20.0,
+  "BaseAcc": 89.16666666666667,
+  "Tie": 0.0,
+  "n": 240
+ },
+ "family=Inguinal hernia": {
+  "Rev": 30.0,
+  "Hold": 97.5,
+  "TA": 30.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 40
+ },
+ "family=Myasthenia gravis": {
+  "Rev": 87.42138364779875,
+  "Hold": 100.0,
+  "TA": 87.42138364779875,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 159
+ },
+ "family=Myocarditis": {
+  "Rev": 52.340425531914896,
+  "Hold": 68.08510638297872,
+  "TA": 48.93617021276596,
+  "BaseAcc": 68.51063829787235,
+  "Tie": 0.0,
+  "n": 235
+ },
+ "family=PSVT": {
+  "Rev": 44.30379746835443,
+  "Hold": 53.164556962025316,
+  "TA": 36.075949367088604,
+  "BaseAcc": 60.75949367088607,
+  "Tie": 0.0,
+  "n": 158
+ },
+ "family=Pancreatic neoplasm": {
+  "Rev": 91.66666666666667,
+  "Hold": 100.0,
+  "TA": 91.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 120
+ },
+ "family=Panic attack": {
+  "Rev": 79.74683544303798,
+  "Hold": 93.67088607594937,
+  "TA": 78.48101265822785,
+  "BaseAcc": 93.67088607594937,
+  "Tie": 0.0,
+  "n": 158
+ },
+ "family=Pericarditis": {
+  "Rev": 42.30769230769231,
+  "Hold": 100.0,
+  "TA": 42.30769230769231,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 156
+ },
+ "family=Pneumonia": {
+  "Rev": 60.18957345971564,
+  "Hold": 82.93838862559242,
+  "TA": 52.843601895734594,
+  "BaseAcc": 90.28436018957346,
+  "Tie": 0.0,
+  "n": 422
+ },
+ "family=Pulmonary embolism": {
+  "Rev": 97.26027397260275,
+  "Hold": 95.89041095890411,
+  "TA": 93.15068493150685,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 73
+ },
+ "family=Pulmonary neoplasm": {
+  "Rev": 93.16239316239316,
+  "Hold": 98.2905982905983,
+  "TA": 93.16239316239316,
+  "BaseAcc": 98.2905982905983,
+  "Tie": 0.0,
+  "n": 117
+ },
+ "family=SLE": {
+  "Rev": 87.93103448275862,
+  "Hold": 100.0,
+  "TA": 87.93103448275862,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 116
+ },
+ "family=Sarcoidosis": {
+  "Rev": 48.743718592964825,
+  "Hold": 42.21105527638191,
+  "TA": 35.678391959798994,
+  "BaseAcc": 54.77386934673367,
+  "Tie": 0.0,
+  "n": 199
+ },
+ "family=Scombroid food poisoning": {
+  "Rev": 5.0,
+  "Hold": 5.0,
+  "TA": 5.0,
+  "BaseAcc": 5.0,
+  "Tie": 0.0,
+  "n": 40
+ },
+ "family=Spontaneous pneumothorax": {
+  "Rev": 73.07692307692308,
+  "Hold": 98.71794871794872,
+  "TA": 73.07692307692308,
+  "BaseAcc": 98.71794871794872,
+  "Tie": 0.0,
+  "n": 78
+ },
+ "family=Spontaneous rib fracture": {
+  "Rev": 68.0672268907563,
+  "Hold": 64.70588235294117,
+  "TA": 52.10084033613445,
+  "BaseAcc": 78.15126050420169,
+  "Tie": 0.0,
+  "n": 119
+ },
+ "family=Stable angina": {
+  "Rev": 10.0,
+  "Hold": 100.0,
+  "TA": 10.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 40
+ },
+ "family=Tuberculosis": {
+  "Rev": 68.96551724137932,
+  "Hold": 98.27586206896552,
+  "TA": 67.24137931034483,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 116
+ },
+ "family=URTI": {
+  "Rev": 38.607594936708864,
+  "Hold": 94.9367088607595,
+  "TA": 36.075949367088604,
+  "BaseAcc": 97.46835443037975,
+  "Tie": 0.0,
+  "n": 158
+ },
+ "family=Unstable angina": {
+  "Rev": 10.0,
+  "Hold": 66.66666666666667,
+  "TA": 10.0,
+  "BaseAcc": 66.66666666666667,
+  "Tie": 0.0,
+  "n": 120
+ },
+ "family=Viral pharyngitis": {
+  "Rev": 45.0,
+  "Hold": 47.5,
+  "TA": 42.5,
+  "BaseAcc": 50.0,
+  "Tie": 0.0,
+  "n": 40
+ },
+ "CI95": {
+  "TA": [
+   47.50727449078565,
+   59.439470611132734
+  ],
+  "Rev": [
+   50.78564500484966,
+   62.90103052692981
+  ],
+  "Hold": [
+   79.65805323489411,
+   89.09444985394353
+  ]
+ },
+ "eval": {
+  "seconds": 2368.3,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

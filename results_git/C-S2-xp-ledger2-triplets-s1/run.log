@@ -1,0 +1,7 @@
+2026-10-09T16:42:23Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-ledger2-triplets-s1
+2026-10-09T16:42:25Z token budget per batch: None (generation None)
+2026-10-09T16:42:25Z C-S2-xp-ledger2-triplets-s1 xp_v1/test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/xp_v1/test/reader_ledger.npz', 'exists')
+2026-10-09T16:42:30Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0445)
+2026-10-09T16:42:31Z padding self-check: max |u_batch - u_single| = 0.1063 (tol 0.634) -> left padding
+2026-10-09T16:45:25Z C-S2-xp-ledger2-triplets-s1 xp_v1/test: TA 96.3 Rev 97.7 Hold 97.7 n=300 (179.4 s)
+2026-10-09T16:45:27Z DONE C-S2-xp-ledger2-triplets-s1 in 3.7 min, GPU util mean 69.0
