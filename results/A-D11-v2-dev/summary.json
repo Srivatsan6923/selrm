@@ -1,0 +1,97 @@
+{
+ "run_id": "A-D11-v2-dev",
+ "groups_tried": 300,
+ "groups_accepted": 207,
+ "acceptance_rate": 69.0,
+ "by": {
+  "nm_kind": {
+   "boundary": {
+    "tried": 60,
+    "accepted": 57
+   },
+   "negation": {
+    "tried": 60,
+    "accepted": 33
+   },
+   "numeric": {
+    "tried": 60,
+    "accepted": 54
+   },
+   "subject": {
+    "tried": 60,
+    "accepted": 30
+   },
+   "time": {
+    "tried": 60,
+    "accepted": 33
+   }
+  },
+  "tier": {
+   "delabelled": {
+    "tried": 1,
+    "accepted": 1
+   },
+   "easy": {
+    "tried": 177,
+    "accepted": 118
+   },
+   "long": {
+    "tried": 114,
+    "accepted": 81
+   },
+   "superseded": {
+    "tried": 8,
+    "accepted": 7
+   }
+  }
+ },
+ "reasons": {
+  "openai/gpt-oss-120b state differs": 29,
+  "ledger quote not in note": 21,
+  "google/gemma-4-31b-it state differs": 43
+ },
+ "reasons_by_kind": {
+  "boundary": {
+   "google/gemma-4-31b-it state differs": 1,
+   "openai/gpt-oss-120b state differs": 2
+  },
+  "negation": {
+   "ledger quote not in note": 11,
+   "google/gemma-4-31b-it state differs": 10,
+   "openai/gpt-oss-120b state differs": 6
+  },
+  "numeric": {
+   "openai/gpt-oss-120b state differs": 3,
+   "google/gemma-4-31b-it state differs": 3
+  },
+  "subject": {
+   "google/gemma-4-31b-it state differs": 15,
+   "ledger quote not in note": 8,
+   "openai/gpt-oss-120b state differs": 7
+  },
+  "time": {
+   "openai/gpt-oss-120b state differs": 11,
+   "ledger quote not in note": 2,
+   "google/gemma-4-31b-it state differs": 14
+  }
+ },
+ "rewriter": "meta-llama/llama-3.3-70b-instruct",
+ "extractors": [
+  "google/gemma-4-31b-it",
+  "openai/gpt-oss-120b"
+ ],
+ "rewrite_params": {
+  "temperature": 0.7,
+  "seed": 2026,
+  "max_tokens": 900
+ },
+ "extract_params": {
+  "temperature": 0,
+  "seed": 2026,
+  "max_tokens": 2000,
+  "response_format": {
+   "type": "json_object"
+  }
+ },
+ "date": "2026-10-09"
+}
