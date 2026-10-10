@@ -2227,6 +2227,10 @@
   "number": 63.1,
   "value": "63.1"
  },
+ "run/B-FOLD2-verdict-triplets/f2L2/all/TA": {
+  "number": 99.66666666666667,
+  "value": "99.7"
+ },
  "run/B-LOKO-boundary-ledger2/L2/all/Hold/s0": {
   "number": 97.3,
   "value": "97.3"
@@ -2379,6 +2383,10 @@
   "number": 67.0,
   "value": "67.0"
  },
+ "run/B-TR-tripclin/L2/all/Hold/s0": {
+  "number": 100.0,
+  "value": "100.0"
+ },
  "run/B-TR-tripclin/L2/all/TA/s0": {
   "number": 97.25,
   "value": "97.2"
@@ -2386,6 +2394,10 @@
  "run/B-TR-tripclin/L3inv/all/TA/s0": {
   "number": 97.4,
   "value": "97.4"
+ },
+ "run/B-TR-tripclin/xr_v1:test/xa/XA/s0": {
+  "number": 90.25,
+  "value": "90.2"
  },
  "run/C-AUD-fover/L2/all/Hold": {
   "number": 61.9,
@@ -2487,6 +2499,22 @@
   "number": 41.0,
   "value": "41.0"
  },
+ "run/C-AUD-genprm-crit/L2/step=criterion/TA": {
+  "number": 75.5,
+  "value": "75.5"
+ },
+ "run/C-AUD-genprm/L2/all/Hold": {
+  "number": 61.5,
+  "value": "61.5"
+ },
+ "run/C-AUD-genprm/L2/all/Rev": {
+  "number": 47.5,
+  "value": "47.5"
+ },
+ "run/C-AUD-genprm/L2/all/TA": {
+  "number": 33.5,
+  "value": "33.5"
+ },
  "run/C-AUD-genprm/clin_v1:medeinst_test/top/Reversal": {
   "number": 22.0,
   "value": "22.0"
@@ -2506,6 +2534,10 @@
  "run/C-AUD-genprm/clin_v1:medeinst_test/top/trap_acc": {
   "number": 46.5,
   "value": "46.5"
+ },
+ "run/C-AUD-genprm/xr_v1:test/top/XA": {
+  "number": 23.0,
+  "value": "23.0"
  },
  "run/C-AUD-gpt-oss-120b/L2/all/Hold": {
   "number": 99.4,
@@ -2779,6 +2811,14 @@
   "number": 200.0,
   "value": "200"
  },
+ "run/C-AUD-thinkprm/clin_v1:medeinst_test/top/Reversal": {
+  "number": 22.5,
+  "value": "22.5"
+ },
+ "run/C-AUD-thinkprm/xr_v1:test/top/XA": {
+  "number": 100.0,
+  "value": "100.0"
+ },
  "run/C-DG-shift/L0/signal=B-F-verdict-blocks/crossed": {
   "number": 95.79158316633267,
   "value": "95.8"
@@ -2831,6 +2871,14 @@
   "number": 79.83193277310924,
   "value": "79.8"
  },
+ "run/C-KP-defcorr/clin_v1:keypairs_careqa_oneway/top/Reversal": {
+  "number": 81.77777777777777,
+  "value": "81.8"
+ },
+ "run/C-KP-defcorr/clin_v1:keypairs_medqa_oneway/top/Reversal": {
+  "number": 77.59103641456582,
+  "value": "77.6"
+ },
  "run/C-KP-ledger2-blocks/clin_v1:keypairs_careqa_oneway/top/Reversal/s0": {
   "number": 44.0,
   "value": "44.0"
@@ -2838,6 +2886,14 @@
  "run/C-KP-ledger2-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0": {
   "number": 35.85434173669468,
   "value": "35.9"
+ },
+ "run/C-KP-ledger2-natural/clin_v1:keypairs_careqa_oneway/top/Reversal/s0": {
+  "number": 22.22222222222222,
+  "value": "22.2"
+ },
+ "run/C-KP-ledger2-natural/clin_v1:keypairs_medqa_oneway/top/Reversal/s0": {
+  "number": 27.45098039215686,
+  "value": "27.5"
  },
  "run/C-KP-ledger2-triplets/clin_v1:keypairs_careqa_oneway/top/Reversal/s0": {
   "number": 38.22222222222222,
@@ -2855,6 +2911,14 @@
   "number": 25.7703081232493,
   "value": "25.8"
  },
+ "run/C-KP-promptledger-lenient/clin_v1:keypairs_careqa_oneway/top/Reversal": {
+  "number": 2.2222222222222223,
+  "value": "2.2"
+ },
+ "run/C-KP-promptledger-lenient/clin_v1:keypairs_medqa_oneway/top/Reversal": {
+  "number": 10.92436974789916,
+  "value": "10.9"
+ },
  "run/C-KP-promptsum/clin_v1:keypairs_careqa_oneway/top/Reversal": {
   "number": 80.88888888888889,
   "value": "80.9"
@@ -2862,6 +2926,22 @@
  "run/C-KP-promptsum/clin_v1:keypairs_medqa_oneway/top/Reversal": {
   "number": 79.55182072829132,
   "value": "79.6"
+ },
+ "run/C-KP-rationale-triplets/clin_v1:keypairs_careqa_oneway/top/Reversal/s0": {
+  "number": 76.0,
+  "value": "76.0"
+ },
+ "run/C-KP-rationale-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0": {
+  "number": 66.10644257703082,
+  "value": "66.1"
+ },
+ "run/C-KP-summary2-blocks/clin_v1:keypairs_careqa_oneway/top/Reversal/s0": {
+  "number": 44.0,
+  "value": "44.0"
+ },
+ "run/C-KP-summary2-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0": {
+  "number": 33.333333333333336,
+  "value": "33.3"
  },
  "run/C-KP-summary2-triplets/clin_v1:keypairs_careqa_oneway/top/Reversal/s0": {
   "number": 55.55555555555556,
@@ -2915,6 +2995,18 @@
   "number": 53.33457180011146,
   "value": "53.3"
  },
+ "run/C-ME-ledger2-blocks/clin_v1:medeinst_test/top/Reversal/s0": {
+  "number": 21.846553966189855,
+  "value": "21.8"
+ },
+ "run/C-ME-ledger2-blocks/clin_v1:medeinst_test/top/control_acc/s0": {
+  "number": 49.45197845067806,
+  "value": "49.5"
+ },
+ "run/C-ME-ledger2-blocks/clin_v1:medeinst_test/top/trap_acc/s0": {
+  "number": 39.55043655953929,
+  "value": "39.6"
+ },
  "run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/malformed_rate/s0@pct1": {
   "number": 0.3591,
   "value": "35.9"
@@ -2942,6 +3034,30 @@
  "run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/trap_acc/s0": {
   "number": 35.073379156604126,
   "value": "35.1"
+ },
+ "run/C-ME-promptledger-lenient/clin_v1:medeinst_test/top/Reversal": {
+  "number": 6.18614155675274,
+  "value": "6.2"
+ },
+ "run/C-ME-promptledger-lenient/clin_v1:medeinst_test/top/control_acc": {
+  "number": 21.177781906000373,
+  "value": "21.2"
+ },
+ "run/C-ME-promptledger-lenient/clin_v1:medeinst_test/top/trap_acc": {
+  "number": 17.1279955415196,
+  "value": "17.1"
+ },
+ "run/C-ME-promptsum/clin_v1:medeinst_test/top/Reversal": {
+  "number": 27.326769459409253,
+  "value": "27.3"
+ },
+ "run/C-ME-promptsum/clin_v1:medeinst_test/top/control_acc": {
+  "number": 70.94556938510125,
+  "value": "70.9"
+ },
+ "run/C-ME-promptsum/clin_v1:medeinst_test/top/trap_acc": {
+  "number": 52.88872375998514,
+  "value": "52.9"
  },
  "run/C-ME-summary2-blocks/clin_v1:medeinst_test/top/Reversal/s0": {
   "number": 22.793981051458296,
@@ -3035,6 +3151,14 @@
   "number": 500.0,
   "value": "500"
  },
+ "run/C-NL-defcorr/clin_v1:nli4ct_test/top/Average@pct1": {
+  "number": 0.7325193850016545,
+  "value": "73.3"
+ },
+ "run/C-NL-ledger2-blocks/clin_v1:nli4ct_test/top/Average/s0@pct1": {
+  "number": 0.7193357324119735,
+  "value": "71.9"
+ },
  "run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Average/s0@pct1": {
   "number": 0.7210933828674362,
   "value": "72.1"
@@ -3050,6 +3174,14 @@
  "run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Faithfulness/s0@pct1": {
   "number": 0.8495370370370371,
   "value": "85.0"
+ },
+ "run/C-NL-promptsum/clin_v1:nli4ct_test/top/Average@pct1": {
+  "number": 0.7280358940376671,
+  "value": "72.8"
+ },
+ "run/C-NL-rationale-triplets/clin_v1:nli4ct_test/top/Average/s0@pct1": {
+  "number": 0.8050569652963269,
+  "value": "80.5"
  },
  "run/C-NL-summary2-triplets/clin_v1:nli4ct_test/top/Average/s0@pct1": {
   "number": 0.7324775048798697,
@@ -3511,6 +3643,14 @@
   "number": 35.0,
   "value": "35"
  },
+ "run/C-TF-defcorr/L2/all/Hold": {
+  "number": 32.35,
+  "value": "32.4"
+ },
+ "run/C-TF-defcorr/L2/all/Rev": {
+  "number": 36.2,
+  "value": "36.2"
+ },
  "run/C-TF-defcorr/L2/all/TA": {
   "number": 26.35,
   "value": "26.4"
@@ -3522,6 +3662,18 @@
  "run/C-TF-defcorr/L2/all/TA/lo": {
   "number": 20.260727865290605,
   "value": "20.3"
+ },
+ "run/C-TF-defcorr/L2/step=criterion/TA": {
+  "number": 71.98067632850241,
+  "value": "72.0"
+ },
+ "run/C-TF-defcorr/L3inv/all/TA": {
+  "number": 38.2,
+  "value": "38.2"
+ },
+ "run/C-TF-defcorr/clin_v1:keypairs_medqa_oneway/top/Reversal": {
+  "number": 77.59103641456582,
+  "value": "77.6"
  },
  "run/C-TF-defcorr/xr_v1:test/top/XA": {
   "number": 58.5,
@@ -3611,6 +3763,18 @@
   "number": 82.06521739130434,
   "value": "82.1"
  },
+ "run/C-TF-promptledger-lenient/L3inv/all/TA": {
+  "number": 53.0,
+  "value": "53.0"
+ },
+ "run/C-TF-promptledger-lenient/clin_v1:keypairs_medqa_oneway/top/Reversal": {
+  "number": 10.92436974789916,
+  "value": "10.9"
+ },
+ "run/C-TF-promptledger-lenient/clin_v1:medeinst_test/top/Reversal": {
+  "number": 6.18614155675274,
+  "value": "6.2"
+ },
  "run/C-TF-promptledger-lenient/xr_v1:test/top/XA": {
   "number": 52.5,
   "value": "52.5"
@@ -3634,6 +3798,10 @@
  "run/C-TF-promptsum/L2/step=criterion/TA": {
   "number": 88.76811594202898,
   "value": "88.8"
+ },
+ "run/C-TF-promptsum/L3inv/all/TA": {
+  "number": 68.6,
+  "value": "68.6"
  },
  "run/C-TF-promptsum/missing/top/MR": {
   "number": 37.8,
@@ -3667,6 +3835,22 @@
   "number": 65.0,
   "value": "65"
  },
+ "run/C-TG-TR-clinonly/clin_v1:trialgpt_test/top/forced_choice_acc/s0": {
+  "number": 90.5123339658444,
+  "value": "90.5"
+ },
+ "run/C-TG-TR-clinonly/clin_v1:trialgpt_test/top/macroF1/s0": {
+  "number": 50.43722925891601,
+  "value": "50.4"
+ },
+ "run/C-TG-TR-fover/clin_v1:trialgpt_test/top/forced_choice_acc/s0": {
+  "number": 89.37381404174573,
+  "value": "89.4"
+ },
+ "run/C-TG-TR-fover/clin_v1:trialgpt_test/top/macroF1/s0": {
+  "number": 65.77377244887366,
+  "value": "65.8"
+ },
  "run/C-TG-critic-dev/clin_v1:trialgpt_dev/top/n_patients@int": {
   "number": 10.0,
   "value": "10"
@@ -3695,6 +3879,22 @@
   "number": 759.0,
   "value": "759"
  },
+ "run/C-TG-defcorr/clin_v1:trialgpt_test/top/forced_choice_acc": {
+  "number": 62.04933586337761,
+  "value": "62.0"
+ },
+ "run/C-TG-defcorr/clin_v1:trialgpt_test/top/macroF1": {
+  "number": 37.04541310313235,
+  "value": "37.0"
+ },
+ "run/C-TG-ledger2-balanced/clin_v1:trialgpt_test/top/forced_choice_acc/s0": {
+  "number": 85.95825426944971,
+  "value": "86.0"
+ },
+ "run/C-TG-ledger2-balanced/clin_v1:trialgpt_test/top/macroF1/s0": {
+  "number": 68.35870637980146,
+  "value": "68.4"
+ },
  "run/C-TG-ledger2-blocks-s0/clin_v1:trialgpt_test/top/macroF1": {
   "number": 70.87562116631884,
   "value": "70.9"
@@ -3706,6 +3906,14 @@
  "run/C-TG-ledger2-blocks/clin_v1:trialgpt_test/top/macroF1/s0": {
   "number": 70.87562116631884,
   "value": "70.9"
+ },
+ "run/C-TG-ledger2-natural/clin_v1:trialgpt_test/top/forced_choice_acc/s0": {
+  "number": 90.13282732447819,
+  "value": "90.1"
+ },
+ "run/C-TG-ledger2-natural/clin_v1:trialgpt_test/top/macroF1/s0": {
+  "number": 67.44777251353979,
+  "value": "67.4"
  },
  "run/C-TG-ledger2-triplets-s0/clin_v1:trialgpt_test/top/macroF1": {
   "number": 69.09251785304396,
@@ -3746,6 +3954,14 @@
  "run/C-TG-promptsum/clin_v1:trialgpt_test/top/macroF1": {
   "number": 68.00105445599257,
   "value": "68.0"
+ },
+ "run/C-TG-rationale-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0": {
+  "number": 86.90702087286527,
+  "value": "86.9"
+ },
+ "run/C-TG-rationale-triplets/clin_v1:trialgpt_test/top/macroF1/s0": {
+  "number": 67.50474969190934,
+  "value": "67.5"
  },
  "run/C-TG-summary2-blocks-s0/clin_v1:trialgpt_test/top/macroF1": {
   "number": 68.16067653413988,

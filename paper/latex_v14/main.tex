@@ -251,8 +251,8 @@ reward reaches \res{run/D-RL-stepcheck/L2/step=1000/reward/s0@2} while accuracy 
 \node[hd] at (13.45,3.3) {(d) Evaluation};
 \node[box, anchor=west, fill=blue!4,  minimum width=31mm] at (13.55,2.75) {rules of held-out structure};
 \node[box, anchor=west, fill=blue!4,  minimum width=31mm] at (13.55,2.2) {rule-side edits};
-\node[box, anchor=west, fill=blue!4,  minimum width=31mm] at (13.55,1.65) {class and knowledge-base triplets\ns};
-\node[box, anchor=west, fill=black!6, minimum width=31mm] at (13.55,1.1) {stated rule, real text: \mcv\ns};
+\node[box, anchor=west, fill=blue!4,  minimum width=31mm] at (13.55,1.65) {class\ns{} and knowledge-base triplets};
+\node[box, anchor=west, fill=black!6, minimum width=31mm] at (13.55,1.1) {stated rule, real text: \mcv};
 \node[box, anchor=west, fill=black!6, minimum width=31mm] at (13.55,0.55) {stated rule: trial criteria, TrialGPT};
 \node[box, anchor=west, fill=black!6, minimum width=31mm] at (13.55,0.0) {no rule: MedEinst, key pairs};
 \end{tikzpicture}}
@@ -261,7 +261,7 @@ decide which mentions count; a near-miss falsifies exactly one applicability
 condition. (b) The program supervises two tasks. (c) At inference the
 criterion is an input with a source, and a symbolic gate recomputes the
 executable parts of applicability. (d) Controlled tests (blue) and external
-labels (grey). \ns Not yet run; the measured system is the reader and judge
+labels (grey). \ns Not yet scored; the measured system is the reader and judge
 of (b) without gate.}
 \label{fig:overview}
 \end{figure*}
@@ -391,10 +391,10 @@ Tier & Criterion source & Label basis\\
 \multicolumn{3}{@{}l}{\emph{Controlled edits, labels by execution}}\\
 Rule triplets, rule-side items & our \res{a15/rules_total@int} stated rules & rule program\\
 Class triplets\ns & RxClass, HPO, Mondo & class closure\\
-KB triplets\ns & DDXPlus finding lists & exclusion procedure\\
-\mcv{} edits\ns & published score text & released values, rule code\\
+KB triplets & DDXPlus finding lists & exclusion procedure\\
+\mcv{} edits & published score text & released values, rule code\\
 \multicolumn{3}{@{}l}{\emph{Released labels, criterion stated}}\\
-\mcv{} criteria\ns & published score text & released values, rule code\\
+\mcv{} criteria & published score text & released values, rule code\\
 Registered criteria\ns & registry text; Chia, LCT annotation & compiled annotation\\
 TrialGPT & trial criterion text & physician labels\\
 \multicolumn{3}{@{}l}{\emph{Released labels, no criterion stated}}\\
@@ -404,7 +404,7 @@ NLI4CT-P & trial report section & expert labels\\
 \bottomrule
 \end{tabular}
 \caption{Tiers, with the source of each criterion and the basis of its
-labels (case text: Table~\ref{tab:sources-full}). \ns Not yet built or
+labels (case text: Table~\ref{tab:sources-full}). \ns Built and frozen, not yet
 scored. \mcv: the rule-based subset of MedCalc-Bench Verified; KB:
 knowledge base.}
 \label{tab:sources}
@@ -586,13 +586,13 @@ Reward signal & Rev & Hold & TA & TA$_c$ & XA & pair & pair\\
 MedS$^3$ PRM        & \res{run/C-AUD-meds3/L2/all/Rev} & \res{run/C-AUD-meds3/L2/all/Hold} & \res{run/C-AUD-meds3/L2/all/TA} & \res{run/C-AUD-meds3/L2/step=criterion/TA} & \res{run/C-AUD-meds3/xr_v1:test/top/XA} & \res{run/C-AUD-meds3/clin_v1:medeinst_test/top/Reversal} & \res{run/C-AUD-meds3/clin_v1:keypairs_medqa_oneway/top/Reversal}\\
 Med-PRM             & \res{run/C-AUD-medprm/L2/all/Rev} & \res{run/C-AUD-medprm/L2/all/Hold} & \res{run/C-AUD-medprm/L2/all/TA} & \res{run/C-AUD-medprm/L2/step=criterion/TA} & \res{run/C-AUD-medprm/xr_v1:test/top/XA} & \res{run/C-AUD-medprm/clin_v1:medeinst_test/top/Reversal} & \res{run/C-AUD-medprm/clin_v1:keypairs_medqa_oneway/top/Reversal}\\
 FoVer PRM           & \res{run/C-AUD-fover/L2/all/Rev} & \res{run/C-AUD-fover/L2/all/Hold} & \res{run/C-AUD-fover/L2/all/TA} & \res{run/C-AUD-fover/L2/step=criterion/TA} & \res{run/C-AUD-fover/xr_v1:test/top/XA} & \res{run/C-AUD-fover/clin_v1:medeinst_test/top/Reversal} & \res{run/C-AUD-fover/clin_v1:keypairs_medqa_oneway/top/Reversal}\\
-ThinkPRM-14B$^{a}$  & \res{run/C-AUD-thinkprm/L2/all/Rev} & \res{run/C-AUD-thinkprm/L2/all/Hold} & \res{run/C-AUD-thinkprm/L2/all/TA} & \tbd & \tbd & \tbd & \tbd\\
-GenPRM-7B$^{b}$     & \tbd & \tbd & \tbd & \tbd & \tbd & \res{run/C-AUD-genprm/clin_v1:medeinst_test/top/Reversal} & \tbd\\
+ThinkPRM-14B$^{a}$  & \res{run/C-AUD-thinkprm/L2/all/Rev} & \res{run/C-AUD-thinkprm/L2/all/Hold} & \res{run/C-AUD-thinkprm/L2/all/TA} & \tbd & \res{run/C-AUD-thinkprm/xr_v1:test/top/XA} & \res{run/C-AUD-thinkprm/clin_v1:medeinst_test/top/Reversal} & \tbd\\
+GenPRM-7B$^{b}$     & \res{run/C-AUD-genprm/L2/all/Rev} & \res{run/C-AUD-genprm/L2/all/Hold} & \res{run/C-AUD-genprm/L2/all/TA} & \res{run/C-AUD-genprm-crit/L2/step=criterion/TA} & \res{run/C-AUD-genprm/xr_v1:test/top/XA} & \res{run/C-AUD-genprm/clin_v1:medeinst_test/top/Reversal} & \tbd\\
 \multicolumn{8}{@{}l}{\emph{\bb, no training}}\\
 Critic              & \res{run/C-TF-critic/L2/all/Rev} & \res{run/C-TF-critic/L2/all/Hold} & \res{run/C-TF-critic/L2/all/TA} & \res{run/C-TF-critic/L2/step=criterion/TA} & \res{run/C-TF-critic/xr_v1:test/top/XA} & \res{run/C-ME-critic/clin_v1:medeinst_test/top/Reversal} & \res{run/C-KP-critic/clin_v1:keypairs_medqa_oneway/top/Reversal}\\
-\ + default corr.   & \tbd & \tbd & \res{run/C-TF-defcorr/L2/all/TA} & \tbd & \res{run/C-TF-defcorr/xr_v1:test/top/XA} & \res{run/C-ME-defcorr/clin_v1:medeinst_test/top/Reversal} & \tbd\\
+\ + default corr.   & \res{run/C-TF-defcorr/L2/all/Rev} & \res{run/C-TF-defcorr/L2/all/Hold} & \res{run/C-TF-defcorr/L2/all/TA} & \res{run/C-TF-defcorr/L2/step=criterion/TA} & \res{run/C-TF-defcorr/xr_v1:test/top/XA} & \res{run/C-ME-defcorr/clin_v1:medeinst_test/top/Reversal} & \res{run/C-TF-defcorr/clin_v1:keypairs_medqa_oneway/top/Reversal}\\
 \ + prompted summary& \res{run/C-TF-promptsum/L2/all/Rev} & \res{run/C-TF-promptsum/L2/all/Hold} & \res{run/C-TF-promptsum/L2/all/TA} & \res{run/C-TF-promptsum/L2/step=criterion/TA} & \res{run/C-TF-promptsum/xr_v1:test/top/XA} & \tbd & \res{run/C-KP-promptsum/clin_v1:keypairs_medqa_oneway/top/Reversal}\\
-\ + prompted ledger$^{c}$ & \res{run/C-TF-promptledger-lenient/L2/all/Rev} & \res{run/C-TF-promptledger-lenient/L2/all/Hold} & \res{run/C-TF-promptledger-lenient/L2/all/TA} & \res{run/C-TF-promptledger-lenient/L2/step=criterion/TA} & \res{run/C-TF-promptledger-lenient/xr_v1:test/top/XA} & \tbd & \tbd\\
+\ + prompted ledger$^{c}$ & \res{run/C-TF-promptledger-lenient/L2/all/Rev} & \res{run/C-TF-promptledger-lenient/L2/all/Hold} & \res{run/C-TF-promptledger-lenient/L2/all/TA} & \res{run/C-TF-promptledger-lenient/L2/step=criterion/TA} & \res{run/C-TF-promptledger-lenient/xr_v1:test/top/XA} & \res{run/C-TF-promptledger-lenient/clin_v1:medeinst_test/top/Reversal} & \res{run/C-TF-promptledger-lenient/clin_v1:keypairs_medqa_oneway/top/Reversal}\\
 Generated program$^{d}$ & \res{run/C-TF-genprog/L2/all/Rev} & \res{run/C-TF-genprog/L2/all/Hold} & \res{run/C-TF-genprog/L2/all/TA} & \tbd & \res{run/C-TF-genprog/xr_v1:test/top/XA} & -- & --\\
 \bottomrule
 \end{tabular}}
@@ -740,13 +740,13 @@ System & L2 & L3-inv & XA & Hold & F1 & choice & pair & control & trap & MedQA &
 \midrule
 \multicolumn{13}{@{}l}{\emph{Training-free, \bb}}\\
 Critic & \res{run/C-TF-critic/L2/all/TA} & \res{run/C-TF-critic/L3inv/all/TA} & \res{run/C-TF-critic/xr_v1:test/top/XA} & \res{run/C-TF-critic/L2/all/Hold} & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/forced_choice_acc} & \res{run/C-ME-critic/clin_v1:medeinst_test/top/Reversal} & \res{run/C-ME-critic/clin_v1:medeinst_test/top/control_acc} & \res{run/C-ME-critic/clin_v1:medeinst_test/top/trap_acc} & \res{run/C-KP-critic/clin_v1:keypairs_medqa_oneway/top/Reversal} & \res{run/C-KP-critic/clin_v1:keypairs_careqa_oneway/top/Reversal} & 80.9\\
-\ \ + prompted summary & \res{run/C-TF-promptsum/L2/all/TA} & \tbd & \res{run/C-TF-promptsum/xr_v1:test/top/XA} & \res{run/C-TF-promptsum/L2/all/Hold} & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/forced_choice_acc} & \tbd & \tbd & \tbd & \res{run/C-KP-promptsum/clin_v1:keypairs_medqa_oneway/top/Reversal} & \res{run/C-KP-promptsum/clin_v1:keypairs_careqa_oneway/top/Reversal} & \tbd\\
+\ \ + prompted summary & \res{run/C-TF-promptsum/L2/all/TA} & \res{run/C-TF-promptsum/L3inv/all/TA} & \res{run/C-TF-promptsum/xr_v1:test/top/XA} & \res{run/C-TF-promptsum/L2/all/Hold} & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/forced_choice_acc} & \res{run/C-ME-promptsum/clin_v1:medeinst_test/top/Reversal} & \res{run/C-ME-promptsum/clin_v1:medeinst_test/top/control_acc} & \res{run/C-ME-promptsum/clin_v1:medeinst_test/top/trap_acc} & \res{run/C-KP-promptsum/clin_v1:keypairs_medqa_oneway/top/Reversal} & \res{run/C-KP-promptsum/clin_v1:keypairs_careqa_oneway/top/Reversal} & \res{run/C-NL-promptsum/clin_v1:nli4ct_test/top/Average@pct1}\\
 \multicolumn{13}{@{}l}{\emph{Trained on rule data only (all clinical columns are zero-shot)}}\\
 Verdict only, rule blocks & \res{run/B-F-verdict-blocks/L2/all/TA/s0} & \res{run/B-F-verdict-blocks/L3inv/all/TA/s0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA/s0} & \res{run/B-F-verdict-blocks/L2/all/Hold/s0} & \res{run/C-TG-verdict-blocks/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-verdict-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \res{run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/trap_acc/s0} & \res{run/C-KP-verdict-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} & \res{run/C-KP-verdict-blocks/clin_v1:keypairs_careqa_oneway/top/Reversal/s0} & 85.6\\
 Verdict only, rule triplets & \res{run/B-F-verdict-triplets/L2/all/TA/s0} & \res{run/B-F-verdict-triplets/L3inv/all/TA/s0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA/s0} & \res{run/B-F-verdict-triplets/L2/all/Hold/s0} & \res{run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \res{run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/trap_acc/s0} & \res{run/C-KP-verdict-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} & \res{run/C-KP-verdict-triplets/clin_v1:keypairs_careqa_oneway/top/Reversal/s0} & 85.4\\
 Evidence summary, rule triplets & \res{run/B-F-summary2-triplets/L2/all/TA/s0} & \res{run/B-F-summary2-triplets/L3inv/all/TA/s1}$^{a}$ & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA/s0} & \res{run/B-F-summary2-triplets/L2/all/Hold/s0} & \res{run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \res{run/C-ME-summary2-triplets/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-summary2-triplets/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-summary2-triplets/clin_v1:medeinst_test/top/trap_acc/s0} & \res{run/C-KP-summary2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} & \res{run/C-KP-summary2-triplets/clin_v1:keypairs_careqa_oneway/top/Reversal/s0} & 73.2\\
-\method{}, rule blocks & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & \res{run/B-F-ledger2-blocks/L3inv/all/TA/s0} & \res{run/B-F-ledger2-blocks/xr_v1:test/xa/XA/s0} & \res{run/B-F-ledger2-blocks/L2/all/Hold/s0} & \res{run/C-TG-ledger2-blocks/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-ledger2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \tbd & \tbd & \tbd & \res{run/C-KP-ledger2-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} & \res{run/C-KP-ledger2-blocks/clin_v1:keypairs_careqa_oneway/top/Reversal/s0} & \tbd\\
-\textbf{\method}, rule triplets & \textbf{99.2} & \res{run/B-F-ledger2-triplets/L3inv/all/TA/s0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s0} & 99.95 & \res{run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/trap_acc/s0} & \res{run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} & \res{run/C-KP-ledger2-triplets/clin_v1:keypairs_careqa_oneway/top/Reversal/s0} & \tbd\\
+\method{}, rule blocks & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & \res{run/B-F-ledger2-blocks/L3inv/all/TA/s0} & \res{run/B-F-ledger2-blocks/xr_v1:test/xa/XA/s0} & \res{run/B-F-ledger2-blocks/L2/all/Hold/s0} & \res{run/C-TG-ledger2-blocks/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-ledger2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \res{run/C-ME-ledger2-blocks/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-ledger2-blocks/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-ledger2-blocks/clin_v1:medeinst_test/top/trap_acc/s0} & \res{run/C-KP-ledger2-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} & \res{run/C-KP-ledger2-blocks/clin_v1:keypairs_careqa_oneway/top/Reversal/s0} & \res{run/C-NL-ledger2-blocks/clin_v1:nli4ct_test/top/Average/s0@pct1}\\
+\textbf{\method}, rule triplets & \textbf{99.2} & \res{run/B-F-ledger2-triplets/L3inv/all/TA/s0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s0} & 99.95 & \res{run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/trap_acc/s0} & \res{run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} & \res{run/C-KP-ledger2-triplets/clin_v1:keypairs_careqa_oneway/top/Reversal/s0} & \res{run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Average/s0@pct1}\\
 \multicolumn{13}{@{}l}{\emph{Reference that uses the rule program at test time}}\\
 Program on the trained reader's ledger & \res{run/B-AE-program-ledger/L2/all/TA} & -- & -- & \res{run/B-AE-program-ledger/L2/all/Hold} & -- & -- & -- & -- & -- & -- & -- & --\\
 \bottomrule
@@ -1170,8 +1170,8 @@ structure means unseen compositions of seen parts. Rendering templates
 (\res{a15/templates.templates_train} for training, \res{a15/templates.templates_test} for test) and cue words for relatives, negation
 and time are disjoint. All cases derived from one base state are in one
 split. On fold 2 the verdict-only model trained on blocks reaches \res{run/B-FOLD2-verdict-blocks/f2L2/all/TA/s0}\% on
-L2 at seed 0 (fold 1, same seed: \res{run/B-F-verdict-blocks/L2/all/TA/s0}\%); the other fold-2 and fold-3 runs are \ph{finished and
-not yet collected}. The set with altered thresholds (L3-alt) does not test
+L2 at seed 0 (fold 1, same seed: \res{run/B-F-verdict-blocks/L2/all/TA/s0}\%); the fold-2 and fold-3 runs of the four key cells are finished (three seeds
+each; fold 2: \res{run/B-FOLD2-verdict-triplets/f2L2/all/TA}\% for the verdict-only model trained on triplets). The set with altered thresholds (L3-alt) does not test
 what we intended: the untrained backbone solves \res{run/C-TF-critic/L3alt/all/TA}\% of it and the
 verdict-only model trained on blocks \res{run/B-F-verdict-blocks/L3alt/all/TA/s0}\% (seed 0), far above their L2 scores, so
 it is listed in Table~\ref{tab:ladder} and not used as evidence.
@@ -1457,11 +1457,11 @@ Tier & Criterion and its source & Case text & Label basis\\
 Rule triplets & stated rule from our library (\res{a15/rules_total} rules) & generated & rule program\\
 Rule-side items & two rules that differ in one applicability clause & generated & rule program\\
 Class triplets\ns & class-level criterion; membership from RxClass, HPO, Mondo & generated & closure of the class\\
-Knowledge-base triplets\ns & pairwise criterion from the DDXPlus condition--evidence lists & DDXPlus test patients, edited by script & exclusion procedure on the lists\\
-\mcv{} edits\ns & published score definition shipped with the data & case reports and vignettes; one value or sentence edited & released entity values and rule code\\
+Knowledge-base triplets & pairwise criterion from the DDXPlus condition--evidence lists & DDXPlus test patients, edited by script & exclusion procedure on the lists\\
+\mcv{} edits & published score definition shipped with the data & case reports and vignettes; one value or sentence edited & released entity values and rule code\\
 \midrule
 \multicolumn{4}{@{}l}{\emph{Released labels, criterion stated}}\\
-\mcv{} criteria\ns & published score definition shipped with the data & 380 notes, 230 human-written & released entity values and rule code\\
+\mcv{} criteria & published score definition shipped with the data & 380 notes, 230 human-written & released entity values and rule code\\
 Registered criteria\ns & trial registry text; structure from Chia and LCT annotation & generated & program compiled from the annotation\\
 TrialGPT & trial criterion text & \res{sum2/run/C-TG-critic-dev/clin_v1:trialgpt_dev/top/n_patients|run/C-TG-critic/clin_v1:trialgpt_test/top/n_patients@int} patient summaries & physician criterion-level labels\\
 \midrule
@@ -1472,15 +1472,16 @@ NLI4CT-P & trial report section & statements & expert labels, edited statements\
 \bottomrule
 \end{tabular}
 \caption{Tiers, with the source of the criterion and the basis of the label.
-\ns Not yet built or scored (\S\ref{sec:results-ground}). \mcv: the
+\ns Not yet scored (\S\ref{sec:results-ground}). \mcv: the
 rule-based subset of MedCalc-Bench Verified.}
 \label{tab:sources-full}
 \end{table*}
 
 
-\ifplaceholders\noindent\textcolor{red}{Everything in this appendix is a
-protocol for stage 2. Dataset facts printed in black were verified on the
-released files; no stage-2 set has been built and no system scored.}\smallskip\fi
+\ifplaceholders\noindent\textcolor{red}{This appendix was written as the
+protocol for stage 2. The sets are now built and frozen; \mcv, the
+knowledge-base triplets and the rule-tier controls are scored, the other tiers are not.
+Sentences that describe a set are being checked against what was built.}\smallskip\fi
 
 \paragraph{\mcv.}
 MedCalc-Bench Verified, tag v1.0.8, CC BY-SA 4.0. The test file has 1{,}100
@@ -1711,7 +1712,7 @@ over a rerun baseline is reported \citep{weng2026policy,yang2026compared}
 \end{tabular}
 \caption{Primary comparisons of stage 2 (Appendix~\ref{app:plan}), one Holm family; paired cluster
 bootstrap on identical items. (7), (8): balanced accuracy on human-written notes, criterion stated; (9), (10):
-triplet accuracy; (11), (12): pair accuracy, (12) as non-inferiority with a margin of two points. Not yet run.}
+triplet accuracy; (11), (12): pair accuracy, (12) as non-inferiority with a margin of two points. (10)--(12) are not yet run and $p$-values are unadjusted until they are.}
 \label{tab:stage2}
 \end{table*}
 
@@ -1733,7 +1734,7 @@ Verdict only, triplets & \res{cmp/mcv/triplets_none.balanced_accuracy} & \res{cm
 \caption{\mcv{} (\%). Criterion claims on untouched notes without and with the score definition in the prompt, by
 note type and by stratum (value stated in the note, denied, or settled by the benchmark's default); triplet
 accuracy on edited human-written notes, by edit type. Verdict-only models are those trained on rule data in
-stage 1, five seeds. Not yet run.}
+stage 1, five seeds. Red cells are not yet computed.}
 \label{tab:mcv}
 \end{table*}
 
@@ -2029,24 +2030,24 @@ System & L2 & L3-inv & XA & Hold & F1 & choice & pair & control & trap & MedQA &
 \midrule
 \multicolumn{13}{@{}l}{\emph{Training-free, \bb}}\\
 Critic & \res{run/C-TF-critic/L2/all/TA} & \res{run/C-TF-critic/L3inv/all/TA} & 39.0 & \res{run/C-TF-critic/L2/all/Hold} & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1} & 92.8 & 24.2 & 71.8 & 51.6 & 79.8 & 84.4 & 80.9\\
-\ \ + default correction & \res{run/C-TF-defcorr/L2/all/TA} & \tbd & \res{run/C-TF-defcorr/xr_v1:test/top/XA} & \tbd & \tbd & \tbd & \res{run/C-ME-defcorr/clin_v1:medeinst_test/top/Reversal} & \res{run/C-ME-defcorr/clin_v1:medeinst_test/top/control_acc} & \res{run/C-ME-defcorr/clin_v1:medeinst_test/top/trap_acc} & \tbd & \tbd & \tbd\\
-\ \ + prompted summary & \res{run/C-TF-promptsum/L2/all/TA} & \tbd & 80.5 & \res{run/C-TF-promptsum/L2/all/Hold} & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/macroF1} & 91.3 & \tbd & \tbd & \tbd & 79.6 & 80.9 & \tbd\\
-\ \ + prompted ledger (lenient parse) & \res{run/C-TF-promptledger-lenient/L2/all/TA} & \tbd & \res{run/C-TF-promptledger-lenient/xr_v1:test/top/XA} & \res{run/C-TF-promptledger-lenient/L2/all/Hold} & \res{run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/forced_choice_acc} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+\ \ + default correction & \res{run/C-TF-defcorr/L2/all/TA} & \res{run/C-TF-defcorr/L3inv/all/TA} & \res{run/C-TF-defcorr/xr_v1:test/top/XA} & \res{run/C-TF-defcorr/L2/all/Hold} & \res{run/C-TG-defcorr/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-defcorr/clin_v1:trialgpt_test/top/forced_choice_acc} & \res{run/C-ME-defcorr/clin_v1:medeinst_test/top/Reversal} & \res{run/C-ME-defcorr/clin_v1:medeinst_test/top/control_acc} & \res{run/C-ME-defcorr/clin_v1:medeinst_test/top/trap_acc} & \res{run/C-KP-defcorr/clin_v1:keypairs_medqa_oneway/top/Reversal} & \res{run/C-KP-defcorr/clin_v1:keypairs_careqa_oneway/top/Reversal} & \res{run/C-NL-defcorr/clin_v1:nli4ct_test/top/Average@pct1}\\
+\ \ + prompted summary & \res{run/C-TF-promptsum/L2/all/TA} & \res{run/C-TF-promptsum/L3inv/all/TA} & 80.5 & \res{run/C-TF-promptsum/L2/all/Hold} & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/macroF1} & 91.3 & \res{run/C-ME-promptsum/clin_v1:medeinst_test/top/Reversal} & \res{run/C-ME-promptsum/clin_v1:medeinst_test/top/control_acc} & \res{run/C-ME-promptsum/clin_v1:medeinst_test/top/trap_acc} & 79.6 & 80.9 & \res{run/C-NL-promptsum/clin_v1:nli4ct_test/top/Average@pct1}\\
+\ \ + prompted ledger (lenient parse) & \res{run/C-TF-promptledger-lenient/L2/all/TA} & \res{run/C-TF-promptledger-lenient/L3inv/all/TA} & \res{run/C-TF-promptledger-lenient/xr_v1:test/top/XA} & \res{run/C-TF-promptledger-lenient/L2/all/Hold} & \res{run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/forced_choice_acc} & \res{run/C-ME-promptledger-lenient/clin_v1:medeinst_test/top/Reversal} & \res{run/C-ME-promptledger-lenient/clin_v1:medeinst_test/top/control_acc} & \res{run/C-ME-promptledger-lenient/clin_v1:medeinst_test/top/trap_acc} & \res{run/C-KP-promptledger-lenient/clin_v1:keypairs_medqa_oneway/top/Reversal} & \res{run/C-KP-promptledger-lenient/clin_v1:keypairs_careqa_oneway/top/Reversal} & \tbd\\
 Generated-program verifier & \res{run/C-TF-genprog/L2/all/TA} & \tbd & \res{run/C-TF-genprog/xr_v1:test/top/XA} & \res{run/C-TF-genprog/L2/all/Hold} & -- & -- & -- & -- & -- & -- & -- & --\\
 \multicolumn{13}{@{}l}{\emph{Trained on rule data only (all clinical columns are zero-shot)}}\\
-Verdict only, FoVer data & \res{run/B-TR-fover/L2/all/TA/s0} & \res{run/B-TR-fover/L3inv/all/TA/s0} & \res{run/B-TR-fover/xr_v1:test/xa/XA/s0} & \res{run/B-TR-fover/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+Verdict only, FoVer data & \res{run/B-TR-fover/L2/all/TA/s0} & \res{run/B-TR-fover/L3inv/all/TA/s0} & \res{run/B-TR-fover/xr_v1:test/xa/XA/s0} & \res{run/B-TR-fover/L2/all/Hold/s0} & \res{run/C-TG-TR-fover/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-TR-fover/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
 Verdict only, rule blocks & \res{run/B-F-verdict-blocks/L2/all/TA/s0} & \res{run/B-F-verdict-blocks/L3inv/all/TA/s0} & 60.8 & \res{run/B-F-verdict-blocks/L2/all/Hold/s0} & \res{run/C-TG-verdict-blocks-s0/clin_v1:trialgpt_test/top/macroF1} & 92.8 & 20.5 & 68.3 & 51.8 & 78.7 & 82.7 & 85.6\\
 Verdict only, rule triplets & \res{run/B-F-verdict-triplets/L2/all/TA/s0} & \res{run/B-F-verdict-triplets/L3inv/all/TA/s0} & 90.2 & \res{run/B-F-verdict-triplets/L2/all/Hold/s0} & \res{run/C-TG-verdict-triplets-s0/clin_v1:trialgpt_test/top/macroF1} & 92.8 & 22.8 & 69.5 & 52.9 & 78.2 & 83.1 & 85.4\\
-Rationale, rule triplets & \res{run/B-F-rationale-triplets/L2/all/TA/s0} & \res{run/B-F-rationale-triplets/L3inv/all/TA/s0} & \res{run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \res{run/B-F-rationale-triplets/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
-Evidence summary, rule blocks & \res{run/B-F-summary2-blocks/L2/all/TA/s0} & \res{run/B-F-summary2-blocks/L3inv/all/TA/s0} & \res{run/B-NS-xr_v1-B-F-summary2-blocks/xr_v1:test/xa/XA/s0} & \res{run/B-F-summary2-blocks/L2/all/Hold/s0} & \res{run/C-TG-summary2-blocks-s0/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-summary2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \res{run/C-ME-summary2-blocks/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-summary2-blocks/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-summary2-blocks/clin_v1:medeinst_test/top/trap_acc/s0} & \tbd & \tbd & \tbd\\
+Rationale, rule triplets & \res{run/B-F-rationale-triplets/L2/all/TA/s0} & \res{run/B-F-rationale-triplets/L3inv/all/TA/s0} & \res{run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \res{run/B-F-rationale-triplets/L2/all/Hold/s0} & \res{run/C-TG-rationale-triplets/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-rationale-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \tbd & \tbd & \tbd & \res{run/C-KP-rationale-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} & \res{run/C-KP-rationale-triplets/clin_v1:keypairs_careqa_oneway/top/Reversal/s0} & \res{run/C-NL-rationale-triplets/clin_v1:nli4ct_test/top/Average/s0@pct1}\\
+Evidence summary, rule blocks & \res{run/B-F-summary2-blocks/L2/all/TA/s0} & \res{run/B-F-summary2-blocks/L3inv/all/TA/s0} & \res{run/B-NS-xr_v1-B-F-summary2-blocks/xr_v1:test/xa/XA/s0} & \res{run/B-F-summary2-blocks/L2/all/Hold/s0} & \res{run/C-TG-summary2-blocks-s0/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-summary2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \res{run/C-ME-summary2-blocks/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-summary2-blocks/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-summary2-blocks/clin_v1:medeinst_test/top/trap_acc/s0} & \res{run/C-KP-summary2-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} & \res{run/C-KP-summary2-blocks/clin_v1:keypairs_careqa_oneway/top/Reversal/s0} & \tbd\\
 Evidence summary, rule triplets & \res{run/B-F-summary2-triplets/L2/all/TA/s0} & 97.6$^{a}$ & 88.5 & \res{run/B-F-summary2-triplets/L2/all/Hold/s0} & \res{run/C-TG-summary2-triplets-s0/clin_v1:trialgpt_test/top/macroF1} & 87.5 & 25.1 & 73.2 & 47.3 & 33.3 & 55.6 & 73.2\\
-\method{}, rule natural & \res{run/B-F-ledger2-natural/L2/all/TA/s0} & \res{run/B-F-ledger2-natural/L3inv/all/TA/s0} & \res{run/B-F-ledger2-natural/xr_v1:test/xa/XA/s0} & \res{run/B-F-ledger2-natural/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
-\method{}, rule balanced & \res{run/B-F-ledger2-balanced/L2/all/TA/s0} & \res{run/B-F-ledger2-balanced/L3inv/all/TA/s0} & \res{run/B-F-ledger2-balanced/xr_v1:test/xa/XA/s0} & \res{run/B-F-ledger2-balanced/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
-\method{}, rule blocks & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & \res{run/B-F-ledger2-blocks/L3inv/all/TA/s0} & 76.0 & \res{run/B-F-ledger2-blocks/L2/all/Hold/s0} & \res{run/C-TG-ledger2-blocks-s0/clin_v1:trialgpt_test/top/macroF1} & 85.8 & \tbd & \tbd & \tbd & 35.9 & 44.0 & \tbd\\
-\textbf{\method}, rule triplets & \textbf{99.2} & \res{run/B-F-ledger2-triplets/L3inv/all/TA/s0} & 89.8 & 99.95 & \res{run/C-TG-ledger2-triplets-s0/clin_v1:trialgpt_test/top/macroF1} & 87.7 & 15.7 & 44.4 & 35.1 & 30.5 & 38.2 & \tbd\\
+\method{}, rule natural & \res{run/B-F-ledger2-natural/L2/all/TA/s0} & \res{run/B-F-ledger2-natural/L3inv/all/TA/s0} & \res{run/B-F-ledger2-natural/xr_v1:test/xa/XA/s0} & \res{run/B-F-ledger2-natural/L2/all/Hold/s0} & \res{run/C-TG-ledger2-natural/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-ledger2-natural/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \tbd & \tbd & \tbd & \res{run/C-KP-ledger2-natural/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} & \res{run/C-KP-ledger2-natural/clin_v1:keypairs_careqa_oneway/top/Reversal/s0} & \tbd\\
+\method{}, rule balanced & \res{run/B-F-ledger2-balanced/L2/all/TA/s0} & \res{run/B-F-ledger2-balanced/L3inv/all/TA/s0} & \res{run/B-F-ledger2-balanced/xr_v1:test/xa/XA/s0} & \res{run/B-F-ledger2-balanced/L2/all/Hold/s0} & \res{run/C-TG-ledger2-balanced/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-ledger2-balanced/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+\method{}, rule blocks & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & \res{run/B-F-ledger2-blocks/L3inv/all/TA/s0} & 76.0 & \res{run/B-F-ledger2-blocks/L2/all/Hold/s0} & \res{run/C-TG-ledger2-blocks-s0/clin_v1:trialgpt_test/top/macroF1} & 85.8 & \res{run/C-ME-ledger2-blocks/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-ledger2-blocks/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-ledger2-blocks/clin_v1:medeinst_test/top/trap_acc/s0} & 35.9 & 44.0 & \res{run/C-NL-ledger2-blocks/clin_v1:nli4ct_test/top/Average/s0@pct1}\\
+\textbf{\method}, rule triplets & \textbf{99.2} & \res{run/B-F-ledger2-triplets/L3inv/all/TA/s0} & 89.8 & 99.95 & \res{run/C-TG-ledger2-triplets-s0/clin_v1:trialgpt_test/top/macroF1} & 87.7 & 15.7 & 44.4 & 35.1 & 30.5 & 38.2 & \res{run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Average/s0@pct1}\\
 \multicolumn{13}{@{}l}{\emph{Trained with clinical pairs (MedEinst reference pairs and MedQA-train key pairs)}}\\
-\method{}, clinical pairs only & \res{run/B-TR-clinonly/L2/all/TA/s0} & \res{run/B-TR-clinonly/L3inv/all/TA/s0} & \res{run/B-TR-clinonly/xr_v1:test/xa/XA/s0} & \res{run/B-TR-clinonly/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
-\method{}, rule triplets + clinical pairs & \res{run/B-TR-tripclin/L2/all/TA/s0} & \res{run/B-TR-tripclin/L3inv/all/TA/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+\method{}, clinical pairs only & \res{run/B-TR-clinonly/L2/all/TA/s0} & \res{run/B-TR-clinonly/L3inv/all/TA/s0} & \res{run/B-TR-clinonly/xr_v1:test/xa/XA/s0} & \res{run/B-TR-clinonly/L2/all/Hold/s0} & \res{run/C-TG-TR-clinonly/clin_v1:trialgpt_test/top/macroF1/s0} & \res{run/C-TG-TR-clinonly/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+\method{}, rule triplets + clinical pairs & \res{run/B-TR-tripclin/L2/all/TA/s0} & \res{run/B-TR-tripclin/L3inv/all/TA/s0} & \res{run/B-TR-tripclin/xr_v1:test/xa/XA/s0} & \res{run/B-TR-tripclin/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
 \multicolumn{13}{@{}l}{\emph{References that use the rule program at test time}}\\
 Trigger tagger + program & \res{run/C-SC-gptrigger/L2/all/TA} & -- & -- & \res{run/C-SC-gptrigger/L2/all/Hold} & -- & -- & -- & -- & -- & -- & -- & --\\
 Program on the trained reader's ledger & \res{run/B-AE-program-ledger/L2/all/TA} & -- & -- & \res{run/B-AE-program-ledger/L2/all/Hold} & -- & -- & -- & -- & -- & -- & -- & --\\

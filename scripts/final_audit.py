@@ -70,7 +70,8 @@ def checks(run_tests):
         if not s:
             continue
         n += 1
-        if not (s.startswith(("sel/", "smoke_v2/")) or any(f"/{f}/" in f"/{s}/" for f in frozen)):
+        base = s.split("@")[0]         # '<set>@<variant>': a view or a variant scoring of that set
+        if not (s.startswith(("sel/", "smoke_v2/")) or any(f"/{f}/" in f"/{x}/" for f in frozen for x in (s, base))):
             bad.append(f"{os.path.relpath(p, ROOT)} ({s})")
     out.append(("Scored sets are frozen", not bad, f"{n} summary files", bad))
 
@@ -102,6 +103,12 @@ def checks(run_tests):
             continue
         n += 1
         sc = f.replace("/summary_", "/scores_")[:-len(".json")] + ".jsonl"
+        if f.split("/")[1].startswith("D-RL-"):      # policy runs keep one line per evaluated case in eval_*step<N>.jsonl
+            d = f.rsplit("/", 1)[0]
+            pat = {"rule_v1/test_L2": "eval_step", "xr_v1/test": "eval_xr_step", "clin_v1/trialgpt_test": "eval_tg_step"}.get(s)
+            if not pat or not any(x.startswith(f"{d}/{pat}") for x in tracked):
+                missing.append(f"{d}: no per-example evaluation file for {s}")
+            continue
         if sc not in tracked:
             missing.append(f"{sc}: {'local only' if os.path.exists(os.path.join(ROOT, sc)) else 'missing'}")
         elif any(t in f.split("/")[1] for t in TWO_STAGE):
