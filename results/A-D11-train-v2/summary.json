@@ -1,0 +1,106 @@
+{
+ "run_id": "A-D11-train-v2",
+ "groups_tried": 2221,
+ "groups_accepted": 1406,
+ "acceptance_rate": 63.30481764970734,
+ "target_share": 0.25,
+ "reasons": {
+  "google/gemma-4-31b-it state differs": 436,
+  "openai/gpt-oss-120b state differs": 204,
+  "ledger quote not in note": 175
+ },
+ "rewriter": "meta-llama/llama-3.3-70b-instruct",
+ "extractors": [
+  "google/gemma-4-31b-it",
+  "openai/gpt-oss-120b"
+ ],
+ "routes": {
+  "meta-llama/llama-3.3-70b-instruct": {
+   "provider": {
+    "order": [
+     "novita/bf16",
+     "coreweave/fp16"
+    ],
+    "allow_fallbacks": true,
+    "quantizations": [
+     "bf16",
+     "fp16"
+    ]
+   }
+  },
+  "google/gemma-4-31b-it": {
+   "provider": {
+    "order": [
+     "crusoe/bf16",
+     "parasail/fp8",
+     "deepinfra/fp8"
+    ],
+    "allow_fallbacks": true,
+    "quantizations": [
+     "bf16",
+     "fp8"
+    ],
+    "ignore": [
+     "chutes",
+     "novita",
+     "siliconflow"
+    ]
+   }
+  },
+  "deepseek/deepseek-v4-pro": {
+   "provider": {
+    "order": [
+     "streamlake/fp8",
+     "parasail/fp8"
+    ],
+    "allow_fallbacks": true,
+    "quantizations": [
+     "fp8"
+    ],
+    "max_price": {
+     "prompt": 0.5,
+     "completion": 3.5
+    }
+   },
+   "reasoning": {
+    "enabled": false
+   }
+  },
+  "openai/gpt-oss-120b": {
+   "provider": {
+    "order": [
+     "coreweave/fp4",
+     "dekallm/bf16",
+     "akashml/bf16"
+    ],
+    "allow_fallbacks": true,
+    "ignore": [
+     "google-vertex",
+     "deepinfra"
+    ]
+   },
+   "reasoning": {
+    "effort": "low"
+   },
+   "response_format": {
+    "type": "text"
+   }
+  }
+ },
+ "rewrite_params": {
+  "temperature": 0.7,
+  "seed": 2026,
+  "max_tokens": 900
+ },
+ "extract_params": {
+  "temperature": 0,
+  "seed": 2026,
+  "max_tokens": 2000,
+  "response_format": {
+   "type": "json_object"
+  }
+ },
+ "dry_run": false,
+ "date": "2026-10-09",
+ "rule": "prompts and ledger anchoring of scripts/rewrite_v2.py (fixed on rule_v1/dev)"
+}

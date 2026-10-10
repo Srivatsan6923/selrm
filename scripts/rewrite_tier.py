@@ -36,11 +36,16 @@ from selrm.schema import LEDGER_KEYS, validate  # noqa: E402
 from selrm.smoke import ledger_to_prose  # noqa: E402
 
 API = "https://openrouter.ai/api/v1/chat/completions"
-REWRITER = "google/gemma-4-31b-it"                               # verified on openrouter.ai/api/v1/models, 2 Oct 2026
-EXTRACTORS = ("deepseek/deepseek-v4-pro", "openai/gpt-oss-120b")  # two families, neither the rewriter's
+# Models changed on 9 Oct 2026 before any call of this pipeline was made (docs/DECISIONS_A.md): a new OpenRouter
+# account is limited to 20 requests a minute on DeepSeek V4 Pro. The lead's condition: the rewriter is not a Gemma
+# model and the two extractors come from two families. Ids verified by live calls on 8-9 Oct 2026.
+REWRITER = "meta-llama/llama-3.3-70b-instruct"                    # Meta
+EXTRACTORS = ("google/gemma-4-31b-it", "openai/gpt-oss-120b")     # Google, OpenAI; neither the rewriter's family
 # Provider routing per model: the cheapest endpoints that serve the published weights (cost plan of 3 Oct 2026,
 # prices from openrouter.ai/api/v1/models/<id>/endpoints); re-quantised endpoints are excluded.
 ROUTES = {
+    "meta-llama/llama-3.3-70b-instruct": {"provider": {"order": ["novita/bf16", "coreweave/fp16"], "allow_fallbacks": True,
+                                                       "quantizations": ["bf16", "fp16"]}},
     "google/gemma-4-31b-it": {"provider": {"order": ["crusoe/bf16", "parasail/fp8", "deepinfra/fp8"],
                                            "allow_fallbacks": True, "quantizations": ["bf16", "fp8"],
                                            "ignore": ["chutes", "novita", "siliconflow"]}},
@@ -50,7 +55,7 @@ ROUTES = {
                                  "reasoning": {"enabled": False}},
     "openai/gpt-oss-120b": {"provider": {"order": ["coreweave/fp4", "dekallm/bf16", "akashml/bf16"],
                                          "allow_fallbacks": True, "ignore": ["google-vertex", "deepinfra"]},
-                            "reasoning": {"effort": "low"}},
+                            "reasoning": {"effort": "low"}, "response_format": {"type": "text"}},
 }
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "rewrite_v1"
@@ -123,7 +128,8 @@ def _value(m, decimals):
     try:
         return round(float(m["value"]), decimals)
     except (TypeError, ValueError):
-        return "bad"
+        lead = re.match(r"\s*(-?\d+(?:\.\d+)?)", str(v))      # '2.2 x10^9/L': the number written first
+        return round(float(lead.group(1)), decimals) if lead else "bad"
 
 
 def gold_mentions(rec, decimals):
@@ -139,18 +145,29 @@ def accepts(rec, mentions, decimals):
     concepts = set(decimals)
     generic = {m["concept"] for m in rec["state"] if m["form"] == "generic"}
     named = {g[0] for g in gold}
+    findings = {m["concept"] for m in rec["state"] if m["kind"] != "numeric"}
     got = []
     for m in mentions:
         c = m.get("concept")
         if c not in concepts:
             continue
         e = (c, _norm_subject(m.get("subject")), str(m.get("status")).lower(), str(m.get("time")).lower(),
-             _value(m, decimals[c]))
+             None if c in findings else _value(m, decimals[c]))   # a finding has no value (a dose or a week count is not one)
+        if e[2] == "absent" and e[4] is None:
+            e = (e[0], e[1], "absent", "current", None)   # an absence has no time: 'no history of X' = 'no X'
         if e[1:4] == ("patient", "absent", "current") and e[4] is None and c not in named and \
                 (c in generic or c not in named):
             continue                               # a generic absence (or closed world) read as absence
         got.append(e)
-    want = Counter(g[:5] for g in gold if g[5] != "delabelled")
+    # a past finding of the patient that the note says has ended may also be read as absent now
+    ended = {g[0] for g in gold if g[1:4] == ("patient", "present", "past") and g[4] is None}
+    ended -= {g[0] for g in gold if g[3] == "current"}
+    for c in ended:
+        extra = (c, "patient", "absent", "current", None)
+        if extra in got and extra not in [g[:5] for g in gold]:
+            got.remove(extra)
+    want = Counter((g[0], g[1], g[2], "current" if g[2] == "absent" and g[4] is None else g[3], g[4])
+                   for g in gold if g[5] != "delabelled")
     dl = [g for g in gold if g[5] == "delabelled"]
     for g in dl:                                   # allergy removed after testing: present-past or absent
         alts = [(g[0], g[1], "present", "past", None), (g[0], g[1], "absent", "past", None),
@@ -281,6 +298,8 @@ def selftest():
             assert accepts(r, perfect, decimals), (tid, r["case_kind"])
             if perfect:                            # any changed attribute is rejected
                 for field, new in (("subject", "neighbor"), ("status", "unknown"), ("time", "future")):
+                    if field == "time" and perfect[0]["status"] == "absent":
+                        continue                   # an absence carries no time (accepts())
                     bad = [dict(perfect[0], **{field: new})] + perfect[1:]
                     assert not accepts(r, bad, decimals), (tid, field)
                 assert not accepts(r, perfect[1:], decimals) or len(perfect) == 0

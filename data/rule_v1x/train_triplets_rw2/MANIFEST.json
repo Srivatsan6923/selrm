@@ -1,0 +1,128 @@
+{
+ "build_command": "python scripts/rewrite_train_v2.py",
+ "created": "2026-10-09",
+ "derived_from": {
+  "name": "rule_v1/train_triplets",
+  "sha256": "9474d523138b2b7fd06d267fc4ff93963e19a7dd0541b90f3cea2825b5ff72bf"
+ },
+ "frozen": true,
+ "generator": "scripts/rewrite_train_v2.py",
+ "git_commit": "97ebe2686c07a40231505361f5dd583354cc165c",
+ "groups_rewritten": 1406,
+ "level": "L0",
+ "n_groups": 5623,
+ "n_records": 60004,
+ "name": "train_triplets_rw2",
+ "records_rewritten": 15010,
+ "records_rewritten_with_test_cue_words": 8654,
+ "rewriting": {
+  "acceptance_rate": 63.30481764970734,
+  "extract_params": {
+   "max_tokens": 2000,
+   "response_format": {
+    "type": "json_object"
+   },
+   "seed": 2026,
+   "temperature": 0
+  },
+  "extractors": [
+   "google/gemma-4-31b-it",
+   "openai/gpt-oss-120b"
+  ],
+  "groups_accepted": 1406,
+  "groups_tried": 2221,
+  "reasons": {
+   "google/gemma-4-31b-it state differs": 436,
+   "ledger quote not in note": 175,
+   "openai/gpt-oss-120b state differs": 204
+  },
+  "rewrite_params": {
+   "max_tokens": 900,
+   "seed": 2026,
+   "temperature": 0.7
+  },
+  "rewriter": "meta-llama/llama-3.3-70b-instruct",
+  "routes": {
+   "deepseek/deepseek-v4-pro": {
+    "provider": {
+     "allow_fallbacks": true,
+     "max_price": {
+      "completion": 3.5,
+      "prompt": 0.5
+     },
+     "order": [
+      "streamlake/fp8",
+      "parasail/fp8"
+     ],
+     "quantizations": [
+      "fp8"
+     ]
+    },
+    "reasoning": {
+     "enabled": false
+    }
+   },
+   "google/gemma-4-31b-it": {
+    "provider": {
+     "allow_fallbacks": true,
+     "ignore": [
+      "chutes",
+      "novita",
+      "siliconflow"
+     ],
+     "order": [
+      "crusoe/bf16",
+      "parasail/fp8",
+      "deepinfra/fp8"
+     ],
+     "quantizations": [
+      "bf16",
+      "fp8"
+     ]
+    }
+   },
+   "meta-llama/llama-3.3-70b-instruct": {
+    "provider": {
+     "allow_fallbacks": true,
+     "order": [
+      "novita/bf16",
+      "coreweave/fp16"
+     ],
+     "quantizations": [
+      "bf16",
+      "fp16"
+     ]
+    }
+   },
+   "openai/gpt-oss-120b": {
+    "provider": {
+     "allow_fallbacks": true,
+     "ignore": [
+      "google-vertex",
+      "deepinfra"
+     ],
+     "order": [
+      "coreweave/fp4",
+      "dekallm/bf16",
+      "akashml/bf16"
+     ]
+    },
+    "reasoning": {
+     "effort": "low"
+    },
+    "response_format": {
+     "type": "text"
+    }
+   }
+  },
+  "rule": "prompts and ledger anchoring of scripts/rewrite_v2.py (fixed on rule_v1/dev)"
+ },
+ "set": "rule_v1x",
+ "sha256": "86775e02854f29d845c339f84c86616a679e028ac6589104dc963f9f040155c7",
+ "shortcut_validation": {
+  "output": "training corpus without complete triplets",
+  "result": "n/a"
+ },
+ "split": "train",
+ "templates": "train + rewritten"
+}

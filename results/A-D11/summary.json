@@ -1,0 +1,145 @@
+{
+ "run_id": "A-D11",
+ "groups_tried": 1000,
+ "groups_accepted": 406,
+ "acceptance_rate": 40.6,
+ "by": {
+  "nm_kind": {
+   "boundary": {
+    "tried": 200,
+    "accepted": 126
+   },
+   "negation": {
+    "tried": 200,
+    "accepted": 16
+   },
+   "numeric": {
+    "tried": 200,
+    "accepted": 133
+   },
+   "subject": {
+    "tried": 200,
+    "accepted": 37
+   },
+   "time": {
+    "tried": 200,
+    "accepted": 94
+   }
+  },
+  "tier": {
+   "delabelled": {
+    "tried": 1,
+    "accepted": 0
+   },
+   "easy": {
+    "tried": 667,
+    "accepted": 272
+   },
+   "long": {
+    "tried": 297,
+    "accepted": 116
+   },
+   "superseded": {
+    "tried": 35,
+    "accepted": 18
+   }
+  }
+ },
+ "reasons": {
+  "google/gemma-4-31b-it state differs": 365,
+  "openai/gpt-oss-120b state differs": 116,
+  "ledger quote not in note": 113
+ },
+ "rewriter": "meta-llama/llama-3.3-70b-instruct",
+ "extractors": [
+  "google/gemma-4-31b-it",
+  "openai/gpt-oss-120b"
+ ],
+ "routes": {
+  "meta-llama/llama-3.3-70b-instruct": {
+   "provider": {
+    "order": [
+     "novita/bf16",
+     "coreweave/fp16"
+    ],
+    "allow_fallbacks": true,
+    "quantizations": [
+     "bf16",
+     "fp16"
+    ]
+   }
+  },
+  "google/gemma-4-31b-it": {
+   "provider": {
+    "order": [
+     "crusoe/bf16",
+     "parasail/fp8",
+     "deepinfra/fp8"
+    ],
+    "allow_fallbacks": true,
+    "quantizations": [
+     "bf16",
+     "fp8"
+    ],
+    "ignore": [
+     "chutes",
+     "novita",
+     "siliconflow"
+    ]
+   }
+  },
+  "deepseek/deepseek-v4-pro": {
+   "provider": {
+    "order": [
+     "streamlake/fp8",
+     "parasail/fp8"
+    ],
+    "allow_fallbacks": true,
+    "quantizations": [
+     "fp8"
+    ],
+    "max_price": {
+     "prompt": 0.5,
+     "completion": 3.5
+    }
+   },
+   "reasoning": {
+    "enabled": false
+   }
+  },
+  "openai/gpt-oss-120b": {
+   "provider": {
+    "order": [
+     "coreweave/fp4",
+     "dekallm/bf16",
+     "akashml/bf16"
+    ],
+    "allow_fallbacks": true,
+    "ignore": [
+     "google-vertex",
+     "deepinfra"
+    ]
+   },
+   "reasoning": {
+    "effort": "low"
+   },
+   "response_format": {
+    "type": "text"
+   }
+  }
+ },
+ "rewrite_params": {
+  "temperature": 0.7,
+  "seed": 2026,
+  "max_tokens": 900
+ },
+ "extract_params": {
+  "temperature": 0,
+  "seed": 2026,
+  "max_tokens": 2000,
+  "response_format": {
+   "type": "json_object"
+  }
+ },
+ "date": "2026-10-09"
+}
