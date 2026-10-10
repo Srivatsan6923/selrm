@@ -41,6 +41,11 @@ def main():
     if acc.exists():
         d = json.loads(acc.read_text(encoding="utf-8"))
         out["mcv_v1_accept"] = {k: d[k] for k in ("n_scores", "n_accepted", "test_rows_covered", "test_human_covered", "train_rows_covered")}
+    stats = ROOT / "tables" / "data_stats.json"
+    if stats.exists():                              # the harder set by requirement, under a key without a slash
+        req = json.loads(stats.read_text(encoding="utf-8"))["requirements"]
+        out["harder_set"] = req["rule_v1/test_hard"]
+        out["test_L2_requirements"] = req["rule_v1/test_L2"]
     prep = ROOT / "ec_v1" / "prepare_summary.json"
     if prep.exists():
         out["ec_v1_prepare"] = json.loads(prep.read_text(encoding="utf-8"))
