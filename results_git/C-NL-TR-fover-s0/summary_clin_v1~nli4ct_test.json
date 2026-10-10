@@ -1,0 +1,37 @@
+{
+ "run_id": "C-NL-TR-fover-s0",
+ "set": "clin_v1/nli4ct_test",
+ "prediction_rule": "Entailment iff u > 0",
+ "macroF1": 0.7125270562770563,
+ "faithfulness": 0.9664351851851852,
+ "consistency": 0.8588007736943907,
+ "Control_F1": 0.6458333333333334,
+ "Control_macroF1": 0.7125270562770563,
+ "Contrast_F1": 0.4504664593513994,
+ "Faithfulness": 0.9664351851851852,
+ "Consistency": 0.8588007736943907,
+ "Consistency_acc": 0.7079303675048356,
+ "n_control": 500,
+ "n_altering": 864,
+ "n_preserving": 4136,
+ "acc_Contradiction": 0.9386666666666666,
+ "acc_Numerical_contradiction": 0.9782608695652174,
+ "acc_Numerical_paraphrase": 0.6696428571428571,
+ "acc_Paraphrase": 0.7193333333333334,
+ "acc_Text_appended": 0.5706666666666667,
+ "Average": 0.8236897640709698,
+ "section=Eligibility": {
+  "Control_F1": 0.47191011235955055,
+  "Faithfulness": 0.9684684684684685,
+  "Consistency": 0.8863849765258216,
+  "Average": 0.7755878524512801,
+  "n_control": 132,
+  "n_altering": 222,
+  "n_preserving": 1065
+ },
+ "eval": {
+  "seconds": 1065.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

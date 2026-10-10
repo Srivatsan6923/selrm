@@ -1,0 +1,32 @@
+{
+ "run_id": "C-KP-ledger2-balanced-s0",
+ "set": "clin_v1/keypairs_medqa_oneway",
+ "Reversal": 34.173669467787114,
+ "CI95": [
+  29.131652661064425,
+  39.21568627450981
+ ],
+ "n_pairs": 357,
+ "q1_acc": 60.78431372549019,
+ "q2_acc": 59.38375350140056,
+ "tie_rate": 26.050420168067227,
+ "Reversal_by_tercile": {
+  "1": 35.294117647058826,
+  "2": 29.41176470588235,
+  "3": 37.81512605042017
+ },
+ "Reversal_by_category": {
+  "step1": 32.926829268292686,
+  "step2&3": 35.233160621761655
+ },
+ "n_by_category": {
+  "step1": 164,
+  "step2&3": 193
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": null
+}

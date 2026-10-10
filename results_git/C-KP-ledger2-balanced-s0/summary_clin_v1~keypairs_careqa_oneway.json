@@ -1,0 +1,49 @@
+{
+ "run_id": "C-KP-ledger2-balanced-s0",
+ "set": "clin_v1/keypairs_careqa_oneway",
+ "Reversal": 22.22222222222222,
+ "CI95": [
+  17.333333333333332,
+  28.0
+ ],
+ "n_pairs": 225,
+ "q1_acc": 41.77777777777778,
+ "q2_acc": 44.0,
+ "tie_rate": 66.66666666666667,
+ "Reversal_by_tercile": {
+  "1": 21.333333333333332,
+  "2": 25.333333333333332,
+  "3": 20.0
+ },
+ "Reversal_by_category": {
+  "Biology": 9.75609756097561,
+  "Chemistry": 16.666666666666668,
+  "Medicine": 44.18604651162791,
+  "Nursing": 27.272727272727273,
+  "Pharmacology": 16.071428571428573,
+  "Psychology": 17.857142857142858
+ },
+ "n_by_category": {
+  "Biology": 41,
+  "Chemistry": 24,
+  "Medicine": 43,
+  "Nursing": 33,
+  "Pharmacology": 56,
+  "Psychology": 28
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "reader_units": 450,
+  "malformed_units": 200,
+  "mode": null,
+  "malformed_rate": 0.4444,
+  "gen_not_stopped": 0,
+  "seconds": 136.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

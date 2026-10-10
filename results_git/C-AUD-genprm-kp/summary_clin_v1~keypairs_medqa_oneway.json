@@ -1,7 +1,33 @@
 {
  "run_id": "C-AUD-genprm-kp",
  "set": "clin_v1/keypairs_medqa_oneway",
- "claim_type": "conclusion",
+ "Reversal": 33.5,
+ "CI95": [
+  27.0,
+  40.0
+ ],
+ "n_pairs": 200,
+ "q1_acc": 62.0,
+ "q2_acc": 56.0,
+ "tie_rate": 4.5,
+ "Reversal_by_tercile": {
+  "1": 33.333333333333336,
+  "2": 33.333333333333336,
+  "3": 33.87096774193548
+ },
+ "Reversal_by_category": {
+  "step1": 32.291666666666664,
+  "step2&3": 34.61538461538461
+ },
+ "n_by_category": {
+  "step1": 96,
+  "step2&3": 104
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
  "eval": {
   "seconds": 15471.5,
   "n_records": 800,

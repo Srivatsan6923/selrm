@@ -1,0 +1,49 @@
+{
+ "run_id": "C-KP-TR-clinonly-s0",
+ "set": "clin_v1/keypairs_careqa_oneway",
+ "Reversal": 42.22222222222222,
+ "CI95": [
+  36.0,
+  48.44444444444444
+ ],
+ "n_pairs": 225,
+ "q1_acc": 54.22222222222222,
+ "q2_acc": 75.55555555555556,
+ "tie_rate": 23.11111111111111,
+ "Reversal_by_tercile": {
+  "1": 46.666666666666664,
+  "2": 50.666666666666664,
+  "3": 29.333333333333332
+ },
+ "Reversal_by_category": {
+  "Biology": 41.46341463414634,
+  "Chemistry": 33.333333333333336,
+  "Medicine": 55.81395348837209,
+  "Nursing": 36.36363636363637,
+  "Pharmacology": 32.142857142857146,
+  "Psychology": 57.142857142857146
+ },
+ "n_by_category": {
+  "Biology": 41,
+  "Chemistry": 24,
+  "Medicine": 43,
+  "Nursing": 33,
+  "Pharmacology": 56,
+  "Psychology": 28
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "reader_units": 450,
+  "malformed_units": 63,
+  "mode": null,
+  "malformed_rate": 0.14,
+  "gen_not_stopped": 0,
+  "seconds": 163.0,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

@@ -1,0 +1,9 @@
+2026-10-10T02:59:59Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-verdict-triplets-s0
+2026-10-10T03:00:00Z token budget per batch: 8000 (generation 24000)
+2026-10-10T03:00:01Z C-S2-me-verdict-triplets-s0 clin_v1/medeinst_test@derived prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test@derived/verdict.npz', 'exists')
+2026-10-10T03:01:17Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0825)
+2026-10-10T03:01:23Z padding self-check: max |u_batch - u_single| = 0.1263 (tol 0.588) -> left padding
+2026-10-10T04:36:52Z C-S2-me-verdict-triplets-s0 clin_v1/medeinst_test@derived: TA nan Rev nan Hold nan n=None (5810.2 s)
+2026-10-10T04:36:54Z C-S2-me-verdict-triplets-s0 clin_v1/medeinst_test@wrong prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test@wrong/verdict.npz', 'exists')
+2026-10-10T06:12:38Z C-S2-me-verdict-triplets-s0 clin_v1/medeinst_test@wrong: TA nan Rev nan Hold nan n=None (5743.6 s)
+2026-10-10T06:12:40Z DONE C-S2-me-verdict-triplets-s0 in 193.4 min, GPU util mean 97.0

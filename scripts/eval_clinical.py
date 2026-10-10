@@ -198,6 +198,7 @@ def summary(items, tau, run, split):
             "forced_choice_acc": 100.0 * sum(x["forced"] == x["gold"] for x in fc) / len(fc) if fc else None,
             "n_forced": len(fc), "evidence": evidence(items),
             "evidence_malformed_without_quotes": evidence(items, True) if any(x["malformed"] for x in items) else None,
+            "malformed_rate": 100.0 * sum(x["malformed"] for x in items) / len(items), "n_malformed": sum(x["malformed"] for x in items),
             "per_trial_acc": {"n_trials": len(tacc), "min_items": 5, "min": tacc[0] if tacc else None,
                               "median": statistics.median(tacc) if tacc else None, "max": tacc[-1] if tacc else None},
             "bootstrap": {"unit": "patient", "B": 1000, "seed": 0}}

@@ -76,6 +76,71 @@ def parts(items, key):
             "acc_items_scoring_none": 100.0 * statistics.mean(zero), "n_none": len(zero)}
 
 
+def descriptive(crit, edits):
+    """Descriptive cells for the MedCalc-V table, means over the seeds scored (no test):
+    '<system>|<portion>@<cond>|<slice>' -> criteria: {BalAcc, Acc, acc_items_scoring_points, acc_items_scoring_none,
+    n, seeds}; edits: {TA, Rev, Hold, n, seeds}. Slices: all, note_type=, stratum= (criteria); all, note_type=human,
+    edit_type= (edits)."""
+    cells = {}
+    slices_c = [("all", lambda r: True)] + [(f"note_type={v}", lambda r, v=v: r["note_type"] == v) for v in ("human", "model")] + [
+        (f"stratum={v}", lambda r, v=v: r["stratum"] == v) for v in ("stated", "denied", "default")]
+    slices_e = [("all", lambda r: True), ("note_type=human", lambda r: r["note_type"] == "human")] + [
+        (f"edit_type={v}", lambda r, v=v: r.get("edit_type") == v) for v in ("value", "sentence")]
+    for kind in ("critic", "blocks", "triplets"):
+        for cond in ("stated", "none", "wrong"):
+            suffix = "" if cond == "stated" else f"@{cond}"
+            for portion, recs, slices in (("criteria_test", crit, slices_c), ("edits_test", edits, slices_e)):
+                per = collections.defaultdict(list)
+                for run in system_runs(kind):
+                    u = scores(run, f"mcv_v1/{portion}{suffix}") or scores(run.replace("C-S2-mcv-", "C-S2-mcv2-"), f"mcv_v1/{portion}{suffix}")
+                    if not u:
+                        continue
+                    for name, keep in slices:
+                        sub = [r for r in recs if keep(r)]
+                        if not sub:
+                            continue
+                        if portion == "criteria_test":
+                            d = d_by(sub, u, suffix)
+                            pts = {r["tid"]: bool(r["meta"]["points"]) for r in sub}
+                            items = [{"points": pts[t], "ok": float(v > 0)} for (t, _), v in d.items()]
+                            if all(any(x["points"] == b for x in items) for b in (True, False)):
+                                p = parts(items, "ok")
+                                per[name].append({"BalAcc": p["balanced_accuracy"], "Acc": 100.0 * statistics.mean(x["ok"] for x in items),
+                                                  "acc_items_scoring_points": p["acc_items_scoring_points"],
+                                                  "acc_items_scoring_none": p["acc_items_scoring_none"], "n": len(items)})
+                        else:
+                            d = d_by(sub, u, suffix)        # criterion claims: triplet parts computed here
+                            T = [(d[(t, "base")] > 0, d[(t, "flip")] < 0, d[(t, "near")] > 0) for t in sorted({t for t, _ in d})]
+                            pc = lambda f: 100.0 * statistics.mean(f(x) for x in T)
+                            per[name].append({"TA": pc(all), "Rev": pc(lambda x: x[0] and x[1]), "Hold": pc(lambda x: x[0] and x[2]), "n": len(T)})
+                for name, v in per.items():
+                    cells[f"{'critic' if kind == 'critic' else 'verdict-' + kind}|{portion}@{cond}|{name}"] = {
+                        k: statistics.mean(x[k] for x in v) for k in v[0]} | {"seeds": len(v)}
+    # rule side (the same note under the original and an altered cut-off; XA = both cells right) and the natural band
+    rs, nb = load(f"{MCV}/ruleside_test/records.jsonl"), load(f"{MCV}/natural_band_test/records.jsonl")
+    lab = {r["tid"]: r["label"] for r in rs if r["claim_role"] == "s"}
+    for kind in ("critic", "blocks", "triplets"):
+        name = "critic" if kind == "critic" else "verdict-" + kind
+        xs, ns = [], []
+        for run in system_runs(kind):
+            run2 = run.replace("C-S2-mcv-", "C-S2-mcv2-")
+            u = scores(run2, "mcv_v1/ruleside_test")
+            if u:
+                ok = {t: (d > 0) == bool(lab[t]) for (t, _), d in d_by(rs, u).items()}
+                items = sorted({t.rsplit("@", 1)[0] for t in ok})
+                xs.append({"XA": 100.0 * statistics.mean(ok[i + "@orig"] and ok[i + "@alt"] for i in items),
+                           "acc_original_cut": 100.0 * statistics.mean(ok[i + "@orig"] for i in items),
+                           "acc_altered_cut": 100.0 * statistics.mean(ok[i + "@alt"] for i in items), "n": len(items)})
+            u = scores(run2, "mcv_v1/natural_band_test")
+            if u:
+                d = d_by(nb, u)
+                ns.append({"Acc": 100.0 * statistics.mean(v > 0 for v in d.values()), "n": len(d)})
+        for key, v in ((f"{name}|ruleside_test@stated|all", xs), (f"{name}|natural_band_test@stated|all", ns)):
+            if v:
+                cells[key] = {k: statistics.mean(x[k] for x in v) for k in v[0]} | {"seeds": len(v)}
+    return cells
+
+
 def main():
     out = {"plan": "docs/ANALYSIS_PLAN_STAGE2.md", "bootstrap": {"B": B, "seed": 0, "unit": "note"}, "comparisons": {}}
     crit = [r for r in load(f"{MCV}/criteria_test/records.jsonl") if r["note_type"] == "human" and r["stratum"] in ("stated", "denied")]
@@ -110,6 +175,38 @@ def main():
                                         "expectation": "> 0", "TA_triplets": ta("a")(items), "TA_blocks": ta("b")(items),
                                         "TA_critic": 100.0 * statistics.mean(ec[t] for t in tids if t in ec) if ec else None,
                                         "seeds": [ns_t, ns_b]}
+    # (11) MedEinst pairs: [triplets: derived - none] - [critic: derived - none], pair accuracy, clusters = label pairs
+    me = load(f"{REPO}/data/clin_v1/medeinst_test/records.jsonl")
+    rid = {r["tid"]: r["rid"] for r in me}
+
+    ACC = {}
+
+    def pair_items(kind, cond):
+        vals, parts2 = collections.defaultdict(list), {"control_acc": [], "trap_acc": []}
+        runs = ["critic"] if kind == "critic" else [f"verdict-{kind}-s{s}" for s in range(5)]
+        for run in runs:
+            u = scores(f"C-ME-{run}", "clin_v1/medeinst_test") if cond == "none" else scores(f"C-S2-me-{run}", f"clin_v1/medeinst_test@{cond}")
+            if u:
+                d = d_by(me, u, "" if cond == "none" else f"@{cond}")
+                for t in rid:
+                    vals[t].append(d[(t, "base")] > 0 and d[(t, "flip")] < 0)
+                parts2["control_acc"].append(100.0 * statistics.mean(d[(t, "base")] > 0 for t in rid))
+                parts2["trap_acc"].append(100.0 * statistics.mean(d[(t, "flip")] < 0 for t in rid))
+        ACC[(kind, cond)] = {k: statistics.mean(v) for k, v in parts2.items() if v}
+        return {t: statistics.mean(v) for t, v in vals.items()}, max((len(v) for v in vals.values()), default=0)
+
+    mc = {(k, c): pair_items(k, c) for k in ("triplets", "blocks", "critic") for c in ("none", "derived", "wrong")}
+    out["medeinst_cells"] = {f"{'critic' if k == 'critic' else 'verdict-' + k}|{c}": {"pair_accuracy": 100.0 * statistics.mean(v.values()), **ACC[(k, c)], "seeds": n, "n": len(v)}
+                             for (k, c), (v, n) in mc.items() if v}
+    need11 = [("triplets", "derived"), ("triplets", "none"), ("critic", "derived"), ("critic", "none")]
+    if all(mc[k][0] for k in need11):
+        items = [{"cl": rid[t], **{f"{k}_{c}": mc[(k, c)][0][t] for k, c in need11}} for t in sorted(rid)]
+        pa = lambda key: (lambda xs: 100.0 * statistics.mean(x[key] for x in xs))
+        r11 = M.paired_cluster_bootstrap(items, "cl", lambda xs: pa("triplets_derived")(xs) - pa("triplets_none")(xs),
+                                         lambda xs: pa("critic_derived")(xs) - pa("critic_none")(xs), B=B)
+        out["comparisons"]["11"] = r11 | {"contrast": "[triplets: derived - none] minus [critic: derived - none]", "metric": "pair accuracy",
+                                          "expectation": "> 0", "seeds": {f"{k}_{c}": mc[(k, c)][1] for k, c in need11}}
+    out["mcv_cells"] = descriptive(load(f"{MCV}/criteria_test/records.jsonl"), load(f"{MCV}/edits_test/records.jsonl"))
     json.dump(out, open(f"{RES}/C-S2-comparisons.json", "w", encoding="utf-8", newline="\n"), indent=1)
     print(json.dumps({k: {x: (round(v[x], 2) if isinstance(v[x], float) else v[x]) for x in ("diff", "lo", "hi", "p", "n_items", "n_clusters")}
                       for k, v in out["comparisons"].items()}, indent=1))

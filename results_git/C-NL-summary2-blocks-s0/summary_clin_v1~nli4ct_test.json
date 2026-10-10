@@ -1,0 +1,42 @@
+{
+ "run_id": "C-NL-summary2-blocks-s0",
+ "set": "clin_v1/nli4ct_test",
+ "prediction_rule": "Entailment iff u > 0",
+ "macroF1": 0.6245397584135391,
+ "faithfulness": 0.8541666666666666,
+ "consistency": 0.6552224371373307,
+ "Control_F1": 0.588495575221239,
+ "Control_macroF1": 0.6245397584135391,
+ "Contrast_F1": 0.4671201814058957,
+ "Faithfulness": 0.8541666666666666,
+ "Consistency": 0.6552224371373307,
+ "Consistency_acc": 0.6327369439071566,
+ "n_control": 500,
+ "n_altering": 864,
+ "n_preserving": 4136,
+ "acc_Contradiction": 0.8406666666666667,
+ "acc_Numerical_contradiction": 0.8007246376811594,
+ "acc_Numerical_paraphrase": 0.6160714285714286,
+ "acc_Paraphrase": 0.612,
+ "acc_Text_appended": 0.5446666666666666,
+ "Average": 0.6992948930084122,
+ "section=Eligibility": {
+  "Control_F1": 0.592,
+  "Faithfulness": 0.7792792792792793,
+  "Consistency": 0.615962441314554,
+  "Average": 0.662413906864611,
+  "n_control": 132,
+  "n_altering": 222,
+  "n_preserving": 1065
+ },
+ "eval": {
+  "reader_units": 5500,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 19,
+  "seconds": 6253.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

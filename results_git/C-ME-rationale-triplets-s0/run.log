@@ -1,0 +1,33 @@
+2026-10-09T05:36:49Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-rationale-triplets-s0
+2026-10-09T05:36:50Z token budget per batch: 8000 (generation 24000)
+2026-10-09T05:37:15Z C-ME-rationale-triplets-s0 clin_v1/medeinst_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test/rationale.npz', 'built 21532 prompts, max 4454 tokens')
+2026-10-09T05:37:16Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0104)
+2026-10-09T05:37:19Z padding self-check: max |u_batch - u_single| = 0.1613 (tol 0.600) -> left padding
+2026-10-09T05:40:03Z generate: batch 25/660, 35134 tokens, 214 tok/s
+2026-10-09T05:42:44Z generate: batch 50/660, 68818 tokens, 212 tok/s
+2026-10-09T05:45:25Z generate: batch 75/660, 101933 tokens, 210 tok/s
+2026-10-09T05:48:02Z generate: batch 100/660, 132194 tokens, 206 tok/s
+2026-10-09T05:50:41Z generate: batch 125/660, 161954 tokens, 202 tok/s
+2026-10-09T05:53:20Z generate: batch 150/660, 191275 tokens, 199 tok/s
+2026-10-09T05:56:01Z generate: batch 175/660, 220640 tokens, 197 tok/s
+2026-10-09T05:58:42Z generate: batch 200/660, 249592 tokens, 195 tok/s
+2026-10-09T06:01:27Z generate: batch 225/660, 278465 tokens, 192 tok/s
+2026-10-09T06:04:15Z generate: batch 250/660, 307332 tokens, 190 tok/s
+2026-10-09T06:06:57Z generate: batch 275/660, 336185 tokens, 189 tok/s
+2026-10-09T06:09:42Z generate: batch 300/660, 365280 tokens, 188 tok/s
+2026-10-09T06:12:29Z generate: batch 325/660, 393097 tokens, 186 tok/s
+2026-10-09T06:15:23Z generate: batch 350/660, 421235 tokens, 184 tok/s
+2026-10-09T06:18:32Z generate: batch 375/660, 449443 tokens, 182 tok/s
+2026-10-09T06:21:33Z generate: batch 400/660, 477808 tokens, 180 tok/s
+2026-10-09T06:24:29Z generate: batch 425/660, 504984 tokens, 178 tok/s
+2026-10-09T06:28:06Z generate: batch 450/660, 533174 tokens, 175 tok/s
+2026-10-09T06:32:43Z generate: batch 475/660, 561221 tokens, 169 tok/s
+2026-10-09T06:37:02Z generate: batch 500/660, 586871 tokens, 164 tok/s
+2026-10-09T06:42:00Z generate: batch 525/660, 612916 tokens, 158 tok/s
+2026-10-09T06:47:19Z generate: batch 550/660, 639665 tokens, 152 tok/s
+2026-10-09T06:52:51Z generate: batch 575/660, 665133 tokens, 147 tok/s
+2026-10-09T06:56:38Z generate: batch 600/660, 686433 tokens, 144 tok/s
+2026-10-09T06:59:55Z generate: batch 625/660, 704934 tokens, 142 tok/s
+2026-10-09T07:02:42Z generate: batch 650/660, 722449 tokens, 141 tok/s
+2026-10-09T07:52:07Z C-ME-rationale-triplets-s0 clin_v1/medeinst_test: TA nan Rev nan Hold nan n=None (8092.0 s)
+2026-10-09T07:52:09Z DONE C-ME-rationale-triplets-s0 in 136.1 min, GPU util mean 95.7

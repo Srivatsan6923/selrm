@@ -1,0 +1,159 @@
+{
+ "note": "Stage 2 C4: MedEinst pairs, derived criterion",
+ "runs": [
+  {
+   "run_id": "C-S2-me-critic",
+   "priority": 3.0,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/medeinst_test@derived",
+    "clin_v1/medeinst_test@wrong"
+   ],
+   "adapter": null,
+   "adapter_run": null,
+   "note": "STAGE2 C4: MedEinst test pairs under the derived criterion and with the exclusive lists exchanged (comparison 11)"
+  },
+  {
+   "run_id": "C-S2-me-verdict-triplets-s0",
+   "priority": 3.01,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/medeinst_test@derived",
+    "clin_v1/medeinst_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s0",
+   "adapter_run": "B-F-verdict-triplets-s0",
+   "note": "STAGE2 C4: MedEinst test pairs under the derived criterion and with the exclusive lists exchanged (comparison 11)"
+  },
+  {
+   "run_id": "C-S2-me-verdict-blocks-s0",
+   "priority": 3.02,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/medeinst_test@derived",
+    "clin_v1/medeinst_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s0",
+   "adapter_run": "B-F-verdict-blocks-s0",
+   "note": "STAGE2 C4: MedEinst test pairs under the derived criterion and with the exclusive lists exchanged (comparison 11)"
+  },
+  {
+   "run_id": "C-S2-me-verdict-triplets-s1",
+   "priority": 3.0300000000000002,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/medeinst_test@derived",
+    "clin_v1/medeinst_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s1",
+   "adapter_run": "B-F-verdict-triplets-s1",
+   "note": "STAGE2 C4: MedEinst test pairs under the derived criterion and with the exclusive lists exchanged (comparison 11)"
+  },
+  {
+   "run_id": "C-S2-me-verdict-blocks-s1",
+   "priority": 3.04,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/medeinst_test@derived",
+    "clin_v1/medeinst_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s1",
+   "adapter_run": "B-F-verdict-blocks-s1",
+   "note": "STAGE2 C4: MedEinst test pairs under the derived criterion and with the exclusive lists exchanged (comparison 11)"
+  },
+  {
+   "run_id": "C-S2-me-verdict-triplets-s2",
+   "priority": 3.05,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/medeinst_test@derived",
+    "clin_v1/medeinst_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s2",
+   "adapter_run": "B-F-verdict-triplets-s2",
+   "note": "STAGE2 C4: MedEinst test pairs under the derived criterion and with the exclusive lists exchanged (comparison 11)"
+  },
+  {
+   "run_id": "C-S2-me-verdict-blocks-s2",
+   "priority": 3.06,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/medeinst_test@derived",
+    "clin_v1/medeinst_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s2",
+   "adapter_run": "B-F-verdict-blocks-s2",
+   "note": "STAGE2 C4: MedEinst test pairs under the derived criterion and with the exclusive lists exchanged (comparison 11)"
+  },
+  {
+   "run_id": "C-S2-me-verdict-triplets-s3",
+   "priority": 3.0700000000000003,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/medeinst_test@derived",
+    "clin_v1/medeinst_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s3",
+   "adapter_run": "B-F-verdict-triplets-s3",
+   "note": "STAGE2 C4: MedEinst test pairs under the derived criterion and with the exclusive lists exchanged (comparison 11)"
+  },
+  {
+   "run_id": "C-S2-me-verdict-blocks-s3",
+   "priority": 3.08,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/medeinst_test@derived",
+    "clin_v1/medeinst_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s3",
+   "adapter_run": "B-F-verdict-blocks-s3",
+   "note": "STAGE2 C4: MedEinst test pairs under the derived criterion and with the exclusive lists exchanged (comparison 11)"
+  },
+  {
+   "run_id": "C-S2-me-verdict-triplets-s4",
+   "priority": 3.09,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/medeinst_test@derived",
+    "clin_v1/medeinst_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s4",
+   "adapter_run": "B-F-verdict-triplets-s4",
+   "note": "STAGE2 C4: MedEinst test pairs under the derived criterion and with the exclusive lists exchanged (comparison 11)"
+  },
+  {
+   "run_id": "C-S2-me-verdict-blocks-s4",
+   "priority": 3.1,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "clin_v1/medeinst_test@derived",
+    "clin_v1/medeinst_test@wrong"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-blocks-s4",
+   "adapter_run": "B-F-verdict-blocks-s4",
+   "note": "STAGE2 C4: MedEinst test pairs under the derived criterion and with the exclusive lists exchanged (comparison 11)"
+  }
+ ]
+}

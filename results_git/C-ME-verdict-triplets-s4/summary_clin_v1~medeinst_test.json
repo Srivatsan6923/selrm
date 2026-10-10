@@ -1,0 +1,34 @@
+{
+ "run_id": "C-ME-verdict-triplets-s4",
+ "set": "clin_v1/medeinst_test",
+ "Reversal": 24.280141185212706,
+ "CI95": [
+  23.128367081553037,
+  25.394761285528517
+ ],
+ "CI95_label_pairs": [
+  15.671415580478932,
+  34.57966764418377
+ ],
+ "n_pairs": 5383,
+ "control_acc": 68.2147501393275,
+ "trap_acc": 55.67527401077466,
+ "bias_trap_rate": 64.40631808278867,
+ "n_control_correct": 3672,
+ "tie_rate": 0.0,
+ "Reversal_excl_no_content_diff": 24.655725334842483,
+ "Reversal_excl_overlap_ref": 24.3796992481203,
+ "n_no_content_diff": 82,
+ "n_overlap_ref": 63,
+ "definitions": "control correct: d(control) > 0; trap correct: d(trap) < 0; Reversal = both (ties fail); bias_trap_rate = share of control-correct pairs with d(trap) > 0 (MedEinst's R_bias on two candidates)",
+ "bootstrap": {
+  "unit": "pair (CI95) and (y_gt, y_bias) label pair (CI95_label_pairs)",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "seconds": 2088.9,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

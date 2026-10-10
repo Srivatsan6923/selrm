@@ -1,0 +1,20 @@
+2026-10-09T07:53:09Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-ledger2-balanced-s0
+2026-10-09T07:53:10Z token budget per batch: 8000 (generation 24000)
+2026-10-09T07:53:11Z C-ME-ledger2-balanced-s0 clin_v1/medeinst_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test/reader_ledger.npz', 'exists')
+2026-10-09T07:53:16Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0189)
+2026-10-09T07:53:20Z padding self-check: max |u_batch - u_single| = 0.1591 (tol 0.659) -> left padding
+2026-10-09T08:04:23Z generate: batch 25/349, 153338 tokens, 231 tok/s
+2026-10-09T08:17:13Z generate: batch 50/349, 291921 tokens, 204 tok/s
+2026-10-09T08:30:56Z generate: batch 75/349, 428300 tokens, 190 tok/s
+2026-10-09T08:45:00Z generate: batch 100/349, 580583 tokens, 187 tok/s
+2026-10-09T08:59:10Z generate: batch 125/349, 745418 tokens, 189 tok/s
+2026-10-09T09:13:19Z generate: batch 150/349, 916807 tokens, 191 tok/s
+2026-10-09T09:27:26Z generate: batch 175/349, 1086739 tokens, 192 tok/s
+2026-10-09T09:41:25Z generate: batch 200/349, 1260238 tokens, 194 tok/s
+2026-10-09T09:55:27Z generate: batch 225/349, 1435302 tokens, 196 tok/s
+2026-10-09T10:09:28Z generate: batch 250/349, 1609817 tokens, 197 tok/s
+2026-10-09T10:23:30Z generate: batch 275/349, 1802423 tokens, 200 tok/s
+2026-10-09T10:37:34Z generate: batch 300/349, 2011334 tokens, 204 tok/s
+2026-10-09T10:50:58Z generate: batch 325/349, 2152634 tokens, 202 tok/s
+2026-10-09T11:27:51Z C-ME-ledger2-balanced-s0 clin_v1/medeinst_test: TA nan Rev nan Hold nan n=None (12879.9 s)
+2026-10-09T11:27:53Z DONE C-ME-ledger2-balanced-s0 in 215.6 min, GPU util mean 96.6

@@ -1,0 +1,42 @@
+{
+ "run_id": "C-NL-ledger2-balanced-s0",
+ "set": "clin_v1/nli4ct_test",
+ "prediction_rule": "Entailment iff u > 0",
+ "macroF1": 0.648052080154613,
+ "faithfulness": 0.8587962962962963,
+ "consistency": 0.753384912959381,
+ "Control_F1": 0.6022988505747128,
+ "Control_macroF1": 0.648052080154613,
+ "Contrast_F1": 0.46624472573839665,
+ "Faithfulness": 0.8587962962962963,
+ "Consistency": 0.753384912959381,
+ "Consistency_acc": 0.6624758220502901,
+ "n_control": 500,
+ "n_altering": 864,
+ "n_preserving": 4136,
+ "acc_Contradiction": 0.8446666666666667,
+ "acc_Numerical_contradiction": 0.927536231884058,
+ "acc_Numerical_paraphrase": 0.6428571428571429,
+ "acc_Paraphrase": 0.6373333333333333,
+ "acc_Text_appended": 0.5726666666666667,
+ "Average": 0.7381600199434634,
+ "section=Eligibility": {
+  "Control_F1": 0.5546218487394957,
+  "Faithfulness": 0.7882882882882883,
+  "Consistency": 0.7568075117370892,
+  "Average": 0.6999058829216244,
+  "n_control": 132,
+  "n_altering": 222,
+  "n_preserving": 1065
+ },
+ "eval": {
+  "reader_units": 5500,
+  "malformed_units": 964,
+  "mode": null,
+  "malformed_rate": 0.1753,
+  "gen_not_stopped": 24,
+  "seconds": 7400.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

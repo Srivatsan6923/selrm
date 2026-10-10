@@ -1,0 +1,133 @@
+{
+ "run_id": "C-TG-defcorr-dev",
+ "set": "clin_v1/trialgpt_dev",
+ "protocol": "docs/TRIALGPT_PROTOCOL.md",
+ "threshold": -0.3531429171562195,
+ "n_items": 213,
+ "n_scored": 200,
+ "n_patients": 10,
+ "macroF1": 30.650408643346193,
+ "macroF1_CI95": [
+  22.371031746031747,
+  40.411424355389876
+ ],
+ "acc": 35.0,
+ "acc_CI95": [
+  26.108374384236452,
+  46.774193548387096
+ ],
+ "per_class": {
+  "met": {
+   "P": 17.391304347826086,
+   "R": 90.9090909090909,
+   "F1": 29.197080291970806,
+   "n": 22
+  },
+  "not_met": {
+   "P": 60.273972602739725,
+   "R": 37.60683760683761,
+   "F1": 46.31578947368421,
+   "n": 117
+  },
+  "nei": {
+   "P": 50.0,
+   "R": 9.836065573770492,
+   "F1": 16.43835616438356,
+   "n": 61
+  }
+ },
+ "confusion": {
+  "met": {
+   "not_met": 2,
+   "met": 20
+  },
+  "not_met": {
+   "met": 67,
+   "not_met": 44,
+   "nei": 6
+  },
+  "nei": {
+   "not_met": 27,
+   "met": 28,
+   "nei": 6
+  }
+ },
+ "pred_distribution": {
+  "not_met": 73,
+  "met": 115,
+  "nei": 12
+ },
+ "macroF1_five_names": 35.564806705008145,
+ "per_class_five_names": {
+  "included": {
+   "P": 58.620689655172406,
+   "R": 89.47368421052632,
+   "F1": 70.83333333333333,
+   "n": 19
+  },
+  "not included": {
+   "P": 20.588235294117645,
+   "R": 100.0,
+   "F1": 34.146341463414636,
+   "n": 7
+  },
+  "excluded": {
+   "P": 3.488372093023256,
+   "R": 100.0,
+   "F1": 6.741573033707865,
+   "n": 3
+  },
+  "not excluded": {
+   "P": 94.87179487179486,
+   "R": 33.63636363636363,
+   "F1": 49.664429530201346,
+   "n": 110
+  },
+  "not enough information": {
+   "P": 50.0,
+   "R": 9.836065573770492,
+   "F1": 16.43835616438356,
+   "n": 61
+  }
+ },
+ "by_type": {
+  "inclusion": {
+   "macroF1": 40.91915085817525,
+   "acc": 41.791044776119406,
+   "n": 67
+  },
+  "exclusion": {
+   "macroF1": 23.563905616541167,
+   "acc": 31.57894736842105,
+   "n": 133
+  }
+ },
+ "not_applicable": {
+  "n": 13,
+  "pred": {
+   "not_met": 6,
+   "met": 6,
+   "nei": 1
+  }
+ },
+ "forced_choice_acc": 49.64028776978417,
+ "n_forced": 139,
+ "evidence": null,
+ "evidence_malformed_without_quotes": null,
+ "malformed_rate": 0.0,
+ "n_malformed": 0,
+ "per_trial_acc": {
+  "n_trials": 16,
+  "min_items": 5,
+  "min": 12.5,
+  "median": 38.18181818181819,
+  "max": 71.42857142857143
+ },
+ "bootstrap": {
+  "unit": "patient",
+  "B": 1000,
+  "seed": 0
+ },
+ "threshold_source": "results_git/C-TG-defcorr-dev/scores_rule_v1~dev_missing.jsonl",
+ "eval": null
+}

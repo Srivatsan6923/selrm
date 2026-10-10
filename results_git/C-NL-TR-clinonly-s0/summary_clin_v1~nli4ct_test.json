@@ -1,0 +1,42 @@
+{
+ "run_id": "C-NL-TR-clinonly-s0",
+ "set": "clin_v1/nli4ct_test",
+ "prediction_rule": "Entailment iff u > 0",
+ "macroF1": 0.6236145813312831,
+ "faithfulness": 0.6377314814814815,
+ "consistency": 0.6769825918762089,
+ "Control_F1": 0.6356589147286821,
+ "Control_macroF1": 0.6236145813312831,
+ "Contrast_F1": 0.48490996703018,
+ "Faithfulness": 0.6377314814814815,
+ "Consistency": 0.6769825918762089,
+ "Consistency_acc": 0.5846228239845261,
+ "n_control": 500,
+ "n_altering": 864,
+ "n_preserving": 4136,
+ "acc_Contradiction": 0.6113333333333333,
+ "acc_Numerical_contradiction": 0.6847826086956522,
+ "acc_Numerical_paraphrase": 0.5848214285714286,
+ "acc_Paraphrase": 0.6,
+ "acc_Text_appended": 0.5546666666666666,
+ "Average": 0.6501243293621242,
+ "section=Eligibility": {
+  "Control_F1": 0.6710526315789475,
+  "Faithfulness": 0.4144144144144144,
+  "Consistency": 0.7248826291079812,
+  "Average": 0.6034498917004477,
+  "n_control": 132,
+  "n_altering": 222,
+  "n_preserving": 1065
+ },
+ "eval": {
+  "reader_units": 5500,
+  "malformed_units": 1273,
+  "mode": null,
+  "malformed_rate": 0.2315,
+  "gen_not_stopped": 331,
+  "seconds": 14984.7,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

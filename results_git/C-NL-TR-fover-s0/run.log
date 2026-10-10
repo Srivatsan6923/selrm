@@ -1,0 +1,7 @@
+2026-10-09T05:11:58Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-TR-fover-s0
+2026-10-09T05:11:59Z token budget per batch: 8000 (generation 24000)
+2026-10-09T05:12:00Z C-NL-TR-fover-s0 clin_v1/nli4ct_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/nli4ct_test/verdict.npz', 'exists')
+2026-10-09T05:12:05Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.1011)
+2026-10-09T05:12:09Z padding self-check: max |u_batch - u_single| = 0.0619 (tol 0.595) -> left padding
+2026-10-09T05:29:46Z C-NL-TR-fover-s0 clin_v1/nli4ct_test: TA nan Rev nan Hold nan n=None (1065.6 s)
+2026-10-09T05:29:48Z DONE C-NL-TR-fover-s0 in 18.5 min, GPU util mean 94.6

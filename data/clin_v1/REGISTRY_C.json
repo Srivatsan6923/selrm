@@ -179,6 +179,32 @@
   "split": "test",
   "tier": "external"
  },
+ "clin_v1/medeinst_test@derived": {
+  "created": "2026-10-09",
+  "frozen": true,
+  "level": "external",
+  "manifest": "views/clin_v1/medeinst_test@derived/MANIFEST.json",
+  "n_groups": 5383,
+  "n_records": 21532,
+  "parent": "clin_v1/medeinst_test",
+  "path": "views/clin_v1/medeinst_test@derived/records.jsonl",
+  "sha256": "fe20654b5554e677e84e400dfff06fa0ad4aa595431cee3a4bf0824dbeb0c8a6",
+  "split": "test",
+  "tier": "view"
+ },
+ "clin_v1/medeinst_test@wrong": {
+  "created": "2026-10-09",
+  "frozen": true,
+  "level": "external",
+  "manifest": "views/clin_v1/medeinst_test@wrong/MANIFEST.json",
+  "n_groups": 5383,
+  "n_records": 21532,
+  "parent": "clin_v1/medeinst_test",
+  "path": "views/clin_v1/medeinst_test@wrong/records.jsonl",
+  "sha256": "b1d9638dba703d8fcc156a36959239154f72d3987d2debd41f5baa5a516db783",
+  "split": "test",
+  "tier": "view"
+ },
  "clin_v1/medeinst_train": {
   "alias_of": "clin_v1/clinpairs_medeinst",
   "created": "2026-10-02",
@@ -391,6 +417,19 @@
   "parent": "rule_v1/test_L3inv",
   "path": "views/rule_v1/test_L3inv@wrong/records.jsonl",
   "sha256": "f6ff606edb8ca2792c75684a69a919fa63c8a8b27b8beb9c6ce27803fa50bdef",
+  "split": "test",
+  "tier": "view"
+ },
+ "xp_v1/orig_rerun": {
+  "created": "2026-10-10",
+  "frozen": true,
+  "level": "L2",
+  "n_groups": 300,
+  "n_records": 4800,
+  "note": "the 300 triplets of xp_v1/test with their original rule text, records unchanged; rescored for the rerun baseline of the paraphrase tier",
+  "parent": "rule_v1/test_L2",
+  "path": "views/xp_v1/orig_rerun/records.jsonl",
+  "sha256": "01c9a82a3c4f20a93830d2d0699d36e2dcf67ee71b572220b1bf5ee4c6b4c074",
   "split": "test",
   "tier": "view"
  }

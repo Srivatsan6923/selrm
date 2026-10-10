@@ -1,0 +1,10 @@
+2026-10-09T05:20:44Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-TR-clinonly-s0
+2026-10-09T05:20:45Z token budget per batch: 8000 (generation 24000)
+2026-10-09T05:20:46Z C-KP-TR-clinonly-s0 clin_v1/keypairs_medqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_medqa_oneway/reader_ledger.npz', 'exists')
+2026-10-09T05:20:48Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0401)
+2026-10-09T05:20:52Z padding self-check: max |u_batch - u_single| = 0.0862 (tol 0.596) -> left padding
+2026-10-09T05:27:39Z generate: batch 25/33, 38767 tokens, 95 tok/s
+2026-10-09T05:33:09Z C-KP-TR-clinonly-s0 clin_v1/keypairs_medqa_oneway: TA nan Rev nan Hold nan n=None (742.5 s)
+2026-10-09T05:33:10Z C-KP-TR-clinonly-s0 clin_v1/keypairs_careqa_oneway prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/keypairs_careqa_oneway/reader_ledger.npz', 'exists')
+2026-10-09T05:35:54Z C-KP-TR-clinonly-s0 clin_v1/keypairs_careqa_oneway: TA nan Rev nan Hold nan n=None (163.0 s)
+2026-10-09T05:35:57Z DONE C-KP-TR-clinonly-s0 in 15.9 min, GPU util mean 88.1

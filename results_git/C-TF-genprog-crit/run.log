@@ -1,0 +1,11 @@
+2026-10-09T04:24:08Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-09T04:24:09Z token budget per batch: 40000 (generation 120000)
+2026-10-09T04:24:17Z C-TF-genprog-crit sub/1000_criterion/rule_v1/test_L2 prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/sub/1000_criterion/rule_v1/test_L2/genprm.npz', 'built 8000 prompts, max 499 tokens')
+2026-10-09T04:24:54Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0308)
+2026-10-09T04:24:56Z padding self-check: max |u_batch - u_single| = 0.1631 (tol 0.542) -> left padding
+2026-10-09T04:48:55Z generate: batch 25/125, 535697 tokens, 372 tok/s
+2026-10-09T05:11:34Z generate: batch 50/125, 1084761 tokens, 388 tok/s
+2026-10-09T05:37:25Z generate: batch 75/125, 1687703 tokens, 388 tok/s
+2026-10-09T06:05:09Z generate: batch 100/125, 2277636 tokens, 379 tok/s
+2026-10-09T06:49:11Z C-TF-genprog-crit sub/1000_criterion/rule_v1/test_L2: TA nan Rev nan Hold nan n=None (8693.7 s)
+2026-10-09T06:49:12Z DONE C-TF-genprog-crit in 145.4 min, GPU util mean 96.6

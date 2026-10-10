@@ -1,0 +1,20 @@
+2026-10-09T00:33:09Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-09T00:33:11Z token budget per batch: 8000 (generation 24000)
+2026-10-09T00:33:11Z C-NL-promptledger clin_v1/nli4ct_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/nli4ct_test/reader_ledger.npz', 'exists')
+2026-10-09T00:34:11Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0652)
+2026-10-09T00:34:15Z padding self-check: max |u_batch - u_single| = 0.1861 (tol 0.626) -> left padding
+2026-10-09T00:45:35Z generate: batch 25/326, 101996 tokens, 150 tok/s
+2026-10-09T01:03:38Z generate: batch 50/326, 227569 tokens, 129 tok/s
+2026-10-09T01:22:36Z generate: batch 75/326, 358893 tokens, 124 tok/s
+2026-10-09T01:43:15Z generate: batch 100/326, 503633 tokens, 122 tok/s
+2026-10-09T02:04:50Z generate: batch 125/326, 651432 tokens, 120 tok/s
+2026-10-09T02:26:51Z generate: batch 150/326, 789649 tokens, 117 tok/s
+2026-10-09T02:49:31Z generate: batch 175/326, 942425 tokens, 116 tok/s
+2026-10-09T03:12:02Z generate: batch 200/326, 1101991 tokens, 116 tok/s
+2026-10-09T03:34:54Z generate: batch 225/326, 1256178 tokens, 116 tok/s
+2026-10-09T03:57:20Z generate: batch 250/326, 1387656 tokens, 114 tok/s
+2026-10-09T04:20:00Z generate: batch 275/326, 1522334 tokens, 112 tok/s
+2026-10-09T04:40:29Z generate: batch 300/326, 1616549 tokens, 109 tok/s
+2026-10-09T05:02:44Z generate: batch 325/326, 1714387 tokens, 106 tok/s
+2026-10-09T05:03:34Z C-NL-promptledger clin_v1/nli4ct_test: TA nan Rev nan Hold nan n=None (16222.3 s)
+2026-10-09T05:03:37Z DONE C-NL-promptledger in 270.8 min, GPU util mean 96.0
