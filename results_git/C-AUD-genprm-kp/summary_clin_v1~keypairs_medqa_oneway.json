@@ -1,0 +1,13 @@
+{
+ "run_id": "C-AUD-genprm-kp",
+ "set": "clin_v1/keypairs_medqa_oneway",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 15471.5,
+  "n_records": 800,
+  "n_groups": 200,
+  "claim_types": [
+   "conclusion"
+  ]
+ }
+}

@@ -18,8 +18,36 @@ Triplet accuracy and its parts on `rule_v1/test_L2` with the stated rule, with t
 | Verdict only, triplets (5) | none | 13.0 | 17.9 | 60.1 | 49.1 | 4.1 | 3.6 |
 | Verdict only, triplets (5) | wrong | 2.9 | 4.5 | 67.4 | 4.8 | 2.4 | 2.9 |
 | Ledger, triplets (5) | stated | 99.2 | 99.3 | 99.9 | 99.4 | 99.2 | 98.6 |
-| Ledger, triplets (4) | none | 40.7 | 48.1 | 67.5 | 78.2 | 31.5 | 27.4 |
-| Ledger, triplets (4) | wrong | 22.9 | 25.4 | 63.0 | 62.1 | 13.3 | 10.2 |
+| Ledger, triplets (5) | none | 39.1 | 46.4 | 68.2 | 77.7 | 29.5 | 26.0 |
+| Ledger, triplets (5) | wrong | 22.7 | 24.9 | 63.1 | 65.4 | 12.1 | 9.3 |
 | Summary, triplets (1) | stated | 98.0 | 98.5 | 99.3 | 100.0 | 97.5 | - |
 | Summary, triplets (1) | none | 32.8 | 39.4 | 69.8 | 82.6 | 20.4 | 11.1 |
 | Summary, triplets (1) | wrong | 17.6 | 20.6 | 66.2 | 71.2 | 4.4 | 3.4 |
+
+### Paraphrased rule text (`xp_v1/test`)
+
+The same 300 triplets of L2 with the original rule text and with a program-preserving paraphrase of it.
+
+| System (seeds) | TA original | TA paraphrase | Rev paraphrase | Hold paraphrase |
+|---|---|---|---|---|
+| Critic (untrained backbone) (1) | 22.3 | 35.3 | 49.7 | 47.3 |
+| Verdict only, blocks (5) | 52.0 | 50.2 | 89.9 | 53.0 |
+| Verdict only, triplets (5) | 91.3 | 89.7 | 91.3 | 95.1 |
+| Ledger, triplets (5) | 99.6 | 97.2 | 98.0 | 97.9 |
+| Summary, triplets (1) | 97.0 | 98.3 | 99.0 | 99.3 |
+
+## 2. Criterion derived from a knowledge base (`kb_v1/triplets_test`; C4)
+
+Triplets built from DDXPlus patients; the criterion is the pair of exclusive finding lists and their procedure. Conditions: criterion stated, removed, and with the two exclusive lists exchanged (labels stay those of the stated criterion).
+
+| System (seeds) | criterion | TA | Rev | Hold |
+|---|---|---|---|---|
+| Critic (untrained backbone) (1) | stated | 75.4 | 76.5 | 96.4 |
+| Critic (untrained backbone) (1) | none | 53.6 | 57.6 | 83.9 |
+| Critic (untrained backbone) (1) | wrong | 18.7 | 19.9 | 53.0 |
+| Verdict only, blocks (5) | stated | 85.4 | 91.1 | 93.4 |
+| Verdict only, blocks (5) | none | 52.4 | 55.7 | 84.6 |
+| Verdict only, blocks (5) | wrong | 2.8 | 3.0 | 22.0 |
+| Verdict only, triplets (5) | stated | 90.6 | 92.7 | 97.0 |
+| Verdict only, triplets (5) | none | 53.2 | 56.5 | 84.0 |
+| Verdict only, triplets (5) | wrong | 1.0 | 1.1 | 12.7 |

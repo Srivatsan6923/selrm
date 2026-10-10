@@ -1,0 +1,256 @@
+{
+ "run_id": "C-AUD-nemotron-3-super-choice",
+ "role": "C",
+ "model": "nvidia/nemotron-3-super-120b-a12b",
+ "name": "nemotron-3-super-choice",
+ "provider": "openrouter",
+ "access_date": "2026-10-09",
+ "readout": "choice",
+ "params": {
+  "temperature": 0,
+  "extra_body": {
+   "reasoning": {
+    "enabled": false
+   }
+  },
+  "max_tokens": 600
+ },
+ "reasoning": "second readout of the same model (8 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
+ "sets": [
+  "rule_v1/dev_missing",
+  "rule_v1/missing"
+ ],
+ "n_groups": "all",
+ "subset_rule": null,
+ "usage": {
+  "calls": 3615,
+  "cached": 1585,
+  "prompt_tokens": 878519,
+  "completion_tokens": 414751,
+  "cost": 0.25123141,
+  "errors": 0
+ },
+ "cost_estimate": 0.25167136,
+ "cost_actual": 0.25123141,
+ "wall_seconds": 897.8,
+ "git_commit": "c6325986b55c29730cab5acff82634715e6d53f9",
+ "summaries": {
+  "rule_v1/dev_missing": null,
+  "rule_v1/missing": null
+ },
+ "earlier_invocations": [
+  {
+   "run_id": "C-AUD-nemotron-3-super-choice",
+   "role": "C",
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "name": "nemotron-3-super-choice",
+   "provider": "openrouter",
+   "access_date": "2026-10-09",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    },
+    "max_tokens": 600
+   },
+   "reasoning": "second readout of the same model (8 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "n_groups": 1000,
+   "subset_rule": "n/5 groups per near-miss kind, random.Random(0) over sorted tids",
+   "usage": {
+    "calls": 6338,
+    "cached": 1661,
+    "prompt_tokens": 1790180,
+    "completion_tokens": 1872501,
+    "cost": 0.9590901050000018,
+    "errors": 1
+   },
+   "cost_estimate": 0.41388064,
+   "cost_actual": 0.9590901050000018,
+   "wall_seconds": 2756.3,
+   "git_commit": "c6325986b55c29730cab5acff82634715e6d53f9",
+   "summaries": {
+    "rule_v1/test_L2": {
+     "Rev": 89.7,
+     "Hold": 92.1,
+     "TA": 86.6,
+     "BaseAcc": 92.0,
+     "Tie": 13.3,
+     "PresHold": 91.2,
+     "n": 1000
+    }
+   }
+  },
+  {
+   "run_id": "C-AUD-nemotron-3-super-choice",
+   "role": "C",
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "name": "nemotron-3-super-choice",
+   "provider": "openrouter",
+   "access_date": "2026-10-09",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    },
+    "max_tokens": 600
+   },
+   "reasoning": "second readout of the same model (8 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "n_groups": 1000,
+   "subset_rule": "n/5 groups per near-miss kind, random.Random(0) over sorted tids",
+   "usage": {
+    "calls": 7808,
+    "cached": 191,
+    "prompt_tokens": 2204753,
+    "completion_tokens": 2297997,
+    "cost": 1.1830056600000016,
+    "errors": 1
+   },
+   "cost_estimate": 0.41388064,
+   "cost_actual": 1.1830056600000016,
+   "wall_seconds": 3495.3,
+   "git_commit": "c6325986b55c29730cab5acff82634715e6d53f9",
+   "summaries": {
+    "rule_v1/test_L2": {
+     "Rev": 88.4,
+     "Hold": 91.6,
+     "TA": 85.5,
+     "BaseAcc": 90.6,
+     "Tie": 14.3,
+     "PresHold": 90.8,
+     "n": 1000
+    }
+   }
+  },
+  {
+   "run_id": "C-AUD-nemotron-3-super-choice",
+   "role": "C",
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "name": "nemotron-3-super-choice",
+   "provider": "openrouter",
+   "access_date": "2026-10-09",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    },
+    "max_tokens": 600
+   },
+   "reasoning": "second readout of the same model (8 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
+   "sets": [
+    "xr_v1/test"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 4631,
+    "cached": 169,
+    "prompt_tokens": 917890,
+    "completion_tokens": 441076,
+    "cost": 0.2673944599999999,
+    "errors": 0
+   },
+   "cost_estimate": 0.21474255999999997,
+   "cost_actual": 0.2673944599999999,
+   "wall_seconds": 980.1,
+   "git_commit": "c6325986b55c29730cab5acff82634715e6d53f9",
+   "summaries": {
+    "xr_v1/test": null
+   }
+  },
+  {
+   "run_id": "C-AUD-nemotron-3-super-choice",
+   "role": "C",
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "name": "nemotron-3-super-choice",
+   "provider": "openrouter",
+   "access_date": "2026-10-09",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    },
+    "max_tokens": 600
+   },
+   "reasoning": "second readout of the same model (8 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
+   "sets": [
+    "xr_v1/test"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 4655,
+    "cached": 145,
+    "prompt_tokens": 921968,
+    "completion_tokens": 439491,
+    "cost": 0.26656132500000057,
+    "errors": 0
+   },
+   "cost_estimate": 0.21474255999999997,
+   "cost_actual": 0.26656132500000057,
+   "wall_seconds": 973.1,
+   "git_commit": "c6325986b55c29730cab5acff82634715e6d53f9",
+   "summaries": {
+    "xr_v1/test": null
+   }
+  },
+  {
+   "run_id": "C-AUD-nemotron-3-super-choice",
+   "role": "C",
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "name": "nemotron-3-super-choice",
+   "provider": "openrouter",
+   "access_date": "2026-10-09",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    },
+    "max_tokens": 600
+   },
+   "reasoning": "second readout of the same model (8 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 4156,
+    "cached": 1044,
+    "prompt_tokens": 1002207,
+    "completion_tokens": 421636,
+    "cost": 0.26424301999999944,
+    "errors": 0
+   },
+   "cost_estimate": 0.25167136,
+   "cost_actual": 0.26424301999999944,
+   "wall_seconds": 895.2,
+   "git_commit": "c6325986b55c29730cab5acff82634715e6d53f9",
+   "summaries": {
+    "rule_v1/dev_missing": null,
+    "rule_v1/missing": null
+   }
+  }
+ ]
+}

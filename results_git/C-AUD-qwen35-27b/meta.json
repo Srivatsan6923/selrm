@@ -4,7 +4,7 @@
  "model": "qwen/qwen3.5-27b",
  "name": "qwen35-27b",
  "provider": "openrouter",
- "access_date": "2026-10-08",
+ "access_date": "2026-10-09",
  "readout": "choice",
  "params": {
   "temperature": 0,
@@ -17,24 +17,26 @@
  },
  "reasoning": "reasoning disabled; two-order choice readout: the endpoint returned log-probabilities for only 39 of 80 smoke calls (8 Oct)",
  "sets": [
-  "xr_v1/test"
+  "rule_v1/dev_missing",
+  "rule_v1/missing"
  ],
  "n_groups": "all",
  "subset_rule": null,
  "usage": {
-  "calls": 0,
-  "cached": 4800,
-  "prompt_tokens": 0,
-  "completion_tokens": 0,
-  "cost": 0.0,
+  "calls": 1146,
+  "cached": 4054,
+  "prompt_tokens": 262401,
+  "completion_tokens": 52764,
+  "cost": 0.19194506500000016,
   "errors": 0
  },
- "cost_estimate": 1.02551332,
- "cost_actual": 0.0,
- "wall_seconds": 81.5,
- "git_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2",
+ "cost_estimate": 1.1728319200000001,
+ "cost_actual": 0.19194506500000016,
+ "wall_seconds": 204.2,
+ "git_commit": "c6325986b55c29730cab5acff82634715e6d53f9",
  "summaries": {
-  "xr_v1/test": null
+  "rule_v1/dev_missing": null,
+  "rule_v1/missing": null
  },
  "earlier_invocations": [
   {
@@ -168,6 +170,297 @@
      "PresHold": 99.5,
      "n": 1000
     }
+   }
+  },
+  {
+   "run_id": "C-AUD-qwen35-27b",
+   "role": "C",
+   "model": "qwen/qwen3.5-27b",
+   "name": "qwen35-27b",
+   "provider": "openrouter",
+   "access_date": "2026-10-08",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "max_tokens": 600,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; two-order choice readout: the endpoint returned log-probabilities for only 39 of 80 smoke calls (8 Oct)",
+   "sets": [
+    "xr_v1/test"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 0,
+    "cached": 4800,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "cost": 0.0,
+    "errors": 0
+   },
+   "cost_estimate": 1.02551332,
+   "cost_actual": 0.0,
+   "wall_seconds": 81.5,
+   "git_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2",
+   "summaries": {
+    "xr_v1/test": null
+   }
+  },
+  {
+   "run_id": "C-AUD-qwen35-27b",
+   "role": "C",
+   "model": "qwen/qwen3.5-27b",
+   "name": "qwen35-27b",
+   "provider": "openrouter",
+   "access_date": "2026-10-09",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "max_tokens": 600,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; two-order choice readout: the endpoint returned log-probabilities for only 39 of 80 smoke calls (8 Oct)",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "n_groups": 1000,
+   "subset_rule": "n/5 groups per near-miss kind, random.Random(0) over sorted tids",
+   "usage": {
+    "calls": 0,
+    "cached": 8000,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "cost": 0.0,
+    "errors": 0
+   },
+   "cost_estimate": 1.89111208,
+   "cost_actual": 0.0,
+   "wall_seconds": 48.0,
+   "git_commit": "ac6e98f488b222ee4baabf6ec00f2f0d22635487",
+   "summaries": {
+    "rule_v1/test_L2": {
+     "Rev": 99.5,
+     "Hold": 98.4,
+     "TA": 98.1,
+     "BaseAcc": 99.7,
+     "Tie": 1.8,
+     "PresHold": 99.5,
+     "n": 1000
+    }
+   }
+  },
+  {
+   "run_id": "C-AUD-qwen35-27b",
+   "role": "C",
+   "model": "qwen/qwen3.5-27b",
+   "name": "qwen35-27b",
+   "provider": "openrouter",
+   "access_date": "2026-10-09",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "max_tokens": 600,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; two-order choice readout: the endpoint returned log-probabilities for only 39 of 80 smoke calls (8 Oct)",
+   "sets": [
+    "xr_v1/test"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 0,
+    "cached": 4800,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "cost": 0.0,
+    "errors": 0
+   },
+   "cost_estimate": 1.02551332,
+   "cost_actual": 0.0,
+   "wall_seconds": 64.8,
+   "git_commit": "ac6e98f488b222ee4baabf6ec00f2f0d22635487",
+   "summaries": {
+    "xr_v1/test": null
+   }
+  },
+  {
+   "run_id": "C-AUD-qwen35-27b",
+   "role": "C",
+   "model": "qwen/qwen3.5-27b",
+   "name": "qwen35-27b",
+   "provider": "openrouter",
+   "access_date": "2026-10-09",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "max_tokens": 600,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; two-order choice readout: the endpoint returned log-probabilities for only 39 of 80 smoke calls (8 Oct)",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "n_groups": 1000,
+   "subset_rule": "n/5 groups per near-miss kind, random.Random(0) over sorted tids",
+   "usage": {
+    "calls": 0,
+    "cached": 8000,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "cost": 0.0,
+    "errors": 0
+   },
+   "cost_estimate": 1.89111208,
+   "cost_actual": 0.0,
+   "wall_seconds": 81.9,
+   "git_commit": "c6325986b55c29730cab5acff82634715e6d53f9",
+   "summaries": {
+    "rule_v1/test_L2": {
+     "Rev": 99.5,
+     "Hold": 98.4,
+     "TA": 98.1,
+     "BaseAcc": 99.7,
+     "Tie": 1.8,
+     "PresHold": 99.5,
+     "n": 1000
+    }
+   }
+  },
+  {
+   "run_id": "C-AUD-qwen35-27b",
+   "role": "C",
+   "model": "qwen/qwen3.5-27b",
+   "name": "qwen35-27b",
+   "provider": "openrouter",
+   "access_date": "2026-10-09",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "max_tokens": 600,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; two-order choice readout: the endpoint returned log-probabilities for only 39 of 80 smoke calls (8 Oct)",
+   "sets": [
+    "xr_v1/test"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 0,
+    "cached": 4800,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "cost": 0.0,
+    "errors": 0
+   },
+   "cost_estimate": 1.02551332,
+   "cost_actual": 0.0,
+   "wall_seconds": 29.1,
+   "git_commit": "c6325986b55c29730cab5acff82634715e6d53f9",
+   "summaries": {
+    "xr_v1/test": null
+   }
+  },
+  {
+   "run_id": "C-AUD-qwen35-27b",
+   "role": "C",
+   "model": "qwen/qwen3.5-27b",
+   "name": "qwen35-27b",
+   "provider": "openrouter",
+   "access_date": "2026-10-09",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "max_tokens": 600,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; two-order choice readout: the endpoint returned log-probabilities for only 39 of 80 smoke calls (8 Oct)",
+   "sets": [
+    "xr_v1/test"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 0,
+    "cached": 4800,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "cost": 0.0,
+    "errors": 0
+   },
+   "cost_estimate": 1.02551332,
+   "cost_actual": 0.0,
+   "wall_seconds": 29.5,
+   "git_commit": "c6325986b55c29730cab5acff82634715e6d53f9",
+   "summaries": {
+    "xr_v1/test": null
+   }
+  },
+  {
+   "run_id": "C-AUD-qwen35-27b",
+   "role": "C",
+   "model": "qwen/qwen3.5-27b",
+   "name": "qwen35-27b",
+   "provider": "openrouter",
+   "access_date": "2026-10-09",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "max_tokens": 600,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; two-order choice readout: the endpoint returned log-probabilities for only 39 of 80 smoke calls (8 Oct)",
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 1127,
+    "cached": 4073,
+    "prompt_tokens": 259286,
+    "completion_tokens": 53000,
+    "cost": 0.19116383999999992,
+    "errors": 0
+   },
+   "cost_estimate": 1.1728319200000001,
+   "cost_actual": 0.19116383999999992,
+   "wall_seconds": 202.5,
+   "git_commit": "c6325986b55c29730cab5acff82634715e6d53f9",
+   "summaries": {
+    "rule_v1/dev_missing": null,
+    "rule_v1/missing": null
    }
   }
  ]

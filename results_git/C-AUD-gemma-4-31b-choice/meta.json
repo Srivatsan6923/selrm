@@ -23,17 +23,17 @@
  "n_groups": "all",
  "subset_rule": null,
  "usage": {
-  "calls": 3725,
-  "cached": 1006,
-  "prompt_tokens": 933161,
-  "completion_tokens": 336214,
-  "cost": 0.21882553550000033,
-  "errors": 469
+  "calls": 469,
+  "cached": 4731,
+  "prompt_tokens": 103102,
+  "completion_tokens": 13095,
+  "cost": 0.014767029000000006,
+  "errors": 0
  },
  "cost_estimate": 0.23126027999999998,
- "cost_actual": 0.21882553550000033,
- "wall_seconds": 1144.9,
- "git_commit": "59725ae4dbcb3609081ec10ad2b0d93f0b49c220",
+ "cost_actual": 0.014767029000000006,
+ "wall_seconds": 65.4,
+ "git_commit": "ac6e98f488b222ee4baabf6ec00f2f0d22635487",
  "summaries": {
   "rule_v1/dev_missing": null,
   "rule_v1/missing": null
@@ -121,6 +121,133 @@
    "cost_actual": 0.2980435150000003,
    "wall_seconds": 637.0,
    "git_commit": "59725ae4dbcb3609081ec10ad2b0d93f0b49c220",
+   "summaries": {
+    "xr_v1/test": null
+   }
+  },
+  {
+   "run_id": "C-AUD-gemma-4-31b-choice",
+   "role": "C",
+   "model": "google/gemma-4-31b-it",
+   "name": "gemma-4-31b-choice",
+   "provider": "openrouter",
+   "access_date": "2026-10-09",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    },
+    "max_tokens": 600
+   },
+   "reasoning": "second readout of the same model (8 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
+   "sets": [
+    "rule_v1/dev_missing",
+    "rule_v1/missing"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 3725,
+    "cached": 1006,
+    "prompt_tokens": 933161,
+    "completion_tokens": 336214,
+    "cost": 0.21882553550000033,
+    "errors": 469
+   },
+   "cost_estimate": 0.23126027999999998,
+   "cost_actual": 0.21882553550000033,
+   "wall_seconds": 1144.9,
+   "git_commit": "59725ae4dbcb3609081ec10ad2b0d93f0b49c220",
+   "summaries": {
+    "rule_v1/dev_missing": null,
+    "rule_v1/missing": null
+   }
+  },
+  {
+   "run_id": "C-AUD-gemma-4-31b-choice",
+   "role": "C",
+   "model": "google/gemma-4-31b-it",
+   "name": "gemma-4-31b-choice",
+   "provider": "openrouter",
+   "access_date": "2026-10-09",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    },
+    "max_tokens": 600
+   },
+   "reasoning": "second readout of the same model (8 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "n_groups": 1000,
+   "subset_rule": "n/5 groups per near-miss kind, random.Random(0) over sorted tids",
+   "usage": {
+    "calls": 0,
+    "cached": 8000,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "cost": 0.0,
+    "errors": 0
+   },
+   "cost_estimate": 0.38581572,
+   "cost_actual": 0.0,
+   "wall_seconds": 60.8,
+   "git_commit": "ac6e98f488b222ee4baabf6ec00f2f0d22635487",
+   "summaries": {
+    "rule_v1/test_L2": {
+     "Rev": 100.0,
+     "Hold": 99.7,
+     "TA": 99.7,
+     "BaseAcc": 100.0,
+     "Tie": 0.0,
+     "PresHold": 100.0,
+     "n": 1000
+    }
+   }
+  },
+  {
+   "run_id": "C-AUD-gemma-4-31b-choice",
+   "role": "C",
+   "model": "google/gemma-4-31b-it",
+   "name": "gemma-4-31b-choice",
+   "provider": "openrouter",
+   "access_date": "2026-10-09",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    },
+    "max_tokens": 600
+   },
+   "reasoning": "second readout of the same model (8 Oct); the one-token log-probability run is kept; see docs/DECISIONS_C.md",
+   "sets": [
+    "xr_v1/test"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 0,
+    "cached": 4800,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "cost": 0.0,
+    "errors": 0
+   },
+   "cost_estimate": 0.19370537999999998,
+   "cost_actual": 0.0,
+   "wall_seconds": 37.0,
+   "git_commit": "ac6e98f488b222ee4baabf6ec00f2f0d22635487",
    "summaries": {
     "xr_v1/test": null
    }
