@@ -104,7 +104,7 @@ published score definition near-misses help again ($+\res{cmp/p7/diff}$ points o
 criterion claims, $+\res{cmp/p9/diff}$ on edited notes), but not demonstrably by
 reading the criterion. A policy optimised against a released medical PRM that
 fails the test drives its reward to \res{run/D-RL-stepcheck/L2/step=1000/reward/s0@2} while its accuracy falls from
-\res{run/D-RL-stepcheck/L2/start/pair/s0}\% to \res{run/D-RL-stepcheck/L2/final/pair/s0}\%.
+\res{run/D-RL-stepcheck/L2/start/pair/s0}\% to \res{run/D-RL-stepcheck/L2/final/pair/s0}\% (seed 0).
 \end{abstract}
 
 \section{Introduction}
@@ -529,9 +529,8 @@ minimum of the calibrated scores (Appendix~\ref{app:more}).
 
 \paragraph{Rules and shifts.}
 The frozen library (\texttt{rule\_v1}) has \res{a15/rules_total@int} rules: \res{a15/rules_by_kind.score@int} scoring rules
-implemented from published definitions, \res{d/a15/rules_total|a15/rules_by_kind.score|a15/rules_by_source.grammar_sampled@int} constraint rules compiled from
-public recommendations by the tree-then-program procedure of
-\citet{shen2026medguidex}, and \res{a15/rules_by_source.grammar_sampled@int} rules sampled from a typed grammar
+implemented from published definitions, \res{d/a15/rules_total|a15/rules_by_kind.score|a15/rules_by_source.grammar_sampled@int} constraint rules written as
+programs, most of them simplified from public recommendations, and \res{a15/rules_by_source.grammar_sampled@int} rules sampled from a typed grammar
 (Appendix~\ref{app:rules}). Each rule has a structural signature (rule kind,
 operators, dependency depth, input types, applicability predicate), in \res{a15/folds.1.n_classes@int}
 classes. The main test, \textbf{L2}, has \res{a15/datasets.rule_v1/test_L2.n_groups} triplets from \res{a15/folds.1.n_l2_rules} rules of
@@ -540,7 +539,7 @@ templates and cue phrases for relatives, negation and time are disjoint
 between training and every test.
 
 \paragraph{Training.}
-All trained models use \bb{} with LoRA \citep{hu2022lora} of rank \res{meta/B-F-verdict-blocks/train.hp.lora_r} for one
+Unless noted, trained models use \bb{} with LoRA \citep{hu2022lora} of rank \res{meta/B-F-verdict-blocks/train.hp.lora_r} for one
 epoch on \res{meta/B-F-verdict-blocks/train.examples} records. Four corpora differ only in the cases they
 contain. \emph{Natural}: one case per group, the decisive condition rare.
 \emph{Balanced}: one case per group, outcomes equally frequent.
@@ -558,8 +557,8 @@ We audit the released Med-PRM \citep{yun2025medprm}, MedS$^3$ PRM
 ThinkPRM-14B and GenPRM-7B. Training-free baselines on \bb{} are the
 zero-shot critic, default correction \citep{shi2024cad}, a prompted summary,
 a prompted ledger, and a verifier that writes and executes a program for the
-rule \citep{ocampo2026solver}; larger open judges are in Table~\ref{tab:openjudges}, closed ones \ph{not yet scored}
-(Appendix~\ref{app:more}). Scores are verdict log-odds. Key cells have five
+rule \citep{ocampo2026solver}
+(Appendix~\ref{app:more}; closed judges \ph{not yet scored}). Scores are verdict log-odds. Key cells have five
 seeds; other values are from seed 0. Paired differences use a cluster
 bootstrap over rules (patients for TrialGPT, label pairs for MedEinst). The
 analysis plan was fixed before the test sets were scored, and a second
@@ -617,10 +616,11 @@ outcome the rule supports \res{run/C-TF-critic/L2/all/TA}\%, with base accuracy 
 errors lie in applying unseen rule structures more than in reading the
 evidence. A prompted summary before the verdict raises its
 accuracy to \res{run/C-TF-promptsum/L2/all/TA}\%, a verifier that writes and runs a program for the
-rule reaches \res{run/C-TF-genprog/L2/all/TA}\%, and ThinkPRM-14B, a general verifier that reasons
-before it scores, \res{run/C-AUD-thinkprm/L2/all/TA}\% on a subset of \res{run/C-AUD-thinkprm/L2/all/n} triplets: the test is solvable
-without training on our rules, and the released medical PRMs do not solve
-it. Among shortcut scorers (Appendix~\ref{app:diag}), a
+rule reaches \res{run/C-TF-genprog/L2/all/TA}\%, and ThinkPRM-14B
+\res{run/C-AUD-thinkprm/L2/all/TA}\% on a subset of \res{run/C-AUD-thinkprm/L2/all/n} triplets. Larger general models solve the test when asked to choose
+between the two claims in both orders (\res{run/C-AUD-nemotron-3-super-choice/L2/all/TA}--\res{run/C-AUD-gemma-4-31b-choice/L2/all/TA}\% for five open models,
+Table~\ref{tab:openjudges}) and are far lower when read out as a one-token score, the
+form a reward takes. The released medical PRMs and a 9B backbone fail it. Among shortcut scorers (Appendix~\ref{app:diag}), a
 claim-only scorer and one that sees whether the decisive concept is named
 solve no triplet, and a trigger lexicon solves \res{run/A-D14-trigger_train/L2/all/TA}\% with training cue
 phrases and \res{run/A-D14-trigger_all/L2/all/TA}\% with the test cue phrases: the difficulty of the
@@ -671,7 +671,7 @@ the base case by a near-miss in half of the groups raises triplet accuracy
 to \res{run/B-F-verdict-triplets/L2/all/TA}\% ($+\res{cmp/p2/diff}$ points $[\res{cmp/p2/lo},\res{cmp/p2/hi}]$), with near-miss correctness of
 \res{run/B-F-verdict-triplets/L2/all/Hold/min}--\res{run/B-F-verdict-triplets/L2/all/Hold/max}\% at unchanged reversal, and the standard deviation over seeds
 falls from \res{run/B-F-verdict-blocks/L2/all/TA/sd} to \res{run/B-F-verdict-triplets/L2/all/TA/sd} points. The prose record moves from \res{run/B-F-summary2-blocks/L2/all/TA}\% to \res{run/B-F-summary2-triplets/L2/all/TA}\%
-and the ledger from \res{run/B-F-ledger2-blocks/L2/all/TA}\% to \res{run/B-F-ledger2-triplets/L2/all/TA}\%. Without near-misses the failures are
+and the ledger from \res{run/B-F-ledger2-blocks/L2/all/TA}\% to \res{run/B-F-ledger2-triplets/L2/all/TA}\%. Without near-misses the failures of the verdict-only model are
 concentrated where the finding belongs to another person (\res{run/B-F-verdict-blocks/L2/nm_kind=subject/TA}\% solved) or
 the value sits on the threshold (\res{run/B-F-verdict-blocks/L2/nm_kind=boundary/TA}\%). Using near-misses only as probes
 for re-weighting \citep{liu2026dynacf} gives \res{run/B-AB-probe-rw/L2/all/TA/s0}\%, and outcome balance is
@@ -681,7 +681,7 @@ not the remedy: on balanced corpora near-miss correctness stays at
 \emph{What the second stage adds.} With near-misses, every format except the
 value ledger solves at least \res{min/run/B-F-verdict-triplets/L2/step=criterion/TA/s0|run/B-F-rationale-triplets/L2/step=criterion/TA/s0|run/B-F-summary2-triplets/L2/step=criterion/TA/s0|run/B-F-ledger2-triplets/L2/step=criterion/TA/s0}\% of triplets on criterion claims. They
 differ on conclusion claims under held-out rule structure: the one-stage
-formats reach \res{run/B-F-verdict-triplets/L2/all/TA/s0}\% and \res{run/B-F-rationale-triplets/L2/all/TA/s0}\%, the two-stage formats \res{run/B-F-summary2-triplets/L2/all/TA/s0}\% and \res{run/B-F-ledger2-triplets/L2/all/TA/s0}\%. The
+formats reach \res{run/B-F-verdict-triplets/L2/all/TA/s0}\% and \res{run/B-F-rationale-triplets/L2/all/TA/s0}\%, the prose and typed-ledger formats \res{run/B-F-summary2-triplets/L2/all/TA/s0}\% and \res{run/B-F-ledger2-triplets/L2/all/TA/s0}\%. The
 rationale writes the same ledger in the same pass as the verdict and gains
 nothing over the verdict alone. What helps is a separately supervised
 reading pass and a second pass that applies the rule to a short record, not
@@ -699,8 +699,8 @@ and nothing else 99.95\% (Table~\ref{tab:ablation}). Both reach \res{run/B-AB-bi
 crossed accuracy on rule-side items, against \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/min}--\res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/max}\% for the ledger:
 what is learned is the reader's decision that a finding counts under the
 rule in view. On rule-side items that differ in a time window the bit
-reader solves \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_window/s0@0}\% and the ledger \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_window/s0@0}\%, because a field that says
-``current'' or ``past'' cannot carry a date.
+reader solves \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_window/s0@0}\% and the ledger \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_window/s0@0}\%
+(prose record: \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA_window/s0@0}\%).
 
 \emph{The learned judge follows whole ledgers, not fields.} Given the ledger
 of another case of the same rule and condition, the judge returns the
@@ -714,14 +714,13 @@ $[0.0,0.6]$). Where a rule is executable, what the pipeline contributes is
 the reading; hence the gate of \S\ref{sec:ledger}.
 
 \emph{Conditions not seen in training.} Trained on triplets without one kind
-of near-miss, the verdict-only model solves 7.0\% of L2 triplets of the kind
+of near-miss, the verdict-only model at seed 0 solves 7.0\% of L2 triplets of the kind
 ``another person'' (\res{run/B-F-verdict-triplets/L2/nm_kind=subject/TA}\% when trained with it), 60.2\% for ``past''
 (\res{run/B-F-verdict-triplets/L2/nm_kind=time/TA}\%) and 49.8\% for ``threshold'' (\res{run/B-F-verdict-triplets/L2/nm_kind=boundary/TA}\%); the ledger \res{run/B-LOKO-subject-ledger2/L2/nm_kind=subject/TA}\%, \res{run/B-LOKO-time-ledger2/L2/nm_kind=time/TA}\%
 and \res{run/B-LOKO-boundary-ledger2/L2/nm_kind=boundary/TA}\%
-(Table~\ref{tab:loko}). Near-miss supervision has to cover each condition
-of Eq.~\ref{eq:applic}, which is the reason to hand a condition to a
-symbolic check where one exists (further ablations:
-Appendix~\ref{app:more}).
+(Table~\ref{tab:loko}; seeds differ widely). For the verdict-only model
+near-miss supervision has to cover each condition of Eq.~\ref{eq:applic} (further
+ablations: Appendix~\ref{app:more}).
 
 \subsection{Transfer within and beyond rules}
 \label{sec:results-shift}
@@ -773,11 +772,12 @@ the triplet-trained verifiers solve \res{run/B-F-ledger2-triplets/xr_v1:test/xa/
 \res{run/C-AUD-medprm/xr_v1:test/top/XA}\%. Unlike the compliance detectors of \citet{sadhu2026compliance},
 these verifiers read the rule. Time windows are the weakest clause (\res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_window/s0@0}\%
 for \method{} at seed 0, against \res{min/run/B-F-ledger2-triplets/xr_v1:test/xa/XA_subject/s0|run/B-F-ledger2-triplets/xr_v1:test/xa/XA_currency/s0|run/B-F-ledger2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}--\res{max/run/B-F-ledger2-triplets/xr_v1:test/xa/XA_subject/s0|run/B-F-ledger2-triplets/xr_v1:test/xa/XA_currency/s0|run/B-F-ledger2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\% for the others): the frozen
-library contains none.
+library has no rule program with one.
 
 \paragraph{Stated criterion, expert labels.}
 On the TrialGPT annotations the systems trained on triplets have a higher
-macro-F1 than the backbone (\res{min/run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/macroF1/s0|run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/macroF1/s0|run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1/s0}--\res{max/run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/macroF1/s0|run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/macroF1/s0|run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1/s0} against \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1}), and no difference is
+macro-F1 than the backbone (\res{min/run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/macroF1/s0|run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/macroF1/s0|run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1/s0}--\res{max/run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/macroF1/s0|run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/macroF1/s0|run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1/s0} against \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1}) at seed 0 but not over five seeds
+(\method: \res{run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1}), and no difference is
 established: $+\res{cmp/p6a/diff}$ points $[\res{cmp/p6a/lo},\res{cmp/p6a/hi}]$ for \method, and
 $\res{cmp/p6b/diff}$ $[\res{cmp/p6b/lo},\res{cmp/p6b/hi}]$ against the same format trained on blocks. The gain
 comes from answering ``not enough information'' more often; on items with a
@@ -785,12 +785,11 @@ decided label the two-stage systems are below the backbone (\res{min/run/C-TG-su
 against \res{run/C-TG-critic/clin_v1:trialgpt_test/top/forced_choice_acc}\%).
 
 \paragraph{No criterion stated.}
-Where the criterion is implicit, training on rules changes nothing or does
-harm. On MedEinst the untrained backbone is right on both members of \res{run/C-ME-critic/clin_v1:medeinst_test/top/Reversal}\%
+On MedEinst and key pairs, where the criterion is implicit, training on
+rules changes nothing or does harm. On MedEinst the untrained backbone is right on both members of \res{run/C-ME-critic/clin_v1:medeinst_test/top/Reversal}\%
 of pairs; with control accuracy of \res{run/C-ME-critic/clin_v1:medeinst_test/top/control_acc}\% and trap accuracy of \res{run/C-ME-critic/clin_v1:medeinst_test/top/trap_acc}\%, it
 gives the same diagnosis to both members of 75.0\% of pairs and is wrong on
-both in 0.8\%. When it responds to the edited sentence it responds
-correctly, and it seldom responds. The verdict-only model trained on
+both in 0.8\%. The verdict-only model trained on
 triplets behaves the same (76.8\%; pair accuracy \res{run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/Reversal/s0}\%), and \method{} falls
 to \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/Reversal/s0}\%, with \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/malformed_rate/s0@pct1}\% of its reader outputs malformed on these long
 narratives. On key pairs the verdict-only models are level with the backbone
@@ -836,9 +835,8 @@ as a process reward where no criterion is stated
 (Table~\ref{tab:downstream}). The expectation of the first plan, that
 adding the ledger score to a step check improves on the step check, is not
 supported ($\res{d/run/D-SEL-combined/sel:medqa/top/acc|run/D-SEL-stepcheck/sel:medqa/top/acc}$ points on MedQA $[\res{cmp/sel-mqa-comb-step/lo},\res{cmp/sel-mqa-comb-step/hi}]$), and self-consistency is the
-best selector. As a trace score for answer correctness the ledger score has
-an AUC of 0.51 (Med-PRM: 0.65): with no criterion in the input it has
-nothing to verify.
+best selector on exam questions. As a trace score for answer correctness the ledger score has
+an AUC of 0.51 (Med-PRM: 0.65).
 
 \paragraph{Policy training.}
 A process reward can be optimised without solving the task, whether or not
@@ -859,9 +857,9 @@ failures to hold (all runs but one; Appendix~\ref{app:more}).
 On executable rules, medical reward models fail in two directions, and
 supervision on decisive evidence alone cures the first failure and produces
 the second. Near-misses in the same budget remove it; one learned bit,
-whether the finding counts under the rule, accounts for the gain.
-Such a verifier follows edits to the rule and is unchanged on benchmarks
-that state none: on the rule tier, selectivity is relative to the stated
+whether the finding counts, accounts for the gain.
+Such a verifier follows rule edits and does not improve on MedEinst or key
+pairs, which state none: on the rule tier, selectivity is relative to the stated
 rule. On clinical notes with a published score, near-misses help again, but
 not demonstrably by reading the criterion.
 
@@ -883,10 +881,12 @@ a sample reported by its authors; key pairs inherit the errors of exam keys
 and are not counterfactuals. Nothing here supports clinical use.
 
 \textbf{Transfer.} The verifiers trained on rules do not improve agreement
-with any clinical benchmark that leaves its criterion implicit, and the
+with MedEinst or key pairs, which leave the criterion implicit (on NLI4CT-P
+the verdict-only models are higher at one seed, untested), and the
 improvement where a criterion is stated is not statistically established.
 On clinical notes with a stated score definition the gain from near-misses
-is established for items of \res{sum/A-SETS/mcv_v1_accept.n_accepted@int} clinical scores; the part of it that is due to
+is seen, at unadjusted $p$, on human-written notes for a subset of the
+\res{sum/A-SETS/mcv_v1_accept.n_accepted@int} clinical scores; the part of it that is due to
 reading the criterion is not, and the comparisons on class conditions, a
 derived criterion and the composite are not yet run.
 
@@ -905,11 +905,11 @@ rules.
 \textbf{The rule language.} The test is generated from a finite language of
 applicability conditions. Held-out signature classes reuse primitives and
 operators seen in training, \res{a15/folds.1.overlap_train_vs_L2.criterion_subexpressions}\% of criterion subexpressions of the main
-test also occur in training rules, there are few such classes, and most
-judgments concern one condition of one rule. A trigger lexicon that is given
-the test cue phrases solves the generated test, and near-miss supervision
+test also occur in training rules, there are few such classes, and each
+group edits one condition of one rule. A trigger lexicon that is given
+the test cue phrases solves the generated test, and for the verdict-only model near-miss supervision
 does not extend to a condition it has not covered
-(\S\ref{sec:results-ablation}). The frozen library has no time windows and
+(\S\ref{sec:results-ablation}). The frozen library has no rule program with a time window and
 no class-level concepts.
 
 \textbf{The reader.} The record assumes that a claim depends on a few
@@ -930,7 +930,10 @@ blocks). A verifier that passes the triplet test is therefore not a safe
 training reward by itself.
 
 \textbf{Scope.} One backbone family; five seeds for the key cells and one
-elsewhere; no closed judge has been scored; English only.
+elsewhere; no closed judge has been scored; English only. Large
+general judges solve the rule triplets with a choice prompt, so the trained
+verifier's advantage is one of size and of the pointwise score, not a
+capability that no other model has.
 
 \section*{Ethical Considerations}
 

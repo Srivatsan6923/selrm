@@ -3927,6 +3927,10 @@
   "number": 87.66603415559773,
   "value": "87.7"
  },
+ "run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1": {
+  "number": 64.34550261748912,
+  "value": "64.3"
+ },
  "run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1/s0": {
   "number": 69.09251785304396,
   "value": "69.1"

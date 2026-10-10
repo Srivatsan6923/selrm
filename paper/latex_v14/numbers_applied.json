@@ -886,6 +886,7 @@
  "run/C-TG-ledger2-triplets-s0/clin_v1:trialgpt_test/top/macroF1": "69.1",
  "run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/eval/malformed_rate/max@pct1": "4.0",
  "run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0": "87.7",
+ "run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1": "64.3",
  "run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1/s0": "69.1",
  "run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/acc": "62.3",
  "run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/forced_choice_acc": "86.0",
