@@ -318,7 +318,7 @@ def with_new_sets(runs, registry):
     adapter, so that sets A registers later are scored by B-NS eval-only runs (FINAL_TASKS_B P0.6)."""
     ns = new_sets(registry)
     for r in runs:
-        if r.get("train", True) and not r["run_id"].startswith(("B-FOLD", "B-DIV", "B-C0", "B-T0", "B-AUX")):
+        if r.get("train", True) and not r["run_id"].startswith(("B-FOLD", "B-DIV", "B-C0", "B-T0", "B-AUX", "B-MIX")):
             r["eval_sets"] = r["eval_sets"] + [s for s in ns if s not in r["eval_sets"]]
             r["keep_adapter"] = True
     return runs
@@ -353,6 +353,26 @@ def ns_eval(registry, adapters, fams=None):
                          "train": False, "adapter": f"adapters/{src}", "eval_sets": sets,
                          "eval": dict(EVAL) | ({"mode": mode} if mode else {})}
                         | {k: spec[k] for k in ("base_model", "kind") if k in spec} | ({"min_gen": gen} if gen else {}))
+    return runs
+
+
+def adaptation(registry, seeds=(0, 1, 2)):
+    """STAGE2_TASKS_B B4: B-MIX-{blocks,triplets}-s<seed>, verdict-only, 60,000 examples: the same 48,000-record
+    selection of rule_v1/train_triplets (construction seed 0) plus every record of mcv_v1/adapt_blocks or
+    adapt_triplets once (12,000). Scored by the run on development portions only; mcv_v1 tests are C's (C3)."""
+    reg = json.load(open(registry))
+    runs = []
+    for arm in ("blocks", "triplets"):
+        c = f"mcv_v1/adapt_{arm}"
+        if not reg.get(c, {}).get("frozen"):
+            continue
+        assert reg[c]["n_records"] == 12000, reg[c]["n_records"]
+        runs += [{"run_id": f"B-MIX-{arm}-s{s}", "seed": s, "priority": 12 + s, "format": "verdict",
+                  "corpus": "rule_v1/train_triplets", "n_examples": 60000, "mix": {"corpus": c, "share": 0.2},
+                  "keep_adapter": True, "eval": dict(EVAL) | {"bs_score": 16}, "max_drop": 0.01,
+                  "hp": {"per_device": 2, "max_len": 3072},     # MedCalc verdict prompts reach 2,717 tokens; 2 x 3,072 fits 40 GB
+                  "big": {"hp": {"per_device": 4}, "eval": {"bs_score": 48}},     # 80 GB cards: per-device 2 idles them
+                  "eval_sets": ["rule_v1/dev", "mcv_v1/dev"], "min_gen": 6} for s in seeds]
     return runs
 
 

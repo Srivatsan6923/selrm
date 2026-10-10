@@ -1,0 +1,135 @@
+{
+ "run_id": "C-AUD-gemma-4-31b",
+ "role": "C",
+ "model": "google/gemma-4-31b-it",
+ "name": "gemma-4-31b",
+ "provider": "openrouter",
+ "access_date": "2026-10-08",
+ "readout": "logprob",
+ "params": {
+  "temperature": 0,
+  "extra_body": {
+   "reasoning": {
+    "enabled": false
+   },
+   "provider": {
+    "require_parameters": true
+   }
+  }
+ },
+ "reasoning": "reasoning disabled; logprob-capable providers only",
+ "sets": [
+  "rule_v1/dev_missing",
+  "rule_v1/missing"
+ ],
+ "n_groups": "all",
+ "subset_rule": null,
+ "usage": {
+  "calls": 4194,
+  "cached": 1006,
+  "prompt_tokens": 935140,
+  "completion_tokens": 49893,
+  "cost": 0.11734454850000002,
+  "errors": 0
+ },
+ "cost_estimate": 0.11022007,
+ "cost_actual": 0.11734454850000002,
+ "wall_seconds": 332.1,
+ "git_commit": "91bbf12bd33c371a1ac7579a575dd199fe839f2e",
+ "summaries": {
+  "rule_v1/dev_missing": null,
+  "rule_v1/missing": null
+ },
+ "earlier_invocations": [
+  {
+   "run_id": "C-AUD-gemma-4-31b",
+   "role": "C",
+   "model": "google/gemma-4-31b-it",
+   "name": "gemma-4-31b",
+   "provider": "openrouter",
+   "access_date": "2026-10-08",
+   "readout": "logprob",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     },
+     "provider": {
+      "require_parameters": true
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; logprob-capable providers only",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "n_groups": 1000,
+   "subset_rule": "n/5 groups per near-miss kind, random.Random(0) over sorted tids",
+   "usage": {
+    "calls": 7920,
+    "cached": 80,
+    "prompt_tokens": 1818430,
+    "completion_tokens": 7920,
+    "cost": 0.19685704549999952,
+    "errors": 0
+   },
+   "cost_estimate": 0.17365538,
+   "cost_actual": 0.19685704549999952,
+   "wall_seconds": 378.3,
+   "git_commit": "6472bdd6e469ad23f06432aadce771bfd119811d",
+   "summaries": {
+    "rule_v1/test_L2": {
+     "Rev": 48.0,
+     "Hold": 58.3,
+     "TA": 33.4,
+     "BaseAcc": 58.3,
+     "Tie": 25.4,
+     "PresHold": 56.2,
+     "n": 1000
+    }
+   }
+  },
+  {
+   "run_id": "C-AUD-gemma-4-31b",
+   "role": "C",
+   "model": "google/gemma-4-31b-it",
+   "name": "gemma-4-31b",
+   "provider": "openrouter",
+   "access_date": "2026-10-08",
+   "readout": "logprob",
+   "params": {
+    "temperature": 0,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     },
+     "provider": {
+      "require_parameters": true
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; logprob-capable providers only",
+   "sets": [
+    "xr_v1/test"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 4800,
+    "cached": 0,
+    "prompt_tokens": 685656,
+    "completion_tokens": 4800,
+    "cost": 0.07548112550000018,
+    "errors": 0
+   },
+   "cost_estimate": 0.06683096999999999,
+   "cost_actual": 0.07548112550000018,
+   "wall_seconds": 214.5,
+   "git_commit": "6472bdd6e469ad23f06432aadce771bfd119811d",
+   "summaries": {
+    "xr_v1/test": null
+   }
+  }
+ ]
+}

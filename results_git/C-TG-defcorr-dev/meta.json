@@ -1,0 +1,11 @@
+{
+ "run_id": "C-TG-defcorr-dev",
+ "role": "C",
+ "inputs": [
+  "C-TG-critic-dev",
+  "C-TF-defcorr-nocase",
+  "C-TF-defcorr-nocase2"
+ ],
+ "alpha": "inf",
+ "note": "default correction of the critic, alpha frozen on rule_v1/dev (C-TF-defcorr)"
+}

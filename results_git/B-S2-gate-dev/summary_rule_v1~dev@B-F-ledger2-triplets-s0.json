@@ -1,0 +1,40 @@
+{
+ "set": "rule_v1/dev",
+ "records": "B-F-ledger2-triplets-s0",
+ "units": 1200,
+ "parsed": 1200,
+ "computed": 1199,
+ "agree": 1194,
+ "malformed": 1,
+ "parser_coverage": 100.0,
+ "gate_coverage": 99.92,
+ "agreement_on_parsed": 99.58,
+ "by_nm_kind": {
+  "boundary": {
+   "n": 240,
+   "agree": 240,
+   "agreement": 100.0
+  },
+  "negation": {
+   "n": 239,
+   "agree": 237,
+   "agreement": 99.16
+  },
+  "numeric": {
+   "n": 240,
+   "agree": 240,
+   "agreement": 100.0
+  },
+  "subject": {
+   "n": 240,
+   "agree": 237,
+   "agreement": 98.75
+  },
+  "time": {
+   "n": 240,
+   "agree": 240,
+   "agreement": 100.0
+  }
+ },
+ "unparsed": []
+}

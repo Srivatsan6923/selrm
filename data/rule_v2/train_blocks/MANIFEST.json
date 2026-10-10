@@ -1,0 +1,137 @@
+{
+ "analysis_plan_sha256": "91c1f59a38ee82c3290a9f8709d44ed8a4bd7ea7e558a0b403f9dec906e5bb2b",
+ "by_family": {
+  "additive_score": 429,
+  "age_limit": 3,
+  "all_of": 60,
+  "allergy_switch": 53,
+  "any_of": 61,
+  "drug_interaction": 45,
+  "family_switch": 30,
+  "g_all_of": 453,
+  "g_any_of": 702,
+  "g_score_cutoff": 256,
+  "g_single": 459,
+  "g_two_of_three": 243,
+  "history_switch": 42,
+  "lab_threshold": 189,
+  "score_cutoff": 14,
+  "state_switch": 75,
+  "two_of_three": 8,
+  "v2_all|class+class": 587,
+  "v2_all|class+window": 511,
+  "v2_all|window+window": 351,
+  "v2_any|window+window": 437,
+  "v2_single|class": 290,
+  "v2_single|window": 176
+ },
+ "by_nm_kind": {
+  "boundary": 621,
+  "class": 829,
+  "negation": 905,
+  "numeric": 630,
+  "subject": 911,
+  "time": 754,
+  "window": 824
+ },
+ "by_part": {
+  "v1": 3103,
+  "v2": 2371
+ },
+ "by_tier": {
+  "delabelled": 13,
+  "easy": 3638,
+  "long": 1743,
+  "superseded": 80
+ },
+ "case_share": {
+  "base": 0.35,
+  "flip": 0.35,
+  "missing": 0.15,
+  "pres": 0.15
+ },
+ "cases_by_kind": {
+  "base": 5474,
+  "flip": 5474,
+  "missing": 2346,
+  "pres": 2346
+ },
+ "created": "2026-10-09",
+ "format": "stage 2: ledger entries (need, found, subject, status, time, concept, applies); struct; crit; cluster = rule id; ref_date on v2 records",
+ "groups": 5474,
+ "labels": {
+  "0": 34553,
+  "1": 25543
+ },
+ "name": "train_blocks",
+ "records": 60096,
+ "rejects": {
+  "v1": {
+   "proposed": 3150,
+   "rejected": 28
+  },
+  "v2": {
+   "proposed": 2397,
+   "rejected": 45
+  }
+ },
+ "rules": 403,
+ "seed": 20261009,
+ "set": "rule_v2",
+ "sha256": "87613d0ada7596acfe6072436259e475ec4393da0a89d9bd0828fc10596d6a40",
+ "split": "train",
+ "target_claim_violations": 0,
+ "templates": "train",
+ "v1_part": "rule_v1 library, fold 1 (data/rule_v1/FOLDS.json): training rules for train and dev, L2 rules for test_L2; cases from selrm.engine with new seeds",
+ "v2_part": {
+  "classes": "training classes of onto_v1",
+  "engine": "selrm/engine2.py",
+  "held_out_for_test_L2": [
+   "any|class+class",
+   "any|class+window"
+  ],
+  "onto_v1_classes_sha256": "ffafdac6421df7618840fbaff68d1c98ff9f00ee8a3bab13ec4346e482d8233a",
+  "rules_per_class": 30,
+  "signature_classes": [
+   "single|window",
+   "single|class",
+   "any|class+window",
+   "any|class+class",
+   "any|window+window",
+   "all|class+window",
+   "all|class+class",
+   "all|window+window"
+  ],
+  "windows": {
+   "days": [
+    7,
+    10,
+    14,
+    21,
+    28,
+    30,
+    45,
+    60,
+    90
+   ],
+   "months": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    9,
+    12,
+    18,
+    24
+   ],
+   "years": [
+    1,
+    2,
+    3,
+    5,
+    10
+   ]
+  }
+ }
+}

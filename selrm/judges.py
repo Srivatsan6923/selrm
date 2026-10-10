@@ -68,7 +68,13 @@ class Cache:
         os.makedirs(os.path.dirname(p), exist_ok=True)
         tmp = f"{p}.{os.getpid()}.{threading.get_ident()}.tmp"
         json.dump(value, open(tmp, "w", encoding="utf-8"), ensure_ascii=False)
-        os.replace(tmp, p)
+        for attempt in range(5):                         # Windows: the target may be open in another thread or a scanner
+            try:
+                os.replace(tmp, p)
+                return
+            except PermissionError:
+                time.sleep(0.2 * (attempt + 1))
+        os.remove(tmp)                                   # not cached; the response is still returned to the caller
 
 
 class Judge:
@@ -93,6 +99,8 @@ class Judge:
         for attempt in range(6):
             try:
                 r = self.client.chat.completions.create(model=self.cfg["id"], messages=messages, **params)
+                if not r.choices:                        # a provider error returned as a body without choices: retry
+                    raise RuntimeError(f"no choices: {getattr(r, 'error', None)}")
                 break
             except Exception as e:                       # rate limits and provider errors: back off
                 if attempt == 5:
@@ -153,7 +161,7 @@ class Judge:
 
     def score_logprob(self, recs):
         """[{u, top, raw}] from the first output token of the verdict prompt."""
-        extra = {"max_tokens": 1, "logprobs": True, "top_logprobs": 20}
+        extra = {"max_tokens": 1, "logprobs": True, "top_logprobs": self.cfg.get("top_logprobs", 20)}   # some providers cap it at 5
         outs = self.map(lambda r: self.call(self.verdict_messages(r), extra), recs)
         res = []
         for o in outs:

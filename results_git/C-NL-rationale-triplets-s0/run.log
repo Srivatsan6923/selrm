@@ -1,0 +1,19 @@
+2026-10-09T02:20:40Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-rationale-triplets-s0
+2026-10-09T02:20:41Z token budget per batch: 8000 (generation 24000)
+2026-10-09T02:20:54Z C-NL-rationale-triplets-s0 clin_v1/nli4ct_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/nli4ct_test/rationale.npz', 'built 5500 prompts, max 2932 tokens')
+2026-10-09T02:20:55Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0168)
+2026-10-09T02:20:59Z padding self-check: max |u_batch - u_single| = 0.2806 (tol 0.610) -> left padding
+2026-10-09T02:24:11Z generate: batch 25/318, 25731 tokens, 134 tok/s
+2026-10-09T02:28:26Z generate: batch 50/318, 51160 tokens, 115 tok/s
+2026-10-09T02:31:53Z generate: batch 75/318, 74323 tokens, 114 tok/s
+2026-10-09T02:35:33Z generate: batch 100/318, 97929 tokens, 112 tok/s
+2026-10-09T02:39:51Z generate: batch 125/318, 121525 tokens, 107 tok/s
+2026-10-09T02:45:35Z generate: batch 150/318, 144939 tokens, 98 tok/s
+2026-10-09T02:49:49Z generate: batch 175/318, 165615 tokens, 96 tok/s
+2026-10-09T02:55:02Z generate: batch 200/318, 186512 tokens, 91 tok/s
+2026-10-09T02:59:03Z generate: batch 225/318, 203721 tokens, 89 tok/s
+2026-10-09T03:03:28Z generate: batch 250/318, 222023 tokens, 87 tok/s
+2026-10-09T03:07:53Z generate: batch 275/318, 237329 tokens, 84 tok/s
+2026-10-09T03:11:49Z generate: batch 300/318, 248544 tokens, 82 tok/s
+2026-10-09T03:34:41Z C-NL-rationale-triplets-s0 clin_v1/nli4ct_test: TA nan Rev nan Hold nan n=None (4426.2 s)
+2026-10-09T03:34:43Z DONE C-NL-rationale-triplets-s0 in 74.8 min, GPU util mean 93.0

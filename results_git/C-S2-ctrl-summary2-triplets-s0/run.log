@@ -1,0 +1,35 @@
+2026-10-09T02:59:50Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-summary2-triplets-s0
+2026-10-09T02:59:51Z token budget per batch: 8000 (generation 24000)
+2026-10-09T03:00:05Z C-S2-ctrl-summary2-triplets-s0 rule_v1/test_L2@none prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/rule_v1/test_L2@none/reader_prose.npz', 'built 8000 prompts, max 352 tokens')
+2026-10-09T03:00:09Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0245)
+2026-10-09T03:00:11Z padding self-check: max |u_batch - u_single| = 0.0558 (tol 0.630) -> left padding
+2026-10-09T03:02:40Z generate: batch 25/190, 33673 tokens, 226 tok/s
+2026-10-09T03:05:17Z generate: batch 50/190, 70679 tokens, 231 tok/s
+2026-10-09T03:08:24Z generate: batch 75/190, 110449 tokens, 224 tok/s
+2026-10-09T03:11:39Z generate: batch 100/190, 154773 tokens, 225 tok/s
+2026-10-09T03:15:04Z generate: batch 125/190, 206499 tokens, 231 tok/s
+2026-10-09T03:17:58Z generate: batch 150/190, 234494 tokens, 220 tok/s
+2026-10-09T03:21:18Z generate: batch 175/190, 265227 tokens, 209 tok/s
+2026-10-09T03:42:59Z C-S2-ctrl-summary2-triplets-s0 rule_v1/test_L2@none: TA 32.8 Rev 39.4 Hold 69.8 n=2000 (2572.7 s)
+2026-10-09T03:43:15Z C-S2-ctrl-summary2-triplets-s0 rule_v1/test_L2@wrong prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/rule_v1/test_L2@wrong/reader_prose.npz', 'built 8000 prompts, max 459 tokens')
+2026-10-09T03:45:53Z generate: batch 25/214, 31327 tokens, 201 tok/s
+2026-10-09T03:48:58Z generate: batch 50/214, 65234 tokens, 191 tok/s
+2026-10-09T03:52:14Z generate: batch 75/214, 99301 tokens, 185 tok/s
+2026-10-09T03:55:39Z generate: batch 100/214, 137017 tokens, 185 tok/s
+2026-10-09T03:59:02Z generate: batch 125/214, 176539 tokens, 187 tok/s
+2026-10-09T04:02:16Z generate: batch 150/214, 212743 tokens, 187 tok/s
+2026-10-09T04:05:32Z generate: batch 175/214, 239082 tokens, 179 tok/s
+2026-10-09T04:09:01Z generate: batch 200/214, 267289 tokens, 173 tok/s
+2026-10-09T04:42:01Z C-S2-ctrl-summary2-triplets-s0 rule_v1/test_L2@wrong: TA 17.6 Rev 20.6 Hold 66.2 n=2000 (3525.2 s)
+2026-10-09T04:42:10Z C-S2-ctrl-summary2-triplets-s0 rule_v1/test_L3inv@none prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/rule_v1/test_L3inv@none/reader_prose.npz', 'built 4000 prompts, max 330 tokens')
+2026-10-09T04:44:28Z generate: batch 25/94, 35338 tokens, 260 tok/s
+2026-10-09T04:47:27Z generate: batch 50/94, 78889 tokens, 250 tok/s
+2026-10-09T04:50:25Z generate: batch 75/94, 115779 tokens, 235 tok/s
+2026-10-09T05:03:33Z C-S2-ctrl-summary2-triplets-s0 rule_v1/test_L3inv@none: TA 11.1 Rev 15.5 Hold 58.8 n=1000 (1282.1 s)
+2026-10-09T05:03:44Z C-S2-ctrl-summary2-triplets-s0 rule_v1/test_L3inv@wrong prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/rule_v1/test_L3inv@wrong/reader_prose.npz', 'built 4000 prompts, max 403 tokens')
+2026-10-09T05:06:26Z generate: batch 25/103, 33735 tokens, 209 tok/s
+2026-10-09T05:09:48Z generate: batch 50/103, 72945 tokens, 201 tok/s
+2026-10-09T05:13:02Z generate: batch 75/103, 107056 tokens, 192 tok/s
+2026-10-09T05:16:24Z generate: batch 100/103, 135684 tokens, 179 tok/s
+2026-10-09T05:31:56Z C-S2-ctrl-summary2-triplets-s0 rule_v1/test_L3inv@wrong: TA 3.4 Rev 7.6 Hold 44.4 n=1000 (1691.2 s)
+2026-10-09T05:32:00Z DONE C-S2-ctrl-summary2-triplets-s0 in 152.8 min, GPU util mean 96.4

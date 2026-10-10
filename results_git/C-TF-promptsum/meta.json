@@ -18,7 +18,8 @@
   "rule_v1/missing",
   "rule_v1/test_L2",
   "rule_v1/test_L3alt",
-  "xr_v1/test"
+  "xr_v1/test",
+  "rule_v1/test_L3inv"
  ],
  "max_new": 768,
  "eval_batch": {
@@ -34,7 +35,8 @@
   "rule_v1/missing": 1011.3,
   "rule_v1/test_L2": 4999.3,
   "rule_v1/test_L3alt": 1978.7,
-  "xr_v1/test": 1037.1
+  "xr_v1/test": 1037.1,
+  "rule_v1/test_L3inv": 1269.7
  },
  "eval_generated_tokens": 159181,
  "pad_check_ok": true,
@@ -59,7 +61,7 @@
  "pod": "selrm-c-run-c-tf-rule-24gb-9299-1-cp7jl",
  "scoring_code": "role-b ac524e8062ef",
  "git_commit": "cfe37bb5ec49",
- "wall_seconds": 10007.3,
+ "wall_seconds": 11296.7,
  "summaries": {
   "rule_v1/dev_missing": null,
   "rule_v1/dev": {
@@ -90,7 +92,16 @@
    "PresHold": 100.0,
    "n": 1000
   },
-  "xr_v1/test": null
+  "xr_v1/test": null,
+  "rule_v1/test_L3inv": {
+   "Rev": 79.3,
+   "Hold": 87.2,
+   "TA": 68.6,
+   "BaseAcc": 91.3,
+   "Tie": 0.0,
+   "PresHold": 90.0,
+   "n": 1000
+  }
  },
  "gpu_util_mean": 84.0,
  "gpu_util_p10": 76.0,
@@ -130,7 +141,17 @@
    "gpu": "NVIDIA GeForce RTX 3090, 615.71.09, 24576 MiB",
    "node": "uicnrp-fiona2.evl.uic.edu",
    "git_commit": "c1d62851844b"
+  },
+  {
+   "run_id": "C-TF-promptsum--p4",
+   "sets": [
+    "rule_v1/test_L3inv"
+   ],
+   "wall_seconds": 1289.4,
+   "gpu": "NVIDIA GeForce RTX 4090, 595.91.07, 24564 MiB",
+   "node": "hcc-nrp-shor-c5834.unl.edu",
+   "git_commit": "f0110636f2af"
   }
  ],
- "merged": "2026-10-03T16:43:42Z"
+ "merged": "2026-10-09T04:01:39Z"
 }

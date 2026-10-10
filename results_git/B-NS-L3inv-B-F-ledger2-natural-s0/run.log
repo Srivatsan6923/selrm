@@ -1,0 +1,5 @@
+2026-10-08T23:38:18Z eval only: base /work/models/unsloth--Qwen3.5-9B, adapter /pvc/selrm/adapters/B-F-ledger2-natural-s0
+2026-10-08T23:38:20Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0034)
+2026-10-08T23:38:21Z padding self-check: max |u_batch - u_single| = 0.0757 (tol 0.618) -> left padding
+2026-10-08T23:42:13Z B-NS-L3inv-B-F-ledger2-natural-s0 rule_v1/test_L3inv: TA 75.4 Rev 98.9 Hold 76.4 n=1000 (233.6 s)
+2026-10-08T23:42:13Z DONE B-NS-L3inv-B-F-ledger2-natural-s0 in 4.2 min, GPU util mean 83.1

@@ -1,0 +1,675 @@
+{
+ "source": "clin_v1/medeinst_test (zhui711/MedEinst, test split)",
+ "pairs": [
+  [
+   "Acute COPD exacerbation / infection",
+   "Acute pulmonary edema",
+   14
+  ],
+  [
+   "Acute COPD exacerbation / infection",
+   "Bronchitis",
+   48
+  ],
+  [
+   "Acute dystonic reactions",
+   "Anaphylaxis",
+   4
+  ],
+  [
+   "Acute dystonic reactions",
+   "Anemia",
+   4
+  ],
+  [
+   "Acute dystonic reactions",
+   "Atrial fibrillation",
+   1
+  ],
+  [
+   "Acute dystonic reactions",
+   "Myasthenia gravis",
+   1
+  ],
+  [
+   "Acute laryngitis",
+   "Bronchitis",
+   157
+  ],
+  [
+   "Acute otitis media",
+   "Bronchitis",
+   2
+  ],
+  [
+   "Acute otitis media",
+   "URTI",
+   1
+  ],
+  [
+   "Acute pulmonary edema",
+   "Possible NSTEMI / STEMI",
+   129
+  ],
+  [
+   "Acute pulmonary edema",
+   "Pulmonary embolism",
+   6
+  ],
+  [
+   "Acute pulmonary edema",
+   "Unstable angina",
+   92
+  ],
+  [
+   "Acute rhinosinusitis",
+   "Bronchitis",
+   5
+  ],
+  [
+   "Acute rhinosinusitis",
+   "Chronic rhinosinusitis",
+   4
+  ],
+  [
+   "Acute rhinosinusitis",
+   "Viral pharyngitis",
+   8
+  ],
+  [
+   "Anaphylaxis",
+   "Possible NSTEMI / STEMI",
+   5
+  ],
+  [
+   "Anemia",
+   "Guillain-Barr\u00e9 syndrome",
+   1
+  ],
+  [
+   "Anemia",
+   "Panic attack",
+   1
+  ],
+  [
+   "Atrial fibrillation",
+   "Myocarditis",
+   1
+  ],
+  [
+   "Atrial fibrillation",
+   "PSVT",
+   10
+  ],
+  [
+   "Atrial fibrillation",
+   "Pulmonary embolism",
+   30
+  ],
+  [
+   "Boerhaave",
+   "Possible NSTEMI / STEMI",
+   168
+  ],
+  [
+   "Bronchiectasis",
+   "Bronchitis",
+   230
+  ],
+  [
+   "Bronchiectasis",
+   "Pneumonia",
+   1
+  ],
+  [
+   "Bronchiolitis",
+   "Pneumonia",
+   2
+  ],
+  [
+   "Bronchitis",
+   "Acute COPD exacerbation / infection",
+   456
+  ],
+  [
+   "Bronchitis",
+   "Allergic sinusitis",
+   1
+  ],
+  [
+   "Bronchitis",
+   "Bronchiectasis",
+   19
+  ],
+  [
+   "Bronchitis",
+   "Bronchospasm / acute asthma exacerbation",
+   22
+  ],
+  [
+   "Bronchitis",
+   "Croup",
+   1
+  ],
+  [
+   "Bronchitis",
+   "GERD",
+   2
+  ],
+  [
+   "Bronchitis",
+   "Influenza",
+   7
+  ],
+  [
+   "Bronchitis",
+   "Pneumonia",
+   242
+  ],
+  [
+   "Bronchitis",
+   "Possible NSTEMI / STEMI",
+   2
+  ],
+  [
+   "Bronchitis",
+   "Pulmonary neoplasm",
+   2
+  ],
+  [
+   "Bronchitis",
+   "Spontaneous pneumothorax",
+   2
+  ],
+  [
+   "Bronchitis",
+   "URTI",
+   93
+  ],
+  [
+   "Bronchitis",
+   "Viral pharyngitis",
+   18
+  ],
+  [
+   "Bronchospasm / acute asthma exacerbation",
+   "Acute COPD exacerbation / infection",
+   1
+  ],
+  [
+   "Chagas",
+   "Acute pulmonary edema",
+   7
+  ],
+  [
+   "Chagas",
+   "Anemia",
+   4
+  ],
+  [
+   "Chagas",
+   "Atrial fibrillation",
+   3
+  ],
+  [
+   "Chagas",
+   "GERD",
+   3
+  ],
+  [
+   "Chagas",
+   "Guillain-Barr\u00e9 syndrome",
+   3
+  ],
+  [
+   "Chagas",
+   "Possible NSTEMI / STEMI",
+   9
+  ],
+  [
+   "Chronic rhinosinusitis",
+   "Acute rhinosinusitis",
+   4
+  ],
+  [
+   "Croup",
+   "Acute dystonic reactions",
+   1
+  ],
+  [
+   "Croup",
+   "Bronchitis",
+   4
+  ],
+  [
+   "Croup",
+   "Pneumonia",
+   9
+  ],
+  [
+   "Ebola",
+   "Bronchitis",
+   3
+  ],
+  [
+   "Ebola",
+   "Pneumonia",
+   4
+  ],
+  [
+   "Epiglottitis",
+   "Acute laryngitis",
+   5
+  ],
+  [
+   "Epiglottitis",
+   "Acute otitis media",
+   1
+  ],
+  [
+   "Epiglottitis",
+   "Possible NSTEMI / STEMI",
+   4
+  ],
+  [
+   "GERD",
+   "Bronchitis",
+   36
+  ],
+  [
+   "Guillain-Barr\u00e9 syndrome",
+   "Acute dystonic reactions",
+   5
+  ],
+  [
+   "Guillain-Barr\u00e9 syndrome",
+   "Anemia",
+   1
+  ],
+  [
+   "HIV (initial infection)",
+   "Anemia",
+   1
+  ],
+  [
+   "HIV (initial infection)",
+   "Influenza",
+   1
+  ],
+  [
+   "Influenza",
+   "Bronchitis",
+   45
+  ],
+  [
+   "Influenza",
+   "Chronic rhinosinusitis",
+   3
+  ],
+  [
+   "Influenza",
+   "HIV (initial infection)",
+   10
+  ],
+  [
+   "Influenza",
+   "Pneumonia",
+   33
+  ],
+  [
+   "Influenza",
+   "URTI",
+   375
+  ],
+  [
+   "Influenza",
+   "Viral pharyngitis",
+   23
+  ],
+  [
+   "Inguinal hernia",
+   "Bronchitis",
+   7
+  ],
+  [
+   "Myasthenia gravis",
+   "Acute dystonic reactions",
+   7
+  ],
+  [
+   "Myasthenia gravis",
+   "Anemia",
+   1
+  ],
+  [
+   "Myasthenia gravis",
+   "Atrial fibrillation",
+   1
+  ],
+  [
+   "Myasthenia gravis",
+   "Guillain-Barr\u00e9 syndrome",
+   13
+  ],
+  [
+   "Myocarditis",
+   "Acute pulmonary edema",
+   148
+  ],
+  [
+   "Myocarditis",
+   "PSVT",
+   3
+  ],
+  [
+   "Myocarditis",
+   "Panic attack",
+   3
+  ],
+  [
+   "Myocarditis",
+   "Pericarditis",
+   39
+  ],
+  [
+   "Myocarditis",
+   "Possible NSTEMI / STEMI",
+   7
+  ],
+  [
+   "Myocarditis",
+   "Unstable angina",
+   34
+  ],
+  [
+   "PSVT",
+   "Anemia",
+   77
+  ],
+  [
+   "PSVT",
+   "Atrial fibrillation",
+   26
+  ],
+  [
+   "PSVT",
+   "Panic attack",
+   29
+  ],
+  [
+   "PSVT",
+   "Pulmonary embolism",
+   3
+  ],
+  [
+   "Pancreatic neoplasm",
+   "Bronchitis",
+   2
+  ],
+  [
+   "Pancreatic neoplasm",
+   "GERD",
+   2
+  ],
+  [
+   "Pancreatic neoplasm",
+   "Possible NSTEMI / STEMI",
+   18
+  ],
+  [
+   "Panic attack",
+   "Guillain-Barr\u00e9 syndrome",
+   8
+  ],
+  [
+   "Panic attack",
+   "PSVT",
+   16
+  ],
+  [
+   "Panic attack",
+   "Possible NSTEMI / STEMI",
+   20
+  ],
+  [
+   "Panic attack",
+   "Spontaneous pneumothorax",
+   1
+  ],
+  [
+   "Pericarditis",
+   "GERD",
+   16
+  ],
+  [
+   "Pericarditis",
+   "Myocarditis",
+   1
+  ],
+  [
+   "Pericarditis",
+   "Pulmonary embolism",
+   65
+  ],
+  [
+   "Pericarditis",
+   "Spontaneous pneumothorax",
+   97
+  ],
+  [
+   "Pneumonia",
+   "Bronchiectasis",
+   55
+  ],
+  [
+   "Pneumonia",
+   "Bronchitis",
+   327
+  ],
+  [
+   "Pneumonia",
+   "Croup",
+   1
+  ],
+  [
+   "Pneumonia",
+   "GERD",
+   1
+  ],
+  [
+   "Pneumonia",
+   "Pericarditis",
+   7
+  ],
+  [
+   "Pneumonia",
+   "Possible NSTEMI / STEMI",
+   3
+  ],
+  [
+   "Pneumonia",
+   "Pulmonary embolism",
+   21
+  ],
+  [
+   "Pneumonia",
+   "Pulmonary neoplasm",
+   151
+  ],
+  [
+   "Pneumonia",
+   "Spontaneous pneumothorax",
+   8
+  ],
+  [
+   "Pneumonia",
+   "Tuberculosis",
+   25
+  ],
+  [
+   "Pneumonia",
+   "URTI",
+   4
+  ],
+  [
+   "Pulmonary embolism",
+   "Possible NSTEMI / STEMI",
+   9
+  ],
+  [
+   "Pulmonary embolism",
+   "Spontaneous pneumothorax",
+   1
+  ],
+  [
+   "Pulmonary neoplasm",
+   "Bronchitis",
+   17
+  ],
+  [
+   "Pulmonary neoplasm",
+   "Possible NSTEMI / STEMI",
+   5
+  ],
+  [
+   "Pulmonary neoplasm",
+   "Pulmonary embolism",
+   1
+  ],
+  [
+   "SLE",
+   "Possible NSTEMI / STEMI",
+   172
+  ],
+  [
+   "SLE",
+   "Pulmonary embolism",
+   3
+  ],
+  [
+   "SLE",
+   "Pulmonary neoplasm",
+   4
+  ],
+  [
+   "Sarcoidosis",
+   "Acute dystonic reactions",
+   40
+  ],
+  [
+   "Sarcoidosis",
+   "Anemia",
+   8
+  ],
+  [
+   "Sarcoidosis",
+   "Atrial fibrillation",
+   3
+  ],
+  [
+   "Sarcoidosis",
+   "Myocarditis",
+   20
+  ],
+  [
+   "Sarcoidosis",
+   "Possible NSTEMI / STEMI",
+   3
+  ],
+  [
+   "Scombroid food poisoning",
+   "Anaphylaxis",
+   3
+  ],
+  [
+   "Spontaneous pneumothorax",
+   "Pulmonary embolism",
+   205
+  ],
+  [
+   "Spontaneous pneumothorax",
+   "Unstable angina",
+   29
+  ],
+  [
+   "Spontaneous rib fracture",
+   "Pericarditis",
+   3
+  ],
+  [
+   "Spontaneous rib fracture",
+   "Pulmonary embolism",
+   146
+  ],
+  [
+   "Spontaneous rib fracture",
+   "Spontaneous pneumothorax",
+   232
+  ],
+  [
+   "Stable angina",
+   "SLE",
+   1
+  ],
+  [
+   "Stable angina",
+   "Unstable angina",
+   7
+  ],
+  [
+   "Tuberculosis",
+   "Bronchitis",
+   207
+  ],
+  [
+   "Tuberculosis",
+   "Pneumonia",
+   45
+  ],
+  [
+   "Tuberculosis",
+   "Pulmonary neoplasm",
+   55
+  ],
+  [
+   "URTI",
+   "Bronchitis",
+   128
+  ],
+  [
+   "URTI",
+   "Cluster headache",
+   3
+  ],
+  [
+   "URTI",
+   "Influenza",
+   37
+  ],
+  [
+   "URTI",
+   "Pneumonia",
+   137
+  ],
+  [
+   "Unstable angina",
+   "GERD",
+   2
+  ],
+  [
+   "Unstable angina",
+   "Possible NSTEMI / STEMI",
+   197
+  ],
+  [
+   "Unstable angina",
+   "SLE",
+   1
+  ],
+  [
+   "Viral pharyngitis",
+   "Tuberculosis",
+   22
+  ]
+ ]
+}

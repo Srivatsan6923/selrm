@@ -1,0 +1,46 @@
+{
+ "analysis_plan_sha256": "91c1f59a38ee82c3290a9f8709d44ed8a4bd7ea7e558a0b403f9dec906e5bb2b",
+ "by_family": {
+  "g_all_of": 75,
+  "g_any_of": 75,
+  "g_score_cutoff": 75,
+  "g_two_of_three": 75
+ },
+ "check": "reordered program equals the original program on every state of every group, and equals the record labels: 0 violations",
+ "created": "2026-10-08",
+ "derived_from": "rule_v1/test_L2",
+ "eligible_groups": 1604,
+ "n_groups": 300,
+ "n_records": 4800,
+ "n_rules": 79,
+ "note": "Restricted to grammar-sampled rules with two or more conditions; hand-written rules keep their text. The claims still say 'Prescribe ...' while the paraphrase says 'give'.",
+ "parent_sha256": "e0b81644a7278070de3ac253426acb1bfbe5da8958cf9e68c00fb5b85b8ddbdd",
+ "purpose": "Program-preserving paraphrases of the rule text (stage 2, secondary analysis 6: rate of changed verdicts against rule_v1/test_L2, paired by iid)",
+ "seed": 20261008,
+ "set": "xp_v1",
+ "sha256": "46d6b08ff4ebb44aa26e927a9081c236ec94a4d534c8b3bbc66e6343a0e27004",
+ "shortcut_validation": "not applicable: cases, claims and labels are those of rule_v1/test_L2 (validated there)",
+ "synonyms": [
+  [
+   "prescribe",
+   "give"
+  ],
+  [
+   "at least two of the following apply",
+   "two or more of the following hold"
+  ],
+  [
+   "the score is",
+   "the total is"
+  ],
+  [
+   "Score",
+   "Count"
+  ]
+ ],
+ "transforms": [
+  "reorder",
+  "move",
+  "synonyms"
+ ]
+}

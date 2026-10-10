@@ -1,0 +1,15 @@
+{
+ "run_id": "C-TG-ledger2-natural-s0",
+ "set": "clin_v1/trialgpt_dev",
+ "claim_type": "conclusion",
+ "eval": {
+  "reader_units": 213,
+  "malformed_units": 8,
+  "mode": null,
+  "malformed_rate": 0.0376,
+  "gen_not_stopped": 0,
+  "seconds": 117.7,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

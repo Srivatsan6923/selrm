@@ -1,21 +1,237 @@
 {
  "runs": [
   {
-   "run_id": "B-FOLD3-ledger2-blocks-s0",
+   "run_id": "B-DIV-base-16-s0",
    "seed": 0,
-   "priority": 76,
+   "priority": 80,
    "eval": {
     "bs_score": 128,
     "bs_gen": 256,
     "max_new": 384
    },
    "format": "ledger2",
-   "corpus": "rule_v1_fold3/train_blocks",
-   "n_examples": 60000,
+   "corpus": "rule_v1/div_base_16",
+   "n_examples": null,
    "keep_adapter": false,
    "eval_sets": [
-    "rule_v1_fold3/dev",
-    "rule_v1_fold3/test_L2"
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DIV-new-32-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_new_32",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DIV-new-63-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_new_63",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DIV-new-64-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_new_64",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DIV-new-128-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_new_128",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DIV-new-223-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_new_223",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DIV-same-32-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_same_32",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DIV-same-63-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_same_63",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DIV-patients-32-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_patients_32",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DIV-patients-63-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_patients_63",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DIV-patients-64-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_patients_64",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DIV-patients-128-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_patients_128",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
+   ]
+  },
+  {
+   "run_id": "B-DIV-patients-223-s0",
+   "seed": 0,
+   "priority": 80,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "format": "ledger2",
+   "corpus": "rule_v1/div_patients_223",
+   "n_examples": null,
+   "keep_adapter": false,
+   "eval_sets": [
+    "rule_v1/dev",
+    "rule_v1/test_L2"
    ]
   }
  ]

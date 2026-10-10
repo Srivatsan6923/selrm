@@ -22,7 +22,11 @@ def load(path):
 
 
 XR = f"{REPO}/scratch/acode_xr/data/xr_v1"     # A's xr_v1 records and KNOWN_ISSUES.json (not in the rule_v1 registry)
-CRITIC = {"clin_v1/medeinst_test": "C-ME-critic"}  # the critic's scores of a clinical set live in its mirrored run
+# clinical sets: (run holding the critic's scores, run that receives the corrected scores)
+CRITIC = {"clin_v1/medeinst_test": ("C-ME-critic", "C-ME-defcorr"), "clin_v1/nli4ct_test": ("C-NL-critic", "C-NL-defcorr"),
+          "clin_v1/keypairs_medqa_oneway": ("C-KP-critic", "C-KP-defcorr"), "clin_v1/keypairs_careqa_oneway": ("C-KP-critic", "C-KP-defcorr"),
+          "clin_v1/trialgpt_test": ("C-TG-critic", "C-TG-defcorr"), "clin_v1/trialgpt_dev": ("C-TG-critic-dev", "C-TG-defcorr-dev")}
+NOCASE = ("C-TF-defcorr-nocase", "C-TF-defcorr-nocase2")
 
 
 def records(data, name):
@@ -38,8 +42,8 @@ def records(data, name):
 
 
 def combined(name, alpha):
-    u = load(f"{RES}/{CRITIC.get(name, 'C-TF-critic')}/scores_{name.replace('/', '~')}.jsonl")
-    u0 = load(f"{RES}/C-TF-defcorr-nocase/scores_nocase~{name.replace('/', '~')}.jsonl")
+    u = load(f"{RES}/{CRITIC.get(name, ('C-TF-critic',))[0]}/scores_{name.replace('/', '~')}.jsonl")
+    u0 = load(next(p for p in (f"{RES}/{d}/scores_nocase~{name.replace('/', '~')}.jsonl" for d in NOCASE) if os.path.exists(p)))
     if alpha == float("inf"):
         return {k: v - u0[k] for k, v in u.items()}
     return {k: (1 + alpha) * v - alpha * u0[k] for k, v in u.items()}
@@ -57,22 +61,22 @@ def main():
     alpha = max(GRID, key=lambda al: (dev_ta[al], -al))
     out = f"{RES}/C-TF-defcorr"
     os.makedirs(out, exist_ok=True)
-    sets = sorted(p[len("scores_nocase~"):-6].replace("~", "/") for p in os.listdir(f"{RES}/C-TF-defcorr-nocase")
-                  if p.startswith("scores_nocase~") and p.endswith(".jsonl"))
+    sets = sorted({p[len("scores_nocase~"):-6].replace("~", "/") for d in NOCASE if os.path.isdir(f"{RES}/{d}")
+                   for p in os.listdir(f"{RES}/{d}") if p.startswith("scores_nocase~") and p.endswith(".jsonl")})
     summ_all = {}
     for s in sets:
         u = combined(s, alpha)
         if s.startswith("clin_v1/"):   # make_tables reads a clinical set of C-TF-<x> from C-ME-<x>; summary by eval_clinical
-            me = f"{RES}/C-ME-defcorr"
+            me = f"{RES}/{CRITIC[s][1]}"
             os.makedirs(me, exist_ok=True)
             with open(f"{me}/scores_{s.replace('/', '~')}.jsonl", "w", encoding="utf-8", newline="\n") as f:
                 for k, v in u.items():
                     f.write(json.dumps({"iid": k, "u": v}) + "\n")
-            json.dump({"run_id": "C-ME-defcorr", "role": "C", "inputs": [CRITIC[s], "C-TF-defcorr-nocase"], "alpha": js(alpha),
+            json.dump({"run_id": CRITIC[s][1], "role": "C", "inputs": [CRITIC[s][0], *NOCASE], "alpha": js(alpha),
                        "note": "default correction of the critic, alpha frozen on rule_v1/dev (C-TF-defcorr)"},
                       open(f"{me}/meta.json", "w", encoding="utf-8", newline="\n"), indent=1)
             open(f"{me}/DONE", "w").write(time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()) + "\n")
-            summ_all[s] = "C-ME-defcorr (python scripts/eval_clinical.py medeinst)"
+            summ_all[s] = f"{CRITIC[s][1]} (summary by scripts/eval_clinical.py)"
             continue
         with open(f"{out}/scores_{s.replace('/', '~')}.jsonl", "w", encoding="utf-8", newline="\n") as f:
             for k, v in u.items():

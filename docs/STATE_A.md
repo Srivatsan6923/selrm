@@ -1,18 +1,19 @@
 # STATE role A
 Updated: Thu 8 Oct 2026. Plan of record: STAGE2_TASKS_A (8 Oct), with STAGE2_SPEC and STAGE2_ANALYSIS_PLAN
 (bundle selrm_stage2_tasks.zip from the lead). It replaces FINAL_TASKS_A and NEXT_TASKS_A; the run freeze of
-7 Oct is lifted. No stage-2 test set is frozen before docs/ANALYSIS_PLAN_STAGE2.md is on main (not there on 8 Oct).
+7 Oct is lifted. docs/ANALYSIS_PLAN_STAGE2.md is on main since b438812 (8 Oct); role-a carries the file but has not merged main (the merge is slow on this disk; let the lead merge).
+API: OPENROUTER key works only with a lower-case 'sk-'; new-account limit of 20 requests a minute on DeepSeek V4 Pro (the rewrite jobs use it as an extractor).
 
 ## Stage 2 (do in this order)
 | # | Item | Status |
 |---|---|---|
-| A1 | mcv_v1 (MedCalc-V) | steps 1-2 done: 19 of 19 scores accepted (380 test rows, 230 human-written; 2426 training rows), `python scripts/mcv_accept.py --write`. Next: items (criteria, natural band, value and sentence edits, rule-side), fidelity filter (needs the API key), dev and adaptation portions, validation, freeze |
-| A2 | kb_v1 (DDXPlus criterion) | steps 1-2 done: release downloaded and counted, selrm/kb_criterion.py committed and handed to C. Next: support check, triplets_dev/test, shortcut validation |
-| A3 | xp_v1 (program-preserving paraphrases) | not started |
-| A4 | onto_v1, cls_v1 | not started |
-| A5 | rule_v2 | not started |
+| A1 | mcv_v1 (MedCalc-V) | **frozen 8 Oct** (3c0abf2): 19 of 19 scores; criteria_test 3,440 pairs, natural_band_test 394, edits_test 1,636 triplets after the fidelity filter (1,787 before), ruleside_test 295 crossed items, dev, adapt_blocks/adapt_triplets 12,000 records each. `python scripts/build_mcv_v1.py --restore`. Audit: docs/DATA_AUDIT_mcv_v1.md; author sheet audit/s2/mcv_edits_sheet.csv; keys in results/A-SETS |
+| A2 | kb_v1 (DDXPlus criterion) | **frozen 8 Oct** (9236dd7): renderer, support check (data/kb_v1/SUPPORT.json), triplets_dev 5,138 and triplets_test 5,143 groups. `python scripts/build_kb_v1.py --restore`. Audit: docs/DATA_AUDIT_kb_v1.md; author sheet audit/s2/kb_criteria_sheet.csv |
+| A3 | xp_v1 (program-preserving paraphrases) | **frozen 8 Oct**: 300 groups of test_L2, 0 program violations. `python scripts/build_xp_v1.py --restore` |
+| A4 | onto_v1, cls_v1 | **frozen 9 Oct**: onto_v1 class tables (drug 47/12/21, phenotype 131/32/56, disease 141/37/54; drug-class change request approved by the user 9 Oct, plan line to be appended by D); cls_v1/dev (300 groups) and cls_v1/test (1,200 groups, 400 per domain). `python scripts/build_cls_v1.py --restore` |
+| A5 | rule_v2 | **frozen 9 Oct**: engine selrm/engine2.py; train_blocks, train_triplets, lo_window, lo_class (60k records each), dev 300, test_L2 2,000; audit docs/DATA_AUDIT_rule_v2.md. `python scripts/build_rule_v2.py --restore --only <set>` |
 | A6 | reg_v1 | not started |
-| A7 | paper inputs from existing data | not started |
+| A7 | paper inputs from existing data | done 8 Oct: keys handed to D in docs/HANDOFFS.md (Table 8, harder set, Table 16, lines 1206 and 1499, Appendix E rule code); line 1512 waits for A6 |
 | carry-over | rewrite_v1 and the _rw corpora (API key); challenge_v1 (H2); H1 aggregation | blocked as before |
 
 External data live under data/_ext/ (git-ignored): medcalc/{test,train}_data.csv, medcalc/medcalc_v1_corrected.csv,

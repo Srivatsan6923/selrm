@@ -1,0 +1,275 @@
+{
+ "analysis_plan_sha256": "91c1f59a38ee82c3290a9f8709d44ed8a4bd7ea7e558a0b403f9dec906e5bb2b",
+ "by_family": {
+  "additive_score": 222,
+  "any_of": 5,
+  "g_all_of": 311,
+  "g_any_of": 85,
+  "g_score_cutoff": 240,
+  "g_two_of_three": 310,
+  "score_cutoff": 27,
+  "v2_any|class+class": 261,
+  "v2_any|class+window": 539
+ },
+ "by_nm_kind": {
+  "boundary": 240,
+  "class": 288,
+  "negation": 332,
+  "numeric": 240,
+  "subject": 326,
+  "time": 286,
+  "window": 288
+ },
+ "by_part": {
+  "v1": 1200,
+  "v2": 800
+ },
+ "by_tier": {
+  "delabelled": 2,
+  "easy": 1293,
+  "long": 659,
+  "superseded": 46
+ },
+ "case_share": {
+  "base": 0.25,
+  "flip": 0.25,
+  "near": 0.25,
+  "pres": 0.25
+ },
+ "cases_by_kind": {
+  "base": 2000,
+  "flip": 2000,
+  "near": 2000,
+  "pres": 2000
+ },
+ "created": "2026-10-09",
+ "format": "stage 2: ledger entries (need, found, subject, status, time, concept, applies); struct; crit; cluster = rule id; ref_date on v2 records",
+ "groups": 2000,
+ "labels": {
+  "0": 15112,
+  "1": 15112
+ },
+ "name": "test_L2",
+ "records": 30224,
+ "rejects": {
+  "v1": {
+   "proposed": 1200,
+   "rejected": 0
+  },
+  "v2": {
+   "proposed": 800,
+   "rejected": 0
+  }
+ },
+ "rules": 163,
+ "seed": 20261009,
+ "set": "rule_v2",
+ "sha256": "b56208497494a814475e72da357c5dc4a4b14cdac14477bd2776fb3e9e75d8c0",
+ "shortcut_validation": {
+  "always_default": {
+   "all": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 2000
+   },
+   "nm_kind=boundary": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 240
+   },
+   "nm_kind=class": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 288
+   },
+   "nm_kind=negation": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 332
+   },
+   "nm_kind=numeric": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 240
+   },
+   "nm_kind=subject": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 326
+   },
+   "nm_kind=time": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 286
+   },
+   "nm_kind=window": {
+    "Hold": 100.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 288
+   }
+  },
+  "concept_named": {
+   "all": {
+    "Hold": 0.0,
+    "Rev": 68.1,
+    "TA": 0.0,
+    "n": 2000
+   },
+   "nm_kind=boundary": {
+    "Hold": 0.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 240
+   },
+   "nm_kind=class": {
+    "Hold": 0.0,
+    "Rev": 100.0,
+    "TA": 0.0,
+    "n": 288
+   },
+   "nm_kind=negation": {
+    "Hold": 0.0,
+    "Rev": 100.0,
+    "TA": 0.0,
+    "n": 332
+   },
+   "nm_kind=numeric": {
+    "Hold": 0.0,
+    "Rev": 0.0,
+    "TA": 0.0,
+    "n": 240
+   },
+   "nm_kind=subject": {
+    "Hold": 0.0,
+    "Rev": 100.0,
+    "TA": 0.0,
+    "n": 326
+   },
+   "nm_kind=time": {
+    "Hold": 0.0,
+    "Rev": 44.76,
+    "TA": 0.0,
+    "n": 286
+   },
+   "nm_kind=window": {
+    "Hold": 0.0,
+    "Rev": 100.0,
+    "TA": 0.0,
+    "n": 288
+   }
+  },
+  "program": {
+   "all": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 2000
+   },
+   "nm_kind=boundary": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 240
+   },
+   "nm_kind=class": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 288
+   },
+   "nm_kind=negation": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 332
+   },
+   "nm_kind=numeric": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 240
+   },
+   "nm_kind=subject": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 326
+   },
+   "nm_kind=time": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 286
+   },
+   "nm_kind=window": {
+    "Hold": 100.0,
+    "Rev": 100.0,
+    "TA": 100.0,
+    "n": 288
+   }
+  }
+ },
+ "split": "test",
+ "target_claim_violations": 0,
+ "templates": "test",
+ "v1_part": "rule_v1 library, fold 1 (data/rule_v1/FOLDS.json): training rules for train and dev, L2 rules for test_L2; cases from selrm.engine with new seeds",
+ "v2_part": {
+  "classes": "training classes of onto_v1",
+  "engine": "selrm/engine2.py",
+  "held_out_for_test_L2": [
+   "any|class+class",
+   "any|class+window"
+  ],
+  "onto_v1_classes_sha256": "ffafdac6421df7618840fbaff68d1c98ff9f00ee8a3bab13ec4346e482d8233a",
+  "rules_per_class": 30,
+  "signature_classes": [
+   "single|window",
+   "single|class",
+   "any|class+window",
+   "any|class+class",
+   "any|window+window",
+   "all|class+window",
+   "all|class+class",
+   "all|window+window"
+  ],
+  "windows": {
+   "days": [
+    7,
+    10,
+    14,
+    21,
+    28,
+    30,
+    45,
+    60,
+    90
+   ],
+   "months": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    9,
+    12,
+    18,
+    24
+   ],
+   "years": [
+    1,
+    2,
+    3,
+    5,
+    10
+   ]
+  }
+ }
+}

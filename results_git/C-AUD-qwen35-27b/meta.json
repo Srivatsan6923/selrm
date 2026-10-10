@@ -1,0 +1,174 @@
+{
+ "run_id": "C-AUD-qwen35-27b",
+ "role": "C",
+ "model": "qwen/qwen3.5-27b",
+ "name": "qwen35-27b",
+ "provider": "openrouter",
+ "access_date": "2026-10-08",
+ "readout": "choice",
+ "params": {
+  "temperature": 0,
+  "max_tokens": 600,
+  "extra_body": {
+   "reasoning": {
+    "enabled": false
+   }
+  }
+ },
+ "reasoning": "reasoning disabled; two-order choice readout: the endpoint returned log-probabilities for only 39 of 80 smoke calls (8 Oct)",
+ "sets": [
+  "xr_v1/test"
+ ],
+ "n_groups": "all",
+ "subset_rule": null,
+ "usage": {
+  "calls": 0,
+  "cached": 4800,
+  "prompt_tokens": 0,
+  "completion_tokens": 0,
+  "cost": 0.0,
+  "errors": 0
+ },
+ "cost_estimate": 1.02551332,
+ "cost_actual": 0.0,
+ "wall_seconds": 81.5,
+ "git_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2",
+ "summaries": {
+  "xr_v1/test": null
+ },
+ "earlier_invocations": [
+  {
+   "run_id": "C-AUD-qwen35-27b",
+   "role": "C",
+   "model": "qwen/qwen3.5-27b",
+   "name": "qwen35-27b",
+   "provider": "openrouter",
+   "access_date": "2026-10-08",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "max_tokens": 600,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; two-order choice readout: the endpoint returned log-probabilities for only 39 of 80 smoke calls (8 Oct)",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "n_groups": 1000,
+   "subset_rule": "n/5 groups per near-miss kind, random.Random(0) over sorted tids",
+   "usage": {
+    "calls": 8000,
+    "cached": 0,
+    "prompt_tokens": 2401218,
+    "completion_tokens": 2371389,
+    "cost": 5.456123249999998,
+    "errors": 0
+   },
+   "cost_estimate": 1.89111208,
+   "cost_actual": 5.456123249999998,
+   "wall_seconds": 3054.5,
+   "git_commit": "",
+   "summaries": {
+    "rule_v1/test_L2": {
+     "Rev": 99.5,
+     "Hold": 98.4,
+     "TA": 98.1,
+     "BaseAcc": 99.7,
+     "Tie": 1.8,
+     "PresHold": 99.5,
+     "n": 1000
+    }
+   }
+  },
+  {
+   "run_id": "C-AUD-qwen35-27b",
+   "role": "C",
+   "model": "qwen/qwen3.5-27b",
+   "name": "qwen35-27b",
+   "provider": "openrouter",
+   "access_date": "2026-10-08",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "max_tokens": 600,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; two-order choice readout: the endpoint returned log-probabilities for only 39 of 80 smoke calls (8 Oct)",
+   "sets": [
+    "xr_v1/test"
+   ],
+   "n_groups": "all",
+   "subset_rule": null,
+   "usage": {
+    "calls": 4800,
+    "cached": 0,
+    "prompt_tokens": 1016422,
+    "completion_tokens": 807714,
+    "cost": 1.903592850000001,
+    "errors": 0
+   },
+   "cost_estimate": 1.02551332,
+   "cost_actual": 1.903592850000001,
+   "wall_seconds": 1601.4,
+   "git_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2",
+   "summaries": {
+    "xr_v1/test": null
+   }
+  },
+  {
+   "run_id": "C-AUD-qwen35-27b",
+   "role": "C",
+   "model": "qwen/qwen3.5-27b",
+   "name": "qwen35-27b",
+   "provider": "openrouter",
+   "access_date": "2026-10-08",
+   "readout": "choice",
+   "params": {
+    "temperature": 0,
+    "max_tokens": 600,
+    "extra_body": {
+     "reasoning": {
+      "enabled": false
+     }
+    }
+   },
+   "reasoning": "reasoning disabled; two-order choice readout: the endpoint returned log-probabilities for only 39 of 80 smoke calls (8 Oct)",
+   "sets": [
+    "rule_v1/test_L2"
+   ],
+   "n_groups": 1000,
+   "subset_rule": "n/5 groups per near-miss kind, random.Random(0) over sorted tids",
+   "usage": {
+    "calls": 0,
+    "cached": 8000,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "cost": 0.0,
+    "errors": 0
+   },
+   "cost_estimate": 1.89111208,
+   "cost_actual": 0.0,
+   "wall_seconds": 240.6,
+   "git_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2",
+   "summaries": {
+    "rule_v1/test_L2": {
+     "Rev": 99.5,
+     "Hold": 98.4,
+     "TA": 98.1,
+     "BaseAcc": 99.7,
+     "Tie": 1.8,
+     "PresHold": 99.5,
+     "n": 1000
+    }
+   }
+  }
+ ]
+}

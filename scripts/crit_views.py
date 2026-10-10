@@ -1,6 +1,6 @@
 """Criterion views (STAGE2_SPEC section 5): identical records with rule_text replaced and the iid suffixed @<cond>.
   python scripts/crit_views.py --set rule_v1/test_L2 --cond none|wrong [--data scratch/rv1] [--out data]
-Handlers: rule_v1 (controls of the rule tier; C1). Other tiers add a handler here.
+Handlers: rule_v1 (controls of the rule tier; C1), mcv_v1 (C3), kb_v1 (C4).
   none   rule text removed ('').
   wrong  the rule text of another rule of the same set, the same for every case and claim of a group: drawn with
          random.Random('<SEED>|<tid>') from the sorted texts of other rules that mention none of the group's claims
@@ -37,7 +37,41 @@ def rule_v1(recs, cond):
     return out
 
 
-HANDLERS = {"rule_v1": rule_v1}
+def mcv_v1(recs, cond):
+    """MedCalc-V: none = no score text (the claim still names the score); wrong = the definition of another score,
+    one per score: random.Random('<SEED>|<score id>') over the sorted definitions of the other scores."""
+    tids = {r["tid"]: r["rid"] for r in recs}
+    if cond == "none":
+        return {t: ("", "score text removed") for t in tids}
+    text = {}
+    for r in recs:
+        text.setdefault(r["rid"], r["rule_text"])
+    other = {}
+    for rid in sorted(text):
+        c = random.Random(f"{SEED}|{rid}").choice(sorted(k for k in text if k != rid and text[k] != text[rid]))
+        other[rid] = (text[c], f"score text of {c}")
+    return {t: other[rid] for t, rid in tids.items()}
+
+
+def kb_v1(recs, cond):
+    """Derived criterion (kb_v1): none = no lists; wrong = lists exchanged: the headings of the two exclusive
+    lists ('Findings listed for <diagnosis> only:') swap places, so each list stands under the other diagnosis."""
+    out = {}
+    for r in recs:
+        if r["tid"] in out:
+            continue
+        if cond == "none":
+            out[r["tid"]] = ("", "criterion text removed")
+            continue
+        L = r["rule_text"].split("\n")
+        h = [i for i, x in enumerate(L) if x.startswith("Findings listed for ") and x.endswith(" only:")]
+        assert len(h) == 2, r["tid"]
+        L[h[0]], L[h[1]] = L[h[1]], L[h[0]]
+        out[r["tid"]] = ("\n".join(L), "exclusive lists exchanged")
+    return out
+
+
+HANDLERS = {"rule_v1": rule_v1, "mcv_v1": mcv_v1, "kb_v1": kb_v1}
 
 
 def main():
@@ -55,7 +89,7 @@ def main():
     for r in recs:
         text, prov = new[r["tid"]]
         out.append(r | {"iid": f"{r['iid']}@{a.cond}", "rule_text": text,
-                        "crit": {"source": a.cond, "provenance": prov, "text_sha": sha(text)}, "cluster": r["rid"]})
+                        "crit": {"source": a.cond, "provenance": prov, "text_sha": sha(text)}, "cluster": r.get("cluster", r["rid"])})
     d = f"{a.out}/views/{name}"
     os.makedirs(d, exist_ok=True)
     with open(f"{d}/records.jsonl", "w", encoding="utf-8", newline="\n") as f:

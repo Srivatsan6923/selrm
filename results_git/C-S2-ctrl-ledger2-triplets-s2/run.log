@@ -1,0 +1,38 @@
+2026-10-09T03:15:21Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-ledger2-triplets-s2
+2026-10-09T03:15:22Z token budget per batch: 8000 (generation 24000)
+2026-10-09T03:15:22Z C-S2-ctrl-ledger2-triplets-s2 rule_v1/test_L2@none prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/rule_v1/test_L2@none/reader_ledger.npz', 'exists')
+2026-10-09T03:15:32Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0179)
+2026-10-09T03:15:35Z padding self-check: max |u_batch - u_single| = 0.0531 (tol 0.607) -> left padding
+2026-10-09T03:18:16Z generate: batch 25/203, 32842 tokens, 204 tok/s
+2026-10-09T03:20:57Z generate: batch 50/203, 66849 tokens, 208 tok/s
+2026-10-09T03:24:00Z generate: batch 75/203, 102547 tokens, 203 tok/s
+2026-10-09T03:27:14Z generate: batch 100/203, 141027 tokens, 202 tok/s
+2026-10-09T03:30:39Z generate: batch 125/203, 186731 tokens, 207 tok/s
+2026-10-09T03:33:41Z generate: batch 150/203, 220007 tokens, 203 tok/s
+2026-10-09T03:36:49Z generate: batch 175/203, 247976 tokens, 195 tok/s
+2026-10-09T03:40:17Z generate: batch 200/203, 279163 tokens, 188 tok/s
+2026-10-09T04:00:33Z C-S2-ctrl-ledger2-triplets-s2 rule_v1/test_L2@none: TA 41.8 Rev 47.5 Hold 69.8 n=2000 (2710.1 s)
+2026-10-09T04:00:34Z C-S2-ctrl-ledger2-triplets-s2 rule_v1/test_L2@wrong prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/rule_v1/test_L2@wrong/reader_ledger.npz', 'exists')
+2026-10-09T04:03:22Z generate: batch 25/227, 30312 tokens, 191 tok/s
+2026-10-09T04:06:21Z generate: batch 50/227, 61658 tokens, 183 tok/s
+2026-10-09T04:09:34Z generate: batch 75/227, 94268 tokens, 177 tok/s
+2026-10-09T04:12:50Z generate: batch 100/227, 127808 tokens, 176 tok/s
+2026-10-09T04:16:16Z generate: batch 125/227, 164183 tokens, 176 tok/s
+2026-10-09T04:19:45Z generate: batch 150/227, 201957 tokens, 177 tok/s
+2026-10-09T04:22:53Z generate: batch 175/227, 227030 tokens, 171 tok/s
+2026-10-09T04:26:13Z generate: batch 200/227, 252394 tokens, 165 tok/s
+2026-10-09T04:29:54Z generate: batch 225/227, 280562 tokens, 160 tok/s
+2026-10-09T05:01:37Z C-S2-ctrl-ledger2-triplets-s2 rule_v1/test_L2@wrong: TA 17.2 Rev 19.1 Hold 64.0 n=2000 (3662.0 s)
+2026-10-09T05:01:38Z C-S2-ctrl-ledger2-triplets-s2 rule_v1/test_L3inv@none prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/rule_v1/test_L3inv@none/reader_ledger.npz', 'exists')
+2026-10-09T05:04:07Z generate: batch 25/101, 33571 tokens, 236 tok/s
+2026-10-09T05:07:02Z generate: batch 50/101, 71976 tokens, 227 tok/s
+2026-10-09T05:10:07Z generate: batch 75/101, 108851 tokens, 217 tok/s
+2026-10-09T05:13:27Z generate: batch 100/101, 138889 tokens, 198 tok/s
+2026-10-09T05:24:16Z C-S2-ctrl-ledger2-triplets-s2 rule_v1/test_L3inv@none: TA 22.4 Rev 29.3 Hold 44.9 n=1000 (1357.0 s)
+2026-10-09T05:24:17Z C-S2-ctrl-ledger2-triplets-s2 rule_v1/test_L3inv@wrong prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/rule_v1/test_L3inv@wrong/reader_ledger.npz', 'exists')
+2026-10-09T05:27:03Z generate: batch 25/109, 32026 tokens, 200 tok/s
+2026-10-09T05:30:19Z generate: batch 50/109, 67736 tokens, 190 tok/s
+2026-10-09T05:33:30Z generate: batch 75/109, 101900 tokens, 186 tok/s
+2026-10-09T05:36:49Z generate: batch 100/109, 128694 tokens, 173 tok/s
+2026-10-09T05:53:22Z C-S2-ctrl-ledger2-triplets-s2 rule_v1/test_L3inv@wrong: TA 9.8 Rev 12.8 Hold 38.8 n=1000 (1744.8 s)
+2026-10-09T05:53:25Z DONE C-S2-ctrl-ledger2-triplets-s2 in 158.8 min, GPU util mean 95.5

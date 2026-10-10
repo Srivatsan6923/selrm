@@ -317,6 +317,9 @@ def value_edits(rows, specs, defs, ranges, units, split="test"):
                     skip("value feeds another item")
                     continue
                 unit = _unit(r["ent"], key)
+                if (r["cid"], key, unit) not in ranges:
+                    skip("input and unit not seen in the training rows")
+                    continue
                 lo, hi = ranges[(r["cid"], key, unit)]
                 ed = value_edit(it, r["ent"], key, lo, hi)
                 if ed is None:

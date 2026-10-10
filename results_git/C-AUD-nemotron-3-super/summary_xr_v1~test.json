@@ -1,0 +1,30 @@
+{
+ "run_id": "C-AUD-nemotron-3-super",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "readout": "logprob",
+ "XA": 19.5,
+ "n_items": 400,
+ "n_incomplete": 0,
+ "n_excluded": 0,
+ "CellAcc": 73.58333333333333,
+ "n_cells": 2400,
+ "cells_without_label": 0,
+ "XA_currency": 18.0,
+ "XA_inclusivity": 23.0,
+ "XA_subject": 14.0,
+ "XA_window": 23.0,
+ "without_known_issues": {
+  "XA": 17.12707182320442,
+  "n_items": 362,
+  "n_incomplete": 0,
+  "n_excluded": 38,
+  "CellAcc": 72.00736648250461,
+  "n_cells": 2172,
+  "cells_without_label": 0,
+  "XA_currency": 11.764705882352942,
+  "XA_inclusivity": 19.48051948051948,
+  "XA_subject": 14.0,
+  "XA_window": 23.0
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "run_id": "C-AUD-gemma-4-31b-choice",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "readout": "choice",
+ "XA": 100.0,
+ "n_items": 400,
+ "n_incomplete": 0,
+ "n_excluded": 0,
+ "CellAcc": 100.0,
+ "n_cells": 2400,
+ "cells_without_label": 0,
+ "XA_currency": 100.0,
+ "XA_inclusivity": 100.0,
+ "XA_subject": 100.0,
+ "XA_window": 100.0,
+ "without_known_issues": {
+  "XA": 100.0,
+  "n_items": 362,
+  "n_incomplete": 0,
+  "n_excluded": 38,
+  "CellAcc": 100.0,
+  "n_cells": 2172,
+  "cells_without_label": 0,
+  "XA_currency": 100.0,
+  "XA_inclusivity": 100.0,
+  "XA_subject": 100.0,
+  "XA_window": 100.0
+ }
+}

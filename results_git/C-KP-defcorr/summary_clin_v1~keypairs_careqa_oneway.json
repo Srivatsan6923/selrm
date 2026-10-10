@@ -1,0 +1,40 @@
+{
+ "run_id": "C-KP-defcorr",
+ "set": "clin_v1/keypairs_careqa_oneway",
+ "Reversal": 81.77777777777777,
+ "CI95": [
+  76.88888888888889,
+  86.22222222222223
+ ],
+ "n_pairs": 225,
+ "q1_acc": 89.77777777777777,
+ "q2_acc": 91.11111111111111,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 86.66666666666667,
+  "2": 77.33333333333333,
+  "3": 81.33333333333333
+ },
+ "Reversal_by_category": {
+  "Biology": 92.6829268292683,
+  "Chemistry": 87.5,
+  "Medicine": 74.4186046511628,
+  "Nursing": 69.6969696969697,
+  "Pharmacology": 83.92857142857143,
+  "Psychology": 82.14285714285714
+ },
+ "n_by_category": {
+  "Biology": 41,
+  "Chemistry": 24,
+  "Medicine": 43,
+  "Nursing": 33,
+  "Pharmacology": 56,
+  "Psychology": 28
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": null
+}

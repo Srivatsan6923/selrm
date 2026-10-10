@@ -1,0 +1,68 @@
+{
+ "patterns": {
+  "verdict": [
+   "\\bthe claim (?:is|was) (?:not )?(?:correct|incorrect|true|false|right|wrong)\\b",
+   "\\banswer\\s*:",
+   "(?:^|\\n)\\s*[+\\-]\\s*$"
+  ],
+  "criterion": [
+   "\\b(?:criterion|condition|requirement)s? (?:is|are|was|were) (?:not )?(?:met|satisfied|fulfilled)\\b",
+   "\\b(?:meets|does not meet|do not meet|fails to meet)\\b",
+   "\\b(?:not )?eligible\\b",
+   "\\bdoes not apply\\b",
+   "\\bapplies\\b",
+   "\\bsatisf(?:ies|y|ied)\\b",
+   "\\bcontradict",
+   "\\bfalls? (?:within|outside)\\b",
+   "\\bwithin the (?:specified |required )?range\\b",
+   "\\bfulfil"
+  ],
+  "action": [
+   "\\btherefore\\b",
+   "\\bthus\\b",
+   "\\bhence\\b",
+   "\\bshould(?: not)?\\b",
+   "\\brecommend",
+   "\\bis indicated\\b",
+   "\\bcontraindicat"
+  ],
+  "compare": [
+   "\\b(?:above|below|greater than|less than|exceeds?|higher than|lower than|at or above|at or below)\\s+\\d"
+  ]
+ },
+ "sets": {
+  "clin_v1/trialgpt_dev": {
+   "units": 213,
+   "condition_removed": true,
+   "decision_language_any": 100.0,
+   "decision_language_verdict": 100.0,
+   "decision_language_criterion": 0.0,
+   "decision_language_action": 0.47,
+   "decision_language_compare": 0.0,
+   "malformed_rate_strict": null,
+   "mean_chars": 141.1
+  },
+  "clin_v1/trialgpt_test": {
+   "units": 801,
+   "condition_removed": true,
+   "decision_language_any": 100.0,
+   "decision_language_verdict": 100.0,
+   "decision_language_criterion": 0.0,
+   "decision_language_action": 0.0,
+   "decision_language_compare": 0.0,
+   "malformed_rate_strict": null,
+   "mean_chars": 138.7
+  },
+  "rule_v1/dev_missing": {
+   "units": 600,
+   "condition_removed": true,
+   "decision_language_any": 100.0,
+   "decision_language_verdict": 100.0,
+   "decision_language_criterion": 0.0,
+   "decision_language_action": 0.0,
+   "decision_language_compare": 0.0,
+   "malformed_rate_strict": null,
+   "mean_chars": 115.6
+  }
+ }
+}

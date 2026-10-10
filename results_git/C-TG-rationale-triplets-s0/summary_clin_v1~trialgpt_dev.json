@@ -1,0 +1,12 @@
+{
+ "run_id": "C-TG-rationale-triplets-s0",
+ "set": "clin_v1/trialgpt_dev",
+ "claim_type": "conclusion",
+ "eval": {
+  "rationale_no_answer": 0,
+  "gen_not_stopped": 0,
+  "seconds": 150.5,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

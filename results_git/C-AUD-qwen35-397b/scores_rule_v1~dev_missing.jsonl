@@ -1,0 +1,1200 @@
+{"iid": "rule_v1.dev.gs027.c3.negation.easy.0/base/conclusion/s", "u": -3.3749999813735485, "top": {"+": -3.4109420776367188, "-": -0.03594209626317024}, "raw": "-"}
+{"iid": "rule_v1.dev.gs027.c3.negation.easy.0/base/conclusion/s_prime", "u": 2.375000037252903, "top": {"+": -0.08996816724538803, "-": -2.464968204498291}, "raw": "+"}
+{"iid": "rule_v1.dev.any_htn.k.time.easy.1/flip/conclusion/s", "u": 3.375000476837158, "top": {"+": -5.629309177398682, "-": -9.00430965423584}, "raw": "-"}
+{"iid": "rule_v1.dev.any_htn.k.time.easy.1/flip/conclusion/s_prime", "u": -2.874999523162842, "top": {"+": -8.37982177734375, "-": -5.504822254180908}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_neutropenia.anc.numeric.easy.2/base/conclusion/s", "u": -1.1250004768371582, "top": {"+": -8.127039909362793, "-": -7.002039432525635}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_neutropenia.anc.numeric.easy.2/base/conclusion/s_prime", "u": 3.875, "top": {"+": -5.008334159851074, "-": -8.883334159851074}, "raw": "-"}
+{"iid": "rule_v1.dev.gs237.c2.negation.easy.3/flip/conclusion/s", "u": 0.5, "top": {"+": -7.382309913635254, "-": -7.882309913635254}, "raw": "-"}
+{"iid": "rule_v1.dev.gs237.c2.negation.easy.3/flip/conclusion/s_prime", "u": -3.125, "top": {"+": -8.381110191345215, "-": -5.256110191345215}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.easy.4/base/conclusion/s", "u": -1.375, "top": {"+": -7.628101, "-": -6.253101}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.easy.4/base/conclusion/s_prime", "u": 4.249999761581421, "top": {"+": -3.4157893657684326, "-": -7.6657891273498535}, "raw": "-"}
+{"iid": "rule_v1.dev.gs205.c1.subject.easy.5/flip/conclusion/s", "u": 3.937500476837158, "top": {"+": -5.132171154022217, "-": -9.069671630859375}, "raw": "-"}
+{"iid": "rule_v1.dev.gs205.c1.subject.easy.5/flip/conclusion/s_prime", "u": -1.8749995231628418, "top": {"+": -8.12774658203125, "-": -6.252747058868408}, "raw": "+"}
+{"iid": "rule_v1.dev.gs232.c2.negation.easy.6/base/conclusion/s", "u": 4.250000232830644, "top": {"+": -0.0161211546510458, "-": -4.2661213874816895}, "raw": "+"}
+{"iid": "rule_v1.dev.gs232.c2.negation.easy.6/base/conclusion/s_prime", "u": 4.875, "top": {"+": -3.290616, "-": -8.165616}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_nice_step1.age.boundary.easy.7/flip/conclusion/s", "u": 0.0, "top": {"+": null, "-": null}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_nice_step1.age.boundary.easy.7/flip/conclusion/s_prime", "u": -2.625, "top": {"+": -8.005890846252441, "-": -5.380890846252441}, "raw": "+"}
+{"iid": "rule_v1.dev.gs128.c4.negation.long.8/base/conclusion/s", "u": -1.3749999850988388, "top": {"+": -1.6143009662628174, "-": -0.23930098116397855}, "raw": "-"}
+{"iid": "rule_v1.dev.gs128.c4.negation.long.8/base/conclusion/s_prime", "u": -4.000000178813934, "top": {"+": -4.28073263168335, "-": -0.2807324528694153}, "raw": "-"}
+{"iid": "rule_v1.dev.postop_hit.hit.subject.long.9/flip/conclusion/s", "u": 2.125, "top": {"+": -8.627182006835938, "-": -10.752182006835938}, "raw": "-"}
+{"iid": "rule_v1.dev.postop_hit.hit.subject.long.9/flip/conclusion/s_prime", "u": -2.999999523162842, "top": {"+": -9.751681327819824, "-": -6.751681804656982}, "raw": "+"}
+{"iid": "rule_v1.dev.gs008.c1.numeric.easy.10/base/conclusion/s", "u": 2.8749998845160007, "top": {"+": -0.0599282942712307, "-": -2.9349281787872314}, "raw": "+"}
+{"iid": "rule_v1.dev.gs008.c1.numeric.easy.10/base/conclusion/s_prime", "u": 2.625, "top": {"+": -6.252935409545898, "-": -8.877935409545898}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.negation.long.11/flip/conclusion/s", "u": 1.6249995231628418, "top": {"+": -7.626323223114014, "-": -9.251322746276855}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.negation.long.11/flip/conclusion/s_prime", "u": -4.9999994999999995, "top": {"+": -8.289401, "-": -3.2894015}, "raw": "+"}
+{"iid": "rule_v1.dev.gs103.c2.time.superseded.12/base/conclusion/s", "u": -2.875, "top": {"+": -7.387834072113037, "-": -4.512834072113037}, "raw": "+"}
+{"iid": "rule_v1.dev.gs103.c2.time.superseded.12/base/conclusion/s_prime", "u": -5.624999817926437, "top": {"+": -5.630677700042725, "-": -0.005677882116287947}, "raw": "-"}
+{"iid": "rule_v1.dev.gs206.c2.numeric.long.13/flip/conclusion/s", "u": 1.4999997, "top": {"+": -7.5015903, "-": -9.00159}, "raw": "-"}
+{"iid": "rule_v1.dev.gs206.c2.numeric.long.13/flip/conclusion/s_prime", "u": 5.374999997206032, "top": {"+": -0.005320551805198193, "-": -5.3803205490112305}, "raw": "+"}
+{"iid": "rule_v1.dev.gs215.c1.boundary.long.14/base/conclusion/s", "u": 0.0, "top": {"+": null, "-": null}, "raw": "+"}
+{"iid": "rule_v1.dev.gs215.c1.boundary.long.14/base/conclusion/s_prime", "u": 4.687499523162842, "top": {"+": -4.759822368621826, "-": -9.447321891784668}, "raw": "-"}
+{"iid": "rule_v1.dev.gs046.c2.numeric.easy.15/flip/conclusion/s", "u": 5.4375, "top": {"+": -4.63590145111084, "-": -10.07340145111084}, "raw": "-"}
+{"iid": "rule_v1.dev.gs046.c2.numeric.easy.15/flip/conclusion/s_prime", "u": -0.9999995231628418, "top": {"+": -8.001656532287598, "-": -7.001657009124756}, "raw": "+"}
+{"iid": "rule_v1.dev.gs218.c2.numeric.long.16/base/conclusion/s", "u": -3.625, "top": {"+": -8.01424789428711, "-": -4.389247894287109}, "raw": "+"}
+{"iid": "rule_v1.dev.gs218.c2.numeric.long.16/base/conclusion/s_prime", "u": -5.124999873805791, "top": {"+": -5.131560802459717, "-": -0.006560928653925657}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_perc.vte.negation.long.17/flip/conclusion/s", "u": -7.375000040978193, "top": {"+": -7.377201557159424, "-": -0.002201516181230545}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_perc.vte.negation.long.17/flip/conclusion/s_prime", "u": -3.3750004768371564, "top": {"+": -9.129143714904783, "-": -5.754143238067627}, "raw": "+"}
+{"iid": "rule_v1.dev.gs168.c3.subject.easy.18/base/conclusion/s", "u": -3.5000001043081284, "top": {"+": -3.53222918510437, "-": -0.03222908079624176}, "raw": "-"}
+{"iid": "rule_v1.dev.gs168.c3.subject.easy.18/base/conclusion/s_prime", "u": -2.2499999329447746, "top": {"+": -2.355393648147583, "-": -0.10539371520280838}, "raw": "-"}
+{"iid": "rule_v1.dev.gs166.c2.numeric.long.19/flip/conclusion/s", "u": -5.999999873805791, "top": {"+": -6.004703521728516, "-": -0.004703647922724485}, "raw": "-"}
+{"iid": "rule_v1.dev.gs166.c2.numeric.long.19/flip/conclusion/s_prime", "u": -0.3750000000000001, "top": {"+": -0.9012501239776612, "-": -0.5262501239776611}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_prasugrel_stroke.stroke.negation.easy.20/base/conclusion/s", "u": -2.499999523162842, "top": {"+": -8.130242347717285, "-": -5.630242824554443}, "raw": "+"}
+{"iid": "rule_v1.dev.c3_prasugrel_stroke.stroke.negation.easy.20/base/conclusion/s_prime", "u": -3.2499998845160007, "top": {"+": -3.2900984287261963, "-": -0.04009854421019554}, "raw": "-"}
+{"iid": "rule_v1.dev.gout_clarith.clarith.subject.long.21/flip/conclusion/s", "u": 0.875, "top": {"+": -9.375834465026855, "-": -10.250834465026855}, "raw": "-"}
+{"iid": "rule_v1.dev.gout_clarith.clarith.subject.long.21/flip/conclusion/s_prime", "u": -0.9999995231628418, "top": {"+": -8.626105308532715, "-": -7.626105785369873}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_khorana.hgb.boundary.long.22/base/conclusion/s", "u": -5.874999761581421, "top": {"+": -9.045092582702637, "-": -3.170092821121216}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_khorana.hgb.boundary.long.22/base/conclusion/s_prime", "u": -7.749999801861122, "top": {"+": -7.751016616821289, "-": -0.001016814960166812}, "raw": "-"}
+{"iid": "rule_v1.dev.gs145.c3.numeric.easy.23/flip/conclusion/s", "u": -5.3749997755512595, "top": {"+": -5.381342887878418, "-": -0.006343112327158451}, "raw": "-"}
+{"iid": "rule_v1.dev.gs145.c3.numeric.easy.23/flip/conclusion/s_prime", "u": -4.125000476837158, "top": {"+": -9.132473945617676, "-": -5.007473468780518}, "raw": "+"}
+{"iid": "rule_v1.dev.gs062.c1.boundary.easy.24/base/conclusion/s", "u": -2.375, "top": {"+": -7.756589889526367, "-": -5.381589889526367}, "raw": "+"}
+{"iid": "rule_v1.dev.gs062.c1.boundary.easy.24/base/conclusion/s_prime", "u": 5.062499523162842, "top": {"+": -4.512963771820068, "-": -9.57546329498291}, "raw": "-"}
+{"iid": "rule_v1.dev.gs041.c3.boundary.long.25/flip/conclusion/s", "u": -5.750000035390258, "top": {"+": -5.769469738006592, "-": -0.01946970261633396}, "raw": "-"}
+{"iid": "rule_v1.dev.gs041.c3.boundary.long.25/flip/conclusion/s_prime", "u": 0.75, "top": {"+": -0.4049186706542969, "-": -1.1549186706542969}, "raw": "+"}
+{"iid": "rule_v1.dev.gs154.c2.boundary.long.26/base/conclusion/s", "u": -3.999999523162842, "top": {"+": -8.759968757629395, "-": -4.759969234466553}, "raw": "+"}
+{"iid": "rule_v1.dev.gs154.c2.boundary.long.26/base/conclusion/s_prime", "u": -6.12500017369166, "top": {"+": -6.128466606140137, "-": -0.003466432448476553}, "raw": "-"}
+{"iid": "rule_v1.dev.gs061.c2.time.easy.27/flip/conclusion/s", "u": 3.500000476837158, "top": {"+": -5.256751537322998, "-": -8.756752014160156}, "raw": "-"}
+{"iid": "rule_v1.dev.gs061.c2.time.easy.27/flip/conclusion/s_prime", "u": -3.125, "top": {"+": -8.505375862121582, "-": -5.380375862121582}, "raw": "+"}
+{"iid": "rule_v1.dev.gs214.c1.time.long.28/base/conclusion/s", "u": 1.6250000596046448, "top": {"+": -0.18286603689193728, "-": -1.807866096496582}, "raw": "+"}
+{"iid": "rule_v1.dev.gs214.c1.time.long.28/base/conclusion/s_prime", "u": -4.999999975785613, "top": {"+": -5.007829666137695, "-": -0.007829690352082253}, "raw": "-"}
+{"iid": "rule_v1.dev.htn_pregnancy.pregnancy.time.easy.29/flip/conclusion/s", "u": 0.9375, "top": {"+": -6.753591060638428, "-": -7.691091060638428}, "raw": "-"}
+{"iid": "rule_v1.dev.htn_pregnancy.pregnancy.time.easy.29/flip/conclusion/s_prime", "u": -0.4999995231628418, "top": {"+": -8.251823425292969, "-": -7.751823902130127}, "raw": "+"}
+{"iid": "rule_v1.dev.wells_dvt.calf.numeric.easy.30/base/conclusion/s", "u": -6.499999523162842, "top": {"+": -8.966485023498535, "-": -2.466485500335694}, "raw": "+"}
+{"iid": "rule_v1.dev.wells_dvt.calf.numeric.easy.30/base/conclusion/s_prime", "u": 3.937500476837158, "top": {"+": -6.128284931182861, "-": -10.06578540802002}, "raw": "-"}
+{"iid": "rule_v1.dev.gs243.c4.boundary.easy.31/flip/conclusion/s", "u": -5.249999860301614, "top": {"+": -5.261653423309326, "-": -0.011653563007712364}, "raw": "-"}
+{"iid": "rule_v1.dev.gs243.c4.boundary.easy.31/flip/conclusion/s_prime", "u": 2.125, "top": {"+": -0.11652541160583496, "-": -2.241525411605835}, "raw": "+"}
+{"iid": "rule_v1.dev.gs000.c3.time.easy.32/base/conclusion/s", "u": -1.8749999552965164, "top": {"+": -2.038933277130127, "-": -0.1639333218336105}, "raw": "-"}
+{"iid": "rule_v1.dev.gs000.c3.time.easy.32/base/conclusion/s_prime", "u": -1.9999998807907104, "top": {"+": -2.135301113128662, "-": -0.13530123233795166}, "raw": "-"}
+{"iid": "rule_v1.dev.gs013.c1.numeric.easy.33/flip/conclusion/s", "u": 2.375, "top": {"+": -6.377732276916504, "-": -8.752732276916504}, "raw": "-"}
+{"iid": "rule_v1.dev.gs013.c1.numeric.easy.33/flip/conclusion/s_prime", "u": -0.625, "top": {"+": -7.751788139343262, "-": -7.126788139343262}, "raw": "+"}
+{"iid": "rule_v1.dev.gs226.c1.negation.long.34/base/conclusion/s", "u": -2.625, "top": {"+": -8.877856254577637, "-": -6.252856254577637}, "raw": "+"}
+{"iid": "rule_v1.dev.gs226.c1.negation.long.34/base/conclusion/s_prime", "u": 3.499999523162842, "top": {"+": -5.132153034210205, "-": -8.632152557373047}, "raw": "-"}
+{"iid": "rule_v1.dev.gs043.c1.time.easy.35/flip/conclusion/s", "u": 5.0, "top": {"+": -3.410508155822754, "-": -8.410508155822754}, "raw": "-"}
+{"iid": "rule_v1.dev.gs043.c1.time.easy.35/flip/conclusion/s_prime", "u": -1.25, "top": {"+": -7.877159595489502, "-": -6.627159595489502}, "raw": "+"}
+{"iid": "rule_v1.dev.gs177.c3.boundary.long.36/base/conclusion/s", "u": 0.5000000298023224, "top": {"+": -0.4888566434383392, "-": -0.9888566732406616}, "raw": "+"}
+{"iid": "rule_v1.dev.gs177.c3.boundary.long.36/base/conclusion/s_prime", "u": -5.1249999376013875, "top": {"+": -5.135859966278076, "-": -0.010860028676688673}, "raw": "-"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.long.37/flip/conclusion/s", "u": 0.875, "top": {"+": -9.250676155090332, "-": -10.125676155090332}, "raw": "-"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.long.37/flip/conclusion/s_prime", "u": -3.1250000000000018, "top": {"+": -9.252541542053224, "-": -6.127541542053223}, "raw": "+"}
+{"iid": "rule_v1.dev.gs073.c1.time.easy.38/base/conclusion/s", "u": 0.75, "top": {"+": -7.377141952514648, "-": -8.127141952514648}, "raw": "+"}
+{"iid": "rule_v1.dev.gs073.c1.time.easy.38/base/conclusion/s_prime", "u": 2.875, "top": {"+": -4.513983249664307, "-": -7.388983249664307}, "raw": "-"}
+{"iid": "rule_v1.dev.gs116.c2.negation.easy.39/flip/conclusion/s", "u": -3.6249998845160007, "top": {"+": -3.661830425262451, "-": -0.036830540746450424}, "raw": "-"}
+{"iid": "rule_v1.dev.gs116.c2.negation.easy.39/flip/conclusion/s_prime", "u": 0.8749999403953552, "top": {"+": -0.3689866662025452, "-": -1.2439866065979004}, "raw": "+"}
+{"iid": "rule_v1.dev.gs145.c3.boundary.easy.40/base/conclusion/s", "u": -1.6250000298023222, "top": {"+": -1.8091330528259275, "-": -0.18413302302360535}, "raw": "-"}
+{"iid": "rule_v1.dev.gs145.c3.boundary.easy.40/base/conclusion/s_prime", "u": 4.375000476837158, "top": {"+": -4.389718532562256, "-": -8.764719009399414}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.negation.easy.41/flip/conclusion/s", "u": 2.1250000000000018, "top": {"+": -7.126555442810059, "-": -9.25155544281006}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.negation.easy.41/flip/conclusion/s_prime", "u": -3.75, "top": {"+": -9.254595756530762, "-": -5.504595756530762}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_abscess_mtx.mtx.subject.easy.42/base/conclusion/s", "u": -1.625, "top": {"+": -7.381033897399902, "-": -5.756033897399902}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_abscess_mtx.mtx.subject.easy.42/base/conclusion/s_prime", "u": -6.250000161817297, "top": {"+": -6.253727912902832, "-": -0.003727751085534692}, "raw": "-"}
+{"iid": "rule_v1.dev.gs153.c1.subject.easy.43/flip/conclusion/s", "u": -4.125000091269612, "top": {"+": -4.143017292022705, "-": -0.01801720075309277}, "raw": "-"}
+{"iid": "rule_v1.dev.gs153.c1.subject.easy.43/flip/conclusion/s_prime", "u": 4.624999911524355, "top": {"+": -0.010659306310117245, "-": -4.635659217834473}, "raw": "+"}
+{"iid": "rule_v1.dev.gs063.c1.time.easy.44/base/conclusion/s", "u": -1.125, "top": {"+": -7.379689693450928, "-": -6.254689693450928}, "raw": "+"}
+{"iid": "rule_v1.dev.gs063.c1.time.easy.44/base/conclusion/s_prime", "u": 0.2499995231628418, "top": {"+": -7.877119541168213, "-": -8.127119064331055}, "raw": "-"}
+{"iid": "rule_v1.dev.gs182.c2.boundary.easy.45/flip/conclusion/s", "u": 2.749999523162842, "top": {"+": -5.506703853607178, "-": -8.25670337677002}, "raw": "-"}
+{"iid": "rule_v1.dev.gs182.c2.boundary.easy.45/flip/conclusion/s_prime", "u": -2.0, "top": {"+": -7.629561901092529, "-": -5.629561901092529}, "raw": "+"}
+{"iid": "rule_v1.dev.pain_ulcer.ulcer.subject.long.46/base/conclusion/s", "u": 4.499999796971679, "top": {"+": -0.012194836512207983, "-": -4.512194633483887}, "raw": "+"}
+{"iid": "rule_v1.dev.pain_ulcer.ulcer.subject.long.46/base/conclusion/s_prime", "u": -4.499999953433871, "top": {"+": -4.512390613555908, "-": -0.012390660122036934}, "raw": "-"}
+{"iid": "rule_v1.dev.gs046.c2.boundary.easy.47/flip/conclusion/s", "u": 4.062500476837158, "top": {"+": -4.8840460777282715, "-": -8.94654655456543}, "raw": "-"}
+{"iid": "rule_v1.dev.gs046.c2.boundary.easy.47/flip/conclusion/s_prime", "u": -1.125, "top": {"+": -7.378258228302002, "-": -6.253258228302002}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_hemorr2hages.aspirin.time.easy.48/base/conclusion/s", "u": -0.7499999701976776, "top": {"+": -1.1430491209030151, "-": -0.3930491507053375}, "raw": "-"}
+{"iid": "rule_v1.dev.s2_hemorr2hages.aspirin.time.easy.48/base/conclusion/s_prime", "u": -5.50000010477379, "top": {"+": -5.5065598487854, "-": -0.006559744011610746}, "raw": "-"}
+{"iid": "rule_v1.dev.gs045.c1.subject.long.49/flip/conclusion/s", "u": -7.124999947031029, "top": {"+": -7.126585960388184, "-": -0.001586013357155025}, "raw": "-"}
+{"iid": "rule_v1.dev.gs045.c1.subject.long.49/flip/conclusion/s_prime", "u": 5.24999984819442, "top": {"+": -0.005888613872230053, "-": -5.25588846206665}, "raw": "+"}
+{"iid": "rule_v1.dev.gs130.c3.negation.easy.50/base/conclusion/s", "u": 4.749999523162842, "top": {"+": -3.774448871612549, "-": -8.52444839477539}, "raw": "-"}
+{"iid": "rule_v1.dev.gs130.c3.negation.easy.50/base/conclusion/s_prime", "u": -5.124999523162842, "top": {"+": -8.899046897888184, "-": -3.774047374725342}, "raw": "+"}
+{"iid": "rule_v1.dev.gs238.c2.time.easy.51/flip/conclusion/s", "u": -5.874999945983291, "top": {"+": -5.880721092224121, "-": -0.0057211462408304214}, "raw": "-"}
+{"iid": "rule_v1.dev.gs238.c2.time.easy.51/flip/conclusion/s_prime", "u": -4.000000476837158, "top": {"+": -8.388718605041504, "-": -4.388718128204346}, "raw": "+"}
+{"iid": "rule_v1.dev.gs135.c1.subject.easy.52/base/conclusion/s", "u": -2.9999998807907104, "top": {"+": -3.0517568588256836, "-": -0.051756978034973145}, "raw": "-"}
+{"iid": "rule_v1.dev.gs135.c1.subject.easy.52/base/conclusion/s_prime", "u": -0.5, "top": {"+": -0.979867160320282, "-": -0.479867160320282}, "raw": "-"}
+{"iid": "rule_v1.dev.c2_pcp_sulfa.sulfa.time.long.53/flip/conclusion/s", "u": 2.0, "top": {"+": -8.250542640686035, "-": -10.250542640686035}, "raw": "-"}
+{"iid": "rule_v1.dev.c2_pcp_sulfa.sulfa.time.long.53/flip/conclusion/s_prime", "u": -3.0, "top": {"+": -8.878302574157715, "-": -5.878302574157715}, "raw": "+"}
+{"iid": "rule_v1.dev.gs070.c1.numeric.long.54/base/conclusion/s", "u": -3.875, "top": {"+": -8.882925033569336, "-": -5.007925033569336}, "raw": "+"}
+{"iid": "rule_v1.dev.gs070.c1.numeric.long.54/base/conclusion/s_prime", "u": 4.375000000000002, "top": {"+": -5.256025314331055, "-": -9.631025314331056}, "raw": "-"}
+{"iid": "rule_v1.dev.gs181.c1.subject.long.55/flip/conclusion/s", "u": -5.874999918276444, "top": {"+": -5.878596305847168, "-": -0.0035963875707238913}, "raw": "-"}
+{"iid": "rule_v1.dev.gs181.c1.subject.long.55/flip/conclusion/s_prime", "u": 4.0000001434236765, "top": {"+": -0.01875243149697781, "-": -4.018752574920654}, "raw": "+"}
+{"iid": "rule_v1.dev.t2d_metformin.egfr.time.long.56/base/conclusion/s", "u": 6.124999951105565, "top": {"+": -0.002952147740870714, "-": -6.1279520988464355}, "raw": "+"}
+{"iid": "rule_v1.dev.t2d_metformin.egfr.time.long.56/base/conclusion/s_prime", "u": 4.874999999999998, "top": {"+": -5.255693435668945, "-": -10.130693435668944}, "raw": "-"}
+{"iid": "rule_v1.dev.gs240.c1.subject.easy.57/flip/conclusion/s", "u": 3.375000476837158, "top": {"+": -5.0088629722595215, "-": -8.38386344909668}, "raw": "-"}
+{"iid": "rule_v1.dev.gs240.c1.subject.easy.57/flip/conclusion/s_prime", "u": 0.3749995231628418, "top": {"+": -7.626224040985107, "-": -8.00122356414795}, "raw": "+"}
+{"iid": "rule_v1.dev.gs042.c2.negation.easy.58/base/conclusion/s", "u": -3.75, "top": {"+": -7.162026882171631, "-": -3.412026882171631}, "raw": "+"}
+{"iid": "rule_v1.dev.gs042.c2.negation.easy.58/base/conclusion/s_prime", "u": 5.125000476837156, "top": {"+": -4.636016368865967, "-": -9.761016845703123}, "raw": "-"}
+{"iid": "rule_v1.dev.gs098.c1.subject.easy.59/flip/conclusion/s", "u": 5.4375, "top": {"+": -4.759897232055664, "-": -10.197397232055664}, "raw": "-"}
+{"iid": "rule_v1.dev.gs098.c1.subject.easy.59/flip/conclusion/s_prime", "u": -5.624999761581421, "top": {"+": -8.914380073547363, "-": -3.2893803119659424}, "raw": "+"}
+{"iid": "rule_v1.dev.gs162.c1.boundary.easy.60/base/conclusion/s", "u": -4.124999761581421, "top": {"+": -7.778634548187256, "-": -3.653634786605835}, "raw": "+"}
+{"iid": "rule_v1.dev.gs162.c1.boundary.easy.60/base/conclusion/s_prime", "u": 4.312500476837158, "top": {"+": -5.007883548736572, "-": -9.32038402557373}, "raw": "-"}
+{"iid": "rule_v1.dev.gs098.c2.subject.easy.61/flip/conclusion/s", "u": 5.0625, "top": {"+": -4.512164115905762, "-": -9.574664115905762}, "raw": "-"}
+{"iid": "rule_v1.dev.gs098.c2.subject.easy.61/flip/conclusion/s_prime", "u": 2.625000037252903, "top": {"+": -0.07314296811819077, "-": -2.6981430053710938}, "raw": "+"}
+{"iid": "rule_v1.dev.gs089.c1.negation.easy.62/base/conclusion/s", "u": -2.875000476837158, "top": {"+": -8.00745964050293, "-": -5.1324591636657715}, "raw": "+"}
+{"iid": "rule_v1.dev.gs089.c1.negation.easy.62/base/conclusion/s_prime", "u": -4.625000228174031, "top": {"+": -4.636038303375244, "-": -0.01103807520121336}, "raw": "-"}
+{"iid": "rule_v1.dev.gs152.c1.negation.long.63/flip/conclusion/s", "u": 2.499999523162842, "top": {"+": -7.001777172088623, "-": -9.501776695251465}, "raw": "-"}
+{"iid": "rule_v1.dev.gs152.c1.negation.long.63/flip/conclusion/s_prime", "u": -4.0, "top": {"+": -8.883626937866211, "-": -4.883626937866211}, "raw": "+"}
+{"iid": "rule_v1.dev.gs133.c1.time.superseded.64/base/conclusion/s", "u": 1.1250000596046448, "top": {"+": -0.28299325704574585, "-": -1.4079933166503906}, "raw": "+"}
+{"iid": "rule_v1.dev.gs133.c1.time.superseded.64/base/conclusion/s_prime", "u": -4.375000157393515, "top": {"+": -4.389011859893799, "-": -0.014011702500283718}, "raw": "-"}
+{"iid": "rule_v1.dev.gs174.c1.numeric.easy.65/flip/conclusion/s", "u": 2.999999999999999, "top": {"+": -4.7608723640441895, "-": -7.760872364044189}, "raw": "-"}
+{"iid": "rule_v1.dev.gs174.c1.numeric.easy.65/flip/conclusion/s_prime", "u": -0.5, "top": {"+": -7.127812385559082, "-": -6.627812385559082}, "raw": "+"}
+{"iid": "rule_v1.dev.gs229.c2.boundary.long.66/base/conclusion/s", "u": 1.3749999701976776, "top": {"+": -0.2284050285816193, "-": -1.6034049987792969}, "raw": "+"}
+{"iid": "rule_v1.dev.gs229.c2.boundary.long.66/base/conclusion/s_prime", "u": -4.125000154599547, "top": {"+": -4.141973972320557, "-": -0.016973817721009254}, "raw": "-"}
+{"iid": "rule_v1.dev.gs028.c1.time.easy.67/flip/conclusion/s", "u": 4.249999761581421, "top": {"+": -3.4111592769622803, "-": -7.661159038543701}, "raw": "-"}
+{"iid": "rule_v1.dev.gs028.c1.time.easy.67/flip/conclusion/s_prime", "u": -3.500000476837158, "top": {"+": -8.012661933898926, "-": -4.512661457061768}, "raw": "+"}
+{"iid": "rule_v1.dev.gs040.c2.boundary.long.68/base/conclusion/s", "u": -4.375, "top": {"+": -8.764019012451172, "-": -4.389019012451172}, "raw": "+"}
+{"iid": "rule_v1.dev.gs040.c2.boundary.long.68/base/conclusion/s_prime", "u": -7.500000132829882, "top": {"+": -7.501302242279053, "-": -0.0013021094491705298}, "raw": "-"}
+{"iid": "rule_v1.dev.gs205.c1.subject.easy.69/flip/conclusion/s", "u": 3.625, "top": {"+": -5.630410194396973, "-": -9.255410194396973}, "raw": "-"}
+{"iid": "rule_v1.dev.gs205.c1.subject.easy.69/flip/conclusion/s_prime", "u": -2.625, "top": {"+": -8.628315925598145, "-": -6.0033159255981445}, "raw": "+"}
+{"iid": "rule_v1.dev.s4_improve_vte.age.boundary.easy.70/base/conclusion/s", "u": -4.000000476837158, "top": {"+": -8.635581970214844, "-": -4.6355814933776855}, "raw": "+"}
+{"iid": "rule_v1.dev.s4_improve_vte.age.boundary.easy.70/base/conclusion/s_prime", "u": 2.687499523162842, "top": {"+": -6.627506732940674, "-": -9.315006256103516}, "raw": "-"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.negation.long.71/flip/conclusion/s", "u": 0.375, "top": {"+": -9.87618637084961, "-": -10.25118637084961}, "raw": "-"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.negation.long.71/flip/conclusion/s_prime", "u": -3.249999523162842, "top": {"+": -9.502699851989746, "-": -6.252700328826904}, "raw": "+"}
+{"iid": "rule_v1.dev.gs152.c1.negation.long.72/base/conclusion/s", "u": -3.25, "top": {"+": -8.506407737731934, "-": -5.256407737731934}, "raw": "+"}
+{"iid": "rule_v1.dev.gs152.c1.negation.long.72/base/conclusion/s_prime", "u": -5.125000073574483, "top": {"+": -5.131555080413818, "-": -0.006555006839334965}, "raw": "-"}
+{"iid": "rule_v1.dev.gs129.c2.numeric.long.73/flip/conclusion/s", "u": 1.8749995231628418, "top": {"+": -7.626588344573975, "-": -9.501587867736816}, "raw": "-"}
+{"iid": "rule_v1.dev.gs129.c2.numeric.long.73/flip/conclusion/s_prime", "u": -2.7499999999999982, "top": {"+": -9.251927375793455, "-": -6.501927375793457}, "raw": "+"}
+{"iid": "rule_v1.dev.gs043.c1.subject.long.74/base/conclusion/s", "u": -0.125, "top": {"+": -0.765348494052887, "-": -0.640348494052887}, "raw": "-"}
+{"iid": "rule_v1.dev.gs043.c1.subject.long.74/base/conclusion/s_prime", "u": 2.749999523162842, "top": {"+": -5.631349086761475, "-": -8.381348609924316}, "raw": "-"}
+{"iid": "rule_v1.dev.gs133.c1.boundary.easy.75/flip/conclusion/s", "u": -4.750000203028321, "top": {"+": -4.7603254318237305, "-": -0.010325228795409204}, "raw": "-"}
+{"iid": "rule_v1.dev.gs133.c1.boundary.easy.75/flip/conclusion/s_prime", "u": -1.875, "top": {"+": -8.002936363220215, "-": -6.127936363220215}, "raw": "+"}
+{"iid": "rule_v1.dev.gs175.c1.negation.easy.76/base/conclusion/s", "u": -2.125, "top": {"+": -7.382168769836426, "-": -5.257168769836426}, "raw": "+"}
+{"iid": "rule_v1.dev.gs175.c1.negation.easy.76/base/conclusion/s_prime", "u": -4.624999958090484, "top": {"+": -4.636641502380371, "-": -0.011641544289886951}, "raw": "-"}
+{"iid": "rule_v1.dev.any_gout.egfr.numeric.easy.77/flip/conclusion/s", "u": 1.4374999999999982, "top": {"+": -8.001993179321289, "-": -9.439493179321287}, "raw": "-"}
+{"iid": "rule_v1.dev.any_gout.egfr.numeric.easy.77/flip/conclusion/s_prime", "u": -0.875, "top": {"+": -7.502539157867432, "-": -6.627539157867432}, "raw": "+"}
+{"iid": "rule_v1.dev.gs231.c1.negation.long.78/base/conclusion/s", "u": -3.625000063329935, "top": {"+": -3.6523942947387695, "-": -0.027394231408834457}, "raw": "-"}
+{"iid": "rule_v1.dev.gs231.c1.negation.long.78/base/conclusion/s_prime", "u": -4.749999945983291, "top": {"+": -4.759829044342041, "-": -0.009829098358750343}, "raw": "-"}
+{"iid": "rule_v1.dev.gs232.c1.boundary.long.79/flip/conclusion/s", "u": 3.87499952316284, "top": {"+": -5.629171848297119, "-": -9.50417137145996}, "raw": "-"}
+{"iid": "rule_v1.dev.gs232.c1.boundary.long.79/flip/conclusion/s_prime", "u": -3.875000476837158, "top": {"+": -8.510650634765625, "-": -4.635650157928467}, "raw": "+"}
+{"iid": "rule_v1.dev.gs095.c2.numeric.easy.80/base/conclusion/s", "u": -3.6250000447034836, "top": {"+": -3.652517795562744, "-": -0.02751775085926056}, "raw": "-"}
+{"iid": "rule_v1.dev.gs095.c2.numeric.easy.80/base/conclusion/s_prime", "u": -6.999999761581421, "top": {"+": -8.057236671447754, "-": -1.057236909866333}, "raw": "+"}
+{"iid": "rule_v1.dev.gs042.c1.negation.easy.81/flip/conclusion/s", "u": 3.375000476837158, "top": {"+": -5.258212566375732, "-": -8.63321304321289}, "raw": "-"}
+{"iid": "rule_v1.dev.gs042.c1.negation.easy.81/flip/conclusion/s_prime", "u": -1.25, "top": {"+": -8.251629829406738, "-": -7.001629829406738}, "raw": "+"}
+{"iid": "rule_v1.dev.gs175.c2.time.superseded.82/base/conclusion/s", "u": -2.875, "top": {"+": -7.389125823974609, "-": -4.514125823974609}, "raw": "+"}
+{"iid": "rule_v1.dev.gs175.c2.time.superseded.82/base/conclusion/s_prime", "u": -6.375000071013346, "top": {"+": -6.378671169281006, "-": -0.003671098267659545}, "raw": "-"}
+{"iid": "rule_v1.dev.gs070.c1.time.long.83/flip/conclusion/s", "u": 2.999999523162842, "top": {"+": -7.126419544219971, "-": -10.126419067382812}, "raw": "-"}
+{"iid": "rule_v1.dev.gs070.c1.time.long.83/flip/conclusion/s_prime", "u": 5.87499989150092, "top": {"+": -0.0032035005278885365, "-": -5.878203392028809}, "raw": "+"}
+{"iid": "rule_v1.dev.gs243.c4.numeric.easy.84/base/conclusion/s", "u": -1.2499999403953552, "top": {"+": -1.523710012435913, "-": -0.27371007204055786}, "raw": "-"}
+{"iid": "rule_v1.dev.gs243.c4.numeric.easy.84/base/conclusion/s_prime", "u": -2.3750000447034836, "top": {"+": -2.4784998893737793, "-": -0.10349984467029572}, "raw": "-"}
+{"iid": "rule_v1.dev.gs172.c2.numeric.long.85/flip/conclusion/s", "u": -8.000000403495505, "top": {"+": -8.000754356384277, "-": -0.0007539528887718916}, "raw": "-"}
+{"iid": "rule_v1.dev.gs172.c2.numeric.long.85/flip/conclusion/s_prime", "u": -2.625, "top": {"+": -8.627914428710938, "-": -6.0029144287109375}, "raw": "+"}
+{"iid": "rule_v1.dev.gs007.c1.subject.easy.86/base/conclusion/s", "u": -4.749999932013452, "top": {"+": -4.760470390319824, "-": -0.010470458306372166}, "raw": "-"}
+{"iid": "rule_v1.dev.gs007.c1.subject.easy.86/base/conclusion/s_prime", "u": 5.1875, "top": {"+": -3.4109, "-": -8.5984}, "raw": "-"}
+{"iid": "rule_v1.dev.gs191.c4.negation.long.87/flip/conclusion/s", "u": -5.249999972060323, "top": {"+": -5.2699456214904785, "-": -0.01994564943015575}, "raw": "-"}
+{"iid": "rule_v1.dev.gs191.c4.negation.long.87/flip/conclusion/s_prime", "u": -0.625, "top": {"+": -1.4749287366867065, "-": -0.8499287366867065}, "raw": "-"}
+{"iid": "rule_v1.dev.gs129.c2.boundary.easy.88/base/conclusion/s", "u": -2.249999523162842, "top": {"+": -8.253684043884277, "-": -6.0036845207214355}, "raw": "+"}
+{"iid": "rule_v1.dev.gs129.c2.boundary.easy.88/base/conclusion/s_prime", "u": 3.8750003, "top": {"+": -3.8971884, "-": -7.7721887}, "raw": "-"}
+{"iid": "rule_v1.dev.gs162.c1.numeric.easy.89/flip/conclusion/s", "u": 5.562499761581423, "top": {"+": -3.531322717666626, "-": -9.093822479248049}, "raw": "-"}
+{"iid": "rule_v1.dev.gs162.c1.numeric.easy.89/flip/conclusion/s_prime", "u": 4.750000030733645, "top": {"+": -0.010468452237546444, "-": -4.760468482971191}, "raw": "+"}
+{"iid": "rule_v1.dev.gs181.c1.negation.easy.90/base/conclusion/s", "u": -2.624999985098839, "top": {"+": -2.697852611541748, "-": -0.07285262644290924}, "raw": "-"}
+{"iid": "rule_v1.dev.gs181.c1.negation.easy.90/base/conclusion/s_prime", "u": 5.374999761581421, "top": {"+": -2.466660261154175, "-": -7.841660022735596}, "raw": "-"}
+{"iid": "rule_v1.dev.gs109.c1.time.easy.91/flip/conclusion/s", "u": 3.499999523162842, "top": {"+": -5.381107807159424, "-": -8.881107330322266}, "raw": "-"}
+{"iid": "rule_v1.dev.gs109.c1.time.easy.91/flip/conclusion/s_prime", "u": 0.0, "top": {"+": null, "-": null}, "raw": "+"}
+{"iid": "rule_v1.dev.gs135.c2.boundary.easy.92/base/conclusion/s", "u": -5.8750002, "top": {"+": -7.7886133, "-": -1.9136131}, "raw": "+"}
+{"iid": "rule_v1.dev.gs135.c2.boundary.easy.92/base/conclusion/s_prime", "u": -4.374999878928065, "top": {"+": -4.390145301818848, "-": -0.015145422890782356}, "raw": "-"}
+{"iid": "rule_v1.dev.gs198.c1.negation.easy.93/flip/conclusion/s", "u": 1.875000074505806, "top": {"+": -0.15318386256694794, "-": -2.028183937072754}, "raw": "+"}
+{"iid": "rule_v1.dev.gs198.c1.negation.easy.93/flip/conclusion/s_prime", "u": -2.749999962747097, "top": {"+": -2.813528060913086, "-": -0.06352809816598892}, "raw": "-"}
+{"iid": "rule_v1.dev.gs062.c1.numeric.easy.94/base/conclusion/s", "u": -2.75, "top": {"+": -7.636318683624268, "-": -4.886318683624268}, "raw": "+"}
+{"iid": "rule_v1.dev.gs062.c1.numeric.easy.94/base/conclusion/s_prime", "u": 3.375, "top": {"+": -4.760483741760254, "-": -8.135483741760254}, "raw": "-"}
+{"iid": "rule_v1.dev.uti_sulfa.sulfa.time.long.95/flip/conclusion/s", "u": 0.875, "top": {"+": -8.501164436340332, "-": -9.376164436340332}, "raw": "-"}
+{"iid": "rule_v1.dev.uti_sulfa.sulfa.time.long.95/flip/conclusion/s_prime", "u": -2.875, "top": {"+": -8.753462791442871, "-": -5.878462791442871}, "raw": "+"}
+{"iid": "rule_v1.dev.gs081.c2.numeric.long.96/base/conclusion/s", "u": -5.0, "top": {"+": -8.896444320678711, "-": -3.896444320678711}, "raw": "+"}
+{"iid": "rule_v1.dev.gs081.c2.numeric.long.96/base/conclusion/s_prime", "u": -4.250000175088644, "top": {"+": -4.265289306640625, "-": -0.015289131551980972}, "raw": "-"}
+{"iid": "rule_v1.dev.gs143.c2.numeric.easy.97/flip/conclusion/s", "u": 6.375000238418579, "top": {"+": -2.128526449203491, "-": -8.50352668762207}, "raw": "-"}
+{"iid": "rule_v1.dev.gs143.c2.numeric.easy.97/flip/conclusion/s_prime", "u": 3.2500000931322575, "top": {"+": -0.04236617311835289, "-": -3.2923662662506104}, "raw": "+"}
+{"iid": "rule_v1.dev.any_gout.ulcer.negation.easy.98/base/conclusion/s", "u": -0.5, "top": {"+": -7.25253963470459, "-": -6.75253963470459}, "raw": "+"}
+{"iid": "rule_v1.dev.any_gout.ulcer.negation.easy.98/base/conclusion/s_prime", "u": 3.5, "top": {"+": -4.637128829956055, "-": -8.137128829956055}, "raw": "-"}
+{"iid": "rule_v1.dev.gs170.c1.subject.long.99/flip/conclusion/s", "u": 1.5, "top": {"+": -8.126088, "-": -9.626088}, "raw": "-"}
+{"iid": "rule_v1.dev.gs170.c1.subject.long.99/flip/conclusion/s_prime", "u": -2.375000476837158, "top": {"+": -9.00171184539795, "-": -6.626711368560791}, "raw": "+"}
+{"iid": "rule_v1.dev.wells_dvt.calf.time.easy.100/base/conclusion/s", "u": -5.000000238418579, "top": {"+": -8.169829368591309, "-": -3.1698291301727295}, "raw": "+"}
+{"iid": "rule_v1.dev.wells_dvt.calf.time.easy.100/base/conclusion/s_prime", "u": 1.5625, "top": {"+": -8.25129222869873, "-": -9.81379222869873}, "raw": "-"}
+{"iid": "rule_v1.dev.gs167.c1.time.easy.101/flip/conclusion/s", "u": 4.0, "top": {"+": -5.505002975463867, "-": -9.505002975463867}, "raw": "-"}
+{"iid": "rule_v1.dev.gs167.c1.time.easy.101/flip/conclusion/s_prime", "u": -1.0, "top": {"+": -8.501324653625488, "-": -7.501324653625488}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.time.superseded.102/base/conclusion/s", "u": 2.624999910593033, "top": {"+": -0.071173757314682, "-": -2.696173667907715}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.time.superseded.102/base/conclusion/s_prime", "u": 0.0, "top": {"+": null, "-": null}, "raw": "-"}
+{"iid": "rule_v1.dev.gs000.c2.subject.easy.103/flip/conclusion/s", "u": -1.7499999701976774, "top": {"+": -1.9170072078704832, "-": -0.1670072376728058}, "raw": "-"}
+{"iid": "rule_v1.dev.gs000.c2.subject.easy.103/flip/conclusion/s_prime", "u": 0.3750000000000001, "top": {"+": -0.5439522862434387, "-": -0.9189522862434388}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_sinus_pen.pen.time.delabelled.104/base/conclusion/s", "u": 7.374999884981662, "top": {"+": -0.004310246091336012, "-": -7.379310131072998}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_sinus_pen.pen.time.delabelled.104/base/conclusion/s_prime", "u": -3.2500000596046448, "top": {"+": -3.292144536972046, "-": -0.04214447736740112}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_perc.spo2.numeric.easy.105/flip/conclusion/s", "u": 6.312500476837158, "top": {"+": -4.020080089569092, "-": -10.33258056640625}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_perc.spo2.numeric.easy.105/flip/conclusion/s_prime", "u": -3.249999523162842, "top": {"+": -9.003819465637207, "-": -5.753819942474365}, "raw": "+"}
+{"iid": "rule_v1.dev.gs129.c1.subject.easy.106/base/conclusion/s", "u": -1.375, "top": {"+": -7.254514217376709, "-": -5.879514217376709}, "raw": "+"}
+{"iid": "rule_v1.dev.gs129.c1.subject.easy.106/base/conclusion/s_prime", "u": 2.875, "top": {"+": -5.25687313079834, "-": -8.13187313079834}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_perc.spo2.boundary.long.107/flip/conclusion/s", "u": -4.875000043999999, "top": {"+": -4.884668, "-": -0.009667956}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_perc.spo2.boundary.long.107/flip/conclusion/s_prime", "u": 4.500000063329935, "top": {"+": -0.0120505653321743, "-": -4.512050628662109}, "raw": "+"}
+{"iid": "rule_v1.dev.s4_improve_vte.vte.negation.easy.108/base/conclusion/s", "u": 2.500000089406967, "top": {"+": -0.08095422387123108, "-": -2.5809543132781982}, "raw": "+"}
+{"iid": "rule_v1.dev.s4_improve_vte.vte.negation.easy.108/base/conclusion/s_prime", "u": -5.875000218860805, "top": {"+": -5.879726409912109, "-": -0.00472619105130434}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_charlson.cr.time.easy.109/flip/conclusion/s", "u": 6.5, "top": {"+": -4.142398834228516, "-": -10.642398834228516}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_charlson.cr.time.easy.109/flip/conclusion/s_prime", "u": -3.625, "top": {"+": -9.005844116210938, "-": -5.3808441162109375}, "raw": "+"}
+{"iid": "rule_v1.dev.gs159.c2.boundary.long.110/base/conclusion/s", "u": -2.5, "top": {"+": -7.632928371429443, "-": -5.132928371429443}, "raw": "+"}
+{"iid": "rule_v1.dev.gs159.c2.boundary.long.110/base/conclusion/s_prime", "u": -5.499999945983291, "top": {"+": -5.504744052886963, "-": -0.004744106903672218}, "raw": "-"}
+{"iid": "rule_v1.dev.gs175.c2.boundary.long.111/flip/conclusion/s", "u": 1.6249995231628418, "top": {"+": -7.376674175262451, "-": -9.001673698425293}, "raw": "-"}
+{"iid": "rule_v1.dev.gs175.c2.boundary.long.111/flip/conclusion/s_prime", "u": -3.1250000000000018, "top": {"+": -9.502166748046877, "-": -6.377166748046875}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_methimazole.alt.time.easy.112/base/conclusion/s", "u": -3.75, "top": {"+": -8.509940147399902, "-": -4.759940147399902}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_methimazole.alt.time.easy.112/base/conclusion/s_prime", "u": 4.624999999999998, "top": {"+": -4.389031410217285, "-": -9.014031410217283}, "raw": "-"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.numeric.easy.113/flip/conclusion/s", "u": 6.125, "top": {"+": -4.020055770874023, "-": -10.145055770874023}, "raw": "-"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.numeric.easy.113/flip/conclusion/s_prime", "u": -1.5, "top": {"+": -8.37736988067627, "-": -6.8773698806762695}, "raw": "+"}
+{"iid": "rule_v1.dev.gs181.c3.time.easy.114/base/conclusion/s", "u": 1.7499999552965162, "top": {"+": -0.1627366989850998, "-": -1.912736654281616}, "raw": "+"}
+{"iid": "rule_v1.dev.gs181.c3.time.easy.114/base/conclusion/s_prime", "u": 4.187499999999998, "top": {"+": -5.007580757141113, "-": -9.195080757141112}, "raw": "-"}
+{"iid": "rule_v1.dev.all_spiro.egfr.boundary.easy.115/flip/conclusion/s", "u": 3.81250047683716, "top": {"+": -6.003189563751221, "-": -9.81569004058838}, "raw": "-"}
+{"iid": "rule_v1.dev.all_spiro.egfr.boundary.easy.115/flip/conclusion/s_prime", "u": -1.75, "top": {"+": -8.376924514770508, "-": -6.626924514770508}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_hemorr2hages.aspirin.time.long.116/base/conclusion/s", "u": -4.875000000000002, "top": {"+": -9.634481430053713, "-": -4.759481430053711}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_hemorr2hages.aspirin.time.long.116/base/conclusion/s_prime", "u": -7.250000073574483, "top": {"+": -7.252161979675293, "-": -0.002161906100809574}, "raw": "-"}
+{"iid": "rule_v1.dev.gs076.c3.time.easy.117/flip/conclusion/s", "u": -6.375000005820766, "top": {"+": -6.377442836761475, "-": -0.002442830940708518}, "raw": "-"}
+{"iid": "rule_v1.dev.gs076.c3.time.easy.117/flip/conclusion/s_prime", "u": -3.000000476837158, "top": {"+": -9.00299072265625, "-": -6.002990245819092}, "raw": "+"}
+{"iid": "rule_v1.dev.all_gastro.aspirin.time.easy.118/base/conclusion/s", "u": -5.25, "top": {"+": -8.182056427001953, "-": -2.932056427001953}, "raw": "+"}
+{"iid": "rule_v1.dev.all_gastro.aspirin.time.easy.118/base/conclusion/s_prime", "u": -6.000000166706741, "top": {"+": -6.003854751586914, "-": -0.0038545848801732063}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_charlson.asthma.negation.long.119/flip/conclusion/s", "u": -4.874999952502549, "top": {"+": -4.884696006774902, "-": -0.00969605427235365}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_charlson.asthma.negation.long.119/flip/conclusion/s_prime", "u": 1.4999999850988388, "top": {"+": -0.21109820902347565, "-": -1.7110981941223145}, "raw": "+"}
+{"iid": "rule_v1.dev.gs208.c1.numeric.easy.120/base/conclusion/s", "u": 2.875000022351742, "top": {"+": -0.05788562446832657, "-": -2.9328856468200684}, "raw": "+"}
+{"iid": "rule_v1.dev.gs208.c1.numeric.easy.120/base/conclusion/s_prime", "u": -5.124999942258, "top": {"+": -5.1329755783081055, "-": -0.007975636050105095}, "raw": "-"}
+{"iid": "rule_v1.dev.gs107.c2.boundary.long.121/flip/conclusion/s", "u": 2.249999523162842, "top": {"+": -6.627604961395264, "-": -8.877604484558105}, "raw": "-"}
+{"iid": "rule_v1.dev.gs107.c2.boundary.long.121/flip/conclusion/s_prime", "u": -2.874999523162842, "top": {"+": -9.002967834472656, "-": -6.1279683113098145}, "raw": "+"}
+{"iid": "rule_v1.dev.gs166.c2.boundary.easy.122/base/conclusion/s", "u": 5.624999761581421, "top": {"+": -3.775908708572388, "-": -9.400908470153809}, "raw": "-"}
+{"iid": "rule_v1.dev.gs166.c2.boundary.easy.122/base/conclusion/s_prime", "u": 6.812500238418579, "top": {"+": -2.2401111125946045, "-": -9.052611351013184}, "raw": "-"}
+{"iid": "rule_v1.dev.gs098.c1.subject.easy.123/flip/conclusion/s", "u": 3.625, "top": {"+": -6.004051208496094, "-": -9.629051208496094}, "raw": "-"}
+{"iid": "rule_v1.dev.gs098.c1.subject.easy.123/flip/conclusion/s_prime", "u": -3.625, "top": {"+": -8.137884140014648, "-": -4.512884140014648}, "raw": "+"}
+{"iid": "rule_v1.dev.gs226.c1.negation.long.124/base/conclusion/s", "u": -2.7500004768371564, "top": {"+": -9.252153396606444, "-": -6.502152919769287}, "raw": "+"}
+{"iid": "rule_v1.dev.gs226.c1.negation.long.124/base/conclusion/s_prime", "u": -7.250000176602043, "top": {"+": -7.251857757568359, "-": -0.0018575809663161635}, "raw": "-"}
+{"iid": "rule_v1.dev.gs121.c2.subject.long.125/flip/conclusion/s", "u": -5.999999955296516, "top": {"+": -6.0035400390625, "-": -0.0035400837659835815}, "raw": "-"}
+{"iid": "rule_v1.dev.gs121.c2.subject.long.125/flip/conclusion/s_prime", "u": -6.749999761581421, "top": {"+": -8.555834770202637, "-": -1.805835008621216}, "raw": "+"}
+{"iid": "rule_v1.dev.ckd_nsaid.egfr.boundary.easy.126/base/conclusion/s", "u": -1.375, "top": {"+": -8.877151489257812, "-": -7.5021514892578125}, "raw": "+"}
+{"iid": "rule_v1.dev.ckd_nsaid.egfr.boundary.easy.126/base/conclusion/s_prime", "u": 3.000000476837158, "top": {"+": -5.506824016571045, "-": -8.506824493408203}, "raw": "-"}
+{"iid": "rule_v1.dev.gs152.c2.time.easy.127/flip/conclusion/s", "u": 3.000000476837158, "top": {"+": -6.253698825836182, "-": -9.25369930267334}, "raw": "-"}
+{"iid": "rule_v1.dev.gs152.c2.time.easy.127/flip/conclusion/s_prime", "u": -2.875000476837158, "top": {"+": -9.003012657165527, "-": -6.128012180328369}, "raw": "+"}
+{"iid": "rule_v1.dev.gs107.c1.subject.long.128/base/conclusion/s", "u": -4.999999523162842, "top": {"+": -8.409783363342285, "-": -3.4097838401794434}, "raw": "+"}
+{"iid": "rule_v1.dev.gs107.c1.subject.long.128/base/conclusion/s_prime", "u": -5.250000020023435, "top": {"+": -5.256017208099365, "-": -0.00601718807592988}, "raw": "-"}
+{"iid": "rule_v1.dev.gs133.c1.numeric.easy.129/flip/conclusion/s", "u": 3.50000047683716, "top": {"+": -5.754720211029053, "-": -9.254720687866213}, "raw": "-"}
+{"iid": "rule_v1.dev.gs133.c1.numeric.easy.129/flip/conclusion/s_prime", "u": -1.5, "top": {"+": -8.002214431762695, "-": -6.502214431762695}, "raw": "+"}
+{"iid": "rule_v1.dev.gs093.c2.time.easy.130/base/conclusion/s", "u": 4.875000027008355, "top": {"+": -0.008684131316840649, "-": -4.883684158325195}, "raw": "+"}
+{"iid": "rule_v1.dev.gs093.c2.time.easy.130/base/conclusion/s_prime", "u": 3.499999523162842, "top": {"+": -5.009063243865967, "-": -8.509062767028809}, "raw": "-"}
+{"iid": "rule_v1.dev.gs232.c2.time.easy.131/flip/conclusion/s", "u": 4.500000476837158, "top": {"+": -4.760256290435791, "-": -9.26025676727295}, "raw": "-"}
+{"iid": "rule_v1.dev.gs232.c2.time.easy.131/flip/conclusion/s_prime", "u": -4.625000238418579, "top": {"+": -8.035168647766113, "-": -3.410168409347534}, "raw": "+"}
+{"iid": "rule_v1.dev.gs026.c1.negation.easy.132/base/conclusion/s", "u": -0.125, "top": {"+": -7.627747058868408, "-": -7.502747058868408}, "raw": "+"}
+{"iid": "rule_v1.dev.gs026.c1.negation.easy.132/base/conclusion/s_prime", "u": 4.374999523162842, "top": {"+": -4.020296573638916, "-": -8.395296096801758}, "raw": "-"}
+{"iid": "rule_v1.dev.gs189.c1.subject.long.133/flip/conclusion/s", "u": -5.749999938998371, "top": {"+": -5.754692077636719, "-": -0.004692138638347387}, "raw": "-"}
+{"iid": "rule_v1.dev.gs189.c1.subject.long.133/flip/conclusion/s_prime", "u": 2.375, "top": {"+": -0.0912773609161377, "-": -2.4662773609161377}, "raw": "+"}
+{"iid": "rule_v1.dev.gs228.c1.subject.easy.134/base/conclusion/s", "u": -6.000000238418579, "top": {"+": -7.912860870361328, "-": -1.912860631942749}, "raw": "+"}
+{"iid": "rule_v1.dev.gs228.c1.subject.easy.134/base/conclusion/s_prime", "u": -3.999999962747097, "top": {"+": -4.019307613372803, "-": -0.01930765062570572}, "raw": "-"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.numeric.easy.135/flip/conclusion/s", "u": 6.500000476837156, "top": {"+": -3.1691536903381348, "-": -9.669154167175291}, "raw": "-"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.numeric.easy.135/flip/conclusion/s_prime", "u": -3.1250000000000018, "top": {"+": -9.377852439880373, "-": -6.252852439880371}, "raw": "+"}
+{"iid": "rule_v1.dev.gs229.c2.numeric.easy.136/base/conclusion/s", "u": 0.9999999701976776, "top": {"+": -0.31725361943244934, "-": -1.317253589630127}, "raw": "+"}
+{"iid": "rule_v1.dev.gs229.c2.numeric.easy.136/base/conclusion/s_prime", "u": 5.562499761581421, "top": {"+": -3.050309419631958, "-": -8.612809181213379}, "raw": "-"}
+{"iid": "rule_v1.dev.af_asthma.asthma.subject.easy.137/flip/conclusion/s", "u": 2.000000476837158, "top": {"+": -6.628048419952393, "-": -8.62804889678955}, "raw": "-"}
+{"iid": "rule_v1.dev.af_asthma.asthma.subject.easy.137/flip/conclusion/s_prime", "u": -2.999999523162842, "top": {"+": -8.504942893981934, "-": -5.504943370819092}, "raw": "+"}
+{"iid": "rule_v1.dev.gs117.c2.boundary.long.138/base/conclusion/s", "u": 3.6250000912696123, "top": {"+": -0.02893104963004589, "-": -3.653931140899658}, "raw": "+"}
+{"iid": "rule_v1.dev.gs117.c2.boundary.long.138/base/conclusion/s_prime", "u": -7.6250001513399175, "top": {"+": -7.626564502716064, "-": -0.001564351376146078}, "raw": "-"}
+{"iid": "rule_v1.dev.gs111.c1.time.long.139/flip/conclusion/s", "u": 2.25, "top": {"+": -6.877144813537598, "-": -9.127144813537598}, "raw": "-"}
+{"iid": "rule_v1.dev.gs111.c1.time.long.139/flip/conclusion/s_prime", "u": -3.625, "top": {"+": -9.129652976989746, "-": -5.504652976989746}, "raw": "+"}
+{"iid": "rule_v1.dev.gs146.c2.boundary.long.140/base/conclusion/s", "u": 2.250000111758709, "top": {"+": -0.10350263863801956, "-": -2.3535027503967285}, "raw": "+"}
+{"iid": "rule_v1.dev.gs146.c2.boundary.long.140/base/conclusion/s_prime", "u": -7.875000149710104, "top": {"+": -7.876221179962158, "-": -0.0012210302520543337}, "raw": "-"}
+{"iid": "rule_v1.dev.gs237.c1.time.easy.141/flip/conclusion/s", "u": 1.9999995231628418, "top": {"+": -6.255394458770752, "-": -8.255393981933594}, "raw": "-"}
+{"iid": "rule_v1.dev.gs237.c1.time.easy.141/flip/conclusion/s_prime", "u": -1.1250004768371582, "top": {"+": -8.126639366149902, "-": -7.001638889312744}, "raw": "+"}
+{"iid": "rule_v1.dev.gs022.c1.time.easy.142/base/conclusion/s", "u": -2.25, "top": {"+": -7.134719371795654, "-": -4.884719371795654}, "raw": "+"}
+{"iid": "rule_v1.dev.gs022.c1.time.easy.142/base/conclusion/s_prime", "u": 4.124999523162842, "top": {"+": -5.505690097808838, "-": -9.63068962097168}, "raw": "-"}
+{"iid": "rule_v1.dev.gs026.c1.subject.easy.143/flip/conclusion/s", "u": 3.874999523162842, "top": {"+": -5.2562127113342285, "-": -9.13121223449707}, "raw": "-"}
+{"iid": "rule_v1.dev.gs026.c1.subject.easy.143/flip/conclusion/s_prime", "u": -1.3750004768371582, "top": {"+": -8.1271333694458, "-": -6.752132892608643}, "raw": "+"}
+{"iid": "rule_v1.dev.gs198.c2.boundary.easy.144/base/conclusion/s", "u": -2.125, "top": {"+": -8.128243446350098, "-": -6.003243446350098}, "raw": "+"}
+{"iid": "rule_v1.dev.gs198.c2.boundary.easy.144/base/conclusion/s_prime", "u": 5.499999523162842, "top": {"+": -3.2889342308044434, "-": -8.788933753967285}, "raw": "-"}
+{"iid": "rule_v1.dev.gs142.c1.numeric.easy.145/flip/conclusion/s", "u": 1.5000000000000009, "top": {"+": -6.0042948722839355, "-": -7.504294872283936}, "raw": "-"}
+{"iid": "rule_v1.dev.gs142.c1.numeric.easy.145/flip/conclusion/s_prime", "u": -1.2500004768371582, "top": {"+": -8.376442909240723, "-": -7.1264424324035645}, "raw": "+"}
+{"iid": "rule_v1.dev.s1_psi.stroke.negation.long.146/base/conclusion/s", "u": 0.6249999701976776, "top": {"+": -0.43408921360969543, "-": -1.059089183807373}, "raw": "+"}
+{"iid": "rule_v1.dev.s1_psi.stroke.negation.long.146/base/conclusion/s_prime", "u": -8.124999701511115, "top": {"+": -8.129067420959473, "-": -0.0040677194483578205}, "raw": "-"}
+{"iid": "rule_v1.dev.gs222.c2.subject.long.147/flip/conclusion/s", "u": -6.375000151339918, "top": {"+": -6.377404689788818, "-": -0.0024045384488999844}, "raw": "-"}
+{"iid": "rule_v1.dev.gs222.c2.subject.long.147/flip/conclusion/s_prime", "u": -3.375000476837158, "top": {"+": -9.004277229309082, "-": -5.629276752471924}, "raw": "+"}
+{"iid": "rule_v1.dev.gs017.c1.numeric.long.148/base/conclusion/s", "u": -3.249999523162842, "top": {"+": -8.381752014160156, "-": -5.1317524909973145}, "raw": "+"}
+{"iid": "rule_v1.dev.gs017.c1.numeric.long.148/base/conclusion/s_prime", "u": -5.750000121537596, "top": {"+": -5.754254341125488, "-": -0.004254219587892294}, "raw": "-"}
+{"iid": "rule_v1.dev.gs117.c2.boundary.easy.149/flip/conclusion/s", "u": 2.5, "top": {"+": -6.253734588623047, "-": -8.753734588623047}, "raw": "-"}
+{"iid": "rule_v1.dev.gs117.c2.boundary.easy.149/flip/conclusion/s_prime", "u": -1.375, "top": {"+": -7.7525763511657715, "-": -6.3775763511657715}, "raw": "+"}
+{"iid": "rule_v1.dev.c3_nice_step1.age.boundary.long.150/base/conclusion/s", "u": -4.499999523162842, "top": {"+": -9.259446144104004, "-": -4.759446620941162}, "raw": "+"}
+{"iid": "rule_v1.dev.c3_nice_step1.age.boundary.long.150/base/conclusion/s_prime", "u": -5.374999960418791, "top": {"+": -5.38106632232666, "-": -0.006066361907869577}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_charlson.cr.boundary.easy.151/flip/conclusion/s", "u": 5.3125, "top": {"+": -4.7603759765625, "-": -10.0728759765625}, "raw": "-"}
+{"iid": "rule_v1.dev.s3_charlson.cr.boundary.easy.151/flip/conclusion/s_prime", "u": -2.750000476837158, "top": {"+": -8.753435134887695, "-": -6.003434658050537}, "raw": "+"}
+{"iid": "rule_v1.dev.c3_cellulitis_sirs.wbc.boundary.long.152/base/conclusion/s", "u": -6.0, "top": {"+": -8.351680755615234, "-": -2.3516807556152344}, "raw": "+"}
+{"iid": "rule_v1.dev.c3_cellulitis_sirs.wbc.boundary.long.152/base/conclusion/s_prime", "u": 4.374999523162842, "top": {"+": -4.883241176605225, "-": -9.258240699768066}, "raw": "-"}
+{"iid": "rule_v1.dev.gs226.c1.subject.easy.153/flip/conclusion/s", "u": 2.374999523162842, "top": {"+": -5.629858493804932, "-": -8.004858016967773}, "raw": "-"}
+{"iid": "rule_v1.dev.gs226.c1.subject.easy.153/flip/conclusion/s_prime", "u": 0.6249995231628418, "top": {"+": -7.626709461212158, "-": -8.251708984375}, "raw": "+"}
+{"iid": "rule_v1.dev.s3_charlson.hf.subject.easy.154/base/conclusion/s", "u": 0.7500000298023224, "top": {"+": -0.39422664046287537, "-": -1.1442266702651978}, "raw": "+"}
+{"iid": "rule_v1.dev.s3_charlson.hf.subject.easy.154/base/conclusion/s_prime", "u": -7.500000086380169, "top": {"+": -7.503475666046143, "-": -0.0034755796659737825}, "raw": "-"}
+{"iid": "rule_v1.dev.rcri.cr.time.easy.155/flip/conclusion/s", "u": 6.749999761581421, "top": {"+": -3.652869462966919, "-": -10.40286922454834}, "raw": "-"}
+{"iid": "rule_v1.dev.rcri.cr.time.easy.155/flip/conclusion/s_prime", "u": -1.8749995231628418, "top": {"+": -9.001411437988281, "-": -7.1264119148254395}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.subject.easy.156/base/conclusion/s", "u": -4.249999761581421, "top": {"+": -7.30251407623291, "-": -3.0525143146514893}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.subject.easy.156/base/conclusion/s_prime", "u": -3.499999932944775, "top": {"+": -3.531868696212769, "-": -0.03186876326799393}, "raw": "-"}
+{"iid": "rule_v1.dev.gs030.c2.negation.long.157/flip/conclusion/s", "u": -6.125000047497451, "top": {"+": -6.129151821136475, "-": -0.004151773639023304}, "raw": "-"}
+{"iid": "rule_v1.dev.gs030.c2.negation.long.157/flip/conclusion/s_prime", "u": -3.749999523162842, "top": {"+": -8.262151718139648, "-": -4.512152194976807}, "raw": "+"}
+{"iid": "rule_v1.dev.gs218.c2.numeric.long.158/base/conclusion/s", "u": -5.625000238418579, "top": {"+": -8.205754280090332, "-": -2.580754041671753}, "raw": "+"}
+{"iid": "rule_v1.dev.gs218.c2.numeric.long.158/base/conclusion/s_prime", "u": 4.5, "top": {"+": -4.883425712585449, "-": -9.38342571258545}, "raw": "-"}
+{"iid": "rule_v1.dev.gs104.c3.negation.long.159/flip/conclusion/s", "u": -4.499999850988388, "top": {"+": -4.516976833343506, "-": -0.016976982355117798}, "raw": "-"}
+{"iid": "rule_v1.dev.gs104.c3.negation.long.159/flip/conclusion/s_prime", "u": 3.500000014901161, "top": {"+": -0.03573392331600189, "-": -3.535733938217163}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_methimazole.alt.boundary.easy.160/base/conclusion/s", "u": -2.749999523162842, "top": {"+": -9.252206802368164, "-": -6.502207279205322}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_methimazole.alt.boundary.easy.160/base/conclusion/s_prime", "u": 6.0, "top": {"+": -4.020197868347168, "-": -10.020197868347168}, "raw": "-"}
+{"iid": "rule_v1.dev.gs085.c1.negation.long.161/flip/conclusion/s", "u": -9.375000102911146, "top": {"+": -9.376076698303224, "-": -0.0010765953920781612}, "raw": "-"}
+{"iid": "rule_v1.dev.gs085.c1.negation.long.161/flip/conclusion/s_prime", "u": 5.375000080559403, "top": {"+": -0.005359092261642218, "-": -5.380359172821045}, "raw": "+"}
+{"iid": "rule_v1.dev.s4_apache.hr.numeric.easy.162/base/conclusion/s", "u": -5.750000476837156, "top": {"+": -9.402140617370604, "-": -3.6521401405334473}, "raw": "+"}
+{"iid": "rule_v1.dev.s4_apache.hr.numeric.easy.162/base/conclusion/s_prime", "u": -7.374999812687748, "top": {"+": -7.376137256622315, "-": -0.0011374439345672729}, "raw": "-"}
+{"iid": "rule_v1.dev.gs204.c1.numeric.long.163/flip/conclusion/s", "u": 1.3749995231628418, "top": {"+": -7.3770222663879395, "-": -8.752021789550781}, "raw": "-"}
+{"iid": "rule_v1.dev.gs204.c1.numeric.long.163/flip/conclusion/s_prime", "u": -2.3749999999999982, "top": {"+": -9.750904083251951, "-": -7.375904083251953}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_atria_bleed.egfr.boundary.easy.164/base/conclusion/s", "u": -5.0, "top": {"+": -9.01894760131836, "-": -4.018947601318359}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_atria_bleed.egfr.boundary.easy.164/base/conclusion/s_prime", "u": -4.499999922700226, "top": {"+": -4.511648654937744, "-": -0.011648732237517834}, "raw": "-"}
+{"iid": "rule_v1.dev.gs222.c2.negation.easy.165/flip/conclusion/s", "u": 4.687500476837158, "top": {"+": -5.1315436363220215, "-": -9.81904411315918}, "raw": "-"}
+{"iid": "rule_v1.dev.gs222.c2.negation.easy.165/flip/conclusion/s_prime", "u": -0.5, "top": {"+": -8.625654220581055, "-": -8.125654220581055}, "raw": "+"}
+{"iid": "rule_v1.dev.gs128.c1.subject.long.166/base/conclusion/s", "u": -2.750000111758709, "top": {"+": -2.8325250148773193, "-": -0.08252490311861038}, "raw": "-"}
+{"iid": "rule_v1.dev.gs128.c1.subject.long.166/base/conclusion/s_prime", "u": -1.3749999403953552, "top": {"+": -1.6562387943267822, "-": -0.281238853931427}, "raw": "-"}
+{"iid": "rule_v1.dev.gs008.c2.negation.long.167/flip/conclusion/s", "u": -4.875000145286322, "top": {"+": -4.884329795837402, "-": -0.009329650551080704}, "raw": "-"}
+{"iid": "rule_v1.dev.gs008.c2.negation.long.167/flip/conclusion/s_prime", "u": 2.1250001043081284, "top": {"+": -0.11424650251865388, "-": -2.2392466068267822}, "raw": "+"}
+{"iid": "rule_v1.dev.gs027.c2.subject.long.168/base/conclusion/s", "u": -5.49999976484105, "top": {"+": -5.5047807693481445, "-": -0.004781004507094622}, "raw": "-"}
+{"iid": "rule_v1.dev.gs027.c2.subject.long.168/base/conclusion/s_prime", "u": 1.3750000298023224, "top": {"+": -0.228882759809494, "-": -1.6038827896118164}, "raw": "+"}
+{"iid": "rule_v1.dev.two_apixaban.cr.numeric.long.169/flip/conclusion/s", "u": -6.499999865656719, "top": {"+": -6.502384662628174, "-": -0.0023847969714552164}, "raw": "-"}
+{"iid": "rule_v1.dev.two_apixaban.cr.numeric.long.169/flip/conclusion/s_prime", "u": 4.624999985098839, "top": {"+": -0.01106978952884674, "-": -4.6360697746276855}, "raw": "+"}
+{"iid": "rule_v1.dev.gs210.c1.negation.easy.170/base/conclusion/s", "u": -4.125, "top": {"+": -7.657414436340332, "-": -3.532414436340332}, "raw": "+"}
+{"iid": "rule_v1.dev.gs210.c1.negation.easy.170/base/conclusion/s_prime", "u": -2.7499998956918716, "top": {"+": -2.814035654067993, "-": -0.06403575837612152}, "raw": "-"}
+{"iid": "rule_v1.dev.gs143.c1.subject.easy.171/flip/conclusion/s", "u": 4.75, "top": {"+": -3.050027370452881, "-": -7.800027370452881}, "raw": "-"}
+{"iid": "rule_v1.dev.gs143.c1.subject.easy.171/flip/conclusion/s_prime", "u": -2.499999523162842, "top": {"+": -8.129386901855469, "-": -5.629387378692627}, "raw": "+"}
+{"iid": "rule_v1.dev.gs172.c1.boundary.long.172/base/conclusion/s", "u": 3.7499999348074198, "top": {"+": -0.024176424369215965, "-": -3.7741763591766357}, "raw": "+"}
+{"iid": "rule_v1.dev.gs172.c1.boundary.long.172/base/conclusion/s_prime", "u": -5.62500023143366, "top": {"+": -5.6299262046813965, "-": -0.004925973247736692}, "raw": "-"}
+{"iid": "rule_v1.dev.gs030.c2.subject.long.173/flip/conclusion/s", "u": 0.0, "top": {"+": null, "-": null}, "raw": "-"}
+{"iid": "rule_v1.dev.gs030.c2.subject.long.173/flip/conclusion/s_prime", "u": -6.375, "top": {"+": -8.614090919494629, "-": -2.239090919494629}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.easy.174/base/conclusion/s", "u": 5.124999855645001, "top": {"+": -0.0101524842903018, "-": -5.135152339935303}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.easy.174/base/conclusion/s_prime", "u": 4.374999523162842, "top": {"+": -6.003509998321533, "-": -10.378509521484375}, "raw": "-"}
+{"iid": "rule_v1.dev.gs109.c2.boundary.easy.175/flip/conclusion/s", "u": 4.437499523162842, "top": {"+": -4.884127140045166, "-": -9.321626663208008}, "raw": "-"}
+{"iid": "rule_v1.dev.gs109.c2.boundary.easy.175/flip/conclusion/s_prime", "u": -2.625, "top": {"+": -7.881523132324219, "-": -5.256523132324219}, "raw": "+"}
+{"iid": "rule_v1.dev.gs076.c2.time.superseded.176/base/conclusion/s", "u": 0.0, "top": {"+": null, "-": null}, "raw": "+"}
+{"iid": "rule_v1.dev.gs076.c2.time.superseded.176/base/conclusion/s_prime", "u": -5.625, "top": {"+": -7.865345478057861, "-": -2.2403454780578613}, "raw": "+"}
+{"iid": "rule_v1.dev.gs168.c2.negation.long.177/flip/conclusion/s", "u": -5.499999788589776, "top": {"+": -5.511858940124512, "-": -0.011859151534736156}, "raw": "-"}
+{"iid": "rule_v1.dev.gs168.c2.negation.long.177/flip/conclusion/s_prime", "u": 2.6250001192092896, "top": {"+": -0.07476699352264404, "-": -2.6997671127319336}, "raw": "+"}
+{"iid": "rule_v1.dev.gout_clarith.clarith.negation.easy.178/base/conclusion/s", "u": -0.625, "top": {"+": -7.5030694, "-": -6.8780694}, "raw": "+"}
+{"iid": "rule_v1.dev.gout_clarith.clarith.negation.easy.178/base/conclusion/s_prime", "u": -4.375000189989805, "top": {"+": -4.39259147644043, "-": -0.017591286450624466}, "raw": "-"}
+{"iid": "rule_v1.dev.c1_transfusion.hgb.boundary.long.179/flip/conclusion/s", "u": 1.9999995231628418, "top": {"+": -7.751314640045166, "-": -9.751314163208008}, "raw": "-"}
+{"iid": "rule_v1.dev.c1_transfusion.hgb.boundary.long.179/flip/conclusion/s_prime", "u": -3.749999523162842, "top": {"+": -8.757412910461426, "-": -5.007413387298584}, "raw": "+"}
+{"iid": "rule_v1.dev.gs199.c2.negation.easy.180/base/conclusion/s", "u": -3.375000048428774, "top": {"+": -3.410881996154785, "-": -0.035881947726011276}, "raw": "-"}
+{"iid": "rule_v1.dev.gs199.c2.negation.easy.180/base/conclusion/s_prime", "u": 2.124999925494194, "top": {"+": -0.11589796841144562, "-": -2.2408978939056396}, "raw": "+"}
+{"iid": "rule_v1.dev.gs182.c2.numeric.easy.181/flip/conclusion/s", "u": 2.5, "top": {"+": -6.382937431335449, "-": -8.88293743133545}, "raw": "-"}
+{"iid": "rule_v1.dev.gs182.c2.numeric.easy.181/flip/conclusion/s_prime", "u": -3.0, "top": {"+": -7.389406204223633, "-": -4.389406204223633}, "raw": "+"}
+{"iid": "rule_v1.dev.gs012.c1.subject.easy.182/base/conclusion/s", "u": -1.5, "top": {"+": -8.253060340881348, "-": -6.753060340881348}, "raw": "+"}
+{"iid": "rule_v1.dev.gs012.c1.subject.easy.182/base/conclusion/s_prime", "u": 2.375, "top": {"+": -4.7616816, "-": -7.1366816}, "raw": "-"}
+{"iid": "rule_v1.dev.gs226.c1.time.easy.183/flip/conclusion/s", "u": 2.5000006, "top": {"+": -5.8798814, "-": -8.379882}, "raw": "-"}
+{"iid": "rule_v1.dev.gs226.c1.time.easy.183/flip/conclusion/s_prime", "u": -1.0, "top": {"+": -7.877878665924072, "-": -6.877878665924072}, "raw": "+"}
+{"iid": "rule_v1.dev.s1_sofa.plt.numeric.easy.184/base/conclusion/s", "u": 4.250000085681677, "top": {"+": -0.0156807042658329, "-": -4.26568078994751}, "raw": "+"}
+{"iid": "rule_v1.dev.s1_sofa.plt.numeric.easy.184/base/conclusion/s_prime", "u": 1.5, "top": {"+": -6.378025054931641, "-": -7.878025054931641}, "raw": "-"}
+{"iid": "rule_v1.dev.gs102.c2.boundary.easy.185/flip/conclusion/s", "u": -2.9999999962747097, "top": {"+": -3.058590888977051, "-": -0.05859089270234108}, "raw": "-"}
+{"iid": "rule_v1.dev.gs102.c2.boundary.easy.185/flip/conclusion/s_prime", "u": 1.5, "top": {"+": -0.20490622520446777, "-": -1.7049062252044678}, "raw": "+"}
+{"iid": "rule_v1.dev.gs092.c1.numeric.long.186/base/conclusion/s", "u": -3.000000476837158, "top": {"+": -8.878636360168457, "-": -5.878635883331299}, "raw": "+"}
+{"iid": "rule_v1.dev.gs092.c1.numeric.long.186/base/conclusion/s_prime", "u": 3.749999523162842, "top": {"+": -4.759958744049072, "-": -8.509958267211914}, "raw": "-"}
+{"iid": "rule_v1.dev.gs149.c1.numeric.long.187/flip/conclusion/s", "u": 1.625, "top": {"+": -8.875787734985352, "-": -10.500787734985352}, "raw": "-"}
+{"iid": "rule_v1.dev.gs149.c1.numeric.long.187/flip/conclusion/s_prime", "u": -4.500000476837158, "top": {"+": -8.888175010681152, "-": -4.388174533843994}, "raw": "+"}
+{"iid": "rule_v1.dev.gs091.c1.numeric.easy.188/base/conclusion/s", "u": -0.75, "top": {"+": -8.50114631652832, "-": -7.75114631652832}, "raw": "+"}
+{"iid": "rule_v1.dev.gs091.c1.numeric.easy.188/base/conclusion/s_prime", "u": 0.0, "top": {"+": null, "-": null}, "raw": "-"}
+{"iid": "rule_v1.dev.gs101.c1.numeric.easy.189/flip/conclusion/s", "u": 3.937500476837158, "top": {"+": -5.505557537078857, "-": -9.443058013916016}, "raw": "-"}
+{"iid": "rule_v1.dev.gs101.c1.numeric.easy.189/flip/conclusion/s_prime", "u": -3.0, "top": {"+": -7.637485027313232, "-": -4.637485027313232}, "raw": "+"}
+{"iid": "rule_v1.dev.gs102.c2.numeric.long.190/base/conclusion/s", "u": -3.5000000759999996, "top": {"+": -3.5678349, "-": -0.067834824}, "raw": "-"}
+{"iid": "rule_v1.dev.gs102.c2.numeric.long.190/base/conclusion/s_prime", "u": -2.8750000298023224, "top": {"+": -2.9434046745300293, "-": -0.06840464472770691}, "raw": "-"}
+{"iid": "rule_v1.dev.gs143.c1.time.easy.191/flip/conclusion/s", "u": 3.0, "top": {"+": -4.760178565979004, "-": -7.760178565979004}, "raw": "-"}
+{"iid": "rule_v1.dev.gs143.c1.time.easy.191/flip/conclusion/s_prime", "u": -4.0, "top": {"+": -8.019317626953125, "-": -4.019317626953125}, "raw": "+"}
+{"iid": "rule_v1.dev.gs130.c1.subject.easy.192/base/conclusion/s", "u": -4.87499980814755, "top": {"+": -4.883394241333008, "-": -0.008394433185458183}, "raw": "-"}
+{"iid": "rule_v1.dev.gs130.c1.subject.easy.192/base/conclusion/s_prime", "u": -4.374999523162842, "top": {"+": -8.393966674804688, "-": -4.018967151641846}, "raw": "+"}
+{"iid": "rule_v1.dev.gs041.c3.numeric.long.193/flip/conclusion/s", "u": -4.62499999627471, "top": {"+": -4.643057823181152, "-": -0.01805782690644264}, "raw": "-"}
+{"iid": "rule_v1.dev.gs041.c3.numeric.long.193/flip/conclusion/s_prime", "u": 1.3750000447034836, "top": {"+": -0.2407880574464798, "-": -1.6157881021499634}, "raw": "+"}
+{"iid": "rule_v1.dev.gs210.c1.subject.long.194/base/conclusion/s", "u": 2.2499999925494194, "top": {"+": -0.10317636281251907, "-": -2.3531763553619385}, "raw": "+"}
+{"iid": "rule_v1.dev.gs210.c1.subject.long.194/base/conclusion/s_prime", "u": -5.000000113621354, "top": {"+": -5.008829593658447, "-": -0.008829480037093163}, "raw": "-"}
+{"iid": "rule_v1.dev.gs060.c1.time.easy.195/flip/conclusion/s", "u": 2.625000476837158, "top": {"+": -5.754854679107666, "-": -8.379855155944824}, "raw": "-"}
+{"iid": "rule_v1.dev.gs060.c1.time.easy.195/flip/conclusion/s_prime", "u": -0.875, "top": {"+": -7.752364158630371, "-": -6.877364158630371}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_dvt_pregnancy.pregnancy.time.easy.196/base/conclusion/s", "u": -4.624999999999999, "top": {"+": -7.324050903320312, "-": -2.6990509033203125}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_dvt_pregnancy.pregnancy.time.easy.196/base/conclusion/s_prime", "u": 5.000000476837158, "top": {"+": -3.5329203605651855, "-": -8.532920837402344}, "raw": "-"}
+{"iid": "rule_v1.dev.gs141.c1.subject.long.197/flip/conclusion/s", "u": -3.625, "top": {"+": -3.652228355407715, "-": -0.027228355407714844}, "raw": "-"}
+{"iid": "rule_v1.dev.gs141.c1.subject.long.197/flip/conclusion/s_prime", "u": -3.499999523162842, "top": {"+": -8.01226806640625, "-": -4.512268543243408}, "raw": "+"}
+{"iid": "rule_v1.dev.gs007.c1.subject.long.198/base/conclusion/s", "u": 4.1875, "top": {"+": -5.38109016418457, "-": -9.56859016418457}, "raw": "-"}
+{"iid": "rule_v1.dev.gs007.c1.subject.long.198/base/conclusion/s_prime", "u": -4.125, "top": {"+": -7.777340412139893, "-": -3.6523404121398926}, "raw": "+"}
+{"iid": "rule_v1.dev.gs013.c1.boundary.easy.199/flip/conclusion/s", "u": 2.875, "top": {"+": -5.008362770080566, "-": -7.883362770080566}, "raw": "-"}
+{"iid": "rule_v1.dev.gs013.c1.boundary.easy.199/flip/conclusion/s_prime", "u": -1.7500004768371582, "top": {"+": -8.12752914428711, "-": -6.377528667449951}, "raw": "+"}
+{"iid": "rule_v1.dev.pain_ulcer.ulcer.subject.easy.200/base/conclusion/s", "u": -1.5, "top": {"+": -7.132308483123779, "-": -5.632308483123779}, "raw": "+"}
+{"iid": "rule_v1.dev.pain_ulcer.ulcer.subject.easy.200/base/conclusion/s_prime", "u": 4.249999523162842, "top": {"+": -3.780803203582764, "-": -8.030802726745605}, "raw": "-"}
+{"iid": "rule_v1.dev.hasbled.sbp.time.easy.201/flip/conclusion/s", "u": -3.1250000409781933, "top": {"+": -3.1692214012145996, "-": -0.044221360236406326}, "raw": "-"}
+{"iid": "rule_v1.dev.hasbled.sbp.time.easy.201/flip/conclusion/s_prime", "u": -1.875, "top": {"+": -9.875856399536133, "-": -8.000856399536133}, "raw": "+"}
+{"iid": "rule_v1.dev.gs172.c2.numeric.easy.202/base/conclusion/s", "u": 0.25, "top": {"+": -0.5780590772628784, "-": -0.8280590772628784}, "raw": "+"}
+{"iid": "rule_v1.dev.gs172.c2.numeric.easy.202/base/conclusion/s_prime", "u": 3.624999523162842, "top": {"+": -4.388731479644775, "-": -8.013731002807617}, "raw": "-"}
+{"iid": "rule_v1.dev.gs058.c1.numeric.easy.203/flip/conclusion/s", "u": 3.5000000000000018, "top": {"+": -6.503734588623047, "-": -10.003734588623049}, "raw": "-"}
+{"iid": "rule_v1.dev.gs058.c1.numeric.easy.203/flip/conclusion/s_prime", "u": -2.125000476837158, "top": {"+": -8.37769889831543, "-": -6.2526984214782715}, "raw": "+"}
+{"iid": "rule_v1.dev.gs240.c1.subject.easy.204/base/conclusion/s", "u": -2.125, "top": {"+": -7.257920265197754, "-": -5.132920265197754}, "raw": "+"}
+{"iid": "rule_v1.dev.gs240.c1.subject.easy.204/base/conclusion/s_prime", "u": 2.000000476837158, "top": {"+": -6.128748416900635, "-": -8.128748893737793}, "raw": "-"}
+{"iid": "rule_v1.dev.gs119.c2.time.easy.205/flip/conclusion/s", "u": 3.250000476837158, "top": {"+": -6.253764629364014, "-": -9.503765106201172}, "raw": "-"}
+{"iid": "rule_v1.dev.gs119.c2.time.easy.205/flip/conclusion/s_prime", "u": -3.0, "top": {"+": -8.629430770874023, "-": -5.629430770874023}, "raw": "+"}
+{"iid": "rule_v1.dev.gs173.c1.negation.easy.206/base/conclusion/s", "u": -1.125, "top": {"+": -7.37907600402832, "-": -6.25407600402832}, "raw": "+"}
+{"iid": "rule_v1.dev.gs173.c1.negation.easy.206/base/conclusion/s_prime", "u": 4.562500476837158, "top": {"+": -3.8984694480896, "-": -8.460969924926758}, "raw": "-"}
+{"iid": "rule_v1.dev.gs076.c3.boundary.easy.207/flip/conclusion/s", "u": -4.249999826774001, "top": {"+": -4.265008449554443, "-": -0.015008622780442238}, "raw": "-"}
+{"iid": "rule_v1.dev.gs076.c3.boundary.easy.207/flip/conclusion/s_prime", "u": -4.374999523162842, "top": {"+": -9.506461143493652, "-": -5.1314616203308105}, "raw": "+"}
+{"iid": "rule_v1.dev.gs222.c2.time.long.208/base/conclusion/s", "u": -6.25, "top": {"+": -8.60210132598877, "-": -2.3521013259887695}, "raw": "+"}
+{"iid": "rule_v1.dev.gs222.c2.time.long.208/base/conclusion/s_prime", "u": -5.999999980675057, "top": {"+": -6.003267765045166, "-": -0.003267784370109439}, "raw": "-"}
+{"iid": "rule_v1.dev.c1_transfusion.hgb.numeric.easy.209/flip/conclusion/s", "u": 3.062499523162842, "top": {"+": -5.8802170753479, "-": -8.942716598510742}, "raw": "-"}
+{"iid": "rule_v1.dev.c1_transfusion.hgb.numeric.easy.209/flip/conclusion/s_prime", "u": -0.875, "top": {"+": -7.87764310836792, "-": -7.00264310836792}, "raw": "+"}
+{"iid": "rule_v1.dev.gs200.c1.negation.easy.210/base/conclusion/s", "u": -5.5, "top": {"+": -7.73969030380249, "-": -2.2396903038024902}, "raw": "+"}
+{"iid": "rule_v1.dev.gs200.c1.negation.easy.210/base/conclusion/s_prime", "u": 3.75, "top": {"+": -5.256658554077148, "-": -9.006658554077148}, "raw": "-"}
+{"iid": "rule_v1.dev.uti_sulfa.sulfa.negation.long.211/flip/conclusion/s", "u": -0.25, "top": {"+": -8.877326965332031, "-": -8.627326965332031}, "raw": "-"}
+{"iid": "rule_v1.dev.uti_sulfa.sulfa.negation.long.211/flip/conclusion/s_prime", "u": -3.125, "top": {"+": -9.003575325012207, "-": -5.878575325012207}, "raw": "+"}
+{"iid": "rule_v1.dev.gs169.c2.time.easy.212/base/conclusion/s", "u": 1.6249999552965164, "top": {"+": -0.18425588309764865, "-": -1.809255838394165}, "raw": "+"}
+{"iid": "rule_v1.dev.gs169.c2.time.easy.212/base/conclusion/s_prime", "u": -3.000000100582838, "top": {"+": -3.0508782863616943, "-": -0.05087818577885628}, "raw": "-"}
+{"iid": "rule_v1.dev.gs169.c2.time.long.213/flip/conclusion/s", "u": 0.75, "top": {"+": -8.251152038574219, "-": -9.001152038574219}, "raw": "-"}
+{"iid": "rule_v1.dev.gs169.c2.time.long.213/flip/conclusion/s_prime", "u": -4.5, "top": {"+": -9.755701065063477, "-": -5.255701065063477}, "raw": "+"}
+{"iid": "rule_v1.dev.gs212.c1.subject.long.214/base/conclusion/s", "u": -5.0, "top": {"+": -8.774539947509766, "-": -3.7745399475097656}, "raw": "+"}
+{"iid": "rule_v1.dev.gs212.c1.subject.long.214/base/conclusion/s_prime", "u": -8.500000315485522, "top": {"+": -8.501258850097656, "-": -0.001258534612134099}, "raw": "-"}
+{"iid": "rule_v1.dev.gs218.c1.subject.long.215/flip/conclusion/s", "u": 2.875, "top": {"+": -7.8760271072387695, "-": -10.75102710723877}, "raw": "-"}
+{"iid": "rule_v1.dev.gs218.c1.subject.long.215/flip/conclusion/s_prime", "u": -2.625, "top": {"+": -8.005273818969727, "-": -5.380273818969727}, "raw": "+"}
+{"iid": "rule_v1.dev.gs171.c1.negation.easy.216/base/conclusion/s", "u": -4.0, "top": {"+": -7.532719612121582, "-": -3.532719612121582}, "raw": "+"}
+{"iid": "rule_v1.dev.gs171.c1.negation.easy.216/base/conclusion/s_prime", "u": -3.8749999310821295, "top": {"+": -3.898120164871216, "-": -0.023120233789086345}, "raw": "-"}
+{"iid": "rule_v1.dev.postop_hit.hit.negation.long.217/flip/conclusion/s", "u": 1.5, "top": {"+": -8.001250267028809, "-": -9.501250267028809}, "raw": "-"}
+{"iid": "rule_v1.dev.postop_hit.hit.negation.long.217/flip/conclusion/s_prime", "u": -2.750000476837158, "top": {"+": -9.501567840576172, "-": -6.751567363739014}, "raw": "+"}
+{"iid": "rule_v1.dev.gs232.c2.subject.long.218/base/conclusion/s", "u": -0.625, "top": {"+": -1.0561482906341553, "-": -0.4311482906341553}, "raw": "-"}
+{"iid": "rule_v1.dev.gs232.c2.subject.long.218/base/conclusion/s_prime", "u": 4.125, "top": {"+": -4.6357221603393555, "-": -8.760722160339355}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_cellulitis_sirs.wbc.boundary.long.219/flip/conclusion/s", "u": -6.874999804887921, "top": {"+": -6.877033710479736, "-": -0.00203390559181571}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_cellulitis_sirs.wbc.boundary.long.219/flip/conclusion/s_prime", "u": -3.25, "top": {"+": -9.128474235534668, "-": -5.878474235534668}, "raw": "+"}
+{"iid": "rule_v1.dev.gs237.c2.subject.easy.220/base/conclusion/s", "u": -2.875, "top": {"+": -7.635640621185303, "-": -4.760640621185303}, "raw": "+"}
+{"iid": "rule_v1.dev.gs237.c2.subject.easy.220/base/conclusion/s_prime", "u": -2.624999888241291, "top": {"+": -2.6973986625671387, "-": -0.07239877432584763}, "raw": "-"}
+{"iid": "rule_v1.dev.gs198.c1.negation.easy.221/flip/conclusion/s", "u": -0.8749999701976776, "top": {"+": -1.2281137704849243, "-": -0.3531138002872467}, "raw": "-"}
+{"iid": "rule_v1.dev.gs198.c1.negation.easy.221/flip/conclusion/s_prime", "u": -1.749999940395355, "top": {"+": -1.9123549461364744, "-": -0.16235500574111938}, "raw": "-"}
+{"iid": "rule_v1.dev.c1_allopurinol.egfr.boundary.easy.222/base/conclusion/s", "u": -0.625, "top": {"+": -7.752982139587402, "-": -7.127982139587402}, "raw": "+"}
+{"iid": "rule_v1.dev.c1_allopurinol.egfr.boundary.easy.222/base/conclusion/s_prime", "u": 5.000000238418579, "top": {"+": -3.7748944759368896, "-": -8.774894714355469}, "raw": "-"}
+{"iid": "rule_v1.dev.gs193.c2.negation.easy.223/flip/conclusion/s", "u": 3.124999523162842, "top": {"+": -5.880443096160889, "-": -9.00544261932373}, "raw": "-"}
+{"iid": "rule_v1.dev.gs193.c2.negation.easy.223/flip/conclusion/s_prime", "u": -1.375, "top": {"+": -7.877512454986572, "-": -6.502512454986572}, "raw": "+"}
+{"iid": "rule_v1.dev.gs084.c2.time.easy.224/base/conclusion/s", "u": -2.499999910593033, "top": {"+": -2.5815351009368896, "-": -0.08153519034385681}, "raw": "-"}
+{"iid": "rule_v1.dev.gs084.c2.time.easy.224/base/conclusion/s_prime", "u": -4.249999960884452, "top": {"+": -4.265956878662109, "-": -0.01595691777765751}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.subject.easy.225/flip/conclusion/s", "u": 3.750000476837158, "top": {"+": -5.2562432289123535, "-": -9.006243705749512}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.subject.easy.225/flip/conclusion/s_prime", "u": 4.374999997206032, "top": {"+": -0.013588431291282175, "-": -4.3885884284973145}, "raw": "+"}
+{"iid": "rule_v1.dev.gs121.c1.negation.easy.226/base/conclusion/s", "u": 3.374999977648258, "top": {"+": -0.03649785369634628, "-": -3.4114978313446045}, "raw": "+"}
+{"iid": "rule_v1.dev.gs121.c1.negation.easy.226/base/conclusion/s_prime", "u": -4.125000229105353, "top": {"+": -4.144437313079834, "-": -0.01943708397448063}, "raw": "-"}
+{"iid": "rule_v1.dev.migraine_cad.cad.subject.easy.227/flip/conclusion/s", "u": 2.4375, "top": {"+": -6.380636215209961, "-": -8.818136215209961}, "raw": "-"}
+{"iid": "rule_v1.dev.migraine_cad.cad.subject.easy.227/flip/conclusion/s_prime", "u": -0.625, "top": {"+": -7.8767828941345215, "-": -7.2517828941345215}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.negation.long.228/base/conclusion/s", "u": 0.4999999701976777, "top": {"+": -0.4767971336841583, "-": -0.976797103881836}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.negation.long.228/base/conclusion/s_prime", "u": -6.874999946099706, "top": {"+": -6.876427173614502, "-": -0.001427227514795959}, "raw": "-"}
+{"iid": "rule_v1.dev.gs133.c1.numeric.easy.229/flip/conclusion/s", "u": 2.375, "top": {"+": -6.378230094909668, "-": -8.753230094909668}, "raw": "-"}
+{"iid": "rule_v1.dev.gs133.c1.numeric.easy.229/flip/conclusion/s_prime", "u": -3.500000476837158, "top": {"+": -8.75572681427002, "-": -5.255726337432861}, "raw": "+"}
+{"iid": "rule_v1.dev.sirs.temp.numeric.easy.230/base/conclusion/s", "u": -4.374999523162842, "top": {"+": -8.517144203186035, "-": -4.142144680023193}, "raw": "+"}
+{"iid": "rule_v1.dev.sirs.temp.numeric.easy.230/base/conclusion/s_prime", "u": 0.125, "top": {"+": -9.375741004943848, "-": -9.500741004943848}, "raw": "-"}
+{"iid": "rule_v1.dev.gs013.c1.boundary.easy.231/flip/conclusion/s", "u": 1.125, "top": {"+": -6.503228664398193, "-": -7.628228664398193}, "raw": "-"}
+{"iid": "rule_v1.dev.gs013.c1.boundary.easy.231/flip/conclusion/s_prime", "u": -1.125, "top": {"+": -8.12666130065918, "-": -7.00166130065918}, "raw": "+"}
+{"iid": "rule_v1.dev.gs237.c1.negation.easy.232/base/conclusion/s", "u": 4.249999821186066, "top": {"+": -0.01803511381149292, "-": -4.268034934997559}, "raw": "+"}
+{"iid": "rule_v1.dev.gs237.c1.negation.easy.232/base/conclusion/s_prime", "u": -4.000000037252903, "top": {"+": -4.020623683929443, "-": -0.020623646676540375}, "raw": "-"}
+{"iid": "rule_v1.dev.gs166.c3.boundary.easy.233/flip/conclusion/s", "u": -4.249999810010195, "top": {"+": -4.266636848449707, "-": -0.016637038439512253}, "raw": "-"}
+{"iid": "rule_v1.dev.gs166.c3.boundary.easy.233/flip/conclusion/s_prime", "u": -5.0, "top": {"+": -8.774003028869629, "-": -3.774003028869629}, "raw": "+"}
+{"iid": "rule_v1.dev.gs171.c1.subject.long.234/base/conclusion/s", "u": -4.500000238418579, "top": {"+": -8.396439552307129, "-": -3.89643931388855}, "raw": "+"}
+{"iid": "rule_v1.dev.gs171.c1.subject.long.234/base/conclusion/s_prime", "u": -4.1249998938292265, "top": {"+": -4.141951560974121, "-": -0.0169516671448946}, "raw": "-"}
+{"iid": "rule_v1.dev.gs145.c1.subject.long.235/flip/conclusion/s", "u": 2.25, "top": {"+": -6.381982803344727, "-": -8.631982803344727}, "raw": "-"}
+{"iid": "rule_v1.dev.gs145.c1.subject.long.235/flip/conclusion/s_prime", "u": 6.125000238418579, "top": {"+": -3.184092283248902, "-": -9.30909252166748}, "raw": "-"}
+{"iid": "rule_v1.dev.gs093.c2.boundary.easy.236/base/conclusion/s", "u": -4.374999761581421, "top": {"+": -7.545043468475342, "-": -3.170043706893921}, "raw": "+"}
+{"iid": "rule_v1.dev.gs093.c2.boundary.easy.236/base/conclusion/s_prime", "u": -4.999999769963324, "top": {"+": -5.008072376251221, "-": -0.008072606287896633}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_dronedarone_hf.hf.negation.easy.237/flip/conclusion/s", "u": 3.000000476837158, "top": {"+": -6.004810810089111, "-": -9.00481128692627}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_dronedarone_hf.hf.negation.easy.237/flip/conclusion/s_prime", "u": -2.875, "top": {"+": -8.133086204528809, "-": -5.258086204528809}, "raw": "+"}
+{"iid": "rule_v1.dev.vte_platelets.plt.boundary.easy.238/base/conclusion/s", "u": 0.0, "top": {"+": -6.6292572021484375, "-": -6.6292572021484375}, "raw": "+"}
+{"iid": "rule_v1.dev.vte_platelets.plt.boundary.easy.238/base/conclusion/s_prime", "u": 3.75, "top": {"+": -4.021346092224121, "-": -7.771346092224121}, "raw": "-"}
+{"iid": "rule_v1.dev.gs095.c2.numeric.long.239/flip/conclusion/s", "u": -4.125000100582838, "top": {"+": -4.142726898193359, "-": -0.017726797610521317}, "raw": "-"}
+{"iid": "rule_v1.dev.gs095.c2.numeric.long.239/flip/conclusion/s_prime", "u": 4.375000206753612, "top": {"+": -0.013304503634572027, "-": -4.388304710388184}, "raw": "+"}
+{"iid": "rule_v1.dev.gs107.c2.boundary.long.240/base/conclusion/s", "u": 3.250000026077032, "top": {"+": -0.039853546768426895, "-": -3.289853572845459}, "raw": "+"}
+{"iid": "rule_v1.dev.gs107.c2.boundary.long.240/base/conclusion/s_prime", "u": -6.125000071479008, "top": {"+": -6.1279120445251465, "-": -0.002911973046138882}, "raw": "-"}
+{"iid": "rule_v1.dev.gs175.c2.numeric.long.241/flip/conclusion/s", "u": -9.12500002013985, "top": {"+": -9.12647819519043, "-": -0.0014781750505790114}, "raw": "-"}
+{"iid": "rule_v1.dev.gs175.c2.numeric.long.241/flip/conclusion/s_prime", "u": -2.75, "top": {"+": -9.002381324768066, "-": -6.252381324768066}, "raw": "+"}
+{"iid": "rule_v1.dev.gs081.c1.subject.long.242/base/conclusion/s", "u": -5.8749998023267835, "top": {"+": -5.878790378570557, "-": -0.0037905762437731023}, "raw": "-"}
+{"iid": "rule_v1.dev.gs081.c1.subject.long.242/base/conclusion/s_prime", "u": -1.125, "top": {"+": -1.4108490943908691, "-": -0.28584909439086914}, "raw": "-"}
+{"iid": "rule_v1.dev.gs177.c2.numeric.easy.243/flip/conclusion/s", "u": -4.625000029802322, "top": {"+": -4.637975692749023, "-": -0.01297566294670105}, "raw": "-"}
+{"iid": "rule_v1.dev.gs177.c2.numeric.easy.243/flip/conclusion/s_prime", "u": 4.125000201165676, "top": {"+": -0.017638958990573883, "-": -4.14263916015625}, "raw": "+"}
+{"iid": "rule_v1.dev.two_apixaban.cr.time.easy.244/base/conclusion/s", "u": 6.874999761581421, "top": {"+": -1.707343339920044, "-": -8.582343101501465}, "raw": "-"}
+{"iid": "rule_v1.dev.two_apixaban.cr.time.easy.244/base/conclusion/s_prime", "u": 4.625, "top": {"+": -5.505410194396973, "-": -10.130410194396973}, "raw": "-"}
+{"iid": "rule_v1.dev.s4_apache.age.numeric.long.245/flip/conclusion/s", "u": -5.374999781604856, "top": {"+": -5.380997180938721, "-": -0.0059973993338644505}, "raw": "-"}
+{"iid": "rule_v1.dev.s4_apache.age.numeric.long.245/flip/conclusion/s_prime", "u": 4.874999837018549, "top": {"+": -0.00844018068164587, "-": -4.883440017700195}, "raw": "+"}
+{"iid": "rule_v1.dev.gs160.c1.boundary.easy.246/base/conclusion/s", "u": -4.125, "top": {"+": -7.536704063415527, "-": -3.4117040634155273}, "raw": "+"}
+{"iid": "rule_v1.dev.gs160.c1.boundary.easy.246/base/conclusion/s_prime", "u": 2.875, "top": {"+": -5.256804466247559, "-": -8.131804466247559}, "raw": "-"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.boundary.easy.247/flip/conclusion/s", "u": -3.1250000335276127, "top": {"+": -3.169126272201538, "-": -0.0441262386739254}, "raw": "-"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.boundary.easy.247/flip/conclusion/s_prime", "u": -2.125, "top": {"+": -7.754678726196289, "-": -5.629678726196289}, "raw": "+"}
+{"iid": "rule_v1.dev.gs133.c1.time.long.248/base/conclusion/s", "u": 3.749999912455678, "top": {"+": -0.02488598041236401, "-": -3.774885892868042}, "raw": "+"}
+{"iid": "rule_v1.dev.gs133.c1.time.long.248/base/conclusion/s_prime", "u": -8.000000283005647, "top": {"+": -8.001132011413574, "-": -0.0011317284079268577}, "raw": "-"}
+{"iid": "rule_v1.dev.wells_dvt.calf.numeric.long.249/flip/conclusion/s", "u": 5.625000476837158, "top": {"+": -4.019542217254639, "-": -9.644542694091797}, "raw": "-"}
+{"iid": "rule_v1.dev.wells_dvt.calf.numeric.long.249/flip/conclusion/s_prime", "u": -3.374999523162842, "top": {"+": -9.12881088256836, "-": -5.753811359405518}, "raw": "+"}
+{"iid": "rule_v1.dev.gs101.c1.boundary.easy.250/base/conclusion/s", "u": -2.0, "top": {"+": -8.003589630126953, "-": -6.003589630126953}, "raw": "+"}
+{"iid": "rule_v1.dev.gs101.c1.boundary.easy.250/base/conclusion/s_prime", "u": -3.999999813735485, "top": {"+": -4.020096778869629, "-": -0.02009696513414383}, "raw": "-"}
+{"iid": "rule_v1.dev.gs076.c2.time.superseded.251/flip/conclusion/s", "u": -6.000000114785507, "top": {"+": -6.003584861755371, "-": -0.0035847469698637724}, "raw": "-"}
+{"iid": "rule_v1.dev.gs076.c2.time.superseded.251/flip/conclusion/s_prime", "u": -4.874999523162842, "top": {"+": -8.894234657287598, "-": -4.019235134124756}, "raw": "+"}
+{"iid": "rule_v1.dev.c2_dvt_pregnancy.pregnancy.subject.easy.252/base/conclusion/s", "u": -0.3749999999999999, "top": {"+": -0.9030051231384276, "-": -0.5280051231384277}, "raw": "-"}
+{"iid": "rule_v1.dev.c2_dvt_pregnancy.pregnancy.subject.easy.252/base/conclusion/s_prime", "u": 3.25, "top": {"+": -4.39015007019043, "-": -7.64015007019043}, "raw": "-"}
+{"iid": "rule_v1.dev.gs022.c1.boundary.easy.253/flip/conclusion/s", "u": 1.0, "top": {"+": -8.001362800598145, "-": -9.001362800598145}, "raw": "-"}
+{"iid": "rule_v1.dev.gs022.c1.boundary.easy.253/flip/conclusion/s_prime", "u": -0.625, "top": {"+": -7.50234842300415, "-": -6.87734842300415}, "raw": "+"}
+{"iid": "rule_v1.dev.gs174.c1.time.long.254/base/conclusion/s", "u": 3.7500000596046448, "top": {"+": -0.02462071180343628, "-": -3.774620771408081}, "raw": "+"}
+{"iid": "rule_v1.dev.gs174.c1.time.long.254/base/conclusion/s_prime", "u": 3.75, "top": {"+": -5.256373405456543, "-": -9.006373405456543}, "raw": "-"}
+{"iid": "rule_v1.dev.c2_statin_clarith.clarith.subject.long.255/flip/conclusion/s", "u": 2.6874999999999982, "top": {"+": -8.000772476196289, "-": -10.688272476196287}, "raw": "-"}
+{"iid": "rule_v1.dev.c2_statin_clarith.clarith.subject.long.255/flip/conclusion/s_prime", "u": -2.375, "top": {"+": -9.750984191894531, "-": -7.375984191894531}, "raw": "+"}
+{"iid": "rule_v1.dev.gs248.c2.numeric.long.256/base/conclusion/s", "u": -6.499999761581421, "top": {"+": -8.628691673278809, "-": -2.1286919116973877}, "raw": "+"}
+{"iid": "rule_v1.dev.gs248.c2.numeric.long.256/base/conclusion/s_prime", "u": 2.374999523162842, "top": {"+": -6.003815174102783, "-": -8.378814697265625}, "raw": "-"}
+{"iid": "rule_v1.dev.gs026.c1.negation.long.257/flip/conclusion/s", "u": 3.8125000000000018, "top": {"+": -6.877147674560547, "-": -10.689647674560549}, "raw": "-"}
+{"iid": "rule_v1.dev.gs026.c1.negation.long.257/flip/conclusion/s_prime", "u": -2.624999523162842, "top": {"+": -9.37667465209961, "-": -6.751675128936768}, "raw": "+"}
+{"iid": "rule_v1.dev.gs248.c2.numeric.long.258/base/conclusion/s", "u": -5.374999523162842, "top": {"+": -8.071651458740234, "-": -2.6966519355773926}, "raw": "+"}
+{"iid": "rule_v1.dev.gs248.c2.numeric.long.258/base/conclusion/s_prime", "u": 1.8749995231628418, "top": {"+": -7.251366138458252, "-": -9.126365661621094}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_lipid_lpa.cad.negation.long.259/flip/conclusion/s", "u": 2.375000476837158, "top": {"+": -7.8762526512146, "-": -10.251253128051758}, "raw": "-"}
+{"iid": "rule_v1.dev.c3_lipid_lpa.cad.negation.long.259/flip/conclusion/s_prime", "u": -3.375000476837158, "top": {"+": -9.25341510772705, "-": -5.878414630889893}, "raw": "+"}
+{"iid": "rule_v1.dev.gs119.c2.negation.easy.260/base/conclusion/s", "u": -4.25, "top": {"+": -8.269229888916016, "-": -4.019229888916016}, "raw": "+"}
+{"iid": "rule_v1.dev.gs119.c2.negation.easy.260/base/conclusion/s_prime", "u": 5.000000476837158, "top": {"+": -4.2652907371521, "-": -9.265291213989258}, "raw": "-"}
+{"iid": "rule_v1.dev.gs163.c3.numeric.easy.261/flip/conclusion/s", "u": -4.999999778345227, "top": {"+": -5.011231899261475, "-": -0.011232120916247368}, "raw": "-"}
+{"iid": "rule_v1.dev.gs163.c3.numeric.easy.261/flip/conclusion/s_prime", "u": 4.3749997997656465, "top": {"+": -0.014070711098611357, "-": -4.389070510864258}, "raw": "+"}
+{"iid": "rule_v1.dev.gs191.c1.time.easy.262/base/conclusion/s", "u": -3.3749999329447746, "top": {"+": -3.4429826736450195, "-": -0.0679827407002449}, "raw": "-"}
+{"iid": "rule_v1.dev.gs191.c1.time.easy.262/base/conclusion/s_prime", "u": 1.1249999701976776, "top": {"+": -0.3295016586780548, "-": -1.4545016288757324}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.boundary.easy.263/flip/conclusion/s", "u": -3.999999947845936, "top": {"+": -4.018773555755615, "-": -0.018773607909679413}, "raw": "-"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.boundary.easy.263/flip/conclusion/s_prime", "u": -1.875, "top": {"+": -8.751901626586914, "-": -6.876901626586914}, "raw": "+"}
+{"iid": "rule_v1.dev.gs109.c2.boundary.easy.264/base/conclusion/s", "u": -0.75, "top": {"+": -6.630276203155518, "-": -5.880276203155518}, "raw": "+"}
+{"iid": "rule_v1.dev.gs109.c2.boundary.easy.264/base/conclusion/s_prime", "u": 4.0, "top": {"+": -4.883627891540527, "-": -8.883627891540527}, "raw": "-"}
+{"iid": "rule_v1.dev.gs233.c2.subject.long.265/flip/conclusion/s", "u": -5.8750000591389835, "top": {"+": -5.8793230056762695, "-": -0.004322946537286043}, "raw": "-"}
+{"iid": "rule_v1.dev.gs233.c2.subject.long.265/flip/conclusion/s_prime", "u": 3.7500000577419996, "top": {"+": -0.024582328274846077, "-": -3.7745823860168457}, "raw": "+"}
+{"iid": "rule_v1.dev.gs129.c2.boundary.long.266/base/conclusion/s", "u": 3.3749999292194843, "top": {"+": -0.035389017313718796, "-": -3.410388946533203}, "raw": "+"}
+{"iid": "rule_v1.dev.gs129.c2.boundary.long.266/base/conclusion/s_prime", "u": 1.3750004768371582, "top": {"+": -7.00260591506958, "-": -8.377606391906738}, "raw": "-"}
+{"iid": "rule_v1.dev.gs175.c2.time.easy.267/flip/conclusion/s", "u": 3.375000476837158, "top": {"+": -5.75455904006958, "-": -9.129559516906738}, "raw": "-"}
+{"iid": "rule_v1.dev.gs175.c2.time.easy.267/flip/conclusion/s_prime", "u": -2.250000476837158, "top": {"+": -9.00174331665039, "-": -6.751742839813232}, "raw": "+"}
+{"iid": "rule_v1.dev.gs095.c3.subject.easy.268/base/conclusion/s", "u": 5.500000238418579, "top": {"+": -2.8141353130340576, "-": -8.314135551452637}, "raw": "-"}
+{"iid": "rule_v1.dev.gs095.c3.subject.easy.268/base/conclusion/s_prime", "u": 6.812499761581419, "top": {"+": -2.4654381275177, "-": -9.27793788909912}, "raw": "-"}
+{"iid": "rule_v1.dev.gs040.c2.time.easy.269/flip/conclusion/s", "u": 3.250000476837158, "top": {"+": -6.3774027824401855, "-": -9.627403259277344}, "raw": "-"}
+{"iid": "rule_v1.dev.gs040.c2.time.easy.269/flip/conclusion/s_prime", "u": -2.249999523162842, "top": {"+": -8.004045486450195, "-": -5.7540459632873535}, "raw": "+"}
+{"iid": "rule_v1.dev.gs093.c2.numeric.long.270/base/conclusion/s", "u": -4.874999523162842, "top": {"+": -8.893728256225586, "-": -4.018728733062744}, "raw": "+"}
+{"iid": "rule_v1.dev.gs093.c2.numeric.long.270/base/conclusion/s_prime", "u": -6.249999821186066, "top": {"+": -6.252315044403076, "-": -0.002315223217010498}, "raw": "-"}
+{"iid": "rule_v1.dev.gs207.c1.boundary.long.271/flip/conclusion/s", "u": 2.0, "top": {"+": -8.1259126663208, "-": -10.1259126663208}, "raw": "-"}
+{"iid": "rule_v1.dev.gs207.c1.boundary.long.271/flip/conclusion/s_prime", "u": -3.0, "top": {"+": -10.250943183898926, "-": -7.250943183898926}, "raw": "+"}
+{"iid": "rule_v1.dev.all_spiro.k.time.long.272/base/conclusion/s", "u": 1.1249999999999998, "top": {"+": -0.2826787233352661, "-": -1.407678723335266}, "raw": "+"}
+{"iid": "rule_v1.dev.all_spiro.k.time.long.272/base/conclusion/s_prime", "u": -5.875000080326572, "top": {"+": -5.878705978393555, "-": -0.003705898066982627}, "raw": "-"}
+{"iid": "rule_v1.dev.gs102.c2.numeric.easy.273/flip/conclusion/s", "u": -3.124999985098839, "top": {"+": -3.17278790473938, "-": -0.04778791964054108}, "raw": "-"}
+{"iid": "rule_v1.dev.gs102.c2.numeric.easy.273/flip/conclusion/s_prime", "u": 1.8749999105930328, "top": {"+": -0.14462479948997498, "-": -2.019624710083008}, "raw": "+"}
+{"iid": "rule_v1.dev.gs102.c1.negation.easy.274/base/conclusion/s", "u": -3.999999985098839, "top": {"+": -4.022397518157959, "-": -0.022397533059120175}, "raw": "-"}
+{"iid": "rule_v1.dev.gs102.c1.negation.easy.274/base/conclusion/s_prime", "u": 0.3750000000000001, "top": {"+": -0.5286364555358887, "-": -0.9036364555358888}, "raw": "+"}
+{"iid": "rule_v1.dev.any_gout.egfr.numeric.easy.275/flip/conclusion/s", "u": 1.5, "top": {"+": -7.002708435058594, "-": -8.502708435058594}, "raw": "-"}
+{"iid": "rule_v1.dev.any_gout.egfr.numeric.easy.275/flip/conclusion/s_prime", "u": -0.25, "top": {"+": -7.876587867736816, "-": -7.626587867736816}, "raw": "+"}
+{"iid": "rule_v1.dev.gs107.c1.negation.long.276/base/conclusion/s", "u": -5.125000238418579, "top": {"+": -8.17489242553711, "-": -3.0498921871185303}, "raw": "+"}
+{"iid": "rule_v1.dev.gs107.c1.negation.long.276/base/conclusion/s_prime", "u": -5.624999798834324, "top": {"+": -5.6292901039123535, "-": -0.004290305078029633}, "raw": "-"}
+{"iid": "rule_v1.dev.gs214.c2.subject.easy.277/flip/conclusion/s", "u": 2.375000476837158, "top": {"+": -7.376562595367432, "-": -9.75156307220459}, "raw": "-"}
+{"iid": "rule_v1.dev.gs214.c2.subject.easy.277/flip/conclusion/s_prime", "u": -3.750000476837158, "top": {"+": -9.378974914550781, "-": -5.628974437713623}, "raw": "+"}
+{"iid": "rule_v1.dev.gs215.c1.boundary.easy.278/base/conclusion/s", "u": -0.5, "top": {"+": -7.252444267272949, "-": -6.752444267272949}, "raw": "+"}
+{"iid": "rule_v1.dev.gs215.c1.boundary.easy.278/base/conclusion/s_prime", "u": 4.374999523162842, "top": {"+": -4.7593913078308105, "-": -9.134390830993652}, "raw": "-"}
+{"iid": "rule_v1.dev.gs121.c2.negation.long.279/flip/conclusion/s", "u": 2.8749999999999982, "top": {"+": -6.752068519592285, "-": -9.627068519592283}, "raw": "-"}
+{"iid": "rule_v1.dev.gs121.c2.negation.long.279/flip/conclusion/s_prime", "u": -4.0, "top": {"+": -8.388293266296387, "-": -4.388293266296387}, "raw": "+"}
+{"iid": "rule_v1.dev.gs237.c1.time.long.280/base/conclusion/s", "u": 3.8750000521540646, "top": {"+": -0.021727271378040314, "-": -3.896727323532105}, "raw": "+"}
+{"iid": "rule_v1.dev.gs237.c1.time.long.280/base/conclusion/s_prime", "u": 0.0, "top": {"+": null, "-": null}, "raw": "-"}
+{"iid": "rule_v1.dev.sirs.hr.time.superseded.281/flip/conclusion/s", "u": 5.250000476837158, "top": {"+": -3.1689810752868652, "-": -8.418981552124023}, "raw": "-"}
+{"iid": "rule_v1.dev.sirs.hr.time.superseded.281/flip/conclusion/s_prime", "u": -3.125000476837158, "top": {"+": -8.256733894348145, "-": -5.131733417510986}, "raw": "+"}
+{"iid": "rule_v1.dev.gs043.c1.subject.easy.282/base/conclusion/s", "u": -4.375, "top": {"+": -7.425609111785889, "-": -3.0506091117858887}, "raw": "+"}
+{"iid": "rule_v1.dev.gs043.c1.subject.easy.282/base/conclusion/s_prime", "u": 2.999999523162842, "top": {"+": -5.505636692047119, "-": -8.505636215209961}, "raw": "-"}
+{"iid": "rule_v1.dev.gs008.c2.subject.long.283/flip/conclusion/s", "u": -5.3749997853301466, "top": {"+": -5.380566120147705, "-": -0.005566334817558527}, "raw": "-"}
+{"iid": "rule_v1.dev.gs008.c2.subject.long.283/flip/conclusion/s_prime", "u": 3.1250000968575478, "top": {"+": -0.044196270406246185, "-": -3.169196367263794}, "raw": "+"}
+{"iid": "rule_v1.dev.gs015.c1.subject.long.284/base/conclusion/s", "u": -5.375000476837158, "top": {"+": -8.072624206542969, "-": -2.6976237297058105}, "raw": "+"}
+{"iid": "rule_v1.dev.gs015.c1.subject.long.284/base/conclusion/s_prime", "u": -7.999999598308932, "top": {"+": -8.000929832458496, "-": -0.0009302341495640576}, "raw": "-"}
+{"iid": "rule_v1.dev.gs146.c1.boundary.easy.285/flip/conclusion/s", "u": 4.249999523162842, "top": {"+": -4.5127387046813965, "-": -8.762738227844238}, "raw": "-"}
+{"iid": "rule_v1.dev.gs146.c1.boundary.easy.285/flip/conclusion/s_prime", "u": 5.125000073108822, "top": {"+": -0.006959365215152502, "-": -5.131959438323975}, "raw": "+"}
+{"iid": "rule_v1.dev.gs019.c1.negation.easy.286/base/conclusion/s", "u": -3.125, "top": {"+": -7.14550256729126, "-": -4.02050256729126}, "raw": "+"}
+{"iid": "rule_v1.dev.gs019.c1.negation.easy.286/base/conclusion/s_prime", "u": 0.0, "top": {"+": null, "-": null}, "raw": "-"}
+{"iid": "rule_v1.dev.two_apixaban.age.numeric.easy.287/flip/conclusion/s", "u": 2.7499994999999995, "top": {"+": -5.5052605, "-": -8.25526}, "raw": "-"}
+{"iid": "rule_v1.dev.two_apixaban.age.numeric.easy.287/flip/conclusion/s_prime", "u": 5.12499996367842, "top": {"+": -0.008125818334519863, "-": -5.1331257820129395}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_timi_stemi.hr.boundary.long.288/base/conclusion/s", "u": 0.375, "top": {"+": -0.5261090397834778, "-": -0.9011090397834778}, "raw": "+"}
+{"iid": "rule_v1.dev.s2_timi_stemi.hr.boundary.long.288/base/conclusion/s_prime", "u": -7.000000151339918, "top": {"+": -7.002404689788818, "-": -0.0024045384488999844}, "raw": "-"}
+{"iid": "rule_v1.dev.gs172.c1.time.superseded.289/flip/conclusion/s", "u": 0.0, "top": {"+": null, "-": null}, "raw": "-"}
+{"iid": "rule_v1.dev.gs172.c1.time.superseded.289/flip/conclusion/s_prime", "u": 6.0000001806765795, "top": {"+": -0.0037682633846998215, "-": -6.003768444061279}, "raw": "+"}
+{"iid": "rule_v1.dev.gs242.c1.negation.easy.290/base/conclusion/s", "u": -3.25, "top": {"+": -9.253242492675781, "-": -6.003242492675781}, "raw": "+"}
+{"iid": "rule_v1.dev.gs242.c1.negation.easy.290/base/conclusion/s_prime", "u": 4.625, "top": {"+": -3.6539268493652344, "-": -8.278926849365234}, "raw": "-"}
+{"iid": "rule_v1.dev.gs128.c4.subject.easy.291/flip/conclusion/s", "u": -3.6250000298023224, "top": {"+": -3.707799196243286, "-": -0.08279916644096375}, "raw": "-"}
+{"iid": "rule_v1.dev.gs128.c4.subject.easy.291/flip/conclusion/s_prime", "u": 1.4999999701976776, "top": {"+": -0.2185751497745514, "-": -1.718575119972229}, "raw": "+"}
+{"iid": "rule_v1.dev.gs040.c1.subject.long.292/base/conclusion/s", "u": -3.625, "top": {"+": -8.384790420532227, "-": -4.759790420532227}, "raw": "+"}
+{"iid": "rule_v1.dev.gs040.c1.subject.long.292/base/conclusion/s_prime", "u": -5.250000092666596, "top": {"+": -5.255949974060059, "-": -0.0059498813934624195}, "raw": "-"}
+{"iid": "rule_v1.dev.gs154.c1.negation.long.293/flip/conclusion/s", "u": 3.6874999999999982, "top": {"+": -7.126148223876953, "-": -10.813648223876951}, "raw": "-"}
+{"iid": "rule_v1.dev.gs154.c1.negation.long.293/flip/conclusion/s_prime", "u": -2.75, "top": {"+": -9.626381874084473, "-": -6.876381874084473}, "raw": "+"}
+{"iid": "rule_v1.dev.statin_alt.alt.time.easy.294/base/conclusion/s", "u": -2.25, "top": {"+": -8.128933906555176, "-": -5.878933906555176}, "raw": "+"}
+{"iid": "rule_v1.dev.statin_alt.alt.time.easy.294/base/conclusion/s_prime", "u": 0.0, "top": {"+": null, "-": null}, "raw": "-"}
+{"iid": "rule_v1.dev.gs022.c1.time.long.295/flip/conclusion/s", "u": 0.0, "top": {"+": null, "-": null}, "raw": "-"}
+{"iid": "rule_v1.dev.gs022.c1.time.long.295/flip/conclusion/s_prime", "u": -2.375, "top": {"+": -8.876983642578125, "-": -6.501983642578125}, "raw": "+"}
+{"iid": "rule_v1.dev.gs006.c1.negation.easy.296/base/conclusion/s", "u": -3.375, "top": {"+": -7.64286994934082, "-": -4.26786994934082}, "raw": "+"}
+{"iid": "rule_v1.dev.gs006.c1.negation.easy.296/base/conclusion/s_prime", "u": 2.6875, "top": {"+": -5.133642196655273, "-": -7.821142196655273}, "raw": "-"}
+{"iid": "rule_v1.dev.gs101.c1.boundary.long.297/flip/conclusion/s", "u": 1.125, "top": {"+": -8.37582778930664, "-": -9.50082778930664}, "raw": "-"}
+{"iid": "rule_v1.dev.gs101.c1.boundary.long.297/flip/conclusion/s_prime", "u": -3.2499995999999998, "top": {"+": -8.879099, "-": -5.6290994}, "raw": "+"}
+{"iid": "rule_v1.dev.gs199.c2.negation.easy.298/base/conclusion/s", "u": 5.500000238418579, "top": {"+": -3.774498701095581, "-": -9.27449893951416}, "raw": "-"}
+{"iid": "rule_v1.dev.gs199.c2.negation.easy.298/base/conclusion/s_prime", "u": -3.250000476837158, "top": {"+": -9.003583908081055, "-": -5.7535834312438965}, "raw": "+"}
+{"iid": "rule_v1.dev.gs106.c1.negation.easy.299/flip/conclusion/s", "u": 3.687499523162842, "top": {"+": -5.878787517547607, "-": -9.56628704071045}, "raw": "-"}
+{"iid": "rule_v1.dev.gs106.c1.negation.easy.299/flip/conclusion/s_prime", "u": -0.75, "top": {"+": -8.001328468322754, "-": -7.251328468322754}, "raw": "+"}
+{"iid": "rule_v1.dev.gs027.c3.negation.easy.0/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs027.c3.negation.easy.0/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.any_htn.k.time.easy.1/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.any_htn.k.time.easy.1/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_neutropenia.anc.numeric.easy.2/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_neutropenia.anc.numeric.easy.2/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c2.negation.easy.3/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c2.negation.easy.3/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.easy.4/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.easy.4/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs205.c1.subject.easy.5/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs205.c1.subject.easy.5/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs232.c2.negation.easy.6/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs232.c2.negation.easy.6/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_nice_step1.age.boundary.easy.7/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_nice_step1.age.boundary.easy.7/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs128.c4.negation.long.8/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs128.c4.negation.long.8/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.postop_hit.hit.subject.long.9/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.postop_hit.hit.subject.long.9/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs008.c1.numeric.easy.10/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs008.c1.numeric.easy.10/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.negation.long.11/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.negation.long.11/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs103.c2.time.superseded.12/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs103.c2.time.superseded.12/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs206.c2.numeric.long.13/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs206.c2.numeric.long.13/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs215.c1.boundary.long.14/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs215.c1.boundary.long.14/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs046.c2.numeric.easy.15/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs046.c2.numeric.easy.15/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs218.c2.numeric.long.16/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs218.c2.numeric.long.16/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_perc.vte.negation.long.17/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_perc.vte.negation.long.17/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs168.c3.subject.easy.18/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs168.c3.subject.easy.18/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs166.c2.numeric.long.19/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs166.c2.numeric.long.19/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_prasugrel_stroke.stroke.negation.easy.20/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_prasugrel_stroke.stroke.negation.easy.20/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gout_clarith.clarith.subject.long.21/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gout_clarith.clarith.subject.long.21/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_khorana.hgb.boundary.long.22/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_khorana.hgb.boundary.long.22/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs145.c3.numeric.easy.23/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs145.c3.numeric.easy.23/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs062.c1.boundary.easy.24/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs062.c1.boundary.easy.24/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs041.c3.boundary.long.25/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs041.c3.boundary.long.25/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs154.c2.boundary.long.26/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs154.c2.boundary.long.26/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs061.c2.time.easy.27/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs061.c2.time.easy.27/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs214.c1.time.long.28/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs214.c1.time.long.28/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.htn_pregnancy.pregnancy.time.easy.29/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.htn_pregnancy.pregnancy.time.easy.29/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.wells_dvt.calf.numeric.easy.30/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.wells_dvt.calf.numeric.easy.30/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs243.c4.boundary.easy.31/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs243.c4.boundary.easy.31/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs000.c3.time.easy.32/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs000.c3.time.easy.32/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs013.c1.numeric.easy.33/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs013.c1.numeric.easy.33/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs226.c1.negation.long.34/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs226.c1.negation.long.34/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs043.c1.time.easy.35/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs043.c1.time.easy.35/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs177.c3.boundary.long.36/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs177.c3.boundary.long.36/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.long.37/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.long.37/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs073.c1.time.easy.38/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs073.c1.time.easy.38/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs116.c2.negation.easy.39/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs116.c2.negation.easy.39/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs145.c3.boundary.easy.40/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs145.c3.boundary.easy.40/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.negation.easy.41/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.negation.easy.41/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_abscess_mtx.mtx.subject.easy.42/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_abscess_mtx.mtx.subject.easy.42/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs153.c1.subject.easy.43/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs153.c1.subject.easy.43/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs063.c1.time.easy.44/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs063.c1.time.easy.44/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs182.c2.boundary.easy.45/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs182.c2.boundary.easy.45/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.pain_ulcer.ulcer.subject.long.46/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.pain_ulcer.ulcer.subject.long.46/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs046.c2.boundary.easy.47/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs046.c2.boundary.easy.47/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_hemorr2hages.aspirin.time.easy.48/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_hemorr2hages.aspirin.time.easy.48/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs045.c1.subject.long.49/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs045.c1.subject.long.49/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs130.c3.negation.easy.50/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs130.c3.negation.easy.50/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs238.c2.time.easy.51/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs238.c2.time.easy.51/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs135.c1.subject.easy.52/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs135.c1.subject.easy.52/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_pcp_sulfa.sulfa.time.long.53/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_pcp_sulfa.sulfa.time.long.53/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs070.c1.numeric.long.54/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs070.c1.numeric.long.54/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs181.c1.subject.long.55/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs181.c1.subject.long.55/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.t2d_metformin.egfr.time.long.56/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.t2d_metformin.egfr.time.long.56/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs240.c1.subject.easy.57/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs240.c1.subject.easy.57/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs042.c2.negation.easy.58/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs042.c2.negation.easy.58/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs098.c1.subject.easy.59/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs098.c1.subject.easy.59/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs162.c1.boundary.easy.60/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs162.c1.boundary.easy.60/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs098.c2.subject.easy.61/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs098.c2.subject.easy.61/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs089.c1.negation.easy.62/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs089.c1.negation.easy.62/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs152.c1.negation.long.63/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs152.c1.negation.long.63/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.time.superseded.64/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.time.superseded.64/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs174.c1.numeric.easy.65/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs174.c1.numeric.easy.65/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs229.c2.boundary.long.66/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs229.c2.boundary.long.66/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs028.c1.time.easy.67/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs028.c1.time.easy.67/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs040.c2.boundary.long.68/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs040.c2.boundary.long.68/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs205.c1.subject.easy.69/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs205.c1.subject.easy.69/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s4_improve_vte.age.boundary.easy.70/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s4_improve_vte.age.boundary.easy.70/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.negation.long.71/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.negation.long.71/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs152.c1.negation.long.72/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs152.c1.negation.long.72/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs129.c2.numeric.long.73/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs129.c2.numeric.long.73/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs043.c1.subject.long.74/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs043.c1.subject.long.74/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.boundary.easy.75/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.boundary.easy.75/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c1.negation.easy.76/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c1.negation.easy.76/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.any_gout.egfr.numeric.easy.77/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.any_gout.egfr.numeric.easy.77/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs231.c1.negation.long.78/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs231.c1.negation.long.78/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs232.c1.boundary.long.79/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs232.c1.boundary.long.79/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs095.c2.numeric.easy.80/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs095.c2.numeric.easy.80/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs042.c1.negation.easy.81/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs042.c1.negation.easy.81/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c2.time.superseded.82/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c2.time.superseded.82/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs070.c1.time.long.83/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs070.c1.time.long.83/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs243.c4.numeric.easy.84/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs243.c4.numeric.easy.84/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs172.c2.numeric.long.85/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs172.c2.numeric.long.85/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs007.c1.subject.easy.86/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs007.c1.subject.easy.86/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs191.c4.negation.long.87/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs191.c4.negation.long.87/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs129.c2.boundary.easy.88/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs129.c2.boundary.easy.88/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs162.c1.numeric.easy.89/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs162.c1.numeric.easy.89/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs181.c1.negation.easy.90/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs181.c1.negation.easy.90/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs109.c1.time.easy.91/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs109.c1.time.easy.91/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs135.c2.boundary.easy.92/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs135.c2.boundary.easy.92/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs198.c1.negation.easy.93/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs198.c1.negation.easy.93/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs062.c1.numeric.easy.94/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs062.c1.numeric.easy.94/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.uti_sulfa.sulfa.time.long.95/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.uti_sulfa.sulfa.time.long.95/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs081.c2.numeric.long.96/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs081.c2.numeric.long.96/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs143.c2.numeric.easy.97/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs143.c2.numeric.easy.97/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.any_gout.ulcer.negation.easy.98/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.any_gout.ulcer.negation.easy.98/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs170.c1.subject.long.99/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs170.c1.subject.long.99/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.wells_dvt.calf.time.easy.100/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.wells_dvt.calf.time.easy.100/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs167.c1.time.easy.101/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs167.c1.time.easy.101/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.time.superseded.102/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.time.superseded.102/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs000.c2.subject.easy.103/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs000.c2.subject.easy.103/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_sinus_pen.pen.time.delabelled.104/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_sinus_pen.pen.time.delabelled.104/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_perc.spo2.numeric.easy.105/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_perc.spo2.numeric.easy.105/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs129.c1.subject.easy.106/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs129.c1.subject.easy.106/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_perc.spo2.boundary.long.107/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_perc.spo2.boundary.long.107/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s4_improve_vte.vte.negation.easy.108/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s4_improve_vte.vte.negation.easy.108/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_charlson.cr.time.easy.109/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_charlson.cr.time.easy.109/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs159.c2.boundary.long.110/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs159.c2.boundary.long.110/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c2.boundary.long.111/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c2.boundary.long.111/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_methimazole.alt.time.easy.112/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_methimazole.alt.time.easy.112/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.numeric.easy.113/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.numeric.easy.113/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs181.c3.time.easy.114/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs181.c3.time.easy.114/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.all_spiro.egfr.boundary.easy.115/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.all_spiro.egfr.boundary.easy.115/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_hemorr2hages.aspirin.time.long.116/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_hemorr2hages.aspirin.time.long.116/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs076.c3.time.easy.117/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs076.c3.time.easy.117/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.all_gastro.aspirin.time.easy.118/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.all_gastro.aspirin.time.easy.118/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_charlson.asthma.negation.long.119/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_charlson.asthma.negation.long.119/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs208.c1.numeric.easy.120/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs208.c1.numeric.easy.120/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs107.c2.boundary.long.121/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs107.c2.boundary.long.121/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs166.c2.boundary.easy.122/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs166.c2.boundary.easy.122/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs098.c1.subject.easy.123/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs098.c1.subject.easy.123/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs226.c1.negation.long.124/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs226.c1.negation.long.124/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs121.c2.subject.long.125/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs121.c2.subject.long.125/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.ckd_nsaid.egfr.boundary.easy.126/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.ckd_nsaid.egfr.boundary.easy.126/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs152.c2.time.easy.127/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs152.c2.time.easy.127/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs107.c1.subject.long.128/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs107.c1.subject.long.128/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.numeric.easy.129/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.numeric.easy.129/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs093.c2.time.easy.130/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs093.c2.time.easy.130/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs232.c2.time.easy.131/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs232.c2.time.easy.131/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs026.c1.negation.easy.132/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs026.c1.negation.easy.132/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs189.c1.subject.long.133/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs189.c1.subject.long.133/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs228.c1.subject.easy.134/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs228.c1.subject.easy.134/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.numeric.easy.135/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.numeric.easy.135/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs229.c2.numeric.easy.136/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs229.c2.numeric.easy.136/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.af_asthma.asthma.subject.easy.137/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.af_asthma.asthma.subject.easy.137/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs117.c2.boundary.long.138/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs117.c2.boundary.long.138/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs111.c1.time.long.139/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs111.c1.time.long.139/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs146.c2.boundary.long.140/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs146.c2.boundary.long.140/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c1.time.easy.141/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c1.time.easy.141/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs022.c1.time.easy.142/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs022.c1.time.easy.142/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs026.c1.subject.easy.143/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs026.c1.subject.easy.143/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs198.c2.boundary.easy.144/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs198.c2.boundary.easy.144/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs142.c1.numeric.easy.145/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs142.c1.numeric.easy.145/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s1_psi.stroke.negation.long.146/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s1_psi.stroke.negation.long.146/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs222.c2.subject.long.147/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs222.c2.subject.long.147/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs017.c1.numeric.long.148/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs017.c1.numeric.long.148/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs117.c2.boundary.easy.149/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs117.c2.boundary.easy.149/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_nice_step1.age.boundary.long.150/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_nice_step1.age.boundary.long.150/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_charlson.cr.boundary.easy.151/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_charlson.cr.boundary.easy.151/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_cellulitis_sirs.wbc.boundary.long.152/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_cellulitis_sirs.wbc.boundary.long.152/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs226.c1.subject.easy.153/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs226.c1.subject.easy.153/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_charlson.hf.subject.easy.154/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s3_charlson.hf.subject.easy.154/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.rcri.cr.time.easy.155/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.rcri.cr.time.easy.155/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.subject.easy.156/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.subject.easy.156/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs030.c2.negation.long.157/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs030.c2.negation.long.157/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs218.c2.numeric.long.158/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs218.c2.numeric.long.158/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs104.c3.negation.long.159/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs104.c3.negation.long.159/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_methimazole.alt.boundary.easy.160/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_methimazole.alt.boundary.easy.160/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs085.c1.negation.long.161/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs085.c1.negation.long.161/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s4_apache.hr.numeric.easy.162/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s4_apache.hr.numeric.easy.162/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs204.c1.numeric.long.163/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs204.c1.numeric.long.163/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_atria_bleed.egfr.boundary.easy.164/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_atria_bleed.egfr.boundary.easy.164/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs222.c2.negation.easy.165/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs222.c2.negation.easy.165/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs128.c1.subject.long.166/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs128.c1.subject.long.166/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs008.c2.negation.long.167/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs008.c2.negation.long.167/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs027.c2.subject.long.168/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs027.c2.subject.long.168/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.two_apixaban.cr.numeric.long.169/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.two_apixaban.cr.numeric.long.169/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs210.c1.negation.easy.170/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs210.c1.negation.easy.170/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs143.c1.subject.easy.171/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs143.c1.subject.easy.171/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs172.c1.boundary.long.172/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs172.c1.boundary.long.172/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs030.c2.subject.long.173/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs030.c2.subject.long.173/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.easy.174/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_spironolactone.k.numeric.easy.174/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs109.c2.boundary.easy.175/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs109.c2.boundary.easy.175/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs076.c2.time.superseded.176/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs076.c2.time.superseded.176/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs168.c2.negation.long.177/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs168.c2.negation.long.177/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gout_clarith.clarith.negation.easy.178/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gout_clarith.clarith.negation.easy.178/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_transfusion.hgb.boundary.long.179/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_transfusion.hgb.boundary.long.179/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs199.c2.negation.easy.180/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs199.c2.negation.easy.180/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs182.c2.numeric.easy.181/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs182.c2.numeric.easy.181/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs012.c1.subject.easy.182/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs012.c1.subject.easy.182/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs226.c1.time.easy.183/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs226.c1.time.easy.183/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s1_sofa.plt.numeric.easy.184/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s1_sofa.plt.numeric.easy.184/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs102.c2.boundary.easy.185/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs102.c2.boundary.easy.185/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs092.c1.numeric.long.186/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs092.c1.numeric.long.186/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs149.c1.numeric.long.187/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs149.c1.numeric.long.187/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs091.c1.numeric.easy.188/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs091.c1.numeric.easy.188/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs101.c1.numeric.easy.189/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs101.c1.numeric.easy.189/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs102.c2.numeric.long.190/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs102.c2.numeric.long.190/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs143.c1.time.easy.191/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs143.c1.time.easy.191/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs130.c1.subject.easy.192/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs130.c1.subject.easy.192/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs041.c3.numeric.long.193/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs041.c3.numeric.long.193/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs210.c1.subject.long.194/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs210.c1.subject.long.194/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs060.c1.time.easy.195/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs060.c1.time.easy.195/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_dvt_pregnancy.pregnancy.time.easy.196/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_dvt_pregnancy.pregnancy.time.easy.196/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs141.c1.subject.long.197/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs141.c1.subject.long.197/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs007.c1.subject.long.198/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs007.c1.subject.long.198/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs013.c1.boundary.easy.199/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs013.c1.boundary.easy.199/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.pain_ulcer.ulcer.subject.easy.200/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.pain_ulcer.ulcer.subject.easy.200/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.hasbled.sbp.time.easy.201/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.hasbled.sbp.time.easy.201/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs172.c2.numeric.easy.202/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs172.c2.numeric.easy.202/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs058.c1.numeric.easy.203/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs058.c1.numeric.easy.203/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs240.c1.subject.easy.204/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs240.c1.subject.easy.204/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs119.c2.time.easy.205/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs119.c2.time.easy.205/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs173.c1.negation.easy.206/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs173.c1.negation.easy.206/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs076.c3.boundary.easy.207/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs076.c3.boundary.easy.207/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs222.c2.time.long.208/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs222.c2.time.long.208/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_transfusion.hgb.numeric.easy.209/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_transfusion.hgb.numeric.easy.209/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs200.c1.negation.easy.210/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs200.c1.negation.easy.210/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.uti_sulfa.sulfa.negation.long.211/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.uti_sulfa.sulfa.negation.long.211/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs169.c2.time.easy.212/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs169.c2.time.easy.212/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs169.c2.time.long.213/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs169.c2.time.long.213/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs212.c1.subject.long.214/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs212.c1.subject.long.214/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs218.c1.subject.long.215/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs218.c1.subject.long.215/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs171.c1.negation.easy.216/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs171.c1.negation.easy.216/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.postop_hit.hit.negation.long.217/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.postop_hit.hit.negation.long.217/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs232.c2.subject.long.218/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs232.c2.subject.long.218/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_cellulitis_sirs.wbc.boundary.long.219/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_cellulitis_sirs.wbc.boundary.long.219/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c2.subject.easy.220/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c2.subject.easy.220/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs198.c1.negation.easy.221/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs198.c1.negation.easy.221/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_allopurinol.egfr.boundary.easy.222/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c1_allopurinol.egfr.boundary.easy.222/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs193.c2.negation.easy.223/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs193.c2.negation.easy.223/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs084.c2.time.easy.224/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs084.c2.time.easy.224/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.subject.easy.225/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_hmb_vte.vte.subject.easy.225/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs121.c1.negation.easy.226/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs121.c1.negation.easy.226/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.migraine_cad.cad.subject.easy.227/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.migraine_cad.cad.subject.easy.227/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.negation.long.228/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_ctpa_contrast.contrast.negation.long.228/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.numeric.easy.229/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.numeric.easy.229/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.sirs.temp.numeric.easy.230/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.sirs.temp.numeric.easy.230/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs013.c1.boundary.easy.231/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs013.c1.boundary.easy.231/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c1.negation.easy.232/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c1.negation.easy.232/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs166.c3.boundary.easy.233/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs166.c3.boundary.easy.233/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs171.c1.subject.long.234/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs171.c1.subject.long.234/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs145.c1.subject.long.235/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs145.c1.subject.long.235/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs093.c2.boundary.easy.236/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs093.c2.boundary.easy.236/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_dronedarone_hf.hf.negation.easy.237/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_dronedarone_hf.hf.negation.easy.237/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.vte_platelets.plt.boundary.easy.238/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.vte_platelets.plt.boundary.easy.238/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs095.c2.numeric.long.239/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs095.c2.numeric.long.239/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs107.c2.boundary.long.240/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs107.c2.boundary.long.240/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c2.numeric.long.241/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c2.numeric.long.241/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs081.c1.subject.long.242/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs081.c1.subject.long.242/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs177.c2.numeric.easy.243/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs177.c2.numeric.easy.243/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.two_apixaban.cr.time.easy.244/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.two_apixaban.cr.time.easy.244/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s4_apache.age.numeric.long.245/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s4_apache.age.numeric.long.245/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs160.c1.boundary.easy.246/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs160.c1.boundary.easy.246/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.boundary.easy.247/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.boundary.easy.247/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.time.long.248/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs133.c1.time.long.248/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.wells_dvt.calf.numeric.long.249/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.wells_dvt.calf.numeric.long.249/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs101.c1.boundary.easy.250/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs101.c1.boundary.easy.250/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs076.c2.time.superseded.251/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs076.c2.time.superseded.251/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_dvt_pregnancy.pregnancy.subject.easy.252/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_dvt_pregnancy.pregnancy.subject.easy.252/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs022.c1.boundary.easy.253/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs022.c1.boundary.easy.253/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs174.c1.time.long.254/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs174.c1.time.long.254/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_statin_clarith.clarith.subject.long.255/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c2_statin_clarith.clarith.subject.long.255/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs248.c2.numeric.long.256/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs248.c2.numeric.long.256/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs026.c1.negation.long.257/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs026.c1.negation.long.257/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs248.c2.numeric.long.258/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs248.c2.numeric.long.258/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_lipid_lpa.cad.negation.long.259/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.c3_lipid_lpa.cad.negation.long.259/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs119.c2.negation.easy.260/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs119.c2.negation.easy.260/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs163.c3.numeric.easy.261/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs163.c3.numeric.easy.261/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs191.c1.time.easy.262/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs191.c1.time.easy.262/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.boundary.easy.263/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_caprini.bmi.boundary.easy.263/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs109.c2.boundary.easy.264/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs109.c2.boundary.easy.264/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs233.c2.subject.long.265/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs233.c2.subject.long.265/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs129.c2.boundary.long.266/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs129.c2.boundary.long.266/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c2.time.easy.267/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs175.c2.time.easy.267/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs095.c3.subject.easy.268/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs095.c3.subject.easy.268/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs040.c2.time.easy.269/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs040.c2.time.easy.269/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs093.c2.numeric.long.270/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs093.c2.numeric.long.270/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs207.c1.boundary.long.271/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs207.c1.boundary.long.271/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.all_spiro.k.time.long.272/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.all_spiro.k.time.long.272/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs102.c2.numeric.easy.273/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs102.c2.numeric.easy.273/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs102.c1.negation.easy.274/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs102.c1.negation.easy.274/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.any_gout.egfr.numeric.easy.275/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.any_gout.egfr.numeric.easy.275/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs107.c1.negation.long.276/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs107.c1.negation.long.276/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs214.c2.subject.easy.277/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs214.c2.subject.easy.277/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs215.c1.boundary.easy.278/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs215.c1.boundary.easy.278/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs121.c2.negation.long.279/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs121.c2.negation.long.279/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c1.time.long.280/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs237.c1.time.long.280/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.sirs.hr.time.superseded.281/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.sirs.hr.time.superseded.281/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs043.c1.subject.easy.282/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs043.c1.subject.easy.282/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs008.c2.subject.long.283/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs008.c2.subject.long.283/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs015.c1.subject.long.284/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs015.c1.subject.long.284/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs146.c1.boundary.easy.285/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs146.c1.boundary.easy.285/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs019.c1.negation.easy.286/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs019.c1.negation.easy.286/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.two_apixaban.age.numeric.easy.287/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.two_apixaban.age.numeric.easy.287/missing/conclusion/s_prime", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_timi_stemi.hr.boundary.long.288/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.s2_timi_stemi.hr.boundary.long.288/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs172.c1.time.superseded.289/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs172.c1.time.superseded.289/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs242.c1.negation.easy.290/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs242.c1.negation.easy.290/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs128.c4.subject.easy.291/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs128.c4.subject.easy.291/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs040.c1.subject.long.292/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs040.c1.subject.long.292/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs154.c1.negation.long.293/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs154.c1.negation.long.293/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.statin_alt.alt.time.easy.294/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.statin_alt.alt.time.easy.294/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs022.c1.time.long.295/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs022.c1.time.long.295/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs006.c1.negation.easy.296/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs006.c1.negation.easy.296/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs101.c1.boundary.long.297/missing/conclusion/s", "u": 1.0, "raw": "+", "parsed": "+", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs101.c1.boundary.long.297/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs199.c2.negation.easy.298/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs199.c2.negation.easy.298/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs106.c1.negation.easy.299/missing/conclusion/s", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}
+{"iid": "rule_v1.dev.gs106.c1.negation.easy.299/missing/conclusion/s_prime", "u": -1.0, "raw": "-", "parsed": "-", "readout": "pointwise"}

@@ -1,0 +1,38 @@
+{
+ "run_id": "C-KP-rationale-triplets-s0",
+ "set": "clin_v1/keypairs_medqa_oneway",
+ "Reversal": 66.10644257703082,
+ "CI95": [
+  61.06442577030813,
+  70.58823529411765
+ ],
+ "n_pairs": 357,
+ "q1_acc": 81.23249299719888,
+ "q2_acc": 80.3921568627451,
+ "tie_rate": 0.0,
+ "Reversal_by_tercile": {
+  "1": 63.865546218487395,
+  "2": 67.22689075630252,
+  "3": 67.22689075630252
+ },
+ "Reversal_by_category": {
+  "step1": 70.73170731707317,
+  "step2&3": 62.17616580310881
+ },
+ "n_by_category": {
+  "step1": 164,
+  "step2&3": 193
+ },
+ "bootstrap": {
+  "unit": "pair",
+  "B": 1000,
+  "seed": 0
+ },
+ "eval": {
+  "rationale_no_answer": 0,
+  "gen_not_stopped": 0,
+  "seconds": 521.8,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

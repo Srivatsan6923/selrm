@@ -1,0 +1,131 @@
+{
+ "run_id": "C-TG-defcorr",
+ "set": "clin_v1/trialgpt_test",
+ "protocol": "docs/TRIALGPT_PROTOCOL.md",
+ "threshold": -0.3531429171562195,
+ "n_items": 801,
+ "n_scored": 759,
+ "n_patients": 43,
+ "macroF1": 37.04541310313235,
+ "macroF1_CI95": [
+  33.47176852830652,
+  41.038739377991966
+ ],
+ "acc": 44.26877470355731,
+ "acc_CI95": [
+  40.32023289665211,
+  49.00133155792277
+ ],
+ "per_class": {
+  "met": {
+   "P": 28.66817155756208,
+   "R": 92.02898550724638,
+   "F1": 43.71772805507745,
+   "n": 138
+  },
+  "not_met": {
+   "P": 65.55183946488295,
+   "R": 50.38560411311054,
+   "F1": 56.9767441860465,
+   "n": 389
+  },
+  "nei": {
+   "P": 76.47058823529412,
+   "R": 5.603448275862069,
+   "F1": 10.441767068273093,
+   "n": 232
+  }
+ },
+ "confusion": {
+  "met": {
+   "met": 127,
+   "not_met": 11
+  },
+  "not_met": {
+   "not_met": 196,
+   "met": 189,
+   "nei": 4
+  },
+  "nei": {
+   "met": 127,
+   "not_met": 92,
+   "nei": 13
+  }
+ },
+ "pred_distribution": {
+  "not_met": 299,
+  "met": 443,
+  "nei": 17
+ },
+ "macroF1_five_names": 34.583530175155666,
+ "per_class_five_names": {
+  "included": {
+   "P": 63.49206349206349,
+   "R": 91.6030534351145,
+   "F1": 75.0,
+   "n": 131
+  },
+  "not included": {
+   "P": 11.538461538461538,
+   "R": 56.25,
+   "F1": 19.148936170212767,
+   "n": 16
+  },
+  "excluded": {
+   "P": 2.7559055118110236,
+   "R": 100.0,
+   "F1": 5.363984674329502,
+   "n": 7
+  },
+  "not excluded": {
+   "P": 84.61538461538461,
+   "R": 50.134048257372655,
+   "F1": 62.962962962962955,
+   "n": 373
+  },
+  "not enough information": {
+   "P": 76.47058823529412,
+   "R": 5.603448275862069,
+   "F1": 10.441767068273093,
+   "n": 232
+  }
+ },
+ "by_type": {
+  "inclusion": {
+   "macroF1": 36.40580977363256,
+   "acc": 50.0,
+   "n": 280
+  },
+  "exclusion": {
+   "macroF1": 24.07014759430784,
+   "acc": 40.91858037578288,
+   "n": 479
+  }
+ },
+ "not_applicable": {
+  "n": 42,
+  "pred": {
+   "not_met": 22,
+   "met": 18,
+   "nei": 2
+  }
+ },
+ "forced_choice_acc": 62.04933586337761,
+ "n_forced": 527,
+ "evidence": null,
+ "evidence_malformed_without_quotes": null,
+ "per_trial_acc": {
+  "n_trials": 64,
+  "min_items": 5,
+  "min": 0.0,
+  "median": 44.44444444444444,
+  "max": 85.71428571428571
+ },
+ "bootstrap": {
+  "unit": "patient",
+  "B": 1000,
+  "seed": 0
+ },
+ "threshold_source": "results_git/C-TG-defcorr-dev/scores_rule_v1~dev_missing.jsonl",
+ "eval": null
+}
