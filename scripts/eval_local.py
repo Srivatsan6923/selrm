@@ -341,7 +341,7 @@ def gate_units(units, text, fmt, mode):
     from the record's `struct` instead of the parser."""
     assert fmt in ("ledger2_dec", "ledger_g"), fmt
     g_fmt = fmt == "ledger_g"            # stage-2 record: the bit is a line of every entry
-    opath = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "onto_v1", "classes.json")
+    opath = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "configs", "onto_v1_classes.json")   # role A's data/onto_v1/classes.json (frozen 9 Oct)
     onto = load_onto(opath) if os.path.exists(opath) else None
     out = {}
     for r in units:
