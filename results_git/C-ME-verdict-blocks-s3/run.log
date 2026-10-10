@@ -1,0 +1,7 @@
+2026-10-10T04:03:38Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-verdict-blocks-s3
+2026-10-10T04:03:40Z token budget per batch: 8000 (generation 24000)
+2026-10-10T04:03:41Z C-ME-verdict-blocks-s3 clin_v1/medeinst_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test/verdict.npz', 'exists')
+2026-10-10T04:03:44Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0554)
+2026-10-10T04:03:47Z padding self-check: max |u_batch - u_single| = 0.1366 (tol 0.696) -> left padding
+2026-10-10T04:38:15Z C-ME-verdict-blocks-s3 clin_v1/medeinst_test: TA nan Rev nan Hold nan n=None (2074.0 s)
+2026-10-10T04:38:16Z DONE C-ME-verdict-blocks-s3 in 35.6 min, GPU util mean 95.9

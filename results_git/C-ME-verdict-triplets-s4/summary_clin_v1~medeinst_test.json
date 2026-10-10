@@ -1,0 +1,10 @@
+{
+ "run_id": "C-ME-verdict-triplets-s4",
+ "set": "clin_v1/medeinst_test",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 2088.9,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

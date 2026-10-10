@@ -1,0 +1,10 @@
+{
+ "run_id": "C-ME-verdict-blocks-s3",
+ "set": "clin_v1/medeinst_test",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 2074.0,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

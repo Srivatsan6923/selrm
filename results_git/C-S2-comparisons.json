@@ -98,13 +98,13 @@
  },
  "medeinst_cells": {
   "verdict-triplets|none": {
-   "pair_accuracy": 20.778376370053874,
-   "seeds": 2,
+   "pair_accuracy": 22.036039383243544,
+   "seeds": 5,
    "n": 5383
   },
   "verdict-blocks|none": {
-   "pair_accuracy": 19.320081738807357,
-   "seeds": 2,
+   "pair_accuracy": 21.010588890953,
+   "seeds": 5,
    "n": 5383
   },
   "critic|none": {
