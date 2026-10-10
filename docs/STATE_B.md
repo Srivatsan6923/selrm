@@ -23,10 +23,14 @@ Nothing is tuned on a test set: parser, linker, gate and prompts are developed o
   Format ledger_g (selrm/formats.py). When runs finish: pull, register (add aliases v2_verdict_*, v2_reader_* to
   register_adapters.py), resummarize is not needed (runner summaries; no local copies of the test sets),
   report by near-miss kind in docs/ANALYSIS_B_S2.md.
-- B3 Ledger-RM-G: **STOPPED by the B3.2 stop rule (10 Oct)**: seed 0 passes on rule_v2/dev and fails on rule_v1/dev
-  by 0.67 TA (DECISIONS_B, HANDOFFS 10 Oct). No test set scored; ledger_rm_g_s* not registered. Do not queue
-  composite test runs (make_queue_b.composite(tests=True)) unless the lead decides for a second development round
-  and a second validation passes. Development-set results: results_git/B-S2-*-ledger_rm_g-*-s0.
+- B3 Ledger-RM-G: round 1 failed the stop rule (rule_v1/dev, 0.67 below); the lead (user, 10 Oct) chose a second
+  development round. Gate changed (DECISIONS_B 10 Oct: computes(), route reader_bit, classes linked by name).
+  Requeued: configs/queues/v2/b_s2g.json (B-S2G-{gate,struct,bit,verdict}-s<k>-dev for every seed whose reader and
+  verdict adapters exist; min_gen 9). When B-S2G-gate-s<k>-dev and -struct- are DONE: pull,
+  `python scripts/assemble_rmg.py --validate <k>`. If seed 0 passes: queue the tests
+  (make_queue_b.composite(adapters, tests=True) -> a queue file, push, prep), bring the test record files into the
+  local data copy for the summaries, assemble, register ledger_rm_g_s<k> with variants, write docs/ANALYSIS_B_S2.md.
+  If it fails again: stop for good and report.
 - B4 adaptation arms: running (v2/b_mix.json). Done: B-MIX-blocks-s0 (mix_blocks_s0). The long-prompt runs use
   "big" settings on 80 GB cards (per-device 4, scoring batch 32).
 - B5 handoffs: adapters line sent 9 Oct; resources per configuration after B2.
