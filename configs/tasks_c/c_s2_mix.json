@@ -1,0 +1,75 @@
+{
+ "note": "Stage 2 secondary 4: B's adaptation adapters on mcv_v1 tests (B-MIX-triplets-s2 not trained yet on 10 Oct; add when it exists)",
+ "runs": [
+  {
+   "run_id": "C-S2-mcv-mix-blocks-s0",
+   "priority": 1.0,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/criteria_test",
+    "mcv_v1/edits_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-MIX-blocks-s0",
+   "adapter_run": "B-MIX-blocks-s0",
+   "note": "STAGE2 secondary 4: adaptation arms (rule triplets + MedCalc training items) on the MedCalc-V tests"
+  },
+  {
+   "run_id": "C-S2-mcv-mix-blocks-s1",
+   "priority": 1.01,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/criteria_test",
+    "mcv_v1/edits_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-MIX-blocks-s1",
+   "adapter_run": "B-MIX-blocks-s1",
+   "note": "STAGE2 secondary 4: adaptation arms (rule triplets + MedCalc training items) on the MedCalc-V tests"
+  },
+  {
+   "run_id": "C-S2-mcv-mix-blocks-s2",
+   "priority": 1.02,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/criteria_test",
+    "mcv_v1/edits_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-MIX-blocks-s2",
+   "adapter_run": "B-MIX-blocks-s2",
+   "note": "STAGE2 secondary 4: adaptation arms (rule triplets + MedCalc training items) on the MedCalc-V tests"
+  },
+  {
+   "run_id": "C-S2-mcv-mix-triplets-s0",
+   "priority": 1.03,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/criteria_test",
+    "mcv_v1/edits_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-MIX-triplets-s0",
+   "adapter_run": "B-MIX-triplets-s0",
+   "note": "STAGE2 secondary 4: adaptation arms (rule triplets + MedCalc training items) on the MedCalc-V tests"
+  },
+  {
+   "run_id": "C-S2-mcv-mix-triplets-s1",
+   "priority": 1.04,
+   "format": "verdict",
+   "bs_score": 64,
+   "min_gen": 7,
+   "sets": [
+    "mcv_v1/criteria_test",
+    "mcv_v1/edits_test"
+   ],
+   "adapter": "/pvcb/selrm/adapters/B-MIX-triplets-s1",
+   "adapter_run": "B-MIX-triplets-s1",
+   "note": "STAGE2 secondary 4: adaptation arms (rule triplets + MedCalc training items) on the MedCalc-V tests"
+  }
+ ]
+}

@@ -242,9 +242,44 @@ def main():
                                               "metric": "triplet accuracy", "expectation": "> 0", "TA_gate": ta("a")(items),
                                               "TA_verdict": ta("b")(items), "seeds": [cc["gate"][1], cc["v2-verdict-triplets"][1]],
                                               "runs": "B-S2G-gate-s<k>-test, B-V2-verdict-triplets-s<k> (role B)"}
+    # (12) clin_v1/keypairs_medqa_oneway (357 pairs), no criterion: Ledger-RM-G as deployed minus verdict x triplets
+    # (stage 1), pair accuracy, non-inferiority at 2 points. Every record has an empty rule_text, so the composite
+    # routes every item to fallback_none = the v2 verdict-only adapter of the same seed (role B, assemble_rmg.py);
+    # seeds = those whose composite passed B's validation (a B-S2G-gate-s<k>-test run exists).
+    kp = load(f"{REPO}/data/clin_v1/keypairs_medqa_oneway/records.jsonl")
+    assert not any(r["rule_text"] for r in kp)
+    ktids = sorted({r["tid"] for r in kp})
+
+    def kp_items(runs):
+        vals = collections.defaultdict(list)
+        for run in runs:
+            u = scores(run, "clin_v1/keypairs_medqa_oneway")
+            if u:
+                d = d_by(kp, u)
+                for t in ktids:
+                    vals[t].append(d[(t, "base")] > 0 and d[(t, "flip")] < 0)
+        return {t: statistics.mean(v) for t, v in vals.items()}, max((len(v) for v in vals.values()), default=0)
+
+    valid = [k for k in range(5) if os.path.exists(f"{REPO}/scratch/bres/B-S2G-gate-s{k}-test/DONE")]
+    ka, na = kp_items([f"C-S2-kp-v2-verdict-triplets-s{k}" for k in valid])
+    kb, nb = kp_items([f"C-KP-verdict-triplets-s{k}" for k in range(5)])
+    if ka and kb:
+        MARGIN = 2.0
+        items = [{"cl": t, "a": ka[t], "b": kb[t]} for t in ktids]
+        pa = lambda key: (lambda xs: 100.0 * statistics.mean(x[key] for x in xs))
+        r12 = M.paired_cluster_bootstrap(items, "cl", lambda xs: pa("a")(xs) + MARGIN, pa("b"), B=B)    # p tests diff = -margin
+        r12 |= {"diff": r12["diff"] - MARGIN, "lo": r12["lo"] - MARGIN, "hi": r12["hi"] - MARGIN}
+        out["comparisons"]["12"] = r12 | {"contrast": "Ledger-RM-G as deployed (route fallback_none: v2 verdict x triplets, same seed) minus verdict x triplets (stage 1)",
+                                          "metric": "pair accuracy", "expectation": "lower bound of the 95% interval above -2", "margin": MARGIN,
+                                          "p_is": "two-sided bootstrap p of diff = -margin", "non_inferior": r12["lo"] - MARGIN > -MARGIN,
+                                          "PA_composite": pa("a")(items), "PA_verdict_triplets": pa("b")(items), "seeds": [na, nb],
+                                          "composite_seeds": valid, "routes": {"fallback_none": len(kp)}}
+    if len(out["comparisons"]) == 6:
+        for k, v in M.holm({k: v["p"] for k, v in out["comparisons"].items()}).items():
+            out["comparisons"][k]["p_holm"] = v
     out["mcv_cells"] = descriptive(load(f"{MCV}/criteria_test/records.jsonl"), load(f"{MCV}/edits_test/records.jsonl"))
     json.dump(out, open(f"{RES}/C-S2-comparisons.json", "w", encoding="utf-8", newline="\n"), indent=1)
-    print(json.dumps({k: {x: (round(v[x], 2) if isinstance(v[x], float) else v[x]) for x in ("diff", "lo", "hi", "p", "n_items", "n_clusters")}
+    print(json.dumps({k: {x: (round(v[x], 2) if isinstance(v[x], float) else v[x]) for x in ("diff", "lo", "hi", "p", "p_holm", "n_items", "n_clusters") if x in v}
                       for k, v in out["comparisons"].items()}, indent=1))
     print(json.dumps(out.get("mcv_criteria_cells"), indent=1)[:1500])
 
