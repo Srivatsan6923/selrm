@@ -7,7 +7,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SETS = {"xr_v1": "xr_v1/test", "challenge_v1": "challenge_v1/test", "ec_v1": "ec_v1/test", "rewrite_v1": "rewrite_v1/test"}
+SETS = {"xr_v1": "xr_v1/test", "challenge_v1": "challenge_v1/test", "ec_v1": "ec_v1/test", "rewrite_v1": "rewrite_v1/test",
+        "mcv_v1": "mcv_v1/criteria_test", "kb_v1": "kb_v1/triplets_test"}   # stage 2: one manifest per set
 
 
 def main():
@@ -35,6 +36,10 @@ def main():
             recs = [json.loads(line) for line in open(path, encoding="utf-8")]
             out["xr_v1"]["validation_without_known_issues"] = {
                 k: xr.crossed_accuracy(recs, s, exclude=items) for k, s in bx.scorers(recs).items()}
+    acc = ROOT / "results" / "A-MCV-ACCEPT" / "summary.json"
+    if acc.exists():
+        d = json.loads(acc.read_text(encoding="utf-8"))
+        out["mcv_v1_accept"] = {k: d[k] for k in ("n_scores", "n_accepted", "test_rows_covered", "test_human_covered", "train_rows_covered")}
     prep = ROOT / "ec_v1" / "prepare_summary.json"
     if prep.exists():
         out["ec_v1_prepare"] = json.loads(prep.read_text(encoding="utf-8"))
