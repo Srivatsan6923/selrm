@@ -558,7 +558,7 @@ We audit the released Med-PRM \citep{yun2025medprm}, MedS$^3$ PRM
 ThinkPRM-14B and GenPRM-7B. Training-free baselines on \bb{} are the
 zero-shot critic, default correction \citep{shi2024cad}, a prompted summary,
 a prompted ledger, and a verifier that writes and executes a program for the
-rule \citep{ocampo2026solver}; larger judges are \ph{not yet scored}
+rule \citep{ocampo2026solver}; larger open judges are in Table~\ref{tab:openjudges}, closed ones \ph{not yet scored}
 (Appendix~\ref{app:more}). Scores are verdict log-odds. Key cells have five
 seeds; other values are from seed 0. Paired differences use a cluster
 bootstrap over rules (patients for TrialGPT, label pairs for MedEinst). The
@@ -601,7 +601,7 @@ conclusion claims on L2; TA$_c$: criterion claims; XA: rule-side items; ME,
 Key: both members right on MedEinst and MedQA key pairs. $^{a}$200
 triplets. $^{b}$200 pairs. $^{c}$Lenient parsing (strict: 98.8\% of ledgers
 malformed, TA 0.05). $^{d}$1{,}000 triplets; executes code it writes.
-Larger open and closed judges: \ph{not yet scored}.}
+Larger open judges: Table~\ref{tab:openjudges}; closed judges: \ph{not yet scored}.}
 \label{tab:audit}
 \end{table}
 
@@ -930,7 +930,7 @@ blocks). A verifier that passes the triplet test is therefore not a safe
 training reward by itself.
 
 \textbf{Scope.} One backbone family; five seeds for the key cells and one
-elsewhere; no larger or closed judge has been scored; English only.
+elsewhere; no closed judge has been scored; English only.
 
 \section*{Ethical Considerations}
 
@@ -1633,7 +1633,7 @@ Registered criteria (TA) & -- & \res{run/C-S2-reg-critic/reg_v1:test@stated/all/
 TrialGPT (F1)          & -- & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1} & -- & \res{run/C-S2-tg-ledger-rm-g/clin_v1:trialgpt_test@stated/top/macroF1} & -- & \res{run/C-S2-tg-ledger-rm-g/clin_v1:trialgpt_test@wrong/top/macroF1}\\
 \multicolumn{7}{@{}l}{\emph{Criterion derived}}\\
 Class triplets (TA)    & \res{run/C-S2-cls-critic/cls_v1:test@none/all/TA} & \res{run/C-S2-cls-critic/cls_v1:test@stated/all/TA} & \res{run/C-S2-cls-ledger-rm-g/cls_v1:test@none/all/TA} & \res{run/C-S2-cls-ledger-rm-g/cls_v1:test@stated/all/TA} & -- & \res{run/C-S2-cls-ledger-rm-g/cls_v1:test@wrong/all/TA}\\
-KB triplets (TA)       & \res{run/C-S2-kb-critic/kb_v1:triplets_test@none/all/TA} & \res{run/C-S2-kb-critic/kb_v1:triplets_test@derived/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@none/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@derived/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@self/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@wrong/all/TA}\\
+KB triplets (TA)       & \res{sum/C-S2-kb/systems.critic.none.TA} & \res{sum/C-S2-kb/systems.critic.stated.TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@none/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@derived/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@self/all/TA} & \res{run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@wrong/all/TA}\\
 MedEinst (pair)        & \res{run/C-ME-critic/clin_v1:medeinst_test/top/Reversal} & \res{run/C-S2-me-critic/clin_v1:medeinst_test@derived/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@none/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@derived/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@self/top/Reversal} & \res{run/C-S2-me-ledger-rm-g/clin_v1:medeinst_test@wrong/top/Reversal}\\
 \multicolumn{7}{@{}l}{\emph{No source}}\\
 Key pairs, MedQA (pair) & \res{run/C-KP-critic/clin_v1:keypairs_medqa_oneway/top/Reversal} & -- & \res{run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@none/top/Reversal} & -- & \res{run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@self/top/Reversal} & \res{run/C-S2-kp-ledger-rm-g/clin_v1:keypairs_medqa_oneway@wrong/top/Reversal}\\
@@ -1669,6 +1669,11 @@ for the backbone (\res{run/C-TF-critic/L2/all/TA}\%). For class-level
 criteria on held-out classes we compare the learned verdict (\tbd), the
 learned verdict given the member list (\tbd) and the gate (\tbd), by depth
 and frequency of the class, and report linking accuracy separately (\tbd).
+On knowledge-base triplets from DDXPlus test patients the criterion is read:
+with the derived criterion, without it and with the two lists exchanged, the
+verdict-only model trained on triplets solves \res{sum/C-S2-kb/systems.verdict-triplets.stated.TA}\%, \res{sum/C-S2-kb/systems.verdict-triplets.none.TA}\% and
+\res{sum/C-S2-kb/systems.verdict-triplets.wrong.TA}\% of triplets, the one trained on blocks \res{sum/C-S2-kb/systems.verdict-blocks.stated.TA}\%, \res{sum/C-S2-kb/systems.verdict-blocks.none.TA}\% and \res{sum/C-S2-kb/systems.verdict-blocks.wrong.TA}\%,
+and the backbone \res{sum/C-S2-kb/systems.critic.stated.TA}\%, \res{sum/C-S2-kb/systems.critic.none.TA}\% and \res{sum/C-S2-kb/systems.critic.wrong.TA}\%.
 On MedEinst the symbolic executor's pair accuracy (\res{sum/C-S2-executor/test.pair}\%) and the share of
 pairs it decides (\res{sum/C-S2-executor/test.both_decided}\%) bound what any rule-follower can gain. For key pairs
 the case-visible composite is compared with the verdict-only verifier
@@ -2002,9 +2007,8 @@ concept scorer; and probe re-weighting, our adaptation of
 \citet{liu2026dynacf} to case edits. \emph{References} that use a rule
 program at test time: a general-purpose trigger tagger
 \citep{harkema2009context} followed by the program, and the program applied
-to the trained reader's ledger. Larger open and closed judges
-(\ph{Qwen3.5-27B, Llama-3.3-70B, Kimi K3, GPT-5.4, Gemini 3.1 Pro, Claude
-Opus 5.5}) are \ph{not yet scored}. All four training corpora contain 15\%
+to the trained reader's ledger. Larger open judges are in Table~\ref{tab:openjudges}; closed judges
+(\ph{one Gemini, one Claude}) are \ph{not yet scored}. All four training corpora contain 15\%
 missing-input and 15\% presentation records; the loss is computed per
 example, so the corpora differ in their cases and not in the objective or
 the batching. In the natural corpus the rate of the decisive condition is a
@@ -2054,6 +2058,31 @@ Columns as there. The run that adds clinical pairs to rule triplets was
 queued and is not finished.}
 \label{tab:main-full}
 \end{table*}
+
+\begin{table}[!ht]
+\centering\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Judge & Readout & Rev & Hold & TA & XA\\
+\midrule
+gpt-oss-120b & choice & \res{run/C-AUD-gpt-oss-120b/L2/all/Rev} & \res{run/C-AUD-gpt-oss-120b/L2/all/Hold} & \res{run/C-AUD-gpt-oss-120b/L2/all/TA} & \res{run/C-AUD-gpt-oss-120b/xr_v1:test/top/XA}\\
+Gemma 4 31B & choice & \res{run/C-AUD-gemma-4-31b-choice/L2/all/Rev} & \res{run/C-AUD-gemma-4-31b-choice/L2/all/Hold} & \res{run/C-AUD-gemma-4-31b-choice/L2/all/TA} & \res{run/C-AUD-gemma-4-31b-choice/xr_v1:test/top/XA}\\
+Gemma 4 31B & log-prob. & \res{run/C-AUD-gemma-4-31b/L2/all/Rev} & \res{run/C-AUD-gemma-4-31b/L2/all/Hold} & \res{run/C-AUD-gemma-4-31b/L2/all/TA} & \res{run/C-AUD-gemma-4-31b/xr_v1:test/top/XA}\\
+Qwen3.5-27B & choice & \res{run/C-AUD-qwen35-27b/L2/all/Rev} & \res{run/C-AUD-qwen35-27b/L2/all/Hold} & \res{run/C-AUD-qwen35-27b/L2/all/TA} & \res{run/C-AUD-qwen35-27b/xr_v1:test/top/XA}\\
+Llama-3.3-70B & choice & \res{run/C-AUD-llama70b-choice/L2/all/Rev} & \res{run/C-AUD-llama70b-choice/L2/all/Hold} & \res{run/C-AUD-llama70b-choice/L2/all/TA} & \res{run/C-AUD-llama70b-choice/xr_v1:test/top/XA}\\
+Llama-3.3-70B & log-prob. & \res{run/C-AUD-llama70b/L2/all/Rev} & \res{run/C-AUD-llama70b/L2/all/Hold} & \res{run/C-AUD-llama70b/L2/all/TA} & \res{run/C-AUD-llama70b/xr_v1:test/top/XA}\\
+Nemotron 3 Super & choice & \res{run/C-AUD-nemotron-3-super-choice/L2/all/Rev} & \res{run/C-AUD-nemotron-3-super-choice/L2/all/Hold} & \res{run/C-AUD-nemotron-3-super-choice/L2/all/TA} & \res{run/C-AUD-nemotron-3-super-choice/xr_v1:test/top/XA}\\
+Nemotron 3 Super & log-prob. & \res{run/C-AUD-nemotron-3-super/L2/all/Rev} & \res{run/C-AUD-nemotron-3-super/L2/all/Hold} & \res{run/C-AUD-nemotron-3-super/L2/all/TA} & \res{run/C-AUD-nemotron-3-super/xr_v1:test/top/XA}\\
+Qwen3.5-397B & log-prob. & \res{run/C-AUD-qwen35-397b/L2/all/Rev} & \res{run/C-AUD-qwen35-397b/L2/all/Hold} & \res{run/C-AUD-qwen35-397b/L2/all/TA} & \res{run/C-AUD-qwen35-397b/xr_v1:test/top/XA}\\
+\bottomrule
+\end{tabular}
+\caption{Larger open judges without training, through an API (\%): 1{,}000 L2 triplets, conclusion claims, and the
+rule-side items (XA). Choice: the two claims are shown in both orders and the same choice twice is a
+decision; log-prob.: one-token log-probability of the verdict, which gives far lower accuracy for the same
+model. Closed judges: \ph{not yet scored}.}
+\label{tab:openjudges}
+\end{table}
 
 \paragraph{Further ablations.}
 \emph{Finding the condition.} When the reader must derive the condition

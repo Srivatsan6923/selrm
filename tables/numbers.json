@@ -1467,9 +1467,89 @@
   "number": 42.0,
   "value": "42"
  },
+ "run/C-AUD-gemma-4-31b-choice/L2/all/Hold": {
+  "number": 99.7,
+  "value": "99.7"
+ },
+ "run/C-AUD-gemma-4-31b-choice/L2/all/Rev": {
+  "number": 100.0,
+  "value": "100.0"
+ },
+ "run/C-AUD-gemma-4-31b-choice/L2/all/TA": {
+  "number": 99.7,
+  "value": "99.7"
+ },
+ "run/C-AUD-gemma-4-31b-choice/xr_v1:test/top/XA": {
+  "number": 100.0,
+  "value": "100.0"
+ },
+ "run/C-AUD-gemma-4-31b/L2/all/Hold": {
+  "number": 58.3,
+  "value": "58.3"
+ },
+ "run/C-AUD-gemma-4-31b/L2/all/Rev": {
+  "number": 48.0,
+  "value": "48.0"
+ },
+ "run/C-AUD-gemma-4-31b/L2/all/TA": {
+  "number": 33.4,
+  "value": "33.4"
+ },
+ "run/C-AUD-gemma-4-31b/xr_v1:test/top/XA": {
+  "number": 41.0,
+  "value": "41.0"
+ },
  "run/C-AUD-genprm/clin_v1:medeinst_test/top/Reversal": {
   "number": 22.0,
   "value": "22.0"
+ },
+ "run/C-AUD-gpt-oss-120b/L2/all/Hold": {
+  "number": 99.4,
+  "value": "99.4"
+ },
+ "run/C-AUD-gpt-oss-120b/L2/all/Rev": {
+  "number": 99.0,
+  "value": "99.0"
+ },
+ "run/C-AUD-gpt-oss-120b/L2/all/TA": {
+  "number": 98.5,
+  "value": "98.5"
+ },
+ "run/C-AUD-gpt-oss-120b/xr_v1:test/top/XA": {
+  "number": 99.5,
+  "value": "99.5"
+ },
+ "run/C-AUD-llama70b-choice/L2/all/Hold": {
+  "number": 95.5,
+  "value": "95.5"
+ },
+ "run/C-AUD-llama70b-choice/L2/all/Rev": {
+  "number": 98.7,
+  "value": "98.7"
+ },
+ "run/C-AUD-llama70b-choice/L2/all/TA": {
+  "number": 94.6,
+  "value": "94.6"
+ },
+ "run/C-AUD-llama70b-choice/xr_v1:test/top/XA": {
+  "number": 98.5,
+  "value": "98.5"
+ },
+ "run/C-AUD-llama70b/L2/all/Hold": {
+  "number": 52.3,
+  "value": "52.3"
+ },
+ "run/C-AUD-llama70b/L2/all/Rev": {
+  "number": 48.2,
+  "value": "48.2"
+ },
+ "run/C-AUD-llama70b/L2/all/TA": {
+  "number": 31.2,
+  "value": "31.2"
+ },
+ "run/C-AUD-llama70b/xr_v1:test/top/XA": {
+  "number": 50.25,
+  "value": "50.2"
  },
  "run/C-AUD-medprm/L2/all/BaseAcc": {
   "number": 91.15,
@@ -1586,6 +1666,70 @@
  "run/C-AUD-meds3/xr_v1:test/xa/XA_window@0": {
   "number": 16.0,
   "value": "16"
+ },
+ "run/C-AUD-nemotron-3-super-choice/L2/all/Hold": {
+  "number": 91.6,
+  "value": "91.6"
+ },
+ "run/C-AUD-nemotron-3-super-choice/L2/all/Rev": {
+  "number": 88.4,
+  "value": "88.4"
+ },
+ "run/C-AUD-nemotron-3-super-choice/L2/all/TA": {
+  "number": 85.5,
+  "value": "85.5"
+ },
+ "run/C-AUD-nemotron-3-super-choice/xr_v1:test/top/XA": {
+  "number": 97.25,
+  "value": "97.2"
+ },
+ "run/C-AUD-nemotron-3-super/L2/all/Hold": {
+  "number": 40.1,
+  "value": "40.1"
+ },
+ "run/C-AUD-nemotron-3-super/L2/all/Rev": {
+  "number": 36.5,
+  "value": "36.5"
+ },
+ "run/C-AUD-nemotron-3-super/L2/all/TA": {
+  "number": 24.6,
+  "value": "24.6"
+ },
+ "run/C-AUD-nemotron-3-super/xr_v1:test/top/XA": {
+  "number": 19.5,
+  "value": "19.5"
+ },
+ "run/C-AUD-qwen35-27b/L2/all/Hold": {
+  "number": 98.4,
+  "value": "98.4"
+ },
+ "run/C-AUD-qwen35-27b/L2/all/Rev": {
+  "number": 99.5,
+  "value": "99.5"
+ },
+ "run/C-AUD-qwen35-27b/L2/all/TA": {
+  "number": 98.1,
+  "value": "98.1"
+ },
+ "run/C-AUD-qwen35-27b/xr_v1:test/top/XA": {
+  "number": 100.0,
+  "value": "100.0"
+ },
+ "run/C-AUD-qwen35-397b/L2/all/Hold": {
+  "number": 42.7,
+  "value": "42.7"
+ },
+ "run/C-AUD-qwen35-397b/L2/all/Rev": {
+  "number": 22.6,
+  "value": "22.6"
+ },
+ "run/C-AUD-qwen35-397b/L2/all/TA": {
+  "number": 13.7,
+  "value": "13.7"
+ },
+ "run/C-AUD-qwen35-397b/xr_v1:test/top/XA": {
+  "number": 0.0,
+  "value": "0.0"
  },
  "run/C-AUD-thinkprm/L2/all/Hold": {
   "number": 90.0,
@@ -1826,14 +1970,6 @@
  "run/C-S2-ctrl-verdict-triplets/rule_v1:test_L2@wrong/all/TA": {
   "number": 2.85,
   "value": "2.9"
- },
- "run/C-S2-kb-critic/kb_v1:triplets_test@derived/all/TA": {
-  "number": null,
-  "value": "\\ph{tbd}"
- },
- "run/C-S2-kb-critic/kb_v1:triplets_test@none/all/TA": {
-  "number": 53.587400349990276,
-  "value": "53.6"
  },
  "run/C-S2-kb-ledger-rm-g/kb_v1:triplets_test@derived/all/TA": {
   "number": null,
@@ -2924,12 +3060,48 @@
   "value": "190"
  },
  "sum/C-S2-executor/test.both_decided": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 70.09102730819245,
+  "value": "70.1"
  },
  "sum/C-S2-executor/test.pair": {
-  "number": null,
-  "value": "\\ph{tbd}"
+  "number": 0.6873490618614155,
+  "value": "0.7"
+ },
+ "sum/C-S2-kb/systems.critic.none.TA": {
+  "number": 53.587400349990276,
+  "value": "53.6"
+ },
+ "sum/C-S2-kb/systems.critic.stated.TA": {
+  "number": 75.36457320629982,
+  "value": "75.4"
+ },
+ "sum/C-S2-kb/systems.critic.wrong.TA": {
+  "number": 18.685592066887033,
+  "value": "18.7"
+ },
+ "sum/C-S2-kb/systems.verdict-blocks.none.TA": {
+  "number": 52.40521096636205,
+  "value": "52.4"
+ },
+ "sum/C-S2-kb/systems.verdict-blocks.stated.TA": {
+  "number": 85.38596150106942,
+  "value": "85.4"
+ },
+ "sum/C-S2-kb/systems.verdict-blocks.wrong.TA": {
+  "number": 2.823254909585845,
+  "value": "2.8"
+ },
+ "sum/C-S2-kb/systems.verdict-triplets.none.TA": {
+  "number": 53.175189578067275,
+  "value": "53.2"
+ },
+ "sum/C-S2-kb/systems.verdict-triplets.stated.TA": {
+  "number": 90.60470542484931,
+  "value": "90.6"
+ },
+ "sum/C-S2-kb/systems.verdict-triplets.wrong.TA": {
+  "number": 1.0305269298075053,
+  "value": "1.0"
  },
  "sum/D-RL-analysis/runs.D-RL-ledger2-blocks-s1.final.share_always_base_claim": {
   "number": 56.0,

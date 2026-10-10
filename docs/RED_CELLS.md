@@ -119,3 +119,5 @@ keys without a value yet (87 cells), as section B announced ("Not yet in the pap
 | Table `tab:gate`, variants and gate diagnostics | 24 | B, C | runs `C-S2-<tier>-{reader-bit,gate,gate-struct}` |
 
 Table 14's 36 tbd cells are now result keys of the same form (run ids in docs/RESULT_KEYS.md, stage 2).
+
+On 10 Oct the note count rose by one (25 to 26): the single note "larger open and closed judges not yet scored" in the systems list became a pointer to the new open-judge table plus two notes, the closed judges still to score and their list. No measured value was lost.

@@ -169,6 +169,17 @@ def run(rid):
     return RUNS[rid]
 
 
+def report_dir(rid):
+    """results*/<rid> holding a summary.json and neither per-example scores nor a claim: an analysis written from
+    finished runs (C-S2-kb, C-S2-ctrl, C-S2-executor), which has no DONE of its own."""
+    for top in TOPS:
+        d = os.path.join(ROOT, top, rid)
+        if os.path.exists(os.path.join(d, "summary.json")) and not any(
+                f.startswith(("scores_", "CLAIMED")) for f in os.listdir(d)):
+            return d
+    return None
+
+
 def seeds(prefix):
     """[(seed, Run)] for prefix-s0..s4 with DONE; [(None, Run)] for a run without seeds."""
     out = [(k, run(f"{prefix}-s{k}")) for k in SEEDS]
@@ -284,6 +295,13 @@ def _resolve(key):
         rid, path = ("A-D15", rest) if head == "a15" else rest.split("/", 1)
         r = run(rid)
         p = os.path.join(r.path, "summary.json") if r else None
+        if sum_ := (None if r else report_dir(rid)):   # a report computed from finished runs (no scores, no claim)
+            x = load_json(os.path.join(sum_, "summary.json"))
+            for part in path.split("."):
+                x = x.get(part) if isinstance(x, dict) else None
+            x = x if isinstance(x, (int, float)) and not isinstance(x, bool) else None
+            f = os.path.join(sum_, "summary.json")
+            return x, fmt(x, spec, isinstance(x, int)), {"file": rel(f), "field": path, "file_commit": file_commit(f)}
         x = load_json(p) if p else None
         for part in path.split("."):
             x = x.get(part) if isinstance(x, dict) else None

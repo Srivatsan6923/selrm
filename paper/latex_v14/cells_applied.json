@@ -174,7 +174,7 @@
  "audit|qwen/qwen3.5-27b|Hold": "98.4",
  "audit|qwen/qwen3.5-27b|Key": "\\ph{tbd}",
  "audit|qwen/qwen3.5-27b|ME": "\\ph{tbd}",
- "audit|qwen/qwen3.5-27b|MR": "\\ph{tbd}",
+ "audit|qwen/qwen3.5-27b|MR": "34.2",
  "audit|qwen/qwen3.5-27b|Rev": "99.5",
  "audit|qwen/qwen3.5-27b|TA": "98.1",
  "audit|ryokamoi/Llama-3.1-8B-FoVer-PRM-2026|Hold": "61.9",
