@@ -1142,12 +1142,12 @@ the task local applicability verification.
  & Train & L2\\
 \midrule
 Rules (fold 1) & 223 & 103\\
-Distinct program structures (names, constants removed) & \tbd & \tbd\\
-Conditions needed per judgment (mean; max) & \tbd & \tbd\\
-Dependency depth (mean; max) & \tbd & \tbd\\
-Cases with competing mentions of the concept (\%) & \tbd & \tbd\\
-Judgments with a numeric comparison (\%) & \tbd & \tbd\\
-Judgments with an exception (\%) & \tbd & \tbd\\
+Distinct program structures (names, constants removed) & \res{stats/structure.train_triplets.distinct_structures@int} & \res{stats/structure.test_L2.distinct_structures@int}\\
+Conditions needed per judgment (mean; max) & \res{stats/structure.train_triplets.conditions_mean@2}; \res{stats/structure.train_triplets.conditions_max@int} & \res{stats/structure.test_L2.conditions_mean@2}; \res{stats/structure.test_L2.conditions_max@int}\\
+Dependency depth (mean; max) & \res{stats/structure.train_triplets.depth_mean@2}; \res{stats/structure.train_triplets.depth_max@int} & \res{stats/structure.test_L2.depth_mean@2}; \res{stats/structure.test_L2.depth_max@int}\\
+Cases with competing mentions of the concept (\%) & \res{stats/structure.train_triplets.competing_mentions_pct} & \res{stats/structure.test_L2.competing_mentions_pct}\\
+Judgments with a numeric comparison (\%) & \res{stats/structure.train_triplets.numeric_pct} & \res{stats/structure.test_L2.numeric_pct}\\
+Judgments with an exception (\%) & \res{stats/structure.train_triplets.exception_pct} & \res{stats/structure.test_L2.exception_pct}\\
 Criteria under which a past or family finding counts (\%) & \multicolumn{2}{c}{30.5 (library)}\\
 \bottomrule
 \end{tabular}}
@@ -1657,8 +1657,10 @@ adaptation on the training notes with and without edited near-misses at
 equal budget (\tbd, \tbd). Registered criteria extend the rule language to
 time windows with a reference date, the clause on which every current
 system is weakest: \tbd{} without and \tbd{} with the date check of the
-gate. On the rule tier, removing the rule text from the prompt gives \tbd{}
-and exchanging it for the rule of another group \tbd. For class-level
+gate. On the rule tier, removing the rule text from the prompt gives \res{run/C-S2-ctrl-verdict-triplets/rule_v1:test_L2@none/all/TA}\%
+and exchanging it for the rule of another group \res{run/C-S2-ctrl-verdict-triplets/rule_v1:test_L2@wrong/all/TA}\% for the verdict-only
+model trained on triplets (\res{run/B-F-verdict-triplets/L2/all/TA}\% with the rule), against \res{run/C-S2-ctrl-critic/rule_v1:test_L2@none/all/TA}\% and \res{run/C-S2-ctrl-critic/rule_v1:test_L2@wrong/all/TA}\%
+for the backbone (\res{run/C-TF-critic/L2/all/TA}\%). For class-level
 criteria on held-out classes we compare the learned verdict (\tbd), the
 learned verdict given the member list (\tbd) and the gate (\tbd), by depth
 and frequency of the class, and report linking accuracy separately (\tbd).
@@ -2024,19 +2026,19 @@ Critic & \res{run/C-TF-critic/L2/all/TA} & \res{run/C-TF-critic/L3inv/all/TA} & 
 \ \ + prompted ledger (lenient parse) & \res{run/C-TF-promptledger-lenient/L2/all/TA} & \tbd & 52.5 & \res{run/C-TF-promptledger-lenient/L2/all/Hold} & \res{run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/macroF1} & 86.0 & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
 Generated-program verifier & \res{run/C-TF-genprog/L2/all/TA} & \tbd & 82.8 & \res{run/C-TF-genprog/L2/all/Hold} & -- & -- & -- & -- & -- & -- & -- & --\\
 \multicolumn{13}{@{}l}{\emph{Trained on rule data only (all clinical columns are zero-shot)}}\\
-Verdict only, FoVer data & \res{run/B-TR-fover/L2/all/TA/s0} & \tbd & 67.0 & \res{run/B-TR-fover/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+Verdict only, FoVer data & \res{run/B-TR-fover/L2/all/TA/s0} & \res{run/B-TR-fover/L3inv/all/TA/s0} & 67.0 & \res{run/B-TR-fover/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
 Verdict only, rule blocks & \res{run/B-F-verdict-blocks/L2/all/TA/s0} & \res{run/B-F-verdict-blocks/L3inv/all/TA/s0} & 60.8 & \res{run/B-F-verdict-blocks/L2/all/Hold/s0} & \res{run/C-TG-verdict-blocks-s0/clin_v1:trialgpt_test/top/macroF1} & 92.8 & 20.5 & 68.3 & 51.8 & 78.7 & 82.7 & 85.6\\
 Verdict only, rule triplets & \res{run/B-F-verdict-triplets/L2/all/TA/s0} & \res{run/B-F-verdict-triplets/L3inv/all/TA/s0} & 90.2 & \res{run/B-F-verdict-triplets/L2/all/Hold/s0} & \res{run/C-TG-verdict-triplets-s0/clin_v1:trialgpt_test/top/macroF1} & 92.8 & 22.8 & 69.5 & 52.9 & 78.2 & 83.1 & 85.4\\
 Rationale, rule triplets & \res{run/B-F-rationale-triplets/L2/all/TA/s0} & \res{run/B-F-rationale-triplets/L3inv/all/TA/s0} & 92.8 & \res{run/B-F-rationale-triplets/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
 Evidence summary, rule blocks & \res{run/B-F-summary2-blocks/L2/all/TA/s0} & \res{run/B-F-summary2-blocks/L3inv/all/TA/s0} & 80.2 & \res{run/B-F-summary2-blocks/L2/all/Hold/s0} & \res{run/C-TG-summary2-blocks-s0/clin_v1:trialgpt_test/top/macroF1} & 84.4 & 22.8 & 61.6 & 56.1 & \tbd & \tbd & \tbd\\
 Evidence summary, rule triplets & \res{run/B-F-summary2-triplets/L2/all/TA/s0} & 97.6$^{a}$ & 88.5 & \res{run/B-F-summary2-triplets/L2/all/Hold/s0} & \res{run/C-TG-summary2-triplets-s0/clin_v1:trialgpt_test/top/macroF1} & 87.5 & 25.1 & 73.2 & 47.3 & 33.3 & 55.6 & 73.2\\
-\method{}, rule natural & \res{run/B-F-ledger2-natural/L2/all/TA/s0} & \tbd & 86.0 & \res{run/B-F-ledger2-natural/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
-\method{}, rule balanced & \res{run/B-F-ledger2-balanced/L2/all/TA/s0} & \tbd & 54.5 & \res{run/B-F-ledger2-balanced/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+\method{}, rule natural & \res{run/B-F-ledger2-natural/L2/all/TA/s0} & \res{run/B-F-ledger2-natural/L3inv/all/TA/s0} & 86.0 & \res{run/B-F-ledger2-natural/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+\method{}, rule balanced & \res{run/B-F-ledger2-balanced/L2/all/TA/s0} & \res{run/B-F-ledger2-balanced/L3inv/all/TA/s0} & 54.5 & \res{run/B-F-ledger2-balanced/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
 \method{}, rule blocks & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & \res{run/B-F-ledger2-blocks/L3inv/all/TA/s0} & 76.0 & \res{run/B-F-ledger2-blocks/L2/all/Hold/s0} & \res{run/C-TG-ledger2-blocks-s0/clin_v1:trialgpt_test/top/macroF1} & 85.8 & \tbd & \tbd & \tbd & 35.9 & 44.0 & \tbd\\
 \textbf{\method}, rule triplets & \textbf{99.2} & \res{run/B-F-ledger2-triplets/L3inv/all/TA/s0} & 89.8 & 99.95 & \res{run/C-TG-ledger2-triplets-s0/clin_v1:trialgpt_test/top/macroF1} & 87.7 & 15.7 & 44.4 & 35.1 & 30.5 & 38.2 & \tbd\\
 \multicolumn{13}{@{}l}{\emph{Trained with clinical pairs (MedEinst reference pairs and MedQA-train key pairs)}}\\
-\method{}, clinical pairs only & \res{run/B-TR-clinonly/L2/all/TA/s0} & \tbd & 35.5 & \res{run/B-TR-clinonly/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
-\method{}, rule triplets + clinical pairs & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+\method{}, clinical pairs only & \res{run/B-TR-clinonly/L2/all/TA/s0} & \res{run/B-TR-clinonly/L3inv/all/TA/s0} & 35.5 & \res{run/B-TR-clinonly/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+\method{}, rule triplets + clinical pairs & \res{run/B-TR-tripclin/L2/all/TA/s0} & \res{run/B-TR-tripclin/L3inv/all/TA/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
 \multicolumn{13}{@{}l}{\emph{References that use the rule program at test time}}\\
 Trigger tagger + program & \res{run/C-SC-gptrigger/L2/all/TA} & -- & -- & \res{run/C-SC-gptrigger/L2/all/Hold} & -- & -- & -- & -- & -- & -- & -- & --\\
 Program on the trained reader's ledger & \res{run/B-AE-program-ledger/L2/all/TA} & -- & -- & \res{run/B-AE-program-ledger/L2/all/Hold} & -- & -- & -- & -- & -- & -- & -- & --\\

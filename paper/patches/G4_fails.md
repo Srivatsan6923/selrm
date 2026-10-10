@@ -52,7 +52,7 @@ limited to the rule tier ("On the rule tier, selectivity is relative to the stat
 
 Section 6.5, paragraph "Derived criterion" becomes
 > **Derived criterion.** The symbolic executor of the criterion derived from the DDXPlus lists decides
-> \res{sum/C-S2-medeinst-executor/share_decided} of the MedEinst pairs, fewer than half. By the rule fixed in
+> \res{sum/C-S2-executor/test.both_decided} of the MedEinst pairs, fewer than half. By the rule fixed in
 > advance, the comparison on MedEinst is dropped from the family, and MedEinst is reported only as the
 > contrast without a criterion (Section 6.4).
 

@@ -75,7 +75,7 @@ Systems (`<system>`): `critic`, `verdict-blocks`, `verdict-triplets` (stage-1 ad
 Comparisons (7)-(12): `results_git/C-S2-comparisons.json` = `{"p7": {"diff", "lo", "hi", "p", "n_clusters"},
 ..., "p12": {...}}`; a comparison dropped by its gate is written as `{"dropped": true, "reason": ...}`.
 make_tables.py applies Holm over the members that are not dropped, once all six entries exist; keys
-`cmp/p7/diff` ... `cmp/p12/padj`. The MedEinst executor audit: `results_git/C-S2-medeinst-executor/summary.json`
-with `pair_acc` and `share_decided` (key `sum/C-S2-medeinst-executor/<field>`).
+`cmp/p7/diff` ... `cmp/p12/padj`. The MedEinst executor audit: `results_git/C-S2-executor/summary.json`
+(`test.both_decided`, `test.pair`; key `sum/C-S2-executor/<dotted field>`; the run needs its `DONE` file).
 
 If your code already writes something else, say so in HANDOFFS and the lead changes the keys, not your files.

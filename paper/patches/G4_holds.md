@@ -44,8 +44,8 @@ with
 > definition lowers it (Table~\ref{tab:ground}).
 >
 > **Derived criterion.** [if G2 passed] The symbolic executor decides
-> \res{sum/C-S2-medeinst-executor/share_decided} of the MedEinst pairs and is right on
-> \res{sum/C-S2-medeinst-executor/pair_acc}; with the derived criterion the trained verifier gains
+> \res{sum/C-S2-executor/test.both_decided} of the MedEinst pairs and is right on
+> \res{sum/C-S2-executor/test.pair}; with the derived criterion the trained verifier gains
 > \res{cmp/p11/diff} points more than the backbone [\res{cmp/p11/lo}, \res{cmp/p11/hi}].
 > [if G2 failed: the block "(11) dropped" of `G4_fails.md`.]
 >

@@ -289,6 +289,13 @@ def _resolve(key):
             x = x.get(part) if isinstance(x, dict) else None
         x = x if isinstance(x, (int, float)) and not isinstance(x, bool) else None
         return x, fmt(x, spec, isinstance(x, int)), {"runs": [prov_run(r, p, path)] if r else []}
+    if head == "stats":            # a field of tables/data_stats.json (A's data statistics)
+        p = os.path.join(ROOT, "tables", "data_stats.json")
+        x = load_json(p)
+        for part in rest.split("."):
+            x = x.get(part) if isinstance(x, dict) else None
+        x = x if isinstance(x, (int, float)) and not isinstance(x, bool) else None
+        return x, fmt(x, spec, isinstance(x, int)), {"file": rel(p), "field": rest, "file_commit": file_commit(p)}
     if head == "cmp":
         name, fld = rest.split("/")
         c = comparisons().get(name)

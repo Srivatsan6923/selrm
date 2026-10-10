@@ -1,6 +1,6 @@
 {
  "generated_by": "scripts/make_tables.py",
- "code_commit": "2bbf2d4a9d729882f8650afbd65eaa98e5ecf76d",
+ "code_commit": "52ca6c5d79ed232a562482a705dfa64b9e6c53d4",
  "uncommitted_changes": true,
  "records": {
   "rule_v1/dev_missing": {
@@ -5348,6 +5348,25 @@
    "stat": "mean",
    "seeds_found": []
   },
+  "run/B-F-ledger2-balanced/L3inv/all/TA/s0": {
+   "value": "49.6",
+   "number": 49.6,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-balanced-s0",
+     "seed": 0,
+     "file": "results_git/B-NS-L3inv-B-F-ledger2-balanced-s0/summary_rule_v1~test_L3inv.json",
+     "field": "all.TA",
+     "file_commit": "7bfe1eb4bee748114e4c1ec5d4b154b1a1e5a979",
+     "code_commit": "0151b9814c20"
+    }
+   ],
+   "set": "rule_v1/test_L3inv",
+   "stat": "s0",
+   "seeds_found": [
+    0
+   ]
+  },
   "run/B-F-ledger2-balanced/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -10052,6 +10071,25 @@
     }
    ],
    "set": "rule_v1/test_L2",
+   "stat": "s0",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-F-ledger2-natural/L3inv/all/TA/s0": {
+   "value": "75.4",
+   "number": 75.4,
+   "runs": [
+    {
+     "run_id": "B-F-ledger2-natural-s0",
+     "seed": 0,
+     "file": "results_git/B-NS-L3inv-B-F-ledger2-natural-s0/summary_rule_v1~test_L3inv.json",
+     "field": "all.TA",
+     "file_commit": "7bfe1eb4bee748114e4c1ec5d4b154b1a1e5a979",
+     "code_commit": "625e93561855"
+    }
+   ],
+   "set": "rule_v1/test_L3inv",
    "stat": "s0",
    "seeds_found": [
     0
@@ -38042,6 +38080,25 @@
     0
    ]
   },
+  "run/B-TR-clinonly/L3inv/all/TA/s0": {
+   "value": "51.7",
+   "number": 51.7,
+   "runs": [
+    {
+     "run_id": "B-TR-clinonly-s0",
+     "seed": 0,
+     "file": "results_git/B-NS-L3inv-B-TR-clinonly-s0/summary_rule_v1~test_L3inv.json",
+     "field": "all.TA",
+     "file_commit": "7bfe1eb4bee748114e4c1ec5d4b154b1a1e5a979",
+     "code_commit": "0151b9814c20"
+    }
+   ],
+   "set": "rule_v1/test_L3inv",
+   "stat": "s0",
+   "seeds_found": [
+    0
+   ]
+  },
   "run/B-TR-clinonly/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
    "number": null,
@@ -38324,6 +38381,25 @@
    ],
    "set": "rule_v1/test_L3alt",
    "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-TR-fover/L3inv/all/TA/s0": {
+   "value": "53.0",
+   "number": 53.0,
+   "runs": [
+    {
+     "run_id": "B-TR-fover-s0",
+     "seed": 0,
+     "file": "results_git/B-NS-L3inv-B-TR-fover-s0/summary_rule_v1~test_L3inv.json",
+     "field": "all.TA",
+     "file_commit": "7bfe1eb4bee748114e4c1ec5d4b154b1a1e5a979",
+     "code_commit": "0151b9814c20"
+    }
+   ],
+   "set": "rule_v1/test_L3inv",
+   "stat": "s0",
    "seeds_found": [
     0
    ]
@@ -38858,6 +38934,25 @@
    ],
    "set": "rule_v1/test_L3alt",
    "stat": "n",
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/B-TR-tripclin/L3inv/all/TA/s0": {
+   "value": "97.4",
+   "number": 97.4,
+   "runs": [
+    {
+     "run_id": "B-TR-tripclin-s0",
+     "seed": 0,
+     "file": "results_git/B-NS-L3inv-B-TR-tripclin-s0/summary_rule_v1~test_L3inv.json",
+     "field": "all.TA",
+     "file_commit": "7bfe1eb4bee748114e4c1ec5d4b154b1a1e5a979",
+     "code_commit": "484afb91114e"
+    }
+   ],
+   "set": "rule_v1/test_L3inv",
+   "stat": "s0",
    "seeds_found": [
     0
    ]
@@ -39697,28 +39792,118 @@
    "seeds_found": []
   },
   "run/C-AUD-llama70b/L2/all/Hold": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "52.3",
+   "number": 52.3,
+   "runs": [
+    {
+     "run_id": "C-AUD-llama70b",
+     "seed": null,
+     "file": "results_git/C-AUD-llama70b/summary_rule_v1~test_L2.json",
+     "field": "all.Hold",
+     "file_commit": "706694cb71125643a6de0424c170e224a7199d78",
+     "code_commit": "706694cb71125643a6de0424c170e224a7199d78"
+    }
+   ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-AUD-llama70b/L2/all/Hold/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "C-AUD-llama70b",
+     "seed": null,
+     "file": "results_git/C-AUD-llama70b/summary_rule_v1~test_L2.json",
+     "field": "all.Hold",
+     "file_commit": "706694cb71125643a6de0424c170e224a7199d78",
+     "code_commit": "706694cb71125643a6de0424c170e224a7199d78"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/C-AUD-llama70b/L2/all/Rev": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "48.2",
+   "number": 48.2,
+   "runs": [
+    {
+     "run_id": "C-AUD-llama70b",
+     "seed": null,
+     "file": "results_git/C-AUD-llama70b/summary_rule_v1~test_L2.json",
+     "field": "all.Rev",
+     "file_commit": "706694cb71125643a6de0424c170e224a7199d78",
+     "code_commit": "706694cb71125643a6de0424c170e224a7199d78"
+    }
+   ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-AUD-llama70b/L2/all/Rev/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "C-AUD-llama70b",
+     "seed": null,
+     "file": "results_git/C-AUD-llama70b/summary_rule_v1~test_L2.json",
+     "field": "all.Rev",
+     "file_commit": "706694cb71125643a6de0424c170e224a7199d78",
+     "code_commit": "706694cb71125643a6de0424c170e224a7199d78"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/C-AUD-llama70b/L2/all/TA": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "31.2",
+   "number": 31.2,
+   "runs": [
+    {
+     "run_id": "C-AUD-llama70b",
+     "seed": null,
+     "file": "results_git/C-AUD-llama70b/summary_rule_v1~test_L2.json",
+     "field": "all.TA",
+     "file_commit": "706694cb71125643a6de0424c170e224a7199d78",
+     "code_commit": "706694cb71125643a6de0424c170e224a7199d78"
+    }
+   ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-AUD-llama70b/L2/all/TA/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "C-AUD-llama70b",
+     "seed": null,
+     "file": "results_git/C-AUD-llama70b/summary_rule_v1~test_L2.json",
+     "field": "all.TA",
+     "file_commit": "706694cb71125643a6de0424c170e224a7199d78",
+     "code_commit": "706694cb71125643a6de0424c170e224a7199d78"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/C-AUD-llama70b/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
@@ -39737,12 +39922,42 @@
    "seeds_found": []
   },
   "run/C-AUD-llama70b/missing/top/MR": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "40.6",
+   "number": 40.6,
+   "runs": [
+    {
+     "run_id": "C-AUD-llama70b",
+     "seed": null,
+     "file": "results_git/C-AUD-llama70b/summary_rule_v1~missing.json",
+     "field": "top.MR",
+     "file_commit": "59725ae4dbcb3609081ec10ad2b0d93f0b49c220",
+     "code_commit": "706694cb71125643a6de0424c170e224a7199d78"
+    }
+   ],
    "set": "rule_v1/missing",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-AUD-llama70b/missing/top/MR/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "C-AUD-llama70b",
+     "seed": null,
+     "file": "results_git/C-AUD-llama70b/summary_rule_v1~missing.json",
+     "field": "top.MR",
+     "file_commit": "59725ae4dbcb3609081ec10ad2b0d93f0b49c220",
+     "code_commit": "706694cb71125643a6de0424c170e224a7199d78"
+    }
+   ],
+   "set": "rule_v1/missing",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/C-AUD-medprm/L2/all/BaseAcc": {
    "value": "91.2",
@@ -40524,28 +40739,118 @@
    ]
   },
   "run/C-AUD-qwen35-27b/L2/all/Hold": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "98.4",
+   "number": 98.4,
+   "runs": [
+    {
+     "run_id": "C-AUD-qwen35-27b",
+     "seed": null,
+     "file": "results_git/C-AUD-qwen35-27b/summary_rule_v1~test_L2.json",
+     "field": "all.Hold",
+     "file_commit": "ac6e98f488b222ee4baabf6ec00f2f0d22635487",
+     "code_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2"
+    }
+   ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-AUD-qwen35-27b/L2/all/Hold/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "C-AUD-qwen35-27b",
+     "seed": null,
+     "file": "results_git/C-AUD-qwen35-27b/summary_rule_v1~test_L2.json",
+     "field": "all.Hold",
+     "file_commit": "ac6e98f488b222ee4baabf6ec00f2f0d22635487",
+     "code_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/C-AUD-qwen35-27b/L2/all/Rev": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "99.5",
+   "number": 99.5,
+   "runs": [
+    {
+     "run_id": "C-AUD-qwen35-27b",
+     "seed": null,
+     "file": "results_git/C-AUD-qwen35-27b/summary_rule_v1~test_L2.json",
+     "field": "all.Rev",
+     "file_commit": "ac6e98f488b222ee4baabf6ec00f2f0d22635487",
+     "code_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2"
+    }
+   ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-AUD-qwen35-27b/L2/all/Rev/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "C-AUD-qwen35-27b",
+     "seed": null,
+     "file": "results_git/C-AUD-qwen35-27b/summary_rule_v1~test_L2.json",
+     "field": "all.Rev",
+     "file_commit": "ac6e98f488b222ee4baabf6ec00f2f0d22635487",
+     "code_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/C-AUD-qwen35-27b/L2/all/TA": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "98.1",
+   "number": 98.1,
+   "runs": [
+    {
+     "run_id": "C-AUD-qwen35-27b",
+     "seed": null,
+     "file": "results_git/C-AUD-qwen35-27b/summary_rule_v1~test_L2.json",
+     "field": "all.TA",
+     "file_commit": "ac6e98f488b222ee4baabf6ec00f2f0d22635487",
+     "code_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2"
+    }
+   ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-AUD-qwen35-27b/L2/all/TA/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "C-AUD-qwen35-27b",
+     "seed": null,
+     "file": "results_git/C-AUD-qwen35-27b/summary_rule_v1~test_L2.json",
+     "field": "all.TA",
+     "file_commit": "ac6e98f488b222ee4baabf6ec00f2f0d22635487",
+     "code_commit": "329a633d028a00d2949076f26b2a86192ea2a5f2"
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/C-AUD-qwen35-27b/clin_v1:keypairs_medqa_oneway/top/Reversal": {
    "value": "\\ph{tbd}",
@@ -42275,6 +42580,154 @@
    "set": "cls_v1/test@stated",
    "stat": "mean",
    "seeds_found": []
+  },
+  "run/C-S2-ctrl-critic/rule_v1:test_L2@none/all/TA": {
+   "value": "8.8",
+   "number": 8.75,
+   "runs": [
+    {
+     "run_id": "C-S2-ctrl-critic",
+     "seed": null,
+     "file": "results_git/C-S2-ctrl-critic/summary_rule_v1~test_L2@none.json",
+     "field": "all.TA",
+     "file_commit": "91bbf12bd33c371a1ac7579a575dd199fe839f2e",
+     "code_commit": "f0110636f2af"
+    }
+   ],
+   "set": "rule_v1/test_L2@none",
+   "stat": "mean",
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-S2-ctrl-critic/rule_v1:test_L2@wrong/all/TA": {
+   "value": "4.1",
+   "number": 4.1,
+   "runs": [
+    {
+     "run_id": "C-S2-ctrl-critic",
+     "seed": null,
+     "file": "results_git/C-S2-ctrl-critic/summary_rule_v1~test_L2@wrong.json",
+     "field": "all.TA",
+     "file_commit": "91bbf12bd33c371a1ac7579a575dd199fe839f2e",
+     "code_commit": "f0110636f2af"
+    }
+   ],
+   "set": "rule_v1/test_L2@wrong",
+   "stat": "mean",
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-S2-ctrl-verdict-triplets/rule_v1:test_L2@none/all/TA": {
+   "value": "13.0",
+   "number": 12.99,
+   "runs": [
+    {
+     "run_id": "C-S2-ctrl-verdict-triplets-s0",
+     "seed": 0,
+     "file": "results_git/C-S2-ctrl-verdict-triplets-s0/summary_rule_v1~test_L2@none.json",
+     "field": "all.TA",
+     "file_commit": "91bbf12bd33c371a1ac7579a575dd199fe839f2e",
+     "code_commit": "f0110636f2af"
+    },
+    {
+     "run_id": "C-S2-ctrl-verdict-triplets-s1",
+     "seed": 1,
+     "file": "results_git/C-S2-ctrl-verdict-triplets-s1/summary_rule_v1~test_L2@none.json",
+     "field": "all.TA",
+     "file_commit": "91bbf12bd33c371a1ac7579a575dd199fe839f2e",
+     "code_commit": "f0110636f2af"
+    },
+    {
+     "run_id": "C-S2-ctrl-verdict-triplets-s2",
+     "seed": 2,
+     "file": "results_git/C-S2-ctrl-verdict-triplets-s2/summary_rule_v1~test_L2@none.json",
+     "field": "all.TA",
+     "file_commit": "91bbf12bd33c371a1ac7579a575dd199fe839f2e",
+     "code_commit": "f0110636f2af"
+    },
+    {
+     "run_id": "C-S2-ctrl-verdict-triplets-s3",
+     "seed": 3,
+     "file": "results_git/C-S2-ctrl-verdict-triplets-s3/summary_rule_v1~test_L2@none.json",
+     "field": "all.TA",
+     "file_commit": "91bbf12bd33c371a1ac7579a575dd199fe839f2e",
+     "code_commit": "f0110636f2af"
+    },
+    {
+     "run_id": "C-S2-ctrl-verdict-triplets-s4",
+     "seed": 4,
+     "file": "results_git/C-S2-ctrl-verdict-triplets-s4/summary_rule_v1~test_L2@none.json",
+     "field": "all.TA",
+     "file_commit": "91bbf12bd33c371a1ac7579a575dd199fe839f2e",
+     "code_commit": "f0110636f2af"
+    }
+   ],
+   "set": "rule_v1/test_L2@none",
+   "stat": "mean",
+   "seeds_found": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ]
+  },
+  "run/C-S2-ctrl-verdict-triplets/rule_v1:test_L2@wrong/all/TA": {
+   "value": "2.9",
+   "number": 2.85,
+   "runs": [
+    {
+     "run_id": "C-S2-ctrl-verdict-triplets-s0",
+     "seed": 0,
+     "file": "results_git/C-S2-ctrl-verdict-triplets-s0/summary_rule_v1~test_L2@wrong.json",
+     "field": "all.TA",
+     "file_commit": "91bbf12bd33c371a1ac7579a575dd199fe839f2e",
+     "code_commit": "f0110636f2af"
+    },
+    {
+     "run_id": "C-S2-ctrl-verdict-triplets-s1",
+     "seed": 1,
+     "file": "results_git/C-S2-ctrl-verdict-triplets-s1/summary_rule_v1~test_L2@wrong.json",
+     "field": "all.TA",
+     "file_commit": "91bbf12bd33c371a1ac7579a575dd199fe839f2e",
+     "code_commit": "f0110636f2af"
+    },
+    {
+     "run_id": "C-S2-ctrl-verdict-triplets-s2",
+     "seed": 2,
+     "file": "results_git/C-S2-ctrl-verdict-triplets-s2/summary_rule_v1~test_L2@wrong.json",
+     "field": "all.TA",
+     "file_commit": "91bbf12bd33c371a1ac7579a575dd199fe839f2e",
+     "code_commit": "f0110636f2af"
+    },
+    {
+     "run_id": "C-S2-ctrl-verdict-triplets-s3",
+     "seed": 3,
+     "file": "results_git/C-S2-ctrl-verdict-triplets-s3/summary_rule_v1~test_L2@wrong.json",
+     "field": "all.TA",
+     "file_commit": "91bbf12bd33c371a1ac7579a575dd199fe839f2e",
+     "code_commit": "f0110636f2af"
+    },
+    {
+     "run_id": "C-S2-ctrl-verdict-triplets-s4",
+     "seed": 4,
+     "file": "results_git/C-S2-ctrl-verdict-triplets-s4/summary_rule_v1~test_L2@wrong.json",
+     "field": "all.TA",
+     "file_commit": "91bbf12bd33c371a1ac7579a575dd199fe839f2e",
+     "code_commit": "f0110636f2af"
+    }
+   ],
+   "set": "rule_v1/test_L2@wrong",
+   "stat": "mean",
+   "seeds_found": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ]
   },
   "run/C-S2-kb-critic/kb_v1:triplets_test@derived/all/TA": {
    "value": "\\ph{tbd}",
@@ -44054,12 +44507,42 @@
    ]
   },
   "run/C-TF-defcorr/clin_v1:keypairs_medqa_oneway/top/Reversal": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "77.6",
+   "number": 77.59103641456582,
+   "runs": [
+    {
+     "run_id": "C-KP-defcorr",
+     "seed": null,
+     "file": "results_git/C-KP-defcorr/summary_clin_v1~keypairs_medqa_oneway.json",
+     "field": "top.Reversal",
+     "file_commit": "706694cb71125643a6de0424c170e224a7199d78",
+     "code_commit": null
+    }
+   ],
    "set": "clin_v1/keypairs_medqa_oneway",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-TF-defcorr/clin_v1:keypairs_medqa_oneway/top/Reversal/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "C-KP-defcorr",
+     "seed": null,
+     "file": "results_git/C-KP-defcorr/summary_clin_v1~keypairs_medqa_oneway.json",
+     "field": "top.Reversal",
+     "file_commit": "706694cb71125643a6de0424c170e224a7199d78",
+     "code_commit": null
+    }
+   ],
+   "set": "clin_v1/keypairs_medqa_oneway",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/C-TF-defcorr/clin_v1:medeinst_test/top/Reversal": {
    "value": "24.7",
@@ -44100,20 +44583,80 @@
    ]
   },
   "run/C-TF-defcorr/clin_v1:nli4ct_test/top/consistency": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "0.8",
+   "number": 0.7703094777562862,
+   "runs": [
+    {
+     "run_id": "C-NL-defcorr",
+     "seed": null,
+     "file": "results_git/C-NL-defcorr/summary_clin_v1~nli4ct_test.json",
+     "field": "top.consistency",
+     "file_commit": "706694cb71125643a6de0424c170e224a7199d78",
+     "code_commit": null
+    }
+   ],
    "set": "clin_v1/nli4ct_test",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-TF-defcorr/clin_v1:nli4ct_test/top/consistency/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "C-NL-defcorr",
+     "seed": null,
+     "file": "results_git/C-NL-defcorr/summary_clin_v1~nli4ct_test.json",
+     "field": "top.consistency",
+     "file_commit": "706694cb71125643a6de0424c170e224a7199d78",
+     "code_commit": null
+    }
+   ],
+   "set": "clin_v1/nli4ct_test",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/C-TF-defcorr/clin_v1:nli4ct_test/top/faithfulness": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "0.7",
+   "number": 0.6759259259259259,
+   "runs": [
+    {
+     "run_id": "C-NL-defcorr",
+     "seed": null,
+     "file": "results_git/C-NL-defcorr/summary_clin_v1~nli4ct_test.json",
+     "field": "top.faithfulness",
+     "file_commit": "706694cb71125643a6de0424c170e224a7199d78",
+     "code_commit": null
+    }
+   ],
    "set": "clin_v1/nli4ct_test",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-TF-defcorr/clin_v1:nli4ct_test/top/faithfulness/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "C-NL-defcorr",
+     "seed": null,
+     "file": "results_git/C-NL-defcorr/summary_clin_v1~nli4ct_test.json",
+     "field": "top.faithfulness",
+     "file_commit": "706694cb71125643a6de0424c170e224a7199d78",
+     "code_commit": null
+    }
+   ],
+   "set": "clin_v1/nli4ct_test",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/C-TF-defcorr/ec_v1:test/all/TA": {
    "value": "\\ph{tbd}",
@@ -45326,12 +45869,42 @@
    ]
   },
   "run/C-TG-defcorr/clin_v1:trialgpt_test/top/macroF1": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "37.0",
+   "number": 37.04541310313235,
+   "runs": [
+    {
+     "run_id": "C-TG-defcorr",
+     "seed": null,
+     "file": "results_git/C-TG-defcorr/summary_clin_v1~trialgpt_test.json",
+     "field": "top.macroF1",
+     "file_commit": "706694cb71125643a6de0424c170e224a7199d78",
+     "code_commit": null
+    }
+   ],
    "set": "clin_v1/trialgpt_test",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    null
+   ]
+  },
+  "run/C-TG-defcorr/clin_v1:trialgpt_test/top/macroF1/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "C-TG-defcorr",
+     "seed": null,
+     "file": "results_git/C-TG-defcorr/summary_clin_v1~trialgpt_test.json",
+     "field": "top.macroF1",
+     "file_commit": "706694cb71125643a6de0424c170e224a7199d78",
+     "code_commit": null
+    }
+   ],
+   "set": "clin_v1/trialgpt_test",
+   "stat": "n",
+   "seeds_found": [
+    null
+   ]
   },
   "run/C-TG-ledger2-balanced/clin_v1:trialgpt_test/top/macroF1": {
    "value": "68.4",
@@ -47067,13 +47640,22 @@
      "field": "step=0.pair",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "step=0.pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/step=0/reward": {
@@ -47085,8 +47667,8 @@
    "seeds_found": []
   },
   "run/D-RL-ledger2-blocks/L2/step=1000/pair": {
-   "value": "35.0",
-   "number": 35.0,
+   "value": "40.4",
+   "number": 40.44444444444445,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47103,18 +47685,27 @@
      "field": "step=1000.pair",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "step=1000.pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/step=1000/reward": {
    "value": "1.0",
-   "number": 0.9959025058150291,
+   "number": 0.9962815368175506,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47131,18 +47722,27 @@
      "field": "step=1000.reward",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "step=1000.reward",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/step=200/pair": {
-   "value": "65.0",
-   "number": 65.0,
+   "value": "66.0",
+   "number": 66.0,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47159,18 +47759,27 @@
      "field": "step=200.pair",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "step=200.pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/step=200/reward": {
    "value": "0.7",
-   "number": 0.7310581915864819,
+   "number": 0.7422228046415146,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47187,18 +47796,27 @@
      "field": "step=200.reward",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "step=200.reward",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/step=400/pair": {
-   "value": "37.7",
-   "number": 37.66666666666667,
+   "value": "39.6",
+   "number": 39.55555555555556,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47215,18 +47833,27 @@
      "field": "step=400.pair",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "step=400.pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/step=400/reward": {
    "value": "1.0",
-   "number": 0.9595596919953824,
+   "number": 0.9615997195243836,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47243,18 +47870,27 @@
      "field": "step=400.reward",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "step=400.reward",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/step=600/pair": {
-   "value": "38.0",
-   "number": 38.0,
+   "value": "42.2",
+   "number": 42.22222222222222,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47271,18 +47907,27 @@
      "field": "step=600.pair",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "step=600.pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/step=600/reward": {
    "value": "1.0",
-   "number": 0.9946136526763439,
+   "number": 0.9947445630033811,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47299,18 +47944,27 @@
      "field": "step=600.reward",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "step=600.reward",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/step=800/pair": {
-   "value": "34.0",
-   "number": 34.0,
+   "value": "37.6",
+   "number": 37.55555555555555,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47327,18 +47981,27 @@
      "field": "step=800.pair",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "step=800.pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/step=800/reward": {
    "value": "1.0",
-   "number": 0.9970994639396666,
+   "number": 0.9965564196308453,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47355,18 +48018,27 @@
      "field": "step=800.reward",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "step=800.reward",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_base": {
-   "value": "67.7",
-   "number": 67.66666666666667,
+   "value": "68.2",
+   "number": 68.22222222222221,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47383,18 +48055,27 @@
      "field": "top.acc_base",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_base",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_base/n": {
-   "value": "2",
-   "number": 2,
+   "value": "3",
+   "number": 3,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47411,18 +48092,27 @@
      "field": "top.acc_base",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_base",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "n",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_base/sd": {
-   "value": "34.4",
-   "number": 34.41253001774531,
+   "value": "24.4",
+   "number": 24.352351776307703,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47439,18 +48129,27 @@
      "field": "top.acc_base",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_base",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "sd",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_flip": {
-   "value": "64.3",
-   "number": 64.33333333333333,
+   "value": "70.0",
+   "number": 70.0,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47467,18 +48166,27 @@
      "field": "top.acc_flip",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_flip",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_flip/n": {
-   "value": "2",
-   "number": 2,
+   "value": "3",
+   "number": 3,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47495,18 +48203,27 @@
      "field": "top.acc_flip",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_flip",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "n",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_flip/sd": {
-   "value": "33.5",
-   "number": 33.46972097616325,
+   "value": "25.6",
+   "number": 25.621171800767513,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47523,18 +48240,27 @@
      "field": "top.acc_flip",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_flip",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "sd",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_near": {
-   "value": "64.7",
-   "number": 64.66666666666666,
+   "value": "63.1",
+   "number": 63.11111111111111,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47550,6 +48276,14 @@
      "file": "results_git/D-RL-ledger2-blocks-s1/summary_rule_v1~test_L2.json",
      "field": "top.acc_near",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_near",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
      "code_commit": null
     }
    ],
@@ -47557,12 +48291,13 @@
    "stat": "mean",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_near/n": {
-   "value": "2",
-   "number": 2,
+   "value": "3",
+   "number": 3,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47578,6 +48313,14 @@
      "file": "results_git/D-RL-ledger2-blocks-s1/summary_rule_v1~test_L2.json",
      "field": "top.acc_near",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_near",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
      "code_commit": null
     }
    ],
@@ -47585,12 +48328,13 @@
    "stat": "n",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_near/sd": {
-   "value": "32.1",
-   "number": 32.05550741379015,
+   "value": "22.8",
+   "number": 22.826235717635026,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47606,6 +48350,14 @@
      "file": "results_git/D-RL-ledger2-blocks-s1/summary_rule_v1~test_L2.json",
      "field": "top.acc_near",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_near",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
      "code_commit": null
     }
    ],
@@ -47613,12 +48365,13 @@
    "stat": "sd",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_pair": {
-   "value": "35.0",
-   "number": 35.0,
+   "value": "40.4",
+   "number": 40.44444444444445,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47634,6 +48387,14 @@
      "file": "results_git/D-RL-ledger2-blocks-s1/summary_rule_v1~test_L2.json",
      "field": "top.acc_pair",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
      "code_commit": null
     }
    ],
@@ -47641,12 +48402,13 @@
    "stat": "mean",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_pair/n": {
-   "value": "2",
-   "number": 2,
+   "value": "3",
+   "number": 3,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47663,13 +48425,22 @@
      "field": "top.acc_pair",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "n",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_pair/s0": {
@@ -47691,13 +48462,22 @@
      "field": "top.acc_pair",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "s0",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_pair/s1": {
@@ -47719,18 +48499,27 @@
      "field": "top.acc_pair",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "s1",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_pair/sd": {
-   "value": "1.4",
-   "number": 1.4142135623730951,
+   "value": "9.5",
+   "number": 9.48292813037861,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47746,6 +48535,14 @@
      "file": "results_git/D-RL-ledger2-blocks-s1/summary_rule_v1~test_L2.json",
      "field": "top.acc_pair",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
      "code_commit": null
     }
    ],
@@ -47753,12 +48550,13 @@
    "stat": "sd",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_triplet": {
-   "value": "27.3",
-   "number": 27.333333333333336,
+   "value": "30.4",
+   "number": 30.444444444444443,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47774,6 +48572,14 @@
      "file": "results_git/D-RL-ledger2-blocks-s1/summary_rule_v1~test_L2.json",
      "field": "top.acc_triplet",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_triplet",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
      "code_commit": null
     }
    ],
@@ -47781,12 +48587,13 @@
    "stat": "mean",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_triplet/n": {
-   "value": "2",
-   "number": 2,
+   "value": "3",
+   "number": 3,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47803,13 +48610,22 @@
      "field": "top.acc_triplet",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_triplet",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "n",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_triplet/s0": {
@@ -47831,18 +48647,27 @@
      "field": "top.acc_triplet",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_triplet",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "s0",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/acc_triplet/sd": {
-   "value": "1.9",
-   "number": 1.8856180831641276,
+   "value": "5.6",
+   "number": 5.551109331909686,
    "runs": [
     {
      "run_id": "D-RL-ledger2-blocks-s0",
@@ -47859,13 +48684,22 @@
      "field": "top.acc_triplet",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.acc_triplet",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "sd",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/start_pair/s0": {
@@ -47887,13 +48721,22 @@
      "field": "top.start_pair",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.start_pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "s0",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/L2/top/start_triplet/s0": {
@@ -47915,13 +48758,22 @@
      "field": "top.start_triplet",
      "file_commit": "2d552bc344cc7d97c9304e2f20b54f3a9a409507",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-blocks-s2",
+     "seed": 2,
+     "file": "results_git/D-RL-ledger2-blocks-s2/summary_rule_v1~test_L2.json",
+     "field": "top.start_triplet",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "s0",
    "seeds_found": [
     0,
-    1
+    1,
+    2
    ]
   },
   "run/D-RL-ledger2-blocks/xr_v1:test/xa/XA": {
@@ -48969,8 +49821,8 @@
    ]
   },
   "run/D-RL-ledger2-triplets/xr_v1:test/xa/XA": {
-   "value": "54.8",
-   "number": 54.75,
+   "value": "57.9",
+   "number": 57.875,
    "runs": [
     {
      "run_id": "D-RL-ledger2-triplets-s0",
@@ -48979,17 +49831,26 @@
      "field": "xa.XA",
      "file_commit": "ba12bf24d93abd79712131b7ae237e647694dd14",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-triplets-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-ledger2-triplets-s1/summary_xr_v1~test.json",
+     "field": "xa.XA",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "xr_v1/test",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-ledger2-triplets/xr_v1:test/xa/XA/n": {
-   "value": "1",
-   "number": 1,
+   "value": "2",
+   "number": 2,
    "runs": [
     {
      "run_id": "D-RL-ledger2-triplets-s0",
@@ -48998,17 +49859,54 @@
      "field": "xa.XA",
      "file_commit": "ba12bf24d93abd79712131b7ae237e647694dd14",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-triplets-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-ledger2-triplets-s1/summary_xr_v1~test.json",
+     "field": "xa.XA",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "xr_v1/test",
    "stat": "n",
    "seeds_found": [
-    0
+    0,
+    1
+   ]
+  },
+  "run/D-RL-ledger2-triplets/xr_v1:test/xa/XA/sd": {
+   "value": "4.4",
+   "number": 4.419417382415922,
+   "runs": [
+    {
+     "run_id": "D-RL-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-ledger2-triplets-s0/summary_xr_v1~test.json",
+     "field": "xa.XA",
+     "file_commit": "ba12bf24d93abd79712131b7ae237e647694dd14",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-triplets-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-ledger2-triplets-s1/summary_xr_v1~test.json",
+     "field": "xa.XA",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
+    }
+   ],
+   "set": "xr_v1/test",
+   "stat": "sd",
+   "seeds_found": [
+    0,
+    1
    ]
   },
   "run/D-RL-ledger2-triplets/xr_v1:test/xa/XA362": {
-   "value": "55.8",
-   "number": 55.80110497237569,
+   "value": "59.5",
+   "number": 59.530386740331494,
    "runs": [
     {
      "run_id": "D-RL-ledger2-triplets-s0",
@@ -49016,18 +49914,27 @@
      "file": "results_git/D-RL-ledger2-triplets-s0/summary_xr_v1~test.json",
      "field": "xa.XA362",
      "file_commit": "ba12bf24d93abd79712131b7ae237e647694dd14",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-triplets-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-ledger2-triplets-s1/summary_xr_v1~test.json",
+     "field": "xa.XA362",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
      "code_commit": null
     }
    ],
    "set": "xr_v1/test",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-ledger2-triplets/xr_v1:test/xa/XA362/n": {
-   "value": "1",
-   "number": 1,
+   "value": "2",
+   "number": 2,
    "runs": [
     {
      "run_id": "D-RL-ledger2-triplets-s0",
@@ -49036,12 +49943,49 @@
      "field": "xa.XA362",
      "file_commit": "ba12bf24d93abd79712131b7ae237e647694dd14",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-triplets-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-ledger2-triplets-s1/summary_xr_v1~test.json",
+     "field": "xa.XA362",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "xr_v1/test",
    "stat": "n",
    "seeds_found": [
-    0
+    0,
+    1
+   ]
+  },
+  "run/D-RL-ledger2-triplets/xr_v1:test/xa/XA362/sd": {
+   "value": "5.3",
+   "number": 5.274000854153806,
+   "runs": [
+    {
+     "run_id": "D-RL-ledger2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-ledger2-triplets-s0/summary_xr_v1~test.json",
+     "field": "xa.XA362",
+     "file_commit": "ba12bf24d93abd79712131b7ae237e647694dd14",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-ledger2-triplets-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-ledger2-triplets-s1/summary_xr_v1~test.json",
+     "field": "xa.XA362",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
+    }
+   ],
+   "set": "xr_v1/test",
+   "stat": "sd",
+   "seeds_found": [
+    0,
+    1
    ]
   },
   "run/D-RL-outcome/L2/step=0/pair": {
@@ -49990,8 +50934,8 @@
    ]
   },
   "run/D-RL-refgraph/L2/step=0/pair": {
-   "value": "88.7",
-   "number": 88.66666666666667,
+   "value": "89.0",
+   "number": 89.0,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50000,12 +50944,21 @@
      "field": "step=0.pair",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "step=0.pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/step=0/reward": {
@@ -50017,8 +50970,8 @@
    "seeds_found": []
   },
   "run/D-RL-refgraph/L2/step=1000/pair": {
-   "value": "98.0",
-   "number": 98.0,
+   "value": "97.0",
+   "number": 97.0,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50027,17 +50980,26 @@
      "field": "step=1000.pair",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "step=1000.pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/step=1000/reward": {
    "value": "1.0",
-   "number": 0.9680078125,
+   "number": 0.96931640625,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50046,12 +51008,21 @@
      "field": "step=1000.reward",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "step=1000.reward",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/step=200/pair": {
@@ -50065,17 +51036,26 @@
      "field": "step=200.pair",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "step=200.pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/step=200/reward": {
    "value": "0.9",
-   "number": 0.8946957236842106,
+   "number": 0.8942228618421053,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50084,17 +51064,26 @@
      "field": "step=200.reward",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "step=200.reward",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/step=400/pair": {
-   "value": "98.0",
-   "number": 98.0,
+   "value": "96.3",
+   "number": 96.33333333333334,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50103,17 +51092,26 @@
      "field": "step=400.pair",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "step=400.pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/step=400/reward": {
    "value": "1.0",
-   "number": 0.9523046875000001,
+   "number": 0.95275390625,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50122,17 +51120,26 @@
      "field": "step=400.reward",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "step=400.reward",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/step=600/pair": {
-   "value": "98.7",
-   "number": 98.66666666666667,
+   "value": "97.7",
+   "number": 97.66666666666667,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50141,17 +51148,26 @@
      "field": "step=600.pair",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "step=600.pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/step=600/reward": {
    "value": "1.0",
-   "number": 0.9673437500000001,
+   "number": 0.9639453125,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50160,17 +51176,26 @@
      "field": "step=600.reward",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "step=600.reward",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/step=800/pair": {
-   "value": "97.3",
-   "number": 97.33333333333333,
+   "value": "97.0",
+   "number": 97.0,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50179,17 +51204,26 @@
      "field": "step=800.pair",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "step=800.pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/step=800/reward": {
    "value": "1.0",
-   "number": 0.9696093749999999,
+   "number": 0.9675390625,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50198,17 +51232,26 @@
      "field": "step=800.reward",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "step=800.reward",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/top/acc_base": {
-   "value": "98.7",
-   "number": 98.66666666666667,
+   "value": "97.3",
+   "number": 97.33333333333334,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50217,17 +51260,26 @@
      "field": "top.acc_base",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_base",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/top/acc_base/n": {
-   "value": "1",
-   "number": 1,
+   "value": "2",
+   "number": 2,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50236,17 +51288,54 @@
      "field": "top.acc_base",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_base",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "n",
    "seeds_found": [
-    0
+    0,
+    1
+   ]
+  },
+  "run/D-RL-refgraph/L2/top/acc_base/sd": {
+   "value": "1.9",
+   "number": 1.88561808316413,
+   "runs": [
+    {
+     "run_id": "D-RL-refgraph-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-refgraph-s0/summary_rule_v1~test_L2.json",
+     "field": "top.acc_base",
+     "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_base",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "sd",
+   "seeds_found": [
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/top/acc_flip": {
-   "value": "99.3",
-   "number": 99.33333333333333,
+   "value": "99.7",
+   "number": 99.66666666666666,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50255,17 +51344,26 @@
      "field": "top.acc_flip",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_flip",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/top/acc_flip/n": {
-   "value": "1",
-   "number": 1,
+   "value": "2",
+   "number": 2,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50274,17 +51372,54 @@
      "field": "top.acc_flip",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_flip",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "n",
    "seeds_found": [
-    0
+    0,
+    1
+   ]
+  },
+  "run/D-RL-refgraph/L2/top/acc_flip/sd": {
+   "value": "0.5",
+   "number": 0.471404520791035,
+   "runs": [
+    {
+     "run_id": "D-RL-refgraph-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-refgraph-s0/summary_rule_v1~test_L2.json",
+     "field": "top.acc_flip",
+     "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_flip",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "sd",
+   "seeds_found": [
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/top/acc_near": {
-   "value": "97.3",
-   "number": 97.33333333333333,
+   "value": "97.7",
+   "number": 97.66666666666666,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50293,17 +51428,26 @@
      "field": "top.acc_near",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_near",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/top/acc_near/n": {
-   "value": "1",
-   "number": 1,
+   "value": "2",
+   "number": 2,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50312,17 +51456,54 @@
      "field": "top.acc_near",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_near",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "n",
    "seeds_found": [
-    0
+    0,
+    1
+   ]
+  },
+  "run/D-RL-refgraph/L2/top/acc_near/sd": {
+   "value": "0.5",
+   "number": 0.471404520791035,
+   "runs": [
+    {
+     "run_id": "D-RL-refgraph-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-refgraph-s0/summary_rule_v1~test_L2.json",
+     "field": "top.acc_near",
+     "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_near",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "sd",
+   "seeds_found": [
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/top/acc_pair": {
-   "value": "98.0",
-   "number": 98.0,
+   "value": "97.0",
+   "number": 97.0,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50330,18 +51511,27 @@
      "file": "results_git/D-RL-refgraph-s0/summary_rule_v1~test_L2.json",
      "field": "top.acc_pair",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
      "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/top/acc_pair/n": {
-   "value": "1",
-   "number": 1,
+   "value": "2",
+   "number": 2,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50350,12 +51540,21 @@
      "field": "top.acc_pair",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "n",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/top/acc_pair/s0": {
@@ -50369,17 +51568,54 @@
      "field": "top.acc_pair",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "s0",
    "seeds_found": [
-    0
+    0,
+    1
+   ]
+  },
+  "run/D-RL-refgraph/L2/top/acc_pair/sd": {
+   "value": "1.4",
+   "number": 1.4142135623730951,
+   "runs": [
+    {
+     "run_id": "D-RL-refgraph-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-refgraph-s0/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "sd",
+   "seeds_found": [
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/top/acc_triplet": {
-   "value": "96.7",
-   "number": 96.66666666666667,
+   "value": "96.0",
+   "number": 96.0,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50387,18 +51623,27 @@
      "file": "results_git/D-RL-refgraph-s0/summary_rule_v1~test_L2.json",
      "field": "top.acc_triplet",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_triplet",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
      "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "mean",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/top/acc_triplet/n": {
-   "value": "1",
-   "number": 1,
+   "value": "2",
+   "number": 2,
    "runs": [
     {
      "run_id": "D-RL-refgraph-s0",
@@ -50407,12 +51652,21 @@
      "field": "top.acc_triplet",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_triplet",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "n",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/top/acc_triplet/s0": {
@@ -50426,12 +51680,49 @@
      "field": "top.acc_triplet",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_triplet",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "s0",
    "seeds_found": [
-    0
+    0,
+    1
+   ]
+  },
+  "run/D-RL-refgraph/L2/top/acc_triplet/sd": {
+   "value": "0.9",
+   "number": 0.94280904158207,
+   "runs": [
+    {
+     "run_id": "D-RL-refgraph-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-refgraph-s0/summary_rule_v1~test_L2.json",
+     "field": "top.acc_triplet",
+     "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
+     "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.acc_triplet",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
+    }
+   ],
+   "set": "rule_v1/test_L2",
+   "stat": "sd",
+   "seeds_found": [
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/top/start_pair/s0": {
@@ -50445,12 +51736,21 @@
      "field": "top.start_pair",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.start_pair",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "s0",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/L2/top/start_triplet/s0": {
@@ -50464,12 +51764,21 @@
      "field": "top.start_triplet",
      "file_commit": "a2ceb5c3cdebcb1a1cd84090d98db8399a1ef653",
      "code_commit": null
+    },
+    {
+     "run_id": "D-RL-refgraph-s1",
+     "seed": 1,
+     "file": "results_git/D-RL-refgraph-s1/summary_rule_v1~test_L2.json",
+     "field": "top.start_triplet",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
     }
    ],
    "set": "rule_v1/test_L2",
    "stat": "s0",
    "seeds_found": [
-    0
+    0,
+    1
    ]
   },
   "run/D-RL-refgraph/xr_v1:test/xa/XA": {
@@ -52056,20 +53365,80 @@
    ]
   },
   "run/D-RL-summary2-triplets/xr_v1:test/xa/XA": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "89.0",
+   "number": 89.0,
+   "runs": [
+    {
+     "run_id": "D-RL-summary2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-summary2-triplets-s0/summary_xr_v1~test.json",
+     "field": "xa.XA",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
+    }
+   ],
    "set": "xr_v1/test",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/D-RL-summary2-triplets/xr_v1:test/xa/XA/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-RL-summary2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-summary2-triplets-s0/summary_xr_v1~test.json",
+     "field": "xa.XA",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
+    }
+   ],
+   "set": "xr_v1/test",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
   },
   "run/D-RL-summary2-triplets/xr_v1:test/xa/XA362": {
-   "value": "\\ph{tbd}",
-   "number": null,
-   "runs": [],
+   "value": "88.1",
+   "number": 88.12154696132596,
+   "runs": [
+    {
+     "run_id": "D-RL-summary2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-summary2-triplets-s0/summary_xr_v1~test.json",
+     "field": "xa.XA362",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
+    }
+   ],
    "set": "xr_v1/test",
    "stat": "mean",
-   "seeds_found": []
+   "seeds_found": [
+    0
+   ]
+  },
+  "run/D-RL-summary2-triplets/xr_v1:test/xa/XA362/n": {
+   "value": "1",
+   "number": 1,
+   "runs": [
+    {
+     "run_id": "D-RL-summary2-triplets-s0",
+     "seed": 0,
+     "file": "results_git/D-RL-summary2-triplets-s0/summary_xr_v1~test.json",
+     "field": "xa.XA362",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
+     "code_commit": null
+    }
+   ],
+   "set": "xr_v1/test",
+   "stat": "n",
+   "seeds_found": [
+    0
+   ]
   },
   "run/D-RL-untrained/L2/top/acc_base": {
    "value": "90.7",
@@ -55311,6 +56680,118 @@
     null
    ]
   },
+  "stats/structure.test_L2.competing_mentions_pct": {
+   "value": "13.4",
+   "number": 13.4,
+   "file": "tables/data_stats.json",
+   "field": "structure.test_L2.competing_mentions_pct",
+   "file_commit": "a6cc31a2c762b477af9545e2022dee5a63a6fe7f"
+  },
+  "stats/structure.test_L2.conditions_max@int": {
+   "value": "4",
+   "number": 4,
+   "file": "tables/data_stats.json",
+   "field": "structure.test_L2.conditions_max",
+   "file_commit": "a6cc31a2c762b477af9545e2022dee5a63a6fe7f"
+  },
+  "stats/structure.test_L2.conditions_mean@2": {
+   "value": "2.51",
+   "number": 2.51,
+   "file": "tables/data_stats.json",
+   "field": "structure.test_L2.conditions_mean",
+   "file_commit": "a6cc31a2c762b477af9545e2022dee5a63a6fe7f"
+  },
+  "stats/structure.test_L2.depth_max@int": {
+   "value": "2",
+   "number": 2,
+   "file": "tables/data_stats.json",
+   "field": "structure.test_L2.depth_max",
+   "file_commit": "a6cc31a2c762b477af9545e2022dee5a63a6fe7f"
+  },
+  "stats/structure.test_L2.depth_mean@2": {
+   "value": "1.83",
+   "number": 1.83,
+   "file": "tables/data_stats.json",
+   "field": "structure.test_L2.depth_mean",
+   "file_commit": "a6cc31a2c762b477af9545e2022dee5a63a6fe7f"
+  },
+  "stats/structure.test_L2.distinct_structures@int": {
+   "value": "56",
+   "number": 56,
+   "file": "tables/data_stats.json",
+   "field": "structure.test_L2.distinct_structures",
+   "file_commit": "a6cc31a2c762b477af9545e2022dee5a63a6fe7f"
+  },
+  "stats/structure.test_L2.exception_pct": {
+   "value": "82.8",
+   "number": 82.8,
+   "file": "tables/data_stats.json",
+   "field": "structure.test_L2.exception_pct",
+   "file_commit": "a6cc31a2c762b477af9545e2022dee5a63a6fe7f"
+  },
+  "stats/structure.test_L2.numeric_pct": {
+   "value": "83.0",
+   "number": 83.0,
+   "file": "tables/data_stats.json",
+   "field": "structure.test_L2.numeric_pct",
+   "file_commit": "a6cc31a2c762b477af9545e2022dee5a63a6fe7f"
+  },
+  "stats/structure.train_triplets.competing_mentions_pct": {
+   "value": "9.0",
+   "number": 9.0,
+   "file": "tables/data_stats.json",
+   "field": "structure.train_triplets.competing_mentions_pct",
+   "file_commit": "a6cc31a2c762b477af9545e2022dee5a63a6fe7f"
+  },
+  "stats/structure.train_triplets.conditions_max@int": {
+   "value": "4",
+   "number": 4,
+   "file": "tables/data_stats.json",
+   "field": "structure.train_triplets.conditions_max",
+   "file_commit": "a6cc31a2c762b477af9545e2022dee5a63a6fe7f"
+  },
+  "stats/structure.train_triplets.conditions_mean@2": {
+   "value": "1.79",
+   "number": 1.79,
+   "file": "tables/data_stats.json",
+   "field": "structure.train_triplets.conditions_mean",
+   "file_commit": "a6cc31a2c762b477af9545e2022dee5a63a6fe7f"
+  },
+  "stats/structure.train_triplets.depth_max@int": {
+   "value": "2",
+   "number": 2,
+   "file": "tables/data_stats.json",
+   "field": "structure.train_triplets.depth_max",
+   "file_commit": "a6cc31a2c762b477af9545e2022dee5a63a6fe7f"
+  },
+  "stats/structure.train_triplets.depth_mean@2": {
+   "value": "1.58",
+   "number": 1.58,
+   "file": "tables/data_stats.json",
+   "field": "structure.train_triplets.depth_mean",
+   "file_commit": "a6cc31a2c762b477af9545e2022dee5a63a6fe7f"
+  },
+  "stats/structure.train_triplets.distinct_structures@int": {
+   "value": "74",
+   "number": 74,
+   "file": "tables/data_stats.json",
+   "field": "structure.train_triplets.distinct_structures",
+   "file_commit": "a6cc31a2c762b477af9545e2022dee5a63a6fe7f"
+  },
+  "stats/structure.train_triplets.exception_pct": {
+   "value": "86.9",
+   "number": 86.9,
+   "file": "tables/data_stats.json",
+   "field": "structure.train_triplets.exception_pct",
+   "file_commit": "a6cc31a2c762b477af9545e2022dee5a63a6fe7f"
+  },
+  "stats/structure.train_triplets.numeric_pct": {
+   "value": "64.1",
+   "number": 64.1,
+   "file": "tables/data_stats.json",
+   "field": "structure.train_triplets.numeric_pct",
+   "file_commit": "a6cc31a2c762b477af9545e2022dee5a63a6fe7f"
+  },
   "sum/D-RL-analysis/runs.D-RL-ledger2-blocks-s1.final.share_always_base_claim": {
    "value": "56.0",
    "number": 56.0,
@@ -55320,7 +56801,7 @@
      "seed": null,
      "file": "results_git/D-RL-analysis/summary.json",
      "field": "runs.D-RL-ledger2-blocks-s1.final.share_always_base_claim",
-     "file_commit": "dfd05b8f81adf4e76ffff54bc7959b9b0cf1286d",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
      "code_commit": null
     }
    ]
@@ -55334,7 +56815,7 @@
      "seed": null,
      "file": "results_git/D-RL-analysis/summary.json",
      "field": "runs.D-RL-stepcheck-s0.final.errors_fail_to_hold_share",
-     "file_commit": "dfd05b8f81adf4e76ffff54bc7959b9b0cf1286d",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
      "code_commit": null
     }
    ]
@@ -55348,7 +56829,7 @@
      "seed": null,
      "file": "results_git/D-RL-analysis/summary.json",
      "field": "runs.D-RL-stepcheck-s0.final.median_chars",
-     "file_commit": "dfd05b8f81adf4e76ffff54bc7959b9b0cf1286d",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
      "code_commit": null
     }
    ]
@@ -55362,7 +56843,7 @@
      "seed": null,
      "file": "results_git/D-RL-analysis/summary.json",
      "field": "runs.D-RL-stepcheck-s0.final.one_step_share",
-     "file_commit": "dfd05b8f81adf4e76ffff54bc7959b9b0cf1286d",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
      "code_commit": null
     }
    ]
@@ -55376,7 +56857,7 @@
      "seed": null,
      "file": "results_git/D-RL-analysis/summary.json",
      "field": "runs.D-RL-stepcheck-s0.final.share_always_flip_claim",
-     "file_commit": "dfd05b8f81adf4e76ffff54bc7959b9b0cf1286d",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
      "code_commit": null
     }
    ]
@@ -55390,7 +56871,7 @@
      "seed": null,
      "file": "results_git/D-RL-analysis/summary.json",
      "field": "runs.D-RL-stepcheck-s0.start.median_chars",
-     "file_commit": "dfd05b8f81adf4e76ffff54bc7959b9b0cf1286d",
+     "file_commit": "1341fe89e69fd34909e40097dbc16032e2e76861",
      "code_commit": null
     }
    ]
@@ -55743,73 +57224,73 @@
     "value": "\\ph{tbd}"
    },
    {
-    "row": "\\ph{Llama-3.3-70B}",
+    "row": "meta-llama/llama-3.3-70b-instruct",
     "col": "Rev",
     "key": "run/C-AUD-llama70b/L2/all/Rev",
-    "value": "\\ph{tbd}"
+    "value": "48.2"
    },
    {
-    "row": "\\ph{Llama-3.3-70B}",
+    "row": "meta-llama/llama-3.3-70b-instruct",
     "col": "Hold",
     "key": "run/C-AUD-llama70b/L2/all/Hold",
-    "value": "\\ph{tbd}"
+    "value": "52.3"
    },
    {
-    "row": "\\ph{Llama-3.3-70B}",
+    "row": "meta-llama/llama-3.3-70b-instruct",
     "col": "TA",
     "key": "run/C-AUD-llama70b/L2/all/TA",
-    "value": "\\ph{tbd}"
+    "value": "31.2"
    },
    {
-    "row": "\\ph{Llama-3.3-70B}",
+    "row": "meta-llama/llama-3.3-70b-instruct",
     "col": "MR",
     "key": "run/C-AUD-llama70b/missing/top/MR",
-    "value": "\\ph{tbd}"
+    "value": "40.6"
    },
    {
-    "row": "\\ph{Llama-3.3-70B}",
+    "row": "meta-llama/llama-3.3-70b-instruct",
     "col": "ME",
     "key": "run/C-AUD-llama70b/clin_v1:medeinst_test/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
-    "row": "\\ph{Llama-3.3-70B}",
+    "row": "meta-llama/llama-3.3-70b-instruct",
     "col": "Key",
     "key": "run/C-AUD-llama70b/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
-    "row": "\\ph{Qwen3.5-27B}",
+    "row": "qwen/qwen3.5-27b",
     "col": "Rev",
     "key": "run/C-AUD-qwen35-27b/L2/all/Rev",
-    "value": "\\ph{tbd}"
+    "value": "99.5"
    },
    {
-    "row": "\\ph{Qwen3.5-27B}",
+    "row": "qwen/qwen3.5-27b",
     "col": "Hold",
     "key": "run/C-AUD-qwen35-27b/L2/all/Hold",
-    "value": "\\ph{tbd}"
+    "value": "98.4"
    },
    {
-    "row": "\\ph{Qwen3.5-27B}",
+    "row": "qwen/qwen3.5-27b",
     "col": "TA",
     "key": "run/C-AUD-qwen35-27b/L2/all/TA",
-    "value": "\\ph{tbd}"
+    "value": "98.1"
    },
    {
-    "row": "\\ph{Qwen3.5-27B}",
+    "row": "qwen/qwen3.5-27b",
     "col": "MR",
     "key": "run/C-AUD-qwen35-27b/missing/top/MR",
     "value": "\\ph{tbd}"
    },
    {
-    "row": "\\ph{Qwen3.5-27B}",
+    "row": "qwen/qwen3.5-27b",
     "col": "ME",
     "key": "run/C-AUD-qwen35-27b/clin_v1:medeinst_test/top/Reversal",
     "value": "\\ph{tbd}"
    },
    {
-    "row": "\\ph{Qwen3.5-27B}",
+    "row": "qwen/qwen3.5-27b",
     "col": "Key",
     "key": "run/C-AUD-qwen35-27b/clin_v1:keypairs_medqa_oneway/top/Reversal",
     "value": "\\ph{tbd}"
@@ -56048,7 +57529,7 @@
     "row": "\\ \\ + default correction",
     "col": "TrialGPT",
     "key": "run/C-TG-defcorr/clin_v1:trialgpt_test/top/macroF1",
-    "value": "\\ph{tbd}"
+    "value": "37.0"
    },
    {
     "row": "\\ \\ + default correction",
@@ -56764,19 +58245,19 @@
     "row": "\\ \\ + default correction",
     "col": "Key",
     "key": "run/C-TF-defcorr/clin_v1:keypairs_medqa_oneway/top/Reversal",
-    "value": "\\ph{tbd}"
+    "value": "77.6"
    },
    {
     "row": "\\ \\ + default correction",
     "col": "NLI-F",
     "key": "run/C-TF-defcorr/clin_v1:nli4ct_test/top/faithfulness",
-    "value": "\\ph{tbd}"
+    "value": "0.7"
    },
    {
     "row": "\\ \\ + default correction",
     "col": "NLI-C",
     "key": "run/C-TF-defcorr/clin_v1:nli4ct_test/top/consistency",
-    "value": "\\ph{tbd}"
+    "value": "0.8"
    },
    {
     "row": "\\ \\ + prompted ledger",
@@ -60408,31 +61889,31 @@
     "row": "Reference graph",
     "col": "Base",
     "key": "run/D-RL-refgraph/L2/top/acc_base",
-    "value": "98.7"
+    "value": "97.3\\sd{1.9}"
    },
    {
     "row": "Reference graph",
     "col": "Flip",
     "key": "run/D-RL-refgraph/L2/top/acc_flip",
-    "value": "99.3"
+    "value": "99.7\\sd{0.5}"
    },
    {
     "row": "Reference graph",
     "col": "Near",
     "key": "run/D-RL-refgraph/L2/top/acc_near",
-    "value": "97.3"
+    "value": "97.7\\sd{0.5}"
    },
    {
     "row": "Reference graph",
     "col": "Pair",
     "key": "run/D-RL-refgraph/L2/top/acc_pair",
-    "value": "98.0"
+    "value": "97.0\\sd{1.4}"
    },
    {
     "row": "Reference graph",
     "col": "Triplet",
     "key": "run/D-RL-refgraph/L2/top/acc_triplet",
-    "value": "96.7"
+    "value": "96.0\\sd{0.9}"
    },
    {
     "row": "Reference graph",
@@ -60492,31 +61973,31 @@
     "row": "\\method{}, rule blocks",
     "col": "Base",
     "key": "run/D-RL-ledger2-blocks/L2/top/acc_base",
-    "value": "67.7\\sd{34.4}"
+    "value": "68.2\\sd{24.4}"
    },
    {
     "row": "\\method{}, rule blocks",
     "col": "Flip",
     "key": "run/D-RL-ledger2-blocks/L2/top/acc_flip",
-    "value": "64.3\\sd{33.5}"
+    "value": "70.0\\sd{25.6}"
    },
    {
     "row": "\\method{}, rule blocks",
     "col": "Near",
     "key": "run/D-RL-ledger2-blocks/L2/top/acc_near",
-    "value": "64.7\\sd{32.1}"
+    "value": "63.1\\sd{22.8}"
    },
    {
     "row": "\\method{}, rule blocks",
     "col": "Pair",
     "key": "run/D-RL-ledger2-blocks/L2/top/acc_pair",
-    "value": "35.0\\sd{1.4}"
+    "value": "40.4\\sd{9.5}"
    },
    {
     "row": "\\method{}, rule blocks",
     "col": "Triplet",
     "key": "run/D-RL-ledger2-blocks/L2/top/acc_triplet",
-    "value": "27.3\\sd{1.9}"
+    "value": "30.4\\sd{5.6}"
    },
    {
     "row": "\\method{}, rule blocks",
@@ -60564,13 +62045,13 @@
     "row": "\\method{}, rule triplets",
     "col": "XA",
     "key": "run/D-RL-ledger2-triplets/xr_v1:test/xa/XA",
-    "value": "54.8"
+    "value": "57.9\\sd{4.4}"
    },
    {
     "row": "\\method{}, rule triplets",
     "col": "XA362",
     "key": "run/D-RL-ledger2-triplets/xr_v1:test/xa/XA362",
-    "value": "55.8"
+    "value": "59.5\\sd{5.3}"
    },
    {
     "row": "Prose summary, rule triplets",
@@ -60606,13 +62087,13 @@
     "row": "Prose summary, rule triplets",
     "col": "XA",
     "key": "run/D-RL-summary2-triplets/xr_v1:test/xa/XA",
-    "value": "\\ph{tbd}"
+    "value": "89.0"
    },
    {
     "row": "Prose summary, rule triplets",
     "col": "XA362",
     "key": "run/D-RL-summary2-triplets/xr_v1:test/xa/XA362",
-    "value": "\\ph{tbd}"
+    "value": "88.1"
    }
   ],
   "xr": [
@@ -61226,7 +62707,7 @@
     "row": "ref.\\ graph",
     "col": "0",
     "key": "run/D-RL-refgraph/L2/step=0/pair",
-    "value": "88.7"
+    "value": "89.0"
    },
    {
     "row": "ref.\\ graph",
@@ -61238,25 +62719,25 @@
     "row": "ref.\\ graph",
     "col": "400",
     "key": "run/D-RL-refgraph/L2/step=400/pair",
-    "value": "98.0"
+    "value": "96.3"
    },
    {
     "row": "ref.\\ graph",
     "col": "600",
     "key": "run/D-RL-refgraph/L2/step=600/pair",
-    "value": "98.7"
+    "value": "97.7"
    },
    {
     "row": "ref.\\ graph",
     "col": "800",
     "key": "run/D-RL-refgraph/L2/step=800/pair",
-    "value": "97.3"
+    "value": "97.0"
    },
    {
     "row": "ref.\\ graph",
     "col": "1000",
     "key": "run/D-RL-refgraph/L2/step=1000/pair",
-    "value": "98.0"
+    "value": "97.0"
    },
    {
     "row": "step check",
@@ -61304,31 +62785,31 @@
     "row": "\\method{} blocks",
     "col": "200",
     "key": "run/D-RL-ledger2-blocks/L2/step=200/pair",
-    "value": "65.0"
+    "value": "66.0"
    },
    {
     "row": "\\method{} blocks",
     "col": "400",
     "key": "run/D-RL-ledger2-blocks/L2/step=400/pair",
-    "value": "37.7"
+    "value": "39.6"
    },
    {
     "row": "\\method{} blocks",
     "col": "600",
     "key": "run/D-RL-ledger2-blocks/L2/step=600/pair",
-    "value": "38.0"
+    "value": "42.2"
    },
    {
     "row": "\\method{} blocks",
     "col": "800",
     "key": "run/D-RL-ledger2-blocks/L2/step=800/pair",
-    "value": "34.0"
+    "value": "37.6"
    },
    {
     "row": "\\method{} blocks",
     "col": "1000",
     "key": "run/D-RL-ledger2-blocks/L2/step=1000/pair",
-    "value": "35.0"
+    "value": "40.4"
    },
    {
     "row": "\\method{} triplets",
