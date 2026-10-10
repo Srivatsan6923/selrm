@@ -96,6 +96,23 @@
   "items": 1100,
   "notes": 226
  },
+ "medeinst_cells": {
+  "verdict-triplets|none": {
+   "pair_accuracy": 20.778376370053874,
+   "seeds": 2,
+   "n": 5383
+  },
+  "verdict-blocks|none": {
+   "pair_accuracy": 19.320081738807357,
+   "seeds": 2,
+   "n": 5383
+  },
+  "critic|none": {
+   "pair_accuracy": 24.187256176853055,
+   "seeds": 1,
+   "n": 5383
+  }
+ },
  "mcv_cells": {
   "critic|criteria_test@stated|all": {
    "BalAcc": 88.38238361677587,
@@ -707,6 +724,42 @@
    "Rev": 36.34527089072544,
    "Hold": 99.39393939393939,
    "n": 1089,
+   "seeds": 5
+  },
+  "critic|ruleside_test@stated|all": {
+   "XA": 39.32203389830509,
+   "acc_original_cut": 90.16949152542372,
+   "acc_altered_cut": 48.8135593220339,
+   "n": 295,
+   "seeds": 1
+  },
+  "critic|natural_band_test@stated|all": {
+   "Acc": 81.47208121827411,
+   "n": 394,
+   "seeds": 1
+  },
+  "verdict-blocks|ruleside_test@stated|all": {
+   "XA": 72.88135593220339,
+   "acc_original_cut": 97.76271186440678,
+   "acc_altered_cut": 75.11864406779661,
+   "n": 295,
+   "seeds": 5
+  },
+  "verdict-blocks|natural_band_test@stated|all": {
+   "Acc": 86.90355329949239,
+   "n": 394,
+   "seeds": 5
+  },
+  "verdict-triplets|ruleside_test@stated|all": {
+   "XA": 90.98305084745762,
+   "acc_original_cut": 98.91525423728814,
+   "acc_altered_cut": 91.9322033898305,
+   "n": 295,
+   "seeds": 5
+  },
+  "verdict-triplets|natural_band_test@stated|all": {
+   "Acc": 89.44162436548223,
+   "n": 394,
    "seeds": 5
   }
  }

@@ -116,6 +116,28 @@ def descriptive(crit, edits):
                 for name, v in per.items():
                     cells[f"{'critic' if kind == 'critic' else 'verdict-' + kind}|{portion}@{cond}|{name}"] = {
                         k: statistics.mean(x[k] for x in v) for k in v[0]} | {"seeds": len(v)}
+    # rule side (the same note under the original and an altered cut-off; XA = both cells right) and the natural band
+    rs, nb = load(f"{MCV}/ruleside_test/records.jsonl"), load(f"{MCV}/natural_band_test/records.jsonl")
+    lab = {r["tid"]: r["label"] for r in rs if r["claim_role"] == "s"}
+    for kind in ("critic", "blocks", "triplets"):
+        name = "critic" if kind == "critic" else "verdict-" + kind
+        xs, ns = [], []
+        for run in system_runs(kind):
+            run2 = run.replace("C-S2-mcv-", "C-S2-mcv2-")
+            u = scores(run2, "mcv_v1/ruleside_test")
+            if u:
+                ok = {t: (d > 0) == bool(lab[t]) for (t, _), d in d_by(rs, u).items()}
+                items = sorted({t.rsplit("@", 1)[0] for t in ok})
+                xs.append({"XA": 100.0 * statistics.mean(ok[i + "@orig"] and ok[i + "@alt"] for i in items),
+                           "acc_original_cut": 100.0 * statistics.mean(ok[i + "@orig"] for i in items),
+                           "acc_altered_cut": 100.0 * statistics.mean(ok[i + "@alt"] for i in items), "n": len(items)})
+            u = scores(run2, "mcv_v1/natural_band_test")
+            if u:
+                d = d_by(nb, u)
+                ns.append({"Acc": 100.0 * statistics.mean(v > 0 for v in d.values()), "n": len(d)})
+        for key, v in ((f"{name}|ruleside_test@stated|all", xs), (f"{name}|natural_band_test@stated|all", ns)):
+            if v:
+                cells[key] = {k: statistics.mean(x[k] for x in v) for k in v[0]} | {"seeds": len(v)}
     return cells
 
 
