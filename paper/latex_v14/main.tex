@@ -991,18 +991,17 @@ negative and the medical claim is withdrawn.
 (1) & $\res{cmp/p1/diff}$ $[\res{cmp/p1/lo},\res{cmp/p1/hi}]$ & $<$0.001 & expectation not supported\\
 (2) & $+\res{cmp/p2/diff}$ $[\res{cmp/p2/lo},\res{cmp/p2/hi}]$ & $<$0.001 & holds (five seeds)\\
 (3) & $+\res{cmp/p3/diff}$ $[\res{cmp/p3/lo},\res{cmp/p3/hi}]$ & \res{cmp/p3/p} & holds, at \res{cmp/p3/diff} points\\
-(4) & $\res{cmp/p4/diff}$ $[-20.1,1.7]$ & 0.104 & fails\\
-(5) & $\res{cmp/p5/diff}$ $[-19.5,-0.8]$ & 0.026 & fails (negative)\\
+(4) & $\res{cmp/p4/diff}$ $[\res{cmp/p4/lo},\res{cmp/p4/hi}]$ & \res{cmp/p4/p} & fails\\
+(5) & $\res{cmp/p5/diff}$ $[\res{cmp/p5/lo},\res{cmp/p5/hi}]$ & \res{cmp/p5/p} & fails (negative)\\
 (6a) & $+\res{cmp/p6a/diff}$ $[\res{cmp/p6a/lo},\res{cmp/p6a/hi}]$ & \res{cmp/p6a/p} & not established\\
 (6b) & $\res{cmp/p6b/diff}$ $[\res{cmp/p6b/lo},\res{cmp/p6b/hi}]$ & \res{cmp/p6b/p} & not established\\
 \bottomrule
 \end{tabular}}
 \caption{Outcome of the seven primary comparisons of stage 1. Intervals for
 (4) and (5) resample the \res{json/results_git/C-ME-comparisons.json::ledger2-triplets-s0 - critic.label_pairs.n_clusters} label pairs; with pairs as units they are
-$[\res{cmp/p4/lo},\res{cmp/p4/hi}]$ and $[\res{cmp/p5/lo},\res{cmp/p5/hi}]$. $p$-values are unadjusted; with the Holm
-correction over the family, (1) to (5) remain below 0.05 ((3) at
-\res{cmp/p3/padj}; (1), (4) and (5) against the expectation) and (6a), (6b) are
-at \res{cmp/p6a/padj}.}
+$[\res{cmp/p4/lo_pairs},\res{cmp/p4/hi_pairs}]$ and $[\res{cmp/p5/lo_pairs},\res{cmp/p5/hi_pairs}]$. $p$-values are unadjusted; with the Holm
+correction over the family only (1), (2) and (3) remain below 0.05 ((3) at
+\res{cmp/p3/padj}, (5) at \res{cmp/p5/padj}).}
 \label{tab:primary}
 \end{table}
 

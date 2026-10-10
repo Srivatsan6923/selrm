@@ -188,32 +188,60 @@
   "value": "0.004"
  },
  "cmp/p3/padj": {
-  "number": 0.012,
-  "value": "0.012"
+  "number": 0.02,
+  "value": "0.020"
  },
  "cmp/p4/diff": {
   "number": -8.452535760728217,
   "value": "-8.5"
  },
  "cmp/p4/hi": {
+  "number": 1.7123287671232887,
+  "value": "1.7"
+ },
+ "cmp/p4/hi_pairs": {
   "number": -7.003529630317665,
   "value": "-7.0"
  },
  "cmp/p4/lo": {
+  "number": -20.05566185423552,
+  "value": "-20.1"
+ },
+ "cmp/p4/lo_pairs": {
   "number": -9.80865688277912,
   "value": "-9.8"
+ },
+ "cmp/p4/p": {
+  "number": 0.104,
+  "value": "0.104"
  },
  "cmp/p5/diff": {
   "number": -9.399962845996658,
   "value": "-9.4"
  },
  "cmp/p5/hi": {
+  "number": -0.7673267326732649,
+  "value": "-0.8"
+ },
+ "cmp/p5/hi_pairs": {
   "number": -8.080995727289615,
   "value": "-8.1"
  },
  "cmp/p5/lo": {
+  "number": -19.462465245597777,
+  "value": "-19.5"
+ },
+ "cmp/p5/lo_pairs": {
   "number": -10.718929964703698,
   "value": "-10.7"
+ },
+ "cmp/p5/p": {
+  "number": 0.026,
+  "value": "0.026"
+ },
+ "cmp/p5/padj": {
+  "number": 0.104,
+  "value": "0.104"
  },
  "cmp/p6a/diff": {
   "number": 3.3918068054352943,
@@ -234,10 +262,6 @@
  "cmp/p6a/p": {
   "number": 0.244,
   "value": "0.244"
- },
- "cmp/p6a/padj": {
-  "number": 0.428,
-  "value": "0.428"
  },
  "cmp/p6b/diff": {
   "number": -1.7831033132748786,

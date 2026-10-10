@@ -519,6 +519,10 @@ def comparisons():
                     out |= {f: r.get(f) for f in ("diff", "lo", "hi", "p")} | {
                         "n": r.get("n") or r.get("n_clusters"), "file": rel(p), "file_commit": file_commit(p),
                         "computed_by": "C: selrm.metrics.paired_cluster_bootstrap (scripts/eval_clinical.py)"}
+                    lp = r.get("label_pairs")      # MedEinst: the plan's cluster is the label pair (134), so its
+                    if isinstance(lp, dict):       # interval and p are the comparison's; pairs as units are kept
+                        out |= {"lo_pairs": out["lo"], "hi_pairs": out["hi"], "p_pairs": out["p"],
+                                "lo": lp.get("lo"), "hi": lp.get("hi"), "p": lp.get("p"), "n": lp.get("n_clusters")}
                     break
         _CMP[name] = out
     family = [_CMP[c[0]] for c in COMPARISONS]
