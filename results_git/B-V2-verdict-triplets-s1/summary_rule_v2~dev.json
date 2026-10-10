@@ -1,0 +1,341 @@
+{
+ "run_id": "B-V2-verdict-triplets-s1",
+ "set": "rule_v2/dev",
+ "claim_type": "conclusion",
+ "all": {
+  "Rev": 98.0,
+  "Hold": 95.66666666666667,
+  "TA": 94.0,
+  "BaseAcc": 99.66666666666667,
+  "Tie": 0.0,
+  "PresHold": 99.66666666666667,
+  "n": 300
+ },
+ "nm_kind=boundary": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 42
+ },
+ "tier=long": {
+  "Rev": 96.73913043478261,
+  "Hold": 91.30434782608695,
+  "TA": 89.1304347826087,
+  "BaseAcc": 98.91304347826087,
+  "Tie": 0.0,
+  "PresHold": 98.91304347826087,
+  "n": 92
+ },
+ "level=L0": {
+  "Rev": 98.0,
+  "Hold": 95.66666666666667,
+  "TA": 94.0,
+  "BaseAcc": 99.66666666666667,
+  "Tie": 0.0,
+  "PresHold": 99.66666666666667,
+  "n": 300
+ },
+ "family=additive_score": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 27
+ },
+ "nm_kind=numeric": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 42
+ },
+ "tier=easy": {
+  "Rev": 98.5,
+  "Hold": 97.5,
+  "TA": 96.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 200
+ },
+ "family=g_single": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 31
+ },
+ "nm_kind=time": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 45
+ },
+ "tier=superseded": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 8
+ },
+ "family=g_all_of": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 27
+ },
+ "family=g_any_of": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 46
+ },
+ "nm_kind=negation": {
+  "Rev": 98.18181818181819,
+  "Hold": 98.18181818181819,
+  "TA": 98.18181818181819,
+  "BaseAcc": 98.18181818181819,
+  "Tie": 0.0,
+  "PresHold": 98.18181818181819,
+  "n": 55
+ },
+ "family=g_score_cutoff": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 21
+ },
+ "family=any_of": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 7
+ },
+ "nm_kind=subject": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 48
+ },
+ "family=g_two_of_three": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 16
+ },
+ "family=history_switch": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 2
+ },
+ "family=state_switch": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 7
+ },
+ "family=allergy_switch": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 3
+ },
+ "family=all_of": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 6
+ },
+ "family=lab_threshold": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 8
+ },
+ "family=family_switch": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 1
+ },
+ "family=score_cutoff": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 1
+ },
+ "family=drug_interaction": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 6
+ },
+ "family=two_of_three": {
+  "Rev": 100.0,
+  "Hold": 100.0,
+  "TA": 100.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 1
+ },
+ "nm_kind=window": {
+  "Rev": 97.05882352941177,
+  "Hold": 73.52941176470588,
+  "TA": 70.58823529411765,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 34
+ },
+ "family=v2_all|class+window": {
+  "Rev": 90.9090909090909,
+  "Hold": 81.81818181818181,
+  "TA": 72.72727272727273,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 22
+ },
+ "nm_kind=class": {
+  "Rev": 88.23529411764706,
+  "Hold": 91.17647058823529,
+  "TA": 79.41176470588235,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 34
+ },
+ "family=v2_single|class": {
+  "Rev": 91.66666666666667,
+  "Hold": 100.0,
+  "TA": 91.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 12
+ },
+ "family=v2_all|class+class": {
+  "Rev": 90.47619047619048,
+  "Hold": 80.95238095238095,
+  "TA": 76.19047619047619,
+  "BaseAcc": 95.23809523809524,
+  "Tie": 0.0,
+  "PresHold": 95.23809523809524,
+  "n": 21
+ },
+ "family=v2_single|window": {
+  "Rev": 80.0,
+  "Hold": 80.0,
+  "TA": 60.0,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 5
+ },
+ "family=v2_any|window+window": {
+  "Rev": 100.0,
+  "Hold": 92.3076923076923,
+  "TA": 92.3076923076923,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 13
+ },
+ "family=v2_all|window+window": {
+  "Rev": 100.0,
+  "Hold": 82.3529411764706,
+  "TA": 82.3529411764706,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "PresHold": 100.0,
+  "n": 17
+ },
+ "CI95": {
+  "TA": [
+   91.0958904109589,
+   96.73202614379085
+  ],
+  "Rev": [
+   96.34551495016612,
+   99.36708860759494
+  ],
+  "Hold": [
+   92.98245614035088,
+   98.02631578947368
+  ]
+ },
+ "step": {
+  "criterion": {
+   "Rev": 98.9010989010989,
+   "Hold": 95.97069597069597,
+   "TA": 94.87179487179488,
+   "BaseAcc": 99.63369963369964,
+   "Tie": 0.0,
+   "PresHold": 99.63369963369964,
+   "n": 273
+  }
+ },
+ "eval": {
+  "seconds": 40.0,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

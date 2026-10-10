@@ -1,0 +1,46 @@
+{
+ "run_id": "B-V2-reader-blocks-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 61.75,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 93.58333333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 81.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 33.0,
+   "XA_window": 33.0
+  },
+  "criterion": {
+   "XA": 61.75,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 93.58333333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 81.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 33.0,
+   "XA_window": 33.0
+  }
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 67,
+  "mode": null,
+  "malformed_rate": 0.0279,
+  "gen_not_stopped": 0,
+  "seconds": 136.5,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

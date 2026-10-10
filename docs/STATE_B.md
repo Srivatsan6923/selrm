@@ -34,6 +34,11 @@ Nothing is tuned on a test set: parser, linker, gate and prompts are developed o
   curves (39), seeds 1-2 of non-core ablations: not queued, to be run when GPUs are idle after B2-B4 or reported to D.
 
 ## GPUs
+- 10 Oct 07:15 UTC: composite validation, seed 0: B-S2G-bit-s0-dev and B-S2G-verdict-s0-dev are done and pulled;
+  B-S2G-gate-s0-dev and B-S2G-struct-s0-dev are requeued on code 9cf63f3 (GEN 8, min_gen 8) after the linker fix
+  (DECISIONS_B 10 Oct). Runners on the new code: one each h100-opp, l40, a40, a6000 (pending); the four running
+  pods (two A100, two H100) are on older code and take only training runs. Then: pull, `python
+  scripts/assemble_rmg.py --validate 0`. Also done and registered: v2_reader_blocks_s0, v2_verdict_triplets_s1.
 - 10 Oct 06:30 UTC: v2_reader_s0 done and registered; composite validation runs queued and prepped
   (configs/queues/v2/b_s2g.json: B-S2G-{gate,struct,bit,verdict}-s0-dev, priority 4). reg_v1/dev and reg_v1/test are
   on the PVC (not yet in the B-V2 runs' eval sets: score them by eval-only runs).
