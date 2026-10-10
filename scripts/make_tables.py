@@ -275,16 +275,27 @@ def resolve(key):
 
 def _resolve(key):
     spec = None
-    if "@" in key.rsplit("/", 1)[-1]:
+    if re.search(r"@(\d|pct1|pct2|int)$", key):     # a format suffix; '@' also occurs in view names (set@cond)
         key, spec = key.rsplit("@", 1)
-    if key[:2] == "d/" or key[:4] in ("min/", "max/"):
+    if key[:5] == "json/":          # json/<repo-relative file>::<dotted.field>: any tracked JSON file (manifests,
+        f, _, path = key[5:].partition("::")    # summaries of analyses); list items by index
+        p = os.path.join(ROOT, f)
+        x = load_json(p) if os.path.exists(p) else None
+        for part in path.split("."):
+            x = (x.get(part) if isinstance(x, dict) else
+                 x[int(part)] if isinstance(x, list) and part.lstrip("-").isdigit() and -len(x) <= int(part) < len(x) else None)
+        x = x if isinstance(x, (int, float)) and not isinstance(x, bool) else None
+        return x, fmt(x, spec, isinstance(x, int)), {"file": rel(p), "field": path, "file_commit": file_commit(p)}
+    if key.partition("/")[0] in ("d", "min", "max", "sum2", "avg", "pct"):   # arithmetic over keys, '|'-separated
         op, _, body = key.partition("/")
         parts = body.split("|")
         xs = [resolve(k)[0] for k in parts]
         if any(x is None for x in xs):
             n = None
         else:
-            n = xs[0] - sum(xs[1:]) if op == "d" else (min(xs) if op == "min" else max(xs))
+            n = {"d": lambda: xs[0] - sum(xs[1:]), "min": lambda: min(xs), "max": lambda: max(xs),
+                 "sum2": lambda: sum(xs), "avg": lambda: sum(xs) / len(xs),
+                 "pct": lambda: 100.0 * xs[0] / xs[1]}[op]()
         return n, fmt(n, spec), {op: parts}
     head, _, rest = key.partition("/")
     if head == "run":
