@@ -20,7 +20,7 @@ PKGS = ("torch", "transformers", "unsloth", "unsloth_zoo", "trl", "peft", "accel
 # "min_gen"; bump GEN in every commit that adds such behaviour (2: genprm format, ledger_edit mode, this check;
 # 3: conddrv, one reader output per claim; 4: train_key with mix, passes, pad_examples, train_meta_exclude;
 # save_epochs; ledger2_case).
-GEN = 6       # 5: eval modes gate and gate_struct; 6: low-utilisation stop, LOWUTIL skip, spec "big"
+GEN = 7       # 7: format ledger_g (stage-2 record); 5: eval modes gate and gate_struct; 6: low-utilisation stop, LOWUTIL skip, spec "big"
 
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

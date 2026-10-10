@@ -288,7 +288,25 @@
     "bs_gen": 256,
     "max_new": 384
    },
-   "min_gen": 4
+   "base_model": "unsloth/Qwen3.5-9B",
+   "min_gen": 6
+  },
+  {
+   "run_id": "B-NS-xr_v1-B-MIX-blocks-s1",
+   "seed": 1,
+   "priority": 45,
+   "format": "verdict",
+   "train": false,
+   "adapter": "adapters/B-MIX-blocks-s1",
+   "eval_sets": [
+    "xr_v1/test"
+   ],
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "min_gen": 6
   },
   {
    "run_id": "B-NS-xr_v1-B-MIX-triplets-s0",
@@ -305,7 +323,24 @@
     "bs_gen": 256,
     "max_new": 384
    },
-   "min_gen": 4
+   "min_gen": 6
+  },
+  {
+   "run_id": "B-NS-xr_v1-B-MIX-triplets-s1",
+   "seed": 1,
+   "priority": 45,
+   "format": "verdict",
+   "train": false,
+   "adapter": "adapters/B-MIX-triplets-s1",
+   "eval_sets": [
+    "xr_v1/test"
+   ],
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "min_gen": 6
   }
  ]
 }

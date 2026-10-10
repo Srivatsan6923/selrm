@@ -1,0 +1,59 @@
+{
+ "set": "rule_v2/dev",
+ "records": "gold",
+ "units": 1200,
+ "struct_units": 1200,
+ "struct_agree": 1200,
+ "parser_same_as_struct": 1196,
+ "parsed": 1200,
+ "computed": 1200,
+ "agree": 1199,
+ "link_mentions": 90,
+ "link_top1": 100.0,
+ "link_top10": 100.0,
+ "link_none": 0,
+ "parser_coverage": 100.0,
+ "gate_coverage": 100.0,
+ "agreement_on_parsed": 99.92,
+ "gate_struct_agreement": 100.0,
+ "parser_precision_vs_struct": 99.67,
+ "link_abstain": 0.0,
+ "by_nm_kind": {
+  "boundary": {
+   "n": 168,
+   "agree": 168,
+   "agreement": 100.0
+  },
+  "class": {
+   "n": 136,
+   "agree": 136,
+   "agreement": 100.0
+  },
+  "negation": {
+   "n": 220,
+   "agree": 220,
+   "agreement": 100.0
+  },
+  "numeric": {
+   "n": 168,
+   "agree": 168,
+   "agreement": 100.0
+  },
+  "subject": {
+   "n": 192,
+   "agree": 191,
+   "agreement": 99.48
+  },
+  "time": {
+   "n": 180,
+   "agree": 180,
+   "agreement": 100.0
+  },
+  "window": {
+   "n": 136,
+   "agree": 136,
+   "agreement": 100.0
+  }
+ },
+ "unparsed": []
+}

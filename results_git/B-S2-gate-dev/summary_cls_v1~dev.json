@@ -1,0 +1,29 @@
+{
+ "set": "cls_v1/dev",
+ "records": "gold",
+ "units": 900,
+ "struct_units": 900,
+ "struct_agree": 900,
+ "parser_same_as_struct": 891,
+ "parsed": 900,
+ "computed": 894,
+ "agree": 894,
+ "link_mentions": 600,
+ "link_top1": 100.0,
+ "link_top10": 100.0,
+ "link_none": 0,
+ "parser_coverage": 100.0,
+ "gate_coverage": 99.33,
+ "agreement_on_parsed": 99.33,
+ "gate_struct_agreement": 100.0,
+ "parser_precision_vs_struct": 99.0,
+ "link_abstain": 0.0,
+ "by_nm_kind": {
+  "class": {
+   "n": 900,
+   "agree": 894,
+   "agreement": 99.33
+  }
+ },
+ "unparsed": []
+}

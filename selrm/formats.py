@@ -28,6 +28,9 @@ conddrv      ledger2 whose reader gets the claim instead of the condition under 
              itself in need (B-AB-conddrv, v13 "condition derived": the reader is given the rule and the claim);
              one reader output per record, the judge as in ledger2
 ledger2_case ledger2 whose judge also sees the case (JUDGE_CASE: rule, case, ledger, claim; B-LC, NEXT_TASKS_B 2)
+ledger_g     stage-2 record (STAGE2_SPEC 3; v2_reader): each entry = the five ledger fields, an optional
+             `concept: <ontology id>` line and `applies: yes|no`; the judge prompts of one adapter are record-only
+             (JUDGE) and record plus case (JUDGE_CASE), half each
 genprm       GENPRM prompt -> ```python check``` + its output + answer (B-TR-genprm; the check is A's
              render_check_code, A-D13, rendered by scripts/render_checks.py; one per record)
 """
@@ -39,9 +42,9 @@ from selrm.prompts import (answer, judge_prompt, ledger_to_text, rationale_promp
                            reader_prompt, verdict_prompt)
 
 FORMATS = ("verdict", "rationale", "summary2", "summary2_case", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader",
-           "verdict_bt", "ledger2_verify", "genprm", "conddrv", "ledger2_case")
+           "verdict_bt", "ledger2_verify", "genprm", "conddrv", "ledger2_case", "ledger_g")
 VERSION = 2                  # bump when example construction changes (part of the pretok key)
-TWO_STAGE = ("summary2", "summary2_case", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader", "ledger2_verify", "conddrv", "ledger2_case")
+TWO_STAGE = ("summary2", "summary2_case", "value2", "ledger2", "ledger2_dec", "dec_judge", "bit_reader", "ledger2_verify", "conddrv", "ledger2_case", "ledger_g")
 PROSE = ("summary2", "summary2_case")       # reader writes free prose (never malformed)
 # summary pipeline whose judge also sees the case (FINAL_TASKS_B P0.4; B-defined prompt: the frozen JUDGE has no case)
 JUDGE_CASE = ("Rule: {rule}\n\nCase:\n{case}\n\nEvidence record:\n{record}\n\nClaim: {claim}\n\n"
@@ -84,6 +87,8 @@ def gold_record(rec: dict, fmt: str) -> str:
         return rec["prose"]
     if fmt == "bit_reader":
         return BITS[holds(rec)]
+    if fmt == "ledger_g":
+        return "\n\n".join(entry_g(e) for e in rec["ledger"])
     if fmt == "value2":
         return "\n\n".join("\n".join(f"{k}: {e[k]}" for k in FIELDS[fmt]) for e in rec["ledger"])
     text = ledger_to_text(rec["ledger"])            # ledger2, ledger2_verify, decision-bit formats
@@ -92,6 +97,12 @@ def gold_record(rec: dict, fmt: str) -> str:
 
 def entry_text(e: dict) -> str:
     return "\n".join(f"{k}: {e[k]}" for k in ("need", "found", "subject", "status", "time"))
+
+
+def entry_g(e: dict) -> str:
+    """Stage-2 entry: the five fields, `concept` when the entry links a term, then the applies bit."""
+    lines = [f"{k}: {e[k]}" for k in ("need", "found", "subject", "status", "time")]
+    return "\n".join(lines + ([f"concept: {e['concept']}"] if e.get("concept") else []) + [f"applies: {e.get('applies', 'no')}"])
 
 
 def parse_entries(text: str) -> list:
@@ -151,6 +162,8 @@ def judge_view(text: str, fmt: str) -> str:
 
 def read_bit(text: str):
     """1 / 0 / None from a decision line at the end of a reader output; 'bad' otherwise."""
+    if text.startswith("need: ") and "\napplies: " in text:      # stage-2 record: applies if any entry does
+        return int(any(e.get("applies") == "yes" for e in parse_entries(text)))
     last = text.strip().split("\n")[-1] if text.strip() else ""
     return next((h for h, line in BITS.items() if line == last), "bad")
 
@@ -182,6 +195,17 @@ def well_formed(text: str, case_text: str, fmt: str) -> bool:
     text = text.strip()
     if fmt == "bit_reader":
         return text in BITS.values()
+    if fmt == "ledger_g":
+        for entry in text.split("\n\n"):
+            kv = [line.partition(": ") for line in entry.split("\n")]
+            if [k for k, _, _ in kv] not in (list(FIELDS["ledger2"]) + ["applies"],
+                                             list(FIELDS["ledger2"]) + ["concept", "applies"]):
+                return False
+            if any(not sep or not v.strip() for _, sep, v in kv) or kv[-1][2] not in ("yes", "no"):
+                return False
+            if kv[1][2] != NOT_MENTIONED and kv[1][2] not in case_text:
+                return False
+        return True
     if fmt in ("ledger2_verify", "conddrv", "ledger2_case"):
         fmt = "ledger2"
     if fmt in ("ledger2_dec", "dec_judge"):
@@ -283,9 +307,10 @@ def build_examples(records, fmt: str, n: int | None = None, resample_p: float = 
                     other = rng.choice(group)
                 key, swapped = other, swapped + 1
         sel.append(key)
+        jf = "ledger2_case" if fmt == "ledger_g" and len(sel) % 2 == 0 else fmt     # ledger_g: half the pairs with the case
         for role in ("s", "s_prime"):
             r = pairs[key][role]
-            ex.append({"prompt": judge_for(r, gold_record(r, fmt), fmt), "completion": answer(r),
+            ex.append({"prompt": judge_for(r, gold_record(r, fmt), jf), "completion": answer(r),
                        "part": "judge", "src": r["iid"]})
     stats = {"n": len(ex), "reader": n_reader, "judge": 2 * n_pairs, "pairs_swapped": swapped,
              "unique_judge_pairs": len(set(sel)), "reader_units": len(reader_units(records, fmt)),

@@ -15,27 +15,28 @@ Nothing is tuned on a test set: parser, linker, gate and prompts are developed o
     (HANDOFFS 9 Oct). L3-inv cells of Table 20: DONE (B-NS-L3inv-*, HANDOFFS 9 Oct).
   - Gate eval mode (eval_local modes gate / gate_struct, runner GEN 5) checked on rule_v1/dev with the stage-1
     decision-field adapter: B-S2-rule_v1dev-decfield-gate-s0.
-- B1 gate library: DONE for rule_v1/dev. selrm/crit_parse.py, selrm/link.py, selrm/gate.py, tests/test_gate.py
-  (boundary day in both conventions), scripts/gate_dev.py (results_git/B-S2-gate-dev/summary_<set>.json; rule_v1/dev:
-  parser coverage and agreement with the program on every unit). TODO when A registers them: rule_v2/dev, reg_v1/dev,
-  mcv_v1/dev (parser; precision against `struct` needs A's struct format, asked in HANDOFFS), cls_v1/dev (linker
-  top-1, top-10 recall, abstention; choose and verify the encoder then), unit conversion in gate.value_check.
-- B2 training on rule_v2: blocked on A5 (rule_v2 not registered). Needs a stage-2 record format in selrm/formats.py
-  (date in `time`, `concept`, `applies`; judge prompts record-only and record+case, half each) and queue rows.
-- B3 Ledger-RM-G: after B1 and B2. Validation stop rule (0.5 TA on rule_v2/dev and rule_v1/dev).
-- B4 adaptation arms: QUEUED 9 Oct (configs/queues/v2/b_mix.json, prepped; B-MIX-{blocks,triplets}-s0..2, priority
-  12-14, max_len 3072). mcv_v1/adapt_blocks, adapt_triplets and dev are on the PVC (registry copy:
-  scratch/registry_rule_v1.json; local records under scratch/role_a_s2/data/mcv_v1). When done: pull,
-  register as mix_blocks_s*/mix_triplets_s* (add the alias rule to register_adapters.py), HANDOFFS to C.
-  New data from A: `submit_b.py fetch-ref origin/role-a [path=url=sha256 ...]`, then `restore-data <sha12>
-  <set,set,...> <builder>`.
-- Next unblocked step: parser on mcv_v1/dev (gate_dev.py reads meta.criterion_holds; mcv records have struct
-  and meta.points instead, so it needs a small adapter), precision against struct.
+- B1 gate library: DONE for rule_v1/dev and rule_v2/dev (results_git/B-S2-gate-dev). TODO: cls_v1/dev (linker
+  top-1, top-10, abstention; local copy via scratch/role_a_s3 `build_cls_v1.py --restore`, dev only), reg_v1/dev
+  (needs the Leaf and Chia archives; struct form numeric/window as in rule_v2), mcv_v1/dev (struct form with
+  inputs/levels/thresholds: from_struct returns None for it; needs its own reading), unit conversion.
+- B2 training on rule_v2: QUEUED 10 Oct (configs/queues/v2/b_v2.json, 20 runs, prepped, min_gen 7, priority 6-12).
+  Format ledger_g (selrm/formats.py). When runs finish: pull, register (add aliases v2_verdict_*, v2_reader_* to
+  register_adapters.py), resummarize is not needed (runner summaries; no local copies of the test sets),
+  report by near-miss kind in docs/ANALYSIS_B_S2.md.
+- B3 Ledger-RM-G: after B2. Eval-only runs of each B-V2-reader-triplets-s<k> with eval mode gate and gate_struct
+  (eval_local.gate_units; scores carry route and checks), then merge with the B-V2-verdict-triplets-s<k> scores for
+  the routes fallback_none and fallback_malformed. Validation stop rule first (rule_v2/dev within 0.5 TA of
+  v2_reader; rule_v1/dev within 0.5 of ledger2_triplets). Register ledger_rm_g_s{0..4}; write ANALYSIS_B_S2.md.
+- B4 adaptation arms: running (v2/b_mix.json). Done: B-MIX-blocks-s0 (mix_blocks_s0). The long-prompt runs use
+  "big" settings on 80 GB cards (per-device 4, scoring batch 32).
 - B5 handoffs: adapters line sent 9 Oct; resources per configuration after B2.
 - Carry-over: Qwen3.5-4B cells (3, queued, the runners take them), 6 B-NS-xr_v1-B-AUX evals (queued); diversity
   curves (39), seeds 1-2 of non-core ablations: not queued, to be run when GPUs are idle after B2-B4 or reported to D.
 
 ## GPUs
+- 10 Oct 02:00 UTC: runners on code 45c7476 (GEN 7): two h100-opp, one each l40, a40, a6000, a100; the A100 runner
+  of 9 Oct (GEN 6, MIX and DIV runs only) is still running. role A data on the PVC through `submit_b.py fetch-ref`
+  and `restore-data` (code 8043eadcc3ad).
 - 10 Oct 00:30 UTC: utilisation since the restart: A100 runner mean 87%, H100 pods 75-93%; no LOWUTIL file.
   H100 pods failed four times with CUDA out of memory in the mcv_v1/dev scoring at batch 48; "big" scoring batch is
   now 32, the failure marks of B-MIX-triplets-s0 and B-MIX-blocks-s1 were renamed old_FAILED_*, two h100-opp

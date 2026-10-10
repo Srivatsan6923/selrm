@@ -1,0 +1,484 @@
+{
+ "runs": [
+  {
+   "run_id": "B-V2-verdict-blocks-s0",
+   "seed": 0,
+   "priority": 6,
+   "format": "verdict",
+   "corpus": "rule_v2/train_blocks",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-verdict-blocks-s1",
+   "seed": 1,
+   "priority": 7,
+   "format": "verdict",
+   "corpus": "rule_v2/train_blocks",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-verdict-blocks-s2",
+   "seed": 2,
+   "priority": 8,
+   "format": "verdict",
+   "corpus": "rule_v2/train_blocks",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-verdict-blocks-s3",
+   "seed": 3,
+   "priority": 9,
+   "format": "verdict",
+   "corpus": "rule_v2/train_blocks",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-verdict-blocks-s4",
+   "seed": 4,
+   "priority": 10,
+   "format": "verdict",
+   "corpus": "rule_v2/train_blocks",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-verdict-triplets-s0",
+   "seed": 0,
+   "priority": 6,
+   "format": "verdict",
+   "corpus": "rule_v2/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-verdict-triplets-s1",
+   "seed": 1,
+   "priority": 7,
+   "format": "verdict",
+   "corpus": "rule_v2/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-verdict-triplets-s2",
+   "seed": 2,
+   "priority": 8,
+   "format": "verdict",
+   "corpus": "rule_v2/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-verdict-triplets-s3",
+   "seed": 3,
+   "priority": 9,
+   "format": "verdict",
+   "corpus": "rule_v2/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-verdict-triplets-s4",
+   "seed": 4,
+   "priority": 10,
+   "format": "verdict",
+   "corpus": "rule_v2/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-reader-triplets-s0",
+   "seed": 0,
+   "priority": 6,
+   "format": "ledger_g",
+   "corpus": "rule_v2/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-reader-triplets-s1",
+   "seed": 1,
+   "priority": 7,
+   "format": "ledger_g",
+   "corpus": "rule_v2/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-reader-triplets-s2",
+   "seed": 2,
+   "priority": 8,
+   "format": "ledger_g",
+   "corpus": "rule_v2/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-reader-triplets-s3",
+   "seed": 3,
+   "priority": 9,
+   "format": "ledger_g",
+   "corpus": "rule_v2/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-reader-triplets-s4",
+   "seed": 4,
+   "priority": 10,
+   "format": "ledger_g",
+   "corpus": "rule_v2/train_triplets",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-reader-blocks-s0",
+   "seed": 0,
+   "priority": 6,
+   "format": "ledger_g",
+   "corpus": "rule_v2/train_blocks",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-verdict-lo_window-s0",
+   "seed": 0,
+   "priority": 9,
+   "format": "verdict",
+   "corpus": "rule_v2/train_triplets_lo_window",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-reader-lo_window-s0",
+   "seed": 0,
+   "priority": 9,
+   "format": "ledger_g",
+   "corpus": "rule_v2/train_triplets_lo_window",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-verdict-lo_class-s0",
+   "seed": 0,
+   "priority": 9,
+   "format": "verdict",
+   "corpus": "rule_v2/train_triplets_lo_class",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  },
+  {
+   "run_id": "B-V2-reader-lo_class-s0",
+   "seed": 0,
+   "priority": 9,
+   "format": "ledger_g",
+   "corpus": "rule_v2/train_triplets_lo_class",
+   "n_examples": 60000,
+   "keep_adapter": true,
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384
+   },
+   "max_drop": 0.01,
+   "eval_sets": [
+    "rule_v2/dev",
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/dev",
+    "cls_v1/test"
+   ],
+   "min_gen": 7
+  }
+ ]
+}

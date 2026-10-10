@@ -3,7 +3,8 @@ criterion. gate(record, constraints, case, ref_date, onto) -> {"checks": {...}, 
 record: list of entries {need, found, subject, status, time[, concept]}. Each check is 1, 0 or None (not
 computable). An entry applies when every check is 1; the record applies when some entry does (three-valued: None
 when no entry is all 1 but one has no 0). `checks` are those of the deciding entry.
-onto: {"closure": {class id: [member ids]}}."""
+onto: {"closure": {class id: member ids}, "linker": selrm.link.Linker or None} (selrm.link.load_onto).
+The result also carries "entries": the per-entry value (1, 0, None), in the record's order."""
 import calendar, datetime, re
 
 FIRST_DEGREE = {"mother", "father", "parent", "sister", "brother", "sibling", "son", "daughter", "child"}
@@ -22,10 +23,11 @@ def shift(d, n, unit):
 
 def entry_dates(time):
     """'past (2024-06-15)' -> (day, day); 'past (2024-06)' -> the month; 'past (2024)' -> the year; else None."""
-    m = re.fullmatch(r"past \((\d{4})(?:-(\d{2}))?(?:-(\d{2}))?\)", time)
+    m = re.fullmatch(r"past \((\d{4})(?:-(\d{2}))?(?:-(\d{2}))?\)|(\d{4})-(\d{2})-(\d{2})", time)
     if not m:
         return None
-    y, mo, d = (int(x) if x else None for x in m.groups())
+    g = m.groups()
+    y, mo, d = (int(x) if x else None for x in (g[3:] if g[3] else g[:3]))
     lo = datetime.date(y, mo or 1, d or 1)
     hi = lo if d else datetime.date(y, mo or 12, calendar.monthrange(y, mo or 12)[1])
     return lo, hi
@@ -75,19 +77,22 @@ def entry_checks(e, constraints, case, ref_date, onto):
             ch[k] = int(e["status"] in c["allowed"])
         elif k == "concept":
             members = ((onto or {}).get("closure") or {}).get(c["class"])
-            ch[k] = None if members is None or not e.get("concept") else int(e["concept"] in members)
+            linker = (onto or {}).get("linker")      # an id is accepted only among the terms retrieved for the quotation
+            known = e.get("concept") and (linker is None or e["concept"] in {x[0] for x in linker.in_text(e["found"])})
+            ch[k] = None if members is None or not known else int(e["concept"] in members)
     return ch
 
 
 def gate(record, constraints, case, ref_date=None, onto=None):
     if constraints is None:                          # the parser abstained
-        return {"checks": dict.fromkeys(KINDS), "applies": None}
-    best, rank = None, -1
+        return {"checks": dict.fromkeys(KINDS), "applies": None, "entries": [None] * len(record)}
+    best, rank, per = None, -1, []
     for e in record:
         ch = entry_checks(e, constraints, case, ref_date, onto)
         r = 0 if 0 in ch.values() else 1 if None in ch.values() else 2
+        per.append((0, None, 1)[r])
         if r > rank:
             best, rank = ch, r
     if best is None:                                 # empty record: nothing found
-        return {"checks": dict.fromkeys(KINDS), "applies": 0}
-    return {"checks": {k: best.get(k) for k in KINDS}, "applies": (0, None, 1)[rank]}
+        return {"checks": dict.fromkeys(KINDS), "applies": 0, "entries": []}
+    return {"checks": {k: best.get(k) for k in KINDS}, "applies": (0, None, 1)[rank], "entries": per}
