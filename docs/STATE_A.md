@@ -12,7 +12,7 @@ API: OPENROUTER key works only with a lower-case 'sk-'; new-account limit of 20 
 | A3 | xp_v1 (program-preserving paraphrases) | **frozen 8 Oct**: 300 groups of test_L2, 0 program violations. `python scripts/build_xp_v1.py --restore` |
 | A4 | onto_v1, cls_v1 | **frozen 9 Oct**: onto_v1 class tables (drug 47/12/21, phenotype 131/32/56, disease 141/37/54; drug-class change request approved by the user 9 Oct, plan line to be appended by D); cls_v1/dev (300 groups) and cls_v1/test (1,200 groups, 400 per domain). `python scripts/build_cls_v1.py --restore` |
 | A5 | rule_v2 | **frozen 9 Oct**: engine selrm/engine2.py; train_blocks, train_triplets, lo_window, lo_class (60k records each), dev 300, test_L2 2,000; audit docs/DATA_AUDIT_rule_v2.md. `python scripts/build_rule_v2.py --restore --only <set>` |
-| A6 | reg_v1 | not started |
+| A6 | reg_v1 | **frozen 9 Oct**: 374 test criteria (1122 groups) and 27 dev criteria from Leaf and Chia; audit docs/DATA_AUDIT_reg_v1.md; author sheet audit/s2/reg_criteria_sheet.csv. `python scripts/build_reg_v1.py --restore` |
 | A7 | paper inputs from existing data | done 8 Oct: keys handed to D in docs/HANDOFFS.md (Table 8, harder set, Table 16, lines 1206 and 1499, Appendix E rule code); line 1512 waits for A6 |
 | carry-over | rewrite_v1 and the _rw corpora (API key); challenge_v1 (H2); H1 aggregation | blocked as before |
 

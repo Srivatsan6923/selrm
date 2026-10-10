@@ -59,6 +59,16 @@ EVENTS = {
     "contrast": ("iodinated contrast scan", "an iodinated contrast scan", "had an iodinated contrast scan",
                  "Scanned with iodinated contrast", ("contrast",)),
 }
+
+
+def event(c):
+    """(noun, with article, third-person past, bare participle, keywords) of a window condition; an event named
+    by a registered criterion has no entry in EVENTS and is worded by its name."""
+    if c.key in EVENTS:
+        return EVENTS[c.key]
+    return c.key, c.key, f"had {c.key}", c.key[0].upper() + c.key[1:], (c.key.lower(),)
+
+
 EVENT_T = {
     "present": ("{Bare} on {d}.", "Last {noun}: {d}.", "{Poss} most recent {noun} was on {d}.", "Records show {np} on {d}.",
                 "{Noun} dated {d}.", "There was {np} on {d}."),
@@ -66,6 +76,15 @@ EVENT_T = {
                "Never had {np}.", "Record negative for {noun}."),
     "rel": ("{Poss} {rel} {past} on {d}.", "Of note, {poss} {rel} {past} on {d}.", "Family: the {rel} {past} on {d}.",
             "The {rel} {past} on {d}.", "It was the {rel} who {past} on {d}.", "{Poss} {rel}, for one, {past} on {d}."),
+}
+# Events named by a registered criterion are arbitrary phrases; they are quoted in a dated log line.
+REG_EVENT_T = {
+    "present": ("Event recorded on {d}: {name}.", "On {d}: {name}.", "Record of {d}: {name}.", "Entry for {d}: {name}.",
+                "Dated {d}: {name}.", "Noted on {d}: {name}."),
+    "absent": ("No record of: {name}.", "Denies: {name}.", "Not on record: {name}.", "No entry for: {name}.",
+               "Never recorded: {name}.", "Record negative for: {name}."),
+    "rel": ("For {poss} {rel}, event recorded on {d}: {name}.", "{Poss} {rel}, on {d}: {name}.", "Family ({rel}), record of {d}: {name}.",
+            "The {rel}, entry for {d}: {name}.", "For the {rel}, noted on {d}: {name}.", "Concerning {poss} {rel}, dated {d}: {name}."),
 }
 CLASS_T = {
     "drug": {
@@ -127,7 +146,7 @@ class Cond:
     @property
     def label(self):
         if self.kind == "window":
-            return f"{EVENTS[self.key][0]} within {self.n} {self.unit} before the visit"
+            return f"{event(self)[0]} within {self.n} {self.unit} before the visit"
         if self.kind == "class":
             return CLASS_LABEL[self.domain].format(name=self.name)
         return f"{self.key} {OPW[self.op]} {fmt_num(self.threshold, self)}"
@@ -135,7 +154,7 @@ class Cond:
     @property
     def phrase(self):
         if self.kind == "window":
-            return (f"the patient {EVENTS[self.key][2]} within {self.n} {self.unit} before the visit date "
+            return (f"the patient {event(self)[2]} within {self.n} {self.unit} before the visit date "
                     f"(a date exactly {self.n} {self.unit} before the visit still counts)")
         if self.kind == "class":
             return CLASS_PHRASE[self.domain].format(name=self.name)
@@ -143,8 +162,8 @@ class Cond:
 
     def start(self, ref):
         """First day of the window."""
-        if self.unit == "days":
-            return ref - dt.timedelta(days=self.n)
+        if self.unit in ("days", "weeks"):
+            return ref - dt.timedelta(days=self.n * (7 if self.unit == "weeks" else 1))
         return add_months(ref, -self.n * (12 if self.unit == "years" else 1))
 
     def counts(self, m, ref):
@@ -227,9 +246,11 @@ def _say(c, m, poss, style):
     """The line of one mention."""
     i = m["tpl"]
     if c.kind == "window":
-        noun, np_, past, bare, _ = EVENTS[c.key]
+        noun, np_, past, bare, _ = event(c)
         d = fmt_date(dt.date.fromisoformat(m["date"]), style) if m.get("date") else ""
         form = "rel" if m["subject"] != "patient" else m["status"]
+        if c.key not in EVENTS:
+            return REG_EVENT_T[form][i].format(name=c.key, d=d, Poss=poss, poss=poss.lower(), rel=m["subject"])
         return EVENT_T[form][i].format(Bare=bare, noun=noun, Noun=noun[0].upper() + noun[1:], np=np_, past=past, d=d,
                                        Poss=poss, poss=poss.lower(), rel=m["subject"])
     if c.kind == "class":
@@ -366,7 +387,7 @@ def propose(rule, crit, nm_kind, tier, split, rng):
         ts = target if isinstance(target, list) else [target] if target else []
         return body[:p] + [{"c": crit, "m": t} for t in ts] + body[p:]
 
-    frames = P.HEADER
+    frames = P.HEADER_NO_AGE if any(c.kind == "numeric" and c.key == "age" for c in rule.conds) else P.HEADER
     hdr = rng.choice(P.ids(frames, split))
     noun = "woman" if sex == "female" else "man"
 
@@ -397,7 +418,7 @@ def propose(rule, crit, nm_kind, tier, split, rng):
     other_hdr = rng.choice([h for h in P.ids(frames, split) if h != hdr] or [hdr])
     cases = {"base": case(hdr, base_ls, style), "flip": case(hdr, lines(flip), style), "near": case(hdr, lines(near), style),
              "pres": case(other_hdr, [base_ls[i] for i in order], other_style)}
-    what = EVENTS[crit.key][0] if crit.kind == "window" else crit.label if crit.kind == "class" else crit.key
+    what = event(crit)[0] if crit.kind == "window" else crit.label if crit.kind == "class" else crit.key
     miss = P.MISSING[rng.choice(P.ids(P.MISSING, split))].format(What=what[0].upper() + what[1:], what=what)
     unknown = dict(cases["base"])
     if crit.kind == "numeric":              # the measurement is not given at all
@@ -470,7 +491,7 @@ def check(g):
     if crit.kind == "class":
         names = {n.lower() for _, ns in crit.members for n in ns} | {n.lower() for _, n, _ in crit.near}
     elif crit.kind == "window":
-        names = set(EVENTS[crit.key][4])
+        names = set(event(crit)[4])
     for k, case in cases.items():
         for f in case["fillers"]:
             if any(n in f.lower() for n in names):

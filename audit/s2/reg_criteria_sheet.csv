@@ -1,0 +1,101 @@
+﻿case,crit_id,corpus,trial,section,criterion_text,reading_by_the_script,rule_text_shown_to_models,q1_reading_is_the_criterion (yes/no),q2_what_is_missing_or_wrong
+1,chia_NCT03138577_inc001,Chia,NCT03138577,inclusion,Age greater than or equal to 18 years of age,The criterion holds exactly when the patient's current age is greater than or equal to 18 years.,"Inclusion criterion: Age greater than or equal to 18 years of age
+Conventions: the value meant is the patient's current value as stated in the case.",,
+2,chia_NCT02208739_exc003,Chia,NCT02208739,exclusion,Patients who had received surgical periodontal treatment within the past 12 months,"The criterion holds exactly when the patient had the event ""surgical periodontal treatment"" at some time within the 12 months before the visit.","Exclusion criterion: Patients who had received surgical periodontal treatment within the past 12 months
+Conventions: time is counted back from the visit date stated in the case; an event on the day exactly 12 months before the visit still counts; only events of the patient count.",,
+3,lct_NCT03924908_inc002,LCT,NCT03924908,inclusion,Burn surface area > or = 5% of the total body surface area,The criterion holds exactly when the patient's current Burn surface area is greater than or equal to 5 %.,"Inclusion criterion: Burn surface area > or = 5% of the total body surface area
+Conventions: the value meant is the patient's current value as stated in the case.",,
+4,lct_NCT03867994_exc016,LCT,NCT03867994,exclusion,Using of carvedilol in the past three months.,"The criterion holds exactly when the patient had the event ""carvedilol"" at some time within the 3 months before the visit.","Exclusion criterion: Using of carvedilol in the past three months.
+Conventions: time is counted back from the visit date stated in the case; an event on the day exactly 3 months before the visit still counts; only events of the patient count.",,
+5,chia_NCT03541980_exc001,Chia,NCT03541980,exclusion,Patient less than age 4 years,The criterion holds exactly when the patient's current age is less than 4 years.,"Exclusion criterion: Patient less than age 4 years
+Conventions: the value meant is the patient's current value as stated in the case.",,
+6,lct_NCT03921827_exc007,LCT,NCT03921827,exclusion,LV EF <30%,The criterion holds exactly when the patient's current LV EF is less than 30 %.,"Exclusion criterion: LV EF <30%
+Conventions: the value meant is the patient's current value as stated in the case.",,
+7,lct_NCT03927729_inc004,LCT,NCT03927729,inclusion,Pain > 4 on a visual numerical scale,The criterion holds exactly when the patient's current Pain is greater than 4.,"Inclusion criterion: Pain > 4 on a visual numerical scale
+Conventions: the value meant is the patient's current value as stated in the case.",,
+8,chia_NCT02420015_inc006,Chia,NCT02420015,inclusion,Score 26 or higher on the Montreal Cognitive Assessment,The criterion holds exactly when the patient's current Montreal Cognitive Assessment is greater than or equal to 26.,"Inclusion criterion: Score 26 or higher on the Montreal Cognitive Assessment
+Conventions: the value meant is the patient's current value as stated in the case.",,
+9,chia_NCT02634541_exc009,Chia,NCT02634541,exclusion,Methotrexate used within the previous 6 months,"The criterion holds exactly when the patient had the event ""Methotrexate"" at some time within the 6 months before the visit.","Exclusion criterion: Methotrexate used within the previous 6 months
+Conventions: time is counted back from the visit date stated in the case; an event on the day exactly 6 months before the visit still counts; only events of the patient count.",,
+10,chia_NCT03255044_exc002,Chia,NCT03255044,exclusion,Serum creatinine > 3 mg/dl,The criterion holds exactly when the patient's current Serum creatinine is greater than 3 mg/dl.,"Exclusion criterion: Serum creatinine > 3 mg/dl
+Conventions: the value meant is the patient's current value as stated in the case.",,
+11,chia_NCT02541955_inc001,Chia,NCT02541955,inclusion,Age > 18 years of age,The criterion holds exactly when the patient's current age is greater than 18 years of age.,"Inclusion criterion: Age > 18 years of age
+Conventions: the value meant is the patient's current value as stated in the case.",,
+12,chia_NCT02986659_exc000,Chia,NCT02986659,exclusion,eGFR <45,The criterion holds exactly when the patient's current eGFR is less than 45.,"Exclusion criterion: eGFR <45
+Conventions: the value meant is the patient's current value as stated in the case.",,
+13,chia_NCT00926523_inc000,Chia,NCT00926523,inclusion,Subject are at least 18 years of age,The criterion holds exactly when the patient's current age is greater than or equal to 18 years.,"Inclusion criterion: Subject are at least 18 years of age
+Conventions: the value meant is the patient's current value as stated in the case.",,
+14,chia_NCT01807897_inc003,Chia,NCT01807897,inclusion,LVEF <45%,The criterion holds exactly when the patient's current LVEF is less than 45 %.,"Inclusion criterion: LVEF <45%
+Conventions: the value meant is the patient's current value as stated in the case.",,
+15,lct_NCT03930121_inc005,LCT,NCT03930121,inclusion,at least 1 correct reaction on the first part of the AAT subscale Token Test (ensuring basic comprehension skills),The criterion holds exactly when the patient's current AAT subscale Token Test is greater than or equal to 1 correct reaction.,"Inclusion criterion: at least 1 correct reaction on the first part of the AAT subscale Token Test (ensuring basic comprehension skills)
+Conventions: the value meant is the patient's current value as stated in the case.",,
+16,chia_NCT03561753_inc009,Chia,NCT03561753,inclusion,Hemoglobin level of 7.0 g/dL or greater,The criterion holds exactly when the patient's current Hemoglobin level is greater than or equal to 7.0 g/dL.,"Inclusion criterion: Hemoglobin level of 7.0 g/dL or greater
+Conventions: the value meant is the patient's current value as stated in the case.",,
+17,chia_NCT01895946_inc000,Chia,NCT01895946,inclusion,Aged at least 18 years,The criterion holds exactly when the patient's current age is greater than or equal to 18 years.,"Inclusion criterion: Aged at least 18 years
+Conventions: the value meant is the patient's current value as stated in the case.",,
+18,lct_NCT03867734_exc004,LCT,NCT03867734,exclusion,Receipt of antibiotics in ≤30 days,"The criterion holds exactly when the patient had the event ""antibiotics"" at some time within the 30 days before the visit.","Exclusion criterion: Receipt of antibiotics in ≤30 days
+Conventions: time is counted back from the visit date stated in the case; an event on the day exactly 30 days before the visit still counts; only events of the patient count.",,
+19,lct_NCT03924414_exc007,LCT,NCT03924414,exclusion,Any use of a bisphosphonate drug within the last 12 months,"The criterion holds exactly when the patient had the event ""bisphosphonate drug"" at some time within the 12 months before the visit.","Exclusion criterion: Any use of a bisphosphonate drug within the last 12 months
+Conventions: time is counted back from the visit date stated in the case; an event on the day exactly 12 months before the visit still counts; only events of the patient count.",,
+20,chia_NCT02733159_inc011,Chia,NCT02733159,inclusion,Serum transaminases ≤2.5 x ULN.,The criterion holds exactly when the patient's current Serum transaminases is less than or equal to 2.5 x ULN.,"Inclusion criterion: Serum transaminases ≤2.5 x ULN.
+Conventions: the value meant is the patient's current value as stated in the case.",,
+21,lct_NCT03921931_inc003,LCT,NCT03921931,inclusion,ametropia below 3 diopters,The criterion holds exactly when the patient's current ametropia is less than 3 diopters.,"Inclusion criterion: ametropia below 3 diopters
+Conventions: the value meant is the patient's current value as stated in the case.",,
+22,chia_NCT02923700_exc005,Chia,NCT02923700,exclusion,use of NSAIDs in the 5 days before blood donation,"The criterion holds exactly when the patient had the event ""NSAIDs"" at some time within the 5 days before the visit.","Exclusion criterion: use of NSAIDs in the 5 days before blood donation
+Conventions: time is counted back from the visit date stated in the case; an event on the day exactly 5 days before the visit still counts; only events of the patient count.",,
+23,chia_NCT01639664_exc000,Chia,NCT01639664,exclusion,Age less than 14 years,The criterion holds exactly when the patient's current age is less than 14 years.,"Exclusion criterion: Age less than 14 years
+Conventions: the value meant is the patient's current value as stated in the case.",,
+24,chia_NCT03228238_inc000,Chia,NCT03228238,inclusion,Subject must be at least 30 years of age.,The criterion holds exactly when the patient's current age is greater than or equal to 30 years.,"Inclusion criterion: Subject must be at least 30 years of age.
+Conventions: the value meant is the patient's current value as stated in the case.",,
+25,chia_NCT01850147_exc003,Chia,NCT01850147,exclusion,LVEF < 1 UNL,The criterion holds exactly when the patient's current LVEF is less than 1 UNL.,"Exclusion criterion: LVEF < 1 UNL
+Conventions: the value meant is the patient's current value as stated in the case.",,
+26,chia_NCT03315975_exc001,Chia,NCT03315975,exclusion,have received influenza vaccination within the past 6 months,"The criterion holds exactly when the patient had the event ""influenza vaccination"" at some time within the 6 months before the visit.","Exclusion criterion: have received influenza vaccination within the past 6 months
+Conventions: time is counted back from the visit date stated in the case; an event on the day exactly 6 months before the visit still counts; only events of the patient count.",,
+27,chia_NCT02749617_exc009,Chia,NCT02749617,exclusion,Dexamethasone use within last 3 months,"The criterion holds exactly when the patient had the event ""Dexamethasone"" at some time within the 3 months before the visit.","Exclusion criterion: Dexamethasone use within last 3 months
+Conventions: time is counted back from the visit date stated in the case; an event on the day exactly 3 months before the visit still counts; only events of the patient count.",,
+28,chia_NCT03335904_inc001,Chia,NCT03335904,inclusion,forced expiratory volume in 1s : forced vital capacity ratio > 0.75,The criterion holds exactly when the patient's current forced expiratory volume in 1s : forced vital capacity ratio is greater than 0.75.,"Inclusion criterion: forced expiratory volume in 1s : forced vital capacity ratio > 0.75
+Conventions: the value meant is the patient's current value as stated in the case.",,
+29,chia_NCT02426034_inc007,Chia,NCT02426034,inclusion,Bilirubin <1.25 times the upper limit of normal (ULN),The criterion holds exactly when the patient's current Bilirubin is less than 1.25 times the upper limit of normal.,"Inclusion criterion: Bilirubin <1.25 times the upper limit of normal (ULN)
+Conventions: the value meant is the patient's current value as stated in the case.",,
+30,chia_NCT02322203_exc006,Chia,NCT02322203,exclusion,BMI less than 18.5,The criterion holds exactly when the patient's current BMI is less than 18.5.,"Exclusion criterion: BMI less than 18.5
+Conventions: the value meant is the patient's current value as stated in the case.",,
+31,chia_NCT03066440_inc001,Chia,NCT03066440,inclusion,Venous pH less than 7.25,The criterion holds exactly when the patient's current Venous pH is less than 7.25.,"Inclusion criterion: Venous pH less than 7.25
+Conventions: the value meant is the patient's current value as stated in the case.",,
+32,chia_NCT02687724_exc011,Chia,NCT02687724,exclusion,Patients in recent receipt of live vaccinations within 4 weeks prior to enrolment,"The criterion holds exactly when the patient had the event ""live vaccinations"" at some time within the 4 weeks before the visit.","Exclusion criterion: Patients in recent receipt of live vaccinations within 4 weeks prior to enrolment
+Conventions: time is counted back from the visit date stated in the case; an event on the day exactly 4 weeks before the visit still counts; only events of the patient count.",,
+33,chia_NCT03400735_inc004,Chia,NCT03400735,inclusion,Oxygen saturation < 90%,The criterion holds exactly when the patient's current Oxygen saturation is less than 90 %.,"Inclusion criterion: Oxygen saturation < 90%
+Conventions: the value meant is the patient's current value as stated in the case.",,
+34,chia_NCT00785213_inc003,Chia,NCT00785213,inclusion,Body mass index (BMI) less than or equal to 32,The criterion holds exactly when the patient's current Body mass index (BMI) is less than or equal to 32.,"Inclusion criterion: Body mass index (BMI) less than or equal to 32
+Conventions: the value meant is the patient's current value as stated in the case.",,
+35,chia_NCT00639795_inc000,Chia,NCT00639795,inclusion,Age greater than 18,The criterion holds exactly when the patient's current age is greater than 18.,"Inclusion criterion: Age greater than 18
+Conventions: the value meant is the patient's current value as stated in the case.",,
+36,chia_NCT02406885_exc005,Chia,NCT02406885,exclusion,Creatinine > 1.5 mg/dL,The criterion holds exactly when the patient's current Creatinine is greater than 1.5 mg/dL.,"Exclusion criterion: Creatinine > 1.5 mg/dL
+Conventions: the value meant is the patient's current value as stated in the case.",,
+37,chia_NCT01700790_exc004,Chia,NCT01700790,exclusion,Bilirubin greater than 2 times ULN.,The criterion holds exactly when the patient's current Bilirubin is greater than 2 times ULN.,"Exclusion criterion: Bilirubin greater than 2 times ULN.
+Conventions: the value meant is the patient's current value as stated in the case.",,
+38,chia_NCT03059069_inc003,Chia,NCT03059069,inclusion,10 = Beck Depression Inventory (BDI) <30 points,The criterion holds exactly when the patient's current Beck Depression Inventory (BDI) is less than 30 points.,"Inclusion criterion: 10 = Beck Depression Inventory (BDI) <30 points
+Conventions: the value meant is the patient's current value as stated in the case.",,
+39,lct_NCT03928496_inc005,LCT,NCT03928496,inclusion,Rancho Los Amigos cognitive scale score greater than seven.,The criterion holds exactly when the patient's current Rancho Los Amigos cognitive scale score is greater than 7.,"Inclusion criterion: Rancho Los Amigos cognitive scale score greater than seven.
+Conventions: the value meant is the patient's current value as stated in the case.",,
+40,chia_NCT03182114_exc004,Chia,NCT03182114,exclusion,body mass index > 35,The criterion holds exactly when the patient's current body mass index is greater than 35.,"Exclusion criterion: body mass index > 35
+Conventions: the value meant is the patient's current value as stated in the case.",,
+41,chia_NCT01715584_exc005,Chia,NCT01715584,exclusion,calculated creatinine clearance less than 60 mL per minute,The criterion holds exactly when the patient's current calculated creatinine clearance is less than 60 mL per minute.,"Exclusion criterion: calculated creatinine clearance less than 60 mL per minute
+Conventions: the value meant is the patient's current value as stated in the case.",,
+42,chia_NCT02964715_inc002,Chia,NCT02964715,inclusion,HbA1c :>6.5%,The criterion holds exactly when the patient's current HbA1c is greater than 6.5 %.,"Inclusion criterion: HbA1c :>6.5%
+Conventions: the value meant is the patient's current value as stated in the case.",,
+43,chia_NCT00625742_inc002,Chia,NCT00625742,inclusion,Have a Karnofsky performance score of 60 or higher.,The criterion holds exactly when the patient's current Karnofsky performance score is greater than or equal to 60.,"Inclusion criterion: Have a Karnofsky performance score of 60 or higher.
+Conventions: the value meant is the patient's current value as stated in the case.",,
+44,chia_NCT01650792_inc002,Chia,NCT01650792,inclusion,Age 18 years or above,The criterion holds exactly when the patient's current age is greater than or equal to 18 years.,"Inclusion criterion: Age 18 years or above
+Conventions: the value meant is the patient's current value as stated in the case.",,
+45,lct_NCT03866733_inc005,LCT,NCT03866733,inclusion,left ventricular ejection fraction >50%.,The criterion holds exactly when the patient's current left ventricular ejection fraction is greater than 50 %.,"Inclusion criterion: left ventricular ejection fraction >50%.
+Conventions: the value meant is the patient's current value as stated in the case.",,
+46,chia_NCT00050349_inc004,Chia,NCT00050349,inclusion,Karnofsky Performance Status > 60,The criterion holds exactly when the patient's current Karnofsky Performance Status is greater than 60.,"Inclusion criterion: Karnofsky Performance Status > 60
+Conventions: the value meant is the patient's current value as stated in the case.",,
+47,chia_NCT03336801_exc001,Chia,NCT03336801,exclusion,American Heart Association class >3,The criterion holds exactly when the patient's current American Heart Association class is greater than 3.,"Exclusion criterion: American Heart Association class >3
+Conventions: the value meant is the patient's current value as stated in the case.",,
+48,chia_NCT02580630_exc009,Chia,NCT02580630,exclusion,BMI above 30.,The criterion holds exactly when the patient's current BMI is greater than 30.,"Exclusion criterion: BMI above 30.
+Conventions: the value meant is the patient's current value as stated in the case.",,
+49,chia_NCT03404479_inc005,Chia,NCT03404479,inclusion,Those who weigh more than 40kg,The criterion holds exactly when the patient's current weigh is greater than 40 kg.,"Inclusion criterion: Those who weigh more than 40kg
+Conventions: the value meant is the patient's current value as stated in the case.",,
+50,lct_NCT03929718_exc009,LCT,NCT03929718,exclusion,"amiodarone usage within the past 3 months,","The criterion holds exactly when the patient had the event ""amiodarone"" at some time within the 3 months before the visit.","Exclusion criterion: amiodarone usage within the past 3 months,
+Conventions: time is counted back from the visit date stated in the case; an event on the day exactly 3 months before the visit still counts; only events of the patient count.",,
