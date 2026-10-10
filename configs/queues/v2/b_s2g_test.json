@@ -83,6 +83,132 @@
     "max_new": 384,
     "mode": "gate_struct"
    }
+  },
+  {
+   "seed": 2,
+   "priority": 6,
+   "train": false,
+   "eval_sets": [
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/test"
+   ],
+   "min_gen": 9,
+   "run_id": "B-S2G-gate-s2-test",
+   "format": "ledger_g",
+   "adapter": "adapters/B-V2-reader-triplets-s2",
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "gate"
+   }
+  },
+  {
+   "seed": 2,
+   "priority": 6,
+   "train": false,
+   "eval_sets": [
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/test"
+   ],
+   "min_gen": 9,
+   "run_id": "B-S2G-struct-s2-test",
+   "format": "ledger_g",
+   "adapter": "adapters/B-V2-reader-triplets-s2",
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "gate_struct"
+   }
+  },
+  {
+   "seed": 3,
+   "priority": 7,
+   "train": false,
+   "eval_sets": [
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/test"
+   ],
+   "min_gen": 9,
+   "run_id": "B-S2G-gate-s3-test",
+   "format": "ledger_g",
+   "adapter": "adapters/B-V2-reader-triplets-s3",
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "gate"
+   }
+  },
+  {
+   "seed": 3,
+   "priority": 7,
+   "train": false,
+   "eval_sets": [
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/test"
+   ],
+   "min_gen": 9,
+   "run_id": "B-S2G-struct-s3-test",
+   "format": "ledger_g",
+   "adapter": "adapters/B-V2-reader-triplets-s3",
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "gate_struct"
+   }
+  },
+  {
+   "seed": 4,
+   "priority": 8,
+   "train": false,
+   "eval_sets": [
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/test"
+   ],
+   "min_gen": 9,
+   "run_id": "B-S2G-gate-s4-test",
+   "format": "ledger_g",
+   "adapter": "adapters/B-V2-reader-triplets-s4",
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "gate"
+   }
+  },
+  {
+   "seed": 4,
+   "priority": 8,
+   "train": false,
+   "eval_sets": [
+    "rule_v2/test_L2",
+    "rule_v1/test_L2",
+    "xr_v1/test",
+    "cls_v1/test"
+   ],
+   "min_gen": 9,
+   "run_id": "B-S2G-struct-s4-test",
+   "format": "ledger_g",
+   "adapter": "adapters/B-V2-reader-triplets-s4",
+   "eval": {
+    "bs_score": 128,
+    "bs_gen": 256,
+    "max_new": 384,
+    "mode": "gate_struct"
+   }
   }
  ]
 }

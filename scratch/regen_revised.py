@@ -14,7 +14,7 @@ print(len(busy), "busy run dirs on the PVC")
 adapters = subprocess.run(["kubectl", "-n", "ecepxie", "exec", "selrm-b-sync", "--", "sh", "-c", "ls /pvc/selrm/adapters"],
                           capture_output=True, text=True, check=True).stdout.split()
 print(len(adapters), "adapters on the PVC")
-VALIDATED = [0, 1]      # B3.2 second validation, 10 Oct
+VALIDATED = [0, 1, 2, 3, 4]      # B3.2: criterion on the seed mean, every seed tested (DECISIONS_B 10 Oct)
 L3INV = ["B-TR-fover-s0", "B-F-ledger2-natural-s0", "B-F-ledger2-balanced-s0", "B-TR-clinonly-s0", "B-TR-tripclin-s0"]
 FILES = {  # queue file -> generator (FINAL_TASKS_B, 3 Oct)
     "b_f_s0.json": lambda: Q.factorial({0}, REG, V),
