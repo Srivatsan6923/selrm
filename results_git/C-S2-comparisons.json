@@ -66,6 +66,25 @@
     "critic_derived": 1,
     "critic_none": 1
    }
+  },
+  "10": {
+   "diff": 25.85833333333332,
+   "lo": 20.812182741116757,
+   "hi": 31.192368839427658,
+   "p": 0.0,
+   "B": 10000,
+   "n_items": 1200,
+   "n_clusters": 131,
+   "contrast": "gate (composite, mode gate) minus verdict-only trained on rule_v2 triplets",
+   "metric": "triplet accuracy",
+   "expectation": "> 0",
+   "TA_gate": 99.70833333333333,
+   "TA_verdict": 73.85000000000001,
+   "seeds": [
+    2,
+    5
+   ],
+   "runs": "B-S2G-gate-s<k>-test, B-V2-verdict-triplets-s<k> (role B)"
   }
  },
  "mcv_criteria_cells": {
@@ -177,6 +196,308 @@
    "trap_acc": 73.04477057402934,
    "seeds": 1,
    "n": 5383
+  }
+ },
+ "cls_cells": {
+  "gate|all": {
+   "TA": 99.70833333333333,
+   "n": 1200,
+   "seeds": 2
+  },
+  "gate|domain=disease": {
+   "TA": 100.0,
+   "n": 400,
+   "seeds": 2
+  },
+  "gate|domain=drug": {
+   "TA": 100.0,
+   "n": 400,
+   "seeds": 2
+  },
+  "gate|domain=phenotype": {
+   "TA": 99.125,
+   "n": 400,
+   "seeds": 2
+  },
+  "gate|name_type=brand": {
+   "TA": 100.0,
+   "n": 180,
+   "seeds": 2
+  },
+  "gate|name_type=label": {
+   "TA": 99.56011730205279,
+   "n": 682,
+   "seeds": 2
+  },
+  "gate|name_type=synonym": {
+   "TA": 99.85207100591717,
+   "n": 338,
+   "seeds": 2
+  },
+  "gate|class_size=10+": {
+   "TA": 99.8158379373849,
+   "n": 543,
+   "seeds": 2
+  },
+  "gate|class_size=2-4": {
+   "TA": 100.0,
+   "n": 172,
+   "seeds": 2
+  },
+  "gate|class_size=5-9": {
+   "TA": 99.48453608247422,
+   "n": 485,
+   "seeds": 2
+  },
+  "gate_struct|all": {
+   "TA": 99.70833333333333,
+   "n": 1200,
+   "seeds": 2
+  },
+  "gate_struct|domain=disease": {
+   "TA": 100.0,
+   "n": 400,
+   "seeds": 2
+  },
+  "gate_struct|domain=drug": {
+   "TA": 100.0,
+   "n": 400,
+   "seeds": 2
+  },
+  "gate_struct|domain=phenotype": {
+   "TA": 99.125,
+   "n": 400,
+   "seeds": 2
+  },
+  "gate_struct|name_type=brand": {
+   "TA": 100.0,
+   "n": 180,
+   "seeds": 2
+  },
+  "gate_struct|name_type=label": {
+   "TA": 99.56011730205279,
+   "n": 682,
+   "seeds": 2
+  },
+  "gate_struct|name_type=synonym": {
+   "TA": 99.85207100591717,
+   "n": 338,
+   "seeds": 2
+  },
+  "gate_struct|class_size=10+": {
+   "TA": 99.8158379373849,
+   "n": 543,
+   "seeds": 2
+  },
+  "gate_struct|class_size=2-4": {
+   "TA": 100.0,
+   "n": 172,
+   "seeds": 2
+  },
+  "gate_struct|class_size=5-9": {
+   "TA": 99.48453608247422,
+   "n": 485,
+   "seeds": 2
+  },
+  "v2-verdict-triplets|all": {
+   "TA": 73.85000000000001,
+   "n": 1200,
+   "seeds": 5
+  },
+  "v2-verdict-triplets|domain=disease": {
+   "TA": 66.25,
+   "n": 400,
+   "seeds": 5
+  },
+  "v2-verdict-triplets|domain=drug": {
+   "TA": 83.1,
+   "n": 400,
+   "seeds": 5
+  },
+  "v2-verdict-triplets|domain=phenotype": {
+   "TA": 72.2,
+   "n": 400,
+   "seeds": 5
+  },
+  "v2-verdict-triplets|name_type=brand": {
+   "TA": 83.44444444444444,
+   "n": 180,
+   "seeds": 5
+  },
+  "v2-verdict-triplets|name_type=label": {
+   "TA": 73.34310850439883,
+   "n": 682,
+   "seeds": 5
+  },
+  "v2-verdict-triplets|name_type=synonym": {
+   "TA": 69.76331360946746,
+   "n": 338,
+   "seeds": 5
+  },
+  "v2-verdict-triplets|class_size=10+": {
+   "TA": 65.67219152854513,
+   "n": 543,
+   "seeds": 5
+  },
+  "v2-verdict-triplets|class_size=2-4": {
+   "TA": 80.11627906976744,
+   "n": 172,
+   "seeds": 5
+  },
+  "v2-verdict-triplets|class_size=5-9": {
+   "TA": 80.78350515463917,
+   "n": 485,
+   "seeds": 5
+  },
+  "v2-verdict-blocks|all": {
+   "TA": 8.016666666666666,
+   "n": 1200,
+   "seeds": 5
+  },
+  "v2-verdict-blocks|domain=disease": {
+   "TA": 1.9,
+   "n": 400,
+   "seeds": 5
+  },
+  "v2-verdict-blocks|domain=drug": {
+   "TA": 9.3,
+   "n": 400,
+   "seeds": 5
+  },
+  "v2-verdict-blocks|domain=phenotype": {
+   "TA": 12.85,
+   "n": 400,
+   "seeds": 5
+  },
+  "v2-verdict-blocks|name_type=brand": {
+   "TA": 11.222222222222221,
+   "n": 180,
+   "seeds": 5
+  },
+  "v2-verdict-blocks|name_type=label": {
+   "TA": 7.771260997067449,
+   "n": 682,
+   "seeds": 5
+  },
+  "v2-verdict-blocks|name_type=synonym": {
+   "TA": 6.804733727810651,
+   "n": 338,
+   "seeds": 5
+  },
+  "v2-verdict-blocks|class_size=10+": {
+   "TA": 7.697974217311235,
+   "n": 543,
+   "seeds": 5
+  },
+  "v2-verdict-blocks|class_size=2-4": {
+   "TA": 9.186046511627907,
+   "n": 172,
+   "seeds": 5
+  },
+  "v2-verdict-blocks|class_size=5-9": {
+   "TA": 7.958762886597938,
+   "n": 485,
+   "seeds": 5
+  },
+  "v2-reader-triplets|all": {
+   "TA": 73.45,
+   "n": 1200,
+   "seeds": 5
+  },
+  "v2-reader-triplets|domain=disease": {
+   "TA": 66.60000000000001,
+   "n": 400,
+   "seeds": 5
+  },
+  "v2-reader-triplets|domain=drug": {
+   "TA": 82.45,
+   "n": 400,
+   "seeds": 5
+  },
+  "v2-reader-triplets|domain=phenotype": {
+   "TA": 71.3,
+   "n": 400,
+   "seeds": 5
+  },
+  "v2-reader-triplets|name_type=brand": {
+   "TA": 79.77777777777779,
+   "n": 180,
+   "seeds": 5
+  },
+  "v2-reader-triplets|name_type=label": {
+   "TA": 74.28152492668622,
+   "n": 682,
+   "seeds": 5
+  },
+  "v2-reader-triplets|name_type=synonym": {
+   "TA": 68.40236686390533,
+   "n": 338,
+   "seeds": 5
+  },
+  "v2-reader-triplets|class_size=10+": {
+   "TA": 64.45672191528546,
+   "n": 543,
+   "seeds": 5
+  },
+  "v2-reader-triplets|class_size=2-4": {
+   "TA": 81.16279069767441,
+   "n": 172,
+   "seeds": 5
+  },
+  "v2-reader-triplets|class_size=5-9": {
+   "TA": 80.78350515463917,
+   "n": 485,
+   "seeds": 5
+  },
+  "v2-reader-blocks|all": {
+   "TA": 14.416666666666666,
+   "n": 1200,
+   "seeds": 1
+  },
+  "v2-reader-blocks|domain=disease": {
+   "TA": 11.5,
+   "n": 400,
+   "seeds": 1
+  },
+  "v2-reader-blocks|domain=drug": {
+   "TA": 7.75,
+   "n": 400,
+   "seeds": 1
+  },
+  "v2-reader-blocks|domain=phenotype": {
+   "TA": 24.0,
+   "n": 400,
+   "seeds": 1
+  },
+  "v2-reader-blocks|name_type=brand": {
+   "TA": 10.0,
+   "n": 180,
+   "seeds": 1
+  },
+  "v2-reader-blocks|name_type=label": {
+   "TA": 13.929618768328444,
+   "n": 682,
+   "seeds": 1
+  },
+  "v2-reader-blocks|name_type=synonym": {
+   "TA": 17.75147928994083,
+   "n": 338,
+   "seeds": 1
+  },
+  "v2-reader-blocks|class_size=10+": {
+   "TA": 16.574585635359114,
+   "n": 543,
+   "seeds": 1
+  },
+  "v2-reader-blocks|class_size=2-4": {
+   "TA": 9.883720930232558,
+   "n": 172,
+   "seeds": 1
+  },
+  "v2-reader-blocks|class_size=5-9": {
+   "TA": 13.608247422680412,
+   "n": 485,
+   "seeds": 1
   }
  },
  "mcv_cells": {

@@ -206,6 +206,42 @@ def main():
                                          lambda xs: pa("critic_derived")(xs) - pa("critic_none")(xs), B=B)
         out["comparisons"]["11"] = r11 | {"contrast": "[triplets: derived - none] minus [critic: derived - none]", "metric": "pair accuracy",
                                           "expectation": "> 0", "seeds": {f"{k}_{c}": mc[(k, c)][1] for k, c in need11}}
+    # (10) cls_v1/test (classes held out from training; class named, no member list): gate minus learned verdict,
+    # triplet accuracy, clusters = classes. Scores are role B's runs (copied from PVC selrm-b into scratch/bres).
+    cp = f"{REPO}/scratch/cls_v1/test/records.jsonl"
+    if os.path.exists(cp):
+        cls = [r for r in load(cp) if r["claim_type"] == "conclusion"]
+        cmeta = {r["tid"]: r for r in cls}
+
+        def cls_items(runs):
+            vals = collections.defaultdict(list)
+            for run in runs:
+                q = f"{REPO}/scratch/bres/{run}/scores_cls_v1~test.jsonl"
+                if os.path.exists(q):
+                    d = d_by(cls, {r["iid"]: r["u"] for r in load(q)})
+                    for t in cmeta:
+                        vals[t].append(d[(t, "base")] > 0 and d[(t, "flip")] < 0 and d[(t, "near")] > 0)
+            return {t: statistics.mean(v) for t, v in vals.items()}, max((len(v) for v in vals.values()), default=0)
+
+        CS = {"gate": [f"B-S2G-gate-s{k}-test" for k in range(5)], "gate_struct": [f"B-S2G-struct-s{k}-test" for k in range(5)],
+              **{f"v2-{f}-{c}": [f"B-V2-{f}-{c}-s{k}" for k in range(5)] for f in ("verdict", "reader") for c in ("triplets", "blocks")}}
+        cc = {k: cls_items(v) for k, v in CS.items()}
+        ta = lambda key: (lambda xs: 100.0 * statistics.mean(x[key] for x in xs))
+        size = lambda n: "2-4" if n <= 4 else "5-9" if n <= 9 else "10+"
+        slices = {"all": lambda m: True}
+        for f, fn in (("domain", lambda m: m["domain"]), ("name_type", lambda m: m["flip_name_type"]), ("class_size", lambda m: size(m["n_members"]))):
+            for v in sorted({fn(r["meta"]) for r in cls}):
+                slices[f"{f}={v}"] = (lambda m, fn=fn, v=v: fn(m) == v)
+        out["cls_cells"] = {f"{k}|{sl}": {"TA": 100.0 * statistics.mean(v[t] for t in v if keep(cmeta[t]["meta"])),
+                                          "n": sum(keep(cmeta[t]["meta"]) for t in v), "seeds": n}
+                            for k, (v, n) in cc.items() if v for sl, keep in slices.items()}
+        if cc["gate"][0] and cc["v2-verdict-triplets"][0]:
+            items = [{"cl": cmeta[t]["cluster"], "a": cc["gate"][0][t], "b": cc["v2-verdict-triplets"][0][t]} for t in sorted(cmeta)]
+            r10 = M.paired_cluster_bootstrap(items, "cl", ta("a"), ta("b"), B=B)
+            out["comparisons"]["10"] = r10 | {"contrast": "gate (composite, mode gate) minus verdict-only trained on rule_v2 triplets",
+                                              "metric": "triplet accuracy", "expectation": "> 0", "TA_gate": ta("a")(items),
+                                              "TA_verdict": ta("b")(items), "seeds": [cc["gate"][1], cc["v2-verdict-triplets"][1]],
+                                              "runs": "B-S2G-gate-s<k>-test, B-V2-verdict-triplets-s<k> (role B)"}
     out["mcv_cells"] = descriptive(load(f"{MCV}/criteria_test/records.jsonl"), load(f"{MCV}/edits_test/records.jsonl"))
     json.dump(out, open(f"{RES}/C-S2-comparisons.json", "w", encoding="utf-8", newline="\n"), indent=1)
     print(json.dumps({k: {x: (round(v[x], 2) if isinstance(v[x], float) else v[x]) for x in ("diff", "lo", "hi", "p", "n_items", "n_clusters")}

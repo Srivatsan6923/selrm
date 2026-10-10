@@ -1,0 +1,140 @@
+{
+ "note": "Stage 2 C7, comparison (12): key pairs without a criterion. The composite routes every such item to its verdict-only adapter (v2, same seed); stage-1 verdict x triplets seeds 1-4 complete the reference",
+ "runs": [
+  {
+   "run_id": "C-S2-kp-v2-verdict-triplets-s0",
+   "priority": 1.0,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-V2-verdict-triplets-s0",
+   "adapter_run": "B-V2-verdict-triplets-s0",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "min_gen": 3
+  },
+  {
+   "run_id": "C-S2-kp-v2-verdict-triplets-s1",
+   "priority": 1.01,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-V2-verdict-triplets-s1",
+   "adapter_run": "B-V2-verdict-triplets-s1",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "min_gen": 3
+  },
+  {
+   "run_id": "C-S2-kp-v2-verdict-triplets-s2",
+   "priority": 1.02,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-V2-verdict-triplets-s2",
+   "adapter_run": "B-V2-verdict-triplets-s2",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "min_gen": 3
+  },
+  {
+   "run_id": "C-S2-kp-v2-verdict-triplets-s3",
+   "priority": 1.03,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-V2-verdict-triplets-s3",
+   "adapter_run": "B-V2-verdict-triplets-s3",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "min_gen": 3
+  },
+  {
+   "run_id": "C-S2-kp-v2-verdict-triplets-s4",
+   "priority": 1.04,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-V2-verdict-triplets-s4",
+   "adapter_run": "B-V2-verdict-triplets-s4",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "min_gen": 3
+  },
+  {
+   "run_id": "C-KP-verdict-triplets-s1",
+   "priority": 2.01,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s1",
+   "adapter_run": "B-F-verdict-triplets-s1",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "min_gen": 3
+  },
+  {
+   "run_id": "C-KP-verdict-triplets-s2",
+   "priority": 2.02,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s2",
+   "adapter_run": "B-F-verdict-triplets-s2",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "min_gen": 3
+  },
+  {
+   "run_id": "C-KP-verdict-triplets-s3",
+   "priority": 2.03,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s3",
+   "adapter_run": "B-F-verdict-triplets-s3",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "min_gen": 3
+  },
+  {
+   "run_id": "C-KP-verdict-triplets-s4",
+   "priority": 2.04,
+   "format": "verdict",
+   "adapter": "/pvcb/selrm/adapters/B-F-verdict-triplets-s4",
+   "adapter_run": "B-F-verdict-triplets-s4",
+   "bs_score": 64,
+   "sets": [
+    "clin_v1/keypairs_medqa",
+    "clin_v1/keypairs_careqa",
+    "clin_v1/keypairs_medqa_oneway",
+    "clin_v1/keypairs_careqa_oneway"
+   ],
+   "min_gen": 3
+  }
+ ]
+}
