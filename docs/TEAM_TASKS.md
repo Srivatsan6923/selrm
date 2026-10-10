@@ -40,6 +40,11 @@ Copy the sheet, answer in the copy, never edit the original.
 | `audit/s2/kb_criteria_sheet.csv` (20 DDXPlus criteria) | does the rendered criterion say what the two condition lists say | `audit/s2/kb_criteria_sheet.md` | `audit/s2/kb_criteria_<authorN>.csv` |
 | `audit/s2/reg_criteria_sheet.csv` (50 registered trial criteria) | q1-q2: does the script's reading (threshold, inclusive or not, window, reference date) do what the sentence says | the sheet itself | `audit/s2/reg_criteria_<authorN>.csv` |
 
+For H4 there is a second, shorter sheet per author: 25 failures of the best verifier on edited MedCalc notes,
+`audit/s2/error_sheet_mcv_part<N>.csv` (N = your author number); same categories as `audit/ERROR_CODING.md`;
+save as `audit/s2/errors_mcv_<authorN>.csv`. The columns `edit_flip` and `edit_near` show only the sentences
+that differ from the base note.
+
 Background for each set: `docs/DATA_AUDIT_mcv_v1.md`, `docs/DATA_AUDIT_kb_v1.md`, `docs/DATA_AUDIT_reg_v1.md`.
 
 ## Schedule
