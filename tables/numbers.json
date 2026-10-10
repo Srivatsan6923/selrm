@@ -1,11 +1,43 @@
 {
+ "a15/datasets.rule_v1/dev.n_groups": {
+  "number": 300,
+  "value": "300"
+ },
+ "a15/datasets.rule_v1/test_L2.n_groups": {
+  "number": 2000,
+  "value": "2{,}000"
+ },
+ "a15/datasets.rule_v1/train_triplets.reject_rate": {
+  "number": 1.1427566807313643,
+  "value": "1.1"
+ },
  "a15/folds.1.n_classes@int": {
   "number": 21,
   "value": "21"
  },
+ "a15/folds.1.n_l1_rules": {
+  "number": 27,
+  "value": "27"
+ },
+ "a15/folds.1.n_l2_rules": {
+  "number": 103,
+  "value": "103"
+ },
+ "a15/folds.1.n_train_rules": {
+  "number": 223,
+  "value": "223"
+ },
  "a15/folds.1.overlap_train_vs_L2.criterion_subexpressions": {
   "number": 76.28865979381443,
   "value": "76.3"
+ },
+ "a15/folds.2.overlap_train_vs_L2.criterion_subexpressions": {
+  "number": 72.05882352941177,
+  "value": "72.1"
+ },
+ "a15/invented_rules_L3inv": {
+  "number": 60,
+  "value": "60"
  },
  "a15/rules_by_kind.score@int": {
   "number": 43,
@@ -22,6 +54,14 @@
  "a15/rules_total@int": {
   "number": 353,
   "value": "353"
+ },
+ "a15/templates.templates_test": {
+  "number": 516,
+  "value": "516"
+ },
+ "a15/templates.templates_train": {
+  "number": 1032,
+  "value": "1{,}032"
  },
  "cmp/mcv/blocks_none.balanced_accuracy": {
   "number": null,
@@ -155,9 +195,25 @@
   "number": -8.452535760728217,
   "value": "-8.5"
  },
+ "cmp/p4/hi": {
+  "number": -7.003529630317665,
+  "value": "-7.0"
+ },
+ "cmp/p4/lo": {
+  "number": -9.80865688277912,
+  "value": "-9.8"
+ },
  "cmp/p5/diff": {
   "number": -9.399962845996658,
   "value": "-9.4"
+ },
+ "cmp/p5/hi": {
+  "number": -8.080995727289615,
+  "value": "-8.1"
+ },
+ "cmp/p5/lo": {
+  "number": -10.718929964703698,
+  "value": "-10.7"
  },
  "cmp/p6a/diff": {
   "number": 3.3918068054352943,
@@ -170,6 +226,10 @@
  "cmp/p6a/lo": {
   "number": -2.5721668821440176,
   "value": "-2.6"
+ },
+ "cmp/p6a/n": {
+  "number": 43,
+  "value": "43"
  },
  "cmp/p6a/p": {
   "number": 0.244,
@@ -343,9 +403,53 @@
   "number": 60,
   "value": "60"
  },
+ "d/run/B-AB-bitonly-reader/L2/all/TA/s0|run/B-F-ledger2-triplets/L2/all/TA/s0": {
+  "number": 0.75,
+  "value": "0.8"
+ },
+ "d/run/B-AB-concept/L2/all/TA/s0|run/B-F-ledger2-triplets/L2/all/TA/s0": {
+  "number": -72.45,
+  "value": "-72.5"
+ },
+ "d/run/B-AB-conddrv/L2/all/TA/s0|run/B-F-ledger2-triplets/L2/all/TA/s0": {
+  "number": -12.650000000000006,
+  "value": "-12.7"
+ },
+ "d/run/B-AB-pairwise/L2/all/TA/s0|run/B-F-ledger2-triplets/L2/all/TA/s0": {
+  "number": -7.799999999999997,
+  "value": "-7.8"
+ },
+ "d/run/B-AB-verify/L2/all/TA/s0|run/B-F-ledger2-triplets/L2/all/TA/s0": {
+  "number": 0.5999999999999943,
+  "value": "0.6"
+ },
+ "d/run/B-AE-program-ledger/L2/all/TA|run/B-F-ledger2-triplets/L2/all/TA/s0": {
+  "number": 0.20000000000000284,
+  "value": "0.2"
+ },
+ "d/run/B-F-ledger2-blocks/L2/all/TA/s0|run/B-F-value2-blocks/L2/all/TA/s0": {
+  "number": 4.599999999999994,
+  "value": "4.6"
+ },
  "d/run/B-F-ledger2-triplets/L2/all/TA/s0|run/B-F-value2-triplets/L2/all/TA/s0": {
   "number": 13.5,
   "value": "13.5"
+ },
+ "d/run/B-LOKO-boundary-summary2/L2/nm_kind=boundary/TA/s0|run/B-F-summary2-triplets/L2/nm_kind=boundary/TA/s0": {
+  "number": -1.0,
+  "value": "-1.0"
+ },
+ "d/run/B-LOKO-subject-verdict/L2/nm_kind=subject/TA/s0|run/B-F-verdict-triplets/L2/nm_kind=subject/TA/s0": {
+  "number": -84.0,
+  "value": "-84.0"
+ },
+ "d/run/B-SC-summary2-triplets/L2/all/TA/s0|run/B-F-ledger2-triplets/L2/all/TA/s0": {
+  "number": -0.4000000000000057,
+  "value": "-0.4"
+ },
+ "d/run/B-SC-summary2-triplets/L2/all/TA/s0|run/B-F-summary2-triplets/L2/all/TA/s0": {
+  "number": 0.7999999999999972,
+  "value": "0.8"
  },
  "d/run/D-SEL-combined-swap/sel:careqa/top/n|run/D-SEL-combined-swap/sel:careqa/top/n_same_answer_as_stepcheck_swap@int": {
   "number": 33.0,
@@ -355,6 +459,282 @@
   "number": -0.864100549882167,
   "value": "-0.9"
  },
+ "json/audit/model_review/summary.json::sessions.0.label_disputed": {
+  "number": 11,
+  "value": "11"
+ },
+ "json/audit/model_review/summary.json::sessions.1.label_disputed": {
+  "number": 9,
+  "value": "9"
+ },
+ "json/audit/model_review/summary.json::sessions.2.label_disputed": {
+  "number": 10,
+  "value": "10"
+ },
+ "json/audit/model_review/summary.json::sessions.3.label_disputed": {
+  "number": 12,
+  "value": "12"
+ },
+ "json/data/clin_v1/clinpairs_medeinst/MANIFEST.json::n_groups@int": {
+  "number": 7807,
+  "value": "7{,}807"
+ },
+ "json/data/clin_v1/clinpairs_medqa/MANIFEST.json::pairs_kept@int": {
+  "number": 122,
+  "value": "122"
+ },
+ "json/data/clin_v1/keypairs_careqa/MANIFEST.json::n_pairs@int": {
+  "number": 3,
+  "value": "3"
+ },
+ "json/data/clin_v1/keypairs_careqa_oneway/MANIFEST.json::n_pairs@int": {
+  "number": 225,
+  "value": "225"
+ },
+ "json/data/clin_v1/keypairs_medqa/MANIFEST.json::n_pairs@int": {
+  "number": 13,
+  "value": "13"
+ },
+ "json/data/clin_v1/keypairs_medqa_oneway/MANIFEST.json::n_pairs@int": {
+  "number": 357,
+  "value": "357"
+ },
+ "json/data/clin_v1/medeinst_dis_test/MANIFEST.json::n_groups@int": {
+  "number": 115,
+  "value": "115"
+ },
+ "json/data/clin_v1/medeinst_ref_train/MANIFEST.json::ref_pairs_released": {
+  "number": 10609,
+  "value": "10{,}609"
+ },
+ "json/data/clin_v1/medeinst_test/MANIFEST.json::n_pairs": {
+  "number": 5383,
+  "value": "5{,}383"
+ },
+ "json/data/clin_v1/trialgpt_test/MANIFEST.json::shortcut_validation.predictors.always met.acc": {
+  "number": 18.181818181818183,
+  "value": "18.2"
+ },
+ "json/data/clin_v1/trialgpt_test/MANIFEST.json::shortcut_validation.predictors.always met.macroF1": {
+  "number": 10.256410256410257,
+  "value": "10.3"
+ },
+ "json/data/clin_v1/trialgpt_test/MANIFEST.json::shortcut_validation.predictors.always nei.acc": {
+  "number": 30.566534914361,
+  "value": "30.6"
+ },
+ "json/data/clin_v1/trialgpt_test/MANIFEST.json::shortcut_validation.predictors.always nei.macroF1": {
+  "number": 15.607130844265052,
+  "value": "15.6"
+ },
+ "json/data/clin_v1/trialgpt_test/MANIFEST.json::shortcut_validation.predictors.always not_met.macroF1": {
+  "number": 22.59001161440186,
+  "value": "22.6"
+ },
+ "json/data/xr_v1/test/MANIFEST.json::by_dimension.window": {
+  "number": 100,
+  "value": "100"
+ },
+ "json/data/xr_v1/test/MANIFEST.json::n_items": {
+  "number": 400,
+  "value": "400"
+ },
+ "json/data/xr_v1/test/MANIFEST.json::n_records": {
+  "number": 9600,
+  "value": "9{,}600"
+ },
+ "json/results/A-SETS/summary.json::xr_v1.by_dimension.currency": {
+  "number": 100,
+  "value": "100"
+ },
+ "json/results/A-SETS/summary.json::xr_v1.known_issue_items": {
+  "number": 38,
+  "value": "38"
+ },
+ "json/results/D-VAL-ledger2-triplets-s0/summary.json::n_preferences@int": {
+  "number": 8000,
+  "value": "8{,}000"
+ },
+ "json/results/D-VAL-ledger2-triplets-s0/summary.json::preference_sign_agreement@pct2": {
+  "number": 0.999625,
+  "value": "99.96"
+ },
+ "json/results_git/B-AE-field-edit/summary_rule_v1~test_L2~edit.json::by.changed=0.agreement": {
+  "number": 99.67,
+  "value": "99.7"
+ },
+ "json/results_git/B-AE-field-edit/summary_rule_v1~test_L2~edit.json::by.changed=1.agreement": {
+  "number": 47.84,
+  "value": "47.8"
+ },
+ "json/results_git/B-F-ledger2-triplets-s0/meta.json::train.examples@int": {
+  "number": 60000,
+  "value": "60{,}000"
+ },
+ "json/results_git/B-F-ledger2-triplets-s0/meta.json::train.hp.batch@int": {
+  "number": 64,
+  "value": "64"
+ },
+ "json/results_git/C-DG-noise/noise_check.json::logodds.TA": {
+  "number": 25.45,
+  "value": "25.4"
+ },
+ "json/results_git/C-DG-noise/noise_check.json::sampled.TA.mean": {
+  "number": 24.815,
+  "value": "24.8"
+ },
+ "json/results_git/C-DG-noise/noise_check.json::sampled.TA.sd": {
+  "number": 0.3793635020223564,
+  "value": "0.4"
+ },
+ "json/results_git/C-DG-noise/noise_check.json::temperature": {
+  "number": 0.7,
+  "value": "0.7"
+ },
+ "json/results_git/C-DG-noise/noise_check_T1.json::sampled.TA.mean": {
+  "number": 24.045,
+  "value": "24.0"
+ },
+ "json/results_git/C-DG-noise/noise_check_T1.json::sampled.TA.sd": {
+  "number": 0.6660205202043953,
+  "value": "0.7"
+ },
+ "json/results_git/C-DG-noise/noise_check_T1.json::temperature": {
+  "number": 1.0,
+  "value": "1.0"
+ },
+ "json/results_git/C-DG-probe/probe.json::control.acc": {
+  "number": 69.85,
+  "value": "69.8"
+ },
+ "json/results_git/C-DG-probe/probe.json::control.unseen_conditions.acc": {
+  "number": 41.31578947368421,
+  "value": "41.3"
+ },
+ "json/results_git/C-DG-probe/probe.json::probe.acc": {
+  "number": 86.875,
+  "value": "86.9"
+ },
+ "json/results_git/C-DG-probe/probe.json::probe.unseen_conditions.acc": {
+  "number": 94.47368421052632,
+  "value": "94.5"
+ },
+ "json/results_git/C-KP-critic/summary_clin_v1~keypairs_careqa_oneway.json::CI95.0": {
+  "number": 79.55555555555556,
+  "value": "79.6"
+ },
+ "json/results_git/C-KP-critic/summary_clin_v1~keypairs_careqa_oneway.json::CI95.1": {
+  "number": 88.88888888888889,
+  "value": "88.9"
+ },
+ "json/results_git/C-KP-critic/summary_clin_v1~keypairs_medqa_oneway.json::CI95.0": {
+  "number": 75.63025210084034,
+  "value": "75.6"
+ },
+ "json/results_git/C-KP-critic/summary_clin_v1~keypairs_medqa_oneway.json::CI95.1": {
+  "number": 84.03361344537815,
+  "value": "84.0"
+ },
+ "json/results_git/C-ME-comparisons.json::ledger2-triplets-s0 - critic.label_pairs.n_clusters": {
+  "number": 134,
+  "value": "134"
+ },
+ "json/results_git/C-ME-critic/summary_clin_v1~medeinst_test.json::CI95.0": {
+  "number": 22.979751068177595,
+  "value": "23.0"
+ },
+ "json/results_git/C-ME-critic/summary_clin_v1~medeinst_test.json::CI95.1": {
+  "number": 25.394761285528517,
+  "value": "25.4"
+ },
+ "json/results_git/C-ME-ledger2-triplets-s0/malformed_reasons_clin_v1~medeinst_test.json::shares.entry not five lines": {
+  "number": 30.19691621772246,
+  "value": "30.2"
+ },
+ "json/results_git/C-ME-ledger2-triplets-s0/summary_clin_v1~medeinst_test.json::CI95.0": {
+  "number": 14.71298532416868,
+  "value": "14.7"
+ },
+ "json/results_git/C-ME-ledger2-triplets-s0/summary_clin_v1~medeinst_test.json::CI95.1": {
+  "number": 16.700724503065207,
+  "value": "16.7"
+ },
+ "json/results_git/C-TF-critic/diagnostics.json::pk.G": {
+  "number": 7.944915254237284,
+  "value": "7.9"
+ },
+ "json/results_git/C-TF-critic/diagnostics.json::pk.K": {
+  "number": 96.0,
+  "value": "96.0"
+ },
+ "json/results_git/C-TF-critic/diagnostics.json::pk.L0_BaseAcc": {
+  "number": 68.6,
+  "value": "68.6"
+ },
+ "json/results_git/C-TF-critic/diagnostics.json::pk.L0_UR": {
+  "number": 33.965014577259474,
+  "value": "34.0"
+ },
+ "json/results_git/C-TF-critic/diagnostics.json::pk.L0_UR_n@int": {
+  "number": 686,
+  "value": "686"
+ },
+ "json/results_git/C-TF-critic/diagnostics.json::pk.P": {
+  "number": 97.7,
+  "value": "97.7"
+ },
+ "json/results_git/C-TF-critic/diagnostics.json::pk.U": {
+  "number": 88.9,
+  "value": "88.9"
+ },
+ "json/results_git/C-TF-critic/diagnostics.json::pk.n@int": {
+  "number": 1000,
+  "value": "1{,}000"
+ },
+ "json/results_git/C-TF-critic/diagnostics.json::pk.n_P_and_K@int": {
+  "number": 944,
+  "value": "944"
+ },
+ "json/results_git/C-TG-comparisons_dev.json::ledger2-triplets - critic.diff": {
+  "number": 13.745914449220358,
+  "value": "13.7"
+ },
+ "json/results_git/C-TG-comparisons_dev.json::ledger2-triplets - critic.hi": {
+  "number": 20.595254635481503,
+  "value": "20.6"
+ },
+ "json/results_git/C-TG-comparisons_dev.json::ledger2-triplets - critic.lo": {
+  "number": 5.009241619928986,
+  "value": "5.0"
+ },
+ "json/results_git/C-TG-comparisons_dev.json::ledger2-triplets - critic.n_clusters": {
+  "number": 10,
+  "value": "10"
+ },
+ "json/results_git/C-TG-critic/summary_clin_v1~trialgpt_test.json::macroF1_CI95.0": {
+  "number": 61.76067884437168,
+  "value": "61.8"
+ },
+ "json/results_git/C-TG-critic/summary_clin_v1~trialgpt_test.json::macroF1_CI95.1": {
+  "number": 69.72261033479323,
+  "value": "69.7"
+ },
+ "json/results_git/C-TG-ledger2-blocks-s0/reader_audit.json::sets.clin_v1/trialgpt_test.malformed_rate_strict@pct1": {
+  "number": 0.0187,
+  "value": "1.9"
+ },
+ "json/results_git/C-TG-ledger2-blocks-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.0": {
+  "number": 66.67800423173925,
+  "value": "66.7"
+ },
+ "json/results_git/C-TG-ledger2-blocks-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.1": {
+  "number": 74.55269848182404,
+  "value": "74.6"
+ },
+ "json/results_git/C-TG-ledger2-triplets-s0/reader_audit.json::sets.clin_v1/trialgpt_test.malformed_rate_strict@pct1": {
+  "number": 0.04,
+  "value": "4.0"
+ },
  "json/results_git/C-TG-ledger2-triplets-s0/summary_clin_v1~trialgpt_test.json::evidence.precision": {
   "number": 55.625,
   "value": "55.6"
@@ -363,21 +743,217 @@
   "number": 67.93893129770993,
   "value": "67.9"
  },
+ "json/results_git/C-TG-ledger2-triplets-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.0": {
+  "number": 64.25270926901763,
+  "value": "64.3"
+ },
+ "json/results_git/C-TG-ledger2-triplets-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.1": {
+  "number": 73.54749780836737,
+  "value": "73.5"
+ },
+ "json/results_git/C-TG-promptsum/summary_clin_v1~trialgpt_test.json::macroF1_CI95.0": {
+  "number": 64.84605342669859,
+  "value": "64.8"
+ },
+ "json/results_git/C-TG-promptsum/summary_clin_v1~trialgpt_test.json::macroF1_CI95.1": {
+  "number": 70.84405933021002,
+  "value": "70.8"
+ },
+ "json/results_git/C-TG-summary2-blocks-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.0": {
+  "number": 63.89451118120606,
+  "value": "63.9"
+ },
+ "json/results_git/C-TG-summary2-blocks-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.1": {
+  "number": 71.6925053818528,
+  "value": "71.7"
+ },
+ "json/results_git/C-TG-summary2-triplets-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.0": {
+  "number": 65.07952067764508,
+  "value": "65.1"
+ },
+ "json/results_git/C-TG-summary2-triplets-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.1": {
+  "number": 72.90690224512882,
+  "value": "72.9"
+ },
+ "json/results_git/C-TG-verdict-blocks-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.0": {
+  "number": 60.31710024518289,
+  "value": "60.3"
+ },
+ "json/results_git/C-TG-verdict-blocks-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.1": {
+  "number": 69.2202892408071,
+  "value": "69.2"
+ },
+ "json/results_git/C-TG-verdict-triplets-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.0": {
+  "number": 66.25395245823388,
+  "value": "66.3"
+ },
+ "json/results_git/C-TG-verdict-triplets-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.1": {
+  "number": 75.27906275953814,
+  "value": "75.3"
+ },
+ "json/results_git/D-CAL/summary.json::auc.ledger2-blocks@3": {
+  "number": 0.47909914506199086,
+  "value": "0.479"
+ },
+ "json/results_git/D-CAL/summary.json::auc.ledger2-triplets@3": {
+  "number": 0.5097469795223625,
+  "value": "0.510"
+ },
+ "json/results_git/D-CAL/summary.json::auc.medprm@3": {
+  "number": 0.6536655224728907,
+  "value": "0.654"
+ },
+ "json/results_git/D-CAL/summary.json::n_questions@int": {
+  "number": 359,
+  "value": "359"
+ },
+ "json/results_git/D-CAL/summary.json::platt.ledger2-triplets.0@3": {
+  "number": 0.0057337402444845535,
+  "value": "0.006"
+ },
+ "json/results_git/D-CAL/summary.json::platt.medprm.0@2": {
+  "number": 0.6645159113862108,
+  "value": "0.66"
+ },
+ "max/run/B-F-ledger2-triplets/xr_v1:test/xa/XA_subject/s0|run/B-F-ledger2-triplets/xr_v1:test/xa/XA_currency/s0|run/B-F-ledger2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0": {
+  "number": 100.0,
+  "value": "100"
+ },
+ "max/run/B-F-verdict-balanced/L2/all/Hold/s0|run/B-F-rationale-balanced/L2/all/Hold/s0|run/B-F-summary2-balanced/L2/all/Hold/s0|run/B-F-value2-balanced/L2/all/Hold/s0|run/B-F-ledger2-balanced/L2/all/Hold/s0": {
+  "number": 72.85,
+  "value": "72.8"
+ },
+ "max/run/B-F-verdict-blocks/xr_v1:test/xa/XA/max|run/B-F-summary2-blocks/xr_v1:test/xa/XA/max|run/B-F-ledger2-blocks/xr_v1:test/xa/XA/max|run/B-F-value2-blocks/xr_v1:test/xa/XA/max": {
+  "number": 82.25,
+  "value": "82.2"
+ },
+ "max/run/B-F-verdict-natural/L2/all/Hold/s0|run/B-F-verdict-balanced/L2/all/Hold/s0|run/B-F-verdict-blocks/L2/all/Hold/s0|run/B-F-rationale-natural/L2/all/Hold/s0|run/B-F-rationale-balanced/L2/all/Hold/s0|run/B-F-rationale-blocks/L2/all/Hold/s0|run/B-F-summary2-natural/L2/all/Hold/s0|run/B-F-summary2-balanced/L2/all/Hold/s0|run/B-F-summary2-blocks/L2/all/Hold/s0|run/B-F-value2-natural/L2/all/Hold/s0|run/B-F-value2-balanced/L2/all/Hold/s0|run/B-F-value2-blocks/L2/all/Hold/s0|run/B-F-ledger2-natural/L2/all/Hold/s0|run/B-F-ledger2-balanced/L2/all/Hold/s0|run/B-F-ledger2-blocks/L2/all/Hold/s0": {
+  "number": 77.75,
+  "value": "77.8"
+ },
+ "max/run/B-F-verdict-natural/L2/all/Rev/s0|run/B-F-verdict-balanced/L2/all/Rev/s0|run/B-F-verdict-blocks/L2/all/Rev/s0|run/B-F-rationale-natural/L2/all/Rev/s0|run/B-F-rationale-balanced/L2/all/Rev/s0|run/B-F-rationale-blocks/L2/all/Rev/s0|run/B-F-summary2-natural/L2/all/Rev/s0|run/B-F-summary2-balanced/L2/all/Rev/s0|run/B-F-summary2-blocks/L2/all/Rev/s0|run/B-F-value2-natural/L2/all/Rev/s0|run/B-F-value2-balanced/L2/all/Rev/s0|run/B-F-value2-blocks/L2/all/Rev/s0|run/B-F-ledger2-natural/L2/all/Rev/s0|run/B-F-ledger2-balanced/L2/all/Rev/s0|run/B-F-ledger2-blocks/L2/all/Rev/s0": {
+  "number": 99.6,
+  "value": "99.6"
+ },
+ "max/run/B-F-verdict-natural/L2/all/TA/s0|run/B-F-verdict-balanced/L2/all/TA/s0|run/B-F-verdict-blocks/L2/all/TA/s0|run/B-F-rationale-natural/L2/all/TA/s0|run/B-F-rationale-balanced/L2/all/TA/s0|run/B-F-rationale-blocks/L2/all/TA/s0|run/B-F-summary2-natural/L2/all/TA/s0|run/B-F-summary2-balanced/L2/all/TA/s0|run/B-F-summary2-blocks/L2/all/TA/s0|run/B-F-ledger2-natural/L2/all/TA/s0|run/B-F-ledger2-balanced/L2/all/TA/s0|run/B-F-ledger2-blocks/L2/all/TA/s0|run/B-F-value2-natural/L2/all/TA/s0|run/B-F-value2-balanced/L2/all/TA/s0|run/B-F-value2-blocks/L2/all/TA/s0": {
+  "number": 77.25,
+  "value": "77.2"
+ },
  "max/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA@0": {
   "number": 11.95,
   "value": "12"
+ },
+ "max/run/C-KP-summary2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0|run/C-KP-ledger2-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0|run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0": {
+  "number": 35.85434173669468,
+  "value": "35.9"
+ },
+ "max/run/C-KP-verdict-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0|run/C-KP-verdict-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0": {
+  "number": 78.71148459383754,
+  "value": "78.7"
+ },
+ "max/run/C-TG-summary2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0|run/C-TG-ledger2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0|run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0|run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0": {
+  "number": 87.66603415559773,
+  "value": "87.7"
+ },
+ "max/run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/macroF1/s0|run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/macroF1/s0|run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1/s0": {
+  "number": 70.84664532321561,
+  "value": "70.8"
  },
  "meta/B-F-ledger2-triplets/train.hp.lora_r@0": {
   "number": 64.0,
   "value": "64"
  },
+ "meta/B-F-verdict-blocks/train.examples": {
+  "number": 60000.0,
+  "value": "60{,}000"
+ },
+ "meta/B-F-verdict-blocks/train.hp.lora_r": {
+  "number": 64.0,
+  "value": "64"
+ },
+ "meta/C-TF-defcorr/dev_TA_by_alpha.inf": {
+  "number": 53.0,
+  "value": "53.0"
+ },
+ "meta/D-RL-outcome/steps": {
+  "number": 1000.0,
+  "value": "1{,}000"
+ },
  "meta/D-RL-outcome/steps@int": {
   "number": 1000.0,
   "value": "1{,}000"
  },
+ "min/run/B-F-ledger2-triplets/xr_v1:test/xa/XA_subject/s0|run/B-F-ledger2-triplets/xr_v1:test/xa/XA_currency/s0|run/B-F-ledger2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0": {
+  "number": 93.0,
+  "value": "93"
+ },
+ "min/run/B-F-verdict-balanced/L2/all/Hold/s0|run/B-F-rationale-balanced/L2/all/Hold/s0|run/B-F-summary2-balanced/L2/all/Hold/s0|run/B-F-value2-balanced/L2/all/Hold/s0|run/B-F-ledger2-balanced/L2/all/Hold/s0": {
+  "number": 51.6,
+  "value": "51.6"
+ },
+ "min/run/B-F-verdict-blocks/xr_v1:test/xa/XA/min|run/B-F-summary2-blocks/xr_v1:test/xa/XA/min|run/B-F-ledger2-blocks/xr_v1:test/xa/XA/min|run/B-F-value2-blocks/xr_v1:test/xa/XA/min": {
+  "number": 35.75,
+  "value": "35.8"
+ },
+ "min/run/B-F-verdict-natural/L2/all/Hold/s0|run/B-F-verdict-balanced/L2/all/Hold/s0|run/B-F-verdict-blocks/L2/all/Hold/s0|run/B-F-rationale-natural/L2/all/Hold/s0|run/B-F-rationale-balanced/L2/all/Hold/s0|run/B-F-rationale-blocks/L2/all/Hold/s0|run/B-F-summary2-natural/L2/all/Hold/s0|run/B-F-summary2-balanced/L2/all/Hold/s0|run/B-F-summary2-blocks/L2/all/Hold/s0|run/B-F-value2-natural/L2/all/Hold/s0|run/B-F-value2-balanced/L2/all/Hold/s0|run/B-F-value2-blocks/L2/all/Hold/s0|run/B-F-ledger2-natural/L2/all/Hold/s0|run/B-F-ledger2-balanced/L2/all/Hold/s0|run/B-F-ledger2-blocks/L2/all/Hold/s0": {
+  "number": 43.9,
+  "value": "43.9"
+ },
+ "min/run/B-F-verdict-natural/L2/all/Rev/s0|run/B-F-verdict-balanced/L2/all/Rev/s0|run/B-F-verdict-blocks/L2/all/Rev/s0|run/B-F-rationale-natural/L2/all/Rev/s0|run/B-F-rationale-balanced/L2/all/Rev/s0|run/B-F-rationale-blocks/L2/all/Rev/s0|run/B-F-summary2-natural/L2/all/Rev/s0|run/B-F-summary2-balanced/L2/all/Rev/s0|run/B-F-summary2-blocks/L2/all/Rev/s0|run/B-F-value2-natural/L2/all/Rev/s0|run/B-F-value2-balanced/L2/all/Rev/s0|run/B-F-value2-blocks/L2/all/Rev/s0|run/B-F-ledger2-natural/L2/all/Rev/s0|run/B-F-ledger2-balanced/L2/all/Rev/s0|run/B-F-ledger2-blocks/L2/all/Rev/s0": {
+  "number": 83.2,
+  "value": "83.2"
+ },
+ "min/run/B-F-verdict-natural/L2/all/TA/s0|run/B-F-verdict-balanced/L2/all/TA/s0|run/B-F-verdict-blocks/L2/all/TA/s0|run/B-F-rationale-natural/L2/all/TA/s0|run/B-F-rationale-balanced/L2/all/TA/s0|run/B-F-rationale-blocks/L2/all/TA/s0|run/B-F-summary2-natural/L2/all/TA/s0|run/B-F-summary2-balanced/L2/all/TA/s0|run/B-F-summary2-blocks/L2/all/TA/s0|run/B-F-ledger2-natural/L2/all/TA/s0|run/B-F-ledger2-balanced/L2/all/TA/s0|run/B-F-ledger2-blocks/L2/all/TA/s0|run/B-F-value2-natural/L2/all/TA/s0|run/B-F-value2-balanced/L2/all/TA/s0|run/B-F-value2-blocks/L2/all/TA/s0": {
+  "number": 43.0,
+  "value": "43.0"
+ },
+ "min/run/B-F-verdict-triplets/L2/step=criterion/TA/s0|run/B-F-rationale-triplets/L2/step=criterion/TA/s0|run/B-F-summary2-triplets/L2/step=criterion/TA/s0|run/B-F-ledger2-triplets/L2/step=criterion/TA/s0": {
+  "number": 97.70531400966183,
+  "value": "97.7"
+ },
  "min/run/C-AUD-meds3/L2/all/TA|run/C-AUD-medprm/L2/all/TA@0": {
   "number": 10.0,
   "value": "10"
+ },
+ "min/run/C-KP-summary2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0|run/C-KP-ledger2-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0|run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0": {
+  "number": 30.532212885154063,
+  "value": "30.5"
+ },
+ "min/run/C-KP-verdict-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0|run/C-KP-verdict-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0": {
+  "number": 78.15126050420169,
+  "value": "78.2"
+ },
+ "min/run/C-TG-summary2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0|run/C-TG-ledger2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0|run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0|run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0": {
+  "number": 84.44022770398482,
+  "value": "84.4"
+ },
+ "min/run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/macroF1/s0|run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/macroF1/s0|run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1/s0": {
+  "number": 69.09251785304396,
+  "value": "69.1"
+ },
+ "pct/json/data/rule_v1/train_balanced/MANIFEST.json::cases_by_kind.missing|json/data/rule_v1/train_balanced/MANIFEST.json::n_cases@0": {
+  "number": 14.99408946680769,
+  "value": "15"
+ },
+ "pct/json/data/rule_v1/train_natural/MANIFEST.json::cases_by_kind.missing|json/data/rule_v1/train_natural/MANIFEST.json::n_cases@0": {
+  "number": 14.99408946680769,
+  "value": "15"
+ },
+ "pct/run/C-KP-ledger2-triplets/clin_v1:keypairs_careqa_oneway/eval/malformed_units/s0|run/C-KP-ledger2-triplets/clin_v1:keypairs_careqa_oneway/eval/reader_units/s0": {
+  "number": 25.11111111111111,
+  "value": "25.1"
+ },
+ "pct/run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/eval/malformed_units/s0|run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/eval/reader_units/s0": {
+  "number": 14.84593837535014,
+  "value": "14.8"
+ },
+ "pct/run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/malformed_units/s0|run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/reader_units/s0": {
+  "number": 35.90934423184098,
+  "value": "35.9"
+ },
+ "pct/stats/semantics.test_L2.finding_bases|a15/datasets.rule_v1/test_L2.n_groups@0": {
+  "number": 46.6,
+  "value": "47"
  },
  "run/A-D14-always_default/L2/all/Hold@0": {
   "number": 100.0,
@@ -483,6 +1059,10 @@
   "number": 26.75,
   "value": "26.8"
  },
+ "run/B-AB-concept/xr_v1:test/xa/XA/s0": {
+  "number": 12.0,
+  "value": "12.0"
+ },
  "run/B-AB-conddrv/L2/all/Hold/s0": {
   "number": 98.6,
   "value": "98.6"
@@ -571,6 +1151,10 @@
   "number": 98.65,
   "value": "98.7"
  },
+ "run/B-AB-nopres/xr_v1:test/xa/XA/s0": {
+  "number": 90.0,
+  "value": "90.0"
+ },
  "run/B-AB-noresamp/L2/all/Hold/s0": {
   "number": 100.0,
   "value": "100.0"
@@ -619,6 +1203,10 @@
   "number": 91.4,
   "value": "91.4"
  },
+ "run/B-AB-pairwise/xr_v1:test/xa/XA/s0": {
+  "number": 92.5,
+  "value": "92.5"
+ },
  "run/B-AB-probe-rw/L2/all/Hold/s0": {
   "number": 56.0,
   "value": "56.0"
@@ -631,6 +1219,10 @@
   "number": 55.3,
   "value": "55.3"
  },
+ "run/B-AB-probe-rw/xr_v1:test/xa/XA/s0": {
+  "number": 25.75,
+  "value": "25.8"
+ },
  "run/B-AB-verify/L2/all/Hold/s0": {
   "number": 100.0,
   "value": "100.0"
@@ -642,6 +1234,10 @@
  "run/B-AB-verify/L2/all/TA/s0": {
   "number": 99.8,
   "value": "99.8"
+ },
+ "run/B-AB-verify/xr_v1:test/xa/XA/s0": {
+  "number": 91.5,
+  "value": "91.5"
  },
  "run/B-AE-oracle-ledger/L2/all/Rev": {
   "number": 99.85,
@@ -691,6 +1287,22 @@
   "number": 49.85,
   "value": "49.9"
  },
+ "run/B-DIS/clin_v1:medeinst_dis_test/pairs/Reversal/s0": {
+  "number": 7.826086956521739,
+  "value": "7.8"
+ },
+ "run/B-DIS/clin_v1:medeinst_dis_test/pairs/Reversal/s1": {
+  "number": 43.47826086956522,
+  "value": "43.5"
+ },
+ "run/B-DIS/clin_v1:medeinst_dis_test/pairs/control_correct/s0": {
+  "number": 9.565217391304348,
+  "value": "9.6"
+ },
+ "run/B-DIS/clin_v1:medeinst_dis_test/pairs/control_correct/s1": {
+  "number": 46.95652173913044,
+  "value": "47.0"
+ },
  "run/B-F-ledger2-balanced/L2/all/Hold/s0": {
   "number": 51.6,
   "value": "51.6"
@@ -702,6 +1314,18 @@
  "run/B-F-ledger2-balanced/L3inv/all/TA/s0": {
   "number": 49.6,
   "value": "49.6"
+ },
+ "run/B-F-ledger2-balanced/xr_v1:test/xa/XA/s0": {
+  "number": 54.5,
+  "value": "54.5"
+ },
+ "run/B-F-ledger2-blocks/L0/all/TA/s0": {
+  "number": 73.5,
+  "value": "73.5"
+ },
+ "run/B-F-ledger2-blocks/L1/all/TA/s0": {
+  "number": 78.2,
+  "value": "78.2"
  },
  "run/B-F-ledger2-blocks/L2/all/Hold/s0": {
   "number": 76.15,
@@ -759,13 +1383,45 @@
   "number": 58.75,
   "value": "58.8"
  },
+ "run/B-F-ledger2-blocks/L3alt/all/TA/s0": {
+  "number": 85.3,
+  "value": "85.3"
+ },
  "run/B-F-ledger2-blocks/L3inv/all/TA/s0": {
   "number": 70.1,
   "value": "70.1"
  },
+ "run/B-F-ledger2-blocks/dev/all/TA/s0": {
+  "number": 70.33333333333333,
+  "value": "70.3"
+ },
+ "run/B-F-ledger2-blocks/hard/all/TA/s0": {
+  "number": 76.4,
+  "value": "76.4"
+ },
+ "run/B-F-ledger2-blocks/readapply/all/TA/s0": {
+  "number": 76.0,
+  "value": "76.0"
+ },
  "run/B-F-ledger2-blocks/xr_v1:test/xa/XA/s0": {
   "number": 76.0,
   "value": "76.0"
+ },
+ "run/B-F-ledger2-blocks/xr_v1:test/xa/XA/s1": {
+  "number": 37.75,
+  "value": "37.8"
+ },
+ "run/B-F-ledger2-blocks/xr_v1:test/xa/XA/s2": {
+  "number": 71.0,
+  "value": "71.0"
+ },
+ "run/B-F-ledger2-blocks/xr_v1:test/xa/XA/s3": {
+  "number": 44.5,
+  "value": "44.5"
+ },
+ "run/B-F-ledger2-blocks/xr_v1:test/xa/XA/s4": {
+  "number": 82.25,
+  "value": "82.2"
  },
  "run/B-F-ledger2-natural/L2/all/Hold/s0": {
   "number": 77.75,
@@ -778,6 +1434,18 @@
  "run/B-F-ledger2-natural/L3inv/all/TA/s0": {
   "number": 75.4,
   "value": "75.4"
+ },
+ "run/B-F-ledger2-natural/xr_v1:test/xa/XA/s0": {
+  "number": 86.0,
+  "value": "86.0"
+ },
+ "run/B-F-ledger2-triplets/L0/all/TA/s0": {
+  "number": 99.7,
+  "value": "99.7"
+ },
+ "run/B-F-ledger2-triplets/L1/all/TA/s0": {
+  "number": 99.1,
+  "value": "99.1"
  },
  "run/B-F-ledger2-triplets/L2/all/Rev/s0": {
   "number": 99.25,
@@ -831,9 +1499,25 @@
   "number": 100.0,
   "value": "100.0"
  },
+ "run/B-F-ledger2-triplets/L3alt/all/TA/s0": {
+  "number": 100.0,
+  "value": "100.0"
+ },
  "run/B-F-ledger2-triplets/L3inv/all/TA/s0": {
   "number": 97.9,
   "value": "97.9"
+ },
+ "run/B-F-ledger2-triplets/dev/all/TA/s0": {
+  "number": 99.66666666666667,
+  "value": "99.7"
+ },
+ "run/B-F-ledger2-triplets/hard/all/TA/s0": {
+  "number": 98.3,
+  "value": "98.3"
+ },
+ "run/B-F-ledger2-triplets/readapply/all/TA/s0": {
+  "number": 99.7,
+  "value": "99.7"
  },
  "run/B-F-ledger2-triplets/xr_v1:test/xa/XA": {
   "number": 89.8,
@@ -858,6 +1542,22 @@
  "run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s0": {
   "number": 89.75,
   "value": "89.8"
+ },
+ "run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s1": {
+  "number": 88.75,
+  "value": "88.8"
+ },
+ "run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s2": {
+  "number": 91.5,
+  "value": "91.5"
+ },
+ "run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s3": {
+  "number": 94.0,
+  "value": "94.0"
+ },
+ "run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s4": {
+  "number": 85.0,
+  "value": "85.0"
  },
  "run/B-F-ledger2-triplets/xr_v1:test/xa/XA362/s0": {
   "number": 88.67403314917127,
@@ -903,6 +1603,14 @@
   "number": 98.7,
   "value": "98.7"
  },
+ "run/B-F-rationale-triplets/L0/all/TA/s0": {
+  "number": 98.1,
+  "value": "98.1"
+ },
+ "run/B-F-rationale-triplets/L1/all/TA/s0": {
+  "number": 97.7,
+  "value": "97.7"
+ },
  "run/B-F-rationale-triplets/L2/all/Hold": {
   "number": 99.6,
   "value": "99.6"
@@ -923,9 +1631,29 @@
   "number": 91.05,
   "value": "91.0"
  },
+ "run/B-F-rationale-triplets/L3alt/all/TA/s0": {
+  "number": 100.0,
+  "value": "100.0"
+ },
  "run/B-F-rationale-triplets/L3inv/all/TA/s0": {
   "number": 96.5,
   "value": "96.5"
+ },
+ "run/B-F-rationale-triplets/dev/all/TA/s0": {
+  "number": 98.0,
+  "value": "98.0"
+ },
+ "run/B-F-rationale-triplets/hard/all/TA/s0": {
+  "number": 90.4,
+  "value": "90.4"
+ },
+ "run/B-F-rationale-triplets/readapply/all/TA/s0": {
+  "number": 99.3,
+  "value": "99.3"
+ },
+ "run/B-F-rationale-triplets/xr_v1:test/xa/XA/s0": {
+  "number": 92.75,
+  "value": "92.8"
  },
  "run/B-F-summary2-balanced/L2/all/TA/s0": {
   "number": 72.5,
@@ -967,6 +1695,22 @@
   "number": 73.6,
   "value": "73.6"
  },
+ "run/B-F-summary2-blocks/xr_v1:test/xa/XA/s0": {
+  "number": 80.25,
+  "value": "80.2"
+ },
+ "run/B-F-summary2-blocks/xr_v1:test/xa/XA/s1": {
+  "number": 51.0,
+  "value": "51.0"
+ },
+ "run/B-F-summary2-blocks/xr_v1:test/xa/XA/s2": {
+  "number": 62.5,
+  "value": "62.5"
+ },
+ "run/B-F-summary2-blocks/xr_v1:test/xa/XA/s3": {
+  "number": 35.75,
+  "value": "35.8"
+ },
  "run/B-F-summary2-blocks/xr_v1:test/xa/XA/s4": {
   "number": 70.25,
   "value": "70.2"
@@ -974,6 +1718,14 @@
  "run/B-F-summary2-natural/L2/all/TA/s0": {
   "number": 45.7,
   "value": "45.7"
+ },
+ "run/B-F-summary2-triplets/L0/all/TA/s1": {
+  "number": 98.4,
+  "value": "98.4"
+ },
+ "run/B-F-summary2-triplets/L1/all/TA/s1": {
+  "number": 97.4,
+  "value": "97.4"
  },
  "run/B-F-summary2-triplets/L2/all/Hold/s0": {
   "number": 99.35,
@@ -1023,13 +1775,45 @@
   "number": 99.75,
   "value": "99.8"
  },
+ "run/B-F-summary2-triplets/L3alt/all/TA/s1": {
+  "number": 100.0,
+  "value": "100.0"
+ },
  "run/B-F-summary2-triplets/L3inv/all/TA/s1": {
   "number": 97.6,
   "value": "97.6"
  },
+ "run/B-F-summary2-triplets/dev/all/TA/s1": {
+  "number": 98.66666666666667,
+  "value": "98.7"
+ },
+ "run/B-F-summary2-triplets/hard/all/TA/s1": {
+  "number": 98.1,
+  "value": "98.1"
+ },
+ "run/B-F-summary2-triplets/readapply/all/TA/s1": {
+  "number": 98.8,
+  "value": "98.8"
+ },
  "run/B-F-summary2-triplets/xr_v1:test/xa/XA/s0": {
   "number": 88.5,
   "value": "88.5"
+ },
+ "run/B-F-summary2-triplets/xr_v1:test/xa/XA/s1": {
+  "number": 92.5,
+  "value": "92.5"
+ },
+ "run/B-F-summary2-triplets/xr_v1:test/xa/XA/s2": {
+  "number": 90.25,
+  "value": "90.2"
+ },
+ "run/B-F-summary2-triplets/xr_v1:test/xa/XA/s3": {
+  "number": 89.25,
+  "value": "89.2"
+ },
+ "run/B-F-summary2-triplets/xr_v1:test/xa/XA/s4": {
+  "number": 91.75,
+  "value": "91.8"
  },
  "run/B-F-summary2-triplets/xr_v1:test/xa/XA362/s0": {
   "number": 87.29281767955801,
@@ -1075,9 +1859,21 @@
   "number": 85.7,
   "value": "85.7"
  },
+ "run/B-F-value2-triplets/xr_v1:test/xa/XA/s0": {
+  "number": 70.5,
+  "value": "70.5"
+ },
  "run/B-F-verdict-balanced/L2/all/TA/s0": {
   "number": 49.15,
   "value": "49.1"
+ },
+ "run/B-F-verdict-blocks/L0/all/TA/s0": {
+  "number": 68.8,
+  "value": "68.8"
+ },
+ "run/B-F-verdict-blocks/L1/all/TA/s0": {
+  "number": 73.8,
+  "value": "73.8"
  },
  "run/B-F-verdict-blocks/L2/all/Hold/max": {
   "number": 64.85,
@@ -1187,13 +1983,41 @@
   "number": 62.9,
   "value": "62.9"
  },
+ "run/B-F-verdict-blocks/dev/all/TA/s0": {
+  "number": 67.33333333333333,
+  "value": "67.3"
+ },
+ "run/B-F-verdict-blocks/hard/all/TA/s0": {
+  "number": 59.1,
+  "value": "59.1"
+ },
  "run/B-F-verdict-blocks/missing/top/MR/max": {
   "number": 100.0,
   "value": "100.0"
  },
+ "run/B-F-verdict-blocks/readapply/all/TA/s0": {
+  "number": 77.7,
+  "value": "77.7"
+ },
  "run/B-F-verdict-blocks/xr_v1:test/xa/XA/s0": {
   "number": 60.75,
   "value": "60.8"
+ },
+ "run/B-F-verdict-blocks/xr_v1:test/xa/XA/s1": {
+  "number": 47.25,
+  "value": "47.2"
+ },
+ "run/B-F-verdict-blocks/xr_v1:test/xa/XA/s2": {
+  "number": 66.25,
+  "value": "66.2"
+ },
+ "run/B-F-verdict-blocks/xr_v1:test/xa/XA/s3": {
+  "number": 40.25,
+  "value": "40.2"
+ },
+ "run/B-F-verdict-blocks/xr_v1:test/xa/XA/s4": {
+  "number": 37.75,
+  "value": "37.8"
  },
  "run/B-F-verdict-blocks/xr_v1:test/xa/XA362/s0": {
   "number": 59.94475138121547,
@@ -1218,6 +2042,14 @@
  "run/B-F-verdict-natural/L2/all/TA/s0": {
   "number": 58.0,
   "value": "58.0"
+ },
+ "run/B-F-verdict-triplets/L0/all/TA/s0": {
+  "number": 99.0,
+  "value": "99.0"
+ },
+ "run/B-F-verdict-triplets/L1/all/TA/s0": {
+  "number": 97.6,
+  "value": "97.6"
  },
  "run/B-F-verdict-triplets/L2/all/Hold/max": {
   "number": 98.2,
@@ -1291,9 +2123,25 @@
   "number": 88.25,
   "value": "88.2"
  },
+ "run/B-F-verdict-triplets/L3alt/all/TA/s0": {
+  "number": 100.0,
+  "value": "100.0"
+ },
  "run/B-F-verdict-triplets/L3inv/all/TA/s0": {
   "number": 96.9,
   "value": "96.9"
+ },
+ "run/B-F-verdict-triplets/dev/all/TA/s0": {
+  "number": 99.66666666666667,
+  "value": "99.7"
+ },
+ "run/B-F-verdict-triplets/hard/all/TA/s0": {
+  "number": 90.5,
+  "value": "90.5"
+ },
+ "run/B-F-verdict-triplets/readapply/all/TA/s0": {
+  "number": 99.4,
+  "value": "99.4"
  },
  "run/B-F-verdict-triplets/xr_v1:test/xa/XA/max": {
   "number": 91.25,
@@ -1306,6 +2154,22 @@
  "run/B-F-verdict-triplets/xr_v1:test/xa/XA/s0": {
   "number": 90.25,
   "value": "90.2"
+ },
+ "run/B-F-verdict-triplets/xr_v1:test/xa/XA/s1": {
+  "number": 91.25,
+  "value": "91.2"
+ },
+ "run/B-F-verdict-triplets/xr_v1:test/xa/XA/s2": {
+  "number": 90.0,
+  "value": "90.0"
+ },
+ "run/B-F-verdict-triplets/xr_v1:test/xa/XA/s3": {
+  "number": 87.25,
+  "value": "87.2"
+ },
+ "run/B-F-verdict-triplets/xr_v1:test/xa/XA/s4": {
+  "number": 85.5,
+  "value": "85.5"
  },
  "run/B-F-verdict-triplets/xr_v1:test/xa/XA362/s0": {
   "number": 89.22651933701657,
@@ -1335,6 +2199,10 @@
   "number": 66.0,
   "value": "66"
  },
+ "run/B-FOLD2-verdict-blocks/f2L2/all/TA/s0": {
+  "number": 63.1,
+  "value": "63.1"
+ },
  "run/B-LOKO-boundary-ledger2/L2/all/Hold/s0": {
   "number": 97.3,
   "value": "97.3"
@@ -1354,6 +2222,10 @@
  "run/B-LOKO-boundary-ledger2/L2/nm_kind=boundary/TA": {
   "number": 87.0,
   "value": "87.0"
+ },
+ "run/B-LOKO-boundary-ledger2/xr_v1:test/xa/XA/s0": {
+  "number": 85.75,
+  "value": "85.8"
  },
  "run/B-LOKO-subject-ledger2/L2/all/Hold/s0": {
   "number": 93.5,
@@ -1375,6 +2247,10 @@
   "number": 62.5,
   "value": "62.5"
  },
+ "run/B-LOKO-subject-ledger2/xr_v1:test/xa/XA/s0": {
+  "number": 90.75,
+  "value": "90.8"
+ },
  "run/B-LOKO-time-ledger2/L2/all/Hold/s0": {
   "number": 97.25,
   "value": "97.2"
@@ -1394,6 +2270,14 @@
  "run/B-LOKO-time-ledger2/L2/nm_kind=time/TA": {
   "number": 86.25,
   "value": "86.2"
+ },
+ "run/B-LOKO-time-ledger2/xr_v1:test/xa/XA/s0": {
+  "number": 84.25,
+  "value": "84.2"
+ },
+ "run/B-NS-xr_v1-B-F-summary2-blocks/xr_v1:test/xa/XA/s0": {
+  "number": 80.25,
+  "value": "80.2"
  },
  "run/B-SC-summary2-triplets/L2/all/Hold/s0": {
   "number": 99.85,
@@ -1443,6 +2327,14 @@
   "number": 51.7,
   "value": "51.7"
  },
+ "run/B-TR-clinonly/xr_v1:test/xa/XA/s0": {
+  "number": 35.5,
+  "value": "35.5"
+ },
+ "run/B-TR-fover/L2/all/BaseAcc/s0": {
+  "number": 49.3,
+  "value": "49.3"
+ },
  "run/B-TR-fover/L2/all/Hold/s0": {
   "number": 44.15,
   "value": "44.1"
@@ -1458,6 +2350,10 @@
  "run/B-TR-fover/L3inv/all/TA/s0": {
   "number": 53.0,
   "value": "53.0"
+ },
+ "run/B-TR-fover/xr_v1:test/xa/XA/s0": {
+  "number": 67.0,
+  "value": "67.0"
  },
  "run/B-TR-tripclin/L2/all/TA/s0": {
   "number": 97.25,
@@ -1483,6 +2379,10 @@
   "number": 68.41787439613526,
   "value": "68.4"
  },
+ "run/C-AUD-fover/clin_v1:keypairs_careqa_oneway/top/Reversal": {
+  "number": 69.33333333333333,
+  "value": "69.3"
+ },
  "run/C-AUD-fover/clin_v1:keypairs_medqa_oneway/top/Reversal": {
   "number": 67.22689075630252,
   "value": "67.2"
@@ -1490,6 +2390,14 @@
  "run/C-AUD-fover/clin_v1:medeinst_test/top/Reversal": {
   "number": 20.99201188928107,
   "value": "21.0"
+ },
+ "run/C-AUD-fover/clin_v1:medeinst_test/top/control_acc": {
+  "number": 71.80011146201004,
+  "value": "71.8"
+ },
+ "run/C-AUD-fover/clin_v1:medeinst_test/top/trap_acc": {
+  "number": 48.09585732862716,
+  "value": "48.1"
  },
  "run/C-AUD-fover/missing/top/MR": {
   "number": 14.8,
@@ -1559,6 +2467,22 @@
   "number": 22.0,
   "value": "22.0"
  },
+ "run/C-AUD-genprm/clin_v1:medeinst_test/top/control_acc": {
+  "number": 58.0,
+  "value": "58.0"
+ },
+ "run/C-AUD-genprm/clin_v1:medeinst_test/top/n_pairs@int": {
+  "number": 200.0,
+  "value": "200"
+ },
+ "run/C-AUD-genprm/clin_v1:medeinst_test/top/tie_rate": {
+  "number": 5.5,
+  "value": "5.5"
+ },
+ "run/C-AUD-genprm/clin_v1:medeinst_test/top/trap_acc": {
+  "number": 46.5,
+  "value": "46.5"
+ },
  "run/C-AUD-gpt-oss-120b/L2/all/Hold": {
   "number": 99.4,
   "value": "99.4"
@@ -1627,6 +2551,10 @@
   "number": 64.19082125603865,
   "value": "64.2"
  },
+ "run/C-AUD-medprm/clin_v1:keypairs_careqa_oneway/top/Reversal": {
+  "number": 56.0,
+  "value": "56.0"
+ },
  "run/C-AUD-medprm/clin_v1:keypairs_medqa_oneway/top/Reversal": {
   "number": 57.703081232493,
   "value": "57.7"
@@ -1634,6 +2562,14 @@
  "run/C-AUD-medprm/clin_v1:medeinst_test/top/Reversal": {
   "number": 16.21772245959502,
   "value": "16.2"
+ },
+ "run/C-AUD-medprm/clin_v1:medeinst_test/top/control_acc": {
+  "number": 67.45309307077838,
+  "value": "67.5"
+ },
+ "run/C-AUD-medprm/clin_v1:medeinst_test/top/trap_acc": {
+  "number": 45.42076908786922,
+  "value": "45.4"
  },
  "run/C-AUD-medprm/missing/top/MR": {
   "number": 0.0,
@@ -1683,6 +2619,10 @@
   "number": 41.48550724637681,
   "value": "41.5"
  },
+ "run/C-AUD-meds3/clin_v1:keypairs_careqa_oneway/top/Reversal": {
+  "number": 49.77777777777778,
+  "value": "49.8"
+ },
  "run/C-AUD-meds3/clin_v1:keypairs_medqa_oneway/top/Reversal": {
   "number": 39.49579831932773,
   "value": "39.5"
@@ -1690,6 +2630,14 @@
  "run/C-AUD-meds3/clin_v1:medeinst_test/top/Reversal": {
   "number": 25.116106260449563,
   "value": "25.1"
+ },
+ "run/C-AUD-meds3/clin_v1:medeinst_test/top/control_acc": {
+  "number": 79.13802712242244,
+  "value": "79.1"
+ },
+ "run/C-AUD-meds3/clin_v1:medeinst_test/top/trap_acc": {
+  "number": 44.15753297417797,
+  "value": "44.2"
  },
  "run/C-AUD-meds3/missing/top/MR": {
   "number": 0.6,
@@ -1799,6 +2747,14 @@
   "number": 87.5,
   "value": "87.5"
  },
+ "run/C-AUD-thinkprm/L2/all/n": {
+  "number": 200.0,
+  "value": "200"
+ },
+ "run/C-AUD-thinkprm/L2/all/n@int": {
+  "number": 200.0,
+  "value": "200"
+ },
  "run/C-DG-shift/L0/signal=B-F-verdict-blocks/crossed": {
   "number": 95.79158316633267,
   "value": "95.8"
@@ -1863,9 +2819,17 @@
   "number": 38.22222222222222,
   "value": "38.2"
  },
+ "run/C-KP-ledger2-triplets/clin_v1:keypairs_careqa_oneway/top/tie_rate/s0": {
+  "number": 38.22222222222222,
+  "value": "38.2"
+ },
  "run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0": {
   "number": 30.532212885154063,
   "value": "30.5"
+ },
+ "run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/top/tie_rate/s0": {
+  "number": 25.7703081232493,
+  "value": "25.8"
  },
  "run/C-KP-promptsum/clin_v1:keypairs_careqa_oneway/top/Reversal": {
   "number": 80.88888888888889,
@@ -1919,6 +2883,26 @@
   "number": 24.67025822032324,
   "value": "24.7"
  },
+ "run/C-ME-defcorr/clin_v1:medeinst_test/top/control_acc": {
+  "number": 70.35110533159948,
+  "value": "70.4"
+ },
+ "run/C-ME-defcorr/clin_v1:medeinst_test/top/trap_acc": {
+  "number": 53.33457180011146,
+  "value": "53.3"
+ },
+ "run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/malformed_rate/s0@pct1": {
+  "number": 0.3591,
+  "value": "35.9"
+ },
+ "run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/malformed_units/s0@int": {
+  "number": 3866,
+  "value": "3{,}866"
+ },
+ "run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/reader_units/s0@int": {
+  "number": 10766,
+  "value": "10{,}766"
+ },
  "run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/Reversal/s0": {
   "number": 15.734720416124837,
   "value": "15.7"
@@ -1927,9 +2911,25 @@
   "number": 44.41761099758499,
   "value": "44.4"
  },
+ "run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/tie_rate/s0": {
+  "number": 48.2444733420026,
+  "value": "48.2"
+ },
  "run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/trap_acc/s0": {
   "number": 35.073379156604126,
   "value": "35.1"
+ },
+ "run/C-ME-summary2-blocks/clin_v1:medeinst_test/top/Reversal/s0": {
+  "number": 22.793981051458296,
+  "value": "22.8"
+ },
+ "run/C-ME-summary2-blocks/clin_v1:medeinst_test/top/control_acc/s0": {
+  "number": 61.61991454579231,
+  "value": "61.6"
+ },
+ "run/C-ME-summary2-blocks/clin_v1:medeinst_test/top/trap_acc/s0": {
+  "number": 56.08396804755712,
+  "value": "56.1"
  },
  "run/C-ME-summary2-triplets/clin_v1:medeinst_test/top/Reversal/s0": {
   "number": 25.134683262121495,
@@ -1947,25 +2947,69 @@
   "number": 20.471855842467026,
   "value": "20.5"
  },
+ "run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/Reversal/s2": {
+  "number": 18.168307635147688,
+  "value": "18.2"
+ },
  "run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/control_acc/s0": {
   "number": 68.27048114434331,
   "value": "68.3"
+ },
+ "run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/control_acc/s2": {
+  "number": 65.24242987181869,
+  "value": "65.2"
  },
  "run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/trap_acc/s0": {
   "number": 51.7555266579974,
   "value": "51.8"
  },
+ "run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/trap_acc/s2": {
+  "number": 52.3128367081553,
+  "value": "52.3"
+ },
  "run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/Reversal/s0": {
   "number": 22.812558053130225,
   "value": "22.8"
+ },
+ "run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/Reversal/s1": {
+  "number": 18.744194686977522,
+  "value": "18.7"
  },
  "run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/control_acc/s0": {
   "number": 69.51514025636263,
   "value": "69.5"
  },
+ "run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/control_acc/s1": {
+  "number": 67.60170908415381,
+  "value": "67.6"
+ },
  "run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/trap_acc/s0": {
   "number": 52.94445476500093,
   "value": "52.9"
+ },
+ "run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/trap_acc/s1": {
+  "number": 50.82667657440089,
+  "value": "50.8"
+ },
+ "run/C-NL-critic/clin_v1:nli4ct_test/top/Average@pct1": {
+  "number": 0.8088030118000121,
+  "value": "80.9"
+ },
+ "run/C-NL-critic/clin_v1:nli4ct_test/top/Consistency@pct1": {
+  "number": 0.7947292069632496,
+  "value": "79.5"
+ },
+ "run/C-NL-critic/clin_v1:nli4ct_test/top/Control_F1@pct1": {
+  "number": 0.7833001988071571,
+  "value": "78.3"
+ },
+ "run/C-NL-critic/clin_v1:nli4ct_test/top/Faithfulness@pct1": {
+  "number": 0.8483796296296297,
+  "value": "84.8"
+ },
+ "run/C-NL-critic/clin_v1:nli4ct_test/top/n_control@int": {
+  "number": 500.0,
+  "value": "500"
  },
  "run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Average/s0@pct1": {
   "number": 0.7210933828674362,
@@ -1982,6 +3026,54 @@
  "run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Faithfulness/s0@pct1": {
   "number": 0.8495370370370371,
   "value": "85.0"
+ },
+ "run/C-NL-summary2-triplets/clin_v1:nli4ct_test/top/Average/s0@pct1": {
+  "number": 0.7324775048798697,
+  "value": "73.2"
+ },
+ "run/C-NL-summary2-triplets/clin_v1:nli4ct_test/top/Consistency/s0@pct1": {
+  "number": 0.679642166344294,
+  "value": "68.0"
+ },
+ "run/C-NL-summary2-triplets/clin_v1:nli4ct_test/top/Control_F1/s0@pct1": {
+  "number": 0.6578366445916115,
+  "value": "65.8"
+ },
+ "run/C-NL-summary2-triplets/clin_v1:nli4ct_test/top/Faithfulness/s0@pct1": {
+  "number": 0.8599537037037037,
+  "value": "86.0"
+ },
+ "run/C-NL-verdict-blocks/clin_v1:nli4ct_test/top/Average/s0@pct1": {
+  "number": 0.8561747653306494,
+  "value": "85.6"
+ },
+ "run/C-NL-verdict-blocks/clin_v1:nli4ct_test/top/Consistency/s0@pct1": {
+  "number": 0.8387330754352031,
+  "value": "83.9"
+ },
+ "run/C-NL-verdict-blocks/clin_v1:nli4ct_test/top/Control_F1/s0@pct1": {
+  "number": 0.7922912205567451,
+  "value": "79.2"
+ },
+ "run/C-NL-verdict-blocks/clin_v1:nli4ct_test/top/Faithfulness/s0@pct1": {
+  "number": 0.9375,
+  "value": "93.8"
+ },
+ "run/C-NL-verdict-triplets/clin_v1:nli4ct_test/top/Average/s0@pct1": {
+  "number": 0.8537216749608456,
+  "value": "85.4"
+ },
+ "run/C-NL-verdict-triplets/clin_v1:nli4ct_test/top/Consistency/s0@pct1": {
+  "number": 0.8445357833655706,
+  "value": "84.5"
+ },
+ "run/C-NL-verdict-triplets/clin_v1:nli4ct_test/top/Control_F1/s0@pct1": {
+  "number": 0.810379241516966,
+  "value": "81.0"
+ },
+ "run/C-NL-verdict-triplets/clin_v1:nli4ct_test/top/Faithfulness/s0@pct1": {
+  "number": 0.90625,
+  "value": "90.6"
  },
  "run/C-S2-cls-critic/cls_v1:test@none/all/TA": {
   "number": null,
@@ -2315,6 +3407,14 @@
   "number": 77.7,
   "value": "77.7"
  },
+ "run/C-TF-critic/L0/all/TA": {
+  "number": 44.4,
+  "value": "44.4"
+ },
+ "run/C-TF-critic/L1/all/TA": {
+  "number": 42.8,
+  "value": "42.8"
+ },
  "run/C-TF-critic/L2/all/Hold": {
   "number": 32.2,
   "value": "32.2"
@@ -2339,9 +3439,21 @@
   "number": 33.4,
   "value": "33.4"
  },
+ "run/C-TF-critic/dev/all/TA": {
+  "number": 39.666666666666664,
+  "value": "39.7"
+ },
+ "run/C-TF-critic/hard/all/TA": {
+  "number": 24.6,
+  "value": "24.6"
+ },
  "run/C-TF-critic/missing/top/MR": {
   "number": 7.7,
   "value": "7.7"
+ },
+ "run/C-TF-critic/readapply/all/TA": {
+  "number": 61.1,
+  "value": "61.1"
  },
  "run/C-TF-critic/xr_v1:test/top/XA": {
   "number": 39.0,
@@ -2427,6 +3539,10 @@
   "number": 89.8,
   "value": "89.8"
  },
+ "run/C-TF-genprog/L2/all/n": {
+  "number": 1000.0,
+  "value": "1{,}000"
+ },
  "run/C-TF-genprog/xr_v1:test/top/XA": {
   "number": 82.75,
   "value": "82.8"
@@ -2474,6 +3590,10 @@
  "run/C-TF-promptledger-lenient/xr_v1:test/top/XA": {
   "number": 52.5,
   "value": "52.5"
+ },
+ "run/C-TF-promptledger/L2/eval/malformed_rate@pct1": {
+  "number": 0.9875,
+  "value": "98.8"
  },
  "run/C-TF-promptsum/L2/all/Hold": {
   "number": 89.85,
@@ -2523,6 +3643,14 @@
   "number": 65.0,
   "value": "65"
  },
+ "run/C-TG-critic-dev/clin_v1:trialgpt_dev/top/n_patients@int": {
+  "number": 10.0,
+  "value": "10"
+ },
+ "run/C-TG-critic-dev/clin_v1:trialgpt_dev/top/n_scored@int": {
+  "number": 200.0,
+  "value": "200"
+ },
  "run/C-TG-critic/clin_v1:trialgpt_test/top/acc": {
   "number": 70.35573122529644,
   "value": "70.4"
@@ -2534,6 +3662,14 @@
  "run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1": {
   "number": 65.70071104760866,
   "value": "65.7"
+ },
+ "run/C-TG-critic/clin_v1:trialgpt_test/top/n_patients@int": {
+  "number": 43.0,
+  "value": "43"
+ },
+ "run/C-TG-critic/clin_v1:trialgpt_test/top/n_scored@int": {
+  "number": 759.0,
+  "value": "759"
  },
  "run/C-TG-ledger2-blocks-s0/clin_v1:trialgpt_test/top/macroF1": {
   "number": 70.87562116631884,
@@ -2551,6 +3687,10 @@
   "number": 69.09251785304396,
   "value": "69.1"
  },
+ "run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/eval/malformed_rate/max@pct1": {
+  "number": 0.04,
+  "value": "4.0"
+ },
  "run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0": {
   "number": 87.66603415559773,
   "value": "87.7"
@@ -2562,6 +3702,10 @@
  "run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/acc": {
   "number": 62.31884057971015,
   "value": "62.3"
+ },
+ "run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/forced_choice_acc": {
+  "number": 85.95825426944971,
+  "value": "86.0"
  },
  "run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/macroF1": {
   "number": 54.03533446375877,
@@ -2583,6 +3727,10 @@
   "number": 68.16067653413988,
   "value": "68.2"
  },
+ "run/C-TG-summary2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0": {
+  "number": 84.44022770398482,
+  "value": "84.4"
+ },
  "run/C-TG-summary2-triplets-s0/clin_v1:trialgpt_test/top/macroF1": {
   "number": 69.18907390344371,
   "value": "69.2"
@@ -2603,6 +3751,10 @@
   "number": 92.78937381404175,
   "value": "92.8"
  },
+ "run/C-TG-verdict-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s2": {
+  "number": 92.0303605313093,
+  "value": "92.0"
+ },
  "run/C-TG-verdict-blocks/clin_v1:trialgpt_test/top/macroF1/s0": {
   "number": 64.83139167213699,
   "value": "64.8"
@@ -2618,6 +3770,10 @@
  "run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0": {
   "number": 92.78937381404175,
   "value": "92.8"
+ },
+ "run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s1": {
+  "number": 91.08159392789373,
+  "value": "91.1"
  },
  "run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/macroF1/s0": {
   "number": 70.84664532321561,
@@ -2663,6 +3819,10 @@
   "number": 84.66666666666667,
   "value": "84.7"
  },
+ "run/D-RL-outcome/L2/start/pair/s0": {
+  "number": 88.66666666666667,
+  "value": "88.7"
+ },
  "run/D-RL-outcome/L2/top/acc_pair/s0": {
   "number": 96.66666666666667,
   "value": "96.7"
@@ -2674,6 +3834,10 @@
  "run/D-RL-outcome/L2/top/acc_triplet/s0": {
   "number": 93.33333333333333,
   "value": "93.3"
+ },
+ "run/D-RL-outcome/L2/top/n_triplets/s0@int": {
+  "number": 150,
+  "value": "150"
  },
  "run/D-RL-outcome/L2/top/start_pair/s0": {
   "number": 88.66666666666667,
@@ -2698,6 +3862,22 @@
  "run/D-RL-refgraph/L2/top/start_triplet/s0": {
   "number": 86.0,
   "value": "86.0"
+ },
+ "run/D-RL-stepcheck/L2/final/pair/s0": {
+  "number": 38.666666666666664,
+  "value": "38.7"
+ },
+ "run/D-RL-stepcheck/L2/start/pair/s0": {
+  "number": 88.0,
+  "value": "88.0"
+ },
+ "run/D-RL-stepcheck/L2/step=1000/reward/s0@2": {
+  "number": 0.999688092470169,
+  "value": "1.00"
+ },
+ "run/D-RL-stepcheck/L2/step=1000/reward/s0@4": {
+  "number": 0.999688092470169,
+  "value": "0.9997"
  },
  "run/D-RL-stepcheck/L2/top/acc_all/s0": {
   "number": 59.77777777777778,
@@ -2823,6 +4003,14 @@
   "number": 88.9,
   "value": "88.9"
  },
+ "run/D-SEL-combined/sel:careqa/top/n@int": {
+  "number": 1000.0,
+  "value": "1{,}000"
+ },
+ "run/D-SEL-combined/sel:keypairs/top/n_pairs@int": {
+  "number": 357.0,
+  "value": "357"
+ },
  "run/D-SEL-combined/sel:keypairs/top/pair_acc": {
   "number": 76.75070028011204,
   "value": "76.8"
@@ -2830,6 +4018,10 @@
  "run/D-SEL-combined/sel:medeinst/top/control_acc": {
   "number": 73.8,
   "value": "73.8"
+ },
+ "run/D-SEL-combined/sel:medeinst/top/n_pairs@int": {
+  "number": 500.0,
+  "value": "500"
  },
  "run/D-SEL-combined/sel:medeinst/top/pair_acc": {
   "number": 22.6,
@@ -2839,9 +4031,17 @@
   "number": 46.4,
   "value": "46.4"
  },
+ "run/D-SEL-combined/sel:medqa/top/N@int": {
+  "number": 16.0,
+  "value": "16"
+ },
  "run/D-SEL-combined/sel:medqa/top/acc": {
   "number": 85.31029065200315,
   "value": "85.3"
+ },
+ "run/D-SEL-combined/sel:medqa/top/n@int": {
+  "number": 1273.0,
+  "value": "1{,}273"
  },
  "run/D-SEL-ledger/sel:careqa/top/acc": {
   "number": 88.4,
@@ -2854,6 +4054,10 @@
  "run/D-SEL-ledger/sel:medeinst/top/control_acc": {
   "number": 73.2,
   "value": "73.2"
+ },
+ "run/D-SEL-ledger/sel:medeinst/top/pair_acc": {
+  "number": 26.2,
+  "value": "26.2"
  },
  "run/D-SEL-ledger/sel:medqa/top/acc": {
   "number": 83.81775333857031,
@@ -3051,6 +4255,78 @@
   "number": 78.0,
   "value": "78.0"
  },
+ "run/D-SELN/sel:keypairs/top/n_pairs@int": {
+  "number": 150.0,
+  "value": "150"
+ },
+ "stats/known_semantic_limits.criterion_claim_without_scope": {
+  "number": 146,
+  "value": "146"
+ },
+ "stats/known_semantic_limits.criterion_claim_without_scope_invented": {
+  "number": 26,
+  "value": "26"
+ },
+ "stats/known_semantic_limits.general_line_contradicts_condition.cases": {
+  "number": 7,
+  "value": "7"
+ },
+ "stats/library_semantics.criteria_past_or_family_pct": {
+  "number": 30.5,
+  "value": "30.5"
+ },
+ "stats/overlap.rule_v1_fold3/test_L2.subexpression_pct": {
+  "number": 85.3,
+  "value": "85.3"
+ },
+ "stats/rejects.logged.rule_v1/test_L2.proposed": {
+  "number": 2000,
+  "value": "2{,}000"
+ },
+ "stats/rejects.logged.rule_v1/train_triplets.proposed": {
+  "number": 5688,
+  "value": "5{,}688"
+ },
+ "stats/rejects.logged.rule_v1/train_triplets.rejected": {
+  "number": 65,
+  "value": "65"
+ },
+ "stats/reviewers.groups": {
+  "number": 450,
+  "value": "450"
+ },
+ "stats/reviewers.groups_round1": {
+  "number": 300,
+  "value": "300"
+ },
+ "stats/reviewers.groups_round2": {
+  "number": 150,
+  "value": "150"
+ },
+ "stats/rules.fold1.l2_rules": {
+  "number": 103,
+  "value": "103"
+ },
+ "stats/rules.fold1.train_rules": {
+  "number": 223,
+  "value": "223"
+ },
+ "stats/rules.hand_written": {
+  "number": 103,
+  "value": "103"
+ },
+ "stats/rules.hand_written_provenance.simplified_source": {
+  "number": 97,
+  "value": "97"
+ },
+ "stats/rules.hand_written_provenance.synthetic": {
+  "number": 6,
+  "value": "6"
+ },
+ "stats/rules.sources_with_contradictions": {
+  "number": 53,
+  "value": "53"
+ },
  "stats/structure.test_L2.competing_mentions_pct": {
   "number": 13.4,
   "value": "13.4"
@@ -3115,6 +4391,26 @@
   "number": 64.1,
   "value": "64.1"
  },
+ "stats/target_claim_check.groups_total": {
+  "number": 16200,
+  "value": "16{,}200"
+ },
+ "stats/target_claim_check.records_total": {
+  "number": 203014,
+  "value": "203{,}014"
+ },
+ "stats/target_claim_check.violations": {
+  "number": 0,
+  "value": "0"
+ },
+ "sum/A-SETS/ec_v1_prepare.kept": {
+  "number": 95,
+  "value": "95"
+ },
+ "sum/A-SETS/ec_v1_prepare.trials": {
+  "number": 85,
+  "value": "85"
+ },
  "sum/A-SETS/mcv_v1_accept.n_accepted@int": {
   "number": 19,
   "value": "19"
@@ -3130,6 +4426,10 @@
  "sum/A-SETS/reg_v1.selection.LCT.candidates@int": {
   "number": 190,
   "value": "190"
+ },
+ "sum/A-SETS/xr_v1.n_items": {
+  "number": 400,
+  "value": "400"
  },
  "sum/C-S2-executor/test.both_decided": {
   "number": 70.09102730819245,
@@ -3198,5 +4498,41 @@
  "sum/D-RL-analysis/runs.D-RL-stepcheck-s0.start.median_chars@int": {
   "number": 834.5,
   "value": "834"
+ },
+ "sum2/json/data/clin_v1/trialgpt_test/MANIFEST.json::by_category.na|json/data/clin_v1/trialgpt_dev/MANIFEST.json::by_category.na@0": {
+  "number": 55,
+  "value": "55"
+ },
+ "sum2/json/data/clin_v1/trialgpt_test/MANIFEST.json::by_category.nei|json/data/clin_v1/trialgpt_dev/MANIFEST.json::by_category.nei@0": {
+  "number": 293,
+  "value": "293"
+ },
+ "sum2/json/data/clin_v1/trialgpt_test/MANIFEST.json::n_trials|json/data/clin_v1/trialgpt_dev/MANIFEST.json::n_trials@0": {
+  "number": 103,
+  "value": "103"
+ },
+ "sum2/json/results_git/C-TG-critic/summary_clin_v1~trialgpt_test.json::per_class_five_names.excluded.n|json/results_git/C-TG-critic-dev/summary_clin_v1~trialgpt_dev.json::per_class_five_names.excluded.n@0": {
+  "number": 10,
+  "value": "10"
+ },
+ "sum2/json/results_git/C-TG-critic/summary_clin_v1~trialgpt_test.json::per_class_five_names.included.n|json/results_git/C-TG-critic-dev/summary_clin_v1~trialgpt_dev.json::per_class_five_names.included.n@0": {
+  "number": 150,
+  "value": "150"
+ },
+ "sum2/json/results_git/C-TG-critic/summary_clin_v1~trialgpt_test.json::per_class_five_names.not included.n|json/results_git/C-TG-critic-dev/summary_clin_v1~trialgpt_dev.json::per_class_five_names.not included.n@0": {
+  "number": 23,
+  "value": "23"
+ },
+ "sum2/json/results_git/C-TG-critic/summary_clin_v1~trialgpt_test.json::per_class_five_names.not included.n|json/results_git/C-TG-critic/summary_clin_v1~trialgpt_test.json::per_class_five_names.excluded.n|json/results_git/C-TG-critic-dev/summary_clin_v1~trialgpt_dev.json::per_class_five_names.not included.n|json/results_git/C-TG-critic-dev/summary_clin_v1~trialgpt_dev.json::per_class_five_names.excluded.n@0": {
+  "number": 33,
+  "value": "33"
+ },
+ "sum2/run/C-TG-critic-dev/clin_v1:trialgpt_dev/top/n_patients|run/C-TG-critic/clin_v1:trialgpt_test/top/n_patients@int": {
+  "number": 53.0,
+  "value": "53"
+ },
+ "sum2/run/C-TG-critic/clin_v1:trialgpt_test/top/n_patients|run/C-TG-critic-dev/clin_v1:trialgpt_dev/top/n_patients@0": {
+  "number": 53.0,
+  "value": "53"
  }
 }

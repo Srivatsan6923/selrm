@@ -45,8 +45,8 @@
 % result files and wrote to numbers.tex (keys: docs/RESULT_KEYS.md). A key
 % without a measured value prints a red tbd. Do not type a number over a key.
 \makeatletter
-\newcommand{\resdef}[2]{\@namedef{res@#1}{#2}}
-\newcommand{\res}[1]{\@ifundefined{res@#1}{\tbd}{\@nameuse{res@#1}}}
+\newcommand{\resdef}[2]{\@namedef{res@\detokenize{#1}}{#2}}
+\newcommand{\res}[1]{\@ifundefined{res@\detokenize{#1}}{\tbd}{\@nameuse{res@\detokenize{#1}}}}
 \makeatother
 \InputIfFileExists{numbers.tex}{}{}
 \ifplaceholders
@@ -103,8 +103,8 @@ that are executable (\ph{gate not yet run}). On clinical notes with a
 published score definition near-misses help again ($+\res{cmp/p7/diff}$ points on
 criterion claims, $+\res{cmp/p9/diff}$ on edited notes), but not demonstrably by
 reading the criterion. A policy optimised against a released medical PRM that
-fails the test drives its reward to 1.00 while its accuracy falls from
-88.0\% to 38.7\%.
+fails the test drives its reward to \res{run/D-RL-stepcheck/L2/step=1000/reward/s0@2} while its accuracy falls from
+\res{run/D-RL-stepcheck/L2/start/pair/s0}\% to \res{run/D-RL-stepcheck/L2/final/pair/s0}\%.
 \end{abstract}
 
 \section{Introduction}
@@ -211,8 +211,8 @@ criterion (\S\ref{sec:results-ground}).
 \noindent\textbf{(4) Reward use.} On exam questions, which state no
 criterion, the verifier's score carries almost no signal. As a training
 reward, a released medical PRM that fails the triplet test is exploited: its
-reward reaches 1.00 while accuracy on held-out rules falls from 88.0\% to
-38.7\% (\S\ref{sec:results-downstream}).
+reward reaches \res{run/D-RL-stepcheck/L2/step=1000/reward/s0@2} while accuracy on held-out rules falls from \res{run/D-RL-stepcheck/L2/start/pair/s0}\% to
+\res{run/D-RL-stepcheck/L2/final/pair/s0}\% (\S\ref{sec:results-downstream}).
 
 \begin{figure*}[t]
 \centering
@@ -331,7 +331,7 @@ A_j(m)=\bigwedge_{k\in\mathcal{K}}\bigl[m_k\in D_j^{k}\bigr],
 \end{equation}
 where $D_j^{k}$ is the set of values of attribute $k$ that $c_j$ accepts. The
 predicate is part of the rule: a creatinine threshold counts the patient's
-current value, a stroke-risk score a stroke at any time. In 30.5\% of
+current value, a stroke-risk score a stroke at any time. In \res{stats/library_semantics.criteria_past_or_family_pct}\% of
 criteria a past or family finding counts, so no global heuristic about time
 or subject is correct. In the frozen library the concept condition is an
 identity test. Rules are clinical scores or \emph{constraint rules} (choose
@@ -355,7 +355,7 @@ missing twins replace a decisive input by an explicit unknown
 one applicability clause of the rule (``ever'' against ``within the last six
 months''; the patient against the patient or a first-degree relative). An
 item crosses two rules with three cases and is solved only if all six
-judgments are right (crossed accuracy, XA); the 400 items were built after
+judgments are right (crossed accuracy, XA); the \res{json/data/xr_v1/test/MANIFEST.json::n_items} items were built after
 the library was frozen, and no system is trained on them.
 
 \paragraph{Triplets and metrics.}
@@ -425,7 +425,7 @@ are single-condition eligibility criteria quoted from the registry, whose
 operator, value, unit, time window and negation come from published
 annotated corpora \citep{kury2020chia,dobbins2022lct}. The \emph{TrialGPT
 annotations} \citep{jin2024trialgpt} give physician judgments for 1{,}015
-patient--criterion pairs; in only 33 does the label make the patient
+patient--criterion pairs; in only \res{sum2/json/results_git/C-TG-critic/summary_clin_v1~trialgpt_test.json::per_class_five_names.not included.n|json/results_git/C-TG-critic/summary_clin_v1~trialgpt_test.json::per_class_five_names.excluded.n|json/results_git/C-TG-critic-dev/summary_clin_v1~trialgpt_dev.json::per_class_five_names.not included.n|json/results_git/C-TG-critic-dev/summary_clin_v1~trialgpt_dev.json::per_class_five_names.excluded.n@0} does the label make the patient
 ineligible.
 
 \paragraph{Criterion derived from an open source.}
@@ -534,14 +534,14 @@ public recommendations by the tree-then-program procedure of
 \citet{shen2026medguidex}, and \res{a15/rules_by_source.grammar_sampled@int} rules sampled from a typed grammar
 (Appendix~\ref{app:rules}). Each rule has a structural signature (rule kind,
 operators, dependency depth, input types, applicability predicate), in \res{a15/folds.1.n_classes@int}
-classes. The main test, \textbf{L2}, has 2{,}000 triplets from 103 rules of
+classes. The main test, \textbf{L2}, has \res{a15/datasets.rule_v1/test_L2.n_groups} triplets from \res{a15/folds.1.n_l2_rules} rules of
 held-out signature classes; L3-inv uses rules with invented names. Rendering
 templates and cue phrases for relatives, negation and time are disjoint
 between training and every test.
 
 \paragraph{Training.}
-All trained models use \bb{} with LoRA \citep{hu2022lora} of rank 64 for one
-epoch on 60{,}000 records. Four corpora differ only in the cases they
+All trained models use \bb{} with LoRA \citep{hu2022lora} of rank \res{meta/B-F-verdict-blocks/train.hp.lora_r} for one
+epoch on \res{meta/B-F-verdict-blocks/train.examples} records. Four corpora differ only in the cases they
 contain. \emph{Natural}: one case per group, the decisive condition rare.
 \emph{Balanced}: one case per group, outcomes equally frequent.
 \emph{Blocks}: the base case and the decisive edit of every group.
@@ -598,9 +598,9 @@ Generated program$^{d}$ & \res{run/C-TF-genprog/L2/all/Rev} & \res{run/C-TF-genp
 \end{tabular}}
 \caption{Audit (\%), each signal with its native readout. Rev, Hold, TA:
 conclusion claims on L2; TA$_c$: criterion claims; XA: rule-side items; ME,
-Key: both members right on MedEinst and MedQA key pairs. $^{a}$200
-triplets. $^{b}$200 pairs. $^{c}$Lenient parsing (strict: 98.8\% of ledgers
-malformed, TA 0.05). $^{d}$1{,}000 triplets; executes code it writes.
+Key: both members right on MedEinst and MedQA key pairs. $^{a}$\res{run/C-AUD-thinkprm/L2/all/n}
+triplets. $^{b}$\res{run/C-AUD-genprm/clin_v1:medeinst_test/top/n_pairs@int} pairs. $^{c}$Lenient parsing (strict: \res{run/C-TF-promptledger/L2/eval/malformed_rate@pct1}\% of ledgers
+malformed, TA 0.05). $^{d}$\res{run/C-TF-genprog/L2/all/n} triplets; executes code it writes.
 Larger open judges: Table~\ref{tab:openjudges}; closed judges: \ph{not yet scored}.}
 \label{tab:audit}
 \end{table}
@@ -618,7 +618,7 @@ errors lie in applying unseen rule structures more than in reading the
 evidence. A prompted summary before the verdict raises its
 accuracy to \res{run/C-TF-promptsum/L2/all/TA}\%, a verifier that writes and runs a program for the
 rule reaches \res{run/C-TF-genprog/L2/all/TA}\%, and ThinkPRM-14B, a general verifier that reasons
-before it scores, \res{run/C-AUD-thinkprm/L2/all/TA}\% on a subset of 200 triplets: the test is solvable
+before it scores, \res{run/C-AUD-thinkprm/L2/all/TA}\% on a subset of \res{run/C-AUD-thinkprm/L2/all/n} triplets: the test is solvable
 without training on our rules, and the released medical PRMs do not solve
 it. Among shortcut scorers (Appendix~\ref{app:diag}), a
 claim-only scorer and one that sees whether the decisive concept is named
@@ -661,8 +661,8 @@ points (Appendix~\ref{app:more}).}
 
 \emph{Supervision without near-misses yields reversal without holding.}
 In the fifteen cells of Table~\ref{tab:factorial} trained without
-near-misses, reversal at seed 0 is between 83.2\% and 99.6\% and near-miss
-correctness between 43.9\% and 77.8\%. Over five seeds the verdict-only
+near-misses, reversal at seed 0 is between \res{min/run/B-F-verdict-natural/L2/all/Rev/s0|run/B-F-verdict-balanced/L2/all/Rev/s0|run/B-F-verdict-blocks/L2/all/Rev/s0|run/B-F-rationale-natural/L2/all/Rev/s0|run/B-F-rationale-balanced/L2/all/Rev/s0|run/B-F-rationale-blocks/L2/all/Rev/s0|run/B-F-summary2-natural/L2/all/Rev/s0|run/B-F-summary2-balanced/L2/all/Rev/s0|run/B-F-summary2-blocks/L2/all/Rev/s0|run/B-F-value2-natural/L2/all/Rev/s0|run/B-F-value2-balanced/L2/all/Rev/s0|run/B-F-value2-blocks/L2/all/Rev/s0|run/B-F-ledger2-natural/L2/all/Rev/s0|run/B-F-ledger2-balanced/L2/all/Rev/s0|run/B-F-ledger2-blocks/L2/all/Rev/s0}\% and \res{max/run/B-F-verdict-natural/L2/all/Rev/s0|run/B-F-verdict-balanced/L2/all/Rev/s0|run/B-F-verdict-blocks/L2/all/Rev/s0|run/B-F-rationale-natural/L2/all/Rev/s0|run/B-F-rationale-balanced/L2/all/Rev/s0|run/B-F-rationale-blocks/L2/all/Rev/s0|run/B-F-summary2-natural/L2/all/Rev/s0|run/B-F-summary2-balanced/L2/all/Rev/s0|run/B-F-summary2-blocks/L2/all/Rev/s0|run/B-F-value2-natural/L2/all/Rev/s0|run/B-F-value2-balanced/L2/all/Rev/s0|run/B-F-value2-blocks/L2/all/Rev/s0|run/B-F-ledger2-natural/L2/all/Rev/s0|run/B-F-ledger2-balanced/L2/all/Rev/s0|run/B-F-ledger2-blocks/L2/all/Rev/s0}\% and near-miss
+correctness between \res{min/run/B-F-verdict-natural/L2/all/Hold/s0|run/B-F-verdict-balanced/L2/all/Hold/s0|run/B-F-verdict-blocks/L2/all/Hold/s0|run/B-F-rationale-natural/L2/all/Hold/s0|run/B-F-rationale-balanced/L2/all/Hold/s0|run/B-F-rationale-blocks/L2/all/Hold/s0|run/B-F-summary2-natural/L2/all/Hold/s0|run/B-F-summary2-balanced/L2/all/Hold/s0|run/B-F-summary2-blocks/L2/all/Hold/s0|run/B-F-value2-natural/L2/all/Hold/s0|run/B-F-value2-balanced/L2/all/Hold/s0|run/B-F-value2-blocks/L2/all/Hold/s0|run/B-F-ledger2-natural/L2/all/Hold/s0|run/B-F-ledger2-balanced/L2/all/Hold/s0|run/B-F-ledger2-blocks/L2/all/Hold/s0}\% and \res{max/run/B-F-verdict-natural/L2/all/Hold/s0|run/B-F-verdict-balanced/L2/all/Hold/s0|run/B-F-verdict-blocks/L2/all/Hold/s0|run/B-F-rationale-natural/L2/all/Hold/s0|run/B-F-rationale-balanced/L2/all/Hold/s0|run/B-F-rationale-blocks/L2/all/Hold/s0|run/B-F-summary2-natural/L2/all/Hold/s0|run/B-F-summary2-balanced/L2/all/Hold/s0|run/B-F-summary2-blocks/L2/all/Hold/s0|run/B-F-value2-natural/L2/all/Hold/s0|run/B-F-value2-balanced/L2/all/Hold/s0|run/B-F-value2-blocks/L2/all/Hold/s0|run/B-F-ledger2-natural/L2/all/Hold/s0|run/B-F-ledger2-balanced/L2/all/Hold/s0|run/B-F-ledger2-blocks/L2/all/Hold/s0}\%. Over five seeds the verdict-only
 model trained on blocks reverses on \res{run/B-F-verdict-blocks/L2/all/Rev/min}--\res{run/B-F-verdict-blocks/L2/all/Rev/max}\% of flips, is right on
 \res{run/B-F-verdict-blocks/L2/all/Hold/min}--\res{run/B-F-verdict-blocks/L2/all/Hold/max}\% of near-misses, and solves \res{run/B-F-verdict-blocks/L2/all/TA}\% of triplets. On criterion claims it ends below where the backbone
 started (\res{run/B-F-verdict-blocks/L2/step=criterion/TA/min}--\res{run/B-F-verdict-blocks/L2/step=criterion/TA/max}\% against \res{run/C-TF-critic/L2/step=criterion/TA}\%): a verifier that has only seen
@@ -676,10 +676,10 @@ concentrated where the finding belongs to another person (\res{run/B-F-verdict-b
 the value sits on the threshold (\res{run/B-F-verdict-blocks/L2/nm_kind=boundary/TA}\%). Using near-misses only as probes
 for re-weighting \citep{liu2026dynacf} gives \res{run/B-AB-probe-rw/L2/all/TA/s0}\%, and outcome balance is
 not the remedy: on balanced corpora near-miss correctness stays at
-51.6--72.8\%.
+\res{min/run/B-F-verdict-balanced/L2/all/Hold/s0|run/B-F-rationale-balanced/L2/all/Hold/s0|run/B-F-summary2-balanced/L2/all/Hold/s0|run/B-F-value2-balanced/L2/all/Hold/s0|run/B-F-ledger2-balanced/L2/all/Hold/s0}--\res{max/run/B-F-verdict-balanced/L2/all/Hold/s0|run/B-F-rationale-balanced/L2/all/Hold/s0|run/B-F-summary2-balanced/L2/all/Hold/s0|run/B-F-value2-balanced/L2/all/Hold/s0|run/B-F-ledger2-balanced/L2/all/Hold/s0}\%.
 
 \emph{What the second stage adds.} With near-misses, every format except the
-value ledger solves at least 97.7\% of triplets on criterion claims. They
+value ledger solves at least \res{min/run/B-F-verdict-triplets/L2/step=criterion/TA/s0|run/B-F-rationale-triplets/L2/step=criterion/TA/s0|run/B-F-summary2-triplets/L2/step=criterion/TA/s0|run/B-F-ledger2-triplets/L2/step=criterion/TA/s0}\% of triplets on criterion claims. They
 differ on conclusion claims under held-out rule structure: the one-stage
 formats reach \res{run/B-F-verdict-triplets/L2/all/TA/s0}\% and \res{run/B-F-rationale-triplets/L2/all/TA/s0}\%, the two-stage formats \res{run/B-F-summary2-triplets/L2/all/TA/s0}\% and \res{run/B-F-ledger2-triplets/L2/all/TA/s0}\%. The
 rationale writes the same ledger in the same pass as the verdict and gains
@@ -706,10 +706,10 @@ reader solves \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA_window/s0@0}\% and t
 of another case of the same rule and condition, the judge returns the
 verdict that ledger implies in 99.9\% of instances. When one of
 \texttt{subject}, \texttt{status} or \texttt{time} is edited in a correct
-ledger, it follows 47.8\% of the edits that should change the verdict and
-keeps 99.7\% of the verdicts that should stay: it is not a faithful function
+ledger, it follows \res{json/results_git/B-AE-field-edit/summary_rule_v1~test_L2~edit.json::by.changed=1.agreement}\% of the edits that should change the verdict and
+keeps \res{json/results_git/B-AE-field-edit/summary_rule_v1~test_L2~edit.json::by.changed=0.agreement}\% of the verdicts that should stay: it is not a faithful function
 of the fields. A rule program applied to the predicted
-ledger gives \res{run/B-AE-program-ledger/L2/all/TA}\%, against \res{run/B-F-ledger2-triplets/L2/all/TA/s0}\% for the learned judge ($+0.2$
+ledger gives \res{run/B-AE-program-ledger/L2/all/TA}\%, against \res{run/B-F-ledger2-triplets/L2/all/TA/s0}\% for the learned judge ($+\res{d/run/B-AE-program-ledger/L2/all/TA|run/B-F-ledger2-triplets/L2/all/TA/s0}$
 $[0.0,0.6]$). Where a rule is executable, what the pipeline contributes is
 the reading; hence the gate of \S\ref{sec:ledger}.
 
@@ -772,16 +772,16 @@ the triplet-trained verifiers solve \res{run/B-F-ledger2-triplets/xr_v1:test/xa/
 (verdict only) over five seeds, the untrained backbone \res{run/C-TF-critic/xr_v1:test/top/XA}\% and Med-PRM
 \res{run/C-AUD-medprm/xr_v1:test/top/XA}\%. Unlike the compliance detectors of \citet{sadhu2026compliance},
 these verifiers read the rule. Time windows are the weakest clause (\res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_window/s0@0}\%
-for \method{} at seed 0, against 93--100\% for the others): the frozen
+for \method{} at seed 0, against \res{min/run/B-F-ledger2-triplets/xr_v1:test/xa/XA_subject/s0|run/B-F-ledger2-triplets/xr_v1:test/xa/XA_currency/s0|run/B-F-ledger2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}--\res{max/run/B-F-ledger2-triplets/xr_v1:test/xa/XA_subject/s0|run/B-F-ledger2-triplets/xr_v1:test/xa/XA_currency/s0|run/B-F-ledger2-triplets/xr_v1:test/xa/XA_inclusivity/s0@0}\% for the others): the frozen
 library contains none.
 
 \paragraph{Stated criterion, expert labels.}
 On the TrialGPT annotations the systems trained on triplets have a higher
-macro-F1 than the backbone (69.1--70.8 against \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1}), and no difference is
+macro-F1 than the backbone (\res{min/run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/macroF1/s0|run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/macroF1/s0|run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1/s0}--\res{max/run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/macroF1/s0|run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/macroF1/s0|run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/macroF1/s0} against \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1}), and no difference is
 established: $+\res{cmp/p6a/diff}$ points $[\res{cmp/p6a/lo},\res{cmp/p6a/hi}]$ for \method, and
 $\res{cmp/p6b/diff}$ $[\res{cmp/p6b/lo},\res{cmp/p6b/hi}]$ against the same format trained on blocks. The gain
 comes from answering ``not enough information'' more often; on items with a
-decided label the two-stage systems are below the backbone (84.4--87.7\%
+decided label the two-stage systems are below the backbone (\res{min/run/C-TG-summary2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0|run/C-TG-ledger2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0|run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0|run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0}--\res{max/run/C-TG-summary2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0|run/C-TG-ledger2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0|run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0|run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0}\%
 against \res{run/C-TG-critic/clin_v1:trialgpt_test/top/forced_choice_acc}\%).
 
 \paragraph{No criterion stated.}
@@ -792,10 +792,10 @@ gives the same diagnosis to both members of 75.0\% of pairs and is wrong on
 both in 0.8\%. When it responds to the edited sentence it responds
 correctly, and it seldom responds. The verdict-only model trained on
 triplets behaves the same (76.8\%; pair accuracy \res{run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/Reversal/s0}\%), and \method{} falls
-to \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/Reversal/s0}\%, with 35.9\% of its reader outputs malformed on these long
+to \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/Reversal/s0}\%, with \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/malformed_rate/s0@pct1}\% of its reader outputs malformed on these long
 narratives. On key pairs the verdict-only models are level with the backbone
-(78.2--78.7\% against \res{run/C-KP-critic/clin_v1:keypairs_medqa_oneway/top/Reversal}\%) and the two-stage systems collapse to
-30.5--35.9\%: a reader with no criterion has nothing to read against, and a
+(\res{min/run/C-KP-verdict-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0|run/C-KP-verdict-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0}--\res{max/run/C-KP-verdict-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0|run/C-KP-verdict-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0}\% against \res{run/C-KP-critic/clin_v1:keypairs_medqa_oneway/top/Reversal}\%) and the two-stage systems collapse to
+\res{min/run/C-KP-summary2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0|run/C-KP-ledger2-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0|run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0}--\res{max/run/C-KP-summary2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0|run/C-KP-ledger2-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0|run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0}\%: a reader with no criterion has nothing to read against, and a
 judge with no case cannot supply the knowledge.
 
 By the decision rule fixed in advance (Appendix~\ref{app:plan}), the
@@ -831,7 +831,7 @@ the criterion does not entail the trap labels.
 \label{sec:results-downstream}
 
 \paragraph{Selection.}
-Reranking 16 samples of a frozen policy on exam questions tests the verifier
+Reranking \res{run/D-SEL-combined/sel:medqa/top/N@int} samples of a frozen policy on exam questions tests the verifier
 as a process reward where no criterion is stated
 (Table~\ref{tab:downstream}). The expectation of the first plan, that
 adding the ledger score to a step check improves on the step check, is not
@@ -842,12 +842,12 @@ nothing to verify.
 
 \paragraph{Policy training.}
 A process reward can be optimised without solving the task, whether or not
-it passes the triplet test. We train a Qwen3.5-4B policy with GRPO for 1{,}000 steps on rule tasks
-and evaluate it with the rule program on 150 held-out L2 pairs (seed 0;
+it passes the triplet test. We train a Qwen3.5-4B policy with GRPO for \res{meta/D-RL-outcome/steps} steps on rule tasks
+and evaluate it with the rule program on \res{run/D-RL-outcome/L2/top/n_triplets/s0@int} held-out L2 pairs (seed 0;
 descriptive). With an outcome reward, accuracy on both members of a pair
-rises from 88.7\% to \res{run/D-RL-outcome/L2/top/acc_pair/s0}\%, and with a reference-graph reward after
+rises from \res{run/D-RL-outcome/L2/start/pair/s0}\% to \res{run/D-RL-outcome/L2/top/acc_pair/s0}\%, and with a reference-graph reward after
 \citet{medceg2025} to \res{run/D-RL-refgraph/L2/top/acc_pair/s0}\%. With the released Med-PRM as the reward it
-falls from 88.0\% to \res{run/D-RL-stepcheck/L2/top/acc_pair/s0}\% while the mean reward reaches 0.9997; within a
+falls from \res{run/D-RL-stepcheck/L2/start/pair/s0}\% to \res{run/D-RL-stepcheck/L2/top/acc_pair/s0}\% while the mean reward reaches \res{run/D-RL-stepcheck/L2/step=1000/reward/s0@4}; within a
 rollout group this reward is uncorrelated with correctness ($-0.05$). The two
 ledger rewards, which never score the final answer, are exploited as well
 (to \res{run/D-RL-ledger2-blocks/L2/top/acc_pair/s0}\% and \res{run/D-RL-ledger2-triplets/L2/top/acc_pair/s0}\%). The
@@ -998,8 +998,8 @@ negative and the medical claim is withdrawn.
 \bottomrule
 \end{tabular}}
 \caption{Outcome of the seven primary comparisons of stage 1. Intervals for
-(4) and (5) resample the 134 label pairs; with pairs as units they are
-$[-9.8,-7.0]$ and $[-10.7,-8.1]$. $p$-values are unadjusted; with the Holm
+(4) and (5) resample the \res{json/results_git/C-ME-comparisons.json::ledger2-triplets-s0 - critic.label_pairs.n_clusters} label pairs; with pairs as units they are
+$[\res{cmp/p4/lo},\res{cmp/p4/hi}]$ and $[\res{cmp/p5/lo},\res{cmp/p5/hi}]$. $p$-values are unadjusted; with the Holm
 correction over the family, (1) to (5) remain below 0.05 ((3) at
 \res{cmp/p3/padj}; (1), (4) and (5) against the expectation) and (6a), (6b) are
 at \res{cmp/p6a/padj}.}
@@ -1068,12 +1068,12 @@ Constraint rules from public recommendations & \res{d/a15/rules_total|a15/rules_
 Grammar-sampled rules                & \res{a15/rules_by_source.grammar_sampled@int}\\
 \midrule
 Total (\texttt{rule\_v1}; \res{a15/folds.1.n_classes@int} signature classes) & \res{a15/rules_total@int}\\
-Invented rules, test only (L3-inv) & 60\\
+Invented rules, test only (L3-inv) & \res{a15/invented_rules_L3inv}\\
 MedCalc-Bench calculators            & not included\\
 \bottomrule
 \end{tabular}}
-\caption{Rule population of the frozen library. Of the 103 rules written from
-sources, 97 are simplified source rules and 6 are synthetic; 53 deviate from
+\caption{Rule population of the frozen library. Of the \res{stats/rules.hand_written} rules written from
+sources, \res{stats/rules.hand_written_provenance.simplified_source} are simplified source rules and \res{stats/rules.hand_written_provenance.synthetic} are synthetic; \res{stats/rules.sources_with_contradictions} deviate from
 their source in a recorded way.}
 \label{tab:rules}
 \end{table}
@@ -1089,7 +1089,7 @@ A program-derived label answers one of four questions
 \toprule
 Question & Evidence\\
 \midrule
-Does the program implement the stated rule? & boundary, unit and dependency tests; target-claim check re-executed on every group (0 violations in 203{,}014 records)\\
+Does the program implement the stated rule? & boundary, unit and dependency tests; target-claim check re-executed on every group (\res{stats/target_claim_check.violations} violations in \res{stats/target_claim_check.records_total} records)\\
 Does the text express the intended state? & model reading sessions before the freeze (below); reading by the authors \ph{pending}\\
 Does the test measure applicability and not artefacts? & shortcut scorers; rule-side items; leave-one-kind-out\\
 Does the behaviour carry beyond the generator? & stage 1: TrialGPT, MedEinst, key pairs (negative or not established); stage 2: \mcv, registered criteria (\ph{pending})\\
@@ -1106,15 +1106,15 @@ its version. Requirements that are ambiguous (for example ``adequate organ
 function'') are excluded and not given an invented interpretation. Because
 every prompt states the rule, correctness is relative to the stated text for
 all sources. Two limits of the frozen library are recorded with the affected
-items: for 146 criteria (26 of them in invented rules) the wording of the
-criterion claim omits the time or person scope that the rule states, and 7
+items: for \res{stats/known_semantic_limits.criterion_claim_without_scope} criteria (\res{stats/known_semantic_limits.criterion_claim_without_scope_invented} of them in invented rules) the wording of the
+criterion claim omits the time or person scope that the rule states, and \res{stats/known_semantic_limits.general_line_contradicts_condition.cases}
 cases contain a general line that contradicts a met condition.
 
 \paragraph{Rendering audit.}
-Before the freeze, 450 rendered groups were read in six model sessions; no
-person took part. In the first round (300 groups, four sessions) the sessions
-disputed 11, 9, 10 and 12 labels; after the generator was changed, the
-second round (150 groups, two sessions) disputed none. Missing-input lines
+Before the freeze, \res{stats/reviewers.groups} rendered groups were read in six model sessions; no
+person took part. In the first round (\res{stats/reviewers.groups_round1} groups, four sessions) the sessions
+disputed \res{json/audit/model_review/summary.json::sessions.0.label_disputed}, \res{json/audit/model_review/summary.json::sessions.1.label_disputed}, \res{json/audit/model_review/summary.json::sessions.2.label_disputed} and \res{json/audit/model_review/summary.json::sessions.3.label_disputed} labels; after the generator was changed, the
+second round (\res{stats/reviewers.groups_round2} groups, two sessions) disputed none. Missing-input lines
 that could be read as ``absent'' were reworded to ``unknown'', and
 presentation edits that changed a fact, sampled alternatives ruled out by
 the condition, and near-misses that differed from the flip in more than one
@@ -1146,14 +1146,14 @@ the task local applicability verification.
 \toprule
  & Train & L2\\
 \midrule
-Rules (fold 1) & 223 & 103\\
+Rules (fold 1) & \res{stats/rules.fold1.train_rules} & \res{stats/rules.fold1.l2_rules}\\
 Distinct program structures (names, constants removed) & \res{stats/structure.train_triplets.distinct_structures@int} & \res{stats/structure.test_L2.distinct_structures@int}\\
 Conditions needed per judgment (mean; max) & \res{stats/structure.train_triplets.conditions_mean@2}; \res{stats/structure.train_triplets.conditions_max@int} & \res{stats/structure.test_L2.conditions_mean@2}; \res{stats/structure.test_L2.conditions_max@int}\\
 Dependency depth (mean; max) & \res{stats/structure.train_triplets.depth_mean@2}; \res{stats/structure.train_triplets.depth_max@int} & \res{stats/structure.test_L2.depth_mean@2}; \res{stats/structure.test_L2.depth_max@int}\\
 Cases with competing mentions of the concept (\%) & \res{stats/structure.train_triplets.competing_mentions_pct} & \res{stats/structure.test_L2.competing_mentions_pct}\\
 Judgments with a numeric comparison (\%) & \res{stats/structure.train_triplets.numeric_pct} & \res{stats/structure.test_L2.numeric_pct}\\
 Judgments with an exception (\%) & \res{stats/structure.train_triplets.exception_pct} & \res{stats/structure.test_L2.exception_pct}\\
-Criteria under which a past or family finding counts (\%) & \multicolumn{2}{c}{30.5 (library)}\\
+Criteria under which a past or family finding counts (\%) & \multicolumn{2}{c}{\res{stats/library_semantics.criteria_past_or_family_pct} (library)}\\
 \bottomrule
 \end{tabular}}
 \caption{Structural statistics of \texttt{rule\_v1}.}
@@ -1161,16 +1161,16 @@ Criteria under which a past or family finding counts (\%) & \multicolumn{2}{c}{3
 \end{table}
 
 \paragraph{Splits and overlap.}
-There are three folds; in fold 1, 223 rules are used for training, 27 for
-L1 and 103 for L2. The levels change different things: L0 the generated
+There are three folds; in fold 1, \res{a15/folds.1.n_train_rules} rules are used for training, \res{a15/folds.1.n_l1_rules} for
+L1 and \res{a15/folds.1.n_l2_rules} for L2. The levels change different things: L0 the generated
 cases only; L1 rule identities and constants; L2 logical compositions; all
 test sets the wording. Between training and L2 no canonical program and no
 rule text is shared, and \res{a15/folds.1.overlap_train_vs_L2.criterion_subexpressions}\% of the criterion subexpressions of L2 rules
-also occur in training rules (72.1\% and 85.3\% in folds 2 and 3): held-out
+also occur in training rules (\res{a15/folds.2.overlap_train_vs_L2.criterion_subexpressions}\% and \res{stats/overlap.rule_v1_fold3/test_L2.subexpression_pct}\% in folds 2 and 3): held-out
 structure means unseen compositions of seen parts. Rendering templates
-(1{,}032 for training, 516 for test) and cue words for relatives, negation
+(\res{a15/templates.templates_train} for training, \res{a15/templates.templates_test} for test) and cue words for relatives, negation
 and time are disjoint. All cases derived from one base state are in one
-split. On fold 2 the verdict-only model trained on blocks reaches 63.1\% on
+split. On fold 2 the verdict-only model trained on blocks reaches \res{run/B-FOLD2-verdict-blocks/f2L2/all/TA/s0}\% on
 L2 at seed 0 (fold 1, same seed: \res{run/B-F-verdict-blocks/L2/all/TA/s0}\%); the other fold-2 and fold-3 runs are \ph{finished and
 not yet collected}. The set with altered thresholds (L3-alt) does not test
 what we intended: the untrained backbone solves \res{run/C-TF-critic/L3alt/all/TA}\% of it and the
@@ -1181,7 +1181,7 @@ it is listed in Table~\ref{tab:ladder} and not used as evidence.
 \texttt{rule\_v1} was frozen, with hashes of every set, before the runs
 reported here; an independent rebuild reproduced every set byte for byte.
 Sets built later (rule-side items, corpora for the ablations) are separate
-named versions, each frozen before any system was scored on it. Of the 400
+named versions, each frozen before any system was scored on it. Of the \res{json/data/xr_v1/test/MANIFEST.json::n_items}
 rule-side items, 38 were found after the freeze to have a known issue (23
 on age inclusivity, 15 on the currency of a diabetes diagnosis); results are
 given with them, and without them in Table~\ref{tab:xr}.
@@ -1193,11 +1193,11 @@ given with them, and without them in Table~\ref{tab:xr}.
 Every edit is checked on the target claim by executing the program: a flip
 must change the claim, a near-miss and a presentation edit must not, also
 for rules that combine criteria. A re-execution of this check over all
-frozen sets found no violation in 16{,}200 groups (203{,}014 records). Of
-the proposed groups of the triplet corpus, 1.1\% (65 of 5{,}688) were
-rejected, all for a presentation edit; none of the 2{,}000 proposed L2
+frozen sets found no violation in \res{stats/target_claim_check.groups_total} groups (\res{stats/target_claim_check.records_total} records). Of
+the proposed groups of the triplet corpus, \res{a15/datasets.rule_v1/train_triplets.reject_rate}\% (\res{stats/rejects.logged.rule_v1/train_triplets.rejected} of \res{stats/rejects.logged.rule_v1/train_triplets.proposed}) were
+rejected, all for a presentation edit; none of the \res{stats/rejects.logged.rule_v1/test_L2.proposed} proposed L2
 groups was. Each run trains on 60{,}000 examples; L2 has 2{,}000
-triplets and the development set 300. No evaluation input contains the edit
+triplets and the development set \res{a15/datasets.rule_v1/dev.n_groups}. No evaluation input contains the edit
 type, the role of the case, or the state.
 
 \begin{proposition}
@@ -1220,7 +1220,7 @@ $k$ and an applicability near-miss names it, so $h_k(x)=0$ and
 $h_k(\xf)=h_k(\xn)=1$: (iii) applies. For a measured input $k$ is named in
 all three cases, so $d(x)=d(\xf)$ as in (i). A scorer that uses the case only
 through $h_k$ thus solves no triplet, although it can reverse on every flip
-of the first kind (47\% of L2 flips). The proposition is a check on the
+of the first kind (\res{pct/stats/semantics.test_L2.finding_bases|a15/datasets.rule_v1/test_L2.n_groups@0}\% of L2 flips). The proposition is a check on the
 construction and does not exclude other shortcuts, and it does not extend to
 sampled decisions.
 
@@ -1265,7 +1265,7 @@ does not) and relabelled lines; counts per requirement are \tbd.
 
 \paragraph{Rule-side items.}
 For a fixed case, two rules differ only in the applicability clause: time
-window, currency, subject, or boundary inclusivity (100 items each; 9{,}600
+window, currency, subject, or boundary inclusivity (\res{json/data/xr_v1/test/MANIFEST.json::by_dimension.window} items each; \res{json/data/xr_v1/test/MANIFEST.json::n_records}
 records). Each item has three cases (the contested form, an uncontested
 positive, an absent finding) and is solved only if all six judgments are
 right. Scorers that ignore the rule text, never count the contested form or
@@ -1283,12 +1283,12 @@ rule-side items and, in stage 2, real notes.
 \label{app:qa}
 
 \paragraph{TrialGPT annotations.}
-The released file has 1{,}015 patient--criterion annotations over 53 patient
-summaries and 103 trials (356 inclusion and 659 exclusion criteria), with
+The released file has 1{,}015 patient--criterion annotations over \res{sum2/run/C-TG-critic/clin_v1:trialgpt_test/top/n_patients|run/C-TG-critic-dev/clin_v1:trialgpt_dev/top/n_patients@0} patient
+summaries and \res{sum2/json/data/clin_v1/trialgpt_test/MANIFEST.json::n_trials|json/data/clin_v1/trialgpt_dev/MANIFEST.json::n_trials@0} trials (356 inclusion and 659 exclusion criteria), with
 expert fields (eligibility label, relevant sentences, a rating of a model's
 explanation) and, separately, GPT-4 outputs. The expert labels are: included
-150, not included 23, excluded 10, not excluded 484, not enough information
-293, not applicable 55. Protocol, fixed before any system was scored: inputs
+\res{sum2/json/results_git/C-TG-critic/summary_clin_v1~trialgpt_test.json::per_class_five_names.included.n|json/results_git/C-TG-critic-dev/summary_clin_v1~trialgpt_dev.json::per_class_five_names.included.n@0}, not included \res{sum2/json/results_git/C-TG-critic/summary_clin_v1~trialgpt_test.json::per_class_five_names.not included.n|json/results_git/C-TG-critic-dev/summary_clin_v1~trialgpt_dev.json::per_class_five_names.not included.n@0}, excluded \res{sum2/json/results_git/C-TG-critic/summary_clin_v1~trialgpt_test.json::per_class_five_names.excluded.n|json/results_git/C-TG-critic-dev/summary_clin_v1~trialgpt_dev.json::per_class_five_names.excluded.n@0}, not excluded 484, not enough information
+\res{sum2/json/data/clin_v1/trialgpt_test/MANIFEST.json::by_category.nei|json/data/clin_v1/trialgpt_dev/MANIFEST.json::by_category.nei@0}, not applicable \res{sum2/json/data/clin_v1/trialgpt_test/MANIFEST.json::by_category.na|json/data/clin_v1/trialgpt_dev/MANIFEST.json::by_category.na@0}. Protocol, fixed before any system was scored: inputs
 are the patient summary as released and the criterion with its type; no
 GPT-4 field is ever an input; targets are the expert labels, read as
 \emph{met}, \emph{not met} or \emph{not enough information} for the
@@ -1296,8 +1296,8 @@ criterion as written \ph{(confirm the mapping against the evaluation
 script)}; ``not applicable'' items are left out; ``not enough information''
 is predicted when neither claim clears an acceptance threshold; adapter,
 prompts and threshold are chosen on the rule tier and on a patient-disjoint
-development portion (200 items, 10 patients), and the test portion (759
-items, 43 patients) is scored once. Intervals resample patients. The patient
+development portion (\res{run/C-TG-critic-dev/clin_v1:trialgpt_dev/top/n_scored@int} items, \res{run/C-TG-critic-dev/clin_v1:trialgpt_dev/top/n_patients@int} patients), and the test portion (\res{run/C-TG-critic/clin_v1:trialgpt_test/top/n_scored@int}
+items, \res{run/C-TG-critic/clin_v1:trialgpt_test/top/n_patients@int} patients) is scored once. Intervals resample patients. The patient
 summaries are synthetic, so this is an external expert-annotated
 evaluation, not validation on clinical records.
 
@@ -1308,46 +1308,46 @@ evaluation, not validation on clinical records.
 \toprule
 System & Macro-F1 & Acc. & Choice\\
 \midrule
-Always ``met'' & 10.3 & 18.2 & --\\
-Always ``not met'' & 22.6 & 51.2 & --\\
-Always ``not enough inf.'' & 15.6 & 30.6 & --\\
+Always ``met'' & \res{json/data/clin_v1/trialgpt_test/MANIFEST.json::shortcut_validation.predictors.always met.macroF1} & \res{json/data/clin_v1/trialgpt_test/MANIFEST.json::shortcut_validation.predictors.always met.acc} & --\\
+Always ``not met'' & \res{json/data/clin_v1/trialgpt_test/MANIFEST.json::shortcut_validation.predictors.always not_met.macroF1} & 51.2 & --\\
+Always ``not enough inf.'' & \res{json/data/clin_v1/trialgpt_test/MANIFEST.json::shortcut_validation.predictors.always nei.macroF1} & \res{json/data/clin_v1/trialgpt_test/MANIFEST.json::shortcut_validation.predictors.always nei.acc} & --\\
 Criterion-type prior & 46.0 & 66.7 & --\\
 \midrule
-Critic & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/acc} & 92.8\\
-\ \ + prompted summary & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/acc} & 91.3\\
-\ \ + prompted ledger$^{a}$ & \res{run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/acc} & 86.0\\
-Verdict only, blocks & 64.8 & 65.7 & 92.8\\
-\ \ seed 2 & 68.6 & 69.2 & 92.0\\
-Verdict only, triplets & 70.8 & 71.1 & 92.8\\
-\ \ seed 1 & 70.1 & \res{run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/acc} & 91.1\\
-Evidence summary, blocks & 68.2 & 69.2 & 84.4\\
-Evidence summary, triplets & 69.2 & 69.0 & 87.5\\
-\method{}, blocks & 70.9 & 71.8 & 85.8\\
-\method{}, triplets & 69.1 & 70.6 & 87.7\\
+Critic & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/acc} & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/forced_choice_acc}\\
+\ \ + prompted summary & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/acc} & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/forced_choice_acc}\\
+\ \ + prompted ledger$^{a}$ & \res{run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/acc} & \res{run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/forced_choice_acc}\\
+Verdict only, blocks & 64.8 & 65.7 & \res{run/C-TG-verdict-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0}\\
+\ \ seed 2 & 68.6 & 69.2 & \res{run/C-TG-verdict-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s2}\\
+Verdict only, triplets & 70.8 & 71.1 & \res{run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0}\\
+\ \ seed 1 & 70.1 & \res{run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/acc} & \res{run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s1}\\
+Evidence summary, blocks & 68.2 & 69.2 & \res{run/C-TG-summary2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0}\\
+Evidence summary, triplets & 69.2 & 69.0 & \res{run/C-TG-summary2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0}\\
+\method{}, blocks & 70.9 & 71.8 & \res{run/C-TG-ledger2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0}\\
+\method{}, triplets & 69.1 & 70.6 & \res{run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0}\\
 \bottomrule
 \end{tabular}
-\caption{TrialGPT test portion (759 items, 43 patients; \%, seed 0 unless
+\caption{TrialGPT test portion (\res{run/C-TG-critic/clin_v1:trialgpt_test/top/n_scored@int} items, \res{run/C-TG-critic/clin_v1:trialgpt_test/top/n_patients@int} patients; \%, seed 0 unless
 marked). Choice: accuracy of the preferred claim without the option ``not
 enough information'' \ph{(confirm the item set)}. $^{a}$Lenient parsing.
-Intervals over patients for macro-F1: critic $[61.8,69.7]$, prompted summary
-$[64.8,70.8]$, verdict only $[60.3,69.2]$ and $[66.3,75.3]$, evidence
-summary $[63.9,71.7]$ and $[65.1,72.9]$, \method{} $[66.7,74.6]$ and
-$[64.3,73.5]$. Malformed reader outputs: 1.9\% (\method, blocks) and 4.0\%
+Intervals over patients for macro-F1: critic $[\res{json/results_git/C-TG-critic/summary_clin_v1~trialgpt_test.json::macroF1_CI95.0},\res{json/results_git/C-TG-critic/summary_clin_v1~trialgpt_test.json::macroF1_CI95.1}]$, prompted summary
+$[\res{json/results_git/C-TG-promptsum/summary_clin_v1~trialgpt_test.json::macroF1_CI95.0},\res{json/results_git/C-TG-promptsum/summary_clin_v1~trialgpt_test.json::macroF1_CI95.1}]$, verdict only $[\res{json/results_git/C-TG-verdict-blocks-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.0},\res{json/results_git/C-TG-verdict-blocks-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.1}]$ and $[\res{json/results_git/C-TG-verdict-triplets-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.0},\res{json/results_git/C-TG-verdict-triplets-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.1}]$, evidence
+summary $[\res{json/results_git/C-TG-summary2-blocks-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.0},\res{json/results_git/C-TG-summary2-blocks-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.1}]$ and $[\res{json/results_git/C-TG-summary2-triplets-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.0},\res{json/results_git/C-TG-summary2-triplets-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.1}]$, \method{} $[\res{json/results_git/C-TG-ledger2-blocks-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.0},\res{json/results_git/C-TG-ledger2-blocks-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.1}]$ and
+$[\res{json/results_git/C-TG-ledger2-triplets-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.0},\res{json/results_git/C-TG-ledger2-triplets-s0/summary_clin_v1~trialgpt_test.json::macroF1_CI95.1}]$. Malformed reader outputs: \res{json/results_git/C-TG-ledger2-blocks-s0/reader_audit.json::sets.clin_v1/trialgpt_test.malformed_rate_strict@pct1}\% (\method, blocks) and \res{json/results_git/C-TG-ledger2-triplets-s0/reader_audit.json::sets.clin_v1/trialgpt_test.malformed_rate_strict@pct1}\%
 (triplets).}
 \label{tab:trialgpt}
 \end{table}
 
 On the development portion the difference between \method{} trained on
-triplets and the critic was $+13.7$ points of macro-F1 $[5.0,20.6]$ with 10
-patients; the test portion, with 43, gives $+\res{cmp/p6a/diff}$ $[\res{cmp/p6a/lo},\res{cmp/p6a/hi}]$. The reader's
+triplets and the critic was $+\res{json/results_git/C-TG-comparisons_dev.json::ledger2-triplets - critic.diff}$ points of macro-F1 $[\res{json/results_git/C-TG-comparisons_dev.json::ledger2-triplets - critic.lo},\res{json/results_git/C-TG-comparisons_dev.json::ledger2-triplets - critic.hi}]$ with \res{json/results_git/C-TG-comparisons_dev.json::ledger2-triplets - critic.n_clusters}
+patients; the test portion, with \res{cmp/p6a/n}, gives $+\res{cmp/p6a/diff}$ $[\res{cmp/p6a/lo},\res{cmp/p6a/hi}]$. The reader's
 quoted sentences match the sentences the physicians marked with precision
 57.8\% and recall 61.8\% for \method{} trained on blocks (\res{json/results_git/C-TG-ledger2-triplets-s0/summary_clin_v1~trialgpt_test.json::evidence.precision}\% and \res{json/results_git/C-TG-ledger2-triplets-s0/summary_clin_v1~trialgpt_test.json::evidence.recall}\% for
 triplets); the expert sentences evaluate evidence selection and do not
 validate the subject, status or time fields.
 
 \paragraph{MedEinst.}
-We use the released test split (5{,}383 pairs; the served reference split
-has 10{,}609 pairs, the paper states 10{,}689). Claims are the two
+We use the released test split (\res{json/data/clin_v1/medeinst_test/MANIFEST.json::n_pairs} pairs; the served reference split
+has \res{json/data/clin_v1/medeinst_ref_train/MANIFEST.json::ref_pairs_released} pairs, the paper states 10{,}689). Claims are the two
 diagnoses of a pair, so the task is a two-way choice and not the benchmark's
 own evaluation over all diagnoses; our pair accuracy is not comparable with
 its published robust accuracy. With two options, uniformly random
@@ -1361,55 +1361,55 @@ always prefers the control diagnosis on 0\%.
 \toprule
 System & Pair & Control & Trap & Same\\
 \midrule
-Med-PRM & 16.2 & 67.5 & 45.4 & 80.5\\
-MedS$^3$ PRM & 25.1 & 79.1 & 44.2 & 73.1\\
-FoVer PRM & 21.0 & 71.8 & 48.1 & 77.9\\
-GenPRM-7B$^{a}$ & 22.0 & 58.0 & 46.5 & --\\
-Critic & 24.2 & 71.8 & 51.6 & 75.0\\
-\ \ + default correction & 24.7 & 70.4 & 53.3 & 74.3\\
-Verdict only, blocks & 20.5 & 68.3 & 51.8 & 79.1\\
-\ \ seed 2 & 18.2 & 65.2 & 52.3 & 81.1\\
-Verdict only, triplets & 22.8 & 69.5 & 52.9 & 76.8\\
-\ \ seed 1 & 18.7 & 67.6 & 50.8 & 81.0\\
-Evidence summary, blocks & 22.8 & 61.6 & 56.1 & 72.1\\
-Evidence summary, triplets & 25.1 & 73.2 & 47.3 & 70.3\\
-\method{}, triplets$^{b}$ & 15.7 & 44.4 & 35.1 & --\\
+Med-PRM & \res{run/C-AUD-medprm/clin_v1:medeinst_test/top/Reversal} & \res{run/C-AUD-medprm/clin_v1:medeinst_test/top/control_acc} & \res{run/C-AUD-medprm/clin_v1:medeinst_test/top/trap_acc} & 80.5\\
+MedS$^3$ PRM & \res{run/C-AUD-meds3/clin_v1:medeinst_test/top/Reversal} & \res{run/C-AUD-meds3/clin_v1:medeinst_test/top/control_acc} & \res{run/C-AUD-meds3/clin_v1:medeinst_test/top/trap_acc} & 73.1\\
+FoVer PRM & \res{run/C-AUD-fover/clin_v1:medeinst_test/top/Reversal} & \res{run/C-AUD-fover/clin_v1:medeinst_test/top/control_acc} & \res{run/C-AUD-fover/clin_v1:medeinst_test/top/trap_acc} & 77.9\\
+GenPRM-7B$^{a}$ & \res{run/C-AUD-genprm/clin_v1:medeinst_test/top/Reversal} & \res{run/C-AUD-genprm/clin_v1:medeinst_test/top/control_acc} & \res{run/C-AUD-genprm/clin_v1:medeinst_test/top/trap_acc} & --\\
+Critic & \res{run/C-ME-critic/clin_v1:medeinst_test/top/Reversal} & \res{run/C-ME-critic/clin_v1:medeinst_test/top/control_acc} & \res{run/C-ME-critic/clin_v1:medeinst_test/top/trap_acc} & 75.0\\
+\ \ + default correction & \res{run/C-ME-defcorr/clin_v1:medeinst_test/top/Reversal} & \res{run/C-ME-defcorr/clin_v1:medeinst_test/top/control_acc} & \res{run/C-ME-defcorr/clin_v1:medeinst_test/top/trap_acc} & 74.3\\
+Verdict only, blocks & \res{run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/trap_acc/s0} & 79.1\\
+\ \ seed 2 & \res{run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/Reversal/s2} & \res{run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/control_acc/s2} & \res{run/C-ME-verdict-blocks/clin_v1:medeinst_test/top/trap_acc/s2} & 81.1\\
+Verdict only, triplets & \res{run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/trap_acc/s0} & 76.8\\
+\ \ seed 1 & \res{run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/Reversal/s1} & \res{run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/control_acc/s1} & \res{run/C-ME-verdict-triplets/clin_v1:medeinst_test/top/trap_acc/s1} & 81.0\\
+Evidence summary, blocks & \res{run/C-ME-summary2-blocks/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-summary2-blocks/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-summary2-blocks/clin_v1:medeinst_test/top/trap_acc/s0} & 72.1\\
+Evidence summary, triplets & \res{run/C-ME-summary2-triplets/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-summary2-triplets/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-summary2-triplets/clin_v1:medeinst_test/top/trap_acc/s0} & 70.3\\
+\method{}, triplets$^{b}$ & \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/trap_acc/s0} & --\\
 \bottomrule
 \end{tabular}
 \caption{MedEinst test pairs, two-way choice (\%, seed 0 unless marked).
 Same: share of pairs whose members receive the same diagnosis, computed from
-the three preceding columns for systems without ties. $^{a}$200 pairs, 5.5\%
-ties. $^{b}$48.2\% ties. Intervals over pairs are about $\pm$1.2 points
-(critic $[23.0,25.4]$, \method{} $[14.7,16.7]$); resampling the 134 label
+the three preceding columns for systems without ties. $^{a}$\res{run/C-AUD-genprm/clin_v1:medeinst_test/top/n_pairs@int} pairs, \res{run/C-AUD-genprm/clin_v1:medeinst_test/top/tie_rate}\%
+ties. $^{b}$\res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/top/tie_rate/s0}\% ties. Intervals over pairs are about $\pm$1.2 points
+(critic $[\res{json/results_git/C-ME-critic/summary_clin_v1~medeinst_test.json::CI95.0},\res{json/results_git/C-ME-critic/summary_clin_v1~medeinst_test.json::CI95.1}]$, \method{} $[\res{json/results_git/C-ME-ledger2-triplets-s0/summary_clin_v1~medeinst_test.json::CI95.0},\res{json/results_git/C-ME-ledger2-triplets-s0/summary_clin_v1~medeinst_test.json::CI95.1}]$); resampling the \res{json/results_git/C-ME-comparisons.json::ledger2-triplets-s0 - critic.label_pairs.n_clusters} label
 pairs widens them to about $\pm$10 points.}
 \label{tab:medeinst}
 \end{table}
 
 Every system without ties gives the same diagnosis to both members of
 70--81\% of pairs and is wrong on both in at most 5.1\%. The failure of
-\method{} on this set is one of format: 35.9\% of its reader outputs are
-malformed (3{,}866 of 10{,}766), and in an inspection recorded by the
-evaluating author \ph{(not reproducible from a result file)} 30.2\% of
+\method{} on this set is one of format: \res{pct/run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/malformed_units/s0|run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/reader_units/s0}\% of its reader outputs are
+malformed (\res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/malformed_units/s0@int} of \res{run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/reader_units/s0@int}), and in an inspection recorded by the
+evaluating author \ph{(not reproducible from a result file)} \res{json/results_git/C-ME-ledger2-triplets-s0/malformed_reasons_clin_v1~medeinst_test.json::shares.entry not five lines}\% of
 reader outputs contained an entry longer than five lines. A model trained on
-clinical pairs (7{,}807 MedEinst reference pairs and 122 key pairs from
+clinical pairs (\res{json/data/clin_v1/clinpairs_medeinst/MANIFEST.json::n_groups@int} MedEinst reference pairs and \res{json/data/clin_v1/clinpairs_medqa/MANIFEST.json::pairs_kept@int} key pairs from
 MedQA training questions) and tested on pairs whose diseases were held out
-(115 pairs) is right on both members of 7.8\% and 43.5\% of pairs at two
-seeds, with trap accuracy above 95\% and control accuracy of 9.6\% and
-47.0\%: it has learned to prefer the trap label, and we do not use it.
+(\res{json/data/clin_v1/medeinst_dis_test/MANIFEST.json::n_groups@int} pairs) is right on both members of \res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/Reversal/s0}\% and \res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/Reversal/s1}\% of pairs at two
+seeds, with trap accuracy above 95\% and control accuracy of \res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/control_correct/s0}\% and
+\res{run/B-DIS/clin_v1:medeinst_dis_test/pairs/control_correct/s1}\%: it has learned to prefer the trap label, and we do not use it.
 
 \paragraph{Key pairs.}
 Pairs are mined within a split and reduced to a one-to-one matching, so that
 no question occurs in two pairs. Excluded: negatively phrased lead-ins,
 options that refer to other options, and questions without a case
 description. Requiring that each question's keyed answer occurs among the
-other's options leaves 13 MedQA and 3 CareQA pairs, too few to score, so the
-reported sets use \ph{the one-directional rule (state it)}: 357 and 225
-pairs. Pair accuracy on MedQA and CareQA: critic 79.8 $[75.6,84.0]$ and 84.4
-$[79.6,88.9]$; prompted summary 79.6 and 80.9; verdict only on blocks 78.7
-and 82.7, on triplets 78.2 and 83.1; prose pipeline on triplets 33.3 and
-55.6; \method{} on blocks 35.9 and 44.0, on triplets 30.5 and 38.2 (ties
-25.8\% and 38.2\%, malformed reader outputs 14.8\% and 25.1\%); Med-PRM 57.7
-and 56.0; MedS$^3$ PRM 39.5 and 49.8; FoVer PRM 67.2 and 69.3. By normalised
+other's options leaves \res{json/data/clin_v1/keypairs_medqa/MANIFEST.json::n_pairs@int} MedQA and \res{json/data/clin_v1/keypairs_careqa/MANIFEST.json::n_pairs@int} CareQA pairs, too few to score, so the
+reported sets use \ph{the one-directional rule (state it)}: \res{json/data/clin_v1/keypairs_medqa_oneway/MANIFEST.json::n_pairs@int} and \res{json/data/clin_v1/keypairs_careqa_oneway/MANIFEST.json::n_pairs@int}
+pairs. Pair accuracy on MedQA and CareQA: critic \res{run/C-KP-critic/clin_v1:keypairs_medqa_oneway/top/Reversal} $[\res{json/results_git/C-KP-critic/summary_clin_v1~keypairs_medqa_oneway.json::CI95.0},\res{json/results_git/C-KP-critic/summary_clin_v1~keypairs_medqa_oneway.json::CI95.1}]$ and \res{run/C-KP-critic/clin_v1:keypairs_careqa_oneway/top/Reversal}
+$[\res{run/C-KP-promptsum/clin_v1:keypairs_medqa_oneway/top/Reversal},\res{json/results_git/C-KP-critic/summary_clin_v1~keypairs_careqa_oneway.json::CI95.1}]$; prompted summary \res{json/results_git/C-KP-critic/summary_clin_v1~keypairs_careqa_oneway.json::CI95.0} and \res{run/C-KP-promptsum/clin_v1:keypairs_careqa_oneway/top/Reversal}; verdict only on blocks \res{run/C-KP-verdict-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0}
+and \res{run/C-KP-verdict-blocks/clin_v1:keypairs_careqa_oneway/top/Reversal/s0}, on triplets \res{run/C-KP-verdict-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} and \res{run/C-KP-verdict-triplets/clin_v1:keypairs_careqa_oneway/top/Reversal/s0}; prose pipeline on triplets \res{run/C-KP-summary2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} and
+\res{run/C-KP-summary2-triplets/clin_v1:keypairs_careqa_oneway/top/Reversal/s0}; \method{} on blocks \res{run/C-KP-ledger2-blocks/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} and \res{run/C-KP-ledger2-blocks/clin_v1:keypairs_careqa_oneway/top/Reversal/s0}, on triplets \res{run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/top/Reversal/s0} and \res{run/C-KP-ledger2-triplets/clin_v1:keypairs_careqa_oneway/top/Reversal/s0} (ties
+\res{run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/top/tie_rate/s0}\% and \res{run/C-KP-ledger2-triplets/clin_v1:keypairs_careqa_oneway/top/tie_rate/s0}\%, malformed reader outputs \res{pct/run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/eval/malformed_units/s0|run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/eval/reader_units/s0}\% and \res{pct/run/C-KP-ledger2-triplets/clin_v1:keypairs_careqa_oneway/eval/malformed_units/s0|run/C-KP-ledger2-triplets/clin_v1:keypairs_careqa_oneway/eval/reader_units/s0}\%); Med-PRM \res{run/C-AUD-medprm/clin_v1:keypairs_medqa_oneway/top/Reversal}
+and \res{run/C-AUD-medprm/clin_v1:keypairs_careqa_oneway/top/Reversal}; MedS$^3$ PRM \res{run/C-AUD-meds3/clin_v1:keypairs_medqa_oneway/top/Reversal} and \res{run/C-AUD-meds3/clin_v1:keypairs_careqa_oneway/top/Reversal}; FoVer PRM \res{run/C-AUD-fover/clin_v1:keypairs_medqa_oneway/top/Reversal} and \res{run/C-AUD-fover/clin_v1:keypairs_careqa_oneway/top/Reversal}. By normalised
 question text, CareQA shares no question with MedQA.
 
 \paragraph{NLI4CT-P.}
@@ -1421,14 +1421,14 @@ question text, CareQA shares no question with MedQA.
 \toprule
 System & Mean & Control F1 & Faithf. & Consist.\\
 \midrule
-Critic & 80.9 & 78.3 & 84.8 & 79.5\\
-Verdict only, blocks & 85.6 & 79.2 & 93.8 & 83.9\\
-Verdict only, triplets & 85.4 & 81.0 & 90.6 & 84.5\\
-Evidence summary, triplets & 73.2 & 65.8 & 86.0 & 68.0\\
+Critic & \res{run/C-NL-critic/clin_v1:nli4ct_test/top/Average@pct1} & \res{run/C-NL-critic/clin_v1:nli4ct_test/top/Control_F1@pct1} & \res{run/C-NL-critic/clin_v1:nli4ct_test/top/Faithfulness@pct1} & \res{run/C-NL-critic/clin_v1:nli4ct_test/top/Consistency@pct1}\\
+Verdict only, blocks & \res{run/C-NL-verdict-blocks/clin_v1:nli4ct_test/top/Average/s0@pct1} & \res{run/C-NL-verdict-blocks/clin_v1:nli4ct_test/top/Control_F1/s0@pct1} & \res{run/C-NL-verdict-blocks/clin_v1:nli4ct_test/top/Faithfulness/s0@pct1} & \res{run/C-NL-verdict-blocks/clin_v1:nli4ct_test/top/Consistency/s0@pct1}\\
+Verdict only, triplets & \res{run/C-NL-verdict-triplets/clin_v1:nli4ct_test/top/Average/s0@pct1} & \res{run/C-NL-verdict-triplets/clin_v1:nli4ct_test/top/Control_F1/s0@pct1} & \res{run/C-NL-verdict-triplets/clin_v1:nli4ct_test/top/Faithfulness/s0@pct1} & \res{run/C-NL-verdict-triplets/clin_v1:nli4ct_test/top/Consistency/s0@pct1}\\
+Evidence summary, triplets & \res{run/C-NL-summary2-triplets/clin_v1:nli4ct_test/top/Average/s0@pct1} & \res{run/C-NL-summary2-triplets/clin_v1:nli4ct_test/top/Control_F1/s0@pct1} & \res{run/C-NL-summary2-triplets/clin_v1:nli4ct_test/top/Faithfulness/s0@pct1} & \res{run/C-NL-summary2-triplets/clin_v1:nli4ct_test/top/Consistency/s0@pct1}\\
 \method{}, triplets & \res{run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Average/s0@pct1} & \res{run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Control_F1/s0@pct1} & \res{run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Faithfulness/s0@pct1} & \res{run/C-NL-ledger2-triplets/clin_v1:nli4ct_test/top/Consistency/s0@pct1}\\
 \bottomrule
 \end{tabular}}
-\caption{NLI4CT-P (\%, seed 0; 500 control statements). Faithfulness and
+\caption{NLI4CT-P (\%, seed 0; \res{run/C-NL-critic/clin_v1:nli4ct_test/top/n_control@int} control statements). Faithfulness and
 consistency follow the task definitions.}
 \label{tab:nli}
 \end{table}
@@ -1464,7 +1464,7 @@ Knowledge-base triplets\ns & pairwise criterion from the DDXPlus condition--evid
 \multicolumn{4}{@{}l}{\emph{Released labels, criterion stated}}\\
 \mcv{} criteria\ns & published score definition shipped with the data & 380 notes, 230 human-written & released entity values and rule code\\
 Registered criteria\ns & trial registry text; structure from Chia and LCT annotation & generated & program compiled from the annotation\\
-TrialGPT & trial criterion text & 53 patient summaries & physician criterion-level labels\\
+TrialGPT & trial criterion text & \res{sum2/run/C-TG-critic-dev/clin_v1:trialgpt_dev/top/n_patients|run/C-TG-critic/clin_v1:trialgpt_test/top/n_patients@int} patient summaries & physician criterion-level labels\\
 \midrule
 \multicolumn{4}{@{}l}{\emph{Released labels, no criterion stated}}\\
 MedEinst & none; derived from the DDXPlus lists as an intervention\ns & narrated DDXPlus cases, one sentence edited & benchmark labels\\
@@ -1538,8 +1538,8 @@ by script. The annotation fixes structure, not execution semantics: whether
 ``within six months'' includes the boundary day, and what the reference date
 is, remain our stated conventions and are printed in the prompt. Cases are
 generated as on the rule tier, with dates. Trials and criterion texts that
-occur in the TrialGPT annotations are excluded. An earlier set of 95
-criteria from 85 trials that we formalised ourselves is not scored: its
+occur in the TrialGPT annotations are excluded. An earlier set of \res{sum/A-SETS/ec_v1_prepare.kept}
+criteria from \res{sum/A-SETS/ec_v1_prepare.trials} trials that we formalised ourselves is not scored: its
 programs were never signed off by two authors.
 
 \paragraph{Knowledge-base criteria.}
@@ -1773,15 +1773,15 @@ time: current
 
 \noindent Given this ledger, the rule and the claim ``Order amoxicillin'', the
 judge returns \texttt{+}. For the main model, malformed ledgers occur in at most 0.2\% of
-rule-tier reader outputs, in 1.9--4.0\% on TrialGPT, 14.8--25.1\% on key
-pairs and 35.9\% on MedEinst: the format degrades as the input moves away
+rule-tier reader outputs, in 1.9--\res{run/C-TG-ledger2-triplets/clin_v1:trialgpt_test/eval/malformed_rate/max@pct1}\% on TrialGPT, \res{pct/run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/eval/malformed_units/s0|run/C-KP-ledger2-triplets/clin_v1:keypairs_medqa_oneway/eval/reader_units/s0}--\res{pct/run/C-KP-ledger2-triplets/clin_v1:keypairs_careqa_oneway/eval/malformed_units/s0|run/C-KP-ledger2-triplets/clin_v1:keypairs_careqa_oneway/eval/reader_units/s0}\% on key
+pairs and \res{pct/run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/malformed_units/s0|run/C-ME-ledger2-triplets/clin_v1:medeinst_test/eval/reader_units/s0}\% on MedEinst: the format degrades as the input moves away
 from a stated rule and a short case. A malformed ledger is recorded as an
 invalid outcome and both claims are rejected. Neither record format may
 state a verdict: no claim sentence and no decision phrase occurs in the
 reader outputs of any of the 27 two-stage runs (for example, in none of
 37{,}497 summaries of one run). In 30.2\% of judge training examples the
 ledger shown is a donor's. A verification pass that re-reads every entry
-against the case and regenerates rejected ones once adds 0.6 points
+against the case and regenerates rejected ones once adds \res{d/run/B-AB-verify/L2/all/TA/s0|run/B-F-ledger2-triplets/L2/all/TA/s0} points
 ($[0.1,1.2]$, $p=0.012$). In triplet and pair evaluations one ledger serves
 both claims.
 
@@ -1859,10 +1859,10 @@ original claims against a one-line case with only that finding. With $P$,
 $K$, $U$ the events of a correct reversal on the reading pair, the
 application pair and the full pair, the composition gap is
 $G=1-\Pr[U\mid P\wedge K]$; it is descriptive, since the tasks differ in
-length and in what must be selected. For the untrained backbone on 1{,}000
-pairs, $P=97.7\%$, $K=96.0\%$, $U=88.9\%$, and $G=7.9\%$ among the 944 pairs
-with $P$ and $K$. On L0 its base accuracy is 68.6\% and, among triplets with
-a correct base preference, it reverses on the near-miss in 34.0\% ($n=686$).
+length and in what must be selected. For the untrained backbone on \res{json/results_git/C-TF-critic/diagnostics.json::pk.n@int}
+pairs, $P=\res{json/results_git/C-TF-critic/diagnostics.json::pk.P}\%$, $K=\res{json/results_git/C-TF-critic/diagnostics.json::pk.K}\%$, $U=\res{json/results_git/C-TF-critic/diagnostics.json::pk.U}\%$, and $G=\res{json/results_git/C-TF-critic/diagnostics.json::pk.G}\%$ among the \res{json/results_git/C-TF-critic/diagnostics.json::pk.n_P_and_K@int} pairs
+with $P$ and $K$. On L0 its base accuracy is \res{json/results_git/C-TF-critic/diagnostics.json::pk.L0_BaseAcc}\% and, among triplets with
+a correct base preference, it reverses on the near-miss in \res{json/results_git/C-TF-critic/diagnostics.json::pk.L0_UR}\% ($n=\res{json/results_git/C-TF-critic/diagnostics.json::pk.L0_UR_n@int}$).
 Other signals are \tbd.
 
 \begin{table}[!ht]
@@ -1904,7 +1904,7 @@ Threshold    & 49.8 & \res{run/B-F-verdict-triplets/L2/nm_kind=boundary/TA/s0} &
 \caption{Leave one near-miss kind out (\%, seed 0). Out: triplet accuracy on
 L2 triplets of the kind that was removed from training; in: the same
 triplets for the model trained on all kinds. Paired differences range from
-$-84.0$ $[-89.2,-78.2]$ (other person, verdict) to $-1.0$ $[-3.2,0.0]$
+$\res{d/run/B-LOKO-subject-verdict/L2/nm_kind=subject/TA/s0|run/B-F-verdict-triplets/L2/nm_kind=subject/TA/s0}$ $[-89.2,-78.2]$ (other person, verdict) to $\res{d/run/B-LOKO-boundary-summary2/L2/nm_kind=boundary/TA/s0|run/B-F-summary2-triplets/L2/nm_kind=boundary/TA/s0}$ $[-3.2,0.0]$
 (threshold, prose). Triplet accuracy on all L2 triplets with the kind
 removed (other person, past, threshold): verdict 76.2, 86.1, 82.8; prose
 97.2, 91.5, 99.3; \method{} \res{run/B-LOKO-subject-ledger2/L2/all/TA}, \res{run/B-LOKO-time-ledger2/L2/all/TA}, \res{run/B-LOKO-boundary-ledger2/L2/all/TA}.}
@@ -1937,9 +1937,9 @@ Evidence summary, triplets & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA/s0}
 \ \ $-$ ledger resampling & \res{run/B-AB-noresamp/xr_v1:test/xa/XA/s0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA362/s0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_window/s0@0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_currency/s0@0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_subject/s0@0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA_inclusivity/s0@0}\\
 \bottomrule
 \end{tabular}}
-\caption{Rule-side items (\%, seed 0): crossed accuracy on all 400 items,
-without the 38 items with a known issue (XA$^{-}$), and by the clause that
-differs between the two rules (100 items each). Over five seeds the window
+\caption{Rule-side items (\%, seed 0): crossed accuracy on all \res{sum/A-SETS/xr_v1.n_items} items,
+without the \res{json/results/A-SETS/summary.json::xr_v1.known_issue_items} items with a known issue (XA$^{-}$), and by the clause that
+differs between the two rules (\res{json/results/A-SETS/summary.json::xr_v1.by_dimension.currency} items each). Over five seeds the window
 column ranges from \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_window/min@0} to \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA_window/max@0} for the verdict-only model and from \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_window/min@0} to \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA_window/max@0}
 for \method{}, both trained on triplets.}
 \label{tab:xr}
@@ -1965,26 +1965,26 @@ conflicting cases.
 \paragraph{Readouts and sampling noise.}
 Dedicated PRMs use their released scoring head and local models the
 log-odds of the verdict token. For the untrained backbone the triplet
-accuracy on L2 is \res{run/C-TF-critic/L2/all/TA}\% in the full-precision scoring run and 25.4\% from
+accuracy on L2 is \res{run/C-TF-critic/L2/all/TA}\% in the full-precision scoring run and \res{json/results_git/C-DG-noise/noise_check.json::logodds.TA}\% from
 the log-odds of a second pass that returns the top tokens; sampling the
-verdict ten times gives 24.8\% (s.d.\ 0.4) at temperature 0.7 and 24.0\%
-(s.d.\ 0.7) at temperature 1.0. Readout and precision thus move this number
+verdict ten times gives \res{json/results_git/C-DG-noise/noise_check.json::sampled.TA.mean}\% (s.d.\ \res{json/results_git/C-DG-noise/noise_check.json::sampled.TA.sd}) at temperature \res{json/results_git/C-DG-noise/noise_check.json::temperature} and \res{json/results_git/C-DG-noise/noise_check_T1.json::sampled.TA.mean}\%
+(s.d.\ \res{json/results_git/C-DG-noise/noise_check_T1.json::sampled.TA.sd}) at temperature \res{json/results_git/C-DG-noise/noise_check_T1.json::temperature}. Readout and precision thus move this number
 by up to three points, which is small against the differences in
 Table~\ref{tab:audit}.
 
 \paragraph{Default correction.}
 The weight $\alpha$ was chosen on development triplets, where triplet
-accuracy is 39.7\% at $\alpha=0$, 47.3\% at 1, 50.7\% at 4, 52.0\% at 16 and
-53.0\% in the limit, which uses only the difference from the score without
+accuracy is \res{run/C-TF-critic/dev/all/TA}\% at $\alpha=0$, 47.3\% at 1, 50.7\% at 4, 52.0\% at 16 and
+\res{meta/C-TF-defcorr/dev_TA_by_alpha.inf}\% in the limit, which uses only the difference from the score without
 the case; the limit was selected after the grid had been extended on
 development data. On L2 this gives \res{run/C-TF-defcorr/L2/all/TA}\% $[\res{run/C-TF-defcorr/L2/all/TA/lo},\res{run/C-TF-defcorr/L2/all/TA/hi}]$,
 against \res{run/C-TF-critic/L2/all/TA}\% without correction.
 
 \paragraph{Exploratory.}
 A linear probe on the residual stream of the untrained backbone, trained on
-L0 and tested on L2, predicts the criterion outcome with 86.9\% accuracy
-(control task \citep{hewitt2019control}: 69.8\%), and with 94.5\% against
-41.3\% on conditions not seen by the probe; decodability does not show use
+L0 and tested on L2, predicts the criterion outcome with \res{json/results_git/C-DG-probe/probe.json::probe.acc}\% accuracy
+(control task \citep{hewitt2019control}: \res{json/results_git/C-DG-probe/probe.json::control.acc}\%), and with \res{json/results_git/C-DG-probe/probe.json::probe.unseen_conditions.acc}\% against
+\res{json/results_git/C-DG-probe/probe.json::control.unseen_conditions.acc}\% on conditions not seen by the probe; decodability does not show use
 \citep{elazar2021amnesic}.
 
 \section{Additional Results}
@@ -2008,8 +2008,8 @@ concept scorer; and probe re-weighting, our adaptation of
 program at test time: a general-purpose trigger tagger
 \citep{harkema2009context} followed by the program, and the program applied
 to the trained reader's ledger. Larger open judges are in Table~\ref{tab:openjudges}; closed judges
-(\ph{one Gemini, one Claude}) are \ph{not yet scored}. All four training corpora contain 15\%
-missing-input and 15\% presentation records; the loss is computed per
+(\ph{one Gemini, one Claude}) are \ph{not yet scored}. All four training corpora contain \res{pct/json/data/rule_v1/train_natural/MANIFEST.json::cases_by_kind.missing|json/data/rule_v1/train_natural/MANIFEST.json::n_cases@0}\%
+missing-input and \res{pct/json/data/rule_v1/train_balanced/MANIFEST.json::cases_by_kind.missing|json/data/rule_v1/train_balanced/MANIFEST.json::n_cases@0}\% presentation records; the loss is computed per
 example, so the corpora differ in their cases and not in the objective or
 the batching. In the natural corpus the rate of the decisive condition is a
 parameter of the generator, not an empirical prevalence. Neither record
@@ -2030,23 +2030,23 @@ System & L2 & L3-inv & XA & Hold & F1 & choice & pair & control & trap & MedQA &
 \midrule
 \multicolumn{13}{@{}l}{\emph{Training-free, \bb}}\\
 Critic & \res{run/C-TF-critic/L2/all/TA} & \res{run/C-TF-critic/L3inv/all/TA} & 39.0 & \res{run/C-TF-critic/L2/all/Hold} & \res{run/C-TG-critic/clin_v1:trialgpt_test/top/macroF1} & 92.8 & 24.2 & 71.8 & 51.6 & 79.8 & 84.4 & 80.9\\
-\ \ + default correction & \res{run/C-TF-defcorr/L2/all/TA} & \tbd & 58.5 & \tbd & \tbd & \tbd & 24.7 & 70.4 & 53.3 & \tbd & \tbd & \tbd\\
+\ \ + default correction & \res{run/C-TF-defcorr/L2/all/TA} & \tbd & \res{run/C-TF-defcorr/xr_v1:test/top/XA} & \tbd & \tbd & \tbd & \res{run/C-ME-defcorr/clin_v1:medeinst_test/top/Reversal} & \res{run/C-ME-defcorr/clin_v1:medeinst_test/top/control_acc} & \res{run/C-ME-defcorr/clin_v1:medeinst_test/top/trap_acc} & \tbd & \tbd & \tbd\\
 \ \ + prompted summary & \res{run/C-TF-promptsum/L2/all/TA} & \tbd & 80.5 & \res{run/C-TF-promptsum/L2/all/Hold} & \res{run/C-TG-promptsum/clin_v1:trialgpt_test/top/macroF1} & 91.3 & \tbd & \tbd & \tbd & 79.6 & 80.9 & \tbd\\
-\ \ + prompted ledger (lenient parse) & \res{run/C-TF-promptledger-lenient/L2/all/TA} & \tbd & 52.5 & \res{run/C-TF-promptledger-lenient/L2/all/Hold} & \res{run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/macroF1} & 86.0 & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
-Generated-program verifier & \res{run/C-TF-genprog/L2/all/TA} & \tbd & 82.8 & \res{run/C-TF-genprog/L2/all/Hold} & -- & -- & -- & -- & -- & -- & -- & --\\
+\ \ + prompted ledger (lenient parse) & \res{run/C-TF-promptledger-lenient/L2/all/TA} & \tbd & \res{run/C-TF-promptledger-lenient/xr_v1:test/top/XA} & \res{run/C-TF-promptledger-lenient/L2/all/Hold} & \res{run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-promptledger-lenient/clin_v1:trialgpt_test/top/forced_choice_acc} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+Generated-program verifier & \res{run/C-TF-genprog/L2/all/TA} & \tbd & \res{run/C-TF-genprog/xr_v1:test/top/XA} & \res{run/C-TF-genprog/L2/all/Hold} & -- & -- & -- & -- & -- & -- & -- & --\\
 \multicolumn{13}{@{}l}{\emph{Trained on rule data only (all clinical columns are zero-shot)}}\\
-Verdict only, FoVer data & \res{run/B-TR-fover/L2/all/TA/s0} & \res{run/B-TR-fover/L3inv/all/TA/s0} & 67.0 & \res{run/B-TR-fover/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+Verdict only, FoVer data & \res{run/B-TR-fover/L2/all/TA/s0} & \res{run/B-TR-fover/L3inv/all/TA/s0} & \res{run/B-TR-fover/xr_v1:test/xa/XA/s0} & \res{run/B-TR-fover/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
 Verdict only, rule blocks & \res{run/B-F-verdict-blocks/L2/all/TA/s0} & \res{run/B-F-verdict-blocks/L3inv/all/TA/s0} & 60.8 & \res{run/B-F-verdict-blocks/L2/all/Hold/s0} & \res{run/C-TG-verdict-blocks-s0/clin_v1:trialgpt_test/top/macroF1} & 92.8 & 20.5 & 68.3 & 51.8 & 78.7 & 82.7 & 85.6\\
 Verdict only, rule triplets & \res{run/B-F-verdict-triplets/L2/all/TA/s0} & \res{run/B-F-verdict-triplets/L3inv/all/TA/s0} & 90.2 & \res{run/B-F-verdict-triplets/L2/all/Hold/s0} & \res{run/C-TG-verdict-triplets-s0/clin_v1:trialgpt_test/top/macroF1} & 92.8 & 22.8 & 69.5 & 52.9 & 78.2 & 83.1 & 85.4\\
-Rationale, rule triplets & \res{run/B-F-rationale-triplets/L2/all/TA/s0} & \res{run/B-F-rationale-triplets/L3inv/all/TA/s0} & 92.8 & \res{run/B-F-rationale-triplets/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
-Evidence summary, rule blocks & \res{run/B-F-summary2-blocks/L2/all/TA/s0} & \res{run/B-F-summary2-blocks/L3inv/all/TA/s0} & 80.2 & \res{run/B-F-summary2-blocks/L2/all/Hold/s0} & \res{run/C-TG-summary2-blocks-s0/clin_v1:trialgpt_test/top/macroF1} & 84.4 & 22.8 & 61.6 & 56.1 & \tbd & \tbd & \tbd\\
+Rationale, rule triplets & \res{run/B-F-rationale-triplets/L2/all/TA/s0} & \res{run/B-F-rationale-triplets/L3inv/all/TA/s0} & \res{run/C-TG-verdict-triplets/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \res{run/B-F-rationale-triplets/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+Evidence summary, rule blocks & \res{run/B-F-summary2-blocks/L2/all/TA/s0} & \res{run/B-F-summary2-blocks/L3inv/all/TA/s0} & \res{run/B-NS-xr_v1-B-F-summary2-blocks/xr_v1:test/xa/XA/s0} & \res{run/B-F-summary2-blocks/L2/all/Hold/s0} & \res{run/C-TG-summary2-blocks-s0/clin_v1:trialgpt_test/top/macroF1} & \res{run/C-TG-summary2-blocks/clin_v1:trialgpt_test/top/forced_choice_acc/s0} & \res{run/C-ME-summary2-blocks/clin_v1:medeinst_test/top/Reversal/s0} & \res{run/C-ME-summary2-blocks/clin_v1:medeinst_test/top/control_acc/s0} & \res{run/C-ME-summary2-blocks/clin_v1:medeinst_test/top/trap_acc/s0} & \tbd & \tbd & \tbd\\
 Evidence summary, rule triplets & \res{run/B-F-summary2-triplets/L2/all/TA/s0} & 97.6$^{a}$ & 88.5 & \res{run/B-F-summary2-triplets/L2/all/Hold/s0} & \res{run/C-TG-summary2-triplets-s0/clin_v1:trialgpt_test/top/macroF1} & 87.5 & 25.1 & 73.2 & 47.3 & 33.3 & 55.6 & 73.2\\
-\method{}, rule natural & \res{run/B-F-ledger2-natural/L2/all/TA/s0} & \res{run/B-F-ledger2-natural/L3inv/all/TA/s0} & 86.0 & \res{run/B-F-ledger2-natural/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
-\method{}, rule balanced & \res{run/B-F-ledger2-balanced/L2/all/TA/s0} & \res{run/B-F-ledger2-balanced/L3inv/all/TA/s0} & 54.5 & \res{run/B-F-ledger2-balanced/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+\method{}, rule natural & \res{run/B-F-ledger2-natural/L2/all/TA/s0} & \res{run/B-F-ledger2-natural/L3inv/all/TA/s0} & \res{run/B-F-ledger2-natural/xr_v1:test/xa/XA/s0} & \res{run/B-F-ledger2-natural/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+\method{}, rule balanced & \res{run/B-F-ledger2-balanced/L2/all/TA/s0} & \res{run/B-F-ledger2-balanced/L3inv/all/TA/s0} & \res{run/B-F-ledger2-balanced/xr_v1:test/xa/XA/s0} & \res{run/B-F-ledger2-balanced/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
 \method{}, rule blocks & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & \res{run/B-F-ledger2-blocks/L3inv/all/TA/s0} & 76.0 & \res{run/B-F-ledger2-blocks/L2/all/Hold/s0} & \res{run/C-TG-ledger2-blocks-s0/clin_v1:trialgpt_test/top/macroF1} & 85.8 & \tbd & \tbd & \tbd & 35.9 & 44.0 & \tbd\\
 \textbf{\method}, rule triplets & \textbf{99.2} & \res{run/B-F-ledger2-triplets/L3inv/all/TA/s0} & 89.8 & 99.95 & \res{run/C-TG-ledger2-triplets-s0/clin_v1:trialgpt_test/top/macroF1} & 87.7 & 15.7 & 44.4 & 35.1 & 30.5 & 38.2 & \tbd\\
 \multicolumn{13}{@{}l}{\emph{Trained with clinical pairs (MedEinst reference pairs and MedQA-train key pairs)}}\\
-\method{}, clinical pairs only & \res{run/B-TR-clinonly/L2/all/TA/s0} & \res{run/B-TR-clinonly/L3inv/all/TA/s0} & 35.5 & \res{run/B-TR-clinonly/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
+\method{}, clinical pairs only & \res{run/B-TR-clinonly/L2/all/TA/s0} & \res{run/B-TR-clinonly/L3inv/all/TA/s0} & \res{run/B-TR-clinonly/xr_v1:test/xa/XA/s0} & \res{run/B-TR-clinonly/L2/all/Hold/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
 \method{}, rule triplets + clinical pairs & \res{run/B-TR-tripclin/L2/all/TA/s0} & \res{run/B-TR-tripclin/L3inv/all/TA/s0} & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd & \tbd\\
 \multicolumn{13}{@{}l}{\emph{References that use the rule program at test time}}\\
 Trigger tagger + program & \res{run/C-SC-gptrigger/L2/all/TA} & -- & -- & \res{run/C-SC-gptrigger/L2/all/Hold} & -- & -- & -- & -- & -- & -- & -- & --\\
@@ -2087,33 +2087,33 @@ model. Closed judges: \ph{not yet scored}.}
 \paragraph{Further ablations.}
 \emph{Finding the condition.} When the reader must derive the condition
 under test from the rule and the claim, triplet accuracy falls to \res{run/B-AB-conddrv/L2/all/TA}\%
-($-12.7$ $[-16.8,-8.9]$): near-miss correctness stays at 98.6\% and reversal
-falls to 87.0\%. \emph{Rule-side items.} Blocks-trained models solve
-35.8--82.2\% over formats and seeds. Windows are the weakest clause for
+($\res{d/run/B-AB-conddrv/L2/all/TA/s0|run/B-F-ledger2-triplets/L2/all/TA/s0}$ $[-16.8,-8.9]$): near-miss correctness stays at \res{run/B-AB-conddrv/L2/all/Hold/s0}\% and reversal
+falls to \res{run/B-AB-conddrv/L2/all/Rev/s0}\%. \emph{Rule-side items.} Blocks-trained models solve
+\res{min/run/B-F-verdict-blocks/xr_v1:test/xa/XA/min|run/B-F-summary2-blocks/xr_v1:test/xa/XA/min|run/B-F-ledger2-blocks/xr_v1:test/xa/XA/min|run/B-F-value2-blocks/xr_v1:test/xa/XA/min}--\res{max/run/B-F-verdict-blocks/xr_v1:test/xa/XA/max|run/B-F-summary2-blocks/xr_v1:test/xa/XA/max|run/B-F-ledger2-blocks/xr_v1:test/xa/XA/max|run/B-F-value2-blocks/xr_v1:test/xa/XA/max}\% over formats and seeds. Windows are the weakest clause for
 every trained system that does not write a decision bit (43--76\% over
 formats and seeds). Training without donor ledgers lowers crossed accuracy
-from \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA}\% to 78.8\% while the L2 score stays at 98.8\%. \emph{One stage
+from \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA}\% to \res{run/B-AB-noresamp/xr_v1:test/xa/XA/s0}\% while the L2 score stays at \res{run/B-AB-noresamp/L2/all/TA/s0}\%. \emph{One stage
 against two.} The rationale's deficit against the two-stage ledger lies in
 reversal (\res{run/B-F-rationale-triplets/L2/all/Rev}\%), not in holding (\res{run/B-F-rationale-triplets/L2/all/Hold}\%); the case-visible prose judge is
-0.8 points above the case-blind one ($[0.1,1.5]$) and statistically level
-with the ledger ($-0.4$ $[-1.1,0.3]$); on blocks the ledger is \res{cmp/x-blocks-ledger-prose/diff} points
-above prose over five seeds ($[\res{cmp/x-blocks-ledger-prose/lo},\res{cmp/x-blocks-ledger-prose/hi}]$); the ledger is 13.5 points above
-the value ledger on triplets ($[11.3,15.9]$) and 4.6 on blocks
+\res{d/run/B-SC-summary2-triplets/L2/all/TA/s0|run/B-F-summary2-triplets/L2/all/TA/s0} points above the case-blind one ($[0.1,1.5]$) and statistically level
+with the ledger ($\res{d/run/B-SC-summary2-triplets/L2/all/TA/s0|run/B-F-ledger2-triplets/L2/all/TA/s0}$ $[-1.1,0.3]$); on blocks the ledger is \res{cmp/x-blocks-ledger-prose/diff} points
+above prose over five seeds ($[\res{cmp/x-blocks-ledger-prose/lo},\res{cmp/x-blocks-ledger-prose/hi}]$); the ledger is \res{d/run/B-F-ledger2-triplets/L2/all/TA/s0|run/B-F-value2-triplets/L2/all/TA/s0} points above
+the value ledger on triplets ($[11.3,15.9]$) and \res{d/run/B-F-ledger2-blocks/L2/all/TA/s0|run/B-F-value2-blocks/L2/all/TA/s0} on blocks
 ($[1.3,7.6]$). With program-supplied ledgers the judge solves \res{run/B-AE-oracle-ledger/L2/all/TA}\% of L2
 triplets: 12 errors of the full model are rescued, none is introduced and 4
 remain. \emph{Corpora without near-misses.} Among the natural, balanced and
-block corpora the differences between cells at seed 0 (43.0--77.2\%) are of
+block corpora the differences between cells at seed 0 (\res{min/run/B-F-verdict-natural/L2/all/TA/s0|run/B-F-verdict-balanced/L2/all/TA/s0|run/B-F-verdict-blocks/L2/all/TA/s0|run/B-F-rationale-natural/L2/all/TA/s0|run/B-F-rationale-balanced/L2/all/TA/s0|run/B-F-rationale-blocks/L2/all/TA/s0|run/B-F-summary2-natural/L2/all/TA/s0|run/B-F-summary2-balanced/L2/all/TA/s0|run/B-F-summary2-blocks/L2/all/TA/s0|run/B-F-ledger2-natural/L2/all/TA/s0|run/B-F-ledger2-balanced/L2/all/TA/s0|run/B-F-ledger2-blocks/L2/all/TA/s0|run/B-F-value2-natural/L2/all/TA/s0|run/B-F-value2-balanced/L2/all/TA/s0|run/B-F-value2-blocks/L2/all/TA/s0}--\res{max/run/B-F-verdict-natural/L2/all/TA/s0|run/B-F-verdict-balanced/L2/all/TA/s0|run/B-F-verdict-blocks/L2/all/TA/s0|run/B-F-rationale-natural/L2/all/TA/s0|run/B-F-rationale-balanced/L2/all/TA/s0|run/B-F-rationale-blocks/L2/all/TA/s0|run/B-F-summary2-natural/L2/all/TA/s0|run/B-F-summary2-balanced/L2/all/TA/s0|run/B-F-summary2-blocks/L2/all/TA/s0|run/B-F-ledger2-natural/L2/all/TA/s0|run/B-F-ledger2-balanced/L2/all/TA/s0|run/B-F-ledger2-blocks/L2/all/TA/s0|run/B-F-value2-natural/L2/all/TA/s0|run/B-F-value2-balanced/L2/all/TA/s0|run/B-F-value2-blocks/L2/all/TA/s0}\%) are of
 the size of the seed-to-seed variation of the block cells (s.d.\ \res{run/B-F-verdict-blocks/L2/all/TA/sd}--\res{run/B-F-ledger2-blocks/L2/all/TA/sd}),
 so we do not interpret them. \emph{Scale.} With the 4B model of the same
 family the verdict-only model trained on blocks reaches \res{run/B-BB-qwen3.5-4b-verdict-blocks/L2/all/TA}\%, against
 \res{run/B-F-verdict-blocks/L2/all/TA/s0}\% for the 9B model at the same seed; the other cells are not run, so we
 draw no conclusion about scale. \emph{Formal data.} Verdict only trained on
 FoVer's formal data solves \res{run/B-TR-fover/L2/all/TA}\% of L2 triplets, with base accuracy at
-chance (49.3\%). \emph{Other signals.} ThinkPRM-14B, a general verifier that
-reasons before it scores, solves \res{run/C-AUD-thinkprm/L2/all/TA}\% of 200 L2 triplets; a logistic model
+chance (\res{run/B-TR-fover/L2/all/BaseAcc/s0}\%). \emph{Other signals.} ThinkPRM-14B, a general verifier that
+reasons before it scores, solves \res{run/C-AUD-thinkprm/L2/all/TA}\% of \res{run/C-AUD-thinkprm/L2/all/n@int} L2 triplets; a logistic model
 on attribute-blind concept--value features solves \res{run/A-D14-attribute_blind/L2/all/TA}\%, and a frozen
 general-purpose clinical trigger tagger followed by the rule program
-77.7\%.
+\res{run/C-SC-gptrigger/L2/all/TA}\%.
 
 
 \begin{table}[!ht]
@@ -2124,29 +2124,29 @@ general-purpose clinical trigger tagger followed by the rule program
 \toprule
 Variant (rule triplets only, seed 0) & Rev & Hold & TA & XA\\
 \midrule
-\method{} (facts only)        & \res{run/B-F-ledger2-triplets/L2/all/Rev/s0} & 99.95 & \res{run/B-F-ledger2-triplets/L2/all/TA/s0} & 89.8\\
-\ \ + decision field          & \res{run/B-AB-decfield/L2/all/Rev/s0} & \res{run/B-AB-decfield/L2/all/Hold/s0} & \res{run/B-AB-decfield/L2/all/TA/s0} & 98.8\\
-\ \ decision field only       & \res{run/B-AB-bitonly-judge/L2/all/Rev/s0} & \res{run/B-AB-bitonly-judge/L2/all/Hold/s0} & \res{run/B-AB-bitonly-judge/L2/all/TA/s0} & 97.8\\
+\method{} (facts only)        & \res{run/B-F-ledger2-triplets/L2/all/Rev/s0} & 99.95 & \res{run/B-F-ledger2-triplets/L2/all/TA/s0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s0}\\
+\ \ + decision field          & \res{run/B-AB-decfield/L2/all/Rev/s0} & \res{run/B-AB-decfield/L2/all/Hold/s0} & \res{run/B-AB-decfield/L2/all/TA/s0} & \res{run/B-AB-decfield/xr_v1:test/xa/XA/s0}\\
+\ \ decision field only       & \res{run/B-AB-bitonly-judge/L2/all/Rev/s0} & \res{run/B-AB-bitonly-judge/L2/all/Hold/s0} & \res{run/B-AB-bitonly-judge/L2/all/TA/s0} & \res{run/B-AB-bitonly-judge/xr_v1:test/xa/XA/s0}\\
 \ \ program on predicted bit  & \res{run/B-AE-pred-bit-program/L2/all/Rev} & \res{run/B-AE-pred-bit-program/L2/all/Hold} & \res{run/B-AE-pred-bit-program/L2/all/TA} & --\\
-\ \ reader writes bit only    & 99.95 & \res{run/B-AB-bitonly-reader/L2/all/Hold/s0} & 99.95 & 97.8\\
-\ \ condition derived by the reader & \res{run/B-AB-conddrv/L2/all/Rev/s0} & \res{run/B-AB-conddrv/L2/all/Hold/s0} & \res{run/B-AB-conddrv/L2/all/TA/s0} & 86.5\\
-\ \ + verification pass       & \res{run/B-AB-verify/L2/all/Rev/s0} & \res{run/B-AB-verify/L2/all/Hold/s0} & \res{run/B-AB-verify/L2/all/TA/s0} & 91.5\\
+\ \ reader writes bit only    & 99.95 & \res{run/B-AB-bitonly-reader/L2/all/Hold/s0} & 99.95 & \res{run/B-AB-bitonly-reader/xr_v1:test/xa/XA/s0}\\
+\ \ condition derived by the reader & \res{run/B-AB-conddrv/L2/all/Rev/s0} & \res{run/B-AB-conddrv/L2/all/Hold/s0} & \res{run/B-AB-conddrv/L2/all/TA/s0} & \res{run/B-AB-conddrv/xr_v1:test/xa/XA/s0}\\
+\ \ + verification pass       & \res{run/B-AB-verify/L2/all/Rev/s0} & \res{run/B-AB-verify/L2/all/Hold/s0} & \res{run/B-AB-verify/L2/all/TA/s0} & \res{run/B-AB-verify/xr_v1:test/xa/XA/s0}\\
 \ \ program-supplied ledger   & \res{run/B-AE-oracle-ledger/L2/all/Rev} & 99.95 & \res{run/B-AE-oracle-ledger/L2/all/TA} & --\\
 \ \ program on predicted ledger & \res{run/B-AE-program-ledger/L2/all/Rev} & \res{run/B-AE-program-ledger/L2/all/Hold} & \res{run/B-AE-program-ledger/L2/all/TA} & --\\
-One-stage ledger (rationale)  & \res{run/B-F-rationale-triplets/L2/all/Rev/s0} & \res{run/B-F-rationale-triplets/L2/all/Hold/s0} & \res{run/B-F-rationale-triplets/L2/all/TA/s0} & 92.8\\
-Value ledger                  & \res{run/B-F-value2-triplets/L2/all/Rev/s0} & \res{run/B-F-value2-triplets/L2/all/Hold/s0} & \res{run/B-F-value2-triplets/L2/all/TA/s0} & 70.5\\
-Evidence summary (matched prose) & \res{run/B-F-summary2-triplets/L2/all/Rev/s0} & \res{run/B-F-summary2-triplets/L2/all/Hold/s0} & \res{run/B-F-summary2-triplets/L2/all/TA/s0} & 88.5\\
-\ \ judge also sees the case  & \res{run/B-SC-summary2-triplets/L2/all/Rev/s0} & \res{run/B-SC-summary2-triplets/L2/all/Hold/s0} & \res{run/B-SC-summary2-triplets/L2/all/TA/s0} & 91.5\\
-Concept scorer                & \res{run/B-AB-concept/L2/all/Rev/s0} & \res{run/B-AB-concept/L2/all/Hold/s0} & \res{run/B-AB-concept/L2/all/TA/s0} & 12.0\\
+One-stage ledger (rationale)  & \res{run/B-F-rationale-triplets/L2/all/Rev/s0} & \res{run/B-F-rationale-triplets/L2/all/Hold/s0} & \res{run/B-F-rationale-triplets/L2/all/TA/s0} & \res{run/B-F-rationale-triplets/xr_v1:test/xa/XA/s0}\\
+Value ledger                  & \res{run/B-F-value2-triplets/L2/all/Rev/s0} & \res{run/B-F-value2-triplets/L2/all/Hold/s0} & \res{run/B-F-value2-triplets/L2/all/TA/s0} & \res{run/B-F-value2-triplets/xr_v1:test/xa/XA/s0}\\
+Evidence summary (matched prose) & \res{run/B-F-summary2-triplets/L2/all/Rev/s0} & \res{run/B-F-summary2-triplets/L2/all/Hold/s0} & \res{run/B-F-summary2-triplets/L2/all/TA/s0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA/s0}\\
+\ \ judge also sees the case  & \res{run/B-SC-summary2-triplets/L2/all/Rev/s0} & \res{run/B-SC-summary2-triplets/L2/all/Hold/s0} & \res{run/B-SC-summary2-triplets/L2/all/TA/s0} & \res{run/B-SC-summary2-triplets/xr_v1:test/xa/XA/s0}\\
+Concept scorer                & \res{run/B-AB-concept/L2/all/Rev/s0} & \res{run/B-AB-concept/L2/all/Hold/s0} & \res{run/B-AB-concept/L2/all/TA/s0} & \res{run/B-AB-concept/xr_v1:test/xa/XA/s0}\\
 Premise gate                  & \res{run/B-AE-premise-gate/L2/all/Rev} & \res{run/B-AE-premise-gate/L2/all/Hold} & \res{run/B-AE-premise-gate/L2/all/TA} & --\\
-$-$ near-misses               & \res{run/B-F-ledger2-blocks/L2/all/Rev/s0} & \res{run/B-F-ledger2-blocks/L2/all/Hold/s0} & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & 76.0\\
-\ \ + probe re-weighting      & \res{run/B-AB-probe-rw/L2/all/Rev/s0} & \res{run/B-AB-probe-rw/L2/all/Hold/s0} & \res{run/B-AB-probe-rw/L2/all/TA/s0} & 25.8\\
-$-$ other-person near-misses  & \res{run/B-LOKO-subject-ledger2/L2/all/Rev/s0} & \res{run/B-LOKO-subject-ledger2/L2/all/Hold/s0} & \res{run/B-LOKO-subject-ledger2/L2/all/TA/s0} & 90.8\\
-$-$ past near-misses          & \res{run/B-LOKO-time-ledger2/L2/all/Rev/s0} & \res{run/B-LOKO-time-ledger2/L2/all/Hold/s0} & \res{run/B-LOKO-time-ledger2/L2/all/TA/s0} & 84.2\\
-$-$ threshold near-misses     & \res{run/B-LOKO-boundary-ledger2/L2/all/Rev/s0} & \res{run/B-LOKO-boundary-ledger2/L2/all/Hold/s0} & \res{run/B-LOKO-boundary-ledger2/L2/all/TA/s0} & 85.8\\
-$-$ presentation edits        & \res{run/B-AB-nopres/L2/all/Rev/s0} & \res{run/B-AB-nopres/L2/all/Hold/s0} & \res{run/B-AB-nopres/L2/all/TA/s0} & 90.0\\
-$-$ ledger resampling         & \res{run/B-AB-noresamp/L2/all/Rev/s0} & \res{run/B-AB-noresamp/L2/all/Hold/s0} & \res{run/B-AB-noresamp/L2/all/TA/s0} & 78.8\\
-Verdict only, pairwise loss   & \res{run/B-AB-pairwise/L2/all/Rev/s0} & \res{run/B-AB-pairwise/L2/all/Hold/s0} & \res{run/B-AB-pairwise/L2/all/TA/s0} & 92.5\\
+$-$ near-misses               & \res{run/B-F-ledger2-blocks/L2/all/Rev/s0} & \res{run/B-F-ledger2-blocks/L2/all/Hold/s0} & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & \res{run/B-F-ledger2-blocks/xr_v1:test/xa/XA/s0}\\
+\ \ + probe re-weighting      & \res{run/B-AB-probe-rw/L2/all/Rev/s0} & \res{run/B-AB-probe-rw/L2/all/Hold/s0} & \res{run/B-AB-probe-rw/L2/all/TA/s0} & \res{run/B-AB-probe-rw/xr_v1:test/xa/XA/s0}\\
+$-$ other-person near-misses  & \res{run/B-LOKO-subject-ledger2/L2/all/Rev/s0} & \res{run/B-LOKO-subject-ledger2/L2/all/Hold/s0} & \res{run/B-LOKO-subject-ledger2/L2/all/TA/s0} & \res{run/B-LOKO-subject-ledger2/xr_v1:test/xa/XA/s0}\\
+$-$ past near-misses          & \res{run/B-LOKO-time-ledger2/L2/all/Rev/s0} & \res{run/B-LOKO-time-ledger2/L2/all/Hold/s0} & \res{run/B-LOKO-time-ledger2/L2/all/TA/s0} & \res{run/B-LOKO-time-ledger2/xr_v1:test/xa/XA/s0}\\
+$-$ threshold near-misses     & \res{run/B-LOKO-boundary-ledger2/L2/all/Rev/s0} & \res{run/B-LOKO-boundary-ledger2/L2/all/Hold/s0} & \res{run/B-LOKO-boundary-ledger2/L2/all/TA/s0} & \res{run/B-LOKO-boundary-ledger2/xr_v1:test/xa/XA/s0}\\
+$-$ presentation edits        & \res{run/B-AB-nopres/L2/all/Rev/s0} & \res{run/B-AB-nopres/L2/all/Hold/s0} & \res{run/B-AB-nopres/L2/all/TA/s0} & \res{run/B-AB-nopres/xr_v1:test/xa/XA/s0}\\
+$-$ ledger resampling         & \res{run/B-AB-noresamp/L2/all/Rev/s0} & \res{run/B-AB-noresamp/L2/all/Hold/s0} & \res{run/B-AB-noresamp/L2/all/TA/s0} & \res{run/B-AB-noresamp/xr_v1:test/xa/XA/s0}\\
+Verdict only, pairwise loss   & \res{run/B-AB-pairwise/L2/all/Rev/s0} & \res{run/B-AB-pairwise/L2/all/Hold/s0} & \res{run/B-AB-pairwise/L2/all/TA/s0} & \res{run/B-AB-pairwise/xr_v1:test/xa/XA/s0}\\
 \bottomrule
 \end{tabular}}
 \caption{Ablations on L2 and on rule-side items (\%). Decision field: the
@@ -2165,9 +2165,9 @@ on; base--flip pairs whose preference shifts under near-miss and
 presentation edits are down-weighted, our adaptation of
 \citet{liu2026dynacf}. Rows that remove one near-miss kind show all L2
 triplets; Table~\ref{tab:loko} shows the removed kind. Paired differences
-to the first row: verification pass $+0.6$ $[0.1,1.2]$; bit-only reader
-$+0.8$ $[0.3,1.4]$; condition derived $-12.7$ $[-16.8,-8.9]$; pairwise loss
-$-7.8$ $[-12.3,-4.0]$; concept scorer $-72.5$ $[-76.0,-68.4]$.}
+to the first row: verification pass $+\res{d/run/B-AB-verify/L2/all/TA/s0|run/B-F-ledger2-triplets/L2/all/TA/s0}$ $[0.1,1.2]$; bit-only reader
+$+\res{d/run/B-AB-bitonly-reader/L2/all/TA/s0|run/B-F-ledger2-triplets/L2/all/TA/s0}$ $[0.3,1.4]$; condition derived $\res{d/run/B-AB-conddrv/L2/all/TA/s0|run/B-F-ledger2-triplets/L2/all/TA/s0}$ $[-16.8,-8.9]$; pairwise loss
+$\res{d/run/B-AB-pairwise/L2/all/TA/s0|run/B-F-ledger2-triplets/L2/all/TA/s0}$ $[-12.3,-4.0]$; concept scorer $\res{d/run/B-AB-concept/L2/all/TA/s0|run/B-F-ledger2-triplets/L2/all/TA/s0}$ $[-76.0,-68.4]$.}
 \label{tab:ablation}
 \end{table}
 
@@ -2179,20 +2179,20 @@ $-7.8$ $[-12.3,-4.0]$; concept scorer $-72.5$ $[-76.0,-68.4]$.}
 \toprule
 System & Dev & L0 & L1 & L2 & L3-inv & Hard & Re-apply & L3-alt\\
 \midrule
-Critic                    & 39.7 & 44.4 & 42.8 & 27.1 & 33.4 & 24.6 & 61.1 & 83.9\\
-Verdict only, blocks      & 67.3 & 68.8 & 73.8 & 58.2 & 62.9 & 59.1 & 77.7 & 94.6\\
-\method{}, blocks         & 70.3 & 73.5 & 78.2 & 75.3 & 70.1 & 76.4 & 76.0 & 85.3\\
-Verdict only, triplets    & 99.7 & 99.0 & 97.6 & 91.3 & 96.9 & 90.5 & 99.4 & 100.0\\
-Rationale, triplets       & 98.0 & 98.1 & 97.7 & 91.0 & 96.5 & 90.4 & 99.3 & 100.0\\
-Evidence summary, triplets$^{a}$ & 98.7 & 98.4 & 97.4 & 98.1 & 97.6 & 98.1 & 98.8 & 100.0\\
-\method{}, triplets       & 99.7 & 99.7 & 99.1 & 99.2 & 97.9 & 98.3 & 99.7 & 100.0\\
+Critic                    & \res{run/C-TF-critic/dev/all/TA} & \res{run/C-TF-critic/L0/all/TA} & \res{run/C-TF-critic/L1/all/TA} & \res{run/C-TF-critic/L2/all/TA} & \res{run/C-TF-critic/L3inv/all/TA} & \res{run/C-TF-critic/hard/all/TA} & \res{run/C-TF-critic/readapply/all/TA} & \res{run/C-TF-critic/L3alt/all/TA}\\
+Verdict only, blocks      & \res{run/B-F-verdict-blocks/dev/all/TA/s0} & \res{run/B-F-verdict-blocks/L0/all/TA/s0} & \res{run/B-F-verdict-blocks/L1/all/TA/s0} & \res{run/B-F-verdict-blocks/L2/all/TA/s0} & \res{run/B-F-verdict-blocks/L3inv/all/TA/s0} & \res{run/B-F-verdict-blocks/hard/all/TA/s0} & \res{run/B-F-verdict-blocks/readapply/all/TA/s0} & \res{run/B-F-verdict-blocks/L3alt/all/TA/s0}\\
+\method{}, blocks         & \res{run/B-F-ledger2-blocks/dev/all/TA/s0} & \res{run/B-F-ledger2-blocks/L0/all/TA/s0} & \res{run/B-F-ledger2-blocks/L1/all/TA/s0} & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & \res{run/B-F-ledger2-blocks/L3inv/all/TA/s0} & \res{run/B-F-ledger2-blocks/hard/all/TA/s0} & \res{run/B-F-ledger2-blocks/readapply/all/TA/s0} & \res{run/B-F-ledger2-blocks/L3alt/all/TA/s0}\\
+Verdict only, triplets    & \res{run/B-F-verdict-triplets/dev/all/TA/s0} & \res{run/B-F-verdict-triplets/L0/all/TA/s0} & \res{run/B-F-verdict-triplets/L1/all/TA/s0} & \res{run/B-F-verdict-triplets/L2/all/TA/s0} & \res{run/B-F-verdict-triplets/L3inv/all/TA/s0} & \res{run/B-F-verdict-triplets/hard/all/TA/s0} & \res{run/B-F-verdict-triplets/readapply/all/TA/s0} & \res{run/B-F-verdict-triplets/L3alt/all/TA/s0}\\
+Rationale, triplets       & \res{run/B-F-rationale-triplets/dev/all/TA/s0} & \res{run/B-F-rationale-triplets/L0/all/TA/s0} & \res{run/B-F-rationale-triplets/L1/all/TA/s0} & \res{run/B-F-rationale-triplets/L2/all/TA/s0} & \res{run/B-F-rationale-triplets/L3inv/all/TA/s0} & \res{run/B-F-rationale-triplets/hard/all/TA/s0} & \res{run/B-F-rationale-triplets/readapply/all/TA/s0} & \res{run/B-F-rationale-triplets/L3alt/all/TA/s0}\\
+Evidence summary, triplets$^{a}$ & \res{run/B-F-summary2-triplets/dev/all/TA/s1} & \res{run/B-F-summary2-triplets/L0/all/TA/s1} & \res{run/B-F-summary2-triplets/L1/all/TA/s1} & \res{run/B-F-summary2-triplets/L2/all/TA/s1} & \res{run/B-F-summary2-triplets/L3inv/all/TA/s1} & \res{run/B-F-summary2-triplets/hard/all/TA/s1} & \res{run/B-F-summary2-triplets/readapply/all/TA/s1} & \res{run/B-F-summary2-triplets/L3alt/all/TA/s1}\\
+\method{}, triplets       & \res{run/B-F-ledger2-triplets/dev/all/TA/s0} & \res{run/B-F-ledger2-triplets/L0/all/TA/s0} & \res{run/B-F-ledger2-triplets/L1/all/TA/s0} & \res{run/B-F-ledger2-triplets/L2/all/TA/s0} & \res{run/B-F-ledger2-triplets/L3inv/all/TA/s0} & \res{run/B-F-ledger2-triplets/hard/all/TA/s0} & \res{run/B-F-ledger2-triplets/readapply/all/TA/s0} & \res{run/B-F-ledger2-triplets/L3alt/all/TA/s0}\\
 \bottomrule
 \end{tabular}}
 \caption{Rule ladder (triplet accuracy, \%, seed 0; $^{a}$seed 1). Dev:
 trained rules, test wording; L3-inv: invented rules; Hard: L2 rules with long
 notes and superseded values; Re-apply: reading and application pairs;
 L3-alt: altered thresholds, which the untrained backbone already solves in
-83.9\% of cases (Appendix~\ref{app:rules}).}
+\res{run/C-TF-critic/L3alt/all/TA}\% of cases (Appendix~\ref{app:rules}).}
 \label{tab:ladder}
 \end{table}
 
@@ -2214,12 +2214,12 @@ Evidence summary, triplets & \res{run/B-F-summary2-triplets/L2/all/TA/s0} & \res
 \method{}, blocks & \res{run/B-F-ledger2-blocks/L2/all/TA/s0} & \res{run/B-F-ledger2-blocks/L2/all/TA/s1} & \res{run/B-F-ledger2-blocks/L2/all/TA/s2} & \res{run/B-F-ledger2-blocks/L2/all/TA/s3} & \res{run/B-F-ledger2-blocks/L2/all/TA/s4} & \res{run/B-F-ledger2-blocks/L2/all/TA} (\res{run/B-F-ledger2-blocks/L2/all/TA/sd})\\
 \method{}, triplets & \res{run/B-F-ledger2-triplets/L2/all/TA/s0} & \res{run/B-F-ledger2-triplets/L2/all/TA/s1} & \res{run/B-F-ledger2-triplets/L2/all/TA/s2} & \res{run/B-F-ledger2-triplets/L2/all/TA/s3} & \res{run/B-F-ledger2-triplets/L2/all/TA/s4} & \res{run/B-F-ledger2-triplets/L2/all/TA} (\res{run/B-F-ledger2-triplets/L2/all/TA/sd})\\
 \multicolumn{7}{@{}l}{\emph{Crossed accuracy on rule-side items}}\\
-Verdict only, blocks & 60.8 & 47.2 & 66.2 & 40.2 & 37.8 & \\
-Verdict only, triplets & 90.2 & 91.2 & 90.0 & 87.2 & 85.5 & \\
-Evidence summary, blocks & 80.2 & 51.0 & 62.5 & 35.8 & \res{run/B-F-summary2-blocks/xr_v1:test/xa/XA/s4} & \\
-Evidence summary, triplets & 88.5 & 92.5 & 90.2 & 89.2 & 91.8 & \\
-\method{}, blocks & 76.0 & 37.8 & 71.0 & 44.5 & 82.2 & \\
-\method{}, triplets & 89.8 & 88.8 & 91.5 & 94.0 & 85.0 & \\
+Verdict only, blocks & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA/s0} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA/s1} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA/s2} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA/s3} & \res{run/B-F-verdict-blocks/xr_v1:test/xa/XA/s4} & \\
+Verdict only, triplets & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA/s0} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA/s1} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA/s2} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA/s3} & \res{run/B-F-verdict-triplets/xr_v1:test/xa/XA/s4} & \\
+Evidence summary, blocks & \res{run/B-F-summary2-blocks/xr_v1:test/xa/XA/s0} & \res{run/B-F-summary2-blocks/xr_v1:test/xa/XA/s1} & \res{run/B-F-summary2-blocks/xr_v1:test/xa/XA/s2} & \res{run/B-F-summary2-blocks/xr_v1:test/xa/XA/s3} & \res{run/B-F-summary2-blocks/xr_v1:test/xa/XA/s4} & \\
+Evidence summary, triplets & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA/s0} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA/s1} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA/s2} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA/s3} & \res{run/B-F-summary2-triplets/xr_v1:test/xa/XA/s4} & \\
+\method{}, blocks & \res{run/B-F-ledger2-blocks/xr_v1:test/xa/XA/s0} & \res{run/B-F-ledger2-blocks/xr_v1:test/xa/XA/s1} & \res{run/B-F-ledger2-blocks/xr_v1:test/xa/XA/s2} & \res{run/B-F-ledger2-blocks/xr_v1:test/xa/XA/s3} & \res{run/B-F-ledger2-blocks/xr_v1:test/xa/XA/s4} & \\
+\method{}, triplets & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s0} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s1} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s2} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s3} & \res{run/B-F-ledger2-triplets/xr_v1:test/xa/XA/s4} & \\
 \bottomrule
 \end{tabular}}
 \caption{Seeds (\%). The pooled 95\% interval of \method{} trained on
@@ -2264,7 +2264,7 @@ whereas at test time the judge reads generated ones; the program-supplied
 ledger analysis measures that gap.
 
 \paragraph{Training.}
-LoRA rank \res{meta/B-F-ledger2-triplets/train.hp.lora_r@0}, batch size 64, one epoch over 60{,}000 records, learning rate
+LoRA rank \res{meta/B-F-ledger2-triplets/train.hp.lora_r@0}, batch size \res{json/results_git/B-F-ledger2-triplets-s0/meta.json::train.hp.batch@int}, one epoch over \res{json/results_git/B-F-ledger2-triplets-s0/meta.json::train.examples@int} records, learning rate
 \ph{1e-4}, $\lambda=\ph{1.0}$, donor probability $p=0.3$ (a donor's ledger
 in 30.2\% of judge examples). The two loss terms are separate supervised
 examples in one corpus: one reader example per case and condition, shared by
@@ -2275,11 +2275,11 @@ GPU-hours and a two-stage run about 2.8, including evaluation. Unique cases,
 reader and judge targets, tokens and optimiser steps per configuration are
 \tbd; equal record counts do not by themselves mean equal supervision.
 Scores from the served model used for selection agree in sign with those of
-the training framework on 99.96\% of 8{,}000 preferences.
+the training framework on \res{json/results/D-VAL-ledger2-triplets-s0/summary.json::preference_sign_agreement@pct2}\% of \res{json/results/D-VAL-ledger2-triplets-s0/summary.json::n_preferences@int} preferences.
 
 \paragraph{Policy training.}
 GRPO from a Qwen3.5-4B policy on rule tasks from training rules, \res{meta/D-RL-outcome/steps@int}
-steps, evaluated every 200 steps and at the end on 150 held-out
+steps, evaluated every 200 steps and at the end on \res{run/D-RL-outcome/L2/top/n_triplets/s0@int} held-out
 L2 pairs with the rule program. Outcome reward: pair accuracy \res{run/D-RL-outcome/L2/top/start_pair/s0}\% to
 \res{run/D-RL-outcome/L2/top/acc_pair/s0}\%, triplet accuracy \res{run/D-RL-outcome/L2/top/start_triplet/s0}\% to \res{run/D-RL-outcome/L2/top/acc_triplet/s0}\%. Reference-graph reward: \res{run/D-RL-refgraph/L2/top/start_pair/s0}\% to
 \res{run/D-RL-refgraph/L2/top/acc_pair/s0}\% and \res{run/D-RL-refgraph/L2/top/start_triplet/s0}\% to \res{run/D-RL-refgraph/L2/top/acc_triplet/s0}\%. Med-PRM as reward: \res{run/D-RL-stepcheck/L2/top/start_pair/s0}\% to \res{run/D-RL-stepcheck/L2/top/acc_pair/s0}\% and \res{run/D-RL-stepcheck/L2/top/start_triplet/s0}\%
@@ -2323,9 +2323,9 @@ Combined (minimum)     & \res{run/D-SEL-combined/sel:medqa/top/acc} & \res{run/D
 Oracle selection       & \res{run/D-SEL-oracle/sel:medqa/top/acc} & \res{run/D-SEL-oracle/sel:careqa/top/acc} & \res{run/D-SEL-oracle/sel:keypairs/top/pair_acc} & \res{run/D-SEL-oracle/sel:medeinst/top/pair_acc} & \res{run/D-SEL-oracle/sel:medeinst/top/control_acc} & \res{run/D-SEL-oracle/sel:medeinst/top/trap_acc}\\
 \bottomrule
 \end{tabular}
-\caption{Reranking 16 samples of a frozen policy (\bb) on
-identical pools (\%): 1{,}273 MedQA and 1{,}000 CareQA questions, 357 key
-pairs, 500 MedEinst pairs. Step check: Med-PRM. Ledger score: \method{}
+\caption{Reranking \res{run/D-SEL-combined/sel:medqa/top/N@int} samples of a frozen policy (\bb) on
+identical pools (\%): \res{run/D-SEL-combined/sel:medqa/top/n@int} MedQA and \res{run/D-SEL-combined/sel:careqa/top/n@int} CareQA questions, \res{run/D-SEL-combined/sel:keypairs/top/n_pairs@int} key
+pairs, \res{run/D-SEL-combined/sel:medeinst/top/n_pairs@int} MedEinst pairs. Step check: Med-PRM. Ledger score: \method{}
 trained on rule triplets. Bold: best selector per column. $^{a}$The two
 swapped rows coincide because the minimum is then the step check's score: with
 a swapped vignette the calibrated ledger score is the smaller one in
@@ -2342,7 +2342,7 @@ is $\res{cmp/sel-mqa-comb-step/diff}$ points on MedQA $[\res{cmp/sel-mqa-comb-st
 $\res{cmp/sel-key-comb-step/diff}$ on key pairs $[\res{cmp/sel-key-comb-step/lo},\res{cmp/sel-key-comb-step/hi}]$ and $\res{cmp/sel-me-comb-step/diff}$ on MedEinst pairs $[\res{cmp/sel-me-comb-step/lo},\res{cmp/sel-me-comb-step/hi}]$.
 Training the ledger with or without near-misses makes no difference here
 ($+\res{cmp/sel-mqa-comb-nonear/diff}$ $[\res{cmp/sel-mqa-comb-nonear/lo},\res{cmp/sel-mqa-comb-nonear/hi}]$ on MedQA). The ledger score alone gives the highest
-pair accuracy on MedEinst (26.2\% against 22.0\% for a single sample); no
+pair accuracy on MedEinst (\res{run/D-SEL-ledger/sel:medeinst/top/pair_acc}\% against \res{run/D-SEL-single/sel:medeinst/top/pair_acc}\% for a single sample); no
 paired test of that difference was planned, and we do not interpret it. The
 minimum of two calibrated scores is a heuristic: it is an upper bound on the
 joint probability, not that probability, and scaling each score separately
@@ -2350,11 +2350,11 @@ does not account for dependence between the two checks.
 Pools hold 16 samples per question from the frozen policy; a trace is
 eligible if it contains a final answer (96.6\% of MedQA samples). Platt
 scaling and the logistic combination are fitted on a MedQA development pool
-of 359 questions from which key-pair questions are removed. There the AUC of
-the trace score for answer correctness is 0.654 for Med-PRM, 0.510 for
-\method{} trained on triplets and 0.479 trained on blocks, and the
-calibration slope of the ledger score is 0.006 against 0.66 for Med-PRM. On
-150 key pairs with nested pools of 1, 16 and 64 samples, pair accuracy is
+of \res{json/results_git/D-CAL/summary.json::n_questions@int} questions from which key-pair questions are removed. There the AUC of
+the trace score for answer correctness is \res{json/results_git/D-CAL/summary.json::auc.medprm@3} for Med-PRM, \res{json/results_git/D-CAL/summary.json::auc.ledger2-triplets@3} for
+\method{} trained on triplets and \res{json/results_git/D-CAL/summary.json::auc.ledger2-blocks@3} trained on blocks, and the
+calibration slope of the ledger score is \res{json/results_git/D-CAL/summary.json::platt.ledger2-triplets.0@3} against \res{json/results_git/D-CAL/summary.json::platt.medprm.0@2} for Med-PRM. On
+\res{run/D-SELN/sel:keypairs/top/n_pairs@int} key pairs with nested pools of 1, 16 and 64 samples, pair accuracy is
 \res{run/D-SELN/sel:keypairs/selector=combined/N1}, \res{run/D-SELN/sel:keypairs/selector=combined/N16} and \res{run/D-SELN/sel:keypairs/selector=combined/N64} for the combined score; \res{run/D-SELN/sel:keypairs/selector=stepcheck/N1}, \res{run/D-SELN/sel:keypairs/selector=stepcheck/N16} and \res{run/D-SELN/sel:keypairs/selector=stepcheck/N64} for the
 step check; \res{run/D-SELN/sel:keypairs/selector=ledger/N1}, \res{run/D-SELN/sel:keypairs/selector=ledger/N16} and \res{run/D-SELN/sel:keypairs/selector=ledger/N64} for the ledger score; \res{run/D-SELN/sel:keypairs/selector=selfcons/N1}, \res{run/D-SELN/sel:keypairs/selector=selfcons/N16} and \res{run/D-SELN/sel:keypairs/selector=selfcons/N64}
 for self-consistency; and \res{run/D-SELN/sel:keypairs/selector=oracle/N1}, \res{run/D-SELN/sel:keypairs/selector=oracle/N16} and \res{run/D-SELN/sel:keypairs/selector=oracle/N64} for the oracle. The curve
@@ -2484,7 +2484,7 @@ cited a pilot result for which no record exists, and it is removed.]}
 
 \paragraph{What the frozen generator changed.}
 \texttt{rule\_v1} holds out signature classes, templates and cue phrases;
-contains rules under which past or family findings count (30.5\% of
+contains rules under which past or family findings count (\res{stats/library_semantics.criteria_past_or_family_pct}\% of
 criteria), so that ``past or family means ignore'' is not a sufficient
 strategy; adds presentation edits and missing inputs to every corpus; and
 was frozen before the runs reported here. Before the freeze, a dry run of
