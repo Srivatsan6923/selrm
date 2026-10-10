@@ -1,0 +1,5 @@
+2026-10-08T23:41:02Z eval only: base /work/models/unsloth--Qwen3.5-9B, adapter /pvc/selrm/adapters/B-TR-clinonly-s0
+2026-10-08T23:41:03Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0304)
+2026-10-08T23:41:04Z padding self-check: max |u_batch - u_single| = 0.1156 (tol 0.592) -> left padding
+2026-10-08T23:44:59Z B-NS-L3inv-B-TR-clinonly-s0 rule_v1/test_L3inv: TA 51.7 Rev 75.9 Hold 65.4 n=1000 (236.2 s)
+2026-10-08T23:45:00Z DONE B-NS-L3inv-B-TR-clinonly-s0 in 4.3 min, GPU util mean 82.4

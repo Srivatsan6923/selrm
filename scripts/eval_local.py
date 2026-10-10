@@ -12,11 +12,13 @@ two-stage  greedy-generate the reader output once per (case, condition); malform
            ledger -> u = -20 for both claims; else judge forward pass per record.
 Batches are padded on the left; a self-check compares batched and single-prompt
 scores and falls back to exact-length buckets (no padding) if they disagree."""
-import argparse, json, os, sys, time
+import argparse, collections, json, os, sys, time
 import numpy as np
 import torch
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from selrm.formats import (MALFORMED_U, PROSE, TWO_STAGE, judge_for, dataset_path, gold_record, judge_view, read_bit,
+from selrm.crit_parse import parse_criterion
+from selrm.gate import gate
+from selrm.formats import (BITS, MALFORMED_U, PROSE, TWO_STAGE, parse_entries, judge_for, dataset_path, gold_record, judge_view, read_bit,
                            reader_unit, reader_units, unit_key, well_formed)
 from selrm.metrics import bootstrap_ci, cluster_bootstrap, crossed_accuracy, decisions, summarise
 from selrm.prompts import judge_prompt, ledger_to_text
@@ -26,7 +28,7 @@ KIND = {"verdict": "verdict", "verdict_bt": "verdict", "rationale": "rationale",
         "dec_judge": "reader_ledger", "bit_reader": "reader_ledger", "ledger2_verify": "reader_ledger",
         "genprm": "genprm", "conddrv": "reader_derive", "ledger2_case": "reader_ledger"}
 PROGRAM_U = 10.0            # |u| when the rule program decides from the predicted bit
-MODES = (None, "oracle_ledger", "program_bit", "ledger_swap", "verify", "ledger_edit")
+MODES = (None, "oracle_ledger", "program_bit", "ledger_swap", "verify", "ledger_edit", "gate", "gate_struct")
 # Executes generated checks one per stdin line (JSON string) in a separate interpreter: no imports
 # (restricted builtins, so no network or files), 2 s per check; prints the last printed line or "error".
 CHECK_HARNESS = r'''
@@ -289,8 +291,15 @@ def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="u
         if mode == "verify":
             extra_v = verification_pass(sc, units, seqs, text, fmt)
         u = np.full(len(recs), MALFORMED_U)
+        routed = gate_units(units, text, fmt, mode) if mode in ("gate", "gate_struct") else None
         if mode == "program_bit":
             u = np.array([program_u(r, *text[reader_unit(r, fmt)]) for r in recs])
+        elif routed:
+            idx = [i for i, r in enumerate(recs) if "record" in routed[reader_unit(r, fmt)]]
+            if idx:
+                gs = [routed[reader_unit(recs[i], fmt)] for i in idx]
+                u[idx] = sc.score(chat_ids(sc.tok, [judge_for(recs[i], g["record"], "ledger2_case" if g["route"] == "judge_case"
+                                                              else fmt) for i, g in zip(idx, gs)]))
         else:
             idx = [i for i, r in enumerate(recs) if text[reader_unit(r, fmt)][1]]
             if idx:
@@ -302,6 +311,13 @@ def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="u
                  "malformed_rate": round(bad / max(1, len(units)), 4), "gen_not_stopped": sum(not d for d in done)}
         if mode == "verify":
             extra |= extra_v
+        if routed:
+            for row, r in zip(rows, recs):
+                row |= {k: v for k, v in routed[reader_unit(r, fmt)].items() if k != "record"}
+            g = list(routed.values())
+            extra |= {"routes": dict(collections.Counter(x["route"] for x in g)),
+                      "gate_coverage": round(sum(x["route"] == "gate" for x in g) / max(1, len(g)), 4),
+                      "bit_changed": sum(x["route"] == "gate" and x["applies_gate"] != x["applies_reader"] for x in g)}
     os.makedirs(out_dir, exist_ok=True)
     with open(f"{out_dir}/scores_{set_name.replace('/', '~')}.jsonl", "w", encoding="utf-8") as f:
         for row in rows:
@@ -313,6 +329,30 @@ def evaluate(sc: Scorer, root, run_id, fmt, set_name, out_dir, log=print, tag="u
     log(f"{run_id} {set_name}: TA {a.get('TA', float('nan')):.1f} Rev {a.get('Rev', float('nan')):.1f} "
         f"Hold {a.get('Hold', float('nan')):.1f} n={a.get('n')} ({summ['eval']['seconds']} s)")
     return summ
+
+
+def gate_units(units, text, fmt, mode):
+    """Ledger-RM-G routing per reader unit (STAGE2_SPEC 7) for formats whose record ends in a decision line.
+    -> {unit: {"route", "checks", "applies_reader", "applies_gate", "record"}}. route: fallback_none (no criterion
+    text) and fallback_malformed carry no "record" (their u stays MALFORMED_U; the composite takes the verdict-only
+    score); gate = the gate's bit replaces the reader's and the judge reads the record only; judge_case = some check
+    is not computable, the reader's bit stands and the judge also sees the case. gate_struct takes the constraints
+    from the record's `struct` instead of the parser."""
+    assert fmt in ("ledger2_dec",), fmt
+    out = {}
+    for r in units:
+        rec_text, ok = text[reader_unit(r, fmt)]
+        if not r["rule_text"] or not ok:
+            out[reader_unit(r, fmt)] = {"route": "fallback_malformed" if r["rule_text"] else "fallback_none"}
+            continue
+        head, _, last = rec_text.strip().rpartition("\n\n")
+        cons = r.get("struct") if mode == "gate_struct" else parse_criterion(r["rule_text"], r["condition"])
+        g = gate(parse_entries(head), cons, r["case_text"], r.get("ref_date"))   # ponytail: no onto yet (onto_v1 from A)
+        done = g["applies"] is not None
+        out[reader_unit(r, fmt)] = {"route": "gate" if done else "judge_case", "checks": g["checks"],
+                                    "applies_reader": read_bit(rec_text), "applies_gate": g["applies"],
+                                    "record": head + "\n\n" + BITS[g["applies"]] if done else rec_text.strip()}
+    return out
 
 
 def verification_pass(sc, units, seqs, text, fmt):

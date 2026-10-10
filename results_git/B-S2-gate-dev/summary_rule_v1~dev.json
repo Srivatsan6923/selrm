@@ -1,5 +1,6 @@
 {
  "set": "rule_v1/dev",
+ "records": "gold",
  "units": 1200,
  "parsed": 1200,
  "computed": 1200,

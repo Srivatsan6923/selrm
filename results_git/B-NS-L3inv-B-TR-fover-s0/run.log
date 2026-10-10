@@ -1,0 +1,5 @@
+2026-10-08T23:42:37Z eval only: base /work/models/unsloth--Qwen3.5-9B, adapter /pvc/selrm/adapters/B-TR-fover-s0
+2026-10-08T23:42:40Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0472)
+2026-10-08T23:42:41Z padding self-check: max |u_batch - u_single| = 0.0628 (tol 0.643) -> left padding
+2026-10-08T23:45:59Z B-NS-L3inv-B-TR-fover-s0 rule_v1/test_L3inv: TA 53.0 Rev 65.4 Hold 57.9 n=1000 (200.9 s)
+2026-10-08T23:46:00Z DONE B-NS-L3inv-B-TR-fover-s0 in 3.7 min, GPU util mean 85.7
