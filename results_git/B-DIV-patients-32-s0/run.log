@@ -1,0 +1,19 @@
+2026-10-10T15:51:04Z step 10/118 loss=0.9261 grad_norm=0.9282 learning_rate=9.953e-05 epoch=0.08529
+2026-10-10T15:51:37Z step 20/118 loss=0.04064 grad_norm=1.563 learning_rate=9.579e-05 epoch=0.1706
+2026-10-10T15:52:10Z step 30/118 loss=0.007282 grad_norm=0.8809 learning_rate=8.86e-05 epoch=0.2559
+2026-10-10T15:52:42Z step 40/118 loss=0.006294 grad_norm=0.005333 learning_rate=7.849e-05 epoch=0.3412
+2026-10-10T15:53:15Z step 50/118 loss=0.001119 grad_norm=0.003991 learning_rate=6.623e-05 epoch=0.4264
+2026-10-10T15:53:48Z step 60/118 loss=0.001885 grad_norm=0.04025 learning_rate=5.275e-05 epoch=0.5117
+2026-10-10T15:54:20Z step 70/118 loss=0.0003128 grad_norm=0.1235 learning_rate=3.907e-05 epoch=0.597
+2026-10-10T15:54:53Z step 80/118 loss=0.0001706 grad_norm=0.003367 learning_rate=2.62e-05 epoch=0.6823
+2026-10-10T15:55:25Z step 90/118 loss=0.0001773 grad_norm=0.01957 learning_rate=1.514e-05 epoch=0.7676
+2026-10-10T15:55:58Z step 100/118 loss=6.801e-05 grad_norm=0.01002 learning_rate=6.699e-06 epoch=0.8529
+2026-10-10T15:56:30Z step 110/118 loss=8.468e-05 grad_norm=0.001611 learning_rate=1.53e-06 epoch=0.9382
+2026-10-10T15:56:55Z step 118/118 train_runtime=382.8 train_samples_per_second=19.59 train_steps_per_second=0.308 total_flos=1.427e+17 train_loss=0.0834 epoch=1
+2026-10-10T15:57:35Z trained 118 steps in 6.4 min, 3837.0 tok/s, peak 32.36 GB
+2026-10-10T15:57:37Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0362)
+2026-10-10T15:57:38Z padding self-check: max |u_batch - u_single| = 0.0715 (tol 0.618) -> left padding
+2026-10-10T15:58:50Z B-DIV-patients-32-s0 rule_v1/dev: TA 97.3 Rev 97.3 Hold 100.0 n=300 (73.9 s)
+2026-10-10T16:02:00Z generate: batch 25/32, 226966 tokens, 1207 tok/s
+2026-10-10T16:06:45Z B-DIV-patients-32-s0 rule_v1/test_L2: TA 90.7 Rev 90.8 Hold 99.8 n=2000 (473.6 s)
+2026-10-10T16:06:46Z DONE B-DIV-patients-32-s0 in 16.7 min, GPU util mean 81.6

@@ -1,0 +1,9 @@
+{
+ "run_id": "B-S2-rule_v2.test_L2-ledger_rm_g-gate-s1",
+ "system": "ledger_rm_g_s1",
+ "variant": "gate",
+ "seed": 1,
+ "reader": "B-V2-reader-triplets-s1",
+ "fallback": "B-V2-verdict-triplets-s1",
+ "set": "rule_v2/test_L2"
+}

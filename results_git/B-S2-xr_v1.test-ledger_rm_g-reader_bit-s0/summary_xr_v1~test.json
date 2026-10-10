@@ -1,0 +1,45 @@
+{
+ "run_id": "B-S2-xr_v1.test-ledger_rm_g-reader_bit-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 98.75,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 99.79166666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 100.0,
+   "XA_window": 95.0
+  },
+  "criterion": {
+   "XA": 98.75,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 99.79166666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 100.0,
+   "XA_window": 95.0
+  }
+ },
+ "eval": {
+  "routes": {
+   "reader_bit": 9510,
+   "fallback_malformed": 90
+  },
+  "fallback_rate": 0.0094,
+  "gate_coverage": 0.0,
+  "malformed_rate": 0.0094
+ }
+}

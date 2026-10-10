@@ -1,0 +1,183 @@
+{
+ "run_id": "B-DIV-new-32-s0",
+ "model": "unsloth/Qwen3.5-9B",
+ "model_revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+ "provider": "local (NRP Nautilus)",
+ "access_date": "2026-10-10",
+ "reasoning": "chat template with enable_thinking=False",
+ "format": "ledger2",
+ "corpus": "rule_v1/div_new_32",
+ "seed": 0,
+ "provisional": false,
+ "timing_only": false,
+ "eval_sets": [
+  "rule_v1/dev",
+  "rule_v1/test_L2"
+ ],
+ "train_key": "ledger2__rule_v1~div_new_32__nall__p0.3__c0__L1024__v2",
+ "pretok_stats": {
+  "n": 7510,
+  "reader": 3756,
+  "judge": 3754,
+  "pairs_swapped": 571,
+  "unique_judge_pairs": 1660,
+  "reader_units": 1965,
+  "judge_pairs_available": 3755,
+  "resample_groups": 96,
+  "label1": 1611,
+  "key": "ledger2__rule_v1~div_new_32__nall__p0.3__c0__L1024__v2",
+  "tokenizer": "unsloth--Qwen3.5-9B",
+  "vocab": 248077,
+  "spec": {
+   "format": "ledger2",
+   "corpus": "rule_v1/div_new_32",
+   "n_examples": null,
+   "resample_p": null,
+   "construction_seed": null
+  },
+  "dropped_over_max_len": 0,
+  "max_len": 1024,
+  "examples": 7510,
+  "tokens": 1572588,
+  "len_mean": 209.39920106524633,
+  "len_max": 515,
+  "completion_tokens": 134781,
+  "end_of_turn": "<|im_end|>",
+  "parts": {
+   "judge": 3754,
+   "reader": 3756
+  }
+ },
+ "train": {
+  "key": {
+   "train_data": "/pvc/selrm/tok/unsloth--Qwen3.5-9B/train/ledger2__rule_v1~div_new_32__nall__p0.3__c0__L1024__v2/train.npz",
+   "base": "unsloth--Qwen3.5-9B",
+   "seed": 0,
+   "max_steps": null,
+   "hp": {
+    "lr": 0.0001,
+    "batch": 64,
+    "epochs": 1,
+    "max_len": 1024,
+    "lora_r": 64,
+    "lora_alpha": 64,
+    "lora_dropout": 0.0,
+    "warmup_ratio": 0.03,
+    "weight_decay": 0.0,
+    "optim": "adamw_torch_fused",
+    "max_grad_norm": 1.0,
+    "target_modules": [
+     "q_proj",
+     "k_proj",
+     "v_proj",
+     "o_proj",
+     "gate_proj",
+     "up_proj",
+     "down_proj"
+    ]
+   }
+  },
+  "train_seconds": 453.3,
+  "steps": 118,
+  "steps_this_attempt": 118,
+  "resumed_from": null,
+  "examples": 7510,
+  "train_loss": 0.09045232207340709,
+  "tokens": 1572588,
+  "tokens_per_s": 3488.3,
+  "s_per_step": 3.842,
+  "peak_mem_gb": 33.4,
+  "peak_mem_allocated_gb": 32.9,
+  "trainable_params": 116391936,
+  "lora_modules": 128,
+  "dtype": "torch.bfloat16",
+  "hp": {
+   "lr": 0.0001,
+   "batch": 64,
+   "per_device": 16,
+   "epochs": 1,
+   "max_len": 1024,
+   "lora_r": 64,
+   "lora_alpha": 64,
+   "lora_dropout": 0.0,
+   "warmup_ratio": 0.03,
+   "weight_decay": 0.0,
+   "optim": "adamw_torch_fused",
+   "max_grad_norm": 1.0,
+   "save_every_s": 1200,
+   "target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj"
+   ]
+  },
+  "grad_accum": 4
+ },
+ "eval_seconds": 506.5,
+ "eval_seconds_by_set": {
+  "rule_v1/dev": 64.2,
+  "rule_v1/test_L2": 426.6
+ },
+ "eval_batch": {
+  "score": 128,
+  "generate": 256,
+  "max_new": 384
+ },
+ "eval_peak_mem_gb": 47.27,
+ "eval_generated_tokens": 322732,
+ "pad_check_ok": true,
+ "per_device_batch": 16,
+ "grad_accum": 4,
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA H100 80GB HBM3, 615.71.09, 81559 MiB",
+ "node": "exp-19-09.sdsc.optiputer.net",
+ "pod": "selrm-b-run-all-h100-opp-15239-0-bqfzk",
+ "git_commit": "9cf63f33dd58",
+ "wall_seconds": 1045.8,
+ "keep_adapter": false,
+ "max_rss_gb": 11.96,
+ "eval_u_path": "fp32-hidden",
+ "adapter_path": null,
+ "summaries": {
+  "rule_v1/dev": {
+   "Rev": 99.0,
+   "Hold": 99.0,
+   "TA": 98.0,
+   "BaseAcc": 99.0,
+   "Tie": 0.0,
+   "PresHold": 98.66666666666667,
+   "n": 300
+  },
+  "rule_v1/test_L2": {
+   "Rev": 97.1,
+   "Hold": 99.6,
+   "TA": 96.7,
+   "BaseAcc": 97.45,
+   "Tie": 0.05,
+   "PresHold": 97.5,
+   "n": 2000
+  }
+ },
+ "gpu_util_mean": 77.7,
+ "gpu_util_p10": 0.0,
+ "gpu_windows_below40": 0.0,
+ "gpu_samples": 27,
+ "gpu_hours": 0.29
+}

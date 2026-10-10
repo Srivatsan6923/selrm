@@ -1,0 +1,46 @@
+{
+ "run_id": "B-V2-reader-triplets-s4",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 98.75,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 99.75,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 100.0,
+   "XA_window": 95.0
+  },
+  "criterion": {
+   "XA": 98.75,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 99.75,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 100.0,
+   "XA_window": 95.0
+  }
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 177.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

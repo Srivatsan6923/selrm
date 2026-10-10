@@ -1,0 +1,45 @@
+{
+ "run_id": "B-S2-xr_v1.test-ledger_rm_g-gate_struct-s1",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 99.5,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 99.91666666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 100.0,
+   "XA_window": 98.0
+  },
+  "criterion": {
+   "XA": 99.5,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 99.91666666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 100.0,
+   "XA_window": 98.0
+  }
+ },
+ "eval": {
+  "routes": {
+   "judge_case": 9592,
+   "fallback_malformed": 8
+  },
+  "fallback_rate": 0.0008,
+  "gate_coverage": 0.0,
+  "malformed_rate": 0.0008
+ }
+}

@@ -1,0 +1,32 @@
+2026-10-10T16:09:13Z step 10/231 loss=1.142 grad_norm=1.365 learning_rate=9.998e-05 epoch=0.04334
+2026-10-10T16:11:18Z step 20/231 loss=0.02896 grad_norm=0.4697 learning_rate=9.929e-05 epoch=0.08667
+2026-10-10T16:13:31Z step 30/231 loss=0.01817 grad_norm=0.0842 learning_rate=9.764e-05 epoch=0.13
+2026-10-10T16:15:37Z step 40/231 loss=0.002149 grad_norm=0.05309 learning_rate=9.505e-05 epoch=0.1733
+2026-10-10T16:17:46Z step 50/231 loss=0.001249 grad_norm=0.007946 learning_rate=9.157e-05 epoch=0.2167
+2026-10-10T16:19:50Z step 60/231 loss=0.0001674 grad_norm=0.0009208 learning_rate=8.728e-05 epoch=0.26
+2026-10-10T16:22:01Z step 70/231 loss=9.383e-05 grad_norm=0.1397 learning_rate=8.226e-05 epoch=0.3034
+2026-10-10T16:24:04Z step 80/231 loss=7.505e-05 grad_norm=0.002827 learning_rate=7.66e-05 epoch=0.3467
+2026-10-10T16:26:11Z step 90/231 loss=0.000486 grad_norm=0.01259 learning_rate=7.042e-05 epoch=0.39
+2026-10-10T16:30:26Z step 100/231 loss=0.0001063 grad_norm=0.005416 learning_rate=6.384e-05 epoch=0.4334
+2026-10-10T16:32:33Z step 110/231 loss=0.00647 grad_norm=0.2729 learning_rate=5.699e-05 epoch=0.4767
+2026-10-10T16:34:36Z step 120/231 loss=0.0001798 grad_norm=0.009279 learning_rate=5e-05 epoch=0.52
+2026-10-10T16:36:44Z step 130/231 loss=0.001407 grad_norm=0.02017 learning_rate=4.301e-05 epoch=0.5634
+2026-10-10T16:38:53Z step 140/231 loss=0.0002601 grad_norm=0.0132 learning_rate=3.616e-05 epoch=0.6067
+2026-10-10T16:41:02Z step 150/231 loss=8.931e-05 grad_norm=0.01376 learning_rate=2.958e-05 epoch=0.6501
+2026-10-10T16:43:05Z step 160/231 loss=0.0001227 grad_norm=0.0002467 learning_rate=2.34e-05 epoch=0.6934
+2026-10-10T16:45:12Z step 170/231 loss=2.899e-05 grad_norm=0.001006 learning_rate=1.774e-05 epoch=0.7367
+2026-10-10T16:47:16Z step 180/231 loss=3.25e-05 grad_norm=0.0002082 learning_rate=1.272e-05 epoch=0.7801
+2026-10-10T16:51:22Z step 190/231 loss=3.281e-05 grad_norm=0.0002902 learning_rate=8.427e-06 epoch=0.8234
+2026-10-10T16:53:29Z step 200/231 loss=4.335e-05 grad_norm=0.0004115 learning_rate=4.952e-06 epoch=0.8667
+2026-10-10T16:55:40Z step 210/231 loss=2.237e-05 grad_norm=0.0006653 learning_rate=2.361e-06 epoch=0.9101
+2026-10-10T16:57:49Z step 220/231 loss=4.562e-05 grad_norm=0.0002104 learning_rate=7.064e-07 epoch=0.9534
+2026-10-10T16:59:57Z step 230/231 loss=4.075e-05 grad_norm=0.003506 learning_rate=1.967e-08 epoch=0.9967
+2026-10-10T17:00:05Z step 231/231 train_runtime=3178 train_samples_per_second=4.647 train_steps_per_second=0.073 total_flos=2.821e+17 train_loss=0.05207 epoch=1
+2026-10-10T17:00:53Z trained 231 steps in 53.0 min, 913.1 tok/s, peak 31.88 GB
+2026-10-10T17:00:55Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0427)
+2026-10-10T17:00:56Z padding self-check: max |u_batch - u_single| = 0.0949 (tol 0.609) -> left padding
+2026-10-10T17:05:20Z B-DIV-patients-63-s0 rule_v1/dev: TA 96.3 Rev 96.3 Hold 100.0 n=300 (266.4 s)
+2026-10-10T17:10:06Z generate: batch 25/63, 104602 tokens, 370 tok/s
+2026-10-10T17:16:30Z generate: batch 50/63, 226346 tokens, 340 tok/s
+2026-10-10T17:37:16Z B-DIV-patients-63-s0 rule_v1/test_L2: TA 88.2 Rev 88.2 Hold 99.9 n=2000 (1915.3 s)
+2026-10-10T17:37:18Z DONE B-DIV-patients-63-s0 in 90.6 min, GPU util mean 93.0

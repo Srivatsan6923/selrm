@@ -1,0 +1,87 @@
+{
+ "run_id": "B-V2-reader-triplets-s4",
+ "set": "cls_v1/dev",
+ "claim_type": "conclusion",
+ "all": {
+  "Rev": 92.0,
+  "Hold": 84.0,
+  "TA": 76.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 300
+ },
+ "nm_kind=class": {
+  "Rev": 92.0,
+  "Hold": 84.0,
+  "TA": 76.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 300
+ },
+ "tier=easy": {
+  "Rev": 92.96482412060301,
+  "Hold": 81.4070351758794,
+  "TA": 74.87437185929649,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 199
+ },
+ "level=L2": {
+  "Rev": 92.0,
+  "Hold": 84.0,
+  "TA": 76.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 300
+ },
+ "family=single|class": {
+  "Rev": 92.0,
+  "Hold": 84.0,
+  "TA": 76.66666666666667,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 300
+ },
+ "tier=long": {
+  "Rev": 90.0990099009901,
+  "Hold": 89.10891089108911,
+  "TA": 80.1980198019802,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 101
+ },
+ "CI95": {
+  "TA": [
+   69.8051948051948,
+   82.87671232876713
+  ],
+  "Rev": [
+   87.91946308724832,
+   95.50898203592814
+  ],
+  "Hold": [
+   77.3462783171521,
+   90.0
+  ]
+ },
+ "step": {
+  "criterion": {
+   "Rev": 92.0,
+   "Hold": 84.0,
+   "TA": 76.66666666666667,
+   "BaseAcc": 100.0,
+   "Tie": 0.0,
+   "n": 300
+  }
+ },
+ "eval": {
+  "reader_units": 900,
+  "malformed_units": 0,
+  "mode": null,
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "seconds": 55.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

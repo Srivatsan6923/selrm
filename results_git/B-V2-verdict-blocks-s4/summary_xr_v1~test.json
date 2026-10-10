@@ -1,0 +1,41 @@
+{
+ "run_id": "B-V2-verdict-blocks-s4",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 55.25,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 92.54166666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 43.0,
+   "XA_inclusivity": 47.0,
+   "XA_subject": 99.0,
+   "XA_window": 32.0
+  },
+  "criterion": {
+   "XA": 67.0,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 94.5,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 71.0,
+   "XA_inclusivity": 69.0,
+   "XA_subject": 96.0,
+   "XA_window": 32.0
+  }
+ },
+ "eval": {
+  "seconds": 60.8,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

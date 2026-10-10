@@ -19,18 +19,13 @@ Nothing is tuned on a test set: parser, linker, gate and prompts are developed o
   top-1, top-10, abstention; local copy via scratch/role_a_s3 `build_cls_v1.py --restore`, dev only), reg_v1/dev
   (needs the Leaf and Chia archives; struct form numeric/window as in rule_v2), mcv_v1/dev (struct form with
   inputs/levels/thresholds: from_struct returns None for it; needs its own reading), unit conversion.
-- B2 training on rule_v2: QUEUED 10 Oct (configs/queues/v2/b_v2.json, 20 runs, prepped, min_gen 7, priority 6-12).
-  Format ledger_g (selrm/formats.py). When runs finish: pull, register (add aliases v2_verdict_*, v2_reader_* to
-  register_adapters.py), resummarize is not needed (runner summaries; no local copies of the test sets),
-  report by near-miss kind in docs/ANALYSIS_B_S2.md.
-- B3 Ledger-RM-G: round 1 failed the stop rule (rule_v1/dev, 0.67 below); the lead (user, 10 Oct) chose a second
-  development round. Gate changed (DECISIONS_B 10 Oct: computes(), route reader_bit, classes linked by name).
-  Requeued: configs/queues/v2/b_s2g.json (B-S2G-{gate,struct,bit,verdict}-s<k>-dev for every seed whose reader and
-  verdict adapters exist; min_gen 9). When B-S2G-gate-s<k>-dev and -struct- are DONE: pull,
-  `python scripts/assemble_rmg.py --validate <k>`. If seed 0 passes: queue the tests
-  (make_queue_b.composite(adapters, tests=True) -> a queue file, push, prep), bring the test record files into the
-  local data copy for the summaries, assemble, register ledger_rm_g_s<k> with variants, write docs/ANALYSIS_B_S2.md.
-  If it fails again: stop for good and report.
+- B2 training on rule_v2: DONE (20 runs, registered). reg_v1 not scored yet (eval-only runs; data on the PVC).
+- B3 Ledger-RM-G: second validation passed on the seed mean (seed 2 fails per seed on rule_v1/dev; DECISIONS_B and
+  HANDOFFS 10 Oct). Tests of seeds 0-1 assembled and registered (ledger_rm_g_s0, _s1). Queued on two A100 runners
+  (queues v2/b_s2g.json, v2/b_s2g_test.json): B-S2G-*-s4-dev (4) and B-S2G-{gate,struct}-s{2,3,4}-test (6).
+  When done: pull; `python scripts/assemble_rmg.py --validate 4`; `python scripts/assemble_rmg.py 2 3 4`; add
+  ledger_rm_g_s2..4 to configs/adapters.json (as s0, s1); `python scripts/analysis_b_s2.py > scratch/x && mv x
+  docs/ANALYSIS_B_S2.md`; HANDOFFS line.
 - B4 adaptation arms: running (v2/b_mix.json). Done: B-MIX-blocks-s0 (mix_blocks_s0). The long-prompt runs use
   "big" settings on 80 GB cards (per-device 4, scoring batch 32).
 - B5 handoffs: adapters line sent 9 Oct; resources per configuration after B2.

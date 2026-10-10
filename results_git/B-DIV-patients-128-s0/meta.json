@@ -1,0 +1,183 @@
+{
+ "run_id": "B-DIV-patients-128-s0",
+ "model": "unsloth/Qwen3.5-9B",
+ "model_revision": "005429cee5cb648998cf2b70eebdd83175989c9a",
+ "provider": "local (NRP Nautilus)",
+ "access_date": "2026-10-10",
+ "reasoning": "chat template with enable_thinking=False",
+ "format": "ledger2",
+ "corpus": "rule_v1/div_patients_128",
+ "seed": 0,
+ "provisional": false,
+ "timing_only": false,
+ "eval_sets": [
+  "rule_v1/dev",
+  "rule_v1/test_L2"
+ ],
+ "train_key": "ledger2__rule_v1~div_patients_128__nall__p0.3__c0__L1024__v2",
+ "pretok_stats": {
+  "n": 30000,
+  "reader": 15000,
+  "judge": 15000,
+  "pairs_swapped": 2207,
+  "unique_judge_pairs": 6609,
+  "reader_units": 7500,
+  "judge_pairs_available": 15000,
+  "resample_groups": 32,
+  "label1": 6372,
+  "key": "ledger2__rule_v1~div_patients_128__nall__p0.3__c0__L1024__v2",
+  "tokenizer": "unsloth--Qwen3.5-9B",
+  "vocab": 248077,
+  "spec": {
+   "format": "ledger2",
+   "corpus": "rule_v1/div_patients_128",
+   "n_examples": null,
+   "resample_p": null,
+   "construction_seed": null
+  },
+  "dropped_over_max_len": 0,
+  "max_len": 1024,
+  "examples": 30000,
+  "tokens": 5862804,
+  "len_mean": 195.4268,
+  "len_max": 473,
+  "completion_tokens": 525616,
+  "end_of_turn": "<|im_end|>",
+  "parts": {
+   "judge": 15000,
+   "reader": 15000
+  }
+ },
+ "train": {
+  "key": {
+   "train_data": "/pvc/selrm/tok/unsloth--Qwen3.5-9B/train/ledger2__rule_v1~div_patients_128__nall__p0.3__c0__L1024__v2/train.npz",
+   "base": "unsloth--Qwen3.5-9B",
+   "seed": 0,
+   "max_steps": null,
+   "hp": {
+    "lr": 0.0001,
+    "batch": 64,
+    "epochs": 1,
+    "max_len": 1024,
+    "lora_r": 64,
+    "lora_alpha": 64,
+    "lora_dropout": 0.0,
+    "warmup_ratio": 0.03,
+    "weight_decay": 0.0,
+    "optim": "adamw_torch_fused",
+    "max_grad_norm": 1.0,
+    "target_modules": [
+     "q_proj",
+     "k_proj",
+     "v_proj",
+     "o_proj",
+     "gate_proj",
+     "up_proj",
+     "down_proj"
+    ]
+   }
+  },
+  "train_seconds": 3779.9,
+  "steps": 469,
+  "steps_this_attempt": 469,
+  "resumed_from": null,
+  "examples": 30000,
+  "train_loss": 0.030626531450578302,
+  "tokens": 5862804,
+  "tokens_per_s": 1551.9,
+  "s_per_step": 8.059,
+  "peak_mem_gb": 32.1,
+  "peak_mem_allocated_gb": 31.69,
+  "trainable_params": 116391936,
+  "lora_modules": 128,
+  "dtype": "torch.bfloat16",
+  "hp": {
+   "lr": 0.0001,
+   "batch": 64,
+   "per_device": 16,
+   "epochs": 1,
+   "max_len": 1024,
+   "lora_r": 64,
+   "lora_alpha": 64,
+   "lora_dropout": 0.0,
+   "warmup_ratio": 0.03,
+   "weight_decay": 0.0,
+   "optim": "adamw_torch_fused",
+   "max_grad_norm": 1.0,
+   "save_every_s": 1200,
+   "target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj"
+   ]
+  },
+  "grad_accum": 4
+ },
+ "eval_seconds": 1280.8,
+ "eval_seconds_by_set": {
+  "rule_v1/dev": 171.1,
+  "rule_v1/test_L2": 1107.6
+ },
+ "eval_batch": {
+  "score": 128,
+  "generate": 128,
+  "max_new": 384
+ },
+ "eval_peak_mem_gb": 33.27,
+ "eval_generated_tokens": 330534,
+ "pad_check_ok": true,
+ "per_device_batch": 16,
+ "grad_accum": 4,
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA A100-PCIE-40GB, 615.71.09, 40960 MiB",
+ "node": "k8s-a100-01.suncorridor.org",
+ "pod": "selrm-b-run-all-a100-28547-0-2kjfl",
+ "git_commit": "a82a051d3285",
+ "wall_seconds": 5135.6,
+ "keep_adapter": false,
+ "max_rss_gb": 11.95,
+ "eval_u_path": "fp32-hidden",
+ "adapter_path": null,
+ "summaries": {
+  "rule_v1/dev": {
+   "Rev": 95.0,
+   "Hold": 99.33333333333333,
+   "TA": 94.66666666666667,
+   "BaseAcc": 100.0,
+   "Tie": 0.0,
+   "PresHold": 100.0,
+   "n": 300
+  },
+  "rule_v1/test_L2": {
+   "Rev": 89.45,
+   "Hold": 99.9,
+   "TA": 89.45,
+   "BaseAcc": 99.65,
+   "Tie": 0.1,
+   "PresHold": 99.65,
+   "n": 2000
+  }
+ },
+ "gpu_util_mean": 87.3,
+ "gpu_util_p10": 0.0,
+ "gpu_windows_below40": 0.059,
+ "gpu_samples": 168,
+ "gpu_hours": 1.427
+}

@@ -82,8 +82,9 @@ def main():
                     print(f"s{k} {set_name} {variant}: source scores missing")
                     ok &= not (variant == "gate" and set_name in ("rule_v2/dev", "rule_v1/dev"))   # nothing validated
                     continue
-                t = s["all"]["TA"]
-                print(f"s{k} {set_name} {variant}: TA {t:.2f} {s['eval']}")
+                xa = ((s.get("xr") or {}).get("conclusion") or {}).get("XA")      # xr_v1: crossed accuracy, no triplets
+                t = s["all"]["TA"] if "all" in s else xa
+                print(f"s{k} {set_name} {variant}: {'TA' if 'all' in s else 'XA'} {t:.2f} {s['eval']}")
                 ref = {"rule_v2/dev": f"B-V2-reader-triplets-s{k}", "rule_v1/dev": f"B-F-ledger2-triplets-s{k}"}.get(set_name)
                 if validate and variant == "gate" and ref:
                     r = ta(ref, set_name)

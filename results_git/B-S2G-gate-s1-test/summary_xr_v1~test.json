@@ -1,0 +1,54 @@
+{
+ "run_id": "B-S2G-gate-s1-test",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 99.0,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 99.83333333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 98.0,
+   "XA_window": 98.0
+  },
+  "criterion": {
+   "XA": 99.0,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 99.83333333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 98.0,
+   "XA_window": 98.0
+  }
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 2,
+  "mode": "gate",
+  "malformed_rate": 0.0008,
+  "gen_not_stopped": 0,
+  "routes": {
+   "judge_case": 287,
+   "gate": 667,
+   "reader_bit": 1444,
+   "fallback_malformed": 2
+  },
+  "gate_coverage": 0.2779,
+  "bit_changed": 0,
+  "seconds": 169.9,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

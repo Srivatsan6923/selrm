@@ -1,0 +1,47 @@
+{
+ "run_id": "B-S2-xr_v1.test-ledger_rm_g-gate-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 98.5,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 99.75,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 98.0,
+   "XA_subject": 100.0,
+   "XA_window": 96.0
+  },
+  "criterion": {
+   "XA": 98.5,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 99.75,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 98.0,
+   "XA_subject": 100.0,
+   "XA_window": 96.0
+  }
+ },
+ "eval": {
+  "routes": {
+   "judge_case": 1148,
+   "gate": 2668,
+   "reader_bit": 5712,
+   "fallback_malformed": 72
+  },
+  "fallback_rate": 0.0075,
+  "gate_coverage": 0.2779,
+  "malformed_rate": 0.0075
+ }
+}

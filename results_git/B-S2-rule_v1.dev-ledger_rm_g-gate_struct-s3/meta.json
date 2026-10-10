@@ -1,0 +1,9 @@
+{
+ "run_id": "B-S2-rule_v1.dev-ledger_rm_g-gate_struct-s3",
+ "system": "ledger_rm_g_s3",
+ "variant": "gate_struct",
+ "seed": 3,
+ "reader": "B-V2-reader-triplets-s3",
+ "fallback": "B-V2-verdict-triplets-s3",
+ "set": "rule_v1/dev"
+}

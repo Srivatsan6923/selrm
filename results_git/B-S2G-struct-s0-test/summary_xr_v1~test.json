@@ -1,0 +1,52 @@
+{
+ "run_id": "B-S2G-struct-s0-test",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 95.0,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 99.16666666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 84.0,
+   "XA_window": 96.0
+  },
+  "criterion": {
+   "XA": 95.0,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 99.16666666666667,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 84.0,
+   "XA_window": 96.0
+  }
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 16,
+  "mode": "gate_struct",
+  "malformed_rate": 0.0067,
+  "gen_not_stopped": 0,
+  "routes": {
+   "judge_case": 2384,
+   "fallback_malformed": 16
+  },
+  "gate_coverage": 0.0,
+  "bit_changed": 0,
+  "seconds": 190.9,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "run_id": "B-S2-cls_v1.dev-ledger_rm_g-gate-s3",
+ "system": "ledger_rm_g_s3",
+ "variant": "gate",
+ "seed": 3,
+ "reader": "B-V2-reader-triplets-s3",
+ "fallback": "B-V2-verdict-triplets-s3",
+ "set": "cls_v1/dev"
+}

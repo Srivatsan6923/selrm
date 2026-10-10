@@ -1863,6 +1863,34 @@
    "pvc": "selrm-b",
    "pvc_path": "selrm/adapters/B-V2-verdict-triplets-s4",
    "alias_of": "B-V2-verdict-triplets-s4"
+  },
+  "ledger_rm_g_s0": {
+   "run_id": "B-S2-<set>-ledger_rm_g-<variant>-s0",
+   "status": "composite, validated on development sets (docs/ANALYSIS_B_S2.md section 4); assembled by scripts/assemble_rmg.py",
+   "reader": "v2_reader_s0",
+   "fallback": "v2_verdict_triplets_s0",
+   "variants": [
+    "gate",
+    "gate_struct",
+    "reader_bit"
+   ],
+   "gate_code": "role-b d2431f7 (selrm/crit_parse.py, gate.py, link.py; scripts/eval_local.py gate_units)",
+   "format": "ledger_g",
+   "scores": "results_git/B-S2-<set with . for />-ledger_rm_g-<variant>-s0/scores_<set>.jsonl (route and checks per item)"
+  },
+  "ledger_rm_g_s1": {
+   "run_id": "B-S2-<set>-ledger_rm_g-<variant>-s1",
+   "status": "composite, validated on development sets (docs/ANALYSIS_B_S2.md section 4); assembled by scripts/assemble_rmg.py",
+   "reader": "v2_reader_s1",
+   "fallback": "v2_verdict_triplets_s1",
+   "variants": [
+    "gate",
+    "gate_struct",
+    "reader_bit"
+   ],
+   "gate_code": "role-b d2431f7 (selrm/crit_parse.py, gate.py, link.py; scripts/eval_local.py gate_units)",
+   "format": "ledger_g",
+   "scores": "results_git/B-S2-<set with . for />-ledger_rm_g-<variant>-s1/scores_<set>.jsonl (route and checks per item)"
   }
  }
 }

@@ -1,0 +1,46 @@
+{
+ "run_id": "B-V2-reader-lo_window-s0",
+ "set": "xr_v1/test",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "xr": {
+  "conclusion": {
+   "XA": 80.0,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 96.58333333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 36.0,
+   "XA_window": 84.0
+  },
+  "criterion": {
+   "XA": 80.0,
+   "n_items": 400,
+   "n_incomplete": 0,
+   "n_excluded": 0,
+   "CellAcc": 96.58333333333333,
+   "n_cells": 2400,
+   "cells_without_label": 0,
+   "XA_currency": 100.0,
+   "XA_inclusivity": 100.0,
+   "XA_subject": 36.0,
+   "XA_window": 84.0
+  }
+ },
+ "eval": {
+  "reader_units": 2400,
+  "malformed_units": 66,
+  "mode": null,
+  "malformed_rate": 0.0275,
+  "gen_not_stopped": 0,
+  "seconds": 270.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

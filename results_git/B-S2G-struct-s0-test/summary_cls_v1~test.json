@@ -1,0 +1,93 @@
+{
+ "run_id": "B-S2G-struct-s0-test",
+ "set": "cls_v1/test",
+ "claim_type": "conclusion",
+ "all": {
+  "Rev": 99.75,
+  "Hold": 100.0,
+  "TA": 99.75,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 1200
+ },
+ "nm_kind=class": {
+  "Rev": 99.75,
+  "Hold": 100.0,
+  "TA": 99.75,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 1200
+ },
+ "tier=long": {
+  "Rev": 99.76303317535545,
+  "Hold": 100.0,
+  "TA": 99.76303317535545,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 422
+ },
+ "level=L2": {
+  "Rev": 99.75,
+  "Hold": 100.0,
+  "TA": 99.75,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 1200
+ },
+ "family=single|class": {
+  "Rev": 99.75,
+  "Hold": 100.0,
+  "TA": 99.75,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 1200
+ },
+ "tier=easy": {
+  "Rev": 99.74293059125964,
+  "Hold": 100.0,
+  "TA": 99.74293059125964,
+  "BaseAcc": 100.0,
+  "Tie": 0.0,
+  "n": 778
+ },
+ "CI95": {
+  "TA": [
+   99.33829611248966,
+   100.0
+  ],
+  "Rev": [
+   99.33829611248966,
+   100.0
+  ],
+  "Hold": [
+   100.0,
+   100.0
+  ]
+ },
+ "step": {
+  "criterion": {
+   "Rev": 99.75,
+   "Hold": 100.0,
+   "TA": 99.75,
+   "BaseAcc": 100.0,
+   "Tie": 0.0,
+   "n": 1200
+  }
+ },
+ "eval": {
+  "reader_units": 3600,
+  "malformed_units": 0,
+  "mode": "gate_struct",
+  "malformed_rate": 0.0,
+  "gen_not_stopped": 0,
+  "routes": {
+   "gate": 3593,
+   "judge_case": 7
+  },
+  "gate_coverage": 0.9981,
+  "bit_changed": 357,
+  "seconds": 432.5,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
