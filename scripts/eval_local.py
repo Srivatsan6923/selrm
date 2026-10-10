@@ -18,7 +18,7 @@ import torch
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from selrm.crit_parse import from_struct, parse_criterion
 from selrm.link import load_onto
-from selrm.gate import gate
+from selrm.gate import computes, gate
 from selrm.formats import (BITS, MALFORMED_U, entry_g, PROSE, TWO_STAGE, parse_entries, judge_for, dataset_path, gold_record, judge_view, read_bit,
                            reader_unit, reader_units, unit_key, well_formed)
 from selrm.metrics import bootstrap_ci, cluster_bootstrap, crossed_accuracy, decisions, summarise
@@ -337,7 +337,8 @@ def gate_units(units, text, fmt, mode):
     -> {unit: {"route", "checks", "applies_reader", "applies_gate", "record"}}. route: fallback_none (no criterion
     text) and fallback_malformed carry no "record" (their u stays MALFORMED_U; the composite takes the verdict-only
     score); gate = the gate's bit replaces the reader's and the judge reads the record only; judge_case = some check
-    is not computable, the reader's bit stands and the judge also sees the case. gate_struct takes the constraints
+    is not computable, the reader's bit stands and the judge also sees the case; reader_bit = the criterion has no
+    threshold, window or class, the reader's bit stands and the judge reads the record only. gate_struct takes the constraints
     from the record's `struct` instead of the parser."""
     assert fmt in ("ledger2_dec", "ledger_g"), fmt
     g_fmt = fmt == "ledger_g"            # stage-2 record: the bit is a line of every entry
@@ -355,6 +356,10 @@ def gate_units(units, text, fmt, mode):
                 else parse_criterion(r["rule_text"], r["condition"], onto and onto["classes"]))
         g = gate(entries, cons, r["case_text"], r.get("ref_date"), onto)
         done = g["applies"] is not None
+        if cons is not None and not computes(cons):      # nothing for the gate to compute: the reader's bit stands
+            out[reader_unit(r, fmt)] = {"route": "reader_bit", "checks": g["checks"], "applies_reader": read_bit(rec_text),
+                                        "applies_gate": None, "record": rec_text.strip()}
+            continue
         if not done:
             record = rec_text.strip()                    # the reader's bit stands; the judge also sees the case
         elif g_fmt:                                      # each entry's bit is replaced by the gate's value for it

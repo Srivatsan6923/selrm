@@ -324,6 +324,7 @@
     "bs_gen": 256,
     "max_new": 384
    },
+   "base_model": "unsloth/Qwen3.5-9B",
    "min_gen": 6
   },
   {
