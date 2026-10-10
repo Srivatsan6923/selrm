@@ -155,6 +155,19 @@
   "split": "test",
   "tier": "external"
  },
+ "rewrite_v1/test": {
+  "audit_file": "rewrite_v1/rejected.jsonl",
+  "created": "2026-10-09",
+  "frozen": true,
+  "level": "L2",
+  "manifest": "rewrite_v1/test/MANIFEST.json",
+  "n_groups": 406,
+  "n_records": 5696,
+  "path": "rewrite_v1/test/records.jsonl",
+  "sha256": "fd7b83c73a891888c7ffb889cfd4cb2a8bd3f5612aa74bc2bd6ab91073afebf8",
+  "split": "test",
+  "tier": "rewritten"
+ },
  "rule_v1/abl_conclusion_triplets": {
   "created": "2026-10-02",
   "frozen": true,

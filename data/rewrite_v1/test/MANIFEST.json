@@ -1,0 +1,180 @@
+{
+ "cases_by_kind": {
+  "base": 406,
+  "flip": 406,
+  "near": 406,
+  "pres": 406
+ },
+ "created": "2026-10-09",
+ "frozen": true,
+ "generator": "scripts/rewrite_tier.py",
+ "git_commit": "80f47b6834fa9b841918be1ec8f1ebc760a7973d",
+ "groups_by": {
+  "class": {
+   "all|finding|ext": 10,
+   "all|mixed|ext": 57,
+   "any|numeric|-": 45,
+   "kofn|mixed|ext": 194,
+   "score|mixed|cur": 100
+  },
+  "family": {
+   "additive_score": 100,
+   "any_of": 1,
+   "g_all_of": 67,
+   "g_any_of": 44,
+   "g_score_cutoff": 73,
+   "g_two_of_three": 107,
+   "score_cutoff": 14
+  },
+  "level": {
+   "L2": 406
+  },
+  "nm_kind": {
+   "boundary": 126,
+   "negation": 16,
+   "numeric": 133,
+   "subject": 37,
+   "time": 94
+  },
+  "rid": {
+   "c3_edoxaban_dose": 1,
+   "centor": 15,
+   "curb65": 4,
+   "cut_bleed": 10,
+   "cut_vte": 4,
+   "gs001": 4,
+   "gs002": 10,
+   "gs003": 3,
+   "gs004": 5,
+   "gs010": 1,
+   "gs011": 3,
+   "gs021": 6,
+   "gs024": 5,
+   "gs025": 5,
+   "gs033": 1,
+   "gs037": 9,
+   "gs038": 9,
+   "gs044": 1,
+   "gs047": 4,
+   "gs048": 2,
+   "gs050": 8,
+   "gs052": 1,
+   "gs054": 5,
+   "gs056": 2,
+   "gs065": 1,
+   "gs066": 1,
+   "gs071": 10,
+   "gs072": 1,
+   "gs074": 2,
+   "gs075": 6,
+   "gs078": 3,
+   "gs079": 7,
+   "gs086": 6,
+   "gs087": 1,
+   "gs088": 7,
+   "gs094": 2,
+   "gs096": 5,
+   "gs108": 4,
+   "gs113": 3,
+   "gs118": 8,
+   "gs120": 5,
+   "gs122": 7,
+   "gs123": 7,
+   "gs124": 9,
+   "gs131": 3,
+   "gs134": 8,
+   "gs137": 1,
+   "gs138": 1,
+   "gs139": 2,
+   "gs140": 9,
+   "gs147": 5,
+   "gs148": 1,
+   "gs155": 5,
+   "gs157": 4,
+   "gs179": 2,
+   "gs183": 4,
+   "gs188": 8,
+   "gs190": 1,
+   "gs194": 6,
+   "gs197": 2,
+   "gs203": 3,
+   "gs209": 9,
+   "gs211": 3,
+   "gs216": 2,
+   "gs219": 3,
+   "gs220": 2,
+   "gs221": 1,
+   "gs223": 5,
+   "gs224": 11,
+   "gs230": 1,
+   "gs245": 4,
+   "gs246": 4,
+   "gs249": 2,
+   "news2_red": 5,
+   "qsofa": 2,
+   "s1_adrop": 4,
+   "s1_bap65": 5,
+   "s1_meds": 5,
+   "s1_news2_other": 4,
+   "s1_spesi": 4,
+   "s2_geneva": 6,
+   "s2_wells_pe": 8,
+   "s3_aims65": 10,
+   "s3_alvarado": 5,
+   "s3_blatchford": 11,
+   "s3_childpugh": 4,
+   "s3_rockall": 8
+  },
+  "tier": {
+   "rewritten": 406
+  }
+ },
+ "labels": {
+  "0": 2848,
+  "1": 2848
+ },
+ "level": "L2",
+ "n_cases": 1624,
+ "n_groups": 406,
+ "n_records": 5696,
+ "name": "test",
+ "python": "3.12.7",
+ "record_share": {
+  "base": 0.25,
+  "flip": 0.25,
+  "near": 0.25,
+  "pres": 0.25
+ },
+ "rewritten": {
+  "acceptance_rate": 40.6,
+  "extract_params": {
+   "max_tokens": 2000,
+   "response_format": {
+    "type": "json_object"
+   },
+   "seed": 2026,
+   "temperature": 0
+  },
+  "extractors": [
+   "google/gemma-4-31b-it",
+   "openai/gpt-oss-120b"
+  ],
+  "groups_accepted": 406,
+  "groups_tried": 1000,
+  "rewrite_params": {
+   "max_tokens": 900,
+   "seed": 2026,
+   "temperature": 0.7
+  },
+  "rewriter": "meta-llama/llama-3.3-70b-instruct"
+ },
+ "set": "rewrite_v1",
+ "sha256": "fd7b83c73a891888c7ffb889cfd4cb2a8bd3f5612aa74bc2bd6ab91073afebf8",
+ "shortcut_validation": {
+  "output": "always_default  all: Rev 0 Hold 100 TA 0 (n=406) | nm_kind=boundary: Rev 0 Hold 100 TA 0 (n=126) | nm_kind=negation: Rev 0 Hold 100 TA 0 (n=16) | nm_kind=numeric: Rev 0 Hold 100 TA 0 (n=133) | nm_kind=subject: Rev 0 Hold 100 TA 0 (n=37) | nm_kind=time: Rev 0 Hold 100 TA 0 (n=94)\nconcept_named   all: Rev 18 Hold 42 TA 2 (n=406) | nm_kind=boundary: Rev 4 Hold 46 TA 2 (n=126) | nm_kind=negation: Rev 88 Hold 12 TA 0 (n=16) | nm_kind=numeric: Rev 1 Hold 54 TA 1 (n=133) | nm_kind=subject: Rev 97 Hold 8 TA 5 (n=37) | nm_kind=time: Rev 17 Hold 36 TA 2 (n=94)\noracle          all: Rev 100 Hold 100 TA 100 (n=406) | nm_kind=boundary: Rev 100 Hold 100 TA 100 (n=126) | nm_kind=negation: Rev 100 Hold 100 TA 100 (n=16) | nm_kind=numeric: Rev 100 Hold 100 TA 100 (n=133) | nm_kind=subject: Rev 100 Hold 100 TA 100 (n=37) | nm_kind=time: Rev 100 Hold 100 TA 100 (n=94)\nSHORTCUT VALIDATION: FAIL",
+  "result": "FAIL"
+ },
+ "split": "test",
+ "template_split_hash": "1020bdc7bdae5d60515ad2344eacd0527a297730bb5a9648e09da1291e101ad5",
+ "templates": "rewritten"
+}
