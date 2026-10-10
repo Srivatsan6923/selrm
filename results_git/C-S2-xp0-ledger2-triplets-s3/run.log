@@ -1,0 +1,8 @@
+2026-10-10T12:21:18Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-ledger2-triplets-s3
+2026-10-10T12:21:20Z token budget per batch: 8000 (generation 24000)
+2026-10-10T12:21:21Z C-S2-xp0-ledger2-triplets-s3 xp_v1/orig_rerun prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/xp_v1/orig_rerun/reader_ledger.npz', 'exists')
+2026-10-10T12:21:23Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0041)
+2026-10-10T12:21:26Z padding self-check: max |u_batch - u_single| = 0.1118 (tol 0.625) -> left padding
+2026-10-10T12:24:36Z generate: batch 25/34, 34040 tokens, 180 tok/s
+2026-10-10T12:30:41Z C-S2-xp0-ledger2-triplets-s3 xp_v1/orig_rerun: TA 99.7 Rev 100.0 Hold 99.7 n=300 (542.5 s)
+2026-10-10T12:31:00Z DONE C-S2-xp0-ledger2-triplets-s3 in 10.5 min, GPU util mean 79.4

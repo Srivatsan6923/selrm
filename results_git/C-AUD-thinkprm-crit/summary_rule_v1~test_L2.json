@@ -1,0 +1,24 @@
+{
+ "run_id": "C-AUD-thinkprm-crit",
+ "set": "rule_v1/test_L2",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {
+   "Rev": 82.5,
+   "Hold": 91.5,
+   "TA": 76.5,
+   "BaseAcc": 92.5,
+   "Tie": 0.0,
+   "PresHold": 91.0,
+   "n": 200
+  }
+ },
+ "eval": {
+  "seconds": 17877.8,
+  "n_records": 1600,
+  "n_groups": 200,
+  "claim_types": [
+   "criterion"
+  ]
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "run_id": "C-AUD-thinkprm-crit",
+ "role": "C",
+ "model": "launch/ThinkPRM-14B",
+ "model_revision": "1d1b415037cccf826fab6cc1b02c1dac199c0c0f",
+ "base": null,
+ "base_revision": null,
+ "prm_module": "thinkprm",
+ "prompt_note": "Input is the official scoring prompt, format_verification_cot_for_thinkprm (github.com/mukhal/ThinkPRM @ 045b1ae, utils/helper.py, 'main template used in the paper'), which both of the repo's scoring classes use: ThinkPRM (prm/thinkprm.py, the README's Basic Usage) and APIThinkPRMVerifier (prm/thinkprm_api.py, the test-time-scaling runs). One user turn 'You are given a math problem and a proposed step-by-step solution:\\n\\n[Math Problem]\\n\\n{problem}\\n\\n[Solution]\\n\\n{solution}\\n\\nReview and critique each step in the proposed solution to determine whether each step is correct. If the solution is incomplete, only verify the provided steps.' in the released chat template with add_generation_prompt=True, so the text ends '<\uff5cAssistant\uff5c><think>\\n'; problem = 'Rule: {rule_text}\\n\\nCase:\\n{case_text}' ('{case_text}' when rule_text is empty) and solution = 'Step 1: {claim_text}' (the official process_example). Tokenized as the repo's pinned vLLM 0.6.4.post1 does it (tokenizer.encode(text) puts a BOS before the template's BOS: two BOS tokens). Not the model card's quick-start variant (instruction without the final '.', then \"\\nLet's verify step by step:\" after the template): after the template's '<think>\\n' it makes '<think>\\n\\n', and on ThinkPRM-1.5B (greedy, 12 rule_v1 dev and 4 MedEinst reference records) 7 of 16 chains were empty and 2 more were one line, against none with the repo prompt (with it, 26 of 28 such records ended with the verdict line within 2048 tokens, 2 were forced at the cap). Decoding is greedy (the card's temperature 0.0) for at most max_new_tokens new tokens, 2048 by default (the card's max_tokens and the class's max_length are 4096; 2048 covers 96% of the 1,000 released training chains, launch/thinkprm-1K-verification-cots @ c0b1da4, and 89% of its 26 one-step chains). Score as in the official ThinkPRM.predict_correctness_batch: every generated ' Yes' or ' No' token (ids 7414, 2308) is a decision on 'Is the solution correct?', and the last one gives the prefix score p = P(' Yes') / (P(' Yes') + P(' No')) at decision_temperature 1.0; u = log p - log(1-p) = logit(' Yes') - logit(' No') at that position, read with one extra left-padded forward pass over the prompt and the chain before that token, in float32 from the bf16 final hidden state, clipped to +-30. A chain that reaches the budget (where the official class, with its larger budget, would read its last ' Yes'/' No' wherever it stands) or that ends without such a token (the official class returns -1) gets the official forced verdict of ThinkPRM.predict_correctness_batch_sequential_scaling, emulated on the same greedy chain: the chain stops at the first 'Is the solution correct?' in its text (that path's vLLM stop string), a finished chain keeps its EOS id (vLLM's token_ids do), the string is appended unless the ids end with its last 3 ids, and u is read at the next token over the prompt re-tokenized without special tokens (one BOS, as that path's decision call has it); the number of forced verdicts is logged.",
+ "provider": "local (NRP Nautilus), as released",
+ "access_date": "2026-10-10",
+ "sets": [
+  "rule_v1/test_L2"
+ ],
+ "n_groups": 200,
+ "max_new": null,
+ "eval_seconds_by_set": {
+  "rule_v1/test_L2": 17877.8
+ },
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.5.0",
+  "unsloth": "2026.9.14",
+  "unsloth_zoo": "2026.9.9",
+  "trl": "0.24.0",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "flash-linear-attention": "0.5.2",
+  "fla-core": "0.5.2",
+  "causal-conv1d": "1.7.0",
+  "triton": "3.6.0",
+  "numpy": "2.5.3"
+ },
+ "gpu": "NVIDIA L40, 615.71.09, 46068 MiB",
+ "node": "rci-tide-gpu-06.sdsu.edu",
+ "pod": "selrm-c-run-c-prm-l40-22246-0-df9n7",
+ "wall_seconds": 18062.8,
+ "eval_peak_mem_gb": 31.67,
+ "summaries": {
+  "rule_v1/test_L2": null
+ },
+ "gpu_util_mean": 94.3,
+ "gpu_util_p10": 97.0,
+ "gpu_windows_below40": 0.0,
+ "gpu_samples": 556
+}

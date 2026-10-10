@@ -1,0 +1,10 @@
+{
+ "run_id": "C-S2-me-verdict-blocks-s1",
+ "set": "clin_v1/medeinst_test@wrong",
+ "claim_type": "conclusion",
+ "eval": {
+  "seconds": 5818.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

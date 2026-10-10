@@ -1,0 +1,16 @@
+2026-10-10T05:16:44Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-verdict-blocks-s1
+2026-10-10T05:16:44Z token budget per batch: 8000 (generation 24000)
+2026-10-10T05:16:44Z C-S2-me-verdict-blocks-s1 clin_v1/medeinst_test@derived prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test@derived/verdict.npz', 'exists')
+2026-10-10T05:17:37Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0411)
+2026-10-10T05:17:42Z padding self-check: max |u_batch - u_single| = 0.1845 (tol 0.602) -> left padding
+2026-10-10T06:42:41Z C-S2-me-verdict-blocks-s1 clin_v1/medeinst_test@derived: TA nan Rev nan Hold nan n=None (5156.6 s)
+2026-10-10T06:42:42Z C-S2-me-verdict-blocks-s1 clin_v1/medeinst_test@wrong prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test@wrong/verdict.npz', 'exists')
+2026-10-10T08:35:41Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-verdict-blocks-s1
+2026-10-10T08:35:42Z token budget per batch: 8000 (generation 24000)
+2026-10-10T08:35:42Z C-S2-me-verdict-blocks-s1 clin_v1/medeinst_test@derived prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test@derived/verdict.npz', 'exists')
+2026-10-10T08:35:56Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0044)
+2026-10-10T08:36:01Z padding self-check: max |u_batch - u_single| = 0.1167 (tol 0.601) -> left padding
+2026-10-10T10:13:21Z C-S2-me-verdict-blocks-s1 clin_v1/medeinst_test@derived: TA nan Rev nan Hold nan n=None (5856.5 s)
+2026-10-10T10:13:23Z C-S2-me-verdict-blocks-s1 clin_v1/medeinst_test@wrong prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/clin_v1/medeinst_test@wrong/verdict.npz', 'exists')
+2026-10-10T11:50:22Z C-S2-me-verdict-blocks-s1 clin_v1/medeinst_test@wrong: TA nan Rev nan Hold nan n=None (5818.6 s)
+2026-10-10T11:50:25Z DONE C-S2-me-verdict-blocks-s1 in 195.6 min, GPU util mean 97.5

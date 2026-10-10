@@ -69,35 +69,55 @@
    "TA_original": 22.333333333333332,
    "TA_paraphrase": 35.333333333333336,
    "Rev_paraphrase": 49.666666666666664,
-   "Hold_paraphrase": 47.333333333333336
+   "Hold_paraphrase": 47.333333333333336,
+   "seeds_changed": 1,
+   "changed_rate_paraphrase": 16.916666666666668,
+   "changed_rate_rerun": 0.9166666666666666,
+   "excess_changed_rate": 16.0
   },
   "verdict-blocks": {
    "seeds": 5,
    "TA_original": 52.0,
    "TA_paraphrase": 50.2,
    "Rev_paraphrase": 89.86666666666667,
-   "Hold_paraphrase": 53.0
+   "Hold_paraphrase": 53.0,
+   "seeds_changed": 5,
+   "changed_rate_paraphrase": 4.466666666666667,
+   "changed_rate_rerun": 0.09999999999999999,
+   "excess_changed_rate": 4.366666666666667
   },
   "verdict-triplets": {
    "seeds": 5,
    "TA_original": 91.26666666666667,
    "TA_paraphrase": 89.66666666666667,
    "Rev_paraphrase": 91.26666666666667,
-   "Hold_paraphrase": 95.06666666666666
+   "Hold_paraphrase": 95.06666666666666,
+   "seeds_changed": 5,
+   "changed_rate_paraphrase": 3.6166666666666667,
+   "changed_rate_rerun": 0.11666666666666667,
+   "excess_changed_rate": 3.5
   },
   "ledger2-triplets": {
    "seeds": 5,
    "TA_original": 99.6,
    "TA_paraphrase": 97.2,
    "Rev_paraphrase": 98.0,
-   "Hold_paraphrase": 97.86666666666667
+   "Hold_paraphrase": 97.86666666666667,
+   "seeds_changed": 5,
+   "changed_rate_paraphrase": 1.5666666666666667,
+   "changed_rate_rerun": 0.0,
+   "excess_changed_rate": 1.5666666666666667
   },
   "summary2-triplets": {
    "seeds": 1,
    "TA_original": 97.0,
    "TA_paraphrase": 98.33333333333333,
    "Rev_paraphrase": 99.0,
-   "Hold_paraphrase": 99.33333333333333
+   "Hold_paraphrase": 99.33333333333333,
+   "seeds_changed": 1,
+   "changed_rate_paraphrase": 0.4166666666666667,
+   "changed_rate_rerun": 0.0,
+   "excess_changed_rate": 0.4166666666666667
   }
  }
 }

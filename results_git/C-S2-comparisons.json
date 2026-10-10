@@ -144,17 +144,17 @@
    "n": 5383
   },
   "verdict-blocks|derived": {
-   "pair_accuracy": 11.01616199145458,
-   "control_acc": 92.62028608582574,
-   "trap_acc": 18.112576630131898,
-   "seeds": 4,
+   "pair_accuracy": 11.027308192457738,
+   "control_acc": 92.42429871818689,
+   "trap_acc": 18.357793052201373,
+   "seeds": 5,
    "n": 5383
   },
   "verdict-blocks|wrong": {
-   "pair_accuracy": 2.1270666914360024,
-   "control_acc": 5.967861787107561,
-   "trap_acc": 87.3955043655954,
-   "seeds": 4,
+   "pair_accuracy": 2.2924020063161805,
+   "control_acc": 6.234441761099759,
+   "trap_acc": 87.53111647780048,
+   "seeds": 5,
    "n": 5383
   },
   "critic|none": {

@@ -39,6 +39,13 @@ def cell(recs, u, suffix=""):
         f"n_{k}": len(v) for k, v in by.items()}
 
 
+def changed(recs, ua, ub):
+    """% of conclusion verdicts (sign of d on each case of each triplet) that differ between two score files."""
+    A, B = (M.decisions(recs, [u[r["iid"]] for r in recs]) for u in (ua, ub))
+    v = [(A[t]["d"][k] > 0) != (B[t]["d"][k] > 0) for t in A for k in A[t]["d"]]
+    return 100 * sum(v) / len(v)
+
+
 def mean(cells, k):
     v = [c[k] for c in cells if c and k in c]
     return statistics.mean(v) if v else None
@@ -82,17 +89,27 @@ def main():
     orig = [r for r in sets["test_L2"] if r["tid"] in tids]
     L += ["", "### Paraphrased rule text (`xp_v1/test`)", "",
           f"The same {len(tids)} triplets of L2 with the original rule text and with a program-preserving paraphrase of it.", "",
-          "| System (seeds) | TA original | TA paraphrase | Rev paraphrase | Hold paraphrase |", "|---|---|---|---|---|"]
+          "Changed verdicts: % of conclusion verdicts (sign of d on the base, flip, near and pres case of each triplet) that "
+          "differ from the stage-1 run on the original text, for the paraphrase and for a second run of the same original "
+          "records (`xp_v1/orig_rerun`, runs `C-S2-xp0-<system>`); excess = paraphrase minus rerun.", "",
+          "| System (seeds) | TA original | TA paraphrase | Rev paraphrase | Hold paraphrase | changed, paraphrase | changed, rerun | excess |",
+          "|---|---|---|---|---|---|---|---|"]
     out_xp = {}
     for name, label, runs, base_dirs in SYSTEMS:
-        a, b = [], []
+        a, b, ch = [], [], []
         for run, bdir in zip(runs, base_dirs):
             u0, u1 = scores(f"{bdir}/scores_rule_v1~test_L2.jsonl"), scores(f"{RES}/C-S2-xp-{run}/scores_xp_v1~test.jsonl")
+            ur = scores(f"{RES}/C-S2-xp0-{run}/scores_xp_v1~orig_rerun.jsonl")
             if u0 and u1:
                 a.append(cell(orig, u0)); b.append(cell(xp, u1))
-        out_xp[name] = {"seeds": len(b), "TA_original": mean(a, "TA"), **{f"{k}_paraphrase": mean(b, k) for k in ("TA", "Rev", "Hold")}}
+            if u0 and u1 and ur:
+                ch.append({"changed_rate_paraphrase": changed(orig, u0, u1), "changed_rate_rerun": changed(orig, u0, ur)})
+        out_xp[name] = {"seeds": len(b), "TA_original": mean(a, "TA"), **{f"{k}_paraphrase": mean(b, k) for k in ("TA", "Rev", "Hold")},
+                        "seeds_changed": len(ch), **{k: mean(ch, k) for k in ("changed_rate_paraphrase", "changed_rate_rerun")}}
         o = out_xp[name]
-        L.append(f"| {label} ({o['seeds']}) | " + " | ".join(fmt(o[k]) for k in ("TA_original", "TA_paraphrase", "Rev_paraphrase", "Hold_paraphrase")) + " |")
+        o["excess_changed_rate"] = o["changed_rate_paraphrase"] - o["changed_rate_rerun"] if ch else None
+        L.append(f"| {label} ({o['seeds']}) | " + " | ".join(fmt(o[k]) for k in (
+            "TA_original", "TA_paraphrase", "Rev_paraphrase", "Hold_paraphrase", "changed_rate_paraphrase", "changed_rate_rerun", "excess_changed_rate")) + " |")
     # ---- 2. kb_v1 triplets (C4): derived criterion stated, removed, exclusive lists exchanged
     kb = load(f"{ACODE}/kb_v1/triplets_test/records.jsonl")
     L += ["", "## 2. Criterion derived from a knowledge base (`kb_v1/triplets_test`; C4)", "",

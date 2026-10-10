@@ -28,13 +28,15 @@ Triplet accuracy and its parts on `rule_v1/test_L2` with the stated rule, with t
 
 The same 300 triplets of L2 with the original rule text and with a program-preserving paraphrase of it.
 
-| System (seeds) | TA original | TA paraphrase | Rev paraphrase | Hold paraphrase |
-|---|---|---|---|---|
-| Critic (untrained backbone) (1) | 22.3 | 35.3 | 49.7 | 47.3 |
-| Verdict only, blocks (5) | 52.0 | 50.2 | 89.9 | 53.0 |
-| Verdict only, triplets (5) | 91.3 | 89.7 | 91.3 | 95.1 |
-| Ledger, triplets (5) | 99.6 | 97.2 | 98.0 | 97.9 |
-| Summary, triplets (1) | 97.0 | 98.3 | 99.0 | 99.3 |
+Changed verdicts: % of conclusion verdicts (sign of d on the base, flip, near and pres case of each triplet) that differ from the stage-1 run on the original text, for the paraphrase and for a second run of the same original records (`xp_v1/orig_rerun`, runs `C-S2-xp0-<system>`); excess = paraphrase minus rerun.
+
+| System (seeds) | TA original | TA paraphrase | Rev paraphrase | Hold paraphrase | changed, paraphrase | changed, rerun | excess |
+|---|---|---|---|---|---|---|---|
+| Critic (untrained backbone) (1) | 22.3 | 35.3 | 49.7 | 47.3 | 16.9 | 0.9 | 16.0 |
+| Verdict only, blocks (5) | 52.0 | 50.2 | 89.9 | 53.0 | 4.5 | 0.1 | 4.4 |
+| Verdict only, triplets (5) | 91.3 | 89.7 | 91.3 | 95.1 | 3.6 | 0.1 | 3.5 |
+| Ledger, triplets (5) | 99.6 | 97.2 | 98.0 | 97.9 | 1.6 | 0.0 | 1.6 |
+| Summary, triplets (1) | 97.0 | 98.3 | 99.0 | 99.3 | 0.4 | 0.0 | 0.4 |
 
 ## 2. Criterion derived from a knowledge base (`kb_v1/triplets_test`; C4)
 

@@ -1,0 +1,36 @@
+2026-10-10T08:57:19Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-10T08:57:20Z token budget per batch: 8000 (generation 24000)
+2026-10-10T08:57:25Z C-S2-xp0-critic xp_v1/orig_rerun prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/xp_v1/orig_rerun/verdict.npz', 'built 4800 prompts, max 463 tokens')
+2026-10-10T08:58:07Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0162)
+2026-10-10T08:58:09Z padding self-check: max |u_batch - u_single| = 0.1006 (tol 0.548) -> left padding
+2026-10-10T09:02:57Z FAILED C-S2-xp0-critic
+Traceback (most recent call last):
+  File "/work/code/scripts/eval_c.py", line 470, in run_one
+    summ[s] = eval_local.evaluate(sc, root, rid, spec["format"], s, rdir, log, tag, spec.get("mode"))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/bcode/scripts/eval_local.py", line 250, in evaluate
+    u = sc.score(seqs)
+        ^^^^^^^^^^^^^^
+  File "/work/bcode/scripts/eval_local.py", line 184, in score
+    u[b] = self._last([seqs[i] for i in b])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/selrm-env/venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/bcode/scripts/eval_local.py", line 162, in _last
+    return u.cpu().numpy()
+           ^^^^^^^
+torch.AcceleratorError: CUDA error: unspecified launch failure
+Search for `cudaErrorLaunchFailure' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+
+2026-10-10T10:44:14Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-10T10:44:16Z token budget per batch: 8000 (generation 24000)
+2026-10-10T10:44:16Z C-S2-xp0-critic xp_v1/orig_rerun prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/xp_v1/orig_rerun/verdict.npz', 'exists')
+2026-10-10T10:45:51Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0834)
+2026-10-10T10:45:54Z padding self-check: max |u_batch - u_single| = 0.2143 (tol 0.548) -> left padding
+2026-10-10T10:50:48Z C-S2-xp0-critic xp_v1/orig_rerun: TA 22.0 Rev 40.3 Hold 26.3 n=300 (390.8 s)
+2026-10-10T10:50:49Z DONE C-S2-xp0-critic in 7.4 min, GPU util mean 67.9
