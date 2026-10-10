@@ -1,0 +1,20 @@
+{
+ "run_id": "C-S2-mcv2-verdict-triplets-s0",
+ "set": "mcv_v1/edits_test@none",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {
+   "Rev": 72.79951100244499,
+   "Hold": 85.14669926650367,
+   "TA": 69.31540342298288,
+   "BaseAcc": 87.89731051344744,
+   "Tie": 0.0,
+   "n": 1636
+  }
+ },
+ "eval": {
+  "seconds": 1337.9,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "run_id": "C-S2-mcv-critic",
+ "set": "mcv_v1/criteria_test@none",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "seconds": 1540.1,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}

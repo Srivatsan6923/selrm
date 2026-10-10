@@ -1,0 +1,11 @@
+2026-10-09T08:37:29Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter /pvcb/selrm/adapters/B-F-verdict-triplets-s3
+2026-10-09T08:37:30Z token budget per batch: 8000 (generation 24000)
+2026-10-09T08:37:30Z C-S2-mcv-verdict-triplets-s3 mcv_v1/criteria_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/mcv_v1/criteria_test/verdict.npz', 'exists')
+2026-10-09T08:37:40Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0024)
+2026-10-09T08:37:42Z padding self-check: max |u_batch - u_single| = 0.1354 (tol 0.787) -> left padding
+2026-10-09T09:01:56Z C-S2-mcv-verdict-triplets-s3 mcv_v1/criteria_test: TA nan Rev nan Hold nan n=None (1465.3 s)
+2026-10-09T09:01:57Z C-S2-mcv-verdict-triplets-s3 mcv_v1/criteria_test@none prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/mcv_v1/criteria_test@none/verdict.npz', 'exists')
+2026-10-09T09:18:05Z C-S2-mcv-verdict-triplets-s3 mcv_v1/criteria_test@none: TA nan Rev nan Hold nan n=None (967.6 s)
+2026-10-09T09:18:06Z C-S2-mcv-verdict-triplets-s3 mcv_v1/edits_test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/mcv_v1/edits_test/verdict.npz', 'exists')
+2026-10-09T09:51:50Z C-S2-mcv-verdict-triplets-s3 mcv_v1/edits_test: TA nan Rev nan Hold nan n=None (2023.4 s)
+2026-10-09T09:51:52Z DONE C-S2-mcv-verdict-triplets-s3 in 75.0 min, GPU util mean 96.1

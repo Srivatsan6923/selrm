@@ -1,0 +1,7 @@
+2026-10-09T06:58:37Z loaded base /work/models/unsloth--Qwen3.5-9B, adapter None
+2026-10-09T06:58:38Z token budget per batch: 8000 (generation 24000)
+2026-10-09T06:58:45Z C-S2-xp-critic xp_v1/test prompts: ('/pvc/selrmc/tok/unsloth--Qwen3.5-9B/eval/xp_v1/test/verdict.npz', 'built 4800 prompts, max 462 tokens')
+2026-10-09T06:59:23Z u path: fp32-hidden (max |u_fp32 - u_bf16logits| = 0.0586)
+2026-10-09T06:59:26Z padding self-check: max |u_batch - u_single| = 0.0722 (tol 0.541) -> left padding
+2026-10-09T07:04:06Z C-S2-xp-critic xp_v1/test: TA 35.3 Rev 49.7 Hold 47.3 n=300 (320.0 s)
+2026-10-09T07:04:08Z DONE C-S2-xp-critic in 5.7 min, GPU util mean 84.3

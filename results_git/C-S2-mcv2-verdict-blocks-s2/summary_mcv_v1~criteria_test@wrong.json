@@ -1,0 +1,13 @@
+{
+ "run_id": "C-S2-mcv2-verdict-blocks-s2",
+ "set": "mcv_v1/criteria_test@wrong",
+ "claim_type": "conclusion",
+ "step": {
+  "criterion": {}
+ },
+ "eval": {
+  "seconds": 2944.6,
+  "pad_ok": true,
+  "u_path": "fp32-hidden"
+ }
+}
