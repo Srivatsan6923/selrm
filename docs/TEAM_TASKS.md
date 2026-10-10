@@ -29,6 +29,19 @@ Everything below is due **Sunday 11 Oct, 23:59 IST** unless a row says otherwise
 Do **H2 before H1** if you do H2 at all (H1 shows generated cases; H2 must be written without having
 seen them). H2 is optional; if nobody does it, the paper keeps "not used in this draft".
 
+## Stage-2 reading sheets are ready (since 9 Oct)
+
+For H-S2-3; readers: Hemashruthi (author4) and the undergraduate assistant (save as `author5`), each alone.
+Copy the sheet, answer in the copy, never edit the original.
+
+| Sheet | What to judge per row | Read with | Save as |
+|---|---|---|---|
+| `audit/s2/mcv_edits_sheet.csv` (100 edited MedCalc notes) | q1-q3: is the edit the only change, does the note now state the edited fact, is the label right under the score text | `audit/s2/mcv_edits_cases.md` | `audit/s2/mcv_edits_<authorN>.csv` |
+| `audit/s2/kb_criteria_sheet.csv` (20 DDXPlus criteria) | does the rendered criterion say what the two condition lists say | `audit/s2/kb_criteria_sheet.md` | `audit/s2/kb_criteria_<authorN>.csv` |
+| `audit/s2/reg_criteria_sheet.csv` (50 registered trial criteria) | q1-q2: does the script's reading (threshold, inclusive or not, window, reference date) do what the sentence says | the sheet itself | `audit/s2/reg_criteria_<authorN>.csv` |
+
+Background for each set: `docs/DATA_AUDIT_mcv_v1.md`, `docs/DATA_AUDIT_kb_v1.md`, `docs/DATA_AUDIT_reg_v1.md`.
+
 ## Schedule
 
 | Day | Reading and checking | Writing |
